@@ -35,152 +35,135 @@ var consumerGroupName = 'testconsumergroup';
 var eventsEndpointName = 'events';
 
 describe('IoTHub', function () {
-  
-  before(function (done) {
-    suite = new SuiteBase(this, testPrefix);
-    suite.setupSuite(function () {
-        client = new IoTHubClient(suite.credentials, null);
-        subscriptionId = suite.subscriptionId;
+
+    before(function (done) {
+        suite = new SuiteBase(this, testPrefix);
+        suite.setupSuite(function () {
+            client = new IoTHubClient(suite.credentials, suite.subscriptionId, null);
+            subscriptionId = suite.subscriptionId;
+        });
+
+        if (suite.isPlayback) {
+            client.longRunningOperationRetryTimeout = 0;
+        }
+
+        suite.createResourcegroup(resourceGroupName, location, function (err, result) {
+            should.not.exist(err);
+        });
+
+        done();
     });
 
-      if (suite.isPlayback) {
-        client.longRunningOperationRetryTimeout = 0;
-      }
+    after(function (done) {
+        suite.teardownSuite(done);
+    });
 
-      suite.createResourcegroup(resourceGroupName, location, function (err, result) {
-          should.not.exist(err);
-      });
+    beforeEach(function (done) {
+        suite.setupTest(done);
+    });
 
-      done();
-  });
-  
-  after(function (done) {
-    suite.teardownSuite(done);
-  });
-  
-  beforeEach(function (done) {
-    suite.setupTest(done);
-  });
-  
-  afterEach(function (done) {
-    suite.baseTeardownTest(done);
-  });
+    afterEach(function (done) {
+        suite.baseTeardownTest(done);
+    });
 
 
-  describe('Get IoTHub Operations', function () {
-      it('should get the iothub operations successfully', function (done) {
-        client.iotHubResource.getResourceProviderOperations(null, function (err, result, request, response) {
-            should.not.exist(err);
-            should.exist(result);
-            response.statusCode.should.equal(200);
-            done();
+    describe('IoTHub Lifecycle Test', function () {
+        it('should check if the iothub name exists', function (done) {
+
+            var operationInputs = {
+                name: resourceName
+            };
+
+            client.iotHubResource.checkNameAvailability(operationInputs, function (err, result, request, response) {
+                should.not.exist(err);
+                if (!result.nameAvailable) {
+                    iotHubExists = true;
+                    console.log('Hub exists');
+                } else {
+                    console.log('Hub does not exist');
+                }
+                done();
+            });
         });
-      });
-  });
 
-  describe('IoTHub Lifecycle Test', function () {
-      it('should check if the iothub name exists', function (done) {
-
-          var operationInputs = {
-              name: resourceName
-          };
-
-          client.iotHubResource.checkIotHubNameAvailability(subscriptionId, operationInputs, null, function (err, result, request, response) {
-              should.not.exist(err);
-              if (!result.nameAvailable) {
-                  iotHubExists = true;
-                  console.log('Hub exists');
-              } else {
-                  console.log('Hub does not exist');
-              }
-              done();
-          });
-      });
-  
         it('should delete a hub if it exists successfully', function (done) {
 
             if (iotHubExists) {
-              console.log('Deleting existing hub');
-              client.iotHubResource.deleteIotHub(resourceName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-                  should.not.exist(err);
-                  operationId = response.headers['azure-asyncoperation'];
-                  waitForJobCompletion(operationId, 0, false, "TimeOut", done);
-              });
+                client.iotHubResource.deleteMethod(resourceGroupName, resourceName, null, function (err, result, request, response) {
+                    should.not.exist(err);
+                    done();
+                });
             } else {
                 console.log('Hub does not exist. Skipping Delete');
                 done();
             }
-      });
+        });
 
-      it('should create the iothub successfully', function (done) {
+        it('should create the iothub successfully', function (done) {
 
-          var iotHubCreateParams = {
-              name: resourceName,
-              location: location,
-              subscriptionid: subscriptionId,
-              resourcegroup: resourceGroupName,
-              sku: {
-                  name: 'S1',
-                  capacity: 2
-              },
-              properties: {
-                  enableFileUploadNotifications: false,
-                  operationsMonitoringProperties: {
-                      events: {
-                          "C2DCommands": "Error",
-                          "DeviceTelemetry": "Error",
-                          "DeviceIdentityOperations": "Error",
-                          "Connections": "Error, Information"
-                      }
-                  },
-                  "features": "None",
-              }
-          }
+            var iotHubCreateParams = {
+                name: resourceName,
+                location: location,
+                subscriptionid: subscriptionId,
+                resourcegroup: resourceGroupName,
+                sku: {
+                    name: 'S1',
+                    capacity: 2
+                },
+                properties: {
+                    enableFileUploadNotifications: false,
+                    operationsMonitoringProperties: {
+                        events: {
+                            "C2DCommands": "Error",
+                            "DeviceTelemetry": "Error",
+                            "DeviceIdentityOperations": "Error",
+                            "Connections": "Error, Information"
+                        }
+                    },
+                    "features": "None",
+                }
+            }
 
-          console.log('Creating the hub');
-          client.iotHubResource.createOrUpdateIotHub(subscriptionId, resourceGroupName, resourceName, iotHubCreateParams, null, function (err, result, request, response) {
-              should.not.exist(err);
-              response.statusCode.should.equal(201);
-              operationId = response.headers['azure-asyncoperation'];
-              waitForJobCompletion(operationId, 0, false, "TimeOut", done);
-          });
-      });
+            console.log('Creating the hub');
+            client.iotHubResource.createOrUpdate(resourceGroupName, resourceName, iotHubCreateParams, null, function (err, result, request, response) {
+                should.not.exist(err);
+                done();
+            });
+        });
 
-      it('should update the iothub successfully', function (done) {
-          var iotHubUpdateParams = {
-              name: resourceName,
-              location: location,
-              subscriptionid: subscriptionId,
-              resourcegroup: resourceGroupName,
-              sku: {
-                  name: 'S1',
-                  capacity: 3
-              },
-              properties: {
-                  enableFileUploadNotifications: false,
-                  operationsMonitoringProperties: {
-                      events: {
-                          "C2DCommands": "Error",
-                          "DeviceTelemetry": "Error",
-                          "DeviceIdentityOperations": "Error",
-                          "Connections": "Error, Information"
-                      }
-                  },
-                  "features": "None",
-              }
-          }
+        it('should update the iothub successfully', function (done) {
+            var iotHubUpdateParams = {
+                name: resourceName,
+                location: location,
+                subscriptionid: subscriptionId,
+                resourcegroup: resourceGroupName,
+                sku: {
+                    name: 'S1',
+                    capacity: 3
+                },
+                properties: {
+                    enableFileUploadNotifications: false,
+                    operationsMonitoringProperties: {
+                        events: {
+                            "C2DCommands": "Error",
+                            "DeviceTelemetry": "Error",
+                            "DeviceIdentityOperations": "Error",
+                            "Connections": "Error, Information"
+                        }
+                    },
+                    "features": "None",
+                }
+            }
 
-          console.log('Updating the hub');
-          client.iotHubResource.createOrUpdateIotHub(subscriptionId, resourceGroupName, resourceName, iotHubUpdateParams, null, function (err, result, request, response) {
-              should.not.exist(err);
-              response.statusCode.should.equal(201);
-              operationId = response.headers['azure-asyncoperation'];
-              waitForJobCompletion(operationId, 0, false, "TimeOut", done);
-          });
-      });
+            console.log('Updating the hub');
+            client.iotHubResource.createOrUpdate(resourceGroupName, resourceName, iotHubUpdateParams, null, function (err, result, request, response) {
+                should.not.exist(err);
+                done();
+            });
+        });
 
-      it('should get the iothub description successfully', function (done) {
-          client.iotHubResource.getIotHub(resourceName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
+        it('should get the iothub description successfully', function (done) {
+            client.iotHubResource.get(resourceGroupName, resourceName, null, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 result.name.should.equal(resourceName);
@@ -188,167 +171,116 @@ describe('IoTHub', function () {
                 result.sku.capacity.should.equal(3);
                 response.statusCode.should.equal(200);
                 done();
-          });
-      });
-
-      it('should get the iothub descriptions for all hubs in a resource group successfully', function (done) {
-          client.iotHubResource.getIotHubsForResourceGroup(subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              result.value.length.should.be.above(0);
-              response.statusCode.should.equal(200);
-              done();
-          });
-      });
-
-      it('should get the iothub quota metric successfully', function (done) {
-          client.iotHubResource.getQuotaMetrics(resourceName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              result.value.length.should.be.equal(2);
-              response.statusCode.should.equal(200);
-              done();
-          });
-      });
-
-      it('should get the iothub stats successfully', function (done) {
-          client.iotHubResource.getIotHubStats(resourceName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              response.statusCode.should.equal(200);
-              result.totalDeviceCount.should.be.equal(0);
-              result.enabledDeviceCount.should.be.equal(0);
-              result.disabledDeviceCount.should.be.equal(0);
-              done();
-          });
-      });
-
-      it('should get the valid iothub skus successfully', function (done) {
-          client.iotHubResource.getValidIotHubSkus(resourceName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              response.statusCode.should.equal(200);
-              result.value.length.should.be.above(0);
-              done();
-          });
-      });
-
-      it('should get all the iothub keys successfully', function (done) {
-          client.iotHubResource.getAllIotHubKeys(resourceName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              response.statusCode.should.equal(200);
-              result.value.length.should.be.above(0);
-              done();
-          });
-      });
-
-      it('should get a specific iothub key successfully', function (done) {
-          client.iotHubResource.getIotHubKeysForKeyName(resourceName, 'iothubowner', subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              response.statusCode.should.equal(200);
-              result.keyName.should.equal('iothubowner');
-              done();
-          });
-      });
-
-      it('should get all the eventhub consumer groups successfully', function (done) {
-          client.iotHubResource.getEventHubConsumerGroups(resourceName, 'events', subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              response.statusCode.should.equal(200);
-              result.value.length.should.be.above(0);
-              console.log("consumer group names : " + JSON.stringify(result.value))
-              done();
-          });
-      });
-
-      it('should add an eventhub consumer group successfully', function (done) {
-          client.iotHubResource.addEventHubConsumerGroup(resourceName, eventsEndpointName, consumerGroupName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              response.statusCode.should.equal(200);
-              result.name.should.equal(consumerGroupName)
-              done();
-          });
-      });
-
-      it('should get a single eventhub consumer group successfully', function (done) {
-          client.iotHubResource.getEventHubConsumerGroup(resourceName, eventsEndpointName, consumerGroupName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              response.statusCode.should.equal(200);
-              result.name.should.equal(consumerGroupName)
-              done();
-          });
-      });
-
-      it('should delete an eventhub consumer group successfully', function (done) {
-          client.iotHubResource.deleteEventHubConsumerGroup(resourceName, eventsEndpointName, consumerGroupName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              response.statusCode.should.equal(200);
-              done();
-          });
-      });
-
-      it('should delete the iothub successfully', function (done) {
-          client.iotHubResource.deleteIotHub(resourceName, subscriptionId, resourceGroupName, null, function (err, result, request, response) {
-                should.not.exist(err);
-                response.statusCode.should.equal(202);
-                operationId = response.headers['azure-asyncoperation'];
-                waitForJobCompletion(operationId, 0, false, "TimeOut", done);
             });
-      });
-  });
+        });
 
-  describe('Get All IoTHubs', function () {
-      it('should get the iothub descriptions for all hubs in a subscription successfully', function (done) {
+        it('should get the iothub descriptions for all hubs in a resource group successfully', function (done) {
+            client.iotHubResource.listByResourceGroup(resourceGroupName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                done();
+            });
+        });
 
-              client.iotHubResource.getIotHubsForSubscription(subscriptionId, null, function (err, result, request, response) {
-                  should.not.exist(err);
-                  should.exist(result);
-                  result.value.length.should.be.above(0);
-                  response.statusCode.should.equal(200);
-                  done();
-              });
-      });
-  });
+        it('should get the iothub quota metric successfully', function (done) {
+            client.iotHubResource.getQuotaMetrics(resourceGroupName, resourceName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                done();
+            });
+        });
 
-  function sleep(time) {
-      var stop = new Date().getTime();
-      while (new Date().getTime() < stop + time) {
-          ;
-      }
-  }
+        /* Enable this after the fix in the service has been deployed
+        it('should get the iothub stats successfully', function (done) {
+            client.iotHubResource.getStats(resourceGroupName, resourceName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                result.totalDeviceCount.should.be.equal(0);
+                result.enabledDeviceCount.should.be.equal(0);
+                result.disabledDeviceCount.should.be.equal(0);
+                done();
+            });
+        });*/
 
-  function waitForJobCompletion(operationId, currentRetryCount, orchestrationFinished, status, done) {
+        it('should get the valid iothub skus successfully', function (done) {
+            client.iotHubResource.getValidSkus(resourceGroupName, resourceName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                done();
+            });
+        });
 
-      if (orchestrationFinished || currentRetryCount >= maxRetryCount)
-      {
-          status.should.equal("Succeeded");
-          console.log('operation completed successfully');
-          done();
-      }
-      else
-      {
-          console.log('Retry Attempt #' + currentRetryCount++);
-          var absoluteOperationId = url.parse(operationId).pathname;
-          var operationIdSegments = absoluteOperationId.toString().split("/");
-          var operationId = operationIdSegments[operationIdSegments.length - 1];
-          client.iotHubResource.getOperationResult(operationId, subscriptionId, resourceGroupName, resourceName, null, function (err, result, request, response) {
-              should.not.exist(err);
-              should.exist(result);
-              console.log('Job status : ' + result.status);
-              if (result.status == 'Succeeded' || result.status == 'Canceled' || result.status == 'Failed') {
-                  status = result.status;
-                  orchestrationFinished = true;
-              }
+        it('should get all the iothub keys successfully', function (done) {
+            client.iotHubResource.listKeys(resourceGroupName, resourceName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                done();
+            });
+        });
 
-              setTimeout(function () {
-                  waitForJobCompletion(absoluteOperationId, currentRetryCount, orchestrationFinished, status, done);
-              }, retryIntervalInSeconds * 1000);
-          });
-      }
-  }
+        it('should get a specific iothub key successfully', function (done) {
+            client.iotHubResource.getKeysForKeyName(resourceGroupName, resourceName, 'iothubowner', null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                result.keyName.should.equal('iothubowner');
+                done();
+            });
+        });
+
+        it('should get all the eventhub consumer groups successfully', function (done) {
+            client.iotHubResource.listEventHubConsumerGroups(resourceGroupName, resourceName, 'events', null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                done();
+            });
+        });
+
+        it('should add an eventhub consumer group successfully', function (done) {
+            client.iotHubResource.createEventHubConsumerGroup(resourceGroupName, resourceName, eventsEndpointName, consumerGroupName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                result.name.should.equal(consumerGroupName)
+                done();
+            });
+        });
+
+        it('should get a single eventhub consumer group successfully', function (done) {
+            client.iotHubResource.getEventHubConsumerGroup(resourceGroupName, resourceName, eventsEndpointName, consumerGroupName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                result.name.should.equal(consumerGroupName)
+                done();
+            });
+        });
+
+        it('should delete an eventhub consumer group successfully', function (done) {
+            client.iotHubResource.deleteEventHubConsumerGroup(resourceGroupName, resourceName, eventsEndpointName, consumerGroupName, null, function (err, result, request, response) {
+                should.not.exist(err);
+                response.statusCode.should.equal(200);
+                done();
+            });
+        });
+
+    });
+
+    describe('Get All IoTHubs in subscription', function () {
+        it('should get the iothub descriptions for all hubs in a subscription successfully', function (done) {
+
+            client.iotHubResource.listBySubscription(null, function (err, result, request, response) {
+                should.not.exist(err);
+                should.exist(result);
+                response.statusCode.should.equal(200);
+                done();
+            });
+        });
+    });
 });

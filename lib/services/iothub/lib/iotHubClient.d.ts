@@ -19,6 +19,8 @@ declare class IotHubClient {
      *
      * @param {credentials} credentials - Gets Azure subscription credentials.
      *
+     * @param {string} subscriptionId - The subscription identifier.
+     *
      * @param {string} [baseUri] - The base URI of the service.
      *
      * @param {object} [options] - The parameter options
@@ -30,9 +32,7 @@ declare class IotHubClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
-     * @param {string} [options.apiVersion] - Client API version.
-     *
-     * @param {string} [options.asyncinfo] - asyncinfo flag
+     * @param {string} [options.apiVersion] - Version of the Api.
      *
      * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
      *
@@ -41,13 +41,13 @@ declare class IotHubClient {
      * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
      *
      */
-    constructor(credentials: ServiceClientCredentials, baseUri: string, options: ServiceClientOptions);
+    constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri: string, options: ServiceClientOptions);
 
     credentials: ServiceClientCredentials;
 
-    apiVersion: string;
+    subscriptionId: string;
 
-    asyncinfo: string;
+    apiVersion: string;
 
     acceptLanguage: string;
 

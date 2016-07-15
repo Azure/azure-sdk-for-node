@@ -14,14 +14,22 @@
  * @class
  * Initializes a new instance of the SharedAccessSignatureAuthorizationRule class.
  * @constructor
- * @member {string} [keyName]
+ * The properties that describe the keys to access the IotHub artifacts.
+ * @member {string} [keyName] The name of the key.
  * 
- * @member {string} [primaryKey]
+ * @member {string} [primaryKey] The primary key.
  * 
- * @member {string} [secondaryKey]
+ * @member {string} [secondaryKey] The secondary key.
  * 
- * @member {string} [rights] Possible values include: 'RegistryRead',
- * 'RegistryWrite', 'ServiceConnect', 'DeviceConnect'
+ * @member {string} [rights] The access rights. Possible values include:
+ * 'RegistryRead', 'RegistryWrite', 'ServiceConnect', 'DeviceConnect',
+ * 'RegistryRead, RegistryWrite', 'RegistryRead, ServiceConnect',
+ * 'RegistryRead, DeviceConnect', 'RegistryWrite, ServiceConnect',
+ * 'RegistryWrite, DeviceConnect', 'ServiceConnect, DeviceConnect',
+ * 'RegistryRead, RegistryWrite, ServiceConnect', 'RegistryRead,
+ * RegistryWrite, DeviceConnect', 'RegistryRead, ServiceConnect,
+ * DeviceConnect', 'RegistryWrite, ServiceConnect, DeviceConnect',
+ * 'RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect'
  * 
  */
 export interface SharedAccessSignatureAuthorizationRule {
@@ -35,40 +43,52 @@ export interface SharedAccessSignatureAuthorizationRule {
  * @class
  * Initializes a new instance of the IotHubProperties class.
  * @constructor
- * @member {array} [authorizationPolicies]
+ * The Iot Hub properties.
+ * @member {array} [authorizationPolicies] The authorization rules.
  * 
- * @member {string} [hostName]
+ * @member {string} [hostName] The name of the host.
  * 
- * @member {object} [eventHubEndpoints]
+ * @member {object} [eventHubEndpoints] The event hub endpoint properties.
  * 
- * @member {object} [storageEndpoints]
+ * @member {object} [storageEndpoints] The list of storage end points where
+ * files can be uploaded. Currently only one storage account can be
+ * configured.
  * 
- * @member {object} [messagingEndpoints]
+ * @member {object} [messagingEndpoints] The list of messaging end points
+ * configured.
  * 
- * @member {boolean} [enableFileUploadNotifications]
+ * @member {boolean} [enableFileUploadNotifications] The flag which indicates
+ * whether file upload notification should be enabled. This is optional at
+ * iot hub level. When enabled upload notifications will be available.
  * 
  * @member {object} [cloudToDevice]
  * 
- * @member {number} [cloudToDevice.maxDeliveryCount]
+ * @member {number} [cloudToDevice.maxDeliveryCount] The max delivery count
+ * for the device queue. Range : 1-100.
  * 
- * @member {string} [cloudToDevice.defaultTtlAsIso8601]
+ * @member {moment.duration} [cloudToDevice.defaultTtlAsIso8601] The default
+ * time to live for the device queue. Range : 1 Min (PT1M) - 2 Days (P2D).
  * 
  * @member {object} [cloudToDevice.feedback]
  * 
- * @member {string} [cloudToDevice.feedback.lockDurationAsIso8601]
+ * @member {moment.duration} [cloudToDevice.feedback.lockDurationAsIso8601]
+ * The lock duration for the feedback queue. Range: 5 Sec (PT5S) - 5 Min
+ * (PT5M).
  * 
- * @member {string} [cloudToDevice.feedback.ttlAsIso8601]
+ * @member {moment.duration} [cloudToDevice.feedback.ttlAsIso8601] The time to
+ * live for the feedback queue. Range: 1 Min (PT1M) - 2 Days (P2D).
  * 
- * @member {number} [cloudToDevice.feedback.maxDeliveryCount]
+ * @member {number} [cloudToDevice.feedback.maxDeliveryCount] The max delivery
+ * count. Range : 1-100.
  * 
- * @member {string} [comments]
+ * @member {string} [comments] The comments.
  * 
  * @member {object} [operationsMonitoringProperties]
  * 
  * @member {object} [operationsMonitoringProperties.events]
  * 
- * @member {string} [features] Possible values include: 'None',
- * 'DeviceManagement'
+ * @member {string} [features] The Capabilities/Features that need to be
+ * enabled for the Hub. Possible values include: 'None', 'DeviceManagement'
  * 
  */
 export interface IotHubProperties {
@@ -88,19 +108,23 @@ export interface IotHubProperties {
  * @class
  * Initializes a new instance of the EventHubProperties class.
  * @constructor
- * @member {number} [retentionTimeInDays]
+ * The properties of the provisioned event hub used by the Iot Hub.
+ * @member {number} [retentionTimeInDays] The retention time in days. Range of
+ * values [For F1: 1-1, S1: 1-7, S2: 1-7, S3: 1-7].
  * 
- * @member {number} [partitionCount]
+ * @member {number} [partitionCount] The partition count. Range of values [For
+ * F1: 2-2, S1: 2-128, S2: 2-128, S3: 2-128].
  * 
- * @member {array} [partitionIds]
+ * @member {array} [partitionIds] The partition ids.
  * 
- * @member {string} [path]
+ * @member {string} [path] The eventhub path.
  * 
- * @member {string} [endpoint]
+ * @member {string} [endpoint] The endpoint.
  * 
- * @member {array} [internalAuthorizationPolicies]
+ * @member {array} [internalAuthorizationPolicies] The internal authorization
+ * rules.
  * 
- * @member {array} [authorizationPolicies]
+ * @member {array} [authorizationPolicies] The authorization rules.
  * 
  */
 export interface EventHubProperties {
@@ -117,25 +141,25 @@ export interface EventHubProperties {
  * @class
  * Initializes a new instance of the SharedAccessAuthorizationRule class.
  * @constructor
- * @member {string} [keyName]
+ * @member {string} [keyName] The key name.
  * 
- * @member {string} [primaryKey]
+ * @member {string} [primaryKey] The primary key.
  * 
- * @member {string} [issuerName]
+ * @member {string} [issuerName] The issuer name.
  * 
- * @member {string} [secondaryKey]
+ * @member {string} [secondaryKey] The secondary key.
  * 
- * @member {string} [claimType]
+ * @member {string} [claimType] The claim type.
  * 
- * @member {string} [claimValue]
+ * @member {string} [claimValue] The claim value.
  * 
- * @member {array} [rights]
+ * @member {array} [rights] The rights.
  * 
- * @member {date} [createdTime]
+ * @member {date} [createdTime] The created time.
  * 
- * @member {date} [modifiedTime]
+ * @member {date} [modifiedTime] The modified time.
  * 
- * @member {number} [revision]
+ * @member {number} [revision] The revision.
  * 
  */
 export interface SharedAccessAuthorizationRule {
@@ -155,15 +179,19 @@ export interface SharedAccessAuthorizationRule {
  * @class
  * Initializes a new instance of the StorageEndpointProperties class.
  * @constructor
- * @member {string} [sasTtlAsIso8601]
+ * The properties of the Storage Endpoint for file upload.
+ * @member {moment.duration} [sasTtlAsIso8601] SAS time to live. Range: 1 Min
+ * (PT1M) - 1 Day (P1D).
  * 
- * @member {string} [connectionString]
+ * @member {string} [connectionString] The account key credentials for storage
+ * account selected by customer for uploading files.
  * 
- * @member {string} [containerName]
+ * @member {string} [containerName] The root container name where all files
+ * will be uploaded.
  * 
  */
 export interface StorageEndpointProperties {
-    sasTtlAsIso8601?: string;
+    sasTtlAsIso8601?: moment.Duration;
     connectionString?: string;
     containerName?: string;
 }
@@ -172,16 +200,19 @@ export interface StorageEndpointProperties {
  * @class
  * Initializes a new instance of the MessagingEndpointProperties class.
  * @constructor
- * @member {string} [lockDurationAsIso8601]
+ * The properties of the Messaging Endpoints used by this IoT Hub.
+ * @member {moment.duration} [lockDurationAsIso8601] The lock duration. Range:
+ * 5 Sec (PT5S) - 5 Min (PT5M).
  * 
- * @member {string} [ttlAsIso8601]
+ * @member {moment.duration} [ttlAsIso8601] The time to live. Range: 1 Min
+ * (PT1M) - 2 Days (P2D).
  * 
- * @member {number} [maxDeliveryCount]
+ * @member {number} [maxDeliveryCount] The max delivery count. Range: 1-100.
  * 
  */
 export interface MessagingEndpointProperties {
-    lockDurationAsIso8601?: string;
-    ttlAsIso8601?: string;
+    lockDurationAsIso8601?: moment.Duration;
+    ttlAsIso8601?: moment.Duration;
     maxDeliveryCount?: number;
 }
 
@@ -189,22 +220,28 @@ export interface MessagingEndpointProperties {
  * @class
  * Initializes a new instance of the CloudToDeviceProperties class.
  * @constructor
- * @member {number} [maxDeliveryCount]
+ * The Iot Hub Cloud-To-Device messaging properties.
+ * @member {number} [maxDeliveryCount] The max delivery count for the device
+ * queue. Range : 1-100.
  * 
- * @member {string} [defaultTtlAsIso8601]
+ * @member {moment.duration} [defaultTtlAsIso8601] The default time to live
+ * for the device queue. Range : 1 Min (PT1M) - 2 Days (P2D).
  * 
  * @member {object} [feedback]
  * 
- * @member {string} [feedback.lockDurationAsIso8601]
+ * @member {moment.duration} [feedback.lockDurationAsIso8601] The lock
+ * duration for the feedback queue. Range: 5 Sec (PT5S) - 5 Min (PT5M).
  * 
- * @member {string} [feedback.ttlAsIso8601]
+ * @member {moment.duration} [feedback.ttlAsIso8601] The time to live for the
+ * feedback queue. Range: 1 Min (PT1M) - 2 Days (P2D).
  * 
- * @member {number} [feedback.maxDeliveryCount]
+ * @member {number} [feedback.maxDeliveryCount] The max delivery count. Range
+ * : 1-100.
  * 
  */
 export interface CloudToDeviceProperties {
     maxDeliveryCount?: number;
-    defaultTtlAsIso8601?: string;
+    defaultTtlAsIso8601?: moment.Duration;
     feedback?: FeedbackProperties;
 }
 
@@ -212,16 +249,19 @@ export interface CloudToDeviceProperties {
  * @class
  * Initializes a new instance of the FeedbackProperties class.
  * @constructor
- * @member {string} [lockDurationAsIso8601]
+ * The Feedback Queue properties.
+ * @member {moment.duration} [lockDurationAsIso8601] The lock duration for the
+ * feedback queue. Range: 5 Sec (PT5S) - 5 Min (PT5M).
  * 
- * @member {string} [ttlAsIso8601]
+ * @member {moment.duration} [ttlAsIso8601] The time to live for the feedback
+ * queue. Range: 1 Min (PT1M) - 2 Days (P2D).
  * 
- * @member {number} [maxDeliveryCount]
+ * @member {number} [maxDeliveryCount] The max delivery count. Range : 1-100.
  * 
  */
 export interface FeedbackProperties {
-    lockDurationAsIso8601?: string;
-    ttlAsIso8601?: string;
+    lockDurationAsIso8601?: moment.Duration;
+    ttlAsIso8601?: moment.Duration;
     maxDeliveryCount?: number;
 }
 
@@ -229,6 +269,7 @@ export interface FeedbackProperties {
  * @class
  * Initializes a new instance of the OperationsMonitoringProperties class.
  * @constructor
+ * The Operation Monitoring properties.
  * @member {object} [events]
  * 
  */
@@ -240,11 +281,16 @@ export interface OperationsMonitoringProperties {
  * @class
  * Initializes a new instance of the IotHubSkuInfo class.
  * @constructor
- * @member {string} [name] Possible values include: 'F1', 'S1', 'S2'
+ * The Sku related information for the hub.
+ * @member {string} [name] The name of the Sku. Possible values include: 'F1',
+ * 'S1', 'S2', 'S3'
  * 
- * @member {string} [tier] Possible values include: 'Free', 'Standard'
+ * @member {string} [tier] The tier. Possible values include: 'Free',
+ * 'Standard'
  * 
- * @member {number} [capacity]
+ * @member {number} [capacity] The number of units being provisioned. Range of
+ * values [For F1: 1-1, S1: 1-200, S2: 1-200, S3: 1-10]. To go above this
+ * range, call support.
  * 
  */
 export interface IotHubSkuInfo {
@@ -255,73 +301,108 @@ export interface IotHubSkuInfo {
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * @member {string} [id] The Resource Id.
+ * 
+ * @member {string} [name] The Resource name.
+ * 
+ * @member {string} [type] The Resource type.
+ * 
+ * @member {string} [location] The Resource location.
+ * 
+ * @member {object} [tags] The Resource tags.
+ * 
+ */
+export interface Resource extends BaseResource {
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the IotHubDescription class.
  * @constructor
- * @member {string} [name]
+ * The description of the IotHub.
+ * @member {string} [subscriptionid] The subscription identifier.
  * 
- * @member {string} [type]
+ * @member {string} [resourcegroup] The resource group name uniquely
+ * identifies the resource group within the user subscriptionId.
  * 
- * @member {string} [location]
- * 
- * @member {object} [tags]
- * 
- * @member {string} [subscriptionid]
- * 
- * @member {string} [resourcegroup]
- * 
- * @member {string} [etag]
+ * @member {string} [etag] The Etag field is *not* required. If it is provided
+ * in the response body, it must also be provided as a header per the normal
+ * ETag convention.
  * 
  * @member {object} [properties]
  * 
- * @member {array} [properties.authorizationPolicies]
+ * @member {array} [properties.authorizationPolicies] The authorization rules.
  * 
- * @member {string} [properties.hostName]
+ * @member {string} [properties.hostName] The name of the host.
  * 
- * @member {object} [properties.eventHubEndpoints]
+ * @member {object} [properties.eventHubEndpoints] The event hub endpoint
+ * properties.
  * 
- * @member {object} [properties.storageEndpoints]
+ * @member {object} [properties.storageEndpoints] The list of storage end
+ * points where files can be uploaded. Currently only one storage account can
+ * be configured.
  * 
- * @member {object} [properties.messagingEndpoints]
+ * @member {object} [properties.messagingEndpoints] The list of messaging end
+ * points configured.
  * 
- * @member {boolean} [properties.enableFileUploadNotifications]
+ * @member {boolean} [properties.enableFileUploadNotifications] The flag which
+ * indicates whether file upload notification should be enabled. This is
+ * optional at iot hub level. When enabled upload notifications will be
+ * available.
  * 
  * @member {object} [properties.cloudToDevice]
  * 
- * @member {number} [properties.cloudToDevice.maxDeliveryCount]
+ * @member {number} [properties.cloudToDevice.maxDeliveryCount] The max
+ * delivery count for the device queue. Range : 1-100.
  * 
- * @member {string} [properties.cloudToDevice.defaultTtlAsIso8601]
+ * @member {moment.duration} [properties.cloudToDevice.defaultTtlAsIso8601]
+ * The default time to live for the device queue. Range : 1 Min (PT1M) - 2
+ * Days (P2D).
  * 
  * @member {object} [properties.cloudToDevice.feedback]
  * 
- * @member {string} [properties.cloudToDevice.feedback.lockDurationAsIso8601]
+ * @member {moment.duration}
+ * [properties.cloudToDevice.feedback.lockDurationAsIso8601] The lock
+ * duration for the feedback queue. Range: 5 Sec (PT5S) - 5 Min (PT5M).
  * 
- * @member {string} [properties.cloudToDevice.feedback.ttlAsIso8601]
+ * @member {moment.duration} [properties.cloudToDevice.feedback.ttlAsIso8601]
+ * The time to live for the feedback queue. Range: 1 Min (PT1M) - 2 Days
+ * (P2D).
  * 
- * @member {number} [properties.cloudToDevice.feedback.maxDeliveryCount]
+ * @member {number} [properties.cloudToDevice.feedback.maxDeliveryCount] The
+ * max delivery count. Range : 1-100.
  * 
- * @member {string} [properties.comments]
+ * @member {string} [properties.comments] The comments.
  * 
  * @member {object} [properties.operationsMonitoringProperties]
  * 
  * @member {object} [properties.operationsMonitoringProperties.events]
  * 
- * @member {string} [properties.features] Possible values include: 'None',
+ * @member {string} [properties.features] The Capabilities/Features that need
+ * to be enabled for the Hub. Possible values include: 'None',
  * 'DeviceManagement'
  * 
  * @member {object} [sku]
  * 
- * @member {string} [sku.name] Possible values include: 'F1', 'S1', 'S2'
+ * @member {string} [sku.name] The name of the Sku. Possible values include:
+ * 'F1', 'S1', 'S2', 'S3'
  * 
- * @member {string} [sku.tier] Possible values include: 'Free', 'Standard'
+ * @member {string} [sku.tier] The tier. Possible values include: 'Free',
+ * 'Standard'
  * 
- * @member {number} [sku.capacity]
+ * @member {number} [sku.capacity] The number of units being provisioned.
+ * Range of values [For F1: 1-1, S1: 1-200, S2: 1-200, S3: 1-10]. To go above
+ * this range, call support.
  * 
  */
-export interface IotHubDescription {
-    name?: string;
-    type?: string;
-    location?: string;
-    tags?: { [propertyName: string]: string };
+export interface IotHubDescription extends Resource {
     subscriptionid?: string;
     resourcegroup?: string;
     etag?: string;
@@ -331,188 +412,16 @@ export interface IotHubDescription {
 
 /**
  * @class
- * Initializes a new instance of the ResponseWithContinuationIEnumerableResourceProviderOperationInfo class.
- * @constructor
- * @member {array} [value]
- * 
- * @member {string} [nextLink]
- * 
- */
-export interface ResponseWithContinuationIEnumerableResourceProviderOperationInfo {
-    value?: ResourceProviderOperationInfo[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceProviderOperationInfo class.
- * @constructor
- * @member {string} [name]
- * 
- * @member {object} [display]
- * 
- * @member {string} [display.provider]
- * 
- * @member {string} [display.resource]
- * 
- * @member {string} [display.operation]
- * 
- * @member {string} [display.description]
- * 
- * @member {string} [origin]
- * 
- * @member {object} [properties]
- * 
- * @member {object} [properties.serviceSpecification]
- * 
- * @member {array} [properties.serviceSpecification.metricSpecifications]
- * 
- * @member {array} [properties.serviceSpecification.logSpecifications]
- * 
- */
-export interface ResourceProviderOperationInfo {
-    name?: string;
-    display?: ResourceProviderOperationDisplayInfo;
-    origin?: string;
-    properties?: ResourceProviderOperationProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceProviderOperationDisplayInfo class.
- * @constructor
- * @member {string} [provider]
- * 
- * @member {string} [resource]
- * 
- * @member {string} [operation]
- * 
- * @member {string} [description]
- * 
- */
-export interface ResourceProviderOperationDisplayInfo {
-    provider?: string;
-    resource?: string;
-    operation?: string;
-    description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceProviderOperationProperties class.
- * @constructor
- * @member {object} [serviceSpecification]
- * 
- * @member {array} [serviceSpecification.metricSpecifications]
- * 
- * @member {array} [serviceSpecification.logSpecifications]
- * 
- */
-export interface ResourceProviderOperationProperties {
-    serviceSpecification?: ServiceSpecification;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceSpecification class.
- * @constructor
- * @member {array} [metricSpecifications]
- * 
- * @member {array} [logSpecifications]
- * 
- */
-export interface ServiceSpecification {
-    metricSpecifications?: MetricSpecification[];
-    logSpecifications?: LogSpecification[];
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricSpecification class.
- * @constructor
- * @member {string} [name]
- * 
- * @member {string} [displayName]
- * 
- * @member {string} [displayDescription]
- * 
- * @member {string} [unit] Possible values include: 'Bytes', 'BytesPerSecond',
- * 'Count', 'CountPerSecond', 'Percent', 'Seconds'
- * 
- * @member {string} [aggregationType] Possible values include: 'Average',
- * 'Last', 'Maximum', 'Minimum', 'None', 'Total'
- * 
- * @member {array} [dimensions]
- * 
- * @member {array} [availabilities]
- * 
- */
-export interface MetricSpecification {
-    name?: string;
-    displayName?: string;
-    displayDescription?: string;
-    unit?: string;
-    aggregationType?: string;
-    dimensions?: MetricDimension[];
-    availabilities?: MetricAvailability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricDimension class.
- * @constructor
- * @member {string} [name]
- * 
- * @member {string} [displayName]
- * 
- */
-export interface MetricDimension {
-    name?: string;
-    displayName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the MetricAvailability class.
- * @constructor
- * @member {string} [timeGrain]
- * 
- * @member {string} [blobDuration]
- * 
- */
-export interface MetricAvailability {
-    timeGrain?: string;
-    blobDuration?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LogSpecification class.
- * @constructor
- * @member {string} [name]
- * 
- * @member {string} [displayName]
- * 
- * @member {string} [blobDuration]
- * 
- */
-export interface LogSpecification {
-    name?: string;
-    displayName?: string;
-    blobDuration?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ErrorDetails class.
  * @constructor
- * @member {string} [code]
+ * The properties related to the details of an error.
+ * @member {string} [code] The error code.
  * 
- * @member {string} [httpStatusCode]
+ * @member {string} [httpStatusCode] The http status code.
  * 
- * @member {string} [message]
+ * @member {string} [message] The error message.
  * 
- * @member {string} [details]
+ * @member {string} [details] The error details.
  * 
  */
 export interface ErrorDetails {
@@ -524,59 +433,32 @@ export interface ErrorDetails {
 
 /**
  * @class
- * Initializes a new instance of the ResponseWithContinuationIEnumerableIotHubDescription class.
+ * Initializes a new instance of the IotHubQuotaMetricInfo class.
  * @constructor
- * @member {array} [value]
+ * The properties related to quota metrics.
+ * @member {string} [name] The name of the quota metric.
  * 
- * @member {string} [nextLink]
+ * @member {number} [currentValue] The current value for the quota metric.
+ * 
+ * @member {number} [maxValue] The maximum value of the quota metric.
  * 
  */
-export interface ResponseWithContinuationIEnumerableIotHubDescription {
-    value?: IotHubDescription[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AsyncOperationResult class.
- * @constructor
- * @member {string} [status]
- * 
- * @member {object} [error]
- * 
- * @member {string} [error.code]
- * 
- * @member {string} [error.message]
- * 
- */
-export interface AsyncOperationResult {
-    status?: string;
-    error?: ErrorMesssage;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorMesssage class.
- * @constructor
- * @member {string} [code]
- * 
- * @member {string} [message]
- * 
- */
-export interface ErrorMesssage {
-    code?: string;
-    message?: string;
+export interface IotHubQuotaMetricInfo {
+    name?: string;
+    currentValue?: number;
+    maxValue?: number;
 }
 
 /**
  * @class
  * Initializes a new instance of the RegistryStatistics class.
  * @constructor
- * @member {number} [totalDeviceCount]
+ * The properties related to the registry statistics.
+ * @member {number} [totalDeviceCount] The total device count.
  * 
- * @member {number} [enabledDeviceCount]
+ * @member {number} [enabledDeviceCount] The enabled device count.
  * 
- * @member {number} [disabledDeviceCount]
+ * @member {number} [disabledDeviceCount] The disabled device count.
  * 
  */
 export interface RegistryStatistics {
@@ -587,141 +469,31 @@ export interface RegistryStatistics {
 
 /**
  * @class
- * Initializes a new instance of the ResponseWithContinuationIEnumerableIotHubSkuDescription class.
- * @constructor
- * @member {array} [value]
- * 
- * @member {string} [nextLink]
- * 
- */
-export interface ResponseWithContinuationIEnumerableIotHubSkuDescription {
-    value?: IotHubSkuDescription[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IotHubSkuDescription class.
- * @constructor
- * @member {string} [resourceType]
- * 
- * @member {object} [sku]
- * 
- * @member {string} [sku.name] Possible values include: 'F1', 'S1', 'S2'
- * 
- * @member {string} [sku.tier] Possible values include: 'Free', 'Standard'
- * 
- * @member {number} [sku.capacity]
- * 
- * @member {object} [capacity]
- * 
- * @member {number} [capacity.minimum]
- * 
- * @member {number} [capacity.maximum]
- * 
- * @member {number} [capacity.default]
- * 
- * @member {string} [capacity.scaleType] Possible values include: 'Automatic',
- * 'Manual', 'None'
- * 
- */
-export interface IotHubSkuDescription {
-    resourceType?: string;
-    sku?: IotHubSkuInfo;
-    capacity?: IotHubCapacity;
-}
-
-/**
- * @class
- * Initializes a new instance of the IotHubCapacity class.
- * @constructor
- * @member {number} [minimum]
- * 
- * @member {number} [maximum]
- * 
- * @member {number} [default]
- * 
- * @member {string} [scaleType] Possible values include: 'Automatic',
- * 'Manual', 'None'
- * 
- */
-export interface IotHubCapacity {
-    minimum?: number;
-    maximum?: number;
-    default?: number;
-    scaleType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResponseWithContinuationIEnumerableString class.
- * @constructor
- * @member {array} [value]
- * 
- * @member {string} [nextLink]
- * 
- */
-export interface ResponseWithContinuationIEnumerableString {
-    value?: string[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the EventHubConsumerGroupInfo class.
- * @constructor
- * @member {object} [tags]
- * 
- * @member {string} [id]
- * 
- * @member {string} [name]
- * 
- */
-export interface EventHubConsumerGroupInfo {
-    tags?: { [propertyName: string]: string };
-    id?: string;
-    name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResponseWithContinuationIEnumerableJobResponse class.
- * @constructor
- * @member {array} [value]
- * 
- * @member {string} [nextLink]
- * 
- */
-export interface ResponseWithContinuationIEnumerableJobResponse {
-    value?: JobResponse[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobResponse class.
  * @constructor
- * @member {string} [jobId]
+ * The properties describing a Job Response.
+ * @member {string} [jobId] The job identifier.
  * 
- * @member {date} [startTimeUtc]
+ * @member {date} [startTimeUtc] Start time of the Job.
  * 
- * @member {date} [endTimeUtc]
+ * @member {date} [endTimeUtc] Represents the time the job stopped processing.
  * 
- * @member {string} [type] Possible values include: 'unknown', 'export',
- * 'import', 'backup', 'readDeviceProperties', 'writeDeviceProperties',
- * 'updateDeviceConfiguration', 'rebootDevice', 'factoryResetDevice',
- * 'firmwareUpdate'
+ * @member {string} [type] The type of job to execute. Possible values
+ * include: 'unknown', 'export', 'import', 'backup', 'readDeviceProperties',
+ * 'writeDeviceProperties', 'updateDeviceConfiguration', 'rebootDevice',
+ * 'factoryResetDevice', 'firmwareUpdate'
  * 
- * @member {string} [status] Possible values include: 'unknown', 'enqueued',
- * 'running', 'completed', 'failed', 'cancelled'
+ * @member {string} [status] Status of the Job. Possible values include:
+ * 'unknown', 'enqueued', 'running', 'completed', 'failed', 'cancelled'
  * 
- * @member {string} [failureReason]
+ * @member {string} [failureReason] If status == failure, this represents a
+ * string containing the reason.
  * 
- * @member {string} [statusMessage]
+ * @member {string} [statusMessage] The status message for the job.
  * 
- * @member {string} [deviceId]
+ * @member {string} [deviceId] The deviceId related to this response.
  * 
- * @member {string} [parentJobId]
+ * @member {string} [parentJobId] The jobId of the parent job, if any.
  * 
  */
 export interface JobResponse {
@@ -738,140 +510,105 @@ export interface JobResponse {
 
 /**
  * @class
- * Initializes a new instance of the ResponseWithContinuationIEnumerableIotHubQuotaMetricInfo class.
+ * Initializes a new instance of the IotHubSkuDescription class.
  * @constructor
- * @member {array} [value]
+ * The properties related to the Sku.
+ * @member {string} [resourceType] The type of the resource.
  * 
- * @member {string} [nextLink]
+ * @member {object} [sku]
+ * 
+ * @member {string} [sku.name] The name of the Sku. Possible values include:
+ * 'F1', 'S1', 'S2', 'S3'
+ * 
+ * @member {string} [sku.tier] The tier. Possible values include: 'Free',
+ * 'Standard'
+ * 
+ * @member {number} [sku.capacity] The number of units being provisioned.
+ * Range of values [For F1: 1-1, S1: 1-200, S2: 1-200, S3: 1-10]. To go above
+ * this range, call support.
+ * 
+ * @member {object} [capacity]
+ * 
+ * @member {number} [capacity.minimum] The minimum number of units.
+ * 
+ * @member {number} [capacity.maximum] The maximum number of units.
+ * 
+ * @member {number} [capacity.default] The default number of units.
+ * 
+ * @member {string} [capacity.scaleType] The type of the scale. Possible
+ * values include: 'Automatic', 'Manual', 'None'
  * 
  */
-export interface ResponseWithContinuationIEnumerableIotHubQuotaMetricInfo {
-    value?: IotHubQuotaMetricInfo[];
-    nextLink?: string;
+export interface IotHubSkuDescription {
+    resourceType?: string;
+    sku?: IotHubSkuInfo;
+    capacity?: IotHubCapacity;
 }
 
 /**
  * @class
- * Initializes a new instance of the IotHubQuotaMetricInfo class.
+ * Initializes a new instance of the IotHubCapacity class.
  * @constructor
- * @member {string} [name]
+ * The properties related to the capacity information.
+ * @member {number} [minimum] The minimum number of units.
  * 
- * @member {number} [currentValue]
+ * @member {number} [maximum] The maximum number of units.
  * 
- * @member {number} [maxValue]
+ * @member {number} [default] The default number of units.
+ * 
+ * @member {string} [scaleType] The type of the scale. Possible values
+ * include: 'Automatic', 'Manual', 'None'
  * 
  */
-export interface IotHubQuotaMetricInfo {
+export interface IotHubCapacity {
+    minimum?: number;
+    maximum?: number;
+    default?: number;
+    scaleType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventHubConsumerGroupInfo class.
+ * @constructor
+ * The properties indicating the EventHubConsumerGroupInfo.
+ * @member {object} [tags] The tags.
+ * 
+ * @member {string} [id] The event hub consumer group identifier.
+ * 
+ * @member {string} [name] The event hub consumer group name.
+ * 
+ */
+export interface EventHubConsumerGroupInfo {
+    tags?: { [propertyName: string]: string };
+    id?: string;
     name?: string;
-    currentValue?: number;
-    maxValue?: number;
 }
 
 /**
  * @class
  * Initializes a new instance of the OperationInputs class.
  * @constructor
- * @member {string} [name]
- * 
- * @member {string} [resourceType]
- * 
- * @member {string} [key]
- * 
- * @member {number} [tokenLifeTimeInMinutes]
- * 
- * @member {string} [connectionString]
- * 
- * @member {object} [iotHubDescription]
- * 
- * @member {string} [iotHubDescription.name]
- * 
- * @member {string} [iotHubDescription.type]
- * 
- * @member {string} [iotHubDescription.location]
- * 
- * @member {object} [iotHubDescription.tags]
- * 
- * @member {string} [iotHubDescription.subscriptionid]
- * 
- * @member {string} [iotHubDescription.resourcegroup]
- * 
- * @member {string} [iotHubDescription.etag]
- * 
- * @member {object} [iotHubDescription.properties]
- * 
- * @member {array} [iotHubDescription.properties.authorizationPolicies]
- * 
- * @member {string} [iotHubDescription.properties.hostName]
- * 
- * @member {object} [iotHubDescription.properties.eventHubEndpoints]
- * 
- * @member {object} [iotHubDescription.properties.storageEndpoints]
- * 
- * @member {object} [iotHubDescription.properties.messagingEndpoints]
- * 
- * @member {boolean}
- * [iotHubDescription.properties.enableFileUploadNotifications]
- * 
- * @member {object} [iotHubDescription.properties.cloudToDevice]
- * 
- * @member {number}
- * [iotHubDescription.properties.cloudToDevice.maxDeliveryCount]
- * 
- * @member {string}
- * [iotHubDescription.properties.cloudToDevice.defaultTtlAsIso8601]
- * 
- * @member {object} [iotHubDescription.properties.cloudToDevice.feedback]
- * 
- * @member {string}
- * [iotHubDescription.properties.cloudToDevice.feedback.lockDurationAsIso8601]
- * 
- * @member {string}
- * [iotHubDescription.properties.cloudToDevice.feedback.ttlAsIso8601]
- * 
- * @member {number}
- * [iotHubDescription.properties.cloudToDevice.feedback.maxDeliveryCount]
- * 
- * @member {string} [iotHubDescription.properties.comments]
- * 
- * @member {object}
- * [iotHubDescription.properties.operationsMonitoringProperties]
- * 
- * @member {object}
- * [iotHubDescription.properties.operationsMonitoringProperties.events]
- * 
- * @member {string} [iotHubDescription.properties.features] Possible values
- * include: 'None', 'DeviceManagement'
- * 
- * @member {object} [iotHubDescription.sku]
- * 
- * @member {string} [iotHubDescription.sku.name] Possible values include:
- * 'F1', 'S1', 'S2'
- * 
- * @member {string} [iotHubDescription.sku.tier] Possible values include:
- * 'Free', 'Standard'
- * 
- * @member {number} [iotHubDescription.sku.capacity]
+ * OperationInputs.
+ * @member {string} [name] The name of the iot hub.
  * 
  */
 export interface OperationInputs {
     name?: string;
-    resourceType?: string;
-    key?: string;
-    tokenLifeTimeInMinutes?: number;
-    connectionString?: string;
-    iotHubDescription?: IotHubDescription;
 }
 
 /**
  * @class
  * Initializes a new instance of the IotHubNameAvailabilityInfo class.
  * @constructor
- * @member {boolean} [nameAvailable]
+ * The properties indicating whether a given iothub name is available.
+ * @member {boolean} [nameAvailable] The value which indicates whether the
+ * provided name is available.
  * 
- * @member {string} [reason] Possible values include: 'Invalid',
- * 'AlreadyExists'
+ * @member {string} [reason] The reason for unavailability. Possible values
+ * include: 'Invalid', 'AlreadyExists'
  * 
- * @member {string} [message]
+ * @member {string} [message] The message describing the detailed reason.
  * 
  */
 export interface IotHubNameAvailabilityInfo {
@@ -882,42 +619,33 @@ export interface IotHubNameAvailabilityInfo {
 
 /**
  * @class
- * Initializes a new instance of the ResponseWithContinuationIEnumerableSharedAccessSignatureAuthorizationRule class.
- * @constructor
- * @member {array} [value]
- * 
- * @member {string} [nextLink]
- * 
- */
-export interface ResponseWithContinuationIEnumerableSharedAccessSignatureAuthorizationRule {
-    value?: SharedAccessSignatureAuthorizationRule[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ExportDevicesRequest class.
  * @constructor
- * @member {string} [exportBlobContainerUri]
+ * Used to provide parameters when requesting an export of all devices in the
+ * hub.
+ * @member {string} exportBlobContainerUri The export BLOB container URI.
  * 
- * @member {boolean} [excludeKeys]
+ * @member {boolean} excludeKeys The value indicating whether keys should be
+ * excluded during export.
  * 
  */
 export interface ExportDevicesRequest {
-    exportBlobContainerUri?: string;
-    excludeKeys?: boolean;
+    exportBlobContainerUri: string;
+    excludeKeys: boolean;
 }
 
 /**
  * @class
  * Initializes a new instance of the ImportDevicesRequest class.
  * @constructor
- * @member {string} [inputBlobContainerUri]
+ * Used to provide parameters when requesting an import of all devices in the
+ * hub.
+ * @member {string} inputBlobContainerUri The input BLOB container URI.
  * 
- * @member {string} [outputBlobContainerUri]
+ * @member {string} outputBlobContainerUri The output BLOB container URI.
  * 
  */
 export interface ImportDevicesRequest {
-    inputBlobContainerUri?: string;
-    outputBlobContainerUri?: string;
+    inputBlobContainerUri: string;
+    outputBlobContainerUri: string;
 }

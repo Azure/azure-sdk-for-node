@@ -21,15 +21,13 @@ import * as models from '../models';
 export interface IotHubResource {
 
     /**
-     * @summary Get an IotHub
+     * @summary Get an IotHub.
      *
-     * Get an IotHub
+     * Get an IotHub.
      *
-     * @param {string} resourceName
+     * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
+     * @param {string} resourceName The name of the resource.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -39,63 +37,81 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getIotHub(resourceName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
-    getIotHub(resourceName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.IotHubDescription>): void;
+    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.IotHubDescription>): void;
 
     /**
-     * @param {string} subscriptionId
+     * @summary Create or update an IotHub.
+     *
+     * Create or update an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} resourceGroupName
+     * @param {string} resourceName The name of the resource.
      * 
-     * @param {string} resourceName
+     * @param {object} iotHubDescription The Iot hub description.
      * 
-     * @param {object} iotHubDescription
+     * @param {string} [iotHubDescription.subscriptionid] The subscription
+     * identifier.
      * 
-     * @param {string} [iotHubDescription.name]
+     * @param {string} [iotHubDescription.resourcegroup] The resource group name
+     * uniquely identifies the resource group within the user subscriptionId.
      * 
-     * @param {string} [iotHubDescription.location]
-     * 
-     * @param {string} [iotHubDescription.subscriptionid]
-     * 
-     * @param {string} [iotHubDescription.resourcegroup]
-     * 
-     * @param {string} [iotHubDescription.etag]
+     * @param {string} [iotHubDescription.etag] The Etag field is *not* required.
+     * If it is provided in the response body, it must also be provided as a
+     * header per the normal ETag convention.
      * 
      * @param {object} [iotHubDescription.properties]
      * 
-     * @param {array} [iotHubDescription.properties.authorizationPolicies]
+     * @param {array} [iotHubDescription.properties.authorizationPolicies] The
+     * authorization rules.
      * 
-     * @param {string} [iotHubDescription.properties.hostName]
+     * @param {string} [iotHubDescription.properties.hostName] The name of the
+     * host.
      * 
-     * @param {object} [iotHubDescription.properties.eventHubEndpoints]
+     * @param {object} [iotHubDescription.properties.eventHubEndpoints] The event
+     * hub endpoint properties.
      * 
-     * @param {object} [iotHubDescription.properties.storageEndpoints]
+     * @param {object} [iotHubDescription.properties.storageEndpoints] The list of
+     * storage end points where files can be uploaded. Currently only one storage
+     * account can be configured.
      * 
-     * @param {object} [iotHubDescription.properties.messagingEndpoints]
+     * @param {object} [iotHubDescription.properties.messagingEndpoints] The list
+     * of messaging end points configured.
      * 
      * @param {boolean}
-     * [iotHubDescription.properties.enableFileUploadNotifications]
+     * [iotHubDescription.properties.enableFileUploadNotifications] The flag
+     * which indicates whether file upload notification should be enabled. This
+     * is optional at iot hub level. When enabled upload notifications will be
+     * available.
      * 
      * @param {object} [iotHubDescription.properties.cloudToDevice]
      * 
      * @param {number}
-     * [iotHubDescription.properties.cloudToDevice.maxDeliveryCount]
+     * [iotHubDescription.properties.cloudToDevice.maxDeliveryCount] The max
+     * delivery count for the device queue. Range : 1-100.
      * 
-     * @param {string}
-     * [iotHubDescription.properties.cloudToDevice.defaultTtlAsIso8601]
+     * @param {moment.duration}
+     * [iotHubDescription.properties.cloudToDevice.defaultTtlAsIso8601] The
+     * default time to live for the device queue. Range : 1 Min (PT1M) - 2 Days
+     * (P2D).
      * 
      * @param {object} [iotHubDescription.properties.cloudToDevice.feedback]
      * 
-     * @param {string}
+     * @param {moment.duration}
      * [iotHubDescription.properties.cloudToDevice.feedback.lockDurationAsIso8601]
+     * The lock duration for the feedback queue. Range: 5 Sec (PT5S) - 5 Min
+     * (PT5M).
      * 
-     * @param {string}
-     * [iotHubDescription.properties.cloudToDevice.feedback.ttlAsIso8601]
+     * @param {moment.duration}
+     * [iotHubDescription.properties.cloudToDevice.feedback.ttlAsIso8601] The
+     * time to live for the feedback queue. Range: 1 Min (PT1M) - 2 Days (P2D).
      * 
      * @param {number}
-     * [iotHubDescription.properties.cloudToDevice.feedback.maxDeliveryCount]
+     * [iotHubDescription.properties.cloudToDevice.feedback.maxDeliveryCount] The
+     * max delivery count. Range : 1-100.
      * 
-     * @param {string} [iotHubDescription.properties.comments]
+     * @param {string} [iotHubDescription.properties.comments] The comments.
      * 
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties]
@@ -103,37 +119,22 @@ export interface IotHubResource {
      * @param {object}
      * [iotHubDescription.properties.operationsMonitoringProperties.events]
      * 
-     * @param {string} [iotHubDescription.properties.features] Possible values
+     * @param {string} [iotHubDescription.properties.features] The
+     * Capabilities/Features that need to be enabled for the Hub. Possible values
      * include: 'None', 'DeviceManagement'
      * 
      * @param {object} [iotHubDescription.sku]
      * 
-     * @param {string} [iotHubDescription.sku.name] Possible values include: 'F1',
-     * 'S1', 'S2'
+     * @param {string} [iotHubDescription.sku.name] The name of the Sku. Possible
+     * values include: 'F1', 'S1', 'S2', 'S3'
      * 
-     * @param {number} [iotHubDescription.sku.capacity]
+     * @param {number} [iotHubDescription.sku.capacity] The number of units being
+     * provisioned. Range of values [For F1: 1-1, S1: 1-200, S2: 1-200, S3:
+     * 1-10]. To go above this range, call support.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {string} [iotHubDescription.location] The Resource location.
      * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    createOrUpdateIotHub(subscriptionId: string, resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
-    createOrUpdateIotHub(subscriptionId: string, resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, callback: ServiceCallback<models.IotHubDescription>): void;
-
-    /**
-     * @summary Delete an IotHub
-     *
-     * Delete an IotHub
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
+     * @param {object} [iotHubDescription.tags] The Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -143,386 +144,104 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteIotHub(resourceName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
-    deleteIotHub(resourceName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.IotHubDescription>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+    createOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, callback: ServiceCallback<models.IotHubDescription>): void;
 
     /**
-     * @summary Delete EventHub Consumer Group for an IotHub
+     * @summary Create or update an IotHub.
      *
-     * Delete EventHub Consumer Group for an IotHub
+     * Create or update an IotHub.
      *
-     * @param {string} resourceName
+     * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} eventHubEndpointName
+     * @param {string} resourceName The name of the resource.
      * 
-     * @param {string} name
+     * @param {object} iotHubDescription The Iot hub description.
      * 
-     * @param {string} subscriptionId
+     * @param {string} [iotHubDescription.subscriptionid] The subscription
+     * identifier.
      * 
-     * @param {string} resourceGroupName
+     * @param {string} [iotHubDescription.resourcegroup] The resource group name
+     * uniquely identifies the resource group within the user subscriptionId.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {string} [iotHubDescription.etag] The Etag field is *not* required.
+     * If it is provided in the response body, it must also be provided as a
+     * header per the normal ETag convention.
      * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
+     * @param {object} [iotHubDescription.properties]
      * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteEventHubConsumerGroup(resourceName: string, eventHubEndpointName: string, name: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-    deleteEventHubConsumerGroup(resourceName: string, eventHubEndpointName: string, name: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<any>): void;
-
-    /**
-     * @summary Get all supported Resource Provider Operations
-     *
-     * Get all supported Resource Provider Operations
-     *
-     * @param {object} [options] Optional Parameters.
+     * @param {array} [iotHubDescription.properties.authorizationPolicies] The
+     * authorization rules.
      * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
+     * @param {string} [iotHubDescription.properties.hostName] The name of the
+     * host.
      * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getResourceProviderOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableResourceProviderOperationInfo>): void;
-    getResourceProviderOperations(callback: ServiceCallback<models.ResponseWithContinuationIEnumerableResourceProviderOperationInfo>): void;
-
-    /**
-     * @summary Get all IotHubs in a subscription
-     *
-     * Get all IotHubs in a subscription
-     *
-     * @param {string} subscriptionId
+     * @param {object} [iotHubDescription.properties.eventHubEndpoints] The event
+     * hub endpoint properties.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {object} [iotHubDescription.properties.storageEndpoints] The list of
+     * storage end points where files can be uploaded. Currently only one storage
+     * account can be configured.
      * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getIotHubsForSubscription(subscriptionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubDescription>): void;
-    getIotHubsForSubscription(subscriptionId: string, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubDescription>): void;
-
-    /**
-     * @summary Get all IotHubs in a Resourcegroup
-     *
-     * Get all IotHubs in a Resourcegroup
-     *
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getIotHubsForResourceGroup(subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubDescription>): void;
-    getIotHubsForResourceGroup(subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubDescription>): void;
-
-    /**
-     * @summary Get the result of a long running operation like create or update
-     * iothub
-     *
-     * Get the result of a long running operation like create or update iothub
-     *
-     * @param {string} operationId
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {string} resourceName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getOperationResult(operationId: string, subscriptionId: string, resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AsyncOperationResult>): void;
-    getOperationResult(operationId: string, subscriptionId: string, resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.AsyncOperationResult>): void;
-
-    /**
-     * @summary Get IotHub Stats
-     *
-     * Get IotHub Stats
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getIotHubStats(resourceName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryStatistics>): void;
-    getIotHubStats(resourceName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.RegistryStatistics>): void;
-
-    /**
-     * @summary Get Valid Skus
-     *
-     * Get Valid Skus
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getValidIotHubSkus(resourceName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubSkuDescription>): void;
-    getValidIotHubSkus(resourceName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubSkuDescription>): void;
-
-    /**
-     * @summary Get EventHub Consumer Groups for an IotHub
-     *
-     * Get EventHub Consumer Groups for an IotHub
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} eventHubEndpointName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getEventHubConsumerGroups(resourceName: string, eventHubEndpointName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableString>): void;
-    getEventHubConsumerGroups(resourceName: string, eventHubEndpointName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableString>): void;
-
-    /**
-     * @summary Get EventHub Consumer Group for an IotHub
-     *
-     * Get EventHub Consumer Group for an IotHub
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} eventHubEndpointName
-     * 
-     * @param {string} groupName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getEventHubConsumerGroup(resourceName: string, eventHubEndpointName: string, groupName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
-    getEventHubConsumerGroup(resourceName: string, eventHubEndpointName: string, groupName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
-
-    /**
-     * @summary Add an EventHub Consumer Group to an IotHub
-     *
-     * Add an EventHub Consumer Group to an IotHub
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} eventHubEndpointName
-     * 
-     * @param {string} groupName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    addEventHubConsumerGroup(resourceName: string, eventHubEndpointName: string, groupName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
-    addEventHubConsumerGroup(resourceName: string, eventHubEndpointName: string, groupName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
-
-    /**
-     * @summary Get all the jobs in an IotHub
-     *
-     * Get all the jobs in an IotHub
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getJobs(resourceName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableJobResponse>): void;
-    getJobs(resourceName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableJobResponse>): void;
-
-    /**
-     * @summary Get a job in an IotHub
-     *
-     * Get a job in an IotHub
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} jobId
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getJob(resourceName: string, jobId: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
-    getJob(resourceName: string, jobId: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.JobResponse>): void;
-
-    /**
-     * @summary Get quota metrics for an IotHub
-     *
-     * Get quota metrics for an IotHub
-     *
-     * @param {string} resourceName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getQuotaMetrics(resourceName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubQuotaMetricInfo>): void;
-    getQuotaMetrics(resourceName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableIotHubQuotaMetricInfo>): void;
-
-    /**
-     * @param {string} subscriptionId
-     * 
-     * @param {object} operationInputs
-     * 
-     * @param {string} [operationInputs.name]
-     * 
-     * @param {string} [operationInputs.resourceType]
-     * 
-     * @param {string} [operationInputs.key]
-     * 
-     * @param {number} [operationInputs.tokenLifeTimeInMinutes]
-     * 
-     * @param {string} [operationInputs.connectionString]
-     * 
-     * @param {object} [operationInputs.iotHubDescription]
-     * 
-     * @param {string} [operationInputs.iotHubDescription.name]
-     * 
-     * @param {string} [operationInputs.iotHubDescription.location]
-     * 
-     * @param {string} [operationInputs.iotHubDescription.subscriptionid]
-     * 
-     * @param {string} [operationInputs.iotHubDescription.resourcegroup]
-     * 
-     * @param {string} [operationInputs.iotHubDescription.etag]
-     * 
-     * @param {object} [operationInputs.iotHubDescription.properties]
-     * 
-     * @param {array}
-     * [operationInputs.iotHubDescription.properties.authorizationPolicies]
-     * 
-     * @param {string} [operationInputs.iotHubDescription.properties.hostName]
-     * 
-     * @param {object}
-     * [operationInputs.iotHubDescription.properties.eventHubEndpoints]
-     * 
-     * @param {object}
-     * [operationInputs.iotHubDescription.properties.storageEndpoints]
-     * 
-     * @param {object}
-     * [operationInputs.iotHubDescription.properties.messagingEndpoints]
+     * @param {object} [iotHubDescription.properties.messagingEndpoints] The list
+     * of messaging end points configured.
      * 
      * @param {boolean}
-     * [operationInputs.iotHubDescription.properties.enableFileUploadNotifications]
+     * [iotHubDescription.properties.enableFileUploadNotifications] The flag
+     * which indicates whether file upload notification should be enabled. This
+     * is optional at iot hub level. When enabled upload notifications will be
+     * available.
      * 
-     * @param {object}
-     * [operationInputs.iotHubDescription.properties.cloudToDevice]
-     * 
-     * @param {number}
-     * [operationInputs.iotHubDescription.properties.cloudToDevice.maxDeliveryCount]
-     * 
-     * @param {string}
-     * [operationInputs.iotHubDescription.properties.cloudToDevice.defaultTtlAsIso8601]
-     * 
-     * @param {object}
-     * [operationInputs.iotHubDescription.properties.cloudToDevice.feedback]
-     * 
-     * @param {string}
-     * [operationInputs.iotHubDescription.properties.cloudToDevice.feedback.lockDurationAsIso8601]
-     * 
-     * @param {string}
-     * [operationInputs.iotHubDescription.properties.cloudToDevice.feedback.ttlAsIso8601]
+     * @param {object} [iotHubDescription.properties.cloudToDevice]
      * 
      * @param {number}
-     * [operationInputs.iotHubDescription.properties.cloudToDevice.feedback.maxDeliveryCount]
+     * [iotHubDescription.properties.cloudToDevice.maxDeliveryCount] The max
+     * delivery count for the device queue. Range : 1-100.
      * 
-     * @param {string} [operationInputs.iotHubDescription.properties.comments]
+     * @param {moment.duration}
+     * [iotHubDescription.properties.cloudToDevice.defaultTtlAsIso8601] The
+     * default time to live for the device queue. Range : 1 Min (PT1M) - 2 Days
+     * (P2D).
+     * 
+     * @param {object} [iotHubDescription.properties.cloudToDevice.feedback]
+     * 
+     * @param {moment.duration}
+     * [iotHubDescription.properties.cloudToDevice.feedback.lockDurationAsIso8601]
+     * The lock duration for the feedback queue. Range: 5 Sec (PT5S) - 5 Min
+     * (PT5M).
+     * 
+     * @param {moment.duration}
+     * [iotHubDescription.properties.cloudToDevice.feedback.ttlAsIso8601] The
+     * time to live for the feedback queue. Range: 1 Min (PT1M) - 2 Days (P2D).
+     * 
+     * @param {number}
+     * [iotHubDescription.properties.cloudToDevice.feedback.maxDeliveryCount] The
+     * max delivery count. Range : 1-100.
+     * 
+     * @param {string} [iotHubDescription.properties.comments] The comments.
      * 
      * @param {object}
-     * [operationInputs.iotHubDescription.properties.operationsMonitoringProperties]
+     * [iotHubDescription.properties.operationsMonitoringProperties]
      * 
      * @param {object}
-     * [operationInputs.iotHubDescription.properties.operationsMonitoringProperties.events]
+     * [iotHubDescription.properties.operationsMonitoringProperties.events]
      * 
-     * @param {string} [operationInputs.iotHubDescription.properties.features]
-     * Possible values include: 'None', 'DeviceManagement'
+     * @param {string} [iotHubDescription.properties.features] The
+     * Capabilities/Features that need to be enabled for the Hub. Possible values
+     * include: 'None', 'DeviceManagement'
      * 
-     * @param {object} [operationInputs.iotHubDescription.sku]
+     * @param {object} [iotHubDescription.sku]
      * 
-     * @param {string} [operationInputs.iotHubDescription.sku.name] Possible
-     * values include: 'F1', 'S1', 'S2'
+     * @param {string} [iotHubDescription.sku.name] The name of the Sku. Possible
+     * values include: 'F1', 'S1', 'S2', 'S3'
      * 
-     * @param {number} [operationInputs.iotHubDescription.sku.capacity]
+     * @param {number} [iotHubDescription.sku.capacity] The number of units being
+     * provisioned. Range of values [For F1: 1-1, S1: 1-200, S2: 1-200, S3:
+     * 1-10]. To go above this range, call support.
+     * 
+     * @param {string} [iotHubDescription.location] The Resource location.
+     * 
+     * @param {object} [iotHubDescription.tags] The Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -532,19 +251,17 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkIotHubNameAvailability(subscriptionId: string, operationInputs: models.OperationInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
-    checkIotHubNameAvailability(subscriptionId: string, operationInputs: models.OperationInputs, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+    beginCreateOrUpdate(resourceGroupName: string, resourceName: string, iotHubDescription: models.IotHubDescription, callback: ServiceCallback<models.IotHubDescription>): void;
 
     /**
-     * @summary Get all Shared Access Policies for an IotHub
+     * @summary Delete an IotHub.
      *
-     * Get all Shared Access Policies for an IotHub
+     * Delete an IotHub.
      *
-     * @param {string} resourceName
+     * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
+     * @param {string} resourceName The name of the resource.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -554,21 +271,17 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getAllIotHubKeys(resourceName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableSharedAccessSignatureAuthorizationRule>): void;
-    getAllIotHubKeys(resourceName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.ResponseWithContinuationIEnumerableSharedAccessSignatureAuthorizationRule>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.IotHubDescription>): void;
 
     /**
-     * @summary Get the Key given a specific KeyName for an IotHub
+     * @summary Delete an IotHub.
      *
-     * Get the Key given a specific KeyName for an IotHub
+     * Delete an IotHub.
      *
-     * @param {string} resourceName
+     * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} keyName
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
+     * @param {string} resourceName The name of the resource.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -578,26 +291,14 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getIotHubKeysForKeyName(resourceName: string, keyName: string, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRule>): void;
-    getIotHubKeysForKeyName(resourceName: string, keyName: string, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRule>): void;
+    beginDeleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescription>): void;
+    beginDeleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.IotHubDescription>): void;
 
     /**
-     * @summary Export all the Devices in an IotHub
+     * @summary Get all IotHubs in a subscription.
      *
-     * Export all the Devices in an IotHub
+     * Get all IotHubs in a subscription.
      *
-     * @param {string} resourceName
-     * 
-     * @param {object} exportDevicesRequest
-     * 
-     * @param {string} [exportDevicesRequest.exportBlobContainerUri]
-     * 
-     * @param {boolean} [exportDevicesRequest.excludeKeys]
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -606,25 +307,15 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    exportDevices(resourceName: string, exportDevicesRequest: models.ExportDevicesRequest, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
-    exportDevices(resourceName: string, exportDevicesRequest: models.ExportDevicesRequest, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.JobResponse>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
+    listBySubscription(callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
 
     /**
-     * @summary Import all the Devices in an IotHub
+     * @summary Get all IotHubs in a Resourcegroup.
      *
-     * Import all the Devices in an IotHub
+     * Get all IotHubs in a Resource group.
      *
-     * @param {string} resourceName
-     * 
-     * @param {object} importDevicesRequest
-     * 
-     * @param {string} [importDevicesRequest.inputBlobContainerUri]
-     * 
-     * @param {string} [importDevicesRequest.outputBlobContainerUri]
-     * 
-     * @param {string} subscriptionId
-     * 
-     * @param {string} resourceGroupName
+     * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -634,6 +325,451 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    importDevices(resourceName: string, importDevicesRequest: models.ImportDevicesRequest, subscriptionId: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
-    importDevices(resourceName: string, importDevicesRequest: models.ImportDevicesRequest, subscriptionId: string, resourceGroupName: string, callback: ServiceCallback<models.JobResponse>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
+
+    /**
+     * @summary Get IotHub Stats.
+     *
+     * Get IotHub Stats.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getStats(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryStatistics>): void;
+    getStats(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.RegistryStatistics>): void;
+
+    /**
+     * @summary Get Valid Skus.
+     *
+     * Get Valid Skus.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getValidSkus(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubSkuDescriptionListResult>): void;
+    getValidSkus(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.IotHubSkuDescriptionListResult>): void;
+
+    /**
+     * @summary Get EventHub Consumer Groups for an IotHub.
+     *
+     * Get EventHub Consumer Groups for an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {string} eventHubEndpointName The name of the event hub endpoint.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listEventHubConsumerGroups(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConsumerGroupsListResult>): void;
+    listEventHubConsumerGroups(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, callback: ServiceCallback<models.EventHubConsumerGroupsListResult>): void;
+
+    /**
+     * @summary Get EventHub Consumer Group for an IotHub.
+     *
+     * Get EventHub Consumer Group for an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {string} eventHubEndpointName The name of the event hub endpoint.
+     * 
+     * @param {string} name The name of the consumer group.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getEventHubConsumerGroup(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
+    getEventHubConsumerGroup(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, name: string, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
+
+    /**
+     * @summary Add an EventHub Consumer Group to an IotHub.
+     *
+     * Add an EventHub Consumer Group to an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {string} eventHubEndpointName The name of the event hub endpoint.
+     * 
+     * @param {string} name The name of the consumer group.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createEventHubConsumerGroup(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
+    createEventHubConsumerGroup(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, name: string, callback: ServiceCallback<models.EventHubConsumerGroupInfo>): void;
+
+    /**
+     * @summary Delete EventHub Consumer Group for an IotHub.
+     *
+     * Delete EventHub Consumer Group for an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {string} eventHubEndpointName The name of the event hub endpoint.
+     * 
+     * @param {string} name The name of the consumer group.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteEventHubConsumerGroup(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteEventHubConsumerGroup(resourceGroupName: string, resourceName: string, eventHubEndpointName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * @summary Get all the jobs in an IotHub.
+     *
+     * Get all the jobs in an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listJobs(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponseListResult>): void;
+    listJobs(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.JobResponseListResult>): void;
+
+    /**
+     * @summary Get a job in an IotHub.
+     *
+     * Get a job in an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {string} jobId The job identifier.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getJob(resourceGroupName: string, resourceName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
+    getJob(resourceGroupName: string, resourceName: string, jobId: string, callback: ServiceCallback<models.JobResponse>): void;
+
+    /**
+     * @summary Get quota metrics for an IotHub.
+     *
+     * Get quota metrics for an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getQuotaMetrics(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubQuotaMetricInfoListResult>): void;
+    getQuotaMetrics(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.IotHubQuotaMetricInfoListResult>): void;
+
+    /**
+     * @summary Check if an IotHub name is available.
+     *
+     * Check if an IotHub name is available.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.name] The name of the iot hub.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    checkNameAvailability(options: { name? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
+    checkNameAvailability(callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
+
+    /**
+     * @summary Get all keys for an IotHub.
+     *
+     * Get all keys for an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listKeys(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
+    listKeys(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
+
+    /**
+     * @summary Get the Key given a specific KeyName for an IotHub.
+     *
+     * Get the Key given a specific KeyName for an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {string} keyName The name of the key.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getKeysForKeyName(resourceGroupName: string, resourceName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRule>): void;
+    getKeysForKeyName(resourceGroupName: string, resourceName: string, keyName: string, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRule>): void;
+
+    /**
+     * @summary Export all the devices in an IotHub.
+     *
+     * Export all the devices in an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {object} exportDevicesParameters The export devices parameters.
+     * 
+     * @param {string} [exportDevicesParameters.exportBlobContainerUri] The export
+     * BLOB container URI.
+     * 
+     * @param {boolean} [exportDevicesParameters.excludeKeys] The value indicating
+     * whether keys should be excluded during export.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    exportDevices(resourceGroupName: string, resourceName: string, exportDevicesParameters: models.ExportDevicesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
+    exportDevices(resourceGroupName: string, resourceName: string, exportDevicesParameters: models.ExportDevicesRequest, callback: ServiceCallback<models.JobResponse>): void;
+
+    /**
+     * @summary Import all the devices in an IotHub.
+     *
+     * Import all the devices in an IotHub.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} resourceName The name of the resource.
+     * 
+     * @param {object} importDevicesParameters The import devices parameters.
+     * 
+     * @param {string} [importDevicesParameters.inputBlobContainerUri] The input
+     * BLOB container URI.
+     * 
+     * @param {string} [importDevicesParameters.outputBlobContainerUri] The output
+     * BLOB container URI.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    importDevices(resourceGroupName: string, resourceName: string, importDevicesParameters: models.ImportDevicesRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponse>): void;
+    importDevices(resourceGroupName: string, resourceName: string, importDevicesParameters: models.ImportDevicesRequest, callback: ServiceCallback<models.JobResponse>): void;
+
+    /**
+     * @summary Get all IotHubs in a subscription.
+     *
+     * Get all IotHubs in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
+
+    /**
+     * @summary Get all IotHubs in a Resourcegroup.
+     *
+     * Get all IotHubs in a Resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.IotHubDescriptionListResult>): void;
+
+    /**
+     * @summary Get Valid Skus.
+     *
+     * Get Valid Skus.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getValidSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubSkuDescriptionListResult>): void;
+    getValidSkusNext(nextPageLink: string, callback: ServiceCallback<models.IotHubSkuDescriptionListResult>): void;
+
+    /**
+     * @summary Get EventHub Consumer Groups for an IotHub.
+     *
+     * Get EventHub Consumer Groups for an IotHub.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listEventHubConsumerGroupsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubConsumerGroupsListResult>): void;
+    listEventHubConsumerGroupsNext(nextPageLink: string, callback: ServiceCallback<models.EventHubConsumerGroupsListResult>): void;
+
+    /**
+     * @summary Get all the jobs in an IotHub.
+     *
+     * Get all the jobs in an IotHub.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listJobsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobResponseListResult>): void;
+    listJobsNext(nextPageLink: string, callback: ServiceCallback<models.JobResponseListResult>): void;
+
+    /**
+     * @summary Get quota metrics for an IotHub.
+     *
+     * Get quota metrics for an IotHub.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getQuotaMetricsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubQuotaMetricInfoListResult>): void;
+    getQuotaMetricsNext(nextPageLink: string, callback: ServiceCallback<models.IotHubQuotaMetricInfoListResult>): void;
+
+    /**
+     * @summary Get all keys for an IotHub.
+     *
+     * Get all keys for an IotHub.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listKeysNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
+    listKeysNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
 }
