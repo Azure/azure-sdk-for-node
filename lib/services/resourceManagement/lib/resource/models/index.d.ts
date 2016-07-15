@@ -544,10 +544,6 @@ export interface DeploymentExtended {
  * 
  * @member {string} [type] Resource type
  * 
- * @member {date} [createdTime] Created time of the resource.
- * 
- * @member {date} [changedTime] Changed time of the resource.
- * 
  * @member {string} location Resource location
  * 
  * @member {object} [tags] Resource tags
@@ -557,8 +553,6 @@ export interface Resource extends BaseResource {
     id?: string;
     name?: string;
     type?: string;
-    createdTime?: Date;
-    changedTime?: Date;
     location: string;
     tags?: { [propertyName: string]: string };
 }
