@@ -5,7 +5,7 @@ services/resourceManagement/authorizationClient-tests.js
 services/resourceManagement/featureClient-tests.js
 services/resourceManagement/subscriptionClient-tests.js
 services/storageManagement/storageManagementClient-tests.js
-#services/intune/intuneResourceManagementClient-tests.js
+services/intune/intuneResourceManagementClient-tests.js
 services/dataLakeAnalyticsManagement/dataLakeAnalyticsManagementClient-tests.js
 services/dataLakeStoreManagement/dataLakeStoreManagementClient-tests.js
 services/cdnManagement/cdnProfile-tests.js
@@ -20,3 +20,4 @@ services/servermanagement/servermanagement-tests.js
 services/notificationHubsManagement/namespace-tests.js
 services/notificationHubsManagement/notificationHub-tests.js
 services/devTestLabs/devTestLabsClient-tests.js
+services/iothub/iothubClient-tests.js
