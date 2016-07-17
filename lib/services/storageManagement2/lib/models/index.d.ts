@@ -26,6 +26,7 @@ export interface StorageAccountCheckNameAvailabilityParameters {
  * Initializes a new instance of the CheckNameAvailabilityResult class.
  * @constructor
  * The CheckNameAvailability operation response.
+ *
  * @member {boolean} [nameAvailable] Gets a boolean value that indicates
  * whether the name is available for you to use. If true, the name is
  * available. If false, the name has already been taken or invalid and cannot
@@ -50,6 +51,7 @@ export interface CheckNameAvailabilityResult {
  * Initializes a new instance of the Sku class.
  * @constructor
  * The SKU of the storage account.
+ *
  * @member {string} name Gets or sets the sku name. Required for account
  * creation, optional for update. Note that in older versions, sku name was
  * called accountType. Possible values include: 'Standard_LRS',
@@ -70,6 +72,7 @@ export interface Sku {
  * @constructor
  * The custom domain assigned to this storage account. This can be set via
  * Update.
+ *
  * @member {string} name Gets or sets the custom domain name. Name is the
  * CNAME source.
  * 
@@ -88,6 +91,7 @@ export interface CustomDomain {
  * Initializes a new instance of the EncryptionService class.
  * @constructor
  * An encrypted service.
+ *
  * @member {boolean} [enabled] A boolean indicating whether or not the service
  * is encrypted.
  * 
@@ -108,6 +112,7 @@ export interface EncryptionService {
  * Initializes a new instance of the EncryptionServices class.
  * @constructor
  * The encrypted services.
+ *
  * @member {object} [blob] The blob service.
  * 
  * @member {boolean} [blob.enabled] A boolean indicating whether or not the
@@ -129,6 +134,7 @@ export interface EncryptionServices {
  * Initializes a new instance of the Encryption class.
  * @constructor
  * The encryption settings on the account.
+ *
  * @member {object} [services] Gets the services which are encrypted.
  * 
  * @member {object} [services.blob] The blob service.
@@ -152,6 +158,7 @@ export interface Encryption {
  * Initializes a new instance of the StorageAccountCreateParameters class.
  * @constructor
  * The parameters to provide for the account.
+ *
  * @member {object} sku Required. Gets or sets the sku type.
  * 
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
@@ -230,6 +237,7 @@ export interface StorageAccountCreateParameters {
  * @constructor
  * The URIs that are used to perform a retrieval of a public blob, queue or
  * table object.
+ *
  * @member {string} [blob] Gets the blob endpoint.
  * 
  * @member {string} [queue] Gets the queue endpoint.
@@ -274,6 +282,7 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the StorageAccount class.
  * @constructor
  * The storage account.
+ *
  * @member {object} [sku] Gets the SKU.
  * 
  * @member {string} [sku.name] Gets or sets the sku name. Required for account
@@ -396,6 +405,7 @@ export interface StorageAccount extends Resource {
  * Initializes a new instance of the StorageAccountKey class.
  * @constructor
  * An access key for the storage account.
+ *
  * @member {string} [keyName] Name of the key.
  * 
  * @member {string} [value] Base 64 encoded value of the key.
@@ -415,6 +425,7 @@ export interface StorageAccountKey {
  * Initializes a new instance of the StorageAccountListKeysResult class.
  * @constructor
  * The ListKeys operation response.
+ *
  * @member {array} [keys] Gets the list of account keys and their properties.
  * 
  */
@@ -438,6 +449,7 @@ export interface StorageAccountRegenerateKeyParameters {
  * Initializes a new instance of the StorageAccountUpdateParameters class.
  * @constructor
  * The parameters to provide for the account.
+ *
  * @member {object} [sku] Gets or sets the sku type. Note that sku cannot be
  * updated to StandardZRS or ProvisionedLRS, nor can accounts of that sku
  * type be updated to any other value.
@@ -504,6 +516,7 @@ export interface StorageAccountUpdateParameters {
  * Initializes a new instance of the UsageName class.
  * @constructor
  * The Usage Names.
+ *
  * @member {string} [value] Gets a string describing the resource name.
  * 
  * @member {string} [localizedValue] Gets a localized string describing the
@@ -520,6 +533,7 @@ export interface UsageName {
  * Initializes a new instance of the Usage class.
  * @constructor
  * Describes Storage Resource Usage.
+ *
  * @member {string} [unit] Gets the unit of measurement. Possible values
  * include: 'Count', 'Bytes', 'Seconds', 'Percent', 'CountsPerSecond',
  * 'BytesPerSecond'
@@ -543,16 +557,4 @@ export interface Usage {
     currentValue?: number;
     limit?: number;
     name?: UsageName;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageListResult class.
- * @constructor
- * The List Usages operation response.
- * @member {array} [value] Gets or sets the list Storage Resource Usages.
- * 
- */
-export interface UsageListResult {
-    value?: Usage[];
 }
