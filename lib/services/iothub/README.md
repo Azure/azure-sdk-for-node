@@ -23,7 +23,11 @@ npm install azure-arm-iothub
     var client = new storageManagementClient(credentials, 'your-subscription-id');
     client.iotHubResource.listBySubscription(function (err, result, request, response)
     {
-      if (err) console.log(err);
+      if (err)
+      {
+        console.log(err);
+      }
+
       console.log(result);
     });
   });
@@ -41,11 +45,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.checkNameAvailability(operationInputs, function (err, result, request, response)
   {
-    should.not.exist(err);
-    if (!result.nameAvailable)
+    if (err)
     {
-      iotHubExists = true;
-    } 
+      console.log(err);
+    }
+
+    console.log(result);
   }
 
 ```
@@ -84,9 +89,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.createOrUpdate(resourceGroupName, resourceName, iotHubCreateParams, function (err, result, request, response)
   {
-    should.not.exist(err);
-    result.sku.capacity.should.equal(2);
-    result.name.should.equal(resourceName);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -125,9 +133,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.createOrUpdate(resourceGroupName, resourceName, iotHubUpdateParams, function (err, result, request, response)
   {
-    should.not.exist(err);
-    result.sku.capacity.should.equal(3);
-    result.name.should.equal(resourceName);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -138,12 +149,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.get(resourceGroupName, resourceName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    result.name.should.equal(resourceName);
-    result.location.should.equal(location);
-    result.sku.capacity.should.equal(3);
-    response.statusCode.should.equal(200);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -154,7 +165,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.deleteMethod(resourceGroupName, resourceName, function (err, result, request, response)
   {
-    should.not.exist(err);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -166,10 +182,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.listByResourceGroup(resourceGroupName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result.length.should.be.above(0);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -180,15 +198,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.getQuotaMetrics(resourceGroupName, resourceName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result[0].name.should.equal('TotalMessages');
-    result[0].currentValue.should.equal(0);
-    result[0].maxValue.should.equal(800000);
-    result[1].name.should.equal('TotalDeviceCount');
-    result[1].currentValue.should.equal(0);
-    result[1].maxValue.should.equal(500000);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -199,12 +214,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.getValidSkus(resourceGroupName, resourceName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result.length.should.be.equal(3);
-    result[0].resourceType.should.equal("Microsoft.Devices/IotHubs");
-    result[0].sku.name.should.equal("S1");
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -215,11 +230,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.listKeys(resourceGroupName, resourceName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result.length.should.be.above(0);
-    result[0].keyName.should.equal('iothubowner');
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -230,10 +246,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.getKeysForKeyName(resourceGroupName, resourceName, 'iothubowner', function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result.keyName.should.equal('iothubowner');
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -244,11 +262,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.listEventHubConsumerGroups(resourceGroupName, resourceName, 'events', function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result.length.should.be.above(0);
-    result[0].should.be.equal('$Default');
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -259,10 +278,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.createEventHubConsumerGroup(resourceGroupName, resourceName, eventsEndpointName, consumerGroupName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result.name.should.equal(consumerGroupName);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -273,10 +294,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.getEventHubConsumerGroup(resourceGroupName, resourceName, eventsEndpointName, consumerGroupName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    should.exist(result);
-    response.statusCode.should.equal(200);
-    result.name.should.equal(consumerGroupName);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
@@ -287,8 +310,12 @@ npm install azure-arm-iothub
 
   client.iotHubResource.deleteEventHubConsumerGroup(resourceGroupName, resourceName, eventsEndpointName, consumerGroupName, function (err, result, request, response)
   {
-    should.not.exist(err);
-    response.statusCode.should.equal(200);
+    if (err)
+    {
+      console.log(err);
+    }
+
+    console.log(result);
   });
 
 ```
