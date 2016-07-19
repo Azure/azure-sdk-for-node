@@ -126,26 +126,6 @@ export interface ApplicationUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationFilter class.
- * @constructor
- * Filter parameters for listing applications
- *
- * @member {string} [displayNameStartsWith] Application display name starts
- * with
- * 
- * @member {string} [appId] ApplicationId
- * 
- * @member {string} [identifierUri] Identifier Uri
- * 
- */
-export interface ApplicationFilter {
-    displayNameStartsWith?: string;
-    appId?: string;
-    identifierUri?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Application class.
  * @constructor
  * Active Directory user information
