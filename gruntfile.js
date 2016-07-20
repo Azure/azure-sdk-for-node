@@ -114,10 +114,8 @@ module.exports = function(grunt) {
     'gh-pages': {
       options: {
         base: 'docs',
-        repo: 'https://github.com/Azure/azure-sdk-for-node.git',
         branch: 'gh-pages',
-        message: '[Auto-generated] Updated documentations',
-        push: false
+        message: '[Auto-generated] Updated documentations'
       },
       src: '**/*'
     }
@@ -127,7 +125,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-symlink');
   grunt.loadTasks('tasks');
-  grunt.loadTasks('grunt-gh-pages');
-  grunt.registerTask('publishdocs', ['grunt-gh-pages']);
+  grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.registerTask('publishdocs', ['gh-pages']);
   grunt.registerTask('genDocs', ['jsdoc', 'symlink']);
 };
