@@ -115,7 +115,8 @@ module.exports = function(grunt) {
       options: {
         base: 'docs',
         branch: 'gh-pages',
-        message: '[Auto-generated] Updated documentations'
+        message: '[Auto-generated] Updated documentations',
+        add: true
       },
       src: '**/*'
     }
