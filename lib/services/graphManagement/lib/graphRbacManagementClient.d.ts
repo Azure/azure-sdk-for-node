@@ -52,11 +52,11 @@ declare class GraphRbacManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
+    objects: operations.Objects;
     applications: operations.Applications;
     groups: operations.Groups;
     servicePrincipals: operations.ServicePrincipals;
     users: operations.Users;
-    objects: operations.Objects;
     }
 
 export = GraphRbacManagementClient;
