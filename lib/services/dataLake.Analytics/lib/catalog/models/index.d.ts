@@ -501,17 +501,12 @@ export interface USqlType extends CatalogItem {
  * @constructor
  * A Data Lake Analytics catalog U-SQL table type item.
  *
- * @member {object} [columns] the type field information associated with this
+ * @member {array} [columns] the type field information associated with this
  * table type.
- * 
- * @member {string} [columns.name] the name of the field associated with this
- * type.
- * 
- * @member {string} [columns.type] the type of the field.
  * 
  */
 export interface USqlTableType extends USqlType {
-    columns?: TypeFieldInfo;
+    columns?: TypeFieldInfo[];
 }
 
 /**
