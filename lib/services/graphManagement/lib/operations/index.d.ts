@@ -14,6 +14,68 @@ import * as models from '../models';
 
 /**
  * @class
+ * Objects
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the GraphRbacManagementClient.
+ */
+export interface Objects {
+
+    /**
+     * Gets the details for current logged in user
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCurrentUser(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AADObject>): void;
+    getCurrentUser(callback: ServiceCallback<models.AADObject>): void;
+
+    /**
+     * Gets AD group membership by provided AD object Ids
+     *
+     * @param {object} parameters Objects filtering parameters.
+     * 
+     * @param {array} [parameters.objectIds] Requested object Ids
+     * 
+     * @param {array} [parameters.types] Requested object types
+     * 
+     * @param {boolean} [parameters.includeDirectoryObjectReferences] If true,
+     * also searches for object ids in the partner tenant
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getObjectsByObjectIds(parameters: models.GetObjectsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
+    getObjectsByObjectIds(parameters: models.GetObjectsParameters, callback: ServiceCallback<models.GetObjectsResult>): void;
+
+    /**
+     * Gets AD group membership by provided AD object Ids
+     *
+     * @param {string} nextLink Next link for list operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getObjectsByObjectIdsNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
+    getObjectsByObjectIdsNext(nextLink: string, callback: ServiceCallback<models.GetObjectsResult>): void;
+}
+
+/**
+ * @class
  * Applications
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the GraphRbacManagementClient.
@@ -615,66 +677,4 @@ export interface Users {
      */
     listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserListResult>): void;
     listNext(nextLink: string, callback: ServiceCallback<models.UserListResult>): void;
-}
-
-/**
- * @class
- * Objects
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the GraphRbacManagementClient.
- */
-export interface Objects {
-
-    /**
-     * Gets the details for current logged in user
-     *
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getCurrentUser(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AADObject>): void;
-    getCurrentUser(callback: ServiceCallback<models.AADObject>): void;
-
-    /**
-     * Gets AD group membership by provided AD object Ids
-     *
-     * @param {object} parameters Objects filtering parameters.
-     * 
-     * @param {array} [parameters.objectIds] Requested object Ids
-     * 
-     * @param {array} [parameters.types] Requested object types
-     * 
-     * @param {boolean} [parameters.includeDirectoryObjectReferences] If true,
-     * also searches for object ids in the partner tenant
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getObjectsByObjectIds(parameters: models.GetObjectsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
-    getObjectsByObjectIds(parameters: models.GetObjectsParameters, callback: ServiceCallback<models.GetObjectsResult>): void;
-
-    /**
-     * Gets AD group membership by provided AD object Ids
-     *
-     * @param {string} nextLink Next link for list operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getObjectsByObjectIdsNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetObjectsResult>): void;
-    getObjectsByObjectIdsNext(nextLink: string, callback: ServiceCallback<models.GetObjectsResult>): void;
 }
