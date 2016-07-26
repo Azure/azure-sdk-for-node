@@ -1,8 +1,8 @@
 # Microsoft Azure SDK for Node.js - Web Site Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Web Site. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
-- **API version: 2013-08-01**
+- **Node.js version: 4.x or higher**
+- **API version: 2014-04-01**
 
 ## Features
 
