@@ -71,7 +71,7 @@ sbService.createQueueIfNotExists(queueName, function (err) {
   }
 });
 ```
-Thanks to [@noodlefrenzy](https://github.com/noodlefrenzy) for the great example. The original is [here](https://github.com/noodlefrenzy/node-cerulean/blob/master/lib/index.js).
+Thanks to [@noodlefrenzy](https://github.com/noodlefrenzy) for the great example. The original is [here](https://github.com/noodlefrenzy/node-cerulean/blob/master/examples/servicebus_send_receive.js).
 
 ## Related projects
 
