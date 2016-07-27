@@ -9,24 +9,24 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2015-12-01.2.2')
+  .delete('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '94a52755-2880-4b3a-9581-8a724bc2eb6e',
+  'request-id': '0fd93ac4-0410-4ee1-9090-4104b4ba24a4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:03:33 GMT',
+  date: 'Fri, 01 Apr 2016 05:54:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2015-12-01.2.2')
+  .delete('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2/files/stderr.txt?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '94a52755-2880-4b3a-9581-8a724bc2eb6e',
+  'request-id': '0fd93ac4-0410-4ee1-9090-4104b4ba24a4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:03:33 GMT',
+  date: 'Fri, 01 Apr 2016 05:54:10 GMT',
   connection: 'close' });
  return result; }]];

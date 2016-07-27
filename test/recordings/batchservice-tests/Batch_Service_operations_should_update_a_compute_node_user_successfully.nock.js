@@ -10,27 +10,27 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser?api-version=2015-12-01.2.2', '*')
+.put('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '072bab08-756f-4d7b-abad-b78ba061e5e3',
+  'request-id': 'b71ab8ca-4623-4d5b-a072-4b8ed3a245d4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser',
-  date: 'Sun, 20 Mar 2016 22:01:29 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser',
+  date: 'Fri, 01 Apr 2016 05:52:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser?api-version=2015-12-01.2.2', '*')
+.put('/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '072bab08-756f-4d7b-abad-b78ba061e5e3',
+  'request-id': 'b71ab8ca-4623-4d5b-a072-4b8ed3a245d4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160320t215552z/users/NodeSDKTestUser',
-  date: 'Sun, 20 Mar 2016 22:01:29 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-366060774_1-20160401t054638z/users/NodeSDKTestUser',
+  date: 'Fri, 01 Apr 2016 05:52:05 GMT',
   connection: 'close' });
  return result; }]];

@@ -16,3 +16,8 @@ services/cdnManagement/cdnCheckNameAvailability-tests.js
 services/cdnManagement/cdnOperation-tests.js
 services/batchManagement/batchManagementClient-tests.js
 services/batch/batchClient-tests.js
+services/servermanagement/servermanagement-tests.js
+services/notificationHubsManagement/namespace-tests.js
+services/notificationHubsManagement/notificationHub-tests.js
+services/devTestLabs/devTestLabsClient-tests.js
+services/iothub/iothubClient-tests.js

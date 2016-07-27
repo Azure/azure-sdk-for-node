@@ -12,9 +12,19 @@ var mappings = {
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 
     'ft': 1
   },
+  'batch.Management': {
+    'dir': 'batchManagement/lib',
+    'source': 'arm-batch/2015-12-01/swagger/BatchManagement.json',
+    'ft': 1
+  },
+  'batch.Service': {
+    'dir': 'batch/lib',
+    'source': 'batch/2016-02-01.3.0/swagger/BatchService.json',
+    'ft': 1
+  },
   'cdn': {
     'dir': 'cdnManagement/lib',
-    'source': 'arm-cdn/2015-06-01/swagger/cdn.json',
+    'source': 'arm-cdn/2016-04-02/swagger/cdn.json',
     'ft': 2
   },
   'compute': {
@@ -29,7 +39,7 @@ var mappings = {
   },
   'datalake.analytics.job': {
     'dir': 'dataLake.Analytics/lib/job',
-    'source': 'arm-datalake-analytics/job/2015-11-01-preview/swagger/job.json'
+    'source': 'arm-datalake-analytics/job/2016-03-20-preview/swagger/job.json'
   },
   'datalake.analytics.catalog': {
     'dir': 'dataLake.Analytics/lib/catalog',
@@ -43,19 +53,37 @@ var mappings = {
     'dir': 'dataLake.Store/lib/filesystem',
     'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
   },
+  'devTestLabs': {
+    'dir': 'devTestLabs/lib',
+    'source': 'arm-devtestlabs/2015-05-21-preview/swagger/DTL.json'
+  },
   'graph': {
     'dir': 'graphManagement/lib',
-    'source': 'arm-graphrbac/1.6-internal/swagger/graphrbac.json',
-    'ft': 1
+    'source': 'arm-graphrbac/compositeGraphRbacManagementClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
   },
   'intune': {
     'dir': 'intune/lib',
     'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
   },
+  'iothub': {
+    'dir': 'iothub/lib',
+    'source': 'arm-iothub/2016-02-03/swagger/iothub.json',
+    'ft': 1
+  },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2016-03-30/swagger/network.json',
+    'source': 'arm-network/2016-06-01/swagger/network.json',
     'ft': 1
+  },
+  'notificationHubs':{
+    'dir': 'notificationHubsManagement/lib',
+    'source': 'arm-notificationhubs/2014-09-01/swagger/notificationhubs.json'
+  },
+  'powerbiembedded': {
+    'dir': 'powerbiembedded/lib',
+    'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
   },
   'rediscache': {
     'dir': 'rediscachemanagement/lib',
@@ -78,34 +106,37 @@ var mappings = {
     'dir': 'resourceManagement/lib/feature',
     'source': 'arm-resources/features/2015-12-01/swagger/features.json'
   },
+  'resource.policy': {
+    'dir': 'resourceManagement/lib/policy',
+    'source': 'arm-resources/policy/2016-04-01/swagger/policy.json'
+  },
   'storage': {
     'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2015-06-15/swagger/storage.json',
+    'source': 'arm-storage/2016-01-01/swagger/storage.json',
     'ft': 2
+  },
+  'servermanagement': {
+    'dir': 'servermanagement/lib',
+    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
   },
   'serviceFabric': {
     'dir': 'serviceFabric/lib',
-    'source': 'arm-servicefabric/2016-01-28/swagger/servicefabric.json',
+    'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
     'language': 'NodeJS'
+  },
+  'traffic':{
+    'dir': 'trafficManagement2/lib',
+    'source': 'arm-trafficmanager/2015-11-01/trafficmanager.json',
+    'ft': 1
   },
   'website': {
     'dir': 'websiteManagement2/lib',
     'source': 'arm-web/2015-08-01/swagger/service.json',
     'ft': 1
-  },
-  'batch.Management': {
-    'dir': 'batchManagement/lib',
-    'source': 'arm-batch/2015-12-01/swagger/BatchManagement.json',
-    'ft': 1
-  },
-  'batch.Service': {
-    'dir': 'batch/lib',
-    'source': 'batch/2015-12-01.2.2/swagger/BatchService.json',
-    'ft': 1
   }
 };
 
-var defaultAutoRestVersion = '0.16.0-Nightly20160323';
+var defaultAutoRestVersion = '0.17.0-Nightly20160630';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
@@ -152,6 +183,7 @@ function codegen(project, cb) {
 }
 
 function generateProject(project, specRoot, autoRestVersion) {
+  var currentModeler = modeler;
   var specPath = specRoot + '/' + mappings[project].source;
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
@@ -159,14 +191,14 @@ function generateProject(project, specRoot, autoRestVersion) {
   }
   //default Modeler is Swagger. However, some services may want to use CompositeSwaggerModeler
   if (mappings[project].modeler && mappings[project].modeler.match(/^CompositeSwagger$/ig) !== null) {
-    modeler = mappings[project].modeler;
+    currentModeler = mappings[project].modeler;
   }
 
   console.log(util.format('Generating "%s" from spec file "%s" with language "%s" and AutoRest version "%s".', 
     project,  specRoot + '/' + mappings[project].source, language, autoRestVersion));
   autoRestExe = constructAutorestExePath(autoRestVersion);
-  var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT',
-    autoRestExe, modeler, language, specPath, mappings[project].dir);
+  var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT_NO_VERSION',
+    autoRestExe, currentModeler, language, specPath, mappings[project].dir);
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;

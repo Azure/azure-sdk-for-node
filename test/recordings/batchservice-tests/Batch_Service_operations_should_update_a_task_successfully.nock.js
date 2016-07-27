@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2015-12-01.2.2', '*')
+.put('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:48 GMT',
-  etag: '0x8D3510B3C6274CD',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:26 GMT',
+  etag: '0x8D359F1CDEE39B4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bc354f43-452e-4b34-8499-1d6971b59ecc',
+  'request-id': '5e7cee4f-b93b-4e06-a0dd-48aab6b12fb3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
-  date: 'Sun, 20 Mar 2016 22:01:48 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:26 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2015-12-01.2.2', '*')
+.put('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2?api-version=2016-02-01.3.0', '*')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:48 GMT',
-  etag: '0x8D3510B3C6274CD',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:26 GMT',
+  etag: '0x8D359F1CDEE39B4',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'bc354f43-452e-4b34-8499-1d6971b59ecc',
+  'request-id': '5e7cee4f-b93b-4e06-a0dd-48aab6b12fb3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask2',
-  date: 'Sun, 20 Mar 2016 22:01:48 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:26 GMT',
   connection: 'close' });
  return result; }]];

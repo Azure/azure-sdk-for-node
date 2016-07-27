@@ -8,44 +8,44 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup3647/providers/Microsoft.Cdn/profiles/cdnTestProfile2665/endpoints/cdnTestEndpoint6514/origins/newname?api-version=2015-06-01')
-  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The parent endpoint needs at least one active origin, so we couldn't delete this one.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup4182/providers/Microsoft.Cdn/profiles/cdnTestProfile8537/endpoints/cdnTestEndpoint5782/origins/newname?api-version=2016-04-02')
+  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"That action isn’t allowed in this profile.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '154',
+  'content-length': '113',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '45822811-9317-4efe-907c-2faef2866a70',
-  'x-ms-client-request-id': '7f7a244c-c6ed-4c89-8208-64aa5513013d',
+  'x-ms-request-id': 'a4284aba-4ab7-4a43-a5f2-a9aa955bfdf3',
+  'x-ms-client-request-id': 'f58acd42-4aff-49fc-8ba3-9e698539ce28',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  'x-ms-routing-request-id': 'WESTUS:20160301T223014Z:34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  date: 'Tue, 01 Mar 2016 22:30:13 GMT',
+  'x-ms-correlation-request-id': 'b63e1588-5e5c-4cd7-be6b-dcda9c817a0a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T225330Z:b63e1588-5e5c-4cd7-be6b-dcda9c817a0a',
+  date: 'Wed, 11 May 2016 22:53:30 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup3647/providers/Microsoft.Cdn/profiles/cdnTestProfile2665/endpoints/cdnTestEndpoint6514/origins/newname?api-version=2015-06-01')
-  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The parent endpoint needs at least one active origin, so we couldn't delete this one.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
+  .delete('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup4182/providers/Microsoft.Cdn/profiles/cdnTestProfile8537/endpoints/cdnTestEndpoint5782/origins/newname?api-version=2016-04-02')
+  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"That action isn’t allowed in this profile.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '154',
+  'content-length': '113',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '45822811-9317-4efe-907c-2faef2866a70',
-  'x-ms-client-request-id': '7f7a244c-c6ed-4c89-8208-64aa5513013d',
+  'x-ms-request-id': 'a4284aba-4ab7-4a43-a5f2-a9aa955bfdf3',
+  'x-ms-client-request-id': 'f58acd42-4aff-49fc-8ba3-9e698539ce28',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  'x-ms-routing-request-id': 'WESTUS:20160301T223014Z:34c90ac2-b7cb-43b3-8b7a-1c9af1724e00',
-  date: 'Tue, 01 Mar 2016 22:30:13 GMT',
+  'x-ms-correlation-request-id': 'b63e1588-5e5c-4cd7-be6b-dcda9c817a0a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T225330Z:b63e1588-5e5c-4cd7-be6b-dcda9c817a0a',
+  date: 'Wed, 11 May 2016 22:53:30 GMT',
   connection: 'close' });
  return result; }]];

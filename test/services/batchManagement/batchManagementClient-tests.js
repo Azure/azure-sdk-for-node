@@ -100,7 +100,8 @@ describe('Batch Management', function () {
       var options = { parameters : params };
       client.applicationOperations.addApplication(groupName, 'batchtestnodesdk', 'my_application_id', options, function (err, result, request, response) {
         should.not.exist(err);
-        should.not.exist(result);
+        should.exist(result);
+        result.id.should.equal('my_application_id');
         response.statusCode.should.equal(201);
         done();
       });
@@ -132,13 +133,8 @@ describe('Batch Management', function () {
         response.statusCode.should.equal(201);
         result.id.should.equal('my_application_id')
         result.version.should.equal('v1.0');
-        should.exist(result.storageUrl);
-        fs.writeFile("test/tmp/test_package.zip", "Hey there!", function (err) {
-          if (err) {
-            return console.log(err);
-          }
-        });
-        var fileContent = fs.createReadStream('test/tmp/test_package.zip');
+        fs.writeFileSync(__dirname + '/../../data/test_package.zip', 'Hey there!');
+        var fileContent = fs.createReadStream(__dirname + '/../../data/test_package.zip');
         var httpRequest = new WebResource();
         var client = new ServiceClient();
         httpRequest.method = 'PUT';
@@ -325,7 +321,7 @@ describe('Batch Management', function () {
     });
     
     it('should sync auto storage keys successfully', function (done) {
-      client.account.syncAutoStorageKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.account.synchronizeAutoStorageKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();

@@ -4,8 +4,9 @@ This project provides a Node.js package that makes it easy to manage Azure Data 
 
 Right now it supports:
 
-  *  **Node.js version: 0.8.28 or higher**
-  *  **REST API version: 2015-10-01-preview**
+  *  **Node.js version: 4.x.x or higher**
+  *  **REST API version for Account: 2015-10-01-preview**
+  *  **REST API version for FileSystem: 2015-10-01-preview**
 
 ## Features
 
@@ -14,72 +15,101 @@ Right now it supports:
 
 ## How to Install
 
-- Install Node.js.
-- Open a Command Prompt, Terminal, or Bash window.
-- Enter the following:
- 
 ```bash
-npm install async
-npm install adal-node
-npm install azure-common
 npm install azure-arm-datalake-store
 ```
 
 ## How to Use
 
-The following example creates a file in a Data Lake Store account and appends data to it.
+### Authentication, account and filesystem client creation and listing file status as an example
+
+ ```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var adlsManagement = require("azure-arm-datalake-store");
+ 
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var accountName = 'testadlsacct';
+  var pathToEnumerate = '/myfolder';
+  var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, 'your-subscription-id');
+  var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials, 'azuredatalakestore.net');
+  filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
+ ```
+
+### Create a Data Lake Store Account
+```javascript
+var util = require('util');
+var resourceGroupName = 'testrg';
+var accountName = 'testadlsacct';
+var location = 'eastus2';
+
+// account object to create
+var accountToCreate = {
+  tags: {
+    testtag1: 'testvalue1',
+    testtag2: 'testvalue2'
+  },
+  name: accountName,
+  location: location
+};
+
+client.account.create(resourceGroupName, accountName, accountToCreate, function (err, result, request, response) {
+  if (err) {
+    console.log(err);
+    /*err has reference to the actual request and response, so you can see what was sent and received on the wire.
+      The structure of err looks like this:
+      err: {
+        code: 'Error Code',
+        message: 'Error Message',
+        body: 'The response body if any',
+        request: reference to a stripped version of http request
+        response: reference to a stripped version of the response
+      }
+    */
+  } else {
+    console.log('result is: ' + util.inspect(result, {depth: null}));
+  }
+});
+```
+
+### Create a file with content
+```javascript
+var util = require('util');
+var accountName = 'testadlsacct';
+var fileToCreate = '/myfolder/myfile.txt';
+var options = {
+  streamContents: new Buffer('some string content')
+}
+
+filesystemClient.filesystem.listFileStatus(accountName, fileToCreate, options, function (err, result, request, response) {
+  if (err) {
+    console.log(err);
+  } else {
+    // no result is returned, only a 201 response for success.
+    console.log('response is: ' + util.inspect(response, {depth: null}));
+  }
+});
+```
+
+### Get a list of files and folders
 
 ```javascript
-var async = require('async');
-var adalNode = require('adal-node');
-var azureCommon = require('azure-common');
-var azureDataLakeStore = require('azure-arm-datalake-store');
-
-var resourceUri = 'https://management.core.windows.net/';
-var loginUri = 'https://login.windows.net/'
-
-var clientId = 'application_id_(guid)';
-var clientSecret = 'application_password';
-
-var tenantId = 'aad_tenant_id';
-var subscriptionId = 'azure_subscription_id';
-var resourceGroup = 'adls_resourcegroup_name';
-
-var accountName = 'adls_account_name';
-
-var context = new adalNode.AuthenticationContext(loginUri+tenantId);
-
-var client;
-var response;
-
-var destinationFilePath = '/newFileName.txt';
-var content = 'desired file contents';
-
-async.series([
-    function (next) {
-        context.acquireTokenWithClientCredentials(resourceUri, clientId, clientSecret, function(err, result){
-            if (err) throw err;
-            response = result;
-            next();
-        });
-    },
-    function (next) {
-        var credentials = new azureCommon.TokenCloudCredentials({
-            subscriptionId : subscriptionId,
-            authorizationScheme : response.tokenType,
-            token : response.accessToken
-        });
-      
-        client = azureDataLakeStore.createDataLakeStoreFileSystemManagementClient(credentials, 'azuredatalakestore.net');
-
-        next();
-    },
-    function (next) {
-        client.fileSystem.directCreate(destinationFilePath, accountName, content, function(err, result){
-            if (err) throw err;
-        });
-    }
-]);
+var util = require('util');
+var accountName = 'testadlsacct';
+var pathToEnumerate = '/myfolder';
+filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, function (err, result, request, response) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('result is: ' + util.inspect(result, {depth: null}));
+  }
+});
 ```
 
 ## Related projects

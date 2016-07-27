@@ -9,30 +9,30 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2015-12-01.2.2')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D3510B3B8DE083\",\"creationTime\":\"2016-03-20T22:01:46.4726324Z\",\"lastModified\":\"2016-03-20T22:01:47.5015811Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2016-03-20T22:01:47.5015811Z\",\"previousState\":\"active\",\"previousStateTransitionTime\":\"2016-03-20T22:01:46.4726324Z\",\"commandLine\":\"echo Hello World\",\"runElevated\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"endTime\":\"2016-03-20T22:01:47.5015811Z\",\"schedulingError\":{\r\n      \"category\":\"UserError\",\"code\":\"TaskEnded\",\"message\":\"Task Was Ended by User Request\"\r\n    },\"retryCount\":0,\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2016-02-01.3.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D359F1CD39AFC7\",\"creationTime\":\"2016-04-01T05:52:24.9534635Z\",\"lastModified\":\"2016-04-01T05:52:25.4472135Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2016-04-01T05:52:25.4472135Z\",\"previousState\":\"active\",\"previousStateTransitionTime\":\"2016-04-01T05:52:24.9534635Z\",\"commandLine\":\"echo Hello World\",\"runElevated\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"endTime\":\"2016-04-01T05:52:25.4472135Z\",\"schedulingError\":{\r\n      \"category\":\"UserError\",\"code\":\"TaskEnded\",\"message\":\"Task Was Ended by User Request\"\r\n    },\"retryCount\":0,\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:47 GMT',
-  etag: '0x8D3510B3B8DE083',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:25 GMT',
+  etag: '0x8D359F1CD39AFC7',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '63daeff1-1450-4db2-a612-aa91ec3858a4',
+  'request-id': '06e98898-63af-401e-892b-c7f91fb57451',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:49 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2015-12-01.2.2')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D3510B3B8DE083\",\"creationTime\":\"2016-03-20T22:01:46.4726324Z\",\"lastModified\":\"2016-03-20T22:01:47.5015811Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2016-03-20T22:01:47.5015811Z\",\"previousState\":\"active\",\"previousStateTransitionTime\":\"2016-03-20T22:01:46.4726324Z\",\"commandLine\":\"echo Hello World\",\"runElevated\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"endTime\":\"2016-03-20T22:01:47.5015811Z\",\"schedulingError\":{\r\n      \"category\":\"UserError\",\"code\":\"TaskEnded\",\"message\":\"Task Was Ended by User Request\"\r\n    },\"retryCount\":0,\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask?api-version=2016-02-01.3.0')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"HelloWorldNodeSDKTestTask\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask\",\"eTag\":\"0x8D359F1CD39AFC7\",\"creationTime\":\"2016-04-01T05:52:24.9534635Z\",\"lastModified\":\"2016-04-01T05:52:25.4472135Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2016-04-01T05:52:25.4472135Z\",\"previousState\":\"active\",\"previousStateTransitionTime\":\"2016-04-01T05:52:24.9534635Z\",\"commandLine\":\"echo Hello World\",\"runElevated\":false,\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"endTime\":\"2016-04-01T05:52:25.4472135Z\",\"schedulingError\":{\r\n      \"category\":\"UserError\",\"code\":\"TaskEnded\",\"message\":\"Task Was Ended by User Request\"\r\n    },\"retryCount\":0,\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:47 GMT',
-  etag: '0x8D3510B3B8DE083',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:25 GMT',
+  etag: '0x8D359F1CD39AFC7',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '63daeff1-1450-4db2-a612-aa91ec3858a4',
+  'request-id': '06e98898-63af-401e-892b-c7f91fb57451',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:49 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:27 GMT',
   connection: 'close' });
  return result; }]];

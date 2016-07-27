@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Service Fabric
 
 This project provides a Node.js package for accessing the Azure Service Fabric. Right now it supports:
-- **Node.js version: 0.10.0 or higher**
+- **Node.js version: 4.x.x or higher**
 
 ## Features
 

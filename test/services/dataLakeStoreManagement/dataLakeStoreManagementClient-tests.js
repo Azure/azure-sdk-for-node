@@ -59,7 +59,14 @@ var importFile = firstFolder + '/importfile.txt';
 var concatFile = firstFolder + '/concatfile.txt';
 var moveFolder = 'adlssdkfolder02';
 var moveFile = firstFolder + '/movefile.txt';
-var filesystemDnsSuffix = 'azuredatalakestore.net'; // TODO: Make this configurable for dogfood environments
+var filesystemDnsSuffix = 'azuredatalakestore.net';
+var baseUri = 'https://management.azure.com';
+
+if(process.env['AZURE_ENVIRONMENT'] && process.env['AZURE_ENVIRONMENT'].toUpperCase() === 'DOGFOOD') {
+  filesystemDnsSuffix = 'caboaccountdogfood.net';
+  baseUri = 'https://api-dogfood.resources.windows-int.net'
+}
+
 var fs = require('fs');
 
 // required functions for reading data
@@ -85,9 +92,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
       accountName = suite.generateId(accountPrefix, knownNames);
       filesystemAccountName = suite.generateId(accountPrefix, knownNames);
       
-      adlsClient = new DataLakeStoreAccountManagementClient(suite.credentials, suite.subscriptionId);
-      adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(suite.credentials, suite.subscriptionId, filesystemDnsSuffix);
-      resourceClient = new ResourceManagementClient(suite.credentials, suite.subscriptionId);
+      var options = {
+        adlsFileSystemDnsSuffix: filesystemDnsSuffix
+      };
+      
+      adlsClient = new DataLakeStoreAccountManagementClient(suite.credentials, suite.subscriptionId, baseUri);
+      adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(suite.credentials, options);
+      resourceClient = new ResourceManagementClient(suite.credentials, suite.subscriptionId, baseUri);
 
       // construct all of the parameter objects
       var adlsAccount = {
@@ -240,12 +251,12 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
   describe('Data Lake Store FileSystem', function () {
     it('create and show commands should work', function (done) {
       // create a folder
-      adlsFileSystemClient.fileSystem.mkdirs(firstFolder, filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.mkdirs(filesystemAccountName, firstFolder, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
         // now get the folder.
-        adlsFileSystemClient.fileSystem.getFileStatus(firstFolder, filesystemAccountName, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, firstFolder, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -254,12 +265,12 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
           validLength.should.be.equal(true);
           
           // create a file with no contents inside of the folder
-          adlsFileSystemClient.fileSystem.create(noContentFile, filesystemAccountName, function (err, result, request, response) {
+          adlsFileSystemClient.fileSystem.create(filesystemAccountName, noContentFile, function (err, result, request, response) {
             should.not.exist(err);
             should.not.exist(result);
             response.statusCode.should.equal(201);
             // now get the file.
-            adlsFileSystemClient.fileSystem.getFileStatus(noContentFile, filesystemAccountName, function (err, result, request, response) {
+            adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, noContentFile, function (err, result, request, response) {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
@@ -271,13 +282,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
               var options = {
                 streamContents: new Buffer(content)
               };
-
-              adlsFileSystemClient.fileSystem.create(contentFile, filesystemAccountName, options, function (err, result, request, response) {
+              
+              adlsFileSystemClient.fileSystem.create(filesystemAccountName, contentFile, options, function (err, result, request, response) {
                 should.not.exist(err);
                 should.not.exist(result);
                 response.statusCode.should.equal(201);
                 // now get the file.
-                adlsFileSystemClient.fileSystem.getFileStatus(contentFile, filesystemAccountName, function (err, result, request, response) {
+                adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, contentFile, function (err, result, request, response) {
                   should.not.exist(err);
                   should.exist(result);
                   response.statusCode.should.equal(200);
@@ -285,7 +296,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                   result.fileStatus.length.should.be.equal(content.length);
                   
                   // list the contents of the folder, there should be two entries
-                  adlsFileSystemClient.fileSystem.listFileStatus(firstFolder, filesystemAccountName, function (err, result, request, response) {
+                  adlsFileSystemClient.fileSystem.listFileStatus(filesystemAccountName, firstFolder, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
@@ -301,12 +312,12 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     });
     
     it('add content should work', function (done) {
-      adlsFileSystemClient.fileSystem.append(noContentFile, new Buffer(content), filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.append(filesystemAccountName, noContentFile, new Buffer(content), function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
         // now get the file.
-        adlsFileSystemClient.fileSystem.getFileStatus(noContentFile, filesystemAccountName, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, noContentFile, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -319,12 +330,12 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     
     it('concat should work', function (done) {
       var options = [noContentFile, contentFile];
-      adlsFileSystemClient.fileSystem.concat(concatFile, options, filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.concat(filesystemAccountName, concatFile, options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
         // now get the file.
-        adlsFileSystemClient.fileSystem.getFileStatus(concatFile, filesystemAccountName, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, concatFile, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -348,11 +359,11 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         overwrite: true
       };
 
-      adlsFileSystemClient.fileSystem.create(concatFile, filesystemAccountName, options, function(err, result, request, response) {
+      adlsFileSystemClient.fileSystem.create(filesystemAccountName, concatFile, options, function(err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);
-        adlsFileSystemClient.fileSystem.open(concatFile, filesystemAccountName, readOptions, function(err, result, request, response) {
+        adlsFileSystemClient.fileSystem.open(filesystemAccountName, concatFile, readOptions, function(err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -367,30 +378,30 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     
     it('move commands should work', function (done) {
       // move a file
-      adlsFileSystemClient.fileSystem.rename(concatFile, moveFile, filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.rename(filesystemAccountName, concatFile, moveFile, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
         // now get the moved file.
-        adlsFileSystemClient.fileSystem.getFileStatus(moveFile, filesystemAccountName, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, moveFile, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
           result.fileStatus.type.should.be.equal('FILE');
           result.fileStatus.length.should.be.equal(content.length * 2);
-          adlsFileSystemClient.fileSystem.getFileStatus(concatFile, filesystemAccountName, function (err, result, request, response) {
+          adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, concatFile, function (err, result, request, response) {
             should.exist(err);
             should.not.exist(result);
             err.statusCode.should.equalOneOf([400,404]);
           
             // now move the whole folder
-            adlsFileSystemClient.fileSystem.rename(firstFolder, moveFolder, filesystemAccountName, function (err, result, request, response) {
+            adlsFileSystemClient.fileSystem.rename(filesystemAccountName, firstFolder, moveFolder, function (err, result, request, response) {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
 
               // get the moved folder
-              adlsFileSystemClient.fileSystem.getFileStatus(moveFolder, filesystemAccountName, function (err, result, request, response) {
+              adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, moveFolder, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
@@ -399,13 +410,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                 validLength.should.be.equal(true);
                 
                 // now get the old folder (should fail)
-                adlsFileSystemClient.fileSystem.getFileStatus(firstFolder, filesystemAccountName, function (err, result, request, response) {
+                adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, firstFolder, function (err, result, request, response) {
                   should.exist(err);
                   should.not.exist(result);
                   err.statusCode.should.equalOneOf([400, 404]);
                 
                   // list the contents of the moved folder, there should be two entries
-                  adlsFileSystemClient.fileSystem.listFileStatus(moveFolder, filesystemAccountName, function (err, result, request, response) {
+                  adlsFileSystemClient.fileSystem.listFileStatus(filesystemAccountName, moveFolder, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
@@ -425,7 +436,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     it('file expiry commands should work', function (done) {
       // delete a file
       var noExpiryTime = 253402300800000;
-      adlsFileSystemClient.fileSystem.getFileInfo(moveFile, filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -435,13 +446,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
           expireTime: absoluteAndRelativeToCreationExpiryTime
         };
         // Set absolute expire time
-        adlsFileSystemClient.fileSystem.setFileExpiry(moveFile, filesystemAccountName, 'Absolute', options, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'Absolute', options, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);
           response.statusCode.should.equal(200);
           
           // get the fileInfo again and verify that the value is within 200ms of the set time.
-          adlsFileSystemClient.fileSystem.getFileInfo(moveFile, filesystemAccountName, function (err, result, request, response) {
+          adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -449,13 +460,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
             
             // set relative to creation time expire time
             options.expireTime = 120 * 1000;
-            adlsFileSystemClient.fileSystem.setFileExpiry(moveFile, filesystemAccountName, 'RelativeToCreationDate', options, function (err, result, request, response) {
+            adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'RelativeToCreationDate', options, function (err, result, request, response) {
               should.not.exist(err);
               should.not.exist(result);
               response.statusCode.should.equal(200);
               
               // get the fileInfo again and verify that the value is within 200ms of the set time.
-              adlsFileSystemClient.fileSystem.getFileInfo(moveFile, filesystemAccountName, function (err, result, request, response) {
+              adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
@@ -463,24 +474,24 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                 
                 // set relative to now
                 var nowPlusOffset = new Date().UTC() + (120*1000);
-                adlsFileSystemClient.fileSystem.setFileExpiry(moveFile, filesystemAccountName, 'RelativeToNow', options, function (err, result, request, response) {
+                adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'RelativeToNow', options, function (err, result, request, response) {
                   should.not.exist(err);
                   should.not.exist(result);
                   response.statusCode.should.equal(200);
                   
-                  adlsFileSystemClient.fileSystem.getFileInfo(moveFile, filesystemAccountName, function (err, result, request, response) {
+                  adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
                     result.fileInfo.expirationTime.should.within(nowPlusOffset - 100, nowPlusOffset + 100);
                     
                     // and finally revert it back to never and the value of options should be ignored
-                    adlsFileSystemClient.fileSystem.setFileExpiry(moveFile, filesystemAccountName, 'NeverExpire', options, function (err, result, request, response) {
+                    adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'NeverExpire', options, function (err, result, request, response) {
                       should.not.exist(err);
                       should.not.exist(result);
                       response.statusCode.should.equal(200);
                       
-                      adlsFileSystemClient.fileSystem.getFileInfo(moveFile, filesystemAccountName, function (err, result, request, response) {
+                      adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
                         should.not.exist(err);
                         should.exist(result);
                         response.statusCode.should.equal(200);
@@ -500,13 +511,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     
     it('delete commands should work', function (done) {
       // delete a file
-      adlsFileSystemClient.fileSystem.deleteMethod(moveFile, filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.deleteMethod(filesystemAccountName, moveFile, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
       
         // now get the deleted file, which should fail
-        adlsFileSystemClient.fileSystem.getFileStatus(moveFile, filesystemAccountName, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, moveFile, function (err, result, request, response) {
           should.exist(err);
           should.not.exist(result);
           err.statusCode.should.equalOneOf([400, 404]);
@@ -516,13 +527,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
             recursive: true
           };
 
-          adlsFileSystemClient.fileSystem.deleteMethod(moveFolder, filesystemAccountName, options, function (err, result, request, response) {
+          adlsFileSystemClient.fileSystem.deleteMethod(filesystemAccountName, moveFolder, options, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
           
             // now get the folder (should fail)
-            adlsFileSystemClient.fileSystem.getFileStatus(moveFolder, filesystemAccountName, function (err, result, request, response) {
+            adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, moveFolder, function (err, result, request, response) {
               should.exist(err);
               should.not.exist(result);
               err.statusCode.should.equalOneOf([400, 404]);
@@ -542,7 +553,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     var permissionFolder = '/';
     it('get, set and delete entry commands should work', function (done) {
       // show permissions
-      adlsFileSystemClient.fileSystem.getAclStatus(permissionFolder, filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.getAclStatus(filesystemAccountName, permissionFolder, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -550,13 +561,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         var initialEntryNum = result.aclStatus.entries.length;
         result.aclStatus.owner.should.not.be.empty;
         // now add permissions for a specific user.
-        adlsFileSystemClient.fileSystem.modifyAclEntries(permissionFolder, permissionToSet, filesystemAccountName, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.modifyAclEntries(filesystemAccountName, permissionFolder, permissionToSet, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);
           response.statusCode.should.equal(200);
         
           // show permissions again to confirm it was added
-          adlsFileSystemClient.fileSystem.getAclStatus(permissionFolder, filesystemAccountName, function (err, result, request, response) {
+          adlsFileSystemClient.fileSystem.getAclStatus(filesystemAccountName, permissionFolder, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -573,13 +584,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
             foundEntry.should.be.equal(true);
             
             // modify the existing entry
-            adlsFileSystemClient.fileSystem.modifyAclEntries(permissionFolder, permissionToUpdate, filesystemAccountName, function (err, result, request, response) {
+            adlsFileSystemClient.fileSystem.modifyAclEntries(filesystemAccountName, permissionFolder, permissionToUpdate, function (err, result, request, response) {
               should.not.exist(err);
               should.not.exist(result);
               response.statusCode.should.equal(200);
             
               // show permissions again to confirm it was modified
-              adlsFileSystemClient.fileSystem.getAclStatus(permissionFolder, filesystemAccountName, function (err, result, request, response) {
+              adlsFileSystemClient.fileSystem.getAclStatus(filesystemAccountName, permissionFolder, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
@@ -595,13 +606,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                 foundEntry.should.be.equal(true);
               
                 // now remove permissions for a specific user.
-                adlsFileSystemClient.fileSystem.removeAclEntries(permissionFolder,permissionToRemove, filesystemAccountName, function (err, result, request, response) {
+                adlsFileSystemClient.fileSystem.removeAclEntries(filesystemAccountName, permissionFolder,permissionToRemove, function (err, result, request, response) {
                   should.not.exist(err);
                   should.not.exist(result);
                   response.statusCode.should.equal(200);
                 
                   // show permissions again to confirm it was removed
-                  adlsFileSystemClient.fileSystem.getAclStatus(permissionFolder, filesystemAccountName, function (err, result, request, response) {
+                  adlsFileSystemClient.fileSystem.getAclStatus(filesystemAccountName, permissionFolder, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
@@ -618,7 +629,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
     
     it('show, set and delete full ACL commands should work', function (done) {
       // show permissions
-      adlsFileSystemClient.fileSystem.getAclStatus(permissionFolder, filesystemAccountName, function (err, result, request, response) {
+      adlsFileSystemClient.fileSystem.getAclStatus(filesystemAccountName, permissionFolder, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -628,13 +639,13 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         var aclSpec = result.aclStatus.entries.toString();
         // now replace the ACL spec with the exact same ACL spec with the addition of one new user as the default user.
         aclSpec = aclSpec + ',default:' + permissionToSet;
-        adlsFileSystemClient.fileSystem.setAcl(permissionFolder, aclSpec, filesystemAccountName, function (err, result, request, response) {
+        adlsFileSystemClient.fileSystem.setAcl(filesystemAccountName, permissionFolder, aclSpec, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);
           response.statusCode.should.equal(200);
         
           // show permissions again to confirm it was added
-          adlsFileSystemClient.fileSystem.getAclStatus(permissionFolder, filesystemAccountName, function (err, result, request, response) {
+          adlsFileSystemClient.fileSystem.getAclStatus(filesystemAccountName, permissionFolder, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);

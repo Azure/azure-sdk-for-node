@@ -59,7 +59,7 @@ describe('Cdn Management CheckNameAvailability', function() {
           tag2: 'val2'
         },
         sku: {
-          name: 'Standard'
+          name: 'Standard_Verizon'
         }
       };
       validEndpointProperties = {

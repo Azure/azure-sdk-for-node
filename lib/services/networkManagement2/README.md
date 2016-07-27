@@ -1,8 +1,8 @@
 # Microsoft Azure SDK for Node.js - Network Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Network Resources.
-- **Node.js version: 0.10.0 or higher**
-- **API version: 2015-06-15**
+- **Node.js version: 4.x.x or higher**
+- **API version: 2016-06-01**
 
 ## Features
 
@@ -24,3 +24,27 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ```bash
 npm install azure-arm-network
 ```
+
+## How to use
+
+### Authentication, client creation and listing vnets in a resource group as an example
+
+ ```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var NetworkManagementClient = require('azure-arm-network');
+
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new NetworkManagementClient(credentials, 'your-subscription-id');
+  client.virtualNetworks.list(resourceGroupName, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
+ ```
+
+ ## Related projects
+
+- [Microsoft Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)

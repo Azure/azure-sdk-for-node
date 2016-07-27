@@ -86,7 +86,19 @@ describe('Batch Service', function () {
   });
 
   describe('operations', function () {
-    
+
+    it('should list node agent sku successfully', function (done) {
+      client.account.listNodeAgentSkus(function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.be.above(0);
+        result[0].id.should.equal('batch.node.centos 7');
+        result[0].osType.should.equal('linux');
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
     it('should add new certificate successfully', function (done) {
       var options = {
         thumbprint: certThumb, thumbprintAlgorithm: 'sha1', password: 'nodesdk', certificateFormat: 'pfx',
@@ -122,10 +134,10 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should create a new pool successfully', function (done) {
       var pool = {
-        id: 'nodesdktestpool1', vmSize: 'small', osFamily: '4', targetDedicated: 3,
+        id: 'nodesdktestpool1', vmSize: 'small', cloudServiceConfiguration: { osFamily: '4' }, targetDedicated: 3,
         certificateReferences: [{ thumbprint: certThumb, thumbprintAlgorithm: 'sha1' }]
       };
       client.pool.add(pool, function (err, result, request, response) {
@@ -141,7 +153,7 @@ describe('Batch Service', function () {
         }, 100000);
       });
     });
-    
+
     it('should update pool target OS version successfully', function (done) {
       client.pool.upgradeOS('nodesdktestpool1', 'WA-GUEST-OS-4.27_201512-01', function (err, result, request, response) {
         should.not.exist(err);
@@ -150,7 +162,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should update pool parameters successfully', function (done) {
       var options = { metadata: [ { name: 'foo', value: 'bar' } ], certificateReferences: [], applicationPackageReferences: []};
       client.pool.updateProperties('nodesdktestpool1', options, function (err, result, request, response) {
@@ -160,7 +172,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should patch pool parameters successfully', function (done) {
       var options = { metadata: [{ name: 'foo2', value: 'bar2' }] };
       client.pool.patch('nodesdktestpool1', options, function (err, result, request, response) {
@@ -176,15 +188,16 @@ describe('Batch Service', function () {
         }, 300000);
       });
     });
-    
-    it('should get a pool reference successfully', function (done) { 
+
+    it('should get a pool reference successfully', function (done) {
       client.pool.get('nodesdktestpool1', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.id.should.equal('nodesdktestpool1');
         result.state.should.equal('active');
         result.allocationState.should.equal('steady');
-        result.osFamily.should.equal('4');
+        should.exist(result.cloudServiceConfiguration);
+        result.cloudServiceConfiguration.osFamily.should.equal('4');
         result.vmSize.should.equal('small');
         result.metadata[0].name.should.equal('foo2');
         result.metadata[0].value.should.equal('bar2');
@@ -192,7 +205,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get a pool reference with odata successfully', function (done) {
       var options = { poolGetOptions: { select: 'id,state', expand: 'stats' } };
       client.pool.get('nodesdktestpool1', options, function (err, result, request, response) {
@@ -206,7 +219,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should list compute nodes successfully', function (done) {
       client.computeNodeOperations.list('nodesdktestpool1', function (err, result, request, response) {
         should.not.exist(err);
@@ -219,7 +232,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get a compute node reference', function (done) {
       client.computeNodeOperations.get('nodesdktestpool1', compute_nodes[0], function (err, result, request, response) {
         should.not.exist(err);
@@ -231,7 +244,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should add a user to a compute node successfully', function (done) {
       var options = { name: 'NodeSDKTestUser', isAdmin: false, password: 'kt#_gahr!@aGERDXA' }
       client.computeNodeOperations.addUser('nodesdktestpool1', compute_nodes[0], options, function (err, result, request, response) {
@@ -241,7 +254,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should update a compute node user successfully', function (done) {
       var options = { password: 'liilef#$DdRGSa_ewkjh' }
       client.computeNodeOperations.updateUser('nodesdktestpool1', compute_nodes[0], 'NodeSDKTestUser', options, function (err, result, request, response) {
@@ -251,7 +264,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get a remote desktop file successfully', function (done) {
       client.computeNodeOperations.getRemoteDesktop('nodesdktestpool1', compute_nodes[0], function (err, result, request, response) {
         should.not.exist(err);
@@ -264,7 +277,7 @@ describe('Batch Service', function () {
         });
       });
     });
-    
+
     it('should delete a compute node user successfully', function (done) {
       client.computeNodeOperations.deleteUser('nodesdktestpool1', compute_nodes[0], 'NodeSDKTestUser', function (err, result, request, response) {
         should.not.exist(err);
@@ -273,7 +286,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should disable scheduling on a compute node successfully', function (done) {
       client.computeNodeOperations.disableScheduling('nodesdktestpool1', compute_nodes[1], function (err, result, request, response) {
         should.not.exist(err);
@@ -282,7 +295,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should enable scheduling on a compute node successfully', function (done) {
       client.computeNodeOperations.enableScheduling('nodesdktestpool1', compute_nodes[1], function (err, result, request, response) {
         should.not.exist(err);
@@ -291,7 +304,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should reboot a compute node successfully', function (done) {
       client.computeNodeOperations.reboot('nodesdktestpool1', compute_nodes[0], function (err, result, request, response) {
         should.not.exist(err);
@@ -300,7 +313,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should reimage a compute node successfully', function (done) {
       client.computeNodeOperations.reimage('nodesdktestpool1', compute_nodes[1], function (err, result, request, response) {
         should.not.exist(err);
@@ -319,7 +332,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should evaluate pool autoscale successfully', function (done) {
       client.pool.evaluateAutoScale('nodesdktestpool1', '$TargetDedicated=3', function (err, result, request, response) {
         should.not.exist(err);
@@ -329,7 +342,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should fail to evaluate invalid autoscale formula', function (done) {
       client.pool.evaluateAutoScale('nodesdktestpool1', 'something_useless', function (err, result, request, response) {
         should.not.exist(err);
@@ -339,7 +352,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should disable autoscale successfully', function (done) {
       client.pool.disableAutoScale('nodesdktestpool1', function (err, result, request, response) {
         should.not.exist(err);
@@ -348,9 +361,9 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should create a second pool successfully', function (done) {
-      pool = { id: 'nodesdktestpool2', vmSize: 'small', osFamily: '4' };
+      pool = { id: 'nodesdktestpool2', vmSize: 'small', cloudServiceConfiguration: { osFamily: '4' } };
       client.pool.add(pool, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
@@ -368,8 +381,8 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
-    it('should list a maximum number of pools', function (done) { 
+
+    it('should list a maximum number of pools', function (done) {
       var options = { poolListOptions: { maxResults: 1 } };
       client.pool.list(options, function (err, result, request, response) {
         should.not.exist(err);
@@ -410,7 +423,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should check that pool exists successfully', function (done) {
       client.pool.exists('nodesdktestpool1', function (err, result, request, response) {
         should.not.exist(err);
@@ -420,7 +433,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should start pool resizing successfully', function (done) {
       var options = { targetDedicated: 3 };
       client.pool.resize('nodesdktestpool2', options, function (err, result, request, response) {
@@ -430,7 +443,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should stop pool resizing successfully', function (done) {
       client.pool.stopResize('nodesdktestpool2', function (err, result, request, response) {
         should.not.exist(err);
@@ -439,7 +452,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get pool lifetime statistics', function (done) {
       client.pool.getAllPoolsLifetimeStatistics(function (err, result, request, response) {
         should.not.exist(err);
@@ -450,7 +463,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should list pools usage metrics', function (done) {
       var options = { poolListPoolUsageMetricsOptions: { maxResults: 1 } };
       client.pool.listPoolUsageMetrics(options, function (err, result, request, response) {
@@ -462,7 +475,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should create a job successfully', function (done) {
       var options = { id: 'HelloWorldJobNodeSDKTest', poolInfo: { poolId: 'nodesdktestpool1' } };
       client.job.add(options, function (err, result, request, response) {
@@ -472,7 +485,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should update a job successfully', function (done) {
       var options = { priority: 500, constraints: { maxTaskRetryCount: 3 }, poolInfo: { poolId: 'nodesdktestpool1' } };
       client.job.update('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
@@ -482,7 +495,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should patch a job successfully', function (done) {
       var options = { priority: 500, constraints: { maxTaskRetryCount: 3 }, poolInfo: { poolId: 'nodesdktestpool1' } };
       client.job.update('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
@@ -492,7 +505,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should create a task successfully', function (done) {
       var options = {
         id: 'HelloWorldNodeSDKTestTask',
@@ -504,7 +517,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should terminate a task successfully', function (done) {
       client.task.terminate('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask', function (err, result, request, response) {
         should.not.exist(err);
@@ -513,7 +526,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should create a second task successfully', function (done) {
       var options = {
         id: 'HelloWorldNodeSDKTestTask2',
@@ -526,7 +539,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should update a task successfully', function (done) {
       var options = { constraints: { maxTaskRetryCount: 3 } };
       client.task.update('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', options, function (err, result, request, response) {
@@ -536,7 +549,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should list all tasks successfully', function (done) {
       client.task.list('HelloWorldJobNodeSDKTest', function (err, result, request, response) {
         should.not.exist(err);
@@ -547,7 +560,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get task reference successfully', function (done) {
       client.task.get('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask', function (err, result, request, response) {
         should.not.exist(err);
@@ -563,7 +576,7 @@ describe('Batch Service', function () {
         }, 100000);
       });
     });
-    
+
     //TODO: Need to test with actual subtasks
     it('should list sub tasks successfully', function (done) {
       client.task.listSubtasks('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask', function (err, result, request, response) {
@@ -573,7 +586,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should list files from task successfully', function (done) {
       client.file.listFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', function (err, result, request, response) {
         should.not.exist(err);
@@ -583,7 +596,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get file properties from task successfully', function (done) {
       client.file.getNodeFilePropertiesFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', 'stderr.txt', function (err, result, request, response) {
         should.not.exist(err);
@@ -592,7 +605,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get file from task successfully', function (done) {
       client.file.getFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', 'stdout.txt', function (err, result, request, response) {
         should.not.exist(err);
@@ -605,7 +618,7 @@ describe('Batch Service', function () {
         });
       });
     });
-    
+
     it('should delete file from task successfully', function (done) {
       client.file.deleteFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', 'stderr.txt', function (err, result, request, response) {
         should.not.exist(err);
@@ -614,7 +627,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should re-list compute nodes successfully', function (done) {
       if (suite.isPlayback) {
         // We don't need to do this unless recording...
@@ -631,7 +644,7 @@ describe('Batch Service', function () {
         }, 100000);
       });
     });
-    
+
     it('should list files from compute node successfully', function (done) {
       client.file.listFromComputeNode('nodesdktestpool1', compute_nodes[1], function (err, result, request, response) {
         should.not.exist(err);
@@ -641,7 +654,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     //TODO: Test this with an actual compute node file
     //it('should get file properties from node successfully', function (done) {
     //  client.file.getNodeFilePropertiesFromComputeNode('nodesdktestpool1', compute_nodes[0], 'workitems', function (err, result, request, response) {
@@ -651,7 +664,7 @@ describe('Batch Service', function () {
     //    done();
     //  });
     //});
-    
+
     //TODO: Test this with an actual compute node file
     //it('should get file from node successfully', function (done) {
     //  client.file.getFromComputeNode('nodesdktestpool1', compute_nodes[0], 'workitems', function (err, result, request, response) {
@@ -665,7 +678,7 @@ describe('Batch Service', function () {
     //    });
     //  });
     //});
-    
+
     //TODO: Test this with an actual compute node file
     //it('should delete file from node successfully', function (done) {
     //  client.file.deleteFromComputeNode('nodesdktestpool1', compute_nodes[0], 'workitems', function (err, result, request, response) {
@@ -693,7 +706,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should delete a task successfully', function (done) {
       client.task.deleteMethod('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask', function (err, result, request, response) {
         should.not.exist(err);
@@ -702,7 +715,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should delete a second task successfully', function (done) {
       client.task.deleteMethod('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', function (err, result, request, response) {
         should.not.exist(err);
@@ -711,7 +724,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get a job reference successfully', function (done) {
       client.job.get('HelloWorldJobNodeSDKTest', function (err, result, request, response) {
         should.not.exist(err);
@@ -723,7 +736,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should list jobs successfully', function (done) {
       client.job.list(function (err, result, request, response) {
         should.not.exist(err);
@@ -733,7 +746,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should fail to job prep+release status', function (done) {
       client.job.listPreparationAndReleaseTaskStatus('HelloWorldJobNodeSDKTest', function (err, result, request, response) {
         should.exist(err);
@@ -742,7 +755,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should disable a job successfully', function (done) {
       client.job.disable('HelloWorldJobNodeSDKTest', 'requeue', function (err, result, request, response) {
         should.not.exist(err);
@@ -751,7 +764,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should enable a job successfully', function (done) {
       client.job.enable('HelloWorldJobNodeSDKTest', function (err, result, request, response) {
         should.not.exist(err);
@@ -760,7 +773,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should terminate a job successfully', function (done) {
       client.job.terminate('HelloWorldJobNodeSDKTest', function (err, result, request, response) {
         should.not.exist(err);
@@ -769,7 +782,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should delete a job successfully', function (done) {
       client.job.deleteMethod('HelloWorldJobNodeSDKTest', function (err, result, request, response) {
         should.not.exist(err);
@@ -778,7 +791,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get all job statistics successfully', function (done) {
       client.job.getAllJobsLifetimeStatistics(function (err, result, request, response) {
         should.not.exist(err);
@@ -789,7 +802,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should create a job schdule successfully', function (done) {
       var options = {
         id: 'NodeSDKTestSchedule', jobSpecification: { id: 'HelloWorldJobNodeSDKTest', poolInfo: { poolId: 'nodesdktestpool1' } },
@@ -812,7 +825,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     //TODO: Have the job schedule perform jobs
     it('should list jobs from job schedule successfully', function (done) {
       client.job.listFromJobSchedule('NodeSDKTestSchedule', function (err, result, request, response) {
@@ -823,7 +836,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should check if a job schedule exists successfully', function (done) {
       client.jobSchedule.exists('NodeSDKTestSchedule', function (err, result, request, response) {
         should.not.exist(err);
@@ -833,7 +846,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should get a job schedule reference successfully', function (done) {
       client.jobSchedule.get('NodeSDKTestSchedule', function (err, result, request, response) {
         should.not.exist(err);
@@ -844,7 +857,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should update a job schedule successfully', function (done) {
       var options = { schedule: { recurrenceInterval: moment.duration({ hours: 6 }) }, jobSpecification: { poolInfo: { poolId: 'nodesdktestpool2' }}};
       client.jobSchedule.update('NodeSDKTestSchedule', options, function (err, result, request, response) {
@@ -866,7 +879,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should disable a job schedule successfully', function (done) {
       client.jobSchedule.disable('NodeSDKTestSchedule', function (err, result, request, response) {
         should.not.exist(err);
@@ -875,7 +888,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should enable a job schedule successfully', function (done) {
       client.jobSchedule.enable('NodeSDKTestSchedule', function (err, result, request, response) {
         should.not.exist(err);
@@ -884,7 +897,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should terminate a job schedule successfully', function (done) {
       client.jobSchedule.terminate('NodeSDKTestSchedule', function (err, result, request, response) {
         should.not.exist(err);
@@ -902,7 +915,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should remove nodes in pool successfully', function (done) {
       var options = { nodeList: compute_nodes, nodeDeallocationOption: 'terminate' };
       client.pool.removeNodes('nodesdktestpool1', options, function (err, result, request, response) {
@@ -911,17 +924,17 @@ describe('Batch Service', function () {
         response.statusCode.should.equal(202);
         done();
       });
-    });    
+    });
 
-    it('should delete a pool successfully', function(done) { 
+    it('should delete a pool successfully', function(done) {
       client.pool.deleteMethod('nodesdktestpool1', function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(202);
         done();
       });
-    });    
-    
+    });
+
     it('should delete a second pool successfully', function (done) {
       client.pool.deleteMethod('nodesdktestpool2', function (err, result, request, response) {
         should.not.exist(err);
@@ -948,7 +961,7 @@ describe('Batch Service', function () {
         done();
       });
     });
-    
+
     it('should fail to cancel deleting a certificate', function (done) {
       client.certificateOperations.cancelDeletion('sha1', certThumb, function (err, result, request, response) {
         should.exist(err);

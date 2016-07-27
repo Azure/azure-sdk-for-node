@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Kulshrestha, Ankur <ankurkul@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Microsoft Azure Service Bus Service Library for node",
   "tags": [
     "azure",
@@ -22,9 +22,6 @@
     "azure"
   ],
   "main": "./lib/servicebus.js",
-  "engines": {
-    "node": ">= 0.6.15"
-  },
   "licenses": [
     {
       "type": "Apache 2.0",

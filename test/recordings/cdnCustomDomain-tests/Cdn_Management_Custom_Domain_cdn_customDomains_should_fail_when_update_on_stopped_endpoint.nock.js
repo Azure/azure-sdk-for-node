@@ -9,45 +9,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains/cdnTestCustomDomain5269?api-version=2015-06-01', '*')
+.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup5157/providers/Microsoft.Cdn/profiles/cdnTestProfile6002/endpoints/testEndpoint-06466c93-ab2d-4268-b3ec-38bbc2a12e90/customDomains/cdnTestCustomDomain3998?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Update is not allowed for custom domain.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '109',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '7aa1111a-92d6-4fec-bf87-f68d40014716',
-  'x-ms-client-request-id': 'd9bc7f8d-ae9c-4796-8de8-67ebd9d1882a',
+  'x-ms-request-id': '48a03a87-a6d4-45f1-9978-7002c30f069d',
+  'x-ms-client-request-id': '58b92285-aecf-4515-afc3-3ba16454915e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '2cce1437-8ad2-4953-ba03-6b7541fa2a67',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224902Z:2cce1437-8ad2-4953-ba03-6b7541fa2a67',
-  date: 'Wed, 02 Mar 2016 22:49:01 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '57d2bcce-3128-4a1d-a679-a59e6ff3d112',
+  'x-ms-routing-request-id': 'WESTUS:20160511T232108Z:57d2bcce-3128-4a1d-a679-a59e6ff3d112',
+  date: 'Wed, 11 May 2016 23:21:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup8531/providers/Microsoft.Cdn/profiles/cdnTestProfile6538/endpoints/testEndpoint-1a5f6171-364f-49c5-9e09-27d07dac882b/customDomains/cdnTestCustomDomain5269?api-version=2015-06-01', '*')
+.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup5157/providers/Microsoft.Cdn/profiles/cdnTestProfile6002/endpoints/testEndpoint-06466c93-ab2d-4268-b3ec-38bbc2a12e90/customDomains/cdnTestCustomDomain3998?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Update is not allowed for custom domain.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '109',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '7aa1111a-92d6-4fec-bf87-f68d40014716',
-  'x-ms-client-request-id': 'd9bc7f8d-ae9c-4796-8de8-67ebd9d1882a',
+  'x-ms-request-id': '48a03a87-a6d4-45f1-9978-7002c30f069d',
+  'x-ms-client-request-id': '58b92285-aecf-4515-afc3-3ba16454915e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '2cce1437-8ad2-4953-ba03-6b7541fa2a67',
-  'x-ms-routing-request-id': 'WESTUS:20160302T224902Z:2cce1437-8ad2-4953-ba03-6b7541fa2a67',
-  date: 'Wed, 02 Mar 2016 22:49:01 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '57d2bcce-3128-4a1d-a679-a59e6ff3d112',
+  'x-ms-routing-request-id': 'WESTUS:20160511T232108Z:57d2bcce-3128-4a1d-a679-a59e6ff3d112',
+  date: 'Wed, 11 May 2016 23:21:07 GMT',
   connection: 'close' });
  return result; }]];

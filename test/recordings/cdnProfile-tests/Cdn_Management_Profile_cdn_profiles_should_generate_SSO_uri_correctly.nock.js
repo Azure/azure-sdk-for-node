@@ -8,44 +8,44 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6554/providers/Microsoft.Cdn/profiles/cdnTestProfile63/generateSsoUri?api-version=2015-06-01')
-  .reply(200, "{\r\n  \"ssoUriValue\":\"https://cdn.windowsazure.com/account/loginexternal/?token=1dgP8j80Ad%2fndgyfwbJeBUJJYsuyALtKoKxHEwSL3MI%3d&timestamp=2016-03-02T23:17:33.2784056Z&cdnAccountId=2B1CE&userCustomId=SSO-47bc2e15-7605-45da-a2fe-4e8e885d3d47&restEndpointId=0\"\r\n}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup7477/providers/Microsoft.Cdn/profiles/cdnTestProfile4304/generateSsoUri?api-version=2016-04-02')
+  .reply(200, "{\r\n  \"ssoUriValue\":\"https://cdn.windowsazure.com/account/loginexternal/?token=QScMRcqkej3HzFPKyGS2mblDatfFfITO1MTi%2bfhsSh8%3d&timestamp=2016-05-11T22:38:15.2919473Z&cdnAccountId=31191&userCustomId=SSO-6679a33b-4b9f-482c-ab4c-d03dd5e9f482&restEndpointId=0\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '259',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': 'd4ac2094-9fd5-4684-af70-a8b25e8b4178',
-  'x-ms-client-request-id': '244cb1f8-0eb0-45b3-b059-58d2aad79ea5',
+  'x-ms-request-id': 'c44fec81-48ee-4cc3-a7eb-fcf2414e01fc',
+  'x-ms-client-request-id': '3dfe34f1-8687-442b-a5f7-ba5a6ad57e31',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'c02180db-5e51-4c87-b85e-dfbb5165f0c8',
-  'x-ms-routing-request-id': 'WESTUS:20160302T231735Z:c02180db-5e51-4c87-b85e-dfbb5165f0c8',
-  date: 'Wed, 02 Mar 2016 23:17:34 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '66b63096-69fc-41b3-bab5-a50f9bdab15a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T223816Z:66b63096-69fc-41b3-bab5-a50f9bdab15a',
+  date: 'Wed, 11 May 2016 22:38:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup6554/providers/Microsoft.Cdn/profiles/cdnTestProfile63/generateSsoUri?api-version=2015-06-01')
-  .reply(200, "{\r\n  \"ssoUriValue\":\"https://cdn.windowsazure.com/account/loginexternal/?token=1dgP8j80Ad%2fndgyfwbJeBUJJYsuyALtKoKxHEwSL3MI%3d&timestamp=2016-03-02T23:17:33.2784056Z&cdnAccountId=2B1CE&userCustomId=SSO-47bc2e15-7605-45da-a2fe-4e8e885d3d47&restEndpointId=0\"\r\n}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup7477/providers/Microsoft.Cdn/profiles/cdnTestProfile4304/generateSsoUri?api-version=2016-04-02')
+  .reply(200, "{\r\n  \"ssoUriValue\":\"https://cdn.windowsazure.com/account/loginexternal/?token=QScMRcqkej3HzFPKyGS2mblDatfFfITO1MTi%2bfhsSh8%3d&timestamp=2016-05-11T22:38:15.2919473Z&cdnAccountId=31191&userCustomId=SSO-6679a33b-4b9f-482c-ab4c-d03dd5e9f482&restEndpointId=0\"\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '259',
   'content-type': 'application/json; odata.metadata=minimal',
   expires: '-1',
-  'x-ms-request-id': 'd4ac2094-9fd5-4684-af70-a8b25e8b4178',
-  'x-ms-client-request-id': '244cb1f8-0eb0-45b3-b059-58d2aad79ea5',
+  'x-ms-request-id': 'c44fec81-48ee-4cc3-a7eb-fcf2414e01fc',
+  'x-ms-client-request-id': '3dfe34f1-8687-442b-a5f7-ba5a6ad57e31',
   'odata-version': '4.0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': 'c02180db-5e51-4c87-b85e-dfbb5165f0c8',
-  'x-ms-routing-request-id': 'WESTUS:20160302T231735Z:c02180db-5e51-4c87-b85e-dfbb5165f0c8',
-  date: 'Wed, 02 Mar 2016 23:17:34 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '66b63096-69fc-41b3-bab5-a50f9bdab15a',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T223816Z:66b63096-69fc-41b3-bab5-a50f9bdab15a',
+  date: 'Wed, 11 May 2016 22:38:15 GMT',
   connection: 'close' });
  return result; }]];

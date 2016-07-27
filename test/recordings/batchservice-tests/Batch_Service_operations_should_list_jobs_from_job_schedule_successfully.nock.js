@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2015-12-01.2.2')
+  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2016-02-01.3.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '81f59465-730f-4b9f-98f7-9c04ea3e316e',
+  'request-id': '4d2ced4a-592b-4fc8-8a5c-ee71b41c4add',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:29 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2015-12-01.2.2')
+  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2016-02-01.3.0')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '81f59465-730f-4b9f-98f7-9c04ea3e316e',
+  'request-id': '4d2ced4a-592b-4fc8-8a5c-ee71b41c4add',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:05:29 GMT',
+  date: 'Fri, 01 Apr 2016 05:56:03 GMT',
   connection: 'close' });
  return result; }]];

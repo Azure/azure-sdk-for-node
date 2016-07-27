@@ -10,41 +10,41 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadls4331/providers/Microsoft.DataLakeStore/accounts/xplattestadls8810?api-version=2015-10-01-preview', '*')
+.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadls5100/providers/Microsoft.DataLakeStore/accounts/xplattestadls5658?api-version=2015-10-01-preview', '*')
   .reply(409, "{\"error\":{\"code\":\"ResourceConflicted\",\"message\":\"Resource Name is belong to another owner.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '93',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '99098e96-acac-4c60-af27-5f51f65e5284',
+  'x-ms-request-id': 'de03c7d1-2959-4ee1-95e6-35ff1e2a422e',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': 'a5939bfd-bc3a-4295-b702-2c199a6012a2',
-  'x-ms-routing-request-id': 'WESTUS:20160316T214504Z:a5939bfd-bc3a-4295-b702-2c199a6012a2',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '2d5bcc38-be38-48c0-868f-3cb5a0baf718',
+  'x-ms-routing-request-id': 'WESTUS:20160701T191657Z:2d5bcc38-be38-48c0-868f-3cb5a0baf718',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 16 Mar 2016 21:45:04 GMT',
+  date: 'Fri, 01 Jul 2016 19:16:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadls4331/providers/Microsoft.DataLakeStore/accounts/xplattestadls8810?api-version=2015-10-01-preview', '*')
+.put('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadls5100/providers/Microsoft.DataLakeStore/accounts/xplattestadls5658?api-version=2015-10-01-preview', '*')
   .reply(409, "{\"error\":{\"code\":\"ResourceConflicted\",\"message\":\"Resource Name is belong to another owner.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '93',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': '99098e96-acac-4c60-af27-5f51f65e5284',
+  'x-ms-request-id': 'de03c7d1-2959-4ee1-95e6-35ff1e2a422e',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': 'a5939bfd-bc3a-4295-b702-2c199a6012a2',
-  'x-ms-routing-request-id': 'WESTUS:20160316T214504Z:a5939bfd-bc3a-4295-b702-2c199a6012a2',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': '2d5bcc38-be38-48c0-868f-3cb5a0baf718',
+  'x-ms-routing-request-id': 'WESTUS:20160701T191657Z:2d5bcc38-be38-48c0-868f-3cb5a0baf718',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 16 Mar 2016 21:45:04 GMT',
+  date: 'Fri, 01 Jul 2016 19:16:56 GMT',
   connection: 'close' });
  return result; }]];

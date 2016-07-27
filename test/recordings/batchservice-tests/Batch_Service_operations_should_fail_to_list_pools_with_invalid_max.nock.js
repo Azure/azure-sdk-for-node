@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2015-12-01.2.2&maxresults=-5')
-  .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:71ec858b-46bb-4bfd-8c90-93a19dd17805\\nTime:2016-03-20T22:01:40.5979386Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '614',
+  .get('/pools?api-version=2016-02-01.3.0&maxresults=-5')
+  .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:1cc52b0d-b4d2-4735-a29c-3f0b88eefc68\\nTime:2016-04-01T05:52:18.9480026Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '614',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '71ec858b-46bb-4bfd-8c90-93a19dd17805',
+  'request-id': '1cc52b0d-b4d2-4735-a29c-3f0b88eefc68',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:40 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2015-12-01.2.2&maxresults=-5')
-  .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:71ec858b-46bb-4bfd-8c90-93a19dd17805\\nTime:2016-03-20T22:01:40.5979386Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '614',
+  .get('/pools?api-version=2016-02-01.3.0&maxresults=-5')
+  .reply(400, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"InvalidQueryParameterValue\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Value for one of the query parameters specified in the request URI is invalid.\\nRequestId:1cc52b0d-b4d2-4735-a29c-3f0b88eefc68\\nTime:2016-04-01T05:52:18.9480026Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"QueryParameterName\",\"value\":\"maxresults\"\r\n    },{\r\n      \"key\":\"QueryParameterValue\",\"value\":\"-5\"\r\n    },{\r\n      \"key\":\"Reason\",\"value\":\"MaxResults cannot be less than 1\"\r\n    }\r\n  ]\r\n}", { 'content-length': '614',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '71ec858b-46bb-4bfd-8c90-93a19dd17805',
+  'request-id': '1cc52b0d-b4d2-4735-a29c-3f0b88eefc68',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
-  date: 'Sun, 20 Mar 2016 22:01:40 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:18 GMT',
   connection: 'close' });
  return result; }]];

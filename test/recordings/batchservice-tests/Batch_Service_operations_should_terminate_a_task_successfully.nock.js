@@ -9,30 +9,30 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2015-12-01.2.2')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2016-02-01.3.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:47 GMT',
-  etag: '0x8D3510B3B8DE083',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:25 GMT',
+  etag: '0x8D359F1CD39AFC7',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3d678802-2804-46a3-ac0a-862d5a76e0ad',
+  'request-id': '7d5ac3f5-52bf-4e16-84ca-331fe4541e84',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate',
-  date: 'Sun, 20 Mar 2016 22:01:46 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2015-12-01.2.2')
+  .post('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate?api-version=2016-02-01.3.0')
   .reply(204, "", { 'content-length': '0',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:47 GMT',
-  etag: '0x8D3510B3B8DE083',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:25 GMT',
+  etag: '0x8D359F1CD39AFC7',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3d678802-2804-46a3-ac0a-862d5a76e0ad',
+  'request-id': '7d5ac3f5-52bf-4e16-84ca-331fe4541e84',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/terminate',
-  date: 'Sun, 20 Mar 2016 22:01:46 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:25 GMT',
   connection: 'close' });
  return result; }]];

@@ -1,0 +1,39 @@
+{
+  "name": "azure-arm-notificationhubs",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Borkar, Smitha <smithab@microsoft.com>"
+  ],
+  "version": "0.1.0-preview",
+  "description": "Microsoft Azure Notification Hubs Resource Provider Management Client Library for Node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/notificationHubsManagementClient.js",
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "ms-rest": "^1.14.0",
+    "ms-rest-azure": "^1.14.0"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

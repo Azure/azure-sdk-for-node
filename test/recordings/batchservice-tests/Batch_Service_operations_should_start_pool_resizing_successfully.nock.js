@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool2/resize?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool2/resize?api-version=2016-02-01.3.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:42 GMT',
-  etag: '0x8D3510B389E0EDD',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:20 GMT',
+  etag: '0x8D359F1CA5B5FB6',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '36b5d671-aa4b-4d78-a7ab-cdd321926f18',
+  'request-id': 'c4d3409b-c58b-4e35-af49-4580bcbd6075',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2/resize',
-  date: 'Sun, 20 Mar 2016 22:01:43 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool2/resize?api-version=2015-12-01.2.2', '*')
+.post('/pools/nodesdktestpool2/resize?api-version=2016-02-01.3.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:42 GMT',
-  etag: '0x8D3510B389E0EDD',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:20 GMT',
+  etag: '0x8D359F1CA5B5FB6',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '36b5d671-aa4b-4d78-a7ab-cdd321926f18',
+  'request-id': 'c4d3409b-c58b-4e35-af49-4580bcbd6075',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2/resize',
-  date: 'Sun, 20 Mar 2016 22:01:43 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:20 GMT',
   connection: 'close' });
  return result; }]];

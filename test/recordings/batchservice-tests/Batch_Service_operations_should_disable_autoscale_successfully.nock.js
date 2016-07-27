@@ -9,30 +9,30 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2015-12-01.2.2')
+  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:38 GMT',
-  etag: '0x8D3510B363835D5',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:16 GMT',
+  etag: '0x8D359F1C7C22FA9',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9147a6df-ab65-4b64-be1d-d2c9adfcf7ba',
+  'request-id': '92956946-8315-42ed-b9e0-cfde4d5d651f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/disableautoscale',
-  date: 'Sun, 20 Mar 2016 22:01:37 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:16 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2015-12-01.2.2')
+  .post('/pools/nodesdktestpool1/disableautoscale?api-version=2016-02-01.3.0')
   .reply(200, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:01:38 GMT',
-  etag: '0x8D3510B363835D5',
+  'last-modified': 'Fri, 01 Apr 2016 05:52:16 GMT',
+  etag: '0x8D359F1C7C22FA9',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '9147a6df-ab65-4b64-be1d-d2c9adfcf7ba',
+  'request-id': '92956946-8315-42ed-b9e0-cfde4d5d651f',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/disableautoscale',
-  date: 'Sun, 20 Mar 2016 22:01:37 GMT',
+  date: 'Fri, 01 Apr 2016 05:52:16 GMT',
   connection: 'close' });
  return result; }]];

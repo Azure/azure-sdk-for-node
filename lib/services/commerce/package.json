@@ -15,9 +15,6 @@
     "azure"
   ],
   "main": "./lib/commerce.js",
-  "engines": {
-    "node": ">= 0.6.15"
-  },
   "licenses": [
     {
       "type": "Apache 2.0",

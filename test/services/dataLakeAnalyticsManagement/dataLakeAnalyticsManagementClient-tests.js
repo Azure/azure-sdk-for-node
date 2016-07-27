@@ -61,8 +61,15 @@ var azureBlobAccountKey;
 
 var script = 'DROP DATABASE IF EXISTS FOO; CREATE DATABASE FOO; DROP DATABASE IF EXISTS FOO;';
 var jobName = 'xplattestjob';
-var jobAndCatalogDnsSuffix = 'azuredatalakeanalytics.net'; // TODO: Make this configurable for dogfood environments
-var filesystemDnsSuffix = 'azuredatalakestore.net'; // TODO: Make this configurable for dogfood environments
+var jobAndCatalogDnsSuffix = 'azuredatalakeanalytics.net';
+var filesystemDnsSuffix = 'azuredatalakestore.net';
+var baseUri = 'https://management.azure.com';
+if(process.env['AZURE_ENVIRONMENT'] && process.env['AZURE_ENVIRONMENT'].toUpperCase() === 'DOGFOOD') {
+  jobAndCatalogDnsSuffix = 'konaaccountdogfood.net';
+  filesystemDnsSuffix = 'caboaccountdogfood.net';
+  baseUri = 'https://api-dogfood.resources.windows-int.net'
+}
+
 // catalog item names
 var dbName;
 var tableName;
@@ -77,12 +84,22 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
   before(function (done) {
     suite = new SuiteBase(this, testPrefix, requiredEnvironment);
     suite.setupSuite(function () {
-      resourceClient = new ResourceManagementClient(suite.credentials, suite.subscriptionId);
-      storageClient = new StorageManagementClient(suite.credentials, suite.subscriptionId);
-      accountClient = new DataLakeAnalyticsAccountManagementClient(suite.credentials, suite.subscriptionId);
-      adlsClient = new DataLakeStoreAccountManagementClient(suite.credentials, suite.subscriptionId);
-      jobClient = new DataLakeAnalyticsJobManagementClient(suite.credentials, suite.subscriptionId, jobAndCatalogDnsSuffix);
-      catalogClient = new DataLakeAnalyticsCatalogManagementClient(suite.credentials, suite.subscriptionId, jobAndCatalogDnsSuffix);
+      resourceClient = new ResourceManagementClient(suite.credentials, suite.subscriptionId, baseUri);
+      storageClient = new StorageManagementClient(suite.credentials, suite.subscriptionId, baseUri);
+      accountClient = new DataLakeAnalyticsAccountManagementClient(suite.credentials, suite.subscriptionId, baseUri);
+      adlsClient = new DataLakeStoreAccountManagementClient(suite.credentials, suite.subscriptionId, baseUri);
+      
+      var jobOptions = {
+        adlaJobDnsSuffix: jobAndCatalogDnsSuffix
+      };
+      
+      var catalogOptions = {
+        adlaCatalogDnsSuffix: jobAndCatalogDnsSuffix
+      };
+      
+      jobClient = new DataLakeAnalyticsJobManagementClient(suite.credentials, jobOptions);
+      catalogClient = new DataLakeAnalyticsCatalogManagementClient(suite.credentials, catalogOptions);
+      
       testLocation = process.env['AZURE_TEST_LOCATION'];
       testLocation = testLocation.toLowerCase().replace(/ /g, '');
       testResourceGroup = process.env['AZURE_TEST_RESOURCE_GROUP'];
@@ -127,7 +144,10 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       
       var storageAccount = {
         location: testLocation,
-        accountType: 'Standard_GRS'
+        sku: {
+          name: 'Standard_GRS',
+        },
+        kind: 'Storage',
       };
       
       if(!suite.isPlayback) {
@@ -162,7 +182,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
   });
 
   after(function (done) {
-    // this is required as a work around to ensure that the datalake analytics account does not get left behind and stuck in the "deleting" state if its storage gets deleted out from under it.
+    // this is required as a work around to ensure that the datalake analytics account does not get left behind and stuck in the "deleting" state if its storage gets deleted out from under it
     if(!suite.isPlayback) {
       setTimeout(function () {
         accountClient.account.deleteMethod(testResourceGroup, jobAndCatalogAccountName, function () {
@@ -329,7 +349,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     
     it('adding and removing blob storage accounts to the account should work', function (done) {
       storageClient.storageAccounts.listKeys(testResourceGroup, azureBlobAccountName, function (err, result) {
-        azureBlobAccountKey = result.key1;
+        azureBlobAccountKey = result.keys[0].value;
         var storageParams = {
           properties: {
             accessKey: azureBlobAccountKey
@@ -387,7 +407,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         }
       };
       
-      jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
+      jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -395,13 +415,27 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         var jobId = result.jobId;
         result.name.should.be.equal(jobName);
         listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-          jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
+          jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
             result.result.should.be.equal('Succeeded');
             // result.properties.statistics.length.should.be.above(0); // Statistics are not currently included in catalog CRUD operations. Will uncomment this when that changes.
-            done();
+            // now build a job and verify the diagnostics
+            job.properties.script = 'DROP DATABASE IF EXIST FOO; CREATE DATABASE FOO;';
+            jobClient.job.build(jobAndCatalogAccountName, job, function (err, result, request, response) {
+              should.not.exist(err);
+              should.exist(result);
+              response.statusCode.should.equal(200);
+              result.properties.diagnostics.length.should.be.equal(1);
+              result.properties.diagnostics[0].severity.should.be.equal('Error');
+              result.properties.diagnostics[0].columnNumber.should.be.equal(18);
+              result.properties.diagnostics[0].end.should.be.equal(22);
+              result.properties.diagnostics[0].start.should.be.equal(17);
+              result.properties.diagnostics[0].lineNumber.should.be.equal(1);
+              result.properties.diagnostics[0].message.indexOf('E_CSC_USER_SYNTAXERROR').should.not.be.equal(-1);
+              done();
+            });
           });
         });
       });
@@ -418,18 +452,18 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         }
       };
       
-      jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
+      jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
         result.jobId.should.not.be.empty;
         var jobId = result.jobId;
         result.name.should.be.equal(jobName);
-        jobClient.job.cancel(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
+        jobClient.job.cancel(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);
           response.statusCode.should.equal(200);
-          jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
+          jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
@@ -452,9 +486,9 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
   });
   describe('Data Lake Analytics Catalog', function () {
     it('list commands should work', function (done) {
-      var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY HASH (Region)); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
+      var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY BUCKETS (UserId) HASH (Region)); ALTER TABLE ' + dbName + '.dbo.' + tableName + ' ADD IF NOT EXISTS PARTITION (1); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
       // Get the default database (master) and all databases.
-      catalogClient.catalog.getDatabase('master', jobAndCatalogAccountName, function (err, result, request, response) {
+      catalogClient.catalog.getDatabase(jobAndCatalogAccountName, 'master', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -469,7 +503,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             script: scriptToRun
           }
         };
-        jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
+        jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
@@ -477,7 +511,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           var jobId = result.jobId;
           result.name.should.be.equal(jobName);
           listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-            jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
+            jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
@@ -489,60 +523,75 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                 response.statusCode.should.equal(200);
                 result.length.should.be.above(1);
                 // now get the specific database we created
-                catalogClient.catalog.getDatabase(dbName, jobAndCatalogAccountName, function (err, result, request, response) {
+                catalogClient.catalog.getDatabase(jobAndCatalogAccountName, dbName, function (err, result, request, response) {
                   should.not.exist(err);
                   should.exist(result);
                   response.statusCode.should.equal(200);
                   result.name.should.be.equal(dbName);
                   // list all tables in the db and confirm that there is one entry.
-                  catalogClient.catalog.listTables(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
+                  catalogClient.catalog.listTables(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
                     result.length.should.be.equal(1);
                     // now get the specific table we created
-                    catalogClient.catalog.getTable(dbName, 'dbo', tableName, jobAndCatalogAccountName, function (err, result, request, response) {
+                    catalogClient.catalog.getTable(jobAndCatalogAccountName, dbName, 'dbo', tableName, function (err, result, request, response) {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
                       result.name.should.be.equal(tableName);
-                      // list all tvfs in the db and confirm that there is one entry.
-                      catalogClient.catalog.listTableValuedFunctions(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
+                      // list all table partitions in the table and confirm that there is one entry.
+                      catalogClient.catalog.listTablePartitions(jobAndCatalogAccountName, dbName, 'dbo', tableName, function (err, result, request, response) {
                         should.not.exist(err);
                         should.exist(result);
                         response.statusCode.should.equal(200);
                         result.length.should.be.equal(1);
-                        // now get the specific tvf we created
-                        catalogClient.catalog.getTableValuedFunction(dbName, 'dbo', tvfName, jobAndCatalogAccountName, function (err, result, request, response) {
+                        var singlePartition = result[0];
+                        // now get the specific table partition we created
+                        catalogClient.catalog.getTablePartition(jobAndCatalogAccountName, dbName, 'dbo', tableName, singlePartition.name, function (err, result, request, response) {
                           should.not.exist(err);
                           should.exist(result);
                           response.statusCode.should.equal(200);
-                          result.name.should.be.equal(tvfName);
-                          // list all views in the db and confirm that there is one entry.
-                          catalogClient.catalog.listViews(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
+                          result.name.should.be.equal(singlePartition.name);
+                          // list all tvfs in the db and confirm that there is one entry.
+                          catalogClient.catalog.listTableValuedFunctions(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
                             should.not.exist(err);
                             should.exist(result);
                             response.statusCode.should.equal(200);
                             result.length.should.be.equal(1);
-                            // now get the specific view we created
-                            catalogClient.catalog.getView(dbName, 'dbo', viewName, jobAndCatalogAccountName, function (err, result, request, response) {
+                            // now get the specific tvf we created
+                            catalogClient.catalog.getTableValuedFunction(jobAndCatalogAccountName, dbName, 'dbo', tvfName, function (err, result, request, response) {
                               should.not.exist(err);
                               should.exist(result);
                               response.statusCode.should.equal(200);
-                              result.name.should.be.equal(viewName);
-                              // list all procedures in the db and confirm that there is one entry.
-                              catalogClient.catalog.listProcedures(dbName, 'dbo', jobAndCatalogAccountName, function (err, result, request, response) {
+                              result.name.should.be.equal(tvfName);
+                              // list all views in the db and confirm that there is one entry.
+                              catalogClient.catalog.listViews(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
                                 should.not.exist(err);
                                 should.exist(result);
                                 response.statusCode.should.equal(200);
                                 result.length.should.be.equal(1);
-                                // now get the specific procedure we created
-                                catalogClient.catalog.getProcedure(dbName, 'dbo', procName, jobAndCatalogAccountName, function (err, result, request, response) {
+                                // now get the specific view we created
+                                catalogClient.catalog.getView(jobAndCatalogAccountName, dbName, 'dbo', viewName, function (err, result, request, response) {
                                   should.not.exist(err);
                                   should.exist(result);
                                   response.statusCode.should.equal(200);
-                                  result.name.should.be.equal(procName);
-                                  done();
+                                  result.name.should.be.equal(viewName);
+                                  // list all procedures in the db and confirm that there is one entry.
+                                  catalogClient.catalog.listProcedures(jobAndCatalogAccountName, dbName, 'dbo', function (err, result, request, response) {
+                                    should.not.exist(err);
+                                    should.exist(result);
+                                    response.statusCode.should.equal(200);
+                                    result.length.should.be.equal(1);
+                                    // now get the specific procedure we created
+                                    catalogClient.catalog.getProcedure(jobAndCatalogAccountName, dbName, 'dbo', procName, function (err, result, request, response) {
+                                      should.not.exist(err);
+                                      should.exist(result);
+                                      response.statusCode.should.equal(200);
+                                      result.name.should.be.equal(procName);
+                                      done();
+                                    });
+                                  });
                                 });
                               });
                             });
@@ -567,6 +616,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       
       var setSecretPwd = 'clitestsetsecretpwd';
       var databaseName = 'master';
+      var secondSecretName = secretName + 'dup';
       var scriptToRun = 'USE ' + databaseName + '; CREATE CREDENTIAL ' + credName + ' WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "' + secretName + '";';
       // Get the default database (master) and all databases.
       // add a database, table, tvf, view and procedure
@@ -580,59 +630,81 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         }
       };
       
-      catalogClient.catalog.createSecret(databaseName, secretName, secretCreateParameters, jobAndCatalogAccountName, function (err, result, request, response) {
+      catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function (err, result, request, response) {
         should.not.exist(err);
         // should.exist(result);
         response.statusCode.should.equal(200);
         // update the secret's password
         secretCreateParameters.password = setSecretPwd;
-        catalogClient.catalog.updateSecret(databaseName, secretName, secretCreateParameters, jobAndCatalogAccountName, function (err, result, request, response) {
+        catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function (err, result, request, response) {
           should.not.exist(err);
           // should.exist(result);
           response.statusCode.should.equal(200);
-          // Create a credential that uses the secret
-          jobClient.job.create(job.jobId, job, jobAndCatalogAccountName, function (err, result, request, response) {
+          // Create another secret
+          catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function (err, result, request, response) {
             should.not.exist(err);
-            should.exist(result);
             response.statusCode.should.equal(200);
-            result.jobId.should.not.be.empty;
-            var jobId = result.jobId;
-            result.name.should.be.equal(jobName);
-            listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-              jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
+            // attempt to create the secret again (should throw)
+            catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function (err, result, request, response) {
+              should.exist(err);
+              err.statusCode.should.equal(409);
+              // Create a credential that uses the secret
+              jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
-                result.result.should.be.equal('Succeeded');
-                // list all credentials in the db and confirm that there is one entry.
-                catalogClient.catalog.listCredentials(databaseName, jobAndCatalogAccountName, function (err, result, request, response) {
-                  should.not.exist(err);
-                  should.exist(result);
-                  response.statusCode.should.equal(200);
-                  result.length.should.be.equal(1);
-                  // now get the specific credential we created
-                  catalogClient.catalog.getCredential(databaseName, credName, jobAndCatalogAccountName, function (err, result, request, response) {
+                result.jobId.should.not.be.empty;
+                var jobId = result.jobId;
+                result.name.should.be.equal(jobName);
+                listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
+                  jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
-                    result.name.should.be.equal(credName);
-                    // get the secret
-                    catalogClient.catalog.getSecret(databaseName, secretName, jobAndCatalogAccountName, function(err, result, request, response) {
+                    result.result.should.be.equal('Succeeded');
+                    // list all credentials in the db and confirm that there is one entry.
+                    catalogClient.catalog.listCredentials(jobAndCatalogAccountName, databaseName, function (err, result, request, response) {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
-                      result.creationTime.should.not.be.empty;
-                      // delete the secret
-                      catalogClient.catalog.deleteSecret(databaseName, secretName, jobAndCatalogAccountName, function(err, result, request, response) {
+                      result.length.should.be.equal(1);
+                      // now get the specific credential we created
+                      catalogClient.catalog.getCredential(jobAndCatalogAccountName, databaseName, credName, function (err, result, request, response) {
                         should.not.exist(err);
-                        should.not.exist(result);
+                        should.exist(result);
                         response.statusCode.should.equal(200);
-                        // try to set the secret again (should fail)
-                        catalogClient.catalog.updateSecret(databaseName, secretName, secretCreateParameters, jobAndCatalogAccountName, function(err, result, request, response) {
-                          should.exist(err);
-                          should.not.exist(result);
-                          err.statusCode.should.equal(404);
-                          done();
+                        result.name.should.be.equal(credName);
+                        // get the secret
+                        catalogClient.catalog.getSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                          should.not.exist(err);
+                          should.exist(result);
+                          response.statusCode.should.equal(200);
+                          result.creationTime.should.not.be.empty;
+                          // delete the secret
+                          catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                            should.not.exist(err);
+                            should.not.exist(result);
+                            response.statusCode.should.equal(200);
+                            // try to set the secret again (should fail)
+                            catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function(err, result, request, response) {
+                              should.exist(err);
+                              should.not.exist(result);
+                              err.statusCode.should.equal(404);
+                              // delete all secrets
+                              catalogClient.catalog.deleteAllSecrets(jobAndCatalogAccountName, databaseName, function(err, result, request, response) {
+                                should.not.exist(err);
+                                should.not.exist(result);
+                                response.statusCode.should.equal(200);
+                                // try to set the second secret again (should fail)
+                                catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function(err, result, request, response) {
+                                  should.exist(err);
+                                  should.not.exist(result);
+                                  err.statusCode.should.equal(404);
+                                  done();
+                                });
+                              });
+                            });
+                          });
                         });
                       });
                     });
@@ -654,7 +726,7 @@ function listPoll(suite, attemptsLeft, accountName, jobId, callback) {
   }
 
   var objectFound = false;
-  jobClient.job.get(jobId, jobAndCatalogAccountName, function (err, result, request, response) {
+  jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
     should.not.exist(err);
     should.exist(result);
     response.statusCode.should.equal(200);

@@ -10,31 +10,31 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2015-12-01.2.2', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2016-02-01.3.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:05:24 GMT',
-  etag: '0x8D3510BBCE75F76',
+  'last-modified': 'Fri, 01 Apr 2016 05:55:58 GMT',
+  etag: '0x8D359F24C009536',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2e339679-ce8f-4806-a3eb-77484b3eca5d',
+  'request-id': '86d14471-846b-44c9-a13d-1fd692dbe194',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/disable',
-  date: 'Sun, 20 Mar 2016 22:05:25 GMT',
+  date: 'Fri, 01 Apr 2016 05:55:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2015-12-01.2.2', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/disable?api-version=2016-02-01.3.0', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Sun, 20 Mar 2016 22:05:24 GMT',
-  etag: '0x8D3510BBCE75F76',
+  'last-modified': 'Fri, 01 Apr 2016 05:55:58 GMT',
+  etag: '0x8D359F24C009536',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '2e339679-ce8f-4806-a3eb-77484b3eca5d',
+  'request-id': '86d14471-846b-44c9-a13d-1fd692dbe194',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/disable',
-  date: 'Sun, 20 Mar 2016 22:05:25 GMT',
+  date: 'Fri, 01 Apr 2016 05:55:58 GMT',
   connection: 'close' });
  return result; }]];
