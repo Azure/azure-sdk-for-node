@@ -330,6 +330,29 @@ export interface RecordSetUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * @member {string} [id] Resource Id
+ * 
+ * @member {string} [name] Resource name
+ * 
+ * @member {string} [type] Resource type
+ * 
+ * @member {string} location Resource location
+ * 
+ * @member {object} [tags] Resource tags
+ * 
+ */
+export interface Resource extends BaseResource {
+    id?: string;
+    name?: string;
+    type?: string;
+    location: string;
+    tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the Zone class.
  * @constructor
  * Describes a DNS zone.
