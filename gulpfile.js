@@ -57,6 +57,10 @@ var mappings = {
     'dir': 'devTestLabs/lib',
     'source': 'arm-devtestlabs/2015-05-21-preview/swagger/DTL.json'
   },
+  'dns': {
+    'dir': 'dnsManagement/lib',
+    'source': 'arm-dns/2016-04-01/swagger/dns.json'
+  },
   'graph': {
     'dir': 'graphManagement/lib',
     'source': 'arm-graphrbac/compositeGraphRbacManagementClient.json',

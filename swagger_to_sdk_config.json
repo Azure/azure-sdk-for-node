@@ -69,6 +69,10 @@
       "swagger": "arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json",
       "output_dir": "lib/services/dataLake.Store/lib/filesystem"
     },
+    "dns": {
+    "swagger": "arm-dns/2016-04-01/swagger/dns.json",
+    "output_dir": "dnsManagement/lib"
+  },
     "graphrbac": {
       "swagger": "arm-graphrbac/compositeGraphRbacManagementClient.json",
       "autorest_options": {
