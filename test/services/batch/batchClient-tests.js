@@ -786,6 +786,29 @@ describe('Batch Service', function () {
       });
     });
 
+    it('should add a task with an application package reference successfully', function (done) {
+      var taskId = 'ApplicationPacakgeReferenceTask';
+      var task = {
+        id: taskId,
+        commandLine: 'cmd /c echo hello world',
+        applicationPackageReferences: [{
+            applicationId: "my_application_id"
+          }
+        ]
+      };
+      client.task.add('HelloWorldJobNodeSDKTest', task, function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(201);
+        client.task.get('HelloWorldJobNodeSDKTest', taskId, function (err, result, request, responnse) {
+          should.not.exist(err);
+          should.exist(result);
+          should.exist(result.applicationPackageReferences);
+          done();
+        });
+      });
+    });
+
     it('should delete a second task successfully', function (done) {
       client.task.deleteMethod('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', function (err, result, request, response) {
         should.not.exist(err);
