@@ -153,15 +153,6 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should update pool target OS version successfully', function (done) {
-      client.pool.upgradeOS('nodesdktestpool1', 'WA-GUEST-OS-4.33_201606-01', function (err, result, request, response) {
-        should.not.exist(err);
-        should.not.exist(result);
-        response.statusCode.should.equal(202);
-        done();
-      });
-    });
-
     it('should update pool parameters successfully', function (done) {
       var options = { metadata: [ { name: 'foo', value: 'bar' } ], certificateReferences: [], applicationPackageReferences: []};
       client.pool.updateProperties('nodesdktestpool1', options, function (err, result, request, response) {
@@ -184,7 +175,7 @@ describe('Batch Service', function () {
         console.log('Waiting for nodes to be ready...')
         setTimeout(function () {
           done();
-        }, 300000);
+        }, 400000);
       });
     });
 
@@ -389,6 +380,15 @@ describe('Batch Service', function () {
       });
     });
 
+    it('should update pool target OS version successfully', function (done) {
+      client.pool.upgradeOS('nodesdktestpool2', 'WA-GUEST-OS-4.32_201605-01', function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(202);
+        done();
+      });
+    });
+
     it('should list pools without filters', function (done) {
       client.pool.list(function (err, result, request, response) {
         should.not.exist(err);
@@ -482,12 +482,10 @@ describe('Batch Service', function () {
     });
 
     it('should list pools usage metrics', function (done) {
-      var options = { poolListPoolUsageMetricsOptions: { maxResults: 1 } };
-      client.pool.listPoolUsageMetrics(options, function (err, result, request, response) {
+      client.pool.listPoolUsageMetrics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result[0].poolId.should.equal('nodesdktestpool1');
         response.statusCode.should.equal(200);
         done();
       });
@@ -524,10 +522,10 @@ describe('Batch Service', function () {
     });
 
     it('should create a task successfully', function (done) {
-      var options = {
+      var task = {
         id: 'HelloWorldNodeSDKTestTask',
-        commandLine: 'echo Hello World'};
-      client.task.add('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
+        commandLine: 'ping 127.0.0.1 -n 20'};
+      client.task.add('HelloWorldJobNodeSDKTest', task, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);
@@ -535,7 +533,7 @@ describe('Batch Service', function () {
       });
     });
 
-    it.only('should create a task with exit conditions successfully', function (done) {
+    it('should create a task with exit conditions successfully', function (done) {
       var jobId = 'JobWithAutoComplete';
       var taskId = 'TaskWithAutoComplete';
       var job = {

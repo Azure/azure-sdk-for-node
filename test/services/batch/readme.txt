@@ -10,7 +10,8 @@ Expect this suite to take around 10 minutes when run in live mode (and when run 
 
 Note, if you wish to run this test suite exclusive of the other client tests, the environment variables AZURE_SUBSCRIPTION_ID, CLIENT_ID and APPLICATION_SECRET will still need to
 be set. However they can be set to any random values, as they will not actually be tested. You also will need to remove all of the other files from the test/testlistarm.txt file,
-and then run "npm -s run-script unit-arm" to actually run the tests.
+and then run "npm -s run-script unit-arm" to actually run the tests. Also note that unless you run the batchManagementClient-tests.js file as well, you will need to create an application package
+with id: "my_application_id"
 
 In order to test (and record) against a specific Batch Account, set the following variables:
 AZURE_BATCH_ACCOUNT (just the account name)
