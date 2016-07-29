@@ -419,13 +419,13 @@ export interface Certificate {
  * @class
  * Initializes a new instance of the ApplicationPackageReference class.
  * @constructor
- * @summary A reference to an application package to be installed on compute
- * nodes in a pool.
+ * @summary A reference to an application package to be deployed to compute
+ * nodes.
  *
- * @member {string} applicationId The id of the application to install.
+ * @member {string} applicationId The id of the application to deploy.
  * 
- * @member {string} [version] The version of the application to install. If
- * omitted, the default version is installed.
+ * @member {string} [version] The version of the application to deploy. If
+ * omitted, the default version is deployed.
  * 
  */
 export interface ApplicationPackageReference {
@@ -818,6 +818,10 @@ export interface TaskConstraints {
  * concurrent task limit, so this is only relevant if the node allows
  * multiple concurrent tasks.
  * 
+ * @member {array} [applicationPackageReferences] A list of application
+ * packages that the Batch service will deploy to the compute node before
+ * running the command line.
+ * 
  */
 export interface JobManagerTask {
     id: string;
@@ -829,6 +833,7 @@ export interface JobManagerTask {
     killJobOnCompletion?: boolean;
     runElevated?: boolean;
     runExclusive?: boolean;
+    applicationPackageReferences?: ApplicationPackageReference[];
 }
 
 /**
@@ -1627,6 +1632,8 @@ export interface PoolInformation {
  * concurrent task limit, so this is only relevant if the node allows
  * multiple concurrent tasks.
  * 
+ * @member {array} [jobManagerTask.applicationPackageReferences]
+ * 
  * @member {object} [jobPreparationTask] The Job Preparation task for jobs
  * created under this schedule.
  * 
@@ -2077,6 +2084,9 @@ export interface JobScheduleStatistics {
  * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.
  * 
+ * @member {array}
+ * [jobSpecification.jobManagerTask.applicationPackageReferences]
+ * 
  * @member {object} [jobSpecification.jobPreparationTask]
  * 
  * @member {string} [jobSpecification.jobPreparationTask.id] The id can
@@ -2454,6 +2464,9 @@ export interface CloudJobSchedule {
  * Job Manager on a compute node. The Job Manager task counts normally
  * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.
+ * 
+ * @member {array}
+ * [jobSpecification.jobManagerTask.applicationPackageReferences]
  * 
  * @member {object} [jobSpecification.jobPreparationTask]
  * 
@@ -2845,6 +2858,8 @@ export interface JobExecutionInformation {
  * concurrent task limit, so this is only relevant if the node allows
  * multiple concurrent tasks.
  * 
+ * @member {array} [jobManagerTask.applicationPackageReferences]
+ * 
  * @member {object} [jobPreparationTask] The Job Preparation task.
  * 
  * @member {string} [jobPreparationTask.id] The id can contain any combination
@@ -3207,6 +3222,8 @@ export interface CloudJob {
  * on a compute node. The Job Manager task counts normally against the node's
  * concurrent task limit, so this is only relevant if the node allows
  * multiple concurrent tasks.
+ * 
+ * @member {array} [jobManagerTask.applicationPackageReferences]
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task.
  * 
@@ -3634,8 +3651,9 @@ export interface JobReleaseTaskExecutionInformation {
  * @member {date} [jobPreparationTaskExecutionInfo.lastRetryTime] This
  * property is set only if the task was retried (i.e. retryCount is nonzero).
  * 
- * @member {object} [jobReleaseTaskExecutionInfo] This property is set only if
- * the Job Release task has run on the node.
+ * @member {object} [jobReleaseTaskExecutionInfo] Information about the
+ * execution status of the Job Release task on this compute node. This
+ * property is set only if the Job Release task has run on the node.
  * 
  * @member {date} [jobReleaseTaskExecutionInfo.startTime]
  * 
@@ -4562,6 +4580,10 @@ export interface TaskIdRange {
  * 
  * @member {array} [dependsOn.taskIdRanges]
  * 
+ * @member {array} [applicationPackageReferences] A list of application
+ * packages that the Batch service will deploy to the compute node before
+ * running the command line.
+ * 
  */
 export interface CloudTask {
     id?: string;
@@ -4586,6 +4608,7 @@ export interface CloudTask {
     multiInstanceSettings?: MultiInstanceSettings;
     stats?: TaskStatistics;
     dependsOn?: TaskDependencies;
+    applicationPackageReferences?: ApplicationPackageReference[];
 }
 
 /**
@@ -4685,6 +4708,10 @@ export interface CloudTask {
  * 
  * @member {array} [dependsOn.taskIdRanges]
  * 
+ * @member {array} [applicationPackageReferences] A list of application
+ * packages that the Batch service will deploy to the compute node before
+ * running the command line.
+ * 
  */
 export interface TaskAddParameter {
     id: string;
@@ -4698,6 +4725,7 @@ export interface TaskAddParameter {
     runElevated?: boolean;
     multiInstanceSettings?: MultiInstanceSettings;
     dependsOn?: TaskDependencies;
+    applicationPackageReferences?: ApplicationPackageReference[];
 }
 
 /**
@@ -5292,6 +5320,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.
  * 
+ * @member {array}
+ * [jobSpecification.jobManagerTask.applicationPackageReferences]
+ * 
  * @member {object} [jobSpecification.jobPreparationTask]
  * 
  * @member {string} [jobSpecification.jobPreparationTask.id] The id can
@@ -5607,6 +5638,9 @@ export interface JobSchedulePatchParameter {
  * Job Manager on a compute node. The Job Manager task counts normally
  * against the node's concurrent task limit, so this is only relevant if the
  * node allows multiple concurrent tasks.
+ * 
+ * @member {array}
+ * [jobSpecification.jobManagerTask.applicationPackageReferences]
  * 
  * @member {object} [jobSpecification.jobPreparationTask]
  * 

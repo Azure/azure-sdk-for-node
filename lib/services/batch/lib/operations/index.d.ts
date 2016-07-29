@@ -2253,6 +2253,10 @@ export interface Job {
      * against the node's concurrent task limit, so this is only relevant if the
      * node allows multiple concurrent tasks.
      * 
+     * @param {array} [job.jobManagerTask.applicationPackageReferences] A list of
+     * application packages that the Batch service will deploy to the compute
+     * node before running the command line.
+     * 
      * @param {object} [job.jobPreparationTask] The Job Preparation task.
      * 
      * @param {string} [job.jobPreparationTask.id] A string that uniquely
@@ -3840,6 +3844,11 @@ export interface JobSchedule {
      * task counts normally against the node's concurrent task limit, so this is
      * only relevant if the node allows multiple concurrent tasks.
      * 
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
+     * A list of application packages that the Batch service will deploy to the
+     * compute node before running the command line.
+     * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] The Job
      * Preparation task for jobs created under this schedule.
@@ -4342,6 +4351,11 @@ export interface JobSchedule {
      * simultaneously with the Job Manager on a compute node. The Job Manager
      * task counts normally against the node's concurrent task limit, so this is
      * only relevant if the node allows multiple concurrent tasks.
+     * 
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
+     * A list of application packages that the Batch service will deploy to the
+     * compute node before running the command line.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] The Job
@@ -4999,6 +5013,11 @@ export interface JobSchedule {
      * task counts normally against the node's concurrent task limit, so this is
      * only relevant if the node allows multiple concurrent tasks.
      * 
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.applicationPackageReferences]
+     * A list of application packages that the Batch service will deploy to the
+     * compute node before running the command line.
+     * 
      * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
      * Job Preparation task for jobs created under this schedule.
      * 
@@ -5557,6 +5576,10 @@ export interface Task {
      * 
      * @param {array} [task.dependsOn.taskIdRanges] The list of task ranges that
      * must complete before this task can be scheduled.
+     * 
+     * @param {array} [task.applicationPackageReferences] A list of application
+     * packages that the Batch service will deploy to the compute node before
+     * running the command line.
      * 
      * @param {object} [options] Optional Parameters.
      * 
