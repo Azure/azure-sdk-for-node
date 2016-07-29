@@ -2,7 +2,7 @@
 
 This project provides a Node.js package that makes it easy to manage Azure resources. Right now it supports:
 - **Node.js version: 4.x.x or higher**
-- **API version: 2015-11-01**
+- **API version: 2016-02-01**
 
 ## Features
 
