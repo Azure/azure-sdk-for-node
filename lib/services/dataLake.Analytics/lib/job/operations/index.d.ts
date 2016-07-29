@@ -70,9 +70,9 @@ export interface Job {
      * @param {uuid} [parameters.jobId] Gets or sets the job's unique identifier
      * (a GUID).
      * 
-     * @param {string} [parameters.name] Gets or sets the friendly name of the job.
+     * @param {string} parameters.name Gets or sets the friendly name of the job.
      * 
-     * @param {string} [parameters.type] Gets or sets the job type of the current
+     * @param {string} parameters.type Gets or sets the job type of the current
      * job (Hive or USql). Possible values include: 'USql', 'Hive'
      * 
      * @param {string} [parameters.submitter] Gets or sets the user or account
@@ -85,16 +85,16 @@ export interface Job {
      * the current job. Lower numbers have a higher priority. By default, a job
      * has a priority of 1000. This must be greater than 0.
      * 
-     * @param {object} [parameters.properties] Gets or sets the job specific
+     * @param {object} parameters.properties Gets or sets the job specific
      * properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] Gets or sets the
      * runtime version of the U-SQL engine to use
      * 
-     * @param {string} [parameters.properties.script] Gets or sets the U-SQL
-     * script to run
+     * @param {string} parameters.properties.script Gets or sets the U-SQL script
+     * to run
      * 
-     * @param {string} [parameters.properties.type] Polymorhpic Discriminator
+     * @param {string} parameters.properties.type Polymorhpic Discriminator
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -158,9 +158,9 @@ export interface Job {
      * @param {uuid} [parameters.jobId] Gets or sets the job's unique identifier
      * (a GUID).
      * 
-     * @param {string} [parameters.name] Gets or sets the friendly name of the job.
+     * @param {string} parameters.name Gets or sets the friendly name of the job.
      * 
-     * @param {string} [parameters.type] Gets or sets the job type of the current
+     * @param {string} parameters.type Gets or sets the job type of the current
      * job (Hive or USql). Possible values include: 'USql', 'Hive'
      * 
      * @param {string} [parameters.submitter] Gets or sets the user or account
@@ -173,16 +173,16 @@ export interface Job {
      * the current job. Lower numbers have a higher priority. By default, a job
      * has a priority of 1000. This must be greater than 0.
      * 
-     * @param {object} [parameters.properties] Gets or sets the job specific
+     * @param {object} parameters.properties Gets or sets the job specific
      * properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] Gets or sets the
      * runtime version of the U-SQL engine to use
      * 
-     * @param {string} [parameters.properties.script] Gets or sets the U-SQL
-     * script to run
+     * @param {string} parameters.properties.script Gets or sets the U-SQL script
+     * to run
      * 
-     * @param {string} [parameters.properties.type] Polymorhpic Discriminator
+     * @param {string} parameters.properties.type Polymorhpic Discriminator
      * 
      * @param {object} [options] Optional Parameters.
      * 

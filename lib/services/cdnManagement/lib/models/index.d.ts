@@ -493,13 +493,9 @@ export interface ValidateCustomDomainOutput {
  *
  * @member {string} name The resource name to validate.
  * 
- * @member {string} type The type of the resource whose name is to be
- * validated. Possible values include: 'Microsoft.Cdn/Profiles/Endpoints'
- * 
  */
 export interface CheckNameAvailabilityInput {
     name: string;
-    type: string;
 }
 
 /**

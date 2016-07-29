@@ -225,22 +225,22 @@ export interface Pool {
      *
      * @param {object} pool The pool to be added.
      * 
-     * @param {string} [pool.id] A string that uniquely identifies the pool within
+     * @param {string} pool.id A string that uniquely identifies the pool within
      * the account. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
      * characters.
      * 
      * @param {string} [pool.displayName] The display name for the pool.
      * 
-     * @param {string} [pool.vmSize] The size of virtual machines in the pool. All
+     * @param {string} pool.vmSize The size of virtual machines in the pool. All
      * virtual machines in a pool are the same size.
      * 
      * @param {object} [pool.cloudServiceConfiguration] The cloud service
      * configuration for the pool. This property and VirtualMachineConfiguration
      * are mutually exclusive and one of the properties must be specified.
      * 
-     * @param {string} [pool.cloudServiceConfiguration.osFamily] The Azure Guest
-     * OS family to be installed on the virtual machines in the pool.
+     * @param {string} pool.cloudServiceConfiguration.osFamily The Azure Guest OS
+     * family to be installed on the virtual machines in the pool.
      * 
      * @param {string} [pool.cloudServiceConfiguration.targetOSVersion] The Azure
      * Guest OS version to be installed on the virtual machines in the pool. The
@@ -255,28 +255,28 @@ export interface Pool {
      * configuration for the pool. This property and CloudServiceConfiguration
      * are mutually exclusive and one of the properties must be specified.
      * 
-     * @param {object} [pool.virtualMachineConfiguration.imageReference] A
-     * reference to the Azure Virtual Machines Marketplace image to use.
+     * @param {object} pool.virtualMachineConfiguration.imageReference A reference
+     * to the Azure Virtual Machines Marketplace image to use.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.publisher]
+     * @param {string} pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.offer] The
+     * @param {string} pool.virtualMachineConfiguration.imageReference.offer The
      * offer type of the Azure Virtual Machines Marketplace image. For example,
      * UbuntuServer or WindowsServer.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.sku] The
-     * SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * @param {string} pool.virtualMachineConfiguration.imageReference.sku The SKU
+     * of the Azure Virtual Machines Marketplace image. For example, 14.04.0-LTS
+     * or 2012-R2-Datacenter.
      * 
      * @param {string} [pool.virtualMachineConfiguration.imageReference.version]
      * The version of the Azure Virtual Machines Marketplace image. A value of
      * 'latest' can be specified to select the latest version of an image. If
      * omitted, the default is 'latest'.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The SKU
-     * of Batch Node Agent to be provisioned on the compute node. The Batch node
+     * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
+     * Batch Node Agent to be provisioned on the compute node. The Batch node
      * agent is a program that runs on each node in the pool, and provides the
      * command-and-control interface between the node and the Batch service.
      * There are different implementations of the node agent, known as SKUs, for
@@ -348,8 +348,8 @@ export interface Pool {
      * @param {object} [pool.taskSchedulingPolicy] How the Batch service
      * distributes tasks between compute nodes in the pool.
      * 
-     * @param {string} [pool.taskSchedulingPolicy.nodeFillType] How tasks should
-     * be distributed across compute nodes. Possible values include: 'spread',
+     * @param {string} pool.taskSchedulingPolicy.nodeFillType How tasks should be
+     * distributed across compute nodes. Possible values include: 'spread',
      * 'pack', 'unmapped'
      * 
      * @param {array} [pool.metadata] A list of name-value pairs associated with
@@ -812,7 +812,7 @@ export interface Pool {
      * 
      * @param {object} poolResizeParameter The parameters for the request.
      * 
-     * @param {number} [poolResizeParameter.targetDedicated] The desired number of
+     * @param {number} poolResizeParameter.targetDedicated The desired number of
      * compute nodes in the pool.
      * 
      * @param {moment.duration} [poolResizeParameter.resizeTimeout] The timeout
@@ -955,19 +955,19 @@ export interface Pool {
      * successfully (that is, to exit with exit code 0) before scheduling any
      * tasks on the compute node.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.certificateReferences] A list
+     * @param {array} poolUpdatePropertiesParameter.certificateReferences A list
      * of certificates to be installed on each compute node in the pool. If you
      * specify an empty collection, any existing certificate references are
      * removed from the pool.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.applicationPackageReferences]
-     * A list of application packages to be installed on each compute node in the
+     * @param {array} poolUpdatePropertiesParameter.applicationPackageReferences A
+     * list of application packages to be installed on each compute node in the
      * pool. If you specify an empty collection, any existing application
      * packages references are removed from the pool.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.metadata] A list of
-     * name-value pairs associated with the pool as metadata. If you specify an
-     * empty collection, any existing metadata is removed from the pool.
+     * @param {array} poolUpdatePropertiesParameter.metadata A list of name-value
+     * pairs associated with the pool as metadata. If you specify an empty
+     * collection, any existing metadata is removed from the pool.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1061,8 +1061,8 @@ export interface Pool {
      * 
      * @param {object} nodeRemoveParameter The parameters for the request.
      * 
-     * @param {array} [nodeRemoveParameter.nodeList] A list containing the id of
-     * the compute nodes to be removed from the specified pool.
+     * @param {array} nodeRemoveParameter.nodeList A list containing the id of the
+     * compute nodes to be removed from the specified pool.
      * 
      * @param {moment.duration} [nodeRemoveParameter.resizeTimeout] The timeout
      * for removal of compute nodes to the pool. The default value is 10 minutes.
@@ -1447,7 +1447,7 @@ export interface Job {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -1475,7 +1475,7 @@ export interface Job {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -1498,21 +1498,21 @@ export interface Job {
      * must be specified.
      * 
      * @param {object}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -1523,7 +1523,7 @@ export interface Job {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -1551,7 +1551,7 @@ export interface Job {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes. Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -1698,7 +1698,7 @@ export interface Job {
      * maximum number of times each task may be retried. The Batch service
      * retries a task if its exit code is nonzero.
      * 
-     * @param {object} [jobUpdateParameter.poolInfo] The pool on which the Batch
+     * @param {object} jobUpdateParameter.poolInfo The pool on which the Batch
      * service runs the job's tasks. If omitted, the job continues to run on its
      * current pool.
      * 
@@ -1718,7 +1718,7 @@ export interface Job {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -1746,7 +1746,7 @@ export interface Job {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -1769,21 +1769,21 @@ export interface Job {
      * must be specified.
      * 
      * @param {object}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -1794,7 +1794,7 @@ export interface Job {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -1822,7 +1822,7 @@ export interface Job {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes. Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -2106,8 +2106,8 @@ export interface Job {
      *
      * @param {object} job The job to be added.
      * 
-     * @param {string} [job.id] A string that uniquely identifies the job within
-     * the account. The id can contain any combination of alphanumeric characters
+     * @param {string} job.id A string that uniquely identifies the job within the
+     * account. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
      * characters. It is common to use a GUID for the id.
      * 
@@ -2250,7 +2250,7 @@ export interface Job {
      * tasks in the job (including the Job Manager, Job Preparation and Job
      * Release tasks).
      * 
-     * @param {object} [job.poolInfo] The pool on which the Batch service runs the
+     * @param {object} job.poolInfo The pool on which the Batch service runs the
      * job's tasks.
      * 
      * @param {string} [job.poolInfo.poolId] The id of an existing pool. All the
@@ -2267,7 +2267,7 @@ export interface Job {
      * prefix to be added to the unique identifier when a pool is automatically
      * created. The prefix can be up to 20 characters long.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * @param {string} job.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -2292,7 +2292,7 @@ export interface Job {
      * properties must be specified.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -2315,21 +2315,21 @@ export interface Job {
      * must be specified.
      * 
      * @param {object}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -2340,7 +2340,7 @@ export interface Job {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -2367,7 +2367,7 @@ export interface Job {
      * are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes. Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -2724,14 +2724,14 @@ export interface CertificateOperations {
      *
      * @param {object} certificate The certificate to be added.
      * 
-     * @param {string} [certificate.thumbprint] The X.509 thumbprint of the
+     * @param {string} certificate.thumbprint The X.509 thumbprint of the
      * certificate. This is a sequence of up to 40 hex digits (it may include
      * spaces but these are removed).
      * 
-     * @param {string} [certificate.thumbprintAlgorithm] The algorithm used to
+     * @param {string} certificate.thumbprintAlgorithm The algorithm used to
      * derive the thumbprint. This must be sha1.
      * 
-     * @param {string} [certificate.data] The base64-encoded contents of the
+     * @param {string} certificate.data The base64-encoded contents of the
      * certificate. The maximum size is 10KB.
      * 
      * @param {string} [certificate.certificateFormat] The format of the
@@ -3842,7 +3842,7 @@ export interface JobSchedule {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -3871,7 +3871,7 @@ export interface JobSchedule {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -3894,21 +3894,21 @@ export interface JobSchedule {
      * must be specified.
      * 
      * @param {object}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -3919,7 +3919,7 @@ export interface JobSchedule {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -3947,7 +3947,7 @@ export interface JobSchedule {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes. Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -4080,10 +4080,10 @@ export interface JobSchedule {
      * 
      * @param {object} jobScheduleUpdateParameter The parameters for the request.
      * 
-     * @param {object} [jobScheduleUpdateParameter.schedule] The schedule
-     * according to which jobs will be created. If you do not specify this
-     * element, it is equivalent to passing the default schedule: that is, a
-     * single job scheduled to run immediately.
+     * @param {object} jobScheduleUpdateParameter.schedule The schedule according
+     * to which jobs will be created. If you do not specify this element, it is
+     * equivalent to passing the default schedule: that is, a single job
+     * scheduled to run immediately.
      * 
      * @param {date} [jobScheduleUpdateParameter.schedule.doNotRunUntil] The
      * earliest time at which any job may be created under this job schedule. If
@@ -4106,8 +4106,8 @@ export interface JobSchedule {
      * between the start times of two successive jobs under the job schedule. A
      * job schedule can have at most one active job under it at any given time.
      * 
-     * @param {object} [jobScheduleUpdateParameter.jobSpecification] Details of
-     * the jobs to be created on this schedule.
+     * @param {object} jobScheduleUpdateParameter.jobSpecification Details of the
+     * jobs to be created on this schedule.
      * 
      * @param {number} [jobScheduleUpdateParameter.jobSpecification.priority] The
      * priority of jobs created under this schedule. Priority values can range
@@ -4319,7 +4319,7 @@ export interface JobSchedule {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -4348,7 +4348,7 @@ export interface JobSchedule {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -4371,21 +4371,21 @@ export interface JobSchedule {
      * must be specified.
      * 
      * @param {object}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -4396,7 +4396,7 @@ export interface JobSchedule {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -4424,7 +4424,7 @@ export interface JobSchedule {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes. Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -4710,13 +4710,13 @@ export interface JobSchedule {
      *
      * @param {object} cloudJobSchedule The job schedule to be added.
      * 
-     * @param {string} [cloudJobSchedule.id] A string that uniquely identifies the
+     * @param {string} cloudJobSchedule.id A string that uniquely identifies the
      * schedule within the account. A GUID is recommended.
      * 
      * @param {string} [cloudJobSchedule.displayName] The display name for the
      * schedule.
      * 
-     * @param {object} [cloudJobSchedule.schedule] The schedule according to which
+     * @param {object} cloudJobSchedule.schedule The schedule according to which
      * jobs will be created.
      * 
      * @param {date} [cloudJobSchedule.schedule.doNotRunUntil] The earliest time
@@ -4740,7 +4740,7 @@ export interface JobSchedule {
      * schedule. A job schedule can have at most one active job under it at any
      * given time.
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification] The details of the jobs
+     * @param {object} cloudJobSchedule.jobSpecification The details of the jobs
      * to be created on this schedule.
      * 
      * @param {number} [cloudJobSchedule.jobSpecification.priority] The priority
@@ -4943,7 +4943,7 @@ export interface JobSchedule {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -4972,7 +4972,7 @@ export interface JobSchedule {
      * properties must be specified.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -4995,21 +4995,21 @@ export interface JobSchedule {
      * must be specified.
      * 
      * @param {object}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -5020,7 +5020,7 @@ export interface JobSchedule {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -5048,7 +5048,7 @@ export interface JobSchedule {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes. Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -5251,14 +5251,14 @@ export interface Task {
      * 
      * @param {object} task The task to be added.
      * 
-     * @param {string} [task.id] A string that uniquely identifies the task within
+     * @param {string} task.id A string that uniquely identifies the task within
      * the job. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
      * characters.
      * 
      * @param {string} [task.displayName] A display name for the task.
      * 
-     * @param {string} [task.commandLine] The command line of the task. For
+     * @param {string} task.commandLine The command line of the task. For
      * multi-instance tasks, the command line is executed on the primary subtask
      * after all the subtasks have finished executing the coordianation command
      * line.
@@ -5303,8 +5303,8 @@ export interface Task {
      * @param {object} [task.multiInstanceSettings] Information about how to run
      * the multi-instance task.
      * 
-     * @param {number} [task.multiInstanceSettings.numberOfInstances] The number
-     * of compute nodes required by the multi-instance task.
+     * @param {number} task.multiInstanceSettings.numberOfInstances The number of
+     * compute nodes required by the multi-instance task.
      * 
      * @param {string} [task.multiInstanceSettings.coordinationCommandLine] The
      * command to run on the compute node instances for coordinating among the
@@ -5759,7 +5759,7 @@ export interface ComputeNodeOperations {
      * 
      * @param {object} user The user account to be created.
      * 
-     * @param {string} [user.name] The user name of the account.
+     * @param {string} user.name The user name of the account.
      * 
      * @param {boolean} [user.isAdmin] Whether the account should be an
      * administrator on the compute node.

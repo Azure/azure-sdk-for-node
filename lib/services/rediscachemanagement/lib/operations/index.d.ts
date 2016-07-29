@@ -35,18 +35,17 @@ export interface Redis {
      * deprecated. As such, it is no longer necessary to provide this parameter
      * and any value specified is ignored.
      * 
-     * @param {object} [parameters.sku] What sku of redis cache to deploy.
+     * @param {object} parameters.sku What sku of redis cache to deploy.
      * 
-     * @param {string} [parameters.sku.name] What type of redis cache to deploy.
+     * @param {string} parameters.sku.name What type of redis cache to deploy.
      * Valid values: (Basic, Standard, Premium). Possible values include:
      * 'Basic', 'Standard', 'Premium'
      * 
-     * @param {string} [parameters.sku.family] Which family to use. Valid values:
+     * @param {string} parameters.sku.family Which family to use. Valid values:
      * (C, P). Possible values include: 'C', 'P'
      * 
-     * @param {number} [parameters.sku.capacity] What size of redis cache to
-     * deploy. Valid values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1,
-     * 2, 3, 4)
+     * @param {number} parameters.sku.capacity What size of redis cache to deploy.
+     * Valid values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
      * 
      * @param {object} [parameters.redisConfiguration] All Redis Settings. Few
      * possible keys:
@@ -71,7 +70,7 @@ export interface Redis {
      * @param {string} [parameters.staticIP] Required when deploying a redis cache
      * inside an existing Azure Virtual Network.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
@@ -203,7 +202,7 @@ export interface Redis {
      * 
      * @param {object} parameters Specifies which redis node(s) to reboot.
      * 
-     * @param {string} [parameters.rebootType] Which redis node(s) to reboot.
+     * @param {string} parameters.rebootType Which redis node(s) to reboot.
      * Depending on this value data loss is possible. Possible values include:
      * 'PrimaryNode', 'SecondaryNode', 'AllNodes'
      * 

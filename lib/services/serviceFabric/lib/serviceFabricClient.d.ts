@@ -765,7 +765,7 @@ declare class ServiceFabricClient {
          * 
          * @param {number} [serviceDescription.flags]
          * 
-         * @param {string} [serviceDescription.ServiceKind] Polymorhpic Discriminator
+         * @param {string} serviceDescription.ServiceKind Polymorhpic Discriminator
          * 
          * @param {object} [options] Optional Parameters.
          * 
@@ -841,7 +841,7 @@ declare class ServiceFabricClient {
          * 
          * @param {array} [serviceGroupDescription.serviceGroupMemberDescription]
          * 
-         * @param {string} [serviceGroupDescription.ServiceKind] Polymorhpic
+         * @param {string} serviceGroupDescription.ServiceKind Polymorhpic
          * Discriminator
          * 
          * @param {object} [options] Optional Parameters.
@@ -886,7 +886,7 @@ declare class ServiceFabricClient {
          * 
          * @param {number} [serviceGroupUpdateDescription.flags]
          * 
-         * @param {string} [serviceGroupUpdateDescription.ServiceKind] Polymorhpic
+         * @param {string} serviceGroupUpdateDescription.ServiceKind Polymorhpic
          * Discriminator
          * 
          * @param {object} [options] Optional Parameters.
@@ -1100,7 +1100,7 @@ declare class ServiceFabricClient {
          * 
          * @param {number} [serviceUpdateDescription.flags]
          * 
-         * @param {string} [serviceUpdateDescription.ServiceKind] Polymorhpic
+         * @param {string} serviceUpdateDescription.ServiceKind Polymorhpic
          * Discriminator
          * 
          * @param {object} [options] Optional Parameters.

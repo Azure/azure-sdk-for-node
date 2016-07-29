@@ -83,10 +83,10 @@ export interface Account {
      * @param {object} parameters The parameters containing the access key and
      * suffix to update the storage account with.
      * 
-     * @param {object} [parameters.properties] the properties for the Azure
-     * Storage account being added.
+     * @param {object} parameters.properties the properties for the Azure Storage
+     * account being added.
      * 
-     * @param {string} [parameters.properties.accessKey] the access key associated
+     * @param {string} parameters.properties.accessKey the access key associated
      * with this Azure Storage account that will be used to connect to it.
      * 
      * @param {string} [parameters.properties.suffix] the optional suffix for the
@@ -119,10 +119,10 @@ export interface Account {
      * @param {object} parameters The parameters containing the access key and
      * optional suffix for the Azure Storage Account.
      * 
-     * @param {object} [parameters.properties] the properties for the Azure
-     * Storage account being added.
+     * @param {object} parameters.properties the properties for the Azure Storage
+     * account being added.
      * 
-     * @param {string} [parameters.properties.accessKey] the access key associated
+     * @param {string} parameters.properties.accessKey the access key associated
      * with this Azure Storage account that will be used to connect to it.
      * 
      * @param {string} [parameters.properties.suffix] the optional suffix for the
@@ -281,7 +281,7 @@ export interface Account {
      * 
      * @param {object} parameters The details of the Data Lake Store account.
      * 
-     * @param {object} [parameters.properties] the properties for the Data Lake
+     * @param {object} parameters.properties the properties for the Data Lake
      * Store account being added.
      * 
      * @param {string} [parameters.properties.suffix] the optional suffix for the
@@ -592,7 +592,7 @@ export interface Account {
      * account.
      * 
      * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
-     * supported degree of parallelism for this acocunt.
+     * supported degree of parallelism for this account.
      * 
      * @param {number} [parameters.properties.maxJobCount] the maximum supported
      * jobs running under the account at the same time.
@@ -641,7 +641,7 @@ export interface Account {
      * account.
      * 
      * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
-     * supported degree of parallelism for this acocunt.
+     * supported degree of parallelism for this account.
      * 
      * @param {number} [parameters.properties.maxJobCount] the maximum supported
      * jobs running under the account at the same time.
@@ -689,7 +689,7 @@ export interface Account {
      * account.
      * 
      * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
-     * supported degree of parallelism for this acocunt.
+     * supported degree of parallelism for this account.
      * 
      * @param {number} [parameters.properties.maxJobCount] the maximum supported
      * jobs running under the account at the same time.
@@ -737,7 +737,7 @@ export interface Account {
      * account.
      * 
      * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
-     * supported degree of parallelism for this acocunt.
+     * supported degree of parallelism for this account.
      * 
      * @param {number} [parameters.properties.maxJobCount] the maximum supported
      * jobs running under the account at the same time.

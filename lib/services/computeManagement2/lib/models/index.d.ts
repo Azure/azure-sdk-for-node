@@ -16,18 +16,17 @@
  * @constructor
  * Instance view status.
  *
- * @member {string} [code] Gets the status Code.
+ * @member {string} [code] the status Code.
  * 
- * @member {string} [level] Gets or sets the level Code. Possible values
- * include: 'Info', 'Warning', 'Error'
+ * @member {string} [level] the level Code. Possible values include: 'Info',
+ * 'Warning', 'Error'
  * 
- * @member {string} [displayStatus] Gets or sets the short localizable label
- * for the status.
+ * @member {string} [displayStatus] the short localizable label for the status.
  * 
- * @member {string} [message] Gets or sets the detailed Message, including for
- * alerts and error messages.
+ * @member {string} [message] the detailed Message, including for alerts and
+ * error messages.
  * 
- * @member {date} [time] Gets or sets the time of the status.
+ * @member {date} [time] the time of the status.
  * 
  */
 export interface InstanceViewStatus {
@@ -78,15 +77,14 @@ export interface Resource extends BaseResource {
  * @constructor
  * Create or update Availability Set parameters.
  *
- * @member {number} [platformUpdateDomainCount] Gets or sets Update Domain
- * count.
+ * @member {number} [platformUpdateDomainCount] Update Domain count.
  * 
- * @member {number} [platformFaultDomainCount] Gets or sets Fault Domain count.
+ * @member {number} [platformFaultDomainCount] Fault Domain count.
  * 
- * @member {array} [virtualMachines] Gets or sets a list containing reference
- * to all Virtual Machines created under this Availability Set.
+ * @member {array} [virtualMachines] a list containing reference to all
+ * Virtual Machines created under this Availability Set.
  * 
- * @member {array} [statuses] Gets or sets the resource status information.
+ * @member {array} [statuses] the resource status information.
  * 
  */
 export interface AvailabilitySet extends Resource {
@@ -102,22 +100,19 @@ export interface AvailabilitySet extends Resource {
  * @constructor
  * Describes the properties of a VM size.
  *
- * @member {string} [name] Gets or sets the VM size name.
+ * @member {string} [name] the VM size name.
  * 
- * @member {number} [numberOfCores] Gets or sets the Number of cores supported
- * by a VM size.
+ * @member {number} [numberOfCores] the Number of cores supported by a VM size.
  * 
- * @member {number} [osDiskSizeInMB] Gets or sets the OS disk size allowed by
- * a VM size.
+ * @member {number} [osDiskSizeInMB] the OS disk size allowed by a VM size.
  * 
- * @member {number} [resourceDiskSizeInMB] Gets or sets the Resource disk size
- * allowed by a VM size.
- * 
- * @member {number} [memoryInMB] Gets or sets the Memory size supported by a
+ * @member {number} [resourceDiskSizeInMB] the Resource disk size allowed by a
  * VM size.
  * 
- * @member {number} [maxDataDiskCount] Gets or sets the Maximum number of data
- * disks allowed by a VM size.
+ * @member {number} [memoryInMB] the Memory size supported by a VM size.
+ * 
+ * @member {number} [maxDataDiskCount] the Maximum number of data disks
+ * allowed by a VM size.
  * 
  */
 export interface VirtualMachineSize {
@@ -135,23 +130,22 @@ export interface VirtualMachineSize {
  * @constructor
  * Describes a Virtual Machine Extension Image.
  *
- * @member {string} operatingSystem Gets or sets the operating system this
- * extension supports.
+ * @member {string} operatingSystem the operating system this extension
+ * supports.
  * 
- * @member {string} computeRole Gets or sets the type of role (IaaS or PaaS)
- * this extension supports.
+ * @member {string} computeRole the type of role (IaaS or PaaS) this extension
+ * supports.
  * 
- * @member {string} handlerSchema Gets or sets the schema defined by
- * publisher, where extension consumers should provide settings in a matching
- * schema.
+ * @member {string} handlerSchema the schema defined by publisher, where
+ * extension consumers should provide settings in a matching schema.
  * 
- * @member {boolean} [vmScaleSetEnabled] Gets or sets whether the extension
- * can be used on xRP VMScaleSets.By default existing extensions are usable
- * on scalesets, but there might be cases where a publisher wants to
- * explicitly indicate the extension is only enabled for CRP VMs but not VMSS.
+ * @member {boolean} [vmScaleSetEnabled] whether the extension can be used on
+ * xRP VMScaleSets.By default existing extensions are usable on scalesets,
+ * but there might be cases where a publisher wants to explicitly indicate
+ * the extension is only enabled for CRP VMs but not VMSS.
  * 
- * @member {boolean} [supportsMultipleExtensions] Gets or sets whether the
- * handler can support multiple extensions.
+ * @member {boolean} [supportsMultipleExtensions] whether the handler can
+ * support multiple extensions.
  * 
  */
 export interface VirtualMachineExtensionImage extends Resource {
@@ -168,11 +162,11 @@ export interface VirtualMachineExtensionImage extends Resource {
  * @constructor
  * Virtual machine image resource information.
  *
- * @member {string} name Gets or sets the name of the resource.
+ * @member {string} name the name of the resource.
  * 
- * @member {string} location Gets or sets the location of the resource.
+ * @member {string} location the location of the resource.
  * 
- * @member {object} [tags] Gets or sets the tags attached to the resource.
+ * @member {object} [tags] the tags attached to the resource.
  * 
  */
 export interface VirtualMachineImageResource extends SubResource {
@@ -187,17 +181,17 @@ export interface VirtualMachineImageResource extends SubResource {
  * @constructor
  * The instance view of a virtual machine extension.
  *
- * @member {string} [name] Gets or sets the virtual machine extension name.
+ * @member {string} [name] the virtual machine extension name.
  * 
- * @member {string} [type] Gets or sets the full type of the extension handler
- * which includes both publisher and type.
+ * @member {string} [type] the full type of the extension handler which
+ * includes both publisher and type.
  * 
- * @member {string} [typeHandlerVersion] Gets or sets the type version of the
- * extension handler.
+ * @member {string} [typeHandlerVersion] the type version of the extension
+ * handler.
  * 
- * @member {array} [substatuses] Gets or sets the resource status information.
+ * @member {array} [substatuses] the resource status information.
  * 
- * @member {array} [statuses] Gets or sets the resource status information.
+ * @member {array} [statuses] the resource status information.
  * 
  */
 export interface VirtualMachineExtensionInstanceView {
@@ -214,48 +208,42 @@ export interface VirtualMachineExtensionInstanceView {
  * @constructor
  * Describes a Virtual Machine Extension.
  *
- * @member {string} [forceUpdateTag] Gets or sets how the extension handler
- * should be forced to update even if the extension configuration has not
- * changed.
+ * @member {string} [forceUpdateTag] how the extension handler should be
+ * forced to update even if the extension configuration has not changed.
  * 
- * @member {string} [publisher] Gets or sets the name of the extension handler
- * publisher.
+ * @member {string} [publisher] the name of the extension handler publisher.
  * 
- * @member {string} [virtualMachineExtensionType] Gets or sets the type of the
- * extension handler.
+ * @member {string} [virtualMachineExtensionType] the type of the extension
+ * handler.
  * 
- * @member {string} [typeHandlerVersion] Gets or sets the type version of the
- * extension handler.
+ * @member {string} [typeHandlerVersion] the type version of the extension
+ * handler.
  * 
- * @member {boolean} [autoUpgradeMinorVersion] Gets or sets whether the
- * extension handler should be automatically upgraded across minor versions.
+ * @member {boolean} [autoUpgradeMinorVersion] whether the extension handler
+ * should be automatically upgraded across minor versions.
  * 
- * @member {object} [settings] Gets or sets Json formatted public settings for
+ * @member {object} [settings] Json formatted public settings for the
+ * extension.
+ * 
+ * @member {object} [protectedSettings] Json formatted protected settings for
  * the extension.
  * 
- * @member {object} [protectedSettings] Gets or sets Json formatted protected
- * settings for the extension.
+ * @member {string} [provisioningState] the provisioning state, which only
+ * appears in the response.
  * 
- * @member {string} [provisioningState] Gets or sets the provisioning state,
- * which only appears in the response.
+ * @member {object} [instanceView] the virtual machine extension instance view.
  * 
- * @member {object} [instanceView] Gets or sets the virtual machine extension
- * instance view.
+ * @member {string} [instanceView.name] the virtual machine extension name.
  * 
- * @member {string} [instanceView.name] Gets or sets the virtual machine
- * extension name.
+ * @member {string} [instanceView.type] the full type of the extension handler
+ * which includes both publisher and type.
  * 
- * @member {string} [instanceView.type] Gets or sets the full type of the
- * extension handler which includes both publisher and type.
+ * @member {string} [instanceView.typeHandlerVersion] the type version of the
+ * extension handler.
  * 
- * @member {string} [instanceView.typeHandlerVersion] Gets or sets the type
- * version of the extension handler.
+ * @member {array} [instanceView.substatuses] the resource status information.
  * 
- * @member {array} [instanceView.substatuses] Gets or sets the resource status
- * information.
- * 
- * @member {array} [instanceView.statuses] Gets or sets the resource status
- * information.
+ * @member {array} [instanceView.statuses] the resource status information.
  * 
  */
 export interface VirtualMachineExtension extends Resource {
@@ -277,11 +265,11 @@ export interface VirtualMachineExtension extends Resource {
  * Used for establishing the purchase context of any 3rd Party artifact
  * through MarketPlace.
  *
- * @member {string} publisher Gets or sets the publisher ID.
+ * @member {string} publisher the publisher ID.
  * 
- * @member {string} name Gets or sets the plan ID.
+ * @member {string} name the plan ID.
  * 
- * @member {string} product Gets or sets the product ID.
+ * @member {string} product the product ID.
  * 
  */
 export interface PurchasePlan {
@@ -296,8 +284,8 @@ export interface PurchasePlan {
  * @constructor
  * Contains the os disk image information.
  *
- * @member {string} operatingSystem Gets or sets the operating system of the
- * osDiskImage. Possible values include: 'Windows', 'Linux'
+ * @member {string} operatingSystem the operating system of the osDiskImage.
+ * Possible values include: 'Windows', 'Linux'
  * 
  */
 export interface OSDiskImage {
@@ -310,9 +298,9 @@ export interface OSDiskImage {
  * @constructor
  * Contains the data disk images information.
  *
- * @member {number} [lun] Gets the LUN number for a data disk.This value is
- * used to identify data disk image inside the VMImage therefore it must be
- * unique for each data disk.The allowed character for the value is digit.
+ * @member {number} [lun] the LUN number for a data disk.This value is used to
+ * identify data disk image inside the VMImage therefore it must be unique
+ * for each data disk.The allowed character for the value is digit.
  * 
  */
 export interface DataDiskImage {
@@ -327,16 +315,16 @@ export interface DataDiskImage {
  *
  * @member {object} [plan]
  * 
- * @member {string} [plan.publisher] Gets or sets the publisher ID.
+ * @member {string} [plan.publisher] the publisher ID.
  * 
- * @member {string} [plan.name] Gets or sets the plan ID.
+ * @member {string} [plan.name] the plan ID.
  * 
- * @member {string} [plan.product] Gets or sets the product ID.
+ * @member {string} [plan.product] the product ID.
  * 
  * @member {object} [osDiskImage]
  * 
- * @member {string} [osDiskImage.operatingSystem] Gets or sets the operating
- * system of the osDiskImage. Possible values include: 'Windows', 'Linux'
+ * @member {string} [osDiskImage.operatingSystem] the operating system of the
+ * osDiskImage. Possible values include: 'Windows', 'Linux'
  * 
  * @member {array} [dataDiskImages]
  * 
@@ -353,10 +341,10 @@ export interface VirtualMachineImage extends VirtualMachineImageResource {
  * @constructor
  * The Usage Names.
  *
- * @member {string} [value] Gets or sets a string describing the resource name.
+ * @member {string} [value] a string describing the resource name.
  * 
- * @member {string} [localizedValue] Gets or sets a localized string
- * describing the resource name.
+ * @member {string} [localizedValue] a localized string describing the
+ * resource name.
  * 
  */
 export interface UsageName {
@@ -370,17 +358,16 @@ export interface UsageName {
  * @constructor
  * Describes Compute Resource Usage.
  *
- * @member {number} currentValue Gets or sets the current value of the usage.
+ * @member {number} currentValue the current value of the usage.
  * 
- * @member {number} limit Gets or sets the limit of usage.
+ * @member {number} limit the limit of usage.
  * 
- * @member {object} name Gets or sets the name of the type of usage.
+ * @member {object} name the name of the type of usage.
  * 
- * @member {string} [name.value] Gets or sets a string describing the resource
- * name.
+ * @member {string} [name.value] a string describing the resource name.
  * 
- * @member {string} [name.localizedValue] Gets or sets a localized string
- * describing the resource name.
+ * @member {string} [name.localizedValue] a localized string describing the
+ * resource name.
  * 
  */
 export interface Usage {
@@ -395,14 +382,12 @@ export interface Usage {
  * @constructor
  * Capture Virtual Machine parameters.
  *
- * @member {string} vhdPrefix Gets or sets the captured VirtualHardDisk's name
- * prefix.
+ * @member {string} vhdPrefix the captured VirtualHardDisk's name prefix.
  * 
- * @member {string} destinationContainerName Gets or sets the destination
- * container name.
+ * @member {string} destinationContainerName the destination container name.
  * 
- * @member {boolean} overwriteVhds Gets or sets whether it overwrites
- * destination VirtualHardDisk if true, in case of conflict.
+ * @member {boolean} overwriteVhds whether it overwrites destination
+ * VirtualHardDisk if true, in case of conflict.
  * 
  */
 export interface VirtualMachineCaptureParameters {
@@ -430,13 +415,13 @@ export interface VirtualMachineCaptureResult extends SubResource {
  * @constructor
  * Plan for the resource.
  *
- * @member {string} [name] Gets or sets the plan ID.
+ * @member {string} [name] the plan ID.
  * 
- * @member {string} [publisher] Gets or sets the publisher ID.
+ * @member {string} [publisher] the publisher ID.
  * 
- * @member {string} [product] Gets or sets the offer ID.
+ * @member {string} [product] the offer ID.
  * 
- * @member {string} [promotionCode] Gets or sets the promotion code.
+ * @member {string} [promotionCode] the promotion code.
  * 
  */
 export interface Plan {
@@ -481,15 +466,15 @@ export interface HardwareProfile {
  * @constructor
  * The image reference.
  *
- * @member {string} [publisher] Gets or sets the image publisher.
+ * @member {string} [publisher] the image publisher.
  * 
- * @member {string} [offer] Gets or sets the image offer.
+ * @member {string} [offer] the image offer.
  * 
- * @member {string} [sku] Gets or sets the image sku.
+ * @member {string} [sku] the image sku.
  * 
- * @member {string} [version] Gets or sets the image version. The allowed
- * formats are Major.Minor.Build or 'latest'. Major, Minor and Build being
- * decimal numbers. Specify 'latest' to use the latest version of image.
+ * @member {string} [version] the image version. The allowed formats are
+ * Major.Minor.Build or 'latest'. Major, Minor and Build being decimal
+ * numbers. Specify 'latest' to use the latest version of image.
  * 
  */
 export interface ImageReference {
@@ -505,11 +490,10 @@ export interface ImageReference {
  * @constructor
  * Describes a reference to Key Vault Secret
  *
- * @member {string} secretUrl Gets or sets the URL referencing a secret in a
- * Key Vault.
+ * @member {string} secretUrl the URL referencing a secret in a Key Vault.
  * 
- * @member {object} sourceVault Gets or sets the Relative URL of the Key Vault
- * containing the secret.
+ * @member {object} sourceVault the Relative URL of the Key Vault containing
+ * the secret.
  * 
  * @member {string} [sourceVault.id] Resource Id
  * 
@@ -525,11 +509,10 @@ export interface KeyVaultSecretReference {
  * @constructor
  * Describes a reference to Key Vault Key
  *
- * @member {string} keyUrl Gets or sets the URL referencing a key in a Key
- * Vault.
+ * @member {string} keyUrl the URL referencing a key in a Key Vault.
  * 
- * @member {object} sourceVault Gets or sets the Relative URL of the Key Vault
- * containing the key
+ * @member {object} sourceVault the Relative URL of the Key Vault containing
+ * the key
  * 
  * @member {string} [sourceVault.id] Resource Id
  * 
@@ -545,30 +528,30 @@ export interface KeyVaultKeyReference {
  * @constructor
  * Describes a Encryption Settings for a Disk
  *
- * @member {object} [diskEncryptionKey] Gets or sets the disk encryption key
- * which is a KeyVault Secret.
+ * @member {object} [diskEncryptionKey] the disk encryption key which is a
+ * KeyVault Secret.
  * 
- * @member {string} [diskEncryptionKey.secretUrl] Gets or sets the URL
- * referencing a secret in a Key Vault.
+ * @member {string} [diskEncryptionKey.secretUrl] the URL referencing a secret
+ * in a Key Vault.
  * 
- * @member {object} [diskEncryptionKey.sourceVault] Gets or sets the Relative
- * URL of the Key Vault containing the secret.
+ * @member {object} [diskEncryptionKey.sourceVault] the Relative URL of the
+ * Key Vault containing the secret.
  * 
  * @member {string} [diskEncryptionKey.sourceVault.id] Resource Id
  * 
- * @member {object} [keyEncryptionKey] Gets or sets the key encryption key
- * which is KeyVault Key.
+ * @member {object} [keyEncryptionKey] the key encryption key which is
+ * KeyVault Key.
  * 
- * @member {string} [keyEncryptionKey.keyUrl] Gets or sets the URL referencing
- * a key in a Key Vault.
+ * @member {string} [keyEncryptionKey.keyUrl] the URL referencing a key in a
+ * Key Vault.
  * 
- * @member {object} [keyEncryptionKey.sourceVault] Gets or sets the Relative
- * URL of the Key Vault containing the key
+ * @member {object} [keyEncryptionKey.sourceVault] the Relative URL of the Key
+ * Vault containing the key
  * 
  * @member {string} [keyEncryptionKey.sourceVault.id] Resource Id
  * 
- * @member {boolean} [enabled] Gets or sets whether disk encryption should be
- * enabled on the Virtual Machine.
+ * @member {boolean} [enabled] whether disk encryption should be enabled on
+ * the Virtual Machine.
  * 
  */
 export interface DiskEncryptionSettings {
@@ -583,8 +566,8 @@ export interface DiskEncryptionSettings {
  * @constructor
  * Describes the uri of a disk.
  *
- * @member {string} [uri] Gets or sets the virtual hard disk's uri. It should
- * be a valid Uri to a virtual hard disk.
+ * @member {string} [uri] the virtual hard disk's uri. It should be a valid
+ * Uri to a virtual hard disk.
  * 
  */
 export interface VirtualHardDisk {
@@ -597,62 +580,61 @@ export interface VirtualHardDisk {
  * @constructor
  * Describes an Operating System disk.
  *
- * @member {string} [osType] Gets or sets the Operating System type. Possible
- * values include: 'Windows', 'Linux'
+ * @member {string} [osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
  * 
- * @member {object} [encryptionSettings] Gets or sets the disk encryption
- * settings.
+ * @member {object} [encryptionSettings] the disk encryption settings.
  * 
- * @member {object} [encryptionSettings.diskEncryptionKey] Gets or sets the
- * disk encryption key which is a KeyVault Secret.
+ * @member {object} [encryptionSettings.diskEncryptionKey] the disk encryption
+ * key which is a KeyVault Secret.
  * 
- * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] Gets or
- * sets the URL referencing a secret in a Key Vault.
+ * @member {string} [encryptionSettings.diskEncryptionKey.secretUrl] the URL
+ * referencing a secret in a Key Vault.
  * 
- * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] Gets or
- * sets the Relative URL of the Key Vault containing the secret.
+ * @member {object} [encryptionSettings.diskEncryptionKey.sourceVault] the
+ * Relative URL of the Key Vault containing the secret.
  * 
  * @member {string} [encryptionSettings.diskEncryptionKey.sourceVault.id]
  * Resource Id
  * 
- * @member {object} [encryptionSettings.keyEncryptionKey] Gets or sets the key
- * encryption key which is KeyVault Key.
+ * @member {object} [encryptionSettings.keyEncryptionKey] the key encryption
+ * key which is KeyVault Key.
  * 
- * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Gets or sets
- * the URL referencing a key in a Key Vault.
+ * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] the URL
+ * referencing a key in a Key Vault.
  * 
- * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] Gets or
- * sets the Relative URL of the Key Vault containing the key
+ * @member {object} [encryptionSettings.keyEncryptionKey.sourceVault] the
+ * Relative URL of the Key Vault containing the key
  * 
  * @member {string} [encryptionSettings.keyEncryptionKey.sourceVault.id]
  * Resource Id
  * 
- * @member {boolean} [encryptionSettings.enabled] Gets or sets whether disk
- * encryption should be enabled on the Virtual Machine.
+ * @member {boolean} [encryptionSettings.enabled] whether disk encryption
+ * should be enabled on the Virtual Machine.
  * 
- * @member {string} name Gets or sets the disk name.
+ * @member {string} name the disk name.
  * 
- * @member {object} vhd Gets or sets the Virtual Hard Disk.
+ * @member {object} vhd the Virtual Hard Disk.
  * 
- * @member {string} [vhd.uri] Gets or sets the virtual hard disk's uri. It
- * should be a valid Uri to a virtual hard disk.
+ * @member {string} [vhd.uri] the virtual hard disk's uri. It should be a
+ * valid Uri to a virtual hard disk.
  * 
- * @member {object} [image] Gets or sets the Source User Image
- * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
- * attach to the Virtual Machine.If SourceImage is provided, the destination
- * VirtualHardDisk should not exist.
+ * @member {object} [image] the Source User Image VirtualHardDisk. This
+ * VirtualHardDisk will be copied before using it to attach to the Virtual
+ * Machine.If SourceImage is provided, the destination VirtualHardDisk should
+ * not exist.
  * 
- * @member {string} [image.uri] Gets or sets the virtual hard disk's uri. It
- * should be a valid Uri to a virtual hard disk.
+ * @member {string} [image.uri] the virtual hard disk's uri. It should be a
+ * valid Uri to a virtual hard disk.
  * 
- * @member {string} [caching] Gets or sets the caching type. Possible values
- * include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [caching] the caching type. Possible values include:
+ * 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} createOption Gets or sets the create option. Possible
- * values include: 'fromImage', 'empty', 'attach'
+ * @member {string} createOption the create option. Possible values include:
+ * 'fromImage', 'empty', 'attach'
  * 
- * @member {number} [diskSizeGB] Gets or sets the initial disk size in GB for
- * blank data disks, and the new desired size for existing OS and Data disks.
+ * @member {number} [diskSizeGB] the initial disk size in GB for blank data
+ * disks, and the new desired size for existing OS and Data disks.
  * 
  */
 export interface OSDisk {
@@ -672,31 +654,31 @@ export interface OSDisk {
  * @constructor
  * Describes a data disk.
  *
- * @member {number} lun Gets or sets the logical unit number.
+ * @member {number} lun the logical unit number.
  * 
- * @member {string} name Gets or sets the disk name.
+ * @member {string} name the disk name.
  * 
- * @member {object} vhd Gets or sets the Virtual Hard Disk.
+ * @member {object} vhd the Virtual Hard Disk.
  * 
- * @member {string} [vhd.uri] Gets or sets the virtual hard disk's uri. It
- * should be a valid Uri to a virtual hard disk.
+ * @member {string} [vhd.uri] the virtual hard disk's uri. It should be a
+ * valid Uri to a virtual hard disk.
  * 
- * @member {object} [image] Gets or sets the Source User Image
- * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
- * attach to the Virtual Machine.If SourceImage is provided, the destination
- * VirtualHardDisk should not exist.
+ * @member {object} [image] the Source User Image VirtualHardDisk. This
+ * VirtualHardDisk will be copied before using it to attach to the Virtual
+ * Machine.If SourceImage is provided, the destination VirtualHardDisk should
+ * not exist.
  * 
- * @member {string} [image.uri] Gets or sets the virtual hard disk's uri. It
- * should be a valid Uri to a virtual hard disk.
+ * @member {string} [image.uri] the virtual hard disk's uri. It should be a
+ * valid Uri to a virtual hard disk.
  * 
- * @member {string} [caching] Gets or sets the caching type. Possible values
- * include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [caching] the caching type. Possible values include:
+ * 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} createOption Gets or sets the create option. Possible
- * values include: 'fromImage', 'empty', 'attach'
+ * @member {string} createOption the create option. Possible values include:
+ * 'fromImage', 'empty', 'attach'
  * 
- * @member {number} [diskSizeGB] Gets or sets the initial disk size in GB for
- * blank data disks, and the new desired size for existing OS and Data disks.
+ * @member {number} [diskSizeGB] the initial disk size in GB for blank data
+ * disks, and the new desired size for existing OS and Data disks.
  * 
  */
 export interface DataDisk {
@@ -715,81 +697,77 @@ export interface DataDisk {
  * @constructor
  * Describes a storage profile.
  *
- * @member {object} [imageReference] Gets or sets the image reference.
+ * @member {object} [imageReference] the image reference.
  * 
- * @member {string} [imageReference.publisher] Gets or sets the image
- * publisher.
+ * @member {string} [imageReference.publisher] the image publisher.
  * 
- * @member {string} [imageReference.offer] Gets or sets the image offer.
+ * @member {string} [imageReference.offer] the image offer.
  * 
- * @member {string} [imageReference.sku] Gets or sets the image sku.
+ * @member {string} [imageReference.sku] the image sku.
  * 
- * @member {string} [imageReference.version] Gets or sets the image version.
- * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
- * Build being decimal numbers. Specify 'latest' to use the latest version of
- * image.
+ * @member {string} [imageReference.version] the image version. The allowed
+ * formats are Major.Minor.Build or 'latest'. Major, Minor and Build being
+ * decimal numbers. Specify 'latest' to use the latest version of image.
  * 
- * @member {object} [osDisk] Gets or sets the OS disk.
+ * @member {object} [osDisk] the OS disk.
  * 
- * @member {string} [osDisk.osType] Gets or sets the Operating System type.
- * Possible values include: 'Windows', 'Linux'
+ * @member {string} [osDisk.osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
  * 
- * @member {object} [osDisk.encryptionSettings] Gets or sets the disk
- * encryption settings.
+ * @member {object} [osDisk.encryptionSettings] the disk encryption settings.
  * 
- * @member {object} [osDisk.encryptionSettings.diskEncryptionKey] Gets or sets
- * the disk encryption key which is a KeyVault Secret.
+ * @member {object} [osDisk.encryptionSettings.diskEncryptionKey] the disk
+ * encryption key which is a KeyVault Secret.
  * 
  * @member {string} [osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
- * Gets or sets the URL referencing a secret in a Key Vault.
+ * the URL referencing a secret in a Key Vault.
  * 
  * @member {object} [osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
- * Gets or sets the Relative URL of the Key Vault containing the secret.
+ * the Relative URL of the Key Vault containing the secret.
  * 
  * @member {string}
  * [osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id] Resource Id
  * 
- * @member {object} [osDisk.encryptionSettings.keyEncryptionKey] Gets or sets
- * the key encryption key which is KeyVault Key.
+ * @member {object} [osDisk.encryptionSettings.keyEncryptionKey] the key
+ * encryption key which is KeyVault Key.
  * 
- * @member {string} [osDisk.encryptionSettings.keyEncryptionKey.keyUrl] Gets
- * or sets the URL referencing a key in a Key Vault.
+ * @member {string} [osDisk.encryptionSettings.keyEncryptionKey.keyUrl] the
+ * URL referencing a key in a Key Vault.
  * 
  * @member {object} [osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
- * Gets or sets the Relative URL of the Key Vault containing the key
+ * the Relative URL of the Key Vault containing the key
  * 
  * @member {string}
  * [osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
  * 
- * @member {boolean} [osDisk.encryptionSettings.enabled] Gets or sets whether
- * disk encryption should be enabled on the Virtual Machine.
+ * @member {boolean} [osDisk.encryptionSettings.enabled] whether disk
+ * encryption should be enabled on the Virtual Machine.
  * 
- * @member {string} [osDisk.name] Gets or sets the disk name.
+ * @member {string} [osDisk.name] the disk name.
  * 
- * @member {object} [osDisk.vhd] Gets or sets the Virtual Hard Disk.
+ * @member {object} [osDisk.vhd] the Virtual Hard Disk.
  * 
- * @member {string} [osDisk.vhd.uri] Gets or sets the virtual hard disk's uri.
- * It should be a valid Uri to a virtual hard disk.
+ * @member {string} [osDisk.vhd.uri] the virtual hard disk's uri. It should be
+ * a valid Uri to a virtual hard disk.
  * 
- * @member {object} [osDisk.image] Gets or sets the Source User Image
- * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
- * attach to the Virtual Machine.If SourceImage is provided, the destination
- * VirtualHardDisk should not exist.
+ * @member {object} [osDisk.image] the Source User Image VirtualHardDisk. This
+ * VirtualHardDisk will be copied before using it to attach to the Virtual
+ * Machine.If SourceImage is provided, the destination VirtualHardDisk should
+ * not exist.
  * 
- * @member {string} [osDisk.image.uri] Gets or sets the virtual hard disk's
- * uri. It should be a valid Uri to a virtual hard disk.
+ * @member {string} [osDisk.image.uri] the virtual hard disk's uri. It should
+ * be a valid Uri to a virtual hard disk.
  * 
- * @member {string} [osDisk.caching] Gets or sets the caching type. Possible
- * values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [osDisk.caching] the caching type. Possible values
+ * include: 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} [osDisk.createOption] Gets or sets the create option.
- * Possible values include: 'fromImage', 'empty', 'attach'
+ * @member {string} [osDisk.createOption] the create option. Possible values
+ * include: 'fromImage', 'empty', 'attach'
  * 
- * @member {number} [osDisk.diskSizeGB] Gets or sets the initial disk size in
- * GB for blank data disks, and the new desired size for existing OS and Data
- * disks.
+ * @member {number} [osDisk.diskSizeGB] the initial disk size in GB for blank
+ * data disks, and the new desired size for existing OS and Data disks.
  * 
- * @member {array} [dataDisks] Gets or sets the data disks.
+ * @member {array} [dataDisks] the data disks.
  * 
  */
 export interface StorageProfile {
@@ -802,26 +780,25 @@ export interface StorageProfile {
  * @class
  * Initializes a new instance of the AdditionalUnattendContent class.
  * @constructor
- * Gets or sets additional XML formatted information that can be included in
- * the Unattend.xml file, which is used by Windows Setup. Contents are
- * defined by setting name, component name, and the pass in which the content
- * is a applied.
+ * additional XML formatted information that can be included in the
+ * Unattend.xml file, which is used by Windows Setup. Contents are defined by
+ * setting name, component name, and the pass in which the content is a
+ * applied.
  *
- * @member {string} [passName] Gets or sets the pass name. Currently, the only
- * allowable value is oobeSystem. Possible values include: 'oobeSystem'
+ * @member {string} [passName] the pass name. Currently, the only allowable
+ * value is oobeSystem. Possible values include: 'oobeSystem'
  * 
- * @member {string} [componentName] Gets or sets the component name.
- * Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
- * Possible values include: 'Microsoft-Windows-Shell-Setup'
+ * @member {string} [componentName] the component name. Currently, the only
+ * allowable value is Microsoft-Windows-Shell-Setup. Possible values include:
+ * 'Microsoft-Windows-Shell-Setup'
  * 
- * @member {string} [settingName] Gets or sets setting name (e.g.
- * FirstLogonCommands, AutoLogon ). Possible values include: 'AutoLogon',
- * 'FirstLogonCommands'
+ * @member {string} [settingName] setting name (e.g. FirstLogonCommands,
+ * AutoLogon ). Possible values include: 'AutoLogon', 'FirstLogonCommands'
  * 
- * @member {string} [content] Gets or sets XML formatted content that is added
- * to the unattend.xml file in the specified pass and component.The XML must
- * be less than 4 KB and must include the root element for the setting or
- * feature that is being inserted.
+ * @member {string} [content] XML formatted content that is added to the
+ * unattend.xml file in the specified pass and component.The XML must be less
+ * than 4 KB and must include the root element for the setting or feature
+ * that is being inserted.
  * 
  */
 export interface AdditionalUnattendContent {
@@ -837,12 +814,11 @@ export interface AdditionalUnattendContent {
  * @constructor
  * Describes Protocol and thumbprint of Windows Remote Management listener
  *
- * @member {string} [protocol] Gets or sets the Protocol used by WinRM
- * listener. Currently only Http and Https are supported. Possible values
- * include: 'Http', 'Https'
+ * @member {string} [protocol] the Protocol used by WinRM listener. Currently
+ * only Http and Https are supported. Possible values include: 'Http', 'Https'
  * 
- * @member {string} [certificateUrl] Gets or sets the Certificate URL in KMS
- * for Https listeners. Should be null for Http listeners.
+ * @member {string} [certificateUrl] the Certificate URL in KMS for Https
+ * listeners. Should be null for Http listeners.
  * 
  */
 export interface WinRMListener {
@@ -856,8 +832,7 @@ export interface WinRMListener {
  * @constructor
  * Describes Windows Remote Management configuration of the VM
  *
- * @member {array} [listeners] Gets or sets the list of Windows Remote
- * Management listeners
+ * @member {array} [listeners] the list of Windows Remote Management listeners
  * 
  */
 export interface WinRMConfiguration {
@@ -870,23 +845,22 @@ export interface WinRMConfiguration {
  * @constructor
  * Describes Windows Configuration of the OS Profile.
  *
- * @member {boolean} [provisionVMAgent] Gets or sets whether VM Agent should
- * be provisioned on the Virtual Machine.
+ * @member {boolean} [provisionVMAgent] whether VM Agent should be provisioned
+ * on the Virtual Machine.
  * 
- * @member {boolean} [enableAutomaticUpdates] Gets or sets whether Windows
- * updates are automatically installed on the VM
+ * @member {boolean} [enableAutomaticUpdates] whether Windows updates are
+ * automatically installed on the VM
  * 
- * @member {string} [timeZone] Gets or sets the Time Zone of the VM
+ * @member {string} [timeZone] the Time Zone of the VM
  * 
- * @member {array} [additionalUnattendContent] Gets or sets the additional
- * base-64 encoded XML formatted information that can be included in the
- * Unattend.xml file.
+ * @member {array} [additionalUnattendContent] the additional base-64 encoded
+ * XML formatted information that can be included in the Unattend.xml file.
  * 
- * @member {object} [winRM] Gets or sets the Windows Remote Management
- * configuration of the VM
+ * @member {object} [winRM] the Windows Remote Management configuration of the
+ * VM
  * 
- * @member {array} [winRM.listeners] Gets or sets the list of Windows Remote
- * Management listeners
+ * @member {array} [winRM.listeners] the list of Windows Remote Management
+ * listeners
  * 
  */
 export interface WindowsConfiguration {
@@ -904,13 +878,13 @@ export interface WindowsConfiguration {
  * Contains information about SSH certificate public key and the path on the
  * Linux VM where the public key is placed.
  *
- * @member {string} [path] Gets or sets the full path on the created VM where
- * SSH public key is stored. If the file already exists, the specified key is
- * appended to the file.
+ * @member {string} [path] the full path on the created VM where SSH public
+ * key is stored. If the file already exists, the specified key is appended
+ * to the file.
  * 
- * @member {string} [keyData] Gets or sets Certificate public key used to
- * authenticate with VM through SSH.The certificate must be in Pem format
- * with or without headers.
+ * @member {string} [keyData] Certificate public key used to authenticate with
+ * VM through SSH.The certificate must be in Pem format with or without
+ * headers.
  * 
  */
 export interface SshPublicKey {
@@ -924,8 +898,8 @@ export interface SshPublicKey {
  * @constructor
  * SSH configuration for Linux based VMs running on Azure
  *
- * @member {array} [publicKeys] Gets or sets the list of SSH public keys used
- * to authenticate with linux based VMs
+ * @member {array} [publicKeys] the list of SSH public keys used to
+ * authenticate with linux based VMs
  * 
  */
 export interface SshConfiguration {
@@ -938,13 +912,13 @@ export interface SshConfiguration {
  * @constructor
  * Describes Windows Configuration of the OS Profile.
  *
- * @member {boolean} [disablePasswordAuthentication] Gets or sets whether
- * Authentication using user name and password is allowed or not
+ * @member {boolean} [disablePasswordAuthentication] whether Authentication
+ * using user name and password is allowed or not
  * 
- * @member {object} [ssh] Gets or sets the SSH configuration for linux VMs
+ * @member {object} [ssh] the SSH configuration for linux VMs
  * 
- * @member {array} [ssh.publicKeys] Gets or sets the list of SSH public keys
- * used to authenticate with linux based VMs
+ * @member {array} [ssh.publicKeys] the list of SSH public keys used to
+ * authenticate with linux based VMs
  * 
  */
 export interface LinuxConfiguration {
@@ -959,11 +933,11 @@ export interface LinuxConfiguration {
  * Describes a single certificate reference in a Key Vault, and where the
  * certificate should reside on the VM.
  *
- * @member {string} [certificateUrl] Gets or sets the URL referencing a secret
- * in a Key Vault which contains a properly formatted certificate.
+ * @member {string} [certificateUrl] the URL referencing a secret in a Key
+ * Vault which contains a properly formatted certificate.
  * 
- * @member {string} [certificateStore] Gets or sets the Certificate store in
- * LocalMachine to add the certificate to on Windows, leave empty on Linux.
+ * @member {string} [certificateStore] the Certificate store in LocalMachine
+ * to add the certificate to on Windows, leave empty on Linux.
  * 
  */
 export interface VaultCertificate {
@@ -977,13 +951,13 @@ export interface VaultCertificate {
  * @constructor
  * Describes a set of certificates which are all in the same Key Vault.
  *
- * @member {object} [sourceVault] Gets or sets the Relative URL of the Key
- * Vault containing all of the certificates in VaultCertificates.
+ * @member {object} [sourceVault] the Relative URL of the Key Vault containing
+ * all of the certificates in VaultCertificates.
  * 
  * @member {string} [sourceVault.id] Resource Id
  * 
- * @member {array} [vaultCertificates] Gets or sets the list of key vault
- * references in SourceVault which contain certificates
+ * @member {array} [vaultCertificates] the list of key vault references in
+ * SourceVault which contain certificates
  * 
  */
 export interface VaultSecretGroup {
@@ -997,52 +971,48 @@ export interface VaultSecretGroup {
  * @constructor
  * Describes an OS profile.
  *
- * @member {string} [computerName] Gets or sets the computer name.
+ * @member {string} [computerName] the computer name.
  * 
- * @member {string} [adminUsername] Gets or sets the admin user name.
+ * @member {string} [adminUsername] the admin user name.
  * 
- * @member {string} [adminPassword] Gets or sets the admin user password.
+ * @member {string} [adminPassword] the admin user password.
  * 
- * @member {string} [customData] Gets or sets a base-64 encoded string of
- * custom data.
+ * @member {string} [customData] a base-64 encoded string of custom data.
  * 
- * @member {object} [windowsConfiguration] Gets or sets the Windows
- * Configuration of the OS profile.
+ * @member {object} [windowsConfiguration] the Windows Configuration of the OS
+ * profile.
  * 
- * @member {boolean} [windowsConfiguration.provisionVMAgent] Gets or sets
- * whether VM Agent should be provisioned on the Virtual Machine.
+ * @member {boolean} [windowsConfiguration.provisionVMAgent] whether VM Agent
+ * should be provisioned on the Virtual Machine.
  * 
- * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] Gets or
- * sets whether Windows updates are automatically installed on the VM
+ * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] whether
+ * Windows updates are automatically installed on the VM
  * 
- * @member {string} [windowsConfiguration.timeZone] Gets or sets the Time Zone
- * of the VM
+ * @member {string} [windowsConfiguration.timeZone] the Time Zone of the VM
  * 
- * @member {array} [windowsConfiguration.additionalUnattendContent] Gets or
- * sets the additional base-64 encoded XML formatted information that can be
- * included in the Unattend.xml file.
+ * @member {array} [windowsConfiguration.additionalUnattendContent] the
+ * additional base-64 encoded XML formatted information that can be included
+ * in the Unattend.xml file.
  * 
- * @member {object} [windowsConfiguration.winRM] Gets or sets the Windows
- * Remote Management configuration of the VM
+ * @member {object} [windowsConfiguration.winRM] the Windows Remote Management
+ * configuration of the VM
  * 
- * @member {array} [windowsConfiguration.winRM.listeners] Gets or sets the
- * list of Windows Remote Management listeners
+ * @member {array} [windowsConfiguration.winRM.listeners] the list of Windows
+ * Remote Management listeners
  * 
- * @member {object} [linuxConfiguration] Gets or sets the Linux Configuration
- * of the OS profile.
+ * @member {object} [linuxConfiguration] the Linux Configuration of the OS
+ * profile.
  * 
- * @member {boolean} [linuxConfiguration.disablePasswordAuthentication] Gets
- * or sets whether Authentication using user name and password is allowed or
- * not
+ * @member {boolean} [linuxConfiguration.disablePasswordAuthentication]
+ * whether Authentication using user name and password is allowed or not
  * 
- * @member {object} [linuxConfiguration.ssh] Gets or sets the SSH
- * configuration for linux VMs
+ * @member {object} [linuxConfiguration.ssh] the SSH configuration for linux
+ * VMs
  * 
- * @member {array} [linuxConfiguration.ssh.publicKeys] Gets or sets the list
- * of SSH public keys used to authenticate with linux based VMs
+ * @member {array} [linuxConfiguration.ssh.publicKeys] the list of SSH public
+ * keys used to authenticate with linux based VMs
  * 
- * @member {array} [secrets] Gets or sets the List of certificates for
- * addition to the VM.
+ * @member {array} [secrets] the List of certificates for addition to the VM.
  * 
  */
 export interface OSProfile {
@@ -1061,8 +1031,8 @@ export interface OSProfile {
  * @constructor
  * Describes a network interface reference.
  *
- * @member {boolean} [primary] Gets or sets whether this is a primary NIC on a
- * virtual machine
+ * @member {boolean} [primary] whether this is a primary NIC on a virtual
+ * machine
  * 
  */
 export interface NetworkInterfaceReference extends SubResource {
@@ -1075,7 +1045,7 @@ export interface NetworkInterfaceReference extends SubResource {
  * @constructor
  * Describes a network profile.
  *
- * @member {array} [networkInterfaces] Gets or sets the network interfaces.
+ * @member {array} [networkInterfaces] the network interfaces.
  * 
  */
 export interface NetworkProfile {
@@ -1088,11 +1058,11 @@ export interface NetworkProfile {
  * @constructor
  * Describes Boot Diagnostics.
  *
- * @member {boolean} [enabled] Gets or sets whether boot diagnostics should be
- * enabled on the Virtual Machine.
+ * @member {boolean} [enabled] whether boot diagnostics should be enabled on
+ * the Virtual Machine.
  * 
- * @member {string} [storageUri] Gets or sets the boot diagnostics storage
- * Uri. It should be a valid Uri
+ * @member {string} [storageUri] the boot diagnostics storage Uri. It should
+ * be a valid Uri
  * 
  */
 export interface BootDiagnostics {
@@ -1106,13 +1076,13 @@ export interface BootDiagnostics {
  * @constructor
  * Describes a diagnostics profile.
  *
- * @member {object} [bootDiagnostics] Gets or sets the boot diagnostics.
+ * @member {object} [bootDiagnostics] the boot diagnostics.
  * 
- * @member {boolean} [bootDiagnostics.enabled] Gets or sets whether boot
- * diagnostics should be enabled on the Virtual Machine.
+ * @member {boolean} [bootDiagnostics.enabled] whether boot diagnostics should
+ * be enabled on the Virtual Machine.
  * 
- * @member {string} [bootDiagnostics.storageUri] Gets or sets the boot
- * diagnostics storage Uri. It should be a valid Uri
+ * @member {string} [bootDiagnostics.storageUri] the boot diagnostics storage
+ * Uri. It should be a valid Uri
  * 
  */
 export interface DiagnosticsProfile {
@@ -1125,26 +1095,26 @@ export interface DiagnosticsProfile {
  * @constructor
  * The instance view of a virtual machine extension handler.
  *
- * @member {string} [type] Gets or sets full type of the extension handler
- * which includes both publisher and type.
+ * @member {string} [type] full type of the extension handler which includes
+ * both publisher and type.
  * 
- * @member {string} [typeHandlerVersion] Gets or sets the type version of the
- * extension handler.
+ * @member {string} [typeHandlerVersion] the type version of the extension
+ * handler.
  * 
- * @member {object} [status] Gets or sets the extension handler status.
+ * @member {object} [status] the extension handler status.
  * 
- * @member {string} [status.code] Gets the status Code.
+ * @member {string} [status.code] the status Code.
  * 
- * @member {string} [status.level] Gets or sets the level Code. Possible
- * values include: 'Info', 'Warning', 'Error'
+ * @member {string} [status.level] the level Code. Possible values include:
+ * 'Info', 'Warning', 'Error'
  * 
- * @member {string} [status.displayStatus] Gets or sets the short localizable
- * label for the status.
+ * @member {string} [status.displayStatus] the short localizable label for the
+ * status.
  * 
- * @member {string} [status.message] Gets or sets the detailed Message,
- * including for alerts and error messages.
+ * @member {string} [status.message] the detailed Message, including for
+ * alerts and error messages.
  * 
- * @member {date} [status.time] Gets or sets the time of the status.
+ * @member {date} [status.time] the time of the status.
  * 
  */
 export interface VirtualMachineExtensionHandlerInstanceView {
@@ -1159,12 +1129,12 @@ export interface VirtualMachineExtensionHandlerInstanceView {
  * @constructor
  * The instance view of the VM Agent running on the virtual machine.
  *
- * @member {string} [vmAgentVersion] Gets or sets the VM Agent full version.
+ * @member {string} [vmAgentVersion] the VM Agent full version.
  * 
- * @member {array} [extensionHandlers] Gets or sets the virtual machine
- * extension handler instance view.
+ * @member {array} [extensionHandlers] the virtual machine extension handler
+ * instance view.
  * 
- * @member {array} [statuses] Gets or sets the resource status information.
+ * @member {array} [statuses] the resource status information.
  * 
  */
 export interface VirtualMachineAgentInstanceView {
@@ -1179,9 +1149,9 @@ export interface VirtualMachineAgentInstanceView {
  * @constructor
  * The instance view of the disk.
  *
- * @member {string} [name] Gets or sets the disk name.
+ * @member {string} [name] the disk name.
  * 
- * @member {array} [statuses] Gets or sets the resource status information.
+ * @member {array} [statuses] the resource status information.
  * 
  */
 export interface DiskInstanceView {
@@ -1195,11 +1165,10 @@ export interface DiskInstanceView {
  * @constructor
  * The instance view of a virtual machine boot diagnostics.
  *
- * @member {string} [consoleScreenshotBlobUri] Gets or sets the console
- * screenshot blob Uri.
+ * @member {string} [consoleScreenshotBlobUri] the console screenshot blob Uri.
  * 
- * @member {string} [serialConsoleLogBlobUri] Gets or sets the Linux serial
- * console log blob Uri.
+ * @member {string} [serialConsoleLogBlobUri] the Linux serial console log
+ * blob Uri.
  * 
  */
 export interface BootDiagnosticsInstanceView {
@@ -1213,39 +1182,34 @@ export interface BootDiagnosticsInstanceView {
  * @constructor
  * The instance view of a virtual machine.
  *
- * @member {number} [platformUpdateDomain] Gets or sets the Update Domain
- * count.
+ * @member {number} [platformUpdateDomain] the Update Domain count.
  * 
- * @member {number} [platformFaultDomain] Gets or sets the Fault Domain count.
+ * @member {number} [platformFaultDomain] the Fault Domain count.
  * 
- * @member {string} [rdpThumbPrint] Gets or sets the Remote desktop
- * certificate thumbprint.
+ * @member {string} [rdpThumbPrint] the Remote desktop certificate thumbprint.
  * 
- * @member {object} [vmAgent] Gets or sets the VM Agent running on the virtual
- * machine.
+ * @member {object} [vmAgent] the VM Agent running on the virtual machine.
  * 
- * @member {string} [vmAgent.vmAgentVersion] Gets or sets the VM Agent full
- * version.
+ * @member {string} [vmAgent.vmAgentVersion] the VM Agent full version.
  * 
- * @member {array} [vmAgent.extensionHandlers] Gets or sets the virtual
- * machine extension handler instance view.
+ * @member {array} [vmAgent.extensionHandlers] the virtual machine extension
+ * handler instance view.
  * 
- * @member {array} [vmAgent.statuses] Gets or sets the resource status
- * information.
+ * @member {array} [vmAgent.statuses] the resource status information.
  * 
- * @member {array} [disks] Gets or sets the disks information.
+ * @member {array} [disks] the disks information.
  * 
- * @member {array} [extensions] Gets or sets the extensions information.
+ * @member {array} [extensions] the extensions information.
  * 
- * @member {object} [bootDiagnostics] Gets or sets the boot diagnostics.
+ * @member {object} [bootDiagnostics] the boot diagnostics.
  * 
- * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] Gets or sets
- * the console screenshot blob Uri.
+ * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] the console
+ * screenshot blob Uri.
  * 
- * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] Gets or sets the
- * Linux serial console log blob Uri.
+ * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] the Linux serial
+ * console log blob Uri.
  * 
- * @member {array} [statuses] Gets or sets the resource status information.
+ * @member {array} [statuses] the resource status information.
  * 
  */
 export interface VirtualMachineInstanceView {
@@ -1265,18 +1229,18 @@ export interface VirtualMachineInstanceView {
  * @constructor
  * Describes a Virtual Machine.
  *
- * @member {object} [plan] Gets or sets the purchase plan when deploying
- * virtual machine from VM Marketplace images.
+ * @member {object} [plan] the purchase plan when deploying virtual machine
+ * from VM Marketplace images.
  * 
- * @member {string} [plan.name] Gets or sets the plan ID.
+ * @member {string} [plan.name] the plan ID.
  * 
- * @member {string} [plan.publisher] Gets or sets the publisher ID.
+ * @member {string} [plan.publisher] the publisher ID.
  * 
- * @member {string} [plan.product] Gets or sets the offer ID.
+ * @member {string} [plan.product] the offer ID.
  * 
- * @member {string} [plan.promotionCode] Gets or sets the promotion code.
+ * @member {string} [plan.promotionCode] the promotion code.
  * 
- * @member {object} [hardwareProfile] Gets or sets the hardware profile.
+ * @member {object} [hardwareProfile] the hardware profile.
  * 
  * @member {string} [hardwareProfile.vmSize] The virtual machine size name.
  * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
@@ -1296,217 +1260,205 @@ export interface VirtualMachineInstanceView {
  * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
  * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
  * 
- * @member {object} [storageProfile] Gets or sets the storage profile.
+ * @member {object} [storageProfile] the storage profile.
  * 
- * @member {object} [storageProfile.imageReference] Gets or sets the image
- * reference.
+ * @member {object} [storageProfile.imageReference] the image reference.
  * 
- * @member {string} [storageProfile.imageReference.publisher] Gets or sets the
- * image publisher.
+ * @member {string} [storageProfile.imageReference.publisher] the image
+ * publisher.
  * 
- * @member {string} [storageProfile.imageReference.offer] Gets or sets the
- * image offer.
+ * @member {string} [storageProfile.imageReference.offer] the image offer.
  * 
- * @member {string} [storageProfile.imageReference.sku] Gets or sets the image
- * sku.
+ * @member {string} [storageProfile.imageReference.sku] the image sku.
  * 
- * @member {string} [storageProfile.imageReference.version] Gets or sets the
- * image version. The allowed formats are Major.Minor.Build or 'latest'.
- * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
- * latest version of image.
+ * @member {string} [storageProfile.imageReference.version] the image version.
+ * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
+ * Build being decimal numbers. Specify 'latest' to use the latest version of
+ * image.
  * 
- * @member {object} [storageProfile.osDisk] Gets or sets the OS disk.
+ * @member {object} [storageProfile.osDisk] the OS disk.
  * 
- * @member {string} [storageProfile.osDisk.osType] Gets or sets the Operating
- * System type. Possible values include: 'Windows', 'Linux'
+ * @member {string} [storageProfile.osDisk.osType] the Operating System type.
+ * Possible values include: 'Windows', 'Linux'
  * 
- * @member {object} [storageProfile.osDisk.encryptionSettings] Gets or sets
- * the disk encryption settings.
+ * @member {object} [storageProfile.osDisk.encryptionSettings] the disk
+ * encryption settings.
  * 
  * @member {object}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] Gets or sets
- * the disk encryption key which is a KeyVault Secret.
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] the disk
+ * encryption key which is a KeyVault Secret.
  * 
  * @member {string}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
- * Gets or sets the URL referencing a secret in a Key Vault.
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl] the
+ * URL referencing a secret in a Key Vault.
  * 
  * @member {object}
  * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
- * Gets or sets the Relative URL of the Key Vault containing the secret.
+ * the Relative URL of the Key Vault containing the secret.
  * 
  * @member {string}
  * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id]
  * Resource Id
  * 
  * @member {object}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey] Gets or sets
- * the key encryption key which is KeyVault Key.
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey] the key
+ * encryption key which is KeyVault Key.
  * 
  * @member {string}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] Gets or
- * sets the URL referencing a key in a Key Vault.
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] the URL
+ * referencing a key in a Key Vault.
  * 
  * @member {object}
  * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
- * Gets or sets the Relative URL of the Key Vault containing the key
+ * the Relative URL of the Key Vault containing the key
  * 
  * @member {string}
  * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
  * Resource Id
  * 
- * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled] Gets
- * or sets whether disk encryption should be enabled on the Virtual Machine.
+ * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled]
+ * whether disk encryption should be enabled on the Virtual Machine.
  * 
- * @member {string} [storageProfile.osDisk.name] Gets or sets the disk name.
+ * @member {string} [storageProfile.osDisk.name] the disk name.
  * 
- * @member {object} [storageProfile.osDisk.vhd] Gets or sets the Virtual Hard
- * Disk.
+ * @member {object} [storageProfile.osDisk.vhd] the Virtual Hard Disk.
  * 
- * @member {string} [storageProfile.osDisk.vhd.uri] Gets or sets the virtual
- * hard disk's uri. It should be a valid Uri to a virtual hard disk.
+ * @member {string} [storageProfile.osDisk.vhd.uri] the virtual hard disk's
+ * uri. It should be a valid Uri to a virtual hard disk.
  * 
- * @member {object} [storageProfile.osDisk.image] Gets or sets the Source User
- * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
- * to attach to the Virtual Machine.If SourceImage is provided, the
- * destination VirtualHardDisk should not exist.
+ * @member {object} [storageProfile.osDisk.image] the Source User Image
+ * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
+ * attach to the Virtual Machine.If SourceImage is provided, the destination
+ * VirtualHardDisk should not exist.
  * 
- * @member {string} [storageProfile.osDisk.image.uri] Gets or sets the virtual
- * hard disk's uri. It should be a valid Uri to a virtual hard disk.
+ * @member {string} [storageProfile.osDisk.image.uri] the virtual hard disk's
+ * uri. It should be a valid Uri to a virtual hard disk.
  * 
- * @member {string} [storageProfile.osDisk.caching] Gets or sets the caching
- * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [storageProfile.osDisk.caching] the caching type. Possible
+ * values include: 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} [storageProfile.osDisk.createOption] Gets or sets the
- * create option. Possible values include: 'fromImage', 'empty', 'attach'
+ * @member {string} [storageProfile.osDisk.createOption] the create option.
+ * Possible values include: 'fromImage', 'empty', 'attach'
  * 
- * @member {number} [storageProfile.osDisk.diskSizeGB] Gets or sets the
- * initial disk size in GB for blank data disks, and the new desired size for
- * existing OS and Data disks.
+ * @member {number} [storageProfile.osDisk.diskSizeGB] the initial disk size
+ * in GB for blank data disks, and the new desired size for existing OS and
+ * Data disks.
  * 
- * @member {array} [storageProfile.dataDisks] Gets or sets the data disks.
+ * @member {array} [storageProfile.dataDisks] the data disks.
  * 
- * @member {object} [osProfile] Gets or sets the OS profile.
+ * @member {object} [osProfile] the OS profile.
  * 
- * @member {string} [osProfile.computerName] Gets or sets the computer name.
+ * @member {string} [osProfile.computerName] the computer name.
  * 
- * @member {string} [osProfile.adminUsername] Gets or sets the admin user name.
+ * @member {string} [osProfile.adminUsername] the admin user name.
  * 
- * @member {string} [osProfile.adminPassword] Gets or sets the admin user
- * password.
+ * @member {string} [osProfile.adminPassword] the admin user password.
  * 
- * @member {string} [osProfile.customData] Gets or sets a base-64 encoded
- * string of custom data.
+ * @member {string} [osProfile.customData] a base-64 encoded string of custom
+ * data.
  * 
- * @member {object} [osProfile.windowsConfiguration] Gets or sets the Windows
- * Configuration of the OS profile.
+ * @member {object} [osProfile.windowsConfiguration] the Windows Configuration
+ * of the OS profile.
  * 
- * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent] Gets or
- * sets whether VM Agent should be provisioned on the Virtual Machine.
+ * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent] whether
+ * VM Agent should be provisioned on the Virtual Machine.
  * 
  * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Gets or sets whether Windows updates are automatically installed on the VM
+ * whether Windows updates are automatically installed on the VM
  * 
- * @member {string} [osProfile.windowsConfiguration.timeZone] Gets or sets the
- * Time Zone of the VM
+ * @member {string} [osProfile.windowsConfiguration.timeZone] the Time Zone of
+ * the VM
  * 
  * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
- * Gets or sets the additional base-64 encoded XML formatted information that
- * can be included in the Unattend.xml file.
+ * the additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file.
  * 
- * @member {object} [osProfile.windowsConfiguration.winRM] Gets or sets the
- * Windows Remote Management configuration of the VM
+ * @member {object} [osProfile.windowsConfiguration.winRM] the Windows Remote
+ * Management configuration of the VM
  * 
- * @member {array} [osProfile.windowsConfiguration.winRM.listeners] Gets or
- * sets the list of Windows Remote Management listeners
+ * @member {array} [osProfile.windowsConfiguration.winRM.listeners] the list
+ * of Windows Remote Management listeners
  * 
- * @member {object} [osProfile.linuxConfiguration] Gets or sets the Linux
- * Configuration of the OS profile.
+ * @member {object} [osProfile.linuxConfiguration] the Linux Configuration of
+ * the OS profile.
  * 
  * @member {boolean}
- * [osProfile.linuxConfiguration.disablePasswordAuthentication] Gets or sets
- * whether Authentication using user name and password is allowed or not
+ * [osProfile.linuxConfiguration.disablePasswordAuthentication] whether
+ * Authentication using user name and password is allowed or not
  * 
- * @member {object} [osProfile.linuxConfiguration.ssh] Gets or sets the SSH
- * configuration for linux VMs
+ * @member {object} [osProfile.linuxConfiguration.ssh] the SSH configuration
+ * for linux VMs
  * 
- * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] Gets or sets
- * the list of SSH public keys used to authenticate with linux based VMs
+ * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] the list of
+ * SSH public keys used to authenticate with linux based VMs
  * 
- * @member {array} [osProfile.secrets] Gets or sets the List of certificates
- * for addition to the VM.
+ * @member {array} [osProfile.secrets] the List of certificates for addition
+ * to the VM.
  * 
- * @member {object} [networkProfile] Gets or sets the network profile.
+ * @member {object} [networkProfile] the network profile.
  * 
- * @member {array} [networkProfile.networkInterfaces] Gets or sets the network
- * interfaces.
+ * @member {array} [networkProfile.networkInterfaces] the network interfaces.
  * 
- * @member {object} [diagnosticsProfile] Gets or sets the diagnostics profile.
+ * @member {object} [diagnosticsProfile] the diagnostics profile.
  * 
- * @member {object} [diagnosticsProfile.bootDiagnostics] Gets or sets the boot
- * diagnostics.
+ * @member {object} [diagnosticsProfile.bootDiagnostics] the boot diagnostics.
  * 
- * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Gets or sets
- * whether boot diagnostics should be enabled on the Virtual Machine.
+ * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] whether boot
+ * diagnostics should be enabled on the Virtual Machine.
  * 
- * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] Gets or
- * sets the boot diagnostics storage Uri. It should be a valid Uri
+ * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] the boot
+ * diagnostics storage Uri. It should be a valid Uri
  * 
- * @member {object} [availabilitySet] Gets or sets the reference Id of the
- * availability set to which this virtual machine belongs.
+ * @member {object} [availabilitySet] the reference Id of the availability set
+ * to which this virtual machine belongs.
  * 
  * @member {string} [availabilitySet.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets the provisioning state,
- * which only appears in the response.
+ * @member {string} [provisioningState] the provisioning state, which only
+ * appears in the response.
  * 
- * @member {object} [instanceView] Gets the virtual machine instance view.
+ * @member {object} [instanceView] the virtual machine instance view.
  * 
- * @member {number} [instanceView.platformUpdateDomain] Gets or sets the
- * Update Domain count.
+ * @member {number} [instanceView.platformUpdateDomain] the Update Domain
+ * count.
  * 
- * @member {number} [instanceView.platformFaultDomain] Gets or sets the Fault
- * Domain count.
+ * @member {number} [instanceView.platformFaultDomain] the Fault Domain count.
  * 
- * @member {string} [instanceView.rdpThumbPrint] Gets or sets the Remote
- * desktop certificate thumbprint.
+ * @member {string} [instanceView.rdpThumbPrint] the Remote desktop
+ * certificate thumbprint.
  * 
- * @member {object} [instanceView.vmAgent] Gets or sets the VM Agent running
- * on the virtual machine.
+ * @member {object} [instanceView.vmAgent] the VM Agent running on the virtual
+ * machine.
  * 
- * @member {string} [instanceView.vmAgent.vmAgentVersion] Gets or sets the VM
- * Agent full version.
+ * @member {string} [instanceView.vmAgent.vmAgentVersion] the VM Agent full
+ * version.
  * 
- * @member {array} [instanceView.vmAgent.extensionHandlers] Gets or sets the
- * virtual machine extension handler instance view.
+ * @member {array} [instanceView.vmAgent.extensionHandlers] the virtual
+ * machine extension handler instance view.
  * 
- * @member {array} [instanceView.vmAgent.statuses] Gets or sets the resource
- * status information.
- * 
- * @member {array} [instanceView.disks] Gets or sets the disks information.
- * 
- * @member {array} [instanceView.extensions] Gets or sets the extensions
+ * @member {array} [instanceView.vmAgent.statuses] the resource status
  * information.
  * 
- * @member {object} [instanceView.bootDiagnostics] Gets or sets the boot
- * diagnostics.
+ * @member {array} [instanceView.disks] the disks information.
+ * 
+ * @member {array} [instanceView.extensions] the extensions information.
+ * 
+ * @member {object} [instanceView.bootDiagnostics] the boot diagnostics.
  * 
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri]
- * Gets or sets the console screenshot blob Uri.
+ * the console screenshot blob Uri.
  * 
- * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri]
- * Gets or sets the Linux serial console log blob Uri.
+ * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] the
+ * Linux serial console log blob Uri.
  * 
- * @member {array} [instanceView.statuses] Gets or sets the resource status
- * information.
+ * @member {array} [instanceView.statuses] the resource status information.
  * 
- * @member {string} [licenseType] Gets or sets the license type, which is for
- * bring your own license scenario.
+ * @member {string} [licenseType] the license type, which is for bring your
+ * own license scenario.
  * 
- * @member {string} [vmId] Gets the virtual machine unique id.
+ * @member {string} [vmId] the virtual machine unique id.
  * 
- * @member {array} [resources] Gets the virtual machine child extension
- * resources.
+ * @member {array} [resources] the virtual machine child extension resources.
  * 
  */
 export interface VirtualMachine extends Resource {
@@ -1530,11 +1482,11 @@ export interface VirtualMachine extends Resource {
  * @constructor
  * Describes a virtual machine scale set sku.
  *
- * @member {string} [name] Gets or sets the sku name.
+ * @member {string} [name] the sku name.
  * 
- * @member {string} [tier] Gets or sets the sku tier.
+ * @member {string} [tier] the sku tier.
  * 
- * @member {number} [capacity] Gets or sets the sku capacity.
+ * @member {number} [capacity] the sku capacity.
  * 
  */
 export interface Sku {
@@ -1549,8 +1501,8 @@ export interface Sku {
  * @constructor
  * Describes an upgrade policy - automatic or manual.
  *
- * @member {string} [mode] Gets or sets the upgrade mode. Possible values
- * include: 'Automatic', 'Manual'
+ * @member {string} [mode] the upgrade mode. Possible values include:
+ * 'Automatic', 'Manual'
  * 
  */
 export interface UpgradePolicy {
@@ -1563,52 +1515,48 @@ export interface UpgradePolicy {
  * @constructor
  * Describes a virtual machine scale set OS profile.
  *
- * @member {string} [computerNamePrefix] Gets or sets the computer name prefix.
+ * @member {string} [computerNamePrefix] the computer name prefix.
  * 
- * @member {string} [adminUsername] Gets or sets the admin user name.
+ * @member {string} [adminUsername] the admin user name.
  * 
- * @member {string} [adminPassword] Gets or sets the admin user password.
+ * @member {string} [adminPassword] the admin user password.
  * 
- * @member {string} [customData] Gets or sets a base-64 encoded string of
- * custom data.
+ * @member {string} [customData] a base-64 encoded string of custom data.
  * 
- * @member {object} [windowsConfiguration] Gets or sets the Windows
- * Configuration of the OS profile.
+ * @member {object} [windowsConfiguration] the Windows Configuration of the OS
+ * profile.
  * 
- * @member {boolean} [windowsConfiguration.provisionVMAgent] Gets or sets
- * whether VM Agent should be provisioned on the Virtual Machine.
+ * @member {boolean} [windowsConfiguration.provisionVMAgent] whether VM Agent
+ * should be provisioned on the Virtual Machine.
  * 
- * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] Gets or
- * sets whether Windows updates are automatically installed on the VM
+ * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] whether
+ * Windows updates are automatically installed on the VM
  * 
- * @member {string} [windowsConfiguration.timeZone] Gets or sets the Time Zone
- * of the VM
+ * @member {string} [windowsConfiguration.timeZone] the Time Zone of the VM
  * 
- * @member {array} [windowsConfiguration.additionalUnattendContent] Gets or
- * sets the additional base-64 encoded XML formatted information that can be
- * included in the Unattend.xml file.
+ * @member {array} [windowsConfiguration.additionalUnattendContent] the
+ * additional base-64 encoded XML formatted information that can be included
+ * in the Unattend.xml file.
  * 
- * @member {object} [windowsConfiguration.winRM] Gets or sets the Windows
- * Remote Management configuration of the VM
+ * @member {object} [windowsConfiguration.winRM] the Windows Remote Management
+ * configuration of the VM
  * 
- * @member {array} [windowsConfiguration.winRM.listeners] Gets or sets the
- * list of Windows Remote Management listeners
+ * @member {array} [windowsConfiguration.winRM.listeners] the list of Windows
+ * Remote Management listeners
  * 
- * @member {object} [linuxConfiguration] Gets or sets the Linux Configuration
- * of the OS profile.
+ * @member {object} [linuxConfiguration] the Linux Configuration of the OS
+ * profile.
  * 
- * @member {boolean} [linuxConfiguration.disablePasswordAuthentication] Gets
- * or sets whether Authentication using user name and password is allowed or
- * not
+ * @member {boolean} [linuxConfiguration.disablePasswordAuthentication]
+ * whether Authentication using user name and password is allowed or not
  * 
- * @member {object} [linuxConfiguration.ssh] Gets or sets the SSH
- * configuration for linux VMs
+ * @member {object} [linuxConfiguration.ssh] the SSH configuration for linux
+ * VMs
  * 
- * @member {array} [linuxConfiguration.ssh.publicKeys] Gets or sets the list
- * of SSH public keys used to authenticate with linux based VMs
+ * @member {array} [linuxConfiguration.ssh.publicKeys] the list of SSH public
+ * keys used to authenticate with linux based VMs
  * 
- * @member {array} [secrets] Gets or sets the List of certificates for
- * addition to the VM.
+ * @member {array} [secrets] the List of certificates for addition to the VM.
  * 
  */
 export interface VirtualMachineScaleSetOSProfile {
@@ -1627,27 +1575,27 @@ export interface VirtualMachineScaleSetOSProfile {
  * @constructor
  * Describes a virtual machine scale set operating system disk.
  *
- * @member {string} name Gets or sets the disk name.
+ * @member {string} name the disk name.
  * 
- * @member {string} [caching] Gets or sets the caching type. Possible values
- * include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [caching] the caching type. Possible values include:
+ * 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} createOption Gets or sets the create option. Possible
- * values include: 'fromImage', 'empty', 'attach'
+ * @member {string} createOption the create option. Possible values include:
+ * 'fromImage', 'empty', 'attach'
  * 
- * @member {string} [osType] Gets or sets the Operating System type. Possible
- * values include: 'Windows', 'Linux'
+ * @member {string} [osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
  * 
- * @member {object} [image] Gets or sets the Source User Image
- * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
- * attach to the Virtual Machine.If SourceImage is provided, the destination
- * VirtualHardDisk should not exist.
+ * @member {object} [image] the Source User Image VirtualHardDisk. This
+ * VirtualHardDisk will be copied before using it to attach to the Virtual
+ * Machine.If SourceImage is provided, the destination VirtualHardDisk should
+ * not exist.
  * 
- * @member {string} [image.uri] Gets or sets the virtual hard disk's uri. It
- * should be a valid Uri to a virtual hard disk.
+ * @member {string} [image.uri] the virtual hard disk's uri. It should be a
+ * valid Uri to a virtual hard disk.
  * 
- * @member {array} [vhdContainers] Gets or sets the list of virtual hard disk
- * container uris.
+ * @member {array} [vhdContainers] the list of virtual hard disk container
+ * uris.
  * 
  */
 export interface VirtualMachineScaleSetOSDisk {
@@ -1665,43 +1613,41 @@ export interface VirtualMachineScaleSetOSDisk {
  * @constructor
  * Describes a virtual machine scale set storage profile.
  *
- * @member {object} [imageReference] Gets or sets the image reference.
+ * @member {object} [imageReference] the image reference.
  * 
- * @member {string} [imageReference.publisher] Gets or sets the image
- * publisher.
+ * @member {string} [imageReference.publisher] the image publisher.
  * 
- * @member {string} [imageReference.offer] Gets or sets the image offer.
+ * @member {string} [imageReference.offer] the image offer.
  * 
- * @member {string} [imageReference.sku] Gets or sets the image sku.
+ * @member {string} [imageReference.sku] the image sku.
  * 
- * @member {string} [imageReference.version] Gets or sets the image version.
- * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
- * Build being decimal numbers. Specify 'latest' to use the latest version of
- * image.
+ * @member {string} [imageReference.version] the image version. The allowed
+ * formats are Major.Minor.Build or 'latest'. Major, Minor and Build being
+ * decimal numbers. Specify 'latest' to use the latest version of image.
  * 
- * @member {object} [osDisk] Gets or sets the OS disk.
+ * @member {object} [osDisk] the OS disk.
  * 
- * @member {string} [osDisk.name] Gets or sets the disk name.
+ * @member {string} [osDisk.name] the disk name.
  * 
- * @member {string} [osDisk.caching] Gets or sets the caching type. Possible
- * values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [osDisk.caching] the caching type. Possible values
+ * include: 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} [osDisk.createOption] Gets or sets the create option.
- * Possible values include: 'fromImage', 'empty', 'attach'
+ * @member {string} [osDisk.createOption] the create option. Possible values
+ * include: 'fromImage', 'empty', 'attach'
  * 
- * @member {string} [osDisk.osType] Gets or sets the Operating System type.
- * Possible values include: 'Windows', 'Linux'
+ * @member {string} [osDisk.osType] the Operating System type. Possible values
+ * include: 'Windows', 'Linux'
  * 
- * @member {object} [osDisk.image] Gets or sets the Source User Image
- * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
- * attach to the Virtual Machine.If SourceImage is provided, the destination
- * VirtualHardDisk should not exist.
+ * @member {object} [osDisk.image] the Source User Image VirtualHardDisk. This
+ * VirtualHardDisk will be copied before using it to attach to the Virtual
+ * Machine.If SourceImage is provided, the destination VirtualHardDisk should
+ * not exist.
  * 
- * @member {string} [osDisk.image.uri] Gets or sets the virtual hard disk's
- * uri. It should be a valid Uri to a virtual hard disk.
+ * @member {string} [osDisk.image.uri] the virtual hard disk's uri. It should
+ * be a valid Uri to a virtual hard disk.
  * 
- * @member {array} [osDisk.vhdContainers] Gets or sets the list of virtual
- * hard disk container uris.
+ * @member {array} [osDisk.vhdContainers] the list of virtual hard disk
+ * container uris.
  * 
  */
 export interface VirtualMachineScaleSetStorageProfile {
@@ -1715,7 +1661,7 @@ export interface VirtualMachineScaleSetStorageProfile {
  * @constructor
  * The API entity reference.
  *
- * @member {string} [id] Gets or sets the ARM resource id in the form of
+ * @member {string} [id] the ARM resource id in the form of
  * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
  * 
  */
@@ -1729,21 +1675,21 @@ export interface ApiEntityReference {
  * @constructor
  * Describes a virtual machine scale set network profile's IP configuration.
  *
- * @member {string} name Gets or sets the IP configuration name.
+ * @member {string} name the IP configuration name.
  * 
- * @member {object} subnet Gets or sets the subnet.
+ * @member {object} subnet the subnet.
  * 
- * @member {string} [subnet.id] Gets or sets the ARM resource id in the form
- * of /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ * @member {string} [subnet.id] the ARM resource id in the form of
+ * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
  * 
- * @member {array} [applicationGatewayBackendAddressPools] Gets or sets the
- * application gateway backend address pools.
+ * @member {array} [applicationGatewayBackendAddressPools] the application
+ * gateway backend address pools.
  * 
- * @member {array} [loadBalancerBackendAddressPools] Gets or sets the load
- * balancer backend address pools.
+ * @member {array} [loadBalancerBackendAddressPools] the load balancer backend
+ * address pools.
  * 
- * @member {array} [loadBalancerInboundNatPools] Gets or sets the load
- * balancer inbound nat pools.
+ * @member {array} [loadBalancerInboundNatPools] the load balancer inbound nat
+ * pools.
  * 
  */
 export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
@@ -1761,13 +1707,13 @@ export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
  * Describes a virtual machine scale set network profile's network
  * configurations.
  *
- * @member {string} name Gets or sets the network configuration name.
+ * @member {string} name the network configuration name.
  * 
- * @member {boolean} [primary] Gets or sets whether this is a primary NIC on a
- * virtual machine.
+ * @member {boolean} [primary] whether this is a primary NIC on a virtual
+ * machine.
  * 
- * @member {array} ipConfigurations Gets or sets the virtual machine scale set
- * IP Configuration.
+ * @member {array} ipConfigurations the virtual machine scale set IP
+ * Configuration.
  * 
  */
 export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource {
@@ -1782,8 +1728,8 @@ export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource 
  * @constructor
  * Describes a virtual machine scale set network profile.
  *
- * @member {array} [networkInterfaceConfigurations] Gets or sets the list of
- * network configurations.
+ * @member {array} [networkInterfaceConfigurations] the list of network
+ * configurations.
  * 
  */
 export interface VirtualMachineScaleSetNetworkProfile {
@@ -1796,27 +1742,26 @@ export interface VirtualMachineScaleSetNetworkProfile {
  * @constructor
  * Describes a Virtual Machine Scale Set Extension.
  *
- * @member {string} [name] Gets or sets the name of the extension.
+ * @member {string} [name] the name of the extension.
  * 
- * @member {string} [publisher] Gets or sets the name of the extension handler
- * publisher.
+ * @member {string} [publisher] the name of the extension handler publisher.
  * 
- * @member {string} [type] Gets or sets the type of the extension handler.
+ * @member {string} [type] the type of the extension handler.
  * 
- * @member {string} [typeHandlerVersion] Gets or sets the type version of the
- * extension handler.
+ * @member {string} [typeHandlerVersion] the type version of the extension
+ * handler.
  * 
- * @member {boolean} [autoUpgradeMinorVersion] Gets or sets whether the
- * extension handler should be automatically upgraded across minor versions.
+ * @member {boolean} [autoUpgradeMinorVersion] whether the extension handler
+ * should be automatically upgraded across minor versions.
  * 
- * @member {object} [settings] Gets or sets Json formatted public settings for
+ * @member {object} [settings] Json formatted public settings for the
+ * extension.
+ * 
+ * @member {object} [protectedSettings] Json formatted protected settings for
  * the extension.
  * 
- * @member {object} [protectedSettings] Gets or sets Json formatted protected
- * settings for the extension.
- * 
- * @member {string} [provisioningState] Gets the provisioning state, which
- * only appears in the response.
+ * @member {string} [provisioningState] the provisioning state, which only
+ * appears in the response.
  * 
  */
 export interface VirtualMachineScaleSetExtension extends SubResource {
@@ -1836,8 +1781,8 @@ export interface VirtualMachineScaleSetExtension extends SubResource {
  * @constructor
  * Describes a virtual machine scale set extension profile.
  *
- * @member {array} [extensions] Gets the virtual machine scale set child
- * extension resources.
+ * @member {array} [extensions] the virtual machine scale set child extension
+ * resources.
  * 
  */
 export interface VirtualMachineScaleSetExtensionProfile {
@@ -1850,113 +1795,107 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * @constructor
  * Describes a virtual machine scale set virtual machine profile.
  *
- * @member {object} [osProfile] Gets or sets the virtual machine scale set OS
- * profile.
+ * @member {object} [osProfile] the virtual machine scale set OS profile.
  * 
- * @member {string} [osProfile.computerNamePrefix] Gets or sets the computer
- * name prefix.
+ * @member {string} [osProfile.computerNamePrefix] the computer name prefix.
  * 
- * @member {string} [osProfile.adminUsername] Gets or sets the admin user name.
+ * @member {string} [osProfile.adminUsername] the admin user name.
  * 
- * @member {string} [osProfile.adminPassword] Gets or sets the admin user
- * password.
+ * @member {string} [osProfile.adminPassword] the admin user password.
  * 
- * @member {string} [osProfile.customData] Gets or sets a base-64 encoded
- * string of custom data.
+ * @member {string} [osProfile.customData] a base-64 encoded string of custom
+ * data.
  * 
- * @member {object} [osProfile.windowsConfiguration] Gets or sets the Windows
- * Configuration of the OS profile.
+ * @member {object} [osProfile.windowsConfiguration] the Windows Configuration
+ * of the OS profile.
  * 
- * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent] Gets or
- * sets whether VM Agent should be provisioned on the Virtual Machine.
+ * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent] whether
+ * VM Agent should be provisioned on the Virtual Machine.
  * 
  * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Gets or sets whether Windows updates are automatically installed on the VM
+ * whether Windows updates are automatically installed on the VM
  * 
- * @member {string} [osProfile.windowsConfiguration.timeZone] Gets or sets the
- * Time Zone of the VM
+ * @member {string} [osProfile.windowsConfiguration.timeZone] the Time Zone of
+ * the VM
  * 
  * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
- * Gets or sets the additional base-64 encoded XML formatted information that
- * can be included in the Unattend.xml file.
+ * the additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file.
  * 
- * @member {object} [osProfile.windowsConfiguration.winRM] Gets or sets the
- * Windows Remote Management configuration of the VM
+ * @member {object} [osProfile.windowsConfiguration.winRM] the Windows Remote
+ * Management configuration of the VM
  * 
- * @member {array} [osProfile.windowsConfiguration.winRM.listeners] Gets or
- * sets the list of Windows Remote Management listeners
+ * @member {array} [osProfile.windowsConfiguration.winRM.listeners] the list
+ * of Windows Remote Management listeners
  * 
- * @member {object} [osProfile.linuxConfiguration] Gets or sets the Linux
- * Configuration of the OS profile.
+ * @member {object} [osProfile.linuxConfiguration] the Linux Configuration of
+ * the OS profile.
  * 
  * @member {boolean}
- * [osProfile.linuxConfiguration.disablePasswordAuthentication] Gets or sets
- * whether Authentication using user name and password is allowed or not
+ * [osProfile.linuxConfiguration.disablePasswordAuthentication] whether
+ * Authentication using user name and password is allowed or not
  * 
- * @member {object} [osProfile.linuxConfiguration.ssh] Gets or sets the SSH
- * configuration for linux VMs
+ * @member {object} [osProfile.linuxConfiguration.ssh] the SSH configuration
+ * for linux VMs
  * 
- * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] Gets or sets
- * the list of SSH public keys used to authenticate with linux based VMs
+ * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] the list of
+ * SSH public keys used to authenticate with linux based VMs
  * 
- * @member {array} [osProfile.secrets] Gets or sets the List of certificates
- * for addition to the VM.
+ * @member {array} [osProfile.secrets] the List of certificates for addition
+ * to the VM.
  * 
- * @member {object} [storageProfile] Gets or sets the virtual machine scale
- * set storage profile.
+ * @member {object} [storageProfile] the virtual machine scale set storage
+ * profile.
  * 
- * @member {object} [storageProfile.imageReference] Gets or sets the image
- * reference.
+ * @member {object} [storageProfile.imageReference] the image reference.
  * 
- * @member {string} [storageProfile.imageReference.publisher] Gets or sets the
- * image publisher.
+ * @member {string} [storageProfile.imageReference.publisher] the image
+ * publisher.
  * 
- * @member {string} [storageProfile.imageReference.offer] Gets or sets the
- * image offer.
+ * @member {string} [storageProfile.imageReference.offer] the image offer.
  * 
- * @member {string} [storageProfile.imageReference.sku] Gets or sets the image
- * sku.
+ * @member {string} [storageProfile.imageReference.sku] the image sku.
  * 
- * @member {string} [storageProfile.imageReference.version] Gets or sets the
- * image version. The allowed formats are Major.Minor.Build or 'latest'.
- * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
- * latest version of image.
+ * @member {string} [storageProfile.imageReference.version] the image version.
+ * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
+ * Build being decimal numbers. Specify 'latest' to use the latest version of
+ * image.
  * 
- * @member {object} [storageProfile.osDisk] Gets or sets the OS disk.
+ * @member {object} [storageProfile.osDisk] the OS disk.
  * 
- * @member {string} [storageProfile.osDisk.name] Gets or sets the disk name.
+ * @member {string} [storageProfile.osDisk.name] the disk name.
  * 
- * @member {string} [storageProfile.osDisk.caching] Gets or sets the caching
- * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [storageProfile.osDisk.caching] the caching type. Possible
+ * values include: 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} [storageProfile.osDisk.createOption] Gets or sets the
- * create option. Possible values include: 'fromImage', 'empty', 'attach'
+ * @member {string} [storageProfile.osDisk.createOption] the create option.
+ * Possible values include: 'fromImage', 'empty', 'attach'
  * 
- * @member {string} [storageProfile.osDisk.osType] Gets or sets the Operating
- * System type. Possible values include: 'Windows', 'Linux'
+ * @member {string} [storageProfile.osDisk.osType] the Operating System type.
+ * Possible values include: 'Windows', 'Linux'
  * 
- * @member {object} [storageProfile.osDisk.image] Gets or sets the Source User
- * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
- * to attach to the Virtual Machine.If SourceImage is provided, the
- * destination VirtualHardDisk should not exist.
+ * @member {object} [storageProfile.osDisk.image] the Source User Image
+ * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
+ * attach to the Virtual Machine.If SourceImage is provided, the destination
+ * VirtualHardDisk should not exist.
  * 
- * @member {string} [storageProfile.osDisk.image.uri] Gets or sets the virtual
- * hard disk's uri. It should be a valid Uri to a virtual hard disk.
+ * @member {string} [storageProfile.osDisk.image.uri] the virtual hard disk's
+ * uri. It should be a valid Uri to a virtual hard disk.
  * 
- * @member {array} [storageProfile.osDisk.vhdContainers] Gets or sets the list
- * of virtual hard disk container uris.
+ * @member {array} [storageProfile.osDisk.vhdContainers] the list of virtual
+ * hard disk container uris.
  * 
- * @member {object} [networkProfile] Gets or sets the virtual machine scale
- * set network profile.
+ * @member {object} [networkProfile] the virtual machine scale set network
+ * profile.
  * 
- * @member {array} [networkProfile.networkInterfaceConfigurations] Gets or
- * sets the list of network configurations.
+ * @member {array} [networkProfile.networkInterfaceConfigurations] the list of
+ * network configurations.
  * 
- * @member {object} [extensionProfile] Gets the virtual machine scale set
- * extension profile.
+ * @member {object} [extensionProfile] the virtual machine scale set extension
+ * profile.
  * 
- * @member {array} [extensionProfile.extensions] Gets the virtual machine
- * scale set child extension resources.
+ * @member {array} [extensionProfile.extensions] the virtual machine scale set
+ * child extension resources.
  * 
  */
 export interface VirtualMachineScaleSetVMProfile {
@@ -1972,152 +1911,145 @@ export interface VirtualMachineScaleSetVMProfile {
  * @constructor
  * Describes a Virtual Machine Scale Set.
  *
- * @member {object} [sku] Gets or sets the virtual machine scale set sku.
+ * @member {object} [sku] the virtual machine scale set sku.
  * 
- * @member {string} [sku.name] Gets or sets the sku name.
+ * @member {string} [sku.name] the sku name.
  * 
- * @member {string} [sku.tier] Gets or sets the sku tier.
+ * @member {string} [sku.tier] the sku tier.
  * 
- * @member {number} [sku.capacity] Gets or sets the sku capacity.
+ * @member {number} [sku.capacity] the sku capacity.
  * 
- * @member {object} [upgradePolicy] Gets or sets the upgrade policy.
+ * @member {object} [upgradePolicy] the upgrade policy.
  * 
- * @member {string} [upgradePolicy.mode] Gets or sets the upgrade mode.
- * Possible values include: 'Automatic', 'Manual'
+ * @member {string} [upgradePolicy.mode] the upgrade mode. Possible values
+ * include: 'Automatic', 'Manual'
  * 
- * @member {object} [virtualMachineProfile] Gets or sets the virtual machine
- * profile.
+ * @member {object} [virtualMachineProfile] the virtual machine profile.
  * 
- * @member {object} [virtualMachineProfile.osProfile] Gets or sets the virtual
- * machine scale set OS profile.
+ * @member {object} [virtualMachineProfile.osProfile] the virtual machine
+ * scale set OS profile.
  * 
- * @member {string} [virtualMachineProfile.osProfile.computerNamePrefix] Gets
- * or sets the computer name prefix.
+ * @member {string} [virtualMachineProfile.osProfile.computerNamePrefix] the
+ * computer name prefix.
  * 
- * @member {string} [virtualMachineProfile.osProfile.adminUsername] Gets or
- * sets the admin user name.
+ * @member {string} [virtualMachineProfile.osProfile.adminUsername] the admin
+ * user name.
  * 
- * @member {string} [virtualMachineProfile.osProfile.adminPassword] Gets or
- * sets the admin user password.
+ * @member {string} [virtualMachineProfile.osProfile.adminPassword] the admin
+ * user password.
  * 
- * @member {string} [virtualMachineProfile.osProfile.customData] Gets or sets
- * a base-64 encoded string of custom data.
+ * @member {string} [virtualMachineProfile.osProfile.customData] a base-64
+ * encoded string of custom data.
  * 
- * @member {object} [virtualMachineProfile.osProfile.windowsConfiguration]
- * Gets or sets the Windows Configuration of the OS profile.
+ * @member {object} [virtualMachineProfile.osProfile.windowsConfiguration] the
+ * Windows Configuration of the OS profile.
  * 
  * @member {boolean}
  * [virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
- * Gets or sets whether VM Agent should be provisioned on the Virtual Machine.
+ * whether VM Agent should be provisioned on the Virtual Machine.
  * 
  * @member {boolean}
  * [virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Gets or sets whether Windows updates are automatically installed on the VM
+ * whether Windows updates are automatically installed on the VM
  * 
  * @member {string}
- * [virtualMachineProfile.osProfile.windowsConfiguration.timeZone] Gets or
- * sets the Time Zone of the VM
+ * [virtualMachineProfile.osProfile.windowsConfiguration.timeZone] the Time
+ * Zone of the VM
  * 
  * @member {array}
  * [virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
- * Gets or sets the additional base-64 encoded XML formatted information that
- * can be included in the Unattend.xml file.
+ * the additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file.
  * 
  * @member {object}
- * [virtualMachineProfile.osProfile.windowsConfiguration.winRM] Gets or sets
- * the Windows Remote Management configuration of the VM
+ * [virtualMachineProfile.osProfile.windowsConfiguration.winRM] the Windows
+ * Remote Management configuration of the VM
  * 
  * @member {array}
- * [virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
- * Gets or sets the list of Windows Remote Management listeners
+ * [virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners] the
+ * list of Windows Remote Management listeners
  * 
- * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration] Gets
- * or sets the Linux Configuration of the OS profile.
+ * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration] the
+ * Linux Configuration of the OS profile.
  * 
  * @member {boolean}
  * [virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
- * Gets or sets whether Authentication using user name and password is
- * allowed or not
+ * whether Authentication using user name and password is allowed or not
  * 
  * @member {object} [virtualMachineProfile.osProfile.linuxConfiguration.ssh]
- * Gets or sets the SSH configuration for linux VMs
+ * the SSH configuration for linux VMs
  * 
  * @member {array}
- * [virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys] Gets
- * or sets the list of SSH public keys used to authenticate with linux based
- * VMs
+ * [virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys] the
+ * list of SSH public keys used to authenticate with linux based VMs
  * 
- * @member {array} [virtualMachineProfile.osProfile.secrets] Gets or sets the
- * List of certificates for addition to the VM.
+ * @member {array} [virtualMachineProfile.osProfile.secrets] the List of
+ * certificates for addition to the VM.
  * 
- * @member {object} [virtualMachineProfile.storageProfile] Gets or sets the
- * virtual machine scale set storage profile.
+ * @member {object} [virtualMachineProfile.storageProfile] the virtual machine
+ * scale set storage profile.
  * 
- * @member {object} [virtualMachineProfile.storageProfile.imageReference] Gets
- * or sets the image reference.
- * 
- * @member {string}
- * [virtualMachineProfile.storageProfile.imageReference.publisher] Gets or
- * sets the image publisher.
+ * @member {object} [virtualMachineProfile.storageProfile.imageReference] the
+ * image reference.
  * 
  * @member {string}
- * [virtualMachineProfile.storageProfile.imageReference.offer] Gets or sets
- * the image offer.
+ * [virtualMachineProfile.storageProfile.imageReference.publisher] the image
+ * publisher.
+ * 
+ * @member {string}
+ * [virtualMachineProfile.storageProfile.imageReference.offer] the image
+ * offer.
  * 
  * @member {string} [virtualMachineProfile.storageProfile.imageReference.sku]
- * Gets or sets the image sku.
+ * the image sku.
  * 
  * @member {string}
- * [virtualMachineProfile.storageProfile.imageReference.version] Gets or sets
- * the image version. The allowed formats are Major.Minor.Build or 'latest'.
- * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
- * latest version of image.
+ * [virtualMachineProfile.storageProfile.imageReference.version] the image
+ * version. The allowed formats are Major.Minor.Build or 'latest'. Major,
+ * Minor and Build being decimal numbers. Specify 'latest' to use the latest
+ * version of image.
  * 
- * @member {object} [virtualMachineProfile.storageProfile.osDisk] Gets or sets
- * the OS disk.
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk] the OS disk.
  * 
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.name] Gets or
- * sets the disk name.
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.name] the
+ * disk name.
  * 
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.caching] Gets
- * or sets the caching type. Possible values include: 'None', 'ReadOnly',
- * 'ReadWrite'
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.caching] the
+ * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
  * 
  * @member {string} [virtualMachineProfile.storageProfile.osDisk.createOption]
- * Gets or sets the create option. Possible values include: 'fromImage',
- * 'empty', 'attach'
+ * the create option. Possible values include: 'fromImage', 'empty', 'attach'
  * 
- * @member {string} [virtualMachineProfile.storageProfile.osDisk.osType] Gets
- * or sets the Operating System type. Possible values include: 'Windows',
- * 'Linux'
+ * @member {string} [virtualMachineProfile.storageProfile.osDisk.osType] the
+ * Operating System type. Possible values include: 'Windows', 'Linux'
  * 
- * @member {object} [virtualMachineProfile.storageProfile.osDisk.image] Gets
- * or sets the Source User Image VirtualHardDisk. This VirtualHardDisk will
- * be copied before using it to attach to the Virtual Machine.If SourceImage
- * is provided, the destination VirtualHardDisk should not exist.
+ * @member {object} [virtualMachineProfile.storageProfile.osDisk.image] the
+ * Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
+ * before using it to attach to the Virtual Machine.If SourceImage is
+ * provided, the destination VirtualHardDisk should not exist.
  * 
  * @member {string} [virtualMachineProfile.storageProfile.osDisk.image.uri]
- * Gets or sets the virtual hard disk's uri. It should be a valid Uri to a
- * virtual hard disk.
+ * the virtual hard disk's uri. It should be a valid Uri to a virtual hard
+ * disk.
  * 
  * @member {array} [virtualMachineProfile.storageProfile.osDisk.vhdContainers]
- * Gets or sets the list of virtual hard disk container uris.
+ * the list of virtual hard disk container uris.
  * 
- * @member {object} [virtualMachineProfile.networkProfile] Gets or sets the
- * virtual machine scale set network profile.
+ * @member {object} [virtualMachineProfile.networkProfile] the virtual machine
+ * scale set network profile.
  * 
  * @member {array}
- * [virtualMachineProfile.networkProfile.networkInterfaceConfigurations] Gets
- * or sets the list of network configurations.
+ * [virtualMachineProfile.networkProfile.networkInterfaceConfigurations] the
+ * list of network configurations.
  * 
- * @member {object} [virtualMachineProfile.extensionProfile] Gets the virtual
+ * @member {object} [virtualMachineProfile.extensionProfile] the virtual
  * machine scale set extension profile.
  * 
- * @member {array} [virtualMachineProfile.extensionProfile.extensions] Gets
- * the virtual machine scale set child extension resources.
+ * @member {array} [virtualMachineProfile.extensionProfile.extensions] the
+ * virtual machine scale set child extension resources.
  * 
- * @member {string} [provisioningState] Gets or sets the provisioning state,
- * which only appears in the response.
+ * @member {string} [provisioningState] the provisioning state, which only
+ * appears in the response.
  * 
  * @member {boolean} [overProvision] Specifies whether the Virtual Machine
  * Scale Set should be overprovisioned.
@@ -2137,8 +2069,7 @@ export interface VirtualMachineScaleSet extends Resource {
  * @constructor
  * Specifies the list of virtual machine scale set instance IDs.
  *
- * @member {array} [instanceIds] Gets or sets the virtual machine scale set
- * instance ids.
+ * @member {array} [instanceIds] the virtual machine scale set instance ids.
  * 
  */
 export interface VirtualMachineScaleSetVMInstanceIDs {
@@ -2151,8 +2082,7 @@ export interface VirtualMachineScaleSetVMInstanceIDs {
  * @constructor
  * Specifies the list of virtual machine scale set instance IDs.
  *
- * @member {array} instanceIds Gets or sets the virtual machine scale set
- * instance ids.
+ * @member {array} instanceIds the virtual machine scale set instance ids.
  * 
  */
 export interface VirtualMachineScaleSetVMInstanceRequiredIDs {
@@ -2166,10 +2096,10 @@ export interface VirtualMachineScaleSetVMInstanceRequiredIDs {
  * The status code and count of the virtual machine scale set instance view
  * status summary.
  *
- * @member {string} [code] Gets the instance view status code.
+ * @member {string} [code] the instance view status code.
  * 
- * @member {number} [count] Gets the number of instances having a particular
- * status code.
+ * @member {number} [count] the number of instances having a particular status
+ * code.
  * 
  */
 export interface VirtualMachineStatusCodeCount {
@@ -2184,7 +2114,7 @@ export interface VirtualMachineStatusCodeCount {
  * Instance view statuses summary for virtual machines of a virtual machine
  * scale set.
  *
- * @member {array} [statusesSummary] Gets the extensions information.
+ * @member {array} [statusesSummary] the extensions information.
  * 
  */
 export interface VirtualMachineScaleSetInstanceViewStatusesSummary {
@@ -2197,9 +2127,9 @@ export interface VirtualMachineScaleSetInstanceViewStatusesSummary {
  * @constructor
  * Extensions summary for virtual machines of a virtual machine scale set.
  *
- * @member {string} [name] Gets the extension name.
+ * @member {string} [name] the extension name.
  * 
- * @member {array} [statusesSummary] Gets the extensions information.
+ * @member {array} [statusesSummary] the extensions information.
  * 
  */
 export interface VirtualMachineScaleSetVMExtensionsSummary {
@@ -2213,15 +2143,14 @@ export interface VirtualMachineScaleSetVMExtensionsSummary {
  * @constructor
  * The instance view of a virtual machine scale set.
  *
- * @member {object} [virtualMachine] Gets the instance view status summary for
- * the virtual machine scale set.
+ * @member {object} [virtualMachine] the instance view status summary for the
+ * virtual machine scale set.
  * 
- * @member {array} [virtualMachine.statusesSummary] Gets the extensions
- * information.
+ * @member {array} [virtualMachine.statusesSummary] the extensions information.
  * 
- * @member {array} [extensions] Gets the extensions information.
+ * @member {array} [extensions] the extensions information.
  * 
- * @member {array} [statuses] Gets or sets the resource status information.
+ * @member {array} [statuses] the resource status information.
  * 
  */
 export interface VirtualMachineScaleSetInstanceView {
@@ -2236,14 +2165,14 @@ export interface VirtualMachineScaleSetInstanceView {
  * @constructor
  * Describes scaling information of a sku.
  *
- * @member {number} [minimum] Gets the minimum capacity.
+ * @member {number} [minimum] the minimum capacity.
  * 
- * @member {number} [maximum] Gets the maximum capacity that can be set.
+ * @member {number} [maximum] the maximum capacity that can be set.
  * 
- * @member {number} [defaultCapacity] Gets the default capacity.
+ * @member {number} [defaultCapacity] the default capacity.
  * 
- * @member {string} [scaleType] Gets the scale type applicable to the sku.
- * Possible values include: 'Automatic', 'None'
+ * @member {string} [scaleType] the scale type applicable to the sku. Possible
+ * values include: 'Automatic', 'None'
  * 
  */
 export interface VirtualMachineScaleSetSkuCapacity {
@@ -2259,28 +2188,26 @@ export interface VirtualMachineScaleSetSkuCapacity {
  * @constructor
  * Describes an available virtual machine scale set sku.
  *
- * @member {string} [resourceType] Gets the type of resource the sku applies
- * to.
+ * @member {string} [resourceType] the type of resource the sku applies to.
  * 
- * @member {object} [sku] Gets the Sku.
+ * @member {object} [sku] the Sku.
  * 
- * @member {string} [sku.name] Gets or sets the sku name.
+ * @member {string} [sku.name] the sku name.
  * 
- * @member {string} [sku.tier] Gets or sets the sku tier.
+ * @member {string} [sku.tier] the sku tier.
  * 
- * @member {number} [sku.capacity] Gets or sets the sku capacity.
+ * @member {number} [sku.capacity] the sku capacity.
  * 
- * @member {object} [capacity] Gets available scaling information.
+ * @member {object} [capacity] available scaling information.
  * 
- * @member {number} [capacity.minimum] Gets the minimum capacity.
+ * @member {number} [capacity.minimum] the minimum capacity.
  * 
- * @member {number} [capacity.maximum] Gets the maximum capacity that can be
- * set.
+ * @member {number} [capacity.maximum] the maximum capacity that can be set.
  * 
- * @member {number} [capacity.defaultCapacity] Gets the default capacity.
+ * @member {number} [capacity.defaultCapacity] the default capacity.
  * 
- * @member {string} [capacity.scaleType] Gets the scale type applicable to the
- * sku. Possible values include: 'Automatic', 'None'
+ * @member {string} [capacity.scaleType] the scale type applicable to the sku.
+ * Possible values include: 'Automatic', 'None'
  * 
  */
 export interface VirtualMachineScaleSetSku {
@@ -2295,60 +2222,56 @@ export interface VirtualMachineScaleSetSku {
  * @constructor
  * Describes a virtual machine scale set virtual machine.
  *
- * @member {string} [instanceId] Gets the virtual machine instance id.
+ * @member {string} [instanceId] the virtual machine instance id.
  * 
- * @member {object} [sku] Gets the virtual machine sku.
+ * @member {object} [sku] the virtual machine sku.
  * 
- * @member {string} [sku.name] Gets or sets the sku name.
+ * @member {string} [sku.name] the sku name.
  * 
- * @member {string} [sku.tier] Gets or sets the sku tier.
+ * @member {string} [sku.tier] the sku tier.
  * 
- * @member {number} [sku.capacity] Gets or sets the sku capacity.
+ * @member {number} [sku.capacity] the sku capacity.
  * 
  * @member {boolean} [latestModelApplied] Specifies whether the latest model
  * has been applied to the virtual machine.
  * 
- * @member {object} [instanceView] Gets the virtual machine instance view.
+ * @member {object} [instanceView] the virtual machine instance view.
  * 
- * @member {number} [instanceView.platformUpdateDomain] Gets or sets the
- * Update Domain count.
+ * @member {number} [instanceView.platformUpdateDomain] the Update Domain
+ * count.
  * 
- * @member {number} [instanceView.platformFaultDomain] Gets or sets the Fault
- * Domain count.
+ * @member {number} [instanceView.platformFaultDomain] the Fault Domain count.
  * 
- * @member {string} [instanceView.rdpThumbPrint] Gets or sets the Remote
- * desktop certificate thumbprint.
+ * @member {string} [instanceView.rdpThumbPrint] the Remote desktop
+ * certificate thumbprint.
  * 
- * @member {object} [instanceView.vmAgent] Gets or sets the VM Agent running
- * on the virtual machine.
+ * @member {object} [instanceView.vmAgent] the VM Agent running on the virtual
+ * machine.
  * 
- * @member {string} [instanceView.vmAgent.vmAgentVersion] Gets or sets the VM
- * Agent full version.
+ * @member {string} [instanceView.vmAgent.vmAgentVersion] the VM Agent full
+ * version.
  * 
- * @member {array} [instanceView.vmAgent.extensionHandlers] Gets or sets the
- * virtual machine extension handler instance view.
+ * @member {array} [instanceView.vmAgent.extensionHandlers] the virtual
+ * machine extension handler instance view.
  * 
- * @member {array} [instanceView.vmAgent.statuses] Gets or sets the resource
- * status information.
- * 
- * @member {array} [instanceView.disks] Gets or sets the disks information.
- * 
- * @member {array} [instanceView.extensions] Gets or sets the extensions
+ * @member {array} [instanceView.vmAgent.statuses] the resource status
  * information.
  * 
- * @member {object} [instanceView.bootDiagnostics] Gets or sets the boot
- * diagnostics.
+ * @member {array} [instanceView.disks] the disks information.
+ * 
+ * @member {array} [instanceView.extensions] the extensions information.
+ * 
+ * @member {object} [instanceView.bootDiagnostics] the boot diagnostics.
  * 
  * @member {string} [instanceView.bootDiagnostics.consoleScreenshotBlobUri]
- * Gets or sets the console screenshot blob Uri.
+ * the console screenshot blob Uri.
  * 
- * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri]
- * Gets or sets the Linux serial console log blob Uri.
+ * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] the
+ * Linux serial console log blob Uri.
  * 
- * @member {array} [instanceView.statuses] Gets or sets the resource status
- * information.
+ * @member {array} [instanceView.statuses] the resource status information.
  * 
- * @member {object} [hardwareProfile] Gets or sets the hardware profile.
+ * @member {object} [hardwareProfile] the hardware profile.
  * 
  * @member {string} [hardwareProfile.vmSize] The virtual machine size name.
  * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
@@ -2368,186 +2291,178 @@ export interface VirtualMachineScaleSetSku {
  * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
  * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
  * 
- * @member {object} [storageProfile] Gets or sets the storage profile.
+ * @member {object} [storageProfile] the storage profile.
  * 
- * @member {object} [storageProfile.imageReference] Gets or sets the image
- * reference.
+ * @member {object} [storageProfile.imageReference] the image reference.
  * 
- * @member {string} [storageProfile.imageReference.publisher] Gets or sets the
- * image publisher.
+ * @member {string} [storageProfile.imageReference.publisher] the image
+ * publisher.
  * 
- * @member {string} [storageProfile.imageReference.offer] Gets or sets the
- * image offer.
+ * @member {string} [storageProfile.imageReference.offer] the image offer.
  * 
- * @member {string} [storageProfile.imageReference.sku] Gets or sets the image
- * sku.
+ * @member {string} [storageProfile.imageReference.sku] the image sku.
  * 
- * @member {string} [storageProfile.imageReference.version] Gets or sets the
- * image version. The allowed formats are Major.Minor.Build or 'latest'.
- * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
- * latest version of image.
+ * @member {string} [storageProfile.imageReference.version] the image version.
+ * The allowed formats are Major.Minor.Build or 'latest'. Major, Minor and
+ * Build being decimal numbers. Specify 'latest' to use the latest version of
+ * image.
  * 
- * @member {object} [storageProfile.osDisk] Gets or sets the OS disk.
+ * @member {object} [storageProfile.osDisk] the OS disk.
  * 
- * @member {string} [storageProfile.osDisk.osType] Gets or sets the Operating
- * System type. Possible values include: 'Windows', 'Linux'
+ * @member {string} [storageProfile.osDisk.osType] the Operating System type.
+ * Possible values include: 'Windows', 'Linux'
  * 
- * @member {object} [storageProfile.osDisk.encryptionSettings] Gets or sets
- * the disk encryption settings.
+ * @member {object} [storageProfile.osDisk.encryptionSettings] the disk
+ * encryption settings.
  * 
  * @member {object}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] Gets or sets
- * the disk encryption key which is a KeyVault Secret.
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey] the disk
+ * encryption key which is a KeyVault Secret.
  * 
  * @member {string}
- * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
- * Gets or sets the URL referencing a secret in a Key Vault.
+ * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl] the
+ * URL referencing a secret in a Key Vault.
  * 
  * @member {object}
  * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
- * Gets or sets the Relative URL of the Key Vault containing the secret.
+ * the Relative URL of the Key Vault containing the secret.
  * 
  * @member {string}
  * [storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault.id]
  * Resource Id
  * 
  * @member {object}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey] Gets or sets
- * the key encryption key which is KeyVault Key.
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey] the key
+ * encryption key which is KeyVault Key.
  * 
  * @member {string}
- * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] Gets or
- * sets the URL referencing a key in a Key Vault.
+ * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl] the URL
+ * referencing a key in a Key Vault.
  * 
  * @member {object}
  * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
- * Gets or sets the Relative URL of the Key Vault containing the key
+ * the Relative URL of the Key Vault containing the key
  * 
  * @member {string}
  * [storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault.id]
  * Resource Id
  * 
- * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled] Gets
- * or sets whether disk encryption should be enabled on the Virtual Machine.
+ * @member {boolean} [storageProfile.osDisk.encryptionSettings.enabled]
+ * whether disk encryption should be enabled on the Virtual Machine.
  * 
- * @member {string} [storageProfile.osDisk.name] Gets or sets the disk name.
+ * @member {string} [storageProfile.osDisk.name] the disk name.
  * 
- * @member {object} [storageProfile.osDisk.vhd] Gets or sets the Virtual Hard
- * Disk.
+ * @member {object} [storageProfile.osDisk.vhd] the Virtual Hard Disk.
  * 
- * @member {string} [storageProfile.osDisk.vhd.uri] Gets or sets the virtual
- * hard disk's uri. It should be a valid Uri to a virtual hard disk.
+ * @member {string} [storageProfile.osDisk.vhd.uri] the virtual hard disk's
+ * uri. It should be a valid Uri to a virtual hard disk.
  * 
- * @member {object} [storageProfile.osDisk.image] Gets or sets the Source User
- * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
- * to attach to the Virtual Machine.If SourceImage is provided, the
- * destination VirtualHardDisk should not exist.
+ * @member {object} [storageProfile.osDisk.image] the Source User Image
+ * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
+ * attach to the Virtual Machine.If SourceImage is provided, the destination
+ * VirtualHardDisk should not exist.
  * 
- * @member {string} [storageProfile.osDisk.image.uri] Gets or sets the virtual
- * hard disk's uri. It should be a valid Uri to a virtual hard disk.
+ * @member {string} [storageProfile.osDisk.image.uri] the virtual hard disk's
+ * uri. It should be a valid Uri to a virtual hard disk.
  * 
- * @member {string} [storageProfile.osDisk.caching] Gets or sets the caching
- * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+ * @member {string} [storageProfile.osDisk.caching] the caching type. Possible
+ * values include: 'None', 'ReadOnly', 'ReadWrite'
  * 
- * @member {string} [storageProfile.osDisk.createOption] Gets or sets the
- * create option. Possible values include: 'fromImage', 'empty', 'attach'
+ * @member {string} [storageProfile.osDisk.createOption] the create option.
+ * Possible values include: 'fromImage', 'empty', 'attach'
  * 
- * @member {number} [storageProfile.osDisk.diskSizeGB] Gets or sets the
- * initial disk size in GB for blank data disks, and the new desired size for
- * existing OS and Data disks.
+ * @member {number} [storageProfile.osDisk.diskSizeGB] the initial disk size
+ * in GB for blank data disks, and the new desired size for existing OS and
+ * Data disks.
  * 
- * @member {array} [storageProfile.dataDisks] Gets or sets the data disks.
+ * @member {array} [storageProfile.dataDisks] the data disks.
  * 
- * @member {object} [osProfile] Gets or sets the OS profile.
+ * @member {object} [osProfile] the OS profile.
  * 
- * @member {string} [osProfile.computerName] Gets or sets the computer name.
+ * @member {string} [osProfile.computerName] the computer name.
  * 
- * @member {string} [osProfile.adminUsername] Gets or sets the admin user name.
+ * @member {string} [osProfile.adminUsername] the admin user name.
  * 
- * @member {string} [osProfile.adminPassword] Gets or sets the admin user
- * password.
+ * @member {string} [osProfile.adminPassword] the admin user password.
  * 
- * @member {string} [osProfile.customData] Gets or sets a base-64 encoded
- * string of custom data.
+ * @member {string} [osProfile.customData] a base-64 encoded string of custom
+ * data.
  * 
- * @member {object} [osProfile.windowsConfiguration] Gets or sets the Windows
- * Configuration of the OS profile.
+ * @member {object} [osProfile.windowsConfiguration] the Windows Configuration
+ * of the OS profile.
  * 
- * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent] Gets or
- * sets whether VM Agent should be provisioned on the Virtual Machine.
+ * @member {boolean} [osProfile.windowsConfiguration.provisionVMAgent] whether
+ * VM Agent should be provisioned on the Virtual Machine.
  * 
  * @member {boolean} [osProfile.windowsConfiguration.enableAutomaticUpdates]
- * Gets or sets whether Windows updates are automatically installed on the VM
+ * whether Windows updates are automatically installed on the VM
  * 
- * @member {string} [osProfile.windowsConfiguration.timeZone] Gets or sets the
- * Time Zone of the VM
+ * @member {string} [osProfile.windowsConfiguration.timeZone] the Time Zone of
+ * the VM
  * 
  * @member {array} [osProfile.windowsConfiguration.additionalUnattendContent]
- * Gets or sets the additional base-64 encoded XML formatted information that
- * can be included in the Unattend.xml file.
+ * the additional base-64 encoded XML formatted information that can be
+ * included in the Unattend.xml file.
  * 
- * @member {object} [osProfile.windowsConfiguration.winRM] Gets or sets the
- * Windows Remote Management configuration of the VM
+ * @member {object} [osProfile.windowsConfiguration.winRM] the Windows Remote
+ * Management configuration of the VM
  * 
- * @member {array} [osProfile.windowsConfiguration.winRM.listeners] Gets or
- * sets the list of Windows Remote Management listeners
+ * @member {array} [osProfile.windowsConfiguration.winRM.listeners] the list
+ * of Windows Remote Management listeners
  * 
- * @member {object} [osProfile.linuxConfiguration] Gets or sets the Linux
- * Configuration of the OS profile.
+ * @member {object} [osProfile.linuxConfiguration] the Linux Configuration of
+ * the OS profile.
  * 
  * @member {boolean}
- * [osProfile.linuxConfiguration.disablePasswordAuthentication] Gets or sets
- * whether Authentication using user name and password is allowed or not
+ * [osProfile.linuxConfiguration.disablePasswordAuthentication] whether
+ * Authentication using user name and password is allowed or not
  * 
- * @member {object} [osProfile.linuxConfiguration.ssh] Gets or sets the SSH
- * configuration for linux VMs
+ * @member {object} [osProfile.linuxConfiguration.ssh] the SSH configuration
+ * for linux VMs
  * 
- * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] Gets or sets
- * the list of SSH public keys used to authenticate with linux based VMs
+ * @member {array} [osProfile.linuxConfiguration.ssh.publicKeys] the list of
+ * SSH public keys used to authenticate with linux based VMs
  * 
- * @member {array} [osProfile.secrets] Gets or sets the List of certificates
- * for addition to the VM.
+ * @member {array} [osProfile.secrets] the List of certificates for addition
+ * to the VM.
  * 
- * @member {object} [networkProfile] Gets or sets the network profile.
+ * @member {object} [networkProfile] the network profile.
  * 
- * @member {array} [networkProfile.networkInterfaces] Gets or sets the network
- * interfaces.
+ * @member {array} [networkProfile.networkInterfaces] the network interfaces.
  * 
- * @member {object} [diagnosticsProfile] Gets or sets the diagnostics profile.
+ * @member {object} [diagnosticsProfile] the diagnostics profile.
  * 
- * @member {object} [diagnosticsProfile.bootDiagnostics] Gets or sets the boot
- * diagnostics.
+ * @member {object} [diagnosticsProfile.bootDiagnostics] the boot diagnostics.
  * 
- * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Gets or sets
- * whether boot diagnostics should be enabled on the Virtual Machine.
+ * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] whether boot
+ * diagnostics should be enabled on the Virtual Machine.
  * 
- * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] Gets or
- * sets the boot diagnostics storage Uri. It should be a valid Uri
+ * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] the boot
+ * diagnostics storage Uri. It should be a valid Uri
  * 
- * @member {object} [availabilitySet] Gets or sets the reference Id of the
- * availability set to which this virtual machine belongs.
+ * @member {object} [availabilitySet] the reference Id of the availability set
+ * to which this virtual machine belongs.
  * 
  * @member {string} [availabilitySet.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets the provisioning state,
- * which only appears in the response.
+ * @member {string} [provisioningState] the provisioning state, which only
+ * appears in the response.
  * 
- * @member {string} [licenseType] Gets or sets the license type, which is for
- * bring your own license scenario.
+ * @member {string} [licenseType] the license type, which is for bring your
+ * own license scenario.
  * 
- * @member {object} [plan] Gets or sets the purchase plan when deploying
- * virtual machine from VM Marketplace images.
+ * @member {object} [plan] the purchase plan when deploying virtual machine
+ * from VM Marketplace images.
  * 
- * @member {string} [plan.name] Gets or sets the plan ID.
+ * @member {string} [plan.name] the plan ID.
  * 
- * @member {string} [plan.publisher] Gets or sets the publisher ID.
+ * @member {string} [plan.publisher] the publisher ID.
  * 
- * @member {string} [plan.product] Gets or sets the offer ID.
+ * @member {string} [plan.product] the offer ID.
  * 
- * @member {string} [plan.promotionCode] Gets or sets the promotion code.
+ * @member {string} [plan.promotionCode] the promotion code.
  * 
- * @member {array} [resources] Gets the virtual machine child extension
- * resources.
+ * @member {array} [resources] the virtual machine child extension resources.
  * 
  */
 export interface VirtualMachineScaleSetVM extends Resource {
@@ -2573,39 +2488,34 @@ export interface VirtualMachineScaleSetVM extends Resource {
  * @constructor
  * The instance view of a virtual machine scale set VM.
  *
- * @member {number} [platformUpdateDomain] Gets or sets the Update Domain
- * count.
+ * @member {number} [platformUpdateDomain] the Update Domain count.
  * 
- * @member {number} [platformFaultDomain] Gets or sets the Fault Domain count.
+ * @member {number} [platformFaultDomain] the Fault Domain count.
  * 
- * @member {string} [rdpThumbPrint] Gets or sets the Remote desktop
- * certificate thumbprint.
+ * @member {string} [rdpThumbPrint] the Remote desktop certificate thumbprint.
  * 
- * @member {object} [vmAgent] Gets or sets the VM Agent running on the virtual
- * machine.
+ * @member {object} [vmAgent] the VM Agent running on the virtual machine.
  * 
- * @member {string} [vmAgent.vmAgentVersion] Gets or sets the VM Agent full
- * version.
+ * @member {string} [vmAgent.vmAgentVersion] the VM Agent full version.
  * 
- * @member {array} [vmAgent.extensionHandlers] Gets or sets the virtual
- * machine extension handler instance view.
+ * @member {array} [vmAgent.extensionHandlers] the virtual machine extension
+ * handler instance view.
  * 
- * @member {array} [vmAgent.statuses] Gets or sets the resource status
- * information.
+ * @member {array} [vmAgent.statuses] the resource status information.
  * 
- * @member {array} [disks] Gets or sets the disks information.
+ * @member {array} [disks] the disks information.
  * 
- * @member {array} [extensions] Gets or sets the extensions information.
+ * @member {array} [extensions] the extensions information.
  * 
- * @member {object} [bootDiagnostics] Gets or sets the boot diagnostics.
+ * @member {object} [bootDiagnostics] the boot diagnostics.
  * 
- * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] Gets or sets
- * the console screenshot blob Uri.
+ * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] the console
+ * screenshot blob Uri.
  * 
- * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] Gets or sets the
- * Linux serial console log blob Uri.
+ * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] the Linux serial
+ * console log blob Uri.
  * 
- * @member {array} [statuses] Gets or sets the resource status information.
+ * @member {array} [statuses] the resource status information.
  * 
  */
 export interface VirtualMachineScaleSetVMInstanceView {
@@ -2625,11 +2535,11 @@ export interface VirtualMachineScaleSetVMInstanceView {
  * @constructor
  * Api error base.
  *
- * @member {string} [code] Gets or sets the error code.
+ * @member {string} [code] the error code.
  * 
- * @member {string} [target] Gets or sets the target of the particular error.
+ * @member {string} [target] the target of the particular error.
  * 
- * @member {string} [message] Gets or sets the error message.
+ * @member {string} [message] the error message.
  * 
  */
 export interface ApiErrorBase {
@@ -2644,10 +2554,9 @@ export interface ApiErrorBase {
  * @constructor
  * Inner error details.
  *
- * @member {string} [exceptiontype] Gets or sets the exception type.
+ * @member {string} [exceptiontype] the exception type.
  * 
- * @member {string} [errordetail] Gets or sets the internal error message or
- * exception dump.
+ * @member {string} [errordetail] the internal error message or exception dump.
  * 
  */
 export interface InnerError {
@@ -2661,20 +2570,20 @@ export interface InnerError {
  * @constructor
  * Api error.
  *
- * @member {array} [details] Gets or sets the Api error details
+ * @member {array} [details] the Api error details
  * 
- * @member {object} [innererror] Gets or sets the Api inner error
+ * @member {object} [innererror] the Api inner error
  * 
- * @member {string} [innererror.exceptiontype] Gets or sets the exception type.
+ * @member {string} [innererror.exceptiontype] the exception type.
  * 
- * @member {string} [innererror.errordetail] Gets or sets the internal error
- * message or exception dump.
+ * @member {string} [innererror.errordetail] the internal error message or
+ * exception dump.
  * 
- * @member {string} [code] Gets or sets the error code.
+ * @member {string} [code] the error code.
  * 
- * @member {string} [target] Gets or sets the target of the particular error.
+ * @member {string} [target] the target of the particular error.
  * 
- * @member {string} [message] Gets or sets the error message.
+ * @member {string} [message] the error message.
  * 
  */
 export interface ApiError {
@@ -2801,8 +2710,8 @@ export interface ContainerServiceWindowsProfile {
  * 
  * @member {object} ssh Specifies the ssh key configuration for Linux VMs
  * 
- * @member {array} [ssh.publicKeys] Gets or sets the list of SSH public keys
- * used to authenticate with Linux based VMs
+ * @member {array} [ssh.publicKeys] the list of SSH public keys used to
+ * authenticate with Linux based VMs
  * 
  */
 export interface ContainerServiceLinuxProfile {
@@ -2816,8 +2725,8 @@ export interface ContainerServiceLinuxProfile {
  * @constructor
  * SSH configuration for Linux based VMs running on Azure
  *
- * @member {array} [publicKeys] Gets or sets the list of SSH public keys used
- * to authenticate with Linux based VMs
+ * @member {array} [publicKeys] the list of SSH public keys used to
+ * authenticate with Linux based VMs
  * 
  */
 export interface ContainerServiceSshConfiguration {
@@ -2830,9 +2739,9 @@ export interface ContainerServiceSshConfiguration {
  * @constructor
  * Contains information about SSH certificate public key data.
  *
- * @member {string} keyData Gets or sets Certificate public key used to
- * authenticate with VM through SSH. The certificate must be in Pem format
- * with or without headers.
+ * @member {string} keyData Certificate public key used to authenticate with
+ * VM through SSH. The certificate must be in Pem format with or without
+ * headers.
  * 
  */
 export interface ContainerServiceSshPublicKey {
@@ -2846,11 +2755,11 @@ export interface ContainerServiceSshPublicKey {
  * @member {object} [vmDiagnostics] Profile for container service VM
  * diagnostic agent
  * 
- * @member {boolean} [vmDiagnostics.enabled] Gets or sets whether VM
- * Diagnostic Agent should be provisioned on the Virtual Machine.
+ * @member {boolean} [vmDiagnostics.enabled] whether VM Diagnostic Agent
+ * should be provisioned on the Virtual Machine.
  * 
- * @member {string} [vmDiagnostics.storageUri] Gets or sets whether VM
- * Diagnostic Agent should be provisioned on the Virtual Machine.
+ * @member {string} [vmDiagnostics.storageUri] whether VM Diagnostic Agent
+ * should be provisioned on the Virtual Machine.
  * 
  */
 export interface ContainerServiceDiagnosticsProfile {
@@ -2863,11 +2772,11 @@ export interface ContainerServiceDiagnosticsProfile {
  * @constructor
  * Describes VM Diagnostics.
  *
- * @member {boolean} [enabled] Gets or sets whether VM Diagnostic Agent should
- * be provisioned on the Virtual Machine.
+ * @member {boolean} [enabled] whether VM Diagnostic Agent should be
+ * provisioned on the Virtual Machine.
  * 
- * @member {string} [storageUri] Gets or sets whether VM Diagnostic Agent
- * should be provisioned on the Virtual Machine.
+ * @member {string} [storageUri] whether VM Diagnostic Agent should be
+ * provisioned on the Virtual Machine.
  * 
  */
 export interface ContainerServiceVMDiagnostics {
@@ -2881,8 +2790,8 @@ export interface ContainerServiceVMDiagnostics {
  * @constructor
  * Container service
  *
- * @member {string} [provisioningState] Gets the provisioning state, which
- * only appears in the response.
+ * @member {string} [provisioningState] the provisioning state, which only
+ * appears in the response.
  * 
  * @member {object} [orchestratorProfile] Properties of orchestrator
  * 
@@ -2918,19 +2827,19 @@ export interface ContainerServiceVMDiagnostics {
  * @member {object} [linuxProfile.ssh] Specifies the ssh key configuration for
  * Linux VMs
  * 
- * @member {array} [linuxProfile.ssh.publicKeys] Gets or sets the list of SSH
- * public keys used to authenticate with Linux based VMs
+ * @member {array} [linuxProfile.ssh.publicKeys] the list of SSH public keys
+ * used to authenticate with Linux based VMs
  * 
  * @member {object} [diagnosticsProfile] Properties for Diagnostic Agent
  * 
  * @member {object} [diagnosticsProfile.vmDiagnostics] Profile for container
  * service VM diagnostic agent
  * 
- * @member {boolean} [diagnosticsProfile.vmDiagnostics.enabled] Gets or sets
- * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
+ * @member {boolean} [diagnosticsProfile.vmDiagnostics.enabled] whether VM
+ * Diagnostic Agent should be provisioned on the Virtual Machine.
  * 
- * @member {string} [diagnosticsProfile.vmDiagnostics.storageUri] Gets or sets
- * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
+ * @member {string} [diagnosticsProfile.vmDiagnostics.storageUri] whether VM
+ * Diagnostic Agent should be provisioned on the Virtual Machine.
  * 
  */
 export interface ContainerService extends Resource {

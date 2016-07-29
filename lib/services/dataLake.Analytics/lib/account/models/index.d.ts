@@ -157,7 +157,7 @@ export interface DataLakeStoreAccountInfo {
  * storage account associated with this Data Lake Analytics account.
  * 
  * @member {number} [maxDegreeOfParallelism] the maximum supported degree of
- * parallelism for this acocunt.
+ * parallelism for this account.
  * 
  * @member {number} [maxJobCount] the maximum supported jobs running under the
  * account at the same time.
@@ -257,7 +257,7 @@ export interface AddStorageAccountParameters {
  * lake storage account associated with this Data Lake Analytics account.
  * 
  * @member {number} [properties.maxDegreeOfParallelism] the maximum supported
- * degree of parallelism for this acocunt.
+ * degree of parallelism for this account.
  * 
  * @member {number} [properties.maxJobCount] the maximum supported jobs
  * running under the account at the same time.

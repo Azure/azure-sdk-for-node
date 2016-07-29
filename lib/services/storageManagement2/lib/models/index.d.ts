@@ -558,16 +558,3 @@ export interface Usage {
     limit?: number;
     name?: UsageName;
 }
-
-/**
- * @class
- * Initializes a new instance of the UsageListResult class.
- * @constructor
- * The List Usages operation response.
- *
- * @member {array} [value] Gets or sets the list Storage Resource Usages.
- * 
- */
-export interface UsageListResult {
-    value?: Usage[];
-}

@@ -71,7 +71,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [keyVaultCertificate.kind] Kind of resource
      * 
-     * @param {string} [keyVaultCertificate.location] Resource Location
+     * @param {string} keyVaultCertificate.location Resource Location
      * 
      * @param {string} [keyVaultCertificate.type] Resource type
      * 
@@ -138,7 +138,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [keyVaultCertificate.kind] Kind of resource
      * 
-     * @param {string} [keyVaultCertificate.location] Resource Location
+     * @param {string} keyVaultCertificate.location Resource Location
      * 
      * @param {string} [keyVaultCertificate.type] Resource type
      * 
@@ -250,8 +250,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.root.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.root.location] Resource
-     * Location
+     * @param {string} certificateDistinguishedName.root.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.root.type] Resource type
      * 
@@ -272,7 +271,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.location] Resource Location
+     * @param {string} certificateDistinguishedName.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.type] Resource type
      * 
@@ -384,8 +383,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.root.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.root.location] Resource
-     * Location
+     * @param {string} certificateDistinguishedName.root.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.root.type] Resource type
      * 
@@ -406,7 +404,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.location] Resource Location
+     * @param {string} certificateDistinguishedName.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.type] Resource type
      * 
@@ -480,7 +478,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [reissueCertificateOrderRequest.kind] Kind of resource
      * 
-     * @param {string} [reissueCertificateOrderRequest.location] Resource Location
+     * @param {string} reissueCertificateOrderRequest.location Resource Location
      * 
      * @param {string} [reissueCertificateOrderRequest.type] Resource type
      * 
@@ -514,7 +512,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [renewCertificateOrderRequest.kind] Kind of resource
      * 
-     * @param {string} [renewCertificateOrderRequest.location] Resource Location
+     * @param {string} renewCertificateOrderRequest.location Resource Location
      * 
      * @param {string} [renewCertificateOrderRequest.type] Resource type
      * 
@@ -710,7 +708,7 @@ export interface Certificates {
      * 
      * @param {string} [certificateEnvelope.kind] Kind of resource
      * 
-     * @param {string} [certificateEnvelope.location] Resource Location
+     * @param {string} certificateEnvelope.location Resource Location
      * 
      * @param {string} [certificateEnvelope.type] Resource type
      * 
@@ -808,7 +806,7 @@ export interface Certificates {
      * 
      * @param {string} [certificateEnvelope.kind] Kind of resource
      * 
-     * @param {string} [certificateEnvelope.location] Resource Location
+     * @param {string} certificateEnvelope.location Resource Location
      * 
      * @param {string} [certificateEnvelope.type] Resource type
      * 
@@ -893,7 +891,7 @@ export interface Certificates {
      * 
      * @param {string} [csrEnvelope.kind] Kind of resource
      * 
-     * @param {string} [csrEnvelope.location] Resource Location
+     * @param {string} csrEnvelope.location Resource Location
      * 
      * @param {string} [csrEnvelope.type] Resource type
      * 
@@ -960,7 +958,7 @@ export interface Certificates {
      * 
      * @param {string} [csrEnvelope.kind] Kind of resource
      * 
-     * @param {string} [csrEnvelope.location] Resource Location
+     * @param {string} csrEnvelope.location Resource Location
      * 
      * @param {string} [csrEnvelope.type] Resource type
      * 
@@ -1181,7 +1179,7 @@ export interface Domains {
      * 
      * @param {string} [domain.kind] Kind of resource
      * 
-     * @param {string} [domain.location] Resource Location
+     * @param {string} domain.location Resource Location
      * 
      * @param {string} [domain.type] Resource type
      * 
@@ -1319,7 +1317,7 @@ export interface Domains {
      * 
      * @param {string} [domain.kind] Kind of resource
      * 
-     * @param {string} [domain.location] Resource Location
+     * @param {string} domain.location Resource Location
      * 
      * @param {string} [domain.type] Resource type
      * 
@@ -1402,7 +1400,7 @@ export interface Global {
      * 
      * @param {string} [requestMessage.kind] Kind of resource
      * 
-     * @param {string} [requestMessage.location] Resource Location
+     * @param {string} requestMessage.location Resource Location
      * 
      * @param {string} [requestMessage.type] Resource type
      * 
@@ -1683,7 +1681,7 @@ export interface GlobalCertificateOrder {
      * 
      * @param {string} [certificateOrder.root.kind] Kind of resource
      * 
-     * @param {string} [certificateOrder.root.location] Resource Location
+     * @param {string} certificateOrder.root.location Resource Location
      * 
      * @param {string} [certificateOrder.root.type] Resource type
      * 
@@ -1703,7 +1701,7 @@ export interface GlobalCertificateOrder {
      * 
      * @param {string} [certificateOrder.kind] Kind of resource
      * 
-     * @param {string} [certificateOrder.location] Resource Location
+     * @param {string} certificateOrder.location Resource Location
      * 
      * @param {string} [certificateOrder.type] Resource type
      * 
@@ -1871,7 +1869,7 @@ export interface GlobalDomainRegistration {
      * 
      * @param {string} [domainRegistrationInput.kind] Kind of resource
      * 
-     * @param {string} [domainRegistrationInput.location] Resource Location
+     * @param {string} domainRegistrationInput.location Resource Location
      * 
      * @param {string} [domainRegistrationInput.type] Resource type
      * 
@@ -2121,7 +2119,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [hostingEnvironmentEnvelope.location] Resource Location
+     * @param {string} hostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [hostingEnvironmentEnvelope.type] Resource type
      * 
@@ -2277,7 +2275,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [hostingEnvironmentEnvelope.location] Resource Location
+     * @param {string} hostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [hostingEnvironmentEnvelope.type] Resource type
      * 
@@ -2842,7 +2840,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [multiRolePoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [multiRolePoolEnvelope.location] Resource Location
+     * @param {string} multiRolePoolEnvelope.location Resource Location
      * 
      * @param {string} [multiRolePoolEnvelope.type] Resource type
      * 
@@ -2905,7 +2903,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [multiRolePoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [multiRolePoolEnvelope.location] Resource Location
+     * @param {string} multiRolePoolEnvelope.location Resource Location
      * 
      * @param {string} [multiRolePoolEnvelope.type] Resource type
      * 
@@ -3026,7 +3024,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [workerPoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [workerPoolEnvelope.location] Resource Location
+     * @param {string} workerPoolEnvelope.location Resource Location
      * 
      * @param {string} [workerPoolEnvelope.type] Resource type
      * 
@@ -3091,7 +3089,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [workerPoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [workerPoolEnvelope.location] Resource Location
+     * @param {string} workerPoolEnvelope.location Resource Location
      * 
      * @param {string} [workerPoolEnvelope.type] Resource type
      * 
@@ -3471,8 +3469,7 @@ export interface ManagedHostingEnvironments {
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [managedHostingEnvironmentEnvelope.location] Resource
-     * Location
+     * @param {string} managedHostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.type] Resource type
      * 
@@ -3635,8 +3632,7 @@ export interface ManagedHostingEnvironments {
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [managedHostingEnvironmentEnvelope.location] Resource
-     * Location
+     * @param {string} managedHostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.type] Resource type
      * 
@@ -3871,7 +3867,7 @@ export interface Provider {
      * 
      * @param {string} [requestMessage.kind] Kind of resource
      * 
-     * @param {string} [requestMessage.location] Resource Location
+     * @param {string} requestMessage.location Resource Location
      * 
      * @param {string} [requestMessage.type] Resource type
      * 
@@ -3924,7 +3920,7 @@ export interface Provider {
      * 
      * @param {string} [requestMessage.kind] Kind of resource
      * 
-     * @param {string} [requestMessage.location] Resource Location
+     * @param {string} requestMessage.location Resource Location
      * 
      * @param {string} [requestMessage.type] Resource type
      * 
@@ -4155,7 +4151,7 @@ export interface ServerFarms {
      * 
      * @param {string} [serverFarmEnvelope.kind] Kind of resource
      * 
-     * @param {string} [serverFarmEnvelope.location] Resource Location
+     * @param {string} serverFarmEnvelope.location Resource Location
      * 
      * @param {string} [serverFarmEnvelope.type] Resource type
      * 
@@ -4237,7 +4233,7 @@ export interface ServerFarms {
      * 
      * @param {string} [serverFarmEnvelope.kind] Kind of resource
      * 
-     * @param {string} [serverFarmEnvelope.location] Resource Location
+     * @param {string} serverFarmEnvelope.location Resource Location
      * 
      * @param {string} [serverFarmEnvelope.type] Resource type
      * 
@@ -4444,7 +4440,7 @@ export interface ServerFarms {
      * 
      * @param {string} [route.kind] Kind of resource
      * 
-     * @param {string} [route.location] Resource Location
+     * @param {string} route.location Resource Location
      * 
      * @param {string} [route.type] Resource type
      * 
@@ -4525,7 +4521,7 @@ export interface ServerFarms {
      * 
      * @param {string} [route.kind] Kind of resource
      * 
-     * @param {string} [route.location] Resource Location
+     * @param {string} route.location Resource Location
      * 
      * @param {string} [route.type] Resource type
      * 
@@ -4590,7 +4586,7 @@ export interface ServerFarms {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -4784,7 +4780,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -4862,7 +4858,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -4938,7 +4934,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -5012,7 +5008,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -5428,7 +5424,7 @@ export interface Sites {
      * 
      * @param {string} [slotConfigNames.kind] Kind of resource
      * 
-     * @param {string} [slotConfigNames.location] Resource Location
+     * @param {string} slotConfigNames.location Resource Location
      * 
      * @param {string} [slotConfigNames.type] Resource type
      * 
@@ -5670,7 +5666,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -5724,7 +5720,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -5818,7 +5814,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -6005,7 +6001,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -6059,7 +6055,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -6153,7 +6149,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -6394,7 +6390,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -6448,7 +6444,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -6542,7 +6538,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -6732,7 +6728,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -6786,7 +6782,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -6880,7 +6876,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -7334,7 +7330,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7430,7 +7426,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7530,7 +7526,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7637,7 +7633,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7812,7 +7808,7 @@ export interface Sites {
      * 
      * @param {string} [hostNameBinding.kind] Kind of resource
      * 
-     * @param {string} [hostNameBinding.location] Resource Location
+     * @param {string} hostNameBinding.location Resource Location
      * 
      * @param {string} [hostNameBinding.type] Resource type
      * 
@@ -7907,7 +7903,7 @@ export interface Sites {
      * 
      * @param {string} [hostNameBinding.kind] Kind of resource
      * 
-     * @param {string} [hostNameBinding.location] Resource Location
+     * @param {string} hostNameBinding.location Resource Location
      * 
      * @param {string} [hostNameBinding.type] Resource type
      * 
@@ -8096,7 +8092,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8143,7 +8139,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8288,7 +8284,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8335,7 +8331,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8501,7 +8497,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8548,7 +8544,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8696,7 +8692,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8743,7 +8739,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8811,7 +8807,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -8876,7 +8872,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -8944,7 +8940,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -9015,7 +9011,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -9091,7 +9087,7 @@ export interface Sites {
      * 
      * @param {string} [appSettings.kind] Kind of resource
      * 
-     * @param {string} [appSettings.location] Resource Location
+     * @param {string} appSettings.location Resource Location
      * 
      * @param {string} [appSettings.type] Resource type
      * 
@@ -9125,7 +9121,7 @@ export interface Sites {
      * 
      * @param {string} [appSettings.kind] Kind of resource
      * 
-     * @param {string} [appSettings.location] Resource Location
+     * @param {string} appSettings.location Resource Location
      * 
      * @param {string} [appSettings.type] Resource type
      * 
@@ -9201,7 +9197,7 @@ export interface Sites {
      * 
      * @param {string} [connectionStrings.kind] Kind of resource
      * 
-     * @param {string} [connectionStrings.location] Resource Location
+     * @param {string} connectionStrings.location Resource Location
      * 
      * @param {string} [connectionStrings.type] Resource type
      * 
@@ -9235,7 +9231,7 @@ export interface Sites {
      * 
      * @param {string} [connectionStrings.kind] Kind of resource
      * 
-     * @param {string} [connectionStrings.location] Resource Location
+     * @param {string} connectionStrings.location Resource Location
      * 
      * @param {string} [connectionStrings.type] Resource type
      * 
@@ -9793,7 +9789,7 @@ export interface Sites {
      * 
      * @param {string} [metadata.kind] Kind of resource
      * 
-     * @param {string} [metadata.location] Resource Location
+     * @param {string} metadata.location Resource Location
      * 
      * @param {string} [metadata.type] Resource type
      * 
@@ -9827,7 +9823,7 @@ export interface Sites {
      * 
      * @param {string} [metadata.kind] Kind of resource
      * 
-     * @param {string} [metadata.location] Resource Location
+     * @param {string} metadata.location Resource Location
      * 
      * @param {string} [metadata.type] Resource type
      * 
@@ -9955,7 +9951,7 @@ export interface Sites {
      * 
      * @param {string} [siteLogsConfig.kind] Kind of resource
      * 
-     * @param {string} [siteLogsConfig.location] Resource Location
+     * @param {string} siteLogsConfig.location Resource Location
      * 
      * @param {string} [siteLogsConfig.type] Resource type
      * 
@@ -10083,7 +10079,7 @@ export interface Sites {
      * 
      * @param {string} [siteLogsConfig.kind] Kind of resource
      * 
-     * @param {string} [siteLogsConfig.location] Resource Location
+     * @param {string} siteLogsConfig.location Resource Location
      * 
      * @param {string} [siteLogsConfig.type] Resource type
      * 
@@ -10382,7 +10378,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10411,7 +10407,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10452,7 +10448,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10481,7 +10477,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10525,7 +10521,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10554,7 +10550,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10595,7 +10591,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10624,7 +10620,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10688,7 +10684,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10749,7 +10745,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10923,7 +10919,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10952,7 +10948,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11001,7 +10997,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -11030,7 +11026,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11093,7 +11089,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11156,7 +11152,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11219,7 +11215,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11285,7 +11281,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11760,7 +11756,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -11832,7 +11828,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -11906,7 +11902,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -11982,7 +11978,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12093,7 +12089,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12138,7 +12134,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12207,7 +12203,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12250,7 +12246,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 

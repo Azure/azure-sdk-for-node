@@ -14,7 +14,7 @@
  * @class
  * Initializes a new instance of the Endpoint class.
  * @constructor
- * Class respresenting a Traffic Manager endpoint.
+ * Class representing a Traffic Manager endpoint.
  *
  * @member {string} [id] Gets or sets the ID of the Traffic Manager endpoint.
  * 

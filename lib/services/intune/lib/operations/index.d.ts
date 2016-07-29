@@ -73,7 +73,7 @@ export interface Ios {
      * @param {object} parameters Parameters supplied to the Create or update an
      * android policy operation.
      * 
-     * @param {string} [parameters.friendlyName]
+     * @param {string} parameters.friendlyName
      * 
      * @param {string} [parameters.description]
      * 
@@ -144,7 +144,7 @@ export interface Ios {
      * @param {object} parameters Parameters supplied to the Create or update an
      * android policy operation.
      * 
-     * @param {string} [parameters.friendlyName]
+     * @param {string} parameters.friendlyName
      * 
      * @param {string} [parameters.description]
      * 
@@ -261,7 +261,7 @@ export interface Ios {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.properties.url]
+     * @param {string} parameters.properties.url
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -326,7 +326,7 @@ export interface Ios {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.properties.url]
+     * @param {string} parameters.properties.url
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -471,7 +471,7 @@ export interface Android {
      * @param {object} parameters Parameters supplied to the Create or update an
      * android policy operation.
      * 
-     * @param {string} [parameters.friendlyName]
+     * @param {string} parameters.friendlyName
      * 
      * @param {string} [parameters.description]
      * 
@@ -541,7 +541,7 @@ export interface Android {
      * @param {object} parameters Parameters supplied to the Create or update an
      * android policy operation.
      * 
-     * @param {string} [parameters.friendlyName]
+     * @param {string} parameters.friendlyName
      * 
      * @param {string} [parameters.description]
      * 
@@ -657,7 +657,7 @@ export interface Android {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.properties.url]
+     * @param {string} parameters.properties.url
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -722,7 +722,7 @@ export interface Android {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.properties.url]
+     * @param {string} parameters.properties.url
      * 
      * @param {object} [options] Optional Parameters.
      * 

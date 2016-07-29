@@ -3317,8 +3317,8 @@ export interface Routes {
      * @param {string} [routeParameters.addressPrefix] Gets or sets the
      * destination CIDR to which the route applies.
      * 
-     * @param {string} [routeParameters.nextHopType] Gets or sets the type of
-     * Azure hop the packet should be sent to. Possible values include:
+     * @param {string} routeParameters.nextHopType Gets or sets the type of Azure
+     * hop the packet should be sent to. Possible values include:
      * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance',
      * 'None'
      * 
@@ -3364,8 +3364,8 @@ export interface Routes {
      * @param {string} [routeParameters.addressPrefix] Gets or sets the
      * destination CIDR to which the route applies.
      * 
-     * @param {string} [routeParameters.nextHopType] Gets or sets the type of
-     * Azure hop the packet should be sent to. Possible values include:
+     * @param {string} routeParameters.nextHopType Gets or sets the type of Azure
+     * hop the packet should be sent to. Possible values include:
      * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance',
      * 'None'
      * 
@@ -3525,7 +3525,7 @@ export interface SecurityRules {
      * @param {string} [securityRuleParameters.description] Gets or sets a
      * description for this rule. Restricted to 140 chars.
      * 
-     * @param {string} [securityRuleParameters.protocol] Gets or sets Network
+     * @param {string} securityRuleParameters.protocol Gets or sets Network
      * protocol this rule applies to. Can be Tcp, Udp or All(*). Possible values
      * include: 'Tcp', 'Udp', '*'
      * 
@@ -3537,30 +3537,30 @@ export interface SecurityRules {
      * Destination Port or Range. Integer or range between 0 and 65535. Asterix
      * '*' can also be used to match all ports.
      * 
-     * @param {string} [securityRuleParameters.sourceAddressPrefix] Gets or sets
+     * @param {string} securityRuleParameters.sourceAddressPrefix Gets or sets
      * source address prefix. CIDR or source IP range. Asterix '*' can also be
      * used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress
      * rule, specifies where network traffic originates from.
      * 
-     * @param {string} [securityRuleParameters.destinationAddressPrefix] Gets or
+     * @param {string} securityRuleParameters.destinationAddressPrefix Gets or
      * sets destination address prefix. CIDR or source IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as
      * 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
      * 
-     * @param {string} [securityRuleParameters.access] Gets or sets network
-     * traffic is allowed or denied. Possible values are 'Allow' and 'Deny'.
-     * Possible values include: 'Allow', 'Deny'
+     * @param {string} securityRuleParameters.access Gets or sets network traffic
+     * is allowed or denied. Possible values are 'Allow' and 'Deny'. Possible
+     * values include: 'Allow', 'Deny'
      * 
      * @param {number} [securityRuleParameters.priority] Gets or sets the priority
      * of the rule. The value can be between 100 and 4096. The priority number
      * must be unique for each rule in the collection. The lower the priority
      * number, the higher the priority of the rule.
      * 
-     * @param {string} [securityRuleParameters.direction] Gets or sets the
-     * direction of the rule.InBound or Outbound. The direction specifies if rule
-     * will be evaluated on incoming or outcoming traffic. Possible values
-     * include: 'Inbound', 'Outbound'
+     * @param {string} securityRuleParameters.direction Gets or sets the direction
+     * of the rule.InBound or Outbound. The direction specifies if rule will be
+     * evaluated on incoming or outcoming traffic. Possible values include:
+     * 'Inbound', 'Outbound'
      * 
      * @param {string} [securityRuleParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -3602,7 +3602,7 @@ export interface SecurityRules {
      * @param {string} [securityRuleParameters.description] Gets or sets a
      * description for this rule. Restricted to 140 chars.
      * 
-     * @param {string} [securityRuleParameters.protocol] Gets or sets Network
+     * @param {string} securityRuleParameters.protocol Gets or sets Network
      * protocol this rule applies to. Can be Tcp, Udp or All(*). Possible values
      * include: 'Tcp', 'Udp', '*'
      * 
@@ -3614,30 +3614,30 @@ export interface SecurityRules {
      * Destination Port or Range. Integer or range between 0 and 65535. Asterix
      * '*' can also be used to match all ports.
      * 
-     * @param {string} [securityRuleParameters.sourceAddressPrefix] Gets or sets
+     * @param {string} securityRuleParameters.sourceAddressPrefix Gets or sets
      * source address prefix. CIDR or source IP range. Asterix '*' can also be
      * used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress
      * rule, specifies where network traffic originates from.
      * 
-     * @param {string} [securityRuleParameters.destinationAddressPrefix] Gets or
+     * @param {string} securityRuleParameters.destinationAddressPrefix Gets or
      * sets destination address prefix. CIDR or source IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as
      * 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
      * 
-     * @param {string} [securityRuleParameters.access] Gets or sets network
-     * traffic is allowed or denied. Possible values are 'Allow' and 'Deny'.
-     * Possible values include: 'Allow', 'Deny'
+     * @param {string} securityRuleParameters.access Gets or sets network traffic
+     * is allowed or denied. Possible values are 'Allow' and 'Deny'. Possible
+     * values include: 'Allow', 'Deny'
      * 
      * @param {number} [securityRuleParameters.priority] Gets or sets the priority
      * of the rule. The value can be between 100 and 4096. The priority number
      * must be unique for each rule in the collection. The lower the priority
      * number, the higher the priority of the rule.
      * 
-     * @param {string} [securityRuleParameters.direction] Gets or sets the
-     * direction of the rule.InBound or Outbound. The direction specifies if rule
-     * will be evaluated on incoming or outcoming traffic. Possible values
-     * include: 'Inbound', 'Outbound'
+     * @param {string} securityRuleParameters.direction Gets or sets the direction
+     * of the rule.InBound or Outbound. The direction specifies if rule will be
+     * evaluated on incoming or outcoming traffic. Possible values include:
+     * 'Inbound', 'Outbound'
      * 
      * @param {string} [securityRuleParameters.provisioningState] Gets or sets
      * Provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -4020,23 +4020,6 @@ export interface Usages {
      */
     list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsagesListResult>): void;
     list(location: string, callback: ServiceCallback<models.UsagesListResult>): void;
-
-    /**
-     * Lists compute usages for a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsagesListResult>): void;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.UsagesListResult>): void;
 }
 
 /**
