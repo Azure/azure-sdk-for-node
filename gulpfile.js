@@ -19,7 +19,7 @@ var mappings = {
   },
   'batch.Service': {
     'dir': 'batch/lib',
-    'source': 'batch/2016-02-01.3.0/swagger/BatchService.json',
+    'source': 'batch/2016-07-01.3.1/swagger/BatchService.json',
     'ft': 1
   },
   'cdn': {

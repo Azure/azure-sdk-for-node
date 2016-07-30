@@ -23,7 +23,7 @@ import * as models from '../models';
 export interface Application {
 
     /**
-     * Lists all of the applications available in the specified account.
+     * @summary Lists all of the applications available in the specified account.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -59,7 +59,7 @@ export interface Application {
     list(callback: ServiceCallback<models.ApplicationListResult>): void;
 
     /**
-     * Gets information about the specified application.
+     * @summary Gets information about the specified application.
      *
      * @param {string} applicationId The id of the application.
      * 
@@ -94,7 +94,7 @@ export interface Application {
     get(applicationId: string, callback: ServiceCallback<models.ApplicationSummary>): void;
 
     /**
-     * Lists all of the applications available in the specified account.
+     * @summary Lists all of the applications available in the specified account.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -135,7 +135,7 @@ export interface Application {
 export interface Pool {
 
     /**
-     * Lists the usage metrics, aggregated by pool across individual time
+     * @summary Lists the usage metrics, aggregated by pool across individual time
      * intervals, for the specified account.
      *
      * @param {object} [options] Optional Parameters.
@@ -183,10 +183,11 @@ export interface Pool {
     listPoolUsageMetrics(callback: ServiceCallback<models.PoolListPoolUsageMetricsResult>): void;
 
     /**
-     * Gets lifetime summary statistics for all of the pools in the specified
-     * account. Statistics are aggregated across all pools that have ever existed
-     * in the account, from account creation to the last update time of the
-     * statistics.
+     * @summary Gets lifetime summary statistics for all of the pools in the
+     * specified account.
+     *
+     * Statistics are aggregated across all pools that have ever existed in the
+     * account, from account creation to the last update time of the statistics.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -221,14 +222,14 @@ export interface Pool {
     getAllPoolsLifetimeStatistics(callback: ServiceCallback<models.PoolStatistics>): void;
 
     /**
-     * Adds a pool to the specified account.
+     * @summary Adds a pool to the specified account.
      *
      * @param {object} pool The pool to be added.
      * 
      * @param {string} [pool.id] A string that uniquely identifies the pool within
      * the account. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
-     * characters.
+     * characters. It is common to use a GUID for the id.
      * 
      * @param {string} [pool.displayName] The display name for the pool.
      * 
@@ -236,7 +237,7 @@ export interface Pool {
      * virtual machines in a pool are the same size.
      * 
      * @param {object} [pool.cloudServiceConfiguration] The cloud service
-     * configuration for the pool. This property and VirtualMachineConfiguration
+     * configuration for the pool.  This property and virtualMachineConfiguration
      * are mutually exclusive and one of the properties must be specified.
      * 
      * @param {string} [pool.cloudServiceConfiguration.osFamily] The Azure Guest
@@ -249,10 +250,10 @@ export interface Pool {
      * 
      * @param {string} [pool.cloudServiceConfiguration.currentOSVersion] The Azure
      * Guest OS Version currently installed on the virtual machines in the pool.
-     * This may differ from TargetOSVersion if the pool state is Upgrading.
+     * This may differ from targetOSVersion if the pool state is Upgrading.
      * 
      * @param {object} [pool.virtualMachineConfiguration] The virtual machine
-     * configuration for the pool. This property and CloudServiceConfiguration
+     * configuration for the pool. This property and cloudServiceConfiguration
      * are mutually exclusive and one of the properties must be specified.
      * 
      * @param {object} [pool.virtualMachineConfiguration.imageReference] A
@@ -284,7 +285,7 @@ export interface Pool {
      * 
      * @param {object} [pool.virtualMachineConfiguration.windowsConfiguration]
      * Windows operating system settings on the virtual machine. This property
-     * must not be specified if the ImageReference property specifies a Linux OS
+     * must not be specified if the imageReference property specifies a Linux OS
      * image.
      * 
      * @param {boolean}
@@ -293,16 +294,15 @@ export interface Pool {
      * the default value is true.
      * 
      * @param {moment.duration} [pool.resizeTimeout] The timeout for allocation of
-     * compute nodes to the pool. In a Get Pool operation, this is the timeout
-     * for the most recent resize operation. The default value is 10 minutes.
+     * compute nodes to the pool. The default value is 10 minutes.
      * 
      * @param {number} [pool.targetDedicated] The desired number of compute nodes
-     * in the pool. This property must have the default value if EnableAutoScale
-     * is true. It is required if EnableAutoScale is false.
+     * in the pool. This property must have the default value if enableAutoScale
+     * is true. It is required if enableAutoScale is false.
      * 
      * @param {boolean} [pool.enableAutoScale] Whether the pool size should
-     * automatically adjust over time. If true, the AutoScaleFormula property
-     * must be set. If false, the TargetDedicated property must be set.
+     * automatically adjust over time. If true, the autoScaleFormula property
+     * must be set. If false, the targetDedicated property must be set.
      * 
      * @param {string} [pool.autoScaleFormula] A formula for the desired number of
      * compute nodes in the pool.
@@ -313,11 +313,24 @@ export interface Pool {
      * @param {boolean} [pool.enableInterNodeCommunication] Whether the pool
      * permits direct communication between nodes.
      * 
+     * @param {object} [pool.networkConfiguration] The network configuration for
+     * the pool.
+     * 
+     * @param {string} [pool.networkConfiguration.subnetId] The ARM resource
+     * identifier of the virtual network subnet which the compute nodes of the
+     * pool will join. The virtual network must be in the same region and
+     * subscription as the Azure Batch account. This property can only be
+     * specified for pools created with a cloudServiceConfiguration.
+     * 
      * @param {object} [pool.startTask] A task specified to run on each compute
      * node as it joins the pool.
      * 
      * @param {string} [pool.startTask.commandLine] The command line of the start
-     * task.
+     * task. The command line does not run under a shell, and therefore cannot
+     * take advantage of shell features such as environment variable expansion.
+     * If you want to take advantage of such features, you should invoke the
+     * shell in the command line, for example using "cmd /c MyCommand" in Windows
+     * or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [pool.startTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
@@ -349,7 +362,7 @@ export interface Pool {
      * distributes tasks between compute nodes in the pool.
      * 
      * @param {string} [pool.taskSchedulingPolicy.nodeFillType] How tasks should
-     * be distributed across compute nodes. Possible values include: 'spread',
+     * be distributed across compute nodes Possible values include: 'spread',
      * 'pack', 'unmapped'
      * 
      * @param {array} [pool.metadata] A list of name-value pairs associated with
@@ -426,7 +439,7 @@ export interface Pool {
     list(callback: ServiceCallback<models.CloudPoolListResult>): void;
 
     /**
-     * Deletes a pool from the specified account.
+     * @summary Deletes a pool from the specified account.
      *
      * @param {string} poolId The id of the pool to delete.
      * 
@@ -592,7 +605,11 @@ export interface Pool {
      * left unchanged.
      * 
      * @param {string} [poolPatchParameter.startTask.commandLine] The command line
-     * of the start task.
+     * of the start task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [poolPatchParameter.startTask.resourceFiles] A list of files
      * that the Batch service will download to the compute node before running
@@ -670,7 +687,7 @@ export interface Pool {
     patch(poolId: string, poolPatchParameter: models.PoolPatchParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Disables automatic scaling for a pool.
+     * @summary Disables automatic scaling for a pool.
      *
      * @param {string} poolId The id of the pool on which to disable automatic
      * scaling.
@@ -706,7 +723,7 @@ export interface Pool {
     disableAutoScale(poolId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Enables automatic scaling for a pool.
+     * @summary Enables automatic scaling for a pool.
      *
      * @param {string} poolId The id of the pool on which to enable automatic
      * scaling.
@@ -767,7 +784,8 @@ export interface Pool {
     enableAutoScale(poolId: string, poolEnableAutoScaleParameter: models.PoolEnableAutoScaleParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets the result of evaluating an automatic scaling formula on the pool.
+     * @summary Gets the result of evaluating an automatic scaling formula on the
+     * pool.
      *
      * @param {string} poolId The id of the pool on which to evaluate the
      * automatic scaling formula.
@@ -806,7 +824,7 @@ export interface Pool {
     evaluateAutoScale(poolId: string, autoScaleFormula: string, callback: ServiceCallback<models.AutoScaleRun>): void;
 
     /**
-     * Changes the number of compute nodes that are assigned to a pool.
+     * @summary Changes the number of compute nodes that are assigned to a pool.
      *
      * @param {string} poolId The id of the pool to resize.
      * 
@@ -869,9 +887,11 @@ export interface Pool {
     resize(poolId: string, poolResizeParameter: models.PoolResizeParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Stops an ongoing resize operation on the pool. This does not restore the
-     * pool to its previous state before the resize operation: it only stops any
-     * further changes being made, and the pool maintains its current state.
+     * @summary Stops an ongoing resize operation on the pool.
+     *
+     * This does not restore the pool to its previous state before the resize
+     * operation: it only stops any further changes being made, and the pool
+     * maintains its current state.
      *
      * @param {string} poolId The id of the pool whose resizing you want to stop.
      * 
@@ -922,7 +942,7 @@ export interface Pool {
     stopResize(poolId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Updates the properties of a pool.
+     * @summary Updates the properties of a pool.
      *
      * @param {string} poolId The id of the pool to update.
      * 
@@ -934,7 +954,11 @@ export interface Pool {
      * task is removed from the pool.
      * 
      * @param {string} [poolUpdatePropertiesParameter.startTask.commandLine] The
-     * command line of the start task.
+     * command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [poolUpdatePropertiesParameter.startTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
@@ -1000,7 +1024,7 @@ export interface Pool {
     updateProperties(poolId: string, poolUpdatePropertiesParameter: models.PoolUpdatePropertiesParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Upgrades the operating system of the specified pool.
+     * @summary Upgrades the operating system of the specified pool.
      *
      * @param {string} poolId The id of the pool to upgrade.
      * 
@@ -1054,14 +1078,14 @@ export interface Pool {
     upgradeOS(poolId: string, targetOSVersion: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Removes compute nodes from the specified pool.
+     * @summary Removes compute nodes from the specified pool.
      *
      * @param {string} poolId The id of the pool from which you want to remove
      * nodes.
      * 
      * @param {object} nodeRemoveParameter The parameters for the request.
      * 
-     * @param {array} [nodeRemoveParameter.nodeList] A list containing the id of
+     * @param {array} [nodeRemoveParameter.nodeList] A list containing the ids of
      * the compute nodes to be removed from the specified pool.
      * 
      * @param {moment.duration} [nodeRemoveParameter.resizeTimeout] The timeout
@@ -1118,7 +1142,7 @@ export interface Pool {
     removeNodes(poolId: string, nodeRemoveParameter: models.NodeRemoveParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Lists the usage metrics, aggregated by pool across individual time
+     * @summary Lists the usage metrics, aggregated by pool across individual time
      * intervals, for the specified account.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1194,7 +1218,7 @@ export interface Pool {
 export interface Account {
 
     /**
-     * Lists all node agent SKUs supported by the Azure Batch service.
+     * @summary Lists all node agent SKUs supported by the Azure Batch service.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -1233,7 +1257,7 @@ export interface Account {
     listNodeAgentSkus(callback: ServiceCallback<models.AccountListNodeAgentSkusResult>): void;
 
     /**
-     * Lists all node agent SKUs supported by the Azure Batch service.
+     * @summary Lists all node agent SKUs supported by the Azure Batch service.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1276,10 +1300,11 @@ export interface Account {
 export interface Job {
 
     /**
-     * Gets lifetime summary statistics for all of the jobs in the specified
-     * account. Statistics are aggregated across all jobs that have ever existed
-     * in the account, from account creation to the last update time of the
-     * statistics.
+     * @summary Gets lifetime summary statistics for all of the jobs in the
+     * specified account.
+     *
+     * Statistics are aggregated across all jobs that have ever existed in the
+     * account, from account creation to the last update time of the statistics.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -1314,7 +1339,7 @@ export interface Job {
     getAllJobsLifetimeStatistics(callback: ServiceCallback<models.JobStatistics>): void;
 
     /**
-     * Deletes a job.
+     * @summary Deletes a job.
      *
      * @param {string} jobId The id of the job to delete.
      * 
@@ -1393,6 +1418,22 @@ export interface Job {
      * issued. If not specified, this header will be automatically populated with
      * the current system clock time.
      * 
+     * @param {string} [options.jobGetOptions.ifMatch] An ETag is specified.
+     * Specify this header to perform the operation only if the resource's ETag
+     * is an exact match as specified.
+     * 
+     * @param {string} [options.jobGetOptions.ifNoneMatch] An ETag is specified.
+     * Specify this header to perform the operation only if the resource's ETag
+     * does not match the specified ETag.
+     * 
+     * @param {date} [options.jobGetOptions.ifModifiedSince] Specify this header
+     * to perform the operation only if the resource has been modified since the
+     * specified date/time.
+     * 
+     * @param {date} [options.jobGetOptions.ifUnmodifiedSince] Specify this header
+     * to perform the operation only if the resource has not been modified since
+     * the specified date/time.
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
@@ -1414,6 +1455,10 @@ export interface Job {
      * priority and 1000 being the highest priority. If omitted, the priority of
      * the job is left unchanged.
      * 
+     * @param {string} [jobPatchParameter.onAllTasksComplete] Specifies an action
+     * the Batch service should take when all tasks in the job are in the
+     * completed state. Possible values include: 'noAction', 'terminateJob'
+     * 
      * @param {object} [jobPatchParameter.constraints] The execution constraints
      * for the job. If omitted, the existing execution constraints are left
      * unchanged.
@@ -1428,18 +1473,22 @@ export interface Job {
      * retries a task if its exit code is nonzero.
      * 
      * @param {object} [jobPatchParameter.poolInfo] The pool on which the Batch
-     * service runs the job's tasks. If omitted, the job continues to run on its
+     * service runs the job's tasks. You may change the pool for a job only when
+     * the job is disabled. The Patch Job call will fail if you include the
+     * poolInfo element and the job is not disabled. If you specify an
+     * autoPoolSpecification specification in the poolInfo, only the keepAlive
+     * property can be updated, and then only if the auto pool has a
+     * poolLifetimeOption of job. If omitted, the job continues to run on its
      * current pool.
      * 
      * @param {string} [jobPatchParameter.poolInfo.poolId] The id of an existing
      * pool. All the tasks of the job will run on the specified pool. You must
-     * specify either PoolId or AutoPoolSpecification, but not both.
+     * specify either poolId or autoPoolSpecification, but not both.
      * 
      * @param {object} [jobPatchParameter.poolInfo.autoPoolSpecification]
      * Characteristics for a temporary 'auto pool'. The Batch service will create
-     * this auto pool and run all of the tasks of the job on it, and will delete
-     * the pool once the job has completed. You must specify either PoolId or
-     * AutoPoolSpecification, but not both.
+     * this auto pool when the job is submitted. You must specify either poolId
+     * or autoPoolSpecification, but not both.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.autoPoolIdPrefix] A
@@ -1488,7 +1537,7 @@ export interface Job {
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
      * The Azure Guest OS Version currently installed on the virtual machines in
-     * the pool. This may differ from TargetOSVersion if the pool state is
+     * the pool. This may differ from targetOSVersion if the pool state is
      * Upgrading.
      * 
      * @param {object}
@@ -1533,7 +1582,7 @@ export interface Job {
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
      * Windows operating system settings on the virtual machine. This property
-     * must not be specified if the ImageReference property specifies a Linux OS
+     * must not be specified if the imageReference property specifies a Linux OS
      * image.
      * 
      * @param {boolean}
@@ -1552,7 +1601,7 @@ export interface Job {
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * How tasks should be distributed across compute nodes. Possible values
+     * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
@@ -1580,13 +1629,28 @@ export interface Job {
      * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration]
+     * The network configuration for the pool.
+     * 
+     * @param {string}
+     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+     * The ARM resource identifier of the virtual network subnet which the
+     * compute nodes of the pool will join. The virtual network must be in the
+     * same region and subscription as the Azure Batch account. This property can
+     * only be specified for pools created with a cloudServiceConfiguration.
+     * 
+     * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask] A task
      * to run on each compute node as it joins the pool. The task runs when the
      * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * The command line of the start task.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -1682,12 +1746,11 @@ export interface Job {
      * 
      * @param {number} [jobUpdateParameter.priority] The priority of the job.
      * Priority values can range from -1000 to 1000, with -1000 being the lowest
-     * priority and 1000 being the highest priority. If omitted, the priority of
-     * the job is left unchanged.
+     * priority and 1000 being the highest priority. If omitted, it is set to the
+     * default value 0.
      * 
      * @param {object} [jobUpdateParameter.constraints] The execution constraints
-     * for the job. If omitted, the existing execution constraints are left
-     * unchanged.
+     * for the job. If omitted, the constraints are cleared.
      * 
      * @param {moment.duration} [jobUpdateParameter.constraints.maxWallClockTime]
      * The maximum elapsed time that the job may run, measured from the time the
@@ -1699,18 +1762,21 @@ export interface Job {
      * retries a task if its exit code is nonzero.
      * 
      * @param {object} [jobUpdateParameter.poolInfo] The pool on which the Batch
-     * service runs the job's tasks. If omitted, the job continues to run on its
-     * current pool.
+     * service runs the job's tasks. You may change the pool for a job only when
+     * the job is disabled. The Update Job call will fail if you include the
+     * poolInfo element and the job is not disabled. If you specify an
+     * autoPoolSpecification specification in the poolInfo, only the keepAlive
+     * property can be updated, and then only if the auto pool has a
+     * poolLifetimeOption of job.
      * 
      * @param {string} [jobUpdateParameter.poolInfo.poolId] The id of an existing
      * pool. All the tasks of the job will run on the specified pool. You must
-     * specify either PoolId or AutoPoolSpecification, but not both.
+     * specify either poolId or autoPoolSpecification, but not both.
      * 
      * @param {object} [jobUpdateParameter.poolInfo.autoPoolSpecification]
      * Characteristics for a temporary 'auto pool'. The Batch service will create
-     * this auto pool and run all of the tasks of the job on it, and will delete
-     * the pool once the job has completed. You must specify either PoolId or
-     * AutoPoolSpecification, but not both.
+     * this auto pool when the job is submitted. You must specify either poolId
+     * or autoPoolSpecification, but not both.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.autoPoolIdPrefix] A
@@ -1759,7 +1825,7 @@ export interface Job {
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
      * The Azure Guest OS Version currently installed on the virtual machines in
-     * the pool. This may differ from TargetOSVersion if the pool state is
+     * the pool. This may differ from targetOSVersion if the pool state is
      * Upgrading.
      * 
      * @param {object}
@@ -1804,7 +1870,7 @@ export interface Job {
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
      * Windows operating system settings on the virtual machine. This property
-     * must not be specified if the ImageReference property specifies a Linux OS
+     * must not be specified if the imageReference property specifies a Linux OS
      * image.
      * 
      * @param {boolean}
@@ -1823,7 +1889,7 @@ export interface Job {
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * How tasks should be distributed across compute nodes. Possible values
+     * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
@@ -1851,13 +1917,28 @@ export interface Job {
      * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration]
+     * The network configuration for the pool.
+     * 
+     * @param {string}
+     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+     * The ARM resource identifier of the virtual network subnet which the
+     * compute nodes of the pool will join. The virtual network must be in the
+     * same region and subscription as the Azure Batch account. This property can
+     * only be specified for pools created with a cloudServiceConfiguration.
+     * 
+     * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask] A task
      * to run on each compute node as it joins the pool. The task runs when the
      * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * The command line of the start task.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -1896,8 +1977,12 @@ export interface Job {
      * of name-value pairs associated with the pool as metadata.
      * 
      * @param {array} [jobUpdateParameter.metadata] A list of name-value pairs
-     * associated with the job as metadata. If omitted, the existing job metadata
-     * is left unchanged.
+     * associated with the job as metadata. If omitted, it takes the default
+     * value of an empty list; in effect, any existing metadata is deleted.
+     * 
+     * @param {string} [jobUpdateParameter.onAllTasksComplete] Specifies an action
+     * the Batch service should take when all tasks in the job are in the
+     * completed state. Possible values include: 'noAction', 'terminateJob'
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1945,7 +2030,7 @@ export interface Job {
     update(jobId: string, jobUpdateParameter: models.JobUpdateParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Disables the specified job, preventing new tasks from running.
+     * @summary Disables the specified job, preventing new tasks from running.
      *
      * @param {string} jobId The id of the job to disable.
      * 
@@ -1998,7 +2083,7 @@ export interface Job {
     disable(jobId: string, disableTasks: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Enables the specified job, allowing new tasks to run.
+     * @summary Enables the specified job, allowing new tasks to run.
      *
      * @param {string} jobId The id of the job to enable.
      * 
@@ -2048,7 +2133,7 @@ export interface Job {
     enable(jobId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Terminates the specified job, marking it as completed.
+     * @summary Terminates the specified job, marking it as completed.
      *
      * @param {string} jobId The id of the job to terminate.
      * 
@@ -2102,7 +2187,7 @@ export interface Job {
     terminate(jobId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Adds a job to the specified account.
+     * @summary Adds a job to the specified account.
      *
      * @param {object} job The job to be added.
      * 
@@ -2113,9 +2198,9 @@ export interface Job {
      * 
      * @param {string} [job.displayName] The display name for the job.
      * 
-     * @param {number} [job.priority] The priority of the job. Priority values can
-     * range from -1000 to 1000, with -1000 being the lowest priority and 1000
-     * being the highest priority. The default value is 0.
+     * @param {number} [job.priority] The priority of the job.  Priority values
+     * can range from -1000 to 1000, with -1000 being the lowest priority and
+     * 1000 being the highest priority. The default value is 0.
      * 
      * @param {object} [job.constraints] The execution constraints for the job.
      * 
@@ -2132,13 +2217,17 @@ export interface Job {
      * launched when the job is started.
      * 
      * @param {string} [job.jobManagerTask.id] A string that uniquely identifies
-     * the Job Manager task. A GUID is recommended.
+     * the Job Manager task.
      * 
      * @param {string} [job.jobManagerTask.displayName] The display name of the
      * Job Manager task.
      * 
      * @param {string} [job.jobManagerTask.commandLine] The command line of the
-     * Job Manager task.
+     * Job Manager task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [job.jobManagerTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
@@ -2160,9 +2249,13 @@ export interface Job {
      * task requires exclusive use of the compute node where it runs. If true, no
      * other tasks will run on the same compute node for as long as the Job
      * Manager is running. If false, other tasks can run simultaneously with the
-     * Job Manager on a compute node. (The Job Manager task counts normally
-     * against the node’s concurrent task limit, so this is only relevant if the
-     * node allows multiple concurrent tasks.)
+     * Job Manager on a compute node. The Job Manager task counts normally
+     * against the node's concurrent task limit, so this is only relevant if the
+     * node allows multiple concurrent tasks.
+     * 
+     * @param {array} [job.jobManagerTask.applicationPackageReferences] A list of
+     * application packages that the Batch service will deploy to the compute
+     * node before running the command line.
      * 
      * @param {object} [job.jobPreparationTask] The Job Preparation task.
      * 
@@ -2172,7 +2265,11 @@ export interface Job {
      * and cannot contain more than 64 characters.
      * 
      * @param {string} [job.jobPreparationTask.commandLine] The command line of
-     * the Job Preparation task.
+     * the Job Preparation task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [job.jobPreparationTask.resourceFiles] A list of files that
      * the Batch service will download to the compute node before running the
@@ -2222,7 +2319,11 @@ export interface Job {
      * contain more than 64 characters.
      * 
      * @param {string} [job.jobReleaseTask.commandLine] The command line of the
-     * Job Release task.
+     * Job Release task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [job.jobReleaseTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
@@ -2240,7 +2341,7 @@ export interface Job {
      * @param {moment.duration} [job.jobReleaseTask.retentionTime] The minimum
      * time to retain the working directory for the Job Release task on the
      * compute node. After this time, the Batch service may delete the working
-     * directory and all its contents. The default is infinite.
+     * directory and all its contents.  The default is infinite.
      * 
      * @param {boolean} [job.jobReleaseTask.runElevated] Whether to run the Job
      * Release task in elevated mode. The default value is false.
@@ -2251,17 +2352,16 @@ export interface Job {
      * Release tasks).
      * 
      * @param {object} [job.poolInfo] The pool on which the Batch service runs the
-     * job’s tasks.
+     * job's tasks.
      * 
      * @param {string} [job.poolInfo.poolId] The id of an existing pool. All the
      * tasks of the job will run on the specified pool. You must specify either
-     * PoolId or AutoPoolSpecification, but not both.
+     * poolId or autoPoolSpecification, but not both.
      * 
      * @param {object} [job.poolInfo.autoPoolSpecification] Characteristics for a
-     * temporary 'auto pool'. The Batch service will create this auto pool and
-     * run all of the tasks of the job on it, and will delete the pool once the
-     * job has completed. You must specify either PoolId or
-     * AutoPoolSpecification, but not both.
+     * temporary 'auto pool'. The Batch service will create this auto pool when
+     * the job is submitted. You must specify either poolId or
+     * autoPoolSpecification, but not both.
      * 
      * @param {string} [job.poolInfo.autoPoolSpecification.autoPoolIdPrefix] A
      * prefix to be added to the unique identifier when a pool is automatically
@@ -2305,7 +2405,7 @@ export interface Job {
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
      * The Azure Guest OS Version currently installed on the virtual machines in
-     * the pool. This may differ from TargetOSVersion if the pool state is
+     * the pool. This may differ from targetOSVersion if the pool state is
      * Upgrading.
      * 
      * @param {object}
@@ -2350,7 +2450,7 @@ export interface Job {
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
      * Windows operating system settings on the virtual machine. This property
-     * must not be specified if the ImageReference property specifies a Linux OS
+     * must not be specified if the imageReference property specifies a Linux OS
      * image.
      * 
      * @param {boolean}
@@ -2368,7 +2468,7 @@ export interface Job {
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * How tasks should be distributed across compute nodes. Possible values
+     * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
@@ -2392,13 +2492,28 @@ export interface Job {
      * [job.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
      * Whether the pool permits direct communication between nodes.
      * 
+     * @param {object}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration] The network
+     * configuration for the pool.
+     * 
+     * @param {string}
+     * [job.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+     * The ARM resource identifier of the virtual network subnet which the
+     * compute nodes of the pool will join. The virtual network must be in the
+     * same region and subscription as the Azure Batch account. This property can
+     * only be specified for pools created with a cloudServiceConfiguration.
+     * 
      * @param {object} [job.poolInfo.autoPoolSpecification.pool.startTask] A task
      * to run on each compute node as it joins the pool. The task runs when the
      * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.commandLine] The
-     * command line of the start task.
+     * command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles] A list
@@ -2434,6 +2549,16 @@ export interface Job {
      * 
      * @param {array} [job.poolInfo.autoPoolSpecification.pool.metadata] A list of
      * name-value pairs associated with the pool as metadata.
+     * 
+     * @param {string} [job.onAllTasksComplete] The action the Batch service
+     * should take when all tasks in the job are in the completed state. Possible
+     * values include: 'noAction', 'terminateJob'
+     * 
+     * @param {string} [job.onTaskFailure] The action the Batch service should
+     * take when any task in the job fails. A task is considered to have failed
+     * if it completes with a non-zero exit code and has exhausted its retry
+     * count, or if it had a scheduling error. Possible values include:
+     * 'noAction', 'performExitOptionsJobAction'
      * 
      * @param {array} [job.metadata] A list of name-value pairs associated with
      * the job as metadata.
@@ -2512,7 +2637,8 @@ export interface Job {
     list(callback: ServiceCallback<models.CloudJobListResult>): void;
 
     /**
-     * Lists the jobs that have been created under the specified job schedule.
+     * @summary Lists the jobs that have been created under the specified job
+     * schedule.
      *
      * @param {string} jobScheduleId The id of the job schedule from which you
      * want to get a list of jobs.
@@ -2560,8 +2686,8 @@ export interface Job {
     listFromJobSchedule(jobScheduleId: string, callback: ServiceCallback<models.CloudJobListResult>): void;
 
     /**
-     * Lists the execution status of the Job Preparation and Job Release task for
-     * the specified job across the compute nodes where the job has run.
+     * @summary Lists the execution status of the Job Preparation and Job Release
+     * task for the specified job across the compute nodes where the job has run.
      *
      * @param {string} jobId The id of the job.
      * 
@@ -2643,7 +2769,8 @@ export interface Job {
     listNext(nextPageLink: string, callback: ServiceCallback<models.CloudJobListResult>): void;
 
     /**
-     * Lists the jobs that have been created under the specified job schedule.
+     * @summary Lists the jobs that have been created under the specified job
+     * schedule.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2675,8 +2802,8 @@ export interface Job {
     listFromJobScheduleNext(nextPageLink: string, callback: ServiceCallback<models.CloudJobListResult>): void;
 
     /**
-     * Lists the execution status of the Job Preparation and Job Release task for
-     * the specified job across the compute nodes where the job has run.
+     * @summary Lists the execution status of the Job Preparation and Job Release
+     * task for the specified job across the compute nodes where the job has run.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2720,7 +2847,7 @@ export interface Job {
 export interface CertificateOperations {
 
     /**
-     * Adds a certificate to the specified account.
+     * @summary Adds a certificate to the specified account.
      *
      * @param {object} certificate The certificate to be added.
      * 
@@ -2813,7 +2940,8 @@ export interface CertificateOperations {
     list(callback: ServiceCallback<models.CertificateListResult>): void;
 
     /**
-     * Cancels a failed deletion of a certificate from the specified account.
+     * @summary Cancels a failed deletion of a certificate from the specified
+     * account.
      *
      * @param {string} thumbprintAlgorithm The algorithm used to derive the
      * thumbprint parameter. This must be sha1.
@@ -2851,7 +2979,7 @@ export interface CertificateOperations {
     cancelDeletion(thumbprintAlgorithm: string, thumbprint: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Deletes a certificate from the specified account.
+     * @summary Deletes a certificate from the specified account.
      *
      * @param {string} thumbprintAlgorithm The algorithm used to derive the
      * thumbprint parameter. This must be sha1.
@@ -2971,7 +3099,8 @@ export interface CertificateOperations {
 export interface File {
 
     /**
-     * Deletes the specified task file from the compute node where the task ran.
+     * @summary Deletes the specified task file from the compute node where the
+     * task ran.
      *
      * @param {string} jobId The id of the job that contains the task.
      * 
@@ -3121,7 +3250,7 @@ export interface File {
     getNodeFilePropertiesFromTask(jobId: string, taskId: string, fileName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Deletes the specified task file from the compute node.
+     * @summary Deletes the specified task file from the compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -3273,7 +3402,7 @@ export interface File {
     getNodeFilePropertiesFromComputeNode(poolId: string, nodeId: string, fileName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Lists the files in a task's directory on its compute node.
+     * @summary Lists the files in a task's directory on its compute node.
      *
      * @param {string} jobId The id of the job that contains the task.
      * 
@@ -3319,7 +3448,8 @@ export interface File {
     listFromTask(jobId: string, taskId: string, callback: ServiceCallback<models.NodeFileListResult>): void;
 
     /**
-     * Lists all of the files in task directories on the specified compute node.
+     * @summary Lists all of the files in task directories on the specified
+     * compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -3366,7 +3496,7 @@ export interface File {
     listFromComputeNode(poolId: string, nodeId: string, callback: ServiceCallback<models.NodeFileListResult>): void;
 
     /**
-     * Lists the files in a task's directory on its compute node.
+     * @summary Lists the files in a task's directory on its compute node.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3398,7 +3528,8 @@ export interface File {
     listFromTaskNext(nextPageLink: string, callback: ServiceCallback<models.NodeFileListResult>): void;
 
     /**
-     * Lists all of the files in task directories on the specified compute node.
+     * @summary Lists all of the files in task directories on the specified
+     * compute node.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3440,7 +3571,7 @@ export interface File {
 export interface JobSchedule {
 
     /**
-     * Checks the specified job schedule exists.
+     * @summary Checks the specified job schedule exists.
      *
      * @param {string} jobScheduleId The id of the job schedule which you want to
      * check.
@@ -3607,8 +3738,7 @@ export interface JobSchedule {
      * @param {object} jobSchedulePatchParameter The parameters for the request.
      * 
      * @param {object} [jobSchedulePatchParameter.schedule] The schedule according
-     * to which jobs will be created. If you do not specify this element, the
-     * existing schedule is not modified.
+     * to which jobs will be created.
      * 
      * @param {date} [jobSchedulePatchParameter.schedule.doNotRunUntil] The
      * earliest time at which any job may be created under this job schedule. If
@@ -3635,13 +3765,13 @@ export interface JobSchedule {
      * the jobs to be created on this schedule.
      * 
      * @param {number} [jobSchedulePatchParameter.jobSpecification.priority] The
-     * priority of jobs created under this schedule. Priority values can range
+     * priority of jobs created under this schedule.  Priority values can range
      * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
      * the highest priority. The default value is 0.
      * 
      * @param {string} [jobSchedulePatchParameter.jobSpecification.displayName]
-     * The display name for jobs created under this schedule. It need not be
-     * unique and can contain any Unicode characters up to a maximum length of
+     * The display name for jobs created under this schedule. The name need not
+     * be unique and can contain any Unicode characters up to a maximum length of
      * 1024.
      * 
      * @param {boolean}
@@ -3668,7 +3798,7 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.id] A string
-     * that uniquely identifies the Job Manager task. A GUID is recommended.
+     * that uniquely identifies the Job Manager task.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.displayName]
@@ -3676,7 +3806,11 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.commandLine]
-     * The command line of the Job Manager task.
+     * The command line of the Job Manager task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such
+     * as environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.resourceFiles]
@@ -3706,9 +3840,14 @@ export interface JobSchedule {
      * Whether the Job Manager task requires exclusive use of the compute node
      * where it runs. If true, no other tasks will run on the same compute node
      * for as long as the Job Manager is running. If false, other tasks can run
-     * simultaneously with the Job Manager on a compute node. (The Job Manager
-     * task counts normally against the node’s concurrent task limit, so this is
-     * only relevant if the node allows multiple concurrent tasks.)
+     * simultaneously with the Job Manager on a compute node. The Job Manager
+     * task counts normally against the node's concurrent task limit, so this is
+     * only relevant if the node allows multiple concurrent tasks.
+     * 
+     * @param {array}
+     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
+     * A list of application packages that the Batch service will deploy to the
+     * compute node before running the command line.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] The Job
@@ -3722,7 +3861,12 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.commandLine]
-     * The command line of the Job Preparation task.
+     * The command line of the Job Preparation task. The command line does not
+     * run under a shell, and therefore cannot take advantage of shell features
+     * such as environment variable expansion. If you want to take advantage of
+     * such features, you should invoke the shell in the command line, for
+     * example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+     * Linux.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.resourceFiles]
@@ -3785,7 +3929,11 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.commandLine]
-     * The command line of the Job Release task.
+     * The command line of the Job Release task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such
+     * as environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.resourceFiles]
@@ -3807,7 +3955,7 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.retentionTime]
      * The minimum time to retain the working directory for the Job Release task
      * on the compute node. After this time, the Batch service may delete the
-     * working directory and all its contents. The default is infinite.
+     * working directory and all its contents.  The default is infinite.
      * 
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.runElevated]
@@ -3827,14 +3975,13 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.poolId] The id of an
      * existing pool. All the tasks of the job will run on the specified pool.
-     * You must specify either PoolId or AutoPoolSpecification, but not both.
+     * You must specify either poolId or autoPoolSpecification, but not both.
      * 
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification]
      * Characteristics for a temporary 'auto pool'. The Batch service will create
-     * this auto pool and run all of the tasks of the job on it, and will delete
-     * the pool once the job has completed. You must specify either PoolId or
-     * AutoPoolSpecification, but not both.
+     * this auto pool when the job is submitted. You must specify either poolId
+     * or autoPoolSpecification, but not both.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix]
@@ -3884,7 +4031,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
      * The Azure Guest OS Version currently installed on the virtual machines in
-     * the pool. This may differ from TargetOSVersion if the pool state is
+     * the pool. This may differ from targetOSVersion if the pool state is
      * Upgrading.
      * 
      * @param {object}
@@ -3929,7 +4076,7 @@ export interface JobSchedule {
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
      * Windows operating system settings on the virtual machine. This property
-     * must not be specified if the ImageReference property specifies a Linux OS
+     * must not be specified if the imageReference property specifies a Linux OS
      * image.
      * 
      * @param {boolean}
@@ -3948,7 +4095,7 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * How tasks should be distributed across compute nodes. Possible values
+     * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
@@ -3976,13 +4123,28 @@ export interface JobSchedule {
      * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
+     * The network configuration for the pool.
+     * 
+     * @param {string}
+     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+     * The ARM resource identifier of the virtual network subnet which the
+     * compute nodes of the pool will join. The virtual network must be in the
+     * same region and subscription as the Azure Batch account. This property can
+     * only be specified for pools created with a cloudServiceConfiguration.
+     * 
+     * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A task to run on each compute node as it joins the pool. The task runs
      * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * The command line of the start task.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -4110,13 +4272,13 @@ export interface JobSchedule {
      * the jobs to be created on this schedule.
      * 
      * @param {number} [jobScheduleUpdateParameter.jobSpecification.priority] The
-     * priority of jobs created under this schedule. Priority values can range
+     * priority of jobs created under this schedule.  Priority values can range
      * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
      * the highest priority. The default value is 0.
      * 
      * @param {string} [jobScheduleUpdateParameter.jobSpecification.displayName]
-     * The display name for jobs created under this schedule. It need not be
-     * unique and can contain any Unicode characters up to a maximum length of
+     * The display name for jobs created under this schedule. The name need not
+     * be unique and can contain any Unicode characters up to a maximum length of
      * 1024.
      * 
      * @param {boolean}
@@ -4144,7 +4306,7 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.id] A string
-     * that uniquely identifies the Job Manager task. A GUID is recommended.
+     * that uniquely identifies the Job Manager task.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.displayName]
@@ -4152,7 +4314,11 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.commandLine]
-     * The command line of the Job Manager task.
+     * The command line of the Job Manager task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such
+     * as environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.resourceFiles]
@@ -4182,9 +4348,14 @@ export interface JobSchedule {
      * Whether the Job Manager task requires exclusive use of the compute node
      * where it runs. If true, no other tasks will run on the same compute node
      * for as long as the Job Manager is running. If false, other tasks can run
-     * simultaneously with the Job Manager on a compute node. (The Job Manager
-     * task counts normally against the node’s concurrent task limit, so this is
-     * only relevant if the node allows multiple concurrent tasks.)
+     * simultaneously with the Job Manager on a compute node. The Job Manager
+     * task counts normally against the node's concurrent task limit, so this is
+     * only relevant if the node allows multiple concurrent tasks.
+     * 
+     * @param {array}
+     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.applicationPackageReferences]
+     * A list of application packages that the Batch service will deploy to the
+     * compute node before running the command line.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] The Job
@@ -4198,7 +4369,12 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.commandLine]
-     * The command line of the Job Preparation task.
+     * The command line of the Job Preparation task. The command line does not
+     * run under a shell, and therefore cannot take advantage of shell features
+     * such as environment variable expansion. If you want to take advantage of
+     * such features, you should invoke the shell in the command line, for
+     * example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+     * Linux.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.resourceFiles]
@@ -4262,7 +4438,11 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.commandLine]
-     * The command line of the Job Release task.
+     * The command line of the Job Release task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such
+     * as environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.resourceFiles]
@@ -4284,7 +4464,7 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.retentionTime]
      * The minimum time to retain the working directory for the Job Release task
      * on the compute node. After this time, the Batch service may delete the
-     * working directory and all its contents. The default is infinite.
+     * working directory and all its contents.  The default is infinite.
      * 
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.runElevated]
@@ -4304,14 +4484,13 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.poolId] The id of an
      * existing pool. All the tasks of the job will run on the specified pool.
-     * You must specify either PoolId or AutoPoolSpecification, but not both.
+     * You must specify either poolId or autoPoolSpecification, but not both.
      * 
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification]
      * Characteristics for a temporary 'auto pool'. The Batch service will create
-     * this auto pool and run all of the tasks of the job on it, and will delete
-     * the pool once the job has completed. You must specify either PoolId or
-     * AutoPoolSpecification, but not both.
+     * this auto pool when the job is submitted. You must specify either poolId
+     * or autoPoolSpecification, but not both.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix]
@@ -4361,7 +4540,7 @@ export interface JobSchedule {
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
      * The Azure Guest OS Version currently installed on the virtual machines in
-     * the pool. This may differ from TargetOSVersion if the pool state is
+     * the pool. This may differ from targetOSVersion if the pool state is
      * Upgrading.
      * 
      * @param {object}
@@ -4406,7 +4585,7 @@ export interface JobSchedule {
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
      * Windows operating system settings on the virtual machine. This property
-     * must not be specified if the ImageReference property specifies a Linux OS
+     * must not be specified if the imageReference property specifies a Linux OS
      * image.
      * 
      * @param {boolean}
@@ -4425,7 +4604,7 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * How tasks should be distributed across compute nodes. Possible values
+     * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
@@ -4453,13 +4632,28 @@ export interface JobSchedule {
      * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
+     * The network configuration for the pool.
+     * 
+     * @param {string}
+     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+     * The ARM resource identifier of the virtual network subnet which the
+     * compute nodes of the pool will join. The virtual network must be in the
+     * same region and subscription as the Azure Batch account. This property can
+     * only be specified for pools created with a cloudServiceConfiguration.
+     * 
+     * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A task to run on each compute node as it joins the pool. The task runs
      * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * The command line of the start task.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -4553,7 +4747,7 @@ export interface JobSchedule {
     update(jobScheduleId: string, jobScheduleUpdateParameter: models.JobScheduleUpdateParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Disables a job schedule.
+     * @summary Disables a job schedule.
      *
      * @param {string} jobScheduleId The id of the job schedule to disable.
      * 
@@ -4604,7 +4798,7 @@ export interface JobSchedule {
     disable(jobScheduleId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Enables a job schedule.
+     * @summary Enables a job schedule.
      *
      * @param {string} jobScheduleId The id of the job schedule to enable.
      * 
@@ -4655,7 +4849,7 @@ export interface JobSchedule {
     enable(jobScheduleId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Terminates a job schedule.
+     * @summary Terminates a job schedule.
      *
      * @param {string} jobScheduleId The id of the job schedule to terminates.
      * 
@@ -4706,12 +4900,12 @@ export interface JobSchedule {
     terminate(jobScheduleId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Adds a job schedule to the specified account.
+     * @summary Adds a job schedule to the specified account.
      *
      * @param {object} cloudJobSchedule The job schedule to be added.
      * 
      * @param {string} [cloudJobSchedule.id] A string that uniquely identifies the
-     * schedule within the account. A GUID is recommended.
+     * schedule within the account.
      * 
      * @param {string} [cloudJobSchedule.displayName] The display name for the
      * schedule.
@@ -4744,13 +4938,13 @@ export interface JobSchedule {
      * to be created on this schedule.
      * 
      * @param {number} [cloudJobSchedule.jobSpecification.priority] The priority
-     * of jobs created under this schedule. Priority values can range from -1000
+     * of jobs created under this schedule.  Priority values can range from -1000
      * to 1000, with -1000 being the lowest priority and 1000 being the highest
      * priority. The default value is 0.
      * 
      * @param {string} [cloudJobSchedule.jobSpecification.displayName] The display
-     * name for jobs created under this schedule. It need not be unique and can
-     * contain any Unicode characters up to a maximum length of 1024.
+     * name for jobs created under this schedule. The name need not be unique and
+     * can contain any Unicode characters up to a maximum length of 1024.
      * 
      * @param {boolean} [cloudJobSchedule.jobSpecification.usesTaskDependencies]
      * The flag that determines if this job will use tasks with dependencies.
@@ -4774,8 +4968,7 @@ export interface JobSchedule {
      * this schedule.
      * 
      * @param {string} [cloudJobSchedule.jobSpecification.jobManagerTask.id] A
-     * string that uniquely identifies the Job Manager task. A GUID is
-     * recommended.
+     * string that uniquely identifies the Job Manager task.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.displayName] The display
@@ -4783,7 +4976,11 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.commandLine] The command
-     * line of the Job Manager task.
+     * line of the Job Manager task. The command line does not run under a shell,
+     * and therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.resourceFiles] A list of
@@ -4812,9 +5009,14 @@ export interface JobSchedule {
      * the Job Manager task requires exclusive use of the compute node where it
      * runs. If true, no other tasks will run on the same compute node for as
      * long as the Job Manager is running. If false, other tasks can run
-     * simultaneously with the Job Manager on a compute node. (The Job Manager
-     * task counts normally against the node’s concurrent task limit, so this is
-     * only relevant if the node allows multiple concurrent tasks.)
+     * simultaneously with the Job Manager on a compute node. The Job Manager
+     * task counts normally against the node's concurrent task limit, so this is
+     * only relevant if the node allows multiple concurrent tasks.
+     * 
+     * @param {array}
+     * [cloudJobSchedule.jobSpecification.jobManagerTask.applicationPackageReferences]
+     * A list of application packages that the Batch service will deploy to the
+     * compute node before running the command line.
      * 
      * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
      * Job Preparation task for jobs created under this schedule.
@@ -4826,7 +5028,11 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.commandLine] The
-     * command line of the Job Preparation task.
+     * command line of the Job Preparation task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such
+     * as environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.resourceFiles] A
@@ -4888,7 +5094,11 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.commandLine] The command
-     * line of the Job Release task.
+     * line of the Job Release task. The command line does not run under a shell,
+     * and therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.resourceFiles] A list of
@@ -4910,7 +5120,7 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.retentionTime] The
      * minimum time to retain the working directory for the Job Release task on
      * the compute node. After this time, the Batch service may delete the
-     * working directory and all its contents. The default is infinite.
+     * working directory and all its contents.  The default is infinite.
      * 
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.runElevated] Whether to
@@ -4927,15 +5137,14 @@ export interface JobSchedule {
      * 
      * @param {string} [cloudJobSchedule.jobSpecification.poolInfo.poolId] The id
      * of an existing pool. All the tasks of the job will run on the specified
-     * pool. You must specify either PoolId or AutoPoolSpecification, but not
+     * pool. You must specify either poolId or autoPoolSpecification, but not
      * both.
      * 
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification]
      * Characteristics for a temporary 'auto pool'. The Batch service will create
-     * this auto pool and run all of the tasks of the job on it, and will delete
-     * the pool once the job has completed. You must specify either PoolId or
-     * AutoPoolSpecification, but not both.
+     * this auto pool when the job is submitted. You must specify either poolId
+     * or autoPoolSpecification, but not both.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix]
@@ -4985,7 +5194,7 @@ export interface JobSchedule {
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
      * The Azure Guest OS Version currently installed on the virtual machines in
-     * the pool. This may differ from TargetOSVersion if the pool state is
+     * the pool. This may differ from targetOSVersion if the pool state is
      * Upgrading.
      * 
      * @param {object}
@@ -5030,7 +5239,7 @@ export interface JobSchedule {
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
      * Windows operating system settings on the virtual machine. This property
-     * must not be specified if the ImageReference property specifies a Linux OS
+     * must not be specified if the imageReference property specifies a Linux OS
      * image.
      * 
      * @param {boolean}
@@ -5049,7 +5258,7 @@ export interface JobSchedule {
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
-     * How tasks should be distributed across compute nodes. Possible values
+     * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
      * @param {moment.duration}
@@ -5077,13 +5286,28 @@ export interface JobSchedule {
      * Whether the pool permits direct communication between nodes.
      * 
      * @param {object}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
+     * The network configuration for the pool.
+     * 
+     * @param {string}
+     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
+     * The ARM resource identifier of the virtual network subnet which the
+     * compute nodes of the pool will join. The virtual network must be in the
+     * same region and subscription as the Azure Batch account. This property can
+     * only be specified for pools created with a cloudServiceConfiguration.
+     * 
+     * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
      * A task to run on each compute node as it joins the pool. The task runs
      * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
-     * The command line of the start task.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example
+     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -5245,7 +5469,7 @@ export interface JobSchedule {
 export interface Task {
 
     /**
-     * Adds a task to the specified job.
+     * @summary Adds a task to the specified job.
      *
      * @param {string} jobId The id of the job to which the task is to be added.
      * 
@@ -5254,14 +5478,42 @@ export interface Task {
      * @param {string} [task.id] A string that uniquely identifies the task within
      * the job. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
-     * characters.
+     * characters. It is common to use a GUID for the id.
      * 
      * @param {string} [task.displayName] A display name for the task.
      * 
      * @param {string} [task.commandLine] The command line of the task. For
      * multi-instance tasks, the command line is executed on the primary subtask
      * after all the subtasks have finished executing the coordianation command
-     * line.
+     * line. The command line does not run under a shell, and therefore cannot
+     * take advantage of shell features such as environment variable expansion.
+     * If you want to take advantage of such features, you should invoke the
+     * shell in the command line, for example using "cmd /c MyCommand" in Windows
+     * or "/bin/sh -c MyCommand" in Linux.
+     * 
+     * @param {object} [task.exitConditions] How the Batch service should respond
+     * when the task completes.
+     * 
+     * @param {array} [task.exitConditions.exitCodes] A list of individual task
+     * exit codes and how the Batch service should respond to them.
+     * 
+     * @param {array} [task.exitConditions.exitCodeRanges] A list of task exit
+     * codes ranges and how the Batch service should respond to them.
+     * 
+     * @param {object} [task.exitConditions.schedulingError] How the Batch service
+     * should respond if the task fails with a scheduling error.
+     * 
+     * @param {object} [task.exitConditions.default] How the Batch service should
+     * respond if the task fails with an exit condition not covered by any of the
+     * other properties – that is, any nonzero exit code not listed in the
+     * exitCodes or exitCodeRanges collection, or a scheduling error if the
+     * schedulingError property is not present.
+     * 
+     * @param {string} [task.exitConditions.default.jobAction] An action to take
+     * on the job containing the task, if the task completes with the given exit
+     * condition and the job’s onTaskFailed property is
+     * 'performexitoptionsjobaction'. Possible values include: 'none', 'disable',
+     * 'terminate'
      * 
      * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the compute node before running the command line. For
@@ -5276,7 +5528,7 @@ export interface Task {
      * 
      * @param {string} [task.affinityInfo.affinityId] An opaque string
      * representing the location of a compute node or a task that has run
-     * previously. You can pass the AffinityId of a compute node or task to
+     * previously. You can pass the affinityId of a compute node or task to
      * indicate that this task needs to be placed close to the node or task.
      * 
      * @param {object} [task.constraints] The execution constraints that apply to
@@ -5324,6 +5576,10 @@ export interface Task {
      * 
      * @param {array} [task.dependsOn.taskIdRanges] The list of task ranges that
      * must complete before this task can be scheduled.
+     * 
+     * @param {array} [task.applicationPackageReferences] A list of application
+     * packages that the Batch service will deploy to the compute node before
+     * running the command line.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -5398,7 +5654,7 @@ export interface Task {
     list(jobId: string, callback: ServiceCallback<models.CloudTaskListResult>): void;
 
     /**
-     * Adds a collection of tasks to the specified job.
+     * @summary Adds a collection of tasks to the specified job.
      *
      * @param {string} jobId The id of the job to which the task collection is to
      * be added.
@@ -5436,7 +5692,7 @@ export interface Task {
     addCollection(jobId: string, value: models.TaskAddParameter[], callback: ServiceCallback<models.TaskAddCollectionResult>): void;
 
     /**
-     * Deletes a task from the specified job.
+     * @summary Deletes a task from the specified job.
      *
      * @param {string} jobId The id of the job from which to delete the task.
      * 
@@ -5615,7 +5871,7 @@ export interface Task {
     update(jobId: string, taskId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Lists all of the subtasks that are associated with the specified
+     * @summary Lists all of the subtasks that are associated with the specified
      * multi-instance task.
      *
      * @param {string} jobId The id of the job.
@@ -5656,7 +5912,7 @@ export interface Task {
     listSubtasks(jobId: string, taskId: string, callback: ServiceCallback<models.CloudTaskListSubtasksResult>): void;
 
     /**
-     * Terminates the specified task.
+     * @summary Terminates the specified task.
      *
      * @param {string} jobId The id of the job containing the task.
      * 
@@ -5750,7 +6006,7 @@ export interface Task {
 export interface ComputeNodeOperations {
 
     /**
-     * Adds a user account to the specified compute node.
+     * @summary Adds a user account to the specified compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -5803,7 +6059,7 @@ export interface ComputeNodeOperations {
     addUser(poolId: string, nodeId: string, user: models.ComputeNodeUser, callback: ServiceCallback<void>): void;
 
     /**
-     * Deletes a user account from the specified compute node.
+     * @summary Deletes a user account from the specified compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -5896,7 +6152,7 @@ export interface ComputeNodeOperations {
     updateUser(poolId: string, nodeId: string, userName: string, nodeUpdateUserParameter: models.NodeUpdateUserParameter, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets information about the specified compute node.
+     * @summary Gets information about the specified compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -5937,7 +6193,7 @@ export interface ComputeNodeOperations {
     get(poolId: string, nodeId: string, callback: ServiceCallback<models.ComputeNode>): void;
 
     /**
-     * Restarts the specified compute node.
+     * @summary Restarts the specified compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -5979,7 +6235,7 @@ export interface ComputeNodeOperations {
     reboot(poolId: string, nodeId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Reinstalls the operating system on the specified compute node.
+     * @summary Reinstalls the operating system on the specified compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -6021,12 +6277,12 @@ export interface ComputeNodeOperations {
     reimage(poolId: string, nodeId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Disable task scheduling of the specified compute node.
+     * @summary Disables task scheduling on the specified compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
-     * @param {string} nodeId The id of the compute node that you want to disable
-     * task scheduling.
+     * @param {string} nodeId The id of the compute node on which you want to
+     * disable task scheduling.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -6066,12 +6322,12 @@ export interface ComputeNodeOperations {
     disableScheduling(poolId: string, nodeId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Enable task scheduling of the specified compute node.
+     * @summary Enables task scheduling on the specified compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
-     * @param {string} nodeId The id of the compute node that you want to enable
-     * task scheduling.
+     * @param {string} nodeId The id of the compute node on which you want to
+     * enable task scheduling.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -6105,7 +6361,7 @@ export interface ComputeNodeOperations {
     enableScheduling(poolId: string, nodeId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets the settings required for remote login to a compute node.
+     * @summary Gets the settings required for remote login to a compute node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
@@ -6145,7 +6401,8 @@ export interface ComputeNodeOperations {
     getRemoteLoginSettings(poolId: string, nodeId: string, callback: ServiceCallback<models.ComputeNodeGetRemoteLoginSettingsResult>): void;
 
     /**
-     * Gets the Remote Desktop Protocol file for the specified compute node.
+     * @summary Gets the Remote Desktop Protocol file for the specified compute
+     * node.
      *
      * @param {string} poolId The id of the pool that contains the compute node.
      * 
