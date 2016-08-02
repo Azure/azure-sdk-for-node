@@ -85,6 +85,7 @@
     "grunt-contrib-symlink": "^0.3.0",
     "grunt-devserver": "~0.6",
     "grunt-jsdoc": "~0.6",
+    "grunt-gh-pages": "1.1.0",
     "jshint": "2.6.3",
     "minami": "git://github.com/devigned/minami#master",
     "mocha": "1.18.0",
