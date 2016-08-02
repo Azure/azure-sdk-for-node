@@ -12,21 +12,38 @@
 
 /**
  * @class
+ * Initializes a new instance of the GraphError class.
+ * @constructor
+ * Active Directory error information
+ *
+ * @member {string} [code] Error code.
+ * 
+ * @member {string} [message] Error message value.
+ * 
+ */
+export interface GraphError {
+    code?: string;
+    message?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the KeyCredential class.
  * @constructor
- * Active Directory service principal Key Credential information
+ * Active Directory Key Credential information
  *
- * @member {date} [startDate] Gets or sets start date
+ * @member {date} [startDate] start date
  * 
- * @member {date} [endDate] Gets or sets end date
+ * @member {date} [endDate] end date
  * 
- * @member {string} [value] Gets or sets value
+ * @member {string} [value] value
  * 
- * @member {string} [keyId] Gets or sets key Id
+ * @member {string} [keyId] key Id
  * 
- * @member {string} [usage] Gets or sets usage
+ * @member {string} [usage] usage. Acceptable values are 'Verify' and 'Sign'.
  * 
- * @member {string} [type] Gets or sets type
+ * @member {string} [type] type. Acceptable values are 'AsymmetricX509Cert'
+ * and 'Symmetric'.
  * 
  */
 export interface KeyCredential {
@@ -42,15 +59,15 @@ export interface KeyCredential {
  * @class
  * Initializes a new instance of the PasswordCredential class.
  * @constructor
- * Active Directory service principal Password Credential information
+ * Active Directory PasswordCredential information
  *
- * @member {date} [startDate] Gets or sets start date
+ * @member {date} [startDate] start date
  * 
- * @member {date} [endDate] Gets or sets end date
+ * @member {date} [endDate] end date
  * 
- * @member {string} [keyId] Gets or sets key Id
+ * @member {string} [keyId] key Id
  * 
- * @member {string} [value] Gets or sets value
+ * @member {string} [value] value
  * 
  */
 export interface PasswordCredential {
@@ -71,23 +88,21 @@ export interface PasswordCredential {
  * 
  * @member {string} displayName Application display name
  * 
- * @member {string} homepage Application homepage
+ * @member {string} [homepage] Application homepage
  * 
  * @member {array} identifierUris Application Uris
  * 
  * @member {array} [replyUrls] Application reply Urls
  * 
- * @member {array} [keyCredentials] Gets or sets the list of KeyCredential
- * objects
+ * @member {array} [keyCredentials] the list of KeyCredential objects
  * 
- * @member {array} [passwordCredentials] Gets or sets the list of
- * PasswordCredential objects
+ * @member {array} [passwordCredentials] the list of PasswordCredential objects
  * 
  */
 export interface ApplicationCreateParameters {
     availableToOtherTenants: boolean;
     displayName: string;
-    homepage: string;
+    homepage?: string;
     identifierUris: string[];
     replyUrls?: string[];
     keyCredentials?: KeyCredential[];
@@ -100,6 +115,9 @@ export interface ApplicationCreateParameters {
  * @constructor
  * Request parameters for updating an existing application
  *
+ * @member {boolean} [availableToOtherTenants] Indicates if the application
+ * will be available to other tenants
+ * 
  * @member {string} [displayName] Application display name
  * 
  * @member {string} [homepage] Application homepage
@@ -108,14 +126,13 @@ export interface ApplicationCreateParameters {
  * 
  * @member {array} [replyUrls] Application reply Urls
  * 
- * @member {array} [keyCredentials] Gets or sets the list of KeyCredential
- * objects
+ * @member {array} [keyCredentials] the list of KeyCredential objects
  * 
- * @member {array} [passwordCredentials] Gets or sets the list of
- * PasswordCredential objects
+ * @member {array} [passwordCredentials] the list of PasswordCredential objects
  * 
  */
 export interface ApplicationUpdateParameters {
+    availableToOtherTenants?: boolean;
     displayName?: string;
     homepage?: string;
     identifierUris?: string[];
@@ -130,23 +147,22 @@ export interface ApplicationUpdateParameters {
  * @constructor
  * Active Directory user information
  *
- * @member {string} [objectId] Gets or sets object Id
+ * @member {string} [objectId] object Id
  * 
- * @member {string} [objectType] Gets or sets object type
+ * @member {string} [objectType] object type
  * 
- * @member {string} [appId] Gets or sets application Id
+ * @member {string} [appId] application Id
  * 
- * @member {array} [appPermissions] Gets or sets application permissions
+ * @member {array} [appPermissions] application permissions
  * 
  * @member {boolean} [availableToOtherTenants] Indicates if the application
  * will be available to other tenants
  * 
- * @member {string} [displayName] Gets or sets the displayName
+ * @member {string} [displayName] the displayName
  * 
- * @member {array} [identifierUris] Gets or sets the application identifier
- * Uris
+ * @member {array} [identifierUris] the application identifier Uris
  * 
- * @member {array} [replyUrls] Gets or sets the application reply Urls
+ * @member {array} [replyUrls] the application reply Urls
  * 
  * @member {string} [homepage] Application homepage
  * 
@@ -165,30 +181,55 @@ export interface Application {
 
 /**
  * @class
+ * Initializes a new instance of the KeyCredentialsUpdateParameters class.
+ * @constructor
+ * Request parameters for  KeyCredentials update operation
+ *
+ * @member {array} [value] KeyCredential list.
+ * 
+ */
+export interface KeyCredentialsUpdateParameters {
+    value?: KeyCredential[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PasswordCredentialsUpdateParameters class.
+ * @constructor
+ * Request paramters for PasswordCredentials update operation
+ *
+ * @member {array} [value] PasswordCredential list.
+ * 
+ */
+export interface PasswordCredentialsUpdateParameters {
+    value?: PasswordCredential[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the AADObject class.
  * @constructor
  * Active Directory object information
  *
- * @member {string} [objectId] Gets or sets object Id
+ * @member {string} [objectId] object Id
  * 
- * @member {string} [objectType] Gets or sets object type
+ * @member {string} [objectType] object type
  * 
- * @member {string} [displayName] Gets or sets object display name
+ * @member {string} [displayName] object display name
  * 
- * @member {string} [userPrincipalName] Gets or sets principal name
+ * @member {string} [userPrincipalName] principal name
  * 
- * @member {string} [mail] Gets or sets mail
+ * @member {string} [mail] mail
  * 
- * @member {boolean} [mailEnabled] Gets or sets MailEnabled field
+ * @member {boolean} [mailEnabled] MailEnabled field
  * 
- * @member {boolean} [securityEnabled] Gets or sets SecurityEnabled field
+ * @member {boolean} [securityEnabled] SecurityEnabled field
  * 
- * @member {string} [signInName] Gets or sets signIn name
+ * @member {string} [signInName] signIn name
  * 
- * @member {array} [servicePrincipalNames] Gets or sets the list of service
- * principal names.
+ * @member {array} [servicePrincipalNames] the list of service principal names.
  * 
- * @member {string} [userType] Gets or sets the user type
+ * @member {string} [userType] the user type
  * 
  */
 export interface AADObject {
@@ -243,15 +284,15 @@ export interface GroupCreateParameters {
  * @constructor
  * Active Directory group information
  *
- * @member {string} [objectId] Gets or sets object Id
+ * @member {string} [objectId] object Id
  * 
- * @member {string} [objectType] Gets or sets object type
+ * @member {string} [objectType] object type
  * 
- * @member {string} [displayName] Gets or sets group display name
+ * @member {string} [displayName] group display name
  * 
- * @member {boolean} [securityEnabled] Gets or sets security enabled field
+ * @member {boolean} [securityEnabled] security enabled field
  * 
- * @member {string} [mail] Gets or sets mail field
+ * @member {string} [mail] mail field
  * 
  */
 export interface ADGroup {
@@ -315,14 +356,20 @@ export interface CheckGroupMembershipResult {
  * @constructor
  * Request parameters for create a new service principal
  *
- * @member {string} appId Gets or sets application Id
+ * @member {string} appId application Id
  * 
  * @member {boolean} accountEnabled Specifies if the account is enabled
+ * 
+ * @member {array} [keyCredentials] the list of KeyCredential objects
+ * 
+ * @member {array} [passwordCredentials] the list of PasswordCredential objects
  * 
  */
 export interface ServicePrincipalCreateParameters {
     appId: string;
     accountEnabled: boolean;
+    keyCredentials?: KeyCredential[];
+    passwordCredentials?: PasswordCredential[];
 }
 
 /**
@@ -331,15 +378,15 @@ export interface ServicePrincipalCreateParameters {
  * @constructor
  * Active Directory service principal information
  *
- * @member {string} [objectId] Gets or sets object Id
+ * @member {string} [objectId] object Id
  * 
- * @member {string} [objectType] Gets or sets object type
+ * @member {string} [objectType] object type
  * 
- * @member {string} [displayName] Gets or sets service principal display name
+ * @member {string} [displayName] service principal display name
  * 
- * @member {string} [appId] Gets or sets app id
+ * @member {string} [appId] app id
  * 
- * @member {array} [servicePrincipalNames] Gets or sets the list of names.
+ * @member {array} [servicePrincipalNames] the list of names.
  * 
  */
 export interface ServicePrincipal {
@@ -440,17 +487,17 @@ export interface UserUpdateParameters {
  * @constructor
  * Active Directory user information
  *
- * @member {string} [objectId] Gets or sets object Id
+ * @member {string} [objectId] object Id
  * 
- * @member {string} [objectType] Gets or sets object type
+ * @member {string} [objectType] object type
  * 
- * @member {string} [userPrincipalName] Gets or sets user principal name
+ * @member {string} [userPrincipalName] user principal name
  * 
- * @member {string} [displayName] Gets or sets user display name
+ * @member {string} [displayName] user display name
  * 
- * @member {string} [signInName] Gets or sets user signIn name
+ * @member {string} [signInName] user signIn name
  * 
- * @member {string} [mail] Gets or sets user mail
+ * @member {string} [mail] user mail
  * 
  * @member {string} [mailNickname] The mail alias for the user
  * 

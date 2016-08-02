@@ -43,8 +43,8 @@ export interface Objects {
      * 
      * @param {array} [parameters.types] Requested object types
      * 
-     * @param {boolean} [parameters.includeDirectoryObjectReferences] If true,
-     * also searches for object ids in the partner tenant
+     * @param {boolean} parameters.includeDirectoryObjectReferences If true, also
+     * searches for object ids in the partner tenant
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -88,21 +88,20 @@ export interface Applications {
      *
      * @param {object} parameters Parameters to create an application.
      * 
-     * @param {boolean} [parameters.availableToOtherTenants] Indicates if the
+     * @param {boolean} parameters.availableToOtherTenants Indicates if the
      * application will be available to other tenants
      * 
-     * @param {string} [parameters.displayName] Application display name
+     * @param {string} parameters.displayName Application display name
      * 
      * @param {string} [parameters.homepage] Application homepage
      * 
-     * @param {array} [parameters.identifierUris] Application Uris
+     * @param {array} parameters.identifierUris Application Uris
      * 
      * @param {array} [parameters.replyUrls] Application reply Urls
      * 
-     * @param {array} [parameters.keyCredentials] Gets or sets the list of
-     * KeyCredential objects
+     * @param {array} [parameters.keyCredentials] the list of KeyCredential objects
      * 
-     * @param {array} [parameters.passwordCredentials] Gets or sets the list of
+     * @param {array} [parameters.passwordCredentials] the list of
      * PasswordCredential objects
      * 
      * @param {object} [options] Optional Parameters.
@@ -175,6 +174,9 @@ export interface Applications {
      * 
      * @param {object} parameters Parameters to update an existing application.
      * 
+     * @param {boolean} [parameters.availableToOtherTenants] Indicates if the
+     * application will be available to other tenants
+     * 
      * @param {string} [parameters.displayName] Application display name
      * 
      * @param {string} [parameters.homepage] Application homepage
@@ -183,10 +185,9 @@ export interface Applications {
      * 
      * @param {array} [parameters.replyUrls] Application reply Urls
      * 
-     * @param {array} [parameters.keyCredentials] Gets or sets the list of
-     * KeyCredential objects
+     * @param {array} [parameters.keyCredentials] the list of KeyCredential objects
      * 
-     * @param {array} [parameters.passwordCredentials] Gets or sets the list of
+     * @param {array} [parameters.passwordCredentials] the list of
      * PasswordCredential objects
      * 
      * @param {object} [options] Optional Parameters.
@@ -199,6 +200,79 @@ export interface Applications {
      */
     patch(applicationObjectId: string, parameters: models.ApplicationUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     patch(applicationObjectId: string, parameters: models.ApplicationUpdateParameters, callback: ServiceCallback<void>): void;
+
+    /**
+     * Get keyCredentials associated with the application by object Id. Reference:
+     * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+     *
+     * @param {string} applicationObjectId Application object id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listKeyCredentials(applicationObjectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyCredentialListResult>): void;
+    listKeyCredentials(applicationObjectId: string, callback: ServiceCallback<models.KeyCredentialListResult>): void;
+
+    /**
+     * Update keyCredentials associated with an existing application. Reference:
+     * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+     *
+     * @param {string} applicationObjectId Application object id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {array} [options.value] KeyCredential list.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateKeyCredentials(applicationObjectId: string, options: { value? : models.KeyCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateKeyCredentials(applicationObjectId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets passwordCredentials associated with an existing application.
+     * Reference: https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+     *
+     * @param {string} applicationObjectId Application object id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listPasswordCredentials(applicationObjectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PasswordCredentialListResult>): void;
+    listPasswordCredentials(applicationObjectId: string, callback: ServiceCallback<models.PasswordCredentialListResult>): void;
+
+    /**
+     * Updates passwordCredentials associated with an existing application.
+     * Reference:
+     * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+     *
+     * @param {string} applicationObjectId Application object id
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {array} [options.value] PasswordCredential list.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updatePasswordCredentials(applicationObjectId: string, options: { value? : models.PasswordCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updatePasswordCredentials(applicationObjectId: string, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -215,9 +289,9 @@ export interface Groups {
      *
      * @param {object} parameters Check group membership parameters.
      * 
-     * @param {string} [parameters.groupId] The object ID of the group to check.
+     * @param {string} parameters.groupId The object ID of the group to check.
      * 
-     * @param {string} [parameters.memberId] The object ID of the contact, group,
+     * @param {string} parameters.memberId The object ID of the contact, group,
      * user, or service principal to check for membership in the specified group.
      * 
      * @param {object} [options] Optional Parameters.
@@ -296,9 +370,9 @@ export interface Groups {
      *
      * @param {object} parameters Parameters to create a group
      * 
-     * @param {string} [parameters.displayName] Group display name
+     * @param {string} parameters.displayName Group display name
      * 
-     * @param {string} [parameters.mailNickname] Mail nick name
+     * @param {string} parameters.mailNickname Mail nick name
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -426,10 +500,15 @@ export interface ServicePrincipals {
      *
      * @param {object} parameters Parameters to create a service principal.
      * 
-     * @param {string} [parameters.appId] Gets or sets application Id
+     * @param {string} parameters.appId application Id
      * 
-     * @param {boolean} [parameters.accountEnabled] Specifies if the account is
+     * @param {boolean} parameters.accountEnabled Specifies if the account is
      * enabled
+     * 
+     * @param {array} [parameters.keyCredentials] the list of KeyCredential objects
+     * 
+     * @param {array} [parameters.passwordCredentials] the list of
+     * PasswordCredential objects
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -491,6 +570,82 @@ export interface ServicePrincipals {
     get(objectId: string, callback: ServiceCallback<models.ServicePrincipal>): void;
 
     /**
+     * Get keyCredentials associated with the service principal by object Id.
+     * Reference:
+     * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+     *
+     * @param {string} objectId Object id to get service principal information.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listKeyCredentials(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyCredentialListResult>): void;
+    listKeyCredentials(objectId: string, callback: ServiceCallback<models.KeyCredentialListResult>): void;
+
+    /**
+     * Update keyCredentials associated with an existing service principal.
+     * Reference:
+     * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#keycredential-type
+     *
+     * @param {string} objectId Object id to get service principal information.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {array} [options.value] KeyCredential list.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateKeyCredentials(objectId: string, options: { value? : models.KeyCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateKeyCredentials(objectId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets passwordCredentials associated with an existing service principal.
+     * Reference:
+     * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+     *
+     * @param {string} objectId Object id to get service principal information.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listPasswordCredentials(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PasswordCredentialListResult>): void;
+    listPasswordCredentials(objectId: string, callback: ServiceCallback<models.PasswordCredentialListResult>): void;
+
+    /**
+     * Updates passwordCredentials associated with an existing service principal.
+     * Reference:
+     * https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/entity-and-complex-type-reference#passwordcredential-type
+     *
+     * @param {string} objectId Object id to get service principal information.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {array} [options.value] PasswordCredential list.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updatePasswordCredentials(objectId: string, options: { value? : models.PasswordCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updatePasswordCredentials(objectId: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Gets list of service principals from the current tenant.
      *
      * @param {string} nextLink Next link for list operation.
@@ -521,23 +676,23 @@ export interface Users {
      *
      * @param {object} parameters Parameters to create a user.
      * 
-     * @param {boolean} [parameters.accountEnabled] Enable the account. If it is
+     * @param {boolean} parameters.accountEnabled Enable the account. If it is
      * enabled then true else false.
      * 
-     * @param {string} [parameters.displayName] User display name
+     * @param {string} parameters.displayName User display name
      * 
-     * @param {object} [parameters.passwordProfile] Password Profile
+     * @param {object} parameters.passwordProfile Password Profile
      * 
-     * @param {string} [parameters.passwordProfile.password] Password
+     * @param {string} parameters.passwordProfile.password Password
      * 
      * @param {boolean} [parameters.passwordProfile.forceChangePasswordNextLogin]
      * Force change password on next login
      * 
-     * @param {string} [parameters.userPrincipalName] The user principal name
+     * @param {string} parameters.userPrincipalName The user principal name
      * (someuser@contoso.com). It must contain one of the verified domains for
      * the tenant.
      * 
-     * @param {string} [parameters.mailNickname] The mail alias for the user
+     * @param {string} parameters.mailNickname The mail alias for the user
      * 
      * @param {string} [parameters.immutableId] Needs to be specified if you are
      * using a federated domain for the user's userPrincipalName (UPN) property
@@ -606,7 +761,7 @@ export interface Users {
      * 
      * @param {object} [parameters.passwordProfile] Password Profile
      * 
-     * @param {string} [parameters.passwordProfile.password] Password
+     * @param {string} parameters.passwordProfile.password Password
      * 
      * @param {boolean} [parameters.passwordProfile.forceChangePasswordNextLogin]
      * Force change password on next login
