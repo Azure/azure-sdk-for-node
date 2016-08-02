@@ -31,7 +31,7 @@ Let us create a serviceprincipal with a password. The default start-date will be
 
 ```
 D:\sdk>azure ad sp create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
-info:    Executing command ad app create
+info:    Executing command ad sp create
 + Creating application testap674
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
 data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
