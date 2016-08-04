@@ -71,6 +71,7 @@ declare class NetworkManagementClient {
     routes: operations.Routes;
     securityRules: operations.SecurityRules;
     subnets: operations.Subnets;
+    virtualNetworkPeerings: operations.VirtualNetworkPeerings;
     usages: operations.Usages;
     virtualNetworkGatewayConnections: operations.VirtualNetworkGatewayConnections;
     virtualNetworkGateways: operations.VirtualNetworkGateways;

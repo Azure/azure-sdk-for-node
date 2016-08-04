@@ -16,21 +16,33 @@
  * @constructor
  * SKU of application gateway
  *
- * @member {string} [name] Gets or sets name of application gateway SKU.
- * Possible values include: 'Standard_Small', 'Standard_Medium',
- * 'Standard_Large'
+ * @member {string} [name] Name of application gateway SKU. Possible values
+ * include: 'Standard_Small', 'Standard_Medium', 'Standard_Large'
  * 
- * @member {string} [tier] Gets or sets tier of application gateway. Possible
- * values include: 'Standard'
+ * @member {string} [tier] Tier of application gateway. Possible values
+ * include: 'Standard'
  * 
- * @member {number} [capacity] Gets or sets capacity (instance count) of
- * application gateway
+ * @member {number} [capacity] Capacity (instance count) of application gateway
  * 
  */
 export interface ApplicationGatewaySku {
     name?: string;
     tier?: string;
     capacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewaySslPolicy class.
+ * @constructor
+ * Application gateway SSL policy
+ *
+ * @member {array} [disabledSslProtocols] SSL protocols to be disabled on
+ * Application Gateway
+ * 
+ */
+export interface ApplicationGatewaySslPolicy {
+    disabledSslProtocols?: string[];
 }
 
 /**
@@ -50,15 +62,15 @@ export interface SubResource extends BaseResource {
  * @constructor
  * IP configuration of application gateway
  *
- * @member {object} [subnet] Gets or sets the reference of the subnet
- * resource.A subnet from where appliation gateway gets its private address
+ * @member {object} [subnet] Reference of the subnet resource. A subnet from
+ * where appliation gateway gets its private address
  * 
  * @member {string} [subnet.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * application gateway subnet resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the application
+ * gateway subnet resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -74,20 +86,45 @@ export interface ApplicationGatewayIPConfiguration extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationGatewayAuthenticationCertificate class.
+ * @constructor
+ * Authentication certificates of application gateway
+ *
+ * @member {string} [data] Certificate public data
+ * 
+ * @member {string} [provisioningState] Provisioning state of the
+ * authentication certificate resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Name of the resource that is unique within a
+ * resource group. This name can be used to access the resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface ApplicationGatewayAuthenticationCertificate extends SubResource {
+    data?: string;
+    provisioningState?: string;
+    name?: string;
+    etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewaySslCertificate class.
  * @constructor
  * SSL certificates of application gateway
  *
- * @member {string} [data] Gets or sets the certificate data
+ * @member {string} [data] SSL Certificate data
  * 
- * @member {string} [password] Gets or sets the certificate password
+ * @member {string} [password] SSL Certificate password
  * 
- * @member {string} [publicCertData] Gets or sets the certificate public data
+ * @member {string} [publicCertData] SSL Certificate public data
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * ssl certificate resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the ssl
+ * certificate resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -109,26 +146,24 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
  * @constructor
  * Frontend IP configuration of application gateway
  *
- * @member {string} [privateIPAddress] Gets or sets the privateIPAddress of
- * the Network Interface IP Configuration
+ * @member {string} [privateIPAddress] PrivateIPAddress of the Network
+ * Interface IP Configuration
  * 
- * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
+ * @member {string} [privateIPAllocationMethod] PrivateIP allocation method
+ * (Static/Dynamic). Possible values include: 'Static', 'Dynamic'
  * 
- * @member {object} [subnet] Gets or sets the reference of the subnet resource
+ * @member {object} [subnet] Reference of the subnet resource
  * 
  * @member {string} [subnet.id] Resource Id
  * 
- * @member {object} [publicIPAddress] Gets or sets the reference of the
- * PublicIP resource
+ * @member {object} [publicIPAddress] Reference of the PublicIP resource
  * 
  * @member {string} [publicIPAddress.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the PublicIP
+ * resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -151,12 +186,12 @@ export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
  * @constructor
  * Frontend Port of application gateway
  *
- * @member {number} [port] Gets or sets the frontend port
+ * @member {number} [port] Frontend port
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * frontend port resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the frontend
+ * port resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -176,9 +211,9 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * @constructor
  * Backend Address of application gateway
  *
- * @member {string} [fqdn] Gets or sets the dns name
+ * @member {string} [fqdn] Dns name
  * 
- * @member {string} [ipAddress] Gets or sets the ip address
+ * @member {string} [ipAddress] Ip address
  * 
  */
 export interface ApplicationGatewayBackendAddress {
@@ -204,8 +239,7 @@ export interface ApplicationGatewayBackendAddress {
  * @member {string} [privateIPAddress]
  * 
  * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
+ * allocation method. Possible values include: 'Static', 'Dynamic'
  * 
  * @member {string} [privateIPAddressVersion] Gets or sets PrivateIP address
  * version (IPv4/IPv6). Possible values include: 'IPv4', 'IPv6'
@@ -219,10 +253,10 @@ export interface ApplicationGatewayBackendAddress {
  * of the NetworkSecurityGroup resource
  * 
  * @member {array} [subnet.networkSecurityGroup.securityRules] Gets or sets
- * Security rules of network security group
+ * security rules of network security group
  * 
  * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] Gets or
- * sets Default security rules of network security group
+ * default security rules of network security group
  * 
  * @member {array} [subnet.networkSecurityGroup.networkInterfaces] Gets
  * collection of references to Network Interfaces
@@ -233,8 +267,8 @@ export interface ApplicationGatewayBackendAddress {
  * @member {string} [subnet.networkSecurityGroup.resourceGuid] Gets or sets
  * resource guid property of the network security group resource
  * 
- * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets
+ * provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [subnet.networkSecurityGroup.etag] Gets a unique read-only
  * string that changes whenever the resource is updated
@@ -248,8 +282,8 @@ export interface ApplicationGatewayBackendAddress {
  * @member {array} [subnet.routeTable.subnets] Gets collection of references
  * to subnets
  * 
- * @member {string} [subnet.routeTable.provisioningState] Gets or sets
- * Provisioning state of the resource Updating/Deleting/Failed
+ * @member {string} [subnet.routeTable.provisioningState] Gets provisioning
+ * state of the resource Updating/Deleting/Failed
  * 
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated
@@ -257,11 +291,12 @@ export interface ApplicationGatewayBackendAddress {
  * @member {array} [subnet.ipConfigurations] Gets array of references to the
  * network interface IP configurations using subnet
  * 
- * @member {string} [subnet.provisioningState] Gets or sets Provisioning state
- * of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [subnet.provisioningState] Gets provisioning state of the
+ * resource
  * 
- * @member {string} [subnet.name] Gets name of the resource that is unique
- * within a resource group. This name can be used to access the resource
+ * @member {string} [subnet.name] Gets or sets the name of the resource that
+ * is unique within a resource group. This name can be used to access the
+ * resource
  * 
  * @member {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated
@@ -286,8 +321,7 @@ export interface ApplicationGatewayBackendAddress {
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.privateIPAllocationMethod] Gets or sets
- * PrivateIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
+ * PrivateIP allocation method. Possible values include: 'Static', 'Dynamic'
  * 
  * @member {object} [publicIPAddress.ipConfiguration.subnet] Gets or sets the
  * reference of the subnet resource
@@ -301,11 +335,11 @@ export interface ApplicationGatewayBackendAddress {
  * 
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * Gets or sets Security rules of network security group
+ * Gets or sets security rules of network security group
  * 
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
- * Gets or sets Default security rules of network security group
+ * Gets or default security rules of network security group
  * 
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
@@ -321,8 +355,7 @@ export interface ApplicationGatewayBackendAddress {
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
@@ -339,7 +372,7 @@ export interface ApplicationGatewayBackendAddress {
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] Gets
- * or sets Provisioning state of the resource Updating/Deleting/Failed
+ * provisioning state of the resource Updating/Deleting/Failed
  * 
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
@@ -350,12 +383,11 @@ export interface ApplicationGatewayBackendAddress {
  * subnet
  * 
  * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the resource
  * 
- * @member {string} [publicIPAddress.ipConfiguration.subnet.name] Gets name of
- * the resource that is unique within a resource group. This name can be used
- * to access the resource
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.name] Gets or sets
+ * the name of the resource that is unique within a resource group. This name
+ * can be used to access the resource
  * 
  * @member {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
  * read-only string that changes whenever the resource is updated
@@ -364,8 +396,7 @@ export interface ApplicationGatewayBackendAddress {
  * sets the reference of the PublicIP resource
  * 
  * @member {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
- * or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [publicIPAddress.ipConfiguration.name] Gets name of the
  * resource that is unique within a resource group. This name can be used to
@@ -402,8 +433,8 @@ export interface ApplicationGatewayBackendAddress {
  * @member {string} [publicIPAddress.resourceGuid] Gets or sets resource guid
  * property of the PublicIP resource
  * 
- * @member {string} [publicIPAddress.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [publicIPAddress.provisioningState] Gets provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [publicIPAddress.etag] Gets a unique read-only string that
  * changes whenever the resource is updated
@@ -438,16 +469,16 @@ export interface NetworkInterfaceIPConfiguration extends SubResource {
  * @constructor
  * Backend Address Pool of application gateway
  *
- * @member {array} [backendIPConfigurations] Gets collection of references to
- * IPs defined in NICs
+ * @member {array} [backendIPConfigurations] Collection of references to IPs
+ * defined in NICs
  * 
- * @member {array} [backendAddresses] Gets or sets the backend addresses
+ * @member {array} [backendAddresses] Backend addresses
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * backend address pool resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the backend
+ * address pool resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
+ * @member {string} [name] Resource that is unique within a resource group.
+ * This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated
@@ -478,7 +509,7 @@ export interface ApplicationGatewayBackendAddressPool extends SubResource {
  * 
  * @member {string} [outboundNatRule.id] Resource Id
  * 
- * @member {string} [provisioningState] Provisioning state of the PublicIP
+ * @member {string} [provisioningState] Get provisioning state of the PublicIP
  * resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -526,8 +557,8 @@ export interface BackendAddressPool extends SubResource {
  * @member {string} [backendIPConfiguration.privateIPAddress]
  * 
  * @member {string} [backendIPConfiguration.privateIPAllocationMethod] Gets or
- * sets PrivateIP allocation method (Static/Dynamic). Possible values
- * include: 'Static', 'Dynamic'
+ * sets PrivateIP allocation method. Possible values include: 'Static',
+ * 'Dynamic'
  * 
  * @member {string} [backendIPConfiguration.privateIPAddressVersion] Gets or
  * sets PrivateIP address version (IPv4/IPv6). Possible values include:
@@ -543,11 +574,11 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {array}
  * [backendIPConfiguration.subnet.networkSecurityGroup.securityRules] Gets or
- * sets Security rules of network security group
+ * sets security rules of network security group
  * 
  * @member {array}
  * [backendIPConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
- * Gets or sets Default security rules of network security group
+ * Gets or default security rules of network security group
  * 
  * @member {array}
  * [backendIPConfiguration.subnet.networkSecurityGroup.networkInterfaces]
@@ -563,8 +594,7 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string}
  * [backendIPConfiguration.subnet.networkSecurityGroup.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [backendIPConfiguration.subnet.networkSecurityGroup.etag]
  * Gets a unique read-only string that changes whenever the resource is
@@ -580,8 +610,8 @@ export interface BackendAddressPool extends SubResource {
  * collection of references to subnets
  * 
  * @member {string}
- * [backendIPConfiguration.subnet.routeTable.provisioningState] Gets or sets
- * Provisioning state of the resource Updating/Deleting/Failed
+ * [backendIPConfiguration.subnet.routeTable.provisioningState] Gets
+ * provisioning state of the resource Updating/Deleting/Failed
  * 
  * @member {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
  * unique read-only string that changes whenever the resource is updated
@@ -589,12 +619,12 @@ export interface BackendAddressPool extends SubResource {
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets array
  * of references to the network interface IP configurations using subnet
  * 
- * @member {string} [backendIPConfiguration.subnet.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [backendIPConfiguration.subnet.provisioningState] Gets
+ * provisioning state of the resource
  * 
- * @member {string} [backendIPConfiguration.subnet.name] Gets name of the
- * resource that is unique within a resource group. This name can be used to
- * access the resource
+ * @member {string} [backendIPConfiguration.subnet.name] Gets or sets the name
+ * of the resource that is unique within a resource group. This name can be
+ * used to access the resource
  * 
  * @member {string} [backendIPConfiguration.subnet.etag] A unique read-only
  * string that changes whenever the resource is updated
@@ -622,8 +652,8 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
- * Gets or sets PrivateIP allocation method (Static/Dynamic). Possible values
- * include: 'Static', 'Dynamic'
+ * Gets or sets PrivateIP allocation method. Possible values include:
+ * 'Static', 'Dynamic'
  * 
  * @member {object}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet] Gets or
@@ -639,11 +669,11 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * Gets or sets Security rules of network security group
+ * Gets or sets security rules of network security group
  * 
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
- * Gets or sets Default security rules of network security group
+ * Gets or default security rules of network security group
  * 
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
@@ -659,8 +689,7 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
@@ -681,7 +710,7 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
- * Gets or sets Provisioning state of the resource Updating/Deleting/Failed
+ * Gets provisioning state of the resource Updating/Deleting/Failed
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
@@ -695,13 +724,12 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the resource
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.name] Gets
- * name of the resource that is unique within a resource group. This name can
- * be used to access the resource
+ * or sets the name of the resource that is unique within a resource group.
+ * This name can be used to access the resource
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.etag] A
@@ -713,8 +741,7 @@ export interface BackendAddressPool extends SubResource {
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.name] Gets name of
@@ -758,8 +785,7 @@ export interface BackendAddressPool extends SubResource {
  * or sets resource guid property of the PublicIP resource
  * 
  * @member {string} [backendIPConfiguration.publicIPAddress.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [backendIPConfiguration.publicIPAddress.etag] Gets a
  * unique read-only string that changes whenever the resource is updated
@@ -774,8 +800,8 @@ export interface BackendAddressPool extends SubResource {
  * that changes whenever the resource is updated
  * 
  * @member {string} [protocol] Gets or sets the transport potocol for the
- * external endpoint. Possible values are Udp or Tcp. Possible values
- * include: 'Udp', 'Tcp'
+ * endpoint. Possible values are Udp or Tcp. Possible values include: 'Udp',
+ * 'Tcp'
  * 
  * @member {number} [frontendPort] Gets or sets the port for the external
  * endpoint. You can spcify any port number you choose, but the port numbers
@@ -802,7 +828,7 @@ export interface BackendAddressPool extends SubResource {
  * Always ON availability Groups in SQL server. This setting can't be changed
  * after you create the endpoint
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -836,11 +862,11 @@ export interface InboundNatRule extends SubResource {
  * @member {object} [networkSecurityGroup] Gets or sets the reference of the
  * NetworkSecurityGroup resource
  * 
- * @member {array} [networkSecurityGroup.securityRules] Gets or sets Security
+ * @member {array} [networkSecurityGroup.securityRules] Gets or sets security
  * rules of network security group
  * 
- * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or sets
- * Default security rules of network security group
+ * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or default
+ * security rules of network security group
  * 
  * @member {array} [networkSecurityGroup.networkInterfaces] Gets collection of
  * references to Network Interfaces
@@ -851,8 +877,8 @@ export interface InboundNatRule extends SubResource {
  * @member {string} [networkSecurityGroup.resourceGuid] Gets or sets resource
  * guid property of the network security group resource
  * 
- * @member {string} [networkSecurityGroup.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [networkSecurityGroup.provisioningState] Gets provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [networkSecurityGroup.etag] Gets a unique read-only string
  * that changes whenever the resource is updated
@@ -865,8 +891,8 @@ export interface InboundNatRule extends SubResource {
  * @member {array} [routeTable.subnets] Gets collection of references to
  * subnets
  * 
- * @member {string} [routeTable.provisioningState] Gets or sets Provisioning
- * state of the resource Updating/Deleting/Failed
+ * @member {string} [routeTable.provisioningState] Gets provisioning state of
+ * the resource Updating/Deleting/Failed
  * 
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated
@@ -874,11 +900,11 @@ export interface InboundNatRule extends SubResource {
  * @member {array} [ipConfigurations] Gets array of references to the network
  * interface IP configurations using subnet
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * PublicIP resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Gets provisioning state of the resource
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
- * resource group. This name can be used to access the resource
+ * @member {string} [name] Gets or sets the name of the resource that is
+ * unique within a resource group. This name can be used to access the
+ * resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated
@@ -923,11 +949,11 @@ export interface Resource extends BaseResource {
  * @constructor
  * NetworkSecurityGroup resource
  *
- * @member {array} [securityRules] Gets or sets Security rules of network
+ * @member {array} [securityRules] Gets or sets security rules of network
  * security group
  * 
- * @member {array} [defaultSecurityRules] Gets or sets Default security rules
- * of network security group
+ * @member {array} [defaultSecurityRules] Gets or default security rules of
+ * network security group
  * 
  * @member {array} [networkInterfaces] Gets collection of references to
  * Network Interfaces
@@ -937,7 +963,7 @@ export interface Resource extends BaseResource {
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * network security group resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -998,7 +1024,7 @@ export interface NetworkSecurityGroup extends Resource {
  * or Outbound. The direction specifies if rule will be evaluated on incoming
  * or outcoming traffic. Possible values include: 'Inbound', 'Outbound'
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -1037,11 +1063,11 @@ export interface SecurityRule extends SubResource {
  * @member {object} [networkSecurityGroup] Gets or sets the reference of the
  * NetworkSecurityGroup resource
  * 
- * @member {array} [networkSecurityGroup.securityRules] Gets or sets Security
+ * @member {array} [networkSecurityGroup.securityRules] Gets or sets security
  * rules of network security group
  * 
- * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or sets
- * Default security rules of network security group
+ * @member {array} [networkSecurityGroup.defaultSecurityRules] Gets or default
+ * security rules of network security group
  * 
  * @member {array} [networkSecurityGroup.networkInterfaces] Gets collection of
  * references to Network Interfaces
@@ -1052,17 +1078,17 @@ export interface SecurityRule extends SubResource {
  * @member {string} [networkSecurityGroup.resourceGuid] Gets or sets resource
  * guid property of the network security group resource
  * 
- * @member {string} [networkSecurityGroup.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [networkSecurityGroup.provisioningState] Gets provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [networkSecurityGroup.etag] Gets a unique read-only string
  * that changes whenever the resource is updated
  * 
  * @member {array} [ipConfigurations] Gets or sets list of IPConfigurations of
- * the NetworkInterface
+ * the network interface
  * 
- * @member {object} [dnsSettings] Gets or sets DNS Settings in
- * NetworkInterface
+ * @member {object} [dnsSettings] Gets or sets DNS settings in network
+ * interface
  * 
  * @member {array} [dnsSettings.dnsServers] Gets or sets list of DNS servers
  * IP addresses
@@ -1071,14 +1097,14 @@ export interface SecurityRule extends SubResource {
  * Applied DNS servers IP addresses
  * 
  * @member {string} [dnsSettings.internalDnsNameLabel] Gets or sets the
- * Internal DNS name
+ * internal DNS name
  * 
  * @member {string} [dnsSettings.internalFqdn] Gets or sets the internal fqdn.
  * 
  * @member {string} [dnsSettings.internalDomainNameSuffix] Gets or sets
  * internal domain name suffix of the NIC.
  * 
- * @member {string} [macAddress] Gets the MAC Address of the network interface
+ * @member {string} [macAddress] Gets the MAC address of the network interface
  * 
  * @member {boolean} [primary] Gets whether this is a primary NIC on a virtual
  * machine
@@ -1089,7 +1115,7 @@ export interface SecurityRule extends SubResource {
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * network interface resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -1113,14 +1139,14 @@ export interface NetworkInterface extends Resource {
  * @class
  * Initializes a new instance of the NetworkInterfaceDnsSettings class.
  * @constructor
- * Dns Settings of a network interface
+ * Dns settings of a network interface
  *
  * @member {array} [dnsServers] Gets or sets list of DNS servers IP addresses
  * 
  * @member {array} [appliedDnsServers] Gets or sets list of Applied DNS
  * servers IP addresses
  * 
- * @member {string} [internalDnsNameLabel] Gets or sets the Internal DNS name
+ * @member {string} [internalDnsNameLabel] Gets or sets the internal DNS name
  * 
  * @member {string} [internalFqdn] Gets or sets the internal fqdn.
  * 
@@ -1146,7 +1172,7 @@ export interface NetworkInterfaceDnsSettings {
  * 
  * @member {array} [subnets] Gets collection of references to subnets
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -1177,7 +1203,7 @@ export interface RouteTable extends Resource {
  * should be forwarded to. Next hop values are only allowed in routes where
  * the next hop type is VirtualAppliance.
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -1206,8 +1232,7 @@ export interface Route extends SubResource {
  * the IP Configuration
  * 
  * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
+ * allocation method. Possible values include: 'Static', 'Dynamic'
  * 
  * @member {object} [subnet] Gets or sets the reference of the subnet resource
  * 
@@ -1218,10 +1243,10 @@ export interface Route extends SubResource {
  * of the NetworkSecurityGroup resource
  * 
  * @member {array} [subnet.networkSecurityGroup.securityRules] Gets or sets
- * Security rules of network security group
+ * security rules of network security group
  * 
  * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] Gets or
- * sets Default security rules of network security group
+ * default security rules of network security group
  * 
  * @member {array} [subnet.networkSecurityGroup.networkInterfaces] Gets
  * collection of references to Network Interfaces
@@ -1232,8 +1257,8 @@ export interface Route extends SubResource {
  * @member {string} [subnet.networkSecurityGroup.resourceGuid] Gets or sets
  * resource guid property of the network security group resource
  * 
- * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets
+ * provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [subnet.networkSecurityGroup.etag] Gets a unique read-only
  * string that changes whenever the resource is updated
@@ -1247,8 +1272,8 @@ export interface Route extends SubResource {
  * @member {array} [subnet.routeTable.subnets] Gets collection of references
  * to subnets
  * 
- * @member {string} [subnet.routeTable.provisioningState] Gets or sets
- * Provisioning state of the resource Updating/Deleting/Failed
+ * @member {string} [subnet.routeTable.provisioningState] Gets provisioning
+ * state of the resource Updating/Deleting/Failed
  * 
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated
@@ -1256,11 +1281,12 @@ export interface Route extends SubResource {
  * @member {array} [subnet.ipConfigurations] Gets array of references to the
  * network interface IP configurations using subnet
  * 
- * @member {string} [subnet.provisioningState] Gets or sets Provisioning state
- * of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [subnet.provisioningState] Gets provisioning state of the
+ * resource
  * 
- * @member {string} [subnet.name] Gets name of the resource that is unique
- * within a resource group. This name can be used to access the resource
+ * @member {string} [subnet.name] Gets or sets the name of the resource that
+ * is unique within a resource group. This name can be used to access the
+ * resource
  * 
  * @member {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated
@@ -1306,13 +1332,13 @@ export interface Route extends SubResource {
  * @member {string} [publicIPAddress.resourceGuid] Gets or sets resource guid
  * property of the PublicIP resource
  * 
- * @member {string} [publicIPAddress.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [publicIPAddress.provisioningState] Gets provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [publicIPAddress.etag] Gets a unique read-only string that
  * changes whenever the resource is updated
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -1351,8 +1377,7 @@ export interface IPConfiguration extends SubResource {
  * privateIPAddress of the IP Configuration
  * 
  * @member {string} [ipConfiguration.privateIPAllocationMethod] Gets or sets
- * PrivateIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
+ * PrivateIP allocation method. Possible values include: 'Static', 'Dynamic'
  * 
  * @member {object} [ipConfiguration.subnet] Gets or sets the reference of the
  * subnet resource
@@ -1364,11 +1389,11 @@ export interface IPConfiguration extends SubResource {
  * the reference of the NetworkSecurityGroup resource
  * 
  * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * Gets or sets Security rules of network security group
+ * Gets or sets security rules of network security group
  * 
  * @member {array}
  * [ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules] Gets or
- * sets Default security rules of network security group
+ * default security rules of network security group
  * 
  * @member {array}
  * [ipConfiguration.subnet.networkSecurityGroup.networkInterfaces] Gets
@@ -1381,8 +1406,8 @@ export interface IPConfiguration extends SubResource {
  * Gets or sets resource guid property of the network security group resource
  * 
  * @member {string}
- * [ipConfiguration.subnet.networkSecurityGroup.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * [ipConfiguration.subnet.networkSecurityGroup.provisioningState] Gets
+ * provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
  * unique read-only string that changes whenever the resource is updated
@@ -1397,7 +1422,7 @@ export interface IPConfiguration extends SubResource {
  * of references to subnets
  * 
  * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] Gets
- * or sets Provisioning state of the resource Updating/Deleting/Failed
+ * provisioning state of the resource Updating/Deleting/Failed
  * 
  * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated
@@ -1405,12 +1430,12 @@ export interface IPConfiguration extends SubResource {
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets array of
  * references to the network interface IP configurations using subnet
  * 
- * @member {string} [ipConfiguration.subnet.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [ipConfiguration.subnet.provisioningState] Gets
+ * provisioning state of the resource
  * 
- * @member {string} [ipConfiguration.subnet.name] Gets name of the resource
- * that is unique within a resource group. This name can be used to access
- * the resource
+ * @member {string} [ipConfiguration.subnet.name] Gets or sets the name of the
+ * resource that is unique within a resource group. This name can be used to
+ * access the resource
  * 
  * @member {string} [ipConfiguration.subnet.etag] A unique read-only string
  * that changes whenever the resource is updated
@@ -1418,8 +1443,8 @@ export interface IPConfiguration extends SubResource {
  * @member {object} [ipConfiguration.publicIPAddress] Gets or sets the
  * reference of the PublicIP resource
  * 
- * @member {string} [ipConfiguration.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [ipConfiguration.provisioningState] Gets provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [ipConfiguration.name] Gets name of the resource that is
  * unique within a resource group. This name can be used to access the
@@ -1455,7 +1480,7 @@ export interface IPConfiguration extends SubResource {
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * PublicIP resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -1509,24 +1534,27 @@ export interface PublicIPAddressDnsSettings {
  * @constructor
  * Backend address pool settings of application gateway
  *
- * @member {number} [port] Gets or sets the port
+ * @member {number} [port] Port
  * 
- * @member {string} [protocol] Gets or sets the protocol. Possible values
- * include: 'Http', 'Https'
+ * @member {string} [protocol] Protocol. Possible values include: 'Http',
+ * 'Https'
  * 
- * @member {string} [cookieBasedAffinity] Gets or sets the cookie affinity.
- * Possible values include: 'Enabled', 'Disabled'
+ * @member {string} [cookieBasedAffinity] Cookie affinity. Possible values
+ * include: 'Enabled', 'Disabled'
  * 
- * @member {number} [requestTimeout] Gets or sets request timeout
+ * @member {number} [requestTimeout] Request timeout
  * 
- * @member {object} [probe] Gets or sets probe resource of application gateway
+ * @member {object} [probe] Probe resource of application gateway
  * 
  * @member {string} [probe.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * backend http settings resource Updating/Deleting/Failed
+ * @member {array} [authenticationCertificates] Array of references to
+ * Application Gateway Authentication Certificates
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [provisioningState] Provisioning state of the backend http
+ * settings resource Updating/Deleting/Failed
+ * 
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -1539,6 +1567,7 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
     cookieBasedAffinity?: string;
     requestTimeout?: number;
     probe?: SubResource;
+    authenticationCertificates?: SubResource[];
     provisioningState?: string;
     name?: string;
     etag?: string;
@@ -1550,33 +1579,33 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @constructor
  * Http listener of application gateway
  *
- * @member {object} [frontendIPConfiguration] Gets or sets frontend IP
- * configuration resource of application gateway
+ * @member {object} [frontendIPConfiguration] Frontend IP configuration
+ * resource of application gateway
  * 
  * @member {string} [frontendIPConfiguration.id] Resource Id
  * 
- * @member {object} [frontendPort] Gets or sets frontend port resource of
- * application gateway
+ * @member {object} [frontendPort] Frontend port resource of application
+ * gateway
  * 
  * @member {string} [frontendPort.id] Resource Id
  * 
- * @member {string} [protocol] Gets or sets the protocol. Possible values
- * include: 'Http', 'Https'
+ * @member {string} [protocol] Protocol. Possible values include: 'Http',
+ * 'Https'
  * 
- * @member {string} [hostName] Gets or sets the host name of http listener
+ * @member {string} [hostName] Host name of http listener
  * 
- * @member {object} [sslCertificate] Gets or sets ssl certificate resource of
- * application gateway
+ * @member {object} [sslCertificate] Ssl certificate resource of application
+ * gateway
  * 
  * @member {string} [sslCertificate.id] Resource Id
  * 
- * @member {boolean} [requireServerNameIndication] Gets or sets the
- * requireServerNameIndication of http listener
+ * @member {boolean} [requireServerNameIndication] RequireServerNameIndication
+ * of http listener
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * http listener resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the http
+ * listener resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -1601,22 +1630,22 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * @constructor
  * Path rule of URL path map of application gateway
  *
- * @member {array} [paths] Gets or sets the path rules of URL path map
+ * @member {array} [paths] Path rules of URL path map
  * 
- * @member {object} [backendAddressPool] Gets or sets backend address pool
- * resource of URL path map
+ * @member {object} [backendAddressPool] Backend address pool resource of URL
+ * path map
  * 
  * @member {string} [backendAddressPool.id] Resource Id
  * 
- * @member {object} [backendHttpSettings] Gets or sets backend http settings
- * resource of URL path map
+ * @member {object} [backendHttpSettings] Backend http settings resource of
+ * URL path map
  * 
  * @member {string} [backendHttpSettings.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets path rule of URL path map
- * resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Path rule of URL path map resource
+ * Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -1638,24 +1667,23 @@ export interface ApplicationGatewayPathRule extends SubResource {
  * @constructor
  * Probe of application gateway
  *
- * @member {string} [protocol] Gets or sets the protocol. Possible values
- * include: 'Http', 'Https'
+ * @member {string} [protocol] Protocol. Possible values include: 'Http',
+ * 'Https'
  * 
- * @member {string} [host] Gets or sets the host to send probe to
+ * @member {string} [host] Host to send probe to
  * 
- * @member {string} [path] Gets or sets the relative path of probe
+ * @member {string} [path] Relative path of probe
  * 
- * @member {number} [interval] Gets or sets probing interval in seconds
+ * @member {number} [interval] Probing interval in seconds
  * 
- * @member {number} [timeout] Gets or sets probing timeout in seconds
+ * @member {number} [timeout] Probing timeout in seconds
  * 
- * @member {number} [unhealthyThreshold] Gets or sets probing unhealthy
- * threshold
+ * @member {number} [unhealthyThreshold] Probing unhealthy threshold
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * backend http settings resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the backend http
+ * settings resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -1680,33 +1708,32 @@ export interface ApplicationGatewayProbe extends SubResource {
  * @constructor
  * Request routing rule of application gateway
  *
- * @member {string} [ruleType] Gets or sets the rule type. Possible values
- * include: 'Basic', 'PathBasedRouting'
+ * @member {string} [ruleType] Rule type. Possible values include: 'Basic',
+ * 'PathBasedRouting'
  * 
- * @member {object} [backendAddressPool] Gets or sets backend address pool
- * resource of application gateway
+ * @member {object} [backendAddressPool] Backend address pool resource of
+ * application gateway
  * 
  * @member {string} [backendAddressPool.id] Resource Id
  * 
- * @member {object} [backendHttpSettings] Gets or sets frontend port resource
- * of application gateway
+ * @member {object} [backendHttpSettings] Frontend port resource of
+ * application gateway
  * 
  * @member {string} [backendHttpSettings.id] Resource Id
  * 
- * @member {object} [httpListener] Gets or sets http listener resource of
- * application gateway
+ * @member {object} [httpListener] Http listener resource of application
+ * gateway
  * 
  * @member {string} [httpListener.id] Resource Id
  * 
- * @member {object} [urlPathMap] Gets or sets url path map resource of
- * application gateway
+ * @member {object} [urlPathMap] Url path map resource of application gateway
  * 
  * @member {string} [urlPathMap.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * request routing rule resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the request
+ * routing rule resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -1730,22 +1757,22 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
  * @constructor
  * UrlPathMap of application gateway
  *
- * @member {object} [defaultBackendAddressPool] Gets or sets default backend
- * address pool resource of URL path map
+ * @member {object} [defaultBackendAddressPool] Default backend address pool
+ * resource of URL path map
  * 
  * @member {string} [defaultBackendAddressPool.id] Resource Id
  * 
- * @member {object} [defaultBackendHttpSettings] Gets or sets default backend
- * http settings resource of URL path map
+ * @member {object} [defaultBackendHttpSettings] Default backend http settings
+ * resource of URL path map
  * 
  * @member {string} [defaultBackendHttpSettings.id] Resource Id
  * 
- * @member {array} [pathRules] Gets or sets path rule of URL path map resource
+ * @member {array} [pathRules] Path rule of URL path map resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * backend http settings resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Provisioning state of the backend http
+ * settings resource Updating/Deleting/Failed
  * 
- * @member {string} [name] Gets name of the resource that is unique within a
+ * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource
  * 
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -1767,65 +1794,73 @@ export interface ApplicationGatewayUrlPathMap extends SubResource {
  * @constructor
  * ApplicationGateways resource
  *
- * @member {object} [sku] Gets or sets sku of application gateway resource
+ * @member {object} [sku] Sku of application gateway resource
  * 
- * @member {string} [sku.name] Gets or sets name of application gateway SKU.
- * Possible values include: 'Standard_Small', 'Standard_Medium',
- * 'Standard_Large'
+ * @member {string} [sku.name] Name of application gateway SKU. Possible
+ * values include: 'Standard_Small', 'Standard_Medium', 'Standard_Large'
  * 
- * @member {string} [sku.tier] Gets or sets tier of application gateway.
- * Possible values include: 'Standard'
+ * @member {string} [sku.tier] Tier of application gateway. Possible values
+ * include: 'Standard'
  * 
- * @member {number} [sku.capacity] Gets or sets capacity (instance count) of
- * application gateway
+ * @member {number} [sku.capacity] Capacity (instance count) of application
+ * gateway
  * 
- * @member {string} [operationalState] Gets operational state of application
+ * @member {object} [sslPolicy] SSL policy of application gateway resource
+ * 
+ * @member {array} [sslPolicy.disabledSslProtocols] SSL protocols to be
+ * disabled on Application Gateway
+ * 
+ * @member {string} [operationalState] Operational state of application
  * gateway resource. Possible values include: 'Stopped', 'Starting',
  * 'Running', 'Stopping'
  * 
- * @member {array} [gatewayIPConfigurations] Gets or sets subnets of
+ * @member {array} [gatewayIPConfigurations] Subnets of application gateway
+ * resource
+ * 
+ * @member {array} [authenticationCertificates] Authentication certificates of
  * application gateway resource
  * 
- * @member {array} [sslCertificates] Gets or sets ssl certificates of
+ * @member {array} [sslCertificates] SSL certificates of application gateway
+ * resource
+ * 
+ * @member {array} [frontendIPConfigurations] Frontend IP addresses of
  * application gateway resource
  * 
- * @member {array} [frontendIPConfigurations] Gets or sets frontend IP
- * addresses of application gateway resource
+ * @member {array} [frontendPorts] Frontend ports of application gateway
+ * resource
  * 
- * @member {array} [frontendPorts] Gets or sets frontend ports of application
+ * @member {array} [probes] Probes of application gateway resource
+ * 
+ * @member {array} [backendAddressPools] Backend address pool of application
  * gateway resource
  * 
- * @member {array} [probes] Gets or sets probes of application gateway resource
- * 
- * @member {array} [backendAddressPools] Gets or sets backend address pool of
+ * @member {array} [backendHttpSettingsCollection] Backend http settings of
  * application gateway resource
  * 
- * @member {array} [backendHttpSettingsCollection] Gets or sets backend http
- * settings of application gateway resource
+ * @member {array} [httpListeners] HTTP listeners of application gateway
+ * resource
  * 
- * @member {array} [httpListeners] Gets or sets HTTP listeners of application
+ * @member {array} [urlPathMaps] URL path map of application gateway resource
+ * 
+ * @member {array} [requestRoutingRules] Request routing rules of application
  * gateway resource
  * 
- * @member {array} [urlPathMaps] Gets or sets URL path map of application
- * gateway resource
- * 
- * @member {array} [requestRoutingRules] Gets or sets request routing rules of
- * application gateway resource
- * 
- * @member {string} [resourceGuid] Gets or sets resource guid property of the
+ * @member {string} [resourceGuid] Resource guid property of the
  * ApplicationGateway resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Provisioning state of the
  * ApplicationGateway resource Updating/Deleting/Failed
  * 
- * @member {string} [etag] Gets a unique read-only string that changes
- * whenever the resource is updated
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
  * 
  */
 export interface ApplicationGateway extends Resource {
     sku?: ApplicationGatewaySku;
+    sslPolicy?: ApplicationGatewaySslPolicy;
     operationalState?: string;
     gatewayIPConfigurations?: ApplicationGatewayIPConfiguration[];
+    authenticationCertificates?: ApplicationGatewayAuthenticationCertificate[];
     sslCertificates?: ApplicationGatewaySslCertificate[];
     frontendIPConfigurations?: ApplicationGatewayFrontendIPConfiguration[];
     frontendPorts?: ApplicationGatewayFrontendPort[];
@@ -1851,7 +1886,7 @@ export interface ApplicationGateway extends Resource {
  * @member {string} [authorizationUseStatus] Gets or sets
  * AuthorizationUseStatus. Possible values include: 'Available', 'InUse'
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -1974,8 +2009,13 @@ export interface ExpressRouteCircuitStats {
  * 
  * @member {number} [stats.secondarybytesOut] Gets BytesOut of the peering.
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [gatewayManagerEtag] Gets or sets the GatewayManager Etag
+ * 
+ * @member {string} [lastModifiedBy] Gets whether the provider or the customer
+ * last modified the peering
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource
@@ -1998,6 +2038,8 @@ export interface ExpressRouteCircuitPeering extends SubResource {
     microsoftPeeringConfig?: ExpressRouteCircuitPeeringConfig;
     stats?: ExpressRouteCircuitStats;
     provisioningState?: string;
+    gatewayManagerEtag?: string;
+    lastModifiedBy?: string;
     name?: string;
     etag?: string;
 }
@@ -2087,8 +2129,10 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * @member {number} [serviceProviderProperties.bandwidthInMbps] Gets or sets
  * BandwidthInMbps.
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
+ * 
+ * @member {string} [gatewayManagerEtag] Gets or sets the GatewayManager Etag
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
  * whenever the resource is updated
@@ -2105,6 +2149,7 @@ export interface ExpressRouteCircuit extends Resource {
     serviceProviderNotes?: string;
     serviceProviderProperties?: ExpressRouteCircuitServiceProviderProperties;
     provisioningState?: string;
+    gatewayManagerEtag?: string;
     etag?: string;
 }
 
@@ -2257,7 +2302,7 @@ export interface ExpressRouteServiceProviderBandwidthsOffered {
  * 
  * @member {array} [bandwidthsOffered] Gets or bandwidths offered
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * resource
  * 
  */
@@ -2273,13 +2318,13 @@ export interface ExpressRouteServiceProvider extends Resource {
  * @constructor
  * Frontend IP address of the load balancer
  *
- * @member {array} [inboundNatRules] Read only.Inbound rules URIs that use
+ * @member {array} [inboundNatRules] Read only. Inbound rules URIs that use
  * this frontend IP
  * 
- * @member {array} [inboundNatPools] Read only.Inbound pools URIs that use
+ * @member {array} [inboundNatPools] Read only. Inbound pools URIs that use
  * this frontend IP
  * 
- * @member {array} [outboundNatRules] Read only.Outbound rules URIs that use
+ * @member {array} [outboundNatRules] Read only. Outbound rules URIs that use
  * this frontend IP
  * 
  * @member {array} [loadBalancingRules] Gets Load Balancing rules URIs that
@@ -2289,8 +2334,7 @@ export interface ExpressRouteServiceProvider extends Resource {
  * the IP Configuration
  * 
  * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
+ * allocation method. Possible values include: 'Static', 'Dynamic'
  * 
  * @member {object} [subnet] Gets or sets the reference of the subnet resource
  * 
@@ -2301,10 +2345,10 @@ export interface ExpressRouteServiceProvider extends Resource {
  * of the NetworkSecurityGroup resource
  * 
  * @member {array} [subnet.networkSecurityGroup.securityRules] Gets or sets
- * Security rules of network security group
+ * security rules of network security group
  * 
  * @member {array} [subnet.networkSecurityGroup.defaultSecurityRules] Gets or
- * sets Default security rules of network security group
+ * default security rules of network security group
  * 
  * @member {array} [subnet.networkSecurityGroup.networkInterfaces] Gets
  * collection of references to Network Interfaces
@@ -2315,8 +2359,8 @@ export interface ExpressRouteServiceProvider extends Resource {
  * @member {string} [subnet.networkSecurityGroup.resourceGuid] Gets or sets
  * resource guid property of the network security group resource
  * 
- * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets or
- * sets Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [subnet.networkSecurityGroup.provisioningState] Gets
+ * provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [subnet.networkSecurityGroup.etag] Gets a unique read-only
  * string that changes whenever the resource is updated
@@ -2330,8 +2374,8 @@ export interface ExpressRouteServiceProvider extends Resource {
  * @member {array} [subnet.routeTable.subnets] Gets collection of references
  * to subnets
  * 
- * @member {string} [subnet.routeTable.provisioningState] Gets or sets
- * Provisioning state of the resource Updating/Deleting/Failed
+ * @member {string} [subnet.routeTable.provisioningState] Gets provisioning
+ * state of the resource Updating/Deleting/Failed
  * 
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated
@@ -2339,11 +2383,12 @@ export interface ExpressRouteServiceProvider extends Resource {
  * @member {array} [subnet.ipConfigurations] Gets array of references to the
  * network interface IP configurations using subnet
  * 
- * @member {string} [subnet.provisioningState] Gets or sets Provisioning state
- * of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [subnet.provisioningState] Gets provisioning state of the
+ * resource
  * 
- * @member {string} [subnet.name] Gets name of the resource that is unique
- * within a resource group. This name can be used to access the resource
+ * @member {string} [subnet.name] Gets or sets the name of the resource that
+ * is unique within a resource group. This name can be used to access the
+ * resource
  * 
  * @member {string} [subnet.etag] A unique read-only string that changes
  * whenever the resource is updated
@@ -2366,8 +2411,7 @@ export interface ExpressRouteServiceProvider extends Resource {
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.privateIPAllocationMethod] Gets or sets
- * PrivateIP allocation method (Static/Dynamic). Possible values include:
- * 'Static', 'Dynamic'
+ * PrivateIP allocation method. Possible values include: 'Static', 'Dynamic'
  * 
  * @member {object} [publicIPAddress.ipConfiguration.subnet] Gets or sets the
  * reference of the subnet resource
@@ -2381,11 +2425,11 @@ export interface ExpressRouteServiceProvider extends Resource {
  * 
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
- * Gets or sets Security rules of network security group
+ * Gets or sets security rules of network security group
  * 
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
- * Gets or sets Default security rules of network security group
+ * Gets or default security rules of network security group
  * 
  * @member {array}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
@@ -2401,8 +2445,7 @@ export interface ExpressRouteServiceProvider extends Resource {
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag] Gets a
@@ -2419,7 +2462,7 @@ export interface ExpressRouteServiceProvider extends Resource {
  * 
  * @member {string}
  * [publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState] Gets
- * or sets Provisioning state of the resource Updating/Deleting/Failed
+ * provisioning state of the resource Updating/Deleting/Failed
  * 
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
@@ -2430,12 +2473,11 @@ export interface ExpressRouteServiceProvider extends Resource {
  * subnet
  * 
  * @member {string} [publicIPAddress.ipConfiguration.subnet.provisioningState]
- * Gets or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * Gets provisioning state of the resource
  * 
- * @member {string} [publicIPAddress.ipConfiguration.subnet.name] Gets name of
- * the resource that is unique within a resource group. This name can be used
- * to access the resource
+ * @member {string} [publicIPAddress.ipConfiguration.subnet.name] Gets or sets
+ * the name of the resource that is unique within a resource group. This name
+ * can be used to access the resource
  * 
  * @member {string} [publicIPAddress.ipConfiguration.subnet.etag] A unique
  * read-only string that changes whenever the resource is updated
@@ -2444,8 +2486,7 @@ export interface ExpressRouteServiceProvider extends Resource {
  * sets the reference of the PublicIP resource
  * 
  * @member {string} [publicIPAddress.ipConfiguration.provisioningState] Gets
- * or sets Provisioning state of the PublicIP resource
- * Updating/Deleting/Failed
+ * provisioning state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [publicIPAddress.ipConfiguration.name] Gets name of the
  * resource that is unique within a resource group. This name can be used to
@@ -2482,13 +2523,13 @@ export interface ExpressRouteServiceProvider extends Resource {
  * @member {string} [publicIPAddress.resourceGuid] Gets or sets resource guid
  * property of the PublicIP resource
  * 
- * @member {string} [publicIPAddress.provisioningState] Gets or sets
- * Provisioning state of the PublicIP resource Updating/Deleting/Failed
+ * @member {string} [publicIPAddress.provisioningState] Gets provisioning
+ * state of the PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [publicIPAddress.etag] Gets a unique read-only string that
  * changes whenever the resource is updated
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -2567,7 +2608,7 @@ export interface FrontendIPConfiguration extends SubResource {
  * Always ON availability Groups in SQL server. This setting can't be changed
  * after you create the endpoint
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -2625,7 +2666,7 @@ export interface LoadBalancingRule extends SubResource {
  * health status from the VM. Path is required if a protocol is set to http.
  * Otherwise, it is not allowed. There is no default value
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -2659,8 +2700,8 @@ export interface Probe extends SubResource {
  * @member {string} [frontendIPConfiguration.id] Resource Id
  * 
  * @member {string} protocol Gets or sets the transport potocol for the
- * external endpoint. Possible values are Udp or Tcp. Possible values
- * include: 'Udp', 'Tcp'
+ * endpoint. Possible values are Udp or Tcp. Possible values include: 'Udp',
+ * 'Tcp'
  * 
  * @member {number} frontendPortRangeStart Gets or sets the starting port
  * range for the NAT pool. You can spcify any port number you choose, but the
@@ -2681,7 +2722,7 @@ export interface Probe extends SubResource {
  * localPort to '*' to automatically assign an unallocated port that is
  * discoverable using the runtime API
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -2720,7 +2761,7 @@ export interface InboundNatPool extends SubResource {
  * 
  * @member {string} [backendAddressPool.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -2764,7 +2805,7 @@ export interface OutboundNatRule extends SubResource {
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * Load balancer resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -2791,7 +2832,7 @@ export interface LoadBalancer extends Resource {
  * AddressSpace contains an array of IP address ranges that can be used by
  * subnets
  *
- * @member {array} [addressPrefixes] Gets or sets List of address blocks
+ * @member {array} [addressPrefixes] Gets or sets list of address blocks
  * reserved for this virtual network in CIDR notation
  * 
  */
@@ -2827,7 +2868,7 @@ export interface BgpSettings {
  * @member {object} [localNetworkAddressSpace] Local network site Address space
  * 
  * @member {array} [localNetworkAddressSpace.addressPrefixes] Gets or sets
- * List of address blocks reserved for this virtual network in CIDR notation
+ * list of address blocks reserved for this virtual network in CIDR notation
  * 
  * @member {string} [gatewayIpAddress] IP address of local network gateway.
  * 
@@ -2844,7 +2885,7 @@ export interface BgpSettings {
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * LocalNetworkGateway resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * LocalNetworkGateway resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -2857,6 +2898,230 @@ export interface LocalNetworkGateway extends Resource {
     bgpSettings?: BgpSettings;
     resourceGuid?: string;
     provisioningState?: string;
+    etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EffectiveNetworkSecurityGroup class.
+ * @constructor
+ * Effective NetworkSecurityGroup
+ *
+ * @member {object} [networkSecurityGroup] Gets the id of network security
+ * group that is applied
+ * 
+ * @member {string} [networkSecurityGroup.id] Resource Id
+ * 
+ * @member {object} [association]
+ * 
+ * @member {object} [association.subnet] Gets the id of subnet if assigned
+ * 
+ * @member {string} [association.subnet.id] Resource Id
+ * 
+ * @member {object} [association.networkInterface] Gets the id of network
+ * interface if assigned
+ * 
+ * @member {string} [association.networkInterface.id] Resource Id
+ * 
+ * @member {array} [effectiveSecurityRules] Gets collection of effective
+ * security rules
+ * 
+ */
+export interface EffectiveNetworkSecurityGroup {
+    networkSecurityGroup?: SubResource;
+    association?: EffectiveNetworkSecurityGroupAssociation;
+    effectiveSecurityRules?: EffectiveNetworkSecurityRule[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EffectiveNetworkSecurityGroupAssociation class.
+ * @constructor
+ * Effective NetworkSecurityGroup association
+ *
+ * @member {object} [subnet] Gets the id of subnet if assigned
+ * 
+ * @member {string} [subnet.id] Resource Id
+ * 
+ * @member {object} [networkInterface] Gets the id of network interface if
+ * assigned
+ * 
+ * @member {string} [networkInterface.id] Resource Id
+ * 
+ */
+export interface EffectiveNetworkSecurityGroupAssociation {
+    subnet?: SubResource;
+    networkInterface?: SubResource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EffectiveNetworkSecurityRule class.
+ * @constructor
+ * Effective NetworkSecurityRules
+ *
+ * @member {string} [name] Gets the name of the security rule specified by the
+ * user (if created by the user)
+ * 
+ * @member {string} [protocol] Gets Network protocol this rule applies to.
+ * Possible values include: 'Tcp', 'Udp', '*'
+ * 
+ * @member {string} [sourcePortRange] Gets source port or range
+ * 
+ * @member {string} [destinationPortRange] Gets destination port or range
+ * 
+ * @member {string} [sourceAddressPrefix] Gets source address prefix
+ * 
+ * @member {string} [destinationAddressPrefix] Gets destination address prefix
+ * 
+ * @member {array} [expandedSourceAddressPrefix] Gets expanded source address
+ * prefix
+ * 
+ * @member {array} [expandedDestinationAddressPrefix] Gets expanded
+ * destination address prefix
+ * 
+ * @member {string} [access] Gets network traffic is allowed or denied.
+ * Possible values include: 'Allow', 'Deny'
+ * 
+ * @member {number} [priority] Gets the priority of the rule
+ * 
+ * @member {string} [direction] Gets the direction of the rule. Possible
+ * values include: 'Inbound', 'Outbound'
+ * 
+ */
+export interface EffectiveNetworkSecurityRule {
+    name?: string;
+    protocol?: string;
+    sourcePortRange?: string;
+    destinationPortRange?: string;
+    sourceAddressPrefix?: string;
+    destinationAddressPrefix?: string;
+    expandedSourceAddressPrefix?: string[];
+    expandedDestinationAddressPrefix?: string[];
+    access?: string;
+    priority?: number;
+    direction?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EffectiveNetworkSecurityGroupListResult class.
+ * @constructor
+ * Response for list effective network security groups api servive call
+ *
+ * @member {array} [value] Gets list of effective network security groups
+ * 
+ * @member {string} [nextLink] Gets the URL to get the next set of results.
+ * 
+ */
+export interface EffectiveNetworkSecurityGroupListResult {
+    value?: EffectiveNetworkSecurityGroup[];
+    nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EffectiveRoute class.
+ * @constructor
+ * Effective Route
+ *
+ * @member {string} [name] Gets the name of the user defined route. This is
+ * optional.
+ * 
+ * @member {string} [source] Gets who created the route. Possible values
+ * include: 'Unknown', 'User', 'VirtualNetworkGateway', 'Default'
+ * 
+ * @member {string} [state] Gets value of effective route. Possible values
+ * include: 'Active', 'Invalid'
+ * 
+ * @member {array} [addressPrefix] Gets address prefixes of the effective
+ * routes in CIDR notation.
+ * 
+ * @member {array} [nextHopIpAddress] Gets the IP address of the next hop of
+ * the effective route
+ * 
+ * @member {string} [nextHopType] Gets or sets the type of Azure hop the
+ * packet should be sent to. Possible values include:
+ * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance',
+ * 'None'
+ * 
+ */
+export interface EffectiveRoute {
+    name?: string;
+    source?: string;
+    state?: string;
+    addressPrefix?: string[];
+    nextHopIpAddress?: string[];
+    nextHopType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EffectiveRouteListResult class.
+ * @constructor
+ * Response for list effective route api servive call
+ *
+ * @member {array} [value] Gets list of effective routes
+ * 
+ * @member {string} [nextLink] Gets the URL to get the next set of results.
+ * 
+ */
+export interface EffectiveRouteListResult {
+    value?: EffectiveRoute[];
+    nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkPeering class.
+ * @constructor
+ * Peerings in a VirtualNework resource
+ *
+ * @member {boolean} [allowVirtualNetworkAccess] Gets or sets whether the VMs
+ * in the linked virtual network space would be able to access all the VMs in
+ * local Virtual network space
+ * 
+ * @member {boolean} [allowForwardedTraffic] Gets or sets whether the
+ * forwarded traffic from the VMs in the remote virtual network will be
+ * allowed/disallowed
+ * 
+ * @member {boolean} [allowGatewayTransit] Gets or sets if gatewayLinks can be
+ * used in remote virtual network’s link to this virtual network
+ * 
+ * @member {boolean} [useRemoteGateways] Gets or sets if remote gateways can
+ * be used on this virtual network. If the flag is set to true, and
+ * allowGatewayTransit on remotepeering is also true, virtual network will
+ * use gateways of remote virtual network for transit. Only 1 peering can
+ * have this flag set to true. This flag cannot be set if virtual network
+ * already has a gateway.
+ * 
+ * @member {object} [remoteVirtualNetwork] Gets or sets the reference of the
+ * remote virtual network
+ * 
+ * @member {string} [remoteVirtualNetwork.id] Resource Id
+ * 
+ * @member {string} [peeringState] Gets the status of the virtual network
+ * peering. Possible values include: 'Initiated', 'Connected', 'Disconnected'
+ * 
+ * @member {string} [provisioningState] Gets provisioning state of the resource
+ * 
+ * @member {string} [name] Gets or sets the name of the resource that is
+ * unique within a resource group. This name can be used to access the
+ * resource
+ * 
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated
+ * 
+ */
+export interface VirtualNetworkPeering extends SubResource {
+    allowVirtualNetworkAccess?: boolean;
+    allowForwardedTraffic?: boolean;
+    allowGatewayTransit?: boolean;
+    useRemoteGateways?: boolean;
+    remoteVirtualNetwork?: SubResource;
+    peeringState?: string;
+    provisioningState?: string;
+    name?: string;
     etag?: string;
 }
 
@@ -2908,12 +3173,8 @@ export interface Usage {
  * @constructor
  * IpConfiguration for Virtual network gateway
  *
- * @member {string} [privateIPAddress] Gets or sets the privateIPAddress of
- * the IP Configuration
- * 
  * @member {string} [privateIPAllocationMethod] Gets or sets PrivateIP
- * allocation method (Static/Dynamic). Possible values include: 'Static',
- * 'Dynamic'
+ * allocation method. Possible values include: 'Static', 'Dynamic'
  * 
  * @member {object} [subnet] Gets or sets the reference of the subnet resource
  * 
@@ -2924,7 +3185,7 @@ export interface Usage {
  * 
  * @member {string} [publicIPAddress.id] Resource Id
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -2935,7 +3196,6 @@ export interface Usage {
  * 
  */
 export interface VirtualNetworkGatewayIPConfiguration extends SubResource {
-    privateIPAddress?: string;
     privateIPAllocationMethod?: string;
     subnet?: SubResource;
     publicIPAddress?: SubResource;
@@ -2974,7 +3234,7 @@ export interface VirtualNetworkGatewaySku {
  * @member {object} [vpnClientAddressPool] Gets or sets the reference of the
  * Address space resource which represents Address space for P2S VpnClient.
  * 
- * @member {array} [vpnClientAddressPool.addressPrefixes] Gets or sets List of
+ * @member {array} [vpnClientAddressPool.addressPrefixes] Gets or sets list of
  * address blocks reserved for this virtual network in CIDR notation
  * 
  * @member {array} [vpnClientRootCertificates] VpnClientRootCertificate for
@@ -2998,8 +3258,8 @@ export interface VpnClientConfiguration {
  *
  * @member {string} [publicCertData] Gets or sets the certificate public data
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * VPN client root certificate resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Gets provisioning state of the VPN
+ * client root certificate resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource
@@ -3024,8 +3284,8 @@ export interface VpnClientRootCertificate extends SubResource {
  * @member {string} [thumbprint] Gets or sets the revoked Vpn client
  * certificate thumbprint
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
- * VPN client revoked certificate resource Updating/Deleting/Failed
+ * @member {string} [provisioningState] Gets provisioning state of the VPN
+ * client revoked certificate resource Updating/Deleting/Failed
  * 
  * @member {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource
@@ -3089,7 +3349,7 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * 
  * @member {array}
  * [vpnClientConfiguration.vpnClientAddressPool.addressPrefixes] Gets or sets
- * List of address blocks reserved for this virtual network in CIDR notation
+ * list of address blocks reserved for this virtual network in CIDR notation
  * 
  * @member {array} [vpnClientConfiguration.vpnClientRootCertificates]
  * VpnClientRootCertificate for Virtual network gateway.
@@ -3111,7 +3371,7 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * VirtualNetworkGateway resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * VirtualNetworkGateway resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -3199,7 +3459,7 @@ export interface VpnClientParameters {
  * 
  * @member {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes]
- * Gets or sets List of address blocks reserved for this virtual network in
+ * Gets or sets list of address blocks reserved for this virtual network in
  * CIDR notation
  * 
  * @member {array}
@@ -3225,8 +3485,8 @@ export interface VpnClientParameters {
  * @member {string} [virtualNetworkGateway1.resourceGuid] Gets or sets
  * resource guid property of the VirtualNetworkGateway resource
  * 
- * @member {string} [virtualNetworkGateway1.provisioningState] Gets or sets
- * Provisioning state of the VirtualNetworkGateway resource
+ * @member {string} [virtualNetworkGateway1.provisioningState] Gets
+ * provisioning state of the VirtualNetworkGateway resource
  * Updating/Deleting/Failed
  * 
  * @member {string} [virtualNetworkGateway1.etag] Gets a unique read-only
@@ -3277,7 +3537,7 @@ export interface VpnClientParameters {
  * 
  * @member {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientAddressPool.addressPrefixes]
- * Gets or sets List of address blocks reserved for this virtual network in
+ * Gets or sets list of address blocks reserved for this virtual network in
  * CIDR notation
  * 
  * @member {array}
@@ -3303,8 +3563,8 @@ export interface VpnClientParameters {
  * @member {string} [virtualNetworkGateway2.resourceGuid] Gets or sets
  * resource guid property of the VirtualNetworkGateway resource
  * 
- * @member {string} [virtualNetworkGateway2.provisioningState] Gets or sets
- * Provisioning state of the VirtualNetworkGateway resource
+ * @member {string} [virtualNetworkGateway2.provisioningState] Gets
+ * provisioning state of the VirtualNetworkGateway resource
  * Updating/Deleting/Failed
  * 
  * @member {string} [virtualNetworkGateway2.etag] Gets a unique read-only
@@ -3317,7 +3577,7 @@ export interface VpnClientParameters {
  * 
  * @member {array}
  * [localNetworkGateway2.localNetworkAddressSpace.addressPrefixes] Gets or
- * sets List of address blocks reserved for this virtual network in CIDR
+ * sets list of address blocks reserved for this virtual network in CIDR
  * notation
  * 
  * @member {string} [localNetworkGateway2.gatewayIpAddress] IP address of
@@ -3338,9 +3598,8 @@ export interface VpnClientParameters {
  * @member {string} [localNetworkGateway2.resourceGuid] Gets or sets resource
  * guid property of the LocalNetworkGateway resource
  * 
- * @member {string} [localNetworkGateway2.provisioningState] Gets or sets
- * Provisioning state of the LocalNetworkGateway resource
- * Updating/Deleting/Failed
+ * @member {string} [localNetworkGateway2.provisioningState] Gets provisioning
+ * state of the LocalNetworkGateway resource Updating/Deleting/Failed
  * 
  * @member {string} [localNetworkGateway2.etag] Gets a unique read-only string
  * that changes whenever the resource is updated
@@ -3372,7 +3631,7 @@ export interface VpnClientParameters {
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * VirtualNetworkGatewayConnection resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * VirtualNetworkGatewayConnection resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -3459,7 +3718,7 @@ export interface DhcpOptions {
  * @member {object} [addressSpace] Gets or sets AddressSpace that contains an
  * array of IP address ranges that can be used by subnets
  * 
- * @member {array} [addressSpace.addressPrefixes] Gets or sets List of address
+ * @member {array} [addressSpace.addressPrefixes] Gets or sets list of address
  * blocks reserved for this virtual network in CIDR notation
  * 
  * @member {object} [dhcpOptions] Gets or sets DHCPOptions that contains an
@@ -3468,12 +3727,15 @@ export interface DhcpOptions {
  * @member {array} [dhcpOptions.dnsServers] Gets or sets list of DNS servers
  * IP addresses
  * 
- * @member {array} [subnets] Gets or sets List of subnets in a VirtualNetwork
+ * @member {array} [subnets] Gets or sets list of subnets in a VirtualNetwork
+ * 
+ * @member {array} [virtualNetworkPeerings] Gets or sets list of peerings in a
+ * VirtualNetwork
  * 
  * @member {string} [resourceGuid] Gets or sets resource guid property of the
  * VirtualNetwork resource
  * 
- * @member {string} [provisioningState] Gets or sets Provisioning state of the
+ * @member {string} [provisioningState] Gets provisioning state of the
  * PublicIP resource Updating/Deleting/Failed
  * 
  * @member {string} [etag] Gets a unique read-only string that changes
@@ -3484,6 +3746,7 @@ export interface VirtualNetwork extends Resource {
     addressSpace?: AddressSpace;
     dhcpOptions?: DhcpOptions;
     subnets?: Subnet[];
+    virtualNetworkPeerings?: VirtualNetworkPeering[];
     resourceGuid?: string;
     provisioningState?: string;
     etag?: string;
