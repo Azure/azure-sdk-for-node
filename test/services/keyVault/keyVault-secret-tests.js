@@ -21,6 +21,7 @@ var KeyVault = Testutil.libRequire('services/keyVault');
 var MockedTestUtils = require('../../framework/mocked-test-utils');
 var KvUtils = require('./kv-test-utils.js');
 var util = require('util');
+var should = require('should');
 
 var series = KvUtils.series;
 var assertExactly = KvUtils.assertExactly;
@@ -31,12 +32,12 @@ var random = KvUtils.getRandom();
 
 var vaultUri = process.env['AZURE_KV_VAULT'];
 if (!vaultUri) {
-    vaultUri = 'https://nodesdktest.vault.azure.net';
+    vaultUri = 'https://sdktestvault0511.vault.azure.net';
 }
 
 var SECRET_NAME = 'nodeSecret';
 var SECRET_VALUE = 'Pa$$w0rd';
-var LIST_TEST_SIZE = 5;
+var LIST_TEST_SIZE = 2;
 
 describe('Key Vault secrets', function () {
 
@@ -46,13 +47,15 @@ describe('Key Vault secrets', function () {
   before(function (done) {
     var credentials = new KeyVault.KeyVaultCredentials(KvUtils.authenticator);
     client = new KeyVault.KeyVaultClient(credentials);
-      
+
     suiteUtil = new MockedTestUtils(client, 'keyVault-secret-tests');
     suiteUtil.setupSuite(done);
   });
 
   after(function (done) {
-    suiteUtil.teardownSuite(done);
+    cleanupCreatedSecrets(function () {
+      suiteUtil.teardownSuite(done);
+    });
   });
 
   beforeEach(function (done) {
@@ -62,10 +65,10 @@ describe('Key Vault secrets', function () {
   afterEach(function (done) {
     suiteUtil.baseTeardownTest(done);
   });
-  
-  describe('identifier', function() {
-    it('should work', function(done) {
-      
+
+  describe('identifier', function () {
+    it('should work', function (done) {
+
       function assertMatch(vault, name, version, secretId) {
         assertExactly(util.format('%s/secrets/%s', vault, name), secretId.baseIdentifier);
         if (version) {
@@ -96,20 +99,22 @@ describe('Key Vault secrets', function () {
 
       verifyCreate(vaultUri, SECRET_NAME, null);
       verifyCreate(vaultUri, SECRET_NAME, '1234');
-      
+
       done();
-      
+
     });
   });
-  
+
   describe('CRUD operations', function () {
     it('should work', function (done) {
-      
+
+      this.timeout(10000);
+
       var createdBundle;
       var secretId;
 
       function createSecret(next) {
-        client.setSecret(vaultUri, SECRET_NAME, { value: SECRET_VALUE }, function(err, secretBundle) {
+        client.setSecret(vaultUri, SECRET_NAME, SECRET_VALUE, function (err, secretBundle) {
           if (err) throw err;
           validateSecretBundle(secretBundle, vaultUri, SECRET_NAME, SECRET_VALUE);
           createdBundle = secretBundle;
@@ -117,9 +122,9 @@ describe('Key Vault secrets', function () {
           next();
         });
       }
-      
+
       function getSecretWOVersion(next) {
-        client.getSecret(secretId.baseIdentifier, function(err, secretBundle) {
+        client.getSecret(secretId.baseIdentifier, function (err, secretBundle) {
           if (err) throw err;
           compareObjects(createdBundle, secretBundle);
           next();
@@ -127,7 +132,7 @@ describe('Key Vault secrets', function () {
       }
 
       function getSecretWithVersion(next) {
-        client.getSecret(secretId.identifier, function(err, secretBundle) {
+        client.getSecret(secretId.identifier, function (err, secretBundle) {
           if (err) throw err;
           compareObjects(createdBundle, secretBundle);
           next();
@@ -137,10 +142,10 @@ describe('Key Vault secrets', function () {
       function updateSecret(secretUri, next) {
         var updatingBundle = KvUtils.clone(createdBundle);
         updatingBundle.contentType = 'text/plain';
-        updatingBundle.attributes.exp = new Date('2050-02-02T08:00:00.000Z');
+        updatingBundle.attributes.expires = new Date('2050-02-02T08:00:00.000Z');
         updatingBundle.tags = { foo: random.hex(100) };
-        var request = { contentType: updatingBundle.contentType, attributes: updatingBundle.attributes, tags: updatingBundle.tags };
-        client.updateSecret(secretUri, request, function(err, secretBundle) {
+        var request = { contentType: updatingBundle.contentType, secretAttributes: updatingBundle.attributes, tags: updatingBundle.tags };
+        client.updateSecret(secretUri, request, function (err, secretBundle) {
           if (err) throw err;
           delete updatingBundle.value;
           updatingBundle.attributes.updated = secretBundle.attributes.updated;
@@ -149,17 +154,17 @@ describe('Key Vault secrets', function () {
           next();
         });
       }
-      
+
       function updateSecretWOVersion(next) {
         return updateSecret(secretId.baseIdentifier, next);
       }
-      
+
       function updateSecretWithVersion(next) {
         return updateSecret(secretId.identifier, next);
       }
 
       function deleteSecret(next) {
-        client.deleteSecret(secretId.vault, secretId.name, function(err, secretBundle) {
+        client.deleteSecret(secretId.vault, secretId.name, function (err, secretBundle) {
           if (err) throw err;
           compareObjects(createdBundle, secretBundle);
           next();
@@ -167,7 +172,7 @@ describe('Key Vault secrets', function () {
       }
 
       function getSecretReturnsNotFound(next) {
-        client.getSecret(secretId.baseIdentifier, function(err, secretBundle) {
+        client.getSecret(secretId.baseIdentifier, function (err, secretBundle) {
           if (!err || !err.code || err.code !== 'SecretNotFound' || !err.statusCode || err.statusCode !== 404) throw new Error('Unexpected error object: ' + JSON.stringify(err, null, ' '));
           next();
         });
@@ -181,15 +186,16 @@ describe('Key Vault secrets', function () {
         updateSecretWithVersion,
         deleteSecret,
         getSecretReturnsNotFound,
-        function () {done();}
-      ]);     
-      
+        function () { done(); }
+      ]);
+
     });
   });
 
-  // TODO: Disabled because intermittently fails due to throtlling. We need to have a better back-off handling here.
-  describe.skip('list', function() {
-    it('should work', function(done) {
+  describe('list', function () {
+    it('should work', function (done) {
+
+      this.timeout(100000);
 
       var maxSecrets = LIST_TEST_SIZE;
       var expected = {};
@@ -201,7 +207,7 @@ describe('Key Vault secrets', function () {
         var errorCount = 0;
 
         function createASecret() {
-          client.setSecret(vaultUri, SECRET_NAME + (secretCount+1), { value: SECRET_VALUE }, function(err, secretBundle) {
+          client.setSecret(vaultUri, SECRET_NAME + (secretCount + 1), SECRET_VALUE, function (err, secretBundle) {
             if (err && err.code == 'Throttled') {
               ++errorCount;
               return setTimeout(createASecret, errorCount * 2500);
@@ -223,23 +229,22 @@ describe('Key Vault secrets', function () {
 
       function listSecrets(next) {
         var currentResult;
-        client.getSecrets(vaultUri, null, function(err, result) {
+        client.getSecrets(vaultUri, { maxresults: LIST_TEST_SIZE }, function (err, result) {
           if (err) throw err;
-          //console.log('getSecrets: ' + JSON.stringify(result, null, ' '));
+          should(result.length).be.within(0, LIST_TEST_SIZE);
           validateSecretList(result, expected);
           currentResult = result;
           if (currentResult.nextLink) {
-            return getNextSecrets();
+            return getNextSecrets(currentResult.nextLink);
           }
           next();
-          
-          function getNextSecrets() {
-            client.getSecretsNext(currentResult.nextLink, function(err, result) {
+
+          function getNextSecrets(nextLink) {
+            client.getSecretsNext(nextLink, function (err, list) {
               if (err) throw err;
-              validateSecretList(result, expected);
-              currentResult = result;
-              if (currentResult.nextLink) {
-                return getNextSecrets();
+              validateSecretList(list, expected);
+              if (list.nextLink) {
+                return getNextSecrets(list.nextLink);
               }
               if (Object.keys(expected).length !== zeroCount) {
                 throw new Error('Not all secrets were returned: ' + JSON.stringify(Object.keys(expected), null, ' '));
@@ -247,48 +252,26 @@ describe('Key Vault secrets', function () {
               next();
             });
           }
-          
+
         });
-      }
-
-      function deleteSecrets(next) {
-
-        var secretNum = 1;
-
-        function deleteASecret() {
-          client.deleteSecret(vaultUri, SECRET_NAME+secretNum, function(err, secretBundle) {
-            if (err) {
-              console.info('Unable to delete secret: ' + JSON.stringify(err));
-            }
-            ++secretNum;
-            if (secretNum <= maxSecrets) {
-              return deleteASecret();
-            }
-            next();
-          });
-        }
-
-        deleteASecret();
       }
 
       series([
         createManySecrets,
         listSecrets,
-        deleteSecrets,
-        function() { 
-          if (!suiteUtil.isMocked) {
-            // Avoid being throttled in the next test.
-            setTimeout(function() {done();}, 5000); 
-          }
+        function () {
+          done();
         }
       ]);
 
     });
   });
 
-  // TODO: Disabled because intermittently fails due to throtlling. We need to have a better back-off handling here.
-  describe.skip('list versions', function() {
-    it('should work', function(done) {
+  describe('list versions', function () {
+    it('should work', function (done) {
+
+      this.timeout(10000);
+
 
       var maxSecrets = LIST_TEST_SIZE;
       var expected = {};
@@ -300,7 +283,7 @@ describe('Key Vault secrets', function () {
         var errorCount = 0;
 
         function createASecret() {
-          client.setSecret(vaultUri, SECRET_NAME, { value: SECRET_VALUE }, function(err, secretBundle) {
+          client.setSecret(vaultUri, SECRET_NAME, SECRET_VALUE, function (err, secretBundle) {
             if (err && err.code == 'Throttled') {
               ++errorCount;
               return setTimeout(createASecret, errorCount * 2500);
@@ -321,22 +304,21 @@ describe('Key Vault secrets', function () {
 
       function listSecretVersions(next) {
         var currentResult;
-        client.getSecretVersions(vaultUri, SECRET_NAME, null, function(err, result) {
+        client.getSecretVersions(vaultUri, SECRET_NAME, function (err, result) {
           if (err) throw err;
           validateSecretList(result, expected);
           currentResult = result;
           if (currentResult.nextLink) {
-            return getNextSecrets();
+            return getNextSecrets(currentResult.nextLink);
           }
           next();
-          
-          function getNextSecrets() {
-            client.getSecretVersionsNext(currentResult.nextLink, function(err, result) {
+
+          function getNextSecrets(nextList) {
+            client.getSecretVersionsNext(nextList, function (err, list) {
               if (err) throw err;
-              validateSecretList(result, expected);
-              currentResult = result;
-              if (currentResult.nextLink) {
-                return getNextSecrets();
+              validateSecretList(list, expected);
+              if (list.nextLink) {
+                return getNextSecrets(list.nextLink);
               }
               if (Object.keys(expected).length !== zeroCount) {
                 throw new Error('Not all secrets were returned: ' + JSON.stringify(Object.keys(expected), null, ' '));
@@ -344,32 +326,35 @@ describe('Key Vault secrets', function () {
               next();
             });
           }
-          
-        });
-      }
 
-      function deleteSecret(next) {
-        client.deleteSecret(vaultUri, SECRET_NAME, function(err, secretBundle) {
-          if (err) {
-            console.info('Unable to delete secret: ' + JSON.stringify(err));
-          }
-          next();
         });
       }
 
       series([
         createManySecretVersions,
         listSecretVersions,
-        deleteSecret,
-        function() { 
-          if (!suiteUtil.isMocked) {
-            // Avoid being throttled in the next test.
-            setTimeout(function() {done();}, 5000); 
-          }
+        function () {
+          done();
         }
       ]);
 
     });
   });
+
+  function cleanupCreatedSecrets(callback) {
+
+    if (!suiteUtil.isMocked) {
+      client.getSecrets(vaultUri, function (err, list) {
+        if (list && list.length !== 0) {
+          list.forEach(function (secret) {
+            var id = KeyVault.parseSecretIdentifier(secret.id);
+            client.deleteSecret(id.vault, id.name, function (err, bundle) { });
+          });
+        }
+        callback();
+      });
+    }
+    else callback();
+  }
 
 });

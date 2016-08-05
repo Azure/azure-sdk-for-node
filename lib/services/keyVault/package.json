@@ -6,10 +6,11 @@
     "Gupta, Divya <Divya.Gupta@microsoft.com>",
     "Kostal, Greg <gkostal@microsoft.com>",
     "Wilson, Hervey <herveyw@microsoft.com>",
+    "Mortazavi, Pooneh <pomortaz@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Microsoft Azure Key Vault Client Library for node",
   "tags": [
     "azure",
@@ -27,9 +28,9 @@
     }
   ],
   "dependencies": {
-    "azure-common": "^0.9.13",
-    "node-uuid": ">= 1.3.3",
-    "underscore": "1.4.x"
+    "ms-rest": "^1.14.0",
+    "ms-rest-azure": "^1.14.0",
+    "underscore": "^1.4.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

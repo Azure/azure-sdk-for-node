@@ -295,6 +295,60 @@
     <Compile Include="lib\services\HDInsight2\lib\hDInsightManagementClient.js" />
     <Compile Include="lib\services\HDInsightJob2\lib\hdinsightjob2.js" />
     <Compile Include="lib\services\HDInsightJob2\lib\hDInsightJobManagementClient.js" />
+    <Compile Include="lib\services\keyVault\lib\keyVaultClient.js" />
+    <Compile Include="lib\services\keyVault\lib\models\action.js" />
+    <Compile Include="lib\services\keyVault\lib\models\administratorDetails.js" />
+    <Compile Include="lib\services\keyVault\lib\models\attributes.js" />
+    <Compile Include="lib\services\keyVault\lib\models\backupKeyResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateAttributes.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateBundle.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateCreateParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateImportParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateIssuerItem.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateIssuerListResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateItem.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateListResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateMergeParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateOperation.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificatePolicy.js" />
+    <Compile Include="lib\services\keyVault\lib\models\certificateUpdateParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\contact.js" />
+    <Compile Include="lib\services\keyVault\lib\models\contacts.js" />
+    <Compile Include="lib\services\keyVault\lib\models\errorModel.js" />
+    <Compile Include="lib\services\keyVault\lib\models\index.js" />
+    <Compile Include="lib\services\keyVault\lib\models\issuerAttributes.js" />
+    <Compile Include="lib\services\keyVault\lib\models\issuerBundle.js" />
+    <Compile Include="lib\services\keyVault\lib\models\issuerCredentials.js" />
+    <Compile Include="lib\services\keyVault\lib\models\issuerReference.js" />
+    <Compile Include="lib\services\keyVault\lib\models\jsonWebKey.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyAttributes.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyBundle.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyCreateParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyImportParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyItem.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyListResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyOperationResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyOperationsParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyProperties.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyRestoreParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyUpdateParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyVaultError.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyVerifyParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\keyVerifyResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\lifetimeAction.js" />
+    <Compile Include="lib\services\keyVault\lib\models\organizationDetails.js" />
+    <Compile Include="lib\services\keyVault\lib\models\pendingCertificateSigningRequestResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\secretAttributes.js" />
+    <Compile Include="lib\services\keyVault\lib\models\secretBundle.js" />
+    <Compile Include="lib\services\keyVault\lib\models\secretItem.js" />
+    <Compile Include="lib\services\keyVault\lib\models\secretListResult.js" />
+    <Compile Include="lib\services\keyVault\lib\models\secretProperties.js" />
+    <Compile Include="lib\services\keyVault\lib\models\secretSetParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\secretUpdateParameters.js" />
+    <Compile Include="lib\services\keyVault\lib\models\subjectAlternativeNames.js" />
+    <Compile Include="lib\services\keyVault\lib\models\trigger.js" />
+    <Compile Include="lib\services\keyVault\lib\models\x509CertificateProperties.js" />
+    <Compile Include="lib\services\keyVault\lib\objectIdentifier.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\admCredential.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\admCredentialProperties.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\apnsCredential.js" />
@@ -888,7 +942,6 @@
     <Compile Include="lib\services\keyVault\lib\jwk.js" />
     <Compile Include="lib\services\keyVault\lib\keyVault.js" />
     <Compile Include="lib\services\keyVault\lib\keyVaultCredentials.js" />
-    <Compile Include="lib\services\keyVault\lib\keyVaultInternalClient.js" />
     <Compile Include="lib\services\keyVaultManagement\lib\keyVault.js" />
     <Compile Include="lib\services\keyVaultManagement\lib\keyVaultManagementClient.js" />
     <Compile Include="lib\services\legacyStorage\lib\storage.js" />
@@ -939,6 +992,8 @@
     <Compile Include="lib\services\networkManagement\lib\networkManagementClient.js" />
     <Compile Include="lib\services\networkManagement2\lib\network.js" />
     <Compile Include="lib\services\networkManagement2\lib\networkResourceProviderClient.js" />
+    <TypeScriptCompile Include="lib\services\keyVault\lib\keyVaultClient.d.ts" />
+    <TypeScriptCompile Include="lib\services\keyVault\lib\models\index.d.ts" />
     <TypeScriptCompile Include="lib\services\notificationHubsManagement\lib\models\index.d.ts" />
     <TypeScriptCompile Include="lib\services\notificationHubsManagement\lib\notificationHubsManagementClient.d.ts" />
     <TypeScriptCompile Include="lib\services\notificationHubsManagement\lib\operations\index.d.ts" />
@@ -1433,6 +1488,19 @@
     <Compile Include="test\services\intune\intuneResourceManagementClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
+    <Compile Include="test\services\keyVault\keyVault-certificate-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\keyVault\keyVault-key-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\keyVault\keyVault-secret-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\keyVault\kv-test-utils.js">
+      <TestFramework>
+      </TestFramework>
+    </Compile>
     <Compile Include="test\services\notificationHubsManagement\namespace-tests.js" />
     <Compile Include="test\services\notificationHubsManagement\notificationHub-tests.js" />
     <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
@@ -1574,6 +1642,7 @@
     <Folder Include="lib\services\keyVault\lib" />
     <Folder Include="lib\services\keyVaultManagement" />
     <Folder Include="lib\services\keyVaultManagement\lib" />
+    <Folder Include="lib\services\keyVault\lib\models\" />
     <Folder Include="lib\services\legacyStorage" />
     <Folder Include="lib\services\legacyStorage\lib" />
     <Folder Include="lib\services\legacyStorage\lib\blob" />
@@ -1918,6 +1987,7 @@
     <Folder Include="test\services\dataLakeAnalyticsManagement\" />
     <Folder Include="test\services\dataLakeStoreManagement\" />
     <Folder Include="test\services\intune" />
+    <Folder Include="test\services\keyVault\" />
     <Folder Include="test\services\notificationHubsManagement\" />
     <Folder Include="test\services\resourceManagement" />
     <Folder Include="test\services\storageManagement" />

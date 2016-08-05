@@ -1,4 +1,7 @@
 common/framework-tests.js
+services/keyVault/keyVault-key-tests.js
+services/keyVault/keyVault-secret-tests.js
+services/keyVault/keyVault-certificate-tests.js
 services/computeManagement/computeManagementClient-tests.js
 services/resourceManagement/resourceManagementClient-tests.js
 services/resourceManagement/authorizationClient-tests.js
