@@ -1,8 +1,8 @@
 # Microsoft Azure SDK for Node.js - Key Vault Management
 
 This project provides a Node.js package for managing vaults on Azure Key Vault. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
-- **Resource Management REST API version: 2014-12-19-PREVIEW**
+- **Node.js version: 4.x.x or higher**
+- **REST API version: 2015-06-01**
 
 ## Features
 
@@ -19,33 +19,19 @@ npm install azure-arm-keyvault
 The following example creates a new vault.
 
 ```javascript
-var AzureCommon       = require('azure-common');
-var AzureMgmtKeyVault = require('azure-arm-keyvault');
-var AdalNode          = require('adal-node'); // Used for authentication
+var msRestAzure = require('ms-rest-azure');
+var keyVaultManagementClient = require('azure-arm-keyvault');
 
-var userName = 'someone@myorg.com';
-var password = '123';
-var clientId = '<client GUID>';
-var resourceUri = 'https://management.core.windows.net/';
+// Interactive Login
+msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new keyVaultManagementClient(credentials, '<your-subscription-id>');
 
-var context = new AdalNode.AuthenticationContext('https://login.windows.net/myorg.com');
-context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientId, function (err, response) {
-  if (err) {
-    throw new Error('Unable to authenticate: ' + err.stack);
-  }
-
-  var credentials = new AzureCommon.TokenCloudCredentials({
-    subscriptionId : '<subscription GUID>',
-    authorizationScheme : response.tokenType,
-    token : response.accessToken
+  client.vaults.list(function(err, result) {
+    if (err) console.log(err);
+    console.log(result);
   });
-  
-  // Creates an Azure Key Vault Management client.
-  // The Azure Resource Manager URI must also be passed to this constructor for the
-  // China, Germany, and US Government Azure environments
-  client = new AzureMgmtKeyVault.KeyVaultManagementClient(credentials);
-  
-  var resourceGroup = 'myResourceGroup';
+
+  var resourceGroup = '<resource group name>';
   var vaultName = 'myNewVault';
   var parameters = {
     location : "East US",
@@ -59,18 +45,17 @@ context.acquireTokenWithUsernamePassword(resourceId, userName, password, clientI
       tenantId : '<tenant GUID>'
     },
     tags : {}
-  }; 
-  
+  };
+
   console.info('Creating vault...');
   client.vaults.createOrUpdate(resourceGroup, vaultName, parameters, function (err, result) {
     if (err) throw err;
-    console.info('Vault created: ' + JSON.stringify(result, null, ' '));
+    console.log(result);
   });
-  
 });
 ```
 
 ## Related projects
 
-- [Microsoft Azure SDK for Node.js](https://github.com/WindowsAzure/azure-sdk-for-node)
-- [Microsoft Azure SDK for Node.js - Key Vault](https://github.com/WindowsAzure/azure-keyvault-for-node)
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js - Key Vault](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/keyVault)

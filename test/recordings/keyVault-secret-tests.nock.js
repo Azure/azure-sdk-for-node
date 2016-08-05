@@ -3,281 +3,855 @@
 exports.scopes = [[],
 [function (nock) { 
 var result = 
-nock('http://nodesdktest.vault.azure.net:443')
+nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
 .put('/secrets/nodeSecret?api-version=2015-06-01', '*')
-  .reply(401, "", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"created\":1470959487,\"updated\":1470959487}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'www-authenticate': 'Bearer authorization="https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47", resource="https://vault.azure.net"',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '8c2119bf-c447-499f-bf5c-54028804ee18',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:45 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
   connection: 'close',
-  'content-length': '0' });
+  'content-length': '192' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://nodesdktest.vault.azure.net:443')
+nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
 .put('/secrets/nodeSecret?api-version=2015-06-01', '*')
-  .reply(401, "", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"created\":1470959487,\"updated\":1470959487}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'www-authenticate': 'Bearer authorization="https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47", resource="https://vault.azure.net"',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '8c2119bf-c447-499f-bf5c-54028804ee18',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:45 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
   connection: 'close',
-  'content-length': '0' });
+  'content-length': '192' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://nodesdktest.vault.azure.net:443')
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/?api-version=2015-06-01')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"created\":1470959487,\"updated\":1470959487}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '27f671eb-3750-4e1d-82f6-4cdf77a19223',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/?api-version=2015-06-01')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"created\":1470959487,\"updated\":1470959487}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '27f671eb-3750-4e1d-82f6-4cdf77a19223',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8?api-version=2015-06-01')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"created\":1470959487,\"updated\":1470959487}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'c811881b-effa-4b2d-91b5-e8299241b5ac',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8?api-version=2015-06-01')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"created\":1470959487,\"updated\":1470959487}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'c811881b-effa-4b2d-91b5-e8299241b5ac',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2015-06-01', '*')
-  .reply(200, {"value":"Pa$$w0rd","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"created":1434666405,"updated":1434666405}}, { 'cache-control': 'no-cache',
+.patch('/secrets/nodeSecret/?api-version=2015-06-01', '*')
+  .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1470959487,\"updated\":1470959488},\"tags\":{\"foo\":\"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'fedc1412-bbe9-4b79-92ec-d9c3fc865076',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:45 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
   connection: 'close',
-  'content-length': '185' });
+  'content-length': '335' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://nodesdktest.vault.azure.net:443')
+nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.put('/secrets/nodeSecret?api-version=2015-06-01', '*')
-  .reply(200, {"value":"Pa$$w0rd","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"created":1434666405,"updated":1434666405}}, { 'cache-control': 'no-cache',
+.patch('/secrets/nodeSecret/?api-version=2015-06-01', '*')
+  .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1470959487,\"updated\":1470959488},\"tags\":{\"foo\":\"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'fedc1412-bbe9-4b79-92ec-d9c3fc865076',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:45 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:27 GMT',
   connection: 'close',
-  'content-length': '185' });
+  'content-length': '335' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://nodesdktest.vault.azure.net:443')
-  .get('/secrets/nodeSecret?api-version=2015-06-01')
-  .reply(200, {"value":"Pa$$w0rd","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"created":1434666405,"updated":1434666405}}, { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:45 GMT',
-  connection: 'close',
-  'content-length': '185' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://nodesdktest.vault.azure.net:443')
-  .get('/secrets/nodeSecret?api-version=2015-06-01')
-  .reply(200, {"value":"Pa$$w0rd","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"created":1434666405,"updated":1434666405}}, { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:45 GMT',
-  connection: 'close',
-  'content-length': '185' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://nodesdktest.vault.azure.net:443')
-  .get('/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53?api-version=2015-06-01')
-  .reply(200, {"value":"Pa$$w0rd","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"created":1434666405,"updated":1434666405}}, { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:46 GMT',
-  connection: 'close',
-  'content-length': '185' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://nodesdktest.vault.azure.net:443')
-  .get('/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53?api-version=2015-06-01')
-  .reply(200, {"value":"Pa$$w0rd","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"created":1434666405,"updated":1434666405}}, { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:46 GMT',
-  connection: 'close',
-  'content-length': '185' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://nodesdktest.vault.azure.net:443')
+nock('http://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret?api-version=2015-06-01', '*')
-  .reply(200, {"contentType":"text/plain","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"exp":2527401600,"created":1434666405,"updated":1434666406},"tags":{"foo":"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248"}}, { 'cache-control': 'no-cache',
+.patch('/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8?api-version=2015-06-01', '*')
+  .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1470959487,\"updated\":1470959489},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '130e9517-ae69-4050-aeec-b3a390b6b5c2',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:46 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:28 GMT',
   connection: 'close',
-  'content-length': '328' });
+  'content-length': '335' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://nodesdktest.vault.azure.net:443')
+nock('https://sdktestvault0511.vault.azure.net')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret?api-version=2015-06-01', '*')
-  .reply(200, {"contentType":"text/plain","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"exp":2527401600,"created":1434666405,"updated":1434666406},"tags":{"foo":"ede2c2613ab96101ef90e0f93ed400417324724f8d0793cc46156eb21c83a50b2aa6d24fbbdce46d3a06ef47b671ba579248"}}, { 'cache-control': 'no-cache',
+.patch('/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8?api-version=2015-06-01', '*')
+  .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1470959487,\"updated\":1470959489},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '130e9517-ae69-4050-aeec-b3a390b6b5c2',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:46 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:28 GMT',
   connection: 'close',
-  'content-length': '328' });
+  'content-length': '335' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://nodesdktest.vault.azure.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53?api-version=2015-06-01', '*')
-  .reply(200, {"contentType":"text/plain","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"exp":2527401600,"created":1434666405,"updated":1434666407},"tags":{"foo":"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa"}}, { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:46 GMT',
-  connection: 'close',
-  'content-length': '328' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://nodesdktest.vault.azure.net:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53?api-version=2015-06-01', '*')
-  .reply(200, {"contentType":"text/plain","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"exp":2527401600,"created":1434666405,"updated":1434666407},"tags":{"foo":"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa"}}, { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:46 GMT',
-  connection: 'close',
-  'content-length': '328' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://nodesdktest.vault.azure.net:443')
+nock('http://sdktestvault0511.vault.azure.net')
   .delete('/secrets/nodeSecret?api-version=2015-06-01')
-  .reply(200, {"contentType":"text/plain","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"exp":2527401600,"created":1434666405,"updated":1434666407},"tags":{"foo":"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa"}}, { 'cache-control': 'no-cache',
+  .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1470959487,\"updated\":1470959489},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '32d4fa58-d6b1-4cdc-9383-1c09827fbe41',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:48 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:28 GMT',
   connection: 'close',
-  'content-length': '328' });
+  'content-length': '335' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://nodesdktest.vault.azure.net:443')
+nock('https://sdktestvault0511.vault.azure.net')
   .delete('/secrets/nodeSecret?api-version=2015-06-01')
-  .reply(200, {"contentType":"text/plain","id":"https://nodesdktest.vault.azure.net/secrets/nodeSecret/bd7375f88ac54de8aedfabfe1c5baf53","attributes":{"enabled":true,"exp":2527401600,"created":1434666405,"updated":1434666407},"tags":{"foo":"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa"}}, { 'cache-control': 'no-cache',
+  .reply(200, "{\"contentType\":\"text/plain\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/7a63db27897e44e88c9ff02d709002a8\",\"attributes\":{\"enabled\":true,\"exp\":2527401600,\"created\":1470959487,\"updated\":1470959489},\"tags\":{\"foo\":\"1c2113c5908b1633b597923b338e697e6396c6b61dea3431fd058d6efb89d103d134e7d6c14ec3c37686dccf447009884afa\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '32d4fa58-d6b1-4cdc-9383-1c09827fbe41',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:48 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:28 GMT',
   connection: 'close',
-  'content-length': '328' });
+  'content-length': '335' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://nodesdktest.vault.azure.net:443')
-  .get('/secrets/nodeSecret?api-version=2015-06-01')
-  .reply(404, {"error":{"code":"SecretNotFound","message":"Secret not found: nodeSecret"}}, { 'cache-control': 'no-cache',
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/?api-version=2015-06-01')
+  .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: nodeSecret\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '76',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '124ca36b-c868-4ec6-ae7c-07cab92105d5',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:47 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://nodesdktest.vault.azure.net:443')
-  .get('/secrets/nodeSecret?api-version=2015-06-01')
-  .reply(404, {"error":{"code":"SecretNotFound","message":"Secret not found: nodeSecret"}}, { 'cache-control': 'no-cache',
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/?api-version=2015-06-01')
+  .reply(404, "{\"error\":{\"code\":\"SecretNotFound\",\"message\":\"Secret not found: nodeSecret\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '76',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/8.5',
-  'x-ms-keyvault-service-version': '1.0.0.96',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '124ca36b-c868-4ec6-ae7c-07cab92105d5',
+  'x-ms-keyvault-service-version': '1.0.0.765',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
-  date: 'Thu, 18 Jun 2015 22:26:47 GMT',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:29 GMT',
   connection: 'close' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret1?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1/67f1e065e6064640b8e3a9cbffff1bf0\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '9717a490-890f-4dbf-a4b8-05314d1a3f34',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:30 GMT',
+  connection: 'close',
+  'content-length': '193' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret1?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1/67f1e065e6064640b8e3a9cbffff1bf0\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '9717a490-890f-4dbf-a4b8-05314d1a3f34',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:30 GMT',
+  connection: 'close',
+  'content-length': '193' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret2?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2/212024b00e4e472c8afe578b33a89062\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '24cebe8f-37e7-4515-bc80-fbe7c5599d0a',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:30 GMT',
+  connection: 'close',
+  'content-length': '193' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret2?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2/212024b00e4e472c8afe578b33a89062\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '24cebe8f-37e7-4515-bc80-fbe7c5599d0a',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:30 GMT',
+  connection: 'close',
+  'content-length': '193' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?maxresults=2&api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava4\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469048531,\"exp\":1500585131,\"created\":1469049131,\"updated\":1469049131}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava6\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469567919,\"exp\":1501104519,\"created\":1469568520,\"updated\":1469568520}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUY2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '1c0b8591-9838-4560-be77-10e0927a97fa',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:31 GMT',
+  connection: 'close',
+  'content-length': '808' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?maxresults=2&api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava4\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469048531,\"exp\":1500585131,\"created\":1469049131,\"updated\":1469049131}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava6\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469567919,\"exp\":1501104519,\"created\":1469568520,\"updated\":1469568520}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUY2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '1c0b8591-9838-4560-be77-10e0927a97fa',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:31 GMT',
+  connection: 'close',
+  'content-length': '808' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUY2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava7\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469568292,\"exp\":1501104892,\"created\":1469568892,\"updated\":1469568892}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava8\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469569754,\"exp\":1501106354,\"created\":1469570354,\"updated\":1469570354}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUa2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '60c38c1c-2a16-4dd6-b3b2-625bf41154c0',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:30 GMT',
+  connection: 'close',
+  'content-length': '808' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUY2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava7\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469568292,\"exp\":1501104892,\"created\":1469568892,\"updated\":1469568892}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava8\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469569754,\"exp\":1501106354,\"created\":1469570354,\"updated\":1469570354}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUa2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '60c38c1c-2a16-4dd6-b3b2-625bf41154c0',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:30 GMT',
+  connection: 'close',
+  'content-length': '808' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUa2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava9\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469574262,\"exp\":1501110862,\"created\":1469574863,\"updated\":1469574863}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959365,\"updated\":1470959365}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'd5637ccd-37b7-4bd4-992c-ea6c4989ad23',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:31 GMT',
+  connection: 'close',
+  'content-length': '798' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDQhTURBd01ETTBJWE5sWTNKbGRDOURVa1ZCVkVWTlFVNVZRVXhGVGxKUFRFeE5SVTVVU2tGV1FUa2hNREF3TURJNElUazVPVGt0TVRJdE16RlVNak02TlRrNk5Ua3VPVGs1T1RrNU9Wb2giLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/createManualEnrollmentJava9\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469574262,\"exp\":1501110862,\"created\":1469574863,\"updated\":1469574863}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959365,\"updated\":1470959365}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'd5637ccd-37b7-4bd4-992c-ea6c4989ad23',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:31 GMT',
+  connection: 'close',
+  'content-length': '798' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959367,\"updated\":1470959367}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListVersionCerts\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959376,\"updated\":1470959376}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5S1FWWkJVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEE0TFRBNVZESXdPakkwT2pBeExqUXhPVE00TURSYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '1d0f5161-b7d0-4fb6-a491-a017f8c48717',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:31 GMT',
+  connection: 'close',
+  'content-length': '770' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiExMDAhTURBd01ESTVJWE5sWTNKbGRDOUpUVkJQVWxSTVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959367,\"updated\":1470959367}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/importListVersionCerts\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959376,\"updated\":1470959376}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5S1FWWkJVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEE0TFRBNVZESXdPakkwT2pBeExqUXhPVE00TURSYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '1d0f5161-b7d0-4fb6-a491-a017f8c48717',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:31 GMT',
+  connection: 'close',
+  'content-length': '770' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5S1FWWkJVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEE0TFRBNVZESXdPakkwT2pBeExqUXhPVE00TURSYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate0\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774077,\"updated\":1470774077}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774079,\"updated\":1470774079}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJeklYTmxZM0psZEM5TVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '7cdd76cd-1732-4964-af7f-18b5fd36d4fa',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:32 GMT',
+  connection: 'close',
+  'content-length': '769' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFM0lYTmxZM0psZEM5S1FWWkJVMFZEVWtWVUlUQXdNREF5T0NFeU1ERTJMVEE0TFRBNVZESXdPakkwT2pBeExqUXhPVE00TURSYUlRLS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate0\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774077,\"updated\":1470774077}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate1\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774079,\"updated\":1470774079}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJeklYTmxZM0psZEM5TVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '7cdd76cd-1732-4964-af7f-18b5fd36d4fa',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:32 GMT',
+  connection: 'close',
+  'content-length': '769' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJeklYTmxZM0psZEM5TVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774080,\"updated\":1470774080}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate3\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774081,\"updated\":1470774081}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeUlYTmxZM0psZEM5T1QwUkZRMFZTVkVsR1NVTkJWRVVoTURBd01ESTRJVGs1T1RrdE1USXRNekZVTWpNNk5UazZOVGt1T1RrNU9UazVPVm9oIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '52a9de3f-8f65-4839-b781-e62feaeb8d37',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:32 GMT',
+  connection: 'close',
+  'content-length': '763' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE5MiFNREF3TURJeklYTmxZM0psZEM5TVNWTlVRMFZTVkVsR1NVTkJWRVV5SVRBd01EQXlPQ0U1T1RrNUxURXlMVE14VkRJek9qVTVPalU1TGprNU9UazVPVGxhSVEtLSIsIlRhcmdldExvY2F0aW9uIjowfQ&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate2\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774080,\"updated\":1470774080}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/listCertificate3\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470774081,\"updated\":1470774081}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeUlYTmxZM0psZEM5T1QwUkZRMFZTVkVsR1NVTkJWRVVoTURBd01ESTRJVGs1T1RrdE1USXRNekZVTWpNNk5UazZOVGt1T1RrNU9UazVPVm9oIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '52a9de3f-8f65-4839-b781-e62feaeb8d37',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:32 GMT',
+  connection: 'close',
+  'content-length': '763' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeUlYTmxZM0psZEM5T1QwUkZRMFZTVkVsR1NVTkJWRVVoTURBd01ESTRJVGs1T1RrdE1USXRNekZVTWpNNk5UazZOVGt1T1RrNU9UazVPVm9oIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeImportCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959363,\"updated\":1470959363}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFNElYTmxZM0psZEM5T1QwUkZVMFZEVWtWVU1pRXdNREF3TWpnaE9UazVPUzB4TWkwek1WUXlNem8xT1RvMU9TNDVPVGs1T1RrNVdpRS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '9c1eec7e-d43a-45a4-9894-3b691bad6aee',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:33 GMT',
+  connection: 'close',
+  'content-length': '672' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4OCFNREF3TURJeUlYTmxZM0psZEM5T1QwUkZRMFZTVkVsR1NVTkJWRVVoTURBd01ESTRJVGs1T1RrdE1USXRNekZVTWpNNk5UazZOVGt1T1RrNU9UazVPVm9oIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeImportCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959363,\"updated\":1470959363}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret1\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFNElYTmxZM0psZEM5T1QwUkZVMFZEVWtWVU1pRXdNREF3TWpnaE9UazVPUzB4TWkwek1WUXlNem8xT1RvMU9TNDVPVGs1T1RrNVdpRS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '9c1eec7e-d43a-45a4-9894-3b691bad6aee',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:33 GMT',
+  connection: 'close',
+  'content-length': '672' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFNElYTmxZM0psZEM5T1QwUkZVMFZEVWtWVU1pRXdNREF3TWpnaE9UazVPUzB4TWkwek1WUXlNem8xT1RvMU9TNDVPVGs1T1RrNVdpRS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/policyCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959397,\"updated\":1470959397}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElYTmxZM0psZEM5VFJVTXhJVEF3TURBeU9DRTVPVGs1TFRFeUxUTXhWREl6T2pVNU9qVTVMams1T1RrNU9UbGFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '2c0d5611-0155-4a6c-a58b-cd5763da086f',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:34 GMT',
+  connection: 'close',
+  'content-length': '657' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE4NCFNREF3TURFNElYTmxZM0psZEM5T1QwUkZVMFZEVWtWVU1pRXdNREF3TWpnaE9UazVPUzB4TWkwek1WUXlNem8xT1RvMU9TNDVPVGs1T1RrNVdpRS0iLCJUYXJnZXRMb2NhdGlvbiI6MH0&maxresults=2')
+  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret2\",\"attributes\":{\"enabled\":true,\"created\":1470959490,\"updated\":1470959490}},{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/policyCertificate\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1430344421,\"exp\":2208988799,\"created\":1470959397,\"updated\":1470959397}}],\"nextLink\":\"https://sdktestvault0511.vault.azure.net:443/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElYTmxZM0psZEM5VFJVTXhJVEF3TURBeU9DRTVPVGs1TFRFeUxUTXhWREl6T2pVNU9qVTVMams1T1RrNU9UbGFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '2c0d5611-0155-4a6c-a58b-cd5763da086f',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:34 GMT',
+  connection: 'close',
+  'content-length': '657' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElYTmxZM0psZEM5VFJVTXhJVEF3TURBeU9DRTVPVGs1TFRFeUxUTXhWREl6T2pVNU9qVTVMams1T1RrNU9UbGFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/UnknownIssuerCert\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469493191,\"exp\":1501029791,\"created\":1469493792,\"updated\":1469493792}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'b5532415-9514-4919-8e49-910d70b592cf',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:34 GMT',
+  connection: 'close',
+  'content-length': '261' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets?api-version=2015-06-01&$skiptoken=eyJOZXh0TWFya2VyIjoiMiE3NiFNREF3TURFeElYTmxZM0psZEM5VFJVTXhJVEF3TURBeU9DRTVPVGs1TFRFeUxUTXhWREl6T2pVNU9qVTVMams1T1RrNU9UbGFJUS0tIiwiVGFyZ2V0TG9jYXRpb24iOjB9&maxresults=2')
+  .reply(200, "{\"value\":[{\"contentType\":\"application/x-pkcs12\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/UnknownIssuerCert\",\"managed\":true,\"attributes\":{\"enabled\":true,\"nbf\":1469493191,\"exp\":1501029791,\"created\":1469493792,\"updated\":1469493792}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'b5532415-9514-4919-8e49-910d70b592cf',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:34 GMT',
+  connection: 'close',
+  'content-length': '261' });
+ return result; }],
+[function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/3062b6588a6f4502b821db8a7ea26488\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '3c932563-a547-48da-b664-552021a2bb61',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:34 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/3062b6588a6f4502b821db8a7ea26488\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': '3c932563-a547-48da-b664-552021a2bb61',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:34 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/811957d9309f4f67b48bc67d6c01b234\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'd36265fa-c491-4bb6-a257-bbcf02e7230f',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:35 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/secrets/nodeSecret?api-version=2015-06-01', '*')
+  .reply(200, "{\"value\":\"Pa$$w0rd\",\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/811957d9309f4f67b48bc67d6c01b234\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'd36265fa-c491-4bb6-a257-bbcf02e7230f',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:35 GMT',
+  connection: 'close',
+  'content-length': '192' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/versions?api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/3062b6588a6f4502b821db8a7ea26488\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/811957d9309f4f67b48bc67d6c01b234\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'd9ef7e11-473e-416b-befb-7a7fa84f406e',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:35 GMT',
+  connection: 'close',
+  'content-length': '375' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://sdktestvault0511.vault.azure.net')
+  .get('/secrets/nodeSecret/versions?api-version=2015-06-01')
+  .reply(200, "{\"value\":[{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/3062b6588a6f4502b821db8a7ea26488\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}},{\"id\":\"https://sdktestvault0511.vault.azure.net/secrets/nodeSecret/811957d9309f4f67b48bc67d6c01b234\",\"attributes\":{\"enabled\":true,\"created\":1470959495,\"updated\":1470959495}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-IIS/8.5',
+  'x-ms-keyvault-region': 'East US',
+  'x-ms-request-id': 'd9ef7e11-473e-416b-befb-7a7fa84f406e',
+  'x-ms-keyvault-service-version': '1.0.0.765',
+  'x-aspnet-version': '4.0.30319',
+  'x-powered-by': 'ASP.NET',
+  'strict-transport-security': 'max-age=31536000;includeSubDomains',
+  'x-content-type-options': 'nosniff',
+  date: 'Thu, 11 Aug 2016 23:51:35 GMT',
+  connection: 'close',
+  'content-length': '375' });
  return result; }]];
