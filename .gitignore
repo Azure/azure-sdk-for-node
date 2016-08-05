@@ -41,6 +41,7 @@ Thumbs.db
 docs/
 main.conf.json
 child.conf.json
+.grunt/
 
 # temporary test artifacts
 test/tmp/*
@@ -48,3 +49,4 @@ test/tmp/*
 # Nuget packages and corresponding codegen sources
 .nuget
 packages
+

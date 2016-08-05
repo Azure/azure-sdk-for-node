@@ -15,3 +15,4 @@
 - If generation is successful then you will see the generated code in the lib folder under `lib/services/<YourServiceName>`
 - Make sure you have License.txt, README.md and package.json file. Take a look at [StorageManagement2](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/storageManagement2) as an example.
 - **Please make sure to have accurate examples in README.md as that is what customers will see when they search for your service package on https://npmjs.com**
+- Once your PR is merged into the master branch, you can publish your package to npm by following the instructions in "step 6" over [here](https://github.com/Azure/adx-documentation-pr/blob/master/clis/azure-cli/guide.md#hydra-specs-pr----node-sdk----xplat-cli)

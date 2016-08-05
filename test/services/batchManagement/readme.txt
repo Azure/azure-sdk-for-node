@@ -7,7 +7,7 @@ In Live Mode
 
 - First create a Service Principal for the subscription you wish to test against.
   Follow the instructions here on creating a Service Principal using the Azure CLI:
-  https://github.com/Azure/azure-sdk-for-node/blob/autorest/Documentation/Authentication.md
+  https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md
 
 - Once the Service Principal is configured, set the following env variables.
 

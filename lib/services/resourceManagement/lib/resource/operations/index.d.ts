@@ -87,13 +87,14 @@ export interface Deployments {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.properties] Gets or sets the deployment properties.
+     * @param {object} [options.properties] The deployment properties.
      * 
-     * @param {object} [options.properties.template] Gets or sets the template
-     * content. Use only one of Template or TemplateLink.
+     * @param {object} [options.properties.template] The template content. It can
+     * be a JObject or a well formed JSON string. Use only one of Template or
+     * TemplateLink.
      * 
-     * @param {object} [options.properties.templateLink] Gets or sets the URI
-     * referencing the template. Use only one of Template or TemplateLink.
+     * @param {object} [options.properties.templateLink] The template URI. Use
+     * only one of Template or TemplateLink.
      * 
      * @param {string} [options.properties.templateLink.uri] URI referencing the
      * template.
@@ -101,11 +102,12 @@ export interface Deployments {
      * @param {string} [options.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {object} [options.properties.parameters] Deployment parameters. Use
-     * only one of Parameters or ParametersLink.
+     * @param {object} [options.properties.parameters] Deployment parameters. It
+     * can be a JObject or a well formed JSON string. Use only one of Parameters
+     * or ParametersLink.
      * 
-     * @param {object} [options.properties.parametersLink] Gets or sets the URI
-     * referencing the parameters. Use only one of Parameters or ParametersLink.
+     * @param {object} [options.properties.parametersLink] The parameters URI. Use
+     * only one of Parameters or ParametersLink.
      * 
      * @param {string} [options.properties.parametersLink.uri] URI referencing the
      * template.
@@ -113,14 +115,14 @@ export interface Deployments {
      * @param {string} [options.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [options.properties.mode] Gets or sets the deployment mode.
-     * Possible values include: 'Incremental', 'Complete'
+     * @param {string} [options.properties.mode] The deployment mode. Possible
+     * values include: 'Incremental', 'Complete'
      * 
-     * @param {object} [options.properties.debugSetting] Gets or sets the debug
-     * setting of the deployment.
+     * @param {object} [options.properties.debugSetting] The debug setting of the
+     * deployment.
      * 
-     * @param {string} [options.properties.debugSetting.detailLevel] Gets or sets
-     * the debug detail level.
+     * @param {string} [options.properties.debugSetting.detailLevel] The debug
+     * detail level.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -141,13 +143,14 @@ export interface Deployments {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.properties] Gets or sets the deployment properties.
+     * @param {object} [options.properties] The deployment properties.
      * 
-     * @param {object} [options.properties.template] Gets or sets the template
-     * content. Use only one of Template or TemplateLink.
+     * @param {object} [options.properties.template] The template content. It can
+     * be a JObject or a well formed JSON string. Use only one of Template or
+     * TemplateLink.
      * 
-     * @param {object} [options.properties.templateLink] Gets or sets the URI
-     * referencing the template. Use only one of Template or TemplateLink.
+     * @param {object} [options.properties.templateLink] The template URI. Use
+     * only one of Template or TemplateLink.
      * 
      * @param {string} [options.properties.templateLink.uri] URI referencing the
      * template.
@@ -155,11 +158,12 @@ export interface Deployments {
      * @param {string} [options.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {object} [options.properties.parameters] Deployment parameters. Use
-     * only one of Parameters or ParametersLink.
+     * @param {object} [options.properties.parameters] Deployment parameters. It
+     * can be a JObject or a well formed JSON string. Use only one of Parameters
+     * or ParametersLink.
      * 
-     * @param {object} [options.properties.parametersLink] Gets or sets the URI
-     * referencing the parameters. Use only one of Parameters or ParametersLink.
+     * @param {object} [options.properties.parametersLink] The parameters URI. Use
+     * only one of Parameters or ParametersLink.
      * 
      * @param {string} [options.properties.parametersLink.uri] URI referencing the
      * template.
@@ -167,14 +171,14 @@ export interface Deployments {
      * @param {string} [options.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [options.properties.mode] Gets or sets the deployment mode.
-     * Possible values include: 'Incremental', 'Complete'
+     * @param {string} [options.properties.mode] The deployment mode. Possible
+     * values include: 'Incremental', 'Complete'
      * 
-     * @param {object} [options.properties.debugSetting] Gets or sets the debug
-     * setting of the deployment.
+     * @param {object} [options.properties.debugSetting] The debug setting of the
+     * deployment.
      * 
-     * @param {string} [options.properties.debugSetting.detailLevel] Gets or sets
-     * the debug detail level.
+     * @param {string} [options.properties.debugSetting.detailLevel] The debug
+     * detail level.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -233,13 +237,14 @@ export interface Deployments {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.properties] Gets or sets the deployment properties.
+     * @param {object} [options.properties] The deployment properties.
      * 
-     * @param {object} [options.properties.template] Gets or sets the template
-     * content. Use only one of Template or TemplateLink.
+     * @param {object} [options.properties.template] The template content. It can
+     * be a JObject or a well formed JSON string. Use only one of Template or
+     * TemplateLink.
      * 
-     * @param {object} [options.properties.templateLink] Gets or sets the URI
-     * referencing the template. Use only one of Template or TemplateLink.
+     * @param {object} [options.properties.templateLink] The template URI. Use
+     * only one of Template or TemplateLink.
      * 
      * @param {string} [options.properties.templateLink.uri] URI referencing the
      * template.
@@ -247,11 +252,12 @@ export interface Deployments {
      * @param {string} [options.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {object} [options.properties.parameters] Deployment parameters. Use
-     * only one of Parameters or ParametersLink.
+     * @param {object} [options.properties.parameters] Deployment parameters. It
+     * can be a JObject or a well formed JSON string. Use only one of Parameters
+     * or ParametersLink.
      * 
-     * @param {object} [options.properties.parametersLink] Gets or sets the URI
-     * referencing the parameters. Use only one of Parameters or ParametersLink.
+     * @param {object} [options.properties.parametersLink] The parameters URI. Use
+     * only one of Parameters or ParametersLink.
      * 
      * @param {string} [options.properties.parametersLink.uri] URI referencing the
      * template.
@@ -259,14 +265,14 @@ export interface Deployments {
      * @param {string} [options.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [options.properties.mode] Gets or sets the deployment mode.
-     * Possible values include: 'Incremental', 'Complete'
+     * @param {string} [options.properties.mode] The deployment mode. Possible
+     * values include: 'Incremental', 'Complete'
      * 
-     * @param {object} [options.properties.debugSetting] Gets or sets the debug
-     * setting of the deployment.
+     * @param {object} [options.properties.debugSetting] The debug setting of the
+     * deployment.
      * 
-     * @param {string} [options.properties.debugSetting.detailLevel] Gets or sets
-     * the debug detail level.
+     * @param {string} [options.properties.debugSetting.detailLevel] The debug
+     * detail level.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -386,13 +392,16 @@ export interface Providers {
      * @param {number} [options.top] Query parameters. If null is passed returns
      * all deployments.
      * 
+     * @param {string} [options.expand] The $expand query parameter. e.g. To
+     * include property aliases in response, use $expand=resourceTypes/aliases.
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderListResult>): void;
+    list(options: { top? : number, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderListResult>): void;
     list(callback: ServiceCallback<models.ProviderListResult>): void;
 
     /**
@@ -403,13 +412,16 @@ export interface Providers {
      * 
      * @param {object} [options] Optional Parameters.
      * 
+     * @param {string} [options.expand] The $expand query parameter. e.g. To
+     * include property aliases in response, use $expand=resourceTypes/aliases.
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceProviderNamespace: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Provider>): void;
+    get(resourceProviderNamespace: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Provider>): void;
     get(resourceProviderNamespace: string, callback: ServiceCallback<models.Provider>): void;
 
     /**
@@ -448,6 +460,8 @@ export interface ResourceGroups {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
+     * @param {string} [options.expand] The $expand query parameter
+     * 
      * @param {number} [options.top] Query parameters. If null is passed returns
      * all resource groups.
      * 
@@ -457,7 +471,7 @@ export interface ResourceGroups {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listResources(resourceGroupName: string, options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+    listResources(resourceGroupName: string, options: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
     listResources(resourceGroupName: string, callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
@@ -486,18 +500,16 @@ export interface ResourceGroups {
      * @param {object} parameters Parameters supplied to the create or update
      * resource group service operation.
      * 
-     * @param {string} [parameters.name] Gets or sets the Name of the resource
-     * group.
+     * @param {string} [parameters.name] The Name of the resource group.
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource group. It cannot be changed after the resource group has been
-     * created. Has to be one of the supported Azure Locations, such as West US,
-     * East US, West Europe, East Asia, etc.
+     * @param {string} [parameters.location] The location of the resource group.
+     * It cannot be changed after the resource group has been created. Has to be
+     * one of the supported Azure Locations, such as West US, East US, West
+     * Europe, East Asia, etc.
      * 
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource group.
+     * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -573,18 +585,16 @@ export interface ResourceGroups {
      * @param {object} parameters Parameters supplied to the update state resource
      * group service operation.
      * 
-     * @param {string} [parameters.name] Gets or sets the Name of the resource
-     * group.
+     * @param {string} [parameters.name] The Name of the resource group.
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource group. It cannot be changed after the resource group has been
-     * created. Has to be one of the supported Azure Locations, such as West US,
-     * East US, West Europe, East Asia, etc.
+     * @param {string} [parameters.location] The location of the resource group.
+     * It cannot be changed after the resource group has been created. Has to be
+     * one of the supported Azure Locations, such as West US, East US, West
+     * Europe, East Asia, etc.
      * 
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource group.
+     * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -606,9 +616,9 @@ export interface ResourceGroups {
      * @param {object} parameters Parameters supplied to the export template
      * resource group operation.
      * 
-     * @param {array} [parameters.resources] Gets or sets the ids of the
-     * resources. The only supported string currently is '*' (all resources).
-     * Future api updates will support exporting specific resources.
+     * @param {array} [parameters.resources] The ids of the resources. The only
+     * supported string currently is '*' (all resources). Future api updates will
+     * support exporting specific resources.
      * 
      * @param {string} [parameters.options] The export template options. Supported
      * values include 'IncludeParameterDefaultValue', 'IncludeComments' or
@@ -695,7 +705,7 @@ export interface Resources {
      * 
      * @param {object} parameters move resources' parameters.
      * 
-     * @param {array} [parameters.resources] Gets or sets the ids of the resources.
+     * @param {array} [parameters.resources] The ids of the resources.
      * 
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      * 
@@ -718,7 +728,7 @@ export interface Resources {
      * 
      * @param {object} parameters move resources' parameters.
      * 
-     * @param {array} [parameters.resources] Gets or sets the ids of the resources.
+     * @param {array} [parameters.resources] The ids of the resources.
      * 
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      * 
@@ -740,6 +750,8 @@ export interface Resources {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
+     * @param {string} [options.expand] The $expand query parameter.
+     * 
      * @param {number} [options.top] Query parameters. If null is passed returns
      * all resource groups.
      * 
@@ -749,7 +761,7 @@ export interface Resources {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: { filter? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
+    list(options: { filter? : string, expand? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListResult>): void;
     list(callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
@@ -824,44 +836,41 @@ export interface Resources {
      * 
      * @param {object} parameters Create or update resource parameters.
      * 
-     * @param {object} [parameters.plan] Gets or sets the plan of the resource.
+     * @param {object} [parameters.plan] The plan of the resource.
      * 
-     * @param {string} [parameters.plan.name] Gets or sets the plan ID.
+     * @param {string} [parameters.plan.name] The plan ID.
      * 
-     * @param {string} [parameters.plan.publisher] Gets or sets the publisher ID.
+     * @param {string} [parameters.plan.publisher] The publisher ID.
      * 
-     * @param {string} [parameters.plan.product] Gets or sets the offer ID.
+     * @param {string} [parameters.plan.product] The offer ID.
      * 
-     * @param {string} [parameters.plan.promotionCode] Gets or sets the promotion
-     * code.
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
      * 
-     * @param {object} [parameters.properties] Gets or sets the resource
-     * properties.
+     * @param {object} [parameters.properties] The resource properties.
      * 
-     * @param {string} [parameters.kind] Gets or sets the kind of the resource.
+     * @param {string} [parameters.kind] The kind of the resource.
      * 
-     * @param {string} [parameters.managedBy] Gets or sets the managedBy property
-     * of the resource.
-     * 
-     * @param {object} [parameters.sku] Gets or sets the sku of the resource.
-     * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name.
-     * 
-     * @param {string} [parameters.sku.tier] Gets or sets the sku tier.
-     * 
-     * @param {string} [parameters.sku.size] Gets or sets the sku size.
-     * 
-     * @param {string} [parameters.sku.family] Gets or sets the sku family.
-     * 
-     * @param {string} [parameters.sku.model] Gets or sets the sku model.
-     * 
-     * @param {number} [parameters.sku.capacity] Gets or sets the sku capacity.
-     * 
-     * @param {object} [parameters.identity] Gets or sets the identity of the
+     * @param {string} [parameters.managedBy] The managedBy property of the
      * resource.
      * 
-     * @param {string} [parameters.identity.type] Gets or sets the identity type.
-     * Possible values include: 'SystemAssigned'
+     * @param {object} [parameters.sku] The sku of the resource.
+     * 
+     * @param {string} [parameters.sku.name] The sku name.
+     * 
+     * @param {string} [parameters.sku.tier] The sku tier.
+     * 
+     * @param {string} [parameters.sku.size] The sku size.
+     * 
+     * @param {string} [parameters.sku.family] The sku family.
+     * 
+     * @param {string} [parameters.sku.model] The sku model.
+     * 
+     * @param {number} [parameters.sku.capacity] The sku capacity.
+     * 
+     * @param {object} [parameters.identity] The identity of the resource.
+     * 
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
      * 
      * @param {string} [parameters.location] Resource location
      * 

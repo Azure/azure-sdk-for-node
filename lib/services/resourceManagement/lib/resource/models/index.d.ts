@@ -16,7 +16,7 @@
  * @constructor
  * Deployment filter.
  *
- * @member {string} [provisioningState] Gets or sets the provisioning state.
+ * @member {string} [provisioningState] The provisioning state.
  * 
  */
 export interface DeploymentExtendedFilter {
@@ -29,20 +29,17 @@ export interface DeploymentExtendedFilter {
  * @constructor
  * Resource filter.
  *
- * @member {string} [resourceType] Gets or sets the resource type.
+ * @member {string} [resourceType] The resource type.
  * 
- * @member {string} [tagname] Gets or sets the tag name.
+ * @member {string} [tagname] The tag name.
  * 
- * @member {string} [tagvalue] Gets or sets the tag value.
- * 
- * @member {string} [expand] Gets or sets the expand value.
+ * @member {string} [tagvalue] The tag value.
  * 
  */
 export interface GenericResourceFilter {
     resourceType?: string;
     tagname?: string;
     tagvalue?: string;
-    expand?: string;
 }
 
 /**
@@ -51,9 +48,9 @@ export interface GenericResourceFilter {
  * @constructor
  * Resource group filter.
  *
- * @member {string} [tagName] Gets or sets the tag name.
+ * @member {string} [tagName] The tag name.
  * 
- * @member {string} [tagValue] Gets or sets the tag value.
+ * @member {string} [tagValue] The tag value.
  * 
  */
 export interface ResourceGroupFilter {
@@ -101,36 +98,34 @@ export interface ParametersLink {
  * @constructor
  * Deployment properties.
  *
- * @member {object} [template] Gets or sets the template content. Use only one
- * of Template or TemplateLink.
+ * @member {object} [template] The template content. It can be a JObject or a
+ * well formed JSON string. Use only one of Template or TemplateLink.
  * 
- * @member {object} [templateLink] Gets or sets the URI referencing the
- * template. Use only one of Template or TemplateLink.
+ * @member {object} [templateLink] The template URI. Use only one of Template
+ * or TemplateLink.
  * 
  * @member {string} [templateLink.uri] URI referencing the template.
  * 
  * @member {string} [templateLink.contentVersion] If included it must match
  * the ContentVersion in the template.
  * 
- * @member {object} [parameters] Deployment parameters. Use only one of
- * Parameters or ParametersLink.
+ * @member {object} [parameters] Deployment parameters. It can be a JObject or
+ * a well formed JSON string. Use only one of Parameters or ParametersLink.
  * 
- * @member {object} [parametersLink] Gets or sets the URI referencing the
- * parameters. Use only one of Parameters or ParametersLink.
+ * @member {object} [parametersLink] The parameters URI. Use only one of
+ * Parameters or ParametersLink.
  * 
  * @member {string} [parametersLink.uri] URI referencing the template.
  * 
  * @member {string} [parametersLink.contentVersion] If included it must match
  * the ContentVersion in the template.
  * 
- * @member {string} mode Gets or sets the deployment mode. Possible values
- * include: 'Incremental', 'Complete'
+ * @member {string} mode The deployment mode. Possible values include:
+ * 'Incremental', 'Complete'
  * 
- * @member {object} [debugSetting] Gets or sets the debug setting of the
- * deployment.
+ * @member {object} [debugSetting] The debug setting of the deployment.
  * 
- * @member {string} [debugSetting.detailLevel] Gets or sets the debug detail
- * level.
+ * @member {string} [debugSetting.detailLevel] The debug detail level.
  * 
  */
 export interface DeploymentProperties {
@@ -146,7 +141,7 @@ export interface DeploymentProperties {
  * @class
  * Initializes a new instance of the DebugSetting class.
  * @constructor
- * @member {string} [detailLevel] Gets or sets the debug detail level.
+ * @member {string} [detailLevel] The debug detail level.
  * 
  */
 export interface DebugSetting {
@@ -159,24 +154,26 @@ export interface DebugSetting {
  * @constructor
  * Deployment operation parameters.
  *
- * @member {object} [properties] Gets or sets the deployment properties.
+ * @member {object} [properties] The deployment properties.
  * 
- * @member {object} [properties.template] Gets or sets the template content.
- * Use only one of Template or TemplateLink.
+ * @member {object} [properties.template] The template content. It can be a
+ * JObject or a well formed JSON string. Use only one of Template or
+ * TemplateLink.
  * 
- * @member {object} [properties.templateLink] Gets or sets the URI referencing
- * the template. Use only one of Template or TemplateLink.
+ * @member {object} [properties.templateLink] The template URI. Use only one
+ * of Template or TemplateLink.
  * 
  * @member {string} [properties.templateLink.uri] URI referencing the template.
  * 
  * @member {string} [properties.templateLink.contentVersion] If included it
  * must match the ContentVersion in the template.
  * 
- * @member {object} [properties.parameters] Deployment parameters. Use only
- * one of Parameters or ParametersLink.
+ * @member {object} [properties.parameters] Deployment parameters. It can be a
+ * JObject or a well formed JSON string. Use only one of Parameters or
+ * ParametersLink.
  * 
- * @member {object} [properties.parametersLink] Gets or sets the URI
- * referencing the parameters. Use only one of Parameters or ParametersLink.
+ * @member {object} [properties.parametersLink] The parameters URI. Use only
+ * one of Parameters or ParametersLink.
  * 
  * @member {string} [properties.parametersLink.uri] URI referencing the
  * template.
@@ -184,14 +181,14 @@ export interface DebugSetting {
  * @member {string} [properties.parametersLink.contentVersion] If included it
  * must match the ContentVersion in the template.
  * 
- * @member {string} [properties.mode] Gets or sets the deployment mode.
- * Possible values include: 'Incremental', 'Complete'
+ * @member {string} [properties.mode] The deployment mode. Possible values
+ * include: 'Incremental', 'Complete'
  * 
- * @member {object} [properties.debugSetting] Gets or sets the debug setting
- * of the deployment.
+ * @member {object} [properties.debugSetting] The debug setting of the
+ * deployment.
  * 
- * @member {string} [properties.debugSetting.detailLevel] Gets or sets the
- * debug detail level.
+ * @member {string} [properties.debugSetting.detailLevel] The debug detail
+ * level.
  * 
  */
 export interface Deployment {
@@ -202,7 +199,7 @@ export interface Deployment {
  * @class
  * Initializes a new instance of the DeploymentExportResult class.
  * @constructor
- * @member {object} [template] Gets or sets the template content.
+ * @member {object} [template] The template content.
  * 
  */
 export interface DeploymentExportResult {
@@ -213,14 +210,13 @@ export interface DeploymentExportResult {
  * @class
  * Initializes a new instance of the ResourceManagementErrorWithDetails class.
  * @constructor
- * @member {string} code Gets or sets the error code returned from the server.
+ * @member {string} code The error code returned from the server.
  * 
- * @member {string} message Gets or sets the error message returned from the
- * server.
+ * @member {string} message The error message returned from the server.
  * 
- * @member {string} [target] Gets or sets the target of the error.
+ * @member {string} [target] The target of the error.
  * 
- * @member {array} [details] Gets or sets validation error.
+ * @member {array} [details] Validation error.
  * 
  */
 export interface ResourceManagementErrorWithDetails {
@@ -232,23 +228,55 @@ export interface ResourceManagementErrorWithDetails {
 
 /**
  * @class
+ * Initializes a new instance of the AliasPathType class.
+ * @constructor
+ * @member {string} [path] The path of an alias.
+ * 
+ * @member {array} [apiVersions] The api versions.
+ * 
+ */
+export interface AliasPathType {
+    path?: string;
+    apiVersions?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AliasType class.
+ * @constructor
+ * @member {string} [name] The alias name.
+ * 
+ * @member {array} [paths] The paths for an alias.
+ * 
+ */
+export interface AliasType {
+    name?: string;
+    paths?: AliasPathType[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ProviderResourceType class.
  * @constructor
  * Resource type managed by the resource provider.
  *
- * @member {string} [resourceType] Gets or sets the resource type.
+ * @member {string} [resourceType] The resource type.
  * 
- * @member {array} [locations] Gets or sets the collection of locations where
- * this resource type can be created in.
+ * @member {array} [locations] The collection of locations where this resource
+ * type can be created in.
  * 
- * @member {array} [apiVersions] Gets or sets the api version.
+ * @member {array} [aliases] The aliases that are supported by this resource
+ * type.
  * 
- * @member {object} [properties] Gets or sets the properties.
+ * @member {array} [apiVersions] The api version.
+ * 
+ * @member {object} [properties] The properties.
  * 
  */
 export interface ProviderResourceType {
     resourceType?: string;
     locations?: string[];
+    aliases?: AliasType[];
     apiVersions?: string[];
     properties?: { [propertyName: string]: string };
 }
@@ -259,15 +287,13 @@ export interface ProviderResourceType {
  * @constructor
  * Resource provider information.
  *
- * @member {string} [id] Gets or sets the provider id.
+ * @member {string} [id] The provider id.
  * 
- * @member {string} [namespace] Gets or sets the namespace of the provider.
+ * @member {string} [namespace] The namespace of the provider.
  * 
- * @member {string} [registrationState] Gets or sets the registration state of
- * the provider.
+ * @member {string} [registrationState] The registration state of the provider.
  * 
- * @member {array} [resourceTypes] Gets or sets the collection of provider
- * resource types.
+ * @member {array} [resourceTypes] The collection of provider resource types.
  * 
  */
 export interface Provider {
@@ -283,11 +309,11 @@ export interface Provider {
  * @constructor
  * Deployment dependency information.
  *
- * @member {string} [id] Gets or sets the ID of the dependency.
+ * @member {string} [id] The ID of the dependency.
  * 
- * @member {string} [resourceType] Gets or sets the dependency resource type.
+ * @member {string} [resourceType] The dependency resource type.
  * 
- * @member {string} [resourceName] Gets or sets the dependency resource name.
+ * @member {string} [resourceName] The dependency resource name.
  * 
  */
 export interface BasicDependency {
@@ -302,13 +328,13 @@ export interface BasicDependency {
  * @constructor
  * Deployment dependency information.
  *
- * @member {array} [dependsOn] Gets the list of dependencies.
+ * @member {array} [dependsOn] The list of dependencies.
  * 
- * @member {string} [id] Gets or sets the ID of the dependency.
+ * @member {string} [id] The ID of the dependency.
  * 
- * @member {string} [resourceType] Gets or sets the dependency resource type.
+ * @member {string} [resourceType] The dependency resource type.
  * 
- * @member {string} [resourceName] Gets or sets the dependency resource name.
+ * @member {string} [resourceName] The dependency resource name.
  * 
  */
 export interface Dependency {
@@ -324,28 +350,24 @@ export interface Dependency {
  * @constructor
  * Deployment properties with additional details.
  *
- * @member {string} [provisioningState] Gets or sets the state of the
- * provisioning.
+ * @member {string} [provisioningState] The state of the provisioning.
  * 
- * @member {string} [correlationId] Gets or sets the correlation ID of the
+ * @member {string} [correlationId] The correlation ID of the deployment.
+ * 
+ * @member {date} [timestamp] The timestamp of the template deployment.
+ * 
+ * @member {object} [outputs] Key/value pairs that represent deploymentoutput.
+ * 
+ * @member {array} [providers] The list of resource providers needed for the
  * deployment.
  * 
- * @member {date} [timestamp] Gets or sets the timestamp of the template
- * deployment.
+ * @member {array} [dependencies] The list of deployment dependencies.
  * 
- * @member {object} [outputs] Gets or sets key/value pairs that represent
- * deploymentoutput.
+ * @member {object} [template] The template content. Use only one of Template
+ * or TemplateLink.
  * 
- * @member {array} [providers] Gets the list of resource providers needed for
- * the deployment.
- * 
- * @member {array} [dependencies] Gets the list of deployment dependencies.
- * 
- * @member {object} [template] Gets or sets the template content. Use only one
- * of Template or TemplateLink.
- * 
- * @member {object} [templateLink] Gets or sets the URI referencing the
- * template. Use only one of Template or TemplateLink.
+ * @member {object} [templateLink] The URI referencing the template. Use only
+ * one of Template or TemplateLink.
  * 
  * @member {string} [templateLink.uri] URI referencing the template.
  * 
@@ -355,22 +377,20 @@ export interface Dependency {
  * @member {object} [parameters] Deployment parameters. Use only one of
  * Parameters or ParametersLink.
  * 
- * @member {object} [parametersLink] Gets or sets the URI referencing the
- * parameters. Use only one of Parameters or ParametersLink.
+ * @member {object} [parametersLink] The URI referencing the parameters. Use
+ * only one of Parameters or ParametersLink.
  * 
  * @member {string} [parametersLink.uri] URI referencing the template.
  * 
  * @member {string} [parametersLink.contentVersion] If included it must match
  * the ContentVersion in the template.
  * 
- * @member {string} [mode] Gets or sets the deployment mode. Possible values
- * include: 'Incremental', 'Complete'
+ * @member {string} [mode] The deployment mode. Possible values include:
+ * 'Incremental', 'Complete'
  * 
- * @member {object} [debugSetting] Gets or sets the debug setting of the
- * deployment.
+ * @member {object} [debugSetting] The debug setting of the deployment.
  * 
- * @member {string} [debugSetting.detailLevel] Gets or sets the debug detail
- * level.
+ * @member {string} [debugSetting.detailLevel] The debug detail level.
  * 
  */
 export interface DeploymentPropertiesExtended {
@@ -394,44 +414,41 @@ export interface DeploymentPropertiesExtended {
  * @constructor
  * Information from validate template deployment response.
  *
- * @member {object} [error] Gets or sets validation error.
+ * @member {object} [error] Validation error.
  * 
- * @member {string} [error.code] Gets or sets the error code returned from the
- * server.
+ * @member {string} [error.code] The error code returned from the server.
  * 
- * @member {string} [error.message] Gets or sets the error message returned
- * from the server.
+ * @member {string} [error.message] The error message returned from the server.
  * 
- * @member {string} [error.target] Gets or sets the target of the error.
+ * @member {string} [error.target] The target of the error.
  * 
- * @member {array} [error.details] Gets or sets validation error.
+ * @member {array} [error.details] Validation error.
  * 
- * @member {object} [properties] Gets or sets the template deployment
- * properties.
+ * @member {object} [properties] The template deployment properties.
  * 
- * @member {string} [properties.provisioningState] Gets or sets the state of
- * the provisioning.
+ * @member {string} [properties.provisioningState] The state of the
+ * provisioning.
  * 
- * @member {string} [properties.correlationId] Gets or sets the correlation ID
- * of the deployment.
+ * @member {string} [properties.correlationId] The correlation ID of the
+ * deployment.
  * 
- * @member {date} [properties.timestamp] Gets or sets the timestamp of the
- * template deployment.
+ * @member {date} [properties.timestamp] The timestamp of the template
+ * deployment.
  * 
- * @member {object} [properties.outputs] Gets or sets key/value pairs that
- * represent deploymentoutput.
+ * @member {object} [properties.outputs] Key/value pairs that represent
+ * deploymentoutput.
  * 
- * @member {array} [properties.providers] Gets the list of resource providers
+ * @member {array} [properties.providers] The list of resource providers
  * needed for the deployment.
  * 
- * @member {array} [properties.dependencies] Gets the list of deployment
+ * @member {array} [properties.dependencies] The list of deployment
  * dependencies.
  * 
- * @member {object} [properties.template] Gets or sets the template content.
- * Use only one of Template or TemplateLink.
+ * @member {object} [properties.template] The template content. Use only one
+ * of Template or TemplateLink.
  * 
- * @member {object} [properties.templateLink] Gets or sets the URI referencing
- * the template. Use only one of Template or TemplateLink.
+ * @member {object} [properties.templateLink] The URI referencing the
+ * template. Use only one of Template or TemplateLink.
  * 
  * @member {string} [properties.templateLink.uri] URI referencing the template.
  * 
@@ -441,8 +458,8 @@ export interface DeploymentPropertiesExtended {
  * @member {object} [properties.parameters] Deployment parameters. Use only
  * one of Parameters or ParametersLink.
  * 
- * @member {object} [properties.parametersLink] Gets or sets the URI
- * referencing the parameters. Use only one of Parameters or ParametersLink.
+ * @member {object} [properties.parametersLink] The URI referencing the
+ * parameters. Use only one of Parameters or ParametersLink.
  * 
  * @member {string} [properties.parametersLink.uri] URI referencing the
  * template.
@@ -450,14 +467,14 @@ export interface DeploymentPropertiesExtended {
  * @member {string} [properties.parametersLink.contentVersion] If included it
  * must match the ContentVersion in the template.
  * 
- * @member {string} [properties.mode] Gets or sets the deployment mode.
- * Possible values include: 'Incremental', 'Complete'
+ * @member {string} [properties.mode] The deployment mode. Possible values
+ * include: 'Incremental', 'Complete'
  * 
- * @member {object} [properties.debugSetting] Gets or sets the debug setting
- * of the deployment.
+ * @member {object} [properties.debugSetting] The debug setting of the
+ * deployment.
  * 
- * @member {string} [properties.debugSetting.detailLevel] Gets or sets the
- * debug detail level.
+ * @member {string} [properties.debugSetting.detailLevel] The debug detail
+ * level.
  * 
  */
 export interface DeploymentValidateResult {
@@ -471,35 +488,35 @@ export interface DeploymentValidateResult {
  * @constructor
  * Deployment information.
  *
- * @member {string} [id] Gets or sets the ID of the deployment.
+ * @member {string} [id] The ID of the deployment.
  * 
- * @member {string} name Gets or sets the name of the deployment.
+ * @member {string} name The name of the deployment.
  * 
- * @member {object} [properties] Gets or sets deployment properties.
+ * @member {object} [properties] Deployment properties.
  * 
- * @member {string} [properties.provisioningState] Gets or sets the state of
- * the provisioning.
+ * @member {string} [properties.provisioningState] The state of the
+ * provisioning.
  * 
- * @member {string} [properties.correlationId] Gets or sets the correlation ID
- * of the deployment.
+ * @member {string} [properties.correlationId] The correlation ID of the
+ * deployment.
  * 
- * @member {date} [properties.timestamp] Gets or sets the timestamp of the
- * template deployment.
+ * @member {date} [properties.timestamp] The timestamp of the template
+ * deployment.
  * 
- * @member {object} [properties.outputs] Gets or sets key/value pairs that
- * represent deploymentoutput.
+ * @member {object} [properties.outputs] Key/value pairs that represent
+ * deploymentoutput.
  * 
- * @member {array} [properties.providers] Gets the list of resource providers
+ * @member {array} [properties.providers] The list of resource providers
  * needed for the deployment.
  * 
- * @member {array} [properties.dependencies] Gets the list of deployment
+ * @member {array} [properties.dependencies] The list of deployment
  * dependencies.
  * 
- * @member {object} [properties.template] Gets or sets the template content.
- * Use only one of Template or TemplateLink.
+ * @member {object} [properties.template] The template content. Use only one
+ * of Template or TemplateLink.
  * 
- * @member {object} [properties.templateLink] Gets or sets the URI referencing
- * the template. Use only one of Template or TemplateLink.
+ * @member {object} [properties.templateLink] The URI referencing the
+ * template. Use only one of Template or TemplateLink.
  * 
  * @member {string} [properties.templateLink.uri] URI referencing the template.
  * 
@@ -509,8 +526,8 @@ export interface DeploymentValidateResult {
  * @member {object} [properties.parameters] Deployment parameters. Use only
  * one of Parameters or ParametersLink.
  * 
- * @member {object} [properties.parametersLink] Gets or sets the URI
- * referencing the parameters. Use only one of Parameters or ParametersLink.
+ * @member {object} [properties.parametersLink] The URI referencing the
+ * parameters. Use only one of Parameters or ParametersLink.
  * 
  * @member {string} [properties.parametersLink.uri] URI referencing the
  * template.
@@ -518,14 +535,14 @@ export interface DeploymentValidateResult {
  * @member {string} [properties.parametersLink.contentVersion] If included it
  * must match the ContentVersion in the template.
  * 
- * @member {string} [properties.mode] Gets or sets the deployment mode.
- * Possible values include: 'Incremental', 'Complete'
+ * @member {string} [properties.mode] The deployment mode. Possible values
+ * include: 'Incremental', 'Complete'
  * 
- * @member {object} [properties.debugSetting] Gets or sets the debug setting
- * of the deployment.
+ * @member {object} [properties.debugSetting] The debug setting of the
+ * deployment.
  * 
- * @member {string} [properties.debugSetting.detailLevel] Gets or sets the
- * debug detail level.
+ * @member {string} [properties.debugSetting.detailLevel] The debug detail
+ * level.
  * 
  */
 export interface DeploymentExtended {
@@ -563,46 +580,45 @@ export interface Resource extends BaseResource {
  * @constructor
  * Resource information.
  *
- * @member {object} [plan] Gets or sets the plan of the resource.
+ * @member {object} [plan] The plan of the resource.
  * 
- * @member {string} [plan.name] Gets or sets the plan ID.
+ * @member {string} [plan.name] The plan ID.
  * 
- * @member {string} [plan.publisher] Gets or sets the publisher ID.
+ * @member {string} [plan.publisher] The publisher ID.
  * 
- * @member {string} [plan.product] Gets or sets the offer ID.
+ * @member {string} [plan.product] The offer ID.
  * 
- * @member {string} [plan.promotionCode] Gets or sets the promotion code.
+ * @member {string} [plan.promotionCode] The promotion code.
  * 
- * @member {object} [properties] Gets or sets the resource properties.
+ * @member {object} [properties] The resource properties.
  * 
- * @member {string} [kind] Gets or sets the kind of the resource.
+ * @member {string} [kind] The kind of the resource.
  * 
- * @member {string} [managedBy] Gets or sets the managedBy property of the
- * resource.
+ * @member {string} [managedBy] The managedBy property of the resource.
  * 
- * @member {object} [sku] Gets or sets the sku of the resource.
+ * @member {object} [sku] The sku of the resource.
  * 
- * @member {string} [sku.name] Gets or sets the sku name.
+ * @member {string} [sku.name] The sku name.
  * 
- * @member {string} [sku.tier] Gets or sets the sku tier.
+ * @member {string} [sku.tier] The sku tier.
  * 
- * @member {string} [sku.size] Gets or sets the sku size.
+ * @member {string} [sku.size] The sku size.
  * 
- * @member {string} [sku.family] Gets or sets the sku family.
+ * @member {string} [sku.family] The sku family.
  * 
- * @member {string} [sku.model] Gets or sets the sku model.
+ * @member {string} [sku.model] The sku model.
  * 
- * @member {number} [sku.capacity] Gets or sets the sku capacity.
+ * @member {number} [sku.capacity] The sku capacity.
  * 
- * @member {object} [identity] Gets or sets the identity of the resource.
+ * @member {object} [identity] The identity of the resource.
  * 
  * @member {string} [identity.principalId] The principal id of resource
  * identity.
  * 
  * @member {string} [identity.tenantId] The tenant id of resource.
  * 
- * @member {string} [identity.type] Gets or sets the identity type. Possible
- * values include: 'SystemAssigned'
+ * @member {string} [identity.type] The identity type. Possible values
+ * include: 'SystemAssigned'
  * 
  */
 export interface GenericResource extends Resource {
@@ -620,13 +636,13 @@ export interface GenericResource extends Resource {
  * @constructor
  * Plan for the resource.
  *
- * @member {string} [name] Gets or sets the plan ID.
+ * @member {string} [name] The plan ID.
  * 
- * @member {string} [publisher] Gets or sets the publisher ID.
+ * @member {string} [publisher] The publisher ID.
  * 
- * @member {string} [product] Gets or sets the offer ID.
+ * @member {string} [product] The offer ID.
  * 
- * @member {string} [promotionCode] Gets or sets the promotion code.
+ * @member {string} [promotionCode] The promotion code.
  * 
  */
 export interface Plan {
@@ -642,17 +658,17 @@ export interface Plan {
  * @constructor
  * Sku for the resource.
  *
- * @member {string} [name] Gets or sets the sku name.
+ * @member {string} [name] The sku name.
  * 
- * @member {string} [tier] Gets or sets the sku tier.
+ * @member {string} [tier] The sku tier.
  * 
- * @member {string} [size] Gets or sets the sku size.
+ * @member {string} [size] The sku size.
  * 
- * @member {string} [family] Gets or sets the sku family.
+ * @member {string} [family] The sku family.
  * 
- * @member {string} [model] Gets or sets the sku model.
+ * @member {string} [model] The sku model.
  * 
- * @member {number} [capacity] Gets or sets the sku capacity.
+ * @member {number} [capacity] The sku capacity.
  * 
  */
 export interface Sku {
@@ -674,8 +690,8 @@ export interface Sku {
  * 
  * @member {string} [tenantId] The tenant id of resource.
  * 
- * @member {string} [type] Gets or sets the identity type. Possible values
- * include: 'SystemAssigned'
+ * @member {string} [type] The identity type. Possible values include:
+ * 'SystemAssigned'
  * 
  */
 export interface Identity {
@@ -690,22 +706,21 @@ export interface Identity {
  * @constructor
  * Resource group information.
  *
- * @member {string} [id] Gets the ID of the resource group.
+ * @member {string} [id] The ID of the resource group.
  * 
- * @member {string} [name] Gets or sets the Name of the resource group.
+ * @member {string} [name] The Name of the resource group.
  * 
  * @member {object} [properties]
  * 
  * @member {string} [properties.provisioningState] Gets resource group
  * provisioning state.
  * 
- * @member {string} location Gets or sets the location of the resource group.
- * It cannot be changed after the resource group has been created. Has to be
- * one of the supported Azure Locations, such as West US, East US, West
- * Europe, East Asia, etc.
+ * @member {string} location The location of the resource group. It cannot be
+ * changed after the resource group has been created. Has to be one of the
+ * supported Azure Locations, such as West US, East US, West Europe, East
+ * Asia, etc.
  * 
- * @member {object} [tags] Gets or sets the tags attached to the resource
- * group.
+ * @member {object} [tags] The tags attached to the resource group.
  * 
  */
 export interface ResourceGroup {
@@ -735,7 +750,7 @@ export interface ResourceGroupProperties {
  * @constructor
  * Parameters of move resources.
  *
- * @member {array} [resources] Gets or sets the ids of the resources.
+ * @member {array} [resources] The ids of the resources.
  * 
  * @member {string} [targetResourceGroup] The target resource group.
  * 
@@ -751,9 +766,9 @@ export interface ResourcesMoveInfo {
  * @constructor
  * Export resource group template request parameters.
  *
- * @member {array} [resources] Gets or sets the ids of the resources. The only
- * supported string currently is '*' (all resources). Future api updates will
- * support exporting specific resources.
+ * @member {array} [resources] The ids of the resources. The only supported
+ * string currently is '*' (all resources). Future api updates will support
+ * exporting specific resources.
  * 
  * @member {string} [options] The export template options. Supported values
  * include 'IncludeParameterDefaultValue', 'IncludeComments' or
@@ -787,11 +802,11 @@ export interface TagCount {
  * @constructor
  * Tag information.
  *
- * @member {string} [id] Gets or sets the tag ID.
+ * @member {string} [id] The tag ID.
  * 
- * @member {string} [tagValueProperty] Gets or sets the tag value.
+ * @member {string} [tagValueProperty] The tag value.
  * 
- * @member {object} [count] Gets or sets the tag value count.
+ * @member {object} [count] The tag value count.
  * 
  * @member {string} [count.type] Type of count.
  * 
@@ -810,17 +825,17 @@ export interface TagValue {
  * @constructor
  * Tag details.
  *
- * @member {string} [id] Gets or sets the tag ID.
+ * @member {string} [id] The tag ID.
  * 
- * @member {string} [tagName] Gets or sets the tag name.
+ * @member {string} [tagName] The tag name.
  * 
- * @member {object} [count] Gets or sets the tag count.
+ * @member {object} [count] The tag count.
  * 
  * @member {string} [count.type] Type of count.
  * 
  * @member {string} [count.value] Value of count.
  * 
- * @member {array} [values] Gets or sets the list of tag values.
+ * @member {array} [values] The list of tag values.
  * 
  */
 export interface TagDetails {
@@ -836,11 +851,11 @@ export interface TagDetails {
  * @constructor
  * Target resource.
  *
- * @member {string} [id] Gets or sets the ID of the resource.
+ * @member {string} [id] The ID of the resource.
  * 
- * @member {string} [resourceName] Gets or sets the name of the resource.
+ * @member {string} [resourceName] The name of the resource.
  * 
- * @member {string} [resourceType] Gets or sets the type of the resource.
+ * @member {string} [resourceType] The type of the resource.
  * 
  */
 export interface TargetResource {
@@ -853,7 +868,7 @@ export interface TargetResource {
  * @class
  * Initializes a new instance of the HttpMessage class.
  * @constructor
- * @member {object} [content] Gets or sets HTTP message content.
+ * @member {object} [content] HTTP message content.
  * 
  */
 export interface HttpMessage {
@@ -866,35 +881,31 @@ export interface HttpMessage {
  * @constructor
  * Deployment operation properties.
  *
- * @member {string} [provisioningState] Gets or sets the state of the
- * provisioning.
+ * @member {string} [provisioningState] The state of the provisioning.
  * 
- * @member {date} [timestamp] Gets or sets the date and time of the operation.
+ * @member {date} [timestamp] The date and time of the operation.
  * 
- * @member {string} [serviceRequestId] Gets or sets deployment operation
- * service request id.
+ * @member {string} [serviceRequestId] Deployment operation service request id.
  * 
- * @member {string} [statusCode] Gets or sets operation status code.
+ * @member {string} [statusCode] Operation status code.
  * 
- * @member {object} [statusMessage] Gets or sets operation status message.
+ * @member {object} [statusMessage] Operation status message.
  * 
- * @member {object} [targetResource] Gets or sets the target resource.
+ * @member {object} [targetResource] The target resource.
  * 
- * @member {string} [targetResource.id] Gets or sets the ID of the resource.
+ * @member {string} [targetResource.id] The ID of the resource.
  * 
- * @member {string} [targetResource.resourceName] Gets or sets the name of the
- * resource.
+ * @member {string} [targetResource.resourceName] The name of the resource.
  * 
- * @member {string} [targetResource.resourceType] Gets or sets the type of the
- * resource.
+ * @member {string} [targetResource.resourceType] The type of the resource.
  * 
- * @member {object} [request] Gets or sets the HTTP request message.
+ * @member {object} [request] The HTTP request message.
  * 
- * @member {object} [request.content] Gets or sets HTTP message content.
+ * @member {object} [request.content] HTTP message content.
  * 
- * @member {object} [response] Gets or sets the HTTP response message.
+ * @member {object} [response] The HTTP response message.
  * 
- * @member {object} [response.content] Gets or sets HTTP message content.
+ * @member {object} [response.content] HTTP message content.
  * 
  */
 export interface DeploymentOperationProperties {
@@ -914,48 +925,41 @@ export interface DeploymentOperationProperties {
  * @constructor
  * Deployment operation information.
  *
- * @member {string} [id] Gets or sets full deployment operation id.
+ * @member {string} [id] Full deployment operation id.
  * 
- * @member {string} [operationId] Gets or sets deployment operation id.
+ * @member {string} [operationId] Deployment operation id.
  * 
- * @member {object} [properties] Gets or sets deployment properties.
+ * @member {object} [properties] Deployment properties.
  * 
- * @member {string} [properties.provisioningState] Gets or sets the state of
- * the provisioning.
+ * @member {string} [properties.provisioningState] The state of the
+ * provisioning.
  * 
- * @member {date} [properties.timestamp] Gets or sets the date and time of the
- * operation.
+ * @member {date} [properties.timestamp] The date and time of the operation.
  * 
- * @member {string} [properties.serviceRequestId] Gets or sets deployment
- * operation service request id.
+ * @member {string} [properties.serviceRequestId] Deployment operation service
+ * request id.
  * 
- * @member {string} [properties.statusCode] Gets or sets operation status code.
+ * @member {string} [properties.statusCode] Operation status code.
  * 
- * @member {object} [properties.statusMessage] Gets or sets operation status
- * message.
+ * @member {object} [properties.statusMessage] Operation status message.
  * 
- * @member {object} [properties.targetResource] Gets or sets the target
+ * @member {object} [properties.targetResource] The target resource.
+ * 
+ * @member {string} [properties.targetResource.id] The ID of the resource.
+ * 
+ * @member {string} [properties.targetResource.resourceName] The name of the
  * resource.
  * 
- * @member {string} [properties.targetResource.id] Gets or sets the ID of the
+ * @member {string} [properties.targetResource.resourceType] The type of the
  * resource.
  * 
- * @member {string} [properties.targetResource.resourceName] Gets or sets the
- * name of the resource.
+ * @member {object} [properties.request] The HTTP request message.
  * 
- * @member {string} [properties.targetResource.resourceType] Gets or sets the
- * type of the resource.
+ * @member {object} [properties.request.content] HTTP message content.
  * 
- * @member {object} [properties.request] Gets or sets the HTTP request message.
+ * @member {object} [properties.response] The HTTP response message.
  * 
- * @member {object} [properties.request.content] Gets or sets HTTP message
- * content.
- * 
- * @member {object} [properties.response] Gets or sets the HTTP response
- * message.
- * 
- * @member {object} [properties.response.content] Gets or sets HTTP message
- * content.
+ * @member {object} [properties.response.content] HTTP message content.
  * 
  */
 export interface DeploymentOperation {
@@ -970,15 +974,15 @@ export interface DeploymentOperation {
  * @constructor
  * Resource provider operation's display properties.
  *
- * @member {string} [publisher] Gets or sets operation description.
+ * @member {string} [publisher] Operation description.
  * 
- * @member {string} [provider] Gets or sets operation provider.
+ * @member {string} [provider] Operation provider.
  * 
- * @member {string} [resource] Gets or sets operation resource.
+ * @member {string} [resource] Operation resource.
  * 
- * @member {string} [operation] Gets or sets operation.
+ * @member {string} [operation] Operation.
  * 
- * @member {string} [description] Gets or sets operation description.
+ * @member {string} [description] Operation description.
  * 
  */
 export interface ResourceProviderOperationDisplayProperties {
@@ -1004,19 +1008,17 @@ export interface SubResource extends BaseResource {
  * @class
  * Initializes a new instance of the ResourceGroupExportResult class.
  * @constructor
- * @member {object} [template] Gets or sets the template content.
+ * @member {object} [template] The template content.
  * 
- * @member {object} [error] Gets or sets the error.
+ * @member {object} [error] The error.
  * 
- * @member {string} [error.code] Gets or sets the error code returned from the
- * server.
+ * @member {string} [error.code] The error code returned from the server.
  * 
- * @member {string} [error.message] Gets or sets the error message returned
- * from the server.
+ * @member {string} [error.message] The error message returned from the server.
  * 
- * @member {string} [error.target] Gets or sets the target of the error.
+ * @member {string} [error.target] The target of the error.
  * 
- * @member {array} [error.details] Gets or sets validation error.
+ * @member {array} [error.details] Validation error.
  * 
  */
 export interface ResourceGroupExportResult {

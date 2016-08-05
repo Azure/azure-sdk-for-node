@@ -14,7 +14,6 @@
 // limitations under the License.
 //
 
-
 var should = require('should');
 var util = require('util');
 var fs = require('fs');
@@ -154,15 +153,6 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should update pool target OS version successfully', function (done) {
-      client.pool.upgradeOS('nodesdktestpool1', 'WA-GUEST-OS-4.27_201512-01', function (err, result, request, response) {
-        should.not.exist(err);
-        should.not.exist(result);
-        response.statusCode.should.equal(202);
-        done();
-      });
-    });
-
     it('should update pool parameters successfully', function (done) {
       var options = { metadata: [ { name: 'foo', value: 'bar' } ], certificateReferences: [], applicationPackageReferences: []};
       client.pool.updateProperties('nodesdktestpool1', options, function (err, result, request, response) {
@@ -185,7 +175,7 @@ describe('Batch Service', function () {
         console.log('Waiting for nodes to be ready...')
         setTimeout(function () {
           done();
-        }, 300000);
+        }, 400000);
       });
     });
 
@@ -216,6 +206,24 @@ describe('Batch Service', function () {
         should.not.exist(result.allocationState);
         should.not.exist(result.vmSize);
         response.statusCode.should.equal(200);
+        done();
+      });
+    });
+
+    it('should add a pool with vnet and get expected error', function (done) {
+      var pool = {
+        id: 'nodesdkvnetpool',
+        vmSize: 'small',
+        cloudServiceConfiguration: { osFamily: '4' },
+        targetDedicated: 0,
+        networkConfiguration: { subnetId: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1' }
+      };
+
+      client.pool.add(pool, function (err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
+        err.statusCode.should.equal(400);
+        err.body.code.should.equal('InvalidPropertyValue');
         done();
       });
     });
@@ -372,6 +380,15 @@ describe('Batch Service', function () {
       });
     });
 
+    it('should update pool target OS version successfully', function (done) {
+      client.pool.upgradeOS('nodesdktestpool2', 'WA-GUEST-OS-4.32_201605-01', function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(202);
+        done();
+      });
+    });
+
     it('should list pools without filters', function (done) {
       client.pool.list(function (err, result, request, response) {
         should.not.exist(err);
@@ -465,12 +482,10 @@ describe('Batch Service', function () {
     });
 
     it('should list pools usage metrics', function (done) {
-      var options = { poolListPoolUsageMetricsOptions: { maxResults: 1 } };
-      client.pool.listPoolUsageMetrics(options, function (err, result, request, response) {
+      client.pool.listPoolUsageMetrics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
-        result[0].poolId.should.equal('nodesdktestpool1');
         response.statusCode.should.equal(200);
         done();
       });
@@ -507,14 +522,69 @@ describe('Batch Service', function () {
     });
 
     it('should create a task successfully', function (done) {
-      var options = {
+      var task = {
         id: 'HelloWorldNodeSDKTestTask',
-        commandLine: 'echo Hello World'};
-      client.task.add('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
+        commandLine: 'ping 127.0.0.1 -n 20'};
+      client.task.add('HelloWorldJobNodeSDKTest', task, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);
         done();
+      });
+    });
+
+    it('should create a task with exit conditions successfully', function (done) {
+      var jobId = 'JobWithAutoComplete';
+      var taskId = 'TaskWithAutoComplete';
+      var job = {
+        id: jobId,
+        poolInfo: {
+          poolId: 'dummypool'
+        },
+        onAllTasksComplete: 'noAction',
+        onTaskFailure: 'performExitOptionsJobAction'
+      };
+
+      client.job.add(job, function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(201);
+
+        var task = {
+          id: taskId,
+          commandLine: 'echo Hello World',
+          exitConditions: {
+            default: {
+              jobAction: 'terminate'
+            },
+            exitCodes: [
+              {
+                code: 1,
+                exitOptions: {
+                 jobAction: 'none'
+                }
+              }]
+           }
+        };
+
+        client.task.add(jobId, task, function (err, result, request, response) {
+          should.not.exist(err);
+          should.not.exist(result);
+          response.statusCode.should.equal(201);
+
+          client.task.get(jobId, taskId, function (err, result, request, response) {
+            should.not.exist(err);
+            should.exist(result);
+            result.exitConditions.default.jobAction.should.equal('terminate');
+            result.exitConditions.exitCodes[0].code.should.equal(1);
+            result.exitConditions.exitCodes[0].exitOptions.jobAction.should.equal('none');
+
+            client.job.deleteMethod(jobId, function (err, result, request, response) {
+              should.not.exist(err);
+              done();
+            });
+          });
+        });
       });
     });
 
@@ -713,6 +783,29 @@ describe('Batch Service', function () {
         should.not.exist(result);
         response.statusCode.should.equal(200);
         done();
+      });
+    });
+
+    it('should add a task with an application package reference successfully', function (done) {
+      var taskId = 'ApplicationPacakgeReferenceTask';
+      var task = {
+        id: taskId,
+        commandLine: 'cmd /c echo hello world',
+        applicationPackageReferences: [{
+            applicationId: "my_application_id"
+          }
+        ]
+      };
+      client.task.add('HelloWorldJobNodeSDKTest', task, function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(201);
+        client.task.get('HelloWorldJobNodeSDKTest', taskId, function (err, result, request, responnse) {
+          should.not.exist(err);
+          should.exist(result);
+          should.exist(result.applicationPackageReferences);
+          done();
+        });
       });
     });
 

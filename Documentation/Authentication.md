@@ -31,7 +31,7 @@ Let us create a serviceprincipal with a password. The default start-date will be
 
 ```
 D:\sdk>azure ad sp create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
-info:    Executing command ad app create
+info:    Executing command ad sp create
 + Creating application testap674
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
 data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
@@ -99,6 +99,8 @@ the user will get a DeviceTokenCredentials object.
    });
  });
 ```
+
+> NOTE: Please provide the domain i.e. the tenantID, if you are going to authenticate with a LiveID(your outlook, yahoo, gmail, etc. account). This will give you the credential object pertaining to the specified tenant. This credential object can then be used for creating the client. Please refer to this [issue for detailed explanation](https://github.com/Azure/azure-sdk-for-node/issues/1821#issuecomment-237419366). 
 
 - **Service Principal Authentication**
 This is useful in automation scenarios. The experience for loginWithServicePrincipalSecret is the same as the one described above for [azure-cli in step 4](https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md#step-4-login-as-a-serviceprincipal).

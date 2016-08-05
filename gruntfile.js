@@ -110,6 +110,15 @@ module.exports = function(grunt) {
           base: './docs',
         }
       }
+    },
+    'gh-pages': {
+      options: {
+        base: 'docs',
+        branch: 'gh-pages',
+        message: '[Auto-generated] Updated documentations',
+        add: true
+      },
+      src: '**/*'
     }
   });
 
@@ -117,6 +126,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-symlink');
   grunt.loadTasks('tasks');
-  grunt.registerTask('publishdocs', ['githubPages:target']);
+  grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.registerTask('publishdocs', ['gh-pages']);
   grunt.registerTask('genDocs', ['jsdoc', 'symlink']);
 };

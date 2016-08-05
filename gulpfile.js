@@ -19,7 +19,7 @@ var mappings = {
   },
   'batch.Service': {
     'dir': 'batch/lib',
-    'source': 'batch/2016-02-01.3.0/swagger/BatchService.json',
+    'source': 'batch/2016-07-01.3.1/swagger/BatchService.json',
     'ft': 1
   },
   'cdn': {
@@ -56,6 +56,10 @@ var mappings = {
   'devTestLabs': {
     'dir': 'devTestLabs/lib',
     'source': 'arm-devtestlabs/2015-05-21-preview/swagger/DTL.json'
+  },
+  'dns': {
+    'dir': 'dnsManagement/lib',
+    'source': 'arm-dns/2016-04-01/swagger/dns.json'
   },
   'graph': {
     'dir': 'graphManagement/lib',

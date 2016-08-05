@@ -6,7 +6,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Srinivasan, Vivek <visriniv@microsoft.com>"
   ],
-  "version": "1.4.4-preview",
+  "version": "1.4.5-preview",
   "description": "Microsoft Azure Resource Management Client Library for node",
   "tags": [
     "azure",
