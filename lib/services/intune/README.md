@@ -19,7 +19,7 @@ npm install azure-arm-intune
 ### Authentication, client creation and getting location by hostname
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var IntuneResourceManagementClient = require('azure-arm-intune');
 
  // Interactive Login

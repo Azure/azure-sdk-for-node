@@ -2,7 +2,7 @@
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Virtual Machines and Cloud Services. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
-- **API version: 2013-11-01**
+- **API version: 2016-06-01**
 
 ## Features
 
@@ -13,6 +13,8 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 - Manage cloud service
 - Manage service certificate
 - Get operating systems and operating system families
+- Redeploy virtual machines
+- Migrate virtual machines to resource manager stack
 
 ## How to Install
 

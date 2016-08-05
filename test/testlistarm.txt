@@ -20,3 +20,4 @@ services/servermanagement/servermanagement-tests.js
 services/notificationHubsManagement/namespace-tests.js
 services/notificationHubsManagement/notificationHub-tests.js
 services/devTestLabs/devTestLabsClient-tests.js
+services/iothub/iothubClient-tests.js

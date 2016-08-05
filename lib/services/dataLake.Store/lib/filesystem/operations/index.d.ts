@@ -247,13 +247,16 @@ export interface FileSystem {
      * 
      * @param {object} [options] Optional Parameters.
      * 
+     * @param {number} [options.offset] The optional offset in the stream to begin
+     * the append operation. Default is to append at the end of the stream.
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { offset? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     append(accountName: string, directFilePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**

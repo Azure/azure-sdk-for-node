@@ -11,9 +11,10 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Huang, Pengfei <phuang@microsoft.com>",
     "Onalan, Alp <alpon@microsoft.com>",
-    "Lee, Hyonho <Hyonho.Lee@microsoft.com>"
+    "Lee, Hyonho <Hyonho.Lee@microsoft.com>",
+    "Desai, Priyank <priydes@microsoft.com>"
   ],
-  "version": "0.15.0",
+  "version": "0.17.0",
   "description": "Microsoft Azure Compute Management Client Library for node",
   "tags": [
     "azure",

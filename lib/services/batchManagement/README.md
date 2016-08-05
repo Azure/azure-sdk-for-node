@@ -14,7 +14,7 @@ npm install azure-arm-batch
 ### Authentication, client creation and listing accounts as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var batchManagementClient = require('azure-arm-batch');
 
  // Interactive Login

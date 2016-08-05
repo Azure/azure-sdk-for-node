@@ -2,7 +2,7 @@
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Network Resources.
 - **Node.js version: 4.x.x or higher**
-- **API version: 2015-06-15**
+- **API version: 2016-06-01**
 
 ## Features
 
@@ -30,7 +30,7 @@ npm install azure-arm-network
 ### Authentication, client creation and listing vnets in a resource group as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
+ var msRestAzure = require('ms-rest-azure');
  var NetworkManagementClient = require('azure-arm-network');
 
  // Interactive Login

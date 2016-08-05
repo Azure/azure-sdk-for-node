@@ -67,9 +67,14 @@ var mappings = {
     'dir': 'intune/lib',
     'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
   },
+  'iothub': {
+    'dir': 'iothub/lib',
+    'source': 'arm-iothub/2016-02-03/swagger/iothub.json',
+    'ft': 1
+  },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2016-03-30/swagger/network.json',
+    'source': 'arm-network/2016-06-01/swagger/network.json',
     'ft': 1
   },
   'notificationHubs':{
@@ -131,7 +136,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160613';
+var defaultAutoRestVersion = '0.17.0-Nightly20160630';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
