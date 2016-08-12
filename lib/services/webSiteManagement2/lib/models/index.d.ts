@@ -15,6 +15,7 @@
  * Initializes a new instance of the ArmPlan class.
  * @constructor
  * The plan object in an ARM, represents a marketplace plan
+ *
  * @member {string} [name] The name
  * 
  * @member {string} [publisher] The publisher
@@ -66,6 +67,7 @@ export interface Resource extends BaseResource {
  * @constructor
  * Class representing the Key Vault container for certificate purchased
  * through Azure
+ *
  * @member {string} [keyVaultId] Key Vault Csm resource Id
  * 
  * @member {string} [keyVaultSecretName] Key Vault secret name
@@ -88,6 +90,7 @@ export interface CertificateOrderCertificate extends Resource {
  * Initializes a new instance of the SkuDescription class.
  * @constructor
  * Describes a sku for a scalable resource
+ *
  * @member {string} [name] Name of the resource sku
  * 
  * @member {string} [tier] Service Tier of the resource sku
@@ -113,6 +116,7 @@ export interface SkuDescription {
  * Initializes a new instance of the CertificateOrder class.
  * @constructor
  * Certificate purchase order
+ *
  * @member {object} [certificates] State of the Key Vault secret
  * 
  * @member {string} [distinguishedName] Certificate distinguished name
@@ -229,6 +233,7 @@ export interface CertificateOrder extends Resource {
  * Initializes a new instance of the CertificateDetails class.
  * @constructor
  * Certificate Details
+ *
  * @member {number} [version] Version
  * 
  * @member {string} [serialNumber] Serial Number
@@ -262,39 +267,10 @@ export interface CertificateDetails extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the CertificateOrderCollection class.
- * @constructor
- * Collection of ceritificate orders
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface CertificateOrderCollection {
-    value?: CertificateOrder[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateOrderCertificateCollection class.
- * @constructor
- * Collection of ceritificateorder certificates
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface CertificateOrderCertificateCollection {
-    value?: CertificateOrderCertificate[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ReissueCertificateOrderRequest class.
  * @constructor
  * Class representing certificate reissue request
+ *
  * @member {number} [keySize] Certificate Key Size
  * 
  * @member {number} [delayExistingRevokeInHours] Delay in hours to revoke
@@ -311,6 +287,7 @@ export interface ReissueCertificateOrderRequest extends Resource {
  * Initializes a new instance of the RenewCertificateOrderRequest class.
  * @constructor
  * Class representing certificate renew request
+ *
  * @member {number} [keySize] Certificate Key Size
  * 
  */
@@ -323,6 +300,7 @@ export interface RenewCertificateOrderRequest extends Resource {
  * Initializes a new instance of the CertificateOrderAction class.
  * @constructor
  * Represents a certificate action
+ *
  * @member {string} [certificateOrderActionType] Type. Possible values
  * include: 'CertificateIssued', 'CertificateOrderCanceled',
  * 'CertificateOrderCreated', 'CertificateRevoked',
@@ -343,6 +321,7 @@ export interface CertificateOrderAction extends Resource {
  * Initializes a new instance of the CertificateEmail class.
  * @constructor
  * Certificate Email
+ *
  * @member {string} [emailId] Email id
  * 
  * @member {date} [timeStamp] Time stamp
@@ -355,24 +334,10 @@ export interface CertificateEmail extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the CertificateCollection class.
- * @constructor
- * Collection of certificates
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface CertificateCollection {
-    value?: Certificate[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Certificate class.
  * @constructor
  * App certificate
+ *
  * @member {string} [friendlyName] Friendly name of the certificate
  * 
  * @member {string} [subjectName] Subject name of the certificate
@@ -438,6 +403,7 @@ export interface Certificate extends Resource {
  * @constructor
  * Specification for a hostingEnvironment (App Service Environment) to use for
  * this resource
+ *
  * @member {string} [id] Resource id of the hostingEnvironment (App Service
  * Environment)
  * 
@@ -459,6 +425,7 @@ export interface HostingEnvironmentProfile {
  * Initializes a new instance of the Csr class.
  * @constructor
  * Certificate signing request object
+ *
  * @member {string} [csrName] Name used to locate CSR object
  * 
  * @member {string} [distinguishedName] Distinguished name of certificate to
@@ -487,24 +454,10 @@ export interface Csr extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ClassicMobileServiceCollection class.
- * @constructor
- * Collection of Classic Mobile Services
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface ClassicMobileServiceCollection {
-    value?: ClassicMobileService[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ClassicMobileService class.
  * @constructor
  * A mobile service
+ *
  * @member {string} [classicMobileServiceName] Name of the mobile service
  * 
  */
@@ -514,24 +467,10 @@ export interface ClassicMobileService extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the DomainCollection class.
- * @constructor
- * Collection of domains
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface DomainCollection {
-    value?: Domain[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Domain class.
  * @constructor
  * Represents a domain
+ *
  * @member {object} [contactAdmin] Admin contact information
  * 
  * @member {object} [contactAdmin.addressMailing] Mailing address
@@ -732,6 +671,7 @@ export interface Domain extends Resource {
  * Contact information for domain registration. If 'Domain Privacy' option is
  * not selected then the contact information will be  be made publicly
  * available through the Whois directories as per ICANN requirements.
+ *
  * @member {object} [addressMailing] Mailing address
  * 
  * @member {string} [addressMailing.address1] Address 1
@@ -780,6 +720,7 @@ export interface Contact {
  * Initializes a new instance of the Address class.
  * @constructor
  * Address information for domain registration
+ *
  * @member {string} [address1] Address 1
  * 
  * @member {string} [address2] Address 2
@@ -807,6 +748,7 @@ export interface Address {
  * Initializes a new instance of the HostName class.
  * @constructor
  * Details of a hostname derived from a domain
+ *
  * @member {string} [name] Name of the hostname
  * 
  * @member {array} [siteNames] List of sites the hostname is assigned to. This
@@ -843,6 +785,7 @@ export interface HostName {
  * @constructor
  * Domain purchase consent object representing acceptance of applicable legal
  * agreements
+ *
  * @member {array} [agreementKeys] List of applicable legal agreement keys.
  * This list can be retrieved using ListLegalAgreements Api under
  * TopLevelDomain resource
@@ -863,6 +806,7 @@ export interface DomainPurchaseConsent {
  * Initializes a new instance of the User class.
  * @constructor
  * Represents user crendentials used for publishing activity
+ *
  * @member {string} [userName] Username (internal)
  * 
  * @member {string} [publishingUserName] Username used for publishing
@@ -882,24 +826,10 @@ export interface User extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the GeoRegionCollection class.
- * @constructor
- * Collection of geo regions
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface GeoRegionCollection {
-    value?: GeoRegion[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the GeoRegion class.
  * @constructor
  * Geographical region
+ *
  * @member {string} [geoRegionName] Region name
  * 
  * @member {string} [description] Region description
@@ -915,24 +845,10 @@ export interface GeoRegion extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ServerFarmCollection class.
- * @constructor
- * Collection of serverfarms
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface ServerFarmCollection {
-    value?: ServerFarmWithRichSku[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ServerFarmWithRichSku class.
  * @constructor
  * App Service Plan Model
+ *
  * @member {string} [serverFarmWithRichSkuName] Name for the App Service Plan
  * 
  * @member {string} [workerTierName] Target worker tier assigned to the App
@@ -1006,6 +922,7 @@ export interface ServerFarmWithRichSku extends Resource {
  * Initializes a new instance of the Site class.
  * @constructor
  * Represents a web app
+ *
  * @member {string} [siteName] Name of web app
  * 
  * @member {string} [state] State of the web app
@@ -1340,6 +1257,7 @@ export interface Site extends Resource {
  * Initializes a new instance of the HostNameSslState class.
  * @constructor
  * Object that represents a SSL-enabled host name.
+ *
  * @member {string} [name] Host name
  * 
  * @member {string} sslState SSL type. Possible values include: 'Disabled',
@@ -1366,6 +1284,7 @@ export interface HostNameSslState {
  * Initializes a new instance of the SiteConfig class.
  * @constructor
  * Configuration of Azure web site
+ *
  * @member {number} [numberOfWorkers] Number of workers
  * 
  * @member {array} [defaultDocuments] Default documents
@@ -1565,6 +1484,7 @@ export interface SiteConfig extends Resource {
  * Initializes a new instance of the NameValuePair class.
  * @constructor
  * Name value pair
+ *
  * @member {string} [name] Pair name
  * 
  * @member {string} [value] Pair value
@@ -1580,6 +1500,7 @@ export interface NameValuePair {
  * Initializes a new instance of the ConnStringInfo class.
  * @constructor
  * Represents database connection string information
+ *
  * @member {string} [name] Name of connection string
  * 
  * @member {string} [connectionString] Connection string value
@@ -1602,6 +1523,7 @@ export interface ConnStringInfo {
  * requests with certain extension.
  * For example it is used to configure php-cgi.exe process to
  * handle all HTTP requests with *.php extension.
+ *
  * @member {string} [extension] Requests with this extension will be handled
  * using the specified FastCGI application.
  * 
@@ -1657,6 +1579,7 @@ export interface VirtualDirectory {
  * Initializes a new instance of the Experiments class.
  * @constructor
  * Class containing Routing in production experiments
+ *
  * @member {array} [rampUpRules] List of
  * {Microsoft.Web.Hosting.Administration.RampUpRule} objects.
  * 
@@ -1671,6 +1594,7 @@ export interface Experiments {
  * @constructor
  * Routing rules for ramp up testing. This rule allows to redirect static
  * traffic % to a slot or to gradually change routing % based on performance
+ *
  * @member {string} [actionHostName] Hostname of a slot to which the traffic
  * will be redirected if decided to. E.g. mysite-stage.azurewebsites.net
  * 
@@ -1725,6 +1649,7 @@ export interface RampUpRule {
  * Initializes a new instance of the SiteLimits class.
  * @constructor
  * Represents metric limits set on a web app.
+ *
  * @member {number} [maxPercentageCpu] Maximum allowed CPU usage percentage
  * 
  * @member {number} [maxMemoryInMb] Maximum allowed memory usage in MB
@@ -1743,6 +1668,7 @@ export interface SiteLimits {
  * Initializes a new instance of the AutoHealRules class.
  * @constructor
  * AutoHealRules - describes the rules which can be defined for auto-heal
+ *
  * @member {object} [triggers] Triggers - Conditions that describe when to
  * execute the auto-heal actions
  * 
@@ -1797,6 +1723,7 @@ export interface AutoHealRules {
  * Initializes a new instance of the AutoHealTriggers class.
  * @constructor
  * AutoHealTriggers - describes the triggers for auto-heal.
+ *
  * @member {object} [requests] Requests - Defines a rule based on total
  * requests
  * 
@@ -1832,6 +1759,7 @@ export interface AutoHealTriggers {
  * Initializes a new instance of the RequestsBasedTrigger class.
  * @constructor
  * RequestsBasedTrigger
+ *
  * @member {number} [count] Count
  * 
  * @member {string} [timeInterval] TimeInterval
@@ -1847,6 +1775,7 @@ export interface RequestsBasedTrigger {
  * Initializes a new instance of the StatusCodesBasedTrigger class.
  * @constructor
  * StatusCodeBasedTrigger
+ *
  * @member {number} [status] HTTP status code
  * 
  * @member {number} [subStatus] SubStatus
@@ -1871,6 +1800,7 @@ export interface StatusCodesBasedTrigger {
  * Initializes a new instance of the SlowRequestsBasedTrigger class.
  * @constructor
  * SlowRequestsBasedTrigger
+ *
  * @member {string} [timeTaken] TimeTaken
  * 
  * @member {number} [count] Count
@@ -1890,6 +1820,7 @@ export interface SlowRequestsBasedTrigger {
  * @constructor
  * AutoHealActions - Describes the actions which can be
  * taken by the auto-heal module when a rule is triggered.
+ *
  * @member {string} actionType ActionType - predefined action to be taken.
  * Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
  * 
@@ -1916,6 +1847,7 @@ export interface AutoHealActions {
  * @constructor
  * AutoHealCustomAction - Describes the custom action to be executed
  * when an auto heal rule is triggered.
+ *
  * @member {string} [exe] Executable to be run
  * 
  * @member {string} [parameters] Parameters for the executable
@@ -1931,6 +1863,7 @@ export interface AutoHealCustomAction {
  * Initializes a new instance of the CorsSettings class.
  * @constructor
  * Cross-Origin Resource Sharing (CORS) settings for the web app.
+ *
  * @member {array} [allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow
@@ -1946,6 +1879,7 @@ export interface CorsSettings {
  * Initializes a new instance of the ApiDefinitionInfo class.
  * @constructor
  * Information about the formal API definition for the web app.
+ *
  * @member {string} [url] The URL of the API definition.
  * 
  */
@@ -1958,6 +1892,7 @@ export interface ApiDefinitionInfo {
  * Initializes a new instance of the IpSecurityRestriction class.
  * @constructor
  * Represents an ip security restriction on a web app.
+ *
  * @member {string} [ipAddress] IP address the security restriction is valid
  * for
  * 
@@ -1975,6 +1910,7 @@ export interface IpSecurityRestriction {
  * Initializes a new instance of the CloningInfo class.
  * @constructor
  * Represents information needed for cloning operation
+ *
  * @member {string} [correlationId] Correlation Id of cloning operation. This
  * id ties multiple cloning operations
  * together to use the same snapshot
@@ -2050,6 +1986,7 @@ export interface SiteProperties {
  * Initializes a new instance of the RoutingRule class.
  * @constructor
  * Routing rules for TiP
+ *
  * @member {string} [name] Name of the routing rule. The recommended name
  * would be to point to the slot which will receive the traffic in the
  * experiment.
@@ -2065,6 +2002,7 @@ export interface RoutingRule {
  * @constructor
  * Configuration settings for the Azure App Service Authentication /
  * Authorization feature.
+ *
  * @member {boolean} [enabled] Gets or sets a value indicating whether the
  * Authentication / Authorization feature is enabled for the current app.
  * 
@@ -2245,24 +2183,10 @@ export interface SiteAuthSettings {
 
 /**
  * @class
- * Initializes a new instance of the HostingEnvironmentCollection class.
- * @constructor
- * Collection of hosting environments (App Service Environments)
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface HostingEnvironmentCollection {
-    value?: HostingEnvironment[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the HostingEnvironment class.
  * @constructor
  * Description of an hostingEnvironment (App Service Environment)
+ *
  * @member {string} [hostingEnvironmentName] Name of the hostingEnvironment
  * (App Service Environment)
  * 
@@ -2414,6 +2338,7 @@ export interface HostingEnvironment extends Resource {
  * Initializes a new instance of the VirtualNetworkProfile class.
  * @constructor
  * Specification for using a virtual network
+ *
  * @member {string} [id] Resource id of the virtual network
  * 
  * @member {string} [name] Name of the virtual network (read-only)
@@ -2435,6 +2360,7 @@ export interface VirtualNetworkProfile {
  * Initializes a new instance of the WorkerPool class.
  * @constructor
  * Worker pool of a hostingEnvironment (App Service Environment)
+ *
  * @member {number} [workerSizeId] Worker size id for referencing this worker
  * pool
  * 
@@ -2476,6 +2402,7 @@ export interface WorkerPool extends Resource {
  * Initializes a new instance of the VirtualIPMapping class.
  * @constructor
  * Class that represents a VIP mapping
+ *
  * @member {string} [virtualIP] Virtual IP address
  * 
  * @member {number} [internalHttpPort] Internal HTTP port
@@ -2497,6 +2424,7 @@ export interface VirtualIPMapping {
  * Initializes a new instance of the StampCapacity class.
  * @constructor
  * Class containing stamp capacity information
+ *
  * @member {string} [name] Name of the stamp
  * 
  * @member {number} [availableCapacity] Available capacity (# of machines,
@@ -2563,24 +2491,10 @@ export interface NetworkAccessControlEntry {
 
 /**
  * @class
- * Initializes a new instance of the ManagedHostingEnvironmentCollection class.
- * @constructor
- * Collection of managed hosting environments
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface ManagedHostingEnvironmentCollection {
-    value?: ManagedHostingEnvironment[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ManagedHostingEnvironment class.
  * @constructor
  * Description of a managed hosting environment
+ *
  * @member {string} [managedHostingEnvironmentName] Name of the managed
  * hosting environment
  * 
@@ -2649,6 +2563,7 @@ export interface ManagedHostingEnvironment extends Resource {
  * Initializes a new instance of the ResourceNameAvailabilityRequest class.
  * @constructor
  * Resource name availability request content
+ *
  * @member {string} [name] Resource name to verify
  * 
  * @member {string} [type] Resource type used for verification
@@ -2667,6 +2582,7 @@ export interface ResourceNameAvailabilityRequest {
  * Initializes a new instance of the ResourceNameAvailability class.
  * @constructor
  * Describes if a resource name is available
+ *
  * @member {boolean} [nameAvailable] True indicates name is valid and
  * available.  False indicates the name is invalid, unavailable, or both.
  * 
@@ -2689,6 +2605,7 @@ export interface ResourceNameAvailability {
  * Initializes a new instance of the DomainControlCenterSsoRequest class.
  * @constructor
  * Single sign on request information for domain management
+ *
  * @member {string} [url] Url where the single sign on request is to be made
  * 
  * @member {string} [postParameterKey] Post parameter key
@@ -2708,6 +2625,7 @@ export interface DomainControlCenterSsoRequest {
  * Initializes a new instance of the DomainRegistrationInput class.
  * @constructor
  * Domain registration input for validation Api
+ *
  * @member {string} [domainRegistrationInputName] Name of the domain
  * 
  * @member {object} [contactAdmin] Admin contact information
@@ -2909,6 +2827,7 @@ export interface DomainRegistrationInput extends Resource {
  * Initializes a new instance of the NameIdentifier class.
  * @constructor
  * Identifies an object
+ *
  * @member {string} [name] Name of the object
  * 
  */
@@ -2921,6 +2840,7 @@ export interface NameIdentifier {
  * Initializes a new instance of the DomainAvailablilityCheckResult class.
  * @constructor
  * Domain availablility check result
+ *
  * @member {string} [name] Name of the domain
  * 
  * @member {boolean} [available] If true then domain can be purchased using
@@ -2941,6 +2861,7 @@ export interface DomainAvailablilityCheckResult {
  * Initializes a new instance of the DomainRecommendationSearchParameters class.
  * @constructor
  * Domain recommendation search parameters
+ *
  * @member {string} [keywords] Keywords to be used for generating domain
  * recommendations
  * 
@@ -2955,25 +2876,11 @@ export interface DomainRecommendationSearchParameters {
 
 /**
  * @class
- * Initializes a new instance of the NameIdentifierCollection class.
- * @constructor
- * Collection of domain name identifiers
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface NameIdentifierCollection {
-    value?: NameIdentifier[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the CsmMoveResourceEnvelope class.
  * @constructor
  * Class containing a list of the resources that need to be moved and the
  * resource group they should be moved to
+ *
  * @member {string} [targetResourceGroup]
  * 
  * @member {array} [resources]
@@ -2989,6 +2896,7 @@ export interface CsmMoveResourceEnvelope {
  * Initializes a new instance of the HostingEnvironmentDiagnostics class.
  * @constructor
  * Diagnostics for a hosting environment (App Service Environment)
+ *
  * @member {string} [name] Name/identifier of the diagnostics
  * 
  * @member {string} [diagnosicsOutput] Diagnostics output
@@ -3001,24 +2909,10 @@ export interface HostingEnvironmentDiagnostics {
 
 /**
  * @class
- * Initializes a new instance of the StampCapacityCollection class.
- * @constructor
- * Collection of stamp capacities
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface StampCapacityCollection {
-    value?: StampCapacity[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AddressResponse class.
  * @constructor
  * Describes main public ip address and any extra vips
+ *
  * @member {string} [serviceIpAddress] Main public vip
  * 
  * @member {string} [internalIpAddress] VNET internal ip address of the
@@ -3040,24 +2934,10 @@ export interface AddressResponse {
 
 /**
  * @class
- * Initializes a new instance of the ResourceMetricCollection class.
- * @constructor
- * Collection of metric responses
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface ResourceMetricCollection {
-    value?: ResourceMetric[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ResourceMetric class.
  * @constructor
  * Object representing a metric for any resource
+ *
  * @member {object} [name] Name of metric
  * 
  * @member {string} [name.value] metric name value
@@ -3095,6 +2975,7 @@ export interface ResourceMetric {
  * Initializes a new instance of the ResourceMetricName class.
  * @constructor
  * Name of a metric for any resource
+ *
  * @member {string} [value] metric name value
  * 
  * @member {string} [localizedValue] Localized metric name value
@@ -3110,6 +2991,7 @@ export interface ResourceMetricName {
  * Initializes a new instance of the ResourceMetricValue class.
  * @constructor
  * Value of resource metric
+ *
  * @member {string} [timeStamp] Value timestamp
  * 
  * @member {number} [average] Value average
@@ -3151,6 +3033,7 @@ export interface KeyValuePairStringString {
  * Initializes a new instance of the MetricDefinition class.
  * @constructor
  * Class repesenting metadata for the metrics
+ *
  * @member {string} [metricDefinitionName] Name of the metric
  * 
  * @member {string} [unit] Unit of the metric
@@ -3176,6 +3059,7 @@ export interface MetricDefinition extends Resource {
  * Initializes a new instance of the MetricAvailabilily class.
  * @constructor
  * Class repesenting metrics availability and retention
+ *
  * @member {string} [timeGrain] Time grain
  * 
  * @member {string} [retention] Retention period for the current
@@ -3189,24 +3073,10 @@ export interface MetricAvailabilily {
 
 /**
  * @class
- * Initializes a new instance of the CsmUsageQuotaCollection class.
- * @constructor
- * Collection of csm usage quotas
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface CsmUsageQuotaCollection {
-    value?: CsmUsageQuota[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the CsmUsageQuota class.
  * @constructor
  * Usage of the quota resource
+ *
  * @member {string} [unit] Units of measurement for the quota resourse
  * 
  * @member {date} [nextResetTime] Next reset time for the resource counter
@@ -3235,6 +3105,7 @@ export interface CsmUsageQuota {
  * Initializes a new instance of the LocalizableString class.
  * @constructor
  * LocalizableString object containing the name and a localized value.
+ *
  * @member {string} [value] Non localized name
  * 
  * @member {string} [localizedValue] Localized name
@@ -3247,39 +3118,10 @@ export interface LocalizableString {
 
 /**
  * @class
- * Initializes a new instance of the MetricDefinitionCollection class.
- * @constructor
- * Collection of metric defintions
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface MetricDefinitionCollection {
-    value?: MetricDefinition[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageCollection class.
- * @constructor
- * Collection of usages
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface UsageCollection {
-    value?: Usage[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Usage class.
  * @constructor
  * Class that represents usage of the quota resource.
+ *
  * @member {string} [displayName] Friendly name shown in the UI
  * 
  * @member {string} [usageName] Name of the quota
@@ -3314,39 +3156,10 @@ export interface Usage extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the WorkerPoolCollection class.
- * @constructor
- * Collection of worker pools
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface WorkerPoolCollection {
-    value?: WorkerPool[];
-    nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SkuInfoCollection class.
- * @constructor
- * Collection of SkuInfos
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface SkuInfoCollection {
-    value?: SkuInfo[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SkuInfo class.
  * @constructor
  * Sku discovery information
+ *
  * @member {string} [resourceType] Resource type that this sku applies to
  * 
  * @member {object} [sku] Name and tier of the sku
@@ -3388,6 +3201,7 @@ export interface SkuInfo {
  * Initializes a new instance of the SkuCapacity class.
  * @constructor
  * Description of the App Service Plan scale options
+ *
  * @member {number} [minimum] Minimum number of Workers for this App Service
  * Plan SKU
  * 
@@ -3410,24 +3224,10 @@ export interface SkuCapacity {
 
 /**
  * @class
- * Initializes a new instance of the SourceControlCollection class.
- * @constructor
- * Collection of soure controls
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface SourceControlCollection {
-    value?: SourceControl[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SourceControl class.
  * @constructor
  * Describes the Source Control OAuth Token
+ *
  * @member {string} [sourceControlName] Name or Source Control Type
  * 
  * @member {string} [token] OAuth Access Token
@@ -3452,6 +3252,7 @@ export interface SourceControl extends Resource {
  * Initializes a new instance of the Recommendation class.
  * @constructor
  * Represents a recommendation result generated by the recommendation engine
+ *
  * @member {date} [creationTime] Timestamp when this instance was created.
  * 
  * @member {string} [recommendationId] A GUID value that each recommendation
@@ -3529,6 +3330,7 @@ export interface Recommendation {
  * Initializes a new instance of the RecommendationRule class.
  * @constructor
  * Represents a recommendation rule that the recommendation engine can perform
+ *
  * @member {string} [name] Unique name of the rule
  * 
  * @member {string} [displayName] UI friendly name of the rule
@@ -3576,6 +3378,7 @@ export interface RecommendationRule {
  * @constructor
  * VNETInfo contract. This contract is public and is a stripped down version
  * of VNETInfoInternal
+ *
  * @member {string} [vnetResourceId] The vnet resource id
  * 
  * @member {string} [certThumbprint] The client certificate thumbprint
@@ -3607,6 +3410,7 @@ export interface VnetInfo extends Resource {
  * Initializes a new instance of the VnetRoute class.
  * @constructor
  * VnetRoute contract used to pass routing information for a vnet.
+ *
  * @member {string} [vnetRouteName] The name of this route. This is only
  * returned by the server and does not need to be set by the client.
  * 
@@ -3643,6 +3447,7 @@ export interface VnetRoute extends Resource {
  * @constructor
  * The VnetGateway contract. This is used to give the vnet gateway access to
  * the VPN package.
+ *
  * @member {string} [vnetName] The VNET name.
  * 
  * @member {string} [vpnPackageUri] The URI where the Vpn package can be
@@ -3661,6 +3466,7 @@ export interface VnetGateway extends Resource {
  * This is an object used to store a full view of network features (presently
  * VNET integration and Hybrid Connections)
  * for a web app.
+ *
  * @member {string} [virtualNetworkName] The Vnet Name
  * 
  * @member {object} [virtualNetworkConnection] The Vnet Summary view
@@ -3699,6 +3505,7 @@ export interface NetworkFeatures extends Resource {
  * Initializes a new instance of the RelayServiceConnectionEntity class.
  * @constructor
  * Class that represents a Biztalk Hybrid Connection
+ *
  * @member {string} [entityName]
  * 
  * @member {string} [entityConnectionString]
@@ -3729,6 +3536,7 @@ export interface RelayServiceConnectionEntity extends Resource {
  * Initializes a new instance of the CsmSlotEntity class.
  * @constructor
  * Class containing deployment slot parameters
+ *
  * @member {string} [targetSlot] Set the destination deployment slot during
  * swap operation
  * 
@@ -3743,25 +3551,11 @@ export interface CsmSlotEntity {
 
 /**
  * @class
- * Initializes a new instance of the SlotDifferenceCollection class.
- * @constructor
- * Collection of Slot Differences
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface SlotDifferenceCollection {
-    value?: SlotDifference[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SlotDifference class.
  * @constructor
  * An object describing the difference in setting values between two web app
  * slots
+ *
  * @member {string} [slotDifferenceType] Indicates the type of the difference:
  * Information, Warning or Error.
  * 
@@ -3797,6 +3591,7 @@ export interface SlotDifference extends Resource {
  * Initializes a new instance of the SlotConfigNamesResource class.
  * @constructor
  * Slot Config names azure resource
+ *
  * @member {array} [connectionStringNames] List of connection string names
  * 
  * @member {array} [appSettingNames] List of application settings names
@@ -3815,6 +3610,7 @@ export interface SlotConfigNamesResource extends Resource {
  * be marked as sticky to the slot
  * and not moved during swap operation
  * This is valid for all deployment slots under the site
+ *
  * @member {array} [connectionStringNames] List of connection string names
  * 
  * @member {array} [appSettingNames] List of application settings names
@@ -3830,6 +3626,7 @@ export interface SlotConfigNames {
  * Initializes a new instance of the SiteCloneability class.
  * @constructor
  * Represents whether or not a web app is cloneable
+ *
  * @member {string} result Name of web app. Possible values include:
  * 'Cloneable', 'PartiallyCloneable', 'NotCloneable'
  * 
@@ -3858,6 +3655,7 @@ export interface SiteCloneability {
  * Initializes a new instance of the SiteCloneabilityCriterion class.
  * @constructor
  * Represents a site cloneability criterion
+ *
  * @member {string} [name] Name of criterion
  * 
  * @member {string} [description] Description of criterion
@@ -3873,6 +3671,7 @@ export interface SiteCloneabilityCriterion {
  * Initializes a new instance of the CsmSiteRecoveryEntity class.
  * @constructor
  * Class containting details about site recovery operation.
+ *
  * @member {date} [snapshotTime] Point in time in which the site recover
  * should be attempted.
  * 
@@ -3896,24 +3695,10 @@ export interface CsmSiteRecoveryEntity {
 
 /**
  * @class
- * Initializes a new instance of the DeletedSiteCollection class.
- * @constructor
- * Collection of deleted sites
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface DeletedSiteCollection {
-    value?: DeletedSite[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the DeletedSite class.
  * @constructor
  * Reports deleted site including the timestamp of operation
+ *
  * @member {date} [deletedTimestamp] Time when the site was deleted
  * 
  * @member {string} [deletedSiteName] Name of web app
@@ -4248,24 +4033,10 @@ export interface DeletedSite extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the DeploymentCollection class.
- * @constructor
- * Collection of app deployments
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface DeploymentCollection {
-    value?: Deployment[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Deployment class.
  * @constructor
  * Represents user crendentials used for publishing activity
+ *
  * @member {string} [deploymentId] Id
  * 
  * @member {number} [status] Status
@@ -4302,24 +4073,10 @@ export interface Deployment extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the SiteInstanceCollection class.
- * @constructor
- * Collection of site instances
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface SiteInstanceCollection {
-    value?: SiteInstance[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SiteInstance class.
  * @constructor
  * Instance of a web app
+ *
  * @member {string} [siteInstanceName] Name of instance
  * 
  */
@@ -4329,24 +4086,10 @@ export interface SiteInstance extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the HostNameBindingCollection class.
- * @constructor
- * Collection of host name bindings
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface HostNameBindingCollection {
-    value?: HostNameBinding[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the HostNameBinding class.
  * @constructor
  * A host name binding object
+ *
  * @member {string} [hostNameBindingName] Hostname
  * 
  * @member {string} [siteName] Web app name
@@ -4380,6 +4123,7 @@ export interface HostNameBinding extends Resource {
  * Initializes a new instance of the SiteSourceControl class.
  * @constructor
  * Describes the source control configuration for web app
+ *
  * @member {string} [repoUrl] Repository or source control url
  * 
  * @member {string} [branch] Name of branch to use for deployment
@@ -4406,6 +4150,7 @@ export interface SiteSourceControl extends Resource {
  * Initializes a new instance of the StringDictionary class.
  * @constructor
  * String dictionary resource
+ *
  * @member {object} [properties] Settings
  * 
  */
@@ -4418,6 +4163,7 @@ export interface StringDictionary extends Resource {
  * Initializes a new instance of the ConnectionStringDictionary class.
  * @constructor
  * String dictionary resource
+ *
  * @member {object} [properties] Connection strings
  * 
  */
@@ -4430,6 +4176,7 @@ export interface ConnectionStringDictionary extends Resource {
  * Initializes a new instance of the ConnStringValueTypePair class.
  * @constructor
  * Database connection string value to type pair
+ *
  * @member {string} [value] Value of pair
  * 
  * @member {string} type Type of database. Possible values include: 'MySql',
@@ -4446,6 +4193,7 @@ export interface ConnStringValueTypePair {
  * Initializes a new instance of the SiteLogsConfig class.
  * @constructor
  * Configuration of Azure web site
+ *
  * @member {object} [applicationLogs] Application logs configuration
  * 
  * @member {object} [applicationLogs.fileSystem] Application logs to file
@@ -4532,6 +4280,7 @@ export interface SiteLogsConfig extends Resource {
  * Initializes a new instance of the ApplicationLogsConfig class.
  * @constructor
  * Application logs configuration
+ *
  * @member {object} [fileSystem] Application logs to file system configuration
  * 
  * @member {string} [fileSystem.level] Log level. Possible values include:
@@ -4571,6 +4320,7 @@ export interface ApplicationLogsConfig {
  * Initializes a new instance of the FileSystemApplicationLogsConfig class.
  * @constructor
  * Application logs to file system configuration
+ *
  * @member {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'
  * 
@@ -4584,6 +4334,7 @@ export interface FileSystemApplicationLogsConfig {
  * Initializes a new instance of the AzureTableStorageApplicationLogsConfig class.
  * @constructor
  * Application logs to azure table storage configuration
+ *
  * @member {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'
  * 
@@ -4601,6 +4352,7 @@ export interface AzureTableStorageApplicationLogsConfig {
  * Initializes a new instance of the AzureBlobStorageApplicationLogsConfig class.
  * @constructor
  * Application logs azure blob storage configuration
+ *
  * @member {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'
  * 
@@ -4623,6 +4375,7 @@ export interface AzureBlobStorageApplicationLogsConfig {
  * Initializes a new instance of the HttpLogsConfig class.
  * @constructor
  * Http logs configuration
+ *
  * @member {object} [fileSystem] Http logs to file system configuration
  * 
  * @member {number} [fileSystem.retentionInMb] Maximum size in megabytes that
@@ -4660,6 +4413,7 @@ export interface HttpLogsConfig {
  * Initializes a new instance of the FileSystemHttpLogsConfig class.
  * @constructor
  * Http logs to file system configuration
+ *
  * @member {number} [retentionInMb] Maximum size in megabytes that http log
  * files can use.
  * When reached old log files will be removed to make space for
@@ -4684,6 +4438,7 @@ export interface FileSystemHttpLogsConfig {
  * Initializes a new instance of the AzureBlobStorageHttpLogsConfig class.
  * @constructor
  * Http logs to azure blob storage configuration
+ *
  * @member {string} [sasUrl] SAS url to a azure blob container with
  * read/write/list/delete permissions
  * 
@@ -4705,6 +4460,7 @@ export interface AzureBlobStorageHttpLogsConfig {
  * Initializes a new instance of the EnabledConfig class.
  * @constructor
  * Enabled configuration
+ *
  * @member {boolean} [enabled] Enabled
  * 
  */
@@ -4762,6 +4518,7 @@ export interface PremierAddOnRequest {
  * Initializes a new instance of the BackupRequest class.
  * @constructor
  * Description of a backup which will be performed
+ *
  * @member {string} [backupRequestName] Name of the backup
  * 
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
@@ -4815,6 +4572,7 @@ export interface BackupRequest extends Resource {
  * @constructor
  * Description of a backup schedule. Describes how often should be the backup
  * performed and what should be the retention policy.
+ *
  * @member {number} [frequencyInterval] How often should be the backup
  * executed (e.g. for weekly backup, this should be set to 7 and
  * FrequencyUnit should be set to Day)
@@ -4853,6 +4611,7 @@ export interface BackupSchedule {
  * if new properties are added they might not be in the previous
  * data rows
  * so please handle nulls
+ *
  * @member {string} [databaseType] SqlAzure / MySql
  * 
  * @member {string} [name]
@@ -4879,6 +4638,7 @@ export interface DatabaseBackupSetting {
  * Initializes a new instance of the BackupItem class.
  * @constructor
  * Backup description
+ *
  * @member {number} [backupItemId] Id of the backup.
  * 
  * @member {string} [storageAccountUrl] SAS URL for the storage account
@@ -4939,6 +4699,7 @@ export interface BackupItem extends Resource {
  * Initializes a new instance of the RestoreRequest class.
  * @constructor
  * Description of a restore request
+ *
  * @member {string} [storageAccountUrl] SAS URL to the container
  * 
  * @member {string} [blobName] Name of a blob which contains the backup
@@ -4982,24 +4743,10 @@ export interface RestoreRequest extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the BackupItemCollection class.
- * @constructor
- * Collection of Backup Items
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface BackupItemCollection {
-    value?: BackupItem[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RestoreResponse class.
  * @constructor
  * Response for a restore site request
+ *
  * @member {string} [operationId] When server starts the restore process, it
  * will return an OperationId identifying that particular restore operation
  * 
@@ -5013,6 +4760,7 @@ export interface RestoreResponse extends Resource {
  * Initializes a new instance of the CsmPublishingProfileOptions class.
  * @constructor
  * Publishing options for requested profile
+ *
  * @member {string} [format] Name of the format. Valid values are:
  * FileZilla3
  * WebDeploy -- default
@@ -5025,24 +4773,10 @@ export interface CsmPublishingProfileOptions {
 
 /**
  * @class
- * Initializes a new instance of the TopLevelDomainCollection class.
- * @constructor
- * Collection of Top Level Domains
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface TopLevelDomainCollection {
-    value?: TopLevelDomain[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TopLevelDomain class.
  * @constructor
  * A top level domain object
+ *
  * @member {string} [topLevelDomainName] Name of the top level domain
  * 
  * @member {boolean} [privacy] If true then the top level domain supports
@@ -5059,6 +4793,7 @@ export interface TopLevelDomain extends Resource {
  * Initializes a new instance of the TopLevelDomainAgreementOption class.
  * @constructor
  * Options for retrieving the list of top level domain legal agreements
+ *
  * @member {boolean} [includePrivacy] If true then the list of agreements will
  * inclue agreements for domain privacy as well.
  * 
@@ -5069,24 +4804,10 @@ export interface TopLevelDomainAgreementOption {
 
 /**
  * @class
- * Initializes a new instance of the TldLegalAgreementCollection class.
- * @constructor
- * Collection of Tld Legal Agreements
- * @member {array} [value] Collection of resources
- * 
- * @member {string} [nextLink] Link to next page of resources
- * 
- */
-export interface TldLegalAgreementCollection {
-    value?: TldLegalAgreement[];
-    nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TldLegalAgreement class.
  * @constructor
  * Represents a legal agreement for top level domain
+ *
  * @member {string} [agreementKey] Unique identifier for the agreement
  * 
  * @member {string} [title] Agreement title

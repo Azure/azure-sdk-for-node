@@ -17,7 +17,7 @@ declare class WebSiteManagementClient {
      * Initializes a new instance of the WebSiteManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
+     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
      * @param {string} subscriptionId - Subscription Id
      *

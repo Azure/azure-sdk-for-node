@@ -71,7 +71,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [keyVaultCertificate.kind] Kind of resource
      * 
-     * @param {string} [keyVaultCertificate.location] Resource Location
+     * @param {string} keyVaultCertificate.location Resource Location
      * 
      * @param {string} [keyVaultCertificate.type] Resource type
      * 
@@ -138,7 +138,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [keyVaultCertificate.kind] Kind of resource
      * 
-     * @param {string} [keyVaultCertificate.location] Resource Location
+     * @param {string} keyVaultCertificate.location Resource Location
      * 
      * @param {string} [keyVaultCertificate.type] Resource type
      * 
@@ -250,8 +250,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.root.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.root.location] Resource
-     * Location
+     * @param {string} certificateDistinguishedName.root.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.root.type] Resource type
      * 
@@ -272,7 +271,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.location] Resource Location
+     * @param {string} certificateDistinguishedName.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.type] Resource type
      * 
@@ -384,8 +383,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.root.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.root.location] Resource
-     * Location
+     * @param {string} certificateDistinguishedName.root.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.root.type] Resource type
      * 
@@ -406,7 +404,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [certificateDistinguishedName.kind] Kind of resource
      * 
-     * @param {string} [certificateDistinguishedName.location] Resource Location
+     * @param {string} certificateDistinguishedName.location Resource Location
      * 
      * @param {string} [certificateDistinguishedName.type] Resource type
      * 
@@ -480,7 +478,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [reissueCertificateOrderRequest.kind] Kind of resource
      * 
-     * @param {string} [reissueCertificateOrderRequest.location] Resource Location
+     * @param {string} reissueCertificateOrderRequest.location Resource Location
      * 
      * @param {string} [reissueCertificateOrderRequest.type] Resource type
      * 
@@ -514,7 +512,7 @@ export interface CertificateOrders {
      * 
      * @param {string} [renewCertificateOrderRequest.kind] Kind of resource
      * 
-     * @param {string} [renewCertificateOrderRequest.location] Resource Location
+     * @param {string} renewCertificateOrderRequest.location Resource Location
      * 
      * @param {string} [renewCertificateOrderRequest.type] Resource type
      * 
@@ -602,6 +600,41 @@ export interface CertificateOrders {
      */
     verifyDomainOwnership(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     verifyDomainOwnership(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Get certificate orders in a resource group
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCertificateOrdersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCollection>): void;
+    getCertificateOrdersNext(nextPageLink: string, callback: ServiceCallback<models.CertificateOrderCollection>): void;
+
+    /**
+     * @summary List all certificates associated with a certificate order (only
+     * one certificate can be associated with an order at a time)
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCertificatesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCertificateCollection>): void;
+    getCertificatesNext(nextPageLink: string, callback: ServiceCallback<models.CertificateOrderCertificateCollection>): void;
 }
 
 /**
@@ -710,7 +743,7 @@ export interface Certificates {
      * 
      * @param {string} [certificateEnvelope.kind] Kind of resource
      * 
-     * @param {string} [certificateEnvelope.location] Resource Location
+     * @param {string} certificateEnvelope.location Resource Location
      * 
      * @param {string} [certificateEnvelope.type] Resource type
      * 
@@ -808,7 +841,7 @@ export interface Certificates {
      * 
      * @param {string} [certificateEnvelope.kind] Kind of resource
      * 
-     * @param {string} [certificateEnvelope.location] Resource Location
+     * @param {string} certificateEnvelope.location Resource Location
      * 
      * @param {string} [certificateEnvelope.type] Resource type
      * 
@@ -893,7 +926,7 @@ export interface Certificates {
      * 
      * @param {string} [csrEnvelope.kind] Kind of resource
      * 
-     * @param {string} [csrEnvelope.location] Resource Location
+     * @param {string} csrEnvelope.location Resource Location
      * 
      * @param {string} [csrEnvelope.type] Resource type
      * 
@@ -960,7 +993,7 @@ export interface Certificates {
      * 
      * @param {string} [csrEnvelope.kind] Kind of resource
      * 
-     * @param {string} [csrEnvelope.location] Resource Location
+     * @param {string} csrEnvelope.location Resource Location
      * 
      * @param {string} [csrEnvelope.type] Resource type
      * 
@@ -976,6 +1009,24 @@ export interface Certificates {
      */
     updateCsr(resourceGroupName: string, name: string, csrEnvelope: models.Csr, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Csr>): void;
     updateCsr(resourceGroupName: string, name: string, csrEnvelope: models.Csr, callback: ServiceCallback<models.Csr>): void;
+
+    /**
+     * @summary Get certificates for a subscription in the specified resource
+     * group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCertificatesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateCollection>): void;
+    getCertificatesNext(nextPageLink: string, callback: ServiceCallback<models.CertificateCollection>): void;
 }
 
 /**
@@ -1037,6 +1088,23 @@ export interface ClassicMobileServices {
      */
     deleteClassicMobileService(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     deleteClassicMobileService(resourceGroupName: string, name: string, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Get all mobile services in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getClassicMobileServicesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClassicMobileServiceCollection>): void;
+    getClassicMobileServicesNext(nextPageLink: string, callback: ServiceCallback<models.ClassicMobileServiceCollection>): void;
 }
 
 /**
@@ -1181,7 +1249,7 @@ export interface Domains {
      * 
      * @param {string} [domain.kind] Kind of resource
      * 
-     * @param {string} [domain.location] Resource Location
+     * @param {string} domain.location Resource Location
      * 
      * @param {string} [domain.type] Resource type
      * 
@@ -1319,7 +1387,7 @@ export interface Domains {
      * 
      * @param {string} [domain.kind] Kind of resource
      * 
-     * @param {string} [domain.location] Resource Location
+     * @param {string} domain.location Resource Location
      * 
      * @param {string} [domain.type] Resource type
      * 
@@ -1355,6 +1423,23 @@ export interface Domains {
      */
     getDomainOperation(resourceGroupName: string, domainName: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Domain>): void;
     getDomainOperation(resourceGroupName: string, domainName: string, operationId: string, callback: ServiceCallback<models.Domain>): void;
+
+    /**
+     * @summary Lists domains under a resource group
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getDomainsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainCollection>): void;
+    getDomainsNext(nextPageLink: string, callback: ServiceCallback<models.DomainCollection>): void;
 }
 
 /**
@@ -1402,7 +1487,7 @@ export interface Global {
      * 
      * @param {string} [requestMessage.kind] Kind of resource
      * 
-     * @param {string} [requestMessage.location] Resource Location
+     * @param {string} requestMessage.location Resource Location
      * 
      * @param {string} [requestMessage.type] Resource type
      * 
@@ -1591,6 +1676,126 @@ export interface Global {
      */
     checkNameAvailability(request: models.ResourceNameAvailabilityRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceNameAvailability>): void;
     checkNameAvailability(request: models.ResourceNameAvailabilityRequest, callback: ServiceCallback<models.ResourceNameAvailability>): void;
+
+    /**
+     * @summary Gets list of available geo regions
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSubscriptionGeoRegionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
+    getSubscriptionGeoRegionsNext(nextPageLink: string, callback: ServiceCallback<models.GeoRegionCollection>): void;
+
+    /**
+     * @summary Get all certificates for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllCertificatesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateCollection>): void;
+    getAllCertificatesNext(nextPageLink: string, callback: ServiceCallback<models.CertificateCollection>): void;
+
+    /**
+     * @summary Gets all App Service Plans for a subcription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllServerFarmsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getAllServerFarmsNext(nextPageLink: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+
+    /**
+     * @summary Gets all Web Apps for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllSitesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    getAllSitesNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Gets all hostingEnvironments (App Service Environment) for a
+     * subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllHostingEnvironmentsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HostingEnvironmentCollection>): void;
+    getAllHostingEnvironmentsNext(nextPageLink: string, callback: ServiceCallback<models.HostingEnvironmentCollection>): void;
+
+    /**
+     * @summary Gets all managed hosting environments for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllManagedHostingEnvironmentsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedHostingEnvironmentCollection>): void;
+    getAllManagedHostingEnvironmentsNext(nextPageLink: string, callback: ServiceCallback<models.ManagedHostingEnvironmentCollection>): void;
+
+    /**
+     * @summary Gets all mobile services for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllClassicMobileServicesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClassicMobileServiceCollection>): void;
+    getAllClassicMobileServicesNext(nextPageLink: string, callback: ServiceCallback<models.ClassicMobileServiceCollection>): void;
 }
 
 /**
@@ -1683,7 +1888,7 @@ export interface GlobalCertificateOrder {
      * 
      * @param {string} [certificateOrder.root.kind] Kind of resource
      * 
-     * @param {string} [certificateOrder.root.location] Resource Location
+     * @param {string} certificateOrder.root.location Resource Location
      * 
      * @param {string} [certificateOrder.root.type] Resource type
      * 
@@ -1703,7 +1908,7 @@ export interface GlobalCertificateOrder {
      * 
      * @param {string} [certificateOrder.kind] Kind of resource
      * 
-     * @param {string} [certificateOrder.location] Resource Location
+     * @param {string} certificateOrder.location Resource Location
      * 
      * @param {string} [certificateOrder.type] Resource type
      * 
@@ -1719,6 +1924,23 @@ export interface GlobalCertificateOrder {
      */
     validateCertificatePurchaseInformation(certificateOrder: models.CertificateOrder, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
     validateCertificatePurchaseInformation(certificateOrder: models.CertificateOrder, callback: ServiceCallback<any>): void;
+
+    /**
+     * @summary Lists all domains in a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllCertificateOrdersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOrderCollection>): void;
+    getAllCertificateOrdersNext(nextPageLink: string, callback: ServiceCallback<models.CertificateOrderCollection>): void;
 }
 
 /**
@@ -1871,7 +2093,7 @@ export interface GlobalDomainRegistration {
      * 
      * @param {string} [domainRegistrationInput.kind] Kind of resource
      * 
-     * @param {string} [domainRegistrationInput.location] Resource Location
+     * @param {string} domainRegistrationInput.location Resource Location
      * 
      * @param {string} [domainRegistrationInput.type] Resource type
      * 
@@ -1925,6 +2147,40 @@ export interface GlobalDomainRegistration {
      */
     listDomainRecommendations(parameters: models.DomainRecommendationSearchParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NameIdentifierCollection>): void;
     listDomainRecommendations(parameters: models.DomainRecommendationSearchParameters, callback: ServiceCallback<models.NameIdentifierCollection>): void;
+
+    /**
+     * @summary Lists all domains in a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAllDomainsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainCollection>): void;
+    getAllDomainsNext(nextPageLink: string, callback: ServiceCallback<models.DomainCollection>): void;
+
+    /**
+     * @summary Lists domain recommendations based on keywords
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listDomainRecommendationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NameIdentifierCollection>): void;
+    listDomainRecommendationsNext(nextPageLink: string, callback: ServiceCallback<models.NameIdentifierCollection>): void;
 }
 
 /**
@@ -2121,7 +2377,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [hostingEnvironmentEnvelope.location] Resource Location
+     * @param {string} hostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [hostingEnvironmentEnvelope.type] Resource type
      * 
@@ -2277,7 +2533,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [hostingEnvironmentEnvelope.location] Resource Location
+     * @param {string} hostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [hostingEnvironmentEnvelope.type] Resource type
      * 
@@ -2842,7 +3098,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [multiRolePoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [multiRolePoolEnvelope.location] Resource Location
+     * @param {string} multiRolePoolEnvelope.location Resource Location
      * 
      * @param {string} [multiRolePoolEnvelope.type] Resource type
      * 
@@ -2905,7 +3161,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [multiRolePoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [multiRolePoolEnvelope.location] Resource Location
+     * @param {string} multiRolePoolEnvelope.location Resource Location
      * 
      * @param {string} [multiRolePoolEnvelope.type] Resource type
      * 
@@ -3026,7 +3282,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [workerPoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [workerPoolEnvelope.location] Resource Location
+     * @param {string} workerPoolEnvelope.location Resource Location
      * 
      * @param {string} [workerPoolEnvelope.type] Resource type
      * 
@@ -3091,7 +3347,7 @@ export interface HostingEnvironments {
      * 
      * @param {string} [workerPoolEnvelope.kind] Kind of resource
      * 
-     * @param {string} [workerPoolEnvelope.location] Resource Location
+     * @param {string} workerPoolEnvelope.location Resource Location
      * 
      * @param {string} [workerPoolEnvelope.type] Resource type
      * 
@@ -3297,6 +3553,373 @@ export interface HostingEnvironments {
      */
     beginResumeHostingEnvironment(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
     beginResumeHostingEnvironment(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Get used, available, and total worker capacity for
+     * hostingEnvironment (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentCapacitiesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StampCapacityCollection>): void;
+    getHostingEnvironmentCapacitiesNext(nextPageLink: string, callback: ServiceCallback<models.StampCapacityCollection>): void;
+
+    /**
+     * @summary Get all hostingEnvironments (App Service Environments) in a
+     * resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HostingEnvironmentCollection>): void;
+    getHostingEnvironmentsNext(nextPageLink: string, callback: ServiceCallback<models.HostingEnvironmentCollection>): void;
+
+    /**
+     * @summary Get global metrics of hostingEnvironment (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentMetricsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getHostingEnvironmentMetricsNext(nextPageLink: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+
+    /**
+     * @summary Get global usages of hostingEnvironment (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentUsagesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+    getHostingEnvironmentUsagesNext(nextPageLink: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+
+    /**
+     * @summary Get metrics for a multiRole pool of a hostingEnvironment (App
+     * Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentMultiRoleMetricsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getHostingEnvironmentMultiRoleMetricsNext(nextPageLink: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+
+    /**
+     * @summary Get metrics for a worker pool of a hostingEnvironment (App Service
+     * Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentWebWorkerMetricsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getHostingEnvironmentWebWorkerMetricsNext(nextPageLink: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+
+    /**
+     * @summary Get metric definitions for a multiRole pool of a
+     * hostingEnvironment (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentMultiRoleMetricDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+    getHostingEnvironmentMultiRoleMetricDefinitionsNext(nextPageLink: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+
+    /**
+     * @summary Get metric definitions for a worker pool of a hostingEnvironment
+     * (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentWebWorkerMetricDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+    getHostingEnvironmentWebWorkerMetricDefinitionsNext(nextPageLink: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+
+    /**
+     * @summary Get usages for a multiRole pool of a hostingEnvironment (App
+     * Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentMultiRoleUsagesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageCollection>): void;
+    getHostingEnvironmentMultiRoleUsagesNext(nextPageLink: string, callback: ServiceCallback<models.UsageCollection>): void;
+
+    /**
+     * @summary Get usages for a worker pool of a hostingEnvironment (App Service
+     * Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentWebWorkerUsagesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageCollection>): void;
+    getHostingEnvironmentWebWorkerUsagesNext(nextPageLink: string, callback: ServiceCallback<models.UsageCollection>): void;
+
+    /**
+     * @summary Get all sites on the hostingEnvironment (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentSitesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    getHostingEnvironmentSitesNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Get all serverfarms (App Service Plans) on the hostingEnvironment
+     * (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentWebHostingPlansNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getHostingEnvironmentWebHostingPlansNext(nextPageLink: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+
+    /**
+     * @summary Get all serverfarms (App Service Plans) on the hostingEnvironment
+     * (App Service Environment).
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getHostingEnvironmentServerFarmsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getHostingEnvironmentServerFarmsNext(nextPageLink: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+
+    /**
+     * @summary Get all multi role pools
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getMultiRolePoolsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPoolCollection>): void;
+    getMultiRolePoolsNext(nextPageLink: string, callback: ServiceCallback<models.WorkerPoolCollection>): void;
+
+    /**
+     * @summary Get available skus for scaling a multiRole pool.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getMultiRolePoolSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SkuInfoCollection>): void;
+    getMultiRolePoolSkusNext(nextPageLink: string, callback: ServiceCallback<models.SkuInfoCollection>): void;
+
+    /**
+     * @summary Get all worker pools
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getWorkerPoolsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkerPoolCollection>): void;
+    getWorkerPoolsNext(nextPageLink: string, callback: ServiceCallback<models.WorkerPoolCollection>): void;
+
+    /**
+     * @summary Get available skus for scaling a worker pool.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getWorkerPoolSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SkuInfoCollection>): void;
+    getWorkerPoolSkusNext(nextPageLink: string, callback: ServiceCallback<models.SkuInfoCollection>): void;
+
+    /**
+     * @summary Suspends the hostingEnvironment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    suspendHostingEnvironmentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    suspendHostingEnvironmentNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Suspends the hostingEnvironment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginSuspendHostingEnvironmentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    beginSuspendHostingEnvironmentNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Resumes the hostingEnvironment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    resumeHostingEnvironmentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    resumeHostingEnvironmentNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Resumes the hostingEnvironment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginResumeHostingEnvironmentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    beginResumeHostingEnvironmentNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
 }
 
 /**
@@ -3471,8 +4094,7 @@ export interface ManagedHostingEnvironments {
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [managedHostingEnvironmentEnvelope.location] Resource
-     * Location
+     * @param {string} managedHostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.type] Resource type
      * 
@@ -3635,8 +4257,7 @@ export interface ManagedHostingEnvironments {
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.kind] Kind of resource
      * 
-     * @param {string} [managedHostingEnvironmentEnvelope.location] Resource
-     * Location
+     * @param {string} managedHostingEnvironmentEnvelope.location Resource Location
      * 
      * @param {string} [managedHostingEnvironmentEnvelope.type] Resource type
      * 
@@ -3807,6 +4428,76 @@ export interface ManagedHostingEnvironments {
      */
     getManagedHostingEnvironmentServerFarms(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
     getManagedHostingEnvironmentServerFarms(resourceGroupName: string, name: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+
+    /**
+     * @summary Get all managed hosting environments in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getManagedHostingEnvironmentsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HostingEnvironmentCollection>): void;
+    getManagedHostingEnvironmentsNext(nextPageLink: string, callback: ServiceCallback<models.HostingEnvironmentCollection>): void;
+
+    /**
+     * @summary Get all sites on the managed hosting environment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getManagedHostingEnvironmentSitesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    getManagedHostingEnvironmentSitesNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Get all serverfarms (App Service Plans) on the managed hosting
+     * environment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getManagedHostingEnvironmentWebHostingPlansNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getManagedHostingEnvironmentWebHostingPlansNext(nextPageLink: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+
+    /**
+     * @summary Get all serverfarms (App Service Plans) on the managed hosting
+     * environment.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getManagedHostingEnvironmentServerFarmsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getManagedHostingEnvironmentServerFarmsNext(nextPageLink: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
 }
 
 /**
@@ -3871,7 +4562,7 @@ export interface Provider {
      * 
      * @param {string} [requestMessage.kind] Kind of resource
      * 
-     * @param {string} [requestMessage.location] Resource Location
+     * @param {string} requestMessage.location Resource Location
      * 
      * @param {string} [requestMessage.type] Resource type
      * 
@@ -3924,7 +4615,7 @@ export interface Provider {
      * 
      * @param {string} [requestMessage.kind] Kind of resource
      * 
-     * @param {string} [requestMessage.location] Resource Location
+     * @param {string} requestMessage.location Resource Location
      * 
      * @param {string} [requestMessage.type] Resource type
      * 
@@ -3940,6 +4631,23 @@ export interface Provider {
      */
     updatePublishingUser(requestMessage: models.User, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.User>): void;
     updatePublishingUser(requestMessage: models.User, callback: ServiceCallback<models.User>): void;
+
+    /**
+     * @summary Gets the source controls available for Azure websites
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSourceControlsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlCollection>): void;
+    getSourceControlsNext(nextPageLink: string, callback: ServiceCallback<models.SourceControlCollection>): void;
 }
 
 /**
@@ -4155,7 +4863,7 @@ export interface ServerFarms {
      * 
      * @param {string} [serverFarmEnvelope.kind] Kind of resource
      * 
-     * @param {string} [serverFarmEnvelope.location] Resource Location
+     * @param {string} serverFarmEnvelope.location Resource Location
      * 
      * @param {string} [serverFarmEnvelope.type] Resource type
      * 
@@ -4237,7 +4945,7 @@ export interface ServerFarms {
      * 
      * @param {string} [serverFarmEnvelope.kind] Kind of resource
      * 
-     * @param {string} [serverFarmEnvelope.location] Resource Location
+     * @param {string} serverFarmEnvelope.location Resource Location
      * 
      * @param {string} [serverFarmEnvelope.type] Resource type
      * 
@@ -4444,7 +5152,7 @@ export interface ServerFarms {
      * 
      * @param {string} [route.kind] Kind of resource
      * 
-     * @param {string} [route.location] Resource Location
+     * @param {string} route.location Resource Location
      * 
      * @param {string} [route.type] Resource type
      * 
@@ -4525,7 +5233,7 @@ export interface ServerFarms {
      * 
      * @param {string} [route.kind] Kind of resource
      * 
-     * @param {string} [route.location] Resource Location
+     * @param {string} route.location Resource Location
      * 
      * @param {string} [route.type] Resource type
      * 
@@ -4590,7 +5298,7 @@ export interface ServerFarms {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -4700,6 +5408,58 @@ export interface ServerFarms {
     getServerFarmOperation(resourceGroupName: string, name: string, operationId: string, callback: ServiceCallback<models.ServerFarmWithRichSku>): void;
 
     /**
+     * @summary Gets collection of App Service Plans in a resource group for a
+     * given subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getServerFarmsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerFarmCollection>): void;
+    getServerFarmsNext(nextPageLink: string, callback: ServiceCallback<models.ServerFarmCollection>): void;
+
+    /**
+     * @summary Queries for App Serice Plan metrics
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getServerFarmMetricsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getServerFarmMetricsNext(nextPageLink: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+
+    /**
+     * @summary List of metrics that can be queried for an App Service Plan
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getServerFarmMetricDefintionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+    getServerFarmMetricDefintionsNext(nextPageLink: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+
+    /**
      * @summary Gets list of Apps associated with an App Service Plan
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -4784,7 +5544,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -4862,7 +5622,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -4938,7 +5698,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -5012,7 +5772,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -5428,7 +6188,7 @@ export interface Sites {
      * 
      * @param {string} [slotConfigNames.kind] Kind of resource
      * 
-     * @param {string} [slotConfigNames.location] Resource Location
+     * @param {string} slotConfigNames.location Resource Location
      * 
      * @param {string} [slotConfigNames.type] Resource type
      * 
@@ -5670,7 +6430,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -5724,7 +6484,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -5818,7 +6578,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -6005,7 +6765,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -6059,7 +6819,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -6153,7 +6913,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -6394,7 +7154,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -6448,7 +7208,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -6542,7 +7302,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -6732,7 +7492,7 @@ export interface Sites {
      * @param {object} [siteEnvelope.siteConfig.autoHealRules.actions] Actions -
      * Actions to be executed when a rule is triggered
      * 
-     * @param {string} [siteEnvelope.siteConfig.autoHealRules.actions.actionType]
+     * @param {string} siteEnvelope.siteConfig.autoHealRules.actions.actionType
      * ActionType - predefined action to be taken. Possible values include:
      * 'Recycle', 'LogEvent', 'CustomAction'
      * 
@@ -6786,7 +7546,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.siteConfig.location] Resource Location
+     * @param {string} siteEnvelope.siteConfig.location Resource Location
      * 
      * @param {string} [siteEnvelope.siteConfig.type] Resource type
      * 
@@ -6880,7 +7640,7 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.kind] Kind of resource
      * 
-     * @param {string} [siteEnvelope.location] Resource Location
+     * @param {string} siteEnvelope.location Resource Location
      * 
      * @param {string} [siteEnvelope.type] Resource type
      * 
@@ -7334,7 +8094,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7430,7 +8190,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7530,7 +8290,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7637,7 +8397,7 @@ export interface Sites {
      * 
      * @param {string} [deployment.kind] Kind of resource
      * 
-     * @param {string} [deployment.location] Resource Location
+     * @param {string} deployment.location Resource Location
      * 
      * @param {string} [deployment.type] Resource type
      * 
@@ -7812,7 +8572,7 @@ export interface Sites {
      * 
      * @param {string} [hostNameBinding.kind] Kind of resource
      * 
-     * @param {string} [hostNameBinding.location] Resource Location
+     * @param {string} hostNameBinding.location Resource Location
      * 
      * @param {string} [hostNameBinding.type] Resource type
      * 
@@ -7907,7 +8667,7 @@ export interface Sites {
      * 
      * @param {string} [hostNameBinding.kind] Kind of resource
      * 
-     * @param {string} [hostNameBinding.location] Resource Location
+     * @param {string} hostNameBinding.location Resource Location
      * 
      * @param {string} [hostNameBinding.type] Resource type
      * 
@@ -8096,7 +8856,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8143,7 +8903,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8288,7 +9048,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8335,7 +9095,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8501,7 +9261,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8548,7 +9308,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8696,7 +9456,7 @@ export interface Sites {
      * @param {object} [siteConfig.autoHealRules.actions] Actions - Actions to be
      * executed when a rule is triggered
      * 
-     * @param {string} [siteConfig.autoHealRules.actions.actionType] ActionType -
+     * @param {string} siteConfig.autoHealRules.actions.actionType ActionType -
      * predefined action to be taken. Possible values include: 'Recycle',
      * 'LogEvent', 'CustomAction'
      * 
@@ -8743,7 +9503,7 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.kind] Kind of resource
      * 
-     * @param {string} [siteConfig.location] Resource Location
+     * @param {string} siteConfig.location Resource Location
      * 
      * @param {string} [siteConfig.type] Resource type
      * 
@@ -8811,7 +9571,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -8876,7 +9636,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -8944,7 +9704,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -9015,7 +9775,7 @@ export interface Sites {
      * 
      * @param {string} [siteSourceControl.kind] Kind of resource
      * 
-     * @param {string} [siteSourceControl.location] Resource Location
+     * @param {string} siteSourceControl.location Resource Location
      * 
      * @param {string} [siteSourceControl.type] Resource type
      * 
@@ -9091,7 +9851,7 @@ export interface Sites {
      * 
      * @param {string} [appSettings.kind] Kind of resource
      * 
-     * @param {string} [appSettings.location] Resource Location
+     * @param {string} appSettings.location Resource Location
      * 
      * @param {string} [appSettings.type] Resource type
      * 
@@ -9125,7 +9885,7 @@ export interface Sites {
      * 
      * @param {string} [appSettings.kind] Kind of resource
      * 
-     * @param {string} [appSettings.location] Resource Location
+     * @param {string} appSettings.location Resource Location
      * 
      * @param {string} [appSettings.type] Resource type
      * 
@@ -9201,7 +9961,7 @@ export interface Sites {
      * 
      * @param {string} [connectionStrings.kind] Kind of resource
      * 
-     * @param {string} [connectionStrings.location] Resource Location
+     * @param {string} connectionStrings.location Resource Location
      * 
      * @param {string} [connectionStrings.type] Resource type
      * 
@@ -9235,7 +9995,7 @@ export interface Sites {
      * 
      * @param {string} [connectionStrings.kind] Kind of resource
      * 
-     * @param {string} [connectionStrings.location] Resource Location
+     * @param {string} connectionStrings.location Resource Location
      * 
      * @param {string} [connectionStrings.type] Resource type
      * 
@@ -9793,7 +10553,7 @@ export interface Sites {
      * 
      * @param {string} [metadata.kind] Kind of resource
      * 
-     * @param {string} [metadata.location] Resource Location
+     * @param {string} metadata.location Resource Location
      * 
      * @param {string} [metadata.type] Resource type
      * 
@@ -9827,7 +10587,7 @@ export interface Sites {
      * 
      * @param {string} [metadata.kind] Kind of resource
      * 
-     * @param {string} [metadata.location] Resource Location
+     * @param {string} metadata.location Resource Location
      * 
      * @param {string} [metadata.type] Resource type
      * 
@@ -9955,7 +10715,7 @@ export interface Sites {
      * 
      * @param {string} [siteLogsConfig.kind] Kind of resource
      * 
-     * @param {string} [siteLogsConfig.location] Resource Location
+     * @param {string} siteLogsConfig.location Resource Location
      * 
      * @param {string} [siteLogsConfig.type] Resource type
      * 
@@ -10083,7 +10843,7 @@ export interface Sites {
      * 
      * @param {string} [siteLogsConfig.kind] Kind of resource
      * 
-     * @param {string} [siteLogsConfig.location] Resource Location
+     * @param {string} siteLogsConfig.location Resource Location
      * 
      * @param {string} [siteLogsConfig.type] Resource type
      * 
@@ -10382,7 +11142,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10411,7 +11171,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10452,7 +11212,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10481,7 +11241,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10525,7 +11285,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10554,7 +11314,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10595,7 +11355,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10624,7 +11384,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10688,7 +11448,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10749,7 +11509,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -10923,7 +11683,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -10952,7 +11712,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11001,7 +11761,7 @@ export interface Sites {
      * be the backup executed (e.g. for weekly backup, this should be set to 7
      * and FrequencyUnit should be set to Day)
      * 
-     * @param {string} [request.backupSchedule.frequencyUnit] How often should be
+     * @param {string} request.backupSchedule.frequencyUnit How often should be
      * the backup executed (e.g. for weekly backup, this should be set to Day and
      * FrequencyInterval should be set to 7). Possible values include: 'Day',
      * 'Hour'
@@ -11030,7 +11790,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11093,7 +11853,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11156,7 +11916,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11219,7 +11979,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11285,7 +12045,7 @@ export interface Sites {
      * 
      * @param {string} [request.kind] Kind of resource
      * 
-     * @param {string} [request.location] Resource Location
+     * @param {string} request.location Resource Location
      * 
      * @param {string} [request.type] Resource type
      * 
@@ -11760,7 +12520,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -11832,7 +12592,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -11906,7 +12666,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -11982,7 +12742,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12093,7 +12853,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12138,7 +12898,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12207,7 +12967,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12250,7 +13010,7 @@ export interface Sites {
      * 
      * @param {string} [connectionEnvelope.kind] Kind of resource
      * 
-     * @param {string} [connectionEnvelope.location] Resource Location
+     * @param {string} connectionEnvelope.location Resource Location
      * 
      * @param {string} [connectionEnvelope.type] Resource type
      * 
@@ -12306,6 +13066,366 @@ export interface Sites {
      */
     getSiteVNETConnectionsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VnetInfo[]>): void;
     getSiteVNETConnectionsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.VnetInfo[]>): void;
+
+    /**
+     * @summary Get the difference in configuration settings between two web app
+     * slots
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSlotsDifferencesFromProductionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SlotDifferenceCollection>): void;
+    getSlotsDifferencesFromProductionNext(nextPageLink: string, callback: ServiceCallback<models.SlotDifferenceCollection>): void;
+
+    /**
+     * @summary Get the difference in configuration settings between two web app
+     * slots
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSlotsDifferencesSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SlotDifferenceCollection>): void;
+    getSlotsDifferencesSlotNext(nextPageLink: string, callback: ServiceCallback<models.SlotDifferenceCollection>): void;
+
+    /**
+     * @summary Gets all the slots for a web apps
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteSlotsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    getSiteSlotsNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Gets the web apps for a subscription in the specified resource
+     * group
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSitesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteCollection>): void;
+    getSitesNext(nextPageLink: string, callback: ServiceCallback<models.SiteCollection>): void;
+
+    /**
+     * @summary Gets deleted web apps in subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getDeletedSitesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSiteCollection>): void;
+    getDeletedSitesNext(nextPageLink: string, callback: ServiceCallback<models.DeletedSiteCollection>): void;
+
+    /**
+     * @summary List deployments
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getDeploymentsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentCollection>): void;
+    getDeploymentsNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentCollection>): void;
+
+    /**
+     * @summary List deployments
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getDeploymentsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentCollection>): void;
+    getDeploymentsSlotNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentCollection>): void;
+
+    /**
+     * @summary List deployments
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getInstanceDeploymentsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentCollection>): void;
+    getInstanceDeploymentsNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentCollection>): void;
+
+    /**
+     * @summary List deployments
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getInstanceDeploymentsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentCollection>): void;
+    getInstanceDeploymentsSlotNext(nextPageLink: string, callback: ServiceCallback<models.DeploymentCollection>): void;
+
+    /**
+     * @summary Gets all instance of a web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteInstanceIdentifiersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteInstanceCollection>): void;
+    getSiteInstanceIdentifiersNext(nextPageLink: string, callback: ServiceCallback<models.SiteInstanceCollection>): void;
+
+    /**
+     * @summary Gets all instance of a web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteInstanceIdentifiersSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteInstanceCollection>): void;
+    getSiteInstanceIdentifiersSlotNext(nextPageLink: string, callback: ServiceCallback<models.SiteInstanceCollection>): void;
+
+    /**
+     * @summary Get web app hostname bindings
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteHostNameBindingsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HostNameBindingCollection>): void;
+    getSiteHostNameBindingsNext(nextPageLink: string, callback: ServiceCallback<models.HostNameBindingCollection>): void;
+
+    /**
+     * @summary Get web app hostname bindings
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteHostNameBindingsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HostNameBindingCollection>): void;
+    getSiteHostNameBindingsSlotNext(nextPageLink: string, callback: ServiceCallback<models.HostNameBindingCollection>): void;
+
+    /**
+     * @summary Lists all available backups for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listSiteBackupsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
+    listSiteBackupsNext(nextPageLink: string, callback: ServiceCallback<models.BackupItemCollection>): void;
+
+    /**
+     * @summary Lists all available backups for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listSiteBackupsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
+    listSiteBackupsSlotNext(nextPageLink: string, callback: ServiceCallback<models.BackupItemCollection>): void;
+
+    /**
+     * @summary Gets the quota usage numbers for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteUsagesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+    getSiteUsagesNext(nextPageLink: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+
+    /**
+     * @summary Gets the quota usage numbers for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteUsagesSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+    getSiteUsagesSlotNext(nextPageLink: string, callback: ServiceCallback<models.CsmUsageQuotaCollection>): void;
+
+    /**
+     * @summary Gets metrics for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteMetricsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getSiteMetricsNext(nextPageLink: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+
+    /**
+     * @summary Gets metrics for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteMetricsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+    getSiteMetricsSlotNext(nextPageLink: string, callback: ServiceCallback<models.ResourceMetricCollection>): void;
+
+    /**
+     * @summary Gets metric definitions for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteMetricDefinitionsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+    getSiteMetricDefinitionsSlotNext(nextPageLink: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+
+    /**
+     * @summary Gets metric definitions for web app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getSiteMetricDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+    getSiteMetricDefinitionsNext(nextPageLink: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
 }
 
 /**
@@ -12365,6 +13485,41 @@ export interface TopLevelDomains {
      */
     listTopLevelDomainAgreements(name: string, options: { includePrivacy? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
     listTopLevelDomainAgreements(name: string, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
+
+    /**
+     * @summary Lists all top level domains supported for registration
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getGetTopLevelDomainsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TopLevelDomainCollection>): void;
+    getGetTopLevelDomainsNext(nextPageLink: string, callback: ServiceCallback<models.TopLevelDomainCollection>): void;
+
+    /**
+     * @summary Lists legal agreements that user needs to accept before purchasing
+     * domain
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listTopLevelDomainAgreementsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
+    listTopLevelDomainAgreementsNext(nextPageLink: string, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
 }
 
 /**
