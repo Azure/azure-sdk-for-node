@@ -57,8 +57,14 @@ describe('Key Vault certificates', function () {
   });
 
   after(function (done) {
-    cleanupCreatedCertificates(function () {
-      suiteUtil.teardownSuite(done);
+    suiteUtil.teardownSuite(function () {
+      if (!suiteUtil.isPlayback) {
+        cleanupCreatedCertificates(function () {
+          done();
+        });
+      } else {
+        done();
+      }
     });
   });
 
@@ -851,18 +857,20 @@ describe('Key Vault certificates', function () {
   }
 
   function cleanupCreatedCertificates(callback) {
-    if (!suiteUtil.isPlayback) {
-      client.getCertificates(vaultUri, function (err, list) {
-        if (list && list.length !== 0) {
-          list.forEach(function (cert) {
-            var id = KeyVault.parseCertificateIdentifier(cert.id);
-            client.deleteCertificate(id.vault, id.name, function (err, bundle) { });
+    client.getCertificates(vaultUri, function (err, list) {
+      if (list && list.length !== 0) {
+        list.forEach(function (cert) {
+          var id = KeyVault.parseCertificateIdentifier(cert.id);
+          client.deleteCertificate(id.vault, id.name, function (err, bundle) {
+            if (err) {
+              console.log(util.format('>>> Error \n %s \n occurred in deleting the certificate for \n %s \n.',
+                util.inspect(err, {depth: null}), util.inspect(id, {depth: null})));
+            }
           });
-        }
-        callback();;
-      });
-    }
-    else callback();
+        });
+      }
+      callback();;
+    });
   }
 
 });
