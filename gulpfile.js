@@ -83,7 +83,7 @@ var mappings = {
   },
   'notificationHubs':{
     'dir': 'notificationHubsManagement/lib',
-    'source': 'arm-notificationhubs/2014-09-01/swagger/notificationhubs.json'
+    'source': 'arm-notificationhubs/2016-03-01/swagger/notificationhubs.json'
   },
   'powerbiembedded': {
     'dir': 'powerbiembedded/lib',
@@ -140,7 +140,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160630';
+var defaultAutoRestVersion = '0.17.0-Nightly20160811';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

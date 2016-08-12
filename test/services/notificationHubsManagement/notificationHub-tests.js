@@ -44,6 +44,7 @@ var namespaceLocation;
 var createNamespaceParameters;
 var createNotificationHubParameters;
 var authRuleParameter;
+var regenerateKeyParameter;
 
 describe('Notification Hubs Management', function () {
     
@@ -61,38 +62,29 @@ describe('Notification Hubs Management', function () {
                 tags: {
                     tag1: 'value1',
                     tag2: 'value2'
-                },
-                properties: {
-                    namespaceType : namespaceType
                 }
             };
             
             createNotificationHubParameters = {
                 location: namespaceLocation,
-                properties: {
-                    WnsCredential : {
-                        properties: {
-                            PackageSid : 'ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699',
-                            SecretKey : 'w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp',
-                            WindowsLiveEndpoint : 'http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf'
-                        }
-                    }
+                wnsCredential : {
+                    packageSid : 'ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699',
+                    secretKey : 'w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp',
+                    windowsLiveEndpoint : 'http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf'
                 }
             };
             
             authRuleParameter = {
                 location: namespaceLocation,
-                properties: {
-                    keyName : authorizationRuleName,
-                    rights : ['Listen', 'Send'], 
-                    primaryKey : 'IR4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkATU=',
-                    secondaryKey : 'aVpieJX6Ot7PUnC9N4wUAWbpB6wfX+s893SwXW9WCeQ=',
-                    claimType : 'SharedAccessKey',
-                    claimValue : 'None'
-                }
+                name : authorizationRuleName, 
+                rights : ['Listen', 'Send']
             };
             
-            
+            regenerateKeyParameter = 
+            {
+                policyKey : 'primary KEY'
+            };
+
             if (suite.isPlayback) {
                 client.longRunningOperationRetryTimeoutInSeconds = 0;
             }
@@ -181,11 +173,10 @@ describe('Notification Hubs Management', function () {
                                 should.exist(result);
                                 response.statusCode.should.equal(200);
                                 var nhub = result;
-                                
-                                //Uncomment after fixing this bug . 
-                                //nhub.properties.WnsCredential.properties.SecretKey.should.equal(createNotificationHubParameters.properties.WnsCredential.properties.SecretKey);
-                                //nhub.properties.WnsCredential.properties.PackageSid.should.equal(createNotificationHubParameters.properties.WnsCredential.properties.PackageSid);
-                                //nhub.properties.WnsCredential.properties.WindowsLiveEndpoint.should.equal(createNotificationHubParameters.properties.WnsCredential.properties.WindowsLiveEndpoint);
+
+                                nhub.wnsCredential.secretKey.should.equal(createNotificationHubParameters.wnsCredential.secretKey);
+                                nhub.wnsCredential.packageSid.should.equal(createNotificationHubParameters.wnsCredential.packageSid);
+                                nhub.wnsCredential.windowsLiveEndpoint.should.equal(createNotificationHubParameters.wnsCredential.windowsLiveEndpoint);
                                 
                                 //console.log("Create Notification Hub Authorization Rules : " + authorizationRuleName);
                                 client.notificationHubs.createOrUpdateAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, authRuleParameter, function (err, result, request, response) {
@@ -194,10 +185,9 @@ describe('Notification Hubs Management', function () {
                                     response.statusCode.should.equal(200);
                                     var authRule = result;
                                     authRule.name.should.equal(authorizationRuleName);
-                                    authRule.properties.primaryKey.should.equal(authRuleParameter.properties.primaryKey);
-                                    authRule.properties.rights.length.should.be.equal(2);
-                                    authRule.properties.rights.indexOf('Listen') > -1;
-                                    authRule.properties.rights.indexOf('Send') > -1;
+                                    authRule.rights.length.should.be.equal(2);
+                                    authRule.rights.indexOf('Listen') > -1;
+                                    authRule.rights.indexOf('Send') > -1;
                                     
                                     //console.log("Get Created Authorization Rules");
                                     client.notificationHubs.getAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, function (err, result, request, response) {
@@ -206,10 +196,9 @@ describe('Notification Hubs Management', function () {
                                         response.statusCode.should.equal(200);
                                         var authRule = result;
                                         authRule.name.should.equal(authorizationRuleName);
-                                        authRule.properties.primaryKey.should.equal(authRuleParameter.properties.primaryKey);
-                                        authRule.properties.rights.length.should.be.equal(2);
-                                        authRule.properties.rights.indexOf('Listen') > -1;
-                                        authRule.properties.rights.indexOf('Send') > -1;
+                                        authRule.rights.length.should.be.equal(2);
+                                        authRule.rights.indexOf('Listen') > -1;
+                                        authRule.rights.indexOf('Send') > -1;
                                         
                                         //console.log("Get all the Notification Hub Authoirzation Rules");
                                         client.notificationHubs.listAuthorizationRules(groupName, namespaceName, notificationHubName, function (err, result, request, response) {
@@ -226,19 +215,47 @@ describe('Notification Hubs Management', function () {
                                                 should.exist(result);
                                                 response.statusCode.should.equal(200);
                                                 var authKey = result;
-                                                authKey.primaryConnectionString.indexOf(authRuleParameter.properties.primaryKey) > -1;
-                                                authKey.secondaryConnectionString.indexOf(authRuleParameter.properties.secondaryKey) > -1;
+                                                authKey.primaryConnectionString.indexOf(authKey.primaryKey) > -1;
+                                                authKey.secondaryConnectionString.indexOf(authKey.secondaryKey) > -1;
                                                 
-                                                //console.log("Delete the Created Authorization Rule");
-                                                client.notificationHubs.deleteAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, function (err, result, request, response) {
+                                                //console.log("NotificationHub regenerateKey");
+                                                client.notificationHubs.regenerateKeys(groupName, namespaceName, notificationHubName, authorizationRuleName, regenerateKeyParameter, function (err, result, request, response) {
                                                     should.not.exist(err);
+                                                    should.exist(result);
                                                     response.statusCode.should.equal(200);
+                                                    var authregenerateKey = result;
+                                                    authregenerateKey.primaryConnectionString.indexOf(authregenerateKey.primaryKey) > -1;
+                                                    authregenerateKey.secondaryConnectionString.indexOf(authregenerateKey.secondaryKey) > -1;
+                                                    authregenerateKey.secondaryKey.should.equal(authKey.secondaryKey);
+                                                    authregenerateKey.primaryKey.should.not.equal(authKey.primaryKey);
                                                     
-                                                    //console.log("Delete the Created Notification Hub");
-                                                    client.notificationHubs.deleteMethod(groupName, namespaceName, notificationHubName, function (err, result, request, response) {
+                                                    //console.log("NotificationHub listKeys after regenerateKey");
+                                                    client.notificationHubs.listKeys(groupName, namespaceName, notificationHubName, authorizationRuleName, function (err, result, request, response) {
                                                         should.not.exist(err);
+                                                        should.exist(result);
                                                         response.statusCode.should.equal(200);
-                                                        done();
+                                                        var authKeyAfterRegenerate = result;
+                                                        
+                                                        authKeyAfterRegenerate.primaryConnectionString.indexOf(authKeyAfterRegenerate.primaryKey) > -1;
+                                                        authKeyAfterRegenerate.secondaryConnectionString.indexOf(authKeyAfterRegenerate.secondaryKey) > -1;
+                                                        //A bug in our service. will fix it an uncomment this . Need to add EntityPath everywhere
+                                                        //authKeyAfterRegenerate.primaryConnectionString.should.equal(authregenerateKey.primaryConnectionString);
+                                                        //authKeyAfterRegenerate.secondaryConnectionString.should.equal(authregenerateKey.secondaryConnectionString);
+                                                        authKeyAfterRegenerate.secondaryKey.should.equal(authregenerateKey.secondaryKey);
+                                                        authKeyAfterRegenerate.primaryKey.should.equal(authregenerateKey.primaryKey);
+                                                        
+                                                        //console.log("Delete the Created Authorization Rule");
+                                                        client.notificationHubs.deleteAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, function (err, result, request, response) {
+                                                            should.not.exist(err);
+                                                            response.statusCode.should.equal(200);
+                                                            
+                                                            //console.log("Delete the Created Notification Hub");
+                                                            client.notificationHubs.deleteMethod(groupName, namespaceName, notificationHubName, function (err, result, request, response) {
+                                                                should.not.exist(err);
+                                                                response.statusCode.should.equal(200);
+                                                                done();
+                                                            });
+                                                        });
                                                     });
                                                 });
                                             });
@@ -264,10 +281,9 @@ describe('Notification Hubs Management', function () {
             namespace = result;
             namespace.name.should.equal(namespaceName);
             namespace.location.should.equal(namespaceLocation);
-            namespace.properties.namespaceType.should.equal(namespaceType);
-            //console.log("State : " + namespace.properties.provisioningState);
+            //console.log("State : " + namespace.provisioningState);
             //console.log(namespace);
-            if (namespace.properties.provisioningState === "Succeeded")
+            if (namespace.provisioningState === "Succeeded")
                 return callback(null, true);
             else
                 return IsNamespaceActive(groupName, namespaceName, callback);

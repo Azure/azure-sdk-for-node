@@ -27,7 +27,6 @@ var testPrefix = 'notificationhubsservice-NS-tests';
 var groupPrefix = 'nodeTestGroup';
 var namespacePrefix = 'testNS';
 var authPrefix = 'testAuth';
-var namespaceType = 'NotificationHub';
 var createdGroups = [];
 var createdAccounts = [];
 
@@ -43,6 +42,7 @@ var groupName;
 var namespaceLocation;
 var createNamespaceParameters;
 var authRuleParameter;
+var regenerateKeyParameter;
 
 describe('Notification Hubs Management :', function () {
     
@@ -59,22 +59,18 @@ describe('Notification Hubs Management :', function () {
                 tags: {
                     tag1: 'value1',
                     tag2: 'value2'
-                },
-                properties: {
-                    namespaceType : namespaceType
                 }
             };
             
             authRuleParameter = {
                 location: namespaceLocation,
-                properties: {
-                    keyName : authorizationRuleName,
-                    rights : ['Listen', 'Send'], 
-                    primaryKey : 'IR4qH02MB2yXjlekt5fhlgMR9YAoMsXHTkUqarUkATU=',
-                    secondaryKey : 'aVpieJX6Ot7PUnC9N4wUAWbpB6wfX+s893SwXW9WCeQ=',
-                    claimType : 'SharedAccessKey',
-                    claimValue : 'None'
-                }
+                name: authorizationRuleName, 
+                rights : ['Listen', 'Send'] 
+            };
+            
+            regenerateKeyParameter = 
+            {
+                policyKey : 'primary KEY'
             };
 
             if (suite.isPlayback) {
@@ -109,7 +105,7 @@ describe('Notification Hubs Management :', function () {
         it('CRUD', function (done) {
             
             //console.log("Create Namespace : " + namespaceName);
-
+            
             client.namespaces.createOrUpdate(groupName, namespaceName, createNamespaceParameters, function (err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
@@ -138,16 +134,16 @@ describe('Notification Hubs Management :', function () {
                             namespaceList.some(function (ns) { return ns.name === namespaceName }).should.be.true;
                             
                             //console.log("Create Namespace Authorization rule : " + authorizationRuleName);
+                            //console.log(authRuleParameter);
                             client.namespaces.createOrUpdateAuthorizationRule(groupName, namespaceName, authorizationRuleName, authRuleParameter, function (err, result, request, response) {
                                 should.not.exist(err);
                                 should.exist(result);
                                 response.statusCode.should.equal(200);
                                 var authRule = result;
                                 authRule.name.should.equal(authorizationRuleName);
-                                authRule.properties.primaryKey.should.equal(authRuleParameter.properties.primaryKey);
-                                authRule.properties.rights.length.should.be.equal(2);
-                                authRule.properties.rights.indexOf('Listen') > -1;
-                                authRule.properties.rights.indexOf('Send') > -1;
+                                authRule.rights.length.should.be.equal(2);
+                                authRule.rights.indexOf('Listen') > -1;
+                                authRule.rights.indexOf('Send') > -1;
                                 
                                 //console.log("Get created Namespace Authorization rule");
                                 client.namespaces.getAuthorizationRule(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
@@ -156,10 +152,9 @@ describe('Notification Hubs Management :', function () {
                                     response.statusCode.should.equal(200);
                                     var authRule = result;
                                     authRule.name.should.equal(authorizationRuleName);
-                                    authRule.properties.primaryKey.should.equal(authRuleParameter.properties.primaryKey);
-                                    authRule.properties.rights.length.should.be.equal(2);
-                                    authRule.properties.rights.indexOf('Listen') > -1;
-                                    authRule.properties.rights.indexOf('Send') > -1;
+                                    authRule.rights.length.should.be.equal(2);
+                                    authRule.rights.indexOf('Listen') > -1;
+                                    authRule.rights.indexOf('Send') > -1;
                                     
                                     //console.log("Get all Namespace Authorizations rules");
                                     client.namespaces.listAuthorizationRules(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
@@ -176,21 +171,50 @@ describe('Notification Hubs Management :', function () {
                                             should.exist(result);
                                             response.statusCode.should.equal(200);
                                             var authKey = result;
-                                            authKey.primaryConnectionString.indexOf(authRuleParameter.properties.primaryKey) > -1;
-                                            authKey.secondaryConnectionString.indexOf(authRuleParameter.properties.secondaryKey) > -1;
+                                            authKey.primaryConnectionString.indexOf(authKey.primaryKey) > -1;
+                                            authKey.secondaryConnectionString.indexOf(authKey.secondaryKey) > -1;
                                             
-                                            //console.log("Delete Namespace Authorization Rule");
-                                            client.namespaces.deleteAuthorizationRule(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
+                                            //console.log("Namespace regenerateKey");
+                                            client.namespaces.regenerateKeys(groupName, namespaceName, authorizationRuleName, regenerateKeyParameter, function (err, result, request, response) {
                                                 should.not.exist(err);
+                                                should.exist(result);
                                                 response.statusCode.should.equal(200);
+                                                var authregenerateKey = result;
+                                                authregenerateKey.primaryConnectionString.indexOf(authregenerateKey.primaryKey) > -1;
+                                                authregenerateKey.secondaryConnectionString.indexOf(authregenerateKey.secondaryKey) > -1;
+                                                authregenerateKey.secondaryKey.should.equal(authKey.secondaryKey);
+                                                authregenerateKey.primaryKey.should.not.equal(authKey.primaryKey);
                                                 
-                                                //There is a bug in the RP Delete call. Will uncomment this once the fix is in 
-                                                //console.log("Delete created Namespace");
-                                                //client.namespaces.deleteMethod(groupName, namespaceName, function (err, result, request, response) {
-                                                //    should.not.exist(err);
-                                                //    response.statusCode.should.equal(200) || response.statusCode.should.equal(204);
-                                                    done();
-                                                //});
+                                                //console.log("Namespace listKeys after regenerateKey");
+                                                client.namespaces.listKeys(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
+                                                    should.not.exist(err);
+                                                    should.exist(result);
+                                                    response.statusCode.should.equal(200);
+                                                    var authKeyAfterRegenerate = result;
+
+                                                    authKeyAfterRegenerate.primaryConnectionString.indexOf(authKeyAfterRegenerate.primaryKey) > -1;
+                                                    authKeyAfterRegenerate.secondaryConnectionString.indexOf(authKeyAfterRegenerate.secondaryKey) > -1;
+                                                    //A bug in our service. will fix it an uncomment this . Need to add EntityPath everywhere
+                                                    //authKeyAfterRegenerate.primaryConnectionString.should.equal(authregenerateKey.primaryConnectionString);
+                                                    //authKeyAfterRegenerate.secondaryConnectionString.should.equal(authregenerateKey.secondaryConnectionString);
+                                                    authKeyAfterRegenerate.secondaryKey.should.equal(authregenerateKey.secondaryKey);
+                                                    authKeyAfterRegenerate.primaryKey.should.equal(authregenerateKey.primaryKey);
+
+                                                    //console.log("Delete Namespace Authorization Rule");
+                                                    client.namespaces.deleteAuthorizationRule(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
+                                                        should.not.exist(err);
+                                                        response.statusCode.should.equal(200);
+                                                        
+                                                        //There is a bug in the RP Delete call. Will uncomment this once the fix is in 
+                                                        //console.log("Delete created Namespace");
+                                                        //client.namespaces.deleteMethod(groupName, namespaceName, function (err, result, request, response) {
+                                                            //should.not.exist(err);
+                                                            //response.statusCode.should.equal(200) || response.statusCode.should.equal(204) || response.statusCode.should.equal(202);
+                                                            done();
+
+                                                        //});
+                                                    });
+                                                });
                                             });
                                         });
                                     });
@@ -214,10 +238,9 @@ describe('Notification Hubs Management :', function () {
             namespace = result;
             namespace.name.should.equal(namespaceName);
             namespace.location.should.equal(namespaceLocation);
-            namespace.properties.namespaceType.should.equal(namespaceType);
-            //console.log("State : " + namespace.properties.provisioningState);
+            //console.log("State : " + namespace.provisioningState);
             //console.log(namespace);
-            if (namespace.properties.provisioningState === "Succeeded")
+            if (namespace.provisioningState === "Succeeded")
                 return callback(null, true);
             else
                 return IsNamespaceActive(groupName, namespaceName, callback);

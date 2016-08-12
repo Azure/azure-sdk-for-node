@@ -303,6 +303,7 @@
     <Compile Include="lib\services\notificationHubsManagement\lib\models\baiduCredentialProperties.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\checkAvailabilityParameters.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\checkAvailabilityResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\checkAvailabilityResult.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\gcmCredential.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\gcmCredentialProperties.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\index.js" />
@@ -316,6 +317,8 @@
     <Compile Include="lib\services\notificationHubsManagement\lib\models\notificationHubListResult.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\notificationHubProperties.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\notificationHubResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\pnsCredentialsResource.js" />
+    <Compile Include="lib\services\notificationHubsManagement\lib\models\policykeyResource.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\resource.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\resourceListKeys.js" />
     <Compile Include="lib\services\notificationHubsManagement\lib\models\sharedAccessAuthorizationRuleCreateOrUpdateParameters.js" />

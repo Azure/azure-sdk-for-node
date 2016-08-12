@@ -21,21 +21,18 @@ import * as models from '../models';
 export interface Namespaces {
 
     /**
-     * Checks the availability of the given service namespace across all Windows
-     * Azure subscriptions. This is useful because the domain name is created
-     * based on the service namespace name.
+     * Checks the availability of the given service namespace across all Azure
+     * subscriptions. This is useful because the domain name is created based on
+     * the service namespace name.
      *
      * @param {object} parameters The namespace name.
      * 
-     * @param {string} [parameters.name] Gets or sets name
+     * @param {boolean} [parameters.isAvailiable] True if the name is available
+     * and can be used to create new Namespace/NotificationHub. Otherwise false.
      * 
-     * @param {string} [parameters.location] Gets or sets location.
+     * @param {string} parameters.location Resource location
      * 
-     * @param {object} [parameters.tags] Gets or sets tags.
-     * 
-     * @param {boolean} [parameters.isAvailiable] Gets or sets true if the name is
-     * available and can be used to create new Namespace/NotificationHub.
-     * Otherwise false.
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -45,8 +42,8 @@ export interface Namespaces {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkAvailability(parameters: models.CheckAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckAvailabilityResource>): void;
-    checkAvailability(parameters: models.CheckAvailabilityParameters, callback: ServiceCallback<models.CheckAvailabilityResource>): void;
+    checkAvailability(parameters: models.CheckAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckAvailabilityResult>): void;
+    checkAvailability(parameters: models.CheckAvailabilityParameters, callback: ServiceCallback<models.CheckAvailabilityResult>): void;
 
     /**
      * Creates/Updates a service namespace. Once created, this namespace's
@@ -59,49 +56,44 @@ export interface Namespaces {
      * @param {object} parameters Parameters supplied to create a Namespace
      * Resource.
      * 
-     * @param {string} [parameters.location] Gets or sets Namespace data center
-     * location.
+     * @param {string} [parameters.namespaceCreateOrUpdateParametersName] The name
+     * of the namespace.
      * 
-     * @param {object} [parameters.tags] Gets or sets Namespace tags.
-     * 
-     * @param {object} [parameters.properties] Gets or sets properties of the
+     * @param {string} [parameters.provisioningState] Provisioning state of the
      * Namespace.
      * 
-     * @param {string} [parameters.properties.name] The name of the namespace.
+     * @param {string} [parameters.region] Specifies the targeted region in which
+     * the namespace should be created. It can be any of the following values:
+     * Australia EastAustralia SoutheastCentral USEast USEast US 2West USNorth
+     * Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan
+     * EastJapan WestNorth EuropeWest Europe
      * 
-     * @param {string} [parameters.properties.provisioningState] Gets or sets
-     * provisioning state of the Namespace.
+     * @param {string} [parameters.status] Status of the namespace. It can be any
+     * of these values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
      * 
-     * @param {string} [parameters.properties.region] Specifies the targeted
-     * region in which the namespace should be created. It can be any of the
-     * following values: Australia EastAustralia SoutheastCentral USEast USEast
-     * US 2West USNorth Central USSouth Central USEast AsiaSoutheast AsiaBrazil
-     * SouthJapan EastJapan WestNorth EuropeWest Europe
+     * @param {date} [parameters.createdAt] The time the namespace was created.
      * 
-     * @param {string} [parameters.properties.status] Status of the namespace. It
-     * can be any of these values:1 = Created/Active2 = Creating3 = Suspended4 =
-     * Deleting
+     * @param {string} [parameters.serviceBusEndpoint] Endpoint you can use to
+     * perform NotificationHub operations.
      * 
-     * @param {date} [parameters.properties.createdAt] The time the namespace was
-     * created.
-     * 
-     * @param {string} [parameters.properties.serviceBusEndpoint] Endpoint you can
-     * use to perform NotificationHub operations.
-     * 
-     * @param {string} [parameters.properties.subscriptionId] The Id of the Azure
+     * @param {string} [parameters.subscriptionId] The Id of the Azure
      * subscription associated with the namespace.
      * 
-     * @param {string} [parameters.properties.scaleUnit] ScaleUnit where the
-     * namespace gets created
+     * @param {string} [parameters.scaleUnit] ScaleUnit where the namespace gets
+     * created
      * 
-     * @param {boolean} [parameters.properties.enabled] Whether or not the
-     * namespace is currently enabled.
+     * @param {boolean} [parameters.enabled] Whether or not the namespace is
+     * currently enabled.
      * 
-     * @param {boolean} [parameters.properties.critical] Whether or not the
-     * namespace is set as Critical.
+     * @param {boolean} [parameters.critical] Whether or not the namespace is set
+     * as Critical.
      * 
-     * @param {string} [parameters.properties.namespaceType] Gets or sets the
-     * namespace type. Possible values include: 'Messaging', 'NotificationHub'
+     * @param {string} [parameters.namespaceType] The namespace type. Possible
+     * values include: 'Messaging', 'NotificationHub'
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -181,39 +173,11 @@ export interface Namespaces {
      * 
      * @param {object} parameters The shared access authorization rule.
      * 
-     * @param {string} [parameters.location] Gets or sets Namespace data center
-     * location.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      * 
-     * @param {string} [parameters.name] Gets or sets Name of the Namespace
-     * AuthorizationRule.
+     * @param {string} parameters.location Resource location
      * 
-     * @param {object} [parameters.properties] Gets or sets properties of the
-     * Namespace AuthorizationRules.
-     * 
-     * @param {string} [parameters.properties.primaryKey] The primary key that was
-     * used.
-     * 
-     * @param {string} [parameters.properties.secondaryKey] The secondary key that
-     * was used.
-     * 
-     * @param {string} [parameters.properties.keyName] The name of the key that
-     * was used.
-     * 
-     * @param {string} [parameters.properties.claimType] The type of the claim.
-     * 
-     * @param {string} [parameters.properties.claimValue] The value of the claim.
-     * 
-     * @param {array} [parameters.properties.rights] The rights associated with
-     * the rule.
-     * 
-     * @param {date} [parameters.properties.createdTime] The time at which the
-     * authorization rule was created.
-     * 
-     * @param {date} [parameters.properties.modifiedTime] The most recent time the
-     * rule was updated.
-     * 
-     * @param {number} [parameters.properties.revision] The revision number for
-     * the rule.
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -265,26 +229,6 @@ export interface Namespaces {
      */
     getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
     getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-
-    /**
-     * The Get Operation Status operation returns the status of the specified
-     * operation. After calling an asynchronous operation, you can call Get
-     * Operation Status to determine whether the operation has succeeded, failed,
-     * or is still in progress.
-     *
-     * @param {string} operationStatusLink Location value returned by the Begin
-     * operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getLongRunningOperationStatus(operationStatusLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    getLongRunningOperationStatus(operationStatusLink: string, callback: ServiceCallback<void>): void;
 
     /**
      * Lists the available namespaces within a resourceGroup.
@@ -359,6 +303,34 @@ export interface Namespaces {
     listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
 
     /**
+     * Regenerates the Primary/Secondary Keys to the Namespace Authorization Rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {string} authorizationRuleName The connection string of the
+     * namespace for the specified authorizationRule.
+     * 
+     * @param {object} parameters Parameters supplied to regenerate the Namespace
+     * Authorization Rule Key.
+     * 
+     * @param {string} [parameters.policyKey] Name of the key that has to be
+     * regenerated for the Namespace/Notification Hub Authorization Rule. The
+     * value can be Primary Key/Secondary Key.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, callback: ServiceCallback<models.ResourceListKeys>): void;
+
+    /**
      * Lists the available namespaces within a resourceGroup.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -428,15 +400,12 @@ export interface NotificationHubs {
      * 
      * @param {object} parameters The notificationHub name.
      * 
-     * @param {string} [parameters.name] Gets or sets name
+     * @param {boolean} [parameters.isAvailiable] True if the name is available
+     * and can be used to create new Namespace/NotificationHub. Otherwise false.
      * 
-     * @param {string} [parameters.location] Gets or sets location.
+     * @param {string} parameters.location Resource location
      * 
-     * @param {object} [parameters.tags] Gets or sets tags.
-     * 
-     * @param {boolean} [parameters.isAvailiable] Gets or sets true if the name is
-     * available and can be used to create new Namespace/NotificationHub.
-     * Otherwise false.
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -446,8 +415,8 @@ export interface NotificationHubs {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkAvailability(resourceGroupName: string, namespaceName: string, parameters: models.CheckAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckAvailabilityResource>): void;
-    checkAvailability(resourceGroupName: string, namespaceName: string, parameters: models.CheckAvailabilityParameters, callback: ServiceCallback<models.CheckAvailabilityResource>): void;
+    checkAvailability(resourceGroupName: string, namespaceName: string, parameters: models.CheckAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckAvailabilityResult>): void;
+    checkAvailability(resourceGroupName: string, namespaceName: string, parameters: models.CheckAvailabilityParameters, callback: ServiceCallback<models.CheckAvailabilityResult>): void;
 
     /**
      * Creates/Update a NotificationHub in a namespace.
@@ -461,125 +430,83 @@ export interface NotificationHubs {
      * @param {object} parameters Parameters supplied to the create/update a
      * NotificationHub Resource.
      * 
-     * @param {string} [parameters.location] Gets or sets NotificationHub data
-     * center location.
+     * @param {string} [parameters.notificationHubCreateOrUpdateParametersName]
+     * The NotificationHub name.
      * 
-     * @param {object} [parameters.tags] Gets or sets NotificationHub tags.
+     * @param {string} [parameters.registrationTtl] The RegistrationTtl of the
+     * created NotificationHub
      * 
-     * @param {object} [parameters.properties] Gets or sets properties of the
-     * NotificationHub.
-     * 
-     * @param {string} [parameters.properties.name] The NotificationHub name.
-     * 
-     * @param {string} [parameters.properties.registrationTtl] The RegistrationTtl
-     * of the created NotificationHub
-     * 
-     * @param {array} [parameters.properties.authorizationRules] The
-     * AuthorizationRules of the created NotificationHub
-     * 
-     * @param {object} [parameters.properties.apnsCredential] The ApnsCredential
-     * of the created NotificationHub
-     * 
-     * @param {object} [parameters.properties.apnsCredential.properties] Gets or
-     * sets properties of NotificationHub ApnsCredential.
-     * 
-     * @param {string}
-     * [parameters.properties.apnsCredential.properties.apnsCertificate] Gets or
-     * sets the APNS certificate.
-     * 
-     * @param {string}
-     * [parameters.properties.apnsCredential.properties.certificateKey] Gets or
-     * sets the certificate key.
-     * 
-     * @param {string} [parameters.properties.apnsCredential.properties.endpoint]
-     * Gets or sets the endpoint of this credential.
-     * 
-     * @param {string}
-     * [parameters.properties.apnsCredential.properties.thumbprint] Gets or sets
-     * the Apns certificate Thumbprint
-     * 
-     * @param {object} [parameters.properties.wnsCredential] The WnsCredential of
+     * @param {array} [parameters.authorizationRules] The AuthorizationRules of
      * the created NotificationHub
      * 
-     * @param {object} [parameters.properties.wnsCredential.properties] Gets or
-     * sets properties of NotificationHub WnsCredential.
+     * @param {object} [parameters.apnsCredential] The ApnsCredential of the
+     * created NotificationHub
      * 
-     * @param {string} [parameters.properties.wnsCredential.properties.packageSid]
-     * Gets or sets the package ID for this credential.
+     * @param {string} [parameters.apnsCredential.apnsCertificate] The APNS
+     * certificate.
      * 
-     * @param {string} [parameters.properties.wnsCredential.properties.secretKey]
-     * Gets or sets the secret key.
+     * @param {string} [parameters.apnsCredential.certificateKey] The certificate
+     * key.
      * 
-     * @param {string}
-     * [parameters.properties.wnsCredential.properties.windowsLiveEndpoint] Gets
-     * or sets the Windows Live endpoint.
+     * @param {string} [parameters.apnsCredential.endpoint] The endpoint of this
+     * credential.
      * 
-     * @param {object} [parameters.properties.gcmCredential] The GcmCredential of
-     * the created NotificationHub
+     * @param {string} [parameters.apnsCredential.thumbprint] The Apns certificate
+     * Thumbprint
      * 
-     * @param {object} [parameters.properties.gcmCredential.properties] Gets or
-     * sets properties of NotificationHub GcmCredential.
+     * @param {object} [parameters.wnsCredential] The WnsCredential of the created
+     * NotificationHub
      * 
-     * @param {string}
-     * [parameters.properties.gcmCredential.properties.gcmEndpoint] Gets or sets
-     * the GCM endpoint.
+     * @param {string} [parameters.wnsCredential.packageSid] The package ID for
+     * this credential.
      * 
-     * @param {string}
-     * [parameters.properties.gcmCredential.properties.googleApiKey] Gets or sets
-     * the Google API key.
+     * @param {string} [parameters.wnsCredential.secretKey] The secret key.
      * 
-     * @param {object} [parameters.properties.mpnsCredential] The MpnsCredential
-     * of the created NotificationHub
+     * @param {string} [parameters.wnsCredential.windowsLiveEndpoint] The Windows
+     * Live endpoint.
      * 
-     * @param {object} [parameters.properties.mpnsCredential.properties] Gets or
-     * sets properties of NotificationHub MpnsCredential.
+     * @param {object} [parameters.gcmCredential] The GcmCredential of the created
+     * NotificationHub
      * 
-     * @param {string}
-     * [parameters.properties.mpnsCredential.properties.mpnsCertificate] Gets or
-     * sets the MPNS certificate.
+     * @param {string} [parameters.gcmCredential.gcmEndpoint] The GCM endpoint.
      * 
-     * @param {string}
-     * [parameters.properties.mpnsCredential.properties.certificateKey] Gets or
-     * sets the certificate key for this credential.
+     * @param {string} [parameters.gcmCredential.googleApiKey] The Google API key.
      * 
-     * @param {string}
-     * [parameters.properties.mpnsCredential.properties.thumbprint] Gets or sets
-     * the Mpns certificate Thumbprint
+     * @param {object} [parameters.mpnsCredential] The MpnsCredential of the
+     * created NotificationHub
      * 
-     * @param {object} [parameters.properties.admCredential] The AdmCredential of
-     * the created NotificationHub
+     * @param {string} [parameters.mpnsCredential.mpnsCertificate] The MPNS
+     * certificate.
      * 
-     * @param {object} [parameters.properties.admCredential.properties] Gets or
-     * sets properties of NotificationHub AdmCredential.
+     * @param {string} [parameters.mpnsCredential.certificateKey] The certificate
+     * key for this credential.
      * 
-     * @param {string} [parameters.properties.admCredential.properties.clientId]
-     * Gets or sets the client identifier.
+     * @param {string} [parameters.mpnsCredential.thumbprint] The Mpns certificate
+     * Thumbprint
      * 
-     * @param {string}
-     * [parameters.properties.admCredential.properties.clientSecret] Gets or sets
-     * the credential secret access key.
+     * @param {object} [parameters.admCredential] The AdmCredential of the created
+     * NotificationHub
      * 
-     * @param {string}
-     * [parameters.properties.admCredential.properties.authTokenUrl] Gets or sets
-     * the URL of the authorization token.
+     * @param {string} [parameters.admCredential.clientId] The client identifier.
      * 
-     * @param {object} [parameters.properties.baiduCredential] The BaiduCredential
-     * of the created NotificationHub
+     * @param {string} [parameters.admCredential.clientSecret] The credential
+     * secret access key.
      * 
-     * @param {object} [parameters.properties.baiduCredential.properties] Gets or
-     * sets properties of NotificationHub BaiduCredential.
+     * @param {string} [parameters.admCredential.authTokenUrl] The URL of the
+     * authorization token.
      * 
-     * @param {string}
-     * [parameters.properties.baiduCredential.properties.baiduApiKey] Get or Set
-     * Baidu Api Key.
+     * @param {object} [parameters.baiduCredential] The BaiduCredential of the
+     * created NotificationHub
      * 
-     * @param {string}
-     * [parameters.properties.baiduCredential.properties.baiduEndPoint] Get or
-     * Set Baidu Endpoint.
+     * @param {string} [parameters.baiduCredential.baiduApiKey] Baidu Api Key.
      * 
-     * @param {string}
-     * [parameters.properties.baiduCredential.properties.baiduSecretKey] Get or
-     * Set Baidu Secret Key
+     * @param {string} [parameters.baiduCredential.baiduEndPoint] Baidu Endpoint.
+     * 
+     * @param {string} [parameters.baiduCredential.baiduSecretKey] Baidu Secret Key
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -645,39 +572,11 @@ export interface NotificationHubs {
      * 
      * @param {object} parameters The shared access authorization rule.
      * 
-     * @param {string} [parameters.location] Gets or sets Namespace data center
-     * location.
+     * @param {array} [parameters.rights] The rights associated with the rule.
      * 
-     * @param {string} [parameters.name] Gets or sets Name of the Namespace
-     * AuthorizationRule.
+     * @param {string} parameters.location Resource location
      * 
-     * @param {object} [parameters.properties] Gets or sets properties of the
-     * Namespace AuthorizationRules.
-     * 
-     * @param {string} [parameters.properties.primaryKey] The primary key that was
-     * used.
-     * 
-     * @param {string} [parameters.properties.secondaryKey] The secondary key that
-     * was used.
-     * 
-     * @param {string} [parameters.properties.keyName] The name of the key that
-     * was used.
-     * 
-     * @param {string} [parameters.properties.claimType] The type of the claim.
-     * 
-     * @param {string} [parameters.properties.claimValue] The value of the claim.
-     * 
-     * @param {array} [parameters.properties.rights] The rights associated with
-     * the rule.
-     * 
-     * @param {date} [parameters.properties.createdTime] The time at which the
-     * authorization rule was created.
-     * 
-     * @param {date} [parameters.properties.modifiedTime] The most recent time the
-     * rule was updated.
-     * 
-     * @param {number} [parameters.properties.revision] The revision number for
-     * the rule.
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -796,6 +695,37 @@ export interface NotificationHubs {
     listKeys(resourceGroupName: string, namespaceName: string, notificationHubName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
 
     /**
+     * Regenerates the Primary/Secondary Keys to the NotificationHub Authorization
+     * Rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {string} notificationHubName The notification hub name.
+     * 
+     * @param {string} authorizationRuleName The connection string of the
+     * NotificationHub for the specified authorizationRule.
+     * 
+     * @param {object} parameters Parameters supplied to regenerate the
+     * NotificationHub Authorization Rule Key.
+     * 
+     * @param {string} [parameters.policyKey] Name of the key that has to be
+     * regenerated for the Namespace/Notification Hub Authorization Rule. The
+     * value can be Primary Key/Secondary Key.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    regenerateKeys(resourceGroupName: string, namespaceName: string, notificationHubName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, notificationHubName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, callback: ServiceCallback<models.ResourceListKeys>): void;
+
+    /**
      * Lists the PNS Credentials associated with a notification hub .
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -812,8 +742,8 @@ export interface NotificationHubs {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getPnsCredentials(resourceGroupName: string, namespaceName: string, notificationHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationHubResource>): void;
-    getPnsCredentials(resourceGroupName: string, namespaceName: string, notificationHubName: string, callback: ServiceCallback<models.NotificationHubResource>): void;
+    getPnsCredentials(resourceGroupName: string, namespaceName: string, notificationHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PnsCredentialsResource>): void;
+    getPnsCredentials(resourceGroupName: string, namespaceName: string, notificationHubName: string, callback: ServiceCallback<models.PnsCredentialsResource>): void;
 
     /**
      * Lists the notification hubs associated with a namespace.
