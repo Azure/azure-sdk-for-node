@@ -19,7 +19,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/keyVault.js",
+  "main": "./lib/keyVaultManagementClient.js",
   "licenses": [
     {
       "type": "Apache 2.0",
@@ -27,7 +27,9 @@
     }
   ],
   "dependencies": {
-    "azure-common": "^0.9.13"
+    "ms-rest": "^1.14.0",
+    "ms-rest-azure": "^1.14.0",
+    "underscore": "^1.4.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
