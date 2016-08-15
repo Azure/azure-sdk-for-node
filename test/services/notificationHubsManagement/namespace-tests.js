@@ -31,7 +31,7 @@ var createdGroups = [];
 var createdAccounts = [];
 
 var requiredEnvironment = [
-  { name: 'AZURE_TEST_LOCATION', defaultValue: 'South Central US' }
+    { name: 'AZURE_TEST_LOCATION', defaultValue: 'South Central US' }
 ];
 
 var suite;
@@ -65,14 +65,14 @@ describe('Notification Hubs Management :', function () {
             authRuleParameter = {
                 location: namespaceLocation,
                 name: authorizationRuleName, 
-                rights : ['Listen', 'Send'] 
+                rights : ['Listen', 'Send']
             };
             
             regenerateKeyParameter = 
             {
                 policyKey : 'primary KEY'
             };
-
+            
             if (suite.isPlayback) {
                 client.longRunningOperationRetryTimeoutInSeconds = 0;
             }
@@ -191,7 +191,7 @@ describe('Notification Hubs Management :', function () {
                                                     should.exist(result);
                                                     response.statusCode.should.equal(200);
                                                     var authKeyAfterRegenerate = result;
-
+                                                    
                                                     authKeyAfterRegenerate.primaryConnectionString.indexOf(authKeyAfterRegenerate.primaryKey) > -1;
                                                     authKeyAfterRegenerate.secondaryConnectionString.indexOf(authKeyAfterRegenerate.secondaryKey) > -1;
                                                     //A bug in our service. will fix it an uncomment this . Need to add EntityPath everywhere
@@ -199,7 +199,7 @@ describe('Notification Hubs Management :', function () {
                                                     //authKeyAfterRegenerate.secondaryConnectionString.should.equal(authregenerateKey.secondaryConnectionString);
                                                     authKeyAfterRegenerate.secondaryKey.should.equal(authregenerateKey.secondaryKey);
                                                     authKeyAfterRegenerate.primaryKey.should.equal(authregenerateKey.primaryKey);
-
+                                                    
                                                     //console.log("Delete Namespace Authorization Rule");
                                                     client.namespaces.deleteAuthorizationRule(groupName, namespaceName, authorizationRuleName, function (err, result, request, response) {
                                                         should.not.exist(err);
@@ -208,10 +208,9 @@ describe('Notification Hubs Management :', function () {
                                                         //There is a bug in the RP Delete call. Will uncomment this once the fix is in 
                                                         //console.log("Delete created Namespace");
                                                         //client.namespaces.deleteMethod(groupName, namespaceName, function (err, result, request, response) {
-                                                            //should.not.exist(err);
-                                                            //response.statusCode.should.equal(200) || response.statusCode.should.equal(204) || response.statusCode.should.equal(202);
-                                                            done();
-
+                                                        //should.not.exist(err);
+                                                        //response.statusCode.should.equal(200) || response.statusCode.should.equal(204) || response.statusCode.should.equal(202);
+                                                        done();
                                                         //});
                                                     });
                                                 });
@@ -226,7 +225,7 @@ describe('Notification Hubs Management :', function () {
             });
         });
     });
-
+    
     function IsNamespaceActive(groupName, namespaceName, callback) {
         
         client.namespaces.get(groupName, namespaceName, 

@@ -31,7 +31,7 @@ var createdGroups = [];
 var createdAccounts = [];
 
 var requiredEnvironment = [
-  { name: 'AZURE_TEST_LOCATION', defaultValue: 'South Central US' }
+    { name: 'AZURE_TEST_LOCATION', defaultValue: 'South Central US' }
 ];
 
 var suite;
@@ -69,7 +69,7 @@ describe('Notification Hubs Management', function () {
                 location: namespaceLocation,
                 wnsCredential : {
                     packageSid : 'ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699',
-                    secretKey : 'w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp',
+                    secretKey : 'w7TBprR-THIS-IS-DUMMY-KEYAzSYFhp',                                         
                     windowsLiveEndpoint : 'http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf'
                 }
             };
@@ -84,12 +84,12 @@ describe('Notification Hubs Management', function () {
             {
                 policyKey : 'primary KEY'
             };
-
+            
             if (suite.isPlayback) {
                 client.longRunningOperationRetryTimeoutInSeconds = 0;
             }
             //console.log("Create Resource Group : " + groupName);
-
+            
             suite.createResourcegroup(groupName, namespaceLocation, function (err, result) {
                 should.not.exist(err);
                 
@@ -112,21 +112,21 @@ describe('Notification Hubs Management', function () {
             });
         });
     });
-        
+    
     after(function (done) {
         suite.teardownSuite(function () {
             //There is a bug in the RP Delete call. Will uncomment this once the fix is in 
-         //   console.log("Delete Namespace");
+            //   console.log("Delete Namespace");
             //client.namespaces.deleteMethod(groupName, namespaceName, function (err, result, request, response) {
-         //       should.not.exist(err);
-         //       console.log("statusCode" + response.statusCode);
-         //       response.statusCode.should.equal(404);
-                
-                //console.log("Delete Resource Group");
-                suite.deleteResourcegroup(groupName, function (err, result) {
-                    should.not.exist(err);
-                    done();
-                });
+            //       should.not.exist(err);
+            //       console.log("statusCode" + response.statusCode);
+            //       response.statusCode.should.equal(404);
+            
+            //console.log("Delete Resource Group");
+            suite.deleteResourcegroup(groupName, function (err, result) {
+                should.not.exist(err);
+                done();
+            });
             //});
 
         });
@@ -173,7 +173,7 @@ describe('Notification Hubs Management', function () {
                                 should.exist(result);
                                 response.statusCode.should.equal(200);
                                 var nhub = result;
-
+                                
                                 nhub.wnsCredential.secretKey.should.equal(createNotificationHubParameters.wnsCredential.secretKey);
                                 nhub.wnsCredential.packageSid.should.equal(createNotificationHubParameters.wnsCredential.packageSid);
                                 nhub.wnsCredential.windowsLiveEndpoint.should.equal(createNotificationHubParameters.wnsCredential.windowsLiveEndpoint);
@@ -269,7 +269,7 @@ describe('Notification Hubs Management', function () {
             });
         });
     });
-
+    
     function IsNamespaceActive(groupName, namespaceName, callback) {
         
         client.namespaces.get(groupName, namespaceName, 
@@ -287,11 +287,10 @@ describe('Notification Hubs Management', function () {
                 return callback(null, true);
             else
                 return IsNamespaceActive(groupName, namespaceName, callback);
-        });        
+        });
     }
-
-    function Wait(callback)
-    {
+    
+    function Wait(callback) {
         if (!suite.isPlayback) {
             setTimeout(function () {
                 //console.log('sleep for 30 seconds');
