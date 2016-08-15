@@ -23,6 +23,7 @@ var Forge = require('node-forge');
 var BigInteger = Forge.jsbn.BigInteger;
 var Random = require('random-js');
 var util = require('util');
+var should = require('should');
 
 var exports = module.exports;
 
@@ -35,7 +36,7 @@ exports.authenticator = function(challenge, callback) {
   var clientId = process.env['AZURE_KV_CLIENT_ID'];
   var clientSecret = process.env['AZURE_KV_CLIENT_SECRET'];
   
-  if (!clientId) clientId = 'mocked';
+  if (!clientId) clientId = 'a2a96829-36de-4f0a-9b7b-c26a3377242e';
   if (!clientSecret) clientSecret = 'mocked';
 
   // Create a new authentication context.
@@ -112,11 +113,11 @@ function clone(obj) {
     return new Buffer(obj);
   }
   if (obj instanceof Object) {
-    if (obj instanceof KeyVault.JsonWebKey) result = new KeyVault.JsonWebKey();
+    if (obj instanceof KeyVault.Models.JsonWebKey) result = new KeyVault.Models.JsonWebKey();
     else
-    if (obj instanceof KeyVault.KeyAttributes) result = new KeyVault.KeyAttributes();
+    if (obj instanceof KeyVault.Models.KeyAttributes) result = new KeyVault.Models.KeyAttributes();
     else
-    if (obj instanceof KeyVault.SecretAttributes) result = new KeyVault.SecretAttributes();
+    if (obj instanceof KeyVault.Models.SecretAttributes) result = new KeyVault.Models.SecretAttributes();
     else
       result = {};
 
@@ -125,6 +126,7 @@ function clone(obj) {
         result[p] = clone(obj[p]);
       }
     }
+
     return result;
   }
   return obj;
@@ -169,7 +171,7 @@ exports.validateSecretBundle = function(bundle, vault, secretName, secretValue) 
 };
 
 exports.validateSecretList = function(result, expected) {
-  var secrets = result.value;
+  var secrets = result;
   if (secrets && secrets.length) {
     for (var i = 0; i < secrets.length; ++i) {
       var secret = secrets[i];
@@ -183,7 +185,7 @@ exports.validateSecretList = function(result, expected) {
   }
 };
 
-exports.validateRsaKeyBundle = function(bundle, vault, keyName, kty, key_ops) {
+exports.validateRsaKeyBundle = function(bundle, vault, keyName, kty, keyOps) {
   var prefix = vault + '/keys/' + keyName + '/';
   var key = bundle.key;
   var kid = key.kid;
@@ -196,11 +198,11 @@ exports.validateRsaKeyBundle = function(bundle, vault, keyName, kty, key_ops) {
   if (!key.n || !key.e) {
     throw new Error('Bad RSA public material.');
   }
-  if (key_ops != null) {
-      var expected = JSON.stringify(key_ops);
-      var actual = JSON.stringify(key.key_ops);
+  if (keyOps != null) {
+      var expected = JSON.stringify(keyOps);
+      var actual = JSON.stringify(key.keyOps);
       if (actual !== expected) {
-        throw new Error(util.format('key_ops should be %s, but is %s.', expected, actual)); 
+        throw new Error(util.format('keyOps should be %s, but is %s.', expected, actual)); 
       }
   }
   var attributes = bundle.attributes;
@@ -210,7 +212,7 @@ exports.validateRsaKeyBundle = function(bundle, vault, keyName, kty, key_ops) {
 };
 
 exports.validateKeyList = function(result, expected) {
-  var keys = result.value;
+  var keys = result;
   if (keys && keys.length) {
     for (var i = 0; i < keys.length; ++i) {
       var key = keys[i];
@@ -222,6 +224,102 @@ exports.validateKeyList = function(result, expected) {
       }
     }
   }
+};
+
+exports.validateCertificateList = function (certificates, expected) {
+    if (certificates && certificates.length) {
+        certificates.forEach(function (certificate) {
+            KeyVault.parseCertificateIdentifier(certificate.id);
+            var attributes = expected[certificate.id];
+            if (attributes) {
+                exports.compareObjects(attributes, certificate.attributes);
+                delete expected[certificate.id];
+            }
+        });
+    }
+};
+
+exports.validateCertificateIssuerList = function (issuers, expected) {
+    if (issuers && issuers.length) {
+        issuers.forEach(function (issuer) {
+            KeyVault.parseCertificateIdentifier(issuer.id);
+            var provider = expected[issuer.id];
+            if (provider) {
+                should(provider).be.exactly(issuer.provider);
+                delete expected[issuer.id];
+            }
+        });
+    }
+};
+
+exports.validateCertificateOperation = function (pendingCertificate, vault, certificateName, policy) {
+  var identifier = KeyVault.parseCertificateOperationIdentifier(pendingCertificate.id);
+  should(identifier.vault).be.exactly(vault);
+  should(identifier.name).be.exactly(certificateName);
+  should.exist(pendingCertificate);
+  should.exist(pendingCertificate.csr);
+  should(policy.issuerReference.name).be.exactly(pendingCertificate.issuerReference.name);
+};
+
+exports.validateCertificateBundle = function (bundle, vault, certificateName, policy) {
+  var identifier = KeyVault.parseCertificateIdentifier(bundle.id);
+  should(identifier.vault).be.exactly(vault);
+  should(identifier.name).be.exactly(certificateName);
+
+  should.exist(bundle);
+  should.exist(bundle.x509Thumbprint);
+  should.exist(bundle.policy);
+  should.exist(bundle.cer);
+  should.exist(bundle.attributes);
+  should.exist(bundle.policy.id);
+  should.exist(bundle.policy.issuerReference);
+  should.exist(bundle.policy.keyProperties);
+  should.exist(bundle.policy.secretProperties);
+  should.exist(bundle.policy.lifetimeActions);
+  should.exist(bundle.policy.x509CertificateProperties);
+  if (policy.secretProperties)
+    exports.compareObjects(policy.secretProperties, bundle.policy.secretProperties);    
+  if (policy.keyProperties)
+    exports.compareObjects(policy.keyProperties, bundle.policy.keyProperties);
+  if (policy.x509CertificateProperties && policy.x509CertificateProperties.validityInMonths)
+    should(policy.x509CertificateProperties.validityInMonths).be.exactly(bundle.policy.x509CertificateProperties.validityInMonths);
+
+  KeyVault.parseSecretIdentifier(bundle.sid);
+  KeyVault.parseKeyIdentifier(bundle.kid);
+};
+
+
+exports.validateIssuerBundle = function (bundle, vault, issuerName, expectedBundle) {
+  var identifier = KeyVault.parseIssuerIdentifier(bundle.id);
+  should(identifier.vault).be.exactly(vault);
+  should(identifier.name).be.exactly(issuerName);
+  
+  should.exist(bundle);
+  should.exist(bundle.attributes);
+  should.exist(bundle.organizationDetails);
+
+  should(bundle.provider).be.exactly(expectedBundle.provider);
+
+  if (expectedBundle.credentials)
+    should(bundle.credentials.accountId).be.exactly(expectedBundle.credentials.accountId);
+      
+  if (expectedBundle.organizationDetails)
+    exports.compareObjects(expectedBundle.organizationDetails, bundle.organizationDetails);
+};
+
+exports.validateCertificateContacts = function (contacts, vault, expectedContacts) {
+  var contactId = vault + '/certificates/contacts';
+  should(contactId).be.exactly(contacts.id);
+  should(expectedContacts.contactList.length).be.exactly(contacts.contactList.length);
+  
+  contacts.contactList.forEach(function (contact) {
+    var expectedContactFiltered = expectedContacts.contactList.filter(function (element, index, array) {
+      if (element.emailAddress === contact.emailAddress)
+        return true;
+      return false;
+    });
+    exports.compareObjects(expectedContactFiltered[0], contact);
+  });
 };
 
 exports.getTestKey = function(suiteUtil) {  
