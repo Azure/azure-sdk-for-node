@@ -57,14 +57,8 @@ describe('Key Vault certificates', function () {
   });
 
   after(function (done) {
-    suiteUtil.teardownSuite(function () {
-      if (!suiteUtil.isPlayback) {
-        cleanupCreatedCertificates(function () {
-          done();
-        });
-      } else {
-        done();
-      }
+    cleanupCreatedCertificates(function () {
+      suiteUtil.teardownSuite(done);
     });
   });
 
@@ -159,7 +153,7 @@ describe('Key Vault certificates', function () {
   describe('CRUD certificate', function () {
     it('should work', function (done) {
 
-      //this.timeout(100000);
+      this.timeout(100000);
 
       //create delete update get
 
@@ -187,7 +181,7 @@ describe('Key Vault certificates', function () {
 
       function createCertificate(next) {
         var intervalTime = 5000;
-        if (suiteUtil.isRecording !== "true") {
+        if (suiteUtil.isPlayback) {
           intervalTime = 0;
         }
         client.createCertificate(vaultUri, CERTIFICATE_NAME, { certificatePolicy: certificatePolicy }, function (err, certificateOperation) {
@@ -268,7 +262,7 @@ describe('Key Vault certificates', function () {
   describe('import', function () {
     it('should work', function (done) {
 
-      //this.timeout(10000);
+      this.timeout(10000);
 
       var CERTIFICATE_NAME = 'nodeImportCertificate';
 
@@ -291,7 +285,7 @@ describe('Key Vault certificates', function () {
   describe('list', function () {
     it('should work', function (done) {
 
-      //this.timeout(100000);
+      this.timeout(100000);
       var expected = {};
 
       function importSomeCertificates(next) {
@@ -351,7 +345,7 @@ describe('Key Vault certificates', function () {
   describe('list versions', function () {
     it('should work', function (done) {
       var CERTIFICATE_NAME = 'importListVersionCerts';
-      //this.timeout(100000);
+      this.timeout(100000);
       var expected = {};
 
       function importSameCertificates(next) {
@@ -410,8 +404,8 @@ describe('Key Vault certificates', function () {
   describe('CRUD issuer', function () {
     it('should work', function (done) {
 
-      //this.timeout(100000);
-      //setTimeout(done, 100000);
+      this.timeout(100000);
+      setTimeout(done, 100000);
 
       var ISSUER_NAME = 'nodeIssuer';
 
@@ -501,7 +495,7 @@ describe('Key Vault certificates', function () {
   describe('list issuers', function () {
     it('should work', function (done) {
 
-      //this.timeout(10000);
+      this.timeout(10000);
 
       var expected = {};
 
@@ -579,7 +573,7 @@ describe('Key Vault certificates', function () {
   describe('async request cancellation and deletion', function () {
     it('should work', function (done) {
 
-      //this.timeout(10000);
+      this.timeout(10000);
 
       var certificateName = "asyncCancelledDeletedCert";
       var certificatePolicy = {
@@ -728,7 +722,7 @@ describe('Key Vault certificates', function () {
   describe('policy', function () {
     it('should work', function (done) {
 
-      //this.timeout(10000);
+      this.timeout(10000);
 
       var certificateName = 'policyCertificate';
 
@@ -784,7 +778,7 @@ describe('Key Vault certificates', function () {
   describe('manual enrolled', function () {
     it('should work', function (done) {
 
-      //this.timeout(10000);
+      this.timeout(10000);
 
       var certificateName = "UnknownIssuerCert1";
       var certificatePolicy = {
@@ -857,20 +851,18 @@ describe('Key Vault certificates', function () {
   }
 
   function cleanupCreatedCertificates(callback) {
-    client.getCertificates(vaultUri, function (err, list) {
-      if (list && list.length !== 0) {
-        list.forEach(function (cert) {
-          var id = KeyVault.parseCertificateIdentifier(cert.id);
-          client.deleteCertificate(id.vault, id.name, function (err, bundle) {
-            if (err) {
-              console.log(util.format('>>> Error \n %s \n occurred in deleting the certificate for \n %s \n.',
-                util.inspect(err, {depth: null}), util.inspect(id, {depth: null})));
-            }
+    if (!suiteUtil.isMocked) {
+      client.getCertificates(vaultUri, function (err, list) {
+        if (list && list.length !== 0) {
+          list.forEach(function (cert) {
+            var id = KeyVault.parseCertificateIdentifier(cert.id);
+            client.deleteCertificate(id.vault, id.name, function (err, bundle) { });
           });
-        });
-      }
-      callback();;
-    });
+        }
+        callback();;
+      });
+    }
+    else callback();
   }
 
 });

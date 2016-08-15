@@ -5,12 +5,13 @@
     "Colombo, Fernando <fcolombo@microsoft.com>",
     "Gupta, Divya <Divya.Gupta@microsoft.com>",
     "Kostal, Greg <gkostal@microsoft.com>",
+    "Mortazavi, Pooneh <pomortaz@microsoft.com>",
     "Wilson, Hervey <herveyw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.11.1",
-  "description": "Microsoft Azure Key Vault Client Library for node",
+  "version": "0.11.2",
+  "description": "Microsoft Azure Key Vault Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
