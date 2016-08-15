@@ -227,7 +227,6 @@ exports.validateKeyList = function(result, expected) {
 };
 
 exports.validateCertificateList = function (certificates, expected) {
-
     if (certificates && certificates.length) {
         certificates.forEach(function (certificate) {
             KeyVault.parseCertificateIdentifier(certificate.id);
@@ -241,7 +240,6 @@ exports.validateCertificateList = function (certificates, expected) {
 };
 
 exports.validateCertificateIssuerList = function (issuers, expected) {
-    
     if (issuers && issuers.length) {
         issuers.forEach(function (issuer) {
             KeyVault.parseCertificateIdentifier(issuer.id);
@@ -255,73 +253,73 @@ exports.validateCertificateIssuerList = function (issuers, expected) {
 };
 
 exports.validateCertificateOperation = function (pendingCertificate, vault, certificateName, policy) {
-    var identifier = KeyVault.parseCertificateOperationIdentifier(pendingCertificate.id);
-    should(identifier.vault).be.exactly(vault);
-    should(identifier.name).be.exactly(certificateName);
-    should.exist(pendingCertificate);
-    should.exist(pendingCertificate.csr);
-    should(policy.issuerReference.name).be.exactly(pendingCertificate.issuerReference.name);
+  var identifier = KeyVault.parseCertificateOperationIdentifier(pendingCertificate.id);
+  should(identifier.vault).be.exactly(vault);
+  should(identifier.name).be.exactly(certificateName);
+  should.exist(pendingCertificate);
+  should.exist(pendingCertificate.csr);
+  should(policy.issuerReference.name).be.exactly(pendingCertificate.issuerReference.name);
 };
 
 exports.validateCertificateBundle = function (bundle, vault, certificateName, policy) {
-    var identifier = KeyVault.parseCertificateIdentifier(bundle.id);
-    should(identifier.vault).be.exactly(vault);
-    should(identifier.name).be.exactly(certificateName);
+  var identifier = KeyVault.parseCertificateIdentifier(bundle.id);
+  should(identifier.vault).be.exactly(vault);
+  should(identifier.name).be.exactly(certificateName);
 
-    should.exist(bundle);
-    should.exist(bundle.x509Thumbprint);
-    should.exist(bundle.policy);
-    should.exist(bundle.cer);
-    should.exist(bundle.attributes);
-    should.exist(bundle.policy.id);
-    should.exist(bundle.policy.issuerReference);
-    should.exist(bundle.policy.keyProperties);
-    should.exist(bundle.policy.secretProperties);
-    should.exist(bundle.policy.lifetimeActions);
-    should.exist(bundle.policy.x509CertificateProperties);
-    if (policy.secretProperties)
-        exports.compareObjects(policy.secretProperties, bundle.policy.secretProperties);    
-    if (policy.keyProperties)
-        exports.compareObjects(policy.keyProperties, bundle.policy.keyProperties);
-    if (policy.x509CertificateProperties && policy.x509CertificateProperties.validityInMonths)
-        should(policy.x509CertificateProperties.validityInMonths).be.exactly(bundle.policy.x509CertificateProperties.validityInMonths);
+  should.exist(bundle);
+  should.exist(bundle.x509Thumbprint);
+  should.exist(bundle.policy);
+  should.exist(bundle.cer);
+  should.exist(bundle.attributes);
+  should.exist(bundle.policy.id);
+  should.exist(bundle.policy.issuerReference);
+  should.exist(bundle.policy.keyProperties);
+  should.exist(bundle.policy.secretProperties);
+  should.exist(bundle.policy.lifetimeActions);
+  should.exist(bundle.policy.x509CertificateProperties);
+  if (policy.secretProperties)
+    exports.compareObjects(policy.secretProperties, bundle.policy.secretProperties);    
+  if (policy.keyProperties)
+    exports.compareObjects(policy.keyProperties, bundle.policy.keyProperties);
+  if (policy.x509CertificateProperties && policy.x509CertificateProperties.validityInMonths)
+    should(policy.x509CertificateProperties.validityInMonths).be.exactly(bundle.policy.x509CertificateProperties.validityInMonths);
 
-    KeyVault.parseSecretIdentifier(bundle.sid);
-    KeyVault.parseKeyIdentifier(bundle.kid);
+  KeyVault.parseSecretIdentifier(bundle.sid);
+  KeyVault.parseKeyIdentifier(bundle.kid);
 };
 
 
 exports.validateIssuerBundle = function (bundle, vault, issuerName, expectedBundle) {
-    var identifier = KeyVault.parseIssuerIdentifier(bundle.id);
-    should(identifier.vault).be.exactly(vault);
-    should(identifier.name).be.exactly(issuerName);
-    
-    should.exist(bundle);
-    should.exist(bundle.attributes);
-    should.exist(bundle.organizationDetails);
+  var identifier = KeyVault.parseIssuerIdentifier(bundle.id);
+  should(identifier.vault).be.exactly(vault);
+  should(identifier.name).be.exactly(issuerName);
+  
+  should.exist(bundle);
+  should.exist(bundle.attributes);
+  should.exist(bundle.organizationDetails);
 
-    should(bundle.provider).be.exactly(expectedBundle.provider);
+  should(bundle.provider).be.exactly(expectedBundle.provider);
 
-    if (expectedBundle.credentials)
-        should(bundle.credentials.accountId).be.exactly(expectedBundle.credentials.accountId);
-        
-    if (expectedBundle.organizationDetails)
-        exports.compareObjects(expectedBundle.organizationDetails, bundle.organizationDetails);
+  if (expectedBundle.credentials)
+    should(bundle.credentials.accountId).be.exactly(expectedBundle.credentials.accountId);
+      
+  if (expectedBundle.organizationDetails)
+    exports.compareObjects(expectedBundle.organizationDetails, bundle.organizationDetails);
 };
 
 exports.validateCertificateContacts = function (contacts, vault, expectedContacts) {
-    var contactId = vault + '/certificates/contacts';
-    should(contactId).be.exactly(contacts.id);
-    should(expectedContacts.contactList.length).be.exactly(contacts.contactList.length);
-    
-    contacts.contactList.forEach(function (contact) {
-        var expectedContact = expectedContacts.contactList.find(function (element, index, array) {
-            if (element.emailAddress == contact.emailAddress)
-                return true;
-            return false;
-        });
-        exports.compareObjects(expectedContact, contact);
+  var contactId = vault + '/certificates/contacts';
+  should(contactId).be.exactly(contacts.id);
+  should(expectedContacts.contactList.length).be.exactly(contacts.contactList.length);
+  
+  contacts.contactList.forEach(function (contact) {
+    var expectedContactFiltered = expectedContacts.contactList.filter(function (element, index, array) {
+      if (element.emailAddress === contact.emailAddress)
+        return true;
+      return false;
     });
+    exports.compareObjects(expectedContactFiltered[0], contact);
+  });
 };
 
 exports.getTestKey = function(suiteUtil) {  
