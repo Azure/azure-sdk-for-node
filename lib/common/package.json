@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Kulshrestha, Ankur <ankurkul@microsoft.com>"
   ],
-  "version": "0.9.17",
+  "version": "0.9.18",
   "description": "Microsoft Azure Common Client Library for node",
   "tags": [
     "azure",
@@ -25,19 +25,14 @@
   "engines": {
     "node": ">= 0.6.15"
   },
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
     "xml2js": "0.2.7",
     "xmlbuilder": "0.4.3",
     "dateformat": "1.0.2-1.2.3",
     "underscore": "1.4.x",
     "tunnel": "~0.0.2",
-    "request": "~2.72.0",
+    "request": "~2.74.0",
     "validator": "~3.22.2",
     "envconf": "~0.0.4",
     "duplexer": "~0.1.1",

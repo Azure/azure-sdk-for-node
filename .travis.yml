@@ -3,7 +3,6 @@ sudo: false
 node_js:
   - "4.2"
   - "0.12"
-  - "0.10"
 
 matrix:
   allow_failures:
