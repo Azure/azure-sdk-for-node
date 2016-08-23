@@ -54,7 +54,7 @@
       "output_dir": "lib/services/dataLake.Analytics/lib/account"
     },
     "datalake.analytics.job": {
-      "swagger": "arm-datalake-analytics/job/2015-11-01-preview/swagger/job.json",
+      "swagger": "arm-datalake-analytics/job/2016-03-20-preview/swagger/job.json",
       "output_dir": "lib/services/dataLake.Analytics/lib/job"
     },
     "datalake.analytics.catalog": {
