@@ -43,8 +43,9 @@ export interface Attributes {
  *
  * @member {string} [kid] Key Identifier
  * 
- * @member {string} [kty] Key type, usually RSA. Possible values include:
- * 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [kty] Supported JsonWebKey key types (kty) for Elliptic
+ * Curve, RSA, HSM, Octet, usually RSA. Possible values include: 'EC', 'RSA',
+ * 'RSA-HSM', 'oct'
  * 
  * @member {array} [keyOps]
  * 
@@ -105,7 +106,8 @@ export interface KeyAttributes extends Attributes {
  * 
  * @member {string} [key.kid] Key Identifier
  * 
- * @member {string} [key.kty] Key type, usually RSA. Possible values include:
+ * @member {string} [key.kty] Supported JsonWebKey key types (kty) for
+ * Elliptic Curve, RSA, HSM, Octet, usually RSA. Possible values include:
  * 'EC', 'RSA', 'RSA-HSM', 'oct'
  * 
  * @member {array} [key.keyOps]
@@ -135,11 +137,16 @@ export interface KeyAttributes extends Attributes {
  * @member {object} [tags] Application-specific metadata in the form of
  * key-value pairs
  * 
+ * @member {boolean} [managed] True if the key's lifetime is managed by key
+ * vault i.e. if this is a key backing a certificate, then managed will be
+ * true.
+ * 
  */
 export interface KeyBundle {
     key?: JsonWebKey;
     attributes?: KeyAttributes;
     tags?: { [propertyName: string]: string };
+    managed?: boolean;
 }
 
 /**
@@ -155,11 +162,16 @@ export interface KeyBundle {
  * @member {object} [tags] Application-specific metadata in the form of
  * key-value pairs
  * 
+ * @member {boolean} [managed] True if the key's lifetime is managed by key
+ * vault i.e. if this is a key backing a certificate, then managed will be
+ * true.
+ * 
  */
 export interface KeyItem {
     kid?: string;
     attributes?: KeyAttributes;
     tags?: { [propertyName: string]: string };
+    managed?: boolean;
 }
 
 /**
@@ -179,7 +191,12 @@ export interface KeyItem {
  * @member {object} [tags] Application-specific metadata in the form of
  * key-value pairs
  * 
- * @member {string} [kid] The key id for certificate.
+ * @member {string} [kid] If this is a secret backing a KV certificate, then
+ * this field specifies the corresponding key backing the KV certificate.
+ * 
+ * @member {boolean} [managed] True if the secret's lifetime is managed by key
+ * vault i.e. if this is a secret backing a certificate, then managed will be
+ * true.
  * 
  */
 export interface SecretBundle {
@@ -189,6 +206,7 @@ export interface SecretBundle {
     attributes?: SecretAttributes;
     tags?: { [propertyName: string]: string };
     kid?: string;
+    managed?: boolean;
 }
 
 /**
@@ -216,12 +234,17 @@ export interface SecretAttributes extends Attributes {
  * 
  * @member {string} [contentType] Type of the secret value such as a password
  * 
+ * @member {boolean} [managed] True if the secret's lifetime is managed by key
+ * vault i.e. if this is a key backing a certificate, then managed will be
+ * true.
+ * 
  */
 export interface SecretItem {
     id?: string;
     attributes?: SecretAttributes;
     tags?: { [propertyName: string]: string };
     contentType?: string;
+    managed?: boolean;
 }
 
 /**
@@ -265,7 +288,7 @@ export interface CertificateItem {
  *
  * @member {string} [id] Certificate Identifier
  * 
- * @member {string} [provider] The name of the issuer.
+ * @member {string} [provider] The issuer provider.
  * 
  */
 export interface CertificateIssuerItem {
@@ -300,7 +323,7 @@ export interface CertificateIssuerItem {
  * @member {string} [policy.keyProperties.keyType] The key type.
  * 
  * @member {number} [policy.keyProperties.keySize] The key size in bytes. e.g.
- * 1024 or 2048.
+ * 2048.
  * 
  * @member {boolean} [policy.keyProperties.reuseKey] Indicates if the same key
  * pair will be used on certificate renewal.
@@ -317,7 +340,7 @@ export interface CertificateIssuerItem {
  * @member {string} [policy.x509CertificateProperties.subject] The subject
  * name. Should be a valid X509 Distinguished Name.
  * 
- * @member {array} [policy.x509CertificateProperties.ekus] The enhaunced key
+ * @member {array} [policy.x509CertificateProperties.ekus] The enhanced key
  * usage.
  * 
  * @member {object} [policy.x509CertificateProperties.subjectAlternativeNames]
@@ -339,7 +362,7 @@ export interface CertificateIssuerItem {
  * usages.
  * 
  * @member {number} [policy.x509CertificateProperties.validityInMonths] The
- * subject alternate names.
+ * duration that the ceritifcate is valid in months.
  * 
  * @member {array} [policy.lifetimeActions] Actions that will be performed by
  * Key Vault over the lifetime of a certificate.
@@ -348,7 +371,7 @@ export interface CertificateIssuerItem {
  * X509 component of a certificate.
  * 
  * @member {string} [policy.issuerReference.name] Name of the referenced
- * issuer object.
+ * issuer object or reserved names e.g. 'Self', 'Unknown'.
  * 
  * @member {object} [policy.attributes] The certificate attributes.
  * 
@@ -390,8 +413,7 @@ export interface CertificateBundle {
  * 
  * @member {string} [keyProperties.keyType] The key type.
  * 
- * @member {number} [keyProperties.keySize] The key size in bytes. e.g. 1024
- * or 2048.
+ * @member {number} [keyProperties.keySize] The key size in bytes. e.g. 2048.
  * 
  * @member {boolean} [keyProperties.reuseKey] Indicates if the same key pair
  * will be used on certificate renewal.
@@ -407,7 +429,7 @@ export interface CertificateBundle {
  * @member {string} [x509CertificateProperties.subject] The subject name.
  * Should be a valid X509 Distinguished Name.
  * 
- * @member {array} [x509CertificateProperties.ekus] The enhaunced key usage.
+ * @member {array} [x509CertificateProperties.ekus] The enhanced key usage.
  * 
  * @member {object} [x509CertificateProperties.subjectAlternativeNames] The
  * subject alternative names.
@@ -423,8 +445,8 @@ export interface CertificateBundle {
  * 
  * @member {array} [x509CertificateProperties.keyUsage] List of key usages.
  * 
- * @member {number} [x509CertificateProperties.validityInMonths] The subject
- * alternate names.
+ * @member {number} [x509CertificateProperties.validityInMonths] The duration
+ * that the ceritifcate is valid in months.
  * 
  * @member {array} [lifetimeActions] Actions that will be performed by Key
  * Vault over the lifetime of a certificate.
@@ -433,7 +455,7 @@ export interface CertificateBundle {
  * component of a certificate.
  * 
  * @member {string} [issuerReference.name] Name of the referenced issuer
- * object.
+ * object or reserved names e.g. 'Self', 'Unknown'.
  * 
  * @member {object} [attributes] The certificate attributes.
  * 
@@ -458,7 +480,7 @@ export interface CertificatePolicy {
  * 
  * @member {string} [keyType] The key type.
  * 
- * @member {number} [keySize] The key size in bytes. e.g. 1024 or 2048.
+ * @member {number} [keySize] The key size in bytes. e.g. 2048.
  * 
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
  * certificate renewal.
@@ -493,7 +515,7 @@ export interface SecretProperties {
  * @member {string} [subject] The subject name. Should be a valid X509
  * Distinguished Name.
  * 
- * @member {array} [ekus] The enhaunced key usage.
+ * @member {array} [ekus] The enhanced key usage.
  * 
  * @member {object} [subjectAlternativeNames] The subject alternative names.
  * 
@@ -505,7 +527,8 @@ export interface SecretProperties {
  * 
  * @member {array} [keyUsage] List of key usages.
  * 
- * @member {number} [validityInMonths] The subject alternate names.
+ * @member {number} [validityInMonths] The duration that the ceritifcate is
+ * valid in months.
  * 
  */
 export interface X509CertificateProperties {
@@ -597,7 +620,8 @@ export interface Action {
  * @constructor
  * Reference to the issuer of the X509 component of a certificate.
  *
- * @member {string} [name] Name of the referenced issuer object.
+ * @member {string} [name] Name of the referenced issuer object or reserved
+ * names e.g. 'Self', 'Unknown'.
  * 
  */
 export interface IssuerReference {
@@ -616,7 +640,7 @@ export interface IssuerReference {
  * component of a certificate.
  * 
  * @member {string} [issuerReference.name] Name of the referenced issuer
- * object.
+ * object or reserved names e.g. 'Self', 'Unknown'.
  * 
  * @member {buffer} [csr] The Certificate Signing Request (CSR) that is being
  * used in the certificate operation.
@@ -678,7 +702,7 @@ export interface ErrorModel {
  *
  * @member {string} [id] Identifier for the issuer object.
  * 
- * @member {string} [provider] The name of the issuer.
+ * @member {string} [provider] The issuer provider.
  * 
  * @member {object} [credentials] The credentials to be used for the issuer.
  * 
@@ -828,7 +852,8 @@ export interface Contact {
  * The key create parameters
  *
  * @member {string} kty The type of key to create. Valid key types, see
- * JsonWebKeyType. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
+ * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
+ * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
  * 
  * @member {number} [keySize] The key size in bytes. e.g. 1024 or 2048.
  * 
@@ -861,7 +886,8 @@ export interface KeyCreateParameters {
  * 
  * @member {string} [key.kid] Key Identifier
  * 
- * @member {string} [key.kty] Key type, usually RSA. Possible values include:
+ * @member {string} [key.kty] Supported JsonWebKey key types (kty) for
+ * Elliptic Curve, RSA, HSM, Octet, usually RSA. Possible values include:
  * 'EC', 'RSA', 'RSA-HSM', 'oct'
  * 
  * @member {array} [key.keyOps]
@@ -1054,7 +1080,7 @@ export interface SecretUpdateParameters {
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
  * 
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. e.g. 1024 or 2048.
+ * bytes. e.g. 2048.
  * 
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
@@ -1072,7 +1098,7 @@ export interface SecretUpdateParameters {
  * subject name. Should be a valid X509 Distinguished Name.
  * 
  * @member {array} [certificatePolicy.x509CertificateProperties.ekus] The
- * enhaunced key usage.
+ * enhanced key usage.
  * 
  * @member {object}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames] The
@@ -1094,8 +1120,8 @@ export interface SecretUpdateParameters {
  * of key usages.
  * 
  * @member {number}
- * [certificatePolicy.x509CertificateProperties.validityInMonths] The subject
- * alternate names.
+ * [certificatePolicy.x509CertificateProperties.validityInMonths] The
+ * duration that the ceritifcate is valid in months.
  * 
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
@@ -1104,7 +1130,7 @@ export interface SecretUpdateParameters {
  * issuer of the X509 component of a certificate.
  * 
  * @member {string} [certificatePolicy.issuerReference.name] Name of the
- * referenced issuer object.
+ * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
  * 
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * 
@@ -1148,7 +1174,7 @@ export interface CertificateCreateParameters {
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
  * 
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. e.g. 1024 or 2048.
+ * bytes. e.g. 2048.
  * 
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
@@ -1166,7 +1192,7 @@ export interface CertificateCreateParameters {
  * subject name. Should be a valid X509 Distinguished Name.
  * 
  * @member {array} [certificatePolicy.x509CertificateProperties.ekus] The
- * enhaunced key usage.
+ * enhanced key usage.
  * 
  * @member {object}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames] The
@@ -1188,8 +1214,8 @@ export interface CertificateCreateParameters {
  * of key usages.
  * 
  * @member {number}
- * [certificatePolicy.x509CertificateProperties.validityInMonths] The subject
- * alternate names.
+ * [certificatePolicy.x509CertificateProperties.validityInMonths] The
+ * duration that the ceritifcate is valid in months.
  * 
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
@@ -1198,7 +1224,7 @@ export interface CertificateCreateParameters {
  * issuer of the X509 component of a certificate.
  * 
  * @member {string} [certificatePolicy.issuerReference.name] Name of the
- * referenced issuer object.
+ * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
  * 
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * 
@@ -1223,6 +1249,74 @@ export interface CertificateImportParameters {
  * @constructor
  * The certificate update parameters
  *
+ * @member {object} [certificatePolicy] The management policy for the
+ * certificate
+ * 
+ * @member {string} [certificatePolicy.id] The certificate id
+ * 
+ * @member {object} [certificatePolicy.keyProperties] Properties of the key
+ * backing a certificate.
+ * 
+ * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
+ * the private key can be exported.
+ * 
+ * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * 
+ * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
+ * bytes. e.g. 2048.
+ * 
+ * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
+ * the same key pair will be used on certificate renewal.
+ * 
+ * @member {object} [certificatePolicy.secretProperties] Properties of the
+ * secret backing a certificate.
+ * 
+ * @member {string} [certificatePolicy.secretProperties.contentType] The media
+ * type (MIME type).
+ * 
+ * @member {object} [certificatePolicy.x509CertificateProperties] Properties
+ * of the X509 component of a certificate.
+ * 
+ * @member {string} [certificatePolicy.x509CertificateProperties.subject] The
+ * subject name. Should be a valid X509 Distinguished Name.
+ * 
+ * @member {array} [certificatePolicy.x509CertificateProperties.ekus] The
+ * enhanced key usage.
+ * 
+ * @member {object}
+ * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames] The
+ * subject alternative names.
+ * 
+ * @member {array}
+ * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.emails]
+ * Email addresses.
+ * 
+ * @member {array}
+ * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.dnsNames]
+ * Domain names.
+ * 
+ * @member {array}
+ * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.upns]
+ * User principal names.
+ * 
+ * @member {array} [certificatePolicy.x509CertificateProperties.keyUsage] List
+ * of key usages.
+ * 
+ * @member {number}
+ * [certificatePolicy.x509CertificateProperties.validityInMonths] The
+ * duration that the ceritifcate is valid in months.
+ * 
+ * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
+ * performed by Key Vault over the lifetime of a certificate.
+ * 
+ * @member {object} [certificatePolicy.issuerReference] Reference to the
+ * issuer of the X509 component of a certificate.
+ * 
+ * @member {string} [certificatePolicy.issuerReference.name] Name of the
+ * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+ * 
+ * @member {object} [certificatePolicy.attributes] The certificate attributes.
+ * 
  * @member {object} [certificateAttributes] The attributes of the certificate
  * (optional)
  * 
@@ -1231,6 +1325,7 @@ export interface CertificateImportParameters {
  * 
  */
 export interface CertificateUpdateParameters {
+    certificatePolicy?: CertificatePolicy;
     certificateAttributes?: CertificateAttributes;
     tags?: { [propertyName: string]: string };
 }
@@ -1255,6 +1350,100 @@ export interface CertificateMergeParameters {
     x509Certificates: Buffer[];
     certificateAttributes?: CertificateAttributes;
     tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateIssuerSetParameters class.
+ * @constructor
+ * The certificate issuer set parameters.
+ *
+ * @member {string} provider The issuer provider.
+ * 
+ * @member {object} [credentials] The credentials to be used for the issuer.
+ * 
+ * @member {string} [credentials.accountId] The user name/account name/account
+ * id.
+ * 
+ * @member {string} [credentials.password] The password/secret/account key.
+ * 
+ * @member {object} [organizationDetails] Details of the organization as
+ * provided to the issuer.
+ * 
+ * @member {string} [organizationDetails.id] Id of the organization.
+ * 
+ * @member {array} [organizationDetails.adminDetails] Details of the
+ * organization administrator.
+ * 
+ * @member {object} [attributes] Attributes of the issuer object.
+ * 
+ * @member {boolean} [attributes.enabled] Determines whether the issuer is
+ * enabled
+ * 
+ * @member {date} [attributes.created] Creation time in UTC
+ * 
+ * @member {date} [attributes.updated] Last updated time in UTC
+ * 
+ */
+export interface CertificateIssuerSetParameters {
+    provider: string;
+    credentials?: IssuerCredentials;
+    organizationDetails?: OrganizationDetails;
+    attributes?: IssuerAttributes;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateIssuerUpdateParameters class.
+ * @constructor
+ * The certificate issuer update parameters.
+ *
+ * @member {string} [provider] The issuer provider.
+ * 
+ * @member {object} [credentials] The credentials to be used for the issuer.
+ * 
+ * @member {string} [credentials.accountId] The user name/account name/account
+ * id.
+ * 
+ * @member {string} [credentials.password] The password/secret/account key.
+ * 
+ * @member {object} [organizationDetails] Details of the organization as
+ * provided to the issuer.
+ * 
+ * @member {string} [organizationDetails.id] Id of the organization.
+ * 
+ * @member {array} [organizationDetails.adminDetails] Details of the
+ * organization administrator.
+ * 
+ * @member {object} [attributes] Attributes of the issuer object.
+ * 
+ * @member {boolean} [attributes.enabled] Determines whether the issuer is
+ * enabled
+ * 
+ * @member {date} [attributes.created] Creation time in UTC
+ * 
+ * @member {date} [attributes.updated] Last updated time in UTC
+ * 
+ */
+export interface CertificateIssuerUpdateParameters {
+    provider?: string;
+    credentials?: IssuerCredentials;
+    organizationDetails?: OrganizationDetails;
+    attributes?: IssuerAttributes;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateOperationUpdateParameter class.
+ * @constructor
+ * The certificate operation update parameters.
+ *
+ * @member {boolean} cancellationRequested Indicates if cancellation was
+ * requested on the certificate operation.
+ * 
+ */
+export interface CertificateOperationUpdateParameter {
+    cancellationRequested: boolean;
 }
 
 /**
