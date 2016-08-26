@@ -96,7 +96,7 @@ export interface Deployments {
      * @param {object} [options.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} [options.properties.templateLink.uri] URI referencing the
+     * @param {string} options.properties.templateLink.uri URI referencing the
      * template.
      * 
      * @param {string} [options.properties.templateLink.contentVersion] If
@@ -109,13 +109,13 @@ export interface Deployments {
      * @param {object} [options.properties.parametersLink] The parameters URI. Use
      * only one of Parameters or ParametersLink.
      * 
-     * @param {string} [options.properties.parametersLink.uri] URI referencing the
+     * @param {string} options.properties.parametersLink.uri URI referencing the
      * template.
      * 
      * @param {string} [options.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [options.properties.mode] The deployment mode. Possible
+     * @param {string} options.properties.mode The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
      * @param {object} [options.properties.debugSetting] The debug setting of the
@@ -152,7 +152,7 @@ export interface Deployments {
      * @param {object} [options.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} [options.properties.templateLink.uri] URI referencing the
+     * @param {string} options.properties.templateLink.uri URI referencing the
      * template.
      * 
      * @param {string} [options.properties.templateLink.contentVersion] If
@@ -165,13 +165,13 @@ export interface Deployments {
      * @param {object} [options.properties.parametersLink] The parameters URI. Use
      * only one of Parameters or ParametersLink.
      * 
-     * @param {string} [options.properties.parametersLink.uri] URI referencing the
+     * @param {string} options.properties.parametersLink.uri URI referencing the
      * template.
      * 
      * @param {string} [options.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [options.properties.mode] The deployment mode. Possible
+     * @param {string} options.properties.mode The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
      * @param {object} [options.properties.debugSetting] The debug setting of the
@@ -246,7 +246,7 @@ export interface Deployments {
      * @param {object} [options.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} [options.properties.templateLink.uri] URI referencing the
+     * @param {string} options.properties.templateLink.uri URI referencing the
      * template.
      * 
      * @param {string} [options.properties.templateLink.contentVersion] If
@@ -259,13 +259,13 @@ export interface Deployments {
      * @param {object} [options.properties.parametersLink] The parameters URI. Use
      * only one of Parameters or ParametersLink.
      * 
-     * @param {string} [options.properties.parametersLink.uri] URI referencing the
+     * @param {string} options.properties.parametersLink.uri URI referencing the
      * template.
      * 
      * @param {string} [options.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [options.properties.mode] The deployment mode. Possible
+     * @param {string} options.properties.mode The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
      * @param {object} [options.properties.debugSetting] The debug setting of the
@@ -504,10 +504,10 @@ export interface ResourceGroups {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.location] The location of the resource group.
-     * It cannot be changed after the resource group has been created. Has to be
-     * one of the supported Azure Locations, such as West US, East US, West
-     * Europe, East Asia, etc.
+     * @param {string} parameters.location The location of the resource group. It
+     * cannot be changed after the resource group has been created. Has to be one
+     * of the supported Azure Locations, such as West US, East US, West Europe,
+     * East Asia, etc.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -589,10 +589,10 @@ export interface ResourceGroups {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.location] The location of the resource group.
-     * It cannot be changed after the resource group has been created. Has to be
-     * one of the supported Azure Locations, such as West US, East US, West
-     * Europe, East Asia, etc.
+     * @param {string} parameters.location The location of the resource group. It
+     * cannot be changed after the resource group has been created. Has to be one
+     * of the supported Azure Locations, such as West US, East US, West Europe,
+     * East Asia, etc.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -850,7 +850,7 @@ export interface Resources {
      * 
      * @param {string} [parameters.kind] The kind of the resource.
      * 
-     * @param {string} [parameters.managedBy] The managedBy property of the
+     * @param {string} [parameters.managedBy] Id of the resource that manages this
      * resource.
      * 
      * @param {object} [parameters.sku] The sku of the resource.
@@ -872,7 +872,7 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned'
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
