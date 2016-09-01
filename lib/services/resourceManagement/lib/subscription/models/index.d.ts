@@ -16,8 +16,8 @@
  * @constructor
  * Location information.
  *
- * @member {string} [id] The ID of the resource
- * (/subscriptions/SubscriptionId).
+ * @member {string} [id] The fully qualified Id of the location. For example,
+ * /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
  * 
  * @member {string} [subscriptionId] The subscription Id.
  * 
