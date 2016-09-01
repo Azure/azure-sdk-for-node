@@ -45,8 +45,8 @@ export interface Location {
  * @constructor
  * Subscription information.
  *
- * @member {string} [id] The ID of the resource
- * (/subscriptions/SubscriptionId).
+ * @member {string} [id] The fully qualified Id. For example,
+ * /subscriptions/00000000-0000-0000-0000-000000000000.
  * 
  * @member {string} [subscriptionId] The subscription Id.
  * 
@@ -54,12 +54,15 @@ export interface Location {
  * 
  * @member {string} [displayName] The subscription display name.
  * 
- * @member {string} [state] The subscription state.
+ * @member {string} [state] The subscription state. Possible values include:
+ * 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
  * 
  * @member {object} [subscriptionPolicies] The subscription policies.
  * 
  * @member {string} [subscriptionPolicies.locationPlacementId] The
- * subscription location placement Id.
+ * subscription location placement Id. The Id indicates which regions are
+ * visible for a subscription. For example, a subscription with a location
+ * placement Id of Public_2014-09-01 has access to Azure public regions.
  * 
  * @member {string} [subscriptionPolicies.quotaId] The subscription quota Id.
  * 
@@ -88,7 +91,9 @@ export interface Subscription {
  * Subscription policies.
  *
  * @member {string} [locationPlacementId] The subscription location placement
- * Id.
+ * Id. The Id indicates which regions are visible for a subscription. For
+ * example, a subscription with a location placement Id of Public_2014-09-01
+ * has access to Azure public regions.
  * 
  * @member {string} [quotaId] The subscription quota Id.
  * 
@@ -108,9 +113,11 @@ export interface SubscriptionPolicies {
  * @constructor
  * Tenant Id information.
  *
- * @member {string} [id] The Id.
+ * @member {string} [id] The fully qualified Id. For example,
+ * /tenants/00000000-0000-0000-0000-000000000000.
  * 
- * @member {string} [tenantId] The tenantId.
+ * @member {string} [tenantId] The tenantId. For example,
+ * 00000000-0000-0000-0000-000000000000.
  * 
  */
 export interface TenantIdDescription {
