@@ -7,7 +7,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/tenants?api-version=2015-11-01')
+  .get('/tenants?api-version=2016-06-01')
   .reply(200, "{\"value\":[{\"id\":\"/tenants/1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\"tenantId\":\"1449d5b7-8a83-47db-ae4c-9b03e888bad0\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '116',
@@ -24,7 +24,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/tenants?api-version=2015-11-01')
+  .get('/tenants?api-version=2016-06-01')
   .reply(200, "{\"value\":[{\"id\":\"/tenants/1449d5b7-8a83-47db-ae4c-9b03e888bad0\",\"tenantId\":\"1449d5b7-8a83-47db-ae4c-9b03e888bad0\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '116',
