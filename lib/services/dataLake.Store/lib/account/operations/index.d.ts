@@ -140,10 +140,41 @@ export interface Account {
      * 
      * @param {string} [parameters.name] the account name.
      * 
+     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * any.
+     * 
+     * @param {string} [parameters.identity.type] The type of encryption being
+     * used. Currently the only supported type is 'SystemAssigned'. Possible
+     * values include: 'SystemAssigned'
+     * 
      * @param {object} [parameters.tags] the value of custom properties.
      * 
      * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
+     * 
+     * @param {object} [parameters.properties.encryptionConfig] The Key vault
+     * encryption configuration.
+     * 
+     * @param {string} [parameters.properties.encryptionConfig.type] The type of
+     * encryption configuration being used. Currently the only supported types
+     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
+     * 'UserManaged', 'ServiceManaged'
+     * 
+     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
+     * The Key vault information for connecting to user managed encryption keys.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
+     * The resource identifier for the user managed Key Vault being used to
+     * encrypt.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
+     * The name of the user managed encryption key.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+     * The version of the user managed encryption key.
      * 
      * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
@@ -176,10 +207,41 @@ export interface Account {
      * 
      * @param {string} [parameters.name] the account name.
      * 
+     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * any.
+     * 
+     * @param {string} [parameters.identity.type] The type of encryption being
+     * used. Currently the only supported type is 'SystemAssigned'. Possible
+     * values include: 'SystemAssigned'
+     * 
      * @param {object} [parameters.tags] the value of custom properties.
      * 
      * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
+     * 
+     * @param {object} [parameters.properties.encryptionConfig] The Key vault
+     * encryption configuration.
+     * 
+     * @param {string} [parameters.properties.encryptionConfig.type] The type of
+     * encryption configuration being used. Currently the only supported types
+     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
+     * 'UserManaged', 'ServiceManaged'
+     * 
+     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
+     * The Key vault information for connecting to user managed encryption keys.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
+     * The resource identifier for the user managed Key Vault being used to
+     * encrypt.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
+     * The name of the user managed encryption key.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+     * The version of the user managed encryption key.
      * 
      * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
@@ -212,10 +274,41 @@ export interface Account {
      * 
      * @param {string} [parameters.name] the account name.
      * 
+     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * any.
+     * 
+     * @param {string} [parameters.identity.type] The type of encryption being
+     * used. Currently the only supported type is 'SystemAssigned'. Possible
+     * values include: 'SystemAssigned'
+     * 
      * @param {object} [parameters.tags] the value of custom properties.
      * 
      * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
+     * 
+     * @param {object} [parameters.properties.encryptionConfig] The Key vault
+     * encryption configuration.
+     * 
+     * @param {string} [parameters.properties.encryptionConfig.type] The type of
+     * encryption configuration being used. Currently the only supported types
+     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
+     * 'UserManaged', 'ServiceManaged'
+     * 
+     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
+     * The Key vault information for connecting to user managed encryption keys.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
+     * The resource identifier for the user managed Key Vault being used to
+     * encrypt.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
+     * The name of the user managed encryption key.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+     * The version of the user managed encryption key.
      * 
      * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
@@ -248,10 +341,41 @@ export interface Account {
      * 
      * @param {string} [parameters.name] the account name.
      * 
+     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * any.
+     * 
+     * @param {string} [parameters.identity.type] The type of encryption being
+     * used. Currently the only supported type is 'SystemAssigned'. Possible
+     * values include: 'SystemAssigned'
+     * 
      * @param {object} [parameters.tags] the value of custom properties.
      * 
      * @param {object} [parameters.properties] the Data Lake Store account
      * properties.
+     * 
+     * @param {object} [parameters.properties.encryptionConfig] The Key vault
+     * encryption configuration.
+     * 
+     * @param {string} [parameters.properties.encryptionConfig.type] The type of
+     * encryption configuration being used. Currently the only supported types
+     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
+     * 'UserManaged', 'ServiceManaged'
+     * 
+     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
+     * The Key vault information for connecting to user managed encryption keys.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
+     * The resource identifier for the user managed Key Vault being used to
+     * encrypt.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
+     * The name of the user managed encryption key.
+     * 
+     * @param {string}
+     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+     * The version of the user managed encryption key.
      * 
      * @param {string} [parameters.properties.endpoint] the gateway host.
      * 
@@ -328,6 +452,27 @@ export interface Account {
      */
     get(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
     get(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
+
+    /**
+     * Attempts to enable a user managed key vault for encryption of the specified
+     * Data Lake Store account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} accountName The name of the Data Lake Store account to
+     * attempt to enable the Key Vault for.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    enableKeyVault(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    enableKeyVault(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Lists the Data Lake Store accounts within a specific resource group. The

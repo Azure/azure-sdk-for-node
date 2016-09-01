@@ -52,6 +52,40 @@ export interface FileSystem {
     concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
+     * Sets or removes the expiration time on the specified file. This operation
+     * can only be executed against files. Folders are not supported.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
+     * @param {string} filePath The Data Lake Store path (starting with '/') of
+     * the file on which to set or remove the expiration time.
+     * 
+     * @param {string} expiryOption Indicates the type of expiration to use for
+     * the file: 1. NeverExpire: ExpireTime is ignored. 2. RelativeToNow:
+     * ExpireTime is an integer in milliseconds representing the expiration date
+     * relative to when file expiration is updated. 3. RelativeToCreationDate:
+     * ExpireTime is an integer in milliseconds representing the expiration date
+     * relative to file creation. 4. Absolute: ExpireTime is an integer in
+     * milliseconds, as a Unix timestamp relative to 1/1/1970 00:00:00. Possible
+     * values include: 'NeverExpire', 'RelativeToNow', 'RelativeToCreationDate',
+     * 'Absolute'
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {number} [options.expireTime] The time that the file will expire,
+     * corresponding to the ExpiryOption that was set.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    setFileExpiry(accountName: string, filePath: string, expiryOption: string, options: { expireTime? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setFileExpiry(accountName: string, filePath: string, expiryOption: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Checks if the specified access is available at the given path.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
@@ -378,6 +412,48 @@ export interface FileSystem {
      */
     removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Removes the existing Default Access Control List (ACL) of the specified
+     * directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
+     * @param {string} defaultAclFilePath The Data Lake Store path (starting with
+     * '/') of the directory with the default ACL being removed.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    removeDefaultAcl(accountName: string, defaultAclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeDefaultAcl(accountName: string, defaultAclFilePath: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Removes the existing Access Control List (ACL) of the specified file or
+     * directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
+     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory with the ACL being removed.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    removeAcl(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeAcl(accountName: string, aclFilePath: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets Access Control List (ACL) entries for the specified file or directory.
