@@ -173,7 +173,11 @@ export interface Namespaces {
      * 
      * @param {object} parameters The shared access authorization rule.
      * 
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {object} parameters.properties Properties of the Namespace
+     * AuthorizationRules.
+     * 
+     * @param {array} [parameters.properties.rights] The rights associated with
+     * the rule.
      * 
      * @param {string} parameters.location Resource location
      * 
@@ -572,7 +576,11 @@ export interface NotificationHubs {
      * 
      * @param {object} parameters The shared access authorization rule.
      * 
-     * @param {array} [parameters.rights] The rights associated with the rule.
+     * @param {object} parameters.properties Properties of the Namespace
+     * AuthorizationRules.
+     * 
+     * @param {array} [parameters.properties.rights] The rights associated with
+     * the rule.
      * 
      * @param {string} parameters.location Resource location
      * 

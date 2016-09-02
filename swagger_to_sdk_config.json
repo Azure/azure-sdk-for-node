@@ -156,7 +156,7 @@
       "output_dir": "lib/services/serviceFabric/lib"
     },
     "trafficmanager": {
-      "swagger": "arm-trafficmanager/2015-11-01/trafficmanager.json",
+      "swagger": "arm-trafficmanager/2015-11-01/swagger/trafficmanager.json",
       "autorest_options": {
         "FT": 1
       },

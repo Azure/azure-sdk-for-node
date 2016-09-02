@@ -198,6 +198,8 @@ export interface Deployment {
  * @class
  * Initializes a new instance of the DeploymentExportResult class.
  * @constructor
+ * The deployment export result.
+ *
  * @member {object} [template] The template content.
  * 
  */
@@ -229,6 +231,8 @@ export interface ResourceManagementErrorWithDetails {
  * @class
  * Initializes a new instance of the AliasPathType class.
  * @constructor
+ * The type of the paths for alias.
+ *
  * @member {string} [path] The path of an alias.
  * 
  * @member {array} [apiVersions] The api versions.
@@ -243,6 +247,8 @@ export interface AliasPathType {
  * @class
  * Initializes a new instance of the AliasType class.
  * @constructor
+ * The alias type.
+ *
  * @member {string} [name] The alias name.
  * 
  * @member {array} [paths] The paths for an alias.
@@ -251,6 +257,22 @@ export interface AliasPathType {
 export interface AliasType {
   name?: string;
   paths?: AliasPathType[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ZoneMappingType class.
+ * @constructor
+ * Zone mapping type.
+ *
+ * @member {string} [location] The location of this zone mapping.
+ * 
+ * @member {array} [zones] The zones in this zone mapping.
+ * 
+ */
+export interface ZoneMappingType {
+  location?: string;
+  zones?: string[];
 }
 
 /**
@@ -269,6 +291,9 @@ export interface AliasType {
  * 
  * @member {array} [apiVersions] The api version.
  * 
+ * @member {array} [zoneMappings] The zone mappings supported by this resource
+ * type.
+ * 
  * @member {object} [properties] The properties.
  * 
  */
@@ -277,6 +302,7 @@ export interface ProviderResourceType {
   locations?: string[];
   aliases?: AliasType[];
   apiVersions?: string[];
+  zoneMappings?: ZoneMappingType[];
   properties?: { [propertyName: string]: string };
 }
 

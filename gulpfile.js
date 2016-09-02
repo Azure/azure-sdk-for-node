@@ -139,8 +139,8 @@ var mappings = {
     'ft': 2
   },
   'traffic':{
-    'dir': 'trafficManagement2/lib',
-    'source': 'arm-trafficmanager/2015-11-01/trafficmanager.json',
+    'dir': 'trafficManagerManagement2/lib',
+    'source': 'arm-trafficmanager/2015-11-01/swagger/trafficmanager.json',
     'ft': 1
   },
   'website': {
