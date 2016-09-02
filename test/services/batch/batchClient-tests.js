@@ -143,13 +143,14 @@ describe('Batch Service', function () {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);
-        if (suite.isPlayback) {
+        if (!suite.isPlayback) {
+          console.log('Waiting for pool to start up...')
+          setTimeout(function () {
+            done();
+          }, 100000);
+        } else {
           done();
         }
-        console.log('Waiting for pool to start up...')
-        setTimeout(function () {
-          done();
-        }, 100000);
       });
     });
 
@@ -169,13 +170,14 @@ describe('Batch Service', function () {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
-        if (suite.isPlayback) {
+        if (!suite.isPlayback) {
+          console.log('Waiting for nodes to be ready...')
+          setTimeout(function () {
+            done();
+          }, 400000);
+        } else {
           done();
         }
-        console.log('Waiting for nodes to be ready...')
-        setTimeout(function () {
-          done();
-        }, 400000);
       });
     });
 
@@ -263,7 +265,7 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should update a compute node user successfully', function (done) {
+    it.skip('should update a compute node user successfully', function (done) {
       var options = { password: 'liilef#$DdRGSa_ewkjh' }
       client.computeNodeOperations.updateUser('nodesdktestpool1', compute_nodes[0], 'NodeSDKTestUser', options, function (err, result, request, response) {
         should.not.exist(err);
@@ -637,13 +639,15 @@ describe('Batch Service', function () {
         should.exist(result);
         result.id.should.equal('HelloWorldNodeSDKTestTask');
         response.statusCode.should.equal(200);
-        if (suite.isPlayback) {
+        if (!suite.isPlayback) {
+          console.log('Waiting for task to complete...')
+          setTimeout(function () {
+            done();
+          }, 100000);
+        } else {
           done();
         }
-        console.log('Waiting for task to complete...')
-        setTimeout(function () {
-          done();
-        }, 100000);
+        
       });
     });
 
@@ -699,19 +703,19 @@ describe('Batch Service', function () {
     });
 
     it('should re-list compute nodes successfully', function (done) {
-      if (suite.isPlayback) {
-        // We don't need to do this unless recording...
-        done();
-      }
       client.computeNodeOperations.list('nodesdktestpool1', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
         compute_nodes = result.map(function (x) { return x.id })
-        console.log('Waiting for nodes to be ready...')
-        setTimeout(function () {
+        if (!suite.isPlayback) {
+          console.log('Waiting for nodes to be ready...')
+          setTimeout(function () {
+            done();
+          }, 100000);
+        } else {
           done();
-        }, 100000);
+        }
       });
     });
 

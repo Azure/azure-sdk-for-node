@@ -76,6 +76,16 @@ var mappings = {
     'source': 'arm-iothub/2016-02-03/swagger/iothub.json',
     'ft': 1
   },
+  'keyvault': {
+    'dir': 'keyvault/lib',
+    'source': 'keyvault/2015-06-01/swagger/keyvault.json',
+    'ft': 1
+  },
+  'keyvaultmanagement': {
+    'dir': 'keyVaultManagement/lib',
+    'source': 'arm-keyvault/2015-06-01/swagger/keyvault.json',
+    'ft': 1
+  },
   'network': {
     'dir': 'networkManagement2/lib',
     'source': 'arm-network/2016-06-01/swagger/network.json',
@@ -91,16 +101,16 @@ var mappings = {
   },
   'rediscache': {
     'dir': 'rediscachemanagement/lib',
-    'source': 'arm-redis/2015-08-01/swagger/redis.json',
+    'source': 'arm-redis/2016-04-01/swagger/redis.json',
     'ft': 1
   },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2016-02-01/swagger/resources.json'
+    'source': 'arm-resources/resources/2016-07-01/swagger/resources.json'
   },
   'resource.subscription': {
     'dir': 'resourceManagement/lib/subscription',
-    'source': 'arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json'
+    'source': 'arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json'
   },
   'resource.lock': {
     'dir': 'resourceManagement/lib/lock',
@@ -114,11 +124,6 @@ var mappings = {
     'dir': 'resourceManagement/lib/policy',
     'source': 'arm-resources/policy/2016-04-01/swagger/policy.json'
   },
-  'storage': {
-    'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2016-01-01/swagger/storage.json',
-    'ft': 2
-  },
   'servermanagement': {
     'dir': 'servermanagement/lib',
     'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
@@ -128,9 +133,14 @@ var mappings = {
     'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
     'language': 'NodeJS'
   },
+  'storage': {
+    'dir': 'storageManagement2/lib',
+    'source': 'arm-storage/2016-01-01/swagger/storage.json',
+    'ft': 2
+  },
   'traffic':{
-    'dir': 'trafficManagement2/lib',
-    'source': 'arm-trafficmanager/2015-11-01/trafficmanager.json',
+    'dir': 'trafficManagerManagement2/lib',
+    'source': 'arm-trafficmanager/2015-11-01/swagger/trafficmanager.json',
     'ft': 1
   },
   'website': {
@@ -140,7 +150,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160811';
+var defaultAutoRestVersion = '0.17.0-Nightly20160831';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
@@ -155,7 +165,7 @@ function clrCmd(cmd){
 };
 
 function constructAutorestExePath(version) {
-  return path.join('packages', 'autorest.' + version, 'tools', 'AutoRest.exe');
+  return path.join('packages', 'Autorest.' + version, 'tools', 'AutoRest.exe');
 }
 function codegen(project, cb) {
   var found = false;
@@ -176,7 +186,7 @@ function codegen(project, cb) {
   if (found) {
     generateProject(project, specRoot, usingAutoRestVersion);
   } else {
-    var nugetCmd2 = clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + usingAutoRestVersion + ' -o packages';
+    var nugetCmd2 = clrCmd(nugetExe) + ' install Autorest -Source ' + nugetSource + ' -Version ' + usingAutoRestVersion + ' -o packages';
     console.log('Downloading Autorest version: ' + nugetCmd2);
     exec(nugetCmd2, function(err, stdout, stderr) {
       console.log(stdout);
@@ -225,7 +235,7 @@ gulp.task('default', function() {
 });
 
 gulp.task('codegen', function(cb) {
-  var nugetCmd = clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages';
+  var nugetCmd = clrCmd(nugetExe) + ' install Autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages';
   console.log('Downloading default AutoRest version: ' + nugetCmd);
   exec(nugetCmd, function(err, stdout, stderr) {
     console.log(stdout);

@@ -2,7 +2,7 @@
 
 This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
 - **Node.js version: 4.x.x or higher**
-- **API version: **
+- **API version: 2015-07-01**
 
 ## Features
 

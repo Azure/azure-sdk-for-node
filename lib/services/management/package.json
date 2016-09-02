@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "Microsoft Azure Management Client Library for node",
   "tags": [
     "azure",
@@ -21,12 +21,7 @@
     "azure"
   ],
   "main": "./lib/management.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.13",
     "underscore": "1.4.x"

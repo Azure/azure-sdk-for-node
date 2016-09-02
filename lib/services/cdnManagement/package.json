@@ -6,7 +6,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wan, Qinyuan <qinwa@microsoft.com>"
   ],
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Microsoft Azure CDN Resource Provider Management Client Library for Node",
   "tags": [
     "azure",
@@ -17,12 +17,7 @@
     "azure"
   ],
   "main": "./lib/cdnManagementClient.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "MIT",
   "dependencies": {
     "ms-rest": "^1.14.0",
     "ms-rest-azure": "^1.14.0"

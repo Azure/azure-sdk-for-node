@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Microsoft Azure Monitoring Client Library for node",
   "tags": [
     "azure",
@@ -21,12 +21,7 @@
     "azure"
   ],
   "main": "./lib/monitoring.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.17",
     "underscore": "1.4.x",

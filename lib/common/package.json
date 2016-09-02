@@ -22,9 +22,6 @@
     "azure"
   ],
   "main": "./lib/common.js",
-  "engines": {
-    "node": ">= 0.6.15"
-  },
   "license": "Apache-2.0",
   "dependencies": {
     "xml2js": "0.2.7",

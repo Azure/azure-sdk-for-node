@@ -1,7 +1,6 @@
 # Microsoft Azure SDK for Node.js - Subscription Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure subscription. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
 - **API version: 2013-08-01**
 
 ## Features

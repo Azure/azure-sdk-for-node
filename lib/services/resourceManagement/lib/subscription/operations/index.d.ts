@@ -53,7 +53,7 @@ export interface Subscriptions {
     get(subscriptionId: string, callback: ServiceCallback<models.Subscription>): void;
 
     /**
-     * Gets a list of the subscriptionIds.
+     * Gets a list of subscriptions.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -67,7 +67,7 @@ export interface Subscriptions {
     list(callback: ServiceCallback<models.SubscriptionListResult>): void;
 
     /**
-     * Gets a list of the subscriptionIds.
+     * Gets a list of subscriptions.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -93,7 +93,7 @@ export interface Subscriptions {
 export interface Tenants {
 
     /**
-     * Gets a list of the tenantIds.
+     * Gets a list of tenants.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -107,7 +107,7 @@ export interface Tenants {
     list(callback: ServiceCallback<models.TenantListResult>): void;
 
     /**
-     * Gets a list of the tenantIds.
+     * Gets a list of tenants.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

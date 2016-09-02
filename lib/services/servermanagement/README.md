@@ -24,7 +24,7 @@ npm install azure-arm-servermanagement
  
  // Interactive Login
  msRestAzure.interactiveLogin(function(err, credentials) {
-  var client = new webSiteManagementClient(credentials, 'your-subscription-id');
+  var client = new ServerManagement(credentials, 'your-subscription-id');
   client.node.list(resourceGroupName, function(err, nodes, request, response) {
     if (err) console.log(err);
     nodes.map(function (node, index, array) {

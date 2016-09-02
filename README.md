@@ -34,7 +34,6 @@ npm install azure
 | [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-batch`         |
 | &nbsp;                                                                            |                                   |
 | **Azure Resource Management (ARM)**                                                                                         |
-| [API Apps](http://azure.microsoft.com/en-us/services/app-service/api/)            | `npm install azure-arm-apiapp`    |
 | [Authorization](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-configure/) | `npm install azure-arm-authorization`    |
 | [CDN](https://azure.microsoft.com/en-us/services/cdn/)                            | `npm install azure-arm-cdn`|
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            | `npm install azure-arm-compute`|
@@ -79,6 +78,12 @@ npm install azure
 ## Related Projects
 
 * [Azure CLI](http://github.com/azure/azure-xplat-cli)
+
+## License
+
+This project is licensed under MIT and Apache-2.0.
+- "MIT" license is usually used for the client libraries generated using [Autorest](https://github.com/Azure/Autorest) that are targeting ARM (V2 version of Azure REST API). The license can be found in "LICENSE.MIT.txt" file in this repository.
+- "Apache-2.0" license is usually used for the client libraries generated using an internal code generator that are targeting ASM (V1 version of Azure REST API). The license can be found in "LICENSE.Apache.txt" file in this repository.
 
 ## Contribute
 

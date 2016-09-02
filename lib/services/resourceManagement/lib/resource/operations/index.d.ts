@@ -96,8 +96,8 @@ export interface Deployments {
      * @param {object} [parameters.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} [parameters.properties.templateLink.uri] URI referencing
-     * the template.
+     * @param {string} parameters.properties.templateLink.uri URI referencing the
+     * template.
      * 
      * @param {string} [parameters.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
@@ -109,13 +109,13 @@ export interface Deployments {
      * @param {object} [parameters.properties.parametersLink] The parameters URI.
      * Use only one of Parameters or ParametersLink.
      * 
-     * @param {string} [parameters.properties.parametersLink.uri] URI referencing
+     * @param {string} parameters.properties.parametersLink.uri URI referencing
      * the template.
      * 
      * @param {string} [parameters.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [parameters.properties.mode] The deployment mode. Possible
+     * @param {string} parameters.properties.mode The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
      * @param {object} [parameters.properties.debugSetting] The debug setting of
@@ -154,8 +154,8 @@ export interface Deployments {
      * @param {object} [parameters.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} [parameters.properties.templateLink.uri] URI referencing
-     * the template.
+     * @param {string} parameters.properties.templateLink.uri URI referencing the
+     * template.
      * 
      * @param {string} [parameters.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
@@ -167,13 +167,13 @@ export interface Deployments {
      * @param {object} [parameters.properties.parametersLink] The parameters URI.
      * Use only one of Parameters or ParametersLink.
      * 
-     * @param {string} [parameters.properties.parametersLink.uri] URI referencing
+     * @param {string} parameters.properties.parametersLink.uri URI referencing
      * the template.
      * 
      * @param {string} [parameters.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [parameters.properties.mode] The deployment mode. Possible
+     * @param {string} parameters.properties.mode The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
      * @param {object} [parameters.properties.debugSetting] The debug setting of
@@ -250,8 +250,8 @@ export interface Deployments {
      * @param {object} [parameters.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} [parameters.properties.templateLink.uri] URI referencing
-     * the template.
+     * @param {string} parameters.properties.templateLink.uri URI referencing the
+     * template.
      * 
      * @param {string} [parameters.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
@@ -263,13 +263,13 @@ export interface Deployments {
      * @param {object} [parameters.properties.parametersLink] The parameters URI.
      * Use only one of Parameters or ParametersLink.
      * 
-     * @param {string} [parameters.properties.parametersLink.uri] URI referencing
+     * @param {string} parameters.properties.parametersLink.uri URI referencing
      * the template.
      * 
      * @param {string} [parameters.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} [parameters.properties.mode] The deployment mode. Possible
+     * @param {string} parameters.properties.mode The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
      * @param {object} [parameters.properties.debugSetting] The debug setting of
@@ -510,10 +510,10 @@ export interface ResourceGroups {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.location] The location of the resource group.
-     * It cannot be changed after the resource group has been created. Has to be
-     * one of the supported Azure Locations, such as West US, East US, West
-     * Europe, East Asia, etc.
+     * @param {string} parameters.location The location of the resource group. It
+     * cannot be changed after the resource group has been created. Has to be one
+     * of the supported Azure Locations, such as West US, East US, West Europe,
+     * East Asia, etc.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -595,10 +595,10 @@ export interface ResourceGroups {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} [parameters.location] The location of the resource group.
-     * It cannot be changed after the resource group has been created. Has to be
-     * one of the supported Azure Locations, such as West US, East US, West
-     * Europe, East Asia, etc.
+     * @param {string} parameters.location The location of the resource group. It
+     * cannot be changed after the resource group has been created. Has to be one
+     * of the supported Azure Locations, such as West US, East US, West Europe,
+     * East Asia, etc.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -878,7 +878,7 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned'
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
