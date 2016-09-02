@@ -165,7 +165,7 @@ function clrCmd(cmd){
 };
 
 function constructAutorestExePath(version) {
-  return path.join('packages', 'autorest.' + version, 'tools', 'AutoRest.exe');
+  return path.join('packages', 'Autorest.' + version, 'tools', 'AutoRest.exe');
 }
 function codegen(project, cb) {
   var found = false;
@@ -235,7 +235,7 @@ gulp.task('default', function() {
 });
 
 gulp.task('codegen', function(cb) {
-  var nugetCmd = clrCmd(nugetExe) + ' install autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages';
+  var nugetCmd = clrCmd(nugetExe) + ' install Autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages';
   console.log('Downloading default AutoRest version: ' + nugetCmd);
   exec(nugetCmd, function(err, stdout, stderr) {
     console.log(stdout);

@@ -65,11 +65,12 @@ describe('Notification Hubs Management :', function () {
       authRuleParameter = {
         location: namespaceLocation,
         name: authorizationRuleName, 
-        rights : ['Listen', 'Send']
+        properties: {
+          rights : ['Listen', 'Send']
+        }
       };
       
-      regenerateKeyParameter = 
-            {
+      regenerateKeyParameter = {
         policyKey : 'primary KEY'
       };
       
