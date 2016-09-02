@@ -18,9 +18,9 @@
     "azure"
   ],
   "main": "./lib/hdinsightjob2.js",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
   "dependencies": {
-    "azure-common": "^0.9.13",
+    "azure-common": "^0.9.18",
     "underscore": "1.4.x"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
