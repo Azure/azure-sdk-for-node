@@ -16,18 +16,18 @@
  * @constructor
  * Location information.
  *
- * @member {string} [id] Gets or sets the ID of the resource
- * (/subscriptions/SubscriptionId).
+ * @member {string} [id] The fully qualified Id of the location. For example,
+ * /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
  * 
- * @member {string} [subscriptionId] Gets or sets the subscription Id.
+ * @member {string} [subscriptionId] The subscription Id.
  * 
- * @member {string} [name] Gets or sets the location name
+ * @member {string} [name] The location name.
  * 
- * @member {string} [displayName] Gets or sets the display name of the location
+ * @member {string} [displayName] The display name of the location.
  * 
- * @member {string} [latitude] Gets or sets the latitude of the location
+ * @member {string} [latitude] The latitude of the location.
  * 
- * @member {string} [longitude] Gets or sets the longitude of the location
+ * @member {string} [longitude] The longitude of the location.
  * 
  */
 export interface Location {
@@ -45,31 +45,43 @@ export interface Location {
  * @constructor
  * Subscription information.
  *
- * @member {string} [id] Gets or sets the ID of the resource
- * (/subscriptions/SubscriptionId).
+ * @member {string} [id] The fully qualified Id. For example,
+ * /subscriptions/00000000-0000-0000-0000-000000000000.
  * 
- * @member {string} [subscriptionId] Gets or sets the subscription Id.
+ * @member {string} [subscriptionId] The subscription Id.
  * 
- * @member {string} [displayName] Gets or sets the subscription display name
+ * @member {string} [tenantId] The tenant Id.
  * 
- * @member {string} [state] Gets or sets the subscription state
+ * @member {string} [displayName] The subscription display name.
  * 
- * @member {object} [subscriptionPolicies] Gets or sets the subscription
- * policies.
+ * @member {string} [state] The subscription state. Possible values include:
+ * 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
  * 
- * @member {string} [subscriptionPolicies.locationPlacementId] Gets or sets
- * the subscription location placement Id.
+ * @member {object} [subscriptionPolicies] The subscription policies.
  * 
- * @member {string} [subscriptionPolicies.quotaId] Gets or sets the
- * subscription quota Id.
+ * @member {string} [subscriptionPolicies.locationPlacementId] The
+ * subscription location placement Id. The Id indicates which regions are
+ * visible for a subscription. For example, a subscription with a location
+ * placement Id of Public_2014-09-01 has access to Azure public regions.
+ * 
+ * @member {string} [subscriptionPolicies.quotaId] The subscription quota Id.
+ * 
+ * @member {string} [subscriptionPolicies.spendingLimit] The subscription
+ * spending limit. Possible values include: 'On', 'Off', 'CurrentPeriodOff'
+ * 
+ * @member {string} [authorizationSource] The authorization source of the
+ * request. Valid values are one or more combinations of Legacy, RoleBased,
+ * Bypassed, Direct and Management. For example, 'Legacy, RoleBased'.
  * 
  */
 export interface Subscription {
     id?: string;
     subscriptionId?: string;
+    tenantId?: string;
     displayName?: string;
     state?: string;
     subscriptionPolicies?: SubscriptionPolicies;
+    authorizationSource?: string;
 }
 
 /**
@@ -78,26 +90,34 @@ export interface Subscription {
  * @constructor
  * Subscription policies.
  *
- * @member {string} [locationPlacementId] Gets or sets the subscription
- * location placement Id.
+ * @member {string} [locationPlacementId] The subscription location placement
+ * Id. The Id indicates which regions are visible for a subscription. For
+ * example, a subscription with a location placement Id of Public_2014-09-01
+ * has access to Azure public regions.
  * 
- * @member {string} [quotaId] Gets or sets the subscription quota Id.
+ * @member {string} [quotaId] The subscription quota Id.
+ * 
+ * @member {string} [spendingLimit] The subscription spending limit. Possible
+ * values include: 'On', 'Off', 'CurrentPeriodOff'
  * 
  */
 export interface SubscriptionPolicies {
     locationPlacementId?: string;
     quotaId?: string;
+    spendingLimit?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the TenantIdDescription class.
  * @constructor
- * Tenant Id information
+ * Tenant Id information.
  *
- * @member {string} [id] Gets or sets Id
+ * @member {string} [id] The fully qualified Id. For example,
+ * /tenants/00000000-0000-0000-0000-000000000000.
  * 
- * @member {string} [tenantId] Gets or sets tenantId
+ * @member {string} [tenantId] The tenantId. For example,
+ * 00000000-0000-0000-0000-000000000000.
  * 
  */
 export interface TenantIdDescription {

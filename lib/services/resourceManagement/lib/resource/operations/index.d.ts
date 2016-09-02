@@ -85,44 +85,46 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {object} parameters Additional parameters supplied to the operation.
      * 
-     * @param {object} [options.properties] The deployment properties.
+     * @param {object} [parameters.properties] The deployment properties.
      * 
-     * @param {object} [options.properties.template] The template content. It can
-     * be a JObject or a well formed JSON string. Use only one of Template or
+     * @param {object} [parameters.properties.template] The template content. It
+     * can be a JObject or a well formed JSON string. Use only one of Template or
      * TemplateLink.
      * 
-     * @param {object} [options.properties.templateLink] The template URI. Use
+     * @param {object} [parameters.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} options.properties.templateLink.uri URI referencing the
-     * template.
+     * @param {string} [parameters.properties.templateLink.uri] URI referencing
+     * the template.
      * 
-     * @param {string} [options.properties.templateLink.contentVersion] If
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {object} [options.properties.parameters] Deployment parameters. It
-     * can be a JObject or a well formed JSON string. Use only one of Parameters
-     * or ParametersLink.
+     * @param {object} [parameters.properties.parameters] Deployment parameters.
+     * It can be a JObject or a well formed JSON string. Use only one of
+     * Parameters or ParametersLink.
      * 
-     * @param {object} [options.properties.parametersLink] The parameters URI. Use
-     * only one of Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parametersLink] The parameters URI.
+     * Use only one of Parameters or ParametersLink.
      * 
-     * @param {string} options.properties.parametersLink.uri URI referencing the
-     * template.
+     * @param {string} [parameters.properties.parametersLink.uri] URI referencing
+     * the template.
      * 
-     * @param {string} [options.properties.parametersLink.contentVersion] If
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} options.properties.mode The deployment mode. Possible
+     * @param {string} [parameters.properties.mode] The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
-     * @param {object} [options.properties.debugSetting] The debug setting of the
-     * deployment.
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
      * 
-     * @param {string} [options.properties.debugSetting.detailLevel] The debug
+     * @param {string} [parameters.properties.debugSetting.detailLevel] The debug
      * detail level.
+     * 
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -130,8 +132,8 @@ export interface Deployments {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, deploymentName: string, options: { properties? : models.DeploymentProperties, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
-    createOrUpdate(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentExtended>): void;
+    createOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
+    createOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
      * Create a named template deployment using a template.
@@ -141,44 +143,46 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {object} parameters Additional parameters supplied to the operation.
      * 
-     * @param {object} [options.properties] The deployment properties.
+     * @param {object} [parameters.properties] The deployment properties.
      * 
-     * @param {object} [options.properties.template] The template content. It can
-     * be a JObject or a well formed JSON string. Use only one of Template or
+     * @param {object} [parameters.properties.template] The template content. It
+     * can be a JObject or a well formed JSON string. Use only one of Template or
      * TemplateLink.
      * 
-     * @param {object} [options.properties.templateLink] The template URI. Use
+     * @param {object} [parameters.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} options.properties.templateLink.uri URI referencing the
-     * template.
+     * @param {string} [parameters.properties.templateLink.uri] URI referencing
+     * the template.
      * 
-     * @param {string} [options.properties.templateLink.contentVersion] If
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {object} [options.properties.parameters] Deployment parameters. It
-     * can be a JObject or a well formed JSON string. Use only one of Parameters
-     * or ParametersLink.
+     * @param {object} [parameters.properties.parameters] Deployment parameters.
+     * It can be a JObject or a well formed JSON string. Use only one of
+     * Parameters or ParametersLink.
      * 
-     * @param {object} [options.properties.parametersLink] The parameters URI. Use
-     * only one of Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parametersLink] The parameters URI.
+     * Use only one of Parameters or ParametersLink.
      * 
-     * @param {string} options.properties.parametersLink.uri URI referencing the
-     * template.
+     * @param {string} [parameters.properties.parametersLink.uri] URI referencing
+     * the template.
      * 
-     * @param {string} [options.properties.parametersLink.contentVersion] If
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} options.properties.mode The deployment mode. Possible
+     * @param {string} [parameters.properties.mode] The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
-     * @param {object} [options.properties.debugSetting] The debug setting of the
-     * deployment.
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
      * 
-     * @param {string} [options.properties.debugSetting.detailLevel] The debug
+     * @param {string} [parameters.properties.debugSetting.detailLevel] The debug
      * detail level.
+     * 
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -186,8 +190,8 @@ export interface Deployments {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, options: { properties? : models.DeploymentProperties, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
-    beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentExtended>): void;
+    beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentExtended>): void;
+    beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
      * Get a deployment.
@@ -235,44 +239,46 @@ export interface Deployments {
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {object} parameters Deployment to validate.
      * 
-     * @param {object} [options.properties] The deployment properties.
+     * @param {object} [parameters.properties] The deployment properties.
      * 
-     * @param {object} [options.properties.template] The template content. It can
-     * be a JObject or a well formed JSON string. Use only one of Template or
+     * @param {object} [parameters.properties.template] The template content. It
+     * can be a JObject or a well formed JSON string. Use only one of Template or
      * TemplateLink.
      * 
-     * @param {object} [options.properties.templateLink] The template URI. Use
+     * @param {object} [parameters.properties.templateLink] The template URI. Use
      * only one of Template or TemplateLink.
      * 
-     * @param {string} options.properties.templateLink.uri URI referencing the
-     * template.
+     * @param {string} [parameters.properties.templateLink.uri] URI referencing
+     * the template.
      * 
-     * @param {string} [options.properties.templateLink.contentVersion] If
+     * @param {string} [parameters.properties.templateLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {object} [options.properties.parameters] Deployment parameters. It
-     * can be a JObject or a well formed JSON string. Use only one of Parameters
-     * or ParametersLink.
+     * @param {object} [parameters.properties.parameters] Deployment parameters.
+     * It can be a JObject or a well formed JSON string. Use only one of
+     * Parameters or ParametersLink.
      * 
-     * @param {object} [options.properties.parametersLink] The parameters URI. Use
-     * only one of Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parametersLink] The parameters URI.
+     * Use only one of Parameters or ParametersLink.
      * 
-     * @param {string} options.properties.parametersLink.uri URI referencing the
-     * template.
+     * @param {string} [parameters.properties.parametersLink.uri] URI referencing
+     * the template.
      * 
-     * @param {string} [options.properties.parametersLink.contentVersion] If
+     * @param {string} [parameters.properties.parametersLink.contentVersion] If
      * included it must match the ContentVersion in the template.
      * 
-     * @param {string} options.properties.mode The deployment mode. Possible
+     * @param {string} [parameters.properties.mode] The deployment mode. Possible
      * values include: 'Incremental', 'Complete'
      * 
-     * @param {object} [options.properties.debugSetting] The debug setting of the
-     * deployment.
+     * @param {object} [parameters.properties.debugSetting] The debug setting of
+     * the deployment.
      * 
-     * @param {string} [options.properties.debugSetting.detailLevel] The debug
+     * @param {string} [parameters.properties.debugSetting.detailLevel] The debug
      * detail level.
+     * 
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -280,8 +286,8 @@ export interface Deployments {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    validate(resourceGroupName: string, deploymentName: string, options: { properties? : models.DeploymentProperties, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentValidateResult>): void;
-    validate(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentValidateResult>): void;
+    validate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeploymentValidateResult>): void;
+    validate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentValidateResult>): void;
 
     /**
      * Exports a deployment template.
@@ -504,10 +510,10 @@ export interface ResourceGroups {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. Has to be one
-     * of the supported Azure Locations, such as West US, East US, West Europe,
-     * East Asia, etc.
+     * @param {string} [parameters.location] The location of the resource group.
+     * It cannot be changed after the resource group has been created. Has to be
+     * one of the supported Azure Locations, such as West US, East US, West
+     * Europe, East Asia, etc.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -589,10 +595,10 @@ export interface ResourceGroups {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. Has to be one
-     * of the supported Azure Locations, such as West US, East US, West Europe,
-     * East Asia, etc.
+     * @param {string} [parameters.location] The location of the resource group.
+     * It cannot be changed after the resource group has been created. Has to be
+     * one of the supported Azure Locations, such as West US, East US, West
+     * Europe, East Asia, etc.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -778,7 +784,7 @@ export interface Resources {
      * 
      * @param {string} resourceName Resource identity.
      * 
-     * @param {string} apiVersion
+     * @param {string} apiVersion Api version to use.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -805,7 +811,7 @@ export interface Resources {
      * 
      * @param {string} resourceName Resource identity.
      * 
-     * @param {string} apiVersion
+     * @param {string} apiVersion Api version to use.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -832,7 +838,7 @@ export interface Resources {
      * 
      * @param {string} resourceName Resource identity.
      * 
-     * @param {string} apiVersion
+     * @param {string} apiVersion Api version to use.
      * 
      * @param {object} parameters Create or update resource parameters.
      * 
@@ -872,7 +878,7 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned'
      * 
-     * @param {string} parameters.location Resource location
+     * @param {string} [parameters.location] Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
@@ -901,7 +907,7 @@ export interface Resources {
      * 
      * @param {string} resourceName Resource identity.
      * 
-     * @param {string} apiVersion
+     * @param {string} apiVersion Api version to use.
      * 
      * @param {object} [options] Optional Parameters.
      * 
