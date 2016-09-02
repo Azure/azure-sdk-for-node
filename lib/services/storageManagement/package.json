@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Desai, Priyank <priydes@microsoft.com>"
   ],
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Microsoft Azure Storage Management Client Library for node",
   "tags": [
     "azure",
@@ -22,12 +22,7 @@
     "azure"
   ],
   "main": "./lib/storage.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.13"
   },

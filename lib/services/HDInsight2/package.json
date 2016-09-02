@@ -7,7 +7,7 @@
     "Hicks, Matthew <mahi@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Microsoft Azure HDInsight Service Library for node",
   "tags": [
     "azure",
@@ -18,12 +18,7 @@
     "azure"
   ],
   "main": "./lib/hdinsight2.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.13",
     "underscore": "1.4.x"

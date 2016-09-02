@@ -10,7 +10,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Microsoft Azure Key Vault Client Library for node",
   "tags": [
     "azure",
@@ -21,12 +21,7 @@
     "azure"
   ],
   "main": "./lib/keyVault.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "licenses": "MIT",
   "dependencies": {
     "ms-rest": "^1.14.0",
     "ms-rest-azure": "^1.14.0",

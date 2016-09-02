@@ -6,7 +6,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Srinivasan, Vivek <visriniv@microsoft.com>"
   ],
-  "version": "1.4.5-preview",
+  "version": "1.4.6-preview",
   "description": "Microsoft Azure Resource Management Client Library for node",
   "tags": [
     "azure",
@@ -17,12 +17,7 @@
     "azure"
   ],
   "main": "./lib/resource.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "licenses": "MIT",
   "dependencies": {
     "ms-rest": "^1.14.0",
     "ms-rest-azure": "^1.14.0"

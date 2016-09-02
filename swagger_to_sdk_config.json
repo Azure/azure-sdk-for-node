@@ -23,7 +23,7 @@
       "output_dir": "lib/services/batchManagement/lib"
     },
     "batch": {
-      "swagger": "batch/2016-02-01.3.0/swagger/BatchService.json",
+      "swagger": "batch/2016-07-01.3.1/swagger/BatchService.json",
       "autorest_options": {
         "FT": 1
       },
@@ -72,7 +72,7 @@
     "dns": {
     "swagger": "arm-dns/2016-04-01/swagger/dns.json",
     "output_dir": "dnsManagement/lib"
-  },
+    },
     "graphrbac": {
       "swagger": "arm-graphrbac/compositeGraphRbacManagementClient.json",
       "autorest_options": {
@@ -85,29 +85,44 @@
       "swagger": "arm-intune/2015-01-14-preview/swagger/intune.json",
       "output_dir": "lib/services/intune/lib"
     },
+    "iothub": {
+      "swagger": "arm-iothub/2016-02-03/swagger/iothub.json",
+      "output_dir": "lib/services/iothub/lib"
+    },
     "network": {
-      "swagger": "arm-network/2016-03-30/swagger/network.json",
+      "swagger": "arm-network/2016-06-01/swagger/network.json",
       "autorest_options": {
         "FT": 1
       },
       "output_dir": "lib/services/networkManagement2/lib"
     },
+    "notificationhubs": {
+      "swagger": "arm-notificationhubs/2016-03-01/swagger/notificationhubs.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/notificationHubsManagement/lib"
+    },
+    "powerbiembedded": {
+      "swagger": "arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json",
+      "output_dir": "lib/services/powerbiembedded/lib"
+    },
     "redis": {
-      "swagger": "arm-redis/2015-08-01/swagger/redis.json",
+      "swagger": "arm-redis/2016-04-01/swagger/redis.json",
       "autorest_options": {
         "FT": 1
       },
       "output_dir": "lib/services/rediscachemanagement/lib"
     },
     "resources.resources": {
-      "swagger": "arm-resources/resources/2016-02-01/swagger/resources.json",
+      "swagger": "arm-resources/resources/2016-07-01/swagger/resources.json",
       "autorest_options": {
         "FT": 1
       },
       "output_dir": "lib/services/resourceManagement/lib/resource"
     },
     "resources.subscriptions": {
-      "swagger": "arm-resources/subscriptions/2015-11-01/swagger/subscriptions.json",
+      "swagger": "arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json",
       "output_dir": "lib/services/resourceManagement/lib/subscription"
     },
     "resources.locks": {
@@ -121,6 +136,10 @@
     "resources.policy": {
       "swagger": "arm-resources/policy/2016-04-01/swagger/policy.json",
       "output_dir": "lib/services/resourceManagement/lib/policy"
+    },
+    "servermanagement": {
+      "swagger": "arm-servermanagement/2015-07-01-preview/servermanagement.json",
+      "output_dir": "lib/services/servermanagement/lib"
     },
     "storage": {
       "swagger": "arm-storage/2016-01-01/swagger/storage.json",

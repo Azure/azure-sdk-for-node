@@ -4,7 +4,7 @@
   "contributors": [
     "Commerce Platform Usage Team <cpusage@microsoft.com>"
   ],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Microsoft Azure Commerce Usage Aggregates Management Client Library for Node",
   "tags": [
     "azure",
@@ -15,12 +15,7 @@
     "azure"
   ],
   "main": "./lib/commerce.js",
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.13"
   },
