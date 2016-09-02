@@ -10,7 +10,7 @@ npm install azure-arm-trafficmanager
 
 ## How to Use
 
-### Authentication, client creation and listing nodes in a resource group as an example
+### Authentication, client creation and listing profiles in a resource group as an example
 
  ```javascript
  var msRestAzure = require('ms-rest-azure');

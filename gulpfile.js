@@ -53,13 +53,17 @@ var mappings = {
     'dir': 'dataLake.Store/lib/filesystem',
     'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
   },
-  'devTestLabs': {
+  'devtestlabs': {
     'dir': 'devTestLabs/lib',
-    'source': 'arm-devtestlabs/2015-05-21-preview/swagger/DTL.json'
+    'source': 'arm-devtestlabs/2016-05-15/swagger/DTL.json'
   },
   'dns': {
     'dir': 'dnsManagement/lib',
     'source': 'arm-dns/2016-04-01/swagger/dns.json'
+  },
+  'eventhub': {
+    'dir': 'eventHubManagement/lib',
+    'source': 'arm-eventhub/2015-08-01/swagger/EventHub.json'
   },
   'graph': {
     'dir': 'graphManagement/lib',
@@ -127,6 +131,10 @@ var mappings = {
   'servermanagement': {
     'dir': 'servermanagement/lib',
     'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
+  },
+  'servicebus.management': {
+    'dir': 'serviceBusManagement2/lib',
+    'source': 'arm-servicebus/2015-08-01/swagger/servicebus.json'
   },
   'serviceFabric': {
     'dir': 'serviceFabric/lib',

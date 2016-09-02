@@ -5,7 +5,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.11.1",
+  "version": "0.11.2",
   "description": "Microsoft Azure WebSite Management Client Library for node",
   "tags": [
     "azure",
@@ -16,7 +16,7 @@
     "azure"
   ],
   "main": "./lib/webSiteManagementClient.js",
-  "licenses": "MIT",
+  "license": "MIT",
   "dependencies": {
     "ms-rest": "^1.14.0",
     "ms-rest-azure": "^1.14.0"

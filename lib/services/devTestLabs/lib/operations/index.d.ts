@@ -21,15 +21,17 @@ import * as models from '../models';
 export interface LabOperations {
 
     /**
-     * List labs.
+     * List labs in a subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -41,7 +43,7 @@ export interface LabOperations {
     listBySubscription(callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
 
     /**
-     * List labs.
+     * List labs in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -49,9 +51,11 @@ export interface LabOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -96,20 +100,18 @@ export interface LabOperations {
      * @param {string} [lab.artifactsStorageAccount] The artifact storage account
      * of the lab.
      * 
-     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
-     * 
      * @param {string} [lab.vaultName] The name of the key vault of the lab.
      * 
      * @param {string} [lab.labStorageType] The type of the lab storage. Possible
      * values include: 'Standard', 'Premium'
      * 
-     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
-     * identifier of the lab.
-     * 
      * @param {date} [lab.createdDate] The creation date of the lab.
      * 
      * @param {string} [lab.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [lab.uniqueIdentifier] The unique immutable identifier of a
+     * resource (Guid).
      * 
      * @param {string} [lab.id] The identifier of the resource.
      * 
@@ -148,20 +150,18 @@ export interface LabOperations {
      * @param {string} [lab.artifactsStorageAccount] The artifact storage account
      * of the lab.
      * 
-     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
-     * 
      * @param {string} [lab.vaultName] The name of the key vault of the lab.
      * 
      * @param {string} [lab.labStorageType] The type of the lab storage. Possible
      * values include: 'Standard', 'Premium'
      * 
-     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
-     * identifier of the lab.
-     * 
      * @param {date} [lab.createdDate] The creation date of the lab.
      * 
      * @param {string} [lab.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [lab.uniqueIdentifier] The unique immutable identifier of a
+     * resource (Guid).
      * 
      * @param {string} [lab.id] The identifier of the resource.
      * 
@@ -235,20 +235,18 @@ export interface LabOperations {
      * @param {string} [lab.artifactsStorageAccount] The artifact storage account
      * of the lab.
      * 
-     * @param {array} [lab.storageAccounts] The storage accounts of the lab.
-     * 
      * @param {string} [lab.vaultName] The name of the key vault of the lab.
      * 
      * @param {string} [lab.labStorageType] The type of the lab storage. Possible
      * values include: 'Standard', 'Premium'
      * 
-     * @param {string} [lab.defaultVirtualNetworkId] The default virtual network
-     * identifier of the lab.
-     * 
      * @param {date} [lab.createdDate] The creation date of the lab.
      * 
      * @param {string} [lab.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [lab.uniqueIdentifier] The unique immutable identifier of a
+     * resource (Guid).
      * 
      * @param {string} [lab.id] The identifier of the resource.
      * 
@@ -365,6 +363,9 @@ export interface LabOperations {
      * @param {string} [labVirtualMachine.provisioningState] The provisioning
      * status of the resource.
      * 
+     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
      * @param {string} [labVirtualMachine.id] The identifier of the resource.
      * 
      * @param {string} [labVirtualMachine.name] The name of the resource.
@@ -480,6 +481,9 @@ export interface LabOperations {
      * @param {string} [labVirtualMachine.provisioningState] The provisioning
      * status of the resource.
      * 
+     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
      * @param {string} [labVirtualMachine.id] The identifier of the resource.
      * 
      * @param {string} [labVirtualMachine.name] The name of the resource.
@@ -543,7 +547,7 @@ export interface LabOperations {
     listVhds(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResponseWithContinuationLabVhd>): void;
 
     /**
-     * List labs.
+     * List labs in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -560,7 +564,7 @@ export interface LabOperations {
     listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationLab>): void;
 
     /**
-     * List labs.
+     * List labs in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -603,7 +607,7 @@ export interface LabOperations {
 export interface ArtifactSourceOperations {
 
     /**
-     * List artifact sources.
+     * List artifact sources in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -613,9 +617,11 @@ export interface ArtifactSourceOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -679,6 +685,9 @@ export interface ArtifactSourceOperations {
      * 
      * @param {string} [artifactSource.provisioningState] The provisioning status
      * of the resource.
+     * 
+     * @param {string} [artifactSource.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
      * 
      * @param {string} [artifactSource.id] The identifier of the resource.
      * 
@@ -755,6 +764,9 @@ export interface ArtifactSourceOperations {
      * @param {string} [artifactSource.provisioningState] The provisioning status
      * of the resource.
      * 
+     * @param {string} [artifactSource.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
      * @param {string} [artifactSource.id] The identifier of the resource.
      * 
      * @param {string} [artifactSource.name] The name of the resource.
@@ -777,7 +789,7 @@ export interface ArtifactSourceOperations {
     patchResource(resourceGroupName: string, labName: string, name: string, artifactSource: models.ArtifactSource, callback: ServiceCallback<models.ArtifactSource>): void;
 
     /**
-     * List artifact sources.
+     * List artifact sources in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -803,7 +815,7 @@ export interface ArtifactSourceOperations {
 export interface ArtifactOperations {
 
     /**
-     * List artifacts.
+     * List artifacts in a given artifact source.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -815,9 +827,11 @@ export interface ArtifactOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -885,7 +899,7 @@ export interface ArtifactOperations {
     generateArmTemplate(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, generateArmTemplateRequest: models.GenerateArmTemplateRequest, callback: ServiceCallback<models.ArmTemplateInfo>): void;
 
     /**
-     * List artifacts.
+     * List artifacts in a given artifact source.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -904,147 +918,11 @@ export interface ArtifactOperations {
 
 /**
  * @class
- * CostInsightOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DevTestLabsClient.
- */
-export interface CostInsightOperations {
-
-    /**
-     * List cost insights.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {number} [options.top]
-     * 
-     * @param {string} [options.orderBy]
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
-
-    /**
-     * Get cost insight.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the cost insight.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostInsight>): void;
-    getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.CostInsight>): void;
-
-    /**
-     * Refresh Lab's Cost Insight Data. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the cost insight.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    refreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    refreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Refresh Lab's Cost Insight Data. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the cost insight.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginRefreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginRefreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * List cost insights.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationCostInsight>): void;
-}
-
-/**
- * @class
  * CostOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DevTestLabsClient.
  */
 export interface CostOperations {
-
-    /**
-     * List costs.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.filter] The filter to apply on the operation.
-     * 
-     * @param {number} [options.top]
-     * 
-     * @param {string} [options.orderBy]
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    list(resourceGroupName: string, labName: string, options: { filter? : string, top? : number, orderBy? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
-    list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
 
     /**
      * Get cost.
@@ -1065,63 +943,6 @@ export interface CostOperations {
      */
     getResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cost>): void;
     getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.Cost>): void;
-
-    /**
-     * Refresh Lab's Cost Data. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the cost.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    refreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    refreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Refresh Lab's Cost Data. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the cost.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginRefreshData(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginRefreshData(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * List costs.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ResponseWithContinuationCost>): void;
 }
 
 /**
@@ -1133,7 +954,7 @@ export interface CostOperations {
 export interface CustomImageOperations {
 
     /**
-     * List custom images.
+     * List custom images in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1143,9 +964,11 @@ export interface CustomImageOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1192,9 +1015,6 @@ export interface CustomImageOperations {
      * 
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
      * 
-     * @param {boolean} [customImage.vm.sysPrep] Indicates whether sysprep has
-     * been run on the VHD.
-     * 
      * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information
      * of the VM.
      * 
@@ -1217,11 +1037,11 @@ export interface CustomImageOperations {
      * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
      * been run on the VHD.
      * 
+     * @param {string} [customImage.vhd.osType] The OS type of the custom image.
+     * Possible values include: 'Windows', 'Linux', 'None'
+     * 
      * @param {string} [customImage.description] The description of the custom
      * image.
-     * 
-     * @param {string} [customImage.osType] The OS type of the custom image.
-     * Possible values include: 'Windows', 'Linux', 'None'
      * 
      * @param {string} [customImage.author] The author of the custom image.
      * 
@@ -1230,6 +1050,9 @@ export interface CustomImageOperations {
      * 
      * @param {string} [customImage.provisioningState] The provisioning status of
      * the resource.
+     * 
+     * @param {string} [customImage.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
      * 
      * @param {string} [customImage.id] The identifier of the resource.
      * 
@@ -1268,9 +1091,6 @@ export interface CustomImageOperations {
      * 
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
      * 
-     * @param {boolean} [customImage.vm.sysPrep] Indicates whether sysprep has
-     * been run on the VHD.
-     * 
      * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information
      * of the VM.
      * 
@@ -1293,11 +1113,11 @@ export interface CustomImageOperations {
      * @param {boolean} [customImage.vhd.sysPrep] Indicates whether sysprep has
      * been run on the VHD.
      * 
+     * @param {string} [customImage.vhd.osType] The OS type of the custom image.
+     * Possible values include: 'Windows', 'Linux', 'None'
+     * 
      * @param {string} [customImage.description] The description of the custom
      * image.
-     * 
-     * @param {string} [customImage.osType] The OS type of the custom image.
-     * Possible values include: 'Windows', 'Linux', 'None'
      * 
      * @param {string} [customImage.author] The author of the custom image.
      * 
@@ -1306,6 +1126,9 @@ export interface CustomImageOperations {
      * 
      * @param {string} [customImage.provisioningState] The provisioning status of
      * the resource.
+     * 
+     * @param {string} [customImage.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
      * 
      * @param {string} [customImage.id] The identifier of the resource.
      * 
@@ -1369,7 +1192,7 @@ export interface CustomImageOperations {
     beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
-     * List custom images.
+     * List custom images in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1395,7 +1218,7 @@ export interface CustomImageOperations {
 export interface FormulaOperations {
 
     /**
-     * List formulas.
+     * List formulas in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1405,9 +1228,11 @@ export interface FormulaOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1548,6 +1373,9 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.provisioningState] The provisioning
      * status of the resource.
      * 
+     * @param {string} [formula.formulaContent.uniqueIdentifier] The unique
+     * immutable identifier of a resource (Guid).
+     * 
      * @param {string} [formula.formulaContent.id] The identifier of the resource.
      * 
      * @param {string} [formula.formulaContent.name] The name of the resource.
@@ -1567,6 +1395,9 @@ export interface FormulaOperations {
      * 
      * @param {string} [formula.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [formula.uniqueIdentifier] The unique immutable identifier
+     * of a resource (Guid).
      * 
      * @param {string} [formula.id] The identifier of the resource.
      * 
@@ -1699,6 +1530,9 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.provisioningState] The provisioning
      * status of the resource.
      * 
+     * @param {string} [formula.formulaContent.uniqueIdentifier] The unique
+     * immutable identifier of a resource (Guid).
+     * 
      * @param {string} [formula.formulaContent.id] The identifier of the resource.
      * 
      * @param {string} [formula.formulaContent.name] The name of the resource.
@@ -1718,6 +1552,9 @@ export interface FormulaOperations {
      * 
      * @param {string} [formula.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [formula.uniqueIdentifier] The unique immutable identifier
+     * of a resource (Guid).
      * 
      * @param {string} [formula.id] The identifier of the resource.
      * 
@@ -1761,7 +1598,7 @@ export interface FormulaOperations {
     deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
-     * List formulas.
+     * List formulas in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1787,7 +1624,7 @@ export interface FormulaOperations {
 export interface GalleryImageOperations {
 
     /**
-     * List gallery images.
+     * List gallery images in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1797,9 +1634,11 @@ export interface GalleryImageOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1811,7 +1650,7 @@ export interface GalleryImageOperations {
     list(resourceGroupName: string, labName: string, callback: ServiceCallback<models.ResponseWithContinuationGalleryImage>): void;
 
     /**
-     * List gallery images.
+     * List gallery images in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1870,7 +1709,7 @@ export interface PolicySet {
 export interface PolicyOperations {
 
     /**
-     * List policies.
+     * List policies in a given policy set.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1882,9 +1721,11 @@ export interface PolicyOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1948,6 +1789,9 @@ export interface PolicyOperations {
      * 
      * @param {string} [policy.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [policy.uniqueIdentifier] The unique immutable identifier
+     * of a resource (Guid).
      * 
      * @param {string} [policy.id] The identifier of the resource.
      * 
@@ -2024,6 +1868,9 @@ export interface PolicyOperations {
      * @param {string} [policy.provisioningState] The provisioning status of the
      * resource.
      * 
+     * @param {string} [policy.uniqueIdentifier] The unique immutable identifier
+     * of a resource (Guid).
+     * 
      * @param {string} [policy.id] The identifier of the resource.
      * 
      * @param {string} [policy.name] The name of the resource.
@@ -2046,7 +1893,7 @@ export interface PolicyOperations {
     patchResource(resourceGroupName: string, labName: string, policySetName: string, name: string, policy: models.Policy, callback: ServiceCallback<models.Policy>): void;
 
     /**
-     * List policies.
+     * List policies in a given policy set.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2072,7 +1919,7 @@ export interface PolicyOperations {
 export interface ScheduleOperations {
 
     /**
-     * List schedules.
+     * List schedules in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2082,9 +1929,11 @@ export interface ScheduleOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2116,8 +1965,7 @@ export interface ScheduleOperations {
     getResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<models.Schedule>): void;
 
     /**
-     * Create or replace an existing schedule. This operation can take a while to
-     * complete.
+     * Create or replace an existing schedule.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2130,8 +1978,7 @@ export interface ScheduleOperations {
      * @param {string} [schedule.status] The status of the schedule. Possible
      * values include: 'Enabled', 'Disabled'
      * 
-     * @param {string} [schedule.taskType] The task type of the schedule. Possible
-     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
+     * @param {string} [schedule.taskType] The task type of the schedule.
      * 
      * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
      * schedule.
@@ -2155,6 +2002,9 @@ export interface ScheduleOperations {
      * 
      * @param {string} [schedule.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [schedule.uniqueIdentifier] The unique immutable identifier
+     * of a resource (Guid).
      * 
      * @param {string} [schedule.id] The identifier of the resource.
      * 
@@ -2178,69 +2028,7 @@ export interface ScheduleOperations {
     createOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
 
     /**
-     * Create or replace an existing schedule. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the schedule.
-     * 
-     * @param {object} schedule
-     * 
-     * @param {string} [schedule.status] The status of the schedule. Possible
-     * values include: 'Enabled', 'Disabled'
-     * 
-     * @param {string} [schedule.taskType] The task type of the schedule. Possible
-     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
-     * 
-     * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
-     * schedule.
-     * 
-     * @param {array} [schedule.weeklyRecurrence.weekdays] The days of the week.
-     * 
-     * @param {string} [schedule.weeklyRecurrence.time] The time of the day.
-     * 
-     * @param {object} [schedule.dailyRecurrence] The daily recurrence of the
-     * schedule.
-     * 
-     * @param {string} [schedule.dailyRecurrence.time]
-     * 
-     * @param {object} [schedule.hourlyRecurrence] The hourly recurrence of the
-     * schedule.
-     * 
-     * @param {number} [schedule.hourlyRecurrence.minute] Minutes of the hour the
-     * schedule will run.
-     * 
-     * @param {string} [schedule.timeZoneId] The time zone id.
-     * 
-     * @param {string} [schedule.provisioningState] The provisioning status of the
-     * resource.
-     * 
-     * @param {string} [schedule.id] The identifier of the resource.
-     * 
-     * @param {string} [schedule.name] The name of the resource.
-     * 
-     * @param {string} [schedule.type] The type of the resource.
-     * 
-     * @param {string} [schedule.location] The location of the resource.
-     * 
-     * @param {object} [schedule.tags] The tags of the resource.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
-    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, schedule: models.Schedule, callback: ServiceCallback<models.Schedule>): void;
-
-    /**
-     * Delete schedule. This operation can take a while to complete.
+     * Delete schedule.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2260,26 +2048,6 @@ export interface ScheduleOperations {
     deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Delete schedule. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the schedule.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Modify properties of schedules.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2293,8 +2061,7 @@ export interface ScheduleOperations {
      * @param {string} [schedule.status] The status of the schedule. Possible
      * values include: 'Enabled', 'Disabled'
      * 
-     * @param {string} [schedule.taskType] The task type of the schedule. Possible
-     * values include: 'LabVmsShutdownTask', 'LabVmsStartupTask', 'LabBillingTask'
+     * @param {string} [schedule.taskType] The task type of the schedule.
      * 
      * @param {object} [schedule.weeklyRecurrence] The weekly recurrence of the
      * schedule.
@@ -2318,6 +2085,9 @@ export interface ScheduleOperations {
      * 
      * @param {string} [schedule.provisioningState] The provisioning status of the
      * resource.
+     * 
+     * @param {string} [schedule.uniqueIdentifier] The unique immutable identifier
+     * of a resource (Guid).
      * 
      * @param {string} [schedule.id] The identifier of the resource.
      * 
@@ -2381,7 +2151,7 @@ export interface ScheduleOperations {
     beginExecute(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
-     * List schedules.
+     * List schedules in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2407,7 +2177,7 @@ export interface ScheduleOperations {
 export interface VirtualMachine {
 
     /**
-     * List virtual machines.
+     * List virtual machines in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2417,9 +2187,11 @@ export interface VirtualMachine {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2546,6 +2318,9 @@ export interface VirtualMachine {
      * @param {string} [labVirtualMachine.provisioningState] The provisioning
      * status of the resource.
      * 
+     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
      * @param {string} [labVirtualMachine.id] The identifier of the resource.
      * 
      * @param {string} [labVirtualMachine.name] The name of the resource.
@@ -2662,6 +2437,9 @@ export interface VirtualMachine {
      * 
      * @param {string} [labVirtualMachine.provisioningState] The provisioning
      * status of the resource.
+     * 
+     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
      * 
      * @param {string} [labVirtualMachine.id] The identifier of the resource.
      * 
@@ -2819,6 +2597,9 @@ export interface VirtualMachine {
      * @param {string} [labVirtualMachine.provisioningState] The provisioning
      * status of the resource.
      * 
+     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
      * @param {string} [labVirtualMachine.id] The identifier of the resource.
      * 
      * @param {string} [labVirtualMachine.name] The name of the resource.
@@ -2971,7 +2752,7 @@ export interface VirtualMachine {
     beginStop(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
-     * List virtual machines.
+     * List virtual machines in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2997,7 +2778,7 @@ export interface VirtualMachine {
 export interface VirtualNetworkOperations {
 
     /**
-     * List virtual networks.
+     * List virtual networks in a given lab.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -3007,9 +2788,11 @@ export interface VirtualNetworkOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top]
+     * @param {number} [options.top] The maximum number of resources to return
+     * from the operation.
      * 
-     * @param {string} [options.orderBy]
+     * @param {string} [options.orderBy] The ordering expression for the results,
+     * using OData notation.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3067,6 +2850,9 @@ export interface VirtualNetworkOperations {
      * @param {string} [virtualNetwork.provisioningState] The provisioning status
      * of the resource.
      * 
+     * @param {string} [virtualNetwork.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
      * @param {string} [virtualNetwork.id] The identifier of the resource.
      * 
      * @param {string} [virtualNetwork.name] The name of the resource.
@@ -3114,6 +2900,9 @@ export interface VirtualNetworkOperations {
      * 
      * @param {string} [virtualNetwork.provisioningState] The provisioning status
      * of the resource.
+     * 
+     * @param {string} [virtualNetwork.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
      * 
      * @param {string} [virtualNetwork.id] The identifier of the resource.
      * 
@@ -3202,6 +2991,9 @@ export interface VirtualNetworkOperations {
      * @param {string} [virtualNetwork.provisioningState] The provisioning status
      * of the resource.
      * 
+     * @param {string} [virtualNetwork.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
      * @param {string} [virtualNetwork.id] The identifier of the resource.
      * 
      * @param {string} [virtualNetwork.name] The name of the resource.
@@ -3224,7 +3016,7 @@ export interface VirtualNetworkOperations {
     patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
 
     /**
-     * List virtual networks.
+     * List virtual networks in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

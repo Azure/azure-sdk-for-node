@@ -11,7 +11,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.13.2-preview",
+  "version": "0.13.3-preview",
   "description": "Microsoft Azure Storage Resource Provider Management Client Library for Node",
   "tags": [
     "azure",
@@ -22,7 +22,7 @@
     "azure"
   ],
   "main": "./lib/storageManagementClient.js",
-  "licenses": "MIT",
+  "license": "MIT",
   "dependencies": {
     "ms-rest": "^1.14.0",
     "ms-rest-azure": "^1.14.0"

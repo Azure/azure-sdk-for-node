@@ -1,11 +1,10 @@
 language: node_js
 sudo: false
 node_js:
-  - "4.2"
-  - "0.12"
+  - "4.x"
 
-matrix:
-  allow_failures:
+#matrix:
+#  allow_failures:
 
 # setup links to submodules
 before_install:
