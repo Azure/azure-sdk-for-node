@@ -426,7 +426,7 @@ describe('Key Vault certificates', function () {
       };
 
       function createCertificateIssuer(next) {
-        client.setCertificateIssuer(vaultUri, ISSUER_NAME, issuerBundle, function (err, responseIssuerBundle) {
+        client.setCertificateIssuer(vaultUri, ISSUER_NAME, 'test', issuerBundle, function (err, responseIssuerBundle) {
           if (err) throw err;
           validateIssuerBundle(responseIssuerBundle, vaultUri, ISSUER_NAME, issuerBundle);
           next();
@@ -517,11 +517,11 @@ describe('Key Vault certificates', function () {
           }
         };
 
-        client.setCertificateIssuer(vaultUri, 'nodeIssuer1', issuerBundle, function (err, setIssuerBundle) {
+        client.setCertificateIssuer(vaultUri, 'nodeIssuer1', 'test', issuerBundle, function (err, setIssuerBundle) {
           if (err) throw err;
           expected[setIssuerBundle.id] = setIssuerBundle.provider;
 
-          client.setCertificateIssuer(vaultUri, 'nodeIssuer2', issuerBundle, function (err, setIssuerBundle) {
+          client.setCertificateIssuer(vaultUri, 'nodeIssuer2', 'test', issuerBundle, function (err, setIssuerBundle) {
             if (err) throw err;
             expected[setIssuerBundle.id] = setIssuerBundle.provider;
             next();
@@ -606,10 +606,7 @@ describe('Key Vault certificates', function () {
 
       function cancelCertificateOperation(next) {
 
-        var certificateOperation = {
-          cancellationRequested: true
-        };
-        client.updateCertificateOperation(vaultUri, certificateName, certificateOperation, function (err, cancelledCertificateOperation) {
+        client.updateCertificateOperation(vaultUri, certificateName, true, function (err, cancelledCertificateOperation) {
           if (err) throw err;
           should.exist(cancelledCertificateOperation.cancellationRequested);
           should(cancelledCertificateOperation.cancellationRequested).be.exactly(true);

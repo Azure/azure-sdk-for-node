@@ -58,7 +58,8 @@ declare class KeyVaultClient {
          * @param {string} keyName The name of the key
          * 
          * @param {string} kty The type of key to create. Valid key types, see
-         * JsonWebKeyType. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
+         * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
+         * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
          * 
          * @param {object} [options] Optional Parameters.
          * 
@@ -99,8 +100,9 @@ declare class KeyVaultClient {
          * 
          * @param {string} [key.kid] Key Identifier
          * 
-         * @param {string} [key.kty] Key type, usually RSA. Possible values include:
-         * 'EC', 'RSA', 'RSA-HSM', 'oct'
+         * @param {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
+         * Curve, RSA, HSM, Octet, usually RSA. Possible values include: 'EC', 'RSA',
+         * 'RSA-HSM', 'oct'
          * 
          * @param {array} [key.keyOps]
          * 
@@ -741,33 +743,31 @@ declare class KeyVaultClient {
          * 
          * @param {string} issuerName The name of the issuer.
          * 
-         * @param {object} issuer The issuer bundle.
-         * 
-         * @param {string} [issuer.provider] The name of the issuer.
-         * 
-         * @param {object} [issuer.credentials] The credentials to be used for the
-         * issuer.
-         * 
-         * @param {string} [issuer.credentials.accountId] The user name/account
-         * name/account id.
-         * 
-         * @param {string} [issuer.credentials.password] The password/secret/account
-         * key.
-         * 
-         * @param {object} [issuer.organizationDetails] Details of the organization as
-         * provided to the issuer.
-         * 
-         * @param {string} [issuer.organizationDetails.id] Id of the organization.
-         * 
-         * @param {array} [issuer.organizationDetails.adminDetails] Details of the
-         * organization administrator.
-         * 
-         * @param {object} [issuer.attributes] Attributes of the issuer object.
-         * 
-         * @param {boolean} [issuer.attributes.enabled] Determines whether the issuer
-         * is enabled
+         * @param {string} provider The issuer provider.
          * 
          * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.credentials] The credentials to be used for the
+         * issuer.
+         * 
+         * @param {string} [options.credentials.accountId] The user name/account
+         * name/account id.
+         * 
+         * @param {string} [options.credentials.password] The password/secret/account
+         * key.
+         * 
+         * @param {object} [options.organizationDetails] Details of the organization
+         * as provided to the issuer.
+         * 
+         * @param {string} [options.organizationDetails.id] Id of the organization.
+         * 
+         * @param {array} [options.organizationDetails.adminDetails] Details of the
+         * organization administrator.
+         * 
+         * @param {object} [options.attributes] Attributes of the issuer object.
+         * 
+         * @param {boolean} [options.attributes.enabled] Determines whether the issuer
+         * is enabled
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -775,8 +775,8 @@ declare class KeyVaultClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        setCertificateIssuer(vaultBaseUrl: string, issuerName: string, issuer: models.IssuerBundle, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssuerBundle>): void;
-        setCertificateIssuer(vaultBaseUrl: string, issuerName: string, issuer: models.IssuerBundle, callback: ServiceCallback<models.IssuerBundle>): void;
+        setCertificateIssuer(vaultBaseUrl: string, issuerName: string, provider: string, options: { credentials? : models.IssuerCredentials, organizationDetails? : models.OrganizationDetails, attributes? : models.IssuerAttributes, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssuerBundle>): void;
+        setCertificateIssuer(vaultBaseUrl: string, issuerName: string, provider: string, callback: ServiceCallback<models.IssuerBundle>): void;
 
         /**
          * Updates the specified certificate issuer.
@@ -786,33 +786,31 @@ declare class KeyVaultClient {
          * 
          * @param {string} issuerName The name of the issuer.
          * 
-         * @param {object} issuer The issuer bundle.
+         * @param {object} [options] Optional Parameters.
          * 
-         * @param {string} [issuer.provider] The name of the issuer.
+         * @param {string} [options.provider] The issuer provider.
          * 
-         * @param {object} [issuer.credentials] The credentials to be used for the
+         * @param {object} [options.credentials] The credentials to be used for the
          * issuer.
          * 
-         * @param {string} [issuer.credentials.accountId] The user name/account
+         * @param {string} [options.credentials.accountId] The user name/account
          * name/account id.
          * 
-         * @param {string} [issuer.credentials.password] The password/secret/account
+         * @param {string} [options.credentials.password] The password/secret/account
          * key.
          * 
-         * @param {object} [issuer.organizationDetails] Details of the organization as
-         * provided to the issuer.
+         * @param {object} [options.organizationDetails] Details of the organization
+         * as provided to the issuer.
          * 
-         * @param {string} [issuer.organizationDetails.id] Id of the organization.
+         * @param {string} [options.organizationDetails.id] Id of the organization.
          * 
-         * @param {array} [issuer.organizationDetails.adminDetails] Details of the
+         * @param {array} [options.organizationDetails.adminDetails] Details of the
          * organization administrator.
          * 
-         * @param {object} [issuer.attributes] Attributes of the issuer object.
+         * @param {object} [options.attributes] Attributes of the issuer object.
          * 
-         * @param {boolean} [issuer.attributes.enabled] Determines whether the issuer
+         * @param {boolean} [options.attributes.enabled] Determines whether the issuer
          * is enabled
-         * 
-         * @param {object} [options] Optional Parameters.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -820,8 +818,8 @@ declare class KeyVaultClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        updateCertificateIssuer(vaultBaseUrl: string, issuerName: string, issuer: models.IssuerBundle, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssuerBundle>): void;
-        updateCertificateIssuer(vaultBaseUrl: string, issuerName: string, issuer: models.IssuerBundle, callback: ServiceCallback<models.IssuerBundle>): void;
+        updateCertificateIssuer(vaultBaseUrl: string, issuerName: string, options: { provider? : string, credentials? : models.IssuerCredentials, organizationDetails? : models.OrganizationDetails, attributes? : models.IssuerAttributes, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssuerBundle>): void;
+        updateCertificateIssuer(vaultBaseUrl: string, issuerName: string, callback: ServiceCallback<models.IssuerBundle>): void;
 
         /**
          * Gets the specified certificate issuer.
@@ -885,7 +883,7 @@ declare class KeyVaultClient {
          * type.
          * 
          * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-         * size in bytes. e.g. 1024 or 2048.
+         * size in bytes. e.g. 2048.
          * 
          * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
          * Indicates if the same key pair will be used on certificate renewal.
@@ -904,7 +902,7 @@ declare class KeyVaultClient {
          * name. Should be a valid X509 Distinguished Name.
          * 
          * @param {array} [options.certificatePolicy.x509CertificateProperties.ekus]
-         * The enhaunced key usage.
+         * The enhanced key usage.
          * 
          * @param {object}
          * [options.certificatePolicy.x509CertificateProperties.subjectAlternativeNames]
@@ -928,7 +926,7 @@ declare class KeyVaultClient {
          * 
          * @param {number}
          * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
-         * subject alternate names.
+         * duration that the ceritifcate is valid in months.
          * 
          * @param {array} [options.certificatePolicy.lifetimeActions] Actions that
          * will be performed by Key Vault over the lifetime of a certificate.
@@ -937,7 +935,7 @@ declare class KeyVaultClient {
          * the issuer of the X509 component of a certificate.
          * 
          * @param {string} [options.certificatePolicy.issuerReference.name] Name of
-         * the referenced issuer object.
+         * the referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
          * 
          * @param {object} [options.certificatePolicy.attributes] The certificate
          * attributes.
@@ -995,7 +993,7 @@ declare class KeyVaultClient {
          * type.
          * 
          * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-         * size in bytes. e.g. 1024 or 2048.
+         * size in bytes. e.g. 2048.
          * 
          * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
          * Indicates if the same key pair will be used on certificate renewal.
@@ -1014,7 +1012,7 @@ declare class KeyVaultClient {
          * name. Should be a valid X509 Distinguished Name.
          * 
          * @param {array} [options.certificatePolicy.x509CertificateProperties.ekus]
-         * The enhaunced key usage.
+         * The enhanced key usage.
          * 
          * @param {object}
          * [options.certificatePolicy.x509CertificateProperties.subjectAlternativeNames]
@@ -1038,7 +1036,7 @@ declare class KeyVaultClient {
          * 
          * @param {number}
          * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
-         * subject alternate names.
+         * duration that the ceritifcate is valid in months.
          * 
          * @param {array} [options.certificatePolicy.lifetimeActions] Actions that
          * will be performed by Key Vault over the lifetime of a certificate.
@@ -1047,7 +1045,7 @@ declare class KeyVaultClient {
          * the issuer of the X509 component of a certificate.
          * 
          * @param {string} [options.certificatePolicy.issuerReference.name] Name of
-         * the referenced issuer object.
+         * the referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
          * 
          * @param {object} [options.certificatePolicy.attributes] The certificate
          * attributes.
@@ -1137,7 +1135,7 @@ declare class KeyVaultClient {
          * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
          * 
          * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
-         * bytes. e.g. 1024 or 2048.
+         * bytes. e.g. 2048.
          * 
          * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
          * the same key pair will be used on certificate renewal.
@@ -1155,7 +1153,7 @@ declare class KeyVaultClient {
          * subject name. Should be a valid X509 Distinguished Name.
          * 
          * @param {array} [certificatePolicy.x509CertificateProperties.ekus] The
-         * enhaunced key usage.
+         * enhanced key usage.
          * 
          * @param {object}
          * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames] The
@@ -1177,8 +1175,8 @@ declare class KeyVaultClient {
          * of key usages.
          * 
          * @param {number}
-         * [certificatePolicy.x509CertificateProperties.validityInMonths] The subject
-         * alternate names.
+         * [certificatePolicy.x509CertificateProperties.validityInMonths] The
+         * duration that the ceritifcate is valid in months.
          * 
          * @param {array} [certificatePolicy.lifetimeActions] Actions that will be
          * performed by Key Vault over the lifetime of a certificate.
@@ -1187,7 +1185,7 @@ declare class KeyVaultClient {
          * of the X509 component of a certificate.
          * 
          * @param {string} [certificatePolicy.issuerReference.name] Name of the
-         * referenced issuer object.
+         * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
          * 
          * @param {object} [certificatePolicy.attributes] The certificate attributes.
          * 
@@ -1223,6 +1221,76 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
+         * @param {object} [options.certificatePolicy] The management policy for the
+         * certificate
+         * 
+         * @param {object} [options.certificatePolicy.keyProperties] Properties of the
+         * key backing a certificate.
+         * 
+         * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
+         * Indicates if the private key can be exported.
+         * 
+         * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
+         * type.
+         * 
+         * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
+         * size in bytes. e.g. 2048.
+         * 
+         * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
+         * Indicates if the same key pair will be used on certificate renewal.
+         * 
+         * @param {object} [options.certificatePolicy.secretProperties] Properties of
+         * the secret backing a certificate.
+         * 
+         * @param {string} [options.certificatePolicy.secretProperties.contentType]
+         * The media type (MIME type).
+         * 
+         * @param {object} [options.certificatePolicy.x509CertificateProperties]
+         * Properties of the X509 component of a certificate.
+         * 
+         * @param {string}
+         * [options.certificatePolicy.x509CertificateProperties.subject] The subject
+         * name. Should be a valid X509 Distinguished Name.
+         * 
+         * @param {array} [options.certificatePolicy.x509CertificateProperties.ekus]
+         * The enhanced key usage.
+         * 
+         * @param {object}
+         * [options.certificatePolicy.x509CertificateProperties.subjectAlternativeNames]
+         * The subject alternative names.
+         * 
+         * @param {array}
+         * [options.certificatePolicy.x509CertificateProperties.subjectAlternativeNames.emails]
+         * Email addresses.
+         * 
+         * @param {array}
+         * [options.certificatePolicy.x509CertificateProperties.subjectAlternativeNames.dnsNames]
+         * Domain names.
+         * 
+         * @param {array}
+         * [options.certificatePolicy.x509CertificateProperties.subjectAlternativeNames.upns]
+         * User principal names.
+         * 
+         * @param {array}
+         * [options.certificatePolicy.x509CertificateProperties.keyUsage] List of key
+         * usages.
+         * 
+         * @param {number}
+         * [options.certificatePolicy.x509CertificateProperties.validityInMonths] The
+         * duration that the ceritifcate is valid in months.
+         * 
+         * @param {array} [options.certificatePolicy.lifetimeActions] Actions that
+         * will be performed by Key Vault over the lifetime of a certificate.
+         * 
+         * @param {object} [options.certificatePolicy.issuerReference] Reference to
+         * the issuer of the X509 component of a certificate.
+         * 
+         * @param {string} [options.certificatePolicy.issuerReference.name] Name of
+         * the referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+         * 
+         * @param {object} [options.certificatePolicy.attributes] The certificate
+         * attributes.
+         * 
          * @param {object} [options.certificateAttributes] The attributes of the
          * certificate (optional)
          * 
@@ -1243,7 +1311,7 @@ declare class KeyVaultClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        updateCertificate(vaultBaseUrl: string, certificateName: string, certificateVersion: string, options: { certificateAttributes? : models.CertificateAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateBundle>): void;
+        updateCertificate(vaultBaseUrl: string, certificateName: string, certificateVersion: string, options: { certificatePolicy? : models.CertificatePolicy, certificateAttributes? : models.CertificateAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateBundle>): void;
         updateCertificate(vaultBaseUrl: string, certificateName: string, certificateVersion: string, callback: ServiceCallback<models.CertificateBundle>): void;
 
         /**
@@ -1276,34 +1344,8 @@ declare class KeyVaultClient {
          * 
          * @param {string} certificateName The name of the certificate
          * 
-         * @param {object} certificateOperation The certificate operation response.
-         * 
-         * @param {object} [certificateOperation.issuerReference] Reference to the
-         * issuer of the X509 component of a certificate.
-         * 
-         * @param {string} [certificateOperation.issuerReference.name] Name of the
-         * referenced issuer object.
-         * 
-         * @param {buffer} [certificateOperation.csr] The Certificate Signing Request
-         * (CSR) that is being used in the certificate operation.
-         * 
-         * @param {boolean} [certificateOperation.cancellationRequested] Indicates if
-         * cancellation was requested on the certificate operation.
-         * 
-         * @param {string} [certificateOperation.status] Status of the certificate
-         * operation.
-         * 
-         * @param {string} [certificateOperation.statusDetails] The status details of
-         * the certificate operation.
-         * 
-         * @param {object} [certificateOperation.error] Error encountered, if any,
-         * during the certificate operation.
-         * 
-         * @param {string} [certificateOperation.target] Location which contains the
-         * result of the certificate operation.
-         * 
-         * @param {string} [certificateOperation.requestId] Identifier for the
-         * certificate operation.
+         * @param {boolean} cancellationRequested Indicates if cancellation was
+         * requested on the certificate operation.
          * 
          * @param {object} [options] Optional Parameters.
          * 
@@ -1313,8 +1355,8 @@ declare class KeyVaultClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        updateCertificateOperation(vaultBaseUrl: string, certificateName: string, certificateOperation: models.CertificateOperation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOperation>): void;
-        updateCertificateOperation(vaultBaseUrl: string, certificateName: string, certificateOperation: models.CertificateOperation, callback: ServiceCallback<models.CertificateOperation>): void;
+        updateCertificateOperation(vaultBaseUrl: string, certificateName: string, cancellationRequested: boolean, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateOperation>): void;
+        updateCertificateOperation(vaultBaseUrl: string, certificateName: string, cancellationRequested: boolean, callback: ServiceCallback<models.CertificateOperation>): void;
 
         /**
          * Gets the certificate operation response.
