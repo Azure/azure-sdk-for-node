@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
 	"Guerra, Alberto <alguerra@microsoft.com>"
   ],
-  "version": "0.10.6",
+  "version": "0.10.7",
   "description": "Microsoft Azure Traffic Manager Management Client Library for node",
   "tags": [
     "azure",
@@ -22,7 +22,7 @@
     "azure"
   ],
   "main": "./lib/trafficManager.js",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "dependencies": {
     "azure-common": "^0.9.13"
   },

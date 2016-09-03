@@ -69,9 +69,17 @@
       "swagger": "arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json",
       "output_dir": "lib/services/dataLake.Store/lib/filesystem"
     },
+    "devtestlabs": {
+      "swagger": "arm-devtestlabs/2016-05-15/swagger/DTL.json",
+      "output_dir": "lib/services/devTestLabs/lib"
+    },
     "dns": {
-    "swagger": "arm-dns/2016-04-01/swagger/dns.json",
-    "output_dir": "dnsManagement/lib"
+      "swagger": "arm-dns/2016-04-01/swagger/dns.json",
+      "output_dir": "lib/services/dnsManagement/lib"
+    },
+    "eventhub": {
+      "swagger": "arm-eventhub/2015-08-01/swagger/EventHub.json",
+      "output_dir": "lib/services/eventHubManagement/lib"
     },
     "graphrbac": {
       "swagger": "arm-graphrbac/compositeGraphRbacManagementClient.json",
@@ -140,6 +148,10 @@
     "servermanagement": {
       "swagger": "arm-servermanagement/2015-07-01-preview/servermanagement.json",
       "output_dir": "lib/services/servermanagement/lib"
+    },
+    "servicebus.management": {
+      "swagger": "arm-servicebus/2015-08-01/swagger/servicebus.json",
+      "output_dir": "lib/services/serviceBusManagement2/lib"
     },
     "storage": {
       "swagger": "arm-storage/2016-01-01/swagger/storage.json",

@@ -17,7 +17,7 @@ declare class DevTestLabsClient {
      * Initializes a new instance of the DevTestLabsClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
+     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
      * @param {string} subscriptionId - The subscription ID.
      *
@@ -59,7 +59,6 @@ declare class DevTestLabsClient {
     labOperations: operations.LabOperations;
     artifactSourceOperations: operations.ArtifactSourceOperations;
     artifactOperations: operations.ArtifactOperations;
-    costInsightOperations: operations.CostInsightOperations;
     costOperations: operations.CostOperations;
     customImageOperations: operations.CustomImageOperations;
     formulaOperations: operations.FormulaOperations;
