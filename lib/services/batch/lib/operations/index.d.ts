@@ -226,22 +226,22 @@ export interface Pool {
      *
      * @param {object} pool The pool to be added.
      * 
-     * @param {string} [pool.id] A string that uniquely identifies the pool within
+     * @param {string} pool.id A string that uniquely identifies the pool within
      * the account. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
      * characters. It is common to use a GUID for the id.
      * 
      * @param {string} [pool.displayName] The display name for the pool.
      * 
-     * @param {string} [pool.vmSize] The size of virtual machines in the pool. All
+     * @param {string} pool.vmSize The size of virtual machines in the pool. All
      * virtual machines in a pool are the same size.
      * 
      * @param {object} [pool.cloudServiceConfiguration] The cloud service
      * configuration for the pool.  This property and virtualMachineConfiguration
      * are mutually exclusive and one of the properties must be specified.
      * 
-     * @param {string} [pool.cloudServiceConfiguration.osFamily] The Azure Guest
-     * OS family to be installed on the virtual machines in the pool.
+     * @param {string} pool.cloudServiceConfiguration.osFamily The Azure Guest OS
+     * family to be installed on the virtual machines in the pool.
      * 
      * @param {string} [pool.cloudServiceConfiguration.targetOSVersion] The Azure
      * Guest OS version to be installed on the virtual machines in the pool. The
@@ -256,28 +256,28 @@ export interface Pool {
      * configuration for the pool. This property and cloudServiceConfiguration
      * are mutually exclusive and one of the properties must be specified.
      * 
-     * @param {object} [pool.virtualMachineConfiguration.imageReference] A
-     * reference to the Azure Virtual Machines Marketplace image to use.
+     * @param {object} pool.virtualMachineConfiguration.imageReference A reference
+     * to the Azure Virtual Machines Marketplace image to use.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.publisher]
+     * @param {string} pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.offer] The
+     * @param {string} pool.virtualMachineConfiguration.imageReference.offer The
      * offer type of the Azure Virtual Machines Marketplace image. For example,
      * UbuntuServer or WindowsServer.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.imageReference.sku] The
-     * SKU of the Azure Virtual Machines Marketplace image. For example,
-     * 14.04.0-LTS or 2012-R2-Datacenter.
+     * @param {string} pool.virtualMachineConfiguration.imageReference.sku The SKU
+     * of the Azure Virtual Machines Marketplace image. For example, 14.04.0-LTS
+     * or 2012-R2-Datacenter.
      * 
      * @param {string} [pool.virtualMachineConfiguration.imageReference.version]
      * The version of the Azure Virtual Machines Marketplace image. A value of
      * 'latest' can be specified to select the latest version of an image. If
      * omitted, the default is 'latest'.
      * 
-     * @param {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The SKU
-     * of Batch Node Agent to be provisioned on the compute node. The Batch node
+     * @param {string} pool.virtualMachineConfiguration.nodeAgentSKUId The SKU of
+     * Batch Node Agent to be provisioned on the compute node. The Batch node
      * agent is a program that runs on each node in the pool, and provides the
      * command-and-control interface between the node and the Batch service.
      * There are different implementations of the node agent, known as SKUs, for
@@ -325,7 +325,7 @@ export interface Pool {
      * @param {object} [pool.startTask] A task specified to run on each compute
      * node as it joins the pool.
      * 
-     * @param {string} [pool.startTask.commandLine] The command line of the start
+     * @param {string} pool.startTask.commandLine The command line of the start
      * task. The command line does not run under a shell, and therefore cannot
      * take advantage of shell features such as environment variable expansion.
      * If you want to take advantage of such features, you should invoke the
@@ -361,8 +361,8 @@ export interface Pool {
      * @param {object} [pool.taskSchedulingPolicy] How the Batch service
      * distributes tasks between compute nodes in the pool.
      * 
-     * @param {string} [pool.taskSchedulingPolicy.nodeFillType] How tasks should
-     * be distributed across compute nodes Possible values include: 'spread',
+     * @param {string} pool.taskSchedulingPolicy.nodeFillType How tasks should be
+     * distributed across compute nodes Possible values include: 'spread',
      * 'pack', 'unmapped'
      * 
      * @param {array} [pool.metadata] A list of name-value pairs associated with
@@ -604,7 +604,7 @@ export interface Pool {
      * compute node as it joins the pool. If omitted, any existing start task is
      * left unchanged.
      * 
-     * @param {string} [poolPatchParameter.startTask.commandLine] The command line
+     * @param {string} poolPatchParameter.startTask.commandLine The command line
      * of the start task. The command line does not run under a shell, and
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
@@ -830,7 +830,7 @@ export interface Pool {
      * 
      * @param {object} poolResizeParameter The parameters for the request.
      * 
-     * @param {number} [poolResizeParameter.targetDedicated] The desired number of
+     * @param {number} poolResizeParameter.targetDedicated The desired number of
      * compute nodes in the pool.
      * 
      * @param {moment.duration} [poolResizeParameter.resizeTimeout] The timeout
@@ -953,7 +953,7 @@ export interface Pool {
      * each compute node as it joins the pool. If omitted, any existing start
      * task is removed from the pool.
      * 
-     * @param {string} [poolUpdatePropertiesParameter.startTask.commandLine] The
+     * @param {string} poolUpdatePropertiesParameter.startTask.commandLine The
      * command line of the start task. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
@@ -979,19 +979,19 @@ export interface Pool {
      * successfully (that is, to exit with exit code 0) before scheduling any
      * tasks on the compute node.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.certificateReferences] A list
+     * @param {array} poolUpdatePropertiesParameter.certificateReferences A list
      * of certificates to be installed on each compute node in the pool. If you
      * specify an empty collection, any existing certificate references are
      * removed from the pool.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.applicationPackageReferences]
-     * A list of application packages to be installed on each compute node in the
+     * @param {array} poolUpdatePropertiesParameter.applicationPackageReferences A
+     * list of application packages to be installed on each compute node in the
      * pool. If you specify an empty collection, any existing application
      * packages references are removed from the pool.
      * 
-     * @param {array} [poolUpdatePropertiesParameter.metadata] A list of
-     * name-value pairs associated with the pool as metadata. If you specify an
-     * empty collection, any existing metadata is removed from the pool.
+     * @param {array} poolUpdatePropertiesParameter.metadata A list of name-value
+     * pairs associated with the pool as metadata. If you specify an empty
+     * collection, any existing metadata is removed from the pool.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1085,7 +1085,7 @@ export interface Pool {
      * 
      * @param {object} nodeRemoveParameter The parameters for the request.
      * 
-     * @param {array} [nodeRemoveParameter.nodeList] A list containing the ids of
+     * @param {array} nodeRemoveParameter.nodeList A list containing the ids of
      * the compute nodes to be removed from the specified pool.
      * 
      * @param {moment.duration} [nodeRemoveParameter.resizeTimeout] The timeout
@@ -1496,7 +1496,7 @@ export interface Job {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * jobPatchParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -1513,7 +1513,7 @@ export interface Job {
      * display name for the pool.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.vmSize] The size of
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.vmSize The size of
      * the virtual machines in the pool. All virtual machines in a pool are the
      * same size.
      * 
@@ -1524,7 +1524,7 @@ export interface Job {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -1547,21 +1547,21 @@ export interface Job {
      * must be specified.
      * 
      * @param {object}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -1572,7 +1572,7 @@ export interface Job {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -1600,7 +1600,7 @@ export interface Job {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -1645,7 +1645,7 @@ export interface Job {
      * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
-     * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+     * jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
      * The command line of the start task. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
@@ -1761,7 +1761,7 @@ export interface Job {
      * maximum number of times each task may be retried. The Batch service
      * retries a task if its exit code is nonzero.
      * 
-     * @param {object} [jobUpdateParameter.poolInfo] The pool on which the Batch
+     * @param {object} jobUpdateParameter.poolInfo The pool on which the Batch
      * service runs the job's tasks. You may change the pool for a job only when
      * the job is disabled. The Update Job call will fail if you include the
      * poolInfo element and the job is not disabled. If you specify an
@@ -1784,7 +1784,7 @@ export interface Job {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -1801,9 +1801,9 @@ export interface Job {
      * display name for the pool.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.vmSize] The size
-     * of the virtual machines in the pool. All virtual machines in a pool are
-     * the same size.
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.vmSize The size of
+     * the virtual machines in the pool. All virtual machines in a pool are the
+     * same size.
      * 
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
@@ -1812,7 +1812,7 @@ export interface Job {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -1835,21 +1835,21 @@ export interface Job {
      * must be specified.
      * 
      * @param {object}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -1860,7 +1860,7 @@ export interface Job {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -1888,7 +1888,7 @@ export interface Job {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -1933,7 +1933,7 @@ export interface Job {
      * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
-     * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+     * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
      * The command line of the start task. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
@@ -2191,8 +2191,8 @@ export interface Job {
      *
      * @param {object} job The job to be added.
      * 
-     * @param {string} [job.id] A string that uniquely identifies the job within
-     * the account. The id can contain any combination of alphanumeric characters
+     * @param {string} job.id A string that uniquely identifies the job within the
+     * account. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
      * characters. It is common to use a GUID for the id.
      * 
@@ -2216,18 +2216,18 @@ export interface Job {
      * @param {object} [job.jobManagerTask] Details of a Job Manager task to be
      * launched when the job is started.
      * 
-     * @param {string} [job.jobManagerTask.id] A string that uniquely identifies
-     * the Job Manager task.
+     * @param {string} job.jobManagerTask.id A string that uniquely identifies the
+     * Job Manager task.
      * 
      * @param {string} [job.jobManagerTask.displayName] The display name of the
      * Job Manager task.
      * 
-     * @param {string} [job.jobManagerTask.commandLine] The command line of the
-     * Job Manager task. The command line does not run under a shell, and
-     * therefore cannot take advantage of shell features such as environment
-     * variable expansion. If you want to take advantage of such features, you
-     * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * @param {string} job.jobManagerTask.commandLine The command line of the Job
+     * Manager task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should
+     * invoke the shell in the command line, for example using "cmd /c MyCommand"
+     * in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [job.jobManagerTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
@@ -2264,8 +2264,8 @@ export interface Job {
      * combination of alphanumeric characters including hyphens and underscores
      * and cannot contain more than 64 characters.
      * 
-     * @param {string} [job.jobPreparationTask.commandLine] The command line of
-     * the Job Preparation task. The command line does not run under a shell, and
+     * @param {string} job.jobPreparationTask.commandLine The command line of the
+     * Job Preparation task. The command line does not run under a shell, and
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
@@ -2318,12 +2318,12 @@ export interface Job {
      * alphanumeric characters including hyphens and underscores and cannot
      * contain more than 64 characters.
      * 
-     * @param {string} [job.jobReleaseTask.commandLine] The command line of the
-     * Job Release task. The command line does not run under a shell, and
-     * therefore cannot take advantage of shell features such as environment
-     * variable expansion. If you want to take advantage of such features, you
-     * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * @param {string} job.jobReleaseTask.commandLine The command line of the Job
+     * Release task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should
+     * invoke the shell in the command line, for example using "cmd /c MyCommand"
+     * in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array} [job.jobReleaseTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
@@ -2351,7 +2351,7 @@ export interface Job {
      * tasks in the job (including the Job Manager, Job Preparation and Job
      * Release tasks).
      * 
-     * @param {object} [job.poolInfo] The pool on which the Batch service runs the
+     * @param {object} job.poolInfo The pool on which the Batch service runs the
      * job's tasks.
      * 
      * @param {string} [job.poolInfo.poolId] The id of an existing pool. All the
@@ -2367,7 +2367,7 @@ export interface Job {
      * prefix to be added to the unique identifier when a pool is automatically
      * created. The prefix can be up to 20 characters long.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.poolLifetimeOption] The
+     * @param {string} job.poolInfo.autoPoolSpecification.poolLifetimeOption The
      * minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -2381,9 +2381,9 @@ export interface Job {
      * @param {string} [job.poolInfo.autoPoolSpecification.pool.displayName] The
      * display name for the pool.
      * 
-     * @param {string} [job.poolInfo.autoPoolSpecification.pool.vmSize] The size
-     * of the virtual machines in the pool. All virtual machines in a pool are
-     * the same size.
+     * @param {string} job.poolInfo.autoPoolSpecification.pool.vmSize The size of
+     * the virtual machines in the pool. All virtual machines in a pool are the
+     * same size.
      * 
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] The
@@ -2392,7 +2392,7 @@ export interface Job {
      * properties must be specified.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * job.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -2415,21 +2415,21 @@ export interface Job {
      * must be specified.
      * 
      * @param {object}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -2440,7 +2440,7 @@ export interface Job {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * job.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -2467,7 +2467,7 @@ export interface Job {
      * are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * job.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -2508,12 +2508,12 @@ export interface Job {
      * node is added to the pool or when the node is restarted.
      * 
      * @param {string}
-     * [job.poolInfo.autoPoolSpecification.pool.startTask.commandLine] The
-     * command line of the start task. The command line does not run under a
-     * shell, and therefore cannot take advantage of shell features such as
-     * environment variable expansion. If you want to take advantage of such
-     * features, you should invoke the shell in the command line, for example
-     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * job.poolInfo.autoPoolSpecification.pool.startTask.commandLine The command
+     * line of the start task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles] A list
@@ -2851,14 +2851,14 @@ export interface CertificateOperations {
      *
      * @param {object} certificate The certificate to be added.
      * 
-     * @param {string} [certificate.thumbprint] The X.509 thumbprint of the
+     * @param {string} certificate.thumbprint The X.509 thumbprint of the
      * certificate. This is a sequence of up to 40 hex digits (it may include
      * spaces but these are removed).
      * 
-     * @param {string} [certificate.thumbprintAlgorithm] The algorithm used to
+     * @param {string} certificate.thumbprintAlgorithm The algorithm used to
      * derive the thumbprint. This must be sha1.
      * 
-     * @param {string} [certificate.data] The base64-encoded contents of the
+     * @param {string} certificate.data The base64-encoded contents of the
      * certificate. The maximum size is 10KB.
      * 
      * @param {string} [certificate.certificateFormat] The format of the
@@ -3177,7 +3177,7 @@ export interface File {
      * 
      * @param {string} [options.fileGetFromTaskOptions.ocpRange] The byte range to
      * be retrieved. The default is to retrieve the entire file. The format is
-     * startRange-endRange.
+     * bytes=startRange-endRange.
      * 
      * @param {date} [options.fileGetFromTaskOptions.ifModifiedSince] Specify this
      * header to perform the operation only if the resource has been modified
@@ -3328,7 +3328,7 @@ export interface File {
      * 
      * @param {string} [options.fileGetFromComputeNodeOptions.ocpRange] The byte
      * range to be retrieved. The default is to retrieve the entire file. The
-     * format is startRange-endRange.
+     * format is bytes=startRange-endRange.
      * 
      * @param {date} [options.fileGetFromComputeNodeOptions.ifModifiedSince]
      * Specify this header to perform the operation only if the resource has been
@@ -3797,18 +3797,18 @@ export interface JobSchedule {
      * under this schedule.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.id] A string
-     * that uniquely identifies the Job Manager task.
+     * jobSchedulePatchParameter.jobSpecification.jobManagerTask.id A string that
+     * uniquely identifies the Job Manager task.
      * 
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.displayName]
      * The display name of the Job Manager task.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.commandLine]
-     * The command line of the Job Manager task. The command line does not run
-     * under a shell, and therefore cannot take advantage of shell features such
-     * as environment variable expansion. If you want to take advantage of such
+     * jobSchedulePatchParameter.jobSpecification.jobManagerTask.commandLine The
+     * command line of the Job Manager task. The command line does not run under
+     * a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example
      * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
@@ -3860,7 +3860,7 @@ export interface JobSchedule {
      * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.commandLine]
+     * jobSchedulePatchParameter.jobSpecification.jobPreparationTask.commandLine
      * The command line of the Job Preparation task. The command line does not
      * run under a shell, and therefore cannot take advantage of shell features
      * such as environment variable expansion. If you want to take advantage of
@@ -3928,10 +3928,10 @@ export interface JobSchedule {
      * underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.commandLine]
-     * The command line of the Job Release task. The command line does not run
-     * under a shell, and therefore cannot take advantage of shell features such
-     * as environment variable expansion. If you want to take advantage of such
+     * jobSchedulePatchParameter.jobSpecification.jobReleaseTask.commandLine The
+     * command line of the Job Release task. The command line does not run under
+     * a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example
      * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
@@ -3968,7 +3968,7 @@ export interface JobSchedule {
      * are set for all tasks in jobs created under this schedule (including the
      * Job Manager, Job Preparation and Job Release tasks).
      * 
-     * @param {object} [jobSchedulePatchParameter.jobSpecification.poolInfo] The
+     * @param {object} jobSchedulePatchParameter.jobSpecification.poolInfo The
      * pool on which the Batch service runs the tasks of jobs created under this
      * schedule.
      * 
@@ -3989,7 +3989,7 @@ export interface JobSchedule {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -4007,7 +4007,7 @@ export interface JobSchedule {
      * The display name for the pool.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a
      * pool are the same size.
      * 
@@ -4018,7 +4018,7 @@ export interface JobSchedule {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -4041,21 +4041,21 @@ export interface JobSchedule {
      * must be specified.
      * 
      * @param {object}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -4066,7 +4066,7 @@ export interface JobSchedule {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -4094,7 +4094,7 @@ export interface JobSchedule {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -4139,7 +4139,7 @@ export interface JobSchedule {
      * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
-     * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+     * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
      * The command line of the start task. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
@@ -4242,10 +4242,10 @@ export interface JobSchedule {
      * 
      * @param {object} jobScheduleUpdateParameter The parameters for the request.
      * 
-     * @param {object} [jobScheduleUpdateParameter.schedule] The schedule
-     * according to which jobs will be created. If you do not specify this
-     * element, it is equivalent to passing the default schedule: that is, a
-     * single job scheduled to run immediately.
+     * @param {object} jobScheduleUpdateParameter.schedule The schedule according
+     * to which jobs will be created. If you do not specify this element, it is
+     * equivalent to passing the default schedule: that is, a single job
+     * scheduled to run immediately.
      * 
      * @param {date} [jobScheduleUpdateParameter.schedule.doNotRunUntil] The
      * earliest time at which any job may be created under this job schedule. If
@@ -4268,8 +4268,8 @@ export interface JobSchedule {
      * between the start times of two successive jobs under the job schedule. A
      * job schedule can have at most one active job under it at any given time.
      * 
-     * @param {object} [jobScheduleUpdateParameter.jobSpecification] Details of
-     * the jobs to be created on this schedule.
+     * @param {object} jobScheduleUpdateParameter.jobSpecification Details of the
+     * jobs to be created on this schedule.
      * 
      * @param {number} [jobScheduleUpdateParameter.jobSpecification.priority] The
      * priority of jobs created under this schedule.  Priority values can range
@@ -4305,7 +4305,7 @@ export interface JobSchedule {
      * schedule.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.id] A string
+     * jobScheduleUpdateParameter.jobSpecification.jobManagerTask.id A string
      * that uniquely identifies the Job Manager task.
      * 
      * @param {string}
@@ -4313,10 +4313,10 @@ export interface JobSchedule {
      * The display name of the Job Manager task.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.commandLine]
-     * The command line of the Job Manager task. The command line does not run
-     * under a shell, and therefore cannot take advantage of shell features such
-     * as environment variable expansion. If you want to take advantage of such
+     * jobScheduleUpdateParameter.jobSpecification.jobManagerTask.commandLine The
+     * command line of the Job Manager task. The command line does not run under
+     * a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example
      * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
@@ -4368,7 +4368,7 @@ export interface JobSchedule {
      * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.commandLine]
+     * jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.commandLine
      * The command line of the Job Preparation task. The command line does not
      * run under a shell, and therefore cannot take advantage of shell features
      * such as environment variable expansion. If you want to take advantage of
@@ -4437,10 +4437,10 @@ export interface JobSchedule {
      * underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.commandLine]
-     * The command line of the Job Release task. The command line does not run
-     * under a shell, and therefore cannot take advantage of shell features such
-     * as environment variable expansion. If you want to take advantage of such
+     * jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.commandLine The
+     * command line of the Job Release task. The command line does not run under
+     * a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example
      * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
      * 
@@ -4477,7 +4477,7 @@ export interface JobSchedule {
      * are set for all tasks in jobs created under this schedule (including the
      * Job Manager, Job Preparation and Job Release tasks).
      * 
-     * @param {object} [jobScheduleUpdateParameter.jobSpecification.poolInfo] The
+     * @param {object} jobScheduleUpdateParameter.jobSpecification.poolInfo The
      * pool on which the Batch service runs the tasks of jobs created under this
      * schedule.
      * 
@@ -4498,7 +4498,7 @@ export interface JobSchedule {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -4516,7 +4516,7 @@ export interface JobSchedule {
      * The display name for the pool.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a
      * pool are the same size.
      * 
@@ -4527,7 +4527,7 @@ export interface JobSchedule {
      * properties must be specified.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -4550,21 +4550,21 @@ export interface JobSchedule {
      * must be specified.
      * 
      * @param {object}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -4575,7 +4575,7 @@ export interface JobSchedule {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -4603,7 +4603,7 @@ export interface JobSchedule {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -4648,7 +4648,7 @@ export interface JobSchedule {
      * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
-     * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+     * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
      * The command line of the start task. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
@@ -4904,13 +4904,13 @@ export interface JobSchedule {
      *
      * @param {object} cloudJobSchedule The job schedule to be added.
      * 
-     * @param {string} [cloudJobSchedule.id] A string that uniquely identifies the
+     * @param {string} cloudJobSchedule.id A string that uniquely identifies the
      * schedule within the account.
      * 
      * @param {string} [cloudJobSchedule.displayName] The display name for the
      * schedule.
      * 
-     * @param {object} [cloudJobSchedule.schedule] The schedule according to which
+     * @param {object} cloudJobSchedule.schedule The schedule according to which
      * jobs will be created.
      * 
      * @param {date} [cloudJobSchedule.schedule.doNotRunUntil] The earliest time
@@ -4934,7 +4934,7 @@ export interface JobSchedule {
      * schedule. A job schedule can have at most one active job under it at any
      * given time.
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification] The details of the jobs
+     * @param {object} cloudJobSchedule.jobSpecification The details of the jobs
      * to be created on this schedule.
      * 
      * @param {number} [cloudJobSchedule.jobSpecification.priority] The priority
@@ -4967,7 +4967,7 @@ export interface JobSchedule {
      * details of a Job Manager task to be launched when a job is started under
      * this schedule.
      * 
-     * @param {string} [cloudJobSchedule.jobSpecification.jobManagerTask.id] A
+     * @param {string} cloudJobSchedule.jobSpecification.jobManagerTask.id A
      * string that uniquely identifies the Job Manager task.
      * 
      * @param {string}
@@ -4975,7 +4975,7 @@ export interface JobSchedule {
      * name of the Job Manager task.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.jobManagerTask.commandLine] The command
+     * cloudJobSchedule.jobSpecification.jobManagerTask.commandLine The command
      * line of the Job Manager task. The command line does not run under a shell,
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
@@ -5027,7 +5027,7 @@ export interface JobSchedule {
      * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.jobPreparationTask.commandLine] The
+     * cloudJobSchedule.jobSpecification.jobPreparationTask.commandLine The
      * command line of the Job Preparation task. The command line does not run
      * under a shell, and therefore cannot take advantage of shell features such
      * as environment variable expansion. If you want to take advantage of such
@@ -5093,7 +5093,7 @@ export interface JobSchedule {
      * hyphens and underscores and cannot contain more than 64 characters.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.jobReleaseTask.commandLine] The command
+     * cloudJobSchedule.jobSpecification.jobReleaseTask.commandLine The command
      * line of the Job Release task. The command line does not run under a shell,
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
@@ -5132,7 +5132,7 @@ export interface JobSchedule {
      * for all tasks in jobs created under this schedule (including the Job
      * Manager, Job Preparation and Job Release tasks).
      * 
-     * @param {object} [cloudJobSchedule.jobSpecification.poolInfo] The pool on
+     * @param {object} cloudJobSchedule.jobSpecification.poolInfo The pool on
      * which the Batch service runs the tasks of jobs created under this schedule.
      * 
      * @param {string} [cloudJobSchedule.jobSpecification.poolInfo.poolId] The id
@@ -5152,7 +5152,7 @@ export interface JobSchedule {
      * created. The prefix can be up to 20 characters long.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption
      * The minimum lifetime of created auto pools, and how multiple jobs on a
      * schedule are assigned to pools. Possible values include: 'jobschedule',
      * 'job', 'unmapped'
@@ -5170,7 +5170,7 @@ export interface JobSchedule {
      * The display name for the pool.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize
      * The size of the virtual machines in the pool. All virtual machines in a
      * pool are the same size.
      * 
@@ -5181,7 +5181,7 @@ export interface JobSchedule {
      * properties must be specified.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily
      * The Azure Guest OS family to be installed on the virtual machines in the
      * pool.
      * 
@@ -5204,21 +5204,21 @@ export interface JobSchedule {
      * must be specified.
      * 
      * @param {object}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference
      * A reference to the Azure Virtual Machines Marketplace image to use.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.publisher
      * The publisher of the Azure Virtual Machines Marketplace image. For
      * example, Canonical or MicrosoftWindowsServer.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.offer
      * The offer type of the Azure Virtual Machines Marketplace image. For
      * example, UbuntuServer or WindowsServer.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference.sku
      * The SKU of the Azure Virtual Machines Marketplace image. For example,
      * 14.04.0-LTS or 2012-R2-Datacenter.
      * 
@@ -5229,7 +5229,7 @@ export interface JobSchedule {
      * omitted, the default is 'latest'.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId
      * The SKU of Batch Node Agent to be provisioned on the compute node. The
      * Batch node agent is a program that runs on each node in the pool, and
      * provides the command-and-control interface between the node and the Batch
@@ -5257,7 +5257,7 @@ export interface JobSchedule {
      * How tasks are distributed among compute nodes in the pool.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType
      * How tasks should be distributed across compute nodes Possible values
      * include: 'spread', 'pack', 'unmapped'
      * 
@@ -5302,7 +5302,7 @@ export interface JobSchedule {
      * when the node is added to the pool or when the node is restarted.
      * 
      * @param {string}
-     * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+     * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
      * The command line of the start task. The command line does not run under a
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
@@ -5475,14 +5475,14 @@ export interface Task {
      * 
      * @param {object} task The task to be added.
      * 
-     * @param {string} [task.id] A string that uniquely identifies the task within
+     * @param {string} task.id A string that uniquely identifies the task within
      * the job. The id can contain any combination of alphanumeric characters
      * including hyphens and underscores, and cannot contain more than 64
      * characters. It is common to use a GUID for the id.
      * 
      * @param {string} [task.displayName] A display name for the task.
      * 
-     * @param {string} [task.commandLine] The command line of the task. For
+     * @param {string} task.commandLine The command line of the task. For
      * multi-instance tasks, the command line is executed on the primary subtask
      * after all the subtasks have finished executing the coordianation command
      * line. The command line does not run under a shell, and therefore cannot
@@ -5526,10 +5526,10 @@ export interface Task {
      * @param {object} [task.affinityInfo] A locality hint that can be used by the
      * Batch service to select a compute node on which to start the new task.
      * 
-     * @param {string} [task.affinityInfo.affinityId] An opaque string
-     * representing the location of a compute node or a task that has run
-     * previously. You can pass the affinityId of a compute node or task to
-     * indicate that this task needs to be placed close to the node or task.
+     * @param {string} task.affinityInfo.affinityId An opaque string representing
+     * the location of a compute node or a task that has run previously. You can
+     * pass the affinityId of a compute node or task to indicate that this task
+     * needs to be placed close to the node or task.
      * 
      * @param {object} [task.constraints] The execution constraints that apply to
      * this task.
@@ -5555,8 +5555,8 @@ export interface Task {
      * @param {object} [task.multiInstanceSettings] Information about how to run
      * the multi-instance task.
      * 
-     * @param {number} [task.multiInstanceSettings.numberOfInstances] The number
-     * of compute nodes required by the multi-instance task.
+     * @param {number} task.multiInstanceSettings.numberOfInstances The number of
+     * compute nodes required by the multi-instance task.
      * 
      * @param {string} [task.multiInstanceSettings.coordinationCommandLine] The
      * command to run on the compute node instances for coordinating among the
@@ -5965,6 +5965,64 @@ export interface Task {
     terminate(jobId: string, taskId: string, callback: ServiceCallback<void>): void;
 
     /**
+     * @summary Reactivates the specified task.
+     *
+     * Reactivation makes a task eligible to be retried again up to its maximum
+     * retry count. This will fail for tasks that are not completed or that
+     * previously completed successfully (with an exit code of 0). Additionally,
+     * this will fail if the job has completed (or is terminating or deleting).
+     *
+     * @param {string} jobId The id of the job containing the task.
+     * 
+     * @param {string} taskId The id of the task to reactivate.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.taskReactivateOptions] Additional parameters for
+     * the operation
+     * 
+     * @param {number} [options.taskReactivateOptions.timeout] The maximum time
+     * that the server can spend processing the request, in seconds. The default
+     * is 30 seconds.
+     * 
+     * @param {string} [options.taskReactivateOptions.clientRequestId] The
+     * caller-generated request identity, in the form of a GUID with no
+     * decoration such as curly braces, e.g. 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+     * 
+     * @param {boolean} [options.taskReactivateOptions.returnClientRequestId]
+     * Whether the server should return the client-request-id identifier in the
+     * response.
+     * 
+     * @param {date} [options.taskReactivateOptions.ocpDate] The time the request
+     * was issued. If not specified, this header will be automatically populated
+     * with the current system clock time.
+     * 
+     * @param {string} [options.taskReactivateOptions.ifMatch] An ETag is
+     * specified. Specify this header to perform the operation only if the
+     * resource's ETag is an exact match as specified.
+     * 
+     * @param {string} [options.taskReactivateOptions.ifNoneMatch] An ETag is
+     * specified. Specify this header to perform the operation only if the
+     * resource's ETag does not match the specified ETag.
+     * 
+     * @param {date} [options.taskReactivateOptions.ifModifiedSince] Specify this
+     * header to perform the operation only if the resource has been modified
+     * since the specified date/time.
+     * 
+     * @param {date} [options.taskReactivateOptions.ifUnmodifiedSince] Specify
+     * this header to perform the operation only if the resource has not been
+     * modified since the specified date/time.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    reactivate(jobId: string, taskId: string, options: { taskReactivateOptions? : models.TaskReactivateOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    reactivate(jobId: string, taskId: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Lists all of the tasks that are associated with the specified job.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -6015,7 +6073,7 @@ export interface ComputeNodeOperations {
      * 
      * @param {object} user The user account to be created.
      * 
-     * @param {string} [user.name] The user name of the account.
+     * @param {string} user.name The user name of the account.
      * 
      * @param {boolean} [user.isAdmin] Whether the account should be an
      * administrator on the compute node.
