@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>objectIdentifier.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="-_.html"></a></li><li><a href="KeyVaultClient.html">KeyVaultClient</a><ul class='methods'><li data-type='method'><a href="KeyVaultClient.html#backupKey">backupKey</a></li><li data-type='method'><a href="KeyVaultClient.html#backupKey">backupKey</a></li><li data-type='method'><a href="KeyVaultClient.html#createCertificate">createCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#createCertificate">createCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#createKey">createKey</a></li><li data-type='method'><a href="KeyVaultClient.html#createKey">createKey</a></li><li data-type='method'><a href="KeyVaultClient.html#decrypt">decrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#decrypt">decrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificate">deleteCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificate">deleteCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificateContacts">deleteCertificateContacts</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificateContacts">deleteCertificateContacts</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificateIssuer">deleteCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificateIssuer">deleteCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificateOperation">deleteCertificateOperation</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteCertificateOperation">deleteCertificateOperation</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteKey">deleteKey</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteKey">deleteKey</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteSecret">deleteSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#deleteSecret">deleteSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#encrypt">encrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#encrypt">encrypt</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificate">getCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificate">getCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateContacts">getCertificateContacts</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateContacts">getCertificateContacts</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateIssuer">getCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateIssuer">getCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateIssuers">getCertificateIssuers</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateIssuers">getCertificateIssuers</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateIssuersNext">getCertificateIssuersNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateIssuersNext">getCertificateIssuersNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateOperation">getCertificateOperation</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateOperation">getCertificateOperation</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificatePolicy">getCertificatePolicy</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificatePolicy">getCertificatePolicy</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificates">getCertificates</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificates">getCertificates</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificatesNext">getCertificatesNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificatesNext">getCertificatesNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateVersions">getCertificateVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateVersions">getCertificateVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateVersionsNext">getCertificateVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getCertificateVersionsNext">getCertificateVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getKey">getKey</a></li><li data-type='method'><a href="KeyVaultClient.html#getKey">getKey</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeys">getKeys</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeys">getKeys</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeysNext">getKeysNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeysNext">getKeysNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersions">getKeyVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersions">getKeyVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersionsNext">getKeyVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getKeyVersionsNext">getKeyVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getPendingCertificateSigningRequest">getPendingCertificateSigningRequest</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecret">getSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecret">getSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecrets">getSecrets</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecrets">getSecrets</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretsNext">getSecretsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretsNext">getSecretsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersions">getSecretVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersions">getSecretVersions</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersionsNext">getSecretVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#getSecretVersionsNext">getSecretVersionsNext</a></li><li data-type='method'><a href="KeyVaultClient.html#importCertificate">importCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#importCertificate">importCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#importKey">importKey</a></li><li data-type='method'><a href="KeyVaultClient.html#importKey">importKey</a></li><li data-type='method'><a href="KeyVaultClient.html#mergeCertificate">mergeCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#mergeCertificate">mergeCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#restoreKey">restoreKey</a></li><li data-type='method'><a href="KeyVaultClient.html#restoreKey">restoreKey</a></li><li data-type='method'><a href="KeyVaultClient.html#setCertificateContacts">setCertificateContacts</a></li><li data-type='method'><a href="KeyVaultClient.html#setCertificateContacts">setCertificateContacts</a></li><li data-type='method'><a href="KeyVaultClient.html#setCertificateIssuer">setCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#setCertificateIssuer">setCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#setSecret">setSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#setSecret">setSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#sign">sign</a></li><li data-type='method'><a href="KeyVaultClient.html#sign">sign</a></li><li data-type='method'><a href="KeyVaultClient.html#unwrapKey">unwrapKey</a></li><li data-type='method'><a href="KeyVaultClient.html#unwrapKey">unwrapKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificate">updateCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificate">updateCertificate</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificateIssuer">updateCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificateIssuer">updateCertificateIssuer</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificateOperation">updateCertificateOperation</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificateOperation">updateCertificateOperation</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificatePolicy">updateCertificatePolicy</a></li><li data-type='method'><a href="KeyVaultClient.html#updateCertificatePolicy">updateCertificatePolicy</a></li><li data-type='method'><a href="KeyVaultClient.html#updateKey">updateKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateKey">updateKey</a></li><li data-type='method'><a href="KeyVaultClient.html#updateSecret">updateSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#updateSecret">updateSecret</a></li><li data-type='method'><a href="KeyVaultClient.html#verify">verify</a></li><li data-type='method'><a href="KeyVaultClient.html#verify">verify</a></li><li data-type='method'><a href="KeyVaultClient.html#wrapKey">wrapKey</a></li><li data-type='method'><a href="KeyVaultClient.html#wrapKey">wrapKey</a></li></ul></li><li><a href="KeyVaultCredentials.html">KeyVaultCredentials</a></li><li><a href="ObjectIdentifier.html">ObjectIdentifier</a></li><li><a href="The%2520attributes%2520of%2520a%2520key%2520managed%2520by%2520the%2520KeyVault%2520service.html">The attributes of a key managed by the KeyVault service</a></li><li><a href="The%2520certificate%2520management%2520attributes.html">The certificate management attributes</a></li><li><a href="The%2520secret%2520management%2520attributes.html">The secret management attributes</a></li></ul><h3>Namespaces</h3><ul><li><a href="JsonWebKeyEncryptionAlgorithms.html">JsonWebKeyEncryptionAlgorithms</a></li><li><a href="JsonWebKeySignatureAlgorithms.html">JsonWebKeySignatureAlgorithms</a></li><li><a href="JsonWebKeyType.html">JsonWebKeyType</a></li></ul><h3>Global</h3><ul><li><a href="global.html#actionType">actionType</a></li><li><a href="global.html#adminDetails">adminDetails</a></li><li><a href="global.html#attributes">attributes</a></li><li><a href="global.html#cancellationRequested">cancellationRequested</a></li><li><a href="global.html#contactList">contactList</a></li><li><a href="global.html#contentType">contentType</a></li><li><a href="global.html#createCertificateIdentifier">createCertificateIdentifier</a></li><li><a href="global.html#createCertificateOperationIdentifier">createCertificateOperationIdentifier</a></li><li><a href="global.html#createIssuerIdentifier">createIssuerIdentifier</a></li><li><a href="global.html#createKeyIdentifier">createKeyIdentifier</a></li><li><a href="global.html#createKeyVaultClient">createKeyVaultClient</a></li><li><a href="global.html#createSecretIdentifier">createSecretIdentifier</a></li><li><a href="global.html#daysBeforeExpiry">daysBeforeExpiry</a></li><li><a href="global.html#keyBundleBackup">keyBundleBackup</a></li><li><a href="global.html#managed">managed</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#parseCertificateIdentifier">parseCertificateIdentifier</a></li><li><a href="global.html#parseCertificateOperationIdentifier">parseCertificateOperationIdentifier</a></li><li><a href="global.html#parseIssuerIdentifier">parseIssuerIdentifier</a></li><li><a href="global.html#parseKeyIdentifier">parseKeyIdentifier</a></li><li><a href="global.html#parseSecretIdentifier">parseSecretIdentifier</a></li><li><a href="global.html#password">password</a></li><li><a href="global.html#phone">phone</a></li><li><a href="global.html#provider">provider</a></li><li><a href="global.html#requestId">requestId</a></li><li><a href="global.html#RESOURCE_ID">RESOURCE_ID</a></li><li><a href="global.html#result">result</a></li><li><a href="global.html#reuseKey">reuseKey</a></li><li><a href="global.html#secretAttributes">secretAttributes</a></li><li><a href="global.html#signature">signature</a></li><li><a href="global.html#t">t</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#updated">updated</a></li><li><a href="global.html#upns">upns</a></li><li><a href="global.html#validityInMonths">validityInMonths</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#x509Thumbprint">x509Thumbprint</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">objectIdentifier.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var url = require('url');
+var util = require('util');
+
+
+/** An identifier for an Azure Key Vault resource.
+  * @class
+  */
+function ObjectIdentifier(collection, vault, name, version) {
+
+  /** The vault URI.
+    * @member {string}
+    */
+  this.vault = vault;
+
+  /** The key name.
+    * @member {string}
+    */
+  this.name = name;
+
+  /** The key version. May be null.
+    * @member {string}
+    */
+  this.version = version;
+
+  /** The base identifier (i.e. without the version).
+    * @member {string}
+    */
+  this.baseIdentifier = util.format('%s/%s/%s', vault, collection, name);
+
+  /** The full identifier if a version was informed; otherwise is the same value of baseIdentifier.
+    * @member {string}
+    */
+  this.identifier = version ? util.format('%s/%s', this.baseIdentifier, version) : this.baseIdentifier;
+}
+
+function createObjectIdentifier(collection, vault, name, version) {
+
+  if (typeof collection != 'string' || !(collection = collection.trim())) {
+    throw new Error('Invalid collection argument');
+  }
+
+  if (typeof vault != 'string' || !(vault = vault.trim())) {
+    throw new Error('Invalid vault argument');
+  }
+
+  if (typeof name != 'string' || !(name = name.trim())) {
+    throw new Error('Invalid name argument');
+  }
+
+  if (version &amp;&amp; typeof version != 'string') {
+    throw new Error('Invalid version argument');
+  }
+
+  if (version) {
+    version = version.trim();
+  }
+
+  if (!version) {
+    version = null;
+  }
+
+  var baseUri;
+  try {
+    baseUri = url.parse(vault, true, true);
+  } catch (e) {
+    throw new Error(util.format('Invalid %s identifier: %s. Not a valid URI', collection, vault));
+  }
+
+  var vault = util.format('%s//%s', baseUri.protocol, baseUri.host);
+  return new ObjectIdentifier(collection, vault, name, version);
+}
+
+function parseObjectIdentifier(collection, identifier) {
+
+  if (typeof collection != 'string' || !(collection = collection.trim())) {
+    throw new Error('Invalid collection argument');
+  }
+
+  if (typeof identifier != 'string' || !(identifier = identifier.trim())) {
+    throw new Error('Invalid identifier argument');
+  }
+
+  var baseUri;
+  try {
+    baseUri = url.parse(identifier, true, true);
+  } catch (e) {
+    throw new Error(util.format('Invalid %s identifier: %s. Not a valid URI', collection, identifier));
+  }
+
+  // Path is of the form '/collection/name[/version]'
+  var segments = baseUri.pathname.split('/');
+  if (segments.length !== 3 &amp;&amp; segments.length !== 4) {
+    throw new Error(util.format('Invalid %s identifier: %s. Bad number of segments: %d', collection, identifier, segments.length));
+  }
+
+  if (collection !== segments[1]) {
+    throw new Error(util.format('Invalid %s identifier: %s. segment [1] should be "%s", found "%s"', collection, identifier, collection, segments[1]));
+  }
+
+  var vault = util.format('%s//%s', baseUri.protocol, baseUri.host);
+  var name = segments[2];
+  var version = segments.length === 4 ? segments[3] : null;
+  return new ObjectIdentifier(collection, vault, name, version);
+}
+
+/** Creates an ObjectIdentifier object for a key.
+ @param {string} vault The vault URI.
+ @param {string} name The key name.
+ @param {string} [version=null] The object version.
+ @return {ObjectIdentifier} An object that represents the key identifier.
+*/
+module.exports.createKeyIdentifier = function (vault, name, version) {
+    return createObjectIdentifier('keys', vault, name, version);
+};
+
+/** Parses a string containing a key identifier and returns the ObjectIdentifier object.
+ @param {string} identifier The key identifier (an URI).
+ @return {ObjectIdentifier} An object that represents the key identifier.
+*/
+module.exports.parseKeyIdentifier = function (identifier) {
+    return parseObjectIdentifier('keys', identifier);
+};
+
+/** Creates an ObjectIdentifier object for a secret.
+ @param {string} vault The vault URI.
+ @param {string} name The secret name.
+ @param {string} [version=null] The object version.
+ @return {ObjectIdentifier} An object that represents the secret identifier.
+*/
+module.exports.createSecretIdentifier = function (vault, name, version) {
+    return createObjectIdentifier('secrets', vault, name, version);
+};
+
+/** Parses a string containing a secret identifier and returns the ObjectIdentifier object.
+ @param {string} identifier The secret identifier (an URI).
+ @return {ObjectIdentifier} An object that represents the secret identifier.
+*/
+module.exports.parseSecretIdentifier = function (identifier) {
+    return parseObjectIdentifier('secrets', identifier);
+};
+
+/** Creates an ObjectIdentifier object for a certificate.
+ @param {string} vault The vault URI.
+ @param {string} name The certificate name.
+ @param {string} [version=null] The object version.
+ @return {ObjectIdentifier} An object that represents the certificate identifier.
+*/
+module.exports.createCertificateIdentifier = function (vault, name, version) {
+    return createObjectIdentifier('certificates', vault, name, version);
+};
+
+/** Parses a string containing a certificate identifier and returns the ObjectIdentifier object.
+ @param {string} identifier The certificate identifier (an URI).
+ @return {ObjectIdentifier} An object that represents the certificate identifier.
+*/
+module.exports.parseCertificateIdentifier = function (identifier) {
+    return parseObjectIdentifier('certificates', identifier);
+};
+
+/** Creates an ObjectIdentifier object for a certificate operation.
+ @param {string} vault The vault URI.
+ @param {string} name The certificate name.
+ @return {ObjectIdentifier} An object that represents the certificate identifier.
+*/
+module.exports.createCertificateOperationIdentifier = function (vault, name) {
+    var objId = createObjectIdentifier('certificates', vault, name, 'pending');
+    objId.baseIdentifier = objId.identifier;
+    objId.version = null;
+    return objId;
+};
+
+/** Parses a string containing a certificate identifier and returns the ObjectIdentifier object.
+ @param {string} identifier The certificate identifier (an URI).
+ @return {ObjectIdentifier} An object that represents the certificate identifier.
+*/
+module.exports.parseCertificateOperationIdentifier = function (identifier) {
+    var objId = parseObjectIdentifier('certificates', identifier);
+    objId.baseIdentifier = objId.identifier;
+    objId.version = null;
+    return objId;
+};
+
+/** Creates an ObjectIdentifier object for a certificate issuer.
+ @param {string} vault The vault URI.
+ @param {string} name The certificate issuer name.
+ @return {ObjectIdentifier} An object that represents the certificate issuer identifier.
+*/
+module.exports.createIssuerIdentifier = function (vault, name) {
+    return createObjectIdentifier('certificates/issuers', vault, name);
+};
+
+/** Parses a string containing a certificate issuer identifier and returns the ObjectIdentifier object.
+ @param {string} identifier The certificate issuer identifier (an URI).
+ @return {ObjectIdentifier} An object that represents the certificate issuer identifier.
+*/
+module.exports.parseIssuerIdentifier = function (identifier) {
+    var baseUri;
+    try {
+        baseUri = url.parse(identifier, true, true);
+    } catch (e) {
+        throw new Error(util.format('Invalid %s identifier: %s. Not a valid URI', 'issuer', identifier));
+    }
+    
+    // Path is of the form '/certificate/issuer/name'
+    var segments = baseUri.pathname.split('/');
+    if (segments.length !== 4) {
+        throw new Error(util.format('Invalid %s identifier: %s. Bad number of segments: %d', 'issuer', identifier, segments.length));
+    }
+    
+    if ('certificates' !== segments[1]) {
+        throw new Error(util.format('Invalid %s identifier: %s. segment [1] should be "%s", found "%s"', 'issuer', identifier, 'certificates', segments[1]));
+    }
+    
+    if ('issuers' !== segments[2]) {
+        throw new Error(util.format('Invalid %s identifier: %s. segment [2] should be "%s", found "%s"', 'issuer', identifier, 'issuers', segments[1]));
+    }
+    
+    var vault = util.format('%s//%s', baseUri.protocol, baseUri.host);
+    var name = segments[3];
+    return new ObjectIdentifier('certificates/issuers', vault, name, null);
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Sep 07 2016 23:44:14 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

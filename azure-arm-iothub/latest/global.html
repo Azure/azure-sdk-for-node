@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Global - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="IotHubClient.html">IotHubClient</a></li><li><a href="IotHubResource.html">IotHubResource</a><ul class='methods'><li data-type='method'><a href="IotHubResource.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="IotHubResource.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="IotHubResource.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="IotHubResource.html#createEventHubConsumerGroup">createEventHubConsumerGroup</a></li><li data-type='method'><a href="IotHubResource.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="IotHubResource.html#deleteEventHubConsumerGroup">deleteEventHubConsumerGroup</a></li><li data-type='method'><a href="IotHubResource.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="IotHubResource.html#exportDevices">exportDevices</a></li><li data-type='method'><a href="IotHubResource.html#get">get</a></li><li data-type='method'><a href="IotHubResource.html#getEventHubConsumerGroup">getEventHubConsumerGroup</a></li><li data-type='method'><a href="IotHubResource.html#getJob">getJob</a></li><li data-type='method'><a href="IotHubResource.html#getKeysForKeyName">getKeysForKeyName</a></li><li data-type='method'><a href="IotHubResource.html#getQuotaMetrics">getQuotaMetrics</a></li><li data-type='method'><a href="IotHubResource.html#getQuotaMetricsNext">getQuotaMetricsNext</a></li><li data-type='method'><a href="IotHubResource.html#getStats">getStats</a></li><li data-type='method'><a href="IotHubResource.html#getValidSkus">getValidSkus</a></li><li data-type='method'><a href="IotHubResource.html#getValidSkusNext">getValidSkusNext</a></li><li data-type='method'><a href="IotHubResource.html#importDevices">importDevices</a></li><li data-type='method'><a href="IotHubResource.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="IotHubResource.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="IotHubResource.html#listBySubscription">listBySubscription</a></li><li data-type='method'><a href="IotHubResource.html#listBySubscriptionNext">listBySubscriptionNext</a></li><li data-type='method'><a href="IotHubResource.html#listEventHubConsumerGroups">listEventHubConsumerGroups</a></li><li data-type='method'><a href="IotHubResource.html#listEventHubConsumerGroupsNext">listEventHubConsumerGroupsNext</a></li><li data-type='method'><a href="IotHubResource.html#listJobs">listJobs</a></li><li data-type='method'><a href="IotHubResource.html#listJobsNext">listJobsNext</a></li><li data-type='method'><a href="IotHubResource.html#listKeys">listKeys</a></li><li data-type='method'><a href="IotHubResource.html#listKeysNext">listKeysNext</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#authorizationPolicies">authorizationPolicies</a></li><li><a href="global.html#capacity">capacity</a></li><li><a href="global.html#containerName">containerName</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#disabledDeviceCount">disabledDeviceCount</a></li><li><a href="global.html#events">events</a></li><li><a href="global.html#excludeKeys">excludeKeys</a></li><li><a href="global.html#features">features</a></li><li><a href="global.html#maxDeliveryCount">maxDeliveryCount</a></li><li><a href="global.html#maxValue">maxValue</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#outputBlobContainerUri">outputBlobContainerUri</a></li><li><a href="global.html#parentJobId">parentJobId</a></li><li><a href="global.html#revision">revision</a></li><li><a href="global.html#rights">rights</a></li><li><a href="global.html#scaleType">scaleType</a></li><li><a href="global.html#tags">tags</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">Global</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="authorizationPolicies"><span class="type-signature"></span>authorizationPolicies<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>The retention time in days. Range of<br>values [For F1: 1-1, S1: 1-7, S2: 1-7, S3: 1-7].</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_eventHubProperties.js.html">models/eventHubProperties.js</a>, <a href="models_eventHubProperties.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="capacity"><span class="type-signature"></span>capacity<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The name of the Sku. Possible values include: 'F1',<br>'S1', 'S2', 'S3'</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubSkuInfo.js.html">models/iotHubSkuInfo.js</a>, <a href="models_iotHubSkuInfo.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="containerName"><span class="type-signature"></span>containerName<span class="type-signature"> :moment.duration</span></h4>
+
+
+
+
+<div class="description">
+    <p>SAS time to live. Range: 1 Min<br>(PT1M) - 1 Day (P1D).</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">moment.duration</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_storageEndpointProperties.js.html">models/storageEndpointProperties.js</a>, <a href="models_storageEndpointProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="details"><span class="type-signature"></span>details<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The error code.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_errorDetails.js.html">models/errorDetails.js</a>, <a href="models_errorDetails.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="disabledDeviceCount"><span class="type-signature"></span>disabledDeviceCount<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>The total device count.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_registryStatistics.js.html">models/registryStatistics.js</a>, <a href="models_registryStatistics.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="events"><span class="type-signature"></span>events<span class="type-signature"> :object</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_operationsMonitoringProperties.js.html">models/operationsMonitoringProperties.js</a>, <a href="models_operationsMonitoringProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="excludeKeys"><span class="type-signature"></span>excludeKeys<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The export BLOB container URI.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_exportDevicesRequest.js.html">models/exportDevicesRequest.js</a>, <a href="models_exportDevicesRequest.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="features"><span class="type-signature"></span>features<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>The authorization rules.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubProperties.js.html">models/iotHubProperties.js</a>, <a href="models_iotHubProperties.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="maxDeliveryCount"><span class="type-signature"></span>maxDeliveryCount<span class="type-signature"> :moment.duration</span></h4>
+
+
+
+
+<div class="description">
+    <p>The lock duration for the<br>feedback queue. Range: 5 Sec (PT5S) - 5 Min (PT5M).</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">moment.duration</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_feedbackProperties.js.html">models/feedbackProperties.js</a>, <a href="models_feedbackProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="maxDeliveryCount"><span class="type-signature"></span>maxDeliveryCount<span class="type-signature"> :moment.duration</span></h4>
+
+
+
+
+<div class="description">
+    <p>The lock duration. Range:<br>5 Sec (PT5S) - 5 Min (PT5M).</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">moment.duration</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_messagingEndpointProperties.js.html">models/messagingEndpointProperties.js</a>, <a href="models_messagingEndpointProperties.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="maxValue"><span class="type-signature"></span>maxValue<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The name of the quota metric.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubQuotaMetricInfo.js.html">models/iotHubQuotaMetricInfo.js</a>, <a href="models_iotHubQuotaMetricInfo.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="message"><span class="type-signature"></span>message<span class="type-signature"> :boolean</span></h4>
+
+
+
+
+<div class="description">
+    <p>The value which indicates whether the<br>provided name is available.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">boolean</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubNameAvailabilityInfo.js.html">models/iotHubNameAvailabilityInfo.js</a>, <a href="models_iotHubNameAvailabilityInfo.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :object</span></h4>
+
+
+
+
+<div class="description">
+    <p>The tags.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_eventHubConsumerGroupInfo.js.html">models/eventHubConsumerGroupInfo.js</a>, <a href="models_eventHubConsumerGroupInfo.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The name of the iot hub.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_operationInputs.js.html">models/operationInputs.js</a>, <a href="models_operationInputs.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>The list of IotHubQuotaMetricInfo.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubQuotaMetricInfoListResult.js.html">models/iotHubQuotaMetricInfoListResult.js</a>, <a href="models_iotHubQuotaMetricInfoListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>The list of JobResponse.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_jobResponseListResult.js.html">models/jobResponseListResult.js</a>, <a href="models_jobResponseListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>The list of IotHubDescription.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubDescriptionListResult.js.html">models/iotHubDescriptionListResult.js</a>, <a href="models_iotHubDescriptionListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>The list of authorization rules.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_sharedAccessSignatureAuthorizationRuleListResult.js.html">models/sharedAccessSignatureAuthorizationRuleListResult.js</a>, <a href="models_sharedAccessSignatureAuthorizationRuleListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>The list of IotHubSkuDescription.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubSkuDescriptionListResult.js.html">models/iotHubSkuDescriptionListResult.js</a>, <a href="models_iotHubSkuDescriptionListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nextLink"><span class="type-signature"></span>nextLink<span class="type-signature"> :array</span></h4>
+
+
+
+
+<div class="description">
+    <p>The list of eventhub consumer group names.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">array</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_eventHubConsumerGroupsListResult.js.html">models/eventHubConsumerGroupsListResult.js</a>, <a href="models_eventHubConsumerGroupsListResult.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="outputBlobContainerUri"><span class="type-signature"></span>outputBlobContainerUri<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The input BLOB container URI.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_importDevicesRequest.js.html">models/importDevicesRequest.js</a>, <a href="models_importDevicesRequest.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="parentJobId"><span class="type-signature"></span>parentJobId<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The job identifier.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_jobResponse.js.html">models/jobResponse.js</a>, <a href="models_jobResponse.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="revision"><span class="type-signature"></span>revision<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The key name.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_sharedAccessAuthorizationRule.js.html">models/sharedAccessAuthorizationRule.js</a>, <a href="models_sharedAccessAuthorizationRule.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="rights"><span class="type-signature"></span>rights<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The name of the key.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_sharedAccessSignatureAuthorizationRule.js.html">models/sharedAccessSignatureAuthorizationRule.js</a>, <a href="models_sharedAccessSignatureAuthorizationRule.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="scaleType"><span class="type-signature"></span>scaleType<span class="type-signature"> :number</span></h4>
+
+
+
+
+<div class="description">
+    <p>The minimum number of units.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_iotHubCapacity.js.html">models/iotHubCapacity.js</a>, <a href="models_iotHubCapacity.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="tags"><span class="type-signature"></span>tags<span class="type-signature"> :string</span></h4>
+
+
+
+
+<div class="description">
+    <p>The Resource Id.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_resource.js.html">models/resource.js</a>, <a href="models_resource.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Sep 07 2016 23:44:13 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
