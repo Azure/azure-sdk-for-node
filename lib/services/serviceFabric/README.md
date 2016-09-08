@@ -9,7 +9,7 @@ This project provides a Node.js package for accessing the Azure Service Fabric. 
 ## How to Install
 
 ```bash
-npm install azure-arm-servicefabric
+npm install azure-servicefabric
 ```
 
 ## Related projects
