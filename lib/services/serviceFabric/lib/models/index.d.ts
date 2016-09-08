@@ -1519,12 +1519,75 @@ export interface StatefulServiceGroupDescription extends ServiceGroupDescription
 
 /**
  * @class
+ * Initializes a new instance of the CreateServiceGroupDescription class.
+ * @constructor
+ * @member {string} [applicationName]
+ * 
+ * @member {string} [serviceName]
+ * 
+ * @member {string} [serviceTypeName]
+ * 
+ * @member {object} [partitionDescription]
+ * 
+ * @member {string} [partitionDescription.partitionScheme]
+ * 
+ * @member {number} [partitionDescription.count]
+ * 
+ * @member {array} [partitionDescription.names]
+ * 
+ * @member {string} [partitionDescription.lowKey]
+ * 
+ * @member {string} [partitionDescription.highKey]
+ * 
+ * @member {string} [placementConstraints]
+ * 
+ * @member {object} [correlationScheme]
+ * 
+ * @member {string} [correlationScheme.serviceName]
+ * 
+ * @member {string} [correlationScheme.serviceCorrelationScheme]
+ * 
+ * @member {object} [serviceLoadMetrics]
+ * 
+ * @member {string} [serviceLoadMetrics.serviceName]
+ * 
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
+ * 
+ * @member {object} [servicePlacementPolicies]
+ * 
+ * @member {string} [servicePlacementPolicies.serviceName]
+ * 
+ * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
+ * 
+ * @member {number} [flags]
+ * 
+ * @member {array} [serviceGroupMemberDescription]
+ * 
+ * @member {string} ServiceKind Polymorhpic Discriminator
+ * 
+ */
+export interface CreateServiceGroupDescription {
+    applicationName?: string;
+    serviceName?: string;
+    serviceTypeName?: string;
+    partitionDescription?: PartitionDescription;
+    placementConstraints?: string;
+    correlationScheme?: ServiceCorrelationDescription;
+    serviceLoadMetrics?: ServiceCorrelationDescription;
+    servicePlacementPolicies?: ServiceCorrelationDescription;
+    flags?: number;
+    serviceGroupMemberDescription?: ServiceGroupMemberDescription[];
+    ServiceKind: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the StatelessCreateServiceGroupDescription class.
  * @constructor
  * @member {number} [instanceCount]
  * 
  */
-export interface StatelessCreateServiceGroupDescription extends ServiceGroupDescription {
+export interface StatelessCreateServiceGroupDescription extends CreateServiceGroupDescription {
     instanceCount?: number;
 }
 
@@ -1549,7 +1612,7 @@ export interface StatelessCreateServiceGroupDescription extends ServiceGroupDesc
  * @member {boolean} [isDefaultMoveCostSpecified]
  * 
  */
-export interface StatefulCreateServiceGroupDescription extends ServiceGroupDescription {
+export interface StatefulCreateServiceGroupDescription extends CreateServiceGroupDescription {
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
     hasPersistedState?: boolean;
@@ -1856,12 +1919,72 @@ export interface StatefulServiceDescription extends ServiceDescription {
 
 /**
  * @class
+ * Initializes a new instance of the CreateServiceDescription class.
+ * @constructor
+ * @member {string} [applicationName]
+ * 
+ * @member {string} [serviceName]
+ * 
+ * @member {string} [serviceTypeName]
+ * 
+ * @member {object} [partitionDescription]
+ * 
+ * @member {string} [partitionDescription.partitionScheme]
+ * 
+ * @member {number} [partitionDescription.count]
+ * 
+ * @member {array} [partitionDescription.names]
+ * 
+ * @member {string} [partitionDescription.lowKey]
+ * 
+ * @member {string} [partitionDescription.highKey]
+ * 
+ * @member {string} [placementConstraints]
+ * 
+ * @member {object} [correlationScheme]
+ * 
+ * @member {string} [correlationScheme.serviceName]
+ * 
+ * @member {string} [correlationScheme.serviceCorrelationScheme]
+ * 
+ * @member {object} [serviceLoadMetrics]
+ * 
+ * @member {string} [serviceLoadMetrics.serviceName]
+ * 
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
+ * 
+ * @member {object} [servicePlacementPolicies]
+ * 
+ * @member {string} [servicePlacementPolicies.serviceName]
+ * 
+ * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
+ * 
+ * @member {number} [flags]
+ * 
+ * @member {string} ServiceKind Polymorhpic Discriminator
+ * 
+ */
+export interface CreateServiceDescription {
+    applicationName?: string;
+    serviceName?: string;
+    serviceTypeName?: string;
+    partitionDescription?: PartitionDescription;
+    placementConstraints?: string;
+    correlationScheme?: ServiceCorrelationDescription;
+    serviceLoadMetrics?: ServiceCorrelationDescription;
+    servicePlacementPolicies?: ServiceCorrelationDescription;
+    flags?: number;
+    ServiceKind: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the StatelessCreateServiceDescription class.
  * @constructor
  * @member {number} [instanceCount]
  * 
  */
-export interface StatelessCreateServiceDescription extends ServiceDescription {
+export interface StatelessCreateServiceDescription extends CreateServiceDescription {
     instanceCount?: number;
 }
 
@@ -1886,7 +2009,7 @@ export interface StatelessCreateServiceDescription extends ServiceDescription {
  * @member {boolean} [isDefaultMoveCostSpecified]
  * 
  */
-export interface StatefulCreateServiceDescription extends ServiceDescription {
+export interface StatefulCreateServiceDescription extends CreateServiceDescription {
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
     hasPersistedState?: boolean;
@@ -1899,32 +2022,32 @@ export interface StatefulCreateServiceDescription extends ServiceDescription {
 
 /**
  * @class
- * Initializes a new instance of the ServiceUpdateDescription class.
+ * Initializes a new instance of the UpdateServiceDescription class.
  * @constructor
  * @member {number} [flags]
  * 
  * @member {string} ServiceKind Polymorhpic Discriminator
  * 
  */
-export interface ServiceUpdateDescription {
+export interface UpdateServiceDescription {
     flags?: number;
     ServiceKind: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the StatelessServiceUpdateDescription class.
+ * Initializes a new instance of the StatelessUpdateServiceDescription class.
  * @constructor
  * @member {number} [instanceCount]
  * 
  */
-export interface StatelessServiceUpdateDescription extends ServiceUpdateDescription {
+export interface StatelessUpdateServiceDescription extends UpdateServiceDescription {
     instanceCount?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the StatefulServiceUpdateDescription class.
+ * Initializes a new instance of the StatefulUpdateServiceDescription class.
  * @constructor
  * @member {number} [targetReplicaSetSize]
  * 
@@ -1937,7 +2060,7 @@ export interface StatelessServiceUpdateDescription extends ServiceUpdateDescript
  * @member {number} [standByReplicaKeepDurationInMilliseconds]
  * 
  */
-export interface StatefulServiceUpdateDescription extends ServiceUpdateDescription {
+export interface StatefulUpdateServiceDescription extends UpdateServiceDescription {
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
     replicaRestartWaitDurationInMilliseconds?: number;
@@ -1947,32 +2070,32 @@ export interface StatefulServiceUpdateDescription extends ServiceUpdateDescripti
 
 /**
  * @class
- * Initializes a new instance of the ServiceGroupUpdateDescription class.
+ * Initializes a new instance of the UpdateServiceGroupDescription class.
  * @constructor
  * @member {number} [flags]
  * 
  * @member {string} ServiceKind Polymorhpic Discriminator
  * 
  */
-export interface ServiceGroupUpdateDescription {
+export interface UpdateServiceGroupDescription {
     flags?: number;
     ServiceKind: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the StatelessServiceGroupUpdateDescription class.
+ * Initializes a new instance of the StatelessUpdateServiceGroupDescription class.
  * @constructor
  * @member {number} [instanceCount]
  * 
  */
-export interface StatelessServiceGroupUpdateDescription extends ServiceGroupUpdateDescription {
+export interface StatelessUpdateServiceGroupDescription extends UpdateServiceGroupDescription {
     instanceCount?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the StatefulServiceGroupUpdateDescription class.
+ * Initializes a new instance of the StatefulUpdateServiceGroupDescription class.
  * @constructor
  * @member {number} [targetReplicaSetSize]
  * 
@@ -1985,7 +2108,7 @@ export interface StatelessServiceGroupUpdateDescription extends ServiceGroupUpda
  * @member {number} [standByReplicaKeepDurationInMilliseconds]
  * 
  */
-export interface StatefulServiceGroupUpdateDescription extends ServiceGroupUpdateDescription {
+export interface StatefulUpdateServiceGroupDescription extends UpdateServiceGroupDescription {
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
     replicaRestartWaitDurationInMilliseconds?: number;

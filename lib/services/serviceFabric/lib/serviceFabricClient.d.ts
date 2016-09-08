@@ -726,42 +726,45 @@ declare class ServiceFabricClient {
         /**
          * @param {string} applicationName The name of the application
          * 
-         * @param {object} serviceDescription The description of the service
+         * @param {object} createServiceDescription The description of the service
          * 
-         * @param {string} [serviceDescription.applicationName]
+         * @param {string} [createServiceDescription.applicationName]
          * 
-         * @param {string} [serviceDescription.serviceName]
+         * @param {string} [createServiceDescription.serviceName]
          * 
-         * @param {string} [serviceDescription.serviceTypeName]
+         * @param {string} [createServiceDescription.serviceTypeName]
          * 
-         * @param {object} [serviceDescription.partitionDescription]
-         * 
-         * @param {string} [serviceDescription.partitionDescription.partitionScheme]
-         * 
-         * @param {number} [serviceDescription.partitionDescription.count]
-         * 
-         * @param {array} [serviceDescription.partitionDescription.names]
-         * 
-         * @param {string} [serviceDescription.partitionDescription.lowKey]
-         * 
-         * @param {string} [serviceDescription.partitionDescription.highKey]
-         * 
-         * @param {string} [serviceDescription.placementConstraints]
-         * 
-         * @param {object} [serviceDescription.correlationScheme]
-         * 
-         * @param {object} [serviceDescription.serviceLoadMetrics]
-         * 
-         * @param {object} [serviceDescription.servicePlacementPolicies]
-         * 
-         * @param {string} [serviceDescription.servicePlacementPolicies.serviceName]
+         * @param {object} [createServiceDescription.partitionDescription]
          * 
          * @param {string}
-         * [serviceDescription.servicePlacementPolicies.serviceCorrelationScheme]
+         * [createServiceDescription.partitionDescription.partitionScheme]
          * 
-         * @param {number} [serviceDescription.flags]
+         * @param {number} [createServiceDescription.partitionDescription.count]
          * 
-         * @param {string} [serviceDescription.ServiceKind] Polymorhpic Discriminator
+         * @param {array} [createServiceDescription.partitionDescription.names]
+         * 
+         * @param {string} [createServiceDescription.partitionDescription.lowKey]
+         * 
+         * @param {string} [createServiceDescription.partitionDescription.highKey]
+         * 
+         * @param {string} [createServiceDescription.placementConstraints]
+         * 
+         * @param {object} [createServiceDescription.correlationScheme]
+         * 
+         * @param {object} [createServiceDescription.serviceLoadMetrics]
+         * 
+         * @param {object} [createServiceDescription.servicePlacementPolicies]
+         * 
+         * @param {string}
+         * [createServiceDescription.servicePlacementPolicies.serviceName]
+         * 
+         * @param {string}
+         * [createServiceDescription.servicePlacementPolicies.serviceCorrelationScheme]
+         * 
+         * @param {number} [createServiceDescription.flags]
+         * 
+         * @param {string} [createServiceDescription.ServiceKind] Polymorhpic
+         * Discriminator
          * 
          * @param {object} [options] Optional Parameters.
          * 
@@ -771,8 +774,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        newService(applicationName: string, serviceDescription: models.ServiceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-        newService(applicationName: string, serviceDescription: models.ServiceDescription, callback: ServiceCallback<any>): void;
+        newService(applicationName: string, createServiceDescription: models.CreateServiceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+        newService(applicationName: string, createServiceDescription: models.CreateServiceDescription, callback: ServiceCallback<any>): void;
 
         /**
          * @param {string} applicationName The name of the application
@@ -798,46 +801,49 @@ declare class ServiceFabricClient {
         /**
          * @param {string} applicationName The name of the service group
          * 
-         * @param {object} serviceGroupDescription The description of the service group
+         * @param {object} createServiceGroupDescription The description of the
+         * service group
          * 
-         * @param {string} [serviceGroupDescription.applicationName]
+         * @param {string} [createServiceGroupDescription.applicationName]
          * 
-         * @param {string} [serviceGroupDescription.serviceName]
+         * @param {string} [createServiceGroupDescription.serviceName]
          * 
-         * @param {string} [serviceGroupDescription.serviceTypeName]
+         * @param {string} [createServiceGroupDescription.serviceTypeName]
          * 
-         * @param {object} [serviceGroupDescription.partitionDescription]
-         * 
-         * @param {string}
-         * [serviceGroupDescription.partitionDescription.partitionScheme]
-         * 
-         * @param {number} [serviceGroupDescription.partitionDescription.count]
-         * 
-         * @param {array} [serviceGroupDescription.partitionDescription.names]
-         * 
-         * @param {string} [serviceGroupDescription.partitionDescription.lowKey]
-         * 
-         * @param {string} [serviceGroupDescription.partitionDescription.highKey]
-         * 
-         * @param {string} [serviceGroupDescription.placementConstraints]
-         * 
-         * @param {object} [serviceGroupDescription.correlationScheme]
-         * 
-         * @param {object} [serviceGroupDescription.serviceLoadMetrics]
-         * 
-         * @param {object} [serviceGroupDescription.servicePlacementPolicies]
+         * @param {object} [createServiceGroupDescription.partitionDescription]
          * 
          * @param {string}
-         * [serviceGroupDescription.servicePlacementPolicies.serviceName]
+         * [createServiceGroupDescription.partitionDescription.partitionScheme]
+         * 
+         * @param {number} [createServiceGroupDescription.partitionDescription.count]
+         * 
+         * @param {array} [createServiceGroupDescription.partitionDescription.names]
+         * 
+         * @param {string} [createServiceGroupDescription.partitionDescription.lowKey]
          * 
          * @param {string}
-         * [serviceGroupDescription.servicePlacementPolicies.serviceCorrelationScheme]
+         * [createServiceGroupDescription.partitionDescription.highKey]
          * 
-         * @param {number} [serviceGroupDescription.flags]
+         * @param {string} [createServiceGroupDescription.placementConstraints]
          * 
-         * @param {array} [serviceGroupDescription.serviceGroupMemberDescription]
+         * @param {object} [createServiceGroupDescription.correlationScheme]
          * 
-         * @param {string} [serviceGroupDescription.ServiceKind] Polymorhpic
+         * @param {object} [createServiceGroupDescription.serviceLoadMetrics]
+         * 
+         * @param {object} [createServiceGroupDescription.servicePlacementPolicies]
+         * 
+         * @param {string}
+         * [createServiceGroupDescription.servicePlacementPolicies.serviceName]
+         * 
+         * @param {string}
+         * [createServiceGroupDescription.servicePlacementPolicies.serviceCorrelationScheme]
+         * 
+         * @param {number} [createServiceGroupDescription.flags]
+         * 
+         * @param {array}
+         * [createServiceGroupDescription.serviceGroupMemberDescription]
+         * 
+         * @param {string} [createServiceGroupDescription.ServiceKind] Polymorhpic
          * Discriminator
          * 
          * @param {object} [options] Optional Parameters.
@@ -848,8 +854,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        newServiceGroup(applicationName: string, serviceGroupDescription: models.ServiceGroupDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-        newServiceGroup(applicationName: string, serviceGroupDescription: models.ServiceGroupDescription, callback: ServiceCallback<any>): void;
+        newServiceGroup(applicationName: string, createServiceGroupDescription: models.CreateServiceGroupDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+        newServiceGroup(applicationName: string, createServiceGroupDescription: models.CreateServiceGroupDescription, callback: ServiceCallback<any>): void;
 
         /**
          * @param {string} applicationName The name of the application
@@ -877,12 +883,12 @@ declare class ServiceFabricClient {
          * 
          * @param {string} serviceName The name of the service
          * 
-         * @param {object} serviceGroupUpdateDescription The description of the
+         * @param {object} updateServiceGroupDescription The description of the
          * service group update
          * 
-         * @param {number} [serviceGroupUpdateDescription.flags]
+         * @param {number} [updateServiceGroupDescription.flags]
          * 
-         * @param {string} [serviceGroupUpdateDescription.ServiceKind] Polymorhpic
+         * @param {string} [updateServiceGroupDescription.ServiceKind] Polymorhpic
          * Discriminator
          * 
          * @param {object} [options] Optional Parameters.
@@ -893,8 +899,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        updateServiceGroup(applicationName: string, serviceName: string, serviceGroupUpdateDescription: models.ServiceGroupUpdateDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-        updateServiceGroup(applicationName: string, serviceName: string, serviceGroupUpdateDescription: models.ServiceGroupUpdateDescription, callback: ServiceCallback<string>): void;
+        updateServiceGroup(applicationName: string, serviceName: string, updateServiceGroupDescription: models.UpdateServiceGroupDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        updateServiceGroup(applicationName: string, serviceName: string, updateServiceGroupDescription: models.UpdateServiceGroupDescription, callback: ServiceCallback<string>): void;
 
         /**
          * @param {string} applicationName The name of the application
@@ -1091,12 +1097,12 @@ declare class ServiceFabricClient {
         /**
          * @param {string} serviceName The name of the service
          * 
-         * @param {object} serviceUpdateDescription The description of the service
+         * @param {object} updateServiceDescription The description of the service
          * update
          * 
-         * @param {number} [serviceUpdateDescription.flags]
+         * @param {number} [updateServiceDescription.flags]
          * 
-         * @param {string} [serviceUpdateDescription.ServiceKind] Polymorhpic
+         * @param {string} [updateServiceDescription.ServiceKind] Polymorhpic
          * Discriminator
          * 
          * @param {object} [options] Optional Parameters.
@@ -1107,8 +1113,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        updateService(serviceName: string, serviceUpdateDescription: models.ServiceUpdateDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-        updateService(serviceName: string, serviceUpdateDescription: models.ServiceUpdateDescription, callback: ServiceCallback<string>): void;
+        updateService(serviceName: string, updateServiceDescription: models.UpdateServiceDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+        updateService(serviceName: string, updateServiceDescription: models.UpdateServiceDescription, callback: ServiceCallback<string>): void;
 
         /**
          * @param {string} serviceName The name of the service
