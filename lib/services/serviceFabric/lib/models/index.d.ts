@@ -23,7 +23,7 @@
  * 
  * @member {string} [nodeUpTimeInSeconds]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {boolean} [isSeedNode]
  * 
@@ -39,7 +39,7 @@
  * 
  * @member {object} [nodeDeactivationInfo]
  * 
- * @member {number} [nodeDeactivationInfo.nodeDeactivationIntent]
+ * @member {string} [nodeDeactivationInfo.nodeDeactivationIntent]
  * 
  * @member {number} [nodeDeactivationInfo.nodeDeactivationStatus]
  * 
@@ -52,7 +52,7 @@ export interface Node {
     configVersion?: string;
     nodeStatus?: number;
     nodeUpTimeInSeconds?: string;
-    healthState?: number;
+    healthState?: string;
     isSeedNode?: boolean;
     upgradeDomain?: string;
     faultDomain?: string;
@@ -76,13 +76,13 @@ export interface NodeId {
  * @class
  * Initializes a new instance of the NodeNodeDeactivationInfo class.
  * @constructor
- * @member {number} [nodeDeactivationIntent]
+ * @member {string} [nodeDeactivationIntent]
  * 
  * @member {number} [nodeDeactivationStatus]
  * 
  */
 export interface NodeNodeDeactivationInfo {
-    nodeDeactivationIntent?: number;
+    nodeDeactivationIntent?: string;
     nodeDeactivationStatus?: number;
 }
 
@@ -94,7 +94,7 @@ export interface NodeNodeDeactivationInfo {
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [timeToLiveInMilliSeconds]
  * 
@@ -120,7 +120,7 @@ export interface NodeNodeDeactivationInfo {
 export interface HealthEvent {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     timeToLiveInMilliSeconds?: string;
     description?: string;
     sequenceNumber?: string;
@@ -177,7 +177,7 @@ export interface UnhealthyEvaluation {
  * 
  * @member {string} [unhealthyEvent.property]
  * 
- * @member {number} [unhealthyEvent.healthState]
+ * @member {string} [unhealthyEvent.healthState]
  * 
  * @member {string} [unhealthyEvent.timeToLiveInMilliSeconds]
  * 
@@ -930,7 +930,7 @@ export interface DeployedCodePackage {
  * @class
  * Initializes a new instance of the DeployedReplica class.
  * @constructor
- * @member {number} [serviceKind]
+ * @member {string} [serviceKind]
  * 
  * @member {string} [serviceName]
  * 
@@ -956,7 +956,7 @@ export interface DeployedCodePackage {
  * 
  */
 export interface DeployedReplica {
-    serviceKind?: number;
+    serviceKind?: string;
     serviceName?: string;
     serviceTypeName?: string;
     serviceManifestVersion?: string;
@@ -974,7 +974,7 @@ export interface DeployedReplica {
  * @class
  * Initializes a new instance of the DeployedReplicaDetail class.
  * @constructor
- * @member {number} [serviceKind]
+ * @member {string} [serviceKind]
  * 
  * @member {string} [serviceName]
  * 
@@ -1019,7 +1019,7 @@ export interface DeployedReplica {
  * 
  */
 export interface DeployedReplicaDetail {
-    serviceKind?: number;
+    serviceKind?: string;
     serviceName?: string;
     partitionId?: string;
     currentServiceOperation?: number;
@@ -1250,7 +1250,7 @@ export interface ServiceTypeServiceTypeDescription {
  * 
  * @member {array} [parameters]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  */
 export interface Application {
@@ -1260,7 +1260,7 @@ export interface Application {
     typeVersion?: string;
     status?: number;
     parameters?: ApplicationParametersItem[];
-    healthState?: number;
+    healthState?: string;
 }
 
 /**
@@ -1328,7 +1328,7 @@ export interface ApplicationManifest {
  * @constructor
  * @member {string} [id]
  * 
- * @member {number} [serviceKind]
+ * @member {string} [serviceKind]
  * 
  * @member {string} [name]
  * 
@@ -1338,7 +1338,7 @@ export interface ApplicationManifest {
  * 
  * @member {boolean} [hasPersistedState]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {number} [serviceStatus]
  * 
@@ -1347,12 +1347,12 @@ export interface ApplicationManifest {
  */
 export interface Service {
     id?: string;
-    serviceKind?: number;
+    serviceKind?: string;
     name?: string;
     typeName?: string;
     manifestVersion?: string;
     hasPersistedState?: boolean;
-    healthState?: number;
+    healthState?: string;
     serviceStatus?: number;
     isServiceGroup?: boolean;
 }
@@ -1361,7 +1361,7 @@ export interface Service {
  * @class
  * Initializes a new instance of the PartitionDescription class.
  * @constructor
- * @member {number} [partitionScheme]
+ * @member {string} [partitionScheme]
  * 
  * @member {number} [count]
  * 
@@ -1373,7 +1373,7 @@ export interface Service {
  * 
  */
 export interface PartitionDescription {
-    partitionScheme?: number;
+    partitionScheme?: string;
     count?: number;
     names?: string[];
     lowKey?: string;
@@ -1388,13 +1388,13 @@ export interface PartitionDescription {
  * 
  * @member {string} [serviceTypeName]
  * 
- * @member {number} [serviceKind]
+ * @member {string} [serviceKind]
  * 
  */
 export interface ServiceGroupMemberDescription {
     serviceName?: string;
     serviceTypeName?: string;
-    serviceKind?: number;
+    serviceKind?: string;
 }
 
 /**
@@ -1409,7 +1409,7 @@ export interface ServiceGroupMemberDescription {
  * 
  * @member {object} [partitionDescription]
  * 
- * @member {number} [partitionDescription.partitionScheme]
+ * @member {string} [partitionDescription.partitionScheme]
  * 
  * @member {number} [partitionDescription.count]
  * 
@@ -1425,19 +1425,19 @@ export interface ServiceGroupMemberDescription {
  * 
  * @member {string} [correlationScheme.serviceName]
  * 
- * @member {number} [correlationScheme.serviceCorrelationScheme]
+ * @member {string} [correlationScheme.serviceCorrelationScheme]
  * 
  * @member {object} [serviceLoadMetrics]
  * 
  * @member {string} [serviceLoadMetrics.serviceName]
  * 
- * @member {number} [serviceLoadMetrics.serviceCorrelationScheme]
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
  * 
  * @member {object} [servicePlacementPolicies]
  * 
  * @member {string} [servicePlacementPolicies.serviceName]
  * 
- * @member {number} [servicePlacementPolicies.serviceCorrelationScheme]
+ * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
  * 
  * @member {number} [flags]
  * 
@@ -1466,12 +1466,12 @@ export interface ServiceGroupDescription {
  * @constructor
  * @member {string} [serviceName]
  * 
- * @member {number} [serviceCorrelationScheme]
+ * @member {string} [serviceCorrelationScheme]
  * 
  */
 export interface ServiceCorrelationDescription {
     serviceName?: string;
-    serviceCorrelationScheme?: number;
+    serviceCorrelationScheme?: string;
 }
 
 /**
@@ -1647,7 +1647,7 @@ export interface ApplicationHealthDeployedApplicationHealthStatesItem {
  * 
  * @member {string} [nextUpgradeDomain]
  * 
- * @member {number} [rollingUpgradeMode]
+ * @member {string} [rollingUpgradeMode]
  * 
  * @member {string} [upgradeDurationInMilliseconds]
  * 
@@ -1681,7 +1681,7 @@ export interface ApplicationUpgrade {
     upgradeDomains?: string;
     upgradeState?: number;
     nextUpgradeDomain?: string;
-    rollingUpgradeMode?: number;
+    rollingUpgradeMode?: string;
     upgradeDurationInMilliseconds?: string;
     upgradeDomainDurationInMilliseconds?: string;
     unhealthyEvaluations?: string;
@@ -1744,11 +1744,11 @@ export interface ServiceLoadMetricDescription {
  * @class
  * Initializes a new instance of the ServicePlacementPolicyDescription class.
  * @constructor
- * @member {number} [type]
+ * @member {string} [type]
  * 
  */
 export interface ServicePlacementPolicyDescription {
-    type?: number;
+    type?: string;
 }
 
 /**
@@ -1763,7 +1763,7 @@ export interface ServicePlacementPolicyDescription {
  * 
  * @member {object} [partitionDescription]
  * 
- * @member {number} [partitionDescription.partitionScheme]
+ * @member {string} [partitionDescription.partitionScheme]
  * 
  * @member {number} [partitionDescription.count]
  * 
@@ -1779,19 +1779,19 @@ export interface ServicePlacementPolicyDescription {
  * 
  * @member {string} [correlationScheme.serviceName]
  * 
- * @member {number} [correlationScheme.serviceCorrelationScheme]
+ * @member {string} [correlationScheme.serviceCorrelationScheme]
  * 
  * @member {object} [serviceLoadMetrics]
  * 
  * @member {string} [serviceLoadMetrics.serviceName]
  * 
- * @member {number} [serviceLoadMetrics.serviceCorrelationScheme]
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
  * 
  * @member {object} [servicePlacementPolicies]
  * 
  * @member {string} [servicePlacementPolicies.serviceName]
  * 
- * @member {number} [servicePlacementPolicies.serviceCorrelationScheme]
+ * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
  * 
  * @member {number} [flags]
  * 
@@ -2054,7 +2054,7 @@ export interface PartitionInformation {
  * @class
  * Initializes a new instance of the Partition class.
  * @constructor
- * @member {number} [serviceKind]
+ * @member {string} [serviceKind]
  * 
  * @member {object} [partitionInformation]
  * 
@@ -2072,7 +2072,7 @@ export interface PartitionInformation {
  * 
  * @member {number} [minReplicaSetSize]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {number} [partitionStatus]
  * 
@@ -2084,11 +2084,11 @@ export interface PartitionInformation {
  * 
  */
 export interface Partition {
-    serviceKind?: number;
+    serviceKind?: string;
     partitionInformation?: PartitionInformation;
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
-    healthState?: number;
+    healthState?: string;
     partitionStatus?: number;
     currentConfigurationEpoch?: PartitionCurrentConfigurationEpoch;
 }
@@ -2111,7 +2111,7 @@ export interface PartitionCurrentConfigurationEpoch {
  * @class
  * Initializes a new instance of the Replica class.
  * @constructor
- * @member {number} [serviceKind]
+ * @member {string} [serviceKind]
  * 
  * @member {string} [instanceId]
  * 
@@ -2121,7 +2121,7 @@ export interface PartitionCurrentConfigurationEpoch {
  * 
  * @member {number} [replicaStatus]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [address]
  * 
@@ -2131,12 +2131,12 @@ export interface PartitionCurrentConfigurationEpoch {
  * 
  */
 export interface Replica {
-    serviceKind?: number;
+    serviceKind?: string;
     instanceId?: string;
     replicaId?: string;
     replicaRole?: number;
     replicaStatus?: number;
-    healthState?: number;
+    healthState?: string;
     address?: string;
     nodeName?: string;
     lastInBuildDurationInSeconds?: string;
@@ -2186,7 +2186,7 @@ export interface PartitionHealthReplicaHealthStatesItem {
  * @class
  * Initializes a new instance of the ReplicaHealth class.
  * @constructor
- * @member {number} [serviceKind]
+ * @member {string} [serviceKind]
  * 
  * @member {string} [partitionId]
  * 
@@ -2198,7 +2198,7 @@ export interface PartitionHealthReplicaHealthStatesItem {
  * 
  */
 export interface ReplicaHealth {
-    serviceKind?: number;
+    serviceKind?: string;
     partitionId?: string;
     replicaId?: string;
     healthEvents?: HealthEvent[];
@@ -2418,7 +2418,7 @@ export interface ClusterHealthApplicationHealthStateItem {
  * @class
  * Initializes a new instance of the MonitoringPolicy class.
  * @constructor
- * @member {number} [failureAction]
+ * @member {string} [failureAction]
  * 
  * @member {string} [healthCheckWaitDurationInMilliseconds]
  * 
@@ -2432,7 +2432,7 @@ export interface ClusterHealthApplicationHealthStateItem {
  * 
  */
 export interface MonitoringPolicy {
-    failureAction?: number;
+    failureAction?: string;
     healthCheckWaitDurationInMilliseconds?: string;
     healthCheckStableDurationInMilliseconds?: string;
     healthCheckRetryTimeoutInMilliseconds?: string;
@@ -2495,7 +2495,7 @@ export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
  * 
  * @member {number} [upgradeKind]
  * 
- * @member {number} [rollingUpgradeMode]
+ * @member {string} [rollingUpgradeMode]
  * 
  * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
  * 
@@ -2503,7 +2503,7 @@ export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
  * 
  * @member {object} [monitoringPolicy]
  * 
- * @member {number} [monitoringPolicy.failureAction]
+ * @member {string} [monitoringPolicy.failureAction]
  * 
  * @member {string} [monitoringPolicy.healthCheckWaitDurationInMilliseconds]
  * 
@@ -2539,7 +2539,7 @@ export interface StartApplicationUpgradeDescription {
     targetApplicationTypeVersion?: string;
     parameters?: string[];
     upgradeKind?: number;
-    rollingUpgradeMode?: number;
+    rollingUpgradeMode?: string;
     upgradeReplicaSetCheckTimeoutInSeconds?: number;
     forceRestart?: boolean;
     monitoringPolicy?: MonitoringPolicy;
@@ -2556,11 +2556,11 @@ export interface StartApplicationUpgradeDescription {
  * 
  * @member {object} [updateDescription]
  * 
- * @member {number} [updateDescription.rollingUpgradeMode]
+ * @member {string} [updateDescription.rollingUpgradeMode]
  * 
  * @member {boolean} [updateDescription.forceRestart]
  * 
- * @member {number} [updateDescription.failureAction]
+ * @member {string} [updateDescription.failureAction]
  * 
  * @member {number} [updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
  * 
@@ -2605,11 +2605,11 @@ export interface UpdateApplicationUpgradeDescription {
  * @class
  * Initializes a new instance of the UpdateApplicationUpgradeDescriptionUpdateDescription class.
  * @constructor
- * @member {number} [rollingUpgradeMode]
+ * @member {string} [rollingUpgradeMode]
  * 
  * @member {boolean} [forceRestart]
  * 
- * @member {number} [failureAction]
+ * @member {string} [failureAction]
  * 
  * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
  * 
@@ -2625,9 +2625,9 @@ export interface UpdateApplicationUpgradeDescription {
  * 
  */
 export interface UpdateApplicationUpgradeDescriptionUpdateDescription {
-    rollingUpgradeMode?: number;
+    rollingUpgradeMode?: string;
     forceRestart?: boolean;
-    failureAction?: number;
+    failureAction?: string;
     upgradeReplicaSetCheckTimeoutInSeconds?: number;
     healthCheckWaitDurationInMilliseconds?: string;
     healthCheckStableDurationInMilliseconds?: string;
@@ -2694,7 +2694,7 @@ export interface ResolvedServicePartitionEndpointsItem {
  * 
  * @member {string} [nextUpgradeDomain]
  * 
- * @member {number} [rollingUpgradeMode]
+ * @member {string} [rollingUpgradeMode]
  * 
  * @member {string} [upgradeDurationInMilliseconds]
  * 
@@ -2727,7 +2727,7 @@ export interface ClusterUpgradeProgress {
     upgradeDomains?: string[];
     upgradeState?: number;
     nextUpgradeDomain?: string;
-    rollingUpgradeMode?: number;
+    rollingUpgradeMode?: string;
     upgradeDurationInMilliseconds?: string;
     upgradeDomainDurationInMilliseconds?: string;
     unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -2768,13 +2768,42 @@ export interface ClusterUpgradeProgressUpgradeDomainProgressAtFailure {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorModel class.
+ * @constructor
+ * @member {object} [error]
+ * 
+ * @member {string} [error.code]
+ * 
+ * @member {string} [error.message]
+ * 
+ */
+export interface ErrorModel {
+    error?: ErrorModelError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorModelError class.
+ * @constructor
+ * @member {string} [code]
+ * 
+ * @member {string} [message]
+ * 
+ */
+export interface ErrorModelError {
+    code?: string;
+    message?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ClusterHealthReport class.
  * @constructor
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -2788,7 +2817,7 @@ export interface ClusterUpgradeProgressUpgradeDomainProgressAtFailure {
 export interface ClusterHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
@@ -2797,13 +2826,27 @@ export interface ClusterHealthReport {
 
 /**
  * @class
+ * Initializes a new instance of the GetNodeListOKResponse class.
+ * @constructor
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface GetNodeListOKResponse {
+    continuationToken?: string;
+    items?: Node[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the DisableNode class.
  * @constructor
- * @member {number} [deactivationIntent]
+ * @member {string} [deactivationIntent]
  * 
  */
 export interface DisableNode {
-    deactivationIntent?: number;
+    deactivationIntent?: string;
 }
 
 /**
@@ -2814,7 +2857,7 @@ export interface DisableNode {
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -2828,7 +2871,7 @@ export interface DisableNode {
 export interface NodeHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
@@ -2843,7 +2886,7 @@ export interface NodeHealthReport {
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -2857,7 +2900,7 @@ export interface NodeHealthReport {
 export interface DeployedApplicationHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
@@ -2872,7 +2915,7 @@ export interface DeployedApplicationHealthReport {
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -2886,7 +2929,7 @@ export interface DeployedApplicationHealthReport {
 export interface DeployedServicePackageHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
@@ -2917,13 +2960,41 @@ export interface UnregisterApplicationType {
 
 /**
  * @class
+ * Initializes a new instance of the GetApplicationListOKResponse class.
+ * @constructor
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface GetApplicationListOKResponse {
+    continuationToken?: string;
+    items?: Application[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetServiceListOKResponse class.
+ * @constructor
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface GetServiceListOKResponse {
+    continuationToken?: string;
+    items?: Service[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationHealthReport class.
  * @constructor
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -2937,7 +3008,7 @@ export interface UnregisterApplicationType {
 export interface ApplicationHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
@@ -2977,7 +3048,7 @@ export interface ResumeApplicationUpgrade {
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -2991,11 +3062,39 @@ export interface ResumeApplicationUpgrade {
 export interface ServiceHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
     removeWhenExpired?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetPartitionListOKResponse class.
+ * @constructor
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface GetPartitionListOKResponse {
+    continuationToken?: string;
+    items?: Partition[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetReplicaListOKResponse class.
+ * @constructor
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface GetReplicaListOKResponse {
+    continuationToken?: string;
+    items?: Replica[];
 }
 
 /**
@@ -3006,7 +3105,7 @@ export interface ServiceHealthReport {
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -3020,7 +3119,7 @@ export interface ServiceHealthReport {
 export interface PartitionHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
@@ -3035,7 +3134,7 @@ export interface PartitionHealthReport {
  * 
  * @member {string} [property]
  * 
- * @member {number} [healthState]
+ * @member {string} [healthState]
  * 
  * @member {string} [description]
  * 
@@ -3049,7 +3148,7 @@ export interface PartitionHealthReport {
 export interface ReplicaHealthReport {
     sourceId?: string;
     property?: string;
-    healthState?: number;
+    healthState?: string;
     description?: string;
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;

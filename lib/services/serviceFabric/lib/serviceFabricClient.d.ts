@@ -50,7 +50,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [clusterHealthReport.property]
          * 
-         * @param {number} [clusterHealthReport.healthState]
+         * @param {string} [clusterHealthReport.healthState]
          * 
          * @param {string} [clusterHealthReport.description]
          * 
@@ -82,8 +82,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        getNodeList(options: { continuationToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Node[]>): void;
-        getNodeList(callback: ServiceCallback<models.Node[]>): void;
+        getNodeList(options: { continuationToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetNodeListOKResponse>): void;
+        getNodeList(callback: ServiceCallback<models.GetNodeListOKResponse>): void;
 
         /**
          * @param {string} nodeName The name of the node
@@ -120,7 +120,7 @@ declare class ServiceFabricClient {
          * 
          * @param {object} disableNode The node of the disable
          * 
-         * @param {number} [disableNode.deactivationIntent]
+         * @param {string} [disableNode.deactivationIntent]
          * 
          * @param {object} [options] Optional Parameters.
          * 
@@ -342,7 +342,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [nodeHealthReport.property]
          * 
-         * @param {number} [nodeHealthReport.healthState]
+         * @param {string} [nodeHealthReport.healthState]
          * 
          * @param {string} [nodeHealthReport.description]
          * 
@@ -375,7 +375,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [deployedApplicationHealthReport.property]
          * 
-         * @param {number} [deployedApplicationHealthReport.healthState]
+         * @param {string} [deployedApplicationHealthReport.healthState]
          * 
          * @param {string} [deployedApplicationHealthReport.description]
          * 
@@ -410,7 +410,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [deployedServicePackageHealthReport.property]
          * 
-         * @param {number} [deployedServicePackageHealthReport.healthState]
+         * @param {string} [deployedServicePackageHealthReport.healthState]
          * 
          * @param {string} [deployedServicePackageHealthReport.description]
          * 
@@ -556,8 +556,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        getApplicationList(options: { continuationToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application[]>): void;
-        getApplicationList(callback: ServiceCallback<models.Application[]>): void;
+        getApplicationList(options: { continuationToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetApplicationListOKResponse>): void;
+        getApplicationList(callback: ServiceCallback<models.GetApplicationListOKResponse>): void;
 
         /**
          * @param {string} applicationName The name of the application
@@ -586,8 +586,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        getServiceList(applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Service[]>): void;
-        getServiceList(applicationName: string, callback: ServiceCallback<models.Service[]>): void;
+        getServiceList(applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetServiceListOKResponse>): void;
+        getServiceList(applicationName: string, callback: ServiceCallback<models.GetServiceListOKResponse>): void;
 
         /**
          * @param {string} applicationName The name of the application
@@ -680,7 +680,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [applicationHealthReport.property]
          * 
-         * @param {number} [applicationHealthReport.healthState]
+         * @param {string} [applicationHealthReport.healthState]
          * 
          * @param {string} [applicationHealthReport.description]
          * 
@@ -736,7 +736,7 @@ declare class ServiceFabricClient {
          * 
          * @param {object} [serviceDescription.partitionDescription]
          * 
-         * @param {number} [serviceDescription.partitionDescription.partitionScheme]
+         * @param {string} [serviceDescription.partitionDescription.partitionScheme]
          * 
          * @param {number} [serviceDescription.partitionDescription.count]
          * 
@@ -756,7 +756,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [serviceDescription.servicePlacementPolicies.serviceName]
          * 
-         * @param {number}
+         * @param {string}
          * [serviceDescription.servicePlacementPolicies.serviceCorrelationScheme]
          * 
          * @param {number} [serviceDescription.flags]
@@ -808,7 +808,7 @@ declare class ServiceFabricClient {
          * 
          * @param {object} [serviceGroupDescription.partitionDescription]
          * 
-         * @param {number}
+         * @param {string}
          * [serviceGroupDescription.partitionDescription.partitionScheme]
          * 
          * @param {number} [serviceGroupDescription.partitionDescription.count]
@@ -830,7 +830,7 @@ declare class ServiceFabricClient {
          * @param {string}
          * [serviceGroupDescription.servicePlacementPolicies.serviceName]
          * 
-         * @param {number}
+         * @param {string}
          * [serviceGroupDescription.servicePlacementPolicies.serviceCorrelationScheme]
          * 
          * @param {number} [serviceGroupDescription.flags]
@@ -925,7 +925,7 @@ declare class ServiceFabricClient {
          * 
          * @param {number} [startApplicationUpgradeDescription.upgradeKind]
          * 
-         * @param {number} [startApplicationUpgradeDescription.rollingUpgradeMode]
+         * @param {string} [startApplicationUpgradeDescription.rollingUpgradeMode]
          * 
          * @param {number}
          * [startApplicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
@@ -934,7 +934,7 @@ declare class ServiceFabricClient {
          * 
          * @param {object} [startApplicationUpgradeDescription.monitoringPolicy]
          * 
-         * @param {number}
+         * @param {string}
          * [startApplicationUpgradeDescription.monitoringPolicy.failureAction]
          * 
          * @param {string}
@@ -996,13 +996,13 @@ declare class ServiceFabricClient {
          * 
          * @param {object} [updateApplicationUpgradeDescription.updateDescription]
          * 
-         * @param {number}
+         * @param {string}
          * [updateApplicationUpgradeDescription.updateDescription.rollingUpgradeMode]
          * 
          * @param {boolean}
          * [updateApplicationUpgradeDescription.updateDescription.forceRestart]
          * 
-         * @param {number}
+         * @param {string}
          * [updateApplicationUpgradeDescription.updateDescription.failureAction]
          * 
          * @param {number}
@@ -1197,7 +1197,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [serviceHealthReport.property]
          * 
-         * @param {number} [serviceHealthReport.healthState]
+         * @param {string} [serviceHealthReport.healthState]
          * 
          * @param {string} [serviceHealthReport.description]
          * 
@@ -1229,8 +1229,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        getPartitionList(serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Partition[]>): void;
-        getPartitionList(serviceName: string, callback: ServiceCallback<models.Partition[]>): void;
+        getPartitionList(serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetPartitionListOKResponse>): void;
+        getPartitionList(serviceName: string, callback: ServiceCallback<models.GetPartitionListOKResponse>): void;
 
         /**
          * @param {string} serviceName The name of the service
@@ -1301,8 +1301,8 @@ declare class ServiceFabricClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        getReplicaList(partitionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Replica[]>): void;
-        getReplicaList(partitionId: string, callback: ServiceCallback<models.Replica[]>): void;
+        getReplicaList(partitionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetReplicaListOKResponse>): void;
+        getReplicaList(partitionId: string, callback: ServiceCallback<models.GetReplicaListOKResponse>): void;
 
         /**
          * @param {string} partitionId The id of the partition
@@ -1349,7 +1349,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [partitionHealthReport.property]
          * 
-         * @param {number} [partitionHealthReport.healthState]
+         * @param {string} [partitionHealthReport.healthState]
          * 
          * @param {string} [partitionHealthReport.description]
          * 
@@ -1400,7 +1400,7 @@ declare class ServiceFabricClient {
          * 
          * @param {string} [replicaHealthReport.property]
          * 
-         * @param {number} [replicaHealthReport.healthState]
+         * @param {string} [replicaHealthReport.healthState]
          * 
          * @param {string} [replicaHealthReport.description]
          * 
