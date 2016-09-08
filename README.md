@@ -31,19 +31,30 @@ npm install azure
 | [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)      | `npm install azure-servicefabric` |
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-storage`       |
+| [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-batch`         |
 | &nbsp;                                                                            |                                   |
 | **Azure Resource Management (ARM)**                                                                                         |
-| [API Apps](http://azure.microsoft.com/en-us/services/app-service/api/)            | `npm install azure-arm-apiapp`    |
 | [Authorization](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-configure/) | `npm install azure-arm-authorization`    |
+| [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-arm-batch`     |
 | [CDN](https://azure.microsoft.com/en-us/services/cdn/)                            | `npm install azure-arm-cdn`|
+| [Commerce/Billing/Usage](https://azure.microsoft.com/en-us/documentation/articles/billing-usage-rate-card-overview/)                            | `npm install azure-arm-commerce`|
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            | `npm install azure-arm-compute`|
 | [Datalake Analytics](https://azure.microsoft.com/en-us/services/data-lake-analytics/) | `azure-arm-datalake-analytics`       |
 | [Datalake Storage](https://azure.microsoft.com/en-us/services/data-lake-store/)   | `azure-arm-datalake-storage`       |
 | [DNS](http://azure.microsoft.com/en-us/services/dns/)                             | `npm install azure-arm-dns`       |
+| [DevTest Labs](https://azure.microsoft.com/en-us/services/devtest-lab/)           | `npm install azure-arm-devtestlabs`       |
+| [EventHubs](https://azure.microsoft.com/en-us/services/event-hubs/)               | `azure-arm-eventhub`  |
+| [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/)                 | `npm install azure-arm-hdinsight` |
+| [HDInsightJobs](https://msdn.microsoft.com/en-us/library/azure/mt613023.aspx)     | `azure-arm-hdinsight-jobs` |
 | [Insights](https://msdn.microsoft.com/en-us/library/azure/dn931943.aspx)          | `npm install azure-arm-insights`  |
+| [IotHub](https://azure.microsoft.com/en-us/documentation/services/iot-hub/)       | `npm install azure-arm-iothub`  |
 | [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-arm-keyvault`  |
+| [Notification Hubs](https://azure.microsoft.com/en-us/documentation/services/notification-hubs/)                 | `azure-arm-notificationhubs`  |
+| [PowerBi Embedded](https://azure.microsoft.com/en-us/services/power-bi-embedded/) | `azure-arm-powerbiembedded`  |
 | [Redis Cache](https://azure.microsoft.com/en-us/services/cache/)                  | `npm install azure-arm-rediscache`   |
 | [Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-resource`  |
+| [ServerManagement](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `azure-arm-servermanagement`  |
+| [Servicebus](https://msdn.microsoft.com/en-us/library/mt639375.aspx)    | `azure-arm-sb`  |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-arm-storage`   |
 | [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficManager`|
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-arm-network`   |
@@ -77,6 +88,12 @@ npm install azure
 ## Related Projects
 
 * [Azure CLI](http://github.com/azure/azure-xplat-cli)
+
+## License
+
+This project is licensed under MIT and Apache-2.0.
+- "MIT" license is usually used for the client libraries generated using [Autorest](https://github.com/Azure/Autorest) that are targeting ARM (V2 version of Azure REST API). The license can be found in "LICENSE.MIT.txt" file in this repository.
+- "Apache-2.0" license is usually used for the client libraries generated using an internal code generator that are targeting ASM (V1 version of Azure REST API). The license can be found in "LICENSE.Apache.txt" file in this repository.
 
 ## Contribute
 

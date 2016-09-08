@@ -3,6 +3,7 @@
   "author": "Microsoft Corporation",
   "contributors": [
     "Kamath, Prarthana <pkamath@microsoft.com>",
+    "Medhekar, Shibani <shimedh@microsoft.com>",
     "Vannelli, Leo <leovann@microsoft.com>",
     "Shen, Andy <andyshen@microsoft.com>",
     "Ruela, Vinicius <viruela@microsoft.com>",
@@ -11,7 +12,7 @@
     "Kulkarni, Jagadish <jagadisk@microsoft.com>",
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.11.4",
   "description": "Microsoft Azure Insights Client Library for node",
   "tags": [
     "azure",
@@ -22,18 +23,10 @@
     "azure"
   ],
   "main": "./lib/insights.js",
-  "engines": {
-    "node": ">= 0.6.15"
-  },
-  "licenses": [
-    {
-      "type": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
+  "license": "Apache-2.0",
   "dependencies": {
-    "azure-common": "^0.9.13",
-    "moment": "2.6.0"
+    "azure-common": "^0.9.17",
+    "moment": "^2.14.1"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Storage Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Storage Resources.Right now it supports:
-- **Node.js version: 0.10.0 or higher**
+- **Node.js version: 4.x.x or higher**
 
 ## How to Install
 
@@ -10,14 +10,20 @@ npm install azure-arm-storage
 ```
 ## How to Use
 
-### Authentication
+### Authentication, client creation and listing storageAccounts as an example
 
  ```javascript
- var msrestAzure = require('ms-rest-azure');
- //user authentication
- var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
- //service principal authentication
- var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
+ var msRestAzure = require('ms-rest-azure');
+ var storageManagementClient = require('azure-arm-storage');
+ 
+ // Interactive Login
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new storageManagementClient(credentials, 'your-subscription-id');
+  client.storageAccounts.list(function(err, result) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
  ```
 
 ### Create the StorageManagementClient
@@ -32,7 +38,10 @@ var client = new storageManagementClient(credentials, 'your-subscription-id');
 ```javascript
 var createParameters = {
   location: 'West US',
-  accountType: 'Standard_LRS',
+  sku: {
+    name: 'Standard_LRS'
+  },
+  kind: 'Storage'
   tags: {
     tag1: 'val1',
     tag2: 'val2'
@@ -60,7 +69,7 @@ client.storageAccounts.getProperties(groupName, accountName, function (err, resu
 ## List all the storage accounts in a specific resource group
 
 ```javascript
-client.storageAccounts.list(groupName, function (err, result, request, response) {
+client.storageAccounts.listByResourceGroup(groupName, function (err, result, request, response) {
   if (err) {
     console.log(err);
   }

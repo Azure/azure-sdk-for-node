@@ -1,8 +1,8 @@
 # Microsoft Azure SDK for Node.js - Authorization
 
 This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
-- **Node.js version: 0.10.0 or higher**
-- **API version: **
+- **Node.js version: 4.x.x or higher**
+- **API version: 2015-07-01**
 
 ## Features
 
@@ -15,20 +15,23 @@ npm install azure-arm-authorization
 
 ## How to Use
 
-### Authentication
+### Authentication, client creation and listing role assignments as an example
 
-### Create the Authorization client
+ ```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var authorizationManagement = require("azure-arm-authorization");
 
-```javascript
-var fs = require("fs"),
-common = require("azure-common"),
-authorizationManagement = require("azure-arm-authorization");
-
-var authorizationManagementClient = authorizationManagement.createAuthorizationManagementClient(new common.TokenCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  token: "<your token here>"
-}));
-```
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new authorizationManagement(credentials, 'your-subscription-id');
+  client.roleAssignments.listForResourceGroup(rgName, function(err, result) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
+ ```
 
 ## Related projects
 

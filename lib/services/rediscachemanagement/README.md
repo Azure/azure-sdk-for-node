@@ -15,14 +15,25 @@ npm install azure-arm-rediscache
 
 ## How to Use
 
-### Initialise the client and managing Redis Cache
+### Authentication, client creation and listing redis caches in a resource group as an example
 
-```javascript
-var msRestAzure = require('ms-rest-azure');
-var AzureMgmtRedisCache = require('azure-arm-rediscache');
-  
-// Create an Azure Redis Cache Management client.
-  var credentials = new msRestAzure.UserTokenCredentials('your-client-id', 'your-domain', 'your-username', 'your-password', 'your-redirect-uri');
+ ```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var AzureMgmtRedisCache = require('azure-arm-rediscache');
+
+ // Interactive Login
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
+ msRestAzure.interactiveLogin(function(err, credentials) {
+  var client = new AzureMgmtRedisCache(credentials, subscriptionId);
+  client.redis.listByResourceGroup(resourceGroup, workspaceCollectionName, function(err, result, request, response) {
+    if (err) console.log(err);
+    console.log(result);
+  });
+ });
+ ```
+
+#### Managing a RedisCache
   client = new AzureMgmtRedisCache(credentials, 'your-subscription-id');
 
   var resourceGroup = 'myResourceGroup';

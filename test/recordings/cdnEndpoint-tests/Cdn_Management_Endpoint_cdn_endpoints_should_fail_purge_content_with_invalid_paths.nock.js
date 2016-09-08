@@ -9,45 +9,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/purge?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"invalidPath!\\\". ContentPath for purge action must be a relative path: either for a single resource \\\"/path/pic.jpg\\\" or a wild card \\\"/path/*\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '235',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '1d3a4c2a-d739-44a7-a589-97e883f3bce4',
-  'x-ms-client-request-id': 'b7dcf65e-d76a-456d-80da-e358c2e23ebe',
+  'x-ms-request-id': '137362ca-6402-4ebe-a97d-591d4c6a1cf8',
+  'x-ms-client-request-id': '3ba7d98a-a522-4fb1-b5f4-2ee931692e67',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': 'f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  'x-ms-routing-request-id': 'WESTUS:20160301T221250Z:f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  date: 'Tue, 01 Mar 2016 22:12:50 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '8e840fed-03a9-4481-8fc8-c41554002077',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T224622Z:8e840fed-03a9-4481-8fc8-c41554002077',
+  date: 'Wed, 11 May 2016 22:46:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/purge?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/purge?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"invalidPath!\\\". ContentPath for purge action must be a relative path: either for a single resource \\\"/path/pic.jpg\\\" or a wild card \\\"/path/*\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '235',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '1d3a4c2a-d739-44a7-a589-97e883f3bce4',
-  'x-ms-client-request-id': 'b7dcf65e-d76a-456d-80da-e358c2e23ebe',
+  'x-ms-request-id': '137362ca-6402-4ebe-a97d-591d4c6a1cf8',
+  'x-ms-client-request-id': '3ba7d98a-a522-4fb1-b5f4-2ee931692e67',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1197',
-  'x-ms-correlation-request-id': 'f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  'x-ms-routing-request-id': 'WESTUS:20160301T221250Z:f9b1bd30-de41-4e7c-8fd7-e36bb6894ebf',
-  date: 'Tue, 01 Mar 2016 22:12:50 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '8e840fed-03a9-4481-8fc8-c41554002077',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T224622Z:8e840fed-03a9-4481-8fc8-c41554002077',
+  date: 'Wed, 11 May 2016 22:46:21 GMT',
   connection: 'close' });
  return result; }]];

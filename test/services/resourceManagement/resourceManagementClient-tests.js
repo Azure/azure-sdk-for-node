@@ -111,7 +111,7 @@ describe('Resource Management Client', function () {
       var resourceType = 'sites';
       var parentResourcePath = '';
       var resourceProviderNamespace = 'Microsoft.Web';
-      var apiVersion = '2014-04-01';
+      var apiVersion = '2015-08-01';
       //create a resource group
       client.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, function (err, result) {
         should.not.exist(err);

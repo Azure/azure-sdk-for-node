@@ -2,9 +2,7 @@
 
 This project provides a Node.js package that lets you consume Azure storage services.
 This package exists to provide back compatibility with previous versions of the azure
-sdk for node. New application should instead use <<TODO>>.
-
-- **Node.js version: 0.6.15 or higher**
+sdk for node.
 - **API version: 2013-03-01**
 
 ## Features

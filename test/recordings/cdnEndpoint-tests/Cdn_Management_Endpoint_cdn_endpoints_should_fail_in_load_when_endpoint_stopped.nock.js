@@ -9,45 +9,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/load?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/load?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The requested operation cannot be executed on the entity in the current state.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '147',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'ad30bb81-4c49-4f2b-b772-f1afa7e50e31',
-  'x-ms-client-request-id': 'ab3ab7d2-2a94-4b96-b7a5-db465e628c7b',
+  'x-ms-request-id': '10d7137e-57d5-4800-9a1e-071f9f8732fa',
+  'x-ms-client-request-id': '3cd4a26e-73f2-4896-8ca0-9d3a50943616',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '3a94bc6c-361e-4659-beb5-3f01233abcd9',
-  'x-ms-routing-request-id': 'WESTUS:20160301T221524Z:3a94bc6c-361e-4659-beb5-3f01233abcd9',
-  date: 'Tue, 01 Mar 2016 22:15:24 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': 'c07de669-aa77-440f-a73c-f28b2941447a',
+  'x-ms-routing-request-id': 'WESTUS:20160511T224729Z:c07de669-aa77-440f-a73c-f28b2941447a',
+  date: 'Wed, 11 May 2016 22:47:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/load?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/load?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"The requested operation cannot be executed on the entity in the current state.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '147',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'ad30bb81-4c49-4f2b-b772-f1afa7e50e31',
-  'x-ms-client-request-id': 'ab3ab7d2-2a94-4b96-b7a5-db465e628c7b',
+  'x-ms-request-id': '10d7137e-57d5-4800-9a1e-071f9f8732fa',
+  'x-ms-client-request-id': '3cd4a26e-73f2-4896-8ca0-9d3a50943616',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '3a94bc6c-361e-4659-beb5-3f01233abcd9',
-  'x-ms-routing-request-id': 'WESTUS:20160301T221524Z:3a94bc6c-361e-4659-beb5-3f01233abcd9',
-  date: 'Tue, 01 Mar 2016 22:15:24 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': 'c07de669-aa77-440f-a73c-f28b2941447a',
+  'x-ms-routing-request-id': 'WESTUS:20160511T224729Z:c07de669-aa77-440f-a73c-f28b2941447a',
+  date: 'Wed, 11 May 2016 22:47:29 GMT',
   connection: 'close' });
  return result; }]];

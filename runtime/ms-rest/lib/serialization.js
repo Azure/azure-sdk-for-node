@@ -6,6 +6,7 @@
 var util = require('util');
 var moment = require('moment');
 var stream = require('stream');
+var utils = require('./utils');
 
 /**
  * Serializes the JSON Object. It serializes Buffer object to a 
@@ -55,24 +56,30 @@ exports.serializeObject = function (toSerialize) {
 exports.serialize = function (mapper, object, objectName) {
   var payload = {};
   var mapperType = mapper.type.name;
-  if (!objectName) objectName = objectNameFromSerializedName(mapper.serializedName);
+  if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
   //Throw if required and object is null or undefined
-  if (mapper.required && (object === null || object === undefined)) {
-    throw new Error(util.format('\'%s\' cannot be null or undefined.'), objectName);
+  if (mapper.required && (object === null || object === undefined) && !mapper.isConstant) {
+    throw new Error(util.format('\'%s\' cannot be null or undefined.', objectName));
   }
   //Set Defaults
-  if (mapper.defaultValue && (object === null || object === undefined)) object = mapper.defaultValue;
+  if ((mapper.defaultValue !== null && mapper.defaultValue !== undefined) && 
+      (object === null || object === undefined)) {
+    object = mapper.defaultValue;
+  }
+  if (mapper.isConstant) object = mapper.defaultValue;
   //Validate Constraints if any
   validateConstraints.call(this, mapper, object, objectName);
-  if (mapperType.match(/^(Number|String|Boolean|Object|Stream)$/ig) !== null) {
+  if (mapperType.match(/^(Number|String|Boolean|Object|Stream|Uuid)$/ig) !== null) {
     payload = serializeBasicTypes.call(this, mapperType, objectName, object);
   } else if (mapperType.match(/^Enum$/ig) !== null) {
     payload = serializeEnumType.call(this, objectName, mapper.type.allowedValues, object);
-  } else if (mapperType.match(/^(Date|DateTime|TimeSpan|DateTimeRfc1123)$/ig) !== null) {
+  } else if (mapperType.match(/^(Date|DateTime|TimeSpan|DateTimeRfc1123|UnixTime)$/ig) !== null) {
     payload = serializeDateTypes.call(this, mapperType, object, objectName);
   } else if (mapperType.match(/^ByteArray$/ig) !== null) {
     payload = serializeBufferType.call(this, objectName, object);
+  } else if (mapperType.match(/^Base64Url$/ig) !== null) {
+    payload = serializeBase64UrlType.call(this, objectName, object);
   } else if (mapperType.match(/^Sequence$/ig) !== null) {
     payload = serializeSequenceType.call(this, mapper, object, objectName);
   } else if (mapperType.match(/^Dictionary$/ig) !== null) {
@@ -185,22 +192,29 @@ function serializeDictionaryType(mapper, object, objectName) {
 function serializeCompositeType(mapper, object, objectName) {
   /*jshint validthis: true */
   //check for polymorphic discriminator
-  if (mapper.type.polymorphicDiscriminator) {
+  if (mapper.type.polymorphicDiscriminator !== null && mapper.type.polymorphicDiscriminator !== undefined) {
     if (object === null || object === undefined) {
       throw new Error(util.format('\'%s\' cannot be null or undefined. \'%s\' is the ' + 
         'polmorphicDiscriminator and is a required property.', objectName, 
         mapper.type.polymorphicDiscriminator));
     }
-    if (!object[mapper.type.polymorphicDiscriminator]) {
+    if (object[mapper.type.polymorphicDiscriminator] === null || object[mapper.type.polymorphicDiscriminator] === undefined) {
       throw new Error(util.format('No discriminator field \'%s\' was found in \'%s\'.', 
         mapper.type.polymorphicDiscriminator, objectName));
     }
-    if (!this.models.discriminators[object[mapper.type.polymorphicDiscriminator]]) {
-      throw new Error(util.format('\'%s\': \'%s\'  in \'%s\' is not a valid ' + 
-        'discriminator as a corresponding model class for that value was not found.', 
-        mapper.type.polymorphicDiscriminator, object[mapper.type.polymorphicDiscriminator], objectName));
+    var indexDiscriminator = null;
+    if (object[mapper.type.polymorphicDiscriminator] === mapper.type.uberParent) {
+      indexDiscriminator = object[mapper.type.polymorphicDiscriminator];
+    } else {
+      indexDiscriminator = mapper.type.uberParent + '.' + object[mapper.type.polymorphicDiscriminator];
     }
-    mapper = new this.models.discriminators[object[mapper.type.polymorphicDiscriminator]]().mapper();
+    if (!this.models.discriminators[indexDiscriminator]) {
+      throw new Error(util.format('\'%s\': \'%s\'  in \'%s\' is not a valid ' + 
+        'discriminator as a corresponding model class for the disciminator \'%s\' ' + 
+        'was not found in this.models.discriminators object.', 
+        mapper.type.polymorphicDiscriminator, object[mapper.type.polymorphicDiscriminator], objectName, indexDiscriminator));
+    }
+    mapper = new this.models.discriminators[indexDiscriminator]().mapper();
   }
   
   var payload = {};
@@ -229,21 +243,37 @@ function serializeCompositeType(mapper, object, objectName) {
       }
     }
     
-    if (requiresFlattening(modelProps, object) && !payload.properties) payload.properties = {};
     for (var key in modelProps) {
       if (modelProps.hasOwnProperty(key)) {
+        var paths = splitSerializeName(modelProps[key].serializedName);
+        var propName = paths.pop();
+
+        var parentObject = payload;
+        paths.forEach(function(pathName) {
+           var childObject = parentObject[pathName];
+           if ((childObject === null || childObject === undefined) && (object[key] !== null && object[key] !== undefined)) {
+            parentObject[pathName] = {};
+           }
+           parentObject = parentObject[pathName];
+        });
+
         //make sure required properties of the CompositeType are present
-        if (modelProps[key].required) {
+        if (modelProps[key].required && !modelProps[key].isConstant) {
           if (object[key] === null || object[key] === undefined) {
             throw new Error(util.format('\'%s\' cannot be null or undefined in \'%s\'.', key, objectName));
           }
         }
+        //make sure that readOnly properties are not sent on the wire
+        if (modelProps[key].readOnly) {
+          continue;
+        }
         //serialize the property if it is present in the provided object instance
-        if (object[key] !== null && object[key] !== undefined) {
-          var propertyObjectName = objectName + '.' + objectNameFromSerializedName(modelProps[key].serializedName);
+        if (((parentObject !== null && parentObject !== undefined) && (modelProps[key].defaultValue !== null && modelProps[key].defaultValue !== undefined)) || 
+            (object[key] !== null && object[key] !== undefined)) {
+          var propertyObjectName = objectName + '.' + modelProps[key].serializedName;
           var propertyMapper = modelProps[key];
           var serializedValue = exports.serialize.call(this, propertyMapper, object[key], propertyObjectName);
-          assignProperty(modelProps[key].serializedName, payload, serializedValue);
+          parentObject[propName] = serializedValue;
         }
       }
     }
@@ -256,15 +286,19 @@ function serializeBasicTypes(typeName, objectName, value) {
   if (value !== null && value !== undefined) {
     if (typeName.match(/^Number$/ig) !== null) {
       if (typeof value !== 'number') {
-        throw new Error(util.format('%s must be of type number.', objectName));
+        throw new Error(util.format('%s with value %s must be of type number.', objectName, value));
       }
     } else if (typeName.match(/^String$/ig) !== null) {
       if (typeof value.valueOf() !== 'string') {
-        throw new Error(util.format('%s must be of type string.', objectName));
+        throw new Error(util.format('%s with value \'%s\' must be of type string.', objectName, value));
+      }
+    } else if (typeName.match(/^Uuid$/ig) !== null) {
+      if (!(typeof value.valueOf() === 'string' && utils.isValidUuid(value))) {
+        throw new Error(util.format('%s with value \'%s\' must be of type string and a valid uuid.', objectName, value));
       }
     } else if (typeName.match(/^Boolean$/ig) !== null) {
       if (typeof value !== 'boolean') {
-        throw new Error(util.format('%s must be of type boolean.', objectName));
+        throw new Error(util.format('%s with value %s must be of type boolean.', objectName, value));
       }
     } else if (typeName.match(/^Object$/ig) !== null) {
       if (typeof value !== 'object') {
@@ -283,7 +317,13 @@ function serializeEnumType(objectName, allowedValues, value) {
   if (!allowedValues) {
     throw new Error(util.format('Please provide a set of allowedValues to validate %s as an Enum Type.', objectName));
   }
-  if (!allowedValues.some(function (item) { return item === value; })) {
+  var isPresent = allowedValues.some(function (item) {
+    if (typeof item.valueOf() === 'string') {
+      return item.toLowerCase() === value.toLowerCase();
+    }
+     return item === value;
+  });
+  if (!isPresent) {
     throw new Error(util.format('%s is not a valid value for %s. The valid values are: %s', 
       value, objectName, JSON.stringify(allowedValues)));
   }
@@ -296,6 +336,16 @@ function serializeBufferType(objectName, value) {
       throw new Error(util.format('%s must be of type Buffer.', objectName));
     }
     value = value.toString('base64');
+  }
+  return value;
+}
+
+function serializeBase64UrlType(objectName, value) {
+  if (value !== null && value !== undefined) {
+    if (!Buffer.isBuffer(value)) {
+      throw new Error(util.format('%s must be of type Buffer.', objectName));
+    }
+    value = bufferToBase64Url(value);
   }
   return value;
 }
@@ -320,6 +370,13 @@ function serializeDateTypes(typeName, value, objectName) {
         throw new Error(util.format('%s must be an instanceof Date or a string in RFC-1123 format.', objectName));
       }
       value = (value instanceof Date) ? value.toUTCString() :  new Date(value).toUTCString();
+    } else if (typeName.match(/^UnixTime$/ig) !== null) {
+      if (!(value instanceof Date || 
+        (typeof value.valueOf() === 'string' && !isNaN(Date.parse(value))))) {
+        throw new Error(util.format('%s must be an instanceof Date or a string in RFC-1123/ISO8601 format ' + 
+          'for it to be serialized in UnixTime/Epoch format.', objectName));
+      }
+      value = dateToUnixTime(value);
     } else if (typeName.match(/^TimeSpan$/ig) !== null) {
       if (!moment.isDuration(value)) {
         throw new Error(util.format('%s must be a TimeSpan/Duration.', objectName));
@@ -345,17 +402,21 @@ exports.deserialize = function (mapper, responseBody, objectName) {
   if (responseBody === null || responseBody === undefined) return responseBody;
   var payload = {};
   var mapperType = mapper.type.name;
-  if (!objectName) objectName = objectNameFromSerializedName(mapper.serializedName);
+  if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
   
-  if (mapperType.match(/^(Number|String|Boolean|Enum|Object|Stream)$/ig) !== null) {
+  if (mapperType.match(/^(Number|String|Boolean|Enum|Object|Stream|Uuid)$/ig) !== null) {
     payload = responseBody;
   } else if (mapperType.match(/^(Date|DateTime|DateTimeRfc1123)$/ig) !== null) {
     payload = new Date(responseBody);
-  } else if (mapperType.match(/^(TimeSpan)$/ig) !== null) {
+  } else if (mapperType.match(/^TimeSpan$/ig) !== null) {
     payload = moment.duration(responseBody);
+  } else if (mapperType.match(/^UnixTime$/ig) !== null) {
+    payload = unixTimeToDate(responseBody);
   } else if (mapperType.match(/^ByteArray$/ig) !== null) {
     payload = new Buffer(responseBody, 'base64');
+  } else if (mapperType.match(/^Base64Url$/ig) !== null) {
+    payload = base64UrlToBuffer(responseBody);
   } else if (mapperType.match(/^Sequence$/ig) !== null) {
     payload = deserializeSequenceType.call(this, mapper, responseBody, objectName);
   } else if (mapperType.match(/^Dictionary$/ig) !== null) {
@@ -363,6 +424,9 @@ exports.deserialize = function (mapper, responseBody, objectName) {
   } else if (mapperType.match(/^Composite$/ig) !== null) {
     payload = deserializeCompositeType.call(this, mapper, responseBody, objectName);
   }
+
+  if (mapper.isConstant) payload = mapper.defaultValue;
+  
   return payload;
 };
 
@@ -403,22 +467,29 @@ function deserializeDictionaryType(mapper, responseBody, objectName) {
 function deserializeCompositeType(mapper, responseBody, objectName) {
   /*jshint validthis: true */
   //check for polymorphic discriminator
-  if (mapper.type.polymorphicDiscriminator) {
+  if (mapper.type.polymorphicDiscriminator !== null && mapper.type.polymorphicDiscriminator !== undefined) {
     if (responseBody === null || responseBody === undefined) {
       throw new Error(util.format('\'%s\' cannot be null or undefined. \'%s\' is the ' + 
         'polmorphicDiscriminator and is a required property.', objectName, 
         mapper.type.polymorphicDiscriminator));
     }
-    if (!responseBody[mapper.type.polymorphicDiscriminator]) {
+    if (responseBody[mapper.type.polymorphicDiscriminator] === null || responseBody[mapper.type.polymorphicDiscriminator] === undefined) {
       throw new Error(util.format('No discriminator field \'%s\' was found in \'%s\'.', 
         mapper.type.polymorphicDiscriminator, objectName));
     }
-    if (!this.models.discriminators[responseBody[mapper.type.polymorphicDiscriminator]]) {
-      throw new Error(util.format('\'%s\': \'%s\'  in \'%s\' is not a valid ' + 
-        'discriminator as a corresponding model class for that value was not found.', 
-        mapper.type.polymorphicDiscriminator, responseBody[mapper.type.polymorphicDiscriminator], objectName));
+    var indexDiscriminator = null;
+    if (responseBody[mapper.type.polymorphicDiscriminator] === mapper.type.uberParent) {
+      indexDiscriminator = responseBody[mapper.type.polymorphicDiscriminator];
+    } else {
+      indexDiscriminator = mapper.type.uberParent + '.' + responseBody[mapper.type.polymorphicDiscriminator];
     }
-    mapper = new this.models.discriminators[responseBody[mapper.type.polymorphicDiscriminator]]().mapper();
+    if (!this.models.discriminators[indexDiscriminator]) {
+      throw new Error(util.format('\'%s\': \'%s\'  in \'%s\' is not a valid ' + 
+        'discriminator as a corresponding model class for the disciminator \'%s\' ' + 
+        'was not found in this.models.discriminators object.', 
+        mapper.type.polymorphicDiscriminator, responseBody[mapper.type.polymorphicDiscriminator], objectName, indexDiscriminator));
+    }
+    mapper = new this.models.discriminators[indexDiscriminator]().mapper();
   }
   
   var instance = {};
@@ -449,19 +520,25 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
     
     for (var key in modelProps) {
       if (modelProps.hasOwnProperty(key)) {
+
+        var jpath = ['responseBody'];
+        var paths = splitSerializeName(modelProps[key].serializedName);
+        paths.forEach(function(item){
+            jpath.push(util.format('[\'%s\']', item));
+        });
         //deserialize the property if it is present in the provided responseBody instance
-        var propertyInstance = responseBody[modelProps[key].serializedName];
-        if (stringContainsProperties(modelProps[key].serializedName)) {
-          if (responseBody.properties) {
-            var serializedKey = objectNameFromSerializedName(modelProps[key].serializedName);
-            propertyInstance = responseBody.properties[serializedKey];
-          }
+        var propertyInstance;
+        try {
+          /*jslint evil: true */
+          propertyInstance = eval(jpath.join(''));
+        } catch (err) {
+          continue;
         }
         var propertyObjectName = objectName + '.' + modelProps[key].serializedName;
         var propertyMapper = modelProps[key];
         var serializedValue;
         //paging
-        if (key === 'value' && util.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
+        if (util.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
           propertyInstance = responseBody[key];
           instance = exports.deserialize.call(this, propertyMapper, propertyInstance, propertyObjectName);
         } else if (propertyInstance !== null && propertyInstance !== undefined) {
@@ -475,31 +552,73 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
   return responseBody;
 }
 
-function assignProperty(serializedName, payload, serializedValue) {
-  var key = objectNameFromSerializedName(serializedName);
-  if (stringContainsProperties(serializedName)) {
-    payload.properties[key] = serializedValue;
-  } else {
-    payload[key] = serializedValue;
-  }
-}
+function splitSerializeName(prop) {
+  var classes = []; 
+  var partialclass = ''; 
+  var subwords = prop.split('.');
 
-function requiresFlattening(mapper, object) {
-  return Object.keys(mapper).some(function (key) {
-    return ((mapper[key].serializedName.match(/^properties\./ig) !== null) && 
-            (object[key] !== null && object[key] !== undefined));
+  subwords.forEach(function(item) {
+    if (item.charAt(item.length - 1) === '\\') {
+     partialclass += item.substr(0, item.length - 1) + '.'; 
+    } else {
+     partialclass += item;
+     classes.push(partialclass);
+     partialclass = '';
+    }
   });
+
+  return classes;
 }
 
-function objectNameFromSerializedName(name) {
-  if (stringContainsProperties(name)) {
-    return name.match(/^properties\.(\w+)$/i)[1];
+function bufferToBase64Url(buffer) {
+  if (!buffer) {
+    return null;
   }
-  return name;
+  if (!Buffer.isBuffer(buffer)) {
+    throw new Error('Please provide an input of type Buffer for converting to Base64Url.');
+  }
+  // Buffer to Base64.
+  var str = buffer.toString('base64');
+  // Base64 to Base64Url.
+  return trimEnd(str, '=').replace(/\+/g, '-').replace(/\//g, '_');
 }
 
-function stringContainsProperties(prop) {
-  return (prop.match(/^properties\.(\w+)$/i) !== null);
+function trimEnd(str, ch) {
+  var len = str.length;
+  while ((len - 1) >= 0 && str[len - 1] === ch) {
+    --len;
+  }
+  return str.substr(0, len);
+}
+
+function base64UrlToBuffer(str) {
+  if (!str) {
+    return null;
+  }
+  if (str && typeof str.valueOf() !== 'string') {
+    throw new Error('Please provide an input of type string for converting to Buffer');
+  }
+  // Base64Url to Base64.
+  str = str.replace(/\-/g, '+').replace(/\_/g, '/');
+  // Base64 to Buffer.
+  return new Buffer(str, 'base64');
+}
+
+function dateToUnixTime(d) {
+  if (!d) {
+    return null;
+  }
+  if (typeof d.valueOf() === 'string') {
+    d = new Date(d);
+  }
+  return parseInt(d.getTime() / 1000);
+}
+
+function unixTimeToDate(n) {
+  if (!n) {
+    return null;
+  }
+  return new Date(n*1000);
 }
 
 exports = module.exports;

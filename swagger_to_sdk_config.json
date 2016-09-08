@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "language": "NodeJS",
+    "autorest": "latest",
+    "autorest_options": {
+      "header": "MICROSOFT_MIT_NO_VERSION"
+    }
+  },
+  "projects": {
+    "authorization": {
+      "swagger": "arm-authorization/2015-07-01/swagger/authorization.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/authorizationManagement/lib"
+    },
+    "batch.management": {
+      "swagger": "arm-batch/2015-12-01/swagger/BatchManagement.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/batchManagement/lib"
+    },
+    "batch": {
+      "swagger": "batch/2016-07-01.3.1/swagger/BatchService.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/batch/lib",
+      "wrapper_filesOrDirs": [
+        "batch.js",
+        "batchSharedKeyCredentials.js",
+        "hmacsha256.js"
+      ]
+    },
+    "cdn": {
+      "swagger": "arm-cdn/2016-04-02/swagger/cdn.json",
+      "autorest_options": {
+        "FT": 2
+      },
+      "output_dir": "lib/services/cdnManagement/lib"
+    },
+    "compute": {
+      "swagger": "arm-compute/compositeComputeClient.json",
+      "autorest_options": {
+        "FT": 1,
+        "Modeler": "CompositeSwagger"
+      },
+      "output_dir": "lib/services/computeManagement2/lib"
+    },
+    "datalake.analytics.account": {
+      "swagger": "arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json",
+      "output_dir": "lib/services/dataLake.Analytics/lib/account"
+    },
+    "datalake.analytics.job": {
+      "swagger": "arm-datalake-analytics/job/2016-03-20-preview/swagger/job.json",
+      "output_dir": "lib/services/dataLake.Analytics/lib/job"
+    },
+    "datalake.analytics.catalog": {
+      "swagger": "arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json",
+      "output_dir": "lib/services/dataLake.Analytics/lib/catalog"
+    },
+    "datalake.store.account": {
+      "swagger": "arm-datalake-store/account/2015-10-01-preview/swagger/account.json",
+      "output_dir": "lib/services/dataLake.Store/lib/account"
+    },
+    "datalake.store.filesystem": {
+      "swagger": "arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json",
+      "output_dir": "lib/services/dataLake.Store/lib/filesystem"
+    },
+    "devtestlabs": {
+      "swagger": "arm-devtestlabs/2016-05-15/swagger/DTL.json",
+      "output_dir": "lib/services/devTestLabs/lib"
+    },
+    "dns": {
+      "swagger": "arm-dns/2016-04-01/swagger/dns.json",
+      "output_dir": "lib/services/dnsManagement/lib"
+    },
+    "eventhub": {
+      "swagger": "arm-eventhub/2015-08-01/swagger/EventHub.json",
+      "output_dir": "lib/services/eventHubManagement/lib"
+    },
+    "graphrbac": {
+      "swagger": "arm-graphrbac/compositeGraphRbacManagementClient.json",
+      "autorest_options": {
+        "FT": 1,
+        "Modeler": "CompositeSwagger"
+      },
+      "output_dir": "lib/services/graphManagement/lib"
+    },
+    "intune": {
+      "swagger": "arm-intune/2015-01-14-preview/swagger/intune.json",
+      "output_dir": "lib/services/intune/lib"
+    },
+    "iothub": {
+      "swagger": "arm-iothub/2016-02-03/swagger/iothub.json",
+      "output_dir": "lib/services/iothub/lib"
+    },
+    "network": {
+      "swagger": "arm-network/2016-06-01/swagger/network.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/networkManagement2/lib"
+    },
+    "notificationhubs": {
+      "swagger": "arm-notificationhubs/2016-03-01/swagger/notificationhubs.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/notificationHubsManagement/lib"
+    },
+    "powerbiembedded": {
+      "swagger": "arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json",
+      "output_dir": "lib/services/powerbiembedded/lib"
+    },
+    "redis": {
+      "swagger": "arm-redis/2016-04-01/swagger/redis.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/rediscachemanagement/lib"
+    },
+    "resources.resources": {
+      "swagger": "arm-resources/resources/2016-07-01/swagger/resources.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/resourceManagement/lib/resource"
+    },
+    "resources.subscriptions": {
+      "swagger": "arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json",
+      "output_dir": "lib/services/resourceManagement/lib/subscription"
+    },
+    "resources.locks": {
+      "swagger": "arm-resources/locks/2015-01-01/swagger/locks.json",
+      "output_dir": "lib/services/resourceManagement/lib/lock"
+    },
+    "resources.features": {
+      "swagger": "arm-resources/features/2015-12-01/swagger/features.json",
+      "output_dir": "lib/services/resourceManagement/lib/feature"
+    },
+    "resources.policy": {
+      "swagger": "arm-resources/policy/2016-04-01/swagger/policy.json",
+      "output_dir": "lib/services/resourceManagement/lib/policy"
+    },
+    "servermanagement": {
+      "swagger": "arm-servermanagement/2015-07-01-preview/servermanagement.json",
+      "output_dir": "lib/services/servermanagement/lib"
+    },
+    "servicebus.management": {
+      "swagger": "arm-servicebus/2015-08-01/swagger/servicebus.json",
+      "output_dir": "lib/services/serviceBusManagement2/lib"
+    },
+    "storage": {
+      "swagger": "arm-storage/2016-01-01/swagger/storage.json",
+      "autorest_options": {
+        "FT": 2
+      },
+      "output_dir": "lib/services/storageManagement2/lib"
+    },
+    "fabric": {
+      "swagger": "servicefabric/2016-01-28/swagger/servicefabric.json",
+      "autorest_options": {
+        "CodeGenerator": "NodeJS"
+      },
+      "output_dir": "lib/services/serviceFabric/lib"
+    },
+    "trafficmanager": {
+      "swagger": "arm-trafficmanager/2015-11-01/swagger/trafficmanager.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/trafficManagerManagement2/lib"
+    },
+    "web": {
+      "swagger": "arm-web/2015-08-01/swagger/service.json",
+      "autorest_options": {
+        "FT": 1
+      },
+      "output_dir": "lib/services/webSiteManagement2/lib"
+    }
+  }
+}

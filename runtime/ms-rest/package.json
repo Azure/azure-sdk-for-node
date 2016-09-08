@@ -5,36 +5,27 @@
     "email": "azsdkteam@microsoft.com",
     "url": "https://github.com/Azure/AutoRest"
   },
-  "version": "1.8.0",
+  "version": "1.14.2",
   "description": "Client Runtime for Node.js client libraries generated using AutoRest",
   "tags": ["node", "microsoft", "autorest", "clientruntime"],
   "keywords": ["node", "microsoft", "autorest", "clientruntime"],
   "main": "./lib/msRest.js",
   "typings": "./lib/index.d.ts",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "dependencies": {
     "underscore": "^1.4.0",
     "tunnel": "~0.0.2",
-    "request": "2.52.0",
-    "validator": "~3.1.0",
+    "request": "2.69.0",
     "duplexer": "~0.1.1",
     "through": "~2.3.4",
-    "tough-cookie": "*",
-    "moment": "^2.6.0"
+    "moment": "^2.9.0"
   },
   "devDependencies": {
     "jshint": "2.6.3",
     "xunit-file": "0.0.5",
-    "mocha": "2.2.5",
-    "should": "5.2.0"
+    "mocha": "2.4.5",
+    "should": "5.2.0",
+    "node-uuid": "*"
   },
   "homepage": "https://github.com/Azure/AutoRest",
   "repository": {

@@ -1,0 +1,36 @@
+{
+  "name": "azure-arm-iothub",
+  "author": "Microsoft Corporation",
+  "contributors": [
+	"Roopesh Manda <rmanda@microsoft.com>"
+  ],
+  "version": "0.1.3",
+  "description": "Microsoft Azure IoTHub Resource Provider Management Client Library for Node",
+  "tags": [
+    "azure",
+    "sdk",
+    "iot"
+  ],
+  "keywords": [
+    "node",
+    "azure",
+    "iot"
+  ],
+  "main": "./lib/iotHubClient.js",
+  "license": "MIT",
+  "dependencies": {
+    "ms-rest": "^1.14.0",
+    "ms-rest-azure": "^1.14.0"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}

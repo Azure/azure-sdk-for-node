@@ -1,88 +1,133 @@
-# Microsoft Azure SDK for Node.js - Data Lake Store
+# Microsoft Azure SDK for Node.js - Graph Management
 
-This project provides a Node.js package that makes it easy to manage Azure Data Lake Store accounts.
-
-Right now it supports:
-
-  *  **Node.js version: 0.8.28 or higher**
-  *  **REST API version: 2015-10-01-preview**
-
-## Features
-
-- Account management: create, get, list, update, and delete.
-- File system management: create, get, upload, append, download, read, delete, list.
+This project provides a Node.js package that makes it easy to manage MicrosoftGraph Resources. Right now it supports:
+- **Node.js version: 4.x.x or higher**
 
 ## How to Install
 
-- Install Node.js.
-- Open a Command Prompt, Terminal, or Bash window.
-- Enter the following:
- 
 ```bash
-npm install async
-npm install adal-node
-npm install azure-common
-npm install azure-arm-datalake-store
+npm install azure-graph
 ```
 
-## How to Use
+## How to use
 
-The following example creates a file in a Data Lake Store account and appends data to it.
+### Authentication, client creation and listing users as an example
 
-```javascript
-var async = require('async');
-var adalNode = require('adal-node');
-var azureCommon = require('azure-common');
-var azureDataLakeStore = require('azure-arm-datalake-store');
+##### Interactive Login
+ ```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var graphRbacManagementClient = require('azure-graph');
 
-var resourceUri = 'https://management.core.windows.net/';
-var loginUri = 'https://login.windows.net/'
+ // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
+ // the user will get a DeviceTokenCredentials object.
 
-var clientId = 'application_id_(guid)';
-var clientSecret = 'application_password';
-
-var tenantId = 'aad_tenant_id';
-var subscriptionId = 'azure_subscription_id';
-var resourceGroup = 'adls_resourcegroup_name';
-
-var accountName = 'adls_account_name';
-
-var context = new adalNode.AuthenticationContext(loginUri+tenantId);
-
-var client;
-var response;
-
-var destinationFilePath = '/newFileName.txt';
-var content = 'desired file contents';
-
-async.series([
-    function (next) {
-        context.acquireTokenWithClientCredentials(resourceUri, clientId, clientSecret, function(err, result){
-            if (err) throw err;
-            response = result;
-            next();
-        });
-    },
-    function (next) {
-        var credentials = new azureCommon.TokenCloudCredentials({
-            subscriptionId : subscriptionId,
-            authorizationScheme : response.tokenType,
-            token : response.accessToken
-        });
-      
-        client = azureDataLakeStore.createDataLakeStoreFileSystemManagementClient(credentials, 'azuredatalakestore.net');
-
-        next();
-    },
-    function (next) {
-        client.fileSystem.directCreate(destinationFilePath, accountName, content, function(err, result){
-            if (err) throw err;
-        });
+ //Note: You need to explicitly specify the tokenAudience as graph and the your domain (tenantId) in which the AD Graph exists. 
+ //      This needs to be done only for working graph clients. For other ARM clients specifying this information is not required.
+ var tenantId='abcd-efgh-ijk-lmno-12345';
+ // Enter your tenant ID here which can be found from your Azure AD URL
+ // Eg. https://manage.windowsazure.com/example.com#Workspaces/ActiveDirectoryExtension/Directory/<TenantId>/users
+ 
+ msRestAzure.interactiveLogin({ tokenAudience: 'graph', domain: tenantId }, function (err, credentials, subscriptions) {
+  if (err) console.log(err);
+  var client = new graphRbacManagementClient(credentials, tenantId);
+  var userParams = {
+    accountEnabled: true,
+    userPrincipalName: 'OfficialStark@<yourdomain.com>', //please add your domain over here
+    displayName: 'Jon Snow',
+    mailNickname: 'OfficialStark',
+    passwordProfile: {
+      password: 'WinterisComing!',
+      forceChangePasswordNextLogin: false
     }
-]);
+  };
+  client.users.create(userParams, function (err, user, request, response) {
+    if (err) return console.log(err);
+    console.log(user);
+    var userObjectId = user.objectId;
+    client.users.list(function (err, result, request, response) {
+      if (err) return console.log(err);
+      console.log(result);
+      client.users.deleteMethod(userObjectId, function (err, result, request, response) {
+        if (err) return console.log(err);
+        console.log(result);
+      });
+    });
+  });
+ });
 ```
 
-## Related projects
+##### Login with username and password (organizational accounts)
+```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var graphRbacManagementClient = require('azure-graph');
+ var tenantId='abcd-efgh-ijk-lmno-12345';
+ // Enter your tenant ID here which can be found from your Azure AD URL
+ // Eg. https://manage.windowsazure.com/example.com#Workspaces/ActiveDirectoryExtension/Directory/<TenantId>/users
+ 
+ msRestAzure.loginWithUsernamePassword('username@contosocorp.onmicrosoft.com', 'your-password', { tokenAudience: 'graph', domain: tenantId }, function (err, credentials, subscriptions) {
+  if (err) console.log(err);
+  var client = new graphRbacManagementClient(credentials, tenantId);
+  var userParams = {
+    accountEnabled: true,
+    userPrincipalName: 'OfficialStark@<yourdomain.com>', //please add your domain over here
+    displayName: 'Jon Snow',
+    mailNickname: 'OfficialStark',
+    passwordProfile: {
+      password: 'WinterisComing!',
+      forceChangePasswordNextLogin: false
+    }
+  };
+  client.users.create(userParams, function (err, user, request, response) {
+    if (err) return console.log(err);
+    console.log(user);
+    var userObjectId = user.objectId;
+    client.users.list(function (err, result, request, response) {
+      if (err) return console.log(err);
+      console.log(result);
+      client.users.deleteMethod(userObjectId, function (err, result, request, response) {
+        if (err) return console.log(err);
+        console.log(result);
+      });
+    });
+  });
+ });
+```
 
-- [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
-- [Microsoft Azure SDK for Node.js - Data Lake Analytics Management](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
+##### Login with serviceprincipal and secret
+```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var graphRbacManagementClient = require('azure-graph');
+ var tenantId='abcd-efgh-ijk-lmno-12345';
+ // Enter your tenant ID here which can be found from your Azure AD URL
+ // Eg. https://manage.windowsazure.com/example.com#Workspaces/ActiveDirectoryExtension/Directory/<TenantId>/users
+ 
+ msRestAzure.loginWithServicePrincipalSecret('clientId', 'application-secret', tenantId, { tokenAudience: 'graph' }, function (err, credentials, subscriptions) {
+  if (err) console.log(err);
+  var client = new graphRbacManagementClient(credentials, tenantId);
+  var userParams = {
+    accountEnabled: true,
+    userPrincipalName: 'OfficialStark@<yourdomain.com>', //please add your domain over here
+    displayName: 'Jon Snow',
+    mailNickname: 'OfficialStark',
+    passwordProfile: {
+      password: 'WinterisComing!',
+      forceChangePasswordNextLogin: false
+    }
+  };
+  client.users.create(userParams, function (err, user, request, response) {
+    if (err) return console.log(err);
+    console.log(user);
+    var userObjectId = user.objectId;
+    client.users.list(function (err, result, request, response) {
+      if (err) return console.log(err);
+      console.log(result);
+      client.users.deleteMethod(userObjectId, function (err, result, request, response) {
+        if (err) return console.log(err);
+        console.log(result);
+      });
+    });
+  });
+ });
+ ```
+
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)

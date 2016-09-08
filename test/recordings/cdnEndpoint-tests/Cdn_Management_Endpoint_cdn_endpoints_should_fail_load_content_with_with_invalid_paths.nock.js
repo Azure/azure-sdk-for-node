@@ -9,45 +9,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/load?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/load?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"/movies/*\\\". ContentPath for load action must be a relative path for a single resource \\\"/path/pic.jpg\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '196',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'f1f6be6f-37b3-4982-92c7-44e58a3873b3',
-  'x-ms-client-request-id': '8f53cc04-aec9-41df-8a19-5768af83c998',
+  'x-ms-request-id': '1f574b62-01b0-4b21-bd79-8e892cfed824',
+  'x-ms-client-request-id': 'ba98823d-111a-4db7-bfee-3413b508cd0e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '6df38347-9e8f-4b4c-8858-1133aa1d8b5e',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221353Z:6df38347-9e8f-4b4c-8858-1133aa1d8b5e',
-  date: 'Tue, 01 Mar 2016 22:13:53 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'db4a8300-076c-4711-bbad-a026a5c532b9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T224654Z:db4a8300-076c-4711-bbad-a026a5c532b9',
+  date: 'Wed, 11 May 2016 22:46:54 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup821/providers/Microsoft.Cdn/profiles/cdnTestProfile45/endpoints/cdnTestEndpoint1818/load?api-version=2015-06-01', '*')
+.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/load?api-version=2016-04-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"/movies/*\\\". ContentPath for load action must be a relative path for a single resource \\\"/path/pic.jpg\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '196',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': 'f1f6be6f-37b3-4982-92c7-44e58a3873b3',
-  'x-ms-client-request-id': '8f53cc04-aec9-41df-8a19-5768af83c998',
+  'x-ms-request-id': '1f574b62-01b0-4b21-bd79-8e892cfed824',
+  'x-ms-client-request-id': 'ba98823d-111a-4db7-bfee-3413b508cd0e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
-  'x-ms-correlation-request-id': '6df38347-9e8f-4b4c-8858-1133aa1d8b5e',
-  'x-ms-routing-request-id': 'CENTRALUS:20160301T221353Z:6df38347-9e8f-4b4c-8858-1133aa1d8b5e',
-  date: 'Tue, 01 Mar 2016 22:13:53 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1197',
+  'x-ms-correlation-request-id': 'db4a8300-076c-4711-bbad-a026a5c532b9',
+  'x-ms-routing-request-id': 'CENTRALUS:20160511T224654Z:db4a8300-076c-4711-bbad-a026a5c532b9',
+  date: 'Wed, 11 May 2016 22:46:54 GMT',
   connection: 'close' });
  return result; }]];

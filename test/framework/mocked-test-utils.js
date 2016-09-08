@@ -16,8 +16,10 @@
 
 // Test includes
 var fs = require('fs');
+var sinon = require('sinon');
 
 var nockHelper = require('./nock-helper');
+var KvTestUtils = require('../services/keyVault/kv-test-utils');
 
 exports = module.exports = MockedTestUtils;
 
@@ -30,8 +32,10 @@ function MockedTestUtils(service, testPrefix) {
   this.recordingsFile = __dirname + '/../recordings/' + this.testPrefix + '.nock.js';
   this.isMocked = !process.env.NOCK_OFF;
   this.isRecording = process.env.AZURE_NOCK_RECORD;
+  this.isPlayback = !process.env.NOCK_OFF && !process.env.AZURE_NOCK_RECORD;
 
   this.setupService(service);
+  this.stubMethods();
 }
 
 MockedTestUtils.prototype.setupService = function (service) {
@@ -104,9 +108,23 @@ MockedTestUtils.prototype.baseTeardownTest = function (callback) {
         line = line.replace(/(\.merge\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
         line = line.replace(/(\.patch\('.*')[^\)]+\)/, '.filteringRequestBody(function (path) { return \'*\';})\n$1, \'*\')');
 
-        scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
-          'var result = ' + line + ' return result; }';
-        lineWritten = true;
+        // put deployment have a timestamp in the url
+        line = line.replace(/(\.put\('\/deployment-templates\/\d{8}T\d{6}')/,
+          '.filteringPath(/\\/deployment-templates\\/\\d{8}T\\d{6}/, \'/deployment-templates/timestamp\')\n.put(\'/deployment-templates/timestamp\'');
+
+        // Requests to logging service contain timestamps in url query params, filter them out too
+        line = line.replace(/(\.get\('.*\/microsoft.insights\/eventtypes\/management\/values\?api-version=[0-9-]+)[^)]+\)/,
+          '.filteringPath(function (path) { return path.slice(0, path.indexOf(\'&\')); })\n$1\')');
+        if (line.match(/\/oauth2\/token\//ig) === null &&
+          line.match(/login\.windows\.net/ig) === null && 
+          line.match(/login\.windows-ppe\.net/ig) === null &&
+          line.match(/login\.microsoftonline\.com/ig) === null &&
+          line.match(/login\.chinacloudapi\.cn/ig) === null &&
+          line.match(/login\.microsoftonline\.de/ig) === null) {
+          scope += (lineWritten ? ',\n' : '') + 'function (nock) { \n' +
+            'var result = ' + line + ' return result; }';
+          lineWritten = true;
+        }
       }
     });
     scope += ']';
@@ -117,3 +135,17 @@ MockedTestUtils.prototype.baseTeardownTest = function (callback) {
 
   callback();
 };
+
+/**
+ * Stubs certain methods to make them work in playback mode.
+ */
+MockedTestUtils.prototype.stubMethods = function() {
+  if (this.isPlayback) {
+    if (KvTestUtils.authenticator.restore) {
+      KvTestUtils.authenticator.restore();
+    }
+    sinon.stub(KvTestUtils, 'authenticator', function(challenge, callback) {
+      return callback(null, 'Bearer MockedTest');
+    });
+  }
+}

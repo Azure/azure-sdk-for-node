@@ -1,6 +1,7 @@
 projects/*
 targets/*
 packages/*
+test/data/test_package.zip
 
 # Visual Studio #
 *.suo
@@ -40,6 +41,7 @@ Thumbs.db
 docs/
 main.conf.json
 child.conf.json
+.grunt/
 
 # temporary test artifacts
 test/tmp/*
@@ -47,3 +49,4 @@ test/tmp/*
 # Nuget packages and corresponding codegen sources
 .nuget
 packages
+

@@ -1,7 +1,6 @@
 # Microsoft Azure SDK for Node.js - SQL Database Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure SQL Database. Right now it supports:
-- **Node.js version: 0.6.15 or higher**
 - **API version: 2012-03-01**
 
 ## Features
