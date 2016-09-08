@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/queueResource.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Namespaces.html">Namespaces</a><ul class='methods'><li data-type='method'><a href="Namespaces.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Namespaces.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Namespaces.html#get">get</a></li><li data-type='method'><a href="Namespaces.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Namespaces.html#listBySubscription">listBySubscription</a></li><li data-type='method'><a href="Namespaces.html#listBySubscriptionNext">listBySubscriptionNext</a></li><li data-type='method'><a href="Namespaces.html#listKeys">listKeys</a></li><li data-type='method'><a href="Namespaces.html#regenerateKeys">regenerateKeys</a></li></ul></li><li><a href="Queues.html">Queues</a><ul class='methods'><li data-type='method'><a href="Queues.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Queues.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="Queues.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="Queues.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Queues.html#get">get</a></li><li data-type='method'><a href="Queues.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="Queues.html#listAll">listAll</a></li><li data-type='method'><a href="Queues.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="Queues.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="Queues.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="Queues.html#listKeys">listKeys</a></li><li data-type='method'><a href="Queues.html#regenerateKeys">regenerateKeys</a></li></ul></li><li><a href="ServiceBusManagementClient.html">ServiceBusManagementClient</a></li><li><a href="Subscriptions.html">Subscriptions</a><ul class='methods'><li data-type='method'><a href="Subscriptions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Subscriptions.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Subscriptions.html#get">get</a></li><li data-type='method'><a href="Subscriptions.html#listAll">listAll</a></li><li data-type='method'><a href="Subscriptions.html#listAllNext">listAllNext</a></li></ul></li><li><a href="Topics.html">Topics</a><ul class='methods'><li data-type='method'><a href="Topics.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Topics.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="Topics.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="Topics.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Topics.html#get">get</a></li><li data-type='method'><a href="Topics.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="Topics.html#listAll">listAll</a></li><li data-type='method'><a href="Topics.html#listAllNext">listAllNext</a></li><li data-type='method'><a href="Topics.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="Topics.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="Topics.html#listKeys">listKeys</a></li><li data-type='method'><a href="Topics.html#regenerateKeys">regenerateKeys</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#capacity">capacity</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#keyName">keyName</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#policykey">policykey</a></li><li><a href="global.html#rights">rights</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#transferMessageCount">transferMessageCount</a></li><li><a href="global.html#updatedAt">updatedAt</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/queueResource.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ * 
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+var models = require('./index');
+
+var util = require('util');
+
+/**
+ * @class
+ * Initializes a new instance of the QueueResource class.
+ * @constructor
+ * Description of queue Resource.
+ *
+ * @member {string} [lockDuration] the duration of a peek lock; that is, the
+ * amount of time that the message is locked for other receivers. The maximum
+ * value for LockDuration is 5 minutes; the default value is 1 minute.
+ * 
+ * @member {date} [accessedAt] Last time a message was sent, or the last time
+ * there was a receive request to this queue.
+ * 
+ * @member {string} [autoDeleteOnIdle] the TimeSpan idle interval after which
+ * the queue is automatically deleted. The minimum duration is 5 minutes.
+ * 
+ * @member {string} [entityAvailabilityStatus] Entity availability status for
+ * the queue. Possible values include: 'Available', 'Limited', 'Renaming',
+ * 'Restoring', 'Unknown'
+ * 
+ * @member {date} [createdAt] the exact time the message was created.
+ * 
+ * @member {string} [defaultMessageTimeToLive] the default message time to
+ * live value. This is the duration after which the message expires, starting
+ * from when the message is sent to Service Bus. This is the default value
+ * used when TimeToLive is not set on a message itself.
+ * 
+ * @member {string} [duplicateDetectionHistoryTimeWindow] TimeSpan structure
+ * that defines the duration of the duplicate detection history. The default
+ * value is 10 minutes..
+ * 
+ * @member {boolean} [enableBatchedOperations] value that indicates whether
+ * server-side batched operations are enabled..
+ * 
+ * @member {boolean} [deadLetteringOnMessageExpiration] a value that indicates
+ * whether this queue has dead letter support when a message expires.
+ * 
+ * @member {boolean} [enableExpress] a value that indicates whether Express
+ * Entities are enabled. An express queue holds a message in memory
+ * temporarily before writing it to persistent storage.
+ * 
+ * @member {boolean} [enablePartitioning] value that indicates whether the
+ * queue to be partitioned across multiple message brokers is enabled.
+ * 
+ * @member {boolean} [isAnonymousAccessible] a value that indicates whether
+ * the message is anonymous accessible.
+ * 
+ * @member {number} [maxDeliveryCount] the maximum delivery count. A message
+ * is automatically deadlettered after this number of deliveries.
+ * 
+ * @member {number} [maxSizeInMegabytes] the maximum size of the queue in
+ * megabytes, which is the size of memory allocated for the queue.
+ * 
+ * @member {number} [messageCount] the number of messages in the queue.
+ * 
+ * @member {object} [countDetails]
+ * 
+ * @member {number} [countDetails.activeMessageCount] Number of active
+ * messages in the queue, topic, or subscription.
+ * 
+ * @member {number} [countDetails.deadLetterMessageCount] Number of messages
+ * that are dead letters.
+ * 
+ * @member {number} [countDetails.scheduledMessageCount] Number scheduled
+ * messages.
+ * 
+ * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
+ * messages transferred into dead letters.
+ * 
+ * @member {number} [countDetails.transferMessageCount] Number of messages
+ * transferred to another queue, topic, or subscription.
+ * 
+ * @member {boolean} [requiresDuplicateDetection] the value indicating if this
+ * queue requires duplicate detection.
+ * 
+ * @member {boolean} [requiresSession] a value that indicates whether the
+ * queue supports the concept of session.
+ * 
+ * @member {number} [sizeInBytes] the size of the queue in bytes.
+ * 
+ * @member {string} [status] Enumerates the possible values for the status of
+ * a messaging entity. Possible values include: 'Active', 'Creating',
+ * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
+ * 'SendDisabled', 'Unknown'
+ * 
+ * @member {boolean} [supportOrdering] a value that indicates whether the
+ * queue supports ordering.
+ * 
+ * @member {date} [updatedAt] the exact time the message has been updated.
+ * 
+ */
+function QueueResource() {
+  QueueResource['super_'].call(this);
+}
+
+util.inherits(QueueResource, models['Resource']);
+
+/**
+ * Defines the metadata of QueueResource
+ *
+ * @returns {object} metadata of QueueResource
+ *
+ */
+QueueResource.prototype.mapper = function () {
+  return {
+    required: false,
+    serializedName: 'QueueResource',
+    type: {
+      name: 'Composite',
+      className: 'QueueResource',
+      modelProperties: {
+        id: {
+          required: false,
+          readOnly: true,
+          serializedName: 'id',
+          type: {
+            name: 'String'
+          }
+        },
+        name: {
+          required: false,
+          readOnly: true,
+          serializedName: 'name',
+          type: {
+            name: 'String'
+          }
+        },
+        type: {
+          required: false,
+          readOnly: true,
+          serializedName: 'type',
+          type: {
+            name: 'String'
+          }
+        },
+        location: {
+          required: true,
+          serializedName: 'location',
+          type: {
+            name: 'String'
+          }
+        },
+        tags: {
+          required: false,
+          serializedName: 'tags',
+          type: {
+            name: 'Dictionary',
+            value: {
+                required: false,
+                serializedName: 'StringElementType',
+                type: {
+                  name: 'String'
+                }
+            }
+          }
+        },
+        lockDuration: {
+          required: false,
+          serializedName: 'properties.lockDuration ',
+          type: {
+            name: 'String'
+          }
+        },
+        accessedAt: {
+          required: false,
+          serializedName: 'properties.accessedAt',
+          type: {
+            name: 'DateTime'
+          }
+        },
+        autoDeleteOnIdle: {
+          required: false,
+          serializedName: 'properties.autoDeleteOnIdle',
+          type: {
+            name: 'String'
+          }
+        },
+        entityAvailabilityStatus: {
+          required: false,
+          serializedName: 'properties.entityAvailabilityStatus ',
+          type: {
+            name: 'Enum',
+            allowedValues: [ 'Available', 'Limited', 'Renaming', 'Restoring', 'Unknown' ]
+          }
+        },
+        createdAt: {
+          required: false,
+          serializedName: 'properties.createdAt',
+          type: {
+            name: 'DateTime'
+          }
+        },
+        defaultMessageTimeToLive: {
+          required: false,
+          serializedName: 'properties.defaultMessageTimeToLive',
+          type: {
+            name: 'String'
+          }
+        },
+        duplicateDetectionHistoryTimeWindow: {
+          required: false,
+          serializedName: 'properties.duplicateDetectionHistoryTimeWindow ',
+          type: {
+            name: 'String'
+          }
+        },
+        enableBatchedOperations: {
+          required: false,
+          serializedName: 'properties.enableBatchedOperations',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        deadLetteringOnMessageExpiration: {
+          required: false,
+          serializedName: 'properties.deadLetteringOnMessageExpiration',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        enableExpress: {
+          required: false,
+          serializedName: 'properties.enableExpress',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        enablePartitioning: {
+          required: false,
+          serializedName: 'properties.enablePartitioning',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        isAnonymousAccessible: {
+          required: false,
+          serializedName: 'properties.isAnonymousAccessible',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        maxDeliveryCount: {
+          required: false,
+          serializedName: 'properties.maxDeliveryCount ',
+          type: {
+            name: 'Number'
+          }
+        },
+        maxSizeInMegabytes: {
+          required: false,
+          serializedName: 'properties.maxSizeInMegabytes',
+          type: {
+            name: 'Number'
+          }
+        },
+        messageCount: {
+          required: false,
+          serializedName: 'properties.messageCount ',
+          type: {
+            name: 'Number'
+          }
+        },
+        countDetails: {
+          required: false,
+          serializedName: 'properties.countDetails',
+          type: {
+            name: 'Composite',
+            className: 'MessageCountDetails'
+          }
+        },
+        requiresDuplicateDetection: {
+          required: false,
+          serializedName: 'properties.requiresDuplicateDetection',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        requiresSession: {
+          required: false,
+          serializedName: 'properties.requiresSession',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        sizeInBytes: {
+          required: false,
+          serializedName: 'properties.sizeInBytes ',
+          type: {
+            name: 'Number'
+          }
+        },
+        status: {
+          required: false,
+          serializedName: 'properties.status',
+          type: {
+            name: 'Enum',
+            allowedValues: [ 'Active', 'Creating', 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring', 'SendDisabled', 'Unknown' ]
+          }
+        },
+        supportOrdering: {
+          required: false,
+          serializedName: 'properties.supportOrdering',
+          type: {
+            name: 'Boolean'
+          }
+        },
+        updatedAt: {
+          required: false,
+          serializedName: 'properties.updatedAt',
+          type: {
+            name: 'DateTime'
+          }
+        }
+      }
+    }
+  };
+};
+
+module.exports = QueueResource;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Sep 07 2016 23:44:34 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
