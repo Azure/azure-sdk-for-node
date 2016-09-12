@@ -66,6 +66,9 @@ export interface IotHubResource {
      * @param {array} [iotHubDescription.properties.authorizationPolicies] The
      * authorization rules.
      * 
+     * @param {array} [iotHubDescription.properties.ipFilterRules] The IP filter
+     * rules.
+     * 
      * @param {string} [iotHubDescription.properties.hostName] The name of the
      * host.
      * 
@@ -172,6 +175,9 @@ export interface IotHubResource {
      * 
      * @param {array} [iotHubDescription.properties.authorizationPolicies] The
      * authorization rules.
+     * 
+     * @param {array} [iotHubDescription.properties.ipFilterRules] The IP filter
+     * rules.
      * 
      * @param {string} [iotHubDescription.properties.hostName] The name of the
      * host.
@@ -529,9 +535,12 @@ export interface IotHubResource {
      *
      * Check if an IotHub name is available.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} operationInputs The operation inputs. Set the name
+     * parameter in the operationInputs structure to the desired iothub name.
      * 
-     * @param {string} [options.name] The name of the iot hub.
+     * @param {string} operationInputs.name The name of the iot hub.
+     * 
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -539,8 +548,8 @@ export interface IotHubResource {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkNameAvailability(options: { name? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
-    checkNameAvailability(callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
+    checkNameAvailability(operationInputs: models.OperationInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
+    checkNameAvailability(operationInputs: models.OperationInputs, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
 
     /**
      * @summary Get all keys for an IotHub.
@@ -595,10 +604,10 @@ export interface IotHubResource {
      * 
      * @param {object} exportDevicesParameters The export devices parameters.
      * 
-     * @param {string} [exportDevicesParameters.exportBlobContainerUri] The export
+     * @param {string} exportDevicesParameters.exportBlobContainerUri The export
      * BLOB container URI.
      * 
-     * @param {boolean} [exportDevicesParameters.excludeKeys] The value indicating
+     * @param {boolean} exportDevicesParameters.excludeKeys The value indicating
      * whether keys should be excluded during export.
      * 
      * @param {object} [options] Optional Parameters.
@@ -623,10 +632,10 @@ export interface IotHubResource {
      * 
      * @param {object} importDevicesParameters The import devices parameters.
      * 
-     * @param {string} [importDevicesParameters.inputBlobContainerUri] The input
+     * @param {string} importDevicesParameters.inputBlobContainerUri The input
      * BLOB container URI.
      * 
-     * @param {string} [importDevicesParameters.outputBlobContainerUri] The output
+     * @param {string} importDevicesParameters.outputBlobContainerUri The output
      * BLOB container URI.
      * 
      * @param {object} [options] Optional Parameters.
