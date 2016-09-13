@@ -46,8 +46,8 @@ export interface Account {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} [parameters.autoStorage.storageAccountId] The resource id
-     * of the storage account to be used for auto storage account.
+     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -86,8 +86,8 @@ export interface Account {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} [parameters.autoStorage.storageAccountId] The resource id
-     * of the storage account to be used for auto storage account.
+     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -116,8 +116,8 @@ export interface Account {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} [parameters.autoStorage.storageAccountId] The resource id
-     * of the storage account to be used for auto storage account.
+     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
      * 

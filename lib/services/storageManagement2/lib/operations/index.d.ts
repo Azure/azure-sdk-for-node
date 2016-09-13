@@ -53,21 +53,21 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      * 
-     * @param {object} [parameters.sku] Required. Gets or sets the sku type.
+     * @param {object} parameters.sku Required. Gets or sets the sku type.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name. Required
-     * for account creation, optional for update. Note that in older versions,
-     * sku name was called accountType. Possible values include: 'Standard_LRS',
+     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
+     * account creation, optional for update. Note that in older versions, sku
+     * name was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      * 
-     * @param {string} [parameters.kind] Required. Indicates the type of storage
+     * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      * 
-     * @param {string} [parameters.location] Required. Gets or sets the location
-     * of the resource. This will be one of the supported and registered Azure
-     * Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region
-     * of a resource cannot be changed once it is created, but if an identical
-     * geo region is specified on update the request will succeed.
+     * @param {string} parameters.location Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update the request will succeed.
      * 
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
      * that describe the resource. These tags can be used in viewing and grouping
@@ -80,8 +80,8 @@ export interface StorageAccounts {
      * supported per storage account at this time. To clear the existing custom
      * domain, use an empty string for the custom domain name property.
      * 
-     * @param {string} [parameters.customDomain.name] Gets or sets the custom
-     * domain name. Name is the CNAME source.
+     * @param {string} parameters.customDomain.name Gets or sets the custom domain
+     * name. Name is the CNAME source.
      * 
      * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
      * indirect CName validation is enabled. Default value is false. This should
@@ -133,21 +133,21 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      * 
-     * @param {object} [parameters.sku] Required. Gets or sets the sku type.
+     * @param {object} parameters.sku Required. Gets or sets the sku type.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name. Required
-     * for account creation, optional for update. Note that in older versions,
-     * sku name was called accountType. Possible values include: 'Standard_LRS',
+     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
+     * account creation, optional for update. Note that in older versions, sku
+     * name was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      * 
-     * @param {string} [parameters.kind] Required. Indicates the type of storage
+     * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      * 
-     * @param {string} [parameters.location] Required. Gets or sets the location
-     * of the resource. This will be one of the supported and registered Azure
-     * Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region
-     * of a resource cannot be changed once it is created, but if an identical
-     * geo region is specified on update the request will succeed.
+     * @param {string} parameters.location Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update the request will succeed.
      * 
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
      * that describe the resource. These tags can be used in viewing and grouping
@@ -160,8 +160,8 @@ export interface StorageAccounts {
      * supported per storage account at this time. To clear the existing custom
      * domain, use an empty string for the custom domain name property.
      * 
-     * @param {string} [parameters.customDomain.name] Gets or sets the custom
-     * domain name. Name is the CNAME source.
+     * @param {string} parameters.customDomain.name Gets or sets the custom domain
+     * name. Name is the CNAME source.
      * 
      * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
      * indirect CName validation is enabled. Default value is false. This should
@@ -265,9 +265,9 @@ export interface StorageAccounts {
      * cannot be updated to StandardZRS or ProvisionedLRS, nor can accounts of
      * that sku type be updated to any other value.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name. Required
-     * for account creation, optional for update. Note that in older versions,
-     * sku name was called accountType. Possible values include: 'Standard_LRS',
+     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
+     * account creation, optional for update. Note that in older versions, sku
+     * name was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      * 
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
@@ -281,8 +281,8 @@ export interface StorageAccounts {
      * supported per storage account at this time. To clear the existing custom
      * domain, use an empty string for the custom domain name property.
      * 
-     * @param {string} [parameters.customDomain.name] Gets or sets the custom
-     * domain name. Name is the CNAME source.
+     * @param {string} parameters.customDomain.name Gets or sets the custom domain
+     * name. Name is the CNAME source.
      * 
      * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
      * indirect CName validation is enabled. Default value is false. This should

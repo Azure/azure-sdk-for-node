@@ -26,7 +26,7 @@ export interface Job {
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute job operations on.
      * 
-     * @param {uuid} jobIdentity JobInfo ID.
+     * @param {uuid} jobIdentity Job Information ID.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -69,9 +69,9 @@ export interface Job {
      * 
      * @param {uuid} [parameters.jobId] the job's unique identifier (a GUID).
      * 
-     * @param {string} [parameters.name] the friendly name of the job.
+     * @param {string} parameters.name the friendly name of the job.
      * 
-     * @param {string} [parameters.type] the job type of the current job (Hive or
+     * @param {string} parameters.type the job type of the current job (Hive or
      * USql). Possible values include: 'USql', 'Hive'
      * 
      * @param {string} [parameters.submitter] the user or account that submitted
@@ -88,15 +88,15 @@ export interface Job {
      * patterns to find in the logFolder. '*' is the only matching character
      * allowed. Example format: jobExecution*.log or *mylog*.txt
      * 
-     * @param {object} [parameters.properties] the job specific properties.
+     * @param {object} parameters.properties the job specific properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] the runtime version
      * of the Data Lake Analytics engine to use for the specific type of job
      * being run.
      * 
-     * @param {string} [parameters.properties.script] the script to run
+     * @param {string} parameters.properties.script the script to run
      * 
-     * @param {string} [parameters.properties.type] Polymorhpic Discriminator
+     * @param {string} parameters.properties.type Polymorhpic Discriminator
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -159,9 +159,9 @@ export interface Job {
      * 
      * @param {uuid} [parameters.jobId] the job's unique identifier (a GUID).
      * 
-     * @param {string} [parameters.name] the friendly name of the job.
+     * @param {string} parameters.name the friendly name of the job.
      * 
-     * @param {string} [parameters.type] the job type of the current job (Hive or
+     * @param {string} parameters.type the job type of the current job (Hive or
      * USql). Possible values include: 'USql', 'Hive'
      * 
      * @param {string} [parameters.submitter] the user or account that submitted
@@ -178,15 +178,15 @@ export interface Job {
      * patterns to find in the logFolder. '*' is the only matching character
      * allowed. Example format: jobExecution*.log or *mylog*.txt
      * 
-     * @param {object} [parameters.properties] the job specific properties.
+     * @param {object} parameters.properties the job specific properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] the runtime version
      * of the Data Lake Analytics engine to use for the specific type of job
      * being run.
      * 
-     * @param {string} [parameters.properties.script] the script to run
+     * @param {string} parameters.properties.script the script to run
      * 
-     * @param {string} [parameters.properties.type] Polymorhpic Discriminator
+     * @param {string} parameters.properties.type Polymorhpic Discriminator
      * 
      * @param {object} [options] Optional Parameters.
      * 

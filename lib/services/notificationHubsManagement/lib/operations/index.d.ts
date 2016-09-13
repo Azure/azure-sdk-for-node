@@ -316,14 +316,11 @@ export interface Namespaces {
      * @param {string} authorizationRuleName The connection string of the
      * namespace for the specified authorizationRule.
      * 
-     * @param {object} parameters Parameters supplied to regenerate the Namespace
-     * Authorization Rule Key.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [parameters.policyKey] Name of the key that has to be
+     * @param {string} [options.policyKey] Name of the key that has to be
      * regenerated for the Namespace/Notification Hub Authorization Rule. The
      * value can be Primary Key/Secondary Key.
-     * 
-     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -331,8 +328,8 @@ export interface Namespaces {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { policyKey? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
 
     /**
      * Lists the available namespaces within a resourceGroup.
@@ -715,14 +712,11 @@ export interface NotificationHubs {
      * @param {string} authorizationRuleName The connection string of the
      * NotificationHub for the specified authorizationRule.
      * 
-     * @param {object} parameters Parameters supplied to regenerate the
-     * NotificationHub Authorization Rule Key.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [parameters.policyKey] Name of the key that has to be
+     * @param {string} [options.policyKey] Name of the key that has to be
      * regenerated for the Namespace/Notification Hub Authorization Rule. The
      * value can be Primary Key/Secondary Key.
-     * 
-     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -730,8 +724,8 @@ export interface NotificationHubs {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, notificationHubName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, notificationHubName: string, authorizationRuleName: string, parameters: models.PolicykeyResource, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, notificationHubName: string, authorizationRuleName: string, options: { policyKey? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, notificationHubName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
 
     /**
      * Lists the PNS Credentials associated with a notification hub .
