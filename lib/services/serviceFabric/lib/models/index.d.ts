@@ -9,6 +9,7 @@
  * @class
  * Initializes a new instance of the Node class.
  * @constructor
+ * The node
  * @member {string} [name]
  * 
  * @member {string} [ipAddressOrFQDN]
@@ -19,11 +20,13 @@
  * 
  * @member {string} [configVersion]
  * 
- * @member {number} [nodeStatus]
+ * @member {string} [nodeStatus] Possible values include: 'Invalid', 'Up',
+ * 'Down', 'Enabling', 'Disabling', 'Disabled', 'Unknown', 'Removed'
  * 
  * @member {string} [nodeUpTimeInSeconds]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {boolean} [isSeedNode]
  * 
@@ -31,17 +34,20 @@
  * 
  * @member {string} [faultDomain]
  * 
- * @member {object} [id]
+ * @member {object} [id] The id
  * 
  * @member {string} [id.id]
  * 
  * @member {string} [instanceId]
  * 
- * @member {object} [nodeDeactivationInfo]
+ * @member {object} [nodeDeactivationInfo] The info of the deactivation info
  * 
- * @member {string} [nodeDeactivationInfo.nodeDeactivationIntent]
+ * @member {string} [nodeDeactivationInfo.nodeDeactivationIntent] Possible
+ * values include: 'Invalid', 'Pause', 'Restart', 'RemoveData'
  * 
- * @member {number} [nodeDeactivationInfo.nodeDeactivationStatus]
+ * @member {string} [nodeDeactivationInfo.nodeDeactivationStatus] Possible
+ * values include: 'Invalid', 'SafetyCheckInProgress', 'SafetyCheckComplete',
+ * 'Completed'
  * 
  */
 export interface Node {
@@ -50,7 +56,7 @@ export interface Node {
     type?: string;
     codeVersion?: string;
     configVersion?: string;
-    nodeStatus?: number;
+    nodeStatus?: string;
     nodeUpTimeInSeconds?: string;
     healthState?: string;
     isSeedNode?: boolean;
@@ -65,6 +71,7 @@ export interface Node {
  * @class
  * Initializes a new instance of the NodeId class.
  * @constructor
+ * The id
  * @member {string} [id]
  * 
  */
@@ -76,25 +83,45 @@ export interface NodeId {
  * @class
  * Initializes a new instance of the NodeNodeDeactivationInfo class.
  * @constructor
- * @member {string} [nodeDeactivationIntent]
+ * The info of the deactivation info
+ * @member {string} [nodeDeactivationIntent] Possible values include:
+ * 'Invalid', 'Pause', 'Restart', 'RemoveData'
  * 
- * @member {number} [nodeDeactivationStatus]
+ * @member {string} [nodeDeactivationStatus] Possible values include:
+ * 'Invalid', 'SafetyCheckInProgress', 'SafetyCheckComplete', 'Completed'
  * 
  */
 export interface NodeNodeDeactivationInfo {
     nodeDeactivationIntent?: string;
-    nodeDeactivationStatus?: number;
+    nodeDeactivationStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeList class.
+ * @constructor
+ * The list of the node
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface NodeList {
+    continuationToken?: string;
+    items?: Node[];
 }
 
 /**
  * @class
  * Initializes a new instance of the HealthEvent class.
  * @constructor
+ * The event of the health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [timeToLiveInMilliSeconds]
  * 
@@ -137,16 +164,18 @@ export interface HealthEvent {
  * @class
  * Initializes a new instance of the HealthEvaluation class.
  * @constructor
+ * The evauation of the health
  * @member {string} [description]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} Kind Polymorhpic Discriminator
  * 
  */
 export interface HealthEvaluation {
     description?: string;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
     Kind: string;
 }
 
@@ -154,11 +183,13 @@ export interface HealthEvaluation {
  * @class
  * Initializes a new instance of the UnhealthyEvaluation class.
  * @constructor
+ * The evaluation of the unhealthy
  * @member {object} [healthEvaluation]
  * 
  * @member {string} [healthEvaluation.description]
  * 
- * @member {number} [healthEvaluation.aggregatedHealthState]
+ * @member {string} [healthEvaluation.aggregatedHealthState] Possible values
+ * include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [healthEvaluation.Kind] Polymorhpic Discriminator
  * 
@@ -171,13 +202,15 @@ export interface UnhealthyEvaluation {
  * @class
  * Initializes a new instance of the EventHealthEvaluation class.
  * @constructor
+ * The evaluation of the event health
  * @member {object} [unhealthyEvent]
  * 
  * @member {string} [unhealthyEvent.sourceId]
  * 
  * @member {string} [unhealthyEvent.property]
  * 
- * @member {string} [unhealthyEvent.healthState]
+ * @member {string} [unhealthyEvent.healthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [unhealthyEvent.timeToLiveInMilliSeconds]
  * 
@@ -211,6 +244,7 @@ export interface EventHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the PartitionsHealthEvaluation class.
  * @constructor
+ * The evaluation of the partitions health
  * @member {array} [unhealthyEvaluations]
  * 
  * @member {number} [totalCount]
@@ -228,6 +262,7 @@ export interface PartitionsHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the ReplicasHealthEvaluation class.
  * @constructor
+ * The evaluation of the replicas health
  * @member {array} [unhealthyEvaluations]
  * 
  * @member {number} [totalCount]
@@ -245,6 +280,7 @@ export interface ReplicasHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the DeployedServicePackagesHealthEvaluation class.
  * @constructor
+ * The evaluation of the deployed service packages health
  * @member {array} [unhealthyEvaluations]
  * 
  * @member {number} [totalCount]
@@ -259,6 +295,7 @@ export interface DeployedServicePackagesHealthEvaluation extends HealthEvaluatio
  * @class
  * Initializes a new instance of the DeployedApplicationsHealthEvaluation class.
  * @constructor
+ * The evaluation of the deployed applications health
  * @member {array} [unhealthyEvaluations]
  * 
  * @member {number} [totalCount]
@@ -276,6 +313,7 @@ export interface DeployedApplicationsHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the ServicesHealthEvaluation class.
  * @constructor
+ * The evaluation of the services health
  * @member {string} [serviceTypeName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -296,6 +334,7 @@ export interface ServicesHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the NodesHealthEvaluation class.
  * @constructor
+ * The evaluation of the nodes health
  * @member {array} [unhealthyEvaluations]
  * 
  * @member {number} [totalCount]
@@ -313,6 +352,7 @@ export interface NodesHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the ApplicationsHealthEvaluation class.
  * @constructor
+ * The evaluation of the applications health
  * @member {array} [unhealthyEvaluations]
  * 
  * @member {number} [totalCount]
@@ -330,6 +370,7 @@ export interface ApplicationsHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the UpgradeDomainNodesHealthEvaluation class.
  * @constructor
+ * The evaluation of the upgrade domain nodes health
  * @member {string} [upgradeDomainName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -350,6 +391,7 @@ export interface UpgradeDomainNodesHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the UpgradeDomainDeployedApplicationsHealthEvaluation class.
  * @constructor
+ * The evaluation of the upgrade domain deployed applications health
  * @member {string} [upgradeDomainName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -370,6 +412,7 @@ export interface UpgradeDomainDeployedApplicationsHealthEvaluation extends Healt
  * @class
  * Initializes a new instance of the SystemApplicationHealthEvaluation class.
  * @constructor
+ * The evaluation of the system application health
  * @member {array} [unhealthyEvaluations]
  * 
  */
@@ -381,6 +424,7 @@ export interface SystemApplicationHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the PartitionHealthEvaluation class.
  * @constructor
+ * The evaluation of the partition health
  * @member {string} [partitionId]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -395,6 +439,7 @@ export interface PartitionHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the ReplicaHealthEvaluation class.
  * @constructor
+ * The evaluation of the replica health
  * @member {string} [partitionId]
  * 
  * @member {string} [replicaOrInstanceId]
@@ -412,6 +457,7 @@ export interface ReplicaHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the DeployedServicePackageHealthEvaluation class.
  * @constructor
+ * The evaluation of the deployed service package health
  * @member {string} [applicationName]
  * 
  * @member {string} [nodeName]
@@ -432,6 +478,7 @@ export interface DeployedServicePackageHealthEvaluation extends HealthEvaluation
  * @class
  * Initializes a new instance of the DeployedApplicationHealthEvaluation class.
  * @constructor
+ * The evaluation of the deployed application health
  * @member {string} [applicationName]
  * 
  * @member {string} [nodeName]
@@ -449,6 +496,7 @@ export interface DeployedApplicationHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the ServiceHealthEvaluation class.
  * @constructor
+ * The evaluation of the service health
  * @member {string} [serviceName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -463,6 +511,7 @@ export interface ServiceHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the NodeHealthEvaluation class.
  * @constructor
+ * The evaluation of the node health
  * @member {string} [nodeName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -477,6 +526,7 @@ export interface NodeHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the ApplicationHealthEvaluation class.
  * @constructor
+ * The evaluation of the application health
  * @member {string} [serviceName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -491,6 +541,7 @@ export interface ApplicationHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the DeltaNodesCheckHealthEvaluation class.
  * @constructor
+ * The evaluation of the delta nodes check health
  * @member {array} [unhealthyEvaluations]
  * 
  * @member {number} [baselineErrorCount]
@@ -514,6 +565,7 @@ export interface DeltaNodesCheckHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the UpgradeDomainDeltaNodesCheckHealthEvaluation class.
  * @constructor
+ * The evaluation of the upgrade domain delta nodes check health
  * @member {string} [upgradeDomainName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -540,6 +592,7 @@ export interface UpgradeDomainDeltaNodesCheckHealthEvaluation extends HealthEval
  * @class
  * Initializes a new instance of the ApplicationTypeHealthEvaluation class.
  * @constructor
+ * The evaluation of the application type health
  * @member {string} [applicationTypeName]
  * 
  * @member {array} [unhealthyEvaluations]
@@ -560,16 +613,18 @@ export interface ApplicationTypeHealthEvaluation extends HealthEvaluation {
  * @class
  * Initializes a new instance of the NodeHealth class.
  * @constructor
+ * The health of the node
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [name]
  * 
  */
 export interface NodeHealth {
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
     name?: string;
 }
 
@@ -577,13 +632,14 @@ export interface NodeHealth {
  * @class
  * Initializes a new instance of the DeployedApplication class.
  * @constructor
+ * The application of the deployed
  * @member {string} [id]
  * 
  * @member {string} [name]
  * 
  * @member {string} [typeName]
  * 
- * @member {number} [status]
+ * @member {string} [status]
  * 
  * @member {string} [workDirectory]
  * 
@@ -596,7 +652,7 @@ export interface DeployedApplication {
     id?: string;
     name?: string;
     typeName?: string;
-    status?: number;
+    status?: string;
     workDirectory?: string;
     logDirectory?: string;
     tempDirectory?: string;
@@ -606,29 +662,33 @@ export interface DeployedApplication {
  * @class
  * Initializes a new instance of the DeployedServicePackageHealthState class.
  * @constructor
+ * The state of the deployed service package health
  * @member {string} [applicationName]
  * 
  * @member {string} [serviceManifestName]
  * 
  * @member {string} [nodeName]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface DeployedServicePackageHealthState {
     applicationName?: string;
     serviceManifestName?: string;
     nodeName?: string;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the DeployedApplicationHealth class.
  * @constructor
+ * The health of the deployed application
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [unhealthyEvaluations]
  * 
@@ -644,12 +704,13 @@ export interface DeployedServicePackageHealthState {
  * 
  * @member {string} [deployedServicePackageHealthStates.nodeName]
  * 
- * @member {number} [deployedServicePackageHealthStates.aggregatedHealthState]
+ * @member {string} [deployedServicePackageHealthStates.aggregatedHealthState]
+ * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface DeployedApplicationHealth {
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
     unhealthyEvaluations?: string;
     name?: string;
     nodeName?: string;
@@ -660,6 +721,7 @@ export interface DeployedApplicationHealth {
  * @class
  * Initializes a new instance of the NodeLoadMetricInformation class.
  * @constructor
+ * The information of the node load metric
  * @member {string} [name]
  * 
  * @member {string} [nodeCapacity]
@@ -689,6 +751,7 @@ export interface NodeLoadMetricInformation {
  * @class
  * Initializes a new instance of the NodeLoadInformation class.
  * @constructor
+ * The information of the node load
  * @member {string} [nodeName]
  * 
  * @member {object} [nodeLoadMetricInformation]
@@ -717,6 +780,7 @@ export interface NodeLoadInformation {
  * @class
  * Initializes a new instance of the CodePackageEntryPointStatistics class.
  * @constructor
+ * The statistics of the code package entry point
  * @member {number} [lastExitCode]
  * 
  * @member {string} [lastActivationTime]
@@ -758,6 +822,7 @@ export interface CodePackageEntryPointStatistics {
  * @class
  * Initializes a new instance of the EntryPoint class.
  * @constructor
+ * The point of the entry
  * @member {number} [entryPointLocation]
  * 
  * @member {number} [processId]
@@ -766,7 +831,7 @@ export interface CodePackageEntryPointStatistics {
  * 
  * @member {number} [nextActivationTime]
  * 
- * @member {number} [status]
+ * @member {string} [status]
  * 
  * @member {object} [codePackageEntryPointStatistics]
  * 
@@ -801,7 +866,7 @@ export interface EntryPoint {
     processId?: number;
     runAsUserName?: number;
     nextActivationTime?: number;
-    status?: number;
+    status?: string;
     codePackageEntryPointStatistics?: CodePackageEntryPointStatistics;
 }
 
@@ -809,6 +874,7 @@ export interface EntryPoint {
  * @class
  * Initializes a new instance of the DeployedCodePackage class.
  * @constructor
+ * The package of the deployed code
  * @member {string} [name]
  * 
  * @member {string} [version]
@@ -829,7 +895,7 @@ export interface EntryPoint {
  * 
  * @member {number} [setupEntryPoint.nextActivationTime]
  * 
- * @member {number} [setupEntryPoint.status]
+ * @member {string} [setupEntryPoint.status]
  * 
  * @member {object} [setupEntryPoint.codePackageEntryPointStatistics]
  * 
@@ -876,7 +942,7 @@ export interface EntryPoint {
  * 
  * @member {number} [mainEntryPoint.nextActivationTime]
  * 
- * @member {number} [mainEntryPoint.status]
+ * @member {string} [mainEntryPoint.status]
  * 
  * @member {object} [mainEntryPoint.codePackageEntryPointStatistics]
  * 
@@ -930,7 +996,9 @@ export interface DeployedCodePackage {
  * @class
  * Initializes a new instance of the DeployedReplica class.
  * @constructor
- * @member {string} [serviceKind]
+ * The replica of the deployed
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
  * 
  * @member {string} [serviceName]
  * 
@@ -948,9 +1016,11 @@ export interface DeployedCodePackage {
  * 
  * @member {string} [replicaId]
  * 
- * @member {string} [replicaRole]
+ * @member {string} [replicaRole] Possible values include: 'Invalid', 'None',
+ * 'Primary', 'IdleSecondary', 'ActiveSecondary'
  * 
- * @member {number} [replicaStatus]
+ * @member {string} [replicaStatus] Possible values include: 'Invalid',
+ * 'InBuild', 'Standby', 'Ready', 'Down', 'Dropped'
  * 
  * @member {string} [address]
  * 
@@ -966,7 +1036,7 @@ export interface DeployedReplica {
     instanceId?: string;
     replicaId?: string;
     replicaRole?: string;
-    replicaStatus?: number;
+    replicaStatus?: string;
     address?: string;
 }
 
@@ -974,7 +1044,9 @@ export interface DeployedReplica {
  * @class
  * Initializes a new instance of the DeployedReplicaDetail class.
  * @constructor
- * @member {string} [serviceKind]
+ * The detail of the deployed replica
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
  * 
  * @member {string} [serviceName]
  * 
@@ -994,11 +1066,12 @@ export interface DeployedReplica {
  * 
  * @member {number} [writeStatus]
  * 
- * @member {object} [replicatorStatus]
+ * @member {object} [replicatorStatus] The status of the replicator
  * 
  * @member {number} [replicatorStatus.kind]
  * 
- * @member {object} [replicatorStatus.replicationQueueStatus]
+ * @member {object} [replicatorStatus.replicationQueueStatus] The status of
+ * the replication queue
  * 
  * @member {string}
  * [replicatorStatus.replicationQueueStatus.queueUtilizationPercentage]
@@ -1036,9 +1109,11 @@ export interface DeployedReplicaDetail {
  * @class
  * Initializes a new instance of the DeployedReplicaDetailReplicatorStatus class.
  * @constructor
+ * The status of the replicator
  * @member {number} [kind]
  * 
- * @member {object} [replicationQueueStatus]
+ * @member {object} [replicationQueueStatus] The status of the replication
+ * queue
  * 
  * @member {string} [replicationQueueStatus.queueUtilizationPercentage]
  * 
@@ -1062,6 +1137,7 @@ export interface DeployedReplicaDetailReplicatorStatus {
  * @class
  * Initializes a new instance of the DeployedReplicaDetailReplicatorStatusReplicationQueueStatus class.
  * @constructor
+ * The status of the replication queue
  * @member {string} [queueUtilizationPercentage]
  * 
  * @member {string} [queueMemorySize]
@@ -1088,23 +1164,25 @@ export interface DeployedReplicaDetailReplicatorStatusReplicationQueueStatus {
  * @class
  * Initializes a new instance of the DeployedServicePackage class.
  * @constructor
+ * The package of the deployed service
  * @member {string} [name]
  * 
  * @member {string} [version]
  * 
- * @member {number} [status]
+ * @member {string} [status]
  * 
  */
 export interface DeployedServicePackage {
     name?: string;
     version?: string;
-    status?: number;
+    status?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the DeployedServicePackageHealth class.
  * @constructor
+ * The health of the deployed service package
  * @member {string} [applicationName]
  * 
  * @member {string} [serviceManifestName]
@@ -1113,7 +1191,8 @@ export interface DeployedServicePackage {
  * 
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface DeployedServicePackageHealth {
@@ -1121,33 +1200,35 @@ export interface DeployedServicePackageHealth {
     serviceManifestName?: string;
     nodeName?: string;
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the DeployedServiceType class.
  * @constructor
+ * The type of the deploye service
  * @member {string} [serviceTypeName]
  * 
  * @member {string} [codePackageName]
  * 
  * @member {string} [serviceManifestName]
  * 
- * @member {number} [status]
+ * @member {string} [status]
  * 
  */
 export interface DeployedServiceType {
     serviceTypeName?: string;
     codePackageName?: string;
     serviceManifestName?: string;
-    status?: number;
+    status?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ApplicationType class.
  * @constructor
+ * The type of the application
  * @member {string} [name]
  * 
  * @member {string} [version]
@@ -1165,6 +1246,7 @@ export interface ApplicationType {
  * @class
  * Initializes a new instance of the ApplicationTypeDefaultParameterListItem class.
  * @constructor
+ * The list of the default parameter
  * @member {string} [key]
  * 
  * @member {string} [value]
@@ -1179,6 +1261,7 @@ export interface ApplicationTypeDefaultParameterListItem {
  * @class
  * Initializes a new instance of the ServiceManifest class.
  * @constructor
+ * The manifest of the service
  * @member {string} [manifest]
  * 
  */
@@ -1190,7 +1273,9 @@ export interface ServiceManifest {
  * @class
  * Initializes a new instance of the ServiceType class.
  * @constructor
- * @member {object} [serviceTypeDescription]
+ * The type of the service
+ * @member {object} [serviceTypeDescription] The description of the service
+ * type
  * 
  * @member {boolean} [serviceTypeDescription.isStateful]
  * 
@@ -1218,6 +1303,7 @@ export interface ServiceType {
  * @class
  * Initializes a new instance of the ServiceTypeServiceTypeDescription class.
  * @constructor
+ * The description of the service type
  * @member {boolean} [isStateful]
  * 
  * @member {string} [serviceTypeName]
@@ -1238,6 +1324,7 @@ export interface ServiceTypeServiceTypeDescription {
  * @class
  * Initializes a new instance of the Application class.
  * @constructor
+ * The application
  * @member {string} [id]
  * 
  * @member {string} [name]
@@ -1246,11 +1333,12 @@ export interface ServiceTypeServiceTypeDescription {
  * 
  * @member {string} [typeVersion]
  * 
- * @member {number} [status]
+ * @member {string} [status]
  * 
  * @member {array} [parameters]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface Application {
@@ -1258,7 +1346,7 @@ export interface Application {
     name?: string;
     typeName?: string;
     typeVersion?: string;
-    status?: number;
+    status?: string;
     parameters?: ApplicationParametersItem[];
     healthState?: string;
 }
@@ -1267,6 +1355,7 @@ export interface Application {
  * @class
  * Initializes a new instance of the ApplicationParametersItem class.
  * @constructor
+ * The parameters
  * @member {string} [key]
  * 
  * @member {string} [value]
@@ -1279,8 +1368,24 @@ export interface ApplicationParametersItem {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationList class.
+ * @constructor
+ * The list of the application
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface ApplicationList {
+    continuationToken?: string;
+    items?: Application[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationDescription class.
  * @constructor
+ * The
  * @member {string} [name]
  * 
  * @member {string} [typeName]
@@ -1301,6 +1406,7 @@ export interface ApplicationDescription {
  * @class
  * Initializes a new instance of the ApplicationDescriptionParameterListItem class.
  * @constructor
+ * The list of the parameter
  * @member {string} [key]
  * 
  * @member {string} [value]
@@ -1315,6 +1421,7 @@ export interface ApplicationDescriptionParameterListItem {
  * @class
  * Initializes a new instance of the ApplicationManifest class.
  * @constructor
+ * The manifest of the application
  * @member {string} [manifest]
  * 
  */
@@ -1326,9 +1433,11 @@ export interface ApplicationManifest {
  * @class
  * Initializes a new instance of the Service class.
  * @constructor
+ * The service
  * @member {string} [id]
  * 
- * @member {string} [serviceKind]
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
  * 
  * @member {string} [name]
  * 
@@ -1338,9 +1447,11 @@ export interface ApplicationManifest {
  * 
  * @member {boolean} [hasPersistedState]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
- * @member {number} [serviceStatus]
+ * @member {string} [serviceStatus] Possible values include: 'Invalid',
+ * 'Active', 'Upgrading', 'Deleting', 'Creating', 'Faile'
  * 
  * @member {boolean} [isServiceGroup]
  * 
@@ -1353,15 +1464,32 @@ export interface Service {
     manifestVersion?: string;
     hasPersistedState?: boolean;
     healthState?: string;
-    serviceStatus?: number;
+    serviceStatus?: string;
     isServiceGroup?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceList class.
+ * @constructor
+ * The list of the service
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface ServiceList {
+    continuationToken?: string;
+    items?: Service[];
 }
 
 /**
  * @class
  * Initializes a new instance of the PartitionDescription class.
  * @constructor
- * @member {string} [partitionScheme]
+ * The description of the partition
+ * @member {string} [partitionScheme] Possible values include: 'Invalid',
+ * 'Singleton', 'UniformInt64', 'Named'
  * 
  * @member {number} [count]
  * 
@@ -1384,11 +1512,13 @@ export interface PartitionDescription {
  * @class
  * Initializes a new instance of the ServiceGroupMemberDescription class.
  * @constructor
+ * The description of the service group member
  * @member {string} [serviceName]
  * 
  * @member {string} [serviceTypeName]
  * 
- * @member {string} [serviceKind]
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
  * 
  */
 export interface ServiceGroupMemberDescription {
@@ -1401,6 +1531,7 @@ export interface ServiceGroupMemberDescription {
  * @class
  * Initializes a new instance of the ServiceGroupDescription class.
  * @constructor
+ * The description of the service group
  * @member {string} [applicationName]
  * 
  * @member {string} [serviceName]
@@ -1409,7 +1540,8 @@ export interface ServiceGroupMemberDescription {
  * 
  * @member {object} [partitionDescription]
  * 
- * @member {string} [partitionDescription.partitionScheme]
+ * @member {string} [partitionDescription.partitionScheme] Possible values
+ * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
  * 
  * @member {number} [partitionDescription.count]
  * 
@@ -1425,19 +1557,25 @@ export interface ServiceGroupMemberDescription {
  * 
  * @member {string} [correlationScheme.serviceName]
  * 
- * @member {string} [correlationScheme.serviceCorrelationScheme]
+ * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [serviceLoadMetrics]
  * 
  * @member {string} [serviceLoadMetrics.serviceName]
  * 
- * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [servicePlacementPolicies]
  * 
  * @member {string} [servicePlacementPolicies.serviceName]
  * 
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
+ * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {number} [flags]
  * 
@@ -1464,9 +1602,11 @@ export interface ServiceGroupDescription {
  * @class
  * Initializes a new instance of the ServiceCorrelationDescription class.
  * @constructor
+ * The description of the service correlation
  * @member {string} [serviceName]
  * 
- * @member {string} [serviceCorrelationScheme]
+ * @member {string} [serviceCorrelationScheme] Possible values include:
+ * 'Invalid', 'Affinity', 'AlignedAffinity', 'NonAlignedAffinity'
  * 
  */
 export interface ServiceCorrelationDescription {
@@ -1478,6 +1618,7 @@ export interface ServiceCorrelationDescription {
  * @class
  * Initializes a new instance of the StatelessServiceGroupDescription class.
  * @constructor
+ * The description of the stateless service group
  * @member {number} [instanceCount]
  * 
  */
@@ -1489,6 +1630,7 @@ export interface StatelessServiceGroupDescription extends ServiceGroupDescriptio
  * @class
  * Initializes a new instance of the StatefulServiceGroupDescription class.
  * @constructor
+ * The description of the stateful service group
  * @member {number} [targetReplicaSetSize]
  * 
  * @member {number} [minReplicaSetSize]
@@ -1501,7 +1643,8 @@ export interface StatelessServiceGroupDescription extends ServiceGroupDescriptio
  * 
  * @member {number} [standByReplicaKeepDurationSeconds]
  * 
- * @member {number} [defaultMoveCost]
+ * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
+ * 'Medium', 'High'
  * 
  * @member {boolean} [isDefaultMoveCostSpecified]
  * 
@@ -1513,7 +1656,7 @@ export interface StatefulServiceGroupDescription extends ServiceGroupDescription
     replicaRestartWaitDurationSeconds?: number;
     quorumLossWaitDurationSeconds?: number;
     standByReplicaKeepDurationSeconds?: number;
-    defaultMoveCost?: number;
+    defaultMoveCost?: string;
     isDefaultMoveCostSpecified?: boolean;
 }
 
@@ -1521,6 +1664,7 @@ export interface StatefulServiceGroupDescription extends ServiceGroupDescription
  * @class
  * Initializes a new instance of the CreateServiceGroupDescription class.
  * @constructor
+ * The description of the create service group
  * @member {string} [applicationName]
  * 
  * @member {string} [serviceName]
@@ -1529,7 +1673,8 @@ export interface StatefulServiceGroupDescription extends ServiceGroupDescription
  * 
  * @member {object} [partitionDescription]
  * 
- * @member {string} [partitionDescription.partitionScheme]
+ * @member {string} [partitionDescription.partitionScheme] Possible values
+ * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
  * 
  * @member {number} [partitionDescription.count]
  * 
@@ -1545,19 +1690,25 @@ export interface StatefulServiceGroupDescription extends ServiceGroupDescription
  * 
  * @member {string} [correlationScheme.serviceName]
  * 
- * @member {string} [correlationScheme.serviceCorrelationScheme]
+ * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [serviceLoadMetrics]
  * 
  * @member {string} [serviceLoadMetrics.serviceName]
  * 
- * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [servicePlacementPolicies]
  * 
  * @member {string} [servicePlacementPolicies.serviceName]
  * 
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
+ * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {number} [flags]
  * 
@@ -1584,6 +1735,7 @@ export interface CreateServiceGroupDescription {
  * @class
  * Initializes a new instance of the StatelessCreateServiceGroupDescription class.
  * @constructor
+ * The description of the stateless create service group
  * @member {number} [instanceCount]
  * 
  */
@@ -1595,6 +1747,7 @@ export interface StatelessCreateServiceGroupDescription extends CreateServiceGro
  * @class
  * Initializes a new instance of the StatefulCreateServiceGroupDescription class.
  * @constructor
+ * The description of the stateful create service group
  * @member {number} [targetReplicaSetSize]
  * 
  * @member {number} [minReplicaSetSize]
@@ -1607,7 +1760,8 @@ export interface StatelessCreateServiceGroupDescription extends CreateServiceGro
  * 
  * @member {number} [standByReplicaKeepDurationSeconds]
  * 
- * @member {number} [defaultMoveCost]
+ * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
+ * 'Medium', 'High'
  * 
  * @member {boolean} [isDefaultMoveCostSpecified]
  * 
@@ -1619,7 +1773,7 @@ export interface StatefulCreateServiceGroupDescription extends CreateServiceGrou
     replicaRestartWaitDurationSeconds?: number;
     quorumLossWaitDurationSeconds?: number;
     standByReplicaKeepDurationSeconds?: number;
-    defaultMoveCost?: number;
+    defaultMoveCost?: string;
     isDefaultMoveCostSpecified?: boolean;
 }
 
@@ -1627,6 +1781,7 @@ export interface StatefulCreateServiceGroupDescription extends CreateServiceGrou
  * @class
  * Initializes a new instance of the ServiceGroupMember class.
  * @constructor
+ * The member of the service group
  * @member {string} [name]
  * 
  * @member {array} [serviceGroupMemberDescription]
@@ -1641,9 +1796,11 @@ export interface ServiceGroupMember {
  * @class
  * Initializes a new instance of the ApplicationHealth class.
  * @constructor
+ * The health of the application
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [unhealthyEvaluations]
  * 
@@ -1656,7 +1813,7 @@ export interface ServiceGroupMember {
  */
 export interface ApplicationHealth {
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
     unhealthyEvaluations?: string;
     name?: string;
     serviceHealthStates?: ApplicationHealthServiceHealthStatesItem[];
@@ -1667,37 +1824,42 @@ export interface ApplicationHealth {
  * @class
  * Initializes a new instance of the ApplicationHealthServiceHealthStatesItem class.
  * @constructor
+ * The states of the service health
  * @member {string} [serviceName]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface ApplicationHealthServiceHealthStatesItem {
     serviceName?: string;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ApplicationHealthDeployedApplicationHealthStatesItem class.
  * @constructor
+ * The states of the deployed application health
  * @member {string} [applicationName]
  * 
  * @member {string} [nodeName]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface ApplicationHealthDeployedApplicationHealthStatesItem {
     applicationName?: string;
     nodeName?: string;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ApplicationUpgrade class.
  * @constructor
+ * The upgrade of the application
  * @member {string} [name]
  * 
  * @member {string} [typeName]
@@ -1706,11 +1868,14 @@ export interface ApplicationHealthDeployedApplicationHealthStatesItem {
  * 
  * @member {string} [upgradeDomains]
  * 
- * @member {number} [upgradeState]
+ * @member {string} [upgradeState] Possible values include: 'Invalid',
+ * 'RollingBackInProgress', 'RollingBackCompleted', 'RollingForwardPending',
+ * 'RollingForwardInProgress', 'RollingForwardCompleted'
  * 
  * @member {string} [nextUpgradeDomain]
  * 
- * @member {string} [rollingUpgradeMode]
+ * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
  * 
  * @member {string} [upgradeDurationInMilliseconds]
  * 
@@ -1718,7 +1883,8 @@ export interface ApplicationHealthDeployedApplicationHealthStatesItem {
  * 
  * @member {string} [unhealthyEvaluations]
  * 
- * @member {object} [currentUpgradeDomainProgress]
+ * @member {object} [currentUpgradeDomainProgress] The progress of the current
+ * upgrade domain
  * 
  * @member {string} [currentUpgradeDomainProgress.domainName]
  * 
@@ -1728,9 +1894,12 @@ export interface ApplicationHealthDeployedApplicationHealthStatesItem {
  * 
  * @member {string} [failureTimestampUtc]
  * 
- * @member {number} [failureReason]
+ * @member {string} [failureReason] Possible values include: 'Invalid',
+ * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout',
+ * 'OverallUpgradeTimeout'
  * 
- * @member {object} [deployedApplicationHealthStates]
+ * @member {object} [deployedApplicationHealthStates] The states of the
+ * deployed application health
  * 
  * @member {string} [deployedApplicationHealthStates.domainName]
  * 
@@ -1742,7 +1911,7 @@ export interface ApplicationUpgrade {
     typeName?: string;
     targetApplicationTypeVersion?: string;
     upgradeDomains?: string;
-    upgradeState?: number;
+    upgradeState?: string;
     nextUpgradeDomain?: string;
     rollingUpgradeMode?: string;
     upgradeDurationInMilliseconds?: string;
@@ -1751,7 +1920,7 @@ export interface ApplicationUpgrade {
     currentUpgradeDomainProgress?: ApplicationUpgradeCurrentUpgradeDomainProgress;
     startTimestampUtc?: string;
     failureTimestampUtc?: string;
-    failureReason?: number;
+    failureReason?: string;
     deployedApplicationHealthStates?: ApplicationUpgradeDeployedApplicationHealthStates;
 }
 
@@ -1759,6 +1928,7 @@ export interface ApplicationUpgrade {
  * @class
  * Initializes a new instance of the ApplicationUpgradeCurrentUpgradeDomainProgress class.
  * @constructor
+ * The progress of the current upgrade domain
  * @member {string} [domainName]
  * 
  * @member {string} [nodeUpgradeProgressList]
@@ -1773,6 +1943,7 @@ export interface ApplicationUpgradeCurrentUpgradeDomainProgress {
  * @class
  * Initializes a new instance of the ApplicationUpgradeDeployedApplicationHealthStates class.
  * @constructor
+ * The states of the deployed application health
  * @member {string} [domainName]
  * 
  * @member {string} [nodeUpgradeProgressList]
@@ -1787,9 +1958,11 @@ export interface ApplicationUpgradeDeployedApplicationHealthStates {
  * @class
  * Initializes a new instance of the ServiceLoadMetricDescription class.
  * @constructor
+ * The description of the service load metric
  * @member {string} [name]
  * 
- * @member {number} [serviceLoadMetricWeight]
+ * @member {string} [serviceLoadMetricWeight] Possible values include: 'Zero',
+ * 'Low', 'Medium', 'High'
  * 
  * @member {number} [primaryDefaultLoad]
  * 
@@ -1798,7 +1971,7 @@ export interface ApplicationUpgradeDeployedApplicationHealthStates {
  */
 export interface ServiceLoadMetricDescription {
     name?: string;
-    serviceLoadMetricWeight?: number;
+    serviceLoadMetricWeight?: string;
     primaryDefaultLoad?: number;
     secondaryDefaultLoad?: number;
 }
@@ -1807,6 +1980,7 @@ export interface ServiceLoadMetricDescription {
  * @class
  * Initializes a new instance of the ServicePlacementPolicyDescription class.
  * @constructor
+ * The description of the service placement policy
  * @member {string} [type]
  * 
  */
@@ -1818,6 +1992,7 @@ export interface ServicePlacementPolicyDescription {
  * @class
  * Initializes a new instance of the ServiceDescription class.
  * @constructor
+ * The description of the service
  * @member {string} [applicationName]
  * 
  * @member {string} [serviceName]
@@ -1826,7 +2001,8 @@ export interface ServicePlacementPolicyDescription {
  * 
  * @member {object} [partitionDescription]
  * 
- * @member {string} [partitionDescription.partitionScheme]
+ * @member {string} [partitionDescription.partitionScheme] Possible values
+ * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
  * 
  * @member {number} [partitionDescription.count]
  * 
@@ -1842,19 +2018,25 @@ export interface ServicePlacementPolicyDescription {
  * 
  * @member {string} [correlationScheme.serviceName]
  * 
- * @member {string} [correlationScheme.serviceCorrelationScheme]
+ * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [serviceLoadMetrics]
  * 
  * @member {string} [serviceLoadMetrics.serviceName]
  * 
- * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [servicePlacementPolicies]
  * 
  * @member {string} [servicePlacementPolicies.serviceName]
  * 
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
+ * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {number} [flags]
  * 
@@ -1878,6 +2060,7 @@ export interface ServiceDescription {
  * @class
  * Initializes a new instance of the StatelessServiceDescription class.
  * @constructor
+ * The description of the stateless service
  * @member {number} [instanceCount]
  * 
  */
@@ -1889,6 +2072,7 @@ export interface StatelessServiceDescription extends ServiceDescription {
  * @class
  * Initializes a new instance of the StatefulServiceDescription class.
  * @constructor
+ * The description of the stateful service
  * @member {number} [targetReplicaSetSize]
  * 
  * @member {number} [minReplicaSetSize]
@@ -1901,7 +2085,8 @@ export interface StatelessServiceDescription extends ServiceDescription {
  * 
  * @member {number} [standByReplicaKeepDurationSeconds]
  * 
- * @member {number} [defaultMoveCost]
+ * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
+ * 'Medium', 'High'
  * 
  * @member {boolean} [isDefaultMoveCostSpecified]
  * 
@@ -1913,7 +2098,7 @@ export interface StatefulServiceDescription extends ServiceDescription {
     replicaRestartWaitDurationSeconds?: number;
     quorumLossWaitDurationSeconds?: number;
     standByReplicaKeepDurationSeconds?: number;
-    defaultMoveCost?: number;
+    defaultMoveCost?: string;
     isDefaultMoveCostSpecified?: boolean;
 }
 
@@ -1921,6 +2106,7 @@ export interface StatefulServiceDescription extends ServiceDescription {
  * @class
  * Initializes a new instance of the CreateServiceDescription class.
  * @constructor
+ * The description of the create service
  * @member {string} [applicationName]
  * 
  * @member {string} [serviceName]
@@ -1929,7 +2115,8 @@ export interface StatefulServiceDescription extends ServiceDescription {
  * 
  * @member {object} [partitionDescription]
  * 
- * @member {string} [partitionDescription.partitionScheme]
+ * @member {string} [partitionDescription.partitionScheme] Possible values
+ * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
  * 
  * @member {number} [partitionDescription.count]
  * 
@@ -1945,19 +2132,25 @@ export interface StatefulServiceDescription extends ServiceDescription {
  * 
  * @member {string} [correlationScheme.serviceName]
  * 
- * @member {string} [correlationScheme.serviceCorrelationScheme]
+ * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [serviceLoadMetrics]
  * 
  * @member {string} [serviceLoadMetrics.serviceName]
  * 
- * @member {string} [serviceLoadMetrics.serviceCorrelationScheme]
+ * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
+ * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {object} [servicePlacementPolicies]
  * 
  * @member {string} [servicePlacementPolicies.serviceName]
  * 
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
+ * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
+ * 'NonAlignedAffinity'
  * 
  * @member {number} [flags]
  * 
@@ -1981,6 +2174,7 @@ export interface CreateServiceDescription {
  * @class
  * Initializes a new instance of the StatelessCreateServiceDescription class.
  * @constructor
+ * The description of the stateless create service
  * @member {number} [instanceCount]
  * 
  */
@@ -1992,6 +2186,7 @@ export interface StatelessCreateServiceDescription extends CreateServiceDescript
  * @class
  * Initializes a new instance of the StatefulCreateServiceDescription class.
  * @constructor
+ * The description of the stateful create service
  * @member {number} [targetReplicaSetSize]
  * 
  * @member {number} [minReplicaSetSize]
@@ -2004,7 +2199,8 @@ export interface StatelessCreateServiceDescription extends CreateServiceDescript
  * 
  * @member {number} [standByReplicaKeepDurationSeconds]
  * 
- * @member {number} [defaultMoveCost]
+ * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
+ * 'Medium', 'High'
  * 
  * @member {boolean} [isDefaultMoveCostSpecified]
  * 
@@ -2016,7 +2212,7 @@ export interface StatefulCreateServiceDescription extends CreateServiceDescripti
     replicaRestartWaitDurationSeconds?: number;
     quorumLossWaitDurationSeconds?: number;
     standByReplicaKeepDurationSeconds?: number;
-    defaultMoveCost?: number;
+    defaultMoveCost?: string;
     isDefaultMoveCostSpecified?: boolean;
 }
 
@@ -2024,6 +2220,7 @@ export interface StatefulCreateServiceDescription extends CreateServiceDescripti
  * @class
  * Initializes a new instance of the UpdateServiceDescription class.
  * @constructor
+ * The description of the update service
  * @member {number} [flags]
  * 
  * @member {string} ServiceKind Polymorhpic Discriminator
@@ -2038,6 +2235,7 @@ export interface UpdateServiceDescription {
  * @class
  * Initializes a new instance of the StatelessUpdateServiceDescription class.
  * @constructor
+ * The description of the stateless update service
  * @member {number} [instanceCount]
  * 
  */
@@ -2049,6 +2247,7 @@ export interface StatelessUpdateServiceDescription extends UpdateServiceDescript
  * @class
  * Initializes a new instance of the StatefulUpdateServiceDescription class.
  * @constructor
+ * The description of the stateful update service
  * @member {number} [targetReplicaSetSize]
  * 
  * @member {number} [minReplicaSetSize]
@@ -2072,6 +2271,7 @@ export interface StatefulUpdateServiceDescription extends UpdateServiceDescripti
  * @class
  * Initializes a new instance of the UpdateServiceGroupDescription class.
  * @constructor
+ * The description of the update service group
  * @member {number} [flags]
  * 
  * @member {string} ServiceKind Polymorhpic Discriminator
@@ -2086,6 +2286,7 @@ export interface UpdateServiceGroupDescription {
  * @class
  * Initializes a new instance of the StatelessUpdateServiceGroupDescription class.
  * @constructor
+ * The description of the stateless update service group
  * @member {number} [instanceCount]
  * 
  */
@@ -2097,6 +2298,7 @@ export interface StatelessUpdateServiceGroupDescription extends UpdateServiceGro
  * @class
  * Initializes a new instance of the StatefulUpdateServiceGroupDescription class.
  * @constructor
+ * The description of the stateful update service group
  * @member {number} [targetReplicaSetSize]
  * 
  * @member {number} [minReplicaSetSize]
@@ -2120,9 +2322,11 @@ export interface StatefulUpdateServiceGroupDescription extends UpdateServiceGrou
  * @class
  * Initializes a new instance of the ServiceHealth class.
  * @constructor
+ * The health of the service
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [name]
  * 
@@ -2131,7 +2335,7 @@ export interface StatefulUpdateServiceGroupDescription extends UpdateServiceGrou
  */
 export interface ServiceHealth {
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
     name?: string;
     partitionHealthStates?: ServiceHealthPartitionHealthStatesItem[];
 }
@@ -2140,21 +2344,25 @@ export interface ServiceHealth {
  * @class
  * Initializes a new instance of the ServiceHealthPartitionHealthStatesItem class.
  * @constructor
+ * The states of the partition health
  * @member {string} [partitionId]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface ServiceHealthPartitionHealthStatesItem {
     partitionId?: string;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the PartitionInformation class.
  * @constructor
- * @member {number} [servicePartitionKind]
+ * The information of the partition
+ * @member {string} [servicePartitionKind] Possible values include: 'Invalid',
+ * 'Singleton', 'Int64Range', 'Named'
  * 
  * @member {string} [id]
  * 
@@ -2166,7 +2374,7 @@ export interface ServiceHealthPartitionHealthStatesItem {
  * 
  */
 export interface PartitionInformation {
-    servicePartitionKind?: number;
+    servicePartitionKind?: string;
     id?: string;
     name?: string[];
     lowKey?: string;
@@ -2177,11 +2385,14 @@ export interface PartitionInformation {
  * @class
  * Initializes a new instance of the Partition class.
  * @constructor
- * @member {string} [serviceKind]
+ * The partition
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
  * 
  * @member {object} [partitionInformation]
  * 
- * @member {number} [partitionInformation.servicePartitionKind]
+ * @member {string} [partitionInformation.servicePartitionKind] Possible
+ * values include: 'Invalid', 'Singleton', 'Int64Range', 'Named'
  * 
  * @member {string} [partitionInformation.id]
  * 
@@ -2191,15 +2402,20 @@ export interface PartitionInformation {
  * 
  * @member {string} [partitionInformation.highKey]
  * 
+ * @member {number} [instanceCount]
+ * 
  * @member {number} [targetReplicaSetSize]
  * 
  * @member {number} [minReplicaSetSize]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
- * @member {number} [partitionStatus]
+ * @member {string} [partitionStatus] Possible values include: 'Invalid',
+ * 'Ready', 'NotReady', 'InQuorumLoss', 'Reconfiguring', 'Deleting'
  * 
- * @member {object} [currentConfigurationEpoch]
+ * @member {object} [currentConfigurationEpoch] The epoch of the current
+ * configuration
  * 
  * @member {string} [currentConfigurationEpoch.configurationVersion]
  * 
@@ -2209,10 +2425,11 @@ export interface PartitionInformation {
 export interface Partition {
     serviceKind?: string;
     partitionInformation?: PartitionInformation;
+    instanceCount?: number;
     targetReplicaSetSize?: number;
     minReplicaSetSize?: number;
     healthState?: string;
-    partitionStatus?: number;
+    partitionStatus?: string;
     currentConfigurationEpoch?: PartitionCurrentConfigurationEpoch;
 }
 
@@ -2220,6 +2437,7 @@ export interface Partition {
  * @class
  * Initializes a new instance of the PartitionCurrentConfigurationEpoch class.
  * @constructor
+ * The epoch of the current configuration
  * @member {string} [configurationVersion]
  * 
  * @member {string} [dataLossVersion]
@@ -2232,19 +2450,39 @@ export interface PartitionCurrentConfigurationEpoch {
 
 /**
  * @class
+ * Initializes a new instance of the PartitionList class.
+ * @constructor
+ * The list of the partition
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface PartitionList {
+    continuationToken?: string;
+    items?: Partition[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the Replica class.
  * @constructor
- * @member {string} [serviceKind]
+ * The replica
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
  * 
  * @member {string} [instanceId]
  * 
  * @member {string} [replicaId]
  * 
- * @member {number} [replicaRole]
+ * @member {string} [replicaRole] Possible values include: 'Invalid', 'None',
+ * 'Primary', 'IdleSecondary', 'ActiveSecondary'
  * 
- * @member {number} [replicaStatus]
+ * @member {string} [replicaStatus] Possible values include: 'Invalid',
+ * 'InBuild', 'Standby', 'Ready', 'Down', 'Dropped'
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [address]
  * 
@@ -2257,8 +2495,8 @@ export interface Replica {
     serviceKind?: string;
     instanceId?: string;
     replicaId?: string;
-    replicaRole?: number;
-    replicaStatus?: number;
+    replicaRole?: string;
+    replicaStatus?: string;
     healthState?: string;
     address?: string;
     nodeName?: string;
@@ -2267,11 +2505,28 @@ export interface Replica {
 
 /**
  * @class
+ * Initializes a new instance of the ReplicaList class.
+ * @constructor
+ * The list of the replica
+ * @member {string} [continuationToken]
+ * 
+ * @member {array} [items]
+ * 
+ */
+export interface ReplicaList {
+    continuationToken?: string;
+    items?: Replica[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the PartitionHealth class.
  * @constructor
+ * The health of the partition
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [partitionId]
  * 
@@ -2280,7 +2535,7 @@ export interface Replica {
  */
 export interface PartitionHealth {
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
     partitionId?: string;
     replicaHealthStates?: PartitionHealthReplicaHealthStatesItem[];
 }
@@ -2289,27 +2544,31 @@ export interface PartitionHealth {
  * @class
  * Initializes a new instance of the PartitionHealthReplicaHealthStatesItem class.
  * @constructor
+ * The states of the replica health
  * @member {number} [healthEvents]
  * 
  * @member {string} [partitionId]
  * 
  * @member {string} [replicaId]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface PartitionHealthReplicaHealthStatesItem {
     healthEvents?: number;
     partitionId?: string;
     replicaId?: string;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ReplicaHealth class.
  * @constructor
- * @member {string} [serviceKind]
+ * The health of the replica
+ * @member {string} [serviceKind] Possible values include: 'Invalid',
+ * 'Stateless', 'Stateful'
  * 
  * @member {string} [partitionId]
  * 
@@ -2317,7 +2576,8 @@ export interface PartitionHealthReplicaHealthStatesItem {
  * 
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface ReplicaHealth {
@@ -2325,13 +2585,14 @@ export interface ReplicaHealth {
     partitionId?: string;
     replicaId?: string;
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the PartitionLoadInformation class.
  * @constructor
+ * The information of the partition load
  * @member {string} [partitionId]
  * 
  * @member {array} [primaryLoadMetricReports]
@@ -2349,6 +2610,7 @@ export interface PartitionLoadInformation {
  * @class
  * Initializes a new instance of the ReplicaLoadInformation class.
  * @constructor
+ * The information of the replica load
  * @member {string} [partitionId]
  * 
  * @member {string} [replicaOrInstanceId]
@@ -2366,6 +2628,7 @@ export interface ReplicaLoadInformation {
  * @class
  * Initializes a new instance of the LoadMetricInformation class.
  * @constructor
+ * The information of the load metric
  * @member {string} [name]
  * 
  * @member {boolean} [isBalancedBefore]
@@ -2398,13 +2661,13 @@ export interface ReplicaLoadInformation {
  * 
  * @member {string} [minNodeLoadValue]
  * 
- * @member {object} [minNodeLoadId]
+ * @member {object} [minNodeLoadId] The id of the min node
  * 
  * @member {string} [minNodeLoadId.id]
  * 
  * @member {string} [maxNodeLoadValue]
  * 
- * @member {object} [maxNodeLoadId]
+ * @member {object} [maxNodeLoadId] The id of the max node load
  * 
  * @member {string} [maxNodeLoadId.id]
  * 
@@ -2435,6 +2698,7 @@ export interface LoadMetricInformation {
  * @class
  * Initializes a new instance of the LoadMetricInformationMinNodeLoadId class.
  * @constructor
+ * The id of the min node
  * @member {string} [id]
  * 
  */
@@ -2446,6 +2710,7 @@ export interface LoadMetricInformationMinNodeLoadId {
  * @class
  * Initializes a new instance of the LoadMetricInformationMaxNodeLoadId class.
  * @constructor
+ * The id of the max node load
  * @member {string} [id]
  * 
  */
@@ -2457,6 +2722,7 @@ export interface LoadMetricInformationMaxNodeLoadId {
  * @class
  * Initializes a new instance of the ClusterLoadInformation class.
  * @constructor
+ * The information of the cluster load
  * @member {string} [lastBalancingStartTimeUtc]
  * 
  * @member {string} [lastBalancingEndTimeUtc]
@@ -2474,9 +2740,11 @@ export interface ClusterLoadInformation {
  * @class
  * Initializes a new instance of the ClusterHealth class.
  * @constructor
+ * The health of the cluster
  * @member {array} [healthEvents]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  * @member {array} [unhealthyEvaluations]
  * 
@@ -2487,7 +2755,7 @@ export interface ClusterLoadInformation {
  */
 export interface ClusterHealth {
     healthEvents?: HealthEvent[];
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
     unhealthyEvaluations?: UnhealthyEvaluation[];
     nodeHealthStates?: ClusterHealthNodeHealthStatesItem[];
     applicationHealthState?: ClusterHealthApplicationHealthStateItem[];
@@ -2497,25 +2765,28 @@ export interface ClusterHealth {
  * @class
  * Initializes a new instance of the ClusterHealthNodeHealthStatesItem class.
  * @constructor
+ * The states of tehe node health
  * @member {string} [name]
  * 
- * @member {object} [id]
+ * @member {object} [id] The id
  * 
  * @member {string} [id.id]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface ClusterHealthNodeHealthStatesItem {
     name?: string;
     id?: ClusterHealthNodeHealthStatesItemId;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ClusterHealthNodeHealthStatesItemId class.
  * @constructor
+ * The id
  * @member {string} [id]
  * 
  */
@@ -2527,20 +2798,23 @@ export interface ClusterHealthNodeHealthStatesItemId {
  * @class
  * Initializes a new instance of the ClusterHealthApplicationHealthStateItem class.
  * @constructor
+ * The state of the application health
  * @member {string} [name]
  * 
- * @member {number} [aggregatedHealthState]
+ * @member {string} [aggregatedHealthState] Possible values include:
+ * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
  * 
  */
 export interface ClusterHealthApplicationHealthStateItem {
     name?: string;
-    aggregatedHealthState?: number;
+    aggregatedHealthState?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the MonitoringPolicy class.
  * @constructor
+ * The policy of the monitoring
  * @member {string} [failureAction]
  * 
  * @member {string} [healthCheckWaitDurationInMilliseconds]
@@ -2567,11 +2841,13 @@ export interface MonitoringPolicy {
  * @class
  * Initializes a new instance of the ApplicationHealthPolicy class.
  * @constructor
+ * The policy of the application health
  * @member {boolean} [considerWarningAsError]
  * 
  * @member {number} [maxPercentUnhealthyDeployedApplications]
  * 
- * @member {object} [defaultServiceTypeHealthPolicy]
+ * @member {object} [defaultServiceTypeHealthPolicy] The policy of the default
+ * service type health
  * 
  * @member {number}
  * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -2593,6 +2869,7 @@ export interface ApplicationHealthPolicy {
  * @class
  * Initializes a new instance of the ApplicationHealthPolicyDefaultServiceTypeHealthPolicy class.
  * @constructor
+ * The policy of the default service type health
  * @member {number} [maxPercentUnhealthyServices]
  * 
  * @member {number} [maxPercentUnhealthyPartitionsPerService]
@@ -2610,15 +2887,17 @@ export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
  * @class
  * Initializes a new instance of the StartApplicationUpgradeDescription class.
  * @constructor
+ * The description of the start application upgrade
  * @member {string} [name]
  * 
  * @member {string} [targetApplicationTypeVersion]
  * 
  * @member {array} [parameters]
  * 
- * @member {number} [upgradeKind]
+ * @member {string} [upgradeKind] Possible values include: 'Invalid', 'Rolling'
  * 
- * @member {string} [rollingUpgradeMode]
+ * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
  * 
  * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
  * 
@@ -2646,6 +2925,7 @@ export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
  * [applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
  * 
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * The policy of the default service type health
  * 
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -2661,7 +2941,7 @@ export interface StartApplicationUpgradeDescription {
     name?: string;
     targetApplicationTypeVersion?: string;
     parameters?: string[];
-    upgradeKind?: number;
+    upgradeKind?: string;
     rollingUpgradeMode?: string;
     upgradeReplicaSetCheckTimeoutInSeconds?: number;
     forceRestart?: boolean;
@@ -2673,13 +2953,15 @@ export interface StartApplicationUpgradeDescription {
  * @class
  * Initializes a new instance of the UpdateApplicationUpgradeDescription class.
  * @constructor
+ * The description of the update application upgrade
  * @member {string} [name]
  * 
  * @member {number} [upgradeKind]
  * 
- * @member {object} [updateDescription]
+ * @member {object} [updateDescription] The description of the update
  * 
- * @member {string} [updateDescription.rollingUpgradeMode]
+ * @member {string} [updateDescription.rollingUpgradeMode] Possible values
+ * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
  * 
  * @member {boolean} [updateDescription.forceRestart]
  * 
@@ -2706,6 +2988,7 @@ export interface StartApplicationUpgradeDescription {
  * [applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
  * 
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+ * The policy of the default service type health
  * 
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -2728,7 +3011,9 @@ export interface UpdateApplicationUpgradeDescription {
  * @class
  * Initializes a new instance of the UpdateApplicationUpgradeDescriptionUpdateDescription class.
  * @constructor
- * @member {string} [rollingUpgradeMode]
+ * The description of the update
+ * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
  * 
  * @member {boolean} [forceRestart]
  * 
@@ -2763,11 +3048,13 @@ export interface UpdateApplicationUpgradeDescriptionUpdateDescription {
  * @class
  * Initializes a new instance of the ResolvedServicePartition class.
  * @constructor
+ * The partition of the resolved service
  * @member {string} [name]
  * 
  * @member {object} [partitionInformation]
  * 
- * @member {number} [partitionInformation.servicePartitionKind]
+ * @member {string} [partitionInformation.servicePartitionKind] Possible
+ * values include: 'Invalid', 'Singleton', 'Int64Range', 'Named'
  * 
  * @member {string} [partitionInformation.id]
  * 
@@ -2793,6 +3080,7 @@ export interface ResolvedServicePartition {
  * @class
  * Initializes a new instance of the ResolvedServicePartitionEndpointsItem class.
  * @constructor
+ * The endpoints
  * @member {number} [kind]
  * 
  * @member {string} [address]
@@ -2807,17 +3095,21 @@ export interface ResolvedServicePartitionEndpointsItem {
  * @class
  * Initializes a new instance of the ClusterUpgradeProgress class.
  * @constructor
+ * The progress of the cluster upgrade
  * @member {string} [codeVersion]
  * 
  * @member {string} [configVersion]
  * 
  * @member {array} [upgradeDomains]
  * 
- * @member {number} [upgradeState]
+ * @member {string} [upgradeState] Possible values include: 'Invalid',
+ * 'RollingBackInProgress', 'RollingBackCompleted', 'RollingForwardPending',
+ * 'RollingForwardInProgress', 'RollingForwardCompleted'
  * 
  * @member {string} [nextUpgradeDomain]
  * 
- * @member {string} [rollingUpgradeMode]
+ * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
  * 
  * @member {string} [upgradeDurationInMilliseconds]
  * 
@@ -2825,7 +3117,8 @@ export interface ResolvedServicePartitionEndpointsItem {
  * 
  * @member {array} [unhealthyEvaluations]
  * 
- * @member {object} [currentUpgradeDomainProgress]
+ * @member {object} [currentUpgradeDomainProgress] The progress of the current
+ * upgrade domain
  * 
  * @member {string} [currentUpgradeDomainProgress.domainName]
  * 
@@ -2835,9 +3128,12 @@ export interface ResolvedServicePartitionEndpointsItem {
  * 
  * @member {string} [failureTimestampUtc]
  * 
- * @member {number} [failureReason]
+ * @member {string} [failureReason] Possible values include: 'Invalid',
+ * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout',
+ * 'OverallUpgradeTimeout'
  * 
- * @member {object} [upgradeDomainProgressAtFailure]
+ * @member {object} [upgradeDomainProgressAtFailure] The failure of the
+ * upgrade domain progress at
  * 
  * @member {string} [upgradeDomainProgressAtFailure.domainName]
  * 
@@ -2848,7 +3144,7 @@ export interface ClusterUpgradeProgress {
     codeVersion?: string;
     configVersion?: string;
     upgradeDomains?: string[];
-    upgradeState?: number;
+    upgradeState?: string;
     nextUpgradeDomain?: string;
     rollingUpgradeMode?: string;
     upgradeDurationInMilliseconds?: string;
@@ -2857,7 +3153,7 @@ export interface ClusterUpgradeProgress {
     currentUpgradeDomainProgress?: ClusterUpgradeProgressCurrentUpgradeDomainProgress;
     startTimestampUtc?: string;
     failureTimestampUtc?: string;
-    failureReason?: number;
+    failureReason?: string;
     upgradeDomainProgressAtFailure?: ClusterUpgradeProgressUpgradeDomainProgressAtFailure;
 }
 
@@ -2865,6 +3161,7 @@ export interface ClusterUpgradeProgress {
  * @class
  * Initializes a new instance of the ClusterUpgradeProgressCurrentUpgradeDomainProgress class.
  * @constructor
+ * The progress of the current upgrade domain
  * @member {string} [domainName]
  * 
  * @member {string} [nodeUpgradeProgressList]
@@ -2879,6 +3176,7 @@ export interface ClusterUpgradeProgressCurrentUpgradeDomainProgress {
  * @class
  * Initializes a new instance of the ClusterUpgradeProgressUpgradeDomainProgressAtFailure class.
  * @constructor
+ * The failure of the upgrade domain progress at
  * @member {string} [domainName]
  * 
  * @member {string} [nodeUpgradeProgressList]
@@ -2893,7 +3191,8 @@ export interface ClusterUpgradeProgressUpgradeDomainProgressAtFailure {
  * @class
  * Initializes a new instance of the ErrorModel class.
  * @constructor
- * @member {object} [error]
+ * The model of the error
+ * @member {object} [error] The error
  * 
  * @member {string} [error.code]
  * 
@@ -2908,6 +3207,7 @@ export interface ErrorModel {
  * @class
  * Initializes a new instance of the ErrorModelError class.
  * @constructor
+ * The error
  * @member {string} [code]
  * 
  * @member {string} [message]
@@ -2922,11 +3222,13 @@ export interface ErrorModelError {
  * @class
  * Initializes a new instance of the ClusterHealthReport class.
  * @constructor
+ * The report of the cluster health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
@@ -2949,38 +3251,15 @@ export interface ClusterHealthReport {
 
 /**
  * @class
- * Initializes a new instance of the GetNodeListOKResponse class.
- * @constructor
- * @member {string} [continuationToken]
- * 
- * @member {array} [items]
- * 
- */
-export interface GetNodeListOKResponse {
-    continuationToken?: string;
-    items?: Node[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DisableNode class.
- * @constructor
- * @member {string} [deactivationIntent]
- * 
- */
-export interface DisableNode {
-    deactivationIntent?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the NodeHealthReport class.
  * @constructor
+ * The report of the node health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
@@ -3005,11 +3284,13 @@ export interface NodeHealthReport {
  * @class
  * Initializes a new instance of the DeployedApplicationHealthReport class.
  * @constructor
+ * The report of the deployed application health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
@@ -3034,11 +3315,13 @@ export interface DeployedApplicationHealthReport {
  * @class
  * Initializes a new instance of the DeployedServicePackageHealthReport class.
  * @constructor
+ * The report of the deployed service package health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
@@ -3063,6 +3346,7 @@ export interface DeployedServicePackageHealthReport {
  * @class
  * Initializes a new instance of the RegisterApplicationType class.
  * @constructor
+ * The type of the register application
  * @member {string} [applicationTypeBuildPath]
  * 
  */
@@ -3074,6 +3358,7 @@ export interface RegisterApplicationType {
  * @class
  * Initializes a new instance of the UnregisterApplicationType class.
  * @constructor
+ * The type of the unregister application
  * @member {string} [applicationTypeVersion]
  * 
  */
@@ -3083,41 +3368,15 @@ export interface UnregisterApplicationType {
 
 /**
  * @class
- * Initializes a new instance of the GetApplicationListOKResponse class.
- * @constructor
- * @member {string} [continuationToken]
- * 
- * @member {array} [items]
- * 
- */
-export interface GetApplicationListOKResponse {
-    continuationToken?: string;
-    items?: Application[];
-}
-
-/**
- * @class
- * Initializes a new instance of the GetServiceListOKResponse class.
- * @constructor
- * @member {string} [continuationToken]
- * 
- * @member {array} [items]
- * 
- */
-export interface GetServiceListOKResponse {
-    continuationToken?: string;
-    items?: Service[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ApplicationHealthReport class.
  * @constructor
+ * The report of the application health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
@@ -3142,6 +3401,7 @@ export interface ApplicationHealthReport {
  * @class
  * Initializes a new instance of the ServiceDescriptionTemplate class.
  * @constructor
+ * The template of the service description
  * @member {string} [serviceName]
  * 
  * @member {string} [serviceTypeName]
@@ -3156,6 +3416,7 @@ export interface ServiceDescriptionTemplate {
  * @class
  * Initializes a new instance of the ResumeApplicationUpgrade class.
  * @constructor
+ * The upgrade of the resume application
  * @member {string} [upgradeDomainName]
  * 
  */
@@ -3167,11 +3428,13 @@ export interface ResumeApplicationUpgrade {
  * @class
  * Initializes a new instance of the ServiceHealthReport class.
  * @constructor
+ * The report of the service health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
@@ -3194,41 +3457,15 @@ export interface ServiceHealthReport {
 
 /**
  * @class
- * Initializes a new instance of the GetPartitionListOKResponse class.
- * @constructor
- * @member {string} [continuationToken]
- * 
- * @member {array} [items]
- * 
- */
-export interface GetPartitionListOKResponse {
-    continuationToken?: string;
-    items?: Partition[];
-}
-
-/**
- * @class
- * Initializes a new instance of the GetReplicaListOKResponse class.
- * @constructor
- * @member {string} [continuationToken]
- * 
- * @member {array} [items]
- * 
- */
-export interface GetReplicaListOKResponse {
-    continuationToken?: string;
-    items?: Replica[];
-}
-
-/**
- * @class
  * Initializes a new instance of the PartitionHealthReport class.
  * @constructor
+ * The report of the partition health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
@@ -3253,11 +3490,13 @@ export interface PartitionHealthReport {
  * @class
  * Initializes a new instance of the ReplicaHealthReport class.
  * @constructor
+ * The report of the replica health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
  * 
- * @member {string} [healthState]
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
  * 
  * @member {string} [description]
  * 
