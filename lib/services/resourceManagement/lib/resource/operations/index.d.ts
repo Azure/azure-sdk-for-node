@@ -515,6 +515,9 @@ export interface ResourceGroups {
      * of the supported Azure Locations, such as West US, East US, West Europe,
      * East Asia, etc.
      * 
+     * @param {string} [parameters.managedBy] Id of the resource that manages this
+     * resource group.
+     * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
      * @param {object} [options] Optional Parameters.
@@ -599,6 +602,9 @@ export interface ResourceGroups {
      * cannot be changed after the resource group has been created. Has to be one
      * of the supported Azure Locations, such as West US, East US, West Europe,
      * East Asia, etc.
+     * 
+     * @param {string} [parameters.managedBy] Id of the resource that manages this
+     * resource group.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -798,7 +804,7 @@ export interface Resources {
     checkExistence(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<boolean>): void;
 
     /**
-     * Delete resource and all of its resources.
+     * Deletes a resource.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
@@ -919,6 +925,128 @@ export interface Resources {
      */
     get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
     get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<models.GenericResource>): void;
+
+    /**
+     * Checks whether resource exists.
+     *
+     * @param {string} resourceId The fully qualified Id of the resource,
+     * including the resource name and resource type. For example,
+     * /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite
+     * 
+     * @param {string} apiVersion Api version to use.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    checkExistenceById(resourceId: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+    checkExistenceById(resourceId: string, apiVersion: string, callback: ServiceCallback<boolean>): void;
+
+    /**
+     * Deletes a resource.
+     *
+     * @param {string} resourceId The fully qualified Id of the resource,
+     * including the resource name and resource type. For example,
+     * /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite
+     * 
+     * @param {string} apiVersion Api version to use.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteById(resourceId: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteById(resourceId: string, apiVersion: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Create a resource.
+     *
+     * @param {string} resourceId The fully qualified Id of the resource,
+     * including the resource name and resource type. For example,
+     * /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite
+     * 
+     * @param {string} apiVersion Api version to use.
+     * 
+     * @param {object} parameters Create or update resource parameters.
+     * 
+     * @param {object} [parameters.plan] The plan of the resource.
+     * 
+     * @param {string} [parameters.plan.name] The plan ID.
+     * 
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     * 
+     * @param {string} [parameters.plan.product] The offer ID.
+     * 
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     * 
+     * @param {object} [parameters.properties] The resource properties.
+     * 
+     * @param {string} [parameters.kind] The kind of the resource.
+     * 
+     * @param {string} [parameters.managedBy] Id of the resource that manages this
+     * resource.
+     * 
+     * @param {object} [parameters.sku] The sku of the resource.
+     * 
+     * @param {string} [parameters.sku.name] The sku name.
+     * 
+     * @param {string} [parameters.sku.tier] The sku tier.
+     * 
+     * @param {string} [parameters.sku.size] The sku size.
+     * 
+     * @param {string} [parameters.sku.family] The sku family.
+     * 
+     * @param {string} [parameters.sku.model] The sku model.
+     * 
+     * @param {number} [parameters.sku.capacity] The sku capacity.
+     * 
+     * @param {object} [parameters.identity] The identity of the resource.
+     * 
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    createOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+
+    /**
+     * Gets a resource.
+     *
+     * @param {string} resourceId The fully qualified Id of the resource,
+     * including the resource name and resource type. For example,
+     * /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite
+     * 
+     * @param {string} apiVersion Api version to use.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getById(resourceId: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    getById(resourceId: string, apiVersion: string, callback: ServiceCallback<models.GenericResource>): void;
 
     /**
      * Get all of the resources under a subscription.
