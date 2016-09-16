@@ -27,13 +27,13 @@
     "mocha": "2.4.5",
     "should": "5.2.0"
   },
-  "homepage": "https://github.com/Azure/AutoRest",
+  "homepage": "https://github.com/Azure/azure-sdk-for-node/blob/master/runtime/ms-rest-azure",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/AutoRest.git"
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/AutoRest/issues"
+    "url": "https://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
     "test": "npm install && npm -s run-script jshint && npm -s run-script unit",
