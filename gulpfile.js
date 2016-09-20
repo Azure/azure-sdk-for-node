@@ -75,6 +75,18 @@ var mappings = {
     'dir': 'intune/lib',
     'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
   },
+  'insights': {
+    'dir': 'insights/lib',
+    'source': 'insights/compositeInsightsClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
+  'insights.management': {
+    'dir': 'insightsManagement/lib',
+    'source': 'arm-insights/compositeInsightsManagementClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
   'iothub': {
     'dir': 'iothub/lib',
     'source': 'arm-iothub/2016-02-03/swagger/iothub.json',
@@ -158,7 +170,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160831';
+var defaultAutoRestVersion = '0.17.0-Nightly20160918';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
