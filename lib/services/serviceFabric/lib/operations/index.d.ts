@@ -132,47 +132,10 @@ export interface Nodes {
      *
      * @param {string} nodeName The name of the node
      * 
-     * @param {object} node The node
+     * @param {object} disableNode The node
      * 
-     * @param {string} [node.name]
-     * 
-     * @param {string} [node.ipAddressOrFQDN]
-     * 
-     * @param {string} [node.type]
-     * 
-     * @param {string} [node.codeVersion]
-     * 
-     * @param {string} [node.configVersion]
-     * 
-     * @param {string} [node.nodeStatus] Possible values include: 'Invalid', 'Up',
-     * 'Down', 'Enabling', 'Disabling', 'Disabled', 'Unknown', 'Removed'
-     * 
-     * @param {string} [node.nodeUpTimeInSeconds]
-     * 
-     * @param {string} [node.healthState] Possible values include: 'Invalid',
-     * 'Ok', 'Warning', 'Error', 'Unknown'
-     * 
-     * @param {boolean} [node.isSeedNode]
-     * 
-     * @param {string} [node.upgradeDomain]
-     * 
-     * @param {string} [node.faultDomain]
-     * 
-     * @param {object} [node.id] The id
-     * 
-     * @param {string} [node.id.id]
-     * 
-     * @param {string} [node.instanceId]
-     * 
-     * @param {object} [node.nodeDeactivationInfo] The info of the deactivation
-     * info
-     * 
-     * @param {string} [node.nodeDeactivationInfo.nodeDeactivationIntent] Possible
-     * values include: 'Invalid', 'Pause', 'Restart', 'RemoveData'
-     * 
-     * @param {string} [node.nodeDeactivationInfo.nodeDeactivationStatus] Possible
-     * values include: 'Invalid', 'SafetyCheckInProgress', 'SafetyCheckComplete',
-     * 'Completed'
+     * @param {string} [disableNode.deactivationIntent] Possible values include:
+     * 'Pause', 'Restart', 'RemoveData', 'RemoveNode'
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -182,8 +145,8 @@ export interface Nodes {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    disable(nodeName: string, node: models.Node, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-    disable(nodeName: string, node: models.Node, callback: ServiceCallback<string>): void;
+    disable(nodeName: string, disableNode: models.DisableNode, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    disable(nodeName: string, disableNode: models.DisableNode, callback: ServiceCallback<string>): void;
 }
 
 /**
@@ -640,8 +603,8 @@ export interface DeployedServicePackageHealthReports {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    send(nodeName: string, applicationName: string, serviceManifestName: string, deployedServicePackageHealthReport: models.DeployedServicePackageHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-    send(nodeName: string, applicationName: string, serviceManifestName: string, deployedServicePackageHealthReport: models.DeployedServicePackageHealthReport, callback: ServiceCallback<string>): void;
+    send(nodeName: string, applicationName: string, serviceManifestName: string, deployedServicePackageHealthReport: models.DeployedServiceHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    send(nodeName: string, applicationName: string, serviceManifestName: string, deployedServicePackageHealthReport: models.DeployedServiceHealthReport, callback: ServiceCallback<string>): void;
 }
 
 /**
