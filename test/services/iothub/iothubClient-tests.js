@@ -84,7 +84,7 @@ describe('IoTHub', function ()
         name: resourceName
       };
 
-      client.iotHubResource.checkNameAvailability(operationInputs, function (err, result, request, response)
+      client.iotHubResource.checkNameAvailability(resourceName, operationInputs, function (err, result, request, response)
       {
         should.not.exist(err);
         if (!result.nameAvailable)
@@ -126,17 +126,24 @@ describe('IoTHub', function ()
         },
         properties:
         {
-          enableFileUploadNotifications: false,
-          operationsMonitoringProperties:
-          {
-            events:
+            enableFileUploadNotifications: false,
+            ipFilterRules: [
+                {
+                    filterName: "ipfilterrule",
+                    action: "accept",
+                    ipMask: "0.0.0.0/0"
+                }
+            ],
+            operationsMonitoringProperties:
             {
-              "C2DCommands": "Error",
-              "DeviceTelemetry": "Error",
-              "DeviceIdentityOperations": "Error",
-              "Connections": "Error, Information"
-            }
-          },
+                events:
+                {
+                    "C2DCommands": "Error",
+                    "DeviceTelemetry": "Error",
+                    "DeviceIdentityOperations": "Error",
+                    "Connections": "Error, Information"
+                }
+            },
           "features": "None",
         }
       }
@@ -165,18 +172,25 @@ describe('IoTHub', function ()
         },
         properties:
         {
-          enableFileUploadNotifications: false,
-          operationsMonitoringProperties:
-          {
-            events:
+            enableFileUploadNotifications: false,
+            ipFilterRules: [
+                {
+                    filterName: "ipfilterrule2",
+                    action: "reject",
+                    ipMask: "192.168.0.0/10"
+                }
+            ],
+            operationsMonitoringProperties:
             {
-              "C2DCommands": "Error",
-              "DeviceTelemetry": "Error",
-              "DeviceIdentityOperations": "Error",
-              "Connections": "Error, Information"
-            }
-          },
-          "features": "None",
+                events:
+                {
+                    "C2DCommands": "Error",
+                    "DeviceTelemetry": "Error",
+                    "DeviceIdentityOperations": "Error",
+                    "Connections": "Error, Information"
+                }
+            },
+            "features": "None",
         }
       }
 
