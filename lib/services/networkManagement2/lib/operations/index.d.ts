@@ -21,12 +21,12 @@ import * as models from '../models';
 export interface ApplicationGateways {
 
     /**
-     * The delete applicationgateway operation deletes the specified
-     * applicationgateway.
+     * The delete ApplicationGateway operation deletes the specified application
+     * gateway.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} applicationGatewayName The name of the applicationgateway.
+     * @param {string} applicationGatewayName The name of the application gateway.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -40,12 +40,12 @@ export interface ApplicationGateways {
     deleteMethod(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The delete applicationgateway operation deletes the specified
-     * applicationgateway.
+     * The delete ApplicationGateway operation deletes the specified application
+     * gateway.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} applicationGatewayName The name of the applicationgateway.
+     * @param {string} applicationGatewayName The name of the application gateway.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -59,12 +59,12 @@ export interface ApplicationGateways {
     beginDeleteMethod(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get applicationgateway operation retreives information about the
-     * specified applicationgateway.
+     * The Get ApplicationGateway operation retrieves information about the
+     * specified application gateway.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} applicationGatewayName The name of the applicationgateway.
+     * @param {string} applicationGatewayName The name of the application gateway.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -91,10 +91,10 @@ export interface ApplicationGateways {
      * 
      * @param {string} [parameters.sku.name] Name of application gateway SKU.
      * Possible values include: 'Standard_Small', 'Standard_Medium',
-     * 'Standard_Large'
+     * 'Standard_Large', 'WAF_Medium', 'WAF_Large'
      * 
      * @param {string} [parameters.sku.tier] Tier of application gateway. Possible
-     * values include: 'Standard'
+     * values include: 'Standard', 'WAF'
      * 
      * @param {number} [parameters.sku.capacity] Capacity (instance count) of
      * application gateway
@@ -136,6 +136,17 @@ export interface ApplicationGateways {
      * 
      * @param {array} [parameters.requestRoutingRules] Request routing rules of
      * application gateway resource
+     * 
+     * @param {object} [parameters.webApplicationFirewallConfiguration] Web
+     * application firewall configuration
+     * 
+     * @param {boolean} parameters.webApplicationFirewallConfiguration.enabled
+     * Whether web application firewall is enabled
+     * 
+     * @param {string}
+     * [parameters.webApplicationFirewallConfiguration.firewallMode] Web
+     * application firewall mode. Possible values include: 'Detection',
+     * 'Prevention'
      * 
      * @param {string} [parameters.resourceGuid] Resource guid property of the
      * ApplicationGateway resource
@@ -177,10 +188,10 @@ export interface ApplicationGateways {
      * 
      * @param {string} [parameters.sku.name] Name of application gateway SKU.
      * Possible values include: 'Standard_Small', 'Standard_Medium',
-     * 'Standard_Large'
+     * 'Standard_Large', 'WAF_Medium', 'WAF_Large'
      * 
      * @param {string} [parameters.sku.tier] Tier of application gateway. Possible
-     * values include: 'Standard'
+     * values include: 'Standard', 'WAF'
      * 
      * @param {number} [parameters.sku.capacity] Capacity (instance count) of
      * application gateway
@@ -223,6 +234,17 @@ export interface ApplicationGateways {
      * @param {array} [parameters.requestRoutingRules] Request routing rules of
      * application gateway resource
      * 
+     * @param {object} [parameters.webApplicationFirewallConfiguration] Web
+     * application firewall configuration
+     * 
+     * @param {boolean} parameters.webApplicationFirewallConfiguration.enabled
+     * Whether web application firewall is enabled
+     * 
+     * @param {string}
+     * [parameters.webApplicationFirewallConfiguration.firewallMode] Web
+     * application firewall mode. Possible values include: 'Detection',
+     * 'Prevention'
+     * 
      * @param {string} [parameters.resourceGuid] Resource guid property of the
      * ApplicationGateway resource
      * 
@@ -250,8 +272,8 @@ export interface ApplicationGateways {
     beginCreateOrUpdate(resourceGroupName: string, applicationGatewayName: string, parameters: models.ApplicationGateway, callback: ServiceCallback<models.ApplicationGateway>): void;
 
     /**
-     * The List ApplicationGateway opertion retrieves all the applicationgateways
-     * in a resource group.
+     * The List ApplicationGateway operation retrieves all the application
+     * gateways in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -267,8 +289,8 @@ export interface ApplicationGateways {
     list(resourceGroupName: string, callback: ServiceCallback<models.ApplicationGatewayListResult>): void;
 
     /**
-     * The List applicationgateway opertion retrieves all the applicationgateways
-     * in a subscription.
+     * The List ApplicationGateway operation retrieves all the application
+     * gateways in a subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -282,7 +304,7 @@ export interface ApplicationGateways {
     listAll(callback: ServiceCallback<models.ApplicationGatewayListResult>): void;
 
     /**
-     * The Start ApplicationGateway operation starts application gatewayin the
+     * The Start ApplicationGateway operation starts application gateway in the
      * specified resource group through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -301,7 +323,7 @@ export interface ApplicationGateways {
     start(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Start ApplicationGateway operation starts application gatewayin the
+     * The Start ApplicationGateway operation starts application gateway in the
      * specified resource group through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -320,7 +342,7 @@ export interface ApplicationGateways {
     beginStart(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The STOP ApplicationGateway operation stops application gatewayin the
+     * The STOP ApplicationGateway operation stops application gateway in the
      * specified resource group through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -339,7 +361,7 @@ export interface ApplicationGateways {
     stop(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The STOP ApplicationGateway operation stops application gatewayin the
+     * The STOP ApplicationGateway operation stops application gateway in the
      * specified resource group through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -358,8 +380,52 @@ export interface ApplicationGateways {
     beginStop(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The List ApplicationGateway opertion retrieves all the applicationgateways
-     * in a resource group.
+     * The BackendHealth operation gets the backend health of application gateway
+     * in the specified resource group through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} applicationGatewayName The name of the application gateway.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.expand] Expands BackendAddressPool and
+     * BackendHttpSettings referenced in backend health.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    backendHealth(resourceGroupName: string, applicationGatewayName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayBackendHealth>): void;
+    backendHealth(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<models.ApplicationGatewayBackendHealth>): void;
+
+    /**
+     * The BackendHealth operation gets the backend health of application gateway
+     * in the specified resource group through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} applicationGatewayName The name of the application gateway.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.expand] Expands BackendAddressPool and
+     * BackendHttpSettings referenced in backend health.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginBackendHealth(resourceGroupName: string, applicationGatewayName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayBackendHealth>): void;
+    beginBackendHealth(resourceGroupName: string, applicationGatewayName: string, callback: ServiceCallback<models.ApplicationGatewayBackendHealth>): void;
+
+    /**
+     * The List ApplicationGateway operation retrieves all the application
+     * gateways in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -376,8 +442,8 @@ export interface ApplicationGateways {
     listNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationGatewayListResult>): void;
 
     /**
-     * The List applicationgateway opertion retrieves all the applicationgateways
-     * in a subscription.
+     * The List ApplicationGateway operation retrieves all the application
+     * gateways in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -466,8 +532,8 @@ export interface ExpressRouteCircuitAuthorizations {
     get(resourceGroupName: string, circuitName: string, authorizationName: string, callback: ServiceCallback<models.ExpressRouteCircuitAuthorization>): void;
 
     /**
-     * The Put Authorization operation creates/updates an authorization in
-     * thespecified ExpressRouteCircuits
+     * The Put Authorization operation creates/updates an authorization in the
+     * specified ExpressRouteCircuits
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -508,8 +574,8 @@ export interface ExpressRouteCircuitAuthorizations {
     createOrUpdate(resourceGroupName: string, circuitName: string, authorizationName: string, authorizationParameters: models.ExpressRouteCircuitAuthorization, callback: ServiceCallback<models.ExpressRouteCircuitAuthorization>): void;
 
     /**
-     * The Put Authorization operation creates/updates an authorization in
-     * thespecified ExpressRouteCircuits
+     * The Put Authorization operation creates/updates an authorization in the
+     * specified ExpressRouteCircuits
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -555,7 +621,7 @@ export interface ExpressRouteCircuitAuthorizations {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} circuitName The name of the curcuit.
+     * @param {string} circuitName The name of the circuit.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -659,7 +725,7 @@ export interface ExpressRouteCircuitPeerings {
     get(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.ExpressRouteCircuitPeering>): void;
 
     /**
-     * The Put Pering operation creates/updates an peering in the specified
+     * The Put Peering operation creates/updates an peering in the specified
      * ExpressRouteCircuits
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -762,7 +828,7 @@ export interface ExpressRouteCircuitPeerings {
     createOrUpdate(resourceGroupName: string, circuitName: string, peeringName: string, peeringParameters: models.ExpressRouteCircuitPeering, callback: ServiceCallback<models.ExpressRouteCircuitPeering>): void;
 
     /**
-     * The Put Pering operation creates/updates an peering in the specified
+     * The Put Peering operation creates/updates an peering in the specified
      * ExpressRouteCircuits
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -870,7 +936,7 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} circuitName The name of the curcuit.
+     * @param {string} circuitName The name of the circuit.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -949,7 +1015,7 @@ export interface ExpressRouteCircuits {
     beginDeleteMethod(resourceGroupName: string, circuitName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get ExpressRouteCircuit operation retreives information about the
+     * The Get ExpressRouteCircuit operation retrieves information about the
      * specified ExpressRouteCircuit.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1124,7 +1190,7 @@ export interface ExpressRouteCircuits {
     beginCreateOrUpdate(resourceGroupName: string, circuitName: string, parameters: models.ExpressRouteCircuit, callback: ServiceCallback<models.ExpressRouteCircuit>): void;
 
     /**
-     * The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+     * The ListArpTable from ExpressRouteCircuit operation retrieves the currently
      * advertised arp table associated with the ExpressRouteCircuits in a
      * resource group.
      *
@@ -1148,7 +1214,7 @@ export interface ExpressRouteCircuits {
     listArpTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
 
     /**
-     * The ListArpTable from ExpressRouteCircuit opertion retrieves the currently
+     * The ListArpTable from ExpressRouteCircuit operation retrieves the currently
      * advertised arp table associated with the ExpressRouteCircuits in a
      * resource group.
      *
@@ -1172,7 +1238,7 @@ export interface ExpressRouteCircuits {
     beginListArpTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsArpTableListResult>): void;
 
     /**
-     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
+     * The ListRoutesTable from ExpressRouteCircuit operation retrieves the
      * currently advertised routes table associated with the ExpressRouteCircuits
      * in a resource group.
      *
@@ -1196,7 +1262,7 @@ export interface ExpressRouteCircuits {
     listRoutesTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
 
     /**
-     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
+     * The ListRoutesTable from ExpressRouteCircuit operation retrieves the
      * currently advertised routes table associated with the ExpressRouteCircuits
      * in a resource group.
      *
@@ -1220,7 +1286,7 @@ export interface ExpressRouteCircuits {
     beginListRoutesTable(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableListResult>): void;
 
     /**
-     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
+     * The ListRoutesTable from ExpressRouteCircuit operation retrieves the
      * currently advertised routes table associated with the ExpressRouteCircuits
      * in a resource group.
      *
@@ -1244,7 +1310,7 @@ export interface ExpressRouteCircuits {
     listRoutesTableSummary(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableSummaryListResult>): void;
 
     /**
-     * The ListRoutesTable from ExpressRouteCircuit opertion retrieves the
+     * The ListRoutesTable from ExpressRouteCircuit operation retrieves the
      * currently advertised routes table associated with the ExpressRouteCircuits
      * in a resource group.
      *
@@ -1268,7 +1334,7 @@ export interface ExpressRouteCircuits {
     beginListRoutesTableSummary(resourceGroupName: string, circuitName: string, peeringName: string, devicePath: string, callback: ServiceCallback<models.ExpressRouteCircuitsRoutesTableSummaryListResult>): void;
 
     /**
-     * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+     * The List stats ExpressRouteCircuit operation retrieves all the stats from a
      * ExpressRouteCircuits in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1287,7 +1353,7 @@ export interface ExpressRouteCircuits {
     getStats(resourceGroupName: string, circuitName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
-     * The Liststats ExpressRouteCircuit opertion retrieves all the stats from a
+     * The List stats ExpressRouteCircuit operation retrieves all the stats from a
      * ExpressRouteCircuits in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1308,7 +1374,7 @@ export interface ExpressRouteCircuits {
     getPeeringStats(resourceGroupName: string, circuitName: string, peeringName: string, callback: ServiceCallback<models.ExpressRouteCircuitStats>): void;
 
     /**
-     * The List ExpressRouteCircuit opertion retrieves all the
+     * The List ExpressRouteCircuit operation retrieves all the
      * ExpressRouteCircuits in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1325,7 +1391,7 @@ export interface ExpressRouteCircuits {
     list(resourceGroupName: string, callback: ServiceCallback<models.ExpressRouteCircuitListResult>): void;
 
     /**
-     * The List ExpressRouteCircuit opertion retrieves all the
+     * The List ExpressRouteCircuit operation retrieves all the
      * ExpressRouteCircuits in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -1340,7 +1406,7 @@ export interface ExpressRouteCircuits {
     listAll(callback: ServiceCallback<models.ExpressRouteCircuitListResult>): void;
 
     /**
-     * The List ExpressRouteCircuit opertion retrieves all the
+     * The List ExpressRouteCircuit operation retrieves all the
      * ExpressRouteCircuits in a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1358,7 +1424,7 @@ export interface ExpressRouteCircuits {
     listNext(nextPageLink: string, callback: ServiceCallback<models.ExpressRouteCircuitListResult>): void;
 
     /**
-     * The List ExpressRouteCircuit opertion retrieves all the
+     * The List ExpressRouteCircuit operation retrieves all the
      * ExpressRouteCircuits in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1385,7 +1451,7 @@ export interface ExpressRouteCircuits {
 export interface ExpressRouteServiceProviders {
 
     /**
-     * The List ExpressRouteServiceProvider opertion retrieves all the available
+     * The List ExpressRouteServiceProvider operation retrieves all the available
      * ExpressRouteServiceProviders.
      *
      * @param {object} [options] Optional Parameters.
@@ -1400,7 +1466,7 @@ export interface ExpressRouteServiceProviders {
     list(callback: ServiceCallback<models.ExpressRouteServiceProviderListResult>): void;
 
     /**
-     * The List ExpressRouteServiceProvider opertion retrieves all the available
+     * The List ExpressRouteServiceProvider operation retrieves all the available
      * ExpressRouteServiceProviders.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1427,7 +1493,7 @@ export interface ExpressRouteServiceProviders {
 export interface LoadBalancers {
 
     /**
-     * The delete loadbalancer operation deletes the specified loadbalancer.
+     * The delete LoadBalancer operation deletes the specified load balancer.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1445,7 +1511,7 @@ export interface LoadBalancers {
     deleteMethod(resourceGroupName: string, loadBalancerName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The delete loadbalancer operation deletes the specified loadbalancer.
+     * The delete LoadBalancer operation deletes the specified load balancer.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1463,8 +1529,8 @@ export interface LoadBalancers {
     beginDeleteMethod(resourceGroupName: string, loadBalancerName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get ntework interface operation retreives information about the
-     * specified network interface.
+     * The Get LoadBalancer operation retrieves information about the specified
+     * LoadBalancer.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1497,9 +1563,9 @@ export interface LoadBalancers {
      * IP addresses of the load balancer
      * 
      * @param {array} [parameters.backendAddressPools] Gets or sets Pools of
-     * backend IP addresseses
+     * backend IP addresses
      * 
-     * @param {array} [parameters.loadBalancingRules] Gets or sets loadbalancing
+     * @param {array} [parameters.loadBalancingRules] Gets or sets load balancing
      * rules
      * 
      * @param {array} [parameters.probes] Gets or sets list of Load balancer probes
@@ -1551,9 +1617,9 @@ export interface LoadBalancers {
      * IP addresses of the load balancer
      * 
      * @param {array} [parameters.backendAddressPools] Gets or sets Pools of
-     * backend IP addresseses
+     * backend IP addresses
      * 
-     * @param {array} [parameters.loadBalancingRules] Gets or sets loadbalancing
+     * @param {array} [parameters.loadBalancingRules] Gets or sets load balancing
      * rules
      * 
      * @param {array} [parameters.probes] Gets or sets list of Load balancer probes
@@ -1592,7 +1658,7 @@ export interface LoadBalancers {
     beginCreateOrUpdate(resourceGroupName: string, loadBalancerName: string, parameters: models.LoadBalancer, callback: ServiceCallback<models.LoadBalancer>): void;
 
     /**
-     * The List loadBalancer opertion retrieves all the loadbalancers in a
+     * The List loadBalancer operation retrieves all the load balancers in a
      * subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -1607,7 +1673,7 @@ export interface LoadBalancers {
     listAll(callback: ServiceCallback<models.LoadBalancerListResult>): void;
 
     /**
-     * The List loadBalancer opertion retrieves all the loadbalancers in a
+     * The List loadBalancer operation retrieves all the load balancers in a
      * resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1624,7 +1690,7 @@ export interface LoadBalancers {
     list(resourceGroupName: string, callback: ServiceCallback<models.LoadBalancerListResult>): void;
 
     /**
-     * The List loadBalancer opertion retrieves all the loadbalancers in a
+     * The List loadBalancer operation retrieves all the load balancers in a
      * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1642,7 +1708,7 @@ export interface LoadBalancers {
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.LoadBalancerListResult>): void;
 
     /**
-     * The List loadBalancer opertion retrieves all the loadbalancers in a
+     * The List loadBalancer operation retrieves all the load balancers in a
      * resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1809,8 +1875,8 @@ export interface LocalNetworkGateways {
     get(resourceGroupName: string, localNetworkGatewayName: string, callback: ServiceCallback<models.LocalNetworkGateway>): void;
 
     /**
-     * The Delete LocalNetworkGateway operation deletes the specifed local network
-     * Gateway through Network resource provider.
+     * The Delete LocalNetworkGateway operation deletes the specified local
+     * network Gateway through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1829,8 +1895,8 @@ export interface LocalNetworkGateways {
     deleteMethod(resourceGroupName: string, localNetworkGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Delete LocalNetworkGateway operation deletes the specifed local network
-     * Gateway through Network resource provider.
+     * The Delete LocalNetworkGateway operation deletes the specified local
+     * network Gateway through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1849,7 +1915,7 @@ export interface LocalNetworkGateways {
     beginDeleteMethod(resourceGroupName: string, localNetworkGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The List LocalNetworkGateways opertion retrieves all the local network
+     * The List LocalNetworkGateways operation retrieves all the local network
      * gateways stored.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1866,7 +1932,7 @@ export interface LocalNetworkGateways {
     list(resourceGroupName: string, callback: ServiceCallback<models.LocalNetworkGatewayListResult>): void;
 
     /**
-     * The List LocalNetworkGateways opertion retrieves all the local network
+     * The List LocalNetworkGateways operation retrieves all the local network
      * gateways stored.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1929,7 +1995,7 @@ export interface NetworkInterfaces {
     beginDeleteMethod(resourceGroupName: string, networkInterfaceName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get ntework interface operation retreives information about the
+     * The Get network interface operation retrieves information about the
      * specified network interface.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2014,6 +2080,9 @@ export interface NetworkInterfaces {
      * 
      * @param {boolean} [parameters.primary] Gets whether this is a primary NIC on
      * a virtual machine
+     * 
+     * @param {boolean} [parameters.enableAcceleratedNetworking] Gets or sets if
+     * the network interface is accelerated networking enabled
      * 
      * @param {boolean} [parameters.enableIPForwarding] Gets or sets whether
      * IPForwarding is enabled on the NIC
@@ -2110,6 +2179,9 @@ export interface NetworkInterfaces {
      * @param {boolean} [parameters.primary] Gets whether this is a primary NIC on
      * a virtual machine
      * 
+     * @param {boolean} [parameters.enableAcceleratedNetworking] Gets or sets if
+     * the network interface is accelerated networking enabled
+     * 
      * @param {boolean} [parameters.enableIPForwarding] Gets or sets whether
      * IPForwarding is enabled on the NIC
      * 
@@ -2182,7 +2254,7 @@ export interface NetworkInterfaces {
     listVirtualMachineScaleSetNetworkInterfaces(resourceGroupName: string, virtualMachineScaleSetName: string, callback: ServiceCallback<models.NetworkInterfaceListResult>): void;
 
     /**
-     * The Get ntework interface operation retreives information about the
+     * The Get network interface operation retrieves information about the
      * specified network interface in a virtual machine scale set.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2208,7 +2280,7 @@ export interface NetworkInterfaces {
     getVirtualMachineScaleSetNetworkInterface(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, callback: ServiceCallback<models.NetworkInterface>): void;
 
     /**
-     * The List networkInterfaces opertion retrieves all the networkInterfaces in
+     * The List networkInterfaces operation retrieves all the networkInterfaces in
      * a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -2223,7 +2295,7 @@ export interface NetworkInterfaces {
     listAll(callback: ServiceCallback<models.NetworkInterfaceListResult>): void;
 
     /**
-     * The List networkInterfaces opertion retrieves all the networkInterfaces in
+     * The List networkInterfaces operation retrieves all the networkInterfaces in
      * a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2352,7 +2424,7 @@ export interface NetworkInterfaces {
     listVirtualMachineScaleSetNetworkInterfacesNext(nextPageLink: string, callback: ServiceCallback<models.NetworkInterfaceListResult>): void;
 
     /**
-     * The List networkInterfaces opertion retrieves all the networkInterfaces in
+     * The List networkInterfaces operation retrieves all the networkInterfaces in
      * a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2370,7 +2442,7 @@ export interface NetworkInterfaces {
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.NetworkInterfaceListResult>): void;
 
     /**
-     * The List networkInterfaces opertion retrieves all the networkInterfaces in
+     * The List networkInterfaces operation retrieves all the networkInterfaces in
      * a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2397,7 +2469,7 @@ export interface NetworkInterfaces {
 export interface NetworkSecurityGroups {
 
     /**
-     * The Delete NetworkSecurityGroup operation deletes the specifed network
+     * The Delete NetworkSecurityGroup operation deletes the specified network
      * security group
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2417,7 +2489,7 @@ export interface NetworkSecurityGroups {
     deleteMethod(resourceGroupName: string, networkSecurityGroupName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Delete NetworkSecurityGroup operation deletes the specifed network
+     * The Delete NetworkSecurityGroup operation deletes the specified network
      * security group
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2460,7 +2532,7 @@ export interface NetworkSecurityGroups {
 
     /**
      * The Put NetworkSecurityGroup operation creates/updates a network security
-     * groupin the specified resource group.
+     * group in the specified resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2504,7 +2576,7 @@ export interface NetworkSecurityGroups {
 
     /**
      * The Put NetworkSecurityGroup operation creates/updates a network security
-     * groupin the specified resource group.
+     * group in the specified resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2660,7 +2732,7 @@ export interface PublicIPAddresses {
     beginDeleteMethod(resourceGroupName: string, publicIpAddressName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get publicIpAddress operation retreives information about the specified
+     * The Get publicIpAddress operation retrieves information about the specified
      * pubicIpAddress
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2712,7 +2784,7 @@ export interface PublicIPAddresses {
      * This is the concatenation of the domainNameLabel and the regionalized DNS
      * zone.
      * 
-     * @param {string} [parameters.dnsSettings.reverseFqdn] Gets or Sests the
+     * @param {string} [parameters.dnsSettings.reverseFqdn] Gets or Sets the
      * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain
@@ -2781,7 +2853,7 @@ export interface PublicIPAddresses {
      * This is the concatenation of the domainNameLabel and the regionalized DNS
      * zone.
      * 
-     * @param {string} [parameters.dnsSettings.reverseFqdn] Gets or Sests the
+     * @param {string} [parameters.dnsSettings.reverseFqdn] Gets or Sets the
      * Reverse FQDN. A user-visible, fully qualified domain name that resolves to
      * this public IP address. If the reverseFqdn is specified, then a PTR DNS
      * record is created pointing from the IP address in the in-addr.arpa domain
@@ -2819,7 +2891,7 @@ export interface PublicIPAddresses {
     beginCreateOrUpdate(resourceGroupName: string, publicIpAddressName: string, parameters: models.PublicIPAddress, callback: ServiceCallback<models.PublicIPAddress>): void;
 
     /**
-     * The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+     * The List publicIpAddress operation retrieves all the publicIpAddresses in a
      * subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -2834,7 +2906,7 @@ export interface PublicIPAddresses {
     listAll(callback: ServiceCallback<models.PublicIPAddressListResult>): void;
 
     /**
-     * The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+     * The List publicIpAddress operation retrieves all the publicIpAddresses in a
      * resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2851,7 +2923,7 @@ export interface PublicIPAddresses {
     list(resourceGroupName: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
 
     /**
-     * The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+     * The List publicIpAddress operation retrieves all the publicIpAddresses in a
      * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2869,7 +2941,7 @@ export interface PublicIPAddresses {
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
 
     /**
-     * The List publicIpAddress opertion retrieves all the publicIpAddresses in a
+     * The List publicIpAddress operation retrieves all the publicIpAddresses in a
      * resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2896,7 +2968,7 @@ export interface PublicIPAddresses {
 export interface RouteTables {
 
     /**
-     * The Delete RouteTable operation deletes the specifed Route Table
+     * The Delete RouteTable operation deletes the specified Route Table
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2914,7 +2986,7 @@ export interface RouteTables {
     deleteMethod(resourceGroupName: string, routeTableName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Delete RouteTable operation deletes the specifed Route Table
+     * The Delete RouteTable operation deletes the specified Route Table
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2953,7 +3025,7 @@ export interface RouteTables {
     get(resourceGroupName: string, routeTableName: string, callback: ServiceCallback<models.RouteTable>): void;
 
     /**
-     * The Put RouteTable operation creates/updates a route tablein the specified
+     * The Put RouteTable operation creates/updates a route table in the specified
      * resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2989,7 +3061,7 @@ export interface RouteTables {
     createOrUpdate(resourceGroupName: string, routeTableName: string, parameters: models.RouteTable, callback: ServiceCallback<models.RouteTable>): void;
 
     /**
-     * The Put RouteTable operation creates/updates a route tablein the specified
+     * The Put RouteTable operation creates/updates a route table in the specified
      * resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -3138,7 +3210,7 @@ export interface Routes {
     beginDeleteMethod(resourceGroupName: string, routeTableName: string, routeName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get route operation retreives information about the specified route
+     * The Get route operation retrieves information about the specified route
      * from the route table.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -3168,13 +3240,13 @@ export interface Routes {
      * @param {string} routeName The name of the route.
      * 
      * @param {object} routeParameters Parameters supplied to the create/update
-     * routeoperation
+     * route operation
      * 
      * @param {string} [routeParameters.addressPrefix] Gets or sets the
      * destination CIDR to which the route applies.
      * 
-     * @param {string} [routeParameters.nextHopType] Gets or sets the type of
-     * Azure hop the packet should be sent to. Possible values include:
+     * @param {string} routeParameters.nextHopType Gets or sets the type of Azure
+     * hop the packet should be sent to. Possible values include:
      * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance',
      * 'None'
      * 
@@ -3215,13 +3287,13 @@ export interface Routes {
      * @param {string} routeName The name of the route.
      * 
      * @param {object} routeParameters Parameters supplied to the create/update
-     * routeoperation
+     * route operation
      * 
      * @param {string} [routeParameters.addressPrefix] Gets or sets the
      * destination CIDR to which the route applies.
      * 
-     * @param {string} [routeParameters.nextHopType] Gets or sets the type of
-     * Azure hop the packet should be sent to. Possible values include:
+     * @param {string} routeParameters.nextHopType Gets or sets the type of Azure
+     * hop the packet should be sent to. Possible values include:
      * 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance',
      * 'None'
      * 
@@ -3253,8 +3325,8 @@ export interface Routes {
     beginCreateOrUpdate(resourceGroupName: string, routeTableName: string, routeName: string, routeParameters: models.Route, callback: ServiceCallback<models.Route>): void;
 
     /**
-     * The List network security rule opertion retrieves all the routes in a route
-     * table.
+     * The List network security rule operation retrieves all the routes in a
+     * route table.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -3272,8 +3344,8 @@ export interface Routes {
     list(resourceGroupName: string, routeTableName: string, callback: ServiceCallback<models.RouteListResult>): void;
 
     /**
-     * The List network security rule opertion retrieves all the routes in a route
-     * table.
+     * The List network security rule operation retrieves all the routes in a
+     * route table.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3343,7 +3415,7 @@ export interface SecurityRules {
     beginDeleteMethod(resourceGroupName: string, networkSecurityGroupName: string, securityRuleName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get NetworkSecurityRule operation retreives information about the
+     * The Get NetworkSecurityRule operation retrieves information about the
      * specified network security rule.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -3381,7 +3453,7 @@ export interface SecurityRules {
      * @param {string} [securityRuleParameters.description] Gets or sets a
      * description for this rule. Restricted to 140 chars.
      * 
-     * @param {string} [securityRuleParameters.protocol] Gets or sets Network
+     * @param {string} securityRuleParameters.protocol Gets or sets Network
      * protocol this rule applies to. Can be Tcp, Udp or All(*). Possible values
      * include: 'Tcp', 'Udp', '*'
      * 
@@ -3393,30 +3465,30 @@ export interface SecurityRules {
      * Destination Port or Range. Integer or range between 0 and 65535. Asterix
      * '*' can also be used to match all ports.
      * 
-     * @param {string} [securityRuleParameters.sourceAddressPrefix] Gets or sets
+     * @param {string} securityRuleParameters.sourceAddressPrefix Gets or sets
      * source address prefix. CIDR or source IP range. Asterix '*' can also be
      * used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress
      * rule, specifies where network traffic originates from.
      * 
-     * @param {string} [securityRuleParameters.destinationAddressPrefix] Gets or
+     * @param {string} securityRuleParameters.destinationAddressPrefix Gets or
      * sets destination address prefix. CIDR or source IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as
      * 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
      * 
-     * @param {string} [securityRuleParameters.access] Gets or sets network
-     * traffic is allowed or denied. Possible values are 'Allow' and 'Deny'.
-     * Possible values include: 'Allow', 'Deny'
+     * @param {string} securityRuleParameters.access Gets or sets network traffic
+     * is allowed or denied. Possible values are 'Allow' and 'Deny'. Possible
+     * values include: 'Allow', 'Deny'
      * 
      * @param {number} [securityRuleParameters.priority] Gets or sets the priority
      * of the rule. The value can be between 100 and 4096. The priority number
      * must be unique for each rule in the collection. The lower the priority
      * number, the higher the priority of the rule.
      * 
-     * @param {string} [securityRuleParameters.direction] Gets or sets the
-     * direction of the rule.InBound or Outbound. The direction specifies if rule
-     * will be evaluated on incoming or outcoming traffic. Possible values
-     * include: 'Inbound', 'Outbound'
+     * @param {string} securityRuleParameters.direction Gets or sets the direction
+     * of the rule.InBound or Outbound. The direction specifies if rule will be
+     * evaluated on incoming or outcoming traffic. Possible values include:
+     * 'Inbound', 'Outbound'
      * 
      * @param {string} [securityRuleParameters.provisioningState] Gets
      * provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -3458,7 +3530,7 @@ export interface SecurityRules {
      * @param {string} [securityRuleParameters.description] Gets or sets a
      * description for this rule. Restricted to 140 chars.
      * 
-     * @param {string} [securityRuleParameters.protocol] Gets or sets Network
+     * @param {string} securityRuleParameters.protocol Gets or sets Network
      * protocol this rule applies to. Can be Tcp, Udp or All(*). Possible values
      * include: 'Tcp', 'Udp', '*'
      * 
@@ -3470,30 +3542,30 @@ export interface SecurityRules {
      * Destination Port or Range. Integer or range between 0 and 65535. Asterix
      * '*' can also be used to match all ports.
      * 
-     * @param {string} [securityRuleParameters.sourceAddressPrefix] Gets or sets
+     * @param {string} securityRuleParameters.sourceAddressPrefix Gets or sets
      * source address prefix. CIDR or source IP range. Asterix '*' can also be
      * used to match all source IPs. Default tags such as 'VirtualNetwork',
      * 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress
      * rule, specifies where network traffic originates from.
      * 
-     * @param {string} [securityRuleParameters.destinationAddressPrefix] Gets or
+     * @param {string} securityRuleParameters.destinationAddressPrefix Gets or
      * sets destination address prefix. CIDR or source IP range. Asterix '*' can
      * also be used to match all source IPs. Default tags such as
      * 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
      * 
-     * @param {string} [securityRuleParameters.access] Gets or sets network
-     * traffic is allowed or denied. Possible values are 'Allow' and 'Deny'.
-     * Possible values include: 'Allow', 'Deny'
+     * @param {string} securityRuleParameters.access Gets or sets network traffic
+     * is allowed or denied. Possible values are 'Allow' and 'Deny'. Possible
+     * values include: 'Allow', 'Deny'
      * 
      * @param {number} [securityRuleParameters.priority] Gets or sets the priority
      * of the rule. The value can be between 100 and 4096. The priority number
      * must be unique for each rule in the collection. The lower the priority
      * number, the higher the priority of the rule.
      * 
-     * @param {string} [securityRuleParameters.direction] Gets or sets the
-     * direction of the rule.InBound or Outbound. The direction specifies if rule
-     * will be evaluated on incoming or outcoming traffic. Possible values
-     * include: 'Inbound', 'Outbound'
+     * @param {string} securityRuleParameters.direction Gets or sets the direction
+     * of the rule.InBound or Outbound. The direction specifies if rule will be
+     * evaluated on incoming or outcoming traffic. Possible values include:
+     * 'Inbound', 'Outbound'
      * 
      * @param {string} [securityRuleParameters.provisioningState] Gets
      * provisioning state of the PublicIP resource Updating/Deleting/Failed
@@ -3519,8 +3591,8 @@ export interface SecurityRules {
     beginCreateOrUpdate(resourceGroupName: string, networkSecurityGroupName: string, securityRuleName: string, securityRuleParameters: models.SecurityRule, callback: ServiceCallback<models.SecurityRule>): void;
 
     /**
-     * The List network security rule opertion retrieves all the security rules in
-     * a network security group.
+     * The List network security rule operation retrieves all the security rules
+     * in a network security group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -3539,8 +3611,8 @@ export interface SecurityRules {
     list(resourceGroupName: string, networkSecurityGroupName: string, callback: ServiceCallback<models.SecurityRuleListResult>): void;
 
     /**
-     * The List network security rule opertion retrieves all the security rules in
-     * a network security group.
+     * The List network security rule operation retrieves all the security rules
+     * in a network security group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3606,7 +3678,7 @@ export interface Subnets {
     beginDeleteMethod(resourceGroupName: string, virtualNetworkName: string, subnetName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get subnet operation retreives information about the specified subnet.
+     * The Get subnet operation retrieves information about the specified subnet.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -3628,7 +3700,7 @@ export interface Subnets {
     get(resourceGroupName: string, virtualNetworkName: string, subnetName: string, callback: ServiceCallback<models.Subnet>): void;
 
     /**
-     * The Put Subnet operation creates/updates a subnet in thespecified virtual
+     * The Put Subnet operation creates/updates a subnet in the specified virtual
      * network
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -3685,6 +3757,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.routeTable.location] Resource location
      * 
      * @param {object} [subnetParameters.routeTable.tags] Resource tags
+     * 
+     * @param {array} [subnetParameters.resourceNavigationLinks] Gets array of
+     * references to the external resources using subnet
      * 
      * @param {string} [subnetParameters.provisioningState] Gets provisioning
      * state of the resource
@@ -3710,7 +3785,7 @@ export interface Subnets {
     createOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, callback: ServiceCallback<models.Subnet>): void;
 
     /**
-     * The Put Subnet operation creates/updates a subnet in thespecified virtual
+     * The Put Subnet operation creates/updates a subnet in the specified virtual
      * network
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -3768,6 +3843,9 @@ export interface Subnets {
      * 
      * @param {object} [subnetParameters.routeTable.tags] Resource tags
      * 
+     * @param {array} [subnetParameters.resourceNavigationLinks] Gets array of
+     * references to the external resources using subnet
+     * 
      * @param {string} [subnetParameters.provisioningState] Gets provisioning
      * state of the resource
      * 
@@ -3792,7 +3870,7 @@ export interface Subnets {
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, subnetName: string, subnetParameters: models.Subnet, callback: ServiceCallback<models.Subnet>): void;
 
     /**
-     * The List subnets opertion retrieves all the subnets in a virtual network.
+     * The List subnets operation retrieves all the subnets in a virtual network.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -3810,7 +3888,7 @@ export interface Subnets {
     list(resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.SubnetListResult>): void;
 
     /**
-     * The List subnets opertion retrieves all the subnets in a virtual network.
+     * The List subnets operation retrieves all the subnets in a virtual network.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -3878,7 +3956,7 @@ export interface VirtualNetworkPeerings {
     beginDeleteMethod(resourceGroupName: string, virtualNetworkName: string, virtualNetworkPeeringName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Get virtual network peering operation retreives information about the
+     * The Get virtual network peering operation retrieves information about the
      * specified virtual network peering.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -3927,7 +4005,7 @@ export interface VirtualNetworkPeerings {
      * 
      * @param {boolean} [virtualNetworkPeeringParameters.useRemoteGateways] Gets
      * or sets if remote gateways can be used on this virtual network. If the
-     * flag is set to true, and allowGatewayTransit on remotepeering is also
+     * flag is set to true, and allowGatewayTransit on remote peering is also
      * true, virtual network will use gateways of remote virtual network for
      * transit. Only 1 peering can have this flag set to true. This flag cannot
      * be set if virtual network already has a gateway.
@@ -3993,7 +4071,7 @@ export interface VirtualNetworkPeerings {
      * 
      * @param {boolean} [virtualNetworkPeeringParameters.useRemoteGateways] Gets
      * or sets if remote gateways can be used on this virtual network. If the
-     * flag is set to true, and allowGatewayTransit on remotepeering is also
+     * flag is set to true, and allowGatewayTransit on remote peering is also
      * true, virtual network will use gateways of remote virtual network for
      * transit. Only 1 peering can have this flag set to true. This flag cannot
      * be set if virtual network already has a gateway.
@@ -4032,7 +4110,7 @@ export interface VirtualNetworkPeerings {
     beginCreateOrUpdate(resourceGroupName: string, virtualNetworkName: string, virtualNetworkPeeringName: string, virtualNetworkPeeringParameters: models.VirtualNetworkPeering, callback: ServiceCallback<models.VirtualNetworkPeering>): void;
 
     /**
-     * The List virtual network peerings opertion retrieves all the peerings in a
+     * The List virtual network peerings operation retrieves all the peerings in a
      * virtual network.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -4051,7 +4129,7 @@ export interface VirtualNetworkPeerings {
     list(resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.VirtualNetworkPeeringListResult>): void;
 
     /**
-     * The List virtual network peerings opertion retrieves all the peerings in a
+     * The List virtual network peerings operation retrieves all the peerings in a
      * virtual network.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -4127,7 +4205,7 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} virtualNetworkGatewayConnectionName The name of the virtual
-     * network gateway conenction.
+     * network gateway connection.
      * 
      * @param {object} parameters Parameters supplied to the Begin Create or
      * update Virtual Network Gateway connection operation through Network
@@ -4153,6 +4231,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {boolean} [parameters.virtualNetworkGateway2.enableBgp] EnableBgp
      * Flag
      * 
+     * @param {boolean} [parameters.virtualNetworkGateway2.activeActive]
+     * ActiveActive flag
+     * 
      * @param {object} [parameters.virtualNetworkGateway2.gatewayDefaultSite] Gets
      * or sets the reference of the LocalNetworkGateway resource which represents
      * Local network site having default routes. Assign Null value in case of
@@ -4163,12 +4244,12 @@ export interface VirtualNetworkGatewayConnections {
      * sku selected for Virtual network gateway.
      * 
      * @param {string} [parameters.virtualNetworkGateway2.sku.name] Gateway sku
-     * name -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * name -Basic/HighPerformance/Standard/UltraPerformance. Possible values
+     * include: 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {string} [parameters.virtualNetworkGateway2.sku.tier] Gateway sku
-     * tier -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * tier -Basic/HighPerformance/Standard/UltraPerformance. Possible values
+     * include: 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {number} [parameters.virtualNetworkGateway2.sku.capacity] The
      * capacity
@@ -4310,7 +4391,7 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} virtualNetworkGatewayConnectionName The name of the virtual
-     * network gateway conenction.
+     * network gateway connection.
      * 
      * @param {object} parameters Parameters supplied to the Begin Create or
      * update Virtual Network Gateway connection operation through Network
@@ -4336,6 +4417,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {boolean} [parameters.virtualNetworkGateway2.enableBgp] EnableBgp
      * Flag
      * 
+     * @param {boolean} [parameters.virtualNetworkGateway2.activeActive]
+     * ActiveActive flag
+     * 
      * @param {object} [parameters.virtualNetworkGateway2.gatewayDefaultSite] Gets
      * or sets the reference of the LocalNetworkGateway resource which represents
      * Local network site having default routes. Assign Null value in case of
@@ -4346,12 +4430,12 @@ export interface VirtualNetworkGatewayConnections {
      * sku selected for Virtual network gateway.
      * 
      * @param {string} [parameters.virtualNetworkGateway2.sku.name] Gateway sku
-     * name -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * name -Basic/HighPerformance/Standard/UltraPerformance. Possible values
+     * include: 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {string} [parameters.virtualNetworkGateway2.sku.tier] Gateway sku
-     * tier -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * tier -Basic/HighPerformance/Standard/UltraPerformance. Possible values
+     * include: 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {number} [parameters.virtualNetworkGateway2.sku.capacity] The
      * capacity
@@ -4507,7 +4591,7 @@ export interface VirtualNetworkGatewayConnections {
     get(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, callback: ServiceCallback<models.VirtualNetworkGatewayConnection>): void;
 
     /**
-     * The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+     * The Delete VirtualNetworkGatewayConnection operation deletes the specified
      * virtual network Gateway connection through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -4527,7 +4611,7 @@ export interface VirtualNetworkGatewayConnections {
     deleteMethod(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Delete VirtualNetworkGatewayConnection operation deletes the specifed
+     * The Delete VirtualNetworkGatewayConnection operation deletes the specified
      * virtual network Gateway connection through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -4734,6 +4818,8 @@ export interface VirtualNetworkGateways {
      * 
      * @param {boolean} [parameters.enableBgp] EnableBgp Flag
      * 
+     * @param {boolean} [parameters.activeActive] ActiveActive flag
+     * 
      * @param {object} [parameters.gatewayDefaultSite] Gets or sets the reference
      * of the LocalNetworkGateway resource which represents Local network site
      * having default routes. Assign Null value in case of removing existing
@@ -4746,12 +4832,12 @@ export interface VirtualNetworkGateways {
      * Virtual network gateway.
      * 
      * @param {string} [parameters.sku.name] Gateway sku name
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {string} [parameters.sku.tier] Gateway sku tier
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {number} [parameters.sku.capacity] The capacity
      * 
@@ -4837,6 +4923,8 @@ export interface VirtualNetworkGateways {
      * 
      * @param {boolean} [parameters.enableBgp] EnableBgp Flag
      * 
+     * @param {boolean} [parameters.activeActive] ActiveActive flag
+     * 
      * @param {object} [parameters.gatewayDefaultSite] Gets or sets the reference
      * of the LocalNetworkGateway resource which represents Local network site
      * having default routes. Assign Null value in case of removing existing
@@ -4849,12 +4937,12 @@ export interface VirtualNetworkGateways {
      * Virtual network gateway.
      * 
      * @param {string} [parameters.sku.name] Gateway sku name
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {string} [parameters.sku.tier] Gateway sku tier
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {number} [parameters.sku.capacity] The capacity
      * 
@@ -4938,7 +5026,7 @@ export interface VirtualNetworkGateways {
     get(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
 
     /**
-     * The Delete VirtualNetworkGateway operation deletes the specifed virtual
+     * The Delete VirtualNetworkGateway operation deletes the specified virtual
      * network Gateway through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -4958,7 +5046,7 @@ export interface VirtualNetworkGateways {
     deleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Delete VirtualNetworkGateway operation deletes the specifed virtual
+     * The Delete VirtualNetworkGateway operation deletes the specified virtual
      * network Gateway through Network resource provider.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -4978,7 +5066,7 @@ export interface VirtualNetworkGateways {
     beginDeleteMethod(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The List VirtualNetworkGateways opertion retrieves all the virtual network
+     * The List VirtualNetworkGateways operation retrieves all the virtual network
      * gateways stored.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -5018,6 +5106,8 @@ export interface VirtualNetworkGateways {
      * 
      * @param {boolean} [parameters.enableBgp] EnableBgp Flag
      * 
+     * @param {boolean} [parameters.activeActive] ActiveActive flag
+     * 
      * @param {object} [parameters.gatewayDefaultSite] Gets or sets the reference
      * of the LocalNetworkGateway resource which represents Local network site
      * having default routes. Assign Null value in case of removing existing
@@ -5030,12 +5120,12 @@ export interface VirtualNetworkGateways {
      * Virtual network gateway.
      * 
      * @param {string} [parameters.sku.name] Gateway sku name
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {string} [parameters.sku.tier] Gateway sku tier
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {number} [parameters.sku.capacity] The capacity
      * 
@@ -5122,6 +5212,8 @@ export interface VirtualNetworkGateways {
      * 
      * @param {boolean} [parameters.enableBgp] EnableBgp Flag
      * 
+     * @param {boolean} [parameters.activeActive] ActiveActive flag
+     * 
      * @param {object} [parameters.gatewayDefaultSite] Gets or sets the reference
      * of the LocalNetworkGateway resource which represents Local network site
      * having default routes. Assign Null value in case of removing existing
@@ -5134,12 +5226,12 @@ export interface VirtualNetworkGateways {
      * Virtual network gateway.
      * 
      * @param {string} [parameters.sku.name] Gateway sku name
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {string} [parameters.sku.tier] Gateway sku tier
-     * -Basic/HighPerformance/Standard. Possible values include: 'Basic',
-     * 'HighPerformance', 'Standard'
+     * -Basic/HighPerformance/Standard/UltraPerformance. Possible values include:
+     * 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance'
      * 
      * @param {number} [parameters.sku.capacity] The capacity
      * 
@@ -5227,7 +5319,7 @@ export interface VirtualNetworkGateways {
     generatevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<string>): void;
 
     /**
-     * The List VirtualNetworkGateways opertion retrieves all the virtual network
+     * The List VirtualNetworkGateways operation retrieves all the virtual network
      * gateways stored.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -5254,7 +5346,7 @@ export interface VirtualNetworkGateways {
 export interface VirtualNetworks {
 
     /**
-     * The Delete VirtualNetwork operation deletes the specifed virtual network
+     * The Delete VirtualNetwork operation deletes the specified virtual network
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -5272,7 +5364,7 @@ export interface VirtualNetworks {
     deleteMethod(resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The Delete VirtualNetwork operation deletes the specifed virtual network
+     * The Delete VirtualNetwork operation deletes the specified virtual network
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -5451,6 +5543,26 @@ export interface VirtualNetworks {
      */
     list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkListResult>): void;
     list(resourceGroupName: string, callback: ServiceCallback<models.VirtualNetworkListResult>): void;
+
+    /**
+     * Checks whether a private Ip address is available for use.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} virtualNetworkName The name of the virtual network.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.ipAddress] The private IP address to be verified.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, options: { ipAddress? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
+    checkIPAddressAvailability(resourceGroupName: string, virtualNetworkName: string, callback: ServiceCallback<models.IPAddressAvailabilityResult>): void;
 
     /**
      * The list VirtualNetwork returns all Virtual Networks in a subscription
