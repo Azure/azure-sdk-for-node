@@ -23,8 +23,9 @@
     "azure"
   ],
   "main": "./lib/insightsClient.js",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "dependencies": {
+    "ms-rest": "^1.15.0",
     "ms-rest-azure": "^1.15.0",
     "moment": "^2.14.1"
   },

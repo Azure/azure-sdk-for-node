@@ -2,11 +2,7 @@
 
 This project provides a Node.js package that makes it easy to use the Azure Insights API. Right now it supports:
 - **Node.js version: 0.6.15 or higher**
-- **API version: 2014-04-01**
-
-## Features
-
- - TODO
+- **API version: 2014-04-01, 2015-04-01, 2016-03-01, 2016-09-01**
 
 ## How to Install
 
@@ -18,18 +14,23 @@ npm install azure-insights
 
 ### Authentication
 
- - TODO: Describe tokens
+ ```javascript
+ var msRestAzure = require('ms-rest-azure');
+ var insightsClient = require('azure-insights');
+ 
+ // Interactive Login
+ msRestAzure.interactiveLogin(function(err, credentials) {
+   var client = new insightsClient(credentials, 'your-subscription-id');
+ });
+ ```
 
-### Create the InsightsManagementClient
+### Create the InsightsClient
 
 ```javascript
-var common               = require("ms-rest-azure"),
-    insightsClientLib    = require("azure-insights");
+ var msRestAzure = require("ms-rest-azure"),
+ var insightsClient = require("azure-insights");
 
-var insightsClient = insightsClientLib.createInsightsClient(new common.TokenCloudCredentials({
-  subscriptionId: "<your subscription id>",
-  token: "<your token here>"
-}));
+ var client = new insightsClient(credentials, 'your subscription id');
 ```
 
 ## Related projects
