@@ -113,9 +113,9 @@ export interface NodeList {
 
 /**
  * @class
- * Initializes a new instance of the NodeHealthReport class.
+ * Initializes a new instance of the HealthReport class.
  * @constructor
- * The report of the node health
+ * The report of the health
  * @member {string} [sourceId]
  * 
  * @member {string} [property]
@@ -132,7 +132,7 @@ export interface NodeList {
  * @member {boolean} [removeWhenExpired]
  * 
  */
-export interface NodeHealthReport {
+export interface HealthReport {
     sourceId?: string;
     property?: string;
     healthState?: string;
@@ -140,6 +140,15 @@ export interface NodeHealthReport {
     timeToLiveInMilliSeconds?: string;
     sequenceNumber?: string;
     removeWhenExpired?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeHealthReport class.
+ * @constructor
+ * The report of the node health
+ */
+export interface NodeHealthReport extends HealthReport {
 }
 
 /**
@@ -731,30 +740,8 @@ export interface DeployedApplication {
  * Initializes a new instance of the DeployedApplicationHealthReport class.
  * @constructor
  * The report of the deployed application health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
  */
-export interface DeployedApplicationHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
+export interface DeployedApplicationHealthReport extends HealthReport {
 }
 
 /**
@@ -1328,30 +1315,8 @@ export interface DeployedServiceType {
  * Initializes a new instance of the DeployedServiceHealthReport class.
  * @constructor
  * The report of the deployed service package health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
  */
-export interface DeployedServiceHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
+export interface DeployedServiceHealthReport extends HealthReport {
 }
 
 /**
@@ -1564,30 +1529,8 @@ export interface ApplicationManifest {
  * Initializes a new instance of the ApplicationHealthReport class.
  * @constructor
  * The report of the application health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
  */
-export interface ApplicationHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
+export interface ApplicationHealthReport extends HealthReport {
 }
 
 /**
@@ -1649,30 +1592,8 @@ export interface ServiceList {
  * Initializes a new instance of the ServiceHealthReport class.
  * @constructor
  * The report of the service health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
  */
-export interface ServiceHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
+export interface ServiceHealthReport extends HealthReport {
 }
 
 /**
@@ -2675,30 +2596,8 @@ export interface PartitionList {
  * Initializes a new instance of the PartitionHealthReport class.
  * @constructor
  * The report of the partition health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
  */
-export interface PartitionHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
+export interface PartitionHealthReport extends HealthReport {
 }
 
 /**
@@ -2761,30 +2660,8 @@ export interface ReplicaList {
  * Initializes a new instance of the ReplicaHealthReport class.
  * @constructor
  * The report of the replica health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
  */
-export interface ReplicaHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
+export interface ReplicaHealthReport extends HealthReport {
 }
 
 /**
@@ -2992,30 +2869,8 @@ export interface LoadMetricInformationMaxNodeLoadId {
  * Initializes a new instance of the ClusterHealthReport class.
  * @constructor
  * The report of the cluster health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
  */
-export interface ClusterHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
+export interface ClusterHealthReport extends HealthReport {
 }
 
 /**
@@ -3256,7 +3111,7 @@ export interface StartApplicationUpgradeDescription {
  * The description of the update application upgrade
  * @member {string} [name]
  * 
- * @member {number} [upgradeKind]
+ * @member {string} [upgradeKind]
  * 
  * @member {object} [updateDescription] The description of the update
  * 
@@ -3302,7 +3157,7 @@ export interface StartApplicationUpgradeDescription {
  */
 export interface UpdateApplicationUpgradeDescription {
     name?: string;
-    upgradeKind?: number;
+    upgradeKind?: string;
     updateDescription?: UpdateApplicationUpgradeDescriptionUpdateDescription;
     applicationHealthPolicy?: ApplicationHealthPolicy;
 }

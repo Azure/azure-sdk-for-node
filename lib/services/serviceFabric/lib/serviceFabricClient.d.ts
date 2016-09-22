@@ -33,7 +33,7 @@ declare class ServiceFabricClient {
 
     // Operation groups
     clusterManifests: operations.ClusterManifests;
-    clusterHealthReports: operations.ClusterHealthReports;
+    clusterHealths: operations.ClusterHealths;
     nodes: operations.Nodes;
     nodeStates: operations.NodeStates;
     nodeHealths: operations.NodeHealths;
@@ -46,9 +46,6 @@ declare class ServiceFabricClient {
     deployedServicePackages: operations.DeployedServicePackages;
     deployedServicePackageHealths: operations.DeployedServicePackageHealths;
     deployedServiceTypes: operations.DeployedServiceTypes;
-    nodeHealthReports: operations.NodeHealthReports;
-    deployedApplicationHealthReports: operations.DeployedApplicationHealthReports;
-    deployedServicePackageHealthReports: operations.DeployedServicePackageHealthReports;
     applicationTypes: operations.ApplicationTypes;
     serviceManifests: operations.ServiceManifests;
     serviceTypes: operations.ServiceTypes;
@@ -59,7 +56,6 @@ declare class ServiceFabricClient {
     serviceGroupMembers: operations.ServiceGroupMembers;
     applicationHealths: operations.ApplicationHealths;
     applicationUpgrades: operations.ApplicationUpgrades;
-    applicationHealthReports: operations.ApplicationHealthReports;
     serviceFromTemplates: operations.ServiceFromTemplates;
     serviceGroups: operations.ServiceGroups;
     serviceGroupFromTemplates: operations.ServiceGroupFromTemplates;
@@ -71,12 +67,10 @@ declare class ServiceFabricClient {
     partitionLoads: operations.PartitionLoads;
     replicas: operations.Replicas;
     partitionHealths: operations.PartitionHealths;
-    partitionHealthReports: operations.PartitionHealthReports;
     replicaHealths: operations.ReplicaHealths;
     partitionLoadInformations: operations.PartitionLoadInformations;
     replicaLoadInformations: operations.ReplicaLoadInformations;
     clusterLoadInformations: operations.ClusterLoadInformations;
-    clusterHealths: operations.ClusterHealths;
     upgradeProgresses: operations.UpgradeProgresses;
     }
 
