@@ -41,6 +41,7 @@ var authorizationRuleName;
 var groupName;
 var namespaceLocation;
 var createNamespaceParameters;
+var patchNamespaceParameters;
 var authRuleParameter;
 var regenerateKeyParameter;
 
@@ -59,7 +60,16 @@ describe('Notification Hubs Management :', function () {
         tags: {
           tag1: 'value1',
           tag2: 'value2'
-        }
+        },
+        sku : { name: "Standard" }
+      };
+
+      patchNamespaceParameters = {
+          tags: {
+              tag3: 'value3',
+              tag4: 'value4'
+          },
+          sku: { name: "Basic" }
       };
       
       authRuleParameter = {
@@ -115,7 +125,8 @@ describe('Notification Hubs Management :', function () {
         //console.log("Get created Namespace");
         IsNamespaceActive(groupName, namespaceName, function (err, active) {
           //console.log("State : " + active);
-          
+
+        
           //console.log("Get all created Namespace in the ResourceGroup");
           client.namespaces.list(groupName, function (err, result, request, response) {
             should.not.exist(err);
@@ -124,6 +135,9 @@ describe('Notification Hubs Management :', function () {
             var namespaceList = result;
             namespaceList.length.should.be.above(0);
             namespaceList.some(function (ns) { return ns.name === namespaceName }).should.be.true;
+            namespaceList.some(function (ns) {
+                return ns.sku.Name == "Standard"
+            }).should.be.true;
             
             //console.log("Get all Namespaces in the subscription");
             client.namespaces.listAll(function (err, result, request, response) {
@@ -133,7 +147,13 @@ describe('Notification Hubs Management :', function () {
               var namespaceList = result;
               namespaceList.length.should.be.above(0);
               namespaceList.some(function (ns) { return ns.name === namespaceName }).should.be.true;
-              
+
+              client.namespaces.patch(groupName, namespaceName, patchNamespaceParameters, function (err, result, request, response) {
+                  should.not.exist(err);
+                  should.exist(result);
+                  response.statusCode.should.equal(200);
+              });
+
               //console.log("Create Namespace Authorization rule : " + authorizationRuleName);
               //console.log(authRuleParameter);
               client.namespaces.createOrUpdateAuthorizationRule(groupName, namespaceName, authorizationRuleName, authRuleParameter, function (err, result, request, response) {
@@ -174,7 +194,7 @@ describe('Notification Hubs Management :', function () {
                       var authKey = result;
                       authKey.primaryConnectionString.indexOf(authKey.primaryKey) > -1;
                       authKey.secondaryConnectionString.indexOf(authKey.secondaryKey) > -1;
-                      
+
                       //console.log("Namespace regenerateKey");
                       client.namespaces.regenerateKeys(groupName, namespaceName, authorizationRuleName, regenerateKeyParameter, function (err, result, request, response) {
                         should.not.exist(err);
