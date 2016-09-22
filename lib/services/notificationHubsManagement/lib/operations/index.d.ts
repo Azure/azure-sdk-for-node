@@ -27,10 +27,7 @@ export interface Namespaces {
      *
      * @param {object} parameters The namespace name.
      * 
-     * @param {boolean} [parameters.isAvailiable] True if the name is available
-     * and can be used to create new Namespace/NotificationHub. Otherwise false.
-     * 
-     * @param {string} [parameters.name] Resource name
+     * @param {string} parameters.name Resource name
      * 
      * @param {string} parameters.location Resource location
      * 
@@ -48,6 +45,9 @@ export interface Namespaces {
      * @param {string} [parameters.sku.family] The Sku Family
      * 
      * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * 
+     * @param {boolean} [parameters.isAvailiable] True if the name is available
+     * and can be used to create new Namespace/NotificationHub. Otherwise false.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -105,8 +105,6 @@ export interface Namespaces {
      * 
      * @param {string} [parameters.namespaceType] The namespace type. Possible
      * values include: 'Messaging', 'NotificationHub'
-     * 
-     * @param {string} [parameters.name] Resource name
      * 
      * @param {string} parameters.location Resource location
      * 
@@ -244,8 +242,6 @@ export interface Namespaces {
      * 
      * @param {array} [parameters.properties.rights] The rights associated with
      * the rule.
-     * 
-     * @param {string} [parameters.name] Resource name
      * 
      * @param {string} parameters.location Resource location
      * 
@@ -485,10 +481,7 @@ export interface NotificationHubs {
      * 
      * @param {object} parameters The notificationHub name.
      * 
-     * @param {boolean} [parameters.isAvailiable] True if the name is available
-     * and can be used to create new Namespace/NotificationHub. Otherwise false.
-     * 
-     * @param {string} [parameters.name] Resource name
+     * @param {string} parameters.name Resource name
      * 
      * @param {string} parameters.location Resource location
      * 
@@ -506,6 +499,9 @@ export interface NotificationHubs {
      * @param {string} [parameters.sku.family] The Sku Family
      * 
      * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * 
+     * @param {boolean} [parameters.isAvailiable] True if the name is available
+     * and can be used to create new Namespace/NotificationHub. Otherwise false.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -604,8 +600,6 @@ export interface NotificationHubs {
      * 
      * @param {string} [parameters.baiduCredential.baiduSecretKey] Baidu Secret Key
      * 
-     * @param {string} [parameters.name] Resource name
-     * 
      * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
@@ -692,8 +686,6 @@ export interface NotificationHubs {
      * 
      * @param {array} [parameters.properties.rights] The rights associated with
      * the rule.
-     * 
-     * @param {string} [parameters.name] Resource name
      * 
      * @param {string} parameters.location Resource location
      * 
