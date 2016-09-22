@@ -152,6 +152,14 @@ describe('Notification Hubs Management :', function () {
                   should.not.exist(err);
                   should.exist(result);
                   response.statusCode.should.equal(200);
+                  client.namespaces.list(groupName, function (err, result, request, response) {
+                      should.not.exist(err);
+                      should.exist(result);
+                      response.statusCode.should.equal(200);
+                      namespaceList.some(function (ns) {
+                          return ns.sku.Name == "Basic"
+                      }).should.be.true;
+                  });
               });
 
               //console.log("Create Namespace Authorization rule : " + authorizationRuleName);
