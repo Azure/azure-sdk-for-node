@@ -1212,7 +1212,7 @@ export interface ApplicationUpgrades {
      * 
      * @param {string} [updateApplicationUpgradeDescription.name]
      * 
-     * @param {number} [updateApplicationUpgradeDescription.upgradeKind]
+     * @param {string} [updateApplicationUpgradeDescription.upgradeKind]
      * 
      * @param {object} [updateApplicationUpgradeDescription.updateDescription] The
      * description of the update
