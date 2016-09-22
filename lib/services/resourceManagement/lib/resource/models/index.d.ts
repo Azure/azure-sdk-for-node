@@ -744,6 +744,9 @@ export interface Identity {
  * supported Azure Locations, such as West US, East US, West Europe, East
  * Asia, etc.
  * 
+ * @member {string} [managedBy] Id of the resource that manages this resource
+ * group.
+ * 
  * @member {object} [tags] The tags attached to the resource group.
  * 
  */
@@ -752,6 +755,7 @@ export interface ResourceGroup {
   name?: string;
   properties?: ResourceGroupProperties;
   location: string;
+  managedBy?: string;
   tags?: { [propertyName: string]: string };
 }
 
