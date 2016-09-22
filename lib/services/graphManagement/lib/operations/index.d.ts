@@ -224,9 +224,9 @@ export interface Applications {
      *
      * @param {string} applicationObjectId Application object id
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {array} value KeyCredential list.
      * 
-     * @param {array} [options.value] KeyCredential list.
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -234,8 +234,8 @@ export interface Applications {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateKeyCredentials(applicationObjectId: string, options: { value? : models.KeyCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    updateKeyCredentials(applicationObjectId: string, callback: ServiceCallback<void>): void;
+    updateKeyCredentials(applicationObjectId: string, value: models.KeyCredential[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateKeyCredentials(applicationObjectId: string, value: models.KeyCredential[], callback: ServiceCallback<void>): void;
 
     /**
      * Gets passwordCredentials associated with an existing application.
@@ -261,9 +261,9 @@ export interface Applications {
      *
      * @param {string} applicationObjectId Application object id
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {array} value PasswordCredential list.
      * 
-     * @param {array} [options.value] PasswordCredential list.
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -271,8 +271,8 @@ export interface Applications {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updatePasswordCredentials(applicationObjectId: string, options: { value? : models.PasswordCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    updatePasswordCredentials(applicationObjectId: string, callback: ServiceCallback<void>): void;
+    updatePasswordCredentials(applicationObjectId: string, value: models.PasswordCredential[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updatePasswordCredentials(applicationObjectId: string, value: models.PasswordCredential[], callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -594,9 +594,9 @@ export interface ServicePrincipals {
      *
      * @param {string} objectId Object id to get service principal information.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {array} value KeyCredential list.
      * 
-     * @param {array} [options.value] KeyCredential list.
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -604,8 +604,8 @@ export interface ServicePrincipals {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateKeyCredentials(objectId: string, options: { value? : models.KeyCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    updateKeyCredentials(objectId: string, callback: ServiceCallback<void>): void;
+    updateKeyCredentials(objectId: string, value: models.KeyCredential[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateKeyCredentials(objectId: string, value: models.KeyCredential[], callback: ServiceCallback<void>): void;
 
     /**
      * Gets passwordCredentials associated with an existing service principal.
@@ -632,9 +632,9 @@ export interface ServicePrincipals {
      *
      * @param {string} objectId Object id to get service principal information.
      * 
-     * @param {object} [options] Optional Parameters.
+     * @param {array} value PasswordCredential list.
      * 
-     * @param {array} [options.value] PasswordCredential list.
+     * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -642,8 +642,8 @@ export interface ServicePrincipals {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updatePasswordCredentials(objectId: string, options: { value? : models.PasswordCredential[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    updatePasswordCredentials(objectId: string, callback: ServiceCallback<void>): void;
+    updatePasswordCredentials(objectId: string, value: models.PasswordCredential[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updatePasswordCredentials(objectId: string, value: models.PasswordCredential[], callback: ServiceCallback<void>): void;
 
     /**
      * Gets list of service principals from the current tenant.
