@@ -9,2973 +9,2061 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":null,\"enabled\":false,\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":null,\"enabled\":false,\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '452',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '853f4a25-7a97-4797-895d-5b3d661e183a_M0_M0',
+  'x-ms-request-id': 'daeda0eb-ed0e-4108-8648-9cc3377acedb_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': '8874a480-427c-4aa1-9240-5245338e7836',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192330Z:8874a480-427c-4aa1-9240-5245338e7836',
+  'x-ms-ratelimit-remaining-subscription-writes': '1191',
+  'x-ms-correlation-request-id': 'e6eb257e-919d-4ecd-ae4b-24fb22b0bfa8',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193856Z:e6eb257e-919d-4ecd-ae4b-24fb22b0bfa8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:29 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":null,\"enabled\":false,\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Unknown\",\"metricId\":null,\"enabled\":false,\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '452',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '853f4a25-7a97-4797-895d-5b3d661e183a_M0_M0',
+  'x-ms-request-id': 'daeda0eb-ed0e-4108-8648-9cc3377acedb_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': '8874a480-427c-4aa1-9240-5245338e7836',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192330Z:8874a480-427c-4aa1-9240-5245338e7836',
+  'x-ms-ratelimit-remaining-subscription-writes': '1191',
+  'x-ms-correlation-request-id': 'e6eb257e-919d-4ecd-ae4b-24fb22b0bfa8',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193856Z:e6eb257e-919d-4ecd-ae4b-24fb22b0bfa8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:29 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'b6282b09-564a-4463-80bd-724aaba46877_M2_M2',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': 'd68fdba4-4865-40d1-845f-d1a1f788658c',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192331Z:d68fdba4-4865-40d1-845f-d1a1f788658c',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:30 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b6282b09-564a-4463-80bd-724aaba46877_M2_M2',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': 'd68fdba4-4865-40d1-845f-d1a1f788658c',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192331Z:d68fdba4-4865-40d1-845f-d1a1f788658c',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:30 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '681488f2-6ec3-49be-852c-8709420baeb2_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '765d54d8-6a3e-4d6f-b043-6967f13e869e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192331Z:765d54d8-6a3e-4d6f-b043-6967f13e869e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:30 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '681488f2-6ec3-49be-852c-8709420baeb2_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '765d54d8-6a3e-4d6f-b043-6967f13e869e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192331Z:765d54d8-6a3e-4d6f-b043-6967f13e869e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:30 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '275ff53a-d2ee-47d8-a277-d01813a60c44_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14968',
-  'x-ms-correlation-request-id': '040e96d2-366c-46df-80de-3b4d48d71415',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192331Z:040e96d2-366c-46df-80de-3b4d48d71415',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:30 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '275ff53a-d2ee-47d8-a277-d01813a60c44_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14968',
-  'x-ms-correlation-request-id': '040e96d2-366c-46df-80de-3b4d48d71415',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192331Z:040e96d2-366c-46df-80de-3b4d48d71415',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:30 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '1e4cb12d-ddeb-40fb-9197-eb8ddc3d83df_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'ba38cae6-870a-4c5a-8d54-92c0e403528a',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192332Z:ba38cae6-870a-4c5a-8d54-92c0e403528a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:32 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '1e4cb12d-ddeb-40fb-9197-eb8ddc3d83df_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'ba38cae6-870a-4c5a-8d54-92c0e403528a',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192332Z:ba38cae6-870a-4c5a-8d54-92c0e403528a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:32 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '541999d9-6629-46ee-bcb3-f6c5c8577028_M2_M2',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': 'a5df83d8-5afa-4d8d-ba9e-fdcb44082254',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192332Z:a5df83d8-5afa-4d8d-ba9e-fdcb44082254',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:32 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '541999d9-6629-46ee-bcb3-f6c5c8577028_M2_M2',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': 'a5df83d8-5afa-4d8d-ba9e-fdcb44082254',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192332Z:a5df83d8-5afa-4d8d-ba9e-fdcb44082254',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:32 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '59f6b4b8-61d1-4360-b5c9-8428aa1356f5_M4_M4',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': 'aecd4510-19a9-4d60-9b02-423b09f613dd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192333Z:aecd4510-19a9-4d60-9b02-423b09f613dd',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:32 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '59f6b4b8-61d1-4360-b5c9-8428aa1356f5_M4_M4',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': 'aecd4510-19a9-4d60-9b02-423b09f613dd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192333Z:aecd4510-19a9-4d60-9b02-423b09f613dd',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:32 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f9d49704-d560-42c0-bc1d-82fffe5a5a62_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '3c518403-0208-473d-bfb4-91965c8746b1',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192333Z:3c518403-0208-473d-bfb4-91965c8746b1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:33 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f9d49704-d560-42c0-bc1d-82fffe5a5a62_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '3c518403-0208-473d-bfb4-91965c8746b1',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192333Z:3c518403-0208-473d-bfb4-91965c8746b1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:33 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'd2a18f67-6c63-4da0-a8ea-cfd74dc2a0ac_M3_M3',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': 'd7ac33be-7ce8-4c0f-94c6-e4185924a3e5',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192334Z:d7ac33be-7ce8-4c0f-94c6-e4185924a3e5',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:33 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'd2a18f67-6c63-4da0-a8ea-cfd74dc2a0ac_M3_M3',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': 'd7ac33be-7ce8-4c0f-94c6-e4185924a3e5',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192334Z:d7ac33be-7ce8-4c0f-94c6-e4185924a3e5',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:33 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'ead7e02b-eb7c-40b3-88a1-86c1889d47e5_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'fcc65668-b2df-4b12-acc6-6e9c4315d36f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192334Z:fcc65668-b2df-4b12-acc6-6e9c4315d36f',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:33 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'ead7e02b-eb7c-40b3-88a1-86c1889d47e5_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'fcc65668-b2df-4b12-acc6-6e9c4315d36f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192334Z:fcc65668-b2df-4b12-acc6-6e9c4315d36f',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:33 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'a18f7d3b-1a1d-4a23-bc6f-a23b43cb2734_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '0a13d50e-c03a-43f2-81dd-0c05dc0484f7',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192334Z:0a13d50e-c03a-43f2-81dd-0c05dc0484f7',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:34 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'a18f7d3b-1a1d-4a23-bc6f-a23b43cb2734_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '0a13d50e-c03a-43f2-81dd-0c05dc0484f7',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192334Z:0a13d50e-c03a-43f2-81dd-0c05dc0484f7',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:34 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '91e17ed4-7218-4f30-b542-d504e630ecc7_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'dd39aef7-7225-4c6f-a0d7-38d8fe8037e8',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192335Z:dd39aef7-7225-4c6f-a0d7-38d8fe8037e8',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:34 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '91e17ed4-7218-4f30-b542-d504e630ecc7_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'dd39aef7-7225-4c6f-a0d7-38d8fe8037e8',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192335Z:dd39aef7-7225-4c6f-a0d7-38d8fe8037e8',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:34 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'abf60a63-332b-4603-b982-f5b0b4051858_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '0beabd34-e54a-4091-9cbb-1cab4f7bfbb7',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192335Z:0beabd34-e54a-4091-9cbb-1cab4f7bfbb7',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:35 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'abf60a63-332b-4603-b982-f5b0b4051858_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '0beabd34-e54a-4091-9cbb-1cab4f7bfbb7',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192335Z:0beabd34-e54a-4091-9cbb-1cab4f7bfbb7',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:35 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b78dac20-4bef-4c8e-b1a6-d5353ffdbf4c_M0_M0',
+  'x-ms-request-id': '8ce8cd15-469d-4c5a-a2bd-12f0c7062082_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14967',
-  'x-ms-correlation-request-id': '3e50c3dd-1618-4cb5-83a7-7085b6c073b4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192336Z:3e50c3dd-1618-4cb5-83a7-7085b6c073b4',
+  'x-ms-correlation-request-id': '606c4b01-3920-405c-95f8-25268569289d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193856Z:606c4b01-3920-405c-95f8-25268569289d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'b78dac20-4bef-4c8e-b1a6-d5353ffdbf4c_M0_M0',
+  'x-ms-request-id': '8ce8cd15-469d-4c5a-a2bd-12f0c7062082_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14967',
-  'x-ms-correlation-request-id': '3e50c3dd-1618-4cb5-83a7-7085b6c073b4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192336Z:3e50c3dd-1618-4cb5-83a7-7085b6c073b4',
+  'x-ms-correlation-request-id': '606c4b01-3920-405c-95f8-25268569289d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193856Z:606c4b01-3920-405c-95f8-25268569289d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '63c4294a-7345-4ff4-8ec2-a8fb71f4669b_M2_M2',
+  'x-ms-request-id': 'a264daae-7766-4c71-a79a-cf09cad93aa8_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'c4e9480c-d7ed-4e1f-971d-dd585f49df0b',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192336Z:c4e9480c-d7ed-4e1f-971d-dd585f49df0b',
+  'x-ms-ratelimit-remaining-subscription-reads': '14968',
+  'x-ms-correlation-request-id': '81be1327-ed76-4a53-b141-073115ed8e0c',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193857Z:81be1327-ed76-4a53-b141-073115ed8e0c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '63c4294a-7345-4ff4-8ec2-a8fb71f4669b_M2_M2',
+  'x-ms-request-id': 'a264daae-7766-4c71-a79a-cf09cad93aa8_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'c4e9480c-d7ed-4e1f-971d-dd585f49df0b',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192336Z:c4e9480c-d7ed-4e1f-971d-dd585f49df0b',
+  'x-ms-ratelimit-remaining-subscription-reads': '14968',
+  'x-ms-correlation-request-id': '81be1327-ed76-4a53-b141-073115ed8e0c',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193857Z:81be1327-ed76-4a53-b141-073115ed8e0c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '886f5346-1659-4d2c-9db7-fcf88714e417_M6_M6',
+  'x-ms-request-id': '3698a6cc-df92-4bf2-be83-6c8bc429eb4b_M1_M1',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14965',
-  'x-ms-correlation-request-id': '73aaef58-8f26-4880-99ad-51c419206fad',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192336Z:73aaef58-8f26-4880-99ad-51c419206fad',
+  'x-ms-correlation-request-id': 'f0e4cbf7-bbb7-4ec1-88fc-2f055fd6cb7c',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193857Z:f0e4cbf7-bbb7-4ec1-88fc-2f055fd6cb7c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '886f5346-1659-4d2c-9db7-fcf88714e417_M6_M6',
+  'x-ms-request-id': '3698a6cc-df92-4bf2-be83-6c8bc429eb4b_M1_M1',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14965',
-  'x-ms-correlation-request-id': '73aaef58-8f26-4880-99ad-51c419206fad',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192336Z:73aaef58-8f26-4880-99ad-51c419206fad',
+  'x-ms-correlation-request-id': 'f0e4cbf7-bbb7-4ec1-88fc-2f055fd6cb7c',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193857Z:f0e4cbf7-bbb7-4ec1-88fc-2f055fd6cb7c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '98fb4939-9c0b-4d61-b70f-daf63f46469a_M6_M6',
+  'x-ms-request-id': '3a46c3c0-8ed7-4a39-abc5-03782fa04198_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14965',
-  'x-ms-correlation-request-id': 'a845ce4e-09a7-44dc-ab69-688281ad9919',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192337Z:a845ce4e-09a7-44dc-ab69-688281ad9919',
+  'x-ms-ratelimit-remaining-subscription-reads': '14964',
+  'x-ms-correlation-request-id': '8ef214c0-a360-4dcd-a7e4-3692a4e7b396',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193858Z:8ef214c0-a360-4dcd-a7e4-3692a4e7b396',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '98fb4939-9c0b-4d61-b70f-daf63f46469a_M6_M6',
+  'x-ms-request-id': '3a46c3c0-8ed7-4a39-abc5-03782fa04198_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14965',
-  'x-ms-correlation-request-id': 'a845ce4e-09a7-44dc-ab69-688281ad9919',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192337Z:a845ce4e-09a7-44dc-ab69-688281ad9919',
+  'x-ms-ratelimit-remaining-subscription-reads': '14964',
+  'x-ms-correlation-request-id': '8ef214c0-a360-4dcd-a7e4-3692a4e7b396',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193858Z:8ef214c0-a360-4dcd-a7e4-3692a4e7b396',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '73a1cee6-f8c8-49e5-81dc-6b7a11f3e168_M5_M5',
+  'x-ms-request-id': 'f20db177-6114-44cb-ab9e-368e2ccfe767_M3_M3',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '2d37ccf1-adb0-4d5f-b4e1-af74663f87df',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193858Z:2d37ccf1-adb0-4d5f-b4e1-af74663f87df',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:38:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f20db177-6114-44cb-ab9e-368e2ccfe767_M3_M3',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '2d37ccf1-adb0-4d5f-b4e1-af74663f87df',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193858Z:2d37ccf1-adb0-4d5f-b4e1-af74663f87df',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:38:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '59779fef-e391-4446-aed3-f4e685f441d8_M2_M2',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14964',
+  'x-ms-correlation-request-id': 'd3328b26-5944-48be-9790-aa888ff7bc21',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193858Z:d3328b26-5944-48be-9790-aa888ff7bc21',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:38:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '59779fef-e391-4446-aed3-f4e685f441d8_M2_M2',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14964',
+  'x-ms-correlation-request-id': 'd3328b26-5944-48be-9790-aa888ff7bc21',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193858Z:d3328b26-5944-48be-9790-aa888ff7bc21',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:38:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'ebcf1438-f5ce-49d6-b969-3cb662ad4668_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': '41e4c09b-adfb-4868-a2db-b86cad68725d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193859Z:41e4c09b-adfb-4868-a2db-b86cad68725d',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'ebcf1438-f5ce-49d6-b969-3cb662ad4668_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': '41e4c09b-adfb-4868-a2db-b86cad68725d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193859Z:41e4c09b-adfb-4868-a2db-b86cad68725d',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '54fe0364-3e6c-40b1-a075-82a972c84708_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'b15873e3-6607-4e8f-a486-7c23957040cd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192337Z:b15873e3-6607-4e8f-a486-7c23957040cd',
+  'x-ms-correlation-request-id': 'f632a9a6-bdbd-489b-b3dc-20c7b6950402',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193859Z:f632a9a6-bdbd-489b-b3dc-20c7b6950402',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:37 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '73a1cee6-f8c8-49e5-81dc-6b7a11f3e168_M5_M5',
+  'x-ms-request-id': '54fe0364-3e6c-40b1-a075-82a972c84708_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'b15873e3-6607-4e8f-a486-7c23957040cd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192337Z:b15873e3-6607-4e8f-a486-7c23957040cd',
+  'x-ms-correlation-request-id': 'f632a9a6-bdbd-489b-b3dc-20c7b6950402',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193859Z:f632a9a6-bdbd-489b-b3dc-20c7b6950402',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:37 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e815afa9-acb7-44a0-a5bd-2b6e488c352e_M7_M7',
+  'x-ms-request-id': '8965e96c-ded8-420a-b093-c7af87e9f554_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '91e82b5a-18a3-433a-b51b-0d09aaf1b96e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192338Z:91e82b5a-18a3-433a-b51b-0d09aaf1b96e',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '51fc9692-a9d3-4036-88ac-2a43e974fe72',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193900Z:51fc9692-a9d3-4036-88ac-2a43e974fe72',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:37 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'e815afa9-acb7-44a0-a5bd-2b6e488c352e_M7_M7',
+  'x-ms-request-id': '8965e96c-ded8-420a-b093-c7af87e9f554_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '91e82b5a-18a3-433a-b51b-0d09aaf1b96e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192338Z:91e82b5a-18a3-433a-b51b-0d09aaf1b96e',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '51fc9692-a9d3-4036-88ac-2a43e974fe72',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193900Z:51fc9692-a9d3-4036-88ac-2a43e974fe72',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:37 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ab5a7cab-02c7-44eb-85f0-1a8b1839ea98_M4_M4',
+  'x-ms-request-id': '4e62a391-7882-4368-8d4c-3b57d0101d6d_M1_M1',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': '3126bfe6-8fd5-48aa-8f16-ccf6b0a0c9f4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192338Z:3126bfe6-8fd5-48aa-8f16-ccf6b0a0c9f4',
+  'x-ms-correlation-request-id': '5476861f-db03-4a56-93c5-132feb44f98b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193900Z:5476861f-db03-4a56-93c5-132feb44f98b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:37 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ab5a7cab-02c7-44eb-85f0-1a8b1839ea98_M4_M4',
+  'x-ms-request-id': '4e62a391-7882-4368-8d4c-3b57d0101d6d_M1_M1',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': '3126bfe6-8fd5-48aa-8f16-ccf6b0a0c9f4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192338Z:3126bfe6-8fd5-48aa-8f16-ccf6b0a0c9f4',
+  'x-ms-correlation-request-id': '5476861f-db03-4a56-93c5-132feb44f98b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193900Z:5476861f-db03-4a56-93c5-132feb44f98b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:37 GMT',
+  date: 'Thu, 22 Sep 2016 19:38:59 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3d2e2410-46e2-4ab4-a085-5ed42fb55450_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '496b3c3d-f0a8-48ce-a135-f4a9bb3c0ec1',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192338Z:496b3c3d-f0a8-48ce-a135-f4a9bb3c0ec1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:38 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '3d2e2410-46e2-4ab4-a085-5ed42fb55450_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '496b3c3d-f0a8-48ce-a135-f4a9bb3c0ec1',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192338Z:496b3c3d-f0a8-48ce-a135-f4a9bb3c0ec1',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:38 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '9b713347-4307-4666-9d1b-673658ce1502_M5_M5',
+  'x-ms-request-id': '0678a5a3-92c1-4164-87dd-7b862b94ebd6_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': 'ab0f06be-6eec-4026-9541-e843f21f4bc0',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192339Z:ab0f06be-6eec-4026-9541-e843f21f4bc0',
+  'x-ms-correlation-request-id': 'da966d18-c456-44b4-98e8-071d5f269994',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193900Z:da966d18-c456-44b4-98e8-071d5f269994',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:39 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '9b713347-4307-4666-9d1b-673658ce1502_M5_M5',
+  'x-ms-request-id': '0678a5a3-92c1-4164-87dd-7b862b94ebd6_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14966',
-  'x-ms-correlation-request-id': 'ab0f06be-6eec-4026-9541-e843f21f4bc0',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192339Z:ab0f06be-6eec-4026-9541-e843f21f4bc0',
+  'x-ms-correlation-request-id': 'da966d18-c456-44b4-98e8-071d5f269994',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193900Z:da966d18-c456-44b4-98e8-071d5f269994',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:39 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '9c5d1a7a-993a-4a0d-bee3-e0402d50b418_M2_M2',
+  'x-ms-request-id': '962208fc-d0e4-4416-85e3-17bd5be9841f_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '944ac3bc-4cd4-49f0-bf4d-13cdca9b9073',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192339Z:944ac3bc-4cd4-49f0-bf4d-13cdca9b9073',
+  'x-ms-ratelimit-remaining-subscription-reads': '14967',
+  'x-ms-correlation-request-id': '9a429550-7c92-4938-9635-4ed41ccba4a3',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193901Z:9a429550-7c92-4938-9635-4ed41ccba4a3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:39 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '9c5d1a7a-993a-4a0d-bee3-e0402d50b418_M2_M2',
+  'x-ms-request-id': '962208fc-d0e4-4416-85e3-17bd5be9841f_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '944ac3bc-4cd4-49f0-bf4d-13cdca9b9073',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192339Z:944ac3bc-4cd4-49f0-bf4d-13cdca9b9073',
+  'x-ms-ratelimit-remaining-subscription-reads': '14967',
+  'x-ms-correlation-request-id': '9a429550-7c92-4938-9635-4ed41ccba4a3',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193901Z:9a429550-7c92-4938-9635-4ed41ccba4a3',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:39 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:00 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'cf792925-a159-4124-b2f4-b8cd70ea6e10_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'e0b9c6b3-d2a4-4e9f-bc63-e7b1bfaf06ea',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192339Z:e0b9c6b3-d2a4-4e9f-bc63-e7b1bfaf06ea',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:38 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'cf792925-a159-4124-b2f4-b8cd70ea6e10_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'e0b9c6b3-d2a4-4e9f-bc63-e7b1bfaf06ea',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192339Z:e0b9c6b3-d2a4-4e9f-bc63-e7b1bfaf06ea',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:38 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '41d44bcd-3a6a-4dd8-a74b-7ab4620529b8_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'f0dd08ea-7fd3-485a-81e6-265610088dce',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192340Z:f0dd08ea-7fd3-485a-81e6-265610088dce',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:39 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '41d44bcd-3a6a-4dd8-a74b-7ab4620529b8_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'f0dd08ea-7fd3-485a-81e6-265610088dce',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192340Z:f0dd08ea-7fd3-485a-81e6-265610088dce',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:39 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '1fd8d24a-44d3-4094-b342-53c0686b18dc_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'edae333a-9ada-40da-98c1-9ccbd995ea2a',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192340Z:edae333a-9ada-40da-98c1-9ccbd995ea2a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:40 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '1fd8d24a-44d3-4094-b342-53c0686b18dc_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'edae333a-9ada-40da-98c1-9ccbd995ea2a',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192340Z:edae333a-9ada-40da-98c1-9ccbd995ea2a',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:40 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0fd9039d-ef6a-426c-bd05-33dc5514de42_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': 'c7cc890f-7f6d-4af8-a29d-6feee9a7c517',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192341Z:c7cc890f-7f6d-4af8-a29d-6feee9a7c517',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:40 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0fd9039d-ef6a-426c-bd05-33dc5514de42_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': 'c7cc890f-7f6d-4af8-a29d-6feee9a7c517',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192341Z:c7cc890f-7f6d-4af8-a29d-6feee9a7c517',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:40 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '4d437237-d84d-4a60-b179-c351254d2fcc_M0_M0',
+  'x-ms-request-id': '956ae1f1-fcbc-4ff4-b043-60adc3af64e8_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': 'b2d67b2b-744e-4e74-93a6-41a6c7b62f62',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192341Z:b2d67b2b-744e-4e74-93a6-41a6c7b62f62',
+  'x-ms-correlation-request-id': '1c6f2981-3c85-465e-8514-0cd951dcfe8c',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193901Z:1c6f2981-3c85-465e-8514-0cd951dcfe8c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:40 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '4d437237-d84d-4a60-b179-c351254d2fcc_M0_M0',
+  'x-ms-request-id': '956ae1f1-fcbc-4ff4-b043-60adc3af64e8_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': 'b2d67b2b-744e-4e74-93a6-41a6c7b62f62',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192341Z:b2d67b2b-744e-4e74-93a6-41a6c7b62f62',
+  'x-ms-correlation-request-id': '1c6f2981-3c85-465e-8514-0cd951dcfe8c',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193901Z:1c6f2981-3c85-465e-8514-0cd951dcfe8c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:40 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '298f83b9-4b20-4e21-8aca-ee452be19a72_M2_M2',
+  'x-ms-request-id': '97b406b4-5571-4cfb-b5fc-153fbbba64aa_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '2b338be2-a8d6-4376-ae4b-3d871fae3f7e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192341Z:2b338be2-a8d6-4376-ae4b-3d871fae3f7e',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': 'a58b79b0-0ae3-43ba-9ad4-28afaead0248',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193902Z:a58b79b0-0ae3-43ba-9ad4-28afaead0248',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:41 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '298f83b9-4b20-4e21-8aca-ee452be19a72_M2_M2',
+  'x-ms-request-id': '97b406b4-5571-4cfb-b5fc-153fbbba64aa_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '2b338be2-a8d6-4376-ae4b-3d871fae3f7e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192341Z:2b338be2-a8d6-4376-ae4b-3d871fae3f7e',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': 'a58b79b0-0ae3-43ba-9ad4-28afaead0248',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193902Z:a58b79b0-0ae3-43ba-9ad4-28afaead0248',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:41 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '86aa9f9a-db31-4d34-aa4b-882e4aa83f5e_M4_M4',
+  'x-ms-request-id': '7ef8b745-7d1e-4727-bd56-db74d19e6c94_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '9dba31ac-ec34-4d10-9fa9-be590ac8bcf7',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192342Z:9dba31ac-ec34-4d10-9fa9-be590ac8bcf7',
+  'x-ms-correlation-request-id': '952dbb56-a213-4a3b-95ad-aa2bc90d1676',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193902Z:952dbb56-a213-4a3b-95ad-aa2bc90d1676',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:41 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '86aa9f9a-db31-4d34-aa4b-882e4aa83f5e_M4_M4',
+  'x-ms-request-id': '7ef8b745-7d1e-4727-bd56-db74d19e6c94_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '9dba31ac-ec34-4d10-9fa9-be590ac8bcf7',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192342Z:9dba31ac-ec34-4d10-9fa9-be590ac8bcf7',
+  'x-ms-correlation-request-id': '952dbb56-a213-4a3b-95ad-aa2bc90d1676',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193902Z:952dbb56-a213-4a3b-95ad-aa2bc90d1676',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:41 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '1ccb3e4a-45b5-47a3-a98a-f18e713568bf_M1_M1',
+  'x-ms-request-id': '7c9470d1-47c3-4962-87f3-dec3c1fd3ce7_M6_M6',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': 'f42387ed-2ee1-47f1-869d-0f8e756550f9',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193902Z:f42387ed-2ee1-47f1-869d-0f8e756550f9',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:01 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '7c9470d1-47c3-4962-87f3-dec3c1fd3ce7_M6_M6',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': 'f42387ed-2ee1-47f1-869d-0f8e756550f9',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193902Z:f42387ed-2ee1-47f1-869d-0f8e756550f9',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:01 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'e8e9af70-1b80-47bb-9dea-ba608d751c9e_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '806bf371-dd1d-4a73-bd5d-c6a9197aa857',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192342Z:806bf371-dd1d-4a73-bd5d-c6a9197aa857',
+  'x-ms-correlation-request-id': 'e5490e50-9597-4c0e-b35e-bb9485e70a0a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193903Z:e5490e50-9597-4c0e-b35e-bb9485e70a0a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:41 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '1ccb3e4a-45b5-47a3-a98a-f18e713568bf_M1_M1',
+  'x-ms-request-id': 'e8e9af70-1b80-47bb-9dea-ba608d751c9e_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '806bf371-dd1d-4a73-bd5d-c6a9197aa857',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192342Z:806bf371-dd1d-4a73-bd5d-c6a9197aa857',
+  'x-ms-correlation-request-id': 'e5490e50-9597-4c0e-b35e-bb9485e70a0a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193903Z:e5490e50-9597-4c0e-b35e-bb9485e70a0a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:41 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3ab74cd5-a784-4e63-9ebc-5ce9732137cb_M3_M3',
+  'x-ms-request-id': 'd05aea14-8b5d-4d9a-b59c-8afa8f0541b4_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'd21d7a6e-6c80-475b-9dc5-89a176f4d838',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192343Z:d21d7a6e-6c80-475b-9dc5-89a176f4d838',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '1c3efc1a-6ee9-42d5-b567-b2def8fb3a7a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193904Z:1c3efc1a-6ee9-42d5-b567-b2def8fb3a7a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:42 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3ab74cd5-a784-4e63-9ebc-5ce9732137cb_M3_M3',
+  'x-ms-request-id': 'd05aea14-8b5d-4d9a-b59c-8afa8f0541b4_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'd21d7a6e-6c80-475b-9dc5-89a176f4d838',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192343Z:d21d7a6e-6c80-475b-9dc5-89a176f4d838',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '1c3efc1a-6ee9-42d5-b567-b2def8fb3a7a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193904Z:1c3efc1a-6ee9-42d5-b567-b2def8fb3a7a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:42 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f436913c-6182-471d-8f4d-49c8393c7877_M3_M3',
+  'x-ms-request-id': 'e63aec80-4827-43f0-9220-4a69efddb850_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': 'f03766b9-8c74-4fc9-8021-ad776541ad16',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192343Z:f03766b9-8c74-4fc9-8021-ad776541ad16',
+  'x-ms-ratelimit-remaining-subscription-reads': '14960',
+  'x-ms-correlation-request-id': '57a2d479-a3af-480f-8fc3-03b2ecf3cffe',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193905Z:57a2d479-a3af-480f-8fc3-03b2ecf3cffe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:42 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f436913c-6182-471d-8f4d-49c8393c7877_M3_M3',
+  'x-ms-request-id': 'e63aec80-4827-43f0-9220-4a69efddb850_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': 'f03766b9-8c74-4fc9-8021-ad776541ad16',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192343Z:f03766b9-8c74-4fc9-8021-ad776541ad16',
+  'x-ms-ratelimit-remaining-subscription-reads': '14960',
+  'x-ms-correlation-request-id': '57a2d479-a3af-480f-8fc3-03b2ecf3cffe',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193905Z:57a2d479-a3af-480f-8fc3-03b2ecf3cffe',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:42 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:04 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ed280a5b-6b17-410c-8ab6-9ba49a660c5c_M4_M4',
+  'x-ms-request-id': '1df0c8b1-16ad-48d8-bc9a-cc0a115fd18f_M3_M3',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': '30293ed7-5f4f-44c0-abba-bc5ed112b2c1',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193905Z:30293ed7-5f4f-44c0-abba-bc5ed112b2c1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:04 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '1df0c8b1-16ad-48d8-bc9a-cc0a115fd18f_M3_M3',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': '30293ed7-5f4f-44c0-abba-bc5ed112b2c1',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193905Z:30293ed7-5f4f-44c0-abba-bc5ed112b2c1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:04 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '6a730ede-a62f-4f25-8974-0c51faf346a5_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14965',
-  'x-ms-correlation-request-id': 'ae1ba066-7bcc-4f30-be91-6e69618b1a2a',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192343Z:ae1ba066-7bcc-4f30-be91-6e69618b1a2a',
+  'x-ms-correlation-request-id': '8f9e82bd-5033-4b47-a580-877b737c133b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193906Z:8f9e82bd-5033-4b47-a580-877b737c133b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:43 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ed280a5b-6b17-410c-8ab6-9ba49a660c5c_M4_M4',
+  'x-ms-request-id': '6a730ede-a62f-4f25-8974-0c51faf346a5_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14965',
-  'x-ms-correlation-request-id': 'ae1ba066-7bcc-4f30-be91-6e69618b1a2a',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192343Z:ae1ba066-7bcc-4f30-be91-6e69618b1a2a',
+  'x-ms-correlation-request-id': '8f9e82bd-5033-4b47-a580-877b737c133b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193906Z:8f9e82bd-5033-4b47-a580-877b737c133b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:43 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '1db0d994-4b52-401a-9911-21fe3c5695d6_M0_M0',
+  'x-ms-request-id': 'fcdd5810-ae02-4c59-b7fb-27afa369fe13_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '82be7de7-425d-4724-af14-022713aa98a1',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192344Z:82be7de7-425d-4724-af14-022713aa98a1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14966',
+  'x-ms-correlation-request-id': '4ee95b2e-b0bd-4b15-993e-ffb6b925f161',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193906Z:4ee95b2e-b0bd-4b15-993e-ffb6b925f161',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:43 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '1db0d994-4b52-401a-9911-21fe3c5695d6_M0_M0',
+  'x-ms-request-id': 'fcdd5810-ae02-4c59-b7fb-27afa369fe13_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '82be7de7-425d-4724-af14-022713aa98a1',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192344Z:82be7de7-425d-4724-af14-022713aa98a1',
+  'x-ms-ratelimit-remaining-subscription-reads': '14966',
+  'x-ms-correlation-request-id': '4ee95b2e-b0bd-4b15-993e-ffb6b925f161',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193906Z:4ee95b2e-b0bd-4b15-993e-ffb6b925f161',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:43 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '5ece5bd6-adf6-454d-b048-5cf43497859a_M1_M1',
+  'x-ms-request-id': 'fb5c1841-6e31-4c8f-bcd2-04e3705f0d9b_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '1708f0d9-4ccf-49ae-956f-764837c032bc',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193906Z:1708f0d9-4ccf-49ae-956f-764837c032bc',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'fb5c1841-6e31-4c8f-bcd2-04e3705f0d9b_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '1708f0d9-4ccf-49ae-956f-764837c032bc',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193906Z:1708f0d9-4ccf-49ae-956f-764837c032bc',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '18845a6d-a703-4e0a-8116-3a2655ab50a0_M7_M7',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': '4a56026d-913f-4752-bfc1-8368dadf9cdf',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193907Z:4a56026d-913f-4752-bfc1-8368dadf9cdf',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '18845a6d-a703-4e0a-8116-3a2655ab50a0_M7_M7',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': '4a56026d-913f-4752-bfc1-8368dadf9cdf',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193907Z:4a56026d-913f-4752-bfc1-8368dadf9cdf',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:06 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '7a93726e-e6e1-446c-a860-0a3043c27fab_M2_M2',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14959',
+  'x-ms-correlation-request-id': '8f86a9ed-46c2-4b09-9d05-dc96205cd84f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193907Z:8f86a9ed-46c2-4b09-9d05-dc96205cd84f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:07 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '7a93726e-e6e1-446c-a860-0a3043c27fab_M2_M2',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14959',
+  'x-ms-correlation-request-id': '8f86a9ed-46c2-4b09-9d05-dc96205cd84f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193907Z:8f86a9ed-46c2-4b09-9d05-dc96205cd84f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:07 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '8b7cfab6-fbc3-4ad8-8a7f-b6161a4023de_M3_M3',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': '3187e458-09ba-40d9-b334-d94ec7a85e46',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193908Z:3187e458-09ba-40d9-b334-d94ec7a85e46',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:07 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '8b7cfab6-fbc3-4ad8-8a7f-b6161a4023de_M3_M3',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14962',
+  'x-ms-correlation-request-id': '3187e458-09ba-40d9-b334-d94ec7a85e46',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193908Z:3187e458-09ba-40d9-b334-d94ec7a85e46',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:07 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '457175a9-20f2-43d9-b506-d3ab2e50bfa1_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': 'e9d648ce-ee1f-49a6-9b24-e28c2bbfa1e4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192344Z:e9d648ce-ee1f-49a6-9b24-e28c2bbfa1e4',
+  'x-ms-correlation-request-id': '69be9a7f-c936-4327-b61d-c8ab8026c392',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193908Z:69be9a7f-c936-4327-b61d-c8ab8026c392',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '5ece5bd6-adf6-454d-b048-5cf43497859a_M1_M1',
+  'x-ms-request-id': '457175a9-20f2-43d9-b506-d3ab2e50bfa1_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': 'e9d648ce-ee1f-49a6-9b24-e28c2bbfa1e4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192344Z:e9d648ce-ee1f-49a6-9b24-e28c2bbfa1e4',
+  'x-ms-correlation-request-id': '69be9a7f-c936-4327-b61d-c8ab8026c392',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193908Z:69be9a7f-c936-4327-b61d-c8ab8026c392',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '672cacc9-12a3-4142-bba7-f4f0872a0ece_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': '3ab7db1b-db4d-41af-a7cf-7a2277cb65ab',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192344Z:3ab7db1b-db4d-41af-a7cf-7a2277cb65ab',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '672cacc9-12a3-4142-bba7-f4f0872a0ece_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': '3ab7db1b-db4d-41af-a7cf-7a2277cb65ab',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192344Z:3ab7db1b-db4d-41af-a7cf-7a2277cb65ab',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '3b2d5eb5-0af0-4d76-a5e6-62ddbed914b6_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '615b4aa2-489b-4f2d-a87e-cd7031a3c771',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192345Z:615b4aa2-489b-4f2d-a87e-cd7031a3c771',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '3b2d5eb5-0af0-4d76-a5e6-62ddbed914b6_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '615b4aa2-489b-4f2d-a87e-cd7031a3c771',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192345Z:615b4aa2-489b-4f2d-a87e-cd7031a3c771',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f4a93825-dd97-42fc-aba2-82d2b54dfc5e_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'fd1beb77-4180-44d9-8097-a4ecc9b69a83',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192345Z:fd1beb77-4180-44d9-8097-a4ecc9b69a83',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f4a93825-dd97-42fc-aba2-82d2b54dfc5e_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'fd1beb77-4180-44d9-8097-a4ecc9b69a83',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192345Z:fd1beb77-4180-44d9-8097-a4ecc9b69a83',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:44 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '9690fd2d-e53a-429d-bffb-00cf6a5ffab9_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': 'fe8c859b-d332-47f2-ad22-1c93c6c944c2',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192346Z:fe8c859b-d332-47f2-ad22-1c93c6c944c2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:45 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '9690fd2d-e53a-429d-bffb-00cf6a5ffab9_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': 'fe8c859b-d332-47f2-ad22-1c93c6c944c2',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192346Z:fe8c859b-d332-47f2-ad22-1c93c6c944c2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:45 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '2b6ced6c-a504-4b74-9367-e6419631e05d_M2_M2',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '97f37ba9-f49b-4d8c-8422-af66a239791d',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192346Z:97f37ba9-f49b-4d8c-8422-af66a239791d',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:45 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '2b6ced6c-a504-4b74-9367-e6419631e05d_M2_M2',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '97f37ba9-f49b-4d8c-8422-af66a239791d',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192346Z:97f37ba9-f49b-4d8c-8422-af66a239791d',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:45 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '585a30e6-f23a-4c0b-b072-ced7c1654795_M4_M4',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '35b1c76a-0f36-4348-9e72-c22ac7fb9188',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192346Z:35b1c76a-0f36-4348-9e72-c22ac7fb9188',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:46 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '585a30e6-f23a-4c0b-b072-ced7c1654795_M4_M4',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '35b1c76a-0f36-4348-9e72-c22ac7fb9188',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192346Z:35b1c76a-0f36-4348-9e72-c22ac7fb9188',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:46 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0d8ac783-9506-4a62-ab51-29d0b452d9a5_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'c9685532-2fc6-4682-a3c0-dc60a6b34895',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192347Z:c9685532-2fc6-4682-a3c0-dc60a6b34895',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:46 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0d8ac783-9506-4a62-ab51-29d0b452d9a5_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'c9685532-2fc6-4682-a3c0-dc60a6b34895',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192347Z:c9685532-2fc6-4682-a3c0-dc60a6b34895',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:46 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0a1c1afe-c14f-4ab1-ba19-67143b2f6307_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '1c0bf771-f007-43dc-a201-97154eef36fd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192347Z:1c0bf771-f007-43dc-a201-97154eef36fd',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:46 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '0a1c1afe-c14f-4ab1-ba19-67143b2f6307_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '1c0bf771-f007-43dc-a201-97154eef36fd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192347Z:1c0bf771-f007-43dc-a201-97154eef36fd',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:46 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'd56b450e-0308-4814-9089-d9887a414dcb_M7_M7',
+  'x-ms-request-id': 'dcb315cd-9774-4fc2-9bf8-e39221362129_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': '1213cd8d-9da0-4035-9719-4f6d0c2ec4e4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192347Z:1213cd8d-9da0-4035-9719-4f6d0c2ec4e4',
+  'x-ms-correlation-request-id': '9b16b22c-e596-407c-b6de-433cb6080933',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193908Z:9b16b22c-e596-407c-b6de-433cb6080933',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:47 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'd56b450e-0308-4814-9089-d9887a414dcb_M7_M7',
+  'x-ms-request-id': 'dcb315cd-9774-4fc2-9bf8-e39221362129_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14964',
-  'x-ms-correlation-request-id': '1213cd8d-9da0-4035-9719-4f6d0c2ec4e4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192347Z:1213cd8d-9da0-4035-9719-4f6d0c2ec4e4',
+  'x-ms-correlation-request-id': '9b16b22c-e596-407c-b6de-433cb6080933',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193908Z:9b16b22c-e596-407c-b6de-433cb6080933',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:47 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '8d0e5ec5-108e-4028-8727-c7ceed0aa6c6_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': 'ecef5d12-6a4f-4d29-abaf-f9636bb46dbd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192348Z:ecef5d12-6a4f-4d29-abaf-f9636bb46dbd',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '8d0e5ec5-108e-4028-8727-c7ceed0aa6c6_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': 'ecef5d12-6a4f-4d29-abaf-f9636bb46dbd',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192348Z:ecef5d12-6a4f-4d29-abaf-f9636bb46dbd',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '012bfe0b-eb26-4b84-91d8-5d23a68fa15c_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '454f92a4-7123-4d09-b0ba-2f7d04dbcaca',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192348Z:454f92a4-7123-4d09-b0ba-2f7d04dbcaca',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '012bfe0b-eb26-4b84-91d8-5d23a68fa15c_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '454f92a4-7123-4d09-b0ba-2f7d04dbcaca',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192348Z:454f92a4-7123-4d09-b0ba-2f7d04dbcaca',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '963be34a-d742-4b0d-aae0-6f094019970c_M4_M4',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '132b1114-0538-4701-9af6-a0b51f9030cb',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192349Z:132b1114-0538-4701-9af6-a0b51f9030cb',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '963be34a-d742-4b0d-aae0-6f094019970c_M4_M4',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': '132b1114-0538-4701-9af6-a0b51f9030cb',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192349Z:132b1114-0538-4701-9af6-a0b51f9030cb',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '3a1c5761-b0b0-42d9-adf8-445f67930509_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-correlation-request-id': 'f747731f-c583-4501-98eb-9a04679dc316',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192349Z:f747731f-c583-4501-98eb-9a04679dc316',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '3a1c5761-b0b0-42d9-adf8-445f67930509_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-correlation-request-id': 'f747731f-c583-4501-98eb-9a04679dc316',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192349Z:f747731f-c583-4501-98eb-9a04679dc316',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:48 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '2c853145-2a2b-49dd-8cab-4a51fa4f73f0_M2_M2',
+  'x-ms-request-id': '854a1033-0b00-4f96-bc23-9abbb80bc4e9_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'afe72e88-ecf8-405c-9a09-8dc980e82a54',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192350Z:afe72e88-ecf8-405c-9a09-8dc980e82a54',
+  'x-ms-correlation-request-id': 'f535b9f7-07ff-4939-b675-ee399a805f1b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193909Z:f535b9f7-07ff-4939-b675-ee399a805f1b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:50 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '2c853145-2a2b-49dd-8cab-4a51fa4f73f0_M2_M2',
+  'x-ms-request-id': '854a1033-0b00-4f96-bc23-9abbb80bc4e9_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': 'afe72e88-ecf8-405c-9a09-8dc980e82a54',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192350Z:afe72e88-ecf8-405c-9a09-8dc980e82a54',
+  'x-ms-correlation-request-id': 'f535b9f7-07ff-4939-b675-ee399a805f1b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193909Z:f535b9f7-07ff-4939-b675-ee399a805f1b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:50 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3b9d1945-df89-42dd-840e-859c72194f3a_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': 'b021c70b-6b9d-43bd-990d-f9325f25c5c5',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192350Z:b021c70b-6b9d-43bd-990d-f9325f25c5c5',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:49 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '3b9d1945-df89-42dd-840e-859c72194f3a_M5_M5',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': 'b021c70b-6b9d-43bd-990d-f9325f25c5c5',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192350Z:b021c70b-6b9d-43bd-990d-f9325f25c5c5',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:49 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '04c52233-0fde-44d5-bb21-78a9dc9adbbc_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '204b427d-6bbe-40d1-9e68-c9dbcf9b0698',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192350Z:204b427d-6bbe-40d1-9e68-c9dbcf9b0698',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:49 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '04c52233-0fde-44d5-bb21-78a9dc9adbbc_M6_M6',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '204b427d-6bbe-40d1-9e68-c9dbcf9b0698',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192350Z:204b427d-6bbe-40d1-9e68-c9dbcf9b0698',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:49 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'c3829dc5-4337-47a7-bd96-4890671a2758_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '6f810a85-0ab1-4777-980f-ec058bb4398c',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192351Z:6f810a85-0ab1-4777-980f-ec058bb4398c',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:50 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'c3829dc5-4337-47a7-bd96-4890671a2758_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '6f810a85-0ab1-4777-980f-ec058bb4398c',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192351Z:6f810a85-0ab1-4777-980f-ec058bb4398c',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:50 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b188ce62-fd36-49a9-bff8-566bccb0b4fe_M3_M3',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': 'ce3dff43-e0af-419a-be74-eefab9126e12',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192351Z:ce3dff43-e0af-419a-be74-eefab9126e12',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:51 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'b188ce62-fd36-49a9-bff8-566bccb0b4fe_M3_M3',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': 'ce3dff43-e0af-419a-be74-eefab9126e12',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192351Z:ce3dff43-e0af-419a-be74-eefab9126e12',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:51 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f06327e3-460b-4e19-b6c4-0d5df7756766_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': '4d19a56b-5190-43ae-a564-c760e133aadc',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192351Z:4d19a56b-5190-43ae-a564-c760e133aadc',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:51 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f06327e3-460b-4e19-b6c4-0d5df7756766_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14963',
-  'x-ms-correlation-request-id': '4d19a56b-5190-43ae-a564-c760e133aadc',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192351Z:4d19a56b-5190-43ae-a564-c760e133aadc',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:51 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '41b27427-9325-458d-925b-3e949c73f8f6_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '2a0c5448-9075-434e-bb6b-cbb93600adb2',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192352Z:2a0c5448-9075-434e-bb6b-cbb93600adb2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:51 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '41b27427-9325-458d-925b-3e949c73f8f6_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '2a0c5448-9075-434e-bb6b-cbb93600adb2',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192352Z:2a0c5448-9075-434e-bb6b-cbb93600adb2',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:51 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '143fa34d-ae8d-4e6b-a89d-dda8599bb094_M4_M4',
+  'x-ms-request-id': '0f7402f3-4727-41c4-9b6c-6d54a58efe3b_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'ff2d0954-6a64-44b6-89c4-ad3538857d40',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192352Z:ff2d0954-6a64-44b6-89c4-ad3538857d40',
+  'x-ms-correlation-request-id': 'ec757593-8d2b-4f4b-af9a-5f126e1ece29',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193909Z:ec757593-8d2b-4f4b-af9a-5f126e1ece29',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '143fa34d-ae8d-4e6b-a89d-dda8599bb094_M4_M4',
+  'x-ms-request-id': '0f7402f3-4727-41c4-9b6c-6d54a58efe3b_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': 'ff2d0954-6a64-44b6-89c4-ad3538857d40',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192352Z:ff2d0954-6a64-44b6-89c4-ad3538857d40',
+  'x-ms-correlation-request-id': 'ec757593-8d2b-4f4b-af9a-5f126e1ece29',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193909Z:ec757593-8d2b-4f4b-af9a-5f126e1ece29',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '5a8b36ea-39a6-415d-b440-5da418136c76_M0_M0',
+  'x-ms-request-id': 'da51da1f-305b-439d-9b91-eed9c87c55e5_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14959',
+  'x-ms-correlation-request-id': '7fbdbc75-43a3-46ea-8568-2ccc460882f1',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193910Z:7fbdbc75-43a3-46ea-8568-2ccc460882f1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:09 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'da51da1f-305b-439d-9b91-eed9c87c55e5_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14959',
+  'x-ms-correlation-request-id': '7fbdbc75-43a3-46ea-8568-2ccc460882f1',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193910Z:7fbdbc75-43a3-46ea-8568-2ccc460882f1',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:09 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'aaa08ee8-7c0b-40d0-9221-91d53f3618a3_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'b0d81ac5-1b3e-4ae6-a73c-f638630944ff',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192352Z:b0d81ac5-1b3e-4ae6-a73c-f638630944ff',
+  'x-ms-correlation-request-id': '3b1f119f-e84e-417a-a5bb-761befc5194a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193910Z:3b1f119f-e84e-417a-a5bb-761befc5194a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '5a8b36ea-39a6-415d-b440-5da418136c76_M0_M0',
+  'x-ms-request-id': 'aaa08ee8-7c0b-40d0-9221-91d53f3618a3_M4_M4',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14961',
-  'x-ms-correlation-request-id': 'b0d81ac5-1b3e-4ae6-a73c-f638630944ff',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192352Z:b0d81ac5-1b3e-4ae6-a73c-f638630944ff',
+  'x-ms-correlation-request-id': '3b1f119f-e84e-417a-a5bb-761befc5194a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193910Z:3b1f119f-e84e-417a-a5bb-761befc5194a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '6c3ac8da-fef7-4d3a-8a9f-ccb283ec0e5b_M1_M1',
+  'x-ms-request-id': '7cc7725b-933e-44c2-8c62-971d0b9476fb_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '44cc44f3-c21c-4ac4-92e0-10ee251f12c3',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192353Z:44cc44f3-c21c-4ac4-92e0-10ee251f12c3',
+  'x-ms-ratelimit-remaining-subscription-reads': '14964',
+  'x-ms-correlation-request-id': '4f83d055-86c5-47b3-847c-7c3f4127dadf',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193911Z:4f83d055-86c5-47b3-847c-7c3f4127dadf',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '6c3ac8da-fef7-4d3a-8a9f-ccb283ec0e5b_M1_M1',
+  'x-ms-request-id': '7cc7725b-933e-44c2-8c62-971d0b9476fb_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14960',
-  'x-ms-correlation-request-id': '44cc44f3-c21c-4ac4-92e0-10ee251f12c3',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192353Z:44cc44f3-c21c-4ac4-92e0-10ee251f12c3',
+  'x-ms-ratelimit-remaining-subscription-reads': '14964',
+  'x-ms-correlation-request-id': '4f83d055-86c5-47b3-847c-7c3f4127dadf',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193911Z:4f83d055-86c5-47b3-847c-7c3f4127dadf',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7f1added-d62d-4a74-9910-9e5fdc114ea4_M3_M3',
+  'x-ms-request-id': 'fd0ecfb2-8163-4605-afe3-4ee2b540ffab_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-correlation-request-id': 'e7473973-a7b5-46ee-a1f1-f3e103901d6e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192353Z:e7473973-a7b5-46ee-a1f1-f3e103901d6e',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': 'dcfbd28f-9f83-4ce3-b61e-60abcb77c80b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193911Z:dcfbd28f-9f83-4ce3-b61e-60abcb77c80b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7f1added-d62d-4a74-9910-9e5fdc114ea4_M3_M3',
+  'x-ms-request-id': 'fd0ecfb2-8163-4605-afe3-4ee2b540ffab_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14954',
-  'x-ms-correlation-request-id': 'e7473973-a7b5-46ee-a1f1-f3e103901d6e',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192353Z:e7473973-a7b5-46ee-a1f1-f3e103901d6e',
+  'x-ms-ratelimit-remaining-subscription-reads': '14965',
+  'x-ms-correlation-request-id': 'dcfbd28f-9f83-4ce3-b61e-60abcb77c80b',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193911Z:dcfbd28f-9f83-4ce3-b61e-60abcb77c80b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:52 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '677',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'bbc740e7-fdbc-4e6f-93b1-ecde413e0039_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': 'b1e91cf4-bd8c-4f1a-90c3-adaf05ac5268',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192353Z:b1e91cf4-bd8c-4f1a-90c3-adaf05ac5268',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:53 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'bbc740e7-fdbc-4e6f-93b1-ecde413e0039_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': 'b1e91cf4-bd8c-4f1a-90c3-adaf05ac5268',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192353Z:b1e91cf4-bd8c-4f1a-90c3-adaf05ac5268',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:53 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'e3a28cdf-f591-4939-a69e-ae67819d8ede_M3_M3',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '97a7e544-4be3-4be3-b23d-10ac5db1a991',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192354Z:97a7e544-4be3-4be3-b23d-10ac5db1a991',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:53 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'e3a28cdf-f591-4939-a69e-ae67819d8ede_M3_M3',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '97a7e544-4be3-4be3-b23d-10ac5db1a991',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192354Z:97a7e544-4be3-4be3-b23d-10ac5db1a991',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:53 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '9a7ae6c0-6808-4476-97ed-a5a217586ae3_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '12b40a45-d5a5-492a-8e57-44ab8807ad29',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192354Z:12b40a45-d5a5-492a-8e57-44ab8807ad29',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:53 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '9a7ae6c0-6808-4476-97ed-a5a217586ae3_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '12b40a45-d5a5-492a-8e57-44ab8807ad29',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192354Z:12b40a45-d5a5-492a-8e57-44ab8807ad29',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:53 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '8a8692c4-90b0-4541-8535-8ec102a0e886_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '4a4834c5-7423-402b-8be4-da464f9ccdb9',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192355Z:4a4834c5-7423-402b-8be4-da464f9ccdb9',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:54 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '8a8692c4-90b0-4541-8535-8ec102a0e886_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14957',
-  'x-ms-correlation-request-id': '4a4834c5-7423-402b-8be4-da464f9ccdb9',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192355Z:4a4834c5-7423-402b-8be4-da464f9ccdb9',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:54 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'e1481119-00ff-4b77-83a8-103abfc7917c_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '285ec05d-2061-43e9-80e8-f8c2ab0894f4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192355Z:285ec05d-2061-43e9-80e8-f8c2ab0894f4',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:55 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:30.31Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '677',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'e1481119-00ff-4b77-83a8-103abfc7917c_M0_M0',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '285ec05d-2061-43e9-80e8-f8c2ab0894f4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192355Z:285ec05d-2061-43e9-80e8-f8c2ab0894f4',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:55 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '676',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'd85e3e24-a25a-46b2-94c6-80344942a951_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '632b04bf-bb63-41c3-bd9e-07823a0f1121',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192355Z:632b04bf-bb63-41c3-bd9e-07823a0f1121',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:55 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '676',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'd85e3e24-a25a-46b2-94c6-80344942a951_M1_M1',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '632b04bf-bb63-41c3-bd9e-07823a0f1121',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192355Z:632b04bf-bb63-41c3-bd9e-07823a0f1121',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:55 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '704',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': '7661228b-55aa-4651-b75e-c94d120a65d3_M7_M7',
+  'x-ms-request-id': '5c2669c3-7873-48e7-ad1b-207a2960d432_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '0a2211c3-d4c0-49b7-800a-9cb5c3f7ce3f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192356Z:0a2211c3-d4c0-49b7-800a-9cb5c3f7ce3f',
+  'x-ms-correlation-request-id': '80bca916-c78f-422b-ba54-7a4d7d2e1215',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193911Z:80bca916-c78f-422b-ba54-7a4d7d2e1215',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:56 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '704',
+  'content-length': '679',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '7661228b-55aa-4651-b75e-c94d120a65d3_M7_M7',
+  'x-ms-request-id': '5c2669c3-7873-48e7-ad1b-207a2960d432_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14962',
-  'x-ms-correlation-request-id': '0a2211c3-d4c0-49b7-800a-9cb5c3f7ce3f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192356Z:0a2211c3-d4c0-49b7-800a-9cb5c3f7ce3f',
+  'x-ms-correlation-request-id': '80bca916-c78f-422b-ba54-7a4d7d2e1215',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193911Z:80bca916-c78f-422b-ba54-7a4d7d2e1215',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:56 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:11 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '1245f263-2ab7-4b5b-81b7-46a00983c960_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '19f3d009-1799-4282-9b90-8762a3877cff',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193912Z:19f3d009-1799-4282-9b90-8762a3877cff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:11 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '1245f263-2ab7-4b5b-81b7-46a00983c960_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '19f3d009-1799-4282-9b90-8762a3877cff',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193912Z:19f3d009-1799-4282-9b90-8762a3877cff',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:11 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'd9567bcd-1b49-46fe-8b13-484e719a0f8e_M6_M6',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14958',
+  'x-ms-correlation-request-id': 'f475021a-a8f1-44c5-8d8e-5cfbcfa2fb2a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193912Z:f475021a-a8f1-44c5-8d8e-5cfbcfa2fb2a',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:12 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'd9567bcd-1b49-46fe-8b13-484e719a0f8e_M6_M6',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14958',
+  'x-ms-correlation-request-id': 'f475021a-a8f1-44c5-8d8e-5cfbcfa2fb2a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193912Z:f475021a-a8f1-44c5-8d8e-5cfbcfa2fb2a',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:12 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '3d475063-1742-4688-8d6e-ae4af6c97b28_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': 'b2be7d2b-b772-450c-b395-04ccd8aeee3f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193913Z:b2be7d2b-b772-450c-b395-04ccd8aeee3f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:12 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '3d475063-1742-4688-8d6e-ae4af6c97b28_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': 'b2be7d2b-b772-450c-b395-04ccd8aeee3f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193913Z:b2be7d2b-b772-450c-b395-04ccd8aeee3f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:12 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f60754a2-7615-43cd-a8ea-ab0c065ee848_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '8427a9f5-6e7e-4a42-8fe7-08822729467f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193913Z:8427a9f5-6e7e-4a42-8fe7-08822729467f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:13 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'f60754a2-7615-43cd-a8ea-ab0c065ee848_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '8427a9f5-6e7e-4a42-8fe7-08822729467f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193913Z:8427a9f5-6e7e-4a42-8fe7-08822729467f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:13 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '05f739d0-017c-4320-8aac-bc2112a2f33a_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '7339dc94-9205-4f14-949d-da7fca21d9db',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193917Z:7339dc94-9205-4f14-949d-da7fca21d9db',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Activating\",\"metricId\":null,\"status\":\"Created\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:38:55.277Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '679',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '05f739d0-017c-4320-8aac-bc2112a2f33a_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14963',
+  'x-ms-correlation-request-id': '7339dc94-9205-4f14-949d-da7fca21d9db',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193917Z:7339dc94-9205-4f14-949d-da7fca21d9db',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '677',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'a137aeca-83da-43ec-abfc-1e5daa430767_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14959',
+  'x-ms-correlation-request-id': '05e321b5-485d-462c-80e0-428802376e0e',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193917Z:05e321b5-485d-462c-80e0-428802376e0e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\"}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '677',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': 'a137aeca-83da-43ec-abfc-1e5daa430767_M4_M4',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14959',
+  'x-ms-correlation-request-id': '05e321b5-485d-462c-80e0-428802376e0e',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193917Z:05e321b5-485d-462c-80e0-428802376e0e',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '705',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '5d283fb6-9afb-449d-a169-38985ee4d401_M6_M6',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '4dddf5be-2051-4118-acaa-c26952224a0f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193918Z:4dddf5be-2051-4118-acaa-c26952224a0f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:17 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '705',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '5d283fb6-9afb-449d-a169-38985ee4d401_M6_M6',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-correlation-request-id': '4dddf5be-2051-4118-acaa-c26952224a0f',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193918Z:4dddf5be-2051-4118-acaa-c26952224a0f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:17 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5492/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1927\",\"name\":\"HydraNH-Namespace1927\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:04:54.09Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1927.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.84Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7797/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1339\",\"name\":\"HydraNH-Namespace1339\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:29:57.37Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1339.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.653Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6304/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2465\",\"name\":\"HydraNH-Namespace2465\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:02:54.267Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2465.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.93Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7727/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace574\",\"name\":\"HydraNH-Namespace574\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:33:44.893Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace574.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:34:04.95Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6246\",\"name\":\"HydraNH-Namespace6246\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:14:09.5Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6246.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.53Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9144/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2745\",\"name\":\"HydraNH-Namespace2745\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:20:20.967Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2745.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.98Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7609/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3902\",\"name\":\"HydraNH-Namespace3902\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T18:54:35.097Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3902.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T18:54:57.51Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9186\",\"name\":\"HydraNH-Namespace9186\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:31:06.97Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9186.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:31:28.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5811/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9473\",\"name\":\"HydraNH-Namespace9473\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:10:27.34Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9473.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.417Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG502/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace89\",\"name\":\"HydraNH-Namespace89\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:21:53.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace89.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3436/providers/Microsoft.NotificationHubs/namespaces/testNS1075\",\"name\":\"testNS1075\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:27:21.063Z\",\"serviceBusEndpoint\":\"https://testNS1075.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:27:43.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH687/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3673\",\"name\":\"HydraNH-Namespace3673\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:40:25.937Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3673.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:40:47.647Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1947/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5704\",\"name\":\"HydraNH-Namespace5704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:29:29.523Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.41Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG328/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7658\",\"name\":\"HydraNH-Namespace7658\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T21:57:50.533Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7658.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.863Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2740/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3915\",\"name\":\"HydraNH-Namespace3915\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:25:13.627Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3915.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH4760/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace956\",\"name\":\"HydraNH-Namespace956\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:57:35.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace956.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:57:56.143Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5918/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6044\",\"name\":\"HydraNH-Namespace6044\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:44:30.58Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6044.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.487Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup1471/providers/Microsoft.NotificationHubs/namespaces/testNS1993\",\"name\":\"testNS1993\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:12:37.09Z\",\"serviceBusEndpoint\":\"https://testNS1993.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:12:59.12Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2239/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8768\",\"name\":\"HydraNH-Namespace8768\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:48:57.073Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8768.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.157Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH114/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5284\",\"name\":\"HydraNH-Namespace5284\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:45:59.263Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5284.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:46:22.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7053/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7393\",\"name\":\"HydraNH-Namespace7393\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:01:16.977Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7393.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.817Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup5500/providers/Microsoft.NotificationHubs/namespaces/testNS2864\",\"name\":\"testNS2864\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:34:09.833Z\",\"serviceBusEndpoint\":\"https://testNS2864.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:34:31.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG201/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7471\",\"name\":\"HydraNH-Namespace7471\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T20:57:23.827Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7471.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T20:57:55.473Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3605/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2992\",\"name\":\"HydraNH-Namespace2992\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:55:53.537Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2992.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3366/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2320\",\"name\":\"HydraNH-Namespace2320\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:10:33.943Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2320.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.903Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup8925/providers/Microsoft.NotificationHubs/namespaces/testNS3765\",\"name\":\"testNS3765\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:30:22.31Z\",\"serviceBusEndpoint\":\"https://testNS3765.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:30:44.893Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9939/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4260\",\"name\":\"HydraNH-Namespace4260\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:54:47.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4260.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.237Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfadsfsdfsd\",\"name\":\"dfadsfsdfsd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:30:08.693Z\",\"serviceBusEndpoint\":\"https://dfadsfsdfsd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:30:29.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4418\",\"name\":\"HydraNH-Namespace4418\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T22:46:16.21Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4418.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5332/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5042\",\"name\":\"HydraNH-Namespace5042\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:39:09.16Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5042.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.36Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5237/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5769\",\"name\":\"HydraNH-Namespace5769\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:50:13.54Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5769.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.457Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1024/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1652\",\"name\":\"HydraNH-Namespace1652\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:06:45.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1652.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.733Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9698/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7349\",\"name\":\"HydraNH-Namespace7349\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:55:45.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7349.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.78Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3856/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7885\",\"name\":\"HydraNH-Namespace7885\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:57:15.08Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7885.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.96Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4618/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9944\",\"name\":\"HydraNH-Namespace9944\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T20:55:05.413Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9944.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.43Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/testRG1212-NH/providers/Microsoft.NotificationHubs/namespaces/testNS-90909\",\"name\":\"testNS-90909\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:06:52.093Z\",\"serviceBusEndpoint\":\"https://testNS-90909.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:07:11.483Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2402/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1535\",\"name\":\"HydraNH-Namespace1535\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:11:59.727Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1535.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.69Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8221/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6431\",\"name\":\"HydraNH-Namespace6431\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:07:23.813Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6431.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.537Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/tegfgg/providers/Microsoft.NotificationHubs/namespaces/testns-oioio\",\"name\":\"testns-oioio\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:40:22.44Z\",\"serviceBusEndpoint\":\"https://testns-oioio.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:40:43.693Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8335/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace251\",\"name\":\"HydraNH-Namespace251\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:33:01.393Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace251.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.94Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhghd\",\"name\":\"testhghd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:31:44.337Z\",\"serviceBusEndpoint\":\"https://testhghd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:32:04.573Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7143\",\"name\":\"HydraNH-Namespace7143\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:55:03.03Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7143.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.747Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/test121/providers/Microsoft.NotificationHubs/namespaces/test12144\",\"name\":\"test12144\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T17:42:09.903Z\",\"serviceBusEndpoint\":\"https://test12144.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T17:42:29.85Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhs-odjfh\",\"name\":\"testnhs-odjfh\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:36:25.873Z\",\"serviceBusEndpoint\":\"https://testnhs-odjfh.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:36:47.823Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5897/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8163\",\"name\":\"HydraNH-Namespace8163\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:06:28.72Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8163.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.08Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup4915/providers/Microsoft.NotificationHubs/namespaces/testNS8120\",\"name\":\"testNS8120\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:02:43.183Z\",\"serviceBusEndpoint\":\"https://testNS8120.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:03:04.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6401/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace226\",\"name\":\"HydraNH-Namespace226\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T21:01:54.48Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace226.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.87Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7444/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9101\",\"name\":\"HydraNH-Namespace9101\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T21:39:03.35Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9101.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG/providers/Microsoft.NotificationHubs/namespaces/TestGcmSmithab\",\"name\":\"TestGcmSmithab\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-06-02T19:14:16.673Z\",\"serviceBusEndpoint\":\"https://TestGcmSmithab.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:16.91Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4626/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4110\",\"name\":\"HydraNH-Namespace4110\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:27:19.677Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4110.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.197Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG1231/providers/Microsoft.NotificationHubs/namespaces/TestTTL-NH\",\"name\":\"TestTTL-NH\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-03-25T00:22:25.433Z\",\"serviceBusEndpoint\":\"https://TestTTL-NH.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:17.37Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5915/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7983\",\"name\":\"HydraNH-Namespace7983\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T23:26:27.06Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7983.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4393/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8154\",\"name\":\"HydraNH-Namespace8154\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:17:04.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8154.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.04Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testdsa\",\"name\":\"testdsa\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:36:28.87Z\",\"serviceBusEndpoint\":\"https://testdsa.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:36:50.713Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhakah\",\"name\":\"testnhakah\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:29:40.163Z\",\"serviceBusEndpoint\":\"https://testnhakah.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:30:01.99Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8262\",\"name\":\"HydraNH-Namespace8262\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:41:20.96Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8262.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9043/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6868\",\"name\":\"HydraNH-Namespace6868\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:08:20.787Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6868.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.547Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG500/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5264\",\"name\":\"HydraNH-Namespace5264\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T22:27:48.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5264.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.397Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7427/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1704\",\"name\":\"HydraNH-Namespace1704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:05:47.57Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.763Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5380/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6298\",\"name\":\"HydraNH-Namespace6298\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:37:15.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6298.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:37:36.777Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hdhdndhdnfk\",\"name\":\"hdhdndhdnfk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:40:34.943Z\",\"serviceBusEndpoint\":\"https://hdhdndhdnfk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:40:56.843Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1763/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5892\",\"name\":\"HydraNH-Namespace5892\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T19:20:44.62Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5892.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.47Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH7031/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3310\",\"name\":\"HydraNH-Namespace3310\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:27:26.957Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3310.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:27:47.087Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/wewqq-pokksk\",\"name\":\"wewqq-pokksk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:00:31.18Z\",\"serviceBusEndpoint\":\"https://wewqq-pokksk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:00:54Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdf\",\"name\":\"dfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:45:40.827Z\",\"serviceBusEndpoint\":\"https://dfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:02.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3499/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2455\",\"name\":\"HydraNH-Namespace2455\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T00:14:49.95Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2455.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.92Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/kjlkklj-kkkk\",\"name\":\"kjlkklj-kkkk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:03:17.903Z\",\"serviceBusEndpoint\":\"https://kjlkklj-kkkk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:03:38.42Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1341/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5206\",\"name\":\"HydraNH-Namespace5206\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:04:15.74Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5206.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5215/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3270\",\"name\":\"HydraNH-Namespace3270\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:35:46.607Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3270.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.133Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdfsdfsdf\",\"name\":\"dfsdfsdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:46:16.37Z\",\"serviceBusEndpoint\":\"https://dfsdfsdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:38.603Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9412/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3119\",\"name\":\"HydraNH-Namespace3119\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:23:11.353Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3119.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.09Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6885/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1729\",\"name\":\"HydraNH-Namespace1729\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:46:43.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1729.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.793Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5074/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6271\",\"name\":\"HydraNH-Namespace6271\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag5\":\"value5\",\"tag6\":\"value6\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T22:14:52.02Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6271.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T22:17:08.543Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3777/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8871\",\"name\":\"HydraNH-Namespace8871\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:57:04.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8871.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/ythshshshs\",\"name\":\"ythshshshs\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:27:28.333Z\",\"serviceBusEndpoint\":\"https://ythshshshs.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:27:48.213Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6515/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4809\",\"name\":\"HydraNH-Namespace4809\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:42:49Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4809.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.31Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/sdfsdfsdf\",\"name\":\"sdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:48:10.777Z\",\"serviceBusEndpoint\":\"https://sdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:49:56.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1571/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace687\",\"name\":\"HydraNH-Namespace687\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T19:30:03.337Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace687.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.553Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup361/providers/Microsoft.NotificationHubs/namespaces/testNS7654\",\"name\":\"testNS7654\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:53:59.31Z\",\"serviceBusEndpoint\":\"https://testNS7654.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:54:22.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4301/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5019\",\"name\":\"HydraNH-Namespace5019\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T01:32:58.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5019.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.35Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhnsdhd\",\"name\":\"testhnsdhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:21:36.32Z\",\"serviceBusEndpoint\":\"https://testhnsdhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:01.283Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2780/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6970\",\"name\":\"HydraNH-Namespace6970\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:18:08.26Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6970.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.677Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5307/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5016\",\"name\":\"HydraNH-Namespace5016\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:22:02.64Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5016.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.337Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6693/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6761\",\"name\":\"HydraNH-Namespace6761\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:03:28.61Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6761.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:03:51.153Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2329/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1169\",\"name\":\"HydraNH-Namespace1169\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:39:41.147Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1169.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.617Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8287/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8570\",\"name\":\"HydraNH-Namespace8570\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:26:40.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8570.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:27:02.103Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6513/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2610\",\"name\":\"HydraNH-Namespace2610\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:51:43.667Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2610.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.953Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7217/providers/Microsoft.NotificationHubs/namespaces/testNS9067\",\"name\":\"testNS9067\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:21:20.047Z\",\"serviceBusEndpoint\":\"https://testNS9067.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:21:42.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/Default-NotificationHubs-CentralUS/providers/Microsoft.NotificationHubs/namespaces/testbdsss\",\"name\":\"testbdsss\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-05-24T23:04:35.783Z\",\"serviceBusEndpoint\":\"https://testbdsss.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"DM2-001\",\"dataCenter\":\"DM2\",\"updatedAt\":\"2016-08-11T21:18:18.443Z\",\"eventHubEnabled\":true,\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8399/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3669\",\"name\":\"HydraNH-Namespace3669\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:45:14.04Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3669.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.15Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup2122/providers/Microsoft.NotificationHubs/namespaces/testNS7982\",\"name\":\"testNS7982\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:49:05.293Z\",\"serviceBusEndpoint\":\"https://testNS7982.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:49:27.437Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6550/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7711\",\"name\":\"HydraNH-Namespace7711\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:51:40.333Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7711.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhhdsndhd\",\"name\":\"testhhdsndhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:22:14.64Z\",\"serviceBusEndpoint\":\"https://testhhdsndhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:38.467Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7453/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6913\",\"name\":\"HydraNH-Namespace6913\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T20:54:40.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6913.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.57Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3564/providers/Microsoft.NotificationHubs/namespaces/testNS3273\",\"name\":\"testNS3273\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:38:10.45Z\",\"serviceBusEndpoint\":\"https://testNS3273.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:38:32.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hhjkhjkhk\",\"name\":\"hhjkhjkhk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:02:18.49Z\",\"serviceBusEndpoint\":\"https://hhjkhjkhk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:02:38.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2906/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7137\",\"name\":\"HydraNH-Namespace7137\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:42:44.45Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7137.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.707Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/jkjkjkjj-lkl\",\"name\":\"jkjkjkjj-lkl\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:01:23.99Z\",\"serviceBusEndpoint\":\"https://jkjkjkjj-lkl.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:01:45.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3832/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3788\",\"name\":\"HydraNH-Namespace3788\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:23:39.56Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3788.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.16Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5492/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1927\",\"name\":\"HydraNH-Namespace1927\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:04:54.09Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1927.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.84Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7797/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1339\",\"name\":\"HydraNH-Namespace1339\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:29:57.37Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1339.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.653Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6304/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2465\",\"name\":\"HydraNH-Namespace2465\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:02:54.267Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2465.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.93Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7727/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace574\",\"name\":\"HydraNH-Namespace574\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:33:44.893Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace574.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:34:04.95Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6246\",\"name\":\"HydraNH-Namespace6246\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:14:09.5Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6246.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.53Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9144/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2745\",\"name\":\"HydraNH-Namespace2745\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:20:20.967Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2745.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.98Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7609/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3902\",\"name\":\"HydraNH-Namespace3902\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T18:54:35.097Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3902.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T18:54:57.51Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9186\",\"name\":\"HydraNH-Namespace9186\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:31:06.97Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9186.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:31:28.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5811/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9473\",\"name\":\"HydraNH-Namespace9473\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:10:27.34Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9473.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.417Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG502/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace89\",\"name\":\"HydraNH-Namespace89\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:21:53.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace89.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3436/providers/Microsoft.NotificationHubs/namespaces/testNS1075\",\"name\":\"testNS1075\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:27:21.063Z\",\"serviceBusEndpoint\":\"https://testNS1075.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:27:43.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH687/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3673\",\"name\":\"HydraNH-Namespace3673\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:40:25.937Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3673.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:40:47.647Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1947/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5704\",\"name\":\"HydraNH-Namespace5704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:29:29.523Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.41Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG328/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7658\",\"name\":\"HydraNH-Namespace7658\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T21:57:50.533Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7658.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.863Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2740/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3915\",\"name\":\"HydraNH-Namespace3915\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:25:13.627Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3915.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH4760/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace956\",\"name\":\"HydraNH-Namespace956\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:57:35.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace956.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:57:56.143Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5918/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6044\",\"name\":\"HydraNH-Namespace6044\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:44:30.58Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6044.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.487Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup1471/providers/Microsoft.NotificationHubs/namespaces/testNS1993\",\"name\":\"testNS1993\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:12:37.09Z\",\"serviceBusEndpoint\":\"https://testNS1993.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:12:59.12Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2239/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8768\",\"name\":\"HydraNH-Namespace8768\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:48:57.073Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8768.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.157Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH114/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5284\",\"name\":\"HydraNH-Namespace5284\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:45:59.263Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5284.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:46:22.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7053/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7393\",\"name\":\"HydraNH-Namespace7393\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:01:16.977Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7393.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.817Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup5500/providers/Microsoft.NotificationHubs/namespaces/testNS2864\",\"name\":\"testNS2864\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:34:09.833Z\",\"serviceBusEndpoint\":\"https://testNS2864.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:34:31.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG201/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7471\",\"name\":\"HydraNH-Namespace7471\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T20:57:23.827Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7471.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T20:57:55.473Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3605/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2992\",\"name\":\"HydraNH-Namespace2992\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:55:53.537Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2992.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3366/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2320\",\"name\":\"HydraNH-Namespace2320\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:10:33.943Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2320.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.903Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup8925/providers/Microsoft.NotificationHubs/namespaces/testNS3765\",\"name\":\"testNS3765\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:30:22.31Z\",\"serviceBusEndpoint\":\"https://testNS3765.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:30:44.893Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9939/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4260\",\"name\":\"HydraNH-Namespace4260\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:54:47.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4260.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.237Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfadsfsdfsd\",\"name\":\"dfadsfsdfsd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:30:08.693Z\",\"serviceBusEndpoint\":\"https://dfadsfsdfsd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:30:29.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4418\",\"name\":\"HydraNH-Namespace4418\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T22:46:16.21Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4418.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5332/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5042\",\"name\":\"HydraNH-Namespace5042\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:39:09.16Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5042.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.36Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5237/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5769\",\"name\":\"HydraNH-Namespace5769\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:50:13.54Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5769.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.457Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1024/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1652\",\"name\":\"HydraNH-Namespace1652\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:06:45.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1652.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.733Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9698/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7349\",\"name\":\"HydraNH-Namespace7349\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:55:45.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7349.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.78Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3856/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7885\",\"name\":\"HydraNH-Namespace7885\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:57:15.08Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7885.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.96Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4618/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9944\",\"name\":\"HydraNH-Namespace9944\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T20:55:05.413Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9944.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.43Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/testRG1212-NH/providers/Microsoft.NotificationHubs/namespaces/testNS-90909\",\"name\":\"testNS-90909\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:06:52.093Z\",\"serviceBusEndpoint\":\"https://testNS-90909.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:07:11.483Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2402/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1535\",\"name\":\"HydraNH-Namespace1535\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:11:59.727Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1535.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.69Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8221/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6431\",\"name\":\"HydraNH-Namespace6431\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:07:23.813Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6431.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.537Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/tegfgg/providers/Microsoft.NotificationHubs/namespaces/testns-oioio\",\"name\":\"testns-oioio\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:40:22.44Z\",\"serviceBusEndpoint\":\"https://testns-oioio.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:40:43.693Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8335/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace251\",\"name\":\"HydraNH-Namespace251\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:33:01.393Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace251.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.94Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhghd\",\"name\":\"testhghd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:31:44.337Z\",\"serviceBusEndpoint\":\"https://testhghd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:32:04.573Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7143\",\"name\":\"HydraNH-Namespace7143\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:55:03.03Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7143.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.747Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/test121/providers/Microsoft.NotificationHubs/namespaces/test12144\",\"name\":\"test12144\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T17:42:09.903Z\",\"serviceBusEndpoint\":\"https://test12144.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T17:42:29.85Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhs-odjfh\",\"name\":\"testnhs-odjfh\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:36:25.873Z\",\"serviceBusEndpoint\":\"https://testnhs-odjfh.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:36:47.823Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5897/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8163\",\"name\":\"HydraNH-Namespace8163\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:06:28.72Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8163.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.08Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup4915/providers/Microsoft.NotificationHubs/namespaces/testNS8120\",\"name\":\"testNS8120\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:02:43.183Z\",\"serviceBusEndpoint\":\"https://testNS8120.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:03:04.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6401/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace226\",\"name\":\"HydraNH-Namespace226\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T21:01:54.48Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace226.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.87Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7444/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9101\",\"name\":\"HydraNH-Namespace9101\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T21:39:03.35Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9101.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG/providers/Microsoft.NotificationHubs/namespaces/TestGcmSmithab\",\"name\":\"TestGcmSmithab\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-06-02T19:14:16.673Z\",\"serviceBusEndpoint\":\"https://TestGcmSmithab.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:16.91Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4626/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4110\",\"name\":\"HydraNH-Namespace4110\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:27:19.677Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4110.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.197Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG1231/providers/Microsoft.NotificationHubs/namespaces/TestTTL-NH\",\"name\":\"TestTTL-NH\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-03-25T00:22:25.433Z\",\"serviceBusEndpoint\":\"https://TestTTL-NH.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:17.37Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5915/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7983\",\"name\":\"HydraNH-Namespace7983\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T23:26:27.06Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7983.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4393/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8154\",\"name\":\"HydraNH-Namespace8154\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:17:04.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8154.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.04Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testdsa\",\"name\":\"testdsa\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:36:28.87Z\",\"serviceBusEndpoint\":\"https://testdsa.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:36:50.713Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhakah\",\"name\":\"testnhakah\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:29:40.163Z\",\"serviceBusEndpoint\":\"https://testnhakah.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:30:01.99Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8262\",\"name\":\"HydraNH-Namespace8262\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:41:20.96Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8262.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9043/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6868\",\"name\":\"HydraNH-Namespace6868\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:08:20.787Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6868.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.547Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG500/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5264\",\"name\":\"HydraNH-Namespace5264\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T22:27:48.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5264.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.397Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7427/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1704\",\"name\":\"HydraNH-Namespace1704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:05:47.57Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.763Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5380/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6298\",\"name\":\"HydraNH-Namespace6298\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:37:15.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6298.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:37:36.777Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hdhdndhdnfk\",\"name\":\"hdhdndhdnfk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:40:34.943Z\",\"serviceBusEndpoint\":\"https://hdhdndhdnfk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:40:56.843Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1763/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5892\",\"name\":\"HydraNH-Namespace5892\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T19:20:44.62Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5892.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.47Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH7031/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3310\",\"name\":\"HydraNH-Namespace3310\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:27:26.957Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3310.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:27:47.087Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/wewqq-pokksk\",\"name\":\"wewqq-pokksk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:00:31.18Z\",\"serviceBusEndpoint\":\"https://wewqq-pokksk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:00:54Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdf\",\"name\":\"dfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:45:40.827Z\",\"serviceBusEndpoint\":\"https://dfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:02.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3499/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2455\",\"name\":\"HydraNH-Namespace2455\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T00:14:49.95Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2455.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.92Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/kjlkklj-kkkk\",\"name\":\"kjlkklj-kkkk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:03:17.903Z\",\"serviceBusEndpoint\":\"https://kjlkklj-kkkk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:03:38.42Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1341/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5206\",\"name\":\"HydraNH-Namespace5206\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:04:15.74Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5206.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5215/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3270\",\"name\":\"HydraNH-Namespace3270\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:35:46.607Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3270.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.133Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdfsdfsdf\",\"name\":\"dfsdfsdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:46:16.37Z\",\"serviceBusEndpoint\":\"https://dfsdfsdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:38.603Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9412/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3119\",\"name\":\"HydraNH-Namespace3119\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:23:11.353Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3119.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.09Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6885/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1729\",\"name\":\"HydraNH-Namespace1729\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:46:43.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1729.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.793Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5074/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6271\",\"name\":\"HydraNH-Namespace6271\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag5\":\"value5\",\"tag6\":\"value6\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T22:14:52.02Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6271.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T22:17:08.543Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3777/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8871\",\"name\":\"HydraNH-Namespace8871\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:57:04.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8871.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/ythshshshs\",\"name\":\"ythshshshs\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:27:28.333Z\",\"serviceBusEndpoint\":\"https://ythshshshs.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:27:48.213Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6515/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4809\",\"name\":\"HydraNH-Namespace4809\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:42:49Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4809.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.31Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/sdfsdfsdf\",\"name\":\"sdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:48:10.777Z\",\"serviceBusEndpoint\":\"https://sdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:49:56.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1571/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace687\",\"name\":\"HydraNH-Namespace687\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T19:30:03.337Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace687.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.553Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup361/providers/Microsoft.NotificationHubs/namespaces/testNS7654\",\"name\":\"testNS7654\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:53:59.31Z\",\"serviceBusEndpoint\":\"https://testNS7654.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:54:22.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4301/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5019\",\"name\":\"HydraNH-Namespace5019\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T01:32:58.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5019.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.35Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhnsdhd\",\"name\":\"testhnsdhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:21:36.32Z\",\"serviceBusEndpoint\":\"https://testhnsdhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:01.283Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2780/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6970\",\"name\":\"HydraNH-Namespace6970\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:18:08.26Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6970.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.677Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5307/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5016\",\"name\":\"HydraNH-Namespace5016\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:22:02.64Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5016.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.337Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6693/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6761\",\"name\":\"HydraNH-Namespace6761\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:03:28.61Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6761.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:03:51.153Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2329/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1169\",\"name\":\"HydraNH-Namespace1169\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:39:41.147Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1169.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.617Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8287/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8570\",\"name\":\"HydraNH-Namespace8570\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:26:40.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8570.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:27:02.103Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6513/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2610\",\"name\":\"HydraNH-Namespace2610\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:51:43.667Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2610.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.953Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7217/providers/Microsoft.NotificationHubs/namespaces/testNS9067\",\"name\":\"testNS9067\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:21:20.047Z\",\"serviceBusEndpoint\":\"https://testNS9067.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:21:42.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/Default-NotificationHubs-CentralUS/providers/Microsoft.NotificationHubs/namespaces/testbdsss\",\"name\":\"testbdsss\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-05-24T23:04:35.783Z\",\"serviceBusEndpoint\":\"https://testbdsss.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"DM2-001\",\"dataCenter\":\"DM2\",\"updatedAt\":\"2016-08-11T21:18:18.443Z\",\"eventHubEnabled\":true,\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8399/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3669\",\"name\":\"HydraNH-Namespace3669\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:45:14.04Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3669.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.15Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup2122/providers/Microsoft.NotificationHubs/namespaces/testNS7982\",\"name\":\"testNS7982\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:49:05.293Z\",\"serviceBusEndpoint\":\"https://testNS7982.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:49:27.437Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6550/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7711\",\"name\":\"HydraNH-Namespace7711\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:51:40.333Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7711.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhhdsndhd\",\"name\":\"testhhdsndhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:22:14.64Z\",\"serviceBusEndpoint\":\"https://testhhdsndhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:38.467Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7453/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6913\",\"name\":\"HydraNH-Namespace6913\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T20:54:40.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6913.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.57Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3564/providers/Microsoft.NotificationHubs/namespaces/testNS3273\",\"name\":\"testNS3273\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:38:10.45Z\",\"serviceBusEndpoint\":\"https://testNS3273.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:38:32.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hhjkhjkhk\",\"name\":\"hhjkhjkhk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:02:18.49Z\",\"serviceBusEndpoint\":\"https://hhjkhjkhk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:02:38.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2906/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7137\",\"name\":\"HydraNH-Namespace7137\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:42:44.45Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7137.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.707Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/jkjkjkjj-lkl\",\"name\":\"jkjkjkjj-lkl\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:01:23.99Z\",\"serviceBusEndpoint\":\"https://jkjkjkjj-lkl.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:01:45.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3832/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3788\",\"name\":\"HydraNH-Namespace3788\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:23:39.56Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3788.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.16Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '69913',
+  'content-length': '69914',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a43902f9-ee6d-440d-b9da-3a2d0ed1ce0d_M2_M2',
+  'x-ms-request-id': '90238166-85de-43ff-82e7-b851efd54403_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-correlation-request-id': '905aad27-81b8-4ae8-b153-9b8d4d664959',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192356Z:905aad27-81b8-4ae8-b153-9b8d4d664959',
+  'x-ms-ratelimit-remaining-subscription-reads': '14958',
+  'x-ms-correlation-request-id': 'c61b187d-3cd7-4b28-bf18-0ea68347ad17',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193919Z:c61b187d-3cd7-4b28-bf18-0ea68347ad17',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:56 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5492/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1927\",\"name\":\"HydraNH-Namespace1927\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:04:54.09Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1927.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.84Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7797/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1339\",\"name\":\"HydraNH-Namespace1339\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:29:57.37Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1339.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.653Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6304/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2465\",\"name\":\"HydraNH-Namespace2465\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:02:54.267Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2465.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.93Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7727/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace574\",\"name\":\"HydraNH-Namespace574\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:33:44.893Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace574.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:34:04.95Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6246\",\"name\":\"HydraNH-Namespace6246\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:14:09.5Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6246.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.53Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9144/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2745\",\"name\":\"HydraNH-Namespace2745\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:20:20.967Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2745.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.98Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7609/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3902\",\"name\":\"HydraNH-Namespace3902\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T18:54:35.097Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3902.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T18:54:57.51Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9186\",\"name\":\"HydraNH-Namespace9186\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:31:06.97Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9186.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:31:28.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5811/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9473\",\"name\":\"HydraNH-Namespace9473\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:10:27.34Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9473.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.417Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG502/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace89\",\"name\":\"HydraNH-Namespace89\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:21:53.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace89.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3436/providers/Microsoft.NotificationHubs/namespaces/testNS1075\",\"name\":\"testNS1075\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:27:21.063Z\",\"serviceBusEndpoint\":\"https://testNS1075.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:27:43.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH687/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3673\",\"name\":\"HydraNH-Namespace3673\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:40:25.937Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3673.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:40:47.647Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1947/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5704\",\"name\":\"HydraNH-Namespace5704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:29:29.523Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.41Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG328/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7658\",\"name\":\"HydraNH-Namespace7658\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T21:57:50.533Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7658.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.863Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2740/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3915\",\"name\":\"HydraNH-Namespace3915\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:25:13.627Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3915.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH4760/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace956\",\"name\":\"HydraNH-Namespace956\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:57:35.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace956.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:57:56.143Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5918/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6044\",\"name\":\"HydraNH-Namespace6044\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:44:30.58Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6044.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.487Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup1471/providers/Microsoft.NotificationHubs/namespaces/testNS1993\",\"name\":\"testNS1993\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:12:37.09Z\",\"serviceBusEndpoint\":\"https://testNS1993.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:12:59.12Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2239/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8768\",\"name\":\"HydraNH-Namespace8768\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:48:57.073Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8768.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.157Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH114/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5284\",\"name\":\"HydraNH-Namespace5284\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:45:59.263Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5284.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:46:22.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7053/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7393\",\"name\":\"HydraNH-Namespace7393\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:01:16.977Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7393.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.817Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup5500/providers/Microsoft.NotificationHubs/namespaces/testNS2864\",\"name\":\"testNS2864\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:34:09.833Z\",\"serviceBusEndpoint\":\"https://testNS2864.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:34:31.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG201/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7471\",\"name\":\"HydraNH-Namespace7471\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T20:57:23.827Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7471.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T20:57:55.473Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3605/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2992\",\"name\":\"HydraNH-Namespace2992\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:55:53.537Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2992.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3366/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2320\",\"name\":\"HydraNH-Namespace2320\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:10:33.943Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2320.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.903Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup8925/providers/Microsoft.NotificationHubs/namespaces/testNS3765\",\"name\":\"testNS3765\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:30:22.31Z\",\"serviceBusEndpoint\":\"https://testNS3765.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:30:44.893Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9939/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4260\",\"name\":\"HydraNH-Namespace4260\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:54:47.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4260.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.237Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfadsfsdfsd\",\"name\":\"dfadsfsdfsd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:30:08.693Z\",\"serviceBusEndpoint\":\"https://dfadsfsdfsd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:30:29.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4418\",\"name\":\"HydraNH-Namespace4418\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T22:46:16.21Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4418.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5332/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5042\",\"name\":\"HydraNH-Namespace5042\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:39:09.16Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5042.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.36Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5237/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5769\",\"name\":\"HydraNH-Namespace5769\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:50:13.54Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5769.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.457Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1024/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1652\",\"name\":\"HydraNH-Namespace1652\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:06:45.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1652.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.733Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9698/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7349\",\"name\":\"HydraNH-Namespace7349\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:55:45.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7349.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.78Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3856/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7885\",\"name\":\"HydraNH-Namespace7885\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:57:15.08Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7885.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.96Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4618/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9944\",\"name\":\"HydraNH-Namespace9944\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T20:55:05.413Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9944.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.43Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/testRG1212-NH/providers/Microsoft.NotificationHubs/namespaces/testNS-90909\",\"name\":\"testNS-90909\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:06:52.093Z\",\"serviceBusEndpoint\":\"https://testNS-90909.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:07:11.483Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2402/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1535\",\"name\":\"HydraNH-Namespace1535\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:11:59.727Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1535.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.69Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8221/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6431\",\"name\":\"HydraNH-Namespace6431\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:07:23.813Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6431.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.537Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/tegfgg/providers/Microsoft.NotificationHubs/namespaces/testns-oioio\",\"name\":\"testns-oioio\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:40:22.44Z\",\"serviceBusEndpoint\":\"https://testns-oioio.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:40:43.693Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8335/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace251\",\"name\":\"HydraNH-Namespace251\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:33:01.393Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace251.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.94Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhghd\",\"name\":\"testhghd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:31:44.337Z\",\"serviceBusEndpoint\":\"https://testhghd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:32:04.573Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7143\",\"name\":\"HydraNH-Namespace7143\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:55:03.03Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7143.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.747Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/test121/providers/Microsoft.NotificationHubs/namespaces/test12144\",\"name\":\"test12144\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T17:42:09.903Z\",\"serviceBusEndpoint\":\"https://test12144.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T17:42:29.85Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhs-odjfh\",\"name\":\"testnhs-odjfh\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:36:25.873Z\",\"serviceBusEndpoint\":\"https://testnhs-odjfh.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:36:47.823Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5897/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8163\",\"name\":\"HydraNH-Namespace8163\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:06:28.72Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8163.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.08Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup4915/providers/Microsoft.NotificationHubs/namespaces/testNS8120\",\"name\":\"testNS8120\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:02:43.183Z\",\"serviceBusEndpoint\":\"https://testNS8120.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:03:04.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6401/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace226\",\"name\":\"HydraNH-Namespace226\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T21:01:54.48Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace226.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.87Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7444/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9101\",\"name\":\"HydraNH-Namespace9101\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T21:39:03.35Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9101.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG/providers/Microsoft.NotificationHubs/namespaces/TestGcmSmithab\",\"name\":\"TestGcmSmithab\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-06-02T19:14:16.673Z\",\"serviceBusEndpoint\":\"https://TestGcmSmithab.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:16.91Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4626/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4110\",\"name\":\"HydraNH-Namespace4110\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:27:19.677Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4110.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.197Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG1231/providers/Microsoft.NotificationHubs/namespaces/TestTTL-NH\",\"name\":\"TestTTL-NH\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-03-25T00:22:25.433Z\",\"serviceBusEndpoint\":\"https://TestTTL-NH.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:17.37Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5915/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7983\",\"name\":\"HydraNH-Namespace7983\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T23:26:27.06Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7983.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4393/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8154\",\"name\":\"HydraNH-Namespace8154\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:17:04.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8154.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.04Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testdsa\",\"name\":\"testdsa\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:36:28.87Z\",\"serviceBusEndpoint\":\"https://testdsa.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:36:50.713Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhakah\",\"name\":\"testnhakah\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:29:40.163Z\",\"serviceBusEndpoint\":\"https://testnhakah.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:30:01.99Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8262\",\"name\":\"HydraNH-Namespace8262\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:41:20.96Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8262.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9043/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6868\",\"name\":\"HydraNH-Namespace6868\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:08:20.787Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6868.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.547Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG500/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5264\",\"name\":\"HydraNH-Namespace5264\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T22:27:48.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5264.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.397Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7427/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1704\",\"name\":\"HydraNH-Namespace1704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:05:47.57Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.763Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5380/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6298\",\"name\":\"HydraNH-Namespace6298\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:37:15.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6298.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:37:36.777Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hdhdndhdnfk\",\"name\":\"hdhdndhdnfk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:40:34.943Z\",\"serviceBusEndpoint\":\"https://hdhdndhdnfk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:40:56.843Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1763/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5892\",\"name\":\"HydraNH-Namespace5892\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T19:20:44.62Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5892.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.47Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH7031/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3310\",\"name\":\"HydraNH-Namespace3310\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:27:26.957Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3310.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:27:47.087Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/wewqq-pokksk\",\"name\":\"wewqq-pokksk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:00:31.18Z\",\"serviceBusEndpoint\":\"https://wewqq-pokksk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:00:54Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdf\",\"name\":\"dfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:45:40.827Z\",\"serviceBusEndpoint\":\"https://dfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:02.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3499/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2455\",\"name\":\"HydraNH-Namespace2455\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T00:14:49.95Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2455.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.92Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/kjlkklj-kkkk\",\"name\":\"kjlkklj-kkkk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:03:17.903Z\",\"serviceBusEndpoint\":\"https://kjlkklj-kkkk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:03:38.42Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1341/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5206\",\"name\":\"HydraNH-Namespace5206\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:04:15.74Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5206.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5215/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3270\",\"name\":\"HydraNH-Namespace3270\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:35:46.607Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3270.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.133Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdfsdfsdf\",\"name\":\"dfsdfsdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:46:16.37Z\",\"serviceBusEndpoint\":\"https://dfsdfsdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:38.603Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9412/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3119\",\"name\":\"HydraNH-Namespace3119\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:23:11.353Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3119.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.09Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6885/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1729\",\"name\":\"HydraNH-Namespace1729\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:46:43.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1729.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.793Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5074/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6271\",\"name\":\"HydraNH-Namespace6271\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag5\":\"value5\",\"tag6\":\"value6\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T22:14:52.02Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6271.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T22:17:08.543Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3777/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8871\",\"name\":\"HydraNH-Namespace8871\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:57:04.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8871.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/ythshshshs\",\"name\":\"ythshshshs\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:27:28.333Z\",\"serviceBusEndpoint\":\"https://ythshshshs.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:27:48.213Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6515/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4809\",\"name\":\"HydraNH-Namespace4809\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:42:49Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4809.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.31Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/sdfsdfsdf\",\"name\":\"sdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:48:10.777Z\",\"serviceBusEndpoint\":\"https://sdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:49:56.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1571/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace687\",\"name\":\"HydraNH-Namespace687\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T19:30:03.337Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace687.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.553Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup361/providers/Microsoft.NotificationHubs/namespaces/testNS7654\",\"name\":\"testNS7654\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:53:59.31Z\",\"serviceBusEndpoint\":\"https://testNS7654.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:54:22.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4301/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5019\",\"name\":\"HydraNH-Namespace5019\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T01:32:58.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5019.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.35Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhnsdhd\",\"name\":\"testhnsdhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:21:36.32Z\",\"serviceBusEndpoint\":\"https://testhnsdhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:01.283Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2780/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6970\",\"name\":\"HydraNH-Namespace6970\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:18:08.26Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6970.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.677Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5307/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5016\",\"name\":\"HydraNH-Namespace5016\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:22:02.64Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5016.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.337Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6693/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6761\",\"name\":\"HydraNH-Namespace6761\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:03:28.61Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6761.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:03:51.153Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2329/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1169\",\"name\":\"HydraNH-Namespace1169\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:39:41.147Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1169.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.617Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8287/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8570\",\"name\":\"HydraNH-Namespace8570\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:26:40.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8570.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:27:02.103Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6513/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2610\",\"name\":\"HydraNH-Namespace2610\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:51:43.667Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2610.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.953Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7217/providers/Microsoft.NotificationHubs/namespaces/testNS9067\",\"name\":\"testNS9067\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:21:20.047Z\",\"serviceBusEndpoint\":\"https://testNS9067.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:21:42.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/Default-NotificationHubs-CentralUS/providers/Microsoft.NotificationHubs/namespaces/testbdsss\",\"name\":\"testbdsss\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-05-24T23:04:35.783Z\",\"serviceBusEndpoint\":\"https://testbdsss.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"DM2-001\",\"dataCenter\":\"DM2\",\"updatedAt\":\"2016-08-11T21:18:18.443Z\",\"eventHubEnabled\":true,\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8399/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3669\",\"name\":\"HydraNH-Namespace3669\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:45:14.04Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3669.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.15Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup2122/providers/Microsoft.NotificationHubs/namespaces/testNS7982\",\"name\":\"testNS7982\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:49:05.293Z\",\"serviceBusEndpoint\":\"https://testNS7982.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:49:27.437Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6550/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7711\",\"name\":\"HydraNH-Namespace7711\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:51:40.333Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7711.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhhdsndhd\",\"name\":\"testhhdsndhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:22:14.64Z\",\"serviceBusEndpoint\":\"https://testhhdsndhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:38.467Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7453/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6913\",\"name\":\"HydraNH-Namespace6913\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T20:54:40.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6913.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.57Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3564/providers/Microsoft.NotificationHubs/namespaces/testNS3273\",\"name\":\"testNS3273\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:38:10.45Z\",\"serviceBusEndpoint\":\"https://testNS3273.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:38:32.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hhjkhjkhk\",\"name\":\"hhjkhjkhk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:02:18.49Z\",\"serviceBusEndpoint\":\"https://hhjkhjkhk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:02:38.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2906/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7137\",\"name\":\"HydraNH-Namespace7137\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:42:44.45Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7137.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.707Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/jkjkjkjj-lkl\",\"name\":\"jkjkjkjj-lkl\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:01:23.99Z\",\"serviceBusEndpoint\":\"https://jkjkjkjj-lkl.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:01:45.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3832/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3788\",\"name\":\"HydraNH-Namespace3788\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:23:39.56Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3788.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.16Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5492/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1927\",\"name\":\"HydraNH-Namespace1927\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:04:54.09Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1927.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.84Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7797/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1339\",\"name\":\"HydraNH-Namespace1339\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:29:57.37Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1339.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.653Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6304/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2465\",\"name\":\"HydraNH-Namespace2465\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:02:54.267Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2465.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.93Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7727/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace574\",\"name\":\"HydraNH-Namespace574\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:33:44.893Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace574.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:34:04.95Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6246\",\"name\":\"HydraNH-Namespace6246\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:14:09.5Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6246.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.53Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9144/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2745\",\"name\":\"HydraNH-Namespace2745\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:20:20.967Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2745.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.98Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7609/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3902\",\"name\":\"HydraNH-Namespace3902\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T18:54:35.097Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3902.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T18:54:57.51Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9186\",\"name\":\"HydraNH-Namespace9186\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:31:06.97Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9186.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:31:28.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5811/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9473\",\"name\":\"HydraNH-Namespace9473\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:10:27.34Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9473.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.417Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG502/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace89\",\"name\":\"HydraNH-Namespace89\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:21:53.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace89.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3436/providers/Microsoft.NotificationHubs/namespaces/testNS1075\",\"name\":\"testNS1075\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:27:21.063Z\",\"serviceBusEndpoint\":\"https://testNS1075.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:27:43.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH687/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3673\",\"name\":\"HydraNH-Namespace3673\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:40:25.937Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3673.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:40:47.647Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1947/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5704\",\"name\":\"HydraNH-Namespace5704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:29:29.523Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.41Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG328/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7658\",\"name\":\"HydraNH-Namespace7658\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T21:57:50.533Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7658.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.863Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2740/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3915\",\"name\":\"HydraNH-Namespace3915\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:25:13.627Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3915.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.17Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH4760/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace956\",\"name\":\"HydraNH-Namespace956\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:57:35.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace956.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:57:56.143Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5918/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6044\",\"name\":\"HydraNH-Namespace6044\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:44:30.58Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6044.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.487Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup1471/providers/Microsoft.NotificationHubs/namespaces/testNS1993\",\"name\":\"testNS1993\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:12:37.09Z\",\"serviceBusEndpoint\":\"https://testNS1993.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:12:59.12Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2239/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8768\",\"name\":\"HydraNH-Namespace8768\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:48:57.073Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8768.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.157Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH114/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5284\",\"name\":\"HydraNH-Namespace5284\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:45:59.263Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5284.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:46:22.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7053/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7393\",\"name\":\"HydraNH-Namespace7393\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:01:16.977Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7393.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.817Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup5500/providers/Microsoft.NotificationHubs/namespaces/testNS2864\",\"name\":\"testNS2864\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:34:09.833Z\",\"serviceBusEndpoint\":\"https://testNS2864.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:34:31.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG201/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7471\",\"name\":\"HydraNH-Namespace7471\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T20:57:23.827Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7471.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T20:57:55.473Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3605/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2992\",\"name\":\"HydraNH-Namespace2992\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:55:53.537Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2992.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3366/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2320\",\"name\":\"HydraNH-Namespace2320\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:10:33.943Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2320.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.903Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup8925/providers/Microsoft.NotificationHubs/namespaces/testNS3765\",\"name\":\"testNS3765\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:30:22.31Z\",\"serviceBusEndpoint\":\"https://testNS3765.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:30:44.893Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9939/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4260\",\"name\":\"HydraNH-Namespace4260\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:54:47.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4260.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.237Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfadsfsdfsd\",\"name\":\"dfadsfsdfsd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:30:08.693Z\",\"serviceBusEndpoint\":\"https://dfadsfsdfsd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:30:29.063Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4418\",\"name\":\"HydraNH-Namespace4418\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T22:46:16.21Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4418.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5332/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5042\",\"name\":\"HydraNH-Namespace5042\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:39:09.16Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5042.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.36Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5237/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5769\",\"name\":\"HydraNH-Namespace5769\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:50:13.54Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5769.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.457Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1024/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1652\",\"name\":\"HydraNH-Namespace1652\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:06:45.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1652.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.733Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9698/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7349\",\"name\":\"HydraNH-Namespace7349\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:55:45.867Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7349.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.78Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3856/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7885\",\"name\":\"HydraNH-Namespace7885\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:57:15.08Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7885.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.96Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4618/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9944\",\"name\":\"HydraNH-Namespace9944\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T20:55:05.413Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9944.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.43Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/testRG1212-NH/providers/Microsoft.NotificationHubs/namespaces/testNS-90909\",\"name\":\"testNS-90909\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:06:52.093Z\",\"serviceBusEndpoint\":\"https://testNS-90909.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:07:11.483Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2402/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1535\",\"name\":\"HydraNH-Namespace1535\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-09T00:11:59.727Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1535.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.69Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8221/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6431\",\"name\":\"HydraNH-Namespace6431\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T23:07:23.813Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6431.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.537Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/tegfgg/providers/Microsoft.NotificationHubs/namespaces/testns-oioio\",\"name\":\"testns-oioio\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-23T22:40:22.44Z\",\"serviceBusEndpoint\":\"https://testns-oioio.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-23T22:40:43.693Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8335/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace251\",\"name\":\"HydraNH-Namespace251\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:33:01.393Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace251.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.94Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhghd\",\"name\":\"testhghd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:31:44.337Z\",\"serviceBusEndpoint\":\"https://testhghd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:32:04.573Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7143\",\"name\":\"HydraNH-Namespace7143\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:55:03.03Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7143.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.747Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/test121/providers/Microsoft.NotificationHubs/namespaces/test12144\",\"name\":\"test12144\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T17:42:09.903Z\",\"serviceBusEndpoint\":\"https://test12144.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T17:42:29.85Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhs-odjfh\",\"name\":\"testnhs-odjfh\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:36:25.873Z\",\"serviceBusEndpoint\":\"https://testnhs-odjfh.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:36:47.823Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5897/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8163\",\"name\":\"HydraNH-Namespace8163\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:06:28.72Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8163.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.08Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup4915/providers/Microsoft.NotificationHubs/namespaces/testNS8120\",\"name\":\"testNS8120\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:02:43.183Z\",\"serviceBusEndpoint\":\"https://testNS8120.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:03:04.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6401/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace226\",\"name\":\"HydraNH-Namespace226\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T21:01:54.48Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace226.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.87Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7444/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9101\",\"name\":\"HydraNH-Namespace9101\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T21:39:03.35Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace9101.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.387Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG/providers/Microsoft.NotificationHubs/namespaces/TestGcmSmithab\",\"name\":\"TestGcmSmithab\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-06-02T19:14:16.673Z\",\"serviceBusEndpoint\":\"https://TestGcmSmithab.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:16.91Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4626/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4110\",\"name\":\"HydraNH-Namespace4110\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:27:19.677Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4110.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.197Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG1231/providers/Microsoft.NotificationHubs/namespaces/TestTTL-NH\",\"name\":\"TestTTL-NH\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-03-25T00:22:25.433Z\",\"serviceBusEndpoint\":\"https://TestTTL-NH.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:02:17.37Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5915/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7983\",\"name\":\"HydraNH-Namespace7983\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T23:26:27.06Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7983.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4393/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8154\",\"name\":\"HydraNH-Namespace8154\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:17:04.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8154.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.04Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testdsa\",\"name\":\"testdsa\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:36:28.87Z\",\"serviceBusEndpoint\":\"https://testdsa.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:36:50.713Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testnhakah\",\"name\":\"testnhakah\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T21:29:40.163Z\",\"serviceBusEndpoint\":\"https://testnhakah.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T21:30:01.99Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8262\",\"name\":\"HydraNH-Namespace8262\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:41:20.96Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8262.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9043/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6868\",\"name\":\"HydraNH-Namespace6868\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:08:20.787Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6868.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.547Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG500/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5264\",\"name\":\"HydraNH-Namespace5264\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T22:27:48.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5264.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.397Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7427/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1704\",\"name\":\"HydraNH-Namespace1704\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T22:05:47.57Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1704.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.763Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5380/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6298\",\"name\":\"HydraNH-Namespace6298\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:37:15.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6298.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:37:36.777Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hdhdndhdnfk\",\"name\":\"hdhdndhdnfk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:40:34.943Z\",\"serviceBusEndpoint\":\"https://hdhdndhdnfk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:40:56.843Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1763/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5892\",\"name\":\"HydraNH-Namespace5892\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T19:20:44.62Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5892.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.47Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRg-NH7031/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3310\",\"name\":\"HydraNH-Namespace3310\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-01T19:27:26.957Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3310.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-01T19:27:47.087Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/wewqq-pokksk\",\"name\":\"wewqq-pokksk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:00:31.18Z\",\"serviceBusEndpoint\":\"https://wewqq-pokksk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:00:54Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdf\",\"name\":\"dfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:45:40.827Z\",\"serviceBusEndpoint\":\"https://dfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:02.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3499/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2455\",\"name\":\"HydraNH-Namespace2455\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T00:14:49.95Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2455.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.92Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/kjlkklj-kkkk\",\"name\":\"kjlkklj-kkkk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:03:17.903Z\",\"serviceBusEndpoint\":\"https://kjlkklj-kkkk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:03:38.42Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1341/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5206\",\"name\":\"HydraNH-Namespace5206\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:04:15.74Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5206.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5215/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3270\",\"name\":\"HydraNH-Namespace3270\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:35:46.607Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3270.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.133Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/dfsdfsdfsdfsdf\",\"name\":\"dfsdfsdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:46:16.37Z\",\"serviceBusEndpoint\":\"https://dfsdfsdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:46:38.603Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9412/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3119\",\"name\":\"HydraNH-Namespace3119\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-04-21T23:23:11.353Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3119.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.09Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6885/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1729\",\"name\":\"HydraNH-Namespace1729\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:46:43.05Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1729.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.793Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5074/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6271\",\"name\":\"HydraNH-Namespace6271\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag5\":\"value5\",\"tag6\":\"value6\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T22:14:52.02Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6271.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T22:17:08.543Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3777/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8871\",\"name\":\"HydraNH-Namespace8871\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T21:57:04.503Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8871.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:46.273Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/ythshshshs\",\"name\":\"ythshshshs\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:27:28.333Z\",\"serviceBusEndpoint\":\"https://ythshshshs.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:27:48.213Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6515/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4809\",\"name\":\"HydraNH-Namespace4809\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:42:49Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace4809.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.31Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/sdfsdfsdf\",\"name\":\"sdfsdfsdf\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:48:10.777Z\",\"serviceBusEndpoint\":\"https://sdfsdfsdf.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:49:56.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1571/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace687\",\"name\":\"HydraNH-Namespace687\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T19:30:03.337Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace687.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.553Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup361/providers/Microsoft.NotificationHubs/namespaces/testNS7654\",\"name\":\"testNS7654\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:53:59.31Z\",\"serviceBusEndpoint\":\"https://testNS7654.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:54:22.127Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4301/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5019\",\"name\":\"HydraNH-Namespace5019\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-08T01:32:58.133Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5019.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.35Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhnsdhd\",\"name\":\"testhnsdhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:21:36.32Z\",\"serviceBusEndpoint\":\"https://testhnsdhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:01.283Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2780/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6970\",\"name\":\"HydraNH-Namespace6970\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:18:08.26Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6970.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.677Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5307/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5016\",\"name\":\"HydraNH-Namespace5016\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-10T23:22:02.64Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace5016.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.337Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6693/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6761\",\"name\":\"HydraNH-Namespace6761\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:03:28.61Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6761.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:03:51.153Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2329/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1169\",\"name\":\"HydraNH-Namespace1169\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T07:39:41.147Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace1169.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.617Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8287/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8570\",\"name\":\"HydraNH-Namespace8570\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-16T19:26:40.87Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace8570.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-16T19:27:02.103Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Standard\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6513/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2610\",\"name\":\"HydraNH-Namespace2610\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T22:51:43.667Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace2610.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:44.953Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7217/providers/Microsoft.NotificationHubs/namespaces/testNS9067\",\"name\":\"testNS9067\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:21:20.047Z\",\"serviceBusEndpoint\":\"https://testNS9067.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:21:42.52Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/Default-NotificationHubs-CentralUS/providers/Microsoft.NotificationHubs/namespaces/testbdsss\",\"name\":\"testbdsss\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-05-24T23:04:35.783Z\",\"serviceBusEndpoint\":\"https://testbdsss.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"DM2-001\",\"dataCenter\":\"DM2\",\"updatedAt\":\"2016-08-11T21:18:18.443Z\",\"eventHubEnabled\":true,\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8399/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3669\",\"name\":\"HydraNH-Namespace3669\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T18:45:14.04Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3669.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.15Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup2122/providers/Microsoft.NotificationHubs/namespaces/testNS7982\",\"name\":\"testNS7982\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:49:05.293Z\",\"serviceBusEndpoint\":\"https://testNS7982.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:49:27.437Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6550/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7711\",\"name\":\"HydraNH-Namespace7711\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-12T03:51:40.333Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7711.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.917Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/testhhdsndhd\",\"name\":\"testhhdsndhd\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-24T22:22:14.64Z\",\"serviceBusEndpoint\":\"https://testhhdsndhd.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-24T22:22:38.467Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7453/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6913\",\"name\":\"HydraNH-Namespace6913\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T20:54:40.73Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace6913.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.57Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup3564/providers/Microsoft.NotificationHubs/namespaces/testNS3273\",\"name\":\"testNS3273\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T18:38:10.45Z\",\"serviceBusEndpoint\":\"https://testNS3273.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T18:38:32.383Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/hhjkhjkhk\",\"name\":\"hhjkhjkhk\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:02:18.49Z\",\"serviceBusEndpoint\":\"https://hhjkhjkhk.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:02:38.373Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2906/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7137\",\"name\":\"HydraNH-Namespace7137\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\",\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-11T17:42:44.45Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace7137.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":true,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.707Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-Default/providers/Microsoft.NotificationHubs/namespaces/jkjkjkjj-lkl\",\"name\":\"jkjkjkjj-lkl\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Free\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-08-30T05:01:23.99Z\",\"serviceBusEndpoint\":\"https://jkjkjkjj-lkl.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-30T05:01:45.343Z\",\"namespaceType\":\"NotificationHub\"}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3832/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3788\",\"name\":\"HydraNH-Namespace3788\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2015-08-07T23:23:39.56Z\",\"serviceBusEndpoint\":\"https://HydraNH-Namespace3788.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-08-11T21:01:45.16Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '69913',
+  'content-length': '69914',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'a43902f9-ee6d-440d-b9da-3a2d0ed1ce0d_M2_M2',
+  'x-ms-request-id': '90238166-85de-43ff-82e7-b851efd54403_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14955',
-  'x-ms-correlation-request-id': '905aad27-81b8-4ae8-b153-9b8d4d664959',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192356Z:905aad27-81b8-4ae8-b153-9b8d4d664959',
+  'x-ms-ratelimit-remaining-subscription-reads': '14958',
+  'x-ms-correlation-request-id': 'c61b187d-3cd7-4b28-bf18-0ea68347ad17',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193919Z:c61b187d-3cd7-4b28-bf18-0ea68347ad17',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:56 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01', '*')
+.patch('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01', '*')
+  .reply(200, "{\"id\":null,\"name\":null,\"type\":null,\"location\":null,\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":null,\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\",\"messagingSku\":1,\"messagingSkuPlan\":{\"sku\":1,\"selectedEventHubUnit\":1}}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '515',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '0d338bbc-0302-41e9-9acf-f31b4724733d_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1190',
+  'x-ms-correlation-request-id': '3c356686-7fe9-45bb-9876-c628142877c5',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193920Z:3c356686-7fe9-45bb-9876-c628142877c5',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:19 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.patch('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837?api-version=2016-03-01', '*')
+  .reply(200, "{\"id\":null,\"name\":null,\"type\":null,\"location\":null,\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":null,\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:17.377Z\",\"namespaceType\":\"NotificationHub\",\"messagingSku\":1,\"messagingSkuPlan\":{\"sku\":1,\"selectedEventHubUnit\":1}}}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '515',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  'x-ms-request-id': '0d338bbc-0302-41e9-9acf-f31b4724733d_M1_M1',
+  'server-sb': 'Service-Bus-Resource-Provider/SN1',
+  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1190',
+  'x-ms-correlation-request-id': '3c356686-7fe9-45bb-9876-c628142877c5',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193920Z:3c356686-7fe9-45bb-9876-c628142877c5',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Thu, 22 Sep 2016 19:39:19 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .filteringRequestBody(function (path) { return '*';})
+.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01', '*')
   .reply(500, "{\"error\":{\"message\":\"Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.\",\"code\":\"InternalServerError\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '205',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f44df2a1-f950-4532-849b-243e5aced393_M4_M4',
+  'x-ms-request-id': '07c00d98-674a-4da1-8ac3-e7db5835c37c_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': '0fa0f131-5846-44eb-a999-3dfb7d214894',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192358Z:0fa0f131-5846-44eb-a999-3dfb7d214894',
+  'x-ms-ratelimit-remaining-subscription-writes': '1192',
+  'x-ms-correlation-request-id': 'f9bb229d-43ff-4eb5-8cc6-36e88b1175b8',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193920Z:f9bb229d-43ff-4eb5-8cc6-36e88b1175b8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:57 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01', '*')
+.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01', '*')
   .reply(500, "{\"error\":{\"message\":\"Processing of the HTTP request resulted in an exception. Please see the HTTP response returned by the 'Response' property of this exception for details.\",\"code\":\"InternalServerError\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '205',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f44df2a1-f950-4532-849b-243e5aced393_M4_M4',
+  'x-ms-request-id': '07c00d98-674a-4da1-8ac3-e7db5835c37c_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-failure-cause': 'service',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': '0fa0f131-5846-44eb-a999-3dfb7d214894',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192358Z:0fa0f131-5846-44eb-a999-3dfb7d214894',
+  'x-ms-ratelimit-remaining-subscription-writes': '1192',
+  'x-ms-correlation-request-id': 'f9bb229d-43ff-4eb5-8cc6-36e88b1175b8',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193920Z:f9bb229d-43ff-4eb5-8cc6-36e88b1175b8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:57 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01', '*')
-  .reply(200, "{\"id\":null,\"name\":null,\"type\":null,\"location\":null,\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":null,\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\",\"messagingSku\":1,\"messagingSkuPlan\":{\"sku\":1,\"selectedEventHubUnit\":1}}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '514',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f34ff8aa-8d2e-4869-9127-8b2a2e0182ab_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1191',
-  'x-ms-correlation-request-id': '43eea7ee-0762-477f-ab8f-162feeb3f85f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192358Z:43eea7ee-0762-477f-ab8f-162feeb3f85f',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:58 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511?api-version=2016-03-01', '*')
-  .reply(200, "{\"id\":null,\"name\":null,\"type\":null,\"location\":null,\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":null,\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:55.577Z\",\"namespaceType\":\"NotificationHub\",\"messagingSku\":1,\"messagingSkuPlan\":{\"sku\":1,\"selectedEventHubUnit\":1}}}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '514',
-  'content-type': 'application/json; charset=utf-8',
-  expires: '-1',
-  'x-ms-request-id': 'f34ff8aa-8d2e-4869-9127-8b2a2e0182ab_M7_M7',
-  'server-sb': 'Service-Bus-Resource-Provider/SN1',
-  server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1191',
-  'x-ms-correlation-request-id': '43eea7ee-0762-477f-ab8f-162feeb3f85f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192358Z:43eea7ee-0762-477f-ab8f-162feeb3f85f',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:58 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:58.303Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:20.37Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '701',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'adc24bed-9f2a-4928-8aa9-06a9d49fe4ab_M7_M7',
+  'x-ms-request-id': '5b11b531-1060-4df8-acab-f154771dd8bd_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '29714042-3d49-40a3-97ca-1a2712b77407',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192359Z:29714042-3d49-40a3-97ca-1a2712b77407',
+  'x-ms-ratelimit-remaining-subscription-reads': '14957',
+  'x-ms-correlation-request-id': 'c3e41fb1-11ca-4833-b9f4-38df7c313d9d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193921Z:c3e41fb1-11ca-4833-b9f4-38df7c313d9d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:58 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511\",\"name\":\"testNS5511\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag3\":\"value3\",\"tag4\":\"value4\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:23:30.31Z\",\"serviceBusEndpoint\":\"https://testNS5511.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:23:58.303Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces?api-version=2016-03-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837\",\"name\":\"testNS3837\",\"type\":\"Microsoft.NotificationHubs/namespaces\",\"location\":\"South Central US\",\"kind\":\"NotificationHub\",\"sku\":{\"name\":\"Basic\"},\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":null,\"status\":\"Active\",\"createdAt\":\"2016-09-22T19:38:55.277Z\",\"serviceBusEndpoint\":\"https://testNS3837.servicebus.windows.net:443/\",\"enabled\":true,\"critical\":false,\"scaleUnit\":\"SN1-001\",\"dataCenter\":\"SN1\",\"updatedAt\":\"2016-09-22T19:39:20.37Z\",\"namespaceType\":\"NotificationHub\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '701',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'adc24bed-9f2a-4928-8aa9-06a9d49fe4ab_M7_M7',
+  'x-ms-request-id': '5b11b531-1060-4df8-acab-f154771dd8bd_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14959',
-  'x-ms-correlation-request-id': '29714042-3d49-40a3-97ca-1a2712b77407',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192359Z:29714042-3d49-40a3-97ca-1a2712b77407',
+  'x-ms-ratelimit-remaining-subscription-reads': '14957',
+  'x-ms-correlation-request-id': 'c3e41fb1-11ca-4833-b9f4-38df7c313d9d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193921Z:c3e41fb1-11ca-4833-b9f4-38df7c313d9d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:23:58 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294\",\"name\":\"testAuth6294\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564\",\"name\":\"testAuth5564\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '331',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'abd160a9-cfa3-4791-be33-ba515511fb5f_M0_M0',
+  'x-ms-request-id': '91882b04-5808-4f92-94cc-c46691765f82_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': 'f84e8a6e-cb74-473d-9200-abdadf0988a0',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192429Z:f84e8a6e-cb74-473d-9200-abdadf0988a0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': 'b537c20f-74b7-467f-9bad-9b0a40f3d82d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193950Z:b537c20f-74b7-467f-9bad-9b0a40f3d82d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:28 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294\",\"name\":\"testAuth6294\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01', '*')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564\",\"name\":\"testAuth5564\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '331',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'abd160a9-cfa3-4791-be33-ba515511fb5f_M0_M0',
+  'x-ms-request-id': '91882b04-5808-4f92-94cc-c46691765f82_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': 'f84e8a6e-cb74-473d-9200-abdadf0988a0',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192429Z:f84e8a6e-cb74-473d-9200-abdadf0988a0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': 'b537c20f-74b7-467f-9bad-9b0a40f3d82d',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193950Z:b537c20f-74b7-467f-9bad-9b0a40f3d82d',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:28 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294\",\"name\":\"testAuth6294\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564\",\"name\":\"testAuth5564\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '331',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '02f7fb19-a6c9-4016-8456-d26706710ded_M6_M6',
+  'x-ms-request-id': 'caaf4341-a6c7-4c5b-9dc3-3f9dc17e870a_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '8d6b835f-f914-4ea0-889f-64545172a8c2',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192430Z:8d6b835f-f914-4ea0-889f-64545172a8c2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14960',
+  'x-ms-correlation-request-id': 'a9007562-88ae-4062-b033-0929be309cc8',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193951Z:a9007562-88ae-4062-b033-0929be309cc8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:30 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01')
-  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294\",\"name\":\"testAuth6294\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01')
+  .reply(200, "{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564\",\"name\":\"testAuth5564\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '331',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '02f7fb19-a6c9-4016-8456-d26706710ded_M6_M6',
+  'x-ms-request-id': 'caaf4341-a6c7-4c5b-9dc3-3f9dc17e870a_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14958',
-  'x-ms-correlation-request-id': '8d6b835f-f914-4ea0-889f-64545172a8c2',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192430Z:8d6b835f-f914-4ea0-889f-64545172a8c2',
+  'x-ms-ratelimit-remaining-subscription-reads': '14960',
+  'x-ms-correlation-request-id': 'a9007562-88ae-4062-b033-0929be309cc8',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193951Z:a9007562-88ae-4062-b033-0929be309cc8',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:30 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:50 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/RootManageSharedAccessKey\",\"name\":\"RootManageSharedAccessKey\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Manage\",\"Send\"]}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294\",\"name\":\"testAuth6294\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules?api-version=2016-03-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/RootManageSharedAccessKey\",\"name\":\"RootManageSharedAccessKey\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Manage\",\"Send\"]}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564\",\"name\":\"testAuth5564\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '726',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '0ce64720-35a4-46bc-89eb-a8bd464b983c_M4_M4',
+  'x-ms-request-id': '84c95d90-51b5-47c6-8cb7-cffd5f1ff5e2_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '6e78ce7a-c10f-49f0-b5ef-8244b9ec53e4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192431Z:6e78ce7a-c10f-49f0-b5ef-8244b9ec53e4',
+  'x-ms-correlation-request-id': '2ca5ca72-d812-4093-bff0-2832a1d5c705',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193952Z:2ca5ca72-d812-4093-bff0-2832a1d5c705',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:30 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules?api-version=2016-03-01')
-  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/RootManageSharedAccessKey\",\"name\":\"RootManageSharedAccessKey\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Manage\",\"Send\"]}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294\",\"name\":\"testAuth6294\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules?api-version=2016-03-01')
+  .reply(200, "{\"value\":[{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/RootManageSharedAccessKey\",\"name\":\"RootManageSharedAccessKey\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Manage\",\"Send\"]}},{\"id\":\"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564\",\"name\":\"testAuth5564\",\"type\":\"Microsoft.NotificationHubs/AuthorizationRules\",\"location\":null,\"tags\":null,\"properties\":{\"rights\":[\"Listen\",\"Send\"]}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '726',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '0ce64720-35a4-46bc-89eb-a8bd464b983c_M4_M4',
+  'x-ms-request-id': '84c95d90-51b5-47c6-8cb7-cffd5f1ff5e2_M3_M3',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-reads': '14956',
-  'x-ms-correlation-request-id': '6e78ce7a-c10f-49f0-b5ef-8244b9ec53e4',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192431Z:6e78ce7a-c10f-49f0-b5ef-8244b9ec53e4',
+  'x-ms-correlation-request-id': '2ca5ca72-d812-4093-bff0-2832a1d5c705',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193952Z:2ca5ca72-d812-4093-bff0-2832a1d5c705',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:30 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:51 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294/listKeys?api-version=2016-03-01')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=g4qRmOfDJ3wJVAZB54Eg3kB2YTj7XzVYEZEwSwfPlxA=\",\"secondaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"primaryKey\":\"g4qRmOfDJ3wJVAZB54Eg3kB2YTj7XzVYEZEwSwfPlxA=\",\"secondaryKey\":\"LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"keyName\":\"testAuth6294\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564/listKeys?api-version=2016-03-01')
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=WeK7bLuIMsn9lG43nl73Y3gLC4Gt2dq+1AvLuDgyFLY=\",\"secondaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"primaryKey\":\"WeK7bLuIMsn9lG43nl73Y3gLC4Gt2dq+1AvLuDgyFLY=\",\"secondaryKey\":\"TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"keyName\":\"testAuth5564\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '0880e836-21be-4211-b27b-928b7a3a0c6a_M2_M2',
+  'x-ms-request-id': '33e29b4d-1c2a-4d56-94e0-535dd2f92708_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1191',
-  'x-ms-correlation-request-id': '5ba0b2b3-742a-4290-91a2-f9a1cc14654f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192432Z:5ba0b2b3-742a-4290-91a2-f9a1cc14654f',
+  'x-ms-ratelimit-remaining-subscription-writes': '1189',
+  'x-ms-correlation-request-id': '5a634763-b863-4de2-887f-47062d661120',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193953Z:5a634763-b863-4de2-887f-47062d661120',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:32 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294/listKeys?api-version=2016-03-01')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=g4qRmOfDJ3wJVAZB54Eg3kB2YTj7XzVYEZEwSwfPlxA=\",\"secondaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"primaryKey\":\"g4qRmOfDJ3wJVAZB54Eg3kB2YTj7XzVYEZEwSwfPlxA=\",\"secondaryKey\":\"LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"keyName\":\"testAuth6294\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564/listKeys?api-version=2016-03-01')
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=WeK7bLuIMsn9lG43nl73Y3gLC4Gt2dq+1AvLuDgyFLY=\",\"secondaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"primaryKey\":\"WeK7bLuIMsn9lG43nl73Y3gLC4Gt2dq+1AvLuDgyFLY=\",\"secondaryKey\":\"TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"keyName\":\"testAuth5564\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '0880e836-21be-4211-b27b-928b7a3a0c6a_M2_M2',
+  'x-ms-request-id': '33e29b4d-1c2a-4d56-94e0-535dd2f92708_M6_M6',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1191',
-  'x-ms-correlation-request-id': '5ba0b2b3-742a-4290-91a2-f9a1cc14654f',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192432Z:5ba0b2b3-742a-4290-91a2-f9a1cc14654f',
+  'x-ms-ratelimit-remaining-subscription-writes': '1189',
+  'x-ms-correlation-request-id': '5a634763-b863-4de2-887f-47062d661120',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193953Z:5a634763-b863-4de2-887f-47062d661120',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:32 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:52 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294/regenerateKeys?api-version=2016-03-01', '*')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"primaryKey\":\"mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryKey\":\"LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"keyName\":\"testAuth6294\"}", { 'cache-control': 'no-cache',
+.post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564/regenerateKeys?api-version=2016-03-01', '*')
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"primaryKey\":\"+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryKey\":\"TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"keyName\":\"testAuth5564\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'eb57413e-146d-4d86-8193-ccbfa3bbcbb3_M4_M4',
+  'x-ms-request-id': '1bee3673-a2d0-4a5e-a11b-fca731ef6898_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1191',
-  'x-ms-correlation-request-id': 'fc3b6fe4-09ea-46fd-a3be-7d76c1d8ec60',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192434Z:fc3b6fe4-09ea-46fd-a3be-7d76c1d8ec60',
+  'x-ms-correlation-request-id': '2d20f207-8526-4856-ae1a-c03c57fb0494',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193954Z:2d20f207-8526-4856-ae1a-c03c57fb0494',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:34 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294/regenerateKeys?api-version=2016-03-01', '*')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"primaryKey\":\"mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryKey\":\"LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"keyName\":\"testAuth6294\"}", { 'cache-control': 'no-cache',
+.post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564/regenerateKeys?api-version=2016-03-01', '*')
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"primaryKey\":\"+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryKey\":\"TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"keyName\":\"testAuth5564\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'eb57413e-146d-4d86-8193-ccbfa3bbcbb3_M4_M4',
+  'x-ms-request-id': '1bee3673-a2d0-4a5e-a11b-fca731ef6898_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1191',
-  'x-ms-correlation-request-id': 'fc3b6fe4-09ea-46fd-a3be-7d76c1d8ec60',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192434Z:fc3b6fe4-09ea-46fd-a3be-7d76c1d8ec60',
+  'x-ms-correlation-request-id': '2d20f207-8526-4856-ae1a-c03c57fb0494',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193954Z:2d20f207-8526-4856-ae1a-c03c57fb0494',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:34 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:53 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294/listKeys?api-version=2016-03-01')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"primaryKey\":\"mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryKey\":\"LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"keyName\":\"testAuth6294\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564/listKeys?api-version=2016-03-01')
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"primaryKey\":\"+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryKey\":\"TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"keyName\":\"testAuth5564\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'd853bf7f-1924-4e57-91db-2b67af0966f4_M3_M3',
+  'x-ms-request-id': '8dd471d6-e50c-4e0b-97f0-cb05192be127_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': '20f55354-60fb-4682-978d-edf084d32ad5',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192435Z:20f55354-60fb-4682-978d-edf084d32ad5',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '3c425d32-e6b1-401d-a39e-0096742d0627',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193955Z:3c425d32-e6b1-401d-a39e-0096742d0627',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:34 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294/listKeys?api-version=2016-03-01')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryConnectionString\":\"Endpoint=sb://testns5511.servicebus.windows.net/;SharedAccessKeyName=testAuth6294;SharedAccessKey=LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"primaryKey\":\"mFdMwjPrWVXSy+tDXUIJZY1XcIjMcQCSv8hCUFvjOwY=\",\"secondaryKey\":\"LrqPR7tH4tqIUBG1GRSInLnhc4829wLsRJYZ3gutl0Q=\",\"keyName\":\"testAuth6294\"}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564/listKeys?api-version=2016-03-01')
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryConnectionString\":\"Endpoint=sb://testns3837.servicebus.windows.net/;SharedAccessKeyName=testAuth5564;SharedAccessKey=TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"primaryKey\":\"+1wr0uNd6Fn6foE2QjDZfI7LUovcl52G4aEwKHs92P8=\",\"secondaryKey\":\"TWTblECvdJFXGxtQSS7v37tendFIUhpPrBHvdsEdjCU=\",\"keyName\":\"testAuth5564\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'd853bf7f-1924-4e57-91db-2b67af0966f4_M3_M3',
+  'x-ms-request-id': '8dd471d6-e50c-4e0b-97f0-cb05192be127_M7_M7',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1194',
-  'x-ms-correlation-request-id': '20f55354-60fb-4682-978d-edf084d32ad5',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192435Z:20f55354-60fb-4682-978d-edf084d32ad5',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'x-ms-correlation-request-id': '3c425d32-e6b1-401d-a39e-0096742d0627',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193955Z:3c425d32-e6b1-401d-a39e-0096742d0627',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:34 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:55 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01')
+  .delete('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'x-ms-request-id': '2428e5e2-a1a5-4aa1-a67f-5e1847d36073_M6_M6',
+  'x-ms-request-id': 'e43add0c-9f4e-49c8-884d-c402c78ea481_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1189',
-  'x-ms-correlation-request-id': '3eaa2394-4b87-4586-8fda-e13b5a2f31c8',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192436Z:3eaa2394-4b87-4586-8fda-e13b5a2f31c8',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-correlation-request-id': 'd3a4f114-7727-49be-8ca4-ec6c683bc57a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193956Z:d3a4f114-7727-49be-8ca4-ec6c683bc57a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup9669/providers/Microsoft.NotificationHubs/namespaces/testNS5511/AuthorizationRules/testAuth6294?api-version=2016-03-01')
+  .delete('/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/nodeTestGroup7823/providers/Microsoft.NotificationHubs/namespaces/testNS3837/AuthorizationRules/testAuth5564?api-version=2016-03-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'x-ms-request-id': '2428e5e2-a1a5-4aa1-a67f-5e1847d36073_M6_M6',
+  'x-ms-request-id': 'e43add0c-9f4e-49c8-884d-c402c78ea481_M0_M0',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1, Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1189',
-  'x-ms-correlation-request-id': '3eaa2394-4b87-4586-8fda-e13b5a2f31c8',
-  'x-ms-routing-request-id': 'WESTUS2:20160922T192436Z:3eaa2394-4b87-4586-8fda-e13b5a2f31c8',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-correlation-request-id': 'd3a4f114-7727-49be-8ca4-ec6c683bc57a',
+  'x-ms-routing-request-id': 'WESTUS2:20160922T193956Z:d3a4f114-7727-49be-8ca4-ec6c683bc57a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Thu, 22 Sep 2016 19:24:36 GMT',
+  date: 'Thu, 22 Sep 2016 19:39:56 GMT',
   connection: 'close' });
  return result; }]];

@@ -157,7 +157,7 @@ describe('Notification Hubs Management :', function () {
                       should.exist(result);
                       response.statusCode.should.equal(200);
                       namespaceList.some(function (ns) {
-                          return ns.sku.Name == "Basic"
+                          return (ns.sku.Name == "Basic" && ns.name == namespaceName)
                       }).should.be.true;
                   });
               });
