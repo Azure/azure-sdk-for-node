@@ -21,31 +21,15 @@ import * as models from '../models';
 export interface Redis {
 
     /**
-     * Create a redis cache, or replace (overwrite/recreate, with potential
-     * downtime) an existing cache
+     * Create or replace (overwrite/recreate, with potential downtime) an existing
+     * redis cache
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} name The name of the redis cache.
      * 
-     * @param {object} parameters Parameters supplied to the CreateOrUpdate redis
+     * @param {object} parameters Parameters supplied to the Create redis
      * operation.
-     * 
-     * @param {string} [parameters.redisVersion] RedisVersion parameter has been
-     * deprecated. As such, it is no longer necessary to provide this parameter
-     * and any value specified is ignored.
-     * 
-     * @param {object} parameters.sku What sku of redis cache to deploy.
-     * 
-     * @param {string} parameters.sku.name What type of redis cache to deploy.
-     * Valid values: (Basic, Standard, Premium). Possible values include:
-     * 'Basic', 'Standard', 'Premium'
-     * 
-     * @param {string} parameters.sku.family Which family to use. Valid values:
-     * (C, P). Possible values include: 'C', 'P'
-     * 
-     * @param {number} parameters.sku.capacity What size of redis cache to deploy.
-     * Valid values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
      * 
      * @param {object} [parameters.redisConfiguration] All Redis Settings. Few
      * possible keys:
@@ -67,6 +51,18 @@ export interface Redis {
      * @param {string} [parameters.staticIP] Required when deploying a redis cache
      * inside an existing Azure Virtual Network.
      * 
+     * @param {object} parameters.sku What sku of redis cache to deploy.
+     * 
+     * @param {string} parameters.sku.name What type of redis cache to deploy.
+     * Valid values: (Basic, Standard, Premium). Possible values include:
+     * 'Basic', 'Standard', 'Premium'
+     * 
+     * @param {string} parameters.sku.family Which family to use. Valid values:
+     * (C, P). Possible values include: 'C', 'P'
+     * 
+     * @param {number} parameters.sku.capacity What size of redis cache to deploy.
+     * Valid values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+     * 
      * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
@@ -79,8 +75,176 @@ export interface Redis {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.RedisCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisResourceWithAccessKey>): void;
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.RedisCreateOrUpdateParameters, callback: ServiceCallback<models.RedisResourceWithAccessKey>): void;
+    create(resourceGroupName: string, name: string, parameters: models.RedisCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisResource>): void;
+    create(resourceGroupName: string, name: string, parameters: models.RedisCreateParameters, callback: ServiceCallback<models.RedisResource>): void;
+
+    /**
+     * Create or replace (overwrite/recreate, with potential downtime) an existing
+     * redis cache
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the redis cache.
+     * 
+     * @param {object} parameters Parameters supplied to the Create redis
+     * operation.
+     * 
+     * @param {object} [parameters.redisConfiguration] All Redis Settings. Few
+     * possible keys:
+     * rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
+     * etc.
+     * 
+     * @param {boolean} [parameters.enableNonSslPort] If the value is true, then
+     * the non-ssl redis server port (6379) will be enabled.
+     * 
+     * @param {object} [parameters.tenantSettings] tenantSettings
+     * 
+     * @param {number} [parameters.shardCount] The number of shards to be created
+     * on a Premium Cluster Cache.
+     * 
+     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
+     * virtual network to deploy the redis cache in. Example format:
+     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+     * 
+     * @param {string} [parameters.staticIP] Required when deploying a redis cache
+     * inside an existing Azure Virtual Network.
+     * 
+     * @param {object} parameters.sku What sku of redis cache to deploy.
+     * 
+     * @param {string} parameters.sku.name What type of redis cache to deploy.
+     * Valid values: (Basic, Standard, Premium). Possible values include:
+     * 'Basic', 'Standard', 'Premium'
+     * 
+     * @param {string} parameters.sku.family Which family to use. Valid values:
+     * (C, P). Possible values include: 'C', 'P'
+     * 
+     * @param {number} parameters.sku.capacity What size of redis cache to deploy.
+     * Valid values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreate(resourceGroupName: string, name: string, parameters: models.RedisCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisResource>): void;
+    beginCreate(resourceGroupName: string, name: string, parameters: models.RedisCreateParameters, callback: ServiceCallback<models.RedisResource>): void;
+
+    /**
+     * Update an existing Redis cache
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the redis cache.
+     * 
+     * @param {object} parameters Parameters supplied to the Update redis
+     * operation.
+     * 
+     * @param {object} [parameters.redisConfiguration] All Redis Settings. Few
+     * possible keys:
+     * rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
+     * etc.
+     * 
+     * @param {boolean} [parameters.enableNonSslPort] If the value is true, then
+     * the non-ssl redis server port (6379) will be enabled.
+     * 
+     * @param {object} [parameters.tenantSettings] tenantSettings
+     * 
+     * @param {number} [parameters.shardCount] The number of shards to be created
+     * on a Premium Cluster Cache.
+     * 
+     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
+     * virtual network to deploy the redis cache in. Example format:
+     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+     * 
+     * @param {string} [parameters.staticIP] Required when deploying a redis cache
+     * inside an existing Azure Virtual Network.
+     * 
+     * @param {object} [parameters.sku] What sku of redis cache to deploy.
+     * 
+     * @param {string} parameters.sku.name What type of redis cache to deploy.
+     * Valid values: (Basic, Standard, Premium). Possible values include:
+     * 'Basic', 'Standard', 'Premium'
+     * 
+     * @param {string} parameters.sku.family Which family to use. Valid values:
+     * (C, P). Possible values include: 'C', 'P'
+     * 
+     * @param {number} parameters.sku.capacity What size of redis cache to deploy.
+     * Valid values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    update(resourceGroupName: string, name: string, parameters: models.RedisUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisResource>): void;
+    update(resourceGroupName: string, name: string, parameters: models.RedisUpdateParameters, callback: ServiceCallback<models.RedisResource>): void;
+
+    /**
+     * Update an existing Redis cache
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the redis cache.
+     * 
+     * @param {object} parameters Parameters supplied to the Update redis
+     * operation.
+     * 
+     * @param {object} [parameters.redisConfiguration] All Redis Settings. Few
+     * possible keys:
+     * rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
+     * etc.
+     * 
+     * @param {boolean} [parameters.enableNonSslPort] If the value is true, then
+     * the non-ssl redis server port (6379) will be enabled.
+     * 
+     * @param {object} [parameters.tenantSettings] tenantSettings
+     * 
+     * @param {number} [parameters.shardCount] The number of shards to be created
+     * on a Premium Cluster Cache.
+     * 
+     * @param {string} [parameters.subnetId] The full resource ID of a subnet in a
+     * virtual network to deploy the redis cache in. Example format:
+     * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+     * 
+     * @param {string} [parameters.staticIP] Required when deploying a redis cache
+     * inside an existing Azure Virtual Network.
+     * 
+     * @param {object} [parameters.sku] What sku of redis cache to deploy.
+     * 
+     * @param {string} parameters.sku.name What type of redis cache to deploy.
+     * Valid values: (Basic, Standard, Premium). Possible values include:
+     * 'Basic', 'Standard', 'Premium'
+     * 
+     * @param {string} parameters.sku.family Which family to use. Valid values:
+     * (C, P). Possible values include: 'C', 'P'
+     * 
+     * @param {number} parameters.sku.capacity What size of redis cache to deploy.
+     * Valid values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginUpdate(resourceGroupName: string, name: string, parameters: models.RedisUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisResource>): void;
+    beginUpdate(resourceGroupName: string, name: string, parameters: models.RedisUpdateParameters, callback: ServiceCallback<models.RedisResource>): void;
 
     /**
      * Deletes a redis cache. This operation takes a while to complete.
@@ -99,6 +263,24 @@ export interface Redis {
      */
     deleteMethod(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Deletes a redis cache. This operation takes a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the redis cache.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets a redis cache (resource description).
@@ -164,8 +346,8 @@ export interface Redis {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listKeys(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListKeysResult>): void;
-    listKeys(resourceGroupName: string, name: string, callback: ServiceCallback<models.RedisListKeysResult>): void;
+    listKeys(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisAccessKeys>): void;
+    listKeys(resourceGroupName: string, name: string, callback: ServiceCallback<models.RedisAccessKeys>): void;
 
     /**
      * Regenerate redis cache's access keys. This operation requires write
@@ -186,8 +368,8 @@ export interface Redis {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    regenerateKey(resourceGroupName: string, name: string, keyType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisListKeysResult>): void;
-    regenerateKey(resourceGroupName: string, name: string, keyType: string, callback: ServiceCallback<models.RedisListKeysResult>): void;
+    regenerateKey(resourceGroupName: string, name: string, keyType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisAccessKeys>): void;
+    regenerateKey(resourceGroupName: string, name: string, keyType: string, callback: ServiceCallback<models.RedisAccessKeys>): void;
 
     /**
      * Reboot specified redis node(s). This operation requires write permission to
@@ -238,8 +420,8 @@ export interface Redis {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    importMethod(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    importMethod(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, callback: ServiceCallback<void>): void;
+    importData(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    importData(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Import data into redis cache.
@@ -262,8 +444,8 @@ export interface Redis {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginImportMethod(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginImportMethod(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, callback: ServiceCallback<void>): void;
+    beginImportData(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginImportData(resourceGroupName: string, name: string, parameters: models.ImportRDBParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Import data into redis cache.
@@ -276,7 +458,7 @@ export interface Redis {
      * 
      * @param {string} [parameters.format] File format.
      * 
-     * @param {string} parameters.prefix Prifix to use for exported files.
+     * @param {string} parameters.prefix Prefix to use for exported files.
      * 
      * @param {string} parameters.container Container name to export to.
      * 
@@ -288,8 +470,8 @@ export interface Redis {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    exportMethod(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    exportMethod(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, callback: ServiceCallback<void>): void;
+    exportData(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    exportData(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Import data into redis cache.
@@ -302,7 +484,7 @@ export interface Redis {
      * 
      * @param {string} [parameters.format] File format.
      * 
-     * @param {string} parameters.prefix Prifix to use for exported files.
+     * @param {string} parameters.prefix Prefix to use for exported files.
      * 
      * @param {string} parameters.container Container name to export to.
      * 
@@ -314,8 +496,8 @@ export interface Redis {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginExportMethod(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginExportMethod(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, callback: ServiceCallback<void>): void;
+    beginExportData(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginExportData(resourceGroupName: string, name: string, parameters: models.ExportRDBParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Gets all redis caches in a resource group.
@@ -367,7 +549,11 @@ export interface PatchSchedules {
      * 
      * @param {string} name The name of the redis cache.
      * 
-     * @param {array} scheduleEntries List of patch schedules for redis cache.
+     * @param {object} parameters Parameters to set patch schedules for redis
+     * cache.
+     * 
+     * @param {array} parameters.scheduleEntries List of patch schedules for redis
+     * cache.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -377,8 +563,8 @@ export interface PatchSchedules {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, name: string, scheduleEntries: models.ScheduleEntry[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisPatchSchedulesResponse>): void;
-    createOrUpdate(resourceGroupName: string, name: string, scheduleEntries: models.ScheduleEntry[], callback: ServiceCallback<models.RedisPatchSchedulesResponse>): void;
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.RedisPatchSchedule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisPatchSchedule>): void;
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.RedisPatchSchedule, callback: ServiceCallback<models.RedisPatchSchedule>): void;
 
     /**
      * Deletes the patching schedule for redis cache.
@@ -413,6 +599,6 @@ export interface PatchSchedules {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisPatchSchedulesResponse>): void;
-    get(resourceGroupName: string, name: string, callback: ServiceCallback<models.RedisPatchSchedulesResponse>): void;
+    get(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RedisPatchSchedule>): void;
+    get(resourceGroupName: string, name: string, callback: ServiceCallback<models.RedisPatchSchedule>): void;
 }
