@@ -6,7 +6,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Agarwal, Shubham <shuagarw@microsoft.com>"
   ],
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Microsoft Azure Client Library in node for graph api",
   "tags": [
     "azure",
