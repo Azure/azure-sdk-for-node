@@ -92,7 +92,7 @@ var mappings = {
   },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2016-06-01/swagger/network.json',
+    'source': 'arm-network/2016-09-01/swagger/network.json',
     'ft': 1
   },
   'notificationHubs':{
@@ -158,7 +158,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160912';
+var defaultAutoRestVersion = '0.17.0-Nightly20160918';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

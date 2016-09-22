@@ -113,6 +113,50 @@ export interface NodeList {
 
 /**
  * @class
+ * Initializes a new instance of the NodeHealthReport class.
+ * @constructor
+ * The report of the node health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface NodeHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DisableNode class.
+ * @constructor
+ * The node
+ * @member {string} [deactivationIntent] Possible values include: 'Pause',
+ * 'Restart', 'RemoveData', 'RemoveNode'
+ * 
+ */
+export interface DisableNode {
+    deactivationIntent?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the HealthEvent class.
  * @constructor
  * The event of the health
@@ -590,6 +634,30 @@ export interface UpgradeDomainDeltaNodesCheckHealthEvaluation extends HealthEval
 
 /**
  * @class
+ * Initializes a new instance of the RegisterApplicationType class.
+ * @constructor
+ * The type of the register application
+ * @member {string} [applicationTypeBuildPath]
+ * 
+ */
+export interface RegisterApplicationType {
+    applicationTypeBuildPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UnregisterApplicationType class.
+ * @constructor
+ * The type of the unregister application
+ * @member {string} [applicationTypeVersion]
+ * 
+ */
+export interface UnregisterApplicationType {
+    applicationTypeVersion?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationTypeHealthEvaluation class.
  * @constructor
  * The evaluation of the application type health
@@ -656,6 +724,37 @@ export interface DeployedApplication {
     workDirectory?: string;
     logDirectory?: string;
     tempDirectory?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeployedApplicationHealthReport class.
+ * @constructor
+ * The report of the deployed application health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface DeployedApplicationHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -1226,6 +1325,37 @@ export interface DeployedServiceType {
 
 /**
  * @class
+ * Initializes a new instance of the DeployedServiceHealthReport class.
+ * @constructor
+ * The report of the deployed service package health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface DeployedServiceHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationType class.
  * @constructor
  * The type of the application
@@ -1431,6 +1561,37 @@ export interface ApplicationManifest {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationHealthReport class.
+ * @constructor
+ * The report of the application health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface ApplicationHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Service class.
  * @constructor
  * The service
@@ -1481,6 +1642,37 @@ export interface Service {
 export interface ServiceList {
     continuationToken?: string;
     items?: Service[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceHealthReport class.
+ * @constructor
+ * The report of the service health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface ServiceHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2104,6 +2296,21 @@ export interface StatefulServiceDescription extends ServiceDescription {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceDescriptionTemplate class.
+ * @constructor
+ * The template of the service description
+ * @member {string} [serviceName]
+ * 
+ * @member {string} [serviceTypeName]
+ * 
+ */
+export interface ServiceDescriptionTemplate {
+    serviceName?: string;
+    serviceTypeName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CreateServiceDescription class.
  * @constructor
  * The description of the create service
@@ -2465,6 +2672,37 @@ export interface PartitionList {
 
 /**
  * @class
+ * Initializes a new instance of the PartitionHealthReport class.
+ * @constructor
+ * The report of the partition health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface PartitionHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Replica class.
  * @constructor
  * The replica
@@ -2516,6 +2754,37 @@ export interface Replica {
 export interface ReplicaList {
     continuationToken?: string;
     items?: Replica[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicaHealthReport class.
+ * @constructor
+ * The report of the replica health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface ReplicaHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -2716,6 +2985,37 @@ export interface LoadMetricInformationMinNodeLoadId {
  */
 export interface LoadMetricInformationMaxNodeLoadId {
     id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterHealthReport class.
+ * @constructor
+ * The report of the cluster health
+ * @member {string} [sourceId]
+ * 
+ * @member {string} [property]
+ * 
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ * 
+ * @member {string} [description]
+ * 
+ * @member {string} [timeToLiveInMilliSeconds]
+ * 
+ * @member {string} [sequenceNumber]
+ * 
+ * @member {boolean} [removeWhenExpired]
+ * 
+ */
+export interface ClusterHealthReport {
+    sourceId?: string;
+    property?: string;
+    healthState?: string;
+    description?: string;
+    timeToLiveInMilliSeconds?: string;
+    sequenceNumber?: string;
+    removeWhenExpired?: boolean;
 }
 
 /**
@@ -3046,6 +3346,18 @@ export interface UpdateApplicationUpgradeDescriptionUpdateDescription {
 
 /**
  * @class
+ * Initializes a new instance of the ResumeApplicationUpgrade class.
+ * @constructor
+ * The upgrade of the resume application
+ * @member {string} [upgradeDomainName]
+ * 
+ */
+export interface ResumeApplicationUpgrade {
+    upgradeDomainName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResolvedServicePartition class.
  * @constructor
  * The partition of the resolved service
@@ -3216,303 +3528,4 @@ export interface ErrorModel {
 export interface ErrorModelError {
     code?: string;
     message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClusterHealthReport class.
- * @constructor
- * The report of the cluster health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface ClusterHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the NodeHealthReport class.
- * @constructor
- * The report of the node health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface NodeHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeployedApplicationHealthReport class.
- * @constructor
- * The report of the deployed application health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface DeployedApplicationHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the DeployedServicePackageHealthReport class.
- * @constructor
- * The report of the deployed service package health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface DeployedServicePackageHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the RegisterApplicationType class.
- * @constructor
- * The type of the register application
- * @member {string} [applicationTypeBuildPath]
- * 
- */
-export interface RegisterApplicationType {
-    applicationTypeBuildPath?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UnregisterApplicationType class.
- * @constructor
- * The type of the unregister application
- * @member {string} [applicationTypeVersion]
- * 
- */
-export interface UnregisterApplicationType {
-    applicationTypeVersion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplicationHealthReport class.
- * @constructor
- * The report of the application health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface ApplicationHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceDescriptionTemplate class.
- * @constructor
- * The template of the service description
- * @member {string} [serviceName]
- * 
- * @member {string} [serviceTypeName]
- * 
- */
-export interface ServiceDescriptionTemplate {
-    serviceName?: string;
-    serviceTypeName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResumeApplicationUpgrade class.
- * @constructor
- * The upgrade of the resume application
- * @member {string} [upgradeDomainName]
- * 
- */
-export interface ResumeApplicationUpgrade {
-    upgradeDomainName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceHealthReport class.
- * @constructor
- * The report of the service health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface ServiceHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the PartitionHealthReport class.
- * @constructor
- * The report of the partition health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface PartitionHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReplicaHealthReport class.
- * @constructor
- * The report of the replica health
- * @member {string} [sourceId]
- * 
- * @member {string} [property]
- * 
- * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
- * 'Warning', 'Error', 'Unknown'
- * 
- * @member {string} [description]
- * 
- * @member {string} [timeToLiveInMilliSeconds]
- * 
- * @member {string} [sequenceNumber]
- * 
- * @member {boolean} [removeWhenExpired]
- * 
- */
-export interface ReplicaHealthReport {
-    sourceId?: string;
-    property?: string;
-    healthState?: string;
-    description?: string;
-    timeToLiveInMilliSeconds?: string;
-    sequenceNumber?: string;
-    removeWhenExpired?: boolean;
 }
