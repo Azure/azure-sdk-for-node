@@ -43,7 +43,7 @@ npm install azure-arm-iothub
     name: resourceName
   };
 
-  client.iotHubResource.checkNameAvailability(esourceName, operationInputs, function (err, result, request, response)
+  client.iotHubResource.checkNameAvailability(resourceName, operationInputs, function (err, result, request, response)
   {
     if (err)
     {
