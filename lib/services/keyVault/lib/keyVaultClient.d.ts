@@ -238,7 +238,8 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
-         * @param {number} [options.maxresults] Maximum number of results to return.
+         * @param {number} [options.maxresults] Maximum number of results to return in
+         * a page. If not specified the service will return up to 25 results.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -257,7 +258,8 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
-         * @param {number} [options.maxresults] Maximum number of results to return.
+         * @param {number} [options.maxresults] Maximum number of results to return in
+         * a page. If not specified the service will return up to 25 results.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -589,7 +591,8 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
-         * @param {number} [options.maxresults] Maximum number of secrets to return.
+         * @param {number} [options.maxresults] Maximum number of results to return in
+         * a page. If not specified the service will return up to 25 results.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -610,7 +613,8 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
-         * @param {number} [options.maxresults] Maximum number of results to return.
+         * @param {number} [options.maxresults] Maximum number of results to return in
+         * a page. If not specified the service will return up to 25 results.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -629,7 +633,8 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
-         * @param {number} [options.maxresults] Maximum number of results to return.
+         * @param {number} [options.maxresults] Maximum number of results to return in
+         * a page. If not specified the service will return up to 25 results.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -724,7 +729,8 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
-         * @param {number} [options.maxresults] Maximum number of results to return.
+         * @param {number} [options.maxresults] Maximum number of results to return in
+         * a page. If not specified the service will return up to 25 results.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -931,11 +937,15 @@ declare class KeyVaultClient {
          * @param {array} [options.certificatePolicy.lifetimeActions] Actions that
          * will be performed by Key Vault over the lifetime of a certificate.
          * 
-         * @param {object} [options.certificatePolicy.issuerReference] Reference to
+         * @param {object} [options.certificatePolicy.issuerParameters] Parameters for
          * the issuer of the X509 component of a certificate.
          * 
-         * @param {string} [options.certificatePolicy.issuerReference.name] Name of
+         * @param {string} [options.certificatePolicy.issuerParameters.name] Name of
          * the referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+         * 
+         * @param {string}
+         * [options.certificatePolicy.issuerParameters.certificateType] Type of
+         * certificate to be requested from the issuer provider.
          * 
          * @param {object} [options.certificatePolicy.attributes] The certificate
          * attributes.
@@ -1041,11 +1051,15 @@ declare class KeyVaultClient {
          * @param {array} [options.certificatePolicy.lifetimeActions] Actions that
          * will be performed by Key Vault over the lifetime of a certificate.
          * 
-         * @param {object} [options.certificatePolicy.issuerReference] Reference to
+         * @param {object} [options.certificatePolicy.issuerParameters] Parameters for
          * the issuer of the X509 component of a certificate.
          * 
-         * @param {string} [options.certificatePolicy.issuerReference.name] Name of
+         * @param {string} [options.certificatePolicy.issuerParameters.name] Name of
          * the referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+         * 
+         * @param {string}
+         * [options.certificatePolicy.issuerParameters.certificateType] Type of
+         * certificate to be requested from the issuer provider.
          * 
          * @param {object} [options.certificatePolicy.attributes] The certificate
          * attributes.
@@ -1083,7 +1097,8 @@ declare class KeyVaultClient {
          * 
          * @param {object} [options] Optional Parameters.
          * 
-         * @param {number} [options.maxresults] Maximum number of results to return.
+         * @param {number} [options.maxresults] Maximum number of results to return in
+         * a page. If not specified the service will return up to 25 results.
          * 
          * @param {object} [options.customHeaders] Headers that will be added to the
          * request
@@ -1181,11 +1196,14 @@ declare class KeyVaultClient {
          * @param {array} [certificatePolicy.lifetimeActions] Actions that will be
          * performed by Key Vault over the lifetime of a certificate.
          * 
-         * @param {object} [certificatePolicy.issuerReference] Reference to the issuer
-         * of the X509 component of a certificate.
+         * @param {object} [certificatePolicy.issuerParameters] Parameters for the
+         * issuer of the X509 component of a certificate.
          * 
-         * @param {string} [certificatePolicy.issuerReference.name] Name of the
+         * @param {string} [certificatePolicy.issuerParameters.name] Name of the
          * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+         * 
+         * @param {string} [certificatePolicy.issuerParameters.certificateType] Type
+         * of certificate to be requested from the issuer provider.
          * 
          * @param {object} [certificatePolicy.attributes] The certificate attributes.
          * 
@@ -1282,11 +1300,15 @@ declare class KeyVaultClient {
          * @param {array} [options.certificatePolicy.lifetimeActions] Actions that
          * will be performed by Key Vault over the lifetime of a certificate.
          * 
-         * @param {object} [options.certificatePolicy.issuerReference] Reference to
+         * @param {object} [options.certificatePolicy.issuerParameters] Parameters for
          * the issuer of the X509 component of a certificate.
          * 
-         * @param {string} [options.certificatePolicy.issuerReference.name] Name of
+         * @param {string} [options.certificatePolicy.issuerParameters.name] Name of
          * the referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+         * 
+         * @param {string}
+         * [options.certificatePolicy.issuerParameters.certificateType] Type of
+         * certificate to be requested from the issuer provider.
          * 
          * @param {object} [options.certificatePolicy.attributes] The certificate
          * attributes.
