@@ -367,11 +367,14 @@ export interface CertificateIssuerItem {
  * @member {array} [policy.lifetimeActions] Actions that will be performed by
  * Key Vault over the lifetime of a certificate.
  * 
- * @member {object} [policy.issuerReference] Reference to the issuer of the
+ * @member {object} [policy.issuerParameters] Parameters for the issuer of the
  * X509 component of a certificate.
  * 
- * @member {string} [policy.issuerReference.name] Name of the referenced
+ * @member {string} [policy.issuerParameters.name] Name of the referenced
  * issuer object or reserved names e.g. 'Self', 'Unknown'.
+ * 
+ * @member {string} [policy.issuerParameters.certificateType] Type of
+ * certificate to be requested from the issuer provider.
  * 
  * @member {object} [policy.attributes] The certificate attributes.
  * 
@@ -451,11 +454,14 @@ export interface CertificateBundle {
  * @member {array} [lifetimeActions] Actions that will be performed by Key
  * Vault over the lifetime of a certificate.
  * 
- * @member {object} [issuerReference] Reference to the issuer of the X509
+ * @member {object} [issuerParameters] Parameters for the issuer of the X509
  * component of a certificate.
  * 
- * @member {string} [issuerReference.name] Name of the referenced issuer
+ * @member {string} [issuerParameters.name] Name of the referenced issuer
  * object or reserved names e.g. 'Self', 'Unknown'.
+ * 
+ * @member {string} [issuerParameters.certificateType] Type of certificate to
+ * be requested from the issuer provider.
  * 
  * @member {object} [attributes] The certificate attributes.
  * 
@@ -466,7 +472,7 @@ export interface CertificatePolicy {
     secretProperties?: SecretProperties;
     x509CertificateProperties?: X509CertificateProperties;
     lifetimeActions?: LifetimeAction[];
-    issuerReference?: IssuerReference;
+    issuerParameters?: IssuerParameters;
     attributes?: CertificateAttributes;
 }
 
@@ -616,16 +622,20 @@ export interface Action {
 
 /**
  * @class
- * Initializes a new instance of the IssuerReference class.
+ * Initializes a new instance of the IssuerParameters class.
  * @constructor
- * Reference to the issuer of the X509 component of a certificate.
+ * Parameters for the issuer of the X509 component of a certificate.
  *
  * @member {string} [name] Name of the referenced issuer object or reserved
  * names e.g. 'Self', 'Unknown'.
  * 
+ * @member {string} [certificateType] Type of certificate to be requested from
+ * the issuer provider.
+ * 
  */
-export interface IssuerReference {
+export interface IssuerParameters {
     name?: string;
+    certificateType?: string;
 }
 
 /**
@@ -636,11 +646,14 @@ export interface IssuerReference {
  *
  * @member {string} [id] The certificate id
  * 
- * @member {object} [issuerReference] Reference to the issuer of the X509
+ * @member {object} [issuerParameters] Parameters for the issuer of the X509
  * component of a certificate.
  * 
- * @member {string} [issuerReference.name] Name of the referenced issuer
+ * @member {string} [issuerParameters.name] Name of the referenced issuer
  * object or reserved names e.g. 'Self', 'Unknown'.
+ * 
+ * @member {string} [issuerParameters.certificateType] Type of certificate to
+ * be requested from the issuer provider.
  * 
  * @member {buffer} [csr] The Certificate Signing Request (CSR) that is being
  * used in the certificate operation.
@@ -668,7 +681,7 @@ export interface IssuerReference {
  */
 export interface CertificateOperation {
     id?: string;
-    issuerReference?: IssuerReference;
+    issuerParameters?: IssuerParameters;
     csr?: Buffer;
     cancellationRequested?: boolean;
     status?: string;
@@ -1126,11 +1139,14 @@ export interface SecretUpdateParameters {
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * 
- * @member {object} [certificatePolicy.issuerReference] Reference to the
+ * @member {object} [certificatePolicy.issuerParameters] Parameters for the
  * issuer of the X509 component of a certificate.
  * 
- * @member {string} [certificatePolicy.issuerReference.name] Name of the
+ * @member {string} [certificatePolicy.issuerParameters.name] Name of the
  * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+ * 
+ * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
+ * of certificate to be requested from the issuer provider.
  * 
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * 
@@ -1220,11 +1236,14 @@ export interface CertificateCreateParameters {
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * 
- * @member {object} [certificatePolicy.issuerReference] Reference to the
+ * @member {object} [certificatePolicy.issuerParameters] Parameters for the
  * issuer of the X509 component of a certificate.
  * 
- * @member {string} [certificatePolicy.issuerReference.name] Name of the
+ * @member {string} [certificatePolicy.issuerParameters.name] Name of the
  * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+ * 
+ * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
+ * of certificate to be requested from the issuer provider.
  * 
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * 
@@ -1309,11 +1328,14 @@ export interface CertificateImportParameters {
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
  * 
- * @member {object} [certificatePolicy.issuerReference] Reference to the
+ * @member {object} [certificatePolicy.issuerParameters] Parameters for the
  * issuer of the X509 component of a certificate.
  * 
- * @member {string} [certificatePolicy.issuerReference.name] Name of the
+ * @member {string} [certificatePolicy.issuerParameters.name] Name of the
  * referenced issuer object or reserved names e.g. 'Self', 'Unknown'.
+ * 
+ * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
+ * of certificate to be requested from the issuer provider.
  * 
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
  * 

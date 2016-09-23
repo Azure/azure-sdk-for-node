@@ -169,7 +169,7 @@ describe('Key Vault certificates', function () {
         secretProperties: {
           contentType: 'application/x-pkcs12'
         },
-        issuerReference: {
+        issuerParameters: {
           name: 'Self'
         },
         x509CertificateProperties: {
@@ -586,7 +586,7 @@ describe('Key Vault certificates', function () {
         secretProperties: {
           contentType: 'application/x-pkcs12'
         },
-        issuerReference: {
+        issuerParameters: {
           name: 'Self'
         },
         x509CertificateProperties: {
@@ -748,7 +748,7 @@ describe('Key Vault certificates', function () {
           secretProperties: {
             contentType: 'application/x-pkcs12'
           },
-          issuerReference: {
+          issuerParameters: {
             name: 'Self'
           }
         };
@@ -788,7 +788,7 @@ describe('Key Vault certificates', function () {
         secretProperties: {
           contentType: 'application/x-pkcs12'
         },
-        issuerReference: {
+        issuerParameters: {
           name: 'Unknown'
         },
         x509CertificateProperties: {
