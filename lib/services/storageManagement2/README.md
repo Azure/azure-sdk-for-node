@@ -8,6 +8,9 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 ```bash
 npm install azure-arm-storage
 ```
+## A working sample
+A sample that can be cloned and is ready to used can be found over [here](https://github.com/Azure-Samples/storage-node-resource-provider-getting-started).
+
 ## How to Use
 
 ### Authentication, client creation and listing storageAccounts as an example
