@@ -1,11 +1,11 @@
 
-# Creating a ServicePrincipal for scripting scenarios
+# Creating a ServicePrincipal for scripting scenarios in 3 different ways
 One does not want to login interactively all the time. Azure provides service principal authentication as a secure way for silent login.
 
-## Via Portal
+## 1. via Portal
 [This article](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/) provides detailed steps on creating a service principal via portal.
 
-## Via XplatCLI in 3 simple steps
+## 2. via XplatCLI in 3 simple steps
 Pre-requisite:
 - Install the latest version of cli from the [latest github release](https://github.com/Azure/azure-xplat-cli/releases) or from [npm](https://npmjs.com/package/azure-cli).
 
@@ -79,6 +79,8 @@ info:    Added subscription TestSubscription
 +
 info:    login command OK
 ```
+## 3. via running a simple node.js script
+You can run a script to create an SP programmaticaly in node.js. Please see the link over [here](./ServicePrincipal) for more info.
 
 ## Using authentication in your node.js script
 
