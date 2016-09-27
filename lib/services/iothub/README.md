@@ -43,7 +43,7 @@ npm install azure-arm-iothub
     name: resourceName
   };
 
-  client.iotHubResource.checkNameAvailability(operationInputs, function (err, result, request, response)
+  client.iotHubResource.checkNameAvailability(resourceName, operationInputs, function (err, result, request, response)
   {
     if (err)
     {
@@ -73,6 +73,13 @@ npm install azure-arm-iothub
     properties:
     {
       enableFileUploadNotifications: false,
+	  ipFilterRules: [
+		 {
+			filterName: "ipfilterrule",
+			action: "accept",
+			ipMask: "0.0.0.0/0"
+		 }
+		],
       operationsMonitoringProperties:
       {
         events:
@@ -117,6 +124,13 @@ npm install azure-arm-iothub
     properties:
     {
       enableFileUploadNotifications: false,
+      ipFilterRules: [
+        {
+           filterName: "ipfilterrule2",
+           action: "reject",
+           ipMask: "192.168.0.0/10"
+        }
+      ],
       operationsMonitoringProperties:
       {
         events:

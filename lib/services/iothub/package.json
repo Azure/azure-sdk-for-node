@@ -4,7 +4,7 @@
   "contributors": [
 	"Roopesh Manda <rmanda@microsoft.com>"
   ],
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Microsoft Azure IoTHub Resource Provider Management Client Library for Node",
   "tags": [
     "azure",

@@ -33,11 +33,11 @@ export interface ClusterManifests {
 
 /**
  * @class
- * ClusterHealthReports
+ * ClusterHealths
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricClient.
  */
-export interface ClusterHealthReports {
+export interface ClusterHealths {
 
     /**
      * Report cluster healths
@@ -69,6 +69,29 @@ export interface ClusterHealthReports {
      */
     send(clusterHealthReport: models.ClusterHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
     send(clusterHealthReport: models.ClusterHealthReport, callback: ServiceCallback<string>): void;
+
+    /**
+     * Get cluster healths
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.eventsHealthStateFilter] The filter of the events
+     * health state
+     * 
+     * @param {string} [options.nodesHealthStateFilter] The filter of the nodes
+     * health state
+     * 
+     * @param {string} [options.applicationsHealthStateFilter] The filter of the
+     * applications health state
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(options: { eventsHealthStateFilter? : string, nodesHealthStateFilter? : string, applicationsHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterHealth>): void;
+    get(callback: ServiceCallback<models.ClusterHealth>): void;
 }
 
 /**
@@ -200,6 +223,39 @@ export interface NodeHealths {
      */
     get(nodeName: string, options: { eventsHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeHealth>): void;
     get(nodeName: string, callback: ServiceCallback<models.NodeHealth>): void;
+
+    /**
+     * Send node health
+     *
+     * @param {string} nodeName The name of the node
+     * 
+     * @param {object} nodeHealthReport The report of the node health
+     * 
+     * @param {string} [nodeHealthReport.sourceId]
+     * 
+     * @param {string} [nodeHealthReport.property]
+     * 
+     * @param {string} [nodeHealthReport.healthState] Possible values include:
+     * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+     * 
+     * @param {string} [nodeHealthReport.description]
+     * 
+     * @param {string} [nodeHealthReport.timeToLiveInMilliSeconds]
+     * 
+     * @param {string} [nodeHealthReport.sequenceNumber]
+     * 
+     * @param {boolean} [nodeHealthReport.removeWhenExpired]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    send(nodeName: string, nodeHealthReport: models.NodeHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    send(nodeName: string, nodeHealthReport: models.NodeHealthReport, callback: ServiceCallback<string>): void;
 }
 
 /**
@@ -276,6 +332,42 @@ export interface DeployedApplicationHealths {
      */
     get(nodeName: string, applicationName: string, options: { eventsHealthStateFilter? : string, deployedServicePackagesHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedApplicationHealth>): void;
     get(nodeName: string, applicationName: string, callback: ServiceCallback<models.DeployedApplicationHealth>): void;
+
+    /**
+     * Send deployed application health
+     *
+     * @param {string} nodeName The name of the node
+     * 
+     * @param {string} applicationName The name of the application
+     * 
+     * @param {object} deployedApplicationHealthReport The report of the deployed
+     * application health
+     * 
+     * @param {string} [deployedApplicationHealthReport.sourceId]
+     * 
+     * @param {string} [deployedApplicationHealthReport.property]
+     * 
+     * @param {string} [deployedApplicationHealthReport.healthState] Possible
+     * values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+     * 
+     * @param {string} [deployedApplicationHealthReport.description]
+     * 
+     * @param {string} [deployedApplicationHealthReport.timeToLiveInMilliSeconds]
+     * 
+     * @param {string} [deployedApplicationHealthReport.sequenceNumber]
+     * 
+     * @param {boolean} [deployedApplicationHealthReport.removeWhenExpired]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    send(nodeName: string, applicationName: string, deployedApplicationHealthReport: models.DeployedApplicationHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    send(nodeName: string, applicationName: string, deployedApplicationHealthReport: models.DeployedApplicationHealthReport, callback: ServiceCallback<string>): void;
 }
 
 /**
@@ -443,132 +535,9 @@ export interface DeployedServicePackageHealths {
      */
     get(nodeName: string, applicationName: string, servicePackageName: string, options: { eventsHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServicePackageHealth>): void;
     get(nodeName: string, applicationName: string, servicePackageName: string, callback: ServiceCallback<models.DeployedServicePackageHealth>): void;
-}
-
-/**
- * @class
- * DeployedServiceTypes
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
- */
-export interface DeployedServiceTypes {
 
     /**
-     * Get deployed service types
-     *
-     * @param {string} nodeName The name of the node
-     * 
-     * @param {string} applicationName The name of the application
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    get(nodeName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServiceType[]>): void;
-    get(nodeName: string, applicationName: string, callback: ServiceCallback<models.DeployedServiceType[]>): void;
-}
-
-/**
- * @class
- * NodeHealthReports
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
- */
-export interface NodeHealthReports {
-
-    /**
-     * Send node health reports
-     *
-     * @param {string} nodeName The name of the node
-     * 
-     * @param {object} nodeHealthReport The report of the node health
-     * 
-     * @param {string} [nodeHealthReport.sourceId]
-     * 
-     * @param {string} [nodeHealthReport.property]
-     * 
-     * @param {string} [nodeHealthReport.healthState] Possible values include:
-     * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
-     * 
-     * @param {string} [nodeHealthReport.description]
-     * 
-     * @param {string} [nodeHealthReport.timeToLiveInMilliSeconds]
-     * 
-     * @param {string} [nodeHealthReport.sequenceNumber]
-     * 
-     * @param {boolean} [nodeHealthReport.removeWhenExpired]
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    send(nodeName: string, nodeHealthReport: models.NodeHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-    send(nodeName: string, nodeHealthReport: models.NodeHealthReport, callback: ServiceCallback<string>): void;
-}
-
-/**
- * @class
- * DeployedApplicationHealthReports
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
- */
-export interface DeployedApplicationHealthReports {
-
-    /**
-     * Send deployed application health reports
-     *
-     * @param {string} nodeName The name of the node
-     * 
-     * @param {string} applicationName The name of the application
-     * 
-     * @param {object} deployedApplicationHealthReport The report of the deployed
-     * application health
-     * 
-     * @param {string} [deployedApplicationHealthReport.sourceId]
-     * 
-     * @param {string} [deployedApplicationHealthReport.property]
-     * 
-     * @param {string} [deployedApplicationHealthReport.healthState] Possible
-     * values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
-     * 
-     * @param {string} [deployedApplicationHealthReport.description]
-     * 
-     * @param {string} [deployedApplicationHealthReport.timeToLiveInMilliSeconds]
-     * 
-     * @param {string} [deployedApplicationHealthReport.sequenceNumber]
-     * 
-     * @param {boolean} [deployedApplicationHealthReport.removeWhenExpired]
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    send(nodeName: string, applicationName: string, deployedApplicationHealthReport: models.DeployedApplicationHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-    send(nodeName: string, applicationName: string, deployedApplicationHealthReport: models.DeployedApplicationHealthReport, callback: ServiceCallback<string>): void;
-}
-
-/**
- * @class
- * DeployedServicePackageHealthReports
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
- */
-export interface DeployedServicePackageHealthReports {
-
-    /**
-     * Send deployed service package health reports
+     * Send deployed service package health
      *
      * @param {string} nodeName The name of the node
      * 
@@ -605,6 +574,33 @@ export interface DeployedServicePackageHealthReports {
      */
     send(nodeName: string, applicationName: string, serviceManifestName: string, deployedServicePackageHealthReport: models.DeployedServiceHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
     send(nodeName: string, applicationName: string, serviceManifestName: string, deployedServicePackageHealthReport: models.DeployedServiceHealthReport, callback: ServiceCallback<string>): void;
+}
+
+/**
+ * @class
+ * DeployedServiceTypes
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricClient.
+ */
+export interface DeployedServiceTypes {
+
+    /**
+     * Get deployed service types
+     *
+     * @param {string} nodeName The name of the node
+     * 
+     * @param {string} applicationName The name of the application
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(nodeName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeployedServiceType[]>): void;
+    get(nodeName: string, applicationName: string, callback: ServiceCallback<models.DeployedServiceType[]>): void;
 }
 
 /**
@@ -1096,6 +1092,39 @@ export interface ApplicationHealths {
      */
     get(applicationName: string, options: { eventsHealthStateFilter? : string, deployedApplicationsHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationHealth>): void;
     get(applicationName: string, callback: ServiceCallback<models.ApplicationHealth>): void;
+
+    /**
+     * Send application health
+     *
+     * @param {string} applicationName The name of the application
+     * 
+     * @param {object} applicationHealthReport The report of the application health
+     * 
+     * @param {string} [applicationHealthReport.sourceId]
+     * 
+     * @param {string} [applicationHealthReport.property]
+     * 
+     * @param {string} [applicationHealthReport.healthState] Possible values
+     * include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
+     * 
+     * @param {string} [applicationHealthReport.description]
+     * 
+     * @param {string} [applicationHealthReport.timeToLiveInMilliSeconds]
+     * 
+     * @param {string} [applicationHealthReport.sequenceNumber]
+     * 
+     * @param {boolean} [applicationHealthReport.removeWhenExpired]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    send(applicationName: string, applicationHealthReport: models.ApplicationHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    send(applicationName: string, applicationHealthReport: models.ApplicationHealthReport, callback: ServiceCallback<string>): void;
 }
 
 /**
@@ -1212,7 +1241,7 @@ export interface ApplicationUpgrades {
      * 
      * @param {string} [updateApplicationUpgradeDescription.name]
      * 
-     * @param {number} [updateApplicationUpgradeDescription.upgradeKind]
+     * @param {string} [updateApplicationUpgradeDescription.upgradeKind]
      * 
      * @param {object} [updateApplicationUpgradeDescription.updateDescription] The
      * description of the update
@@ -1299,48 +1328,6 @@ export interface ApplicationUpgrades {
      */
     resume(applicationName: string, resumeApplicationUpgrade: models.ResumeApplicationUpgrade, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
     resume(applicationName: string, resumeApplicationUpgrade: models.ResumeApplicationUpgrade, callback: ServiceCallback<string>): void;
-}
-
-/**
- * @class
- * ApplicationHealthReports
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
- */
-export interface ApplicationHealthReports {
-
-    /**
-     * Send application health reports
-     *
-     * @param {string} applicationName The name of the application
-     * 
-     * @param {object} applicationHealthReport The report of the application health
-     * 
-     * @param {string} [applicationHealthReport.sourceId]
-     * 
-     * @param {string} [applicationHealthReport.property]
-     * 
-     * @param {string} [applicationHealthReport.healthState] Possible values
-     * include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
-     * 
-     * @param {string} [applicationHealthReport.description]
-     * 
-     * @param {string} [applicationHealthReport.timeToLiveInMilliSeconds]
-     * 
-     * @param {string} [applicationHealthReport.sequenceNumber]
-     * 
-     * @param {boolean} [applicationHealthReport.removeWhenExpired]
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    send(applicationName: string, applicationHealthReport: models.ApplicationHealthReport, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-    send(applicationName: string, applicationHealthReport: models.ApplicationHealthReport, callback: ServiceCallback<string>): void;
 }
 
 /**
@@ -1813,18 +1800,9 @@ export interface PartitionHealths {
      */
     get(partitionId: string, options: { eventsHealthStateFilter? : string, replicasHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PartitionHealth>): void;
     get(partitionId: string, callback: ServiceCallback<models.PartitionHealth>): void;
-}
-
-/**
- * @class
- * PartitionHealthReports
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
- */
-export interface PartitionHealthReports {
 
     /**
-     * Send partition health reports
+     * Send partition health
      *
      * @param {string} partitionId The id of the partition
      * 
@@ -1995,38 +1973,6 @@ export interface ClusterLoadInformations {
      */
     get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterLoadInformation>): void;
     get(callback: ServiceCallback<models.ClusterLoadInformation>): void;
-}
-
-/**
- * @class
- * ClusterHealths
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
- */
-export interface ClusterHealths {
-
-    /**
-     * Get cluster healths
-     *
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.eventsHealthStateFilter] The filter of the events
-     * health state
-     * 
-     * @param {string} [options.nodesHealthStateFilter] The filter of the nodes
-     * health state
-     * 
-     * @param {string} [options.applicationsHealthStateFilter] The filter of the
-     * applications health state
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    get(options: { eventsHealthStateFilter? : string, nodesHealthStateFilter? : string, applicationsHealthStateFilter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterHealth>): void;
-    get(callback: ServiceCallback<models.ClusterHealth>): void;
 }
 
 /**

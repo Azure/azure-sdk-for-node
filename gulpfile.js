@@ -122,7 +122,7 @@ var mappings = {
   },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2016-07-01/swagger/resources.json'
+    'source': 'arm-resources/resources/2016-09-01/swagger/resources.json'
   },
   'resource.subscription': {
     'dir': 'resourceManagement/lib/subscription',

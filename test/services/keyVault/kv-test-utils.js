@@ -258,7 +258,7 @@ exports.validateCertificateOperation = function (pendingCertificate, vault, cert
   should(identifier.name).be.exactly(certificateName);
   should.exist(pendingCertificate);
   should.exist(pendingCertificate.csr);
-  should(policy.issuerReference.name).be.exactly(pendingCertificate.issuerReference.name);
+  should(policy.issuerParameters.name).be.exactly(pendingCertificate.issuerParameters.name);
 };
 
 exports.validateCertificateBundle = function (bundle, vault, certificateName, policy) {
@@ -272,7 +272,7 @@ exports.validateCertificateBundle = function (bundle, vault, certificateName, po
   should.exist(bundle.cer);
   should.exist(bundle.attributes);
   should.exist(bundle.policy.id);
-  should.exist(bundle.policy.issuerReference);
+  should.exist(bundle.policy.issuerParameters);
   should.exist(bundle.policy.keyProperties);
   should.exist(bundle.policy.secretProperties);
   should.exist(bundle.policy.lifetimeActions);

@@ -11,6 +11,76 @@
 
 /**
  * @class
+ * Initializes a new instance of the CheckAvailabilityParameters class.
+ * @constructor
+ * Parameters supplied to the Check Name Availability for Namespace and
+ * NotificationHubs.
+ *
+ * @member {string} [id] Resource Id
+ * 
+ * @member {string} name Resource name
+ * 
+ * @member {string} [type] Resource type
+ * 
+ * @member {string} location Resource location
+ * 
+ * @member {object} [tags] Resource tags
+ * 
+ * @member {object} [sku] The sku of the created namespace
+ * 
+ * @member {string} [sku.name] Name of the notification hub sku. Possible
+ * values include: 'Free', 'Basic', 'Standard'
+ * 
+ * @member {string} [sku.tier] The tier of particular sku
+ * 
+ * @member {string} [sku.size] The Sku size
+ * 
+ * @member {string} [sku.family] The Sku Family
+ * 
+ * @member {number} [sku.capacity] The capacity of the resource
+ * 
+ * @member {boolean} [isAvailiable] True if the name is available and can be
+ * used to create new Namespace/NotificationHub. Otherwise false.
+ * 
+ */
+export interface CheckAvailabilityParameters {
+  id?: string;
+  name: string;
+  type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+  sku?: Sku;
+  isAvailiable?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * The Sku description for a namespace
+ *
+ * @member {string} name Name of the notification hub sku. Possible values
+ * include: 'Free', 'Basic', 'Standard'
+ * 
+ * @member {string} [tier] The tier of particular sku
+ * 
+ * @member {string} [size] The Sku size
+ * 
+ * @member {string} [family] The Sku Family
+ * 
+ * @member {number} [capacity] The capacity of the resource
+ * 
+ */
+export interface Sku {
+  name: string;
+  tier?: string;
+  size?: string;
+  family?: string;
+  capacity?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * @member {string} [id] Resource Id
@@ -23,6 +93,19 @@
  * 
  * @member {object} [tags] Resource tags
  * 
+ * @member {object} [sku] The sku of the created namespace
+ * 
+ * @member {string} [sku.name] Name of the notification hub sku. Possible
+ * values include: 'Free', 'Basic', 'Standard'
+ * 
+ * @member {string} [sku.tier] The tier of particular sku
+ * 
+ * @member {string} [sku.size] The Sku size
+ * 
+ * @member {string} [sku.family] The Sku Family
+ * 
+ * @member {number} [sku.capacity] The capacity of the resource
+ * 
  */
 export interface Resource extends BaseResource {
   id?: string;
@@ -30,21 +113,7 @@ export interface Resource extends BaseResource {
   type?: string;
   location: string;
   tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the CheckAvailabilityParameters class.
- * @constructor
- * Parameters supplied to the Check Name Availability for Namespace and
- * NotificationHubs.
- *
- * @member {boolean} [isAvailiable] True if the name is available and can be
- * used to create new Namespace/NotificationHub. Otherwise false.
- * 
- */
-export interface CheckAvailabilityParameters extends Resource {
-  isAvailiable?: boolean;
+  sku?: Sku;
 }
 
 /**
@@ -113,6 +182,33 @@ export interface NamespaceCreateOrUpdateParameters extends Resource {
   enabled?: boolean;
   critical?: boolean;
   namespaceType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NamespacePatchParameters class.
+ * @constructor
+ * Parameters supplied to the Patch Namespace operation.
+ *
+ * @member {object} [tags] Resource tags
+ * 
+ * @member {object} [sku] The sku of the created namespace
+ * 
+ * @member {string} [sku.name] Name of the notification hub sku. Possible
+ * values include: 'Free', 'Basic', 'Standard'
+ * 
+ * @member {string} [sku.tier] The tier of particular sku
+ * 
+ * @member {string} [sku.size] The Sku size
+ * 
+ * @member {string} [sku.family] The Sku Family
+ * 
+ * @member {number} [sku.capacity] The capacity of the resource
+ * 
+ */
+export interface NamespacePatchParameters {
+  tags?: { [propertyName: string]: string };
+  sku?: Sku;
 }
 
 /**
