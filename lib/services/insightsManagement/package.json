@@ -1,5 +1,5 @@
 {
-  "name": "azure-insights",
+  "name": "azure-arm-insights",
   "author": "Microsoft Corporation",
   "contributors": [
     "Kamath, Prarthana <pkamath@microsoft.com>",
@@ -13,7 +13,7 @@
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
   "version": "0.14.0-preview",
-  "description": "Microsoft Azure Insights Client Library for node",
+  "description": "Microsoft Azure Insights Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -22,7 +22,7 @@
     "node",
     "azure"
   ],
-  "main": "./lib/insightsClient.js",
+  "main": "./lib/insightsManagementClient.js",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^1.15.0",
