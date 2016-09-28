@@ -72,7 +72,7 @@
     "azure-arm-website": "0.11.2",
     "azure-arm-datalake-analytics": "0.4.3",
     "azure-arm-datalake-store": "0.4.2",
-    "azure-arm-batch": "0.2.1",
+    "azure-arm-batch": "0.3.0",
     "azure-batch": "0.5.1",
     "azure-servicefabric": "0.1.0",
     "mime": "~1.2.4",
