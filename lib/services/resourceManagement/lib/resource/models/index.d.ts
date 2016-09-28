@@ -261,22 +261,6 @@ export interface AliasType {
 
 /**
  * @class
- * Initializes a new instance of the ZoneMappingType class.
- * @constructor
- * Zone mapping type.
- *
- * @member {string} [location] The location of this zone mapping.
- * 
- * @member {array} [zones] The zones in this zone mapping.
- * 
- */
-export interface ZoneMappingType {
-  location?: string;
-  zones?: string[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ProviderResourceType class.
  * @constructor
  * Resource type managed by the resource provider.
@@ -291,9 +275,6 @@ export interface ZoneMappingType {
  * 
  * @member {array} [apiVersions] The api version.
  * 
- * @member {array} [zoneMappings] The zone mappings supported by this resource
- * type.
- * 
  * @member {object} [properties] The properties.
  * 
  */
@@ -302,7 +283,6 @@ export interface ProviderResourceType {
   locations?: string[];
   aliases?: AliasType[];
   apiVersions?: string[];
-  zoneMappings?: ZoneMappingType[];
   properties?: { [propertyName: string]: string };
 }
 
@@ -744,9 +724,6 @@ export interface Identity {
  * supported Azure Locations, such as West US, East US, West Europe, East
  * Asia, etc.
  * 
- * @member {string} [managedBy] Id of the resource that manages this resource
- * group.
- * 
  * @member {object} [tags] The tags attached to the resource group.
  * 
  */
@@ -755,7 +732,6 @@ export interface ResourceGroup {
   name?: string;
   properties?: ResourceGroupProperties;
   location: string;
-  managedBy?: string;
   tags?: { [propertyName: string]: string };
 }
 
