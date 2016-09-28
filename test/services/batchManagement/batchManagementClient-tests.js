@@ -73,7 +73,7 @@ describe('Batch Management', function () {
   describe('operations', function () {
     
     it('should get subscription quota successfully', function (done) {
-      client.subscription.getSubscriptionQuotas(location, function (err, result, request, response) {
+      client.location.getQuotas(location, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.accountQuota.should.equal(1);
@@ -85,7 +85,7 @@ describe('Batch Management', function () {
       var resource = util.format('/subscriptions/%s/resourceGroups/%s/providers/Microsoft.Storage/storageAccounts/%s',
             suite.subscriptionId, groupName, autoStorage);
       var params = { location: location, autoStorage: { storageAccountId: resource } };
-      client.account.create(groupName, 'batchtestnodesdk', params, function (err, result, request, response) {
+      client.batchAccountOperations.create(groupName, 'batchtestnodesdk', params, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.location.should.equal(location);
@@ -98,7 +98,7 @@ describe('Batch Management', function () {
     it('should add application successfully', function (done) {
       var params = { allowUpdates: true, displayName: 'my_application_name' };
       var options = { parameters : params };
-      client.applicationOperations.addApplication(groupName, 'batchtestnodesdk', 'my_application_id', options, function (err, result, request, response) {
+      client.applicationOperations.create(groupName, 'batchtestnodesdk', 'my_application_id', options, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.id.should.equal('my_application_id');
@@ -108,7 +108,7 @@ describe('Batch Management', function () {
     });
     
     it('should get application successfully', function (done) {
-      client.applicationOperations.getApplication(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
+      client.applicationOperations.get(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.id.should.equal('my_application_id')
@@ -127,7 +127,7 @@ describe('Batch Management', function () {
     });
     
     it('should add application package successfully', function (done) {
-      client.applicationOperations.addApplicationPackage(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
+      client.applicationPackageOperations.create(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(201);
@@ -154,7 +154,7 @@ describe('Batch Management', function () {
     });
     
     it('should add second application package successfully', function (done) {
-      client.applicationOperations.addApplicationPackage(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', function (err, result, request, response) {
+      client.applicationPackageOperations.create(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         done();
@@ -162,7 +162,7 @@ describe('Batch Management', function () {
     });
     
     it('should activate application package successfully', function (done) {
-      client.applicationOperations.activateApplicationPackage(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', 'zip', function (err, result, request, response) {
+      client.applicationPackageOperations.activate(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', 'zip', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -170,7 +170,7 @@ describe('Batch Management', function () {
     });
     
     it('should fail to activate application package', function (done) {
-      client.applicationOperations.activateApplicationPackage(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', 'zip', function (err, result, request, response) {
+      client.applicationPackageOperations.activate(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', 'zip', function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         err.code.should.equal('ApplicationPackageBlobNotFound');
@@ -180,7 +180,7 @@ describe('Batch Management', function () {
     
     it('should fail to update application', function (done) {
       var params = { allowUpdates: false, displayName: 'my_updated_name', defaultVersion: 'v2.0' };
-      client.applicationOperations.updateApplication(groupName, 'batchtestnodesdk', 'my_application_id', params, function (err, result, request, response) {
+      client.applicationOperations.update(groupName, 'batchtestnodesdk', 'my_application_id', params, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         err.code.should.equal('RequestedDefaultVersionNotActive');
@@ -190,7 +190,7 @@ describe('Batch Management', function () {
     
     it('should update application successfully', function (done) {
       var params = { allowUpdates: false, displayName: 'my_updated_name', defaultVersion: 'v1.0' };
-      client.applicationOperations.updateApplication(groupName, 'batchtestnodesdk', 'my_application_id', params, function (err, result, request, response) {
+      client.applicationOperations.update(groupName, 'batchtestnodesdk', 'my_application_id', params, function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -198,7 +198,7 @@ describe('Batch Management', function () {
     });
     
     it('should get application package successfully', function (done) {
-      client.applicationOperations.getApplicationPackage(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
+      client.applicationPackageOperations.get(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         response.statusCode.should.equal(200);
@@ -207,7 +207,7 @@ describe('Batch Management', function () {
     });
     
     it('should delete application package successfully', function (done) {
-      client.applicationOperations.deleteApplicationPackage(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
+      client.applicationPackageOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', 'v1.0', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -215,7 +215,7 @@ describe('Batch Management', function () {
     });
     
     it('should fail to delete application', function (done) {
-      client.applicationOperations.deleteApplication(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
+      client.applicationOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
         should.exist(err);
         err.code.should.equal('ApplicationPackagesNotEmpty');
         err.response.statusCode.should.equal(409);
@@ -224,7 +224,7 @@ describe('Batch Management', function () {
     });
     
     it('should delete second application package successfully', function (done) {
-      client.applicationOperations.deleteApplicationPackage(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', function (err, result, request, response) {
+      client.applicationPackageOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', 'v2.0', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -232,7 +232,7 @@ describe('Batch Management', function () {
     });
     
     it('should delete application successfully', function (done) {
-      client.applicationOperations.deleteApplication(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
+      client.applicationOperations.deleteMethod(groupName, 'batchtestnodesdk', 'my_application_id', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -241,7 +241,7 @@ describe('Batch Management', function () {
     
     it('should fail to create a batch account due to dupilcate location', function (done) {
       var params = { location: 'japaneast' };
-      client.account.create(groupName, 'batchtestnodesdk2', params, function (err, result, request, response) {
+      client.batchAccountOperations.create(groupName, 'batchtestnodesdk2', params, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         //This fails after the initial create request - so error isn't surfaced.
@@ -251,7 +251,7 @@ describe('Batch Management', function () {
     
     it('should fail to create a batch account due to invalid resource group', function (done) {
       var params = { location: 'japaneast' };
-      client.account.create('does-not-exist', 'batchtestnodesdk', params, function (err, result, request, response) {
+      client.batchAccountOperations.create('does-not-exist', 'batchtestnodesdk', params, function (err, result, request, response) {
         should.exist(err);
         err.code.should.equal('ResourceGroupNotFound');
         err.response.statusCode.should.equal(404);
@@ -262,7 +262,7 @@ describe('Batch Management', function () {
     });
     
     it('should get a specific account info successfully', function (done) {
-      client.account.get(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.batchAccountOperations.get(groupName, 'batchtestnodesdk', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.name.should.equal('batchtestnodesdk');
@@ -273,7 +273,7 @@ describe('Batch Management', function () {
     });
     
     it('should list accounts successfully', function (done) {
-      client.account.list(function (err, result, request, response) {
+      client.batchAccountOperations.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
@@ -290,7 +290,7 @@ describe('Batch Management', function () {
     });
     
     it('should list accounts by resource group successfully', function (done) {
-      client.account.listByResourceGroup(groupName, function (err, result, request, response) {
+      client.batchAccountOperations.listByResourceGroup(groupName, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.length.should.be.above(0);
@@ -301,7 +301,7 @@ describe('Batch Management', function () {
     });
     
     it('should get account keys successfully', function (done) {
-      client.account.listKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.batchAccountOperations.getKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         should.exist(result.primary);
@@ -311,7 +311,7 @@ describe('Batch Management', function () {
     });
     
     it('should regenerate keys successfully', function (done) {
-      client.account.regenerateKey(groupName, 'batchtestnodesdk', 'Primary', function (err, result, request, response) {
+      client.batchAccountOperations.regenerateKey(groupName, 'batchtestnodesdk', 'Primary', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         should.exist(result.primary);
@@ -321,7 +321,7 @@ describe('Batch Management', function () {
     });
     
     it('should sync auto storage keys successfully', function (done) {
-      client.account.synchronizeAutoStorageKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.batchAccountOperations.synchronizeAutoStorageKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
         should.not.exist(err);
         response.statusCode.should.equal(204);
         done();
@@ -330,7 +330,7 @@ describe('Batch Management', function () {
     
     it('should update account successfully', function (done) {
       var tags = { tags: { Name: 'tagName', Value: 'tagValue' } };
-      client.account.update(groupName, 'batchtestnodesdk', tags, function (err, result, request, response) {
+      client.batchAccountOperations.update(groupName, 'batchtestnodesdk', tags, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.tags.name.should.equal('tagName');
@@ -340,7 +340,7 @@ describe('Batch Management', function () {
     });
     
     it('should delete a batch account successfully', function (done) {
-      client.account.deleteMethod(groupName, 'batchtestnodesdk', function (err, result, request, response) {
+      client.batchAccountOperations.deleteMethod(groupName, 'batchtestnodesdk', function (err, result, request, response) {
         //Pending change in behavior for raised error
         should.exist(err);
         done();
