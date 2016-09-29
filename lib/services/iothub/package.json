@@ -32,5 +32,6 @@
   },
   "scripts": {
     "test": "npm -s run-script jshint"
-  }
+  },
+  "typings": "./lib/iotHubClient.d.ts"
 }
