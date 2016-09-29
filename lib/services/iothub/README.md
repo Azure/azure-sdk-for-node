@@ -15,12 +15,12 @@ npm install azure-arm-iothub
  ```javascript
 
   var msRestAzure = require('ms-rest-azure');
-  var storageManagementClient = require('azure-arm-storage');
+  var IoTHubClient = require('azure-arm-iothub');
 
   // Interactive Login
   msRestAzure.interactiveLogin(function(err, credentials) 
 	{
-    var client = new storageManagementClient(credentials, 'your-subscription-id');
+    var client = new IoTHubClient(credentials, 'your-subscription-id');
     client.iotHubResource.listBySubscription(function (err, result, request, response)
     {
       if (err)
