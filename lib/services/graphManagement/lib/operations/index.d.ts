@@ -273,6 +273,22 @@ export interface Applications {
      */
     updatePasswordCredentials(applicationObjectId: string, value: models.PasswordCredential[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     updatePasswordCredentials(applicationObjectId: string, value: models.PasswordCredential[], callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets list of applications from the current tenant.
+     *
+     * @param {string} nextLink Next link for list operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationListResult>): void;
+    listNext(nextLink: string, callback: ServiceCallback<models.ApplicationListResult>): void;
 }
 
 /**
