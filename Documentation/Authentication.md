@@ -30,7 +30,7 @@ Let us create a serviceprincipal with a password. The default start-date will be
 > ###### NOTE: The AppId a.k.a the serviceprincipal name in **GUID** format that gets created in this command is also known as clientId. It is the id given by ADAL for itself to identify your application. You can use this as the clientId during user authentication (creating UserTokenCredentials object).
 
 ```
-D:\sdk>azure ad sp create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
+D:\sdk>azure ad sp create -n testap908 -p P@ssw0rd
 info:    Executing command ad sp create
 + Creating application testap674
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
@@ -38,7 +38,7 @@ data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
 data:    Display Name:            testap674
 data:    Service Principal Names:
 data:                             56894bd4-0fde-41d8-a0d7-5bsslccety2   <<<<<<<<<<<<<<<<<<<<< also known as clientId
-data:                             https://testap674.com/home
+data:                             https://testap908
 info:    ad sp create command OK
 ```
 
