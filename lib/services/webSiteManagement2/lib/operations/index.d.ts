@@ -4841,6 +4841,8 @@ export interface ServerFarms {
      * If False apps assigned to this App Service Plan will scale to
      * all instances of the plan
      * 
+     * @param {boolean} [serverFarmEnvelope.reserved] Reserved
+     * 
      * @param {object} [serverFarmEnvelope.sku]
      * 
      * @param {string} [serverFarmEnvelope.sku.name] Name of the resource sku
@@ -4922,6 +4924,8 @@ export interface ServerFarms {
      * to this App Service Plan can be scaled independently
      * If False apps assigned to this App Service Plan will scale to
      * all instances of the plan
+     * 
+     * @param {boolean} [serverFarmEnvelope.reserved] Reserved
      * 
      * @param {object} [serverFarmEnvelope.sku]
      * 
