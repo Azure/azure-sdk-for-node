@@ -1511,13 +1511,16 @@ export interface Global {
      * 
      * @param {string} [options.sku] Filter only to regions that support this sku
      * 
+     * @param {boolean} [options.linuxWorkersEnabled] Filter only to regions that
+     * support linux workers
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getSubscriptionGeoRegions(options: { sku? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
+    getSubscriptionGeoRegions(options: { sku? : string, linuxWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
     getSubscriptionGeoRegions(callback: ServiceCallback<models.GeoRegionCollection>): void;
 
     /**
@@ -4841,6 +4844,9 @@ export interface ServerFarms {
      * If False apps assigned to this App Service Plan will scale to
      * all instances of the plan
      * 
+     * @param {boolean} [serverFarmEnvelope.reserved] Enables creation of a Linux
+     * App Service Plan
+     * 
      * @param {object} [serverFarmEnvelope.sku]
      * 
      * @param {string} [serverFarmEnvelope.sku.name] Name of the resource sku
@@ -4922,6 +4928,9 @@ export interface ServerFarms {
      * to this App Service Plan can be scaled independently
      * If False apps assigned to this App Service Plan will scale to
      * all instances of the plan
+     * 
+     * @param {boolean} [serverFarmEnvelope.reserved] Enables creation of a Linux
+     * App Service Plan
      * 
      * @param {object} [serverFarmEnvelope.sku]
      * 
