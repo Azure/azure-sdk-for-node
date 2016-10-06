@@ -9,7 +9,7 @@ var duplexer = require('duplexer');
 var _ = require('underscore');
 var Constants = require('./constants');
 
-var HttpVerbs = Constants.HttpVerbs;
+var HttpVerbs = Constants.HttpConstants.HttpVerbs;
 
 //
 // Request pipelines are functions that allow you to
@@ -83,11 +83,11 @@ exports.createWithSink = function(sink) {
 exports.requestLibrarySink = function (requestOptions) {
 
   return function (options, callback) {
-    request = request.defaults(requestOptions);
+    var defaultRequest = request.defaults(requestOptions);
     var requestStream;
     var bodyStream;
     if (options.headersOnly) {
-      var requestHeaderStream = request(options);
+      var requestHeaderStream = defaultRequest(options);
       requestHeaderStream.on('error', function (err) {
         return callback(err);
       });
@@ -101,9 +101,9 @@ exports.requestLibrarySink = function (requestOptions) {
       if (options.body && typeof options.body.pipe === 'function') {
         bodyStream = options.body;
         options.body = null;
-        requestStream = bodyStream.pipe(request(options));
+        requestStream = bodyStream.pipe(defaultRequest(options));
       } else {
-        requestStream = request(options);
+        requestStream = defaultRequest(options);
       }
       requestStream.on('error', function (err) {
         return callback(err);
@@ -115,12 +115,12 @@ exports.requestLibrarySink = function (requestOptions) {
     } else if (options.body && typeof options.body.pipe === 'function') {
       bodyStream = options.body;
       options.body = null;
-      return bodyStream.pipe(request(options, function (err, response, body) {
+      return bodyStream.pipe(defaultRequest(options, function (err, response, body) {
         if (err) { return callback(err); }
         return callback(null, response, body);
       }));
     } else {
-      return request(options, function (err, response, body) {
+      return defaultRequest(options, function (err, response, body) {
         if (err) { return callback(err); }
         return callback(null, response, body);
       });
@@ -142,7 +142,7 @@ exports.requestLibrarySink = function (requestOptions) {
 exports.create = function (requestOptions) {
   return function () {
     if (arguments.length === 0) {
-      return exports.createWithSink(exports.requestLibrarySink);
+      return exports.createWithSink(exports.requestLibrarySink(requestOptions));
     }
     // User passed filters to add to the pipeline.
     // build up appropriate arguments and call exports.createWithSink
