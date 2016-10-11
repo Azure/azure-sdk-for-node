@@ -49,6 +49,8 @@ export interface SharedAccessSignatureAuthorizationRule {
  * 
  * @member {array} [ipFilterRules] The IP filter rules.
  * 
+ * @member {string} [provisioningState] The provisioning state.
+ * 
  * @member {string} [hostName] The name of the host.
  * 
  * @member {object} [eventHubEndpoints] The event hub endpoint properties.
@@ -97,6 +99,7 @@ export interface SharedAccessSignatureAuthorizationRule {
 export interface IotHubProperties {
   authorizationPolicies?: SharedAccessSignatureAuthorizationRule[];
   ipFilterRules?: IpFilterRule[];
+  provisioningState?: string;
   hostName?: string;
   eventHubEndpoints?: { [propertyName: string]: EventHubProperties };
   storageEndpoints?: { [propertyName: string]: StorageEndpointProperties };
@@ -374,6 +377,8 @@ export interface Resource extends BaseResource {
  * @member {array} [properties.authorizationPolicies] The authorization rules.
  * 
  * @member {array} [properties.ipFilterRules] The IP filter rules.
+ * 
+ * @member {string} [properties.provisioningState] The provisioning state.
  * 
  * @member {string} [properties.hostName] The name of the host.
  * 
