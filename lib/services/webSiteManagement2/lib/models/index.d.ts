@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -1019,6 +1022,8 @@ export interface ServerFarmWithRichSku extends Resource {
  * 
  * @member {string} [siteConfig.javaContainerVersion] Java container version
  * 
+ * @member {string} [siteConfig.appCommandLine] App Command Line to launch
+ * 
  * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
  * 
@@ -1341,6 +1346,8 @@ export interface HostNameSslState {
  * 
  * @member {string} [javaContainerVersion] Java container version
  * 
+ * @member {string} [appCommandLine] App Command Line to launch
+ * 
  * @member {string} [managedPipelineMode] Managed pipeline mode. Possible
  * values include: 'Integrated', 'Classic'
  * 
@@ -1465,6 +1472,7 @@ export interface SiteConfig extends Resource {
   javaVersion?: string;
   javaContainer?: string;
   javaContainerVersion?: string;
+  appCommandLine?: string;
   managedPipelineMode?: string;
   virtualApplications?: VirtualApplication[];
   loadBalancing?: string;
@@ -3796,6 +3804,8 @@ export interface CsmSiteRecoveryEntity {
  * @member {string} [siteConfig.javaContainer] Java container
  * 
  * @member {string} [siteConfig.javaContainerVersion] Java container version
+ * 
+ * @member {string} [siteConfig.appCommandLine] App Command Line to launch
  * 
  * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
