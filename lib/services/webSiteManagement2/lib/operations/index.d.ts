@@ -6370,6 +6370,9 @@ export interface Sites {
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
      * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
+     * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
      * 
@@ -6704,6 +6707,9 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
+     * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
      * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
@@ -7094,6 +7100,9 @@ export interface Sites {
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
      * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
+     * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
      * 
@@ -7431,6 +7440,9 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
+     * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
      * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
@@ -8804,6 +8816,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
      * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
+     * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'
      * 
@@ -8995,6 +9009,8 @@ export interface Sites {
      * @param {string} [siteConfig.javaContainer] Java container
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
+     * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
      * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'
@@ -9209,6 +9225,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
      * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
+     * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'
      * 
@@ -9403,6 +9421,8 @@ export interface Sites {
      * @param {string} [siteConfig.javaContainer] Java container
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
+     * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
      * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'
