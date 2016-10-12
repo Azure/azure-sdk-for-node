@@ -257,6 +257,25 @@ export interface Servers {
     suspend(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
 
     /**
+     * Supends the specified Analysis Services server instance
+     *
+     * @param {string} resourceGroupName Name of the Azure Resource group which a
+     * given Analysis Services server is part of.
+     * 
+     * @param {string} serverName Name of the Analysis Services server
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginSuspend(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginSuspend(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Resumes the specified Analysis Services server instance
      *
      * @param {string} resourceGroupName Name of the Azure Resource group which a
@@ -274,6 +293,25 @@ export interface Servers {
      */
     resume(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     resume(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Resumes the specified Analysis Services server instance
+     *
+     * @param {string} resourceGroupName Name of the Azure Resource group which a
+     * given Analysis Services server is part of.
+     * 
+     * @param {string} serverName Name of the Analysis Services server
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginResume(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginResume(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets all the Analysis Services servers for the given resource group
