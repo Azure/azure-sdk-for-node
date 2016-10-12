@@ -7,6 +7,10 @@ var path = require('path');
 var exec = require('child_process').exec;
 
 var mappings = {
+  'analysisservices': {
+    'dir': 'analysisServices/lib',
+    'source': 'arm-asazure/2016-05-16/swagger/asazure.json', 
+  },
   'authorization': {
     'dir': 'authorizationManagement/lib',
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 

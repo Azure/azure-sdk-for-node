@@ -1,0 +1,36 @@
+{
+  "name": "azure-arm-analyisservices",
+  "author": "Microsoft Corporation",
+  "contributors": [
+    "Thippur Jayakeerthy, Arunkumar <athipp@microsoft.com>"
+  ],
+  "version": "1.0.0",
+  "description": "Microsoft Azure Analysis Servies  Management Client Library for node",
+  "tags": [
+    "azure",
+    "sdk",
+    "asazure",
+    "analysis",
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/analysisServicesManagementClient.js",
+  "license": "MIT",
+  "dependencies": {
+    "ms-rest": "^1.14.2",
+    "ms-rest-azure": "^1.14.2"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
+  "scripts": {
+    "test": "npm -s run-script jshint"
+  }
+}
