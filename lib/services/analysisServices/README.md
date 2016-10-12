@@ -10,7 +10,7 @@ This project provides a Node.js package for accessing the Azure PAS. Right now i
 ## How to Install
 
 ```bash
-npm install azure-arm-analyisservices
+npm install azure-arm-analysisservices
 ```
 
 ## How to Use
@@ -19,7 +19,7 @@ npm install azure-arm-analyisservices
 
  ```javascript
  var msRestAzure = require('ms-rest-azure');
- var analysisServicesManagement = require("azure-arm-analyisservices");
+ var analysisServicesManagement = require("azure-arm-analysisservices");
 
  // Interactive Login
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 

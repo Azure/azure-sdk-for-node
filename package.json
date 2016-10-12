@@ -48,7 +48,7 @@
     "azure-asm-subscription": "0.10.2",
     "azure-asm-trafficmanager": "0.10.4",
     "azure-asm-website": "0.10.5",
-    "azure-arm-analyisservices": "1.0.0",
+    "azure-arm-analysisservices": "1.0.0",
     "azure-arm-authorization": "3.1.1",
     "azure-arm-cdn": "0.2.2",
     "azure-arm-commerce": "0.1.2",
