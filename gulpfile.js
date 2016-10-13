@@ -132,6 +132,10 @@ var mappings = {
     'dir': 'resourceManagement/lib/lock',
     'source': 'arm-resources/locks/2015-01-01/swagger/locks.json'
   },
+  'resource.link': {
+    'dir': 'resourceManagement/lib/link',
+    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
+  },
   'resource.feature': {
     'dir': 'resourceManagement/lib/feature',
     'source': 'arm-resources/features/2015-12-01/swagger/features.json'
