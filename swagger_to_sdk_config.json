@@ -50,23 +50,23 @@
       "output_dir": "lib/services/computeManagement2/lib"
     },
     "datalake.analytics.account": {
-      "swagger": "arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json",
+      "swagger": "arm-datalake-analytics/account/2016-11-01/swagger/account.json",
       "output_dir": "lib/services/dataLake.Analytics/lib/account"
     },
     "datalake.analytics.job": {
-      "swagger": "arm-datalake-analytics/job/2016-03-20-preview/swagger/job.json",
+      "swagger": "arm-datalake-analytics/job/2016-11-01/swagger/job.json",
       "output_dir": "lib/services/dataLake.Analytics/lib/job"
     },
     "datalake.analytics.catalog": {
-      "swagger": "arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json",
+      "swagger": "arm-datalake-analytics/catalog/2016-11-01/swagger/catalog.json",
       "output_dir": "lib/services/dataLake.Analytics/lib/catalog"
     },
     "datalake.store.account": {
-      "swagger": "arm-datalake-store/account/2015-10-01-preview/swagger/account.json",
+      "swagger": "arm-datalake-store/account/2016-11-01/swagger/account.json",
       "output_dir": "lib/services/dataLake.Store/lib/account"
     },
     "datalake.store.filesystem": {
-      "swagger": "arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json",
+      "swagger": "arm-datalake-store/filesystem/2016-11-01/swagger/filesystem.json",
       "output_dir": "lib/services/dataLake.Store/lib/filesystem"
     },
     "devtestlabs": {
