@@ -60,7 +60,7 @@ npm install azure-arm-analysisservices
     }
   };
 
-  client.servers.create(resourceGroupName, serverName, serverToCreate, options, callback) {
+  client.servers.create(resourceGroupName, serverName, serverToCreate, function (err, result) {
     if (err) {
       console.log(err);
       /*err has reference to the actual request and response, so you can see what was sent and received on the wire.
