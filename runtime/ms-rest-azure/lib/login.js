@@ -150,6 +150,9 @@ function _crossCheckUserNameWithToken(usernameFromMethodCall, userIdFromToken) {
  *
  * @param {object} [options.language] The language code specifying how the message should be localized to. Default value 'en-us'.
  *
+ * @param {object|function} [options.userCodeResponseLogger] A logger that logs the user code response message required for interactive login. When
+ * this option is specified the usercode response message will not be logged to console.
+ *
  * @param {function} callback
  *
  * @returns {function} callback(err, credentials, subscriptions)
@@ -190,6 +193,7 @@ exports.interactive = function interactive(options, callback) {
   this.clientId = options.clientId;
   this.tokenCache = options.tokenCache;
   this.language = options.language;
+  this.userCodeResponseLogger = options.userCodeResponseLogger;
   var authorityUrl = this.environment.activeDirectoryEndpointUrl + this.domain;
   this.context = new adal.AuthenticationContext(authorityUrl, this.environment.validateAuthority, this.tokenCache);
   var self = this;
@@ -199,7 +203,11 @@ exports.interactive = function interactive(options, callback) {
     function (callback) {
       self.context.acquireUserCode(self.environment.activeDirectoryResourceId, self.clientId, self.language, function (err, userCodeResponse) {
         if (err) return callback(err);
-        console.log(userCodeResponse.message);
+        if (self.userCodeResponseLogger) {
+          self.userCodeResponseLogger(userCodeResponse.message);
+        } else {
+          console.log(userCodeResponse.message);
+        }
         return callback(null, userCodeResponse);
       });
     },
