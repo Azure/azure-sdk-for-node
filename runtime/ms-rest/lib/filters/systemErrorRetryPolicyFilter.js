@@ -6,22 +6,16 @@ var utils = require('../utils');
 /**
  * Determines if the operation should be retried and how long to wait until the next retry.
  *
- * @param {number} statusCode The HTTP status code.
  * @param {object} retryData  The retry data.
  * @return {bool} True if the operation qualifies for a retry; false otherwise.
  */
-function shouldRetry(statusCode, retryData) {
-  if ((statusCode < 500 && statusCode !== 408) || statusCode === 501 || statusCode === 505) {
-    return false;
-  }
-  
+function shouldRetry(retryData) {
   var currentCount;
   if (!retryData) {
-    throw new Error('retryData for the ExponentialRetryPolicyFilter cannot be null.');
+    throw new Error('retryData for the SystemErrorRetryPolicyFilter cannot be null.');
   } else {
     currentCount = (retryData && retryData.retryCount);
   }
-
   return (currentCount < this.retryCount);
 }
 
@@ -81,8 +75,10 @@ function handle(requestOptions, next) {
         // Previous operation ended so update the retry data
         retryData = self.updateRetryData(retryData, returnObject.error);
 
-        if (!utils.objectIsNull(returnObject.response) && self.shouldRetry(returnObject.response.statusCode, retryData)) {
-
+        if (!utils.objectIsNull(returnObject.error) && self.shouldRetry(retryData, returnObject.error) &&
+             (returnObject.error.code === 'ETIMEDOUT' || returnObject.error.code === 'ESOCKETTIMEDOUT' ||
+              returnObject.error.code === 'ECONNREFUSED' || returnObject.error.code === 'ECONNRESET' ||
+              returnObject.error.code === 'ENOTFOUND')) {
           // If previous operation ended with an error and the policy allows a retry, do that
           setTimeout(function () {
             operation();
@@ -92,7 +88,6 @@ function handle(requestOptions, next) {
             // If the operation failed in the end, return all errors instead of just the last one
             returnObject.error = retryData.error;
           }
-
           if (nextPostCallback) {
             nextPostCallback(returnObject);
           } else if (finalCallback) {
@@ -107,7 +102,7 @@ function handle(requestOptions, next) {
 }
 
 /**
- * Creates a new 'ExponentialRetryPolicyFilter' instance.
+ * Creates a new 'SystemErrorRetryPolicyFilter' instance.
  *
  * @constructor
  * @param {number} retryCount        The client retry count.
@@ -115,14 +110,15 @@ function handle(requestOptions, next) {
  * @param {number} minRetryInterval  The minimum retry interval, in milliseconds.
  * @param {number} maxRetryInterval  The maximum retry interval, in milliseconds.
  */
-function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterval, maxRetryInterval) {
+function SystemErrorRetryPolicyFilter(retryCount, retryInterval, minRetryInterval, maxRetryInterval) {
   function newFilter(options, next, callback) {
     var retryData = null;
 
     function retryCallback(err, response, body) {
       retryData = newFilter.updateRetryData(retryData, err);
-      if (!utils.objectIsNull(response) && newFilter.shouldRetry(response.statusCode, retryData)) {
-
+      if (!utils.objectIsNull(err) && newFilter.shouldRetry(retryData, err) && 
+          (err.code === 'ETIMEDOUT' || err.code === 'ESOCKETTIMEDOUT' || err.code === 'ECONNREFUSED' || 
+           err.code === 'ECONNRESET' || err.code === 'ENOTFOUND')) {
         // If previous operation ended with an error and the policy allows a retry, do that
         setTimeout(function () {
           next(options, retryCallback);
@@ -135,14 +131,13 @@ function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
         callback(err, response, body);
       }
     }
-
     return next(options, retryCallback);
   }
   
-  newFilter.retryCount = isNaN(retryCount) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount;
-  newFilter.retryInterval =  isNaN(retryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
-  newFilter.minRetryInterval =  isNaN(minRetryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
-  newFilter.maxRetryInterval =  isNaN(maxRetryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
+  newFilter.retryCount = isNaN(retryCount) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount;
+  newFilter.retryInterval =  isNaN(retryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
+  newFilter.minRetryInterval =  isNaN(minRetryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
+  newFilter.maxRetryInterval =  isNaN(maxRetryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
   newFilter.handle = handle;
   newFilter.shouldRetry = shouldRetry;
   newFilter.updateRetryData = updateRetryData;
@@ -152,21 +147,21 @@ function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
 /**
  * Represents the default client retry interval, in milliseconds.
  */
-ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL = 1000 * 30;
+SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL = 1000 * 30;
 
 /**
  * Represents the default client retry count.
  */
-ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT = 3;
+SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT = 3;
 
 /**
  * Represents the default maximum retry interval, in milliseconds.
  */
-ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL = 1000 * 90;
+SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL = 1000 * 90;
 
 /**
  * Represents the default minimum retry interval, in milliseconds.
  */
-ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL = 1000 * 3;
+SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL = 1000 * 3;
 
-module.exports = ExponentialRetryPolicyFilter;
+module.exports = SystemErrorRetryPolicyFilter;

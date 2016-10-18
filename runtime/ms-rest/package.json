@@ -13,7 +13,6 @@
   "typings": "./lib/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "underscore": "^1.4.0",
     "tunnel": "~0.0.2",
     "request": "~2.74.0",
     "duplexer": "~0.1.1",

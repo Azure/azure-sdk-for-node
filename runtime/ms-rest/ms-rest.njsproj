@@ -23,6 +23,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Compile Include="lib\constants.js" />
+    <Compile Include="lib\filters\systemErrorRetryPolicyFilter.js" />
     <Compile Include="lib\httpOperationResponse.js" />
     <Compile Include="lib\msRest.js" />
     <Compile Include="lib\requestPipeline.js" />
