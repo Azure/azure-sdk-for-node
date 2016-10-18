@@ -1,26 +1,26 @@
 {
-  "name": "azure-arm-website",
+  "name": "azure-arm-analysisservices",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Wang, Yugang <yugangw@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>",
-    "Stempniewicz, Lukasz <lukaszs@microsoft.com>"
+    "Thippur Jayakeerthy, Arunkumar <athipp@microsoft.com>"
   ],
-  "version": "0.11.4",
-  "description": "Microsoft Azure WebSite Management Client Library for node",
+  "version": "1.0.0",
+  "description": "Microsoft Azure Analysis Servies  Management Client Library for node",
   "tags": [
     "azure",
-    "sdk"
+    "sdk",
+    "asazure",
+    "analysis"
   ],
   "keywords": [
     "node",
     "azure"
   ],
-  "main": "./lib/webSiteManagementClient.js",
+  "main": "./lib/analysisServicesManagementClient.js",
   "license": "MIT",
   "dependencies": {
-    "ms-rest": "^1.14.0",
-    "ms-rest-azure": "^1.14.0"
+    "ms-rest": "^1.14.2",
+    "ms-rest-azure": "^1.14.2"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
