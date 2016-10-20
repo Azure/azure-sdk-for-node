@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -403,8 +406,12 @@ export interface EventCategoryCollection extends Array<LocalizableString> {
  * @constructor
  * Represents collection of events.
  *
+ * @member {string} [nextLink] Provides the link to retrive the next set of
+ * events.
+ * 
  */
 export interface EventDataCollection extends Array<EventData> {
+  nextLink?: string;
 }
 
 /**
