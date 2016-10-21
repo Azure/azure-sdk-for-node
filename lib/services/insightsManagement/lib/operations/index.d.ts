@@ -280,7 +280,7 @@ export interface AlertRules {
      * @param {object} [parameters.condition] the condition that results in the
      * alert rule being activated.
      * 
-     * @param {string} parameters.condition.odatatype Polymorhpic Discriminator
+     * @param {string} parameters.condition.odata.type Polymorhpic Discriminator
      * 
      * @param {array} [parameters.actions] the actions that are performed when the
      * alert rule becomes active, and when an alert condition is resolved.
@@ -406,13 +406,13 @@ export interface LogProfiles {
      * 
      * @param {object} parameters Parameters supplied to the operation.
      * 
-     * @param {string} [parameters.storageAccountId] the resource id of the
-     * storage account.
+     * @param {string} parameters.storageAccountId the resource id of the storage
+     * account.
      * 
      * @param {string} [parameters.serviceBusRuleId] the resource id of the
      * service bus rule.
      * 
-     * @param {array} [parameters.locations] the comma separated list of valid ARM
+     * @param {array} parameters.locations the comma separated list of valid ARM
      * locations plus global. This are the locations where the logs are generated
      * from.
      * 

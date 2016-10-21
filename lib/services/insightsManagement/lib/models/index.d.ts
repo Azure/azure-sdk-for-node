@@ -8,9 +8,6 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -574,11 +571,11 @@ export interface Incident {
  * @constructor
  * The condition that results in the alert rule being activated.
  *
- * @member {string} odatatype Polymorhpic Discriminator
+ * @member {string} odata.type Polymorhpic Discriminator
  * 
  */
 export interface RuleCondition {
-  odatatype: string;
+  odata.type: string;
 }
 
 /**
@@ -587,11 +584,11 @@ export interface RuleCondition {
  * @constructor
  * The resource from which the rule collects its data.
  *
- * @member {string} odatatype Polymorhpic Discriminator
+ * @member {string} odata.type Polymorhpic Discriminator
  * 
  */
 export interface RuleDataSource {
-  odatatype: string;
+  odata.type: string;
 }
 
 /**
@@ -678,7 +675,7 @@ export interface RuleManagementEventDataSource extends RuleDataSource {
  * @member {object} [dataSource] the resource from which the rule collects its
  * data.
  * 
- * @member {string} [dataSource.odatatype] Polymorhpic Discriminator
+ * @member {string} [dataSource.odata.type] Polymorhpic Discriminator
  * 
  * @member {string} operator the operator used to compare the data and the
  * threshold. Possible values include: 'GreaterThan', 'GreaterThanOrEqual',
@@ -713,7 +710,7 @@ export interface ThresholdRuleCondition extends RuleCondition {
  * @member {object} [dataSource] the resource from which the rule collects its
  * data.
  * 
- * @member {string} [dataSource.odatatype] Polymorhpic Discriminator
+ * @member {string} [dataSource.odata.type] Polymorhpic Discriminator
  * 
  * @member {moment.duration} [windowSize] the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
@@ -760,7 +757,7 @@ export interface ManagementEventAggregationCondition {
  * @member {object} [dataSource] the resource from which the rule collects its
  * data.
  * 
- * @member {string} [dataSource.odatatype] Polymorhpic Discriminator
+ * @member {string} [dataSource.odata.type] Polymorhpic Discriminator
  * 
  * @member {object} [aggregation] the aggregation condition.
  * 
@@ -787,11 +784,11 @@ export interface ManagementEventRuleCondition extends RuleCondition {
  * The action that is performed when the alert rule becomes active, and when
  * an alert condition is resolved.
  *
- * @member {string} odatatype Polymorhpic Discriminator
+ * @member {string} odata.type Polymorhpic Discriminator
  * 
  */
 export interface RuleAction {
-  odatatype: string;
+  odata.type: string;
 }
 
 /**
@@ -848,7 +845,7 @@ export interface RuleWebhookAction extends RuleAction {
  * @member {object} [condition] the condition that results in the alert rule
  * being activated.
  * 
- * @member {string} [condition.odatatype] Polymorhpic Discriminator
+ * @member {string} [condition.odata.type] Polymorhpic Discriminator
  * 
  * @member {array} [actions] the actions that are performed when the alert
  * rule becomes active, and when an alert condition is resolved.
@@ -872,11 +869,11 @@ export interface AlertRuleResource extends Resource {
  * @constructor
  * The log profile resource.
  *
- * @member {string} [storageAccountId] the resource id of the storage account.
+ * @member {string} storageAccountId the resource id of the storage account.
  * 
  * @member {string} [serviceBusRuleId] the resource id of the service bus rule.
  * 
- * @member {array} [locations] the comma separated list of valid ARM locations
+ * @member {array} locations the comma separated list of valid ARM locations
  * plus global. This are the locations where the logs are generated from.
  * 
  * @member {array} [categories]  the categories of the logs. These categories
@@ -892,9 +889,9 @@ export interface AlertRuleResource extends Resource {
  * 
  */
 export interface LogProfileResource extends Resource {
-  storageAccountId?: string;
+  storageAccountId: string;
   serviceBusRuleId?: string;
-  locations?: string[];
+  locations: string[];
   categories?: string[];
   retentionPolicy?: RetentionPolicy;
 }
