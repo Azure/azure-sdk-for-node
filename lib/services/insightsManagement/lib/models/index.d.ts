@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -571,11 +574,11 @@ export interface Incident {
  * @constructor
  * The condition that results in the alert rule being activated.
  *
- * @member {string} odata.type Polymorhpic Discriminator
+ * @member {string} odatatype Polymorhpic Discriminator
  * 
  */
 export interface RuleCondition {
-  odata.type: string;
+  odatatype: string;
 }
 
 /**
@@ -584,11 +587,11 @@ export interface RuleCondition {
  * @constructor
  * The resource from which the rule collects its data.
  *
- * @member {string} odata.type Polymorhpic Discriminator
+ * @member {string} odatatype Polymorhpic Discriminator
  * 
  */
 export interface RuleDataSource {
-  odata.type: string;
+  odatatype: string;
 }
 
 /**
@@ -675,7 +678,7 @@ export interface RuleManagementEventDataSource extends RuleDataSource {
  * @member {object} [dataSource] the resource from which the rule collects its
  * data.
  * 
- * @member {string} [dataSource.odata.type] Polymorhpic Discriminator
+ * @member {string} [dataSource.odatatype] Polymorhpic Discriminator
  * 
  * @member {string} operator the operator used to compare the data and the
  * threshold. Possible values include: 'GreaterThan', 'GreaterThanOrEqual',
@@ -710,7 +713,7 @@ export interface ThresholdRuleCondition extends RuleCondition {
  * @member {object} [dataSource] the resource from which the rule collects its
  * data.
  * 
- * @member {string} [dataSource.odata.type] Polymorhpic Discriminator
+ * @member {string} [dataSource.odatatype] Polymorhpic Discriminator
  * 
  * @member {moment.duration} [windowSize] the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
@@ -757,7 +760,7 @@ export interface ManagementEventAggregationCondition {
  * @member {object} [dataSource] the resource from which the rule collects its
  * data.
  * 
- * @member {string} [dataSource.odata.type] Polymorhpic Discriminator
+ * @member {string} [dataSource.odatatype] Polymorhpic Discriminator
  * 
  * @member {object} [aggregation] the aggregation condition.
  * 
@@ -784,11 +787,11 @@ export interface ManagementEventRuleCondition extends RuleCondition {
  * The action that is performed when the alert rule becomes active, and when
  * an alert condition is resolved.
  *
- * @member {string} odata.type Polymorhpic Discriminator
+ * @member {string} odatatype Polymorhpic Discriminator
  * 
  */
 export interface RuleAction {
-  odata.type: string;
+  odatatype: string;
 }
 
 /**
@@ -845,7 +848,7 @@ export interface RuleWebhookAction extends RuleAction {
  * @member {object} [condition] the condition that results in the alert rule
  * being activated.
  * 
- * @member {string} [condition.odata.type] Polymorhpic Discriminator
+ * @member {string} [condition.odatatype] Polymorhpic Discriminator
  * 
  * @member {array} [actions] the actions that are performed when the alert
  * rule becomes active, and when an alert condition is resolved.

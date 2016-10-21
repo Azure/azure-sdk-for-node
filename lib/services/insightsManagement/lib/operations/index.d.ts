@@ -280,7 +280,7 @@ export interface AlertRules {
      * @param {object} [parameters.condition] the condition that results in the
      * alert rule being activated.
      * 
-     * @param {string} parameters.condition.odata.type Polymorhpic Discriminator
+     * @param {string} parameters.condition.odatatype Polymorhpic Discriminator
      * 
      * @param {array} [parameters.actions] the actions that are performed when the
      * alert rule becomes active, and when an alert condition is resolved.
