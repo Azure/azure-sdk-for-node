@@ -134,7 +134,7 @@ describe('exponentialretrypolicyfilter-unittests', function () {
 });
 
 describe('systemErrorRetrypolicyfilter-unittests', function () {
-  it('RetrySucceedsOn_ENOTFOUND_ErrorCode', function (done) {
+  it('DoesNotRetryOn_ENOTFOUND_ErrorCode', function (done) {
     var retryCount = 2;
     var retryInterval = 2;
     var minRetryInterval = 1;
@@ -155,14 +155,15 @@ describe('systemErrorRetrypolicyfilter-unittests', function () {
           timesCalled++;
           retryCallback(e, null, null);
         } else {
-          done();
+          throw 'Should not Retry on ENOTFOUND ErrorCode';
+          
         }
       };
     };
     
     var mockRetryPolicyFilter = new SystemErrorRetryPolicyFilter(retryCount, retryInterval, minRetryInterval, maxRetryInterval);
     mockRetryPolicyFilter(null, mockNextGenerator(), function (err, result, response, body) {
-      throw 'Retry does not succeed on ENOTFOUND ErrorCode';
+      done();
     });
   });
   

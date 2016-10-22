@@ -55,52 +55,6 @@ function updateRetryData (retryData, err) {
   return retryData;
 }
 
-
-/**
- * Handles an operation with an exponential retry policy.
- *
- * @param {Object}   requestOptions The original request options.
- * @param {function} next           The next filter to be handled.
- * @return {undefined}
- */
-function handle(requestOptions, next) {
-  var self = this;
-  var retryData = null;
-
-  var operation = function () {
-    // retry policies dont really do anything to the request options
-    // so move on to next
-    if (next) {
-      next(requestOptions, function (returnObject, finalCallback, nextPostCallback) {
-        // Previous operation ended so update the retry data
-        retryData = self.updateRetryData(retryData, returnObject.error);
-
-        if (!utils.objectIsNull(returnObject.error) && self.shouldRetry(retryData, returnObject.error) &&
-             (returnObject.error.code === 'ETIMEDOUT' || returnObject.error.code === 'ESOCKETTIMEDOUT' ||
-              returnObject.error.code === 'ECONNREFUSED' || returnObject.error.code === 'ECONNRESET' ||
-              returnObject.error.code === 'ENOTFOUND')) {
-          // If previous operation ended with an error and the policy allows a retry, do that
-          setTimeout(function () {
-            operation();
-          }, retryData.retryInterval);
-        } else {
-          if (!utils.objectIsNull(returnObject.error)) {
-            // If the operation failed in the end, return all errors instead of just the last one
-            returnObject.error = retryData.error;
-          }
-          if (nextPostCallback) {
-            nextPostCallback(returnObject);
-          } else if (finalCallback) {
-            finalCallback(returnObject);
-          }
-        }
-      });
-    }
-  };
-
-  operation();
-}
-
 /**
  * Creates a new 'SystemErrorRetryPolicyFilter' instance.
  *
@@ -118,7 +72,7 @@ function SystemErrorRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
       retryData = newFilter.updateRetryData(retryData, err);
       if (!utils.objectIsNull(err) && newFilter.shouldRetry(retryData, err) && 
           (err.code === 'ETIMEDOUT' || err.code === 'ESOCKETTIMEDOUT' || err.code === 'ECONNREFUSED' || 
-           err.code === 'ECONNRESET' || err.code === 'ENOTFOUND')) {
+           err.code === 'ECONNRESET')) {
         // If previous operation ended with an error and the policy allows a retry, do that
         setTimeout(function () {
           next(options, retryCallback);
@@ -138,7 +92,6 @@ function SystemErrorRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
   newFilter.retryInterval =  isNaN(retryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
   newFilter.minRetryInterval =  isNaN(minRetryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
   newFilter.maxRetryInterval =  isNaN(maxRetryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
-  newFilter.handle = handle;
   newFilter.shouldRetry = shouldRetry;
   newFilter.updateRetryData = updateRetryData;
   return newFilter;
