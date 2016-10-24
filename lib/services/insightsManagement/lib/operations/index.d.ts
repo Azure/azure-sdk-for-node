@@ -178,6 +178,12 @@ export interface ServiceDiagnosticSettings {
      * 
      * @param {string} [parameters.workspaceId] the OMS workspace Id.
      * 
+     * @param {string} [parameters.name] Azure resource name
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -186,8 +192,8 @@ export interface ServiceDiagnosticSettings {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceUri: string, parameters: models.ServiceDiagnosticSettingsCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceDiagnosticSettingsResource>): void;
-    createOrUpdate(resourceUri: string, parameters: models.ServiceDiagnosticSettingsCreateOrUpdateParameters, callback: ServiceCallback<models.ServiceDiagnosticSettingsResource>): void;
+    createOrUpdate(resourceUri: string, parameters: models.ServiceDiagnosticSettingsResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceDiagnosticSettingsResource>): void;
+    createOrUpdate(resourceUri: string, parameters: models.ServiceDiagnosticSettingsResource, callback: ServiceCallback<models.ServiceDiagnosticSettingsResource>): void;
 }
 
 /**
@@ -274,7 +280,7 @@ export interface AlertRules {
      * @param {object} [parameters.condition] the condition that results in the
      * alert rule being activated.
      * 
-     * @param {string} parameters.condition.odata.type Polymorhpic Discriminator
+     * @param {string} parameters.condition.odatatype Polymorhpic Discriminator
      * 
      * @param {array} [parameters.actions] the actions that are performed when the
      * alert rule becomes active, and when an alert condition is resolved.
@@ -400,15 +406,18 @@ export interface LogProfiles {
      * 
      * @param {object} parameters Parameters supplied to the operation.
      * 
-     * @param {string} [parameters.storageAccountId] the resource id of the
-     * storage account.
+     * @param {string} parameters.storageAccountId the resource id of the storage
+     * account.
      * 
      * @param {string} [parameters.serviceBusRuleId] the resource id of the
      * service bus rule.
      * 
-     * @param {array} [parameters.locations] the locations.
+     * @param {array} parameters.locations the comma separated list of valid ARM
+     * locations plus global. This are the locations where the logs are generated
+     * from.
      * 
-     * @param {array} [parameters.categories]  the categories.
+     * @param {array} [parameters.categories]  the categories of the logs. These
+     * categories are created as is convenient to the user.
      * 
      * @param {object} [parameters.retentionPolicy] the retention policy for this
      * log.
@@ -419,6 +428,12 @@ export interface LogProfiles {
      * @param {number} parameters.retentionPolicy.days the number of days for the
      * retention.
      * 
+     * @param {string} [parameters.name] Azure resource name
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -427,8 +442,8 @@ export interface LogProfiles {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(logProfileName: string, parameters: models.LogProfileCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogProfileResource>): void;
-    createOrUpdate(logProfileName: string, parameters: models.LogProfileCreateOrUpdateParameters, callback: ServiceCallback<models.LogProfileResource>): void;
+    createOrUpdate(logProfileName: string, parameters: models.LogProfileResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogProfileResource>): void;
+    createOrUpdate(logProfileName: string, parameters: models.LogProfileResource, callback: ServiceCallback<models.LogProfileResource>): void;
 
     /**
      * List the log profiles.
