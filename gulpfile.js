@@ -31,6 +31,10 @@ var mappings = {
     'source': 'arm-cdn/2016-04-02/swagger/cdn.json',
     'ft': 2
   },
+  'commerce': {
+    'dir': 'commerce/lib',
+    'source': 'arm-commerce/2015-06-01-preview/swagger/commerce.json'
+  },
   'compute': {
     'dir': 'computeManagement2/lib',
     'source': 'arm-compute/compositeComputeClient.json',
@@ -178,7 +182,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20161019';
+var defaultAutoRestVersion = '0.17.0-Nightly20161020';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
