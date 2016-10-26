@@ -4,7 +4,7 @@
   "contributors": [
     "Watanabe Garcia, Otniel <otnielw@microsoft.com>"
   ],
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Microsoft Intune Resource Management Client Library for node",
   "tags": [
     "azure",
@@ -15,9 +15,6 @@
     "azure"
   ],
   "main": "./lib/intuneResourceManagementClient.js",
-  "engines": {
-    "node": "^5.0.0"
-  },
   "license": "MIT",
   "dependencies": {
     "ms-rest-azure": "^1.14.0",
