@@ -61,10 +61,10 @@ export interface Servers {
      * @param {object} serverParameters.sku Sku of the Analysis Services resource
      * 
      * @param {string} serverParameters.sku.name Name of the Sku level for the
-     * server being provisioned. Possible values include: 'S1', 'S2', 'S4'
+     * server being provisioned. Possible values include: 'S1', 'S2', 'S4', 'D1'
      * 
-     * @param {string} serverParameters.sku.tier Name of the tier to which the Sku
-     * applies. Possible values include: 'Developer', 'Standard'
+     * @param {string} [serverParameters.sku.tier] Name of the tier to which the
+     * Sku applies. Possible values include: 'Development', 'Standard'
      * 
      * @param {object} [serverParameters.tags] Key value pairs of additional
      * properties that can ebe specified
@@ -102,10 +102,10 @@ export interface Servers {
      * @param {object} serverParameters.sku Sku of the Analysis Services resource
      * 
      * @param {string} serverParameters.sku.name Name of the Sku level for the
-     * server being provisioned. Possible values include: 'S1', 'S2', 'S4'
+     * server being provisioned. Possible values include: 'S1', 'S2', 'S4', 'D1'
      * 
-     * @param {string} serverParameters.sku.tier Name of the tier to which the Sku
-     * applies. Possible values include: 'Developer', 'Standard'
+     * @param {string} [serverParameters.sku.tier] Name of the tier to which the
+     * Sku applies. Possible values include: 'Development', 'Standard'
      * 
      * @param {object} [serverParameters.tags] Key value pairs of additional
      * properties that can ebe specified
@@ -137,8 +137,8 @@ export interface Servers {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AnalysisServicesServer>): void;
-    deleteMethod(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.AnalysisServicesServer>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Deletes the specified Analysis Services server.
@@ -156,8 +156,8 @@ export interface Servers {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginDeleteMethod(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AnalysisServicesServer>): void;
-    beginDeleteMethod(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.AnalysisServicesServer>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Updates the current state of the specified Analysis Services server
@@ -174,10 +174,11 @@ export interface Servers {
      * resource
      * 
      * @param {string} serverUpdateParameters.sku.name Name of the Sku level for
-     * the server being provisioned. Possible values include: 'S1', 'S2', 'S4'
+     * the server being provisioned. Possible values include: 'S1', 'S2', 'S4',
+     * 'D1'
      * 
-     * @param {string} serverUpdateParameters.sku.tier Name of the tier to which
-     * the Sku applies. Possible values include: 'Developer', 'Standard'
+     * @param {string} [serverUpdateParameters.sku.tier] Name of the tier to which
+     * the Sku applies. Possible values include: 'Development', 'Standard'
      * 
      * @param {object} [serverUpdateParameters.tags] Key value pairs of additional
      * properties that can ebe specified
@@ -197,45 +198,6 @@ export interface Servers {
      */
     update(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AnalysisServicesServer>): void;
     update(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, callback: ServiceCallback<models.AnalysisServicesServer>): void;
-
-    /**
-     * Updates the current state of the specified Analysis Services server
-     *
-     * @param {string} resourceGroupName Name of the Azure Resource group which a
-     * given Analysis Services server is part of.
-     * 
-     * @param {string} serverName Name of the Analysis Services server
-     * 
-     * @param {object} serverUpdateParameters Request object for updating the
-     * server
-     * 
-     * @param {object} [serverUpdateParameters.sku] Sku of the Analysis Services
-     * resource
-     * 
-     * @param {string} serverUpdateParameters.sku.name Name of the Sku level for
-     * the server being provisioned. Possible values include: 'S1', 'S2', 'S4'
-     * 
-     * @param {string} serverUpdateParameters.sku.tier Name of the tier to which
-     * the Sku applies. Possible values include: 'Developer', 'Standard'
-     * 
-     * @param {object} [serverUpdateParameters.tags] Key value pairs of additional
-     * properties that can ebe specified
-     * 
-     * @param {object} [serverUpdateParameters.asAdministrators]
-     * 
-     * @param {array} [serverUpdateParameters.asAdministrators.members] Collection
-     * of administrator user identities
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginUpdate(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AnalysisServicesServer>): void;
-    beginUpdate(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, callback: ServiceCallback<models.AnalysisServicesServer>): void;
 
     /**
      * Supends the specified Analysis Services server instance

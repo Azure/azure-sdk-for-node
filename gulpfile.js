@@ -9,7 +9,7 @@ var exec = require('child_process').exec;
 var mappings = {
   'analysisservices': {
     'dir': 'analysisServices/lib',
-    'source': 'arm-asazure/2016-05-16/swagger/asazure.json', 
+    'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json', 
   },
   'authorization': {
     'dir': 'authorizationManagement/lib',
