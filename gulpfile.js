@@ -28,7 +28,7 @@ var mappings = {
   },
   'cdn': {
     'dir': 'cdnManagement/lib',
-    'source': 'arm-cdn/2016-04-02/swagger/cdn.json',
+    'source': 'arm-cdn/2016-10-02/swagger/cdn.json',
     'ft': 2
   },
   'compute': {

@@ -115,12 +115,12 @@ describe('Cdn Management Origin', function() {
   });
 
   describe('cdn origins', function() {
-      it('should return a list of one origin when list by endpoint', function (done) {
-      client.profiles.create(profileName, standardCreateParameters, groupName, function (err, result, request, response) {
+    it('should return a list of one origin when list by endpoint', function(done) {
+      client.profiles.create(groupName, profileName, standardCreateParameters, function(err, result, request, response) {
         should.not.exist(err);
-        client.endpoints.create(endpointName, validEndpointProperties, profileName, groupName, function (err, result, request, response) {
+        client.endpoints.create(groupName, profileName, endpointName, validEndpointProperties, function(err, result, request, response) {
           should.not.exist(err);
-          client.origins.listByEndpoint(endpointName, profileName, groupName, function (err, result, request, response) {
+          client.origins.listByEndpoint(groupName, profileName, endpointName, function(err, result, request, response) {
             should.not.exist(err);
             var origins = result;
             origins.length.should.equal(1);
@@ -130,44 +130,44 @@ describe('Cdn Management Origin', function() {
           });
         });
       });
-    })
+    });
 
     it('should return one origin when get by that origin', function(done) {
-      client.origins.get(originName, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.origins.get(groupName, profileName, endpointName, originName, function(err, result, request, response) {
         should.not.exist(err);
         var origin = result;
         origin.name.should.equal(originName);
         origin.hostName.should.equal(originName + '.azureedge.net');
         done();
       });
-    })
+    });
 
     it('should fail when get by that an invalid origin name', function(done) {
-      client.origins.get('fakeOriginName', endpointName, profileName, groupName, function(err, result, request, response) {
+      client.origins.get(groupName, profileName, endpointName, 'fakeOriginName', function(err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         done();
       });
-    })
+    });
 
     it('should fail if trying to create another origin in the same endpoint', function(done) {
-      client.origins.create('anotherName', validOriginParameteres, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.origins.create(groupName, profileName, endpointName, 'anotherName', validOriginParameteres, function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should fail updating origin with invalid origin parameters', function(done) {
-      client.origins.update(originName, invalidOriginParameters, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.origins.update(groupName, profileName, endpointName, originName, invalidOriginParameters, function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should successfully updating origin with valid origin parameters', function(done) {
-      client.origins.update(originName, validOriginParameteres, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.origins.update(groupName, profileName, endpointName, originName, validOriginParameteres, function(err, result, request, response) {
         should.not.exist(err);
-        client.origins.get(originName, endpointName, profileName, groupName, function(err, result, request, response) {
+        client.origins.get(groupName, profileName, endpointName, originName, function(err, result, request, response) {
           should.not.exist(err);
           var origin = result;
           origin.name.should.equal(originName);
@@ -180,9 +180,9 @@ describe('Cdn Management Origin', function() {
     });
 
     it('should successfully updating origin when endpoint is stopped', function(done) {
-      client.endpoints.stop(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.stop(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
-        client.origins.update(originName, validOriginParameteres, endpointName, profileName, groupName, function(err, result, request, response) {
+        client.origins.update(groupName, profileName, endpointName, originName, validOriginParameteres, function(err, result, request, response) {
           should.not.exist(err);
           done();
         });
@@ -190,9 +190,9 @@ describe('Cdn Management Origin', function() {
     });
 
     it('should successfully updating origin when endpoint is running', function(done) {
-      client.endpoints.start(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.start(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
-        client.origins.update(originName, validOriginParameteres, endpointName, profileName, groupName, function(err, result, request, response) {
+        client.origins.update(groupName, profileName, endpointName, originName, validOriginParameteres, function(err, result, request, response) {
           should.not.exist(err);
           done();
         });
@@ -200,7 +200,7 @@ describe('Cdn Management Origin', function() {
     });
 
     it('should fail deleting origin', function(done) {
-      client.origins.deleteIfExists(originName, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.origins.deleteMethod(groupName, profileName, endpointName, originName, function(err, result, request, response) {
         should.exist(err);
         done();
       });
