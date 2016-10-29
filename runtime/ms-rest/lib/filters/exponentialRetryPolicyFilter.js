@@ -139,10 +139,10 @@ function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
     return next(options, retryCallback);
   }
   
-  newFilter.retryCount = isNaN(retryCount) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount;
-  newFilter.retryInterval =  isNaN(retryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
-  newFilter.minRetryInterval =  isNaN(minRetryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
-  newFilter.maxRetryInterval =  isNaN(maxRetryInterval) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
+  newFilter.retryCount = isNaN(parseInt(retryCount)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount;
+  newFilter.retryInterval =  isNaN(parseInt(retryInterval)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
+  newFilter.minRetryInterval =  isNaN(parseInt(minRetryInterval)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
+  newFilter.maxRetryInterval =  isNaN(parseInt(maxRetryInterval)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
   newFilter.handle = handle;
   newFilter.shouldRetry = shouldRetry;
   newFilter.updateRetryData = updateRetryData;

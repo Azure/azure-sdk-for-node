@@ -27,10 +27,10 @@
  * @member {object} sku Sku of the Analysis Services resource
  * 
  * @member {string} [sku.name] Name of the Sku level for the server being
- * provisioned. Possible values include: 'S1', 'S2', 'S4'
+ * provisioned. Possible values include: 'S1', 'S2', 'S4', 'D1'
  * 
  * @member {string} [sku.tier] Name of the tier to which the Sku applies.
- * Possible values include: 'Developer', 'Standard'
+ * Possible values include: 'Development', 'Standard'
  * 
  * @member {object} [tags] Key value pairs of additional properties that can
  * ebe specified
@@ -52,15 +52,15 @@ export interface Resource extends BaseResource {
  * Represents the SKU name and tier for Analysis Services resource
  *
  * @member {string} name Name of the Sku level for the server being
- * provisioned. Possible values include: 'S1', 'S2', 'S4'
+ * provisioned. Possible values include: 'S1', 'S2', 'S4', 'D1'
  * 
- * @member {string} tier Name of the tier to which the Sku applies. Possible
- * values include: 'Developer', 'Standard'
+ * @member {string} [tier] Name of the tier to which the Sku applies. Possible
+ * values include: 'Development', 'Standard'
  * 
  */
 export interface ResourceSku {
   name: string;
-  tier: string;
+  tier?: string;
 }
 
 /**
@@ -96,10 +96,10 @@ export interface AnalysisServicesServer extends Resource {
  * @member {object} [sku] Sku of the Analysis Services resource
  * 
  * @member {string} [sku.name] Name of the Sku level for the server being
- * provisioned. Possible values include: 'S1', 'S2', 'S4'
+ * provisioned. Possible values include: 'S1', 'S2', 'S4', 'D1'
  * 
  * @member {string} [sku.tier] Name of the tier to which the Sku applies.
- * Possible values include: 'Developer', 'Standard'
+ * Possible values include: 'Development', 'Standard'
  * 
  * @member {object} [tags] Key value pairs of additional properties that can
  * ebe specified
