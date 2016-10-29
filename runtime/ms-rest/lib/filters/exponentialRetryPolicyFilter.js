@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-var _ = require('underscore');
 var utils = require('../utils');
 
 /**
@@ -64,12 +63,12 @@ function updateRetryData (retryData, err) {
 
 
 /**
-* Handles an operation with an exponential retry policy.
-*
-* @param {Object}   requestOptions The original request options.
-* @param {function} next           The next filter to be handled.
-* @return {undefined}
-*/
+ * Handles an operation with an exponential retry policy.
+ *
+ * @param {Object}   requestOptions The original request options.
+ * @param {function} next           The next filter to be handled.
+ * @return {undefined}
+ */
 function handle(requestOptions, next) {
   var self = this;
   var retryData = null;
@@ -82,11 +81,7 @@ function handle(requestOptions, next) {
         // Previous operation ended so update the retry data
         retryData = self.updateRetryData(retryData, returnObject.error);
 
-        if (returnObject.error &&
-            ((!utils.objectIsNull(returnObject.response) &&
-            self.shouldRetry(returnObject.response.statusCode, retryData)) ||
-            returnObject.error.message === 'ETIMEDOUT' ||
-            returnObject.error.message === 'ESOCKETTIMEDOUT')) {
+        if (!utils.objectIsNull(returnObject.response) && self.shouldRetry(returnObject.response.statusCode, retryData)) {
 
           // If previous operation ended with an error and the policy allows a retry, do that
           setTimeout(function () {
@@ -112,14 +107,14 @@ function handle(requestOptions, next) {
 }
 
 /**
-* Creates a new 'ExponentialRetryPolicyFilter' instance.
-*
-* @constructor
-* @param {number} retryCount        The client retry count.
-* @param {number} retryInterval     The client retry interval, in milliseconds.
-* @param {number} minRetryInterval  The minimum retry interval, in milliseconds.
-* @param {number} maxRetryInterval  The maximum retry interval, in milliseconds.
-*/
+ * Creates a new 'ExponentialRetryPolicyFilter' instance.
+ *
+ * @constructor
+ * @param {number} retryCount        The client retry count.
+ * @param {number} retryInterval     The client retry interval, in milliseconds.
+ * @param {number} minRetryInterval  The minimum retry interval, in milliseconds.
+ * @param {number} maxRetryInterval  The maximum retry interval, in milliseconds.
+ */
 function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterval, maxRetryInterval) {
   function newFilter(options, next, callback) {
     var retryData = null;
@@ -143,38 +138,35 @@ function ExponentialRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
 
     return next(options, retryCallback);
   }
-
-  _.extend(newFilter, {
-    retryCount: isNaN(retryCount) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_COUNT : retryCount,
-    retryInterval: isNaN(retryInterval) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval,
-    minRetryInterval: isNaN(minRetryInterval) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval,
-    maxRetryInterval: isNaN(maxRetryInterval) ? ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval,
-    handle: handle,
-    shouldRetry: shouldRetry,
-    updateRetryData: updateRetryData
-  });
-
+  
+  newFilter.retryCount = isNaN(parseInt(retryCount)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount;
+  newFilter.retryInterval =  isNaN(parseInt(retryInterval)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
+  newFilter.minRetryInterval =  isNaN(parseInt(minRetryInterval)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
+  newFilter.maxRetryInterval =  isNaN(parseInt(maxRetryInterval)) ? ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
+  newFilter.handle = handle;
+  newFilter.shouldRetry = shouldRetry;
+  newFilter.updateRetryData = updateRetryData;
   return newFilter;
 }
 
 /**
-* Represents the default client retry interval, in milliseconds.
-*/
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_INTERVAL = 1000 * 30;
+ * Represents the default client retry interval, in milliseconds.
+ */
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL = 1000 * 30;
 
 /**
-* Represents the default client retry count.
-*/
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_RETRY_COUNT = 3;
+ * Represents the default client retry count.
+ */
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT = 3;
 
 /**
-* Represents the default maximum retry interval, in milliseconds.
-*/
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MAX_RETRY_INTERVAL = 1000 * 90;
+ * Represents the default maximum retry interval, in milliseconds.
+ */
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL = 1000 * 90;
 
 /**
-* Represents the default minimum retry interval, in milliseconds.
-*/
-ExponentialRetryPolicyFilter.DEFAULT_CLIENT_MIN_RETRY_INTERVAL = 1000 * 3;
+ * Represents the default minimum retry interval, in milliseconds.
+ */
+ExponentialRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL = 1000 * 3;
 
 module.exports = ExponentialRetryPolicyFilter;

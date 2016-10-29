@@ -3,7 +3,6 @@
 
 'use strict';
 
-var _ = require('underscore');
 var tunnel = require('tunnel');
 var https = require('https');
 var url = require('url');
@@ -15,7 +14,7 @@ var utils = require('../utils');
 * @param {object} proxy The proxy url (with host, port and protocol properties).
 */
 exports.create = function (proxy) {
-  if (!proxy || !_.isObject(proxy)) {
+  if (!proxy || !(proxy instanceof Object)) {
     throw new Error('Invalid proxy argument');
   }
 
