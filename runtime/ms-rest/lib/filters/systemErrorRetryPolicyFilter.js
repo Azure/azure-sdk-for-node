@@ -88,10 +88,10 @@ function SystemErrorRetryPolicyFilter(retryCount, retryInterval, minRetryInterva
     return next(options, retryCallback);
   }
   
-  newFilter.retryCount = isNaN(retryCount) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount;
-  newFilter.retryInterval =  isNaN(retryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
-  newFilter.minRetryInterval =  isNaN(minRetryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
-  newFilter.maxRetryInterval =  isNaN(maxRetryInterval) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
+  newFilter.retryCount = isNaN(parseInt(retryCount)) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_COUNT : retryCount;
+  newFilter.retryInterval =  isNaN(parseInt(retryInterval)) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_RETRY_INTERVAL : retryInterval;
+  newFilter.minRetryInterval =  isNaN(parseInt(minRetryInterval)) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MIN_RETRY_INTERVAL : minRetryInterval;
+  newFilter.maxRetryInterval =  isNaN(parseInt(maxRetryInterval)) ? SystemErrorRetryPolicyFilter.prototype.DEFAULT_CLIENT_MAX_RETRY_INTERVAL : maxRetryInterval;
   newFilter.shouldRetry = shouldRetry;
   newFilter.updateRetryData = updateRetryData;
   return newFilter;
