@@ -150,13 +150,6 @@ describe('Cdn Management Origin', function() {
       });
     });
 
-    it('should fail if trying to create another origin in the same endpoint', function(done) {
-      client.origins.create(groupName, profileName, endpointName, 'anotherName', validOriginParameteres, function(err, result, request, response) {
-        should.exist(err);
-        done();
-      });
-    });
-
     it('should fail updating origin with invalid origin parameters', function(done) {
       client.origins.update(groupName, profileName, endpointName, originName, invalidOriginParameters, function(err, result, request, response) {
         should.exist(err);
@@ -196,13 +189,6 @@ describe('Cdn Management Origin', function() {
           should.not.exist(err);
           done();
         });
-      });
-    });
-
-    it('should fail deleting origin', function(done) {
-      client.origins.deleteMethod(groupName, profileName, endpointName, originName, function(err, result, request, response) {
-        should.exist(err);
-        done();
       });
     });
   });

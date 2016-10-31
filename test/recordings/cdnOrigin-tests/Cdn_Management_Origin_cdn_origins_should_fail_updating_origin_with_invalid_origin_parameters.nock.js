@@ -2,52 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
 };
 
-exports.scopes = [[function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup4182/providers/Microsoft.Cdn/profiles/cdnTestProfile8537/endpoints/cdnTestEndpoint5782/origins/newname?api-version=2016-04-02', '*')
-  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Property 'Origin.HttpsPort' cannot be set to '-9090'. Acceptable values are within range [1, 65535]\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '168',
-  'content-type': 'application/json; charset=utf-8',
-  'content-language': 'en-US',
-  expires: '-1',
-  'x-ms-request-id': 'c113c3d3-2b3f-4941-b452-f9f1df6e7250',
-  'x-ms-client-request-id': '141f1880-995b-4cc8-bae8-9dc3559d952d',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '16ea4ddd-18e2-4585-8485-7d846ea8f437',
-  'x-ms-routing-request-id': 'CENTRALUS:20160511T225149Z:16ea4ddd-18e2-4585-8485-7d846ea8f437',
-  date: 'Wed, 11 May 2016 22:51:49 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup4182/providers/Microsoft.Cdn/profiles/cdnTestProfile8537/endpoints/cdnTestEndpoint5782/origins/newname?api-version=2016-04-02', '*')
-  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Property 'Origin.HttpsPort' cannot be set to '-9090'. Acceptable values are within range [1, 65535]\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '168',
-  'content-type': 'application/json; charset=utf-8',
-  'content-language': 'en-US',
-  expires: '-1',
-  'x-ms-request-id': 'c113c3d3-2b3f-4941-b452-f9f1df6e7250',
-  'x-ms-client-request-id': '141f1880-995b-4cc8-bae8-9dc3559d952d',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '16ea4ddd-18e2-4585-8485-7d846ea8f437',
-  'x-ms-routing-request-id': 'CENTRALUS:20160511T225149Z:16ea4ddd-18e2-4585-8485-7d846ea8f437',
-  date: 'Wed, 11 May 2016 22:51:49 GMT',
-  connection: 'close' });
- return result; }]];
+exports.scopes = [[]];
