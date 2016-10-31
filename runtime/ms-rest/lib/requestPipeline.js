@@ -6,8 +6,8 @@
 var request = require('request');
 var through = require('through');
 var duplexer = require('duplexer');
-var _ = require('underscore');
 var Constants = require('./constants');
+var utils = require('./utils');
 
 var HttpVerbs = Constants.HttpConstants.HttpVerbs;
 
@@ -43,13 +43,14 @@ exports.createWithSink = function(sink) {
 
   // Add 'add' method so we can add filters.
   runFilteredRequest.add = function () {
-    _.each(arguments, function (filter) {
+    var argumentList = utils.objectValues(arguments);
+    argumentList.forEach(function (filter) {
       pipeline = makeFilteredPipeline(filter);
     });
   };
 
   // Add verb specific helper methods
-  var verbs = _.values(HttpVerbs);
+  var verbs = Object.keys(HttpVerbs);
   verbs.forEach(function (method) {
     runFilteredRequest[method] = (function (m) {
       return function (options, callback) {
@@ -146,7 +147,7 @@ exports.create = function (requestOptions) {
     }
     // User passed filters to add to the pipeline.
     // build up appropriate arguments and call exports.createWithSink
-    return exports.createWithSink.apply(null, [exports.requestLibrarySink(requestOptions)].concat(_.toArray(arguments)));
+    return exports.createWithSink.apply(null, [exports.requestLibrarySink(requestOptions)].concat(utils.objectValues(arguments)));
   };
 };
 

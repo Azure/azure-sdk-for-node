@@ -23,6 +23,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Compile Include="lib\constants.js" />
+    <Compile Include="lib\filters\systemErrorRetryPolicyFilter.js" />
     <Compile Include="lib\httpOperationResponse.js" />
     <Compile Include="lib\msRest.js" />
     <Compile Include="lib\requestPipeline.js" />
@@ -35,11 +36,18 @@
     <Compile Include="test\credentialTests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
+    <Compile Include="test\data\TestClient\lib\models\cat.js" />
+    <Compile Include="test\data\TestClient\lib\models\dog.js" />
+    <Compile Include="test\data\TestClient\lib\models\fish.js" />
     <Compile Include="test\data\TestClient\lib\models\index.js" />
     <Compile Include="test\data\TestClient\lib\models\invoice.js" />
+    <Compile Include="test\data\TestClient\lib\models\pet.js" />
+    <Compile Include="test\data\TestClient\lib\models\petgallery.js" />
     <Compile Include="test\data\TestClient\lib\models\product.js" />
     <Compile Include="test\data\TestClient\lib\models\productListResultNextLink.js" />
     <Compile Include="test\data\TestClient\lib\models\productListResult.js" />
+    <Compile Include="test\data\TestClient\lib\models\sawshark.js" />
+    <Compile Include="test\data\TestClient\lib\models\shark.js" />
     <Compile Include="test\data\TestClient\lib\models\subProduct.js" />
     <Compile Include="test\data\TestClient\lib\testClient.js" />
     <Compile Include="test\logFilterTests.js">
