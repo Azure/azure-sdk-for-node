@@ -21,7 +21,7 @@ import * as models from '../models';
 export interface StorageAccounts {
 
     /**
-     * Checks that account name is valid and is not in use.
+     * Checks that the storage account name is valid and is not already in use.
      *
      * @param {string} name
      * 
@@ -38,10 +38,10 @@ export interface StorageAccounts {
 
     /**
      * Asynchronously creates a new storage account with the specified parameters.
-     * If an account is already created and subsequent create request is issued
+     * If an account is already created and a subsequent create request is issued
      * with different properties, the account properties will be updated. If an
-     * account is already created and subsequent create or update request is
-     * issued with exact same set of properties, the request will succeed.
+     * account is already created and a subsequent create or update request is
+     * issued with the exact same set of properties, the request will succeed.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription.
@@ -53,56 +53,56 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      * 
-     * @param {object} [parameters.sku] Required. Gets or sets the sku type.
+     * @param {object} parameters.sku Required. Gets or sets the sku name.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name. Required
-     * for account creation, optional for update. Note that in older versions,
-     * sku name was called accountType. Possible values include: 'Standard_LRS',
+     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
+     * account creation; optional for update. Note that in older versions, sku
+     * name was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      * 
-     * @param {string} [parameters.kind] Required. Indicates the type of storage
+     * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      * 
-     * @param {string} [parameters.location] Required. Gets or sets the location
-     * of the resource. This will be one of the supported and registered Azure
-     * Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region
-     * of a resource cannot be changed once it is created, but if an identical
-     * geo region is specified on update the request will succeed.
+     * @param {string} parameters.location Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
      * 
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used in viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be
-     * provided for a resource. Each tag must have a key no greater than 128
-     * characters and value no greater than 256 characters.
+     * that describe the resource. These tags can be used for viewing and
+     * grouping this resource (across resource groups). A maximum of 15 tags can
+     * be provided for a resource. Each tag must have a key with a length no
+     * greater than 128 characters and a value with a length no greater than 256
+     * characters.
      * 
      * @param {object} [parameters.customDomain] User domain assigned to the
      * storage account. Name is the CNAME source. Only one custom domain is
      * supported per storage account at this time. To clear the existing custom
      * domain, use an empty string for the custom domain name property.
      * 
-     * @param {string} [parameters.customDomain.name] Gets or sets the custom
-     * domain name. Name is the CNAME source.
+     * @param {string} parameters.customDomain.name Gets or sets the custom domain
+     * name assigned to the storage account. Name is the CNAME source.
      * 
      * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
      * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates
+     * only be set on updates.
      * 
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will
-     * remain. The default setting is unencrypted.
+     * remain the same. The default setting is unencrypted.
      * 
-     * @param {object} [parameters.encryption.services] Gets the services which
-     * are encrypted.
+     * @param {object} [parameters.encryption.services] List of services which
+     * support encryption.
      * 
-     * @param {object} [parameters.encryption.services.blob] The blob service.
+     * @param {object} [parameters.encryption.services.blob] The encryption
+     * function of the blob storage service.
      * 
      * @param {boolean} [parameters.encryption.services.blob.enabled] A boolean
-     * indicating whether or not the service is encrypted.
+     * indicating whether or not the service encrypts the data as it is stored.
      * 
-     * @param {string} [parameters.accessTier] Required for StandardBlob accounts.
-     * The access tier used for billing. Access tier cannot be changed more than
-     * once every 7 days (168 hours). Access tier cannot be set for StandardLRS,
-     * StandardGRS, StandardRAGRS, or PremiumLRS account types. Possible values
+     * @param {string} [parameters.accessTier] Required for storage accounts where
+     * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
      * 
      * @param {object} [options] Optional Parameters.
@@ -118,10 +118,10 @@ export interface StorageAccounts {
 
     /**
      * Asynchronously creates a new storage account with the specified parameters.
-     * If an account is already created and subsequent create request is issued
+     * If an account is already created and a subsequent create request is issued
      * with different properties, the account properties will be updated. If an
-     * account is already created and subsequent create or update request is
-     * issued with exact same set of properties, the request will succeed.
+     * account is already created and a subsequent create or update request is
+     * issued with the exact same set of properties, the request will succeed.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription.
@@ -133,56 +133,56 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the created
      * account.
      * 
-     * @param {object} [parameters.sku] Required. Gets or sets the sku type.
+     * @param {object} parameters.sku Required. Gets or sets the sku name.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name. Required
-     * for account creation, optional for update. Note that in older versions,
-     * sku name was called accountType. Possible values include: 'Standard_LRS',
+     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
+     * account creation; optional for update. Note that in older versions, sku
+     * name was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      * 
-     * @param {string} [parameters.kind] Required. Indicates the type of storage
+     * @param {string} parameters.kind Required. Indicates the type of storage
      * account. Possible values include: 'Storage', 'BlobStorage'
      * 
-     * @param {string} [parameters.location] Required. Gets or sets the location
-     * of the resource. This will be one of the supported and registered Azure
-     * Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region
-     * of a resource cannot be changed once it is created, but if an identical
-     * geo region is specified on update the request will succeed.
+     * @param {string} parameters.location Required. Gets or sets the location of
+     * the resource. This will be one of the supported and registered Azure Geo
+     * Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a
+     * resource cannot be changed once it is created, but if an identical geo
+     * region is specified on update, the request will succeed.
      * 
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
-     * that describe the resource. These tags can be used in viewing and grouping
-     * this resource (across resource groups). A maximum of 15 tags can be
-     * provided for a resource. Each tag must have a key no greater than 128
-     * characters and value no greater than 256 characters.
+     * that describe the resource. These tags can be used for viewing and
+     * grouping this resource (across resource groups). A maximum of 15 tags can
+     * be provided for a resource. Each tag must have a key with a length no
+     * greater than 128 characters and a value with a length no greater than 256
+     * characters.
      * 
      * @param {object} [parameters.customDomain] User domain assigned to the
      * storage account. Name is the CNAME source. Only one custom domain is
      * supported per storage account at this time. To clear the existing custom
      * domain, use an empty string for the custom domain name property.
      * 
-     * @param {string} [parameters.customDomain.name] Gets or sets the custom
-     * domain name. Name is the CNAME source.
+     * @param {string} parameters.customDomain.name Gets or sets the custom domain
+     * name assigned to the storage account. Name is the CNAME source.
      * 
      * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
      * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates
+     * only be set on updates.
      * 
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. If left unspecified the account encryption settings will
-     * remain. The default setting is unencrypted.
+     * remain the same. The default setting is unencrypted.
      * 
-     * @param {object} [parameters.encryption.services] Gets the services which
-     * are encrypted.
+     * @param {object} [parameters.encryption.services] List of services which
+     * support encryption.
      * 
-     * @param {object} [parameters.encryption.services.blob] The blob service.
+     * @param {object} [parameters.encryption.services.blob] The encryption
+     * function of the blob storage service.
      * 
      * @param {boolean} [parameters.encryption.services.blob.enabled] A boolean
-     * indicating whether or not the service is encrypted.
+     * indicating whether or not the service encrypts the data as it is stored.
      * 
-     * @param {string} [parameters.accessTier] Required for StandardBlob accounts.
-     * The access tier used for billing. Access tier cannot be changed more than
-     * once every 7 days (168 hours). Access tier cannot be set for StandardLRS,
-     * StandardGRS, StandardRAGRS, or PremiumLRS account types. Possible values
+     * @param {string} [parameters.accessTier] Required for storage accounts where
+     * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
      * 
      * @param {object} [options] Optional Parameters.
@@ -219,7 +219,7 @@ export interface StorageAccounts {
 
     /**
      * Returns the properties for the specified storage account including but not
-     * limited to name, account type, location, and account status. The ListKeys
+     * limited to name, SKU name, location, and account status. The ListKeys
      * operation should be used to retrieve storage keys.
      *
      * @param {string} resourceGroupName The name of the resource group within the
@@ -241,15 +241,16 @@ export interface StorageAccounts {
     getProperties(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.StorageAccount>): void;
 
     /**
-     * The update operation can be used to update the account type, encryption, or
-     * tags for a storage account. It can also be used to map the account to a
-     * custom domain. Only one custom domain is supported per storage account
-     * and. replacement/change of custom domain is not supported. In order to
-     * replace an old custom domain, the old value must be cleared/unregistered
-     * before a new value may be set. Update of multiple properties is supported.
-     * This call does not change the storage keys for the account. If you want to
-     * change storage account keys, use the regenerate keys operation.  The
-     * location and name of the storage account cannot be changed after creation.
+     * The update operation can be used to update the SKU, encryption, access
+     * tier, or tags for a storage account. It can also be used to map the
+     * account to a custom domain. Only one custom domain is supported per
+     * storage account; the replacement/change of custom domain is not supported.
+     * In order to replace an old custom domain, the old value must be
+     * cleared/unregistered before a new value can be set. The update of multiple
+     * properties is supported. This call does not change the storage keys for
+     * the account. If you want to change the storage account keys, use the
+     * regenerate keys operation. The location and name of the storage account
+     * cannot be changed after creation.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription.
@@ -261,48 +262,49 @@ export interface StorageAccounts {
      * @param {object} parameters The parameters to provide for the updated
      * account.
      * 
-     * @param {object} [parameters.sku] Gets or sets the sku type. Note that sku
-     * cannot be updated to StandardZRS or ProvisionedLRS, nor can accounts of
-     * that sku type be updated to any other value.
+     * @param {object} [parameters.sku] Gets or sets the SKU name. Note that the
+     * SKU name cannot be updated to Standard_ZRS or Premium_LRS, nor can
+     * accounts of those sku names be updated to any other value.
      * 
-     * @param {string} [parameters.sku.name] Gets or sets the sku name. Required
-     * for account creation, optional for update. Note that in older versions,
-     * sku name was called accountType. Possible values include: 'Standard_LRS',
+     * @param {string} parameters.sku.name Gets or sets the sku name. Required for
+     * account creation; optional for update. Note that in older versions, sku
+     * name was called accountType. Possible values include: 'Standard_LRS',
      * 'Standard_GRS', 'Standard_RAGRS', 'Standard_ZRS', 'Premium_LRS'
      * 
      * @param {object} [parameters.tags] Gets or sets a list of key value pairs
      * that describe the resource. These tags can be used in viewing and grouping
      * this resource (across resource groups). A maximum of 15 tags can be
-     * provided for a resource. Each tag must have a key no greater than 128
-     * characters and value no greater than 256 characters.
+     * provided for a resource. Each tag must have a key no greater in length
+     * than 128 characters and a value no greater in length than 256 characters.
      * 
-     * @param {object} [parameters.customDomain] User domain assigned to the
-     * storage account. Name is the CNAME source. Only one custom domain is
-     * supported per storage account at this time. To clear the existing custom
-     * domain, use an empty string for the custom domain name property.
+     * @param {object} [parameters.customDomain] Custom domain assigned to the
+     * storage account by the user. Name is the CNAME source. Only one custom
+     * domain is supported per storage account at this time. To clear the
+     * existing custom domain, use an empty string for the custom domain name
+     * property.
      * 
-     * @param {string} [parameters.customDomain.name] Gets or sets the custom
-     * domain name. Name is the CNAME source.
+     * @param {string} parameters.customDomain.name Gets or sets the custom domain
+     * name assigned to the storage account. Name is the CNAME source.
      * 
      * @param {boolean} [parameters.customDomain.useSubDomain] Indicates whether
      * indirect CName validation is enabled. Default value is false. This should
-     * only be set on updates
+     * only be set on updates.
      * 
      * @param {object} [parameters.encryption] Provides the encryption settings on
      * the account. The default setting is unencrypted.
      * 
-     * @param {object} [parameters.encryption.services] Gets the services which
-     * are encrypted.
+     * @param {object} [parameters.encryption.services] List of services which
+     * support encryption.
      * 
-     * @param {object} [parameters.encryption.services.blob] The blob service.
+     * @param {object} [parameters.encryption.services.blob] The encryption
+     * function of the blob storage service.
      * 
      * @param {boolean} [parameters.encryption.services.blob.enabled] A boolean
-     * indicating whether or not the service is encrypted.
+     * indicating whether or not the service encrypts the data as it is stored.
      * 
-     * @param {string} [parameters.accessTier] The access tier used for billing.
-     * Access tier cannot be changed more than once every 7 days (168 hours).
-     * Access tier cannot be set for StandardLRS, StandardGRS, StandardRAGRS, or
-     * PremiumLRS account types. Possible values include: 'Hot', 'Cool'
+     * @param {string} [parameters.accessTier] Required for storage accounts where
+     * kind = BlobStorage. The access tier used for billing. Possible values
+     * include: 'Hot', 'Cool'
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -352,9 +354,12 @@ export interface StorageAccounts {
     /**
      * Lists the access keys for the specified storage account.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription.
      * 
-     * @param {string} accountName The name of the storage account.
+     * @param {string} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -368,7 +373,7 @@ export interface StorageAccounts {
     listKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
 
     /**
-     * Regenerates the access keys for the specified storage account.
+     * Regenerates one of the access keys for the specified storage account.
      *
      * @param {string} resourceGroupName The name of the resource group within the
      * user's subscription.
