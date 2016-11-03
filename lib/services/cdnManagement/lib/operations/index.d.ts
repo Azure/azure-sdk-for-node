@@ -21,7 +21,7 @@ import * as models from '../models';
 export interface Profiles {
 
     /**
-     * Lists the CDN profiles within an Azure subscription.
+     * Lists all the CDN profiles within an Azure subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -35,7 +35,7 @@ export interface Profiles {
     list(callback: ServiceCallback<models.ProfileListResult>): void;
 
     /**
-     * Lists the CDN profiles within a resource group.
+     * Lists all the CDN profiles within a resource group.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -52,13 +52,14 @@ export interface Profiles {
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
 
     /**
-     * Gets a CDN profile with the specified parameters.
+     * Gets a CDN profile with the specified profile name under the specified
+     * subscription and resource group.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -72,15 +73,16 @@ export interface Profiles {
     get(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.Profile>): void;
 
     /**
-     * Creates a new CDN profile with the specified parameters.
+     * Creates a new CDN profile with a profile name under the specified
+     * subscription and resource group.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {object} profile Profile properties needed for creation.
+     * @param {object} profile Profile properties needed to create a new profile.
      * 
      * @param {object} profile.sku The SKU (pricing tier) of the CDN profile.
      * 
@@ -88,9 +90,9 @@ export interface Profiles {
      * values include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
      * 'Standard_Akamai', 'Standard_ChinaCdn'
      * 
-     * @param {string} profile.location Resource location
+     * @param {string} profile.location Resource location.
      * 
-     * @param {object} [profile.tags] Resource tags
+     * @param {object} [profile.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -104,15 +106,16 @@ export interface Profiles {
     create(resourceGroupName: string, profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
 
     /**
-     * Creates a new CDN profile with the specified parameters.
+     * Creates a new CDN profile with a profile name under the specified
+     * subscription and resource group.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {object} profile Profile properties needed for creation.
+     * @param {object} profile Profile properties needed to create a new profile.
      * 
      * @param {object} profile.sku The SKU (pricing tier) of the CDN profile.
      * 
@@ -120,9 +123,9 @@ export interface Profiles {
      * values include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
      * 'Standard_Akamai', 'Standard_ChinaCdn'
      * 
-     * @param {string} profile.location Resource location
+     * @param {string} profile.location Resource location.
      * 
-     * @param {object} [profile.tags] Resource tags
+     * @param {object} [profile.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -136,13 +139,14 @@ export interface Profiles {
     beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
 
     /**
-     * Updates an existing CDN profile with the specified parameters.
+     * Updates an existing CDN profile with the specified profile name under the
+     * specified subscription and resource group.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
      * @param {object} tags Profile tags
      * 
@@ -158,13 +162,14 @@ export interface Profiles {
     update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, callback: ServiceCallback<models.Profile>): void;
 
     /**
-     * Updates an existing CDN profile with the specified parameters.
+     * Updates an existing CDN profile with the specified profile name under the
+     * specified subscription and resource group.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
      * @param {object} tags Profile tags
      * 
@@ -187,8 +192,8 @@ export interface Profiles {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -209,8 +214,8 @@ export interface Profiles {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -224,16 +229,18 @@ export interface Profiles {
     beginDeleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Generates a dynamic SSO URI used to sign in to the CDN Supplemental Portal
-     * used for advanced management tasks, such as Country Filtering, Advanced
-     * HTTP Reports, and Real-time Stats and Alerts. The SSO URI changes
-     * approximately every 10 minutes.
+     * Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
+     * Supplemnetal portal is used to configure advanced feature capabilities
+     * that are not yet available in the Azure portal, such as core reports in a
+     * standard profile; rules engine, advanced HTTP reports, and real-time stats
+     * and alerts in a premium profile. The SSO URI changes approximately every
+     * 10 minutes.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -247,7 +254,7 @@ export interface Profiles {
     generateSsoUri(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.SsoUri>): void;
 
     /**
-     * Lists the CDN profiles within an Azure subscription.
+     * Lists all the CDN profiles within an Azure subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -264,7 +271,7 @@ export interface Profiles {
     listNext(nextPageLink: string, callback: ServiceCallback<models.ProfileListResult>): void;
 
     /**
-     * Lists the CDN profiles within a resource group.
+     * Lists all the CDN profiles within a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -290,13 +297,13 @@ export interface Profiles {
 export interface Endpoints {
 
     /**
-     * Lists existing CDN endpoints within a profile.
+     * Lists existing CDN endpoints.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -310,15 +317,17 @@ export interface Endpoints {
     listByProfile(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.EndpointListResult>): void;
 
     /**
-     * Gets an existing CDN endpoint with the specified parameters.
+     * Gets an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -337,10 +346,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} endpoint Endpoint properties
      * 
@@ -355,10 +365,10 @@ export interface Endpoints {
      * valid MIME type.
      * 
      * @param {boolean} [endpoint.isCompressionEnabled] Indicates whether content
-     * compression is enabled. Default value is false. If compression is enabled,
-     * the content transferred from the CDN endpoint to the end user will be
-     * compressed. The requested content must be larger than 1 byte and smaller
-     * than 1 MB.
+     * compression is enabled. The default value is false. If compression is
+     * enabled, the content transferred from the CDN endpoint to the end user
+     * will be compressed. The requested content must be larger than 1 byte and
+     * smaller than 1 MB.
      * 
      * @param {boolean} [endpoint.isHttpAllowed] Indicates whether HTTP traffic is
      * allowed on the endpoint. Default value is true. At least one protocol
@@ -372,6 +382,11 @@ export interface Endpoints {
      * string caching behavior. Possible values include: 'IgnoreQueryString',
      * 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
+     * @param {string} [endpoint.optimizationType] Customer can specify what
+     * scenario they want this CDN endpoint to optimize. (e.g. Download, Media
+     * services, and etc.) With this information we can apply scenario driven
+     * optimization.
+     * 
      * @param {array} [endpoint.geoFilters] The list of geo filters for the CDN
      * endpoint.
      * 
@@ -379,9 +394,9 @@ export interface Endpoints {
      * When multiple origins exist, the first origin will be used as primary and
      * rest will be used as failover options.
      * 
-     * @param {string} endpoint.location Resource location
+     * @param {string} endpoint.location Resource location.
      * 
-     * @param {object} [endpoint.tags] Resource tags
+     * @param {object} [endpoint.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -400,10 +415,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} endpoint Endpoint properties
      * 
@@ -418,10 +434,10 @@ export interface Endpoints {
      * valid MIME type.
      * 
      * @param {boolean} [endpoint.isCompressionEnabled] Indicates whether content
-     * compression is enabled. Default value is false. If compression is enabled,
-     * the content transferred from the CDN endpoint to the end user will be
-     * compressed. The requested content must be larger than 1 byte and smaller
-     * than 1 MB.
+     * compression is enabled. The default value is false. If compression is
+     * enabled, the content transferred from the CDN endpoint to the end user
+     * will be compressed. The requested content must be larger than 1 byte and
+     * smaller than 1 MB.
      * 
      * @param {boolean} [endpoint.isHttpAllowed] Indicates whether HTTP traffic is
      * allowed on the endpoint. Default value is true. At least one protocol
@@ -435,6 +451,11 @@ export interface Endpoints {
      * string caching behavior. Possible values include: 'IgnoreQueryString',
      * 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
+     * @param {string} [endpoint.optimizationType] Customer can specify what
+     * scenario they want this CDN endpoint to optimize. (e.g. Download, Media
+     * services, and etc.) With this information we can apply scenario driven
+     * optimization.
+     * 
      * @param {array} [endpoint.geoFilters] The list of geo filters for the CDN
      * endpoint.
      * 
@@ -442,9 +463,9 @@ export interface Endpoints {
      * When multiple origins exist, the first origin will be used as primary and
      * rest will be used as failover options.
      * 
-     * @param {string} endpoint.location Resource location
+     * @param {string} endpoint.location Resource location.
      * 
-     * @param {object} [endpoint.tags] Resource tags
+     * @param {object} [endpoint.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -466,14 +487,15 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} endpointUpdateProperties Endpoint update properties
      * 
-     * @param {object} [endpointUpdateProperties.tags] Endpoint tags
+     * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      * 
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
      * the CDN provider will send along with content requests to origins. The
@@ -487,7 +509,7 @@ export interface Endpoints {
      * elements should be a valid MIME type.
      * 
      * @param {boolean} [endpointUpdateProperties.isCompressionEnabled] Indicates
-     * whether content compression is enabled. Default value is false. If
+     * whether content compression is enabled. The default value is false. If
      * compression is enabled, the content transferred from the CDN endpoint to
      * the end user will be compressed. The requested content must be larger than
      * 1 byte and smaller than 1 MB.
@@ -503,6 +525,11 @@ export interface Endpoints {
      * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
      * Defines the query string caching behavior. Possible values include:
      * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     * 
+     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
+     * specify what scenario they want this CDN endpoint to optimize. (e.g.
+     * Download, Media services, and etc.) With this information we can apply
+     * scenario driven optimization.
      * 
      * @param {array} [endpointUpdateProperties.geoFilters] The list of geo
      * filters for the CDN endpoint.
@@ -527,14 +554,15 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} endpointUpdateProperties Endpoint update properties
      * 
-     * @param {object} [endpointUpdateProperties.tags] Endpoint tags
+     * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      * 
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
      * the CDN provider will send along with content requests to origins. The
@@ -548,7 +576,7 @@ export interface Endpoints {
      * elements should be a valid MIME type.
      * 
      * @param {boolean} [endpointUpdateProperties.isCompressionEnabled] Indicates
-     * whether content compression is enabled. Default value is false. If
+     * whether content compression is enabled. The default value is false. If
      * compression is enabled, the content transferred from the CDN endpoint to
      * the end user will be compressed. The requested content must be larger than
      * 1 byte and smaller than 1 MB.
@@ -564,6 +592,11 @@ export interface Endpoints {
      * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
      * Defines the query string caching behavior. Possible values include:
      * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     * 
+     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
+     * specify what scenario they want this CDN endpoint to optimize. (e.g.
+     * Download, Media services, and etc.) With this information we can apply
+     * scenario driven optimization.
      * 
      * @param {array} [endpointUpdateProperties.geoFilters] The list of geo
      * filters for the CDN endpoint.
@@ -585,10 +618,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -607,10 +641,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -629,10 +664,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -651,10 +687,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -673,10 +710,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -695,10 +733,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -717,10 +756,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {array} contentPaths The path to the content to be purged. Can
      * describe a file path or a wild card directory.
@@ -742,10 +782,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {array} contentPaths The path to the content to be purged. Can
      * describe a file path or a wild card directory.
@@ -762,15 +803,16 @@ export interface Endpoints {
     beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
 
     /**
-     * Forcibly pre-loads CDN endpoint content.
+     * Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {array} contentPaths The path to the content to be loaded. Should
      * describe a file path.
@@ -787,15 +829,16 @@ export interface Endpoints {
     loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
 
     /**
-     * Forcibly pre-loads CDN endpoint content.
+     * Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {array} contentPaths The path to the content to be loaded. Should
      * describe a file path.
@@ -818,10 +861,11 @@ export interface Endpoints {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {string} hostName The host name of the custom domain. Must be a
      * domain name.
@@ -838,7 +882,7 @@ export interface Endpoints {
     validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
 
     /**
-     * Lists existing CDN endpoints within a profile.
+     * Lists existing CDN endpoints.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -869,10 +913,11 @@ export interface Origins {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -891,13 +936,14 @@ export interface Origins {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
-     * @param {string} originName Name of the origin, an arbitrary value but it
-     * needs to be unique under endpoint
+     * @param {string} originName Name of the origin which is unique within the
+     * endpoint.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -916,12 +962,13 @@ export interface Origins {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
-     * @param {string} originName Name of the origin. Must be unique within
+     * @param {string} originName Name of the origin which is unique within the
      * endpoint.
      * 
      * @param {object} originUpdateProperties Origin properties
@@ -952,12 +999,13 @@ export interface Origins {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
-     * @param {string} originName Name of the origin. Must be unique within
+     * @param {string} originName Name of the origin which is unique within the
      * endpoint.
      * 
      * @param {object} originUpdateProperties Origin properties
@@ -1014,10 +1062,11 @@ export interface CustomDomains {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1036,10 +1085,11 @@ export interface CustomDomains {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {string} customDomainName Name of the custom domain within an
      * endpoint.
@@ -1061,10 +1111,11 @@ export interface CustomDomains {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {string} customDomainName Name of the custom domain within an
      * endpoint.
@@ -1089,10 +1140,11 @@ export interface CustomDomains {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {string} customDomainName Name of the custom domain within an
      * endpoint.
@@ -1117,10 +1169,11 @@ export interface CustomDomains {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {string} customDomainName Name of the custom domain within an
      * endpoint.
@@ -1142,10 +1195,11 @@ export interface CustomDomains {
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      * 
-     * @param {string} profileName Name of the CDN profile within the resource
-     * group.
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
      * 
-     * @param {string} endpointName Name of the endpoint within the CDN profile.
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
      * 
      * @param {string} customDomainName Name of the custom domain within an
      * endpoint.

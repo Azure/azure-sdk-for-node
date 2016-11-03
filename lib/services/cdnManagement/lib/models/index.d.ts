@@ -18,15 +18,15 @@ exports.CloudError = msRestAzure.CloudError;
  * @constructor
  * The Resource definition.
  *
- * @member {string} [id] Resource ID
+ * @member {string} [id] Resource ID.
  * 
- * @member {string} [name] Resource name
+ * @member {string} [name] Resource name.
  * 
- * @member {string} [type] Resource type
+ * @member {string} [type] Resource type.
  * 
- * @member {string} location Resource location
+ * @member {string} location Resource location.
  * 
- * @member {object} [tags] Resource tags
+ * @member {object} [tags] Resource tags.
  * 
  */
 export interface Resource extends BaseResource {
@@ -126,10 +126,10 @@ export interface SsoUri {
  * MIME type.
  * 
  * @member {boolean} [isCompressionEnabled] Indicates whether content
- * compression is enabled. Default value is false. If compression is enabled,
- * the content transferred from the CDN endpoint to the end user will be
- * compressed. The requested content must be larger than 1 byte and smaller
- * than 1 MB.
+ * compression is enabled. The default value is false. If compression is
+ * enabled, the content transferred from the CDN endpoint to the end user
+ * will be compressed. The requested content must be larger than 1 byte and
+ * smaller than 1 MB.
  * 
  * @member {boolean} [isHttpAllowed] Indicates whether HTTP traffic is allowed
  * on the endpoint. Default value is true. At least one protocol (HTTP or
@@ -142,6 +142,10 @@ export interface SsoUri {
  * @member {string} [queryStringCachingBehavior] Defines the query string
  * caching behavior. Possible values include: 'IgnoreQueryString',
  * 'BypassCaching', 'UseQueryString', 'NotSet'
+ * 
+ * @member {string} [optimizationType] Customer can specify what scenario they
+ * want this CDN endpoint to optimize. (e.g. Download, Media services, and
+ * etc.) With this information we can apply scenario driven optimization.
  * 
  * @member {array} [geoFilters] The list of geo filters for the CDN endpoint.
  * 
@@ -167,6 +171,7 @@ export interface Endpoint extends Resource {
   isHttpAllowed?: boolean;
   isHttpsAllowed?: boolean;
   queryStringCachingBehavior?: string;
+  optimizationType?: string;
   geoFilters?: GeoFilter[];
   hostName?: string;
   origins: DeepCreatedOrigin[];
@@ -178,7 +183,7 @@ export interface Endpoint extends Resource {
  * @class
  * Initializes a new instance of the DeepCreatedOrigin class.
  * @constructor
- * Deep created origins within a CDN endpoint.
+ * Origins to be added when creating a CDN endpoint.
  *
  * @member {string} name Origin name
  * 
@@ -205,7 +210,7 @@ export interface DeepCreatedOrigin extends BaseResource {
  * @constructor
  * Endpoint properties required for new endpoint creation.
  *
- * @member {object} [tags] Endpoint tags
+ * @member {object} [tags] Endpoint tags.
  * 
  * @member {string} [originHostHeader] The host header the CDN provider will
  * send along with content requests to origins. The default value is the host
@@ -218,10 +223,10 @@ export interface DeepCreatedOrigin extends BaseResource {
  * MIME type.
  * 
  * @member {boolean} [isCompressionEnabled] Indicates whether content
- * compression is enabled. Default value is false. If compression is enabled,
- * the content transferred from the CDN endpoint to the end user will be
- * compressed. The requested content must be larger than 1 byte and smaller
- * than 1 MB.
+ * compression is enabled. The default value is false. If compression is
+ * enabled, the content transferred from the CDN endpoint to the end user
+ * will be compressed. The requested content must be larger than 1 byte and
+ * smaller than 1 MB.
  * 
  * @member {boolean} [isHttpAllowed] Indicates whether HTTP traffic is allowed
  * on the endpoint. Default value is true. At least one protocol (HTTP or
@@ -235,6 +240,10 @@ export interface DeepCreatedOrigin extends BaseResource {
  * caching behavior. Possible values include: 'IgnoreQueryString',
  * 'BypassCaching', 'UseQueryString', 'NotSet'
  * 
+ * @member {string} [optimizationType] Customer can specify what scenario they
+ * want this CDN endpoint to optimize. (e.g. Download, Media services, and
+ * etc.) With this information we can apply scenario driven optimization.
+ * 
  * @member {array} [geoFilters] The list of geo filters for the CDN endpoint.
  * 
  */
@@ -247,6 +256,7 @@ export interface EndpointUpdateParameters extends BaseResource {
   isHttpAllowed?: boolean;
   isHttpsAllowed?: boolean;
   queryStringCachingBehavior?: string;
+  optimizationType?: string;
   geoFilters?: GeoFilter[];
 }
 
@@ -259,7 +269,8 @@ export interface EndpointUpdateParameters extends BaseResource {
  * @member {string} relativePath Relative path applicable to geo filter. (e.g.
  * '/mypictures', '/mypicture/kitty.jpg', and etc.)
  * 
- * @member {string} action Action of the geo filter.
+ * @member {string} action Action of the geo filter. Possible values include:
+ * 'Block', 'Allow'
  * 
  * @member {array} countryCodes Two letter country codes of the geo filter.
  * (e.g. AU, MX, and etc.)
@@ -357,7 +368,7 @@ export interface OriginUpdateParameters extends BaseResource {
  * @class
  * Initializes a new instance of the CustomDomain class.
  * @constructor
- * CDN CustomDomain represents a mapping between a user specified domain name
+ * CDN CustomDomain represents a mapping between a user-specified domain name
  * and a CDN endpoint. This is to use custom domain names to represent the
  * URLs for branding purposes.
  *
@@ -367,6 +378,11 @@ export interface OriginUpdateParameters extends BaseResource {
  * @member {string} [resourceState] Resource status of the custom domain.
  * Possible values include: 'Creating', 'Active', 'Deleting'
  * 
+ * @member {string} [validationData] Special validation or data may be
+ * required when delivering CDN to some regions due to local compliance
+ * reasons. (e.g. ICP license number of a custom domain is required to
+ * deliver content in China.)
+ * 
  * @member {string} [provisioningState] Provisioning status of the custom
  * domain.
  * 
@@ -374,6 +390,7 @@ export interface OriginUpdateParameters extends BaseResource {
 export interface CustomDomain extends Resource {
   hostName: string;
   resourceState?: string;
+  validationData?: string;
   provisioningState?: string;
 }
 
@@ -381,7 +398,7 @@ export interface CustomDomain extends Resource {
  * @class
  * Initializes a new instance of the CustomDomainParameters class.
  * @constructor
- * CustomDomain properties required for custom domain creation or update.
+ * The customDomain JSON object required for custom domain creation or update.
  *
  * @member {string} hostName The host name of the custom domain. Must be a
  * domain name.
@@ -467,7 +484,7 @@ export interface CheckNameAvailabilityOutput {
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}
  * 
- * @member {object} [display]
+ * @member {object} [display] The object that represents the operation.
  * 
  * @member {string} [display.provider] Service provider: Microsoft.Cdn
  * 
@@ -487,6 +504,8 @@ export interface Operation {
  * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
+ * The object that represents the operation.
+ *
  * @member {string} [provider] Service provider: Microsoft.Cdn
  * 
  * @member {string} [resource] Resource on which the operation is performed:
@@ -505,7 +524,10 @@ export interface OperationDisplay {
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * @member {string} [code] Error code
+ * Error reponse indicates CDN service is not able to process the incoming
+ * request. The reason is provided in the error message.
+ *
+ * @member {string} [code] Error code.
  * 
  * @member {string} [message] Error message indicating why the operation
  * failed.
@@ -521,7 +543,11 @@ export interface ErrorResponse {
  * @class
  * Initializes a new instance of the ProfileListResult class.
  * @constructor
- * @member {string} [nextLink] URL to get the next set of results.
+ * Result of the request to list profiles. It contains a list of profile
+ * objects and a URL link to get the the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of profile objects if
+ * there are any.
  * 
  */
 export interface ProfileListResult extends Array<Profile> {
@@ -532,7 +558,11 @@ export interface ProfileListResult extends Array<Profile> {
  * @class
  * Initializes a new instance of the EndpointListResult class.
  * @constructor
- * @member {string} [nextLink] URL to get the next set of results.
+ * Result of the request to list endpoints. It contains a list of endpoint
+ * objects and a URL link to get the the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of endpoint objects if
+ * there are any.
  * 
  */
 export interface EndpointListResult extends Array<Endpoint> {
@@ -543,7 +573,11 @@ export interface EndpointListResult extends Array<Endpoint> {
  * @class
  * Initializes a new instance of the OriginListResult class.
  * @constructor
- * @member {string} [nextLink] URL to get the next set of results.
+ * Result of the request to list origins. It contains a list of origin objects
+ * and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of origin objects if
+ * there are any.
  * 
  */
 export interface OriginListResult extends Array<Origin> {
@@ -554,7 +588,11 @@ export interface OriginListResult extends Array<Origin> {
  * @class
  * Initializes a new instance of the CustomDomainListResult class.
  * @constructor
- * @member {string} [nextLink] URL to get the next set of results.
+ * Result of the request to list custom domains. It contains a list of custom
+ * domain objects and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of custom domain
+ * objects if there are any.
  * 
  */
 export interface CustomDomainListResult extends Array<CustomDomain> {
@@ -565,7 +603,11 @@ export interface CustomDomainListResult extends Array<CustomDomain> {
  * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
- * @member {string} [nextLink] URL to get the next set of results.
+ * Result of the request to list CDN operations. It contains a list of
+ * operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
  * 
  */
 export interface OperationListResult extends Array<Operation> {
