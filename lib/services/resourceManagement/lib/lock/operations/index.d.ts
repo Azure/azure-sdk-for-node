@@ -29,18 +29,16 @@ export interface ManagementLocks {
      * 
      * @param {object} parameters The management lock parameters.
      * 
-     * @param {string} [parameters.level] Gets or sets the lock level of the
-     * management lock. Possible values include: 'NotSpecified', 'CanNotDelete',
-     * 'ReadOnly'
+     * @param {string} [parameters.level] The lock level of the management lock.
+     * Possible values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
      * 
-     * @param {string} [parameters.notes] Gets or sets the notes of the management
-     * lock.
+     * @param {string} [parameters.notes] The notes of the management lock.
      * 
-     * @param {string} [parameters.id] Gets or sets the Id of the lock.
+     * @param {string} [parameters.id] The Id of the lock.
      * 
-     * @param {string} [parameters.type] Gets or sets the type of the lock.
+     * @param {string} [parameters.type] The type of the lock.
      * 
-     * @param {string} [parameters.name] Gets or sets the name of the lock.
+     * @param {string} [parameters.name] The name of the lock.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -52,6 +50,42 @@ export interface ManagementLocks {
      */
     createOrUpdateAtResourceGroupLevel(resourceGroupName: string, lockName: string, parameters: models.ManagementLockObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockObject>): void;
     createOrUpdateAtResourceGroupLevel(resourceGroupName: string, lockName: string, parameters: models.ManagementLockObject, callback: ServiceCallback<models.ManagementLockObject>): void;
+
+    /**
+     * Deletes the management lock of a resource group.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     * 
+     * @param {string} lockName The name of lock.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteAtResourceGroupLevel(resourceGroupName: string, lockName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteAtResourceGroupLevel(resourceGroupName: string, lockName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets a management lock at the resource group level.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     * 
+     * @param {string} lockName The lock name.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAtResourceGroupLevel(resourceGroupName: string, lockName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockObject>): void;
+    getAtResourceGroupLevel(resourceGroupName: string, lockName: string, callback: ServiceCallback<models.ManagementLockObject>): void;
 
     /**
      * Create or update a management lock at the resource level or any level below
@@ -71,18 +105,16 @@ export interface ManagementLocks {
      * 
      * @param {object} parameters Create or update management lock parameters.
      * 
-     * @param {string} [parameters.level] Gets or sets the lock level of the
-     * management lock. Possible values include: 'NotSpecified', 'CanNotDelete',
-     * 'ReadOnly'
+     * @param {string} [parameters.level] The lock level of the management lock.
+     * Possible values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
      * 
-     * @param {string} [parameters.notes] Gets or sets the notes of the management
-     * lock.
+     * @param {string} [parameters.notes] The notes of the management lock.
      * 
-     * @param {string} [parameters.id] Gets or sets the Id of the lock.
+     * @param {string} [parameters.id] The Id of the lock.
      * 
-     * @param {string} [parameters.type] Gets or sets the type of the lock.
+     * @param {string} [parameters.type] The type of the lock.
      * 
-     * @param {string} [parameters.name] Gets or sets the name of the lock.
+     * @param {string} [parameters.name] The name of the lock.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -128,18 +160,16 @@ export interface ManagementLocks {
      * 
      * @param {object} parameters The management lock parameters.
      * 
-     * @param {string} [parameters.level] Gets or sets the lock level of the
-     * management lock. Possible values include: 'NotSpecified', 'CanNotDelete',
-     * 'ReadOnly'
+     * @param {string} [parameters.level] The lock level of the management lock.
+     * Possible values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
      * 
-     * @param {string} [parameters.notes] Gets or sets the notes of the management
-     * lock.
+     * @param {string} [parameters.notes] The notes of the management lock.
      * 
-     * @param {string} [parameters.id] Gets or sets the Id of the lock.
+     * @param {string} [parameters.id] The Id of the lock.
      * 
-     * @param {string} [parameters.type] Gets or sets the type of the lock.
+     * @param {string} [parameters.type] The type of the lock.
      * 
-     * @param {string} [parameters.name] Gets or sets the name of the lock.
+     * @param {string} [parameters.name] The name of the lock.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -185,24 +215,6 @@ export interface ManagementLocks {
     get(lockName: string, callback: ServiceCallback<models.ManagementLockObject>): void;
 
     /**
-     * Deletes the management lock of a resource group.
-     *
-     * @param {string} resourceGroup The resource group names.
-     * 
-     * @param {string} lockName The name of lock.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteAtResourceGroupLevel(resourceGroup: string, lockName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteAtResourceGroupLevel(resourceGroup: string, lockName: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Gets all the management locks of a resource group.
      *
      * @param {string} resourceGroupName Resource group name.
@@ -246,23 +258,6 @@ export interface ManagementLocks {
      */
     listAtResourceLevel(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
     listAtResourceLevel(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.ManagementLockListResult>): void;
-
-    /**
-     * Get a list of management locks at resource level or below.
-     *
-     * @param {string} nextLink NextLink from the previous successful call to List
-     * operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
-    listNext(nextLink: string, callback: ServiceCallback<models.ManagementLockListResult>): void;
 
     /**
      * Gets all the management locks of a subscription.
@@ -313,23 +308,6 @@ export interface ManagementLocks {
      */
     listAtResourceLevelNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
     listAtResourceLevelNext(nextPageLink: string, callback: ServiceCallback<models.ManagementLockListResult>): void;
-
-    /**
-     * Get a list of management locks at resource level or below.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listNextNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementLockListResult>): void;
-    listNextNext(nextPageLink: string, callback: ServiceCallback<models.ManagementLockListResult>): void;
 
     /**
      * Gets all the management locks of a subscription.

@@ -8,54 +8,9 @@
  * regenerated.
  */
 
-
-/**
- * @class
- * Initializes a new instance of the DeploymentExtendedFilter class.
- * @constructor
- * Deployment filter.
- *
- * @member {string} [provisioningState] Gets or sets the provisioning state.
- * 
- */
-export interface DeploymentExtendedFilter {
-  provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GenericResourceFilter class.
- * @constructor
- * Resource filter.
- *
- * @member {string} [resourceType] Gets or sets the resource type.
- * 
- * @member {string} [tagname] Gets or sets the tag name.
- * 
- * @member {string} [tagvalue] Gets or sets the tag value.
- * 
- */
-export interface GenericResourceFilter {
-  resourceType?: string;
-  tagname?: string;
-  tagvalue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceGroupFilter class.
- * @constructor
- * Resource group filter.
- *
- * @member {string} [tagName] Gets or sets the tag name.
- * 
- * @member {string} [tagValue] Gets or sets the tag value.
- * 
- */
-export interface ResourceGroupFilter {
-  tagName?: string;
-  tagValue?: string;
-}
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -63,16 +18,16 @@ export interface ResourceGroupFilter {
  * @constructor
  * Management lock information.
  *
- * @member {string} [level] Gets or sets the lock level of the management
- * lock. Possible values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
+ * @member {string} [level] The lock level of the management lock. Possible
+ * values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'
  * 
- * @member {string} [notes] Gets or sets the notes of the management lock.
+ * @member {string} [notes] The notes of the management lock.
  * 
- * @member {string} [id] Gets or sets the Id of the lock.
+ * @member {string} [id] The Id of the lock.
  * 
- * @member {string} [type] Gets or sets the type of the lock.
+ * @member {string} [type] The type of the lock.
  * 
- * @member {string} [name] Gets or sets the name of the lock.
+ * @member {string} [name] The name of the lock.
  * 
  */
 export interface ManagementLockObject extends BaseResource {
@@ -83,40 +38,6 @@ export interface ManagementLockObject extends BaseResource {
   name?: string;
 }
 
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * @member {string} [id] Resource Id
- * 
- * @member {string} [name] Resource name
- * 
- * @member {string} [type] Resource type
- * 
- * @member {string} location Resource location
- * 
- * @member {object} [tags] Resource tags
- * 
- */
-export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the SubResource class.
- * @constructor
- * @member {string} [id] Resource Id
- * 
- */
-export interface SubResource extends BaseResource {
-  id?: string;
-}
-
 
 /**
  * @class
@@ -124,8 +45,7 @@ export interface SubResource extends BaseResource {
  * @constructor
  * List of management locks.
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * results.
+ * @member {string} [nextLink] The URL to get the next set of results.
  * 
  */
 export interface ManagementLockListResult extends Array<ManagementLockObject> {
