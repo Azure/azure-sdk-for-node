@@ -17,7 +17,7 @@ declare class CdnManagementClient {
      * Initializes a new instance of the CdnManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
+     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
      * @param {string} subscriptionId - Azure Subscription ID.
      *

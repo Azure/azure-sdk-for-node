@@ -79,11 +79,11 @@ export interface Profiles {
      * 
      * @param {object} profileProperties Profile properties needed for creation.
      * 
-     * @param {string} [profileProperties.location] Profile location
+     * @param {string} profileProperties.location Profile location
      * 
      * @param {object} [profileProperties.tags] Profile tags
      * 
-     * @param {object} [profileProperties.sku] The SKU (pricing tier) of the CDN
+     * @param {object} profileProperties.sku The SKU (pricing tier) of the CDN
      * profile.
      * 
      * @param {string} [profileProperties.sku.name] Name of the pricing tier.
@@ -112,11 +112,11 @@ export interface Profiles {
      * 
      * @param {object} profileProperties Profile properties needed for creation.
      * 
-     * @param {string} [profileProperties.location] Profile location
+     * @param {string} profileProperties.location Profile location
      * 
      * @param {object} [profileProperties.tags] Profile tags
      * 
-     * @param {object} [profileProperties.sku] The SKU (pricing tier) of the CDN
+     * @param {object} profileProperties.sku The SKU (pricing tier) of the CDN
      * profile.
      * 
      * @param {string} [profileProperties.sku.name] Name of the pricing tier.
@@ -306,7 +306,7 @@ export interface Endpoints {
      * 
      * @param {object} endpointProperties Endpoint properties
      * 
-     * @param {string} [endpointProperties.location] Endpoint location
+     * @param {string} endpointProperties.location Endpoint location
      * 
      * @param {object} [endpointProperties.tags] Endpoint tags
      * 
@@ -339,7 +339,7 @@ export interface Endpoints {
      * query string caching behavior. Possible values include:
      * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
-     * @param {array} [endpointProperties.origins] The set of origins for the CDN
+     * @param {array} endpointProperties.origins The set of origins for the CDN
      * endpoint. When multiple origins exist, the first origin will be used as
      * primary and rest will be used as failover options.
      * 
@@ -367,7 +367,7 @@ export interface Endpoints {
      * 
      * @param {object} endpointProperties Endpoint properties
      * 
-     * @param {string} [endpointProperties.location] Endpoint location
+     * @param {string} endpointProperties.location Endpoint location
      * 
      * @param {object} [endpointProperties.tags] Endpoint tags
      * 
@@ -400,7 +400,7 @@ export interface Endpoints {
      * query string caching behavior. Possible values include:
      * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
-     * @param {array} [endpointProperties.origins] The set of origins for the CDN
+     * @param {array} endpointProperties.origins The set of origins for the CDN
      * endpoint. When multiple origins exist, the first origin will be used as
      * primary and rest will be used as failover options.
      * 
@@ -859,8 +859,8 @@ export interface Origins {
      * 
      * @param {object} originProperties Origin properties
      * 
-     * @param {string} [originProperties.hostName] The address of the origin.
-     * Domain names, IPv4 addresses, and IPv6 addresses are supported.
+     * @param {string} originProperties.hostName The address of the origin. Domain
+     * names, IPv4 addresses, and IPv6 addresses are supported.
      * 
      * @param {number} [originProperties.httpPort] The value of the HTTP port.
      * Must be between 1 and 65535.
@@ -895,8 +895,8 @@ export interface Origins {
      * 
      * @param {object} originProperties Origin properties
      * 
-     * @param {string} [originProperties.hostName] The address of the origin.
-     * Domain names, IPv4 addresses, and IPv6 addresses are supported.
+     * @param {string} originProperties.hostName The address of the origin. Domain
+     * names, IPv4 addresses, and IPv6 addresses are supported.
      * 
      * @param {number} [originProperties.httpPort] The value of the HTTP port.
      * Must be between 1 and 65535.
@@ -931,8 +931,8 @@ export interface Origins {
      * 
      * @param {object} originProperties Origin properties
      * 
-     * @param {string} [originProperties.hostName] The address of the origin.
-     * Domain names, IPv4 addresses, and IPv6 addresses are supported.
+     * @param {string} originProperties.hostName The address of the origin. Domain
+     * names, IPv4 addresses, and IPv6 addresses are supported.
      * 
      * @param {number} [originProperties.httpPort] The value of the HTTP port.
      * Must be between 1 and 65535.
@@ -967,8 +967,8 @@ export interface Origins {
      * 
      * @param {object} originProperties Origin properties
      * 
-     * @param {string} [originProperties.hostName] The address of the origin.
-     * Domain names, IPv4 addresses, and IPv6 addresses are supported.
+     * @param {string} originProperties.hostName The address of the origin. Domain
+     * names, IPv4 addresses, and IPv6 addresses are supported.
      * 
      * @param {number} [originProperties.httpPort] The value of the HTTP port.
      * Must be between 1 and 65535.
@@ -1251,9 +1251,6 @@ export interface NameAvailability {
      *
      * @param {string} name The resource name to validate.
      * 
-     * @param {string} type The type of the resource whose name is to be
-     * validated. Possible values include: 'Microsoft.Cdn/Profiles/Endpoints'
-     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1262,8 +1259,8 @@ export interface NameAvailability {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkNameAvailability(name: string, type: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
-    checkNameAvailability(name: string, type: string, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+    checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+    checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
 }
 
 /**
