@@ -38,11 +38,9 @@ export interface AvailabilitySets {
      * @param {array} [parameters.virtualMachines] a list containing reference to
      * all Virtual Machines created under this Availability Set.
      * 
-     * @param {array} [parameters.statuses] the resource status information.
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {string} [parameters.location] Resource location
-     * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -263,9 +261,9 @@ export interface VirtualMachineExtensions {
      * @param {array} [extensionParameters.instanceView.statuses] the resource
      * status information.
      * 
-     * @param {string} [extensionParameters.location] Resource location
+     * @param {string} extensionParameters.location Resource location.
      * 
-     * @param {object} [extensionParameters.tags] Resource tags
+     * @param {object} [extensionParameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -331,9 +329,9 @@ export interface VirtualMachineExtensions {
      * @param {array} [extensionParameters.instanceView.statuses] the resource
      * status information.
      * 
-     * @param {string} [extensionParameters.location] Resource location
+     * @param {string} extensionParameters.location Resource location.
      * 
-     * @param {object} [extensionParameters.tags] Resource tags
+     * @param {object} [extensionParameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -615,14 +613,14 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Capture Virtual
      * Machine operation.
      * 
-     * @param {string} [parameters.vhdPrefix] the captured VirtualHardDisk's name
+     * @param {string} parameters.vhdPrefix the captured VirtualHardDisk's name
      * prefix.
      * 
-     * @param {string} [parameters.destinationContainerName] the destination
+     * @param {string} parameters.destinationContainerName the destination
      * container name.
      * 
-     * @param {boolean} [parameters.overwriteVhds] whether it overwrites
-     * destination VirtualHardDisk if true, in case of conflict.
+     * @param {boolean} parameters.overwriteVhds whether it overwrites destination
+     * VirtualHardDisk if true, in case of conflict.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -646,14 +644,14 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Capture Virtual
      * Machine operation.
      * 
-     * @param {string} [parameters.vhdPrefix] the captured VirtualHardDisk's name
+     * @param {string} parameters.vhdPrefix the captured VirtualHardDisk's name
      * prefix.
      * 
-     * @param {string} [parameters.destinationContainerName] the destination
+     * @param {string} parameters.destinationContainerName the destination
      * container name.
      * 
-     * @param {boolean} [parameters.overwriteVhds] whether it overwrites
-     * destination VirtualHardDisk if true, in case of conflict.
+     * @param {boolean} parameters.overwriteVhds whether it overwrites destination
+     * VirtualHardDisk if true, in case of conflict.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -739,11 +737,11 @@ export interface VirtualMachines {
      * the disk encryption key which is a KeyVault Secret.
      * 
      * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
      * the URL referencing a secret in a Key Vault.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
      * the Relative URL of the Key Vault containing the secret.
      * 
      * @param {object}
@@ -751,25 +749,24 @@ export interface VirtualMachines {
      * key encryption key which is KeyVault Key.
      * 
      * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
      * the URL referencing a key in a Key Vault.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
      * the Relative URL of the Key Vault containing the key
      * 
      * @param {boolean}
      * [parameters.storageProfile.osDisk.encryptionSettings.enabled] whether disk
      * encryption should be enabled on the Virtual Machine.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.name] the disk name.
+     * @param {string} parameters.storageProfile.osDisk.name the disk name.
      * 
-     * @param {object} [parameters.storageProfile.osDisk.vhd] the Virtual Hard
-     * Disk.
+     * @param {object} parameters.storageProfile.osDisk.vhd the Virtual Hard Disk.
      * 
      * @param {object} [parameters.storageProfile.osDisk.image] the Source User
      * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
-     * to attach to the Virtual Machine.If SourceImage is provided, the
+     * to attach to the Virtual Machine. If SourceImage is provided, the
      * destination VirtualHardDisk should not exist.
      * 
      * @param {string} [parameters.storageProfile.osDisk.image.uri] the virtual
@@ -778,7 +775,7 @@ export interface VirtualMachines {
      * @param {string} [parameters.storageProfile.osDisk.caching] the caching
      * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
-     * @param {string} [parameters.storageProfile.osDisk.createOption] the create
+     * @param {string} parameters.storageProfile.osDisk.createOption the create
      * option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] the initial
@@ -864,9 +861,9 @@ export interface VirtualMachines {
      * @param {string} [parameters.licenseType] the license type, which is for
      * bring your own license scenario.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -952,11 +949,11 @@ export interface VirtualMachines {
      * the disk encryption key which is a KeyVault Secret.
      * 
      * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
      * the URL referencing a secret in a Key Vault.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
      * the Relative URL of the Key Vault containing the secret.
      * 
      * @param {object}
@@ -964,25 +961,24 @@ export interface VirtualMachines {
      * key encryption key which is KeyVault Key.
      * 
      * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
      * the URL referencing a key in a Key Vault.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
      * the Relative URL of the Key Vault containing the key
      * 
      * @param {boolean}
      * [parameters.storageProfile.osDisk.encryptionSettings.enabled] whether disk
      * encryption should be enabled on the Virtual Machine.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.name] the disk name.
+     * @param {string} parameters.storageProfile.osDisk.name the disk name.
      * 
-     * @param {object} [parameters.storageProfile.osDisk.vhd] the Virtual Hard
-     * Disk.
+     * @param {object} parameters.storageProfile.osDisk.vhd the Virtual Hard Disk.
      * 
      * @param {object} [parameters.storageProfile.osDisk.image] the Source User
      * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
-     * to attach to the Virtual Machine.If SourceImage is provided, the
+     * to attach to the Virtual Machine. If SourceImage is provided, the
      * destination VirtualHardDisk should not exist.
      * 
      * @param {string} [parameters.storageProfile.osDisk.image.uri] the virtual
@@ -991,7 +987,7 @@ export interface VirtualMachines {
      * @param {string} [parameters.storageProfile.osDisk.caching] the caching
      * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
-     * @param {string} [parameters.storageProfile.osDisk.createOption] the create
+     * @param {string} parameters.storageProfile.osDisk.createOption the create
      * option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] the initial
@@ -1077,9 +1073,9 @@ export interface VirtualMachines {
      * @param {string} [parameters.licenseType] the license type, which is for
      * bring your own license scenario.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1565,16 +1561,15 @@ export interface VirtualMachineScaleSets {
      * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
      * the OS disk.
      * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] the disk
-     * name.
+     * @param {string} parameters.virtualMachineProfile.storageProfile.osDisk.name
+     * the disk name.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] the
      * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] the
+     * parameters.virtualMachineProfile.storageProfile.osDisk.createOption the
      * create option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {string}
@@ -1584,7 +1579,7 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] the Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before
-     * using it to attach to the Virtual Machine.If SourceImage is provided, the
+     * using it to attach to the Virtual Machine. If SourceImage is provided, the
      * destination VirtualHardDisk should not exist.
      * 
      * @param {string}
@@ -1609,12 +1604,12 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.extensionProfile.extensions] the virtual
      * machine scale set child extension resources.
      * 
-     * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
+     * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1747,16 +1742,15 @@ export interface VirtualMachineScaleSets {
      * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
      * the OS disk.
      * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] the disk
-     * name.
+     * @param {string} parameters.virtualMachineProfile.storageProfile.osDisk.name
+     * the disk name.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] the
      * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] the
+     * parameters.virtualMachineProfile.storageProfile.osDisk.createOption the
      * create option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {string}
@@ -1766,7 +1760,7 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] the Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before
-     * using it to attach to the Virtual Machine.If SourceImage is provided, the
+     * using it to attach to the Virtual Machine. If SourceImage is provided, the
      * destination VirtualHardDisk should not exist.
      * 
      * @param {string}
@@ -1791,12 +1785,12 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.extensionProfile.extensions] the virtual
      * machine scale set child extension resources.
      * 
-     * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
+     * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2627,70 +2621,106 @@ export interface VirtualMachineScaleSetVMs {
 
 /**
  * @class
- * ContainerServiceOperations
+ * ContainerServices
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
  */
-export interface ContainerServiceOperations {
+export interface ContainerServices {
 
     /**
-     * The operation to create or update a container service.
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    list(callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
-     * @param {object} parameters Parameters supplied to the Create Container
-     * Service operation.
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
      * 
-     * @param {object} [parameters.orchestratorProfile] Properties of orchestrator
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
      * 
-     * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
-     * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'Swarm', 'DCOS'
+     * @param {string} parameters.orchestratorProfile.orchestratorType Specifies
+     * the orchestrator to use to manage container service cluster resources.
+     * Possible values include: 'Swarm', 'DCOS', 'Custom'
      * 
-     * @param {object} [parameters.masterProfile] Properties of master agents
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     * 
+     * @param {string} parameters.customProfile.orchestrator The name of the
+     * custom orchestrator to use.
+     * 
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     * 
+     * @param {object} parameters.masterProfile Properties of master agents.
      * 
      * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container cluster
+     * the container service cluster.
      * 
-     * @param {string} [parameters.masterProfile.dnsPrefix] DNS prefix to be used
-     * to create FQDN for master
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create FQDN for master.
      * 
-     * @param {array} [parameters.agentPoolProfiles] Properties of agent pools
+     * @param {array} parameters.agentPoolProfiles Properties of agent pools.
      * 
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
      * 
-     * @param {string} [parameters.windowsProfile.adminUsername] The administrator
-     * username to use for Windows VMs
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * user name to use for Windows VMs.
      * 
-     * @param {string} [parameters.windowsProfile.adminPassword] The administrator
-     * password to use for Windows VMs
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
      * 
-     * @param {object} [parameters.linuxProfile] Properties for Linux VMs
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
      * 
-     * @param {string} [parameters.linuxProfile.adminUsername] The administrator
-     * username to use for all Linux VMs
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * user name to use for Linux VMs.
      * 
-     * @param {object} [parameters.linuxProfile.ssh] Specifies the ssh key
-     * configuration for Linux VMs
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
      * 
-     * @param {array} [parameters.linuxProfile.ssh.publicKeys] the list of SSH
-     * public keys used to authenticate with Linux based VMs
+     * @param {array} parameters.linuxProfile.ssh.publicKeys The list of SSH
+     * public keys used to authenticate with Linux-based VMs.
      * 
-     * @param {object} [parameters.diagnosticsProfile] Properties for Diagnostic
-     * Agent
+     * @param {object} [parameters.diagnosticsProfile] Properties of the
+     * diagnostic agent.
      * 
-     * @param {object} [parameters.diagnosticsProfile.vmDiagnostics] Profile for
-     * container service VM diagnostic agent
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
      * 
-     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled]
-     * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled
+     * Whether the VM diagnostic agent should be provisioned on the VM.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2704,63 +2734,81 @@ export interface ContainerServiceOperations {
     createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
 
     /**
-     * The operation to create or update a container service.
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
-     * @param {object} parameters Parameters supplied to the Create Container
-     * Service operation.
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
      * 
-     * @param {object} [parameters.orchestratorProfile] Properties of orchestrator
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
      * 
-     * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
-     * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'Swarm', 'DCOS'
+     * @param {string} parameters.orchestratorProfile.orchestratorType Specifies
+     * the orchestrator to use to manage container service cluster resources.
+     * Possible values include: 'Swarm', 'DCOS', 'Custom'
      * 
-     * @param {object} [parameters.masterProfile] Properties of master agents
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     * 
+     * @param {string} parameters.customProfile.orchestrator The name of the
+     * custom orchestrator to use.
+     * 
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     * 
+     * @param {object} parameters.masterProfile Properties of master agents.
      * 
      * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container cluster
+     * the container service cluster.
      * 
-     * @param {string} [parameters.masterProfile.dnsPrefix] DNS prefix to be used
-     * to create FQDN for master
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create FQDN for master.
      * 
-     * @param {array} [parameters.agentPoolProfiles] Properties of agent pools
+     * @param {array} parameters.agentPoolProfiles Properties of agent pools.
      * 
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
      * 
-     * @param {string} [parameters.windowsProfile.adminUsername] The administrator
-     * username to use for Windows VMs
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * user name to use for Windows VMs.
      * 
-     * @param {string} [parameters.windowsProfile.adminPassword] The administrator
-     * password to use for Windows VMs
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
      * 
-     * @param {object} [parameters.linuxProfile] Properties for Linux VMs
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
      * 
-     * @param {string} [parameters.linuxProfile.adminUsername] The administrator
-     * username to use for all Linux VMs
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * user name to use for Linux VMs.
      * 
-     * @param {object} [parameters.linuxProfile.ssh] Specifies the ssh key
-     * configuration for Linux VMs
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
      * 
-     * @param {array} [parameters.linuxProfile.ssh.publicKeys] the list of SSH
-     * public keys used to authenticate with Linux based VMs
+     * @param {array} parameters.linuxProfile.ssh.publicKeys The list of SSH
+     * public keys used to authenticate with Linux-based VMs.
      * 
-     * @param {object} [parameters.diagnosticsProfile] Properties for Diagnostic
-     * Agent
+     * @param {object} [parameters.diagnosticsProfile] Properties of the
+     * diagnostic agent.
      * 
-     * @param {object} [parameters.diagnosticsProfile.vmDiagnostics] Profile for
-     * container service VM diagnostic agent
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
      * 
-     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled]
-     * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled
+     * Whether the VM diagnostic agent should be provisioned on the VM.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2774,12 +2822,17 @@ export interface ContainerServiceOperations {
     beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
 
     /**
-     * The operation to get a container service.
+     * @summary Gets the specified container service.
+     *
+     * Gets the specified container service in the specified subscription and
+     * resource group. The operation returns the properties for the specified
+     * container service including state, number of masters and agents, and FQDNs
+     * of masters and agents.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2793,12 +2846,19 @@ export interface ContainerServiceOperations {
     get(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<models.ContainerService>): void;
 
     /**
-     * The operation to delete a container service.
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted
+     * individually.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2812,12 +2872,19 @@ export interface ContainerServiceOperations {
     deleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The operation to delete a container service.
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted
+     * individually.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2831,7 +2898,12 @@ export interface ContainerServiceOperations {
     beginDeleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The operation to list container services.
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and
+     * resource group. The operation returns properties of each container service
+     * including state, number of masters and agents, and FQDNs of masters and
+     * agents.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -2843,6 +2915,49 @@ export interface ContainerServiceOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-    list(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+    /**
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and
+     * resource group. The operation returns properties of each container service
+     * including state, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
 }
