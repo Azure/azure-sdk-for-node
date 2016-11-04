@@ -101,7 +101,7 @@ describe('Cdn Management CheckNameAvailability', function() {
 
   describe('cdn check name availability', function() {
     it('should return true when check a unique created endpoint name', function(done) {
-      client.nameAvailability.checkNameAvailability(endpointName, 'Microsoft.Cdn/Profiles/Endpoints', function(err, result, request, response) {
+      client.checkNameAvailability(endpointName, 'Microsoft.Cdn/Profiles/Endpoints', function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.nameAvailable.should.equal(true);
@@ -110,11 +110,11 @@ describe('Cdn Management CheckNameAvailability', function() {
     });
 
     it('should return false once endpoint is already used', function(done) {
-      client.profiles.create(profileName, standardCreateParameters, groupName, function(err, result, request, response) {
+      client.profiles.create(groupName, profileName, standardCreateParameters, function(err, result, request, response) {
         should.not.exist(err);
-        client.endpoints.create(endpointName, validEndpointProperties, profileName, groupName, function(err, result, request, response) {
+        client.endpoints.create(groupName, profileName, endpointName, validEndpointProperties, function(err, result, request, response) {
           should.not.exist(err);
-          client.nameAvailability.checkNameAvailability(endpointName, 'Microsoft.Cdn/Profiles/Endpoints', function(err, result, request, response) {
+          client.checkNameAvailability(endpointName, 'Microsoft.Cdn/Profiles/Endpoints', function(err, result, request, response) {
             should.not.exist(err);
             should.exist(result);
             result.nameAvailable.should.equal(false);

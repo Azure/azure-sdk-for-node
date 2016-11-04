@@ -9,6 +9,7 @@
  */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
 declare class CdnManagementClient {
@@ -17,7 +18,7 @@ declare class CdnManagementClient {
      * Initializes a new instance of the CdnManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
+     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
      * @param {string} subscriptionId - Azure Subscription ID.
      *
@@ -32,7 +33,7 @@ declare class CdnManagementClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
-     * @param {string} [options.apiVersion] - Version of the API to be used with the client request. Current version is 2016-04-02
+     * @param {string} [options.apiVersion] - Version of the API to be used with the client request. Current version is 2016-10-02.
      *
      * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
      *
@@ -60,8 +61,55 @@ declare class CdnManagementClient {
     endpoints: operations.Endpoints;
     origins: operations.Origins;
     customDomains: operations.CustomDomains;
-    nameAvailability: operations.NameAvailability;
-    operations: operations.Operations;
-    }
+
+            /**
+         * Check the availability of a resource name without creating the resource.
+         * This is needed for resources where name is globally unique, such as a CDN
+         * endpoint.
+         *
+         * @param {string} name The resource name to validate.
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+        checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+
+        /**
+         * Lists all of the available CDN REST API operations.
+         *
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+        listOperations(callback: ServiceCallback<models.OperationListResult>): void;
+
+        /**
+         * Lists all of the available CDN REST API operations.
+         *
+         * @param {string} nextPageLink The NextLink from the previous successful call
+         * to List operation.
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+        listOperationsNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+}
 
 export = CdnManagementClient;

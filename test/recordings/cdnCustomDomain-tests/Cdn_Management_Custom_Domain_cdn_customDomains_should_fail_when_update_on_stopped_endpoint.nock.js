@@ -2,52 +2,7 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
 };
 
-exports.scopes = [[function (nock) { 
-var result = 
-nock('http://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup5157/providers/Microsoft.Cdn/profiles/cdnTestProfile6002/endpoints/testEndpoint-06466c93-ab2d-4268-b3ec-38bbc2a12e90/customDomains/cdnTestCustomDomain3998?api-version=2016-04-02', '*')
-  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Update is not allowed for custom domain.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '109',
-  'content-type': 'application/json; charset=utf-8',
-  'content-language': 'en-US',
-  expires: '-1',
-  'x-ms-request-id': '48a03a87-a6d4-45f1-9978-7002c30f069d',
-  'x-ms-client-request-id': '58b92285-aecf-4515-afc3-3ba16454915e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': '57d2bcce-3128-4a1d-a679-a59e6ff3d112',
-  'x-ms-routing-request-id': 'WESTUS:20160511T232108Z:57d2bcce-3128-4a1d-a679-a59e6ff3d112',
-  date: 'Wed, 11 May 2016 23:21:07 GMT',
-  connection: 'close' });
- return result; },
-function (nock) { 
-var result = 
-nock('https://management.azure.com:443')
-  .filteringRequestBody(function (path) { return '*';})
-.patch('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup5157/providers/Microsoft.Cdn/profiles/cdnTestProfile6002/endpoints/testEndpoint-06466c93-ab2d-4268-b3ec-38bbc2a12e90/customDomains/cdnTestCustomDomain3998?api-version=2016-04-02', '*')
-  .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Update is not allowed for custom domain.\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
-  pragma: 'no-cache',
-  'content-length': '109',
-  'content-type': 'application/json; charset=utf-8',
-  'content-language': 'en-US',
-  expires: '-1',
-  'x-ms-request-id': '48a03a87-a6d4-45f1-9978-7002c30f069d',
-  'x-ms-client-request-id': '58b92285-aecf-4515-afc3-3ba16454915e',
-  'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  server: 'Microsoft-IIS/8.5',
-  'x-aspnet-version': '4.0.30319',
-  'x-powered-by': 'ASP.NET',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': '57d2bcce-3128-4a1d-a679-a59e6ff3d112',
-  'x-ms-routing-request-id': 'WESTUS:20160511T232108Z:57d2bcce-3128-4a1d-a679-a59e6ff3d112',
-  date: 'Wed, 11 May 2016 23:21:07 GMT',
-  connection: 'close' });
- return result; }]];
+exports.scopes = [[]];
