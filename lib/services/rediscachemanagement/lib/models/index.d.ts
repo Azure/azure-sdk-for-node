@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -34,61 +37,10 @@ export interface Sku {
 
 /**
  * @class
- * Initializes a new instance of the RedisProperties class.
- * @constructor
- * Properties supplied to CreateOrUpdate redis operation.
- *
- * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
- * As such, it is no longer necessary to provide this parameter and any value
- * specified is ignored.
- * 
- * @member {object} sku What sku of redis cache to deploy.
- * 
- * @member {string} [sku.name] What type of redis cache to deploy. Valid
- * values: (Basic, Standard, Premium). Possible values include: 'Basic',
- * 'Standard', 'Premium'
- * 
- * @member {string} [sku.family] Which family to use. Valid values: (C, P).
- * Possible values include: 'C', 'P'
- * 
- * @member {number} [sku.capacity] What size of redis cache to deploy. Valid
- * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
- * 
- * @member {object} [redisConfiguration] All Redis Settings. Few possible
- * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
- * etc.
- * 
- * @member {boolean} [enableNonSslPort] If the value is true, then the non-ssl
- * redis server port (6379) will be enabled.
- * 
- * @member {object} [tenantSettings] tenantSettings
- * 
- * @member {number} [shardCount] The number of shards to be created on a
- * Premium Cluster Cache.
- * 
- * @member {string} [subnetId] The full resource ID of a subnet in a virtual
- * network to deploy the redis cache in. Example format:
- * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
- * 
- * @member {string} [staticIP] Required when deploying a redis cache inside an
- * existing Azure Virtual Network.
- * 
- */
-export interface RedisProperties {
-  redisVersion?: string;
-  sku: Sku;
-  redisConfiguration?: { [propertyName: string]: string };
-  enableNonSslPort?: boolean;
-  tenantSettings?: { [propertyName: string]: string };
-  shardCount?: number;
-  subnetId?: string;
-  staticIP?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
+ * The Resource definition.
+ *
  * @member {string} [id] Resource Id
  * 
  * @member {string} [name] Resource name
@@ -110,26 +62,10 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the RedisCreateOrUpdateParameters class.
+ * Initializes a new instance of the RedisCreateParameters class.
  * @constructor
- * Parameters supplied to the CreateOrUpdate Redis operation.
+ * Parameters supplied to the Create Redis operation.
  *
- * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
- * As such, it is no longer necessary to provide this parameter and any value
- * specified is ignored.
- * 
- * @member {object} sku What sku of redis cache to deploy.
- * 
- * @member {string} [sku.name] What type of redis cache to deploy. Valid
- * values: (Basic, Standard, Premium). Possible values include: 'Basic',
- * 'Standard', 'Premium'
- * 
- * @member {string} [sku.family] Which family to use. Valid values: (C, P).
- * Possible values include: 'C', 'P'
- * 
- * @member {number} [sku.capacity] What size of redis cache to deploy. Valid
- * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
- * 
  * @member {object} [redisConfiguration] All Redis Settings. Few possible
  * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
  * etc.
@@ -149,16 +85,78 @@ export interface Resource extends BaseResource {
  * @member {string} [staticIP] Required when deploying a redis cache inside an
  * existing Azure Virtual Network.
  * 
+ * @member {object} sku What sku of redis cache to deploy.
+ * 
+ * @member {string} [sku.name] What type of redis cache to deploy. Valid
+ * values: (Basic, Standard, Premium). Possible values include: 'Basic',
+ * 'Standard', 'Premium'
+ * 
+ * @member {string} [sku.family] Which family to use. Valid values: (C, P).
+ * Possible values include: 'C', 'P'
+ * 
+ * @member {number} [sku.capacity] What size of redis cache to deploy. Valid
+ * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+ * 
  */
-export interface RedisCreateOrUpdateParameters extends Resource {
-  redisVersion?: string;
-  sku: Sku;
+export interface RedisCreateParameters extends Resource {
   redisConfiguration?: { [propertyName: string]: string };
   enableNonSslPort?: boolean;
   tenantSettings?: { [propertyName: string]: string };
   shardCount?: number;
   subnetId?: string;
   staticIP?: string;
+  sku: Sku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RedisUpdateParameters class.
+ * @constructor
+ * Parameters supplied to the Update Redis operation.
+ *
+ * @member {object} [redisConfiguration] All Redis Settings. Few possible
+ * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
+ * etc.
+ * 
+ * @member {boolean} [enableNonSslPort] If the value is true, then the non-ssl
+ * redis server port (6379) will be enabled.
+ * 
+ * @member {object} [tenantSettings] tenantSettings
+ * 
+ * @member {number} [shardCount] The number of shards to be created on a
+ * Premium Cluster Cache.
+ * 
+ * @member {string} [subnetId] The full resource ID of a subnet in a virtual
+ * network to deploy the redis cache in. Example format:
+ * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
+ * 
+ * @member {string} [staticIP] Required when deploying a redis cache inside an
+ * existing Azure Virtual Network.
+ * 
+ * @member {object} [sku] What sku of redis cache to deploy.
+ * 
+ * @member {string} [sku.name] What type of redis cache to deploy. Valid
+ * values: (Basic, Standard, Premium). Possible values include: 'Basic',
+ * 'Standard', 'Premium'
+ * 
+ * @member {string} [sku.family] Which family to use. Valid values: (C, P).
+ * Possible values include: 'C', 'P'
+ * 
+ * @member {number} [sku.capacity] What size of redis cache to deploy. Valid
+ * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+ * 
+ * @member {object} [tags] Resource tags
+ * 
+ */
+export interface RedisUpdateParameters {
+  redisConfiguration?: { [propertyName: string]: string };
+  enableNonSslPort?: boolean;
+  tenantSettings?: { [propertyName: string]: string };
+  shardCount?: number;
+  subnetId?: string;
+  staticIP?: string;
+  sku?: Sku;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -181,99 +179,19 @@ export interface RedisAccessKeys {
 
 /**
  * @class
- * Initializes a new instance of the RedisResourceWithAccessKey class.
- * @constructor
- * A redis item in CreateOrUpdate Operation response.
- *
- * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
- * As such, it is no longer necessary to provide this parameter and any value
- * specified is ignored.
- * 
- * @member {object} sku What sku of redis cache to deploy.
- * 
- * @member {string} [sku.name] What type of redis cache to deploy. Valid
- * values: (Basic, Standard, Premium). Possible values include: 'Basic',
- * 'Standard', 'Premium'
- * 
- * @member {string} [sku.family] Which family to use. Valid values: (C, P).
- * Possible values include: 'C', 'P'
- * 
- * @member {number} [sku.capacity] What size of redis cache to deploy. Valid
- * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
- * 
- * @member {object} [redisConfiguration] All Redis Settings. Few possible
- * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
- * etc.
- * 
- * @member {boolean} [enableNonSslPort] If the value is true, then the non-ssl
- * redis server port (6379) will be enabled.
- * 
- * @member {object} [tenantSettings] tenantSettings
- * 
- * @member {number} [shardCount] The number of shards to be created on a
- * Premium Cluster Cache.
- * 
- * @member {string} [subnetId] The full resource ID of a subnet in a virtual
- * network to deploy the redis cache in. Example format:
- * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
- * 
- * @member {string} [staticIP] Required when deploying a redis cache inside an
- * existing Azure Virtual Network.
- * 
- * @member {string} [provisioningState] Redis instance provisioning status
- * 
- * @member {string} [hostName] Redis host name
- * 
- * @member {number} [port] Redis non-ssl port
- * 
- * @member {number} [sslPort] Redis ssl port
- * 
- * @member {object} [accessKeys] Redis cache access keys.
- * 
- * @member {string} [accessKeys.primaryKey] The current primary key that
- * clients can use to authenticate with redis cache.
- * 
- * @member {string} [accessKeys.secondaryKey] The current secondary key that
- * clients can use to authenticate with redis cache.
- * 
- */
-export interface RedisResourceWithAccessKey extends Resource {
-  redisVersion?: string;
-  sku: Sku;
-  redisConfiguration?: { [propertyName: string]: string };
-  enableNonSslPort?: boolean;
-  tenantSettings?: { [propertyName: string]: string };
-  shardCount?: number;
-  subnetId?: string;
-  staticIP?: string;
-  provisioningState?: string;
-  hostName?: string;
-  port?: number;
-  sslPort?: number;
-  accessKeys?: RedisAccessKeys;
-}
-
-/**
- * @class
  * Initializes a new instance of the RedisResource class.
  * @constructor
  * A single redis item in List or Get Operation.
  *
- * @member {string} [redisVersion] RedisVersion parameter has been deprecated.
- * As such, it is no longer necessary to provide this parameter and any value
- * specified is ignored.
+ * @member {string} [redisVersion] Redis Version.
  * 
- * @member {object} sku What sku of redis cache to deploy.
+ * @member {string} [provisioningState] Redis instance provisioning status
  * 
- * @member {string} [sku.name] What type of redis cache to deploy. Valid
- * values: (Basic, Standard, Premium). Possible values include: 'Basic',
- * 'Standard', 'Premium'
+ * @member {string} [hostName] Redis host name
  * 
- * @member {string} [sku.family] Which family to use. Valid values: (C, P).
- * Possible values include: 'C', 'P'
+ * @member {number} [port] Redis non-ssl port
  * 
- * @member {number} [sku.capacity] What size of redis cache to deploy. Valid
- * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
+ * @member {number} [sslPort] Redis ssl port
  * 
  * @member {object} [redisConfiguration] All Redis Settings. Few possible
  * keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
@@ -294,46 +212,48 @@ export interface RedisResourceWithAccessKey extends Resource {
  * @member {string} [staticIP] Required when deploying a redis cache inside an
  * existing Azure Virtual Network.
  * 
- * @member {string} [provisioningState] Redis instance provisioning status
+ * @member {object} sku What sku of redis cache to deploy.
  * 
- * @member {string} [hostName] Redis host name
+ * @member {string} [sku.name] What type of redis cache to deploy. Valid
+ * values: (Basic, Standard, Premium). Possible values include: 'Basic',
+ * 'Standard', 'Premium'
  * 
- * @member {number} [port] Redis non-ssl port
+ * @member {string} [sku.family] Which family to use. Valid values: (C, P).
+ * Possible values include: 'C', 'P'
  * 
- * @member {number} [sslPort] Redis ssl port
+ * @member {number} [sku.capacity] What size of redis cache to deploy. Valid
+ * values: for C family (0, 1, 2, 3, 4, 5, 6), for P family (1, 2, 3, 4)
  * 
  */
 export interface RedisResource extends Resource {
   redisVersion?: string;
-  sku: Sku;
+  provisioningState?: string;
+  hostName?: string;
+  port?: number;
+  sslPort?: number;
   redisConfiguration?: { [propertyName: string]: string };
   enableNonSslPort?: boolean;
   tenantSettings?: { [propertyName: string]: string };
   shardCount?: number;
   subnetId?: string;
   staticIP?: string;
-  provisioningState?: string;
-  hostName?: string;
-  port?: number;
-  sslPort?: number;
+  sku: Sku;
 }
 
 /**
  * @class
- * Initializes a new instance of the RedisListKeysResult class.
+ * Initializes a new instance of the RedisListResult class.
  * @constructor
- * The response of redis list keys operation.
+ * The response of list redis operation.
  *
- * @member {string} [primaryKey] The current primary key that clients can use
- * to authenticate with redis cache.
+ * @member {array} [value] Results of the list operation
  * 
- * @member {string} [secondaryKey] The current secondary key that clients can
- * use to authenticate with redis cache.
+ * @member {string} [nextLink] Link for next set of locations.
  * 
  */
-export interface RedisListKeysResult {
-  primaryKey?: string;
-  secondaryKey?: string;
+export interface RedisListResult {
+  value?: RedisResource[];
+  nextLink?: string;
 }
 
 /**
@@ -377,7 +297,7 @@ export interface RedisRebootParameters {
  *
  * @member {string} [format] File format.
  * 
- * @member {string} prefix Prifix to use for exported files.
+ * @member {string} prefix Prefix to use for exported files.
  * 
  * @member {string} container Container name to export to.
  * 
@@ -408,9 +328,11 @@ export interface ImportRDBParameters {
  * @class
  * Initializes a new instance of the ScheduleEntry class.
  * @constructor
+ * Patch schedule entry for Premium Redis Cache.
+ *
  * @member {string} dayOfWeek Day of week when cache can be patched. Possible
  * values include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
- * 'Saturday', 'Sunday'
+ * 'Saturday', 'Sunday', 'Everyday', 'Weekend'
  * 
  * @member {number} startHourUtc Start hour after which cache patching can
  * start.
@@ -427,20 +349,7 @@ export interface ScheduleEntry {
 
 /**
  * @class
- * Initializes a new instance of the RedisPatchSchedulesRequest class.
- * @constructor
- * Parameters to set patch schedules for redis cache.
- *
- * @member {array} scheduleEntries List of patch schedules for redis cache.
- * 
- */
-export interface RedisPatchSchedulesRequest {
-  scheduleEntries: ScheduleEntry[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RedisPatchSchedulesResponse class.
+ * Initializes a new instance of the RedisPatchSchedule class.
  * @constructor
  * Response to put/get patch schedules for redis cache.
  *
@@ -455,7 +364,7 @@ export interface RedisPatchSchedulesRequest {
  * @member {array} scheduleEntries List of patch schedules for redis cache.
  * 
  */
-export interface RedisPatchSchedulesResponse {
+export interface RedisPatchSchedule {
   id?: string;
   name?: string;
   type?: string;
