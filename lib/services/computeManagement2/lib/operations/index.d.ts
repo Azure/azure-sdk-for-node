@@ -25,8 +25,7 @@ export interface AvailabilitySets {
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} name Parameters supplied to the Create Availability Set
-     * operation.
+     * @param {string} name The name of the availability set.
      * 
      * @param {object} parameters Parameters supplied to the Create Availability
      * Set operation.
@@ -35,14 +34,12 @@ export interface AvailabilitySets {
      * 
      * @param {number} [parameters.platformFaultDomainCount] Fault Domain count.
      * 
-     * @param {array} [parameters.virtualMachines] a list containing reference to
-     * all Virtual Machines created under this Availability Set.
+     * @param {array} [parameters.virtualMachines] A list of references to all
+     * virtual machines in the availability set.
      * 
-     * @param {array} [parameters.statuses] the resource status information.
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {string} [parameters.location] Resource location
-     * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -74,7 +71,7 @@ export interface AvailabilitySets {
     deleteMethod(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The operation to get the availability set.
+     * Retrieves information about an availability set.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -92,7 +89,7 @@ export interface AvailabilitySets {
     get(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.AvailabilitySet>): void;
 
     /**
-     * The operation to list the availability sets.
+     * The operation to list all availability sets in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -263,9 +260,9 @@ export interface VirtualMachineExtensions {
      * @param {array} [extensionParameters.instanceView.statuses] the resource
      * status information.
      * 
-     * @param {string} [extensionParameters.location] Resource location
+     * @param {string} extensionParameters.location Resource location.
      * 
-     * @param {object} [extensionParameters.tags] Resource tags
+     * @param {object} [extensionParameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -277,6 +274,51 @@ export interface VirtualMachineExtensions {
      */
     createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
     createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+
+    /**
+     * The operation to delete the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine where the extension
+     * should be deleted.
+     * 
+     * @param {string} vmExtensionName The name of the virtual machine extension.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * The operation to get the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine containing the
+     * extension.
+     * 
+     * @param {string} vmExtensionName The name of the virtual machine extension.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    get(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.VirtualMachineExtension>): void;
 
     /**
      * The operation to create or update the extension.
@@ -331,9 +373,9 @@ export interface VirtualMachineExtensions {
      * @param {array} [extensionParameters.instanceView.statuses] the resource
      * status information.
      * 
-     * @param {string} [extensionParameters.location] Resource location
+     * @param {string} extensionParameters.location Resource location.
      * 
-     * @param {object} [extensionParameters.tags] Resource tags
+     * @param {object} [extensionParameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -364,53 +406,8 @@ export interface VirtualMachineExtensions {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * The operation to delete the extension.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine where the extension
-     * should be deleted.
-     * 
-     * @param {string} vmExtensionName The name of the virtual machine extension.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * The operation to get the extension.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine containing the
-     * extension.
-     * 
-     * @param {string} vmExtensionName The name of the virtual machine extension.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    get(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
-    get(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.VirtualMachineExtension>): void;
 }
 
 /**
@@ -424,15 +421,15 @@ export interface VirtualMachineImages {
     /**
      * Gets a virtual machine image.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      * 
-     * @param {string} publisherName
+     * @param {string} publisherName A valid image publisher.
      * 
-     * @param {string} offer
+     * @param {string} offer A valid image publisher offer.
      * 
-     * @param {string} skus
+     * @param {string} skus A valid image SKU.
      * 
-     * @param {string} version
+     * @param {string} version A valid image SKU version.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -446,15 +443,16 @@ export interface VirtualMachineImages {
     get(location: string, publisherName: string, offer: string, skus: string, version: string, callback: ServiceCallback<models.VirtualMachineImage>): void;
 
     /**
-     * Gets a list of virtual machine images.
+     * Gets a list of all virtual machine image versions for the specified
+     * location, publisher, offer, and SKU.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      * 
-     * @param {string} publisherName
+     * @param {string} publisherName A valid image publisher.
      * 
-     * @param {string} offer
+     * @param {string} offer A valid image publisher offer.
      * 
-     * @param {string} skus
+     * @param {string} skus A valid image SKU.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -474,11 +472,12 @@ export interface VirtualMachineImages {
     list(location: string, publisherName: string, offer: string, skus: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
-     * Gets a list of virtual machine image offers.
+     * Gets a list of virtual machine image offers for the specified location and
+     * publisher.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      * 
-     * @param {string} publisherName
+     * @param {string} publisherName A valid image publisher.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -492,9 +491,10 @@ export interface VirtualMachineImages {
     listOffers(location: string, publisherName: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
-     * Gets a list of virtual machine image publishers.
+     * Gets a list of virtual machine image publishers for the specified Azure
+     * location.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -508,13 +508,14 @@ export interface VirtualMachineImages {
     listPublishers(location: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 
     /**
-     * Gets a list of virtual machine image skus.
+     * Gets a list of virtual machine image SKUs for the specified location,
+     * publisher, and offer.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      * 
-     * @param {string} publisherName
+     * @param {string} publisherName A valid image publisher.
      * 
-     * @param {string} offer
+     * @param {string} offer A valid image publisher offer.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -537,7 +538,8 @@ export interface VirtualMachineImages {
 export interface UsageOperations {
 
     /**
-     * Lists compute usages for a subscription.
+     * Gets, for the specified location, the current compute usage information as
+     * well as the limits for compute resources under the subscription.
      *
      * @param {string} location The location upon which resource usage is queried.
      * 
@@ -553,7 +555,8 @@ export interface UsageOperations {
     list(location: string, callback: ServiceCallback<models.ListUsagesResult>): void;
 
     /**
-     * Lists compute usages for a subscription.
+     * Gets, for the specified location, the current compute usage information as
+     * well as the limits for compute resources under the subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -615,14 +618,14 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Capture Virtual
      * Machine operation.
      * 
-     * @param {string} [parameters.vhdPrefix] the captured VirtualHardDisk's name
+     * @param {string} parameters.vhdPrefix the captured VirtualHardDisk's name
      * prefix.
      * 
-     * @param {string} [parameters.destinationContainerName] the destination
+     * @param {string} parameters.destinationContainerName the destination
      * container name.
      * 
-     * @param {boolean} [parameters.overwriteVhds] whether it overwrites
-     * destination VirtualHardDisk if true, in case of conflict.
+     * @param {boolean} parameters.overwriteVhds whether it overwrites destination
+     * VirtualHardDisk if true, in case of conflict.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -636,37 +639,6 @@ export interface VirtualMachines {
     capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
 
     /**
-     * Captures the VM by copying virtual hard disks of the VM and outputs a
-     * template that can be used to create similar VMs.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine.
-     * 
-     * @param {object} parameters Parameters supplied to the Capture Virtual
-     * Machine operation.
-     * 
-     * @param {string} [parameters.vhdPrefix] the captured VirtualHardDisk's name
-     * prefix.
-     * 
-     * @param {string} [parameters.destinationContainerName] the destination
-     * container name.
-     * 
-     * @param {boolean} [parameters.overwriteVhds] whether it overwrites
-     * destination VirtualHardDisk if true, in case of conflict.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
-    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
-
-    /**
      * The operation to create or update a virtual machine.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -676,7 +648,7 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Create Virtual
      * Machine operation.
      * 
-     * @param {object} [parameters.plan] the purchase plan when deploying virtual
+     * @param {object} [parameters.plan] The purchase plan when deploying virtual
      * machine from VM Marketplace images.
      * 
      * @param {string} [parameters.plan.name] the plan ID.
@@ -687,7 +659,7 @@ export interface VirtualMachines {
      * 
      * @param {string} [parameters.plan.promotionCode] the promotion code.
      * 
-     * @param {object} [parameters.hardwareProfile] the hardware profile.
+     * @param {object} [parameters.hardwareProfile] The hardware profile.
      * 
      * @param {string} [parameters.hardwareProfile.vmSize] The virtual machine
      * size name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
@@ -707,26 +679,26 @@ export interface VirtualMachines {
      * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
      * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
      * 
-     * @param {object} [parameters.storageProfile] the storage profile.
+     * @param {object} [parameters.storageProfile] The storage profile.
      * 
-     * @param {object} [parameters.storageProfile.imageReference] the image
+     * @param {object} [parameters.storageProfile.imageReference] The image
      * reference.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.publisher] the
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
      * image publisher.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.offer] the image
+     * @param {string} [parameters.storageProfile.imageReference.offer] The image
      * offer.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.sku] the image
-     * sku.
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
      * 
-     * @param {string} [parameters.storageProfile.imageReference.version] the
+     * @param {string} [parameters.storageProfile.imageReference.version] The
      * image version. The allowed formats are Major.Minor.Build or 'latest'.
      * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
-     * latest version of image.
+     * latest version of the image.
      * 
-     * @param {object} [parameters.storageProfile.osDisk] the OS disk.
+     * @param {object} [parameters.storageProfile.osDisk] The OS disk.
      * 
      * @param {string} [parameters.storageProfile.osDisk.osType] the Operating
      * System type. Possible values include: 'Windows', 'Linux'
@@ -739,11 +711,11 @@ export interface VirtualMachines {
      * the disk encryption key which is a KeyVault Secret.
      * 
      * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
      * the URL referencing a secret in a Key Vault.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
      * the Relative URL of the Key Vault containing the secret.
      * 
      * @param {object}
@@ -751,25 +723,24 @@ export interface VirtualMachines {
      * key encryption key which is KeyVault Key.
      * 
      * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
      * the URL referencing a key in a Key Vault.
      * 
      * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
      * the Relative URL of the Key Vault containing the key
      * 
      * @param {boolean}
      * [parameters.storageProfile.osDisk.encryptionSettings.enabled] whether disk
      * encryption should be enabled on the Virtual Machine.
      * 
-     * @param {string} [parameters.storageProfile.osDisk.name] the disk name.
+     * @param {string} parameters.storageProfile.osDisk.name the disk name.
      * 
-     * @param {object} [parameters.storageProfile.osDisk.vhd] the Virtual Hard
-     * Disk.
+     * @param {object} parameters.storageProfile.osDisk.vhd the Virtual Hard Disk.
      * 
      * @param {object} [parameters.storageProfile.osDisk.image] the Source User
      * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
-     * to attach to the Virtual Machine.If SourceImage is provided, the
+     * to attach to the Virtual Machine. If SourceImage is provided, the
      * destination VirtualHardDisk should not exist.
      * 
      * @param {string} [parameters.storageProfile.osDisk.image.uri] the virtual
@@ -778,95 +749,104 @@ export interface VirtualMachines {
      * @param {string} [parameters.storageProfile.osDisk.caching] the caching
      * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
-     * @param {string} [parameters.storageProfile.osDisk.createOption] the create
+     * @param {string} parameters.storageProfile.osDisk.createOption the create
      * option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] the initial
      * disk size in GB for blank data disks, and the new desired size for
      * existing OS and Data disks.
      * 
-     * @param {array} [parameters.storageProfile.dataDisks] the data disks.
+     * @param {array} [parameters.storageProfile.dataDisks] The data disks.
      * 
-     * @param {object} [parameters.osProfile] the OS profile.
+     * @param {object} [parameters.osProfile] The OS profile.
      * 
-     * @param {string} [parameters.osProfile.computerName] the computer name.
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine.
      * 
-     * @param {string} [parameters.osProfile.adminUsername] the admin user name.
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account.
      * 
-     * @param {string} [parameters.osProfile.adminPassword] the admin user
-     * password.
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account.
      * 
-     * @param {string} [parameters.osProfile.customData] a base-64 encoded string
-     * of custom data.
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes
      * 
      * @param {object} [parameters.osProfile.windowsConfiguration] the Windows
      * Configuration of the OS profile.
      * 
      * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] whether VM
-     * Agent should be provisioned on the Virtual Machine.
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether the virtual machine agent should be provisioned on the Virtual
+     * Machine. If not specified, then the default behavior is to set it to true.
      * 
      * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] whether
-     * Windows updates are automatically installed on the VM
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates]
+     * Indicates whether Windows updates are automatically installed on the VM.
      * 
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] the
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] The
      * Time Zone of the VM
      * 
      * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent] the
-     * additional base-64 encoded XML formatted information that can be included
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Additional base-64 encoded XML formatted information that can be included
      * in the Unattend.xml file.
      * 
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] the
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] The
      * Windows Remote Management configuration of the VM
      * 
      * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * the list of Windows Remote Management listeners
+     * The list of Windows Remote Management listeners
      * 
      * @param {object} [parameters.osProfile.linuxConfiguration] the Linux
      * Configuration of the OS profile.
      * 
      * @param {boolean}
      * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * whether Authentication using user name and password is allowed or not
+     * Specifies whether password authentication should be disabled.
      * 
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] the SSH
-     * configuration for linux VMs
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] The SSH
+     * configuration for linux VMs.
      * 
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] the
-     * list of SSH public keys used to authenticate with linux based VMs
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
      * 
      * @param {array} [parameters.osProfile.secrets] the List of certificates for
      * addition to the VM.
      * 
-     * @param {object} [parameters.networkProfile] the network profile.
+     * @param {object} [parameters.networkProfile] The network profile.
      * 
-     * @param {array} [parameters.networkProfile.networkInterfaces] the network
-     * interfaces.
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the
+     * virtual machine.
      * 
-     * @param {object} [parameters.diagnosticsProfile] the diagnostics profile.
+     * @param {object} [parameters.diagnosticsProfile] The diagnostics profile.
      * 
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] the boot
-     * diagnostics.
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
      * 
      * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * whether boot diagnostics should be enabled on the Virtual Machine.
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
      * 
      * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * the boot diagnostics storage Uri. It should be a valid Uri
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
      * 
-     * @param {object} [parameters.availabilitySet] the reference Id of the
-     * availability set to which this virtual machine belongs.
+     * @param {object} [parameters.availabilitySet] The reference Id of the
+     * availability set to which the virtual machine belongs.
      * 
      * @param {string} [parameters.availabilitySet.id] Resource Id
      * 
-     * @param {string} [parameters.licenseType] the license type, which is for
-     * bring your own license scenario.
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -878,219 +858,6 @@ export interface VirtualMachines {
      */
     createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
     createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
-
-    /**
-     * The operation to create or update a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine.
-     * 
-     * @param {object} parameters Parameters supplied to the Create Virtual
-     * Machine operation.
-     * 
-     * @param {object} [parameters.plan] the purchase plan when deploying virtual
-     * machine from VM Marketplace images.
-     * 
-     * @param {string} [parameters.plan.name] the plan ID.
-     * 
-     * @param {string} [parameters.plan.publisher] the publisher ID.
-     * 
-     * @param {string} [parameters.plan.product] the offer ID.
-     * 
-     * @param {string} [parameters.plan.promotionCode] the promotion code.
-     * 
-     * @param {object} [parameters.hardwareProfile] the hardware profile.
-     * 
-     * @param {string} [parameters.hardwareProfile.vmSize] The virtual machine
-     * size name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
-     * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
-     * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
-     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4',
-     * 'Standard_D11', 'Standard_D12', 'Standard_D13', 'Standard_D14',
-     * 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2',
-     * 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
-     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
-     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
-     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
-     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2',
-     * 'Standard_DS11_v2', 'Standard_DS12_v2', 'Standard_DS13_v2',
-     * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1', 'Standard_G2',
-     * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
-     * 
-     * @param {object} [parameters.storageProfile] the storage profile.
-     * 
-     * @param {object} [parameters.storageProfile.imageReference] the image
-     * reference.
-     * 
-     * @param {string} [parameters.storageProfile.imageReference.publisher] the
-     * image publisher.
-     * 
-     * @param {string} [parameters.storageProfile.imageReference.offer] the image
-     * offer.
-     * 
-     * @param {string} [parameters.storageProfile.imageReference.sku] the image
-     * sku.
-     * 
-     * @param {string} [parameters.storageProfile.imageReference.version] the
-     * image version. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
-     * latest version of image.
-     * 
-     * @param {object} [parameters.storageProfile.osDisk] the OS disk.
-     * 
-     * @param {string} [parameters.storageProfile.osDisk.osType] the Operating
-     * System type. Possible values include: 'Windows', 'Linux'
-     * 
-     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] the
-     * disk encryption settings.
-     * 
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
-     * the disk encryption key which is a KeyVault Secret.
-     * 
-     * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl]
-     * the URL referencing a secret in a Key Vault.
-     * 
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault]
-     * the Relative URL of the Key Vault containing the secret.
-     * 
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey] the
-     * key encryption key which is KeyVault Key.
-     * 
-     * @param {string}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl]
-     * the URL referencing a key in a Key Vault.
-     * 
-     * @param {object}
-     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault]
-     * the Relative URL of the Key Vault containing the key
-     * 
-     * @param {boolean}
-     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] whether disk
-     * encryption should be enabled on the Virtual Machine.
-     * 
-     * @param {string} [parameters.storageProfile.osDisk.name] the disk name.
-     * 
-     * @param {object} [parameters.storageProfile.osDisk.vhd] the Virtual Hard
-     * Disk.
-     * 
-     * @param {object} [parameters.storageProfile.osDisk.image] the Source User
-     * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
-     * to attach to the Virtual Machine.If SourceImage is provided, the
-     * destination VirtualHardDisk should not exist.
-     * 
-     * @param {string} [parameters.storageProfile.osDisk.image.uri] the virtual
-     * hard disk's uri. It should be a valid Uri to a virtual hard disk.
-     * 
-     * @param {string} [parameters.storageProfile.osDisk.caching] the caching
-     * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
-     * 
-     * @param {string} [parameters.storageProfile.osDisk.createOption] the create
-     * option. Possible values include: 'fromImage', 'empty', 'attach'
-     * 
-     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] the initial
-     * disk size in GB for blank data disks, and the new desired size for
-     * existing OS and Data disks.
-     * 
-     * @param {array} [parameters.storageProfile.dataDisks] the data disks.
-     * 
-     * @param {object} [parameters.osProfile] the OS profile.
-     * 
-     * @param {string} [parameters.osProfile.computerName] the computer name.
-     * 
-     * @param {string} [parameters.osProfile.adminUsername] the admin user name.
-     * 
-     * @param {string} [parameters.osProfile.adminPassword] the admin user
-     * password.
-     * 
-     * @param {string} [parameters.osProfile.customData] a base-64 encoded string
-     * of custom data.
-     * 
-     * @param {object} [parameters.osProfile.windowsConfiguration] the Windows
-     * Configuration of the OS profile.
-     * 
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] whether VM
-     * Agent should be provisioned on the Virtual Machine.
-     * 
-     * @param {boolean}
-     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] whether
-     * Windows updates are automatically installed on the VM
-     * 
-     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] the
-     * Time Zone of the VM
-     * 
-     * @param {array}
-     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent] the
-     * additional base-64 encoded XML formatted information that can be included
-     * in the Unattend.xml file.
-     * 
-     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] the
-     * Windows Remote Management configuration of the VM
-     * 
-     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
-     * the list of Windows Remote Management listeners
-     * 
-     * @param {object} [parameters.osProfile.linuxConfiguration] the Linux
-     * Configuration of the OS profile.
-     * 
-     * @param {boolean}
-     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * whether Authentication using user name and password is allowed or not
-     * 
-     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] the SSH
-     * configuration for linux VMs
-     * 
-     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] the
-     * list of SSH public keys used to authenticate with linux based VMs
-     * 
-     * @param {array} [parameters.osProfile.secrets] the List of certificates for
-     * addition to the VM.
-     * 
-     * @param {object} [parameters.networkProfile] the network profile.
-     * 
-     * @param {array} [parameters.networkProfile.networkInterfaces] the network
-     * interfaces.
-     * 
-     * @param {object} [parameters.diagnosticsProfile] the diagnostics profile.
-     * 
-     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] the boot
-     * diagnostics.
-     * 
-     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
-     * whether boot diagnostics should be enabled on the Virtual Machine.
-     * 
-     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
-     * the boot diagnostics storage Uri. It should be a valid Uri
-     * 
-     * @param {object} [parameters.availabilitySet] the reference Id of the
-     * availability set to which this virtual machine belongs.
-     * 
-     * @param {string} [parameters.availabilitySet.id] Resource Id
-     * 
-     * @param {string} [parameters.licenseType] the license type, which is for
-     * bring your own license scenario.
-     * 
-     * @param {string} [parameters.location] Resource location
-     * 
-     * @param {object} [parameters.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
 
     /**
      * The operation to delete a virtual machine.
@@ -1109,24 +876,6 @@ export interface VirtualMachines {
      */
     deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * The operation to delete a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to get a virtual machine.
@@ -1167,25 +916,6 @@ export interface VirtualMachines {
      */
     deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Shuts down the Virtual Machine and releases the compute resources. You are
-     * not billed for the compute resources that this Virtual Machine uses.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Sets the state of the VM as Generalized.
@@ -1238,8 +968,8 @@ export interface VirtualMachines {
     listAll(callback: ServiceCallback<models.VirtualMachineListResult>): void;
 
     /**
-     * Lists all available virtual machine sizes it can be resized to for a
-     * virtual machine.
+     * Lists all available virtual machine sizes to which the specified virtual
+     * machine can be resized.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -1275,24 +1005,6 @@ export interface VirtualMachines {
     powerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The operation to power off (stop) a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
-
-    /**
      * The operation to restart a virtual machine.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1309,6 +1021,349 @@ export interface VirtualMachines {
      */
     restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     restart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * The operation to start a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Captures the VM by copying virtual hard disks of the VM and outputs a
+     * template that can be used to create similar VMs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} parameters Parameters supplied to the Capture Virtual
+     * Machine operation.
+     * 
+     * @param {string} parameters.vhdPrefix the captured VirtualHardDisk's name
+     * prefix.
+     * 
+     * @param {string} parameters.destinationContainerName the destination
+     * container name.
+     * 
+     * @param {boolean} parameters.overwriteVhds whether it overwrites destination
+     * VirtualHardDisk if true, in case of conflict.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+
+    /**
+     * The operation to create or update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} parameters Parameters supplied to the Create Virtual
+     * Machine operation.
+     * 
+     * @param {object} [parameters.plan] The purchase plan when deploying virtual
+     * machine from VM Marketplace images.
+     * 
+     * @param {string} [parameters.plan.name] the plan ID.
+     * 
+     * @param {string} [parameters.plan.publisher] the publisher ID.
+     * 
+     * @param {string} [parameters.plan.product] the offer ID.
+     * 
+     * @param {string} [parameters.plan.promotionCode] the promotion code.
+     * 
+     * @param {object} [parameters.hardwareProfile] The hardware profile.
+     * 
+     * @param {string} [parameters.hardwareProfile.vmSize] The virtual machine
+     * size name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
+     * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
+     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
+     * 'Standard_D1', 'Standard_D2', 'Standard_D3', 'Standard_D4',
+     * 'Standard_D11', 'Standard_D12', 'Standard_D13', 'Standard_D14',
+     * 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2', 'Standard_D4_v2',
+     * 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2', 'Standard_D13_v2',
+     * 'Standard_D14_v2', 'Standard_D15_v2', 'Standard_DS1', 'Standard_DS2',
+     * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+     * 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2', 'Standard_DS2_v2',
+     * 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2',
+     * 'Standard_DS11_v2', 'Standard_DS12_v2', 'Standard_DS13_v2',
+     * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1', 'Standard_G2',
+     * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+     * 
+     * @param {object} [parameters.storageProfile] The storage profile.
+     * 
+     * @param {object} [parameters.storageProfile.imageReference] The image
+     * reference.
+     * 
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     * 
+     * @param {string} [parameters.storageProfile.imageReference.offer] The image
+     * offer.
+     * 
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     * 
+     * @param {string} [parameters.storageProfile.imageReference.version] The
+     * image version. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
+     * latest version of the image.
+     * 
+     * @param {object} [parameters.storageProfile.osDisk] The OS disk.
+     * 
+     * @param {string} [parameters.storageProfile.osDisk.osType] the Operating
+     * System type. Possible values include: 'Windows', 'Linux'
+     * 
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] the
+     * disk encryption settings.
+     * 
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey]
+     * the disk encryption key which is a KeyVault Secret.
+     * 
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * the URL referencing a secret in a Key Vault.
+     * 
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * the Relative URL of the Key Vault containing the secret.
+     * 
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey] the
+     * key encryption key which is KeyVault Key.
+     * 
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * the URL referencing a key in a Key Vault.
+     * 
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * the Relative URL of the Key Vault containing the key
+     * 
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] whether disk
+     * encryption should be enabled on the Virtual Machine.
+     * 
+     * @param {string} parameters.storageProfile.osDisk.name the disk name.
+     * 
+     * @param {object} parameters.storageProfile.osDisk.vhd the Virtual Hard Disk.
+     * 
+     * @param {object} [parameters.storageProfile.osDisk.image] the Source User
+     * Image VirtualHardDisk. This VirtualHardDisk will be copied before using it
+     * to attach to the Virtual Machine. If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
+     * 
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] the virtual
+     * hard disk's uri. It should be a valid Uri to a virtual hard disk.
+     * 
+     * @param {string} [parameters.storageProfile.osDisk.caching] the caching
+     * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     * 
+     * @param {string} parameters.storageProfile.osDisk.createOption the create
+     * option. Possible values include: 'fromImage', 'empty', 'attach'
+     * 
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] the initial
+     * disk size in GB for blank data disks, and the new desired size for
+     * existing OS and Data disks.
+     * 
+     * @param {array} [parameters.storageProfile.dataDisks] The data disks.
+     * 
+     * @param {object} [parameters.osProfile] The OS profile.
+     * 
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine.
+     * 
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account.
+     * 
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account.
+     * 
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes
+     * 
+     * @param {object} [parameters.osProfile.windowsConfiguration] the Windows
+     * Configuration of the OS profile.
+     * 
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether the virtual machine agent should be provisioned on the Virtual
+     * Machine. If not specified, then the default behavior is to set it to true.
+     * 
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates]
+     * Indicates whether Windows updates are automatically installed on the VM.
+     * 
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] The
+     * Time Zone of the VM
+     * 
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Additional base-64 encoded XML formatted information that can be included
+     * in the Unattend.xml file.
+     * 
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] The
+     * Windows Remote Management configuration of the VM
+     * 
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     * 
+     * @param {object} [parameters.osProfile.linuxConfiguration] the Linux
+     * Configuration of the OS profile.
+     * 
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     * 
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] The SSH
+     * configuration for linux VMs.
+     * 
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     * 
+     * @param {array} [parameters.osProfile.secrets] the List of certificates for
+     * addition to the VM.
+     * 
+     * @param {object} [parameters.networkProfile] The network profile.
+     * 
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource Ids for the network interfaces associated with the
+     * virtual machine.
+     * 
+     * @param {object} [parameters.diagnosticsProfile] The diagnostics profile.
+     * 
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
+     * 
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     * 
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
+     * 
+     * @param {object} [parameters.availabilitySet] The reference Id of the
+     * availability set to which the virtual machine belongs.
+     * 
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     * 
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system.
+     * 
+     * @param {string} parameters.location Resource location.
+     * 
+     * @param {object} [parameters.tags] Resource tags.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
+
+    /**
+     * The operation to delete a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Shuts down the Virtual Machine and releases the compute resources. You are
+     * not billed for the compute resources that this Virtual Machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * The operation to power off (stop) a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmName The name of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to restart a virtual machine.
@@ -1343,44 +1398,8 @@ export interface VirtualMachines {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    start(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * The operation to start a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * The operation to redeploy a virtual machine.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmName The name of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
 
     /**
      * The operation to redeploy a virtual machine.
@@ -1459,9 +1478,9 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {object} [parameters.sku] the virtual machine scale set sku.
      * 
-     * @param {string} [parameters.sku.name] the sku name.
+     * @param {string} [parameters.sku.name] The sku name.
      * 
-     * @param {string} [parameters.sku.tier] the sku tier.
+     * @param {string} [parameters.sku.tier] The sku tier.
      * 
      * @param {number} [parameters.sku.capacity] the sku capacity.
      * 
@@ -1495,28 +1514,30 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
-     * whether VM Agent should be provisioned on the Virtual Machine.
+     * Indicates whether the virtual machine agent should be provisioned on the
+     * Virtual Machine. If not specified, then the default behavior is to set it
+     * to true.
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
-     * whether Windows updates are automatically installed on the VM
+     * Indicates whether Windows updates are automatically installed on the VM.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
-     * the Time Zone of the VM
+     * The Time Zone of the VM
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
-     * the additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file.
+     * Additional base-64 encoded XML formatted information that can be included
+     * in the Unattend.xml file.
      * 
      * @param {object}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM]
-     * the Windows Remote Management configuration of the VM
+     * The Windows Remote Management configuration of the VM
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
-     * the list of Windows Remote Management listeners
+     * The list of Windows Remote Management listeners
      * 
      * @param {object}
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] the Linux
@@ -1524,15 +1545,15 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {boolean}
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * whether Authentication using user name and password is allowed or not
+     * Specifies whether password authentication should be disabled.
      * 
      * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] the
-     * SSH configuration for linux VMs
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] The
+     * SSH configuration for linux VMs.
      * 
      * @param {array}
      * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
-     * the list of SSH public keys used to authenticate with linux based VMs
+     * The list of SSH public keys used to authenticate with linux based VMs.
      * 
      * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] the
      * List of certificates for addition to the VM.
@@ -1546,35 +1567,34 @@ export interface VirtualMachineScaleSets {
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
-     * the image publisher.
+     * The image publisher.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] the
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] The
      * image offer.
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] the
-     * image sku.
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] The
+     * image SKU.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.imageReference.version]
-     * the image version. The allowed formats are Major.Minor.Build or 'latest'.
+     * The image version. The allowed formats are Major.Minor.Build or 'latest'.
      * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
-     * latest version of image.
+     * latest version of the image.
      * 
      * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
      * the OS disk.
      * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] the disk
-     * name.
+     * @param {string} parameters.virtualMachineProfile.storageProfile.osDisk.name
+     * the disk name.
      * 
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] the
      * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
      * 
      * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] the
+     * parameters.virtualMachineProfile.storageProfile.osDisk.createOption the
      * create option. Possible values include: 'fromImage', 'empty', 'attach'
      * 
      * @param {string}
@@ -1584,7 +1604,7 @@ export interface VirtualMachineScaleSets {
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] the Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before
-     * using it to attach to the Virtual Machine.If SourceImage is provided, the
+     * using it to attach to the Virtual Machine. If SourceImage is provided, the
      * destination VirtualHardDisk should not exist.
      * 
      * @param {string}
@@ -1609,12 +1629,12 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.extensionProfile.extensions] the virtual
      * machine scale set child extension resources.
      * 
-     * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
+     * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1626,188 +1646,6 @@ export interface VirtualMachineScaleSets {
      */
     createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
     createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
-
-    /**
-     * Allows you to create or update a virtual machine scale set by providing
-     * parameters or a path to pre-configured parameter file.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} name Parameters supplied to the Create Virtual Machine
-     * Scale Set operation.
-     * 
-     * @param {object} parameters Parameters supplied to the Create Virtual
-     * Machine Scale Set operation.
-     * 
-     * @param {object} [parameters.sku] the virtual machine scale set sku.
-     * 
-     * @param {string} [parameters.sku.name] the sku name.
-     * 
-     * @param {string} [parameters.sku.tier] the sku tier.
-     * 
-     * @param {number} [parameters.sku.capacity] the sku capacity.
-     * 
-     * @param {object} [parameters.upgradePolicy] the upgrade policy.
-     * 
-     * @param {string} [parameters.upgradePolicy.mode] the upgrade mode. Possible
-     * values include: 'Automatic', 'Manual'
-     * 
-     * @param {object} [parameters.virtualMachineProfile] the virtual machine
-     * profile.
-     * 
-     * @param {object} [parameters.virtualMachineProfile.osProfile] the virtual
-     * machine scale set OS profile.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] the
-     * computer name prefix.
-     * 
-     * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
-     * the admin user name.
-     * 
-     * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
-     * the admin user password.
-     * 
-     * @param {string} [parameters.virtualMachineProfile.osProfile.customData] a
-     * base-64 encoded string of custom data.
-     * 
-     * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] the
-     * Windows Configuration of the OS profile.
-     * 
-     * @param {boolean}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
-     * whether VM Agent should be provisioned on the Virtual Machine.
-     * 
-     * @param {boolean}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
-     * whether Windows updates are automatically installed on the VM
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
-     * the Time Zone of the VM
-     * 
-     * @param {array}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
-     * the additional base-64 encoded XML formatted information that can be
-     * included in the Unattend.xml file.
-     * 
-     * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM]
-     * the Windows Remote Management configuration of the VM
-     * 
-     * @param {array}
-     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
-     * the list of Windows Remote Management listeners
-     * 
-     * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] the Linux
-     * Configuration of the OS profile.
-     * 
-     * @param {boolean}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
-     * whether Authentication using user name and password is allowed or not
-     * 
-     * @param {object}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] the
-     * SSH configuration for linux VMs
-     * 
-     * @param {array}
-     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
-     * the list of SSH public keys used to authenticate with linux based VMs
-     * 
-     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] the
-     * List of certificates for addition to the VM.
-     * 
-     * @param {object} [parameters.virtualMachineProfile.storageProfile] the
-     * virtual machine scale set storage profile.
-     * 
-     * @param {object}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference] the image
-     * reference.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
-     * the image publisher.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] the
-     * image offer.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] the
-     * image sku.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.imageReference.version]
-     * the image version. The allowed formats are Major.Minor.Build or 'latest'.
-     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
-     * latest version of image.
-     * 
-     * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
-     * the OS disk.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] the disk
-     * name.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] the
-     * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.createOption] the
-     * create option. Possible values include: 'fromImage', 'empty', 'attach'
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] the
-     * Operating System type. Possible values include: 'Windows', 'Linux'
-     * 
-     * @param {object}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] the Source
-     * User Image VirtualHardDisk. This VirtualHardDisk will be copied before
-     * using it to attach to the Virtual Machine.If SourceImage is provided, the
-     * destination VirtualHardDisk should not exist.
-     * 
-     * @param {string}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] the
-     * virtual hard disk's uri. It should be a valid Uri to a virtual hard disk.
-     * 
-     * @param {array}
-     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers] the
-     * list of virtual hard disk container uris.
-     * 
-     * @param {object} [parameters.virtualMachineProfile.networkProfile] the
-     * virtual machine scale set network profile.
-     * 
-     * @param {array}
-     * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
-     * the list of network configurations.
-     * 
-     * @param {object} [parameters.virtualMachineProfile.extensionProfile] the
-     * virtual machine scale set extension profile.
-     * 
-     * @param {array}
-     * [parameters.virtualMachineProfile.extensionProfile.extensions] the virtual
-     * machine scale set child extension resources.
-     * 
-     * @param {boolean} [parameters.overProvision] Specifies whether the Virtual
-     * Machine Scale Set should be overprovisioned.
-     * 
-     * @param {string} [parameters.location] Resource location
-     * 
-     * @param {object} [parameters.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
-    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
 
     /**
      * Allows you to deallocate virtual machines in a virtual machine scale set.
@@ -1834,30 +1672,6 @@ export interface VirtualMachineScaleSets {
     deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Allows you to deallocate virtual machines in a virtual machine scale set.
-     * Shuts down the virtual machines and releases the compute resources. You
-     * are not billed for the compute resources that this virtual machine scale
-     * set uses.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {array} [options.instanceIds] the virtual machine scale set instance
-     * ids.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Allows you to delete a virtual machine scale set.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1874,24 +1688,6 @@ export interface VirtualMachineScaleSets {
      */
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to delete a virtual machine scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Display information about a virtual machine scale set.
@@ -1930,26 +1726,6 @@ export interface VirtualMachineScaleSets {
      */
     deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to delete virtual machines in a virtual machine scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {array} instanceIds the virtual machine scale set instance ids.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
 
     /**
      * Displays status of a virtual machine scale set instance.
@@ -2045,6 +1821,333 @@ export interface VirtualMachineScaleSets {
     powerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
+     * Allows you to restart virtual machines in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to start virtual machines in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to manually upgrade virtual machines in a virtual machine scale
+     * set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {array} instanceIds the virtual machine scale set instance ids.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to re-image(update the version of the installed operating
+     * system) virtual machines in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    reimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to create or update a virtual machine scale set by providing
+     * parameters or a path to pre-configured parameter file.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name Parameters supplied to the Create Virtual Machine
+     * Scale Set operation.
+     * 
+     * @param {object} parameters Parameters supplied to the Create Virtual
+     * Machine Scale Set operation.
+     * 
+     * @param {object} [parameters.sku] the virtual machine scale set sku.
+     * 
+     * @param {string} [parameters.sku.name] The sku name.
+     * 
+     * @param {string} [parameters.sku.tier] The sku tier.
+     * 
+     * @param {number} [parameters.sku.capacity] the sku capacity.
+     * 
+     * @param {object} [parameters.upgradePolicy] the upgrade policy.
+     * 
+     * @param {string} [parameters.upgradePolicy.mode] the upgrade mode. Possible
+     * values include: 'Automatic', 'Manual'
+     * 
+     * @param {object} [parameters.virtualMachineProfile] the virtual machine
+     * profile.
+     * 
+     * @param {object} [parameters.virtualMachineProfile.osProfile] the virtual
+     * machine scale set OS profile.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] the
+     * computer name prefix.
+     * 
+     * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
+     * the admin user name.
+     * 
+     * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
+     * the admin user password.
+     * 
+     * @param {string} [parameters.virtualMachineProfile.osProfile.customData] a
+     * base-64 encoded string of custom data.
+     * 
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] the
+     * Windows Configuration of the OS profile.
+     * 
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
+     * Indicates whether the virtual machine agent should be provisioned on the
+     * Virtual Machine. If not specified, then the default behavior is to set it
+     * to true.
+     * 
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
+     * Indicates whether Windows updates are automatically installed on the VM.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
+     * The Time Zone of the VM
+     * 
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Additional base-64 encoded XML formatted information that can be included
+     * in the Unattend.xml file.
+     * 
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM]
+     * The Windows Remote Management configuration of the VM
+     * 
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     * 
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] the Linux
+     * Configuration of the OS profile.
+     * 
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     * 
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] The
+     * SSH configuration for linux VMs.
+     * 
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
+     * The list of SSH public keys used to authenticate with linux based VMs.
+     * 
+     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] the
+     * List of certificates for addition to the VM.
+     * 
+     * @param {object} [parameters.virtualMachineProfile.storageProfile] the
+     * virtual machine scale set storage profile.
+     * 
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference] the image
+     * reference.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
+     * The image publisher.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] The
+     * image offer.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] The
+     * image SKU.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.version]
+     * The image version. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor and Build being decimal numbers. Specify 'latest' to use the
+     * latest version of the image.
+     * 
+     * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk]
+     * the OS disk.
+     * 
+     * @param {string} parameters.virtualMachineProfile.storageProfile.osDisk.name
+     * the disk name.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] the
+     * caching type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     * 
+     * @param {string}
+     * parameters.virtualMachineProfile.storageProfile.osDisk.createOption the
+     * create option. Possible values include: 'fromImage', 'empty', 'attach'
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] the
+     * Operating System type. Possible values include: 'Windows', 'Linux'
+     * 
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] the Source
+     * User Image VirtualHardDisk. This VirtualHardDisk will be copied before
+     * using it to attach to the Virtual Machine. If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
+     * 
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] the
+     * virtual hard disk's uri. It should be a valid Uri to a virtual hard disk.
+     * 
+     * @param {array}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers] the
+     * list of virtual hard disk container uris.
+     * 
+     * @param {object} [parameters.virtualMachineProfile.networkProfile] the
+     * virtual machine scale set network profile.
+     * 
+     * @param {array}
+     * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
+     * the list of network configurations.
+     * 
+     * @param {object} [parameters.virtualMachineProfile.extensionProfile] the
+     * virtual machine scale set extension profile.
+     * 
+     * @param {array}
+     * [parameters.virtualMachineProfile.extensionProfile.extensions] the virtual
+     * machine scale set child extension resources.
+     * 
+     * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
+     * Machine Scale Set should be overprovisioned.
+     * 
+     * @param {string} parameters.location Resource location.
+     * 
+     * @param {object} [parameters.tags] Resource tags.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+
+    /**
+     * Allows you to deallocate virtual machines in a virtual machine scale set.
+     * Shuts down the virtual machines and releases the compute resources. You
+     * are not billed for the compute resources that this virtual machine scale
+     * set uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {array} [options.instanceIds] the virtual machine scale set instance
+     * ids.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to delete a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to delete virtual machines in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {array} instanceIds the virtual machine scale set instance ids.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+
+    /**
      * Allows you to power off (stop) virtual machines in a virtual machine scale
      * set. Note that resources are still attached and you are getting charged
      * for the resources. Use deallocate to release resources.
@@ -2085,50 +2188,8 @@ export interface VirtualMachineScaleSets {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to restart virtual machines in a virtual machine scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {array} [options.instanceIds] the virtual machine scale set instance
-     * ids.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginRestart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to start virtual machines in a virtual machine scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {array} [options.instanceIds] the virtual machine scale set instance
-     * ids.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Allows you to start virtual machines in a virtual machine scale set.
@@ -2169,48 +2230,8 @@ export interface VirtualMachineScaleSets {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to manually upgrade virtual machines in a virtual machine scale
-     * set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {array} instanceIds the virtual machine scale set instance ids.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to re-image(update the version of the installed operating
-     * system) virtual machines in a virtual machine scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    reimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Allows you to re-image(update the version of the installed operating
@@ -2317,27 +2338,6 @@ export interface VirtualMachineScaleSetVMs {
     reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Allows you to re-image(update the version of the installed operating
-     * system) a virtual machine scale set instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {string} instanceId The instance id of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Allows you to deallocate a virtual machine scale set virtual machine. Shuts
      * down the virtual machine and releases the compute resources. You are not
      * billed for the compute resources that this virtual machine uses.
@@ -2360,28 +2360,6 @@ export interface VirtualMachineScaleSetVMs {
     deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Allows you to deallocate a virtual machine scale set virtual machine. Shuts
-     * down the virtual machine and releases the compute resources. You are not
-     * billed for the compute resources that this virtual machine uses.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {string} instanceId The instance id of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Allows you to delete a virtual machine scale set.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2400,26 +2378,6 @@ export interface VirtualMachineScaleSetVMs {
      */
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to delete a virtual machine scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {string} instanceId The instance id of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
      * Displays information about a virtual machine scale set virtual machine.
@@ -2508,6 +2466,109 @@ export interface VirtualMachineScaleSetVMs {
     powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
+     * Allows you to restart a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {string} instanceId The instance id of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to start a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {string} instanceId The instance id of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to re-image(update the version of the installed operating
+     * system) a virtual machine scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {string} instanceId The instance id of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to deallocate a virtual machine scale set virtual machine. Shuts
+     * down the virtual machine and releases the compute resources. You are not
+     * billed for the compute resources that this virtual machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {string} instanceId The instance id of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Allows you to delete a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} vmScaleSetName The name of the virtual machine scale set.
+     * 
+     * @param {string} instanceId The instance id of the virtual machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Allows you to power off (stop) a virtual machine in a VM scale set.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2544,48 +2605,8 @@ export interface VirtualMachineScaleSetVMs {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to restart a virtual machine in a VM scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {string} instanceId The instance id of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Allows you to start a virtual machine in a VM scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} vmScaleSetName The name of the virtual machine scale set.
-     * 
-     * @param {string} instanceId The instance id of the virtual machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
 
     /**
      * Allows you to start a virtual machine in a VM scale set.
@@ -2627,70 +2648,109 @@ export interface VirtualMachineScaleSetVMs {
 
 /**
  * @class
- * ContainerServiceOperations
+ * ContainerServices
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
  */
-export interface ContainerServiceOperations {
+export interface ContainerServices {
 
     /**
-     * The operation to create or update a container service.
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    list(callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
-     * @param {object} parameters Parameters supplied to the Create Container
-     * Service operation.
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
      * 
-     * @param {object} [parameters.orchestratorProfile] Properties of orchestrator
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
      * 
-     * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
-     * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'Swarm', 'DCOS'
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom'
      * 
-     * @param {object} [parameters.masterProfile] Properties of master agents
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     * 
+     * @param {string} parameters.customProfile.orchestrator The name of the
+     * custom orchestrator to use.
+     * 
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     * 
+     * @param {object} parameters.masterProfile Properties of master agents.
      * 
      * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container cluster
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
      * 
-     * @param {string} [parameters.masterProfile.dnsPrefix] DNS prefix to be used
-     * to create FQDN for master
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
      * 
-     * @param {array} [parameters.agentPoolProfiles] Properties of agent pools
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
      * 
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
      * 
-     * @param {string} [parameters.windowsProfile.adminUsername] The administrator
-     * username to use for Windows VMs
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * user name to use for Windows VMs.
      * 
-     * @param {string} [parameters.windowsProfile.adminPassword] The administrator
-     * password to use for Windows VMs
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
      * 
-     * @param {object} [parameters.linuxProfile] Properties for Linux VMs
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
      * 
-     * @param {string} [parameters.linuxProfile.adminUsername] The administrator
-     * username to use for all Linux VMs
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * user name to use for Linux VMs.
      * 
-     * @param {object} [parameters.linuxProfile.ssh] Specifies the ssh key
-     * configuration for Linux VMs
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
      * 
-     * @param {array} [parameters.linuxProfile.ssh.publicKeys] the list of SSH
-     * public keys used to authenticate with Linux based VMs
+     * @param {array} parameters.linuxProfile.ssh.publicKeys The list of SSH
+     * public keys used to authenticate with Linux-based VMs.
      * 
-     * @param {object} [parameters.diagnosticsProfile] Properties for Diagnostic
-     * Agent
+     * @param {object} [parameters.diagnosticsProfile] Properties of the
+     * diagnostic agent.
      * 
-     * @param {object} [parameters.diagnosticsProfile.vmDiagnostics] Profile for
-     * container service VM diagnostic agent
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
      * 
-     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled]
-     * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled
+     * Whether the VM diagnostic agent is provisioned on the VM.
      * 
-     * @param {string} [parameters.location] Resource location
+     * @param {string} parameters.location Resource location.
      * 
-     * @param {object} [parameters.tags] Resource tags
+     * @param {object} [parameters.tags] Resource tags.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2704,82 +2764,17 @@ export interface ContainerServiceOperations {
     createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
 
     /**
-     * The operation to create or update a container service.
+     * @summary Gets the properties of the specified container service.
+     *
+     * Gets the properties of the specified container service in the specified
+     * subscription and resource group. The operation returns the properties
+     * including state, orchestrator, number of masters and agents, and FQDNs of
+     * masters and agents.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
-     * 
-     * @param {object} parameters Parameters supplied to the Create Container
-     * Service operation.
-     * 
-     * @param {object} [parameters.orchestratorProfile] Properties of orchestrator
-     * 
-     * @param {string} [parameters.orchestratorProfile.orchestratorType] Specifies
-     * what orchestrator will be used to manage container cluster resources.
-     * Possible values include: 'Swarm', 'DCOS'
-     * 
-     * @param {object} [parameters.masterProfile] Properties of master agents
-     * 
-     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container cluster
-     * 
-     * @param {string} [parameters.masterProfile.dnsPrefix] DNS prefix to be used
-     * to create FQDN for master
-     * 
-     * @param {array} [parameters.agentPoolProfiles] Properties of agent pools
-     * 
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs
-     * 
-     * @param {string} [parameters.windowsProfile.adminUsername] The administrator
-     * username to use for Windows VMs
-     * 
-     * @param {string} [parameters.windowsProfile.adminPassword] The administrator
-     * password to use for Windows VMs
-     * 
-     * @param {object} [parameters.linuxProfile] Properties for Linux VMs
-     * 
-     * @param {string} [parameters.linuxProfile.adminUsername] The administrator
-     * username to use for all Linux VMs
-     * 
-     * @param {object} [parameters.linuxProfile.ssh] Specifies the ssh key
-     * configuration for Linux VMs
-     * 
-     * @param {array} [parameters.linuxProfile.ssh.publicKeys] the list of SSH
-     * public keys used to authenticate with Linux based VMs
-     * 
-     * @param {object} [parameters.diagnosticsProfile] Properties for Diagnostic
-     * Agent
-     * 
-     * @param {object} [parameters.diagnosticsProfile.vmDiagnostics] Profile for
-     * container service VM diagnostic agent
-     * 
-     * @param {boolean} [parameters.diagnosticsProfile.vmDiagnostics.enabled]
-     * whether VM Diagnostic Agent should be provisioned on the Virtual Machine.
-     * 
-     * @param {string} [parameters.location] Resource location
-     * 
-     * @param {object} [parameters.tags] Resource tags
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
-    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
-
-    /**
-     * The operation to get a container service.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2793,12 +2788,19 @@ export interface ContainerServiceOperations {
     get(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<models.ContainerService>): void;
 
     /**
-     * The operation to delete a container service.
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted
+     * individually.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2812,12 +2814,130 @@ export interface ContainerServiceOperations {
     deleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The operation to delete a container service.
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and
+     * resource group. The operation returns properties of each container service
+     * including state, orchestrator, number of masters and agents, and FQDNs of
+     * masters and agents.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} containerServiceName The name of the container service
-     * within the given subscription and resource group.
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     * 
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
+     * 
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
+     * 
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom'
+     * 
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     * 
+     * @param {string} parameters.customProfile.orchestrator The name of the
+     * custom orchestrator to use.
+     * 
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     * 
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     * 
+     * @param {object} parameters.masterProfile Properties of master agents.
+     * 
+     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
+     * 
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
+     * 
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
+     * 
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
+     * 
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * user name to use for Windows VMs.
+     * 
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
+     * 
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
+     * 
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * user name to use for Linux VMs.
+     * 
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
+     * 
+     * @param {array} parameters.linuxProfile.ssh.publicKeys The list of SSH
+     * public keys used to authenticate with Linux-based VMs.
+     * 
+     * @param {object} [parameters.diagnosticsProfile] Properties of the
+     * diagnostic agent.
+     * 
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
+     * 
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled
+     * Whether the VM diagnostic agent is provisioned on the VM.
+     * 
+     * @param {string} parameters.location Resource location.
+     * 
+     * @param {object} [parameters.tags] Resource tags.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
+
+    /**
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted
+     * individually.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2831,9 +2951,15 @@ export interface ContainerServiceOperations {
     beginDeleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * The operation to list container services.
+     * @summary Gets a list of container services in the specified subscription.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -2843,6 +2969,28 @@ export interface ContainerServiceOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-    list(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and
+     * resource group. The operation returns properties of each container service
+     * including state, orchestrator, number of masters and agents, and FQDNs of
+     * masters and agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
 }
