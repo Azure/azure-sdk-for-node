@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -36,23 +39,23 @@ export interface Resource extends BaseResource {
  * @class
  * Initializes a new instance of the NamespaceCreateOrUpdateParameters class.
  * @constructor
- * Parameters supplied to the CreateOrUpdate Namespace operation.
+ * Parameters supplied to the Create Or Update Namespace operation.
  *
  * @member {string} location Namespace location.
  * 
  * @member {object} [sku]
  * 
- * @member {string} [sku.name] Name of this Sku. Possible values include:
+ * @member {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard', 'Premium'
  * 
- * @member {string} [sku.tier] The tier of this particular SKU. Possible
- * values include: 'Basic', 'Standard', 'Premium'
+ * @member {string} [sku.tier] The billing tier of this particular SKU.
+ * Possible values include: 'Basic', 'Standard', 'Premium'
  * 
- * @member {number} [sku.capacity] The messaging units for the tier specified
+ * @member {number} [sku.capacity] The specified messaging units for the tier.
  * 
  * @member {object} [tags] Namespace tags.
  * 
- * @member {string} [provisioningState] Provisioning state of the Namespace.
+ * @member {string} [provisioningState] Provisioning state of the namespace.
  * 
  * @member {string} [status] State of the namespace. Possible values include:
  * 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling', 'Active',
@@ -64,9 +67,9 @@ export interface Resource extends BaseResource {
  * @member {date} [updatedAt] The time the namespace was updated.
  * 
  * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
- * ServiceBus operations.
+ * Service Bus operations.
  * 
- * @member {boolean} [createACSNamespace] Indicates whether to create ACS
+ * @member {boolean} [createACSNamespace] Indicates whether to create an ACS
  * namespace.
  * 
  * @member {boolean} [enabled] Specifies whether this instance is enabled.
@@ -89,15 +92,15 @@ export interface NamespaceCreateOrUpdateParameters {
  * @class
  * Initializes a new instance of the Sku class.
  * @constructor
- * Sku of the Namespace.
+ * SKU of the namespace.
  *
- * @member {string} [name] Name of this Sku. Possible values include: 'Basic',
+ * @member {string} [name] Name of this SKU. Possible values include: 'Basic',
  * 'Standard', 'Premium'
  * 
- * @member {string} tier The tier of this particular SKU. Possible values
- * include: 'Basic', 'Standard', 'Premium'
+ * @member {string} tier The billing tier of this particular SKU. Possible
+ * values include: 'Basic', 'Standard', 'Premium'
  * 
- * @member {number} [capacity] The messaging units for the tier specified
+ * @member {number} [capacity] The specified messaging units for the tier.
  * 
  */
 export interface Sku {
@@ -108,21 +111,38 @@ export interface Sku {
 
 /**
  * @class
+ * Initializes a new instance of the NamespaceListResult class.
+ * @constructor
+ * The response of the List Namespace operation.
+ *
+ * @member {array} [value] Result of the List Namespace operation.
+ * 
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of Namespaces.
+ * 
+ */
+export interface NamespaceListResult {
+  value?: NamespaceResource[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NamespaceResource class.
  * @constructor
- * Description of a Namespace resource.
+ * Description of a namespace resource.
  *
  * @member {object} [sku]
  * 
- * @member {string} [sku.name] Name of this Sku. Possible values include:
+ * @member {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard', 'Premium'
  * 
- * @member {string} [sku.tier] The tier of this particular SKU. Possible
- * values include: 'Basic', 'Standard', 'Premium'
+ * @member {string} [sku.tier] The billing tier of this particular SKU.
+ * Possible values include: 'Basic', 'Standard', 'Premium'
  * 
- * @member {number} [sku.capacity] The messaging units for the tier specified
+ * @member {number} [sku.capacity] The specified messaging units for the tier.
  * 
- * @member {string} [provisioningState] Provisioning state of the Namespace.
+ * @member {string} [provisioningState] Provisioning state of the namespace.
  * 
  * @member {string} [status] State of the namespace. Possible values include:
  * 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling', 'Active',
@@ -134,9 +154,9 @@ export interface Sku {
  * @member {date} [updatedAt] The time the namespace was updated.
  * 
  * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
- * ServiceBus operations.
+ * Service Bus operations.
  * 
- * @member {boolean} [createACSNamespace] Indicates whether to create ACS
+ * @member {boolean} [createACSNamespace] Indicates whether to create an ACS
  * namespace.
  * 
  * @member {boolean} [enabled] Specifies whether this instance is enabled.
@@ -157,11 +177,11 @@ export interface NamespaceResource extends Resource {
  * @class
  * Initializes a new instance of the SharedAccessAuthorizationRuleCreateOrUpdateParameters class.
  * @constructor
- * Parameters supplied to the CreateOrUpdate  AuthorizationRules.
+ * Parameters supplied to the Create Or Update Authorization Rules operation.
  *
  * @member {string} [location] data center location.
  * 
- * @member {string} [name] Name of the AuthorizationRule.
+ * @member {string} [name] Name of the authorization rule.
  * 
  * @member {array} rights The rights associated with the rule.
  * 
@@ -174,9 +194,26 @@ export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the SharedAccessAuthorizationRuleListResult class.
+ * @constructor
+ * The response to the List Namespace operation.
+ *
+ * @member {array} [value] Result of the List Authorization Rules operation.
+ * 
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of Authorization Rules.
+ * 
+ */
+export interface SharedAccessAuthorizationRuleListResult {
+  value?: SharedAccessAuthorizationRuleResource[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SharedAccessAuthorizationRuleResource class.
  * @constructor
- * Description of a Namespace AuthorizationRules.
+ * Description of a namespace authorization rule.
  *
  * @member {array} rights The rights associated with the rule.
  * 
@@ -191,19 +228,19 @@ export interface SharedAccessAuthorizationRuleResource extends Resource {
  * @constructor
  * Namespace/ServiceBus Connection String
  *
- * @member {string} [primaryConnectionString] PrimaryConnectionString of the
- * created Namespace AuthorizationRule.
+ * @member {string} [primaryConnectionString] Primary connection string of the
+ * created namespace authorization rule.
  * 
- * @member {string} [secondaryConnectionString] SecondaryConnectionString of
- * the created Namespace AuthorizationRule
+ * @member {string} [secondaryConnectionString] Secondary connection string of
+ * the created namespace authorization rule.
  * 
  * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
- * signing and validating the SAS token
+ * signing and validating the SAS token.
  * 
  * @member {string} [secondaryKey] A base64-encoded 256-bit primary key for
- * signing and validating the SAS token
+ * signing and validating the SAS token.
  * 
- * @member {string} [keyName] A string that describes the authorization rule
+ * @member {string} [keyName] A string that describes the authorization rule.
  * 
  */
 export interface ResourceListKeys {
@@ -218,9 +255,9 @@ export interface ResourceListKeys {
  * @class
  * Initializes a new instance of the RegenerateKeysParameters class.
  * @constructor
- * Parameters supplied to the Regenerate Auth Rule.
+ * Parameters supplied to the Regenerate Authorization Rule operation.
  *
- * @member {string} [policykey] Key that needs to be regenerated . Possible
+ * @member {string} [policykey] Key that needs to be regenerated. Possible
  * values include: 'PrimaryKey', 'SecondaryKey'
  * 
  */
@@ -232,13 +269,13 @@ export interface RegenerateKeysParameters {
  * @class
  * Initializes a new instance of the QueueCreateOrUpdateParameters class.
  * @constructor
- * Parameters supplied to the CreateOrUpdate Queue operation.
+ * Parameters supplied to the Create Or Update Queue operation.
  *
  * @member {string} [name] Queue name.
  * 
  * @member {string} location location of the resource.
  * 
- * @member {string} [lockDuration] the duration of a peek lock; that is, the
+ * @member {string} [lockDuration] The duration of a peek-lock; that is, the
  * amount of time that the message is locked for other receivers. The maximum
  * value for LockDuration is 5 minutes; the default value is 1 minute.
  * 
@@ -252,40 +289,40 @@ export interface RegenerateKeysParameters {
  * the queue. Possible values include: 'Available', 'Limited', 'Renaming',
  * 'Restoring', 'Unknown'
  * 
- * @member {date} [createdAt] the exact time the message was created.
+ * @member {date} [createdAt] The exact time the message was created.
  * 
- * @member {string} [defaultMessageTimeToLive] the default message time to
+ * @member {string} [defaultMessageTimeToLive] The default message time to
  * live value. This is the duration after which the message expires, starting
  * from when the message is sent to Service Bus. This is the default value
  * used when TimeToLive is not set on a message itself.
  * 
  * @member {string} [duplicateDetectionHistoryTimeWindow] TimeSpan structure
  * that defines the duration of the duplicate detection history. The default
- * value is 10 minutes..
+ * value is 10 minutes.
  * 
- * @member {boolean} [enableBatchedOperations] value that indicates whether
- * server-side batched operations are enabled..
+ * @member {boolean} [enableBatchedOperations] A value that indicates whether
+ * server-side batched operations are enabled.
  * 
- * @member {boolean} [deadLetteringOnMessageExpiration] a value that indicates
+ * @member {boolean} [deadLetteringOnMessageExpiration] A value that indicates
  * whether this queue has dead letter support when a message expires.
  * 
- * @member {boolean} [enableExpress] a value that indicates whether Express
+ * @member {boolean} [enableExpress] A value that indicates whether Express
  * Entities are enabled. An express queue holds a message in memory
  * temporarily before writing it to persistent storage.
  * 
- * @member {boolean} [enablePartitioning] value that indicates whether the
- * queue to be partitioned across multiple message brokers is enabled.
+ * @member {boolean} [enablePartitioning] A value that indicates whether the
+ * queue is to be partitioned across multiple message brokers.
  * 
- * @member {boolean} [isAnonymousAccessible] a value that indicates whether
- * the message is anonymous accessible.
+ * @member {boolean} [isAnonymousAccessible] A value that indicates whether
+ * the message is accessible anonymously.
  * 
- * @member {number} [maxDeliveryCount] the maximum delivery count. A message
+ * @member {number} [maxDeliveryCount] The maximum delivery count. A message
  * is automatically deadlettered after this number of deliveries.
  * 
- * @member {number} [maxSizeInMegabytes] the maximum size of the queue in
+ * @member {number} [maxSizeInMegabytes] The maximum size of the queue in
  * megabytes, which is the size of memory allocated for the queue.
  * 
- * @member {number} [messageCount] the number of messages in the queue.
+ * @member {number} [messageCount] The number of messages in the queue.
  * 
  * @member {object} [countDetails]
  * 
@@ -293,9 +330,9 @@ export interface RegenerateKeysParameters {
  * messages in the queue, topic, or subscription.
  * 
  * @member {number} [countDetails.deadLetterMessageCount] Number of messages
- * that are dead letters.
+ * that are dead lettered.
  * 
- * @member {number} [countDetails.scheduledMessageCount] Number scheduled
+ * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
  * 
  * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
@@ -304,23 +341,23 @@ export interface RegenerateKeysParameters {
  * @member {number} [countDetails.transferMessageCount] Number of messages
  * transferred to another queue, topic, or subscription.
  * 
- * @member {boolean} [requiresDuplicateDetection] the value indicating if this
+ * @member {boolean} [requiresDuplicateDetection] A value indicating if this
  * queue requires duplicate detection.
  * 
- * @member {boolean} [requiresSession] a value that indicates whether the
- * queue supports the concept of session.
+ * @member {boolean} [requiresSession] A value that indicates whether the
+ * queue supports the concept of sessions.
  * 
- * @member {number} [sizeInBytes] the size of the queue in bytes.
+ * @member {number} [sizeInBytes] The size of the queue, in bytes.
  * 
  * @member {string} [status] Enumerates the possible values for the status of
  * a messaging entity. Possible values include: 'Active', 'Creating',
  * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
  * 'SendDisabled', 'Unknown'
  * 
- * @member {boolean} [supportOrdering] a value that indicates whether the
+ * @member {boolean} [supportOrdering] A value that indicates whether the
  * queue supports ordering.
  * 
- * @member {date} [updatedAt] the exact time the message has been updated.
+ * @member {date} [updatedAt] The exact time the message was updated.
  * 
  */
 export interface QueueCreateOrUpdateParameters {
@@ -360,9 +397,9 @@ export interface QueueCreateOrUpdateParameters {
  * queue, topic, or subscription.
  * 
  * @member {number} [deadLetterMessageCount] Number of messages that are dead
- * letters.
+ * lettered.
  * 
- * @member {number} [scheduledMessageCount] Number scheduled messages.
+ * @member {number} [scheduledMessageCount] Number of scheduled messages.
  * 
  * @member {number} [transferDeadLetterMessageCount] Number of messages
  * transferred into dead letters.
@@ -381,11 +418,28 @@ export interface MessageCountDetails {
 
 /**
  * @class
+ * Initializes a new instance of the QueueListResult class.
+ * @constructor
+ * The response to the List Queues operation.
+ *
+ * @member {array} [value] Result of the List Queues operation.
+ * 
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of queues.
+ * 
+ */
+export interface QueueListResult {
+  value?: QueueResource[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the QueueResource class.
  * @constructor
  * Description of queue Resource.
  *
- * @member {string} [lockDuration] the duration of a peek lock; that is, the
+ * @member {string} [lockDuration] The duration of a peek-lock; that is, the
  * amount of time that the message is locked for other receivers. The maximum
  * value for LockDuration is 5 minutes; the default value is 1 minute.
  * 
@@ -399,40 +453,40 @@ export interface MessageCountDetails {
  * the queue. Possible values include: 'Available', 'Limited', 'Renaming',
  * 'Restoring', 'Unknown'
  * 
- * @member {date} [createdAt] the exact time the message was created.
+ * @member {date} [createdAt] The exact time the message was created.
  * 
- * @member {string} [defaultMessageTimeToLive] the default message time to
+ * @member {string} [defaultMessageTimeToLive] The default message time to
  * live value. This is the duration after which the message expires, starting
  * from when the message is sent to Service Bus. This is the default value
  * used when TimeToLive is not set on a message itself.
  * 
  * @member {string} [duplicateDetectionHistoryTimeWindow] TimeSpan structure
  * that defines the duration of the duplicate detection history. The default
- * value is 10 minutes..
+ * value is 10 minutes.
  * 
- * @member {boolean} [enableBatchedOperations] value that indicates whether
- * server-side batched operations are enabled..
+ * @member {boolean} [enableBatchedOperations] A value that indicates whether
+ * server-side batched operations are enabled.
  * 
- * @member {boolean} [deadLetteringOnMessageExpiration] a value that indicates
+ * @member {boolean} [deadLetteringOnMessageExpiration] A value that indicates
  * whether this queue has dead letter support when a message expires.
  * 
- * @member {boolean} [enableExpress] a value that indicates whether Express
+ * @member {boolean} [enableExpress] A value that indicates whether Express
  * Entities are enabled. An express queue holds a message in memory
  * temporarily before writing it to persistent storage.
  * 
- * @member {boolean} [enablePartitioning] value that indicates whether the
- * queue to be partitioned across multiple message brokers is enabled.
+ * @member {boolean} [enablePartitioning] A value that indicates whether the
+ * queue is to be partitioned across multiple message brokers.
  * 
- * @member {boolean} [isAnonymousAccessible] a value that indicates whether
- * the message is anonymous accessible.
+ * @member {boolean} [isAnonymousAccessible] A value that indicates whether
+ * the message is accessible anonymously.
  * 
- * @member {number} [maxDeliveryCount] the maximum delivery count. A message
+ * @member {number} [maxDeliveryCount] The maximum delivery count. A message
  * is automatically deadlettered after this number of deliveries.
  * 
- * @member {number} [maxSizeInMegabytes] the maximum size of the queue in
+ * @member {number} [maxSizeInMegabytes] The maximum size of the queue in
  * megabytes, which is the size of memory allocated for the queue.
  * 
- * @member {number} [messageCount] the number of messages in the queue.
+ * @member {number} [messageCount] The number of messages in the queue.
  * 
  * @member {object} [countDetails]
  * 
@@ -440,9 +494,9 @@ export interface MessageCountDetails {
  * messages in the queue, topic, or subscription.
  * 
  * @member {number} [countDetails.deadLetterMessageCount] Number of messages
- * that are dead letters.
+ * that are dead lettered.
  * 
- * @member {number} [countDetails.scheduledMessageCount] Number scheduled
+ * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
  * 
  * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
@@ -451,23 +505,23 @@ export interface MessageCountDetails {
  * @member {number} [countDetails.transferMessageCount] Number of messages
  * transferred to another queue, topic, or subscription.
  * 
- * @member {boolean} [requiresDuplicateDetection] the value indicating if this
+ * @member {boolean} [requiresDuplicateDetection] A value indicating if this
  * queue requires duplicate detection.
  * 
- * @member {boolean} [requiresSession] a value that indicates whether the
- * queue supports the concept of session.
+ * @member {boolean} [requiresSession] A value that indicates whether the
+ * queue supports the concept of sessions.
  * 
- * @member {number} [sizeInBytes] the size of the queue in bytes.
+ * @member {number} [sizeInBytes] The size of the queue, in bytes.
  * 
  * @member {string} [status] Enumerates the possible values for the status of
  * a messaging entity. Possible values include: 'Active', 'Creating',
  * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
  * 'SendDisabled', 'Unknown'
  * 
- * @member {boolean} [supportOrdering] a value that indicates whether the
+ * @member {boolean} [supportOrdering] A value that indicates whether the
  * queue supports ordering.
  * 
- * @member {date} [updatedAt] the exact time the message has been updated.
+ * @member {date} [updatedAt] The exact time the message was updated.
  * 
  */
 export interface QueueResource extends Resource {
@@ -499,14 +553,14 @@ export interface QueueResource extends Resource {
  * @class
  * Initializes a new instance of the TopicCreateOrUpdateParameters class.
  * @constructor
- * Parameters supplied to the CreateOrUpdate Topic operation.
+ * Parameters supplied to the Create Or Update Topic operation.
  *
  * @member {string} [name] Topic name.
  * 
  * @member {string} location Location of the resource.
  * 
- * @member {date} [accessedAt] Last time the message was sent or a request was
- * received for this topic.
+ * @member {date} [accessedAt] Last time the message was sent, or a request
+ * was received, for this topic.
  * 
  * @member {string} [autoDeleteOnIdle] TimeSpan idle interval after which the
  * topic is automatically deleted. The minimum duration is 5 minutes.
@@ -523,9 +577,9 @@ export interface QueueResource extends Resource {
  * messages in the queue, topic, or subscription.
  * 
  * @member {number} [countDetails.deadLetterMessageCount] Number of messages
- * that are dead letters.
+ * that are dead lettered.
  * 
- * @member {number} [countDetails.scheduledMessageCount] Number scheduled
+ * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
  * 
  * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
@@ -541,10 +595,10 @@ export interface QueueResource extends Resource {
  * 
  * @member {string} [duplicateDetectionHistoryTimeWindow] TimeSpan structure
  * that defines the duration of the duplicate detection history. The default
- * value is 10 minutes..
+ * value is 10 minutes.
  * 
  * @member {boolean} [enableBatchedOperations] Value that indicates whether
- * server-side batched operations are enabled..
+ * server-side batched operations are enabled.
  * 
  * @member {boolean} [enableExpress] Value that indicates whether Express
  * Entities are enabled. An express topic holds a message in memory
@@ -554,23 +608,23 @@ export interface QueueResource extends Resource {
  * topic to be partitioned across multiple message brokers is enabled.
  * 
  * @member {boolean} [enableSubscriptionPartitioning] Value that indicates
- * whether partitioning is enabled or disabled..
+ * whether partitioning is enabled or disabled.
  * 
  * @member {boolean} [filteringMessagesBeforePublishing] Whether messages
  * should be filtered before publishing.
  * 
  * @member {boolean} [isAnonymousAccessible] Value that indicates whether the
- * message is anonymous accessible.
+ * message is accessible anonymously.
  * 
  * @member {boolean} [isExpress]
  * 
  * @member {number} [maxSizeInMegabytes] Maximum size of the topic in
- * megabytes, which is the size of memory allocated for the topic.
+ * megabytes, which is the size of the memory allocated for the topic.
  * 
  * @member {boolean} [requiresDuplicateDetection] Value indicating if this
  * topic requires duplicate detection.
  * 
- * @member {number} [sizeInBytes] Size of the topic in bytes.
+ * @member {number} [sizeInBytes] Size of the topic, in bytes.
  * 
  * @member {string} [status] Enumerates the possible values for the status of
  * a messaging entity. Possible values include: 'Active', 'Creating',
@@ -582,7 +636,7 @@ export interface QueueResource extends Resource {
  * @member {boolean} [supportOrdering] Value that indicates whether the topic
  * supports ordering.
  * 
- * @member {date} [updatedAt] The exact time the message has been updated.
+ * @member {date} [updatedAt] The exact time the message was updated.
  * 
  */
 export interface TopicCreateOrUpdateParameters {
@@ -613,12 +667,29 @@ export interface TopicCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the TopicListResult class.
+ * @constructor
+ * The response to the List Topics operation.
+ *
+ * @member {array} [value] Result of the List Topics operation.
+ * 
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of topics.
+ * 
+ */
+export interface TopicListResult {
+  value?: TopicResource[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TopicResource class.
  * @constructor
- * Description of topic Resource.
+ * Description of topic resource.
  *
- * @member {date} [accessedAt] Last time the message was sent or a request was
- * received for this topic.
+ * @member {date} [accessedAt] Last time the message was sent, or a request
+ * was received, for this topic.
  * 
  * @member {string} [autoDeleteOnIdle] TimeSpan idle interval after which the
  * topic is automatically deleted. The minimum duration is 5 minutes.
@@ -635,9 +706,9 @@ export interface TopicCreateOrUpdateParameters {
  * messages in the queue, topic, or subscription.
  * 
  * @member {number} [countDetails.deadLetterMessageCount] Number of messages
- * that are dead letters.
+ * that are dead lettered.
  * 
- * @member {number} [countDetails.scheduledMessageCount] Number scheduled
+ * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
  * 
  * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
@@ -653,10 +724,10 @@ export interface TopicCreateOrUpdateParameters {
  * 
  * @member {string} [duplicateDetectionHistoryTimeWindow] TimeSpan structure
  * that defines the duration of the duplicate detection history. The default
- * value is 10 minutes..
+ * value is 10 minutes.
  * 
  * @member {boolean} [enableBatchedOperations] Value that indicates whether
- * server-side batched operations are enabled..
+ * server-side batched operations are enabled.
  * 
  * @member {boolean} [enableExpress] Value that indicates whether Express
  * Entities are enabled. An express topic holds a message in memory
@@ -666,23 +737,23 @@ export interface TopicCreateOrUpdateParameters {
  * topic to be partitioned across multiple message brokers is enabled.
  * 
  * @member {boolean} [enableSubscriptionPartitioning] Value that indicates
- * whether partitioning is enabled or disabled..
+ * whether partitioning is enabled or disabled.
  * 
  * @member {boolean} [filteringMessagesBeforePublishing] Whether messages
  * should be filtered before publishing.
  * 
  * @member {boolean} [isAnonymousAccessible] Value that indicates whether the
- * message is anonymous accessible.
+ * message is accessible anonymously.
  * 
  * @member {boolean} [isExpress]
  * 
  * @member {number} [maxSizeInMegabytes] Maximum size of the topic in
- * megabytes, which is the size of memory allocated for the topic.
+ * megabytes, which is the size of the memory allocated for the topic.
  * 
  * @member {boolean} [requiresDuplicateDetection] Value indicating if this
  * topic requires duplicate detection.
  * 
- * @member {number} [sizeInBytes] Size of the topic in bytes.
+ * @member {number} [sizeInBytes] Size of the topic, in bytes.
  * 
  * @member {string} [status] Enumerates the possible values for the status of
  * a messaging entity. Possible values include: 'Active', 'Creating',
@@ -694,7 +765,7 @@ export interface TopicCreateOrUpdateParameters {
  * @member {boolean} [supportOrdering] Value that indicates whether the topic
  * supports ordering.
  * 
- * @member {date} [updatedAt] The exact time the message has been updated.
+ * @member {date} [updatedAt] The exact time the message was updated.
  * 
  */
 export interface TopicResource extends Resource {
@@ -725,13 +796,13 @@ export interface TopicResource extends Resource {
  * @class
  * Initializes a new instance of the SubscriptionCreateOrUpdateParameters class.
  * @constructor
- * Parameters supplied to the CreateOrUpdate Subscription operation.
+ * Parameters supplied to the Create Or Update Subscription operation.
  *
  * @member {string} location Subscription data center location.
  * 
- * @member {string} [type] Resource Manager type of the resource.
+ * @member {string} [type] Resource manager type of the resource.
  * 
- * @member {date} [accessedAt] Last time a there was a receive request to this
+ * @member {date} [accessedAt] Last time there was a receive request to this
  * subscription.
  * 
  * @member {string} [autoDeleteOnIdle] TimeSpan idle interval after which the
@@ -743,9 +814,9 @@ export interface TopicResource extends Resource {
  * messages in the queue, topic, or subscription.
  * 
  * @member {number} [countDetails.deadLetterMessageCount] Number of messages
- * that are dead letters.
+ * that are dead lettered.
  * 
- * @member {number} [countDetails.scheduledMessageCount] Number scheduled
+ * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
  * 
  * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
@@ -762,14 +833,14 @@ export interface TopicResource extends Resource {
  * when TimeToLive is not set on a message itself.
  * 
  * @member {boolean} [deadLetteringOnFilterEvaluationExceptions] Value that
- * indicates if a subscription has dead letter support on Filter evaluation
- * exceptions.
+ * indicates whether a subscription has dead letter support on filter
+ * evaluation exceptions.
  * 
  * @member {boolean} [deadLetteringOnMessageExpiration] Value that indicates
- * if a subscription has dead letter support when a message expires.
+ * whether a subscription has dead letter support when a message expires.
  * 
  * @member {boolean} [enableBatchedOperations] Value that indicates whether
- * server-side batched operations are enabled..
+ * server-side batched operations are enabled.
  * 
  * @member {string} [entityAvailabilityStatus] Entity availability status for
  * the topic. Possible values include: 'Available', 'Limited', 'Renaming',
@@ -786,14 +857,14 @@ export interface TopicResource extends Resource {
  * @member {number} [messageCount] Number of messages.
  * 
  * @member {boolean} [requiresSession] Value indicating if a subscription
- * supports the concept of session.
+ * supports the concept of sessions.
  * 
  * @member {string} [status] Enumerates the possible values for the status of
  * a messaging entity. Possible values include: 'Active', 'Creating',
  * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
  * 'SendDisabled', 'Unknown'
  * 
- * @member {date} [updatedAt] The exact time the message has been updated.
+ * @member {date} [updatedAt] The exact time the message was updated.
  * 
  */
 export interface SubscriptionCreateOrUpdateParameters {
@@ -819,11 +890,28 @@ export interface SubscriptionCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the SubscriptionListResult class.
+ * @constructor
+ * The response to the List Subscriptions operation.
+ *
+ * @member {array} [value] Result of the List Subscriptions operation.
+ * 
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of subscriptions.
+ * 
+ */
+export interface SubscriptionListResult {
+  value?: SubscriptionResource[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SubscriptionResource class.
  * @constructor
- * Description of Subscription Resource.
+ * Description of subscription resource.
  *
- * @member {date} [accessedAt] Last time a there was a receive request to this
+ * @member {date} [accessedAt] Last time there was a receive request to this
  * subscription.
  * 
  * @member {string} [autoDeleteOnIdle] TimeSpan idle interval after which the
@@ -835,9 +923,9 @@ export interface SubscriptionCreateOrUpdateParameters {
  * messages in the queue, topic, or subscription.
  * 
  * @member {number} [countDetails.deadLetterMessageCount] Number of messages
- * that are dead letters.
+ * that are dead lettered.
  * 
- * @member {number} [countDetails.scheduledMessageCount] Number scheduled
+ * @member {number} [countDetails.scheduledMessageCount] Number of scheduled
  * messages.
  * 
  * @member {number} [countDetails.transferDeadLetterMessageCount] Number of
@@ -854,14 +942,14 @@ export interface SubscriptionCreateOrUpdateParameters {
  * when TimeToLive is not set on a message itself.
  * 
  * @member {boolean} [deadLetteringOnFilterEvaluationExceptions] Value that
- * indicates if a subscription has dead letter support on Filter evaluation
- * exceptions.
+ * indicates whether a subscription has dead letter support on filter
+ * evaluation exceptions.
  * 
  * @member {boolean} [deadLetteringOnMessageExpiration] Value that indicates
- * if a subscription has dead letter support when a message expires.
+ * whether a subscription has dead letter support when a message expires.
  * 
  * @member {boolean} [enableBatchedOperations] Value that indicates whether
- * server-side batched operations are enabled..
+ * server-side batched operations are enabled.
  * 
  * @member {string} [entityAvailabilityStatus] Entity availability status for
  * the topic. Possible values include: 'Available', 'Limited', 'Renaming',
@@ -878,14 +966,14 @@ export interface SubscriptionCreateOrUpdateParameters {
  * @member {number} [messageCount] Number of messages.
  * 
  * @member {boolean} [requiresSession] Value indicating if a subscription
- * supports the concept of session.
+ * supports the concept of sessions.
  * 
  * @member {string} [status] Enumerates the possible values for the status of
  * a messaging entity. Possible values include: 'Active', 'Creating',
  * 'Deleting', 'Disabled', 'ReceiveDisabled', 'Renaming', 'Restoring',
  * 'SendDisabled', 'Unknown'
  * 
- * @member {date} [updatedAt] The exact time the message has been updated.
+ * @member {date} [updatedAt] The exact time the message was updated.
  * 
  */
 export interface SubscriptionResource extends Resource {
@@ -915,7 +1003,7 @@ export interface SubscriptionResource extends Resource {
  * The response of the List Namespace operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Namespaces
+ * Value contains incomplete list of Namespaces.
  * 
  */
 export interface NamespaceListResult extends Array<NamespaceResource> {
@@ -926,10 +1014,10 @@ export interface NamespaceListResult extends Array<NamespaceResource> {
  * @class
  * Initializes a new instance of the SharedAccessAuthorizationRuleListResult class.
  * @constructor
- * The response of the List Namespace operation.
+ * The response to the List Namespace operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of AuthorizationRules
+ * Value contains incomplete list of Authorization Rules.
  * 
  */
 export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAccessAuthorizationRuleResource> {
@@ -940,10 +1028,10 @@ export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAcc
  * @class
  * Initializes a new instance of the QueueListResult class.
  * @constructor
- * The response of the List Queues operation.
+ * The response to the List Queues operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Queues
+ * Value contains incomplete list of queues.
  * 
  */
 export interface QueueListResult extends Array<QueueResource> {
@@ -954,10 +1042,10 @@ export interface QueueListResult extends Array<QueueResource> {
  * @class
  * Initializes a new instance of the TopicListResult class.
  * @constructor
- * The response of the List Topics operation.
+ * The response to the List Topics operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Topics
+ * Value contains incomplete list of topics.
  * 
  */
 export interface TopicListResult extends Array<TopicResource> {
@@ -968,10 +1056,10 @@ export interface TopicListResult extends Array<TopicResource> {
  * @class
  * Initializes a new instance of the SubscriptionListResult class.
  * @constructor
- * The response of the List Subscriptions operation.
+ * The response to the List Subscriptions operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Subscriptions
+ * Value contains incomplete list of subscriptions.
  * 
  */
 export interface SubscriptionListResult extends Array<SubscriptionResource> {
