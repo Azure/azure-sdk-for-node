@@ -21,11 +21,12 @@ import * as models from '../models';
 export interface PolicyAssignments {
 
     /**
-     * Delete policy assignment.
+     * Deletes a policy assignment.
      *
-     * @param {string} scope Scope of the policy assignment.
+     * @param {string} scope The scope of the policy assignment.
      * 
-     * @param {string} policyAssignmentName Policy assignment name.
+     * @param {string} policyAssignmentName The name of the policy assignment to
+     * delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -39,31 +40,31 @@ export interface PolicyAssignments {
     deleteMethod(scope: string, policyAssignmentName: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
-     * Create policy assignment.
+     * @summary Creates a policy assignment.
      *
-     * @param {string} scope Scope of the policy assignment.
+     * Policy assignments are inherited by child resources. For example, when you
+     * apply a policy to a resource group that policy is assigned to all
+     * resources in the group.
+     *
+     * @param {string} scope The scope of the policy assignment.
      * 
-     * @param {string} policyAssignmentName Policy assignment name.
+     * @param {string} policyAssignmentName The name of the policy assignment.
      * 
-     * @param {object} parameters Policy assignment.
+     * @param {object} parameters Parameters for the policy assignment.
      * 
-     * @param {string} [parameters.displayName] Gets or sets the policy assignment
-     * display name.
-     * 
-     * @param {string} [parameters.policyDefinitionId] Gets or sets the policy
-     * definition Id.
-     * 
-     * @param {string} [parameters.scope] Gets or sets the scope at which the
-     * policy assignment exists.
-     * 
-     * @param {string} [parameters.id] Gets or sets the Id of the policy
+     * @param {string} [parameters.displayName] The display name of the policy
      * assignment.
      * 
-     * @param {string} [parameters.type] Gets or sets the type of the policy
-     * assignment.
+     * @param {string} [parameters.policyDefinitionId] The ID of the policy
+     * definition.
      * 
-     * @param {string} [parameters.name] Gets or sets the name of the policy
-     * assignment.
+     * @param {string} [parameters.scope] The scope for the policy assignment.
+     * 
+     * @param {string} [parameters.id] The ID of the policy assignment.
+     * 
+     * @param {string} [parameters.type] The type of the policy assignment.
+     * 
+     * @param {string} [parameters.name] The name of the policy assignment.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -77,11 +78,12 @@ export interface PolicyAssignments {
     create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignment, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
-     * Get single policy assignment.
+     * Gets a policy assignment.
      *
-     * @param {string} scope Scope of the policy assignment.
+     * @param {string} scope The scope of the policy assignment.
      * 
-     * @param {string} policyAssignmentName Policy assignment name.
+     * @param {string} policyAssignmentName The name of the policy assignment to
+     * get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -95,9 +97,10 @@ export interface PolicyAssignments {
     get(scope: string, policyAssignmentName: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
-     * Gets policy assignments of the resource group.
+     * Gets policy assignments for the resource group.
      *
-     * @param {string} resourceGroupName Resource group name.
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains policy assignments.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -113,18 +116,20 @@ export interface PolicyAssignments {
     listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
-     * Gets policy assignments of the resource.
+     * Gets policy assignments for a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the resource. The name is case insensitive.
      * 
-     * @param {string} resourceProviderNamespace The resource provider namespace.
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
      * 
      * @param {string} parentResourcePath The parent resource path.
      * 
      * @param {string} resourceType The resource type.
      * 
-     * @param {string} resourceName The resource name.
+     * @param {string} resourceName The name of the resource with policy
+     * assignments.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -140,7 +145,7 @@ export interface PolicyAssignments {
     listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
-     * Gets all the policy assignments of a subscription.
+     * Gets all the policy assignments for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -156,9 +161,18 @@ export interface PolicyAssignments {
     list(callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
-     * Delete policy assignment.
+     * @summary Deletes a policy assignment by ID.
      *
-     * @param {string} policyAssignmentId Policy assignment Id
+     * When providing a scope for the assigment, use
+     * '/subscriptions/{subscription-id}/' for subscriptions,
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}'
+     * for resource groups, and
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+     * for resources.
+     *
+     * @param {string} policyAssignmentId The ID of the policy assignment to
+     * delete. Use the format
+     * '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -172,29 +186,36 @@ export interface PolicyAssignments {
     deleteById(policyAssignmentId: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
-     * Create policy assignment by Id.
+     * @summary Creates a policy assignment by ID.
      *
-     * @param {string} policyAssignmentId Policy assignment Id
+     * Policy assignments are inherited by child resources. For example, when you
+     * apply a policy to a resource group that policy is assigned to all
+     * resources in the group. When providing a scope for the assigment, use
+     * '/subscriptions/{subscription-id}/' for subscriptions,
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}'
+     * for resource groups, and
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+     * for resources.
+     *
+     * @param {string} policyAssignmentId The ID of the policy assignment to
+     * create. Use the format
+     * '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
      * 
-     * @param {object} parameters Policy assignment.
+     * @param {object} parameters Parameters for policy assignment.
      * 
-     * @param {string} [parameters.displayName] Gets or sets the policy assignment
-     * display name.
-     * 
-     * @param {string} [parameters.policyDefinitionId] Gets or sets the policy
-     * definition Id.
-     * 
-     * @param {string} [parameters.scope] Gets or sets the scope at which the
-     * policy assignment exists.
-     * 
-     * @param {string} [parameters.id] Gets or sets the Id of the policy
+     * @param {string} [parameters.displayName] The display name of the policy
      * assignment.
      * 
-     * @param {string} [parameters.type] Gets or sets the type of the policy
-     * assignment.
+     * @param {string} [parameters.policyDefinitionId] The ID of the policy
+     * definition.
      * 
-     * @param {string} [parameters.name] Gets or sets the name of the policy
-     * assignment.
+     * @param {string} [parameters.scope] The scope for the policy assignment.
+     * 
+     * @param {string} [parameters.id] The ID of the policy assignment.
+     * 
+     * @param {string} [parameters.type] The type of the policy assignment.
+     * 
+     * @param {string} [parameters.name] The name of the policy assignment.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -208,9 +229,18 @@ export interface PolicyAssignments {
     createById(policyAssignmentId: string, parameters: models.PolicyAssignment, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
-     * Get single policy assignment.
+     * @summary Gets a policy assignment by ID.
      *
-     * @param {string} policyAssignmentId Policy assignment Id
+     * When providing a scope for the assigment, use
+     * '/subscriptions/{subscription-id}/' for subscriptions,
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}'
+     * for resource groups, and
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}'
+     * for resources.
+     *
+     * @param {string} policyAssignmentId The ID of the policy assignment to get.
+     * Use the format
+     * '/{scope}/providers/Microsoft.Authorization/policyAssignments/{policy-assignment-name}'.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -224,7 +254,7 @@ export interface PolicyAssignments {
     getById(policyAssignmentId: string, callback: ServiceCallback<models.PolicyAssignment>): void;
 
     /**
-     * Gets policy assignments of the resource group.
+     * Gets policy assignments for the resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -241,7 +271,7 @@ export interface PolicyAssignments {
     listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
-     * Gets policy assignments of the resource.
+     * Gets policy assignments for a resource.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -258,7 +288,7 @@ export interface PolicyAssignments {
     listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
     /**
-     * Gets all the policy assignments of a subscription.
+     * Gets all the policy assignments for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -284,28 +314,29 @@ export interface PolicyAssignments {
 export interface PolicyDefinitions {
 
     /**
-     * Create or update a policy definition.
+     * Creates or updates a policy definition.
      *
-     * @param {string} policyDefinitionName The policy definition name.
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * create.
      * 
      * @param {object} parameters The policy definition properties.
      * 
-     * @param {string} [parameters.policyType] Gets or sets policy definition
-     * policy type. Possible values include: 'NotSpecified', 'BuiltIn', 'Custom'
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
      * 
-     * @param {string} [parameters.displayName] Gets or sets the policy definition
-     * display name.
-     * 
-     * @param {string} [parameters.description] Gets or sets the policy definition
-     * description.
-     * 
-     * @param {object} [parameters.policyRule] Gets or sets the policy rule.
-     * 
-     * @param {string} [parameters.id] Gets or sets the Id of the policy
+     * @param {string} [parameters.displayName] The display name of the policy
      * definition.
      * 
-     * @param {string} [parameters.name] Gets or sets the name of the policy
-     * definition.
+     * @param {string} [parameters.description] The policy definition description.
+     * 
+     * @param {object} [parameters.policyRule] The policy rule.
+     * 
+     * @param {string} [parameters.id] The ID of the policy definition.
+     * 
+     * @param {string} [parameters.name] The name of the policy definition. If you
+     * do not specify a value for name, the value is inferred from the name value
+     * in the request URI.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -319,9 +350,10 @@ export interface PolicyDefinitions {
     createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, callback: ServiceCallback<models.PolicyDefinition>): void;
 
     /**
-     * Deletes the policy definition.
+     * Deletes a policy definition.
      *
-     * @param {string} policyDefinitionName The policy definition name.
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -337,7 +369,8 @@ export interface PolicyDefinitions {
     /**
      * Gets the policy definition.
      *
-     * @param {string} policyDefinitionName The policy definition name.
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -351,7 +384,7 @@ export interface PolicyDefinitions {
     get(policyDefinitionName: string, callback: ServiceCallback<models.PolicyDefinition>): void;
 
     /**
-     * Gets all the policy definitions of a subscription.
+     * Gets all the policy definitions for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -367,7 +400,7 @@ export interface PolicyDefinitions {
     list(callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
 
     /**
-     * Gets all the policy definitions of a subscription.
+     * Gets all the policy definitions for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

@@ -21,9 +21,13 @@ import * as models from '../models';
 export interface Subscriptions {
 
     /**
-     * Gets a list of the subscription locations.
+     * @summary Gets all available geo-locations.
      *
-     * @param {string} subscriptionId Id of the subscription
+     * This operation provides all the locations that are available for resource
+     * providers; however, each resource provider may support a subset of this
+     * list.
+     *
+     * @param {string} subscriptionId The ID of the target subscription.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -37,9 +41,9 @@ export interface Subscriptions {
     listLocations(subscriptionId: string, callback: ServiceCallback<models.LocationListResult>): void;
 
     /**
-     * Gets details about particular subscription.
+     * Gets details about a specified subscription.
      *
-     * @param {string} subscriptionId Id of the subscription.
+     * @param {string} subscriptionId The ID of the target subscription.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -53,7 +57,7 @@ export interface Subscriptions {
     get(subscriptionId: string, callback: ServiceCallback<models.Subscription>): void;
 
     /**
-     * Gets a list of subscriptions.
+     * Gets all subscriptions for a tenant.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -67,7 +71,7 @@ export interface Subscriptions {
     list(callback: ServiceCallback<models.SubscriptionListResult>): void;
 
     /**
-     * Gets a list of subscriptions.
+     * Gets all subscriptions for a tenant.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -93,7 +97,7 @@ export interface Subscriptions {
 export interface Tenants {
 
     /**
-     * Gets a list of tenants.
+     * Gets the tenants for your account.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -107,7 +111,7 @@ export interface Tenants {
     list(callback: ServiceCallback<models.TenantListResult>): void;
 
     /**
-     * Gets a list of tenants.
+     * Gets the tenants for your account.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

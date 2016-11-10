@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -15,20 +18,21 @@
  * @constructor
  * The policy definition.
  *
- * @member {string} [policyType] Gets or sets policy definition policy type.
- * Possible values include: 'NotSpecified', 'BuiltIn', 'Custom'
+ * @member {string} [policyType] The type of policy definition. Possible
+ * values are NotSpecified, BuiltIn, and Custom. Possible values include:
+ * 'NotSpecified', 'BuiltIn', 'Custom'
  * 
- * @member {string} [displayName] Gets or sets the policy definition display
- * name.
+ * @member {string} [displayName] The display name of the policy definition.
  * 
- * @member {string} [description] Gets or sets the policy definition
- * description.
+ * @member {string} [description] The policy definition description.
  * 
- * @member {object} [policyRule] Gets or sets the policy rule.
+ * @member {object} [policyRule] The policy rule.
  * 
- * @member {string} [id] Gets or sets the Id of the policy definition.
+ * @member {string} [id] The ID of the policy definition.
  * 
- * @member {string} [name] Gets or sets the name of the policy definition.
+ * @member {string} [name] The name of the policy definition. If you do not
+ * specify a value for name, the value is inferred from the name value in the
+ * request URI.
  * 
  */
 export interface PolicyDefinition extends BaseResource {
@@ -42,23 +46,38 @@ export interface PolicyDefinition extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the PolicyDefinitionListResult class.
+ * @constructor
+ * List of policy definitions.
+ *
+ * @member {array} [value] An array of policy definitions.
+ * 
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface PolicyDefinitionListResult {
+  value?: PolicyDefinition[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PolicyAssignment class.
  * @constructor
  * The policy definition.
  *
- * @member {string} [displayName] Gets or sets the policy assignment display
- * name.
+ * @member {string} [displayName] The display name of the policy assignment.
  * 
- * @member {string} [policyDefinitionId] Gets or sets the policy definition Id.
+ * @member {string} [policyDefinitionId] The ID of the policy definition.
  * 
- * @member {string} [scope] Gets or sets the scope at which the policy
- * assignment exists.
+ * @member {string} [scope] The scope for the policy assignment.
  * 
- * @member {string} [id] Gets or sets the Id of the policy assignment.
+ * @member {string} [id] The ID of the policy assignment.
  * 
- * @member {string} [type] Gets or sets the type of the policy assignment.
+ * @member {string} [type] The type of the policy assignment.
  * 
- * @member {string} [name] Gets or sets the name of the policy assignment.
+ * @member {string} [name] The name of the policy assignment.
  * 
  */
 export interface PolicyAssignment extends BaseResource {
@@ -70,6 +89,23 @@ export interface PolicyAssignment extends BaseResource {
   name?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the PolicyAssignmentListResult class.
+ * @constructor
+ * List of policy assignments.
+ *
+ * @member {array} [value] An array of policy assignments.
+ * 
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface PolicyAssignmentListResult {
+  value?: PolicyAssignment[];
+  nextLink?: string;
+}
+
 
 /**
  * @class
@@ -77,7 +113,7 @@ export interface PolicyAssignment extends BaseResource {
  * @constructor
  * List of policy assignments.
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
+ * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
  * 
  */
@@ -91,7 +127,7 @@ export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
  * @constructor
  * List of policy definitions.
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
+ * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
  * 
  */
