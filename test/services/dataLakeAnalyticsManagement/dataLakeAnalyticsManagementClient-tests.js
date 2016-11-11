@@ -120,26 +120,21 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       
       // construct all of the parameter objects
       var adlsAccount = {
-        name: storeAccountName,
         location: testLocation
       };
       
       var secondAdlsAccount = {
-        name: additionalStoreAccountName,
         location: testLocation
       };
       
       var adlaAccount = {
-        name: jobAndCatalogAccountName,
         location: testLocation,
-        properties: {
-          defaultDataLakeStoreAccount: storeAccountName,
-          dataLakeStoreAccounts: [
-            {
-              name: storeAccountName
-            }
-          ]
-        }
+        defaultDataLakeStoreAccount: storeAccountName,
+        dataLakeStoreAccounts: [
+          {
+            name: storeAccountName
+          }
+        ]
       };
       
       var storageAccount = {
@@ -217,16 +212,13 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           testtag1: 'testvalue1',
           testtag2: 'testvalue2'
         },
-        name: accountName,
         location: testLocation,
-        properties: {
-          defaultDataLakeStoreAccount: storeAccountName,
-          dataLakeStoreAccounts: [
-            {
-              name: storeAccountName
-            }
-          ]
-        }
+        defaultDataLakeStoreAccount: storeAccountName,
+        dataLakeStoreAccounts: [
+          {
+            name: storeAccountName
+          }
+        ]
       };
 
       accountClient.account.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
@@ -245,21 +237,18 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           testtag1: 'testvalue1',
           testtag2: 'testvalue2'
         },
-        name: accountName,
         location: testLocation,
-        properties: {
-          defaultDataLakeStoreAccount: storeAccountName,
-          dataLakeStoreAccounts: [
-            {
-              name: storeAccountName
-            }
-          ]
-        }
+        defaultDataLakeStoreAccount: storeAccountName,
+        dataLakeStoreAccounts: [
+          {
+            name: storeAccountName
+          }
+        ]
       };
-      accountClient.account.create(testResourceGroup, accountName, accountToCreate, function (err, result, request, response) {
+      accountClient.account.create(secondResourceGroup, accountName, accountToCreate, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
-        err.statusCode.should.equalOneOf([400, 409]); //TODO: need to update to just 409 when fixed in the service.
+        err.statusCode.should.equalOneOf([400, 409]);
         done();
       });
     });
@@ -297,12 +286,13 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     it('updating the account should work', function (done) {
       // define the account to update
       var accountToUpdate = {
+        parameters: {
           tags: {
             testtag1: 'testvalue1',
             testtag2: 'testvalue2',
             testtag3: 'testvalue3'
-          },
-          name: jobAndCatalogAccountName
+          }
+        }
       };
       
       accountClient.account.update(testResourceGroup, jobAndCatalogAccountName, accountToUpdate, function (err, result, request, response) {
@@ -317,12 +307,10 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
     
     it('adding and removing data lake storage accounts to the account should work', function (done) {
       var options = {
-        properties: {
-          suffix: filesystemDnsSuffix
-        }
+        suffix: filesystemDnsSuffix
       };
 
-      accountClient.account.addDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, options, function (err, result, request, response) {
+      accountClient.dataLakeStoreAccounts.add(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -330,8 +318,8 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
-          result.properties.dataLakeStoreAccounts.length.should.be.equal(2);
-          accountClient.account.deleteDataLakeStoreAccount(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, function (err, result, request, response) {
+          result.dataLakeStoreAccounts.length.should.be.equal(2);
+          accountClient.dataLakeStoreAccounts.deleteMethod(testResourceGroup, jobAndCatalogAccountName, additionalStoreAccountName, function (err, result, request, response) {
             should.not.exist(err);
             should.not.exist(result);
             response.statusCode.should.equal(200);
@@ -339,7 +327,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
               should.not.exist(err);
               should.exist(result);
               response.statusCode.should.equal(200);
-              result.properties.dataLakeStoreAccounts.length.should.be.equal(1);
+              result.dataLakeStoreAccounts.length.should.be.equal(1);
               done();
             });
           });
@@ -351,11 +339,9 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
       storageClient.storageAccounts.listKeys(testResourceGroup, azureBlobAccountName, function (err, result) {
         azureBlobAccountKey = result.keys[0].value;
         var storageParams = {
-          properties: {
-            accessKey: azureBlobAccountKey
-          }
+          accessKey: azureBlobAccountKey
         };
-        accountClient.account.addStorageAccount(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, storageParams, function (err, result, request, response) {
+        accountClient.storageAccounts.add(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, storageParams, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);
           response.statusCode.should.equal(200);
@@ -363,8 +349,8 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             should.not.exist(err);
             should.exist(result);
             response.statusCode.should.equal(200);
-            result.properties.storageAccounts.length.should.be.equal(1);
-            accountClient.account.deleteStorageAccount(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, function (err, result, request, response) {
+            result.storageAccounts.length.should.be.equal(1);
+            accountClient.storageAccounts.deleteMethod(testResourceGroup, jobAndCatalogAccountName, azureBlobAccountName, function (err, result, request, response) {
               should.not.exist(err);
               should.not.exist(result);
               response.statusCode.should.equal(200);
@@ -372,7 +358,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
-                result.properties.storageAccounts.length.should.be.equal(0);
+                result.storageAccounts.length.should.be.equal(0);
                 done();
               });
             });
