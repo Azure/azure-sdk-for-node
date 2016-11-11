@@ -472,7 +472,12 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                   result.fileStatus.expirationTime.should.within(absoluteAndRelativeToCreationExpiryTime - 100, absoluteAndRelativeToCreationExpiryTime + 100);
                   
                   // set relative to now
-                  var nowPlusOffset = (new Date()).getTime() + (120*1000);
+                  var nowPlusOffset = suite.getMockVariable('nowPlusOffset');
+                  if (!nowPlusOffset) {
+                    nowPlusOffset = (new Date()).getTime() + (120*1000);
+                    suite.saveMockVariable('nowPlusOffset', nowPlusOffset);
+                  }
+                  
                   adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, expireFile, 'RelativeToNow', options, function (err, result, request, response) {
                     should.not.exist(err);
                     should.not.exist(result);
@@ -482,7 +487,8 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                       should.not.exist(err);
                       should.exist(result);
                       response.statusCode.should.equal(200);
-                      result.fileStatus.expirationTime.should.within(nowPlusOffset - 500, nowPlusOffset + 500);
+                      // we give +- 2 seconds of range due to commit timing in the service.
+                      result.fileStatus.expirationTime.should.within(nowPlusOffset - 2000, nowPlusOffset + 2000);
                       
                       // and finally revert it back to never and the value of options should be ignored
                       adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, expireFile, 'NeverExpire', options, function (err, result, request, response) {
