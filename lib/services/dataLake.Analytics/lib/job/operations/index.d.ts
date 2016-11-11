@@ -26,7 +26,7 @@ export interface Job {
      * @param {string} accountName The Azure Data Lake Analytics account to
      * execute job operations on.
      * 
-     * @param {uuid} jobIdentity JobInfo ID.
+     * @param {uuid} jobIdentity Job Information ID.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -67,15 +67,10 @@ export interface Job {
      * 
      * @param {object} parameters The parameters to build a job.
      * 
-     * @param {uuid} [parameters.jobId] the job's unique identifier (a GUID).
+     * @param {string} parameters.name the friendly name of the job.
      * 
-     * @param {string} [parameters.name] the friendly name of the job.
-     * 
-     * @param {string} [parameters.type] the job type of the current job (Hive or
+     * @param {string} parameters.type the job type of the current job (Hive or
      * USql). Possible values include: 'USql', 'Hive'
-     * 
-     * @param {string} [parameters.submitter] the user or account that submitted
-     * the job.
      * 
      * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
      * used for this job. This must be greater than 0.
@@ -88,15 +83,15 @@ export interface Job {
      * patterns to find in the logFolder. '*' is the only matching character
      * allowed. Example format: jobExecution*.log or *mylog*.txt
      * 
-     * @param {object} [parameters.properties] the job specific properties.
+     * @param {object} parameters.properties the job specific properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] the runtime version
      * of the Data Lake Analytics engine to use for the specific type of job
      * being run.
      * 
-     * @param {string} [parameters.properties.script] the script to run
+     * @param {string} parameters.properties.script the script to run
      * 
-     * @param {string} [parameters.properties.type] Polymorhpic Discriminator
+     * @param {string} parameters.properties.type Polymorphic Discriminator
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -157,15 +152,10 @@ export interface Job {
      * 
      * @param {object} parameters The parameters to submit a job.
      * 
-     * @param {uuid} [parameters.jobId] the job's unique identifier (a GUID).
+     * @param {string} parameters.name the friendly name of the job.
      * 
-     * @param {string} [parameters.name] the friendly name of the job.
-     * 
-     * @param {string} [parameters.type] the job type of the current job (Hive or
+     * @param {string} parameters.type the job type of the current job (Hive or
      * USql). Possible values include: 'USql', 'Hive'
-     * 
-     * @param {string} [parameters.submitter] the user or account that submitted
-     * the job.
      * 
      * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
      * used for this job. This must be greater than 0.
@@ -178,15 +168,15 @@ export interface Job {
      * patterns to find in the logFolder. '*' is the only matching character
      * allowed. Example format: jobExecution*.log or *mylog*.txt
      * 
-     * @param {object} [parameters.properties] the job specific properties.
+     * @param {object} parameters.properties the job specific properties.
      * 
      * @param {string} [parameters.properties.runtimeVersion] the runtime version
      * of the Data Lake Analytics engine to use for the specific type of job
      * being run.
      * 
-     * @param {string} [parameters.properties.script] the script to run
+     * @param {string} parameters.properties.script the script to run
      * 
-     * @param {string} [parameters.properties.type] Polymorhpic Discriminator
+     * @param {string} parameters.properties.type Polymorphic Discriminator
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -215,10 +205,6 @@ export interface Job {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -232,21 +218,13 @@ export interface Job {
      * request a count of the matching resources included with the resources in
      * the response, e.g. Categories?$count=true. Optional.
      * 
-     * @param {string} [options.search] A free form search. A free-text search
-     * expression to match for whether a particular entry should be included in
-     * the feed, e.g. Categories?$search=blue OR green. Optional.
-     * 
-     * @param {string} [options.format] The return format. Return the response in
-     * particular formatxii without access to request headers for standard
-     * content-type negotiation (e.g Orders?$format=json). Optional.
-     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(accountName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInfoListResult>): void;
+    list(accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInfoListResult>): void;
     list(accountName: string, callback: ServiceCallback<models.JobInfoListResult>): void;
 
     /**

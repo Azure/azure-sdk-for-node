@@ -102,7 +102,6 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
 
       // construct all of the parameter objects
       var adlsAccount = {
-        name: filesystemAccountName,
         location: testLocation
       };
 
@@ -154,7 +153,6 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
           testtag1: 'testvalue1',
           testtag2: 'testvalue2'
         },
-        name: accountName,
         location: testLocation
       };
       
@@ -174,7 +172,6 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
           testtag1: 'testvalue1',
           testtag2: 'testvalue2'
         },
-        name: accountName,
         location: testLocation
       };
       
@@ -220,8 +217,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
           testtag1: 'testvalue1',
           testtag2: 'testvalue2',
           testtag3: 'testvalue3'
-        },
-        name: filesystemAccountName
+        }
       };
       
       adlsClient.account.update(testResourceGroup, filesystemAccountName, accountToUpdate, function (err, result, request, response) {
@@ -431,72 +427,82 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
       });
     });
     
-    /*
-    * TODO: Re-enable when expiry is added back
     it('file expiry commands should work', function (done) {
       // delete a file
       var noExpiryTime = 253402300800000;
-      adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
+      var expireFile = noContentFile + '.expire'
+      adlsFileSystemClient.fileSystem.create(filesystemAccountName, expireFile, function (err, result, request, response) {
         should.not.exist(err);
-        should.exist(result);
-        response.statusCode.should.equal(200);
-        result.fileInfo.expirationTime.should.equal(noExpiryTime);
-        var absoluteAndRelativeToCreationExpiryTime = result.fileInfo.creationTime + (120 * 1000);
-        var options = {
-          expireTime: absoluteAndRelativeToCreationExpiryTime
-        };
-        // Set absolute expire time
-        adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'Absolute', options, function (err, result, request, response) {
+        should.not.exist(result);
+        response.statusCode.should.equal(201);
+        adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, expireFile, function (err, result, request, response) {
           should.not.exist(err);
-          should.not.exist(result);
+          should.exist(result);
           response.statusCode.should.equal(200);
-          
-          // get the fileInfo again and verify that the value is within 200ms of the set time.
-          adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
+          result.fileStatus.expirationTime.should.equalOneOf([noExpiryTime,0]);
+          var absoluteAndRelativeToCreationExpiryTime = result.fileStatus.modificationTime + (120 * 1000);
+          var options = {
+            expireTime: absoluteAndRelativeToCreationExpiryTime
+          };
+          // Set absolute expire time
+          adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, expireFile, 'Absolute', options, function (err, result, request, response) {
             should.not.exist(err);
-            should.exist(result);
+            should.not.exist(result);
             response.statusCode.should.equal(200);
-            result.fileInfo.expirationTime.should.within(absoluteAndRelativeToCreationExpiryTime - 100, absoluteAndRelativeToCreationExpiryTime + 100);
             
-            // set relative to creation time expire time
-            options.expireTime = 120 * 1000;
-            adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'RelativeToCreationDate', options, function (err, result, request, response) {
+            // get the fileInfo again and verify that the value is within 200ms of the set time.
+            adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, expireFile, function (err, result, request, response) {
               should.not.exist(err);
-              should.not.exist(result);
+              should.exist(result);
               response.statusCode.should.equal(200);
+              result.fileStatus.expirationTime.should.within(absoluteAndRelativeToCreationExpiryTime - 100, absoluteAndRelativeToCreationExpiryTime + 100);
               
-              // get the fileInfo again and verify that the value is within 200ms of the set time.
-              adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
+              // set relative to creation time expire time
+              options.expireTime = 120 * 1000;
+              adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, expireFile, 'RelativeToCreationDate', options, function (err, result, request, response) {
                 should.not.exist(err);
-                should.exist(result);
+                should.not.exist(result);
                 response.statusCode.should.equal(200);
-                result.fileInfo.expirationTime.should.within(absoluteAndRelativeToCreationExpiryTime - 100, absoluteAndRelativeToCreationExpiryTime + 100);
                 
-                // set relative to now
-                var nowPlusOffset = new Date().UTC() + (120*1000);
-                adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'RelativeToNow', options, function (err, result, request, response) {
+                // get the fileInfo again and verify that the value is within 200ms of the set time.
+                adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, expireFile, function (err, result, request, response) {
                   should.not.exist(err);
-                  should.not.exist(result);
+                  should.exist(result);
                   response.statusCode.should.equal(200);
+                  result.fileStatus.expirationTime.should.within(absoluteAndRelativeToCreationExpiryTime - 100, absoluteAndRelativeToCreationExpiryTime + 100);
                   
-                  adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
+                  // set relative to now
+                  var nowPlusOffset = suite.getMockVariable('nowPlusOffset');
+                  if (!nowPlusOffset) {
+                    nowPlusOffset = (new Date()).getTime() + (120*1000);
+                    suite.saveMockVariable('nowPlusOffset', nowPlusOffset);
+                  }
+                  
+                  adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, expireFile, 'RelativeToNow', options, function (err, result, request, response) {
                     should.not.exist(err);
-                    should.exist(result);
+                    should.not.exist(result);
                     response.statusCode.should.equal(200);
-                    result.fileInfo.expirationTime.should.within(nowPlusOffset - 100, nowPlusOffset + 100);
                     
-                    // and finally revert it back to never and the value of options should be ignored
-                    adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, moveFile, 'NeverExpire', options, function (err, result, request, response) {
+                    adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, expireFile, function (err, result, request, response) {
                       should.not.exist(err);
-                      should.not.exist(result);
+                      should.exist(result);
                       response.statusCode.should.equal(200);
+                      // we give +- 2 seconds of range due to commit timing in the service.
+                      result.fileStatus.expirationTime.should.within(nowPlusOffset - 2000, nowPlusOffset + 2000);
                       
-                      adlsFileSystemClient.fileSystem.getFileInfo(filesystemAccountName, moveFile, function (err, result, request, response) {
+                      // and finally revert it back to never and the value of options should be ignored
+                      adlsFileSystemClient.fileSystem.setFileExpiry(filesystemAccountName, expireFile, 'NeverExpire', options, function (err, result, request, response) {
                         should.not.exist(err);
-                        should.exist(result);
+                        should.not.exist(result);
                         response.statusCode.should.equal(200);
-                        result.fileInfo.expirationTime.should.equal(noExpiryTime);
-                        done();
+                        
+                        adlsFileSystemClient.fileSystem.getFileStatus(filesystemAccountName, expireFile, function (err, result, request, response) {
+                          should.not.exist(err);
+                          should.exist(result);
+                          response.statusCode.should.equal(200);
+                          result.fileStatus.expirationTime.should.equalOneOf([noExpiryTime,0]);
+                          done();
+                        });
                       });
                     });
                   });
@@ -507,7 +513,6 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         });
       });
     });
-    */
     
     it('delete commands should work', function (done) {
       // delete a file
@@ -616,7 +621,8 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
-                    result.aclStatus.entries.length.should.be.equal(initialEntryNum);
+                    // add one because the mask is not removed when the user is removed
+                    result.aclStatus.entries.length.should.be.equal(initialEntryNum + 1);
                     done();
                   });
                 });

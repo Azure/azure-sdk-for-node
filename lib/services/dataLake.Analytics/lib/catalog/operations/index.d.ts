@@ -22,10 +22,11 @@ export interface Catalog {
 
     /**
      * Creates the specified secret for use with external data sources in the
-     * specified database.
+     * specified database. This is deprecated and will be removed in the next
+     * release. Please use CreateCredential instead.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database in which to create
      * the secret.
@@ -35,7 +36,7 @@ export interface Catalog {
      * @param {object} parameters The parameters required to create the secret
      * (name and password)
      * 
-     * @param {string} [parameters.password] the password for the secret to pass in
+     * @param {string} parameters.password the password for the secret to pass in
      * 
      * @param {string} [parameters.uri] the URI identifier for the secret in the
      * format <hostname>:<port>
@@ -53,10 +54,11 @@ export interface Catalog {
 
     /**
      * Modifies the specified secret for use with external data sources in the
-     * specified database
+     * specified database. This is deprecated and will be removed in the next
+     * release. Please use UpdateCredential instead.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the secret.
      * 
@@ -65,7 +67,7 @@ export interface Catalog {
      * @param {object} parameters The parameters required to modify the secret
      * (name and password)
      * 
-     * @param {string} [parameters.password] the password for the secret to pass in
+     * @param {string} parameters.password the password for the secret to pass in
      * 
      * @param {string} [parameters.uri] the URI identifier for the secret in the
      * format <hostname>:<port>
@@ -82,10 +84,11 @@ export interface Catalog {
     updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, callback: ServiceCallback<models.USqlSecret>): void;
 
     /**
-     * Gets the specified secret in the specified database
+     * Gets the specified secret in the specified database. This is deprecated and
+     * will be removed in the next release. Please use GetCredential instead.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the secret.
      * 
@@ -103,10 +106,12 @@ export interface Catalog {
     getSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<models.USqlSecret>): void;
 
     /**
-     * Deletes the specified secret in the specified database
+     * Deletes the specified secret in the specified database. This is deprecated
+     * and will be removed in the next release. Please use DeleteCredential
+     * instead.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the secret.
      * 
@@ -124,10 +129,12 @@ export interface Catalog {
     deleteSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Deletes all secrets in the specified database
+     * Deletes all secrets in the specified database. This is deprecated and will
+     * be removed in the next release. In the future, please only drop individual
+     * credentials using DeleteCredential
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the secret.
      * 
@@ -143,11 +150,174 @@ export interface Catalog {
     deleteAllSecrets(accountName: string, databaseName: string, callback: ServiceCallback<void>): void;
 
     /**
+     * Creates the specified credential for use with external data sources in the
+     * specified database.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
+     * 
+     * @param {string} databaseName The name of the database in which to create
+     * the credential.
+     * 
+     * @param {string} credentialName The name of the credential.
+     * 
+     * @param {object} parameters The parameters required to create the credential
+     * (name and password)
+     * 
+     * @param {string} parameters.password the password for the credential and
+     * user with access to the data source.
+     * 
+     * @param {string} parameters.uri the URI identifier for the data source this
+     * credential can connect to in the format <hostname>:<port>
+     * 
+     * @param {string} parameters.userId the object identifier for the user
+     * associated with this credential with access to the data source.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialCreateParameters, callback: ServiceCallback<void>): void;
+
+    /**
+     * Modifies the specified credential for use with external data sources in the
+     * specified database
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
+     * 
+     * @param {string} databaseName The name of the database containing the
+     * credential.
+     * 
+     * @param {string} credentialName The name of the credential.
+     * 
+     * @param {object} parameters The parameters required to modify the credential
+     * (name and password)
+     * 
+     * @param {string} [parameters.password] the current password for the
+     * credential and user with access to the data source. This is required if
+     * the requester is not the account owner.
+     * 
+     * @param {string} [parameters.newPassword] the new password for the
+     * credential and user with access to the data source.
+     * 
+     * @param {string} [parameters.uri] the URI identifier for the data source
+     * this credential can connect to in the format <hostname>:<port>
+     * 
+     * @param {string} [parameters.userId] the object identifier for the user
+     * associated with this credential with access to the data source.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    updateCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialUpdateParameters, callback: ServiceCallback<void>): void;
+
+    /**
+     * Retrieves the specified credential from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
+     * 
+     * @param {string} databaseName The name of the database containing the schema.
+     * 
+     * @param {string} credentialName The name of the credential.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getCredential(accountName: string, databaseName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredential>): void;
+    getCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<models.USqlCredential>): void;
+
+    /**
+     * Deletes the specified credential in the specified database
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
+     * 
+     * @param {string} databaseName The name of the database containing the
+     * credential.
+     * 
+     * @param {string} credentialName The name of the credential to delete
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.parameters] The parameters to delete a credential
+     * if the current user is not the account owner.
+     * 
+     * @param {string} [options.parameters.password] the current password for the
+     * credential and user with access to the data source. This is required if
+     * the requester is not the account owner.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteCredential(accountName: string, databaseName: string, credentialName: string, options: { parameters? : models.DataLakeAnalyticsCatalogCredentialDeleteParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Retrieves the list of credentials from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
+     * 
+     * @param {string} databaseName The name of the database containing the schema.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {string} [options.filter] OData filter. Optional.
+     * 
+     * @param {number} [options.top] The number of items to return. Optional.
+     * 
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     * 
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     * 
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     * 
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in
+     * the response, e.g. Categories?$count=true. Optional.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listCredentials(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
+    listCredentials(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlCredentialList>): void;
+
+    /**
      * Retrieves the specified external data source from the Data Lake Analytics
      * catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * external data source.
@@ -169,8 +339,8 @@ export interface Catalog {
      * Retrieves the list of external data sources from the Data Lake Analytics
      * catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * external data sources.
@@ -184,10 +354,6 @@ export interface Catalog {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -207,78 +373,14 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listExternalDataSources(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
+    listExternalDataSources(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
     listExternalDataSources(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
-
-    /**
-     * Retrieves the specified credential from the Data Lake Analytics catalog.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
-     * 
-     * @param {string} databaseName The name of the database containing the schema.
-     * 
-     * @param {string} credentialName The name of the credential.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getCredential(accountName: string, databaseName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredential>): void;
-    getCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<models.USqlCredential>): void;
-
-    /**
-     * Retrieves the list of credentials from the Data Lake Analytics catalog.
-     *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
-     * 
-     * @param {string} databaseName The name of the database containing the schema.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {string} [options.filter] OData filter. Optional.
-     * 
-     * @param {number} [options.top] The number of items to return. Optional.
-     * 
-     * @param {number} [options.skip] The number of items to skip over before
-     * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
-     * @param {string} [options.select] OData Select statement. Limits the
-     * properties on each entry to just those requested, e.g.
-     * Categories?$select=CategoryName,Description. Optional.
-     * 
-     * @param {string} [options.orderby] OrderBy clause. One or more
-     * comma-separated expressions with an optional "asc" (the default) or "desc"
-     * depending on the order you'd like the values sorted, e.g.
-     * Categories?$orderby=CategoryName desc. Optional.
-     * 
-     * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listCredentials(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
-    listCredentials(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlCredentialList>): void;
 
     /**
      * Retrieves the specified procedure from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * procedure.
@@ -301,8 +403,8 @@ export interface Catalog {
     /**
      * Retrieves the list of procedures from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * procedures.
@@ -317,10 +419,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -341,14 +439,14 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listProcedures(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedureList>): void;
+    listProcedures(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedureList>): void;
     listProcedures(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlProcedureList>): void;
 
     /**
      * Retrieves the specified table from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the table.
      * 
@@ -370,8 +468,8 @@ export interface Catalog {
     /**
      * Retrieves the list of tables from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the tables.
      * 
@@ -385,10 +483,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -409,14 +503,14 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listTables(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
+    listTables(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
     listTables(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableList>): void;
 
     /**
      * Retrieves the specified table type from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the table
      * type.
@@ -439,8 +533,8 @@ export interface Catalog {
     /**
      * Retrieves the list of table types from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the table
      * types.
@@ -456,10 +550,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -480,14 +570,14 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listTableTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
+    listTableTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
     listTableTypes(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableTypeList>): void;
 
     /**
      * Retrieves the specified view from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the view.
      * 
@@ -509,8 +599,8 @@ export interface Catalog {
     /**
      * Retrieves the list of views from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the views.
      * 
@@ -524,10 +614,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -548,15 +634,15 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listViews(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlViewList>): void;
+    listViews(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlViewList>): void;
     listViews(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlViewList>): void;
 
     /**
      * Retrieves the specified table statistics from the Data Lake Analytics
      * catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * statistics.
@@ -581,8 +667,8 @@ export interface Catalog {
     /**
      * Retrieves the list of table statistics from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * statistics.
@@ -599,10 +685,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -623,15 +705,15 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+    listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
     listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
 
     /**
      * Retrieves the specified table partition from the Data Lake Analytics
      * catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * partition.
@@ -656,8 +738,8 @@ export interface Catalog {
     /**
      * Retrieves the list of table partitions from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * partitions.
@@ -675,10 +757,6 @@ export interface Catalog {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -698,15 +776,15 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+    listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
     listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, callback: ServiceCallback<models.USqlTablePartitionList>): void;
 
     /**
      * Retrieves the list of types within the specified database and schema from
      * the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the types.
      * 
@@ -721,10 +799,6 @@ export interface Catalog {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -744,15 +818,15 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTypeList>): void;
+    listTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTypeList>): void;
     listTypes(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTypeList>): void;
 
     /**
      * Retrieves the specified table valued function from the Data Lake Analytics
      * catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the table
      * valued function.
@@ -777,8 +851,8 @@ export interface Catalog {
      * Retrieves the list of table valued functions from the Data Lake Analytics
      * catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the table
      * valued functions.
@@ -794,10 +868,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -818,14 +888,14 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listTableValuedFunctions(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
+    listTableValuedFunctions(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
     listTableValuedFunctions(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
 
     /**
      * Retrieves the specified assembly from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * assembly.
@@ -846,8 +916,8 @@ export interface Catalog {
     /**
      * Retrieves the list of assemblies from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the
      * assembly.
@@ -860,10 +930,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -884,14 +950,14 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAssemblies(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssemblyList>): void;
+    listAssemblies(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssemblyList>): void;
     listAssemblies(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlAssemblyList>): void;
 
     /**
      * Retrieves the specified schema from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the schema.
      * 
@@ -911,8 +977,8 @@ export interface Catalog {
     /**
      * Retrieves the list of schemas from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database containing the schema.
      * 
@@ -924,10 +990,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -948,14 +1010,14 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listSchemas(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchemaList>): void;
+    listSchemas(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchemaList>): void;
     listSchemas(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlSchemaList>): void;
 
     /**
      * Retrieves the specified database from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {string} databaseName The name of the database.
      * 
@@ -973,8 +1035,8 @@ export interface Catalog {
     /**
      * Retrieves the list of databases from the Data Lake Analytics catalog.
      *
-     * @param {string} accountName The Azure Data Lake Analytics account to
-     * execute catalog operations on.
+     * @param {string} accountName The Azure Data Lake Analytics account upon
+     * which to execute catalog operations.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -984,10 +1046,6 @@ export interface Catalog {
      * 
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
-     * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories?$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
      * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
@@ -1008,8 +1066,25 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listDatabases(accountName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabaseList>): void;
+    listDatabases(accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabaseList>): void;
     listDatabases(accountName: string, callback: ServiceCallback<models.USqlDatabaseList>): void;
+
+    /**
+     * Retrieves the list of credentials from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listCredentialsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
+    listCredentialsNext(nextPageLink: string, callback: ServiceCallback<models.USqlCredentialList>): void;
 
     /**
      * Retrieves the list of external data sources from the Data Lake Analytics
@@ -1028,23 +1103,6 @@ export interface Catalog {
      */
     listExternalDataSourcesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
     listExternalDataSourcesNext(nextPageLink: string, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
-
-    /**
-     * Retrieves the list of credentials from the Data Lake Analytics catalog.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listCredentialsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
-    listCredentialsNext(nextPageLink: string, callback: ServiceCallback<models.USqlCredentialList>): void;
 
     /**
      * Retrieves the list of procedures from the Data Lake Analytics catalog.

@@ -14,11 +14,46 @@ import * as models from '../models';
 
 /**
  * @class
- * Account
+ * FirewallRules
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeStoreAccountManagementClient.
  */
-export interface Account {
+export interface FirewallRules {
+
+    /**
+     * Creates or updates the specified firewall rule. During update, the firewall
+     * rule with the specified name will be replaced with this new firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} accountName The name of the Data Lake Store account to
+     * which to add the firewall rule.
+     * 
+     * @param {string} firewallRuleName The name of the firewall rule to create or
+     * update.
+     * 
+     * @param {object} parameters Parameters supplied to create or update the
+     * firewall rule.
+     * 
+     * @param {string} parameters.startIpAddress the start IP address for the
+     * firewall rule.
+     * 
+     * @param {string} parameters.endIpAddress the end IP address for the firewall
+     * rule.
+     * 
+     * @param {string} [parameters.name] Resource name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, callback: ServiceCallback<models.FirewallRule>): void;
 
     /**
      * Deletes the specified firewall rule from the specified Data Lake Store
@@ -40,8 +75,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteFirewallRule(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteFirewallRule(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets the specified Data Lake Store firewall rule.
@@ -62,8 +97,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getFirewallRule(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
-    getFirewallRule(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<models.FirewallRule>): void;
+    get(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    get(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<models.FirewallRule>): void;
 
     /**
      * Lists the Data Lake Store firewall rules within the specified Data Lake
@@ -83,36 +118,15 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listFirewallRules(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
-    listFirewallRules(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
 
     /**
-     * Creates or updates the specified firewall rule.
+     * Lists the Data Lake Store firewall rules within the specified Data Lake
+     * Store account.
      *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Store account.
-     * 
-     * @param {string} accountName The name of the Data Lake Store account to
-     * which to add the firewall rule.
-     * 
-     * @param {string} name The name of the firewall rule to create or update.
-     * 
-     * @param {object} parameters Parameters supplied to create the create
-     * firewall rule.
-     * 
-     * @param {string} [parameters.name] the firewall rule's name.
-     * 
-     * @param {string} [parameters.id] the firewall rule's subscription ID.
-     * 
-     * @param {string} [parameters.location] the firewall rule's regional location.
-     * 
-     * @param {object} [parameters.properties] the properties of the firewall rule.
-     * 
-     * @param {string} [parameters.properties.startIpAddress] the start IP address
-     * for the firewall rule.
-     * 
-     * @param {string} [parameters.properties.endIpAddress] the end IP address for
-     * the firewall rule.
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -122,8 +136,145 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdateFirewallRule(resourceGroupName: string, accountName: string, name: string, parameters: models.FirewallRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
-    createOrUpdateFirewallRule(resourceGroupName: string, accountName: string, name: string, parameters: models.FirewallRule, callback: ServiceCallback<models.FirewallRule>): void;
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
+    listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
+}
+
+/**
+ * @class
+ * TrustedIdProviders
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeStoreAccountManagementClient.
+ */
+export interface TrustedIdProviders {
+
+    /**
+     * Creates or updates the specified trusted identity provider. During update,
+     * the trusted identity provider with the specified name will be replaced
+     * with this new provider
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} accountName The name of the Data Lake Store account to
+     * which to add the trusted identity provider.
+     * 
+     * @param {string} trustedIdProviderName The name of the trusted identity
+     * provider. This is used for differentiation of providers in the account.
+     * 
+     * @param {object} parameters Parameters supplied to create the create the
+     * trusted identity provider.
+     * 
+     * @param {string} parameters.idProvider The URL of this trusted identity
+     * provider
+     * 
+     * @param {string} [parameters.name] Resource name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, trustedIdProviderName: string, parameters: models.TrustedIdProvider, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrustedIdProvider>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, trustedIdProviderName: string, parameters: models.TrustedIdProvider, callback: ServiceCallback<models.TrustedIdProvider>): void;
+
+    /**
+     * Deletes the specified trusted identity provider from the specified Data
+     * Lake Store account
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} accountName The name of the Data Lake Store account from
+     * which to delete the trusted identity provider.
+     * 
+     * @param {string} trustedIdProviderName The name of the trusted identity
+     * provider to delete.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, trustedIdProviderName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, trustedIdProviderName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets the specified Data Lake Store trusted identity provider.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} accountName The name of the Data Lake Store account from
+     * which to get the trusted identity provider.
+     * 
+     * @param {string} trustedIdProviderName The name of the trusted identity
+     * provider to retrieve.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, accountName: string, trustedIdProviderName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrustedIdProvider>): void;
+    get(resourceGroupName: string, accountName: string, trustedIdProviderName: string, callback: ServiceCallback<models.TrustedIdProvider>): void;
+
+    /**
+     * Lists the Data Lake Store trusted identity providers within the specified
+     * Data Lake Store account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} accountName The name of the Data Lake Store account from
+     * which to get the trusted identity providers.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByAccount(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreTrustedIdProviderListResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeStoreTrustedIdProviderListResult>): void;
+
+    /**
+     * Lists the Data Lake Store trusted identity providers within the specified
+     * Data Lake Store account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreTrustedIdProviderListResult>): void;
+    listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeStoreTrustedIdProviderListResult>): void;
+}
+
+/**
+ * @class
+ * Account
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeStoreAccountManagementClient.
+ */
+export interface Account {
 
     /**
      * Creates the specified Data Lake Store account.
@@ -136,54 +287,56 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the Data Lake
      * Store account.
      * 
-     * @param {string} [parameters.location] the account regional location.
-     * 
-     * @param {string} [parameters.name] the account name.
-     * 
      * @param {object} [parameters.identity] The Key vault encryption identity, if
      * any.
      * 
-     * @param {string} [parameters.identity.type] The type of encryption being
-     * used. Currently the only supported type is 'SystemAssigned'. Possible
-     * values include: 'SystemAssigned'
-     * 
-     * @param {object} [parameters.tags] the value of custom properties.
-     * 
-     * @param {object} [parameters.properties] the Data Lake Store account
-     * properties.
-     * 
-     * @param {string} [parameters.properties.encryptionState] The current state
-     * of encryption for this Data Lake store account. Possible values include:
+     * @param {string} [parameters.encryptionState] The current state of
+     * encryption for this Data Lake store account. Possible values include:
      * 'Enabled', 'Disabled'
      * 
-     * @param {object} [parameters.properties.encryptionConfig] The Key vault
-     * encryption configuration.
+     * @param {object} [parameters.encryptionConfig] The Key vault encryption
+     * configuration.
      * 
-     * @param {string} [parameters.properties.encryptionConfig.type] The type of
-     * encryption configuration being used. Currently the only supported types
-     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
+     * @param {string} parameters.encryptionConfig.type The type of encryption
+     * configuration being used. Currently the only supported types are
+     * 'UserManaged' and 'ServiceManaged'. Possible values include:
      * 'UserManaged', 'ServiceManaged'
      * 
-     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
-     * The Key vault information for connecting to user managed encryption keys.
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key
+     * vault information for connecting to user managed encryption keys.
      * 
      * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
-     * The resource identifier for the user managed Key Vault being used to
-     * encrypt.
+     * parameters.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId The
+     * resource identifier for the user managed Key Vault being used to encrypt.
      * 
      * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
-     * The name of the user managed encryption key.
+     * parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyName The name of
+     * the user managed encryption key.
      * 
      * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
-     * The version of the user managed encryption key.
+     * parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion The
+     * version of the user managed encryption key.
      * 
-     * @param {string} [parameters.properties.endpoint] the gateway host.
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake store account. Possible values
+     * include: 'Enabled', 'Disabled'
      * 
-     * @param {string} [parameters.properties.defaultGroup] the default owner
-     * group for all new folders and files created in the Data Lake Store account.
+     * @param {array} [parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake store account.
+     * 
+     * @param {string} [parameters.trustedIdProviderState] The current state of
+     * the trusted identity provider feature for this Data Lake store account.
+     * Possible values include: 'Enabled', 'Disabled'
+     * 
+     * @param {array} [parameters.trustedIdProviders] The list of trusted identity
+     * providers associated with this Data Lake store account.
+     * 
+     * @param {string} [parameters.defaultGroup] the default owner group for all
+     * new folders and files created in the Data Lake Store account.
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -197,77 +350,6 @@ export interface Account {
     create(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
 
     /**
-     * Creates the specified Data Lake Store account.
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Store account.
-     * 
-     * @param {string} name The name of the Data Lake Store account to create.
-     * 
-     * @param {object} parameters Parameters supplied to create the Data Lake
-     * Store account.
-     * 
-     * @param {string} [parameters.location] the account regional location.
-     * 
-     * @param {string} [parameters.name] the account name.
-     * 
-     * @param {object} [parameters.identity] The Key vault encryption identity, if
-     * any.
-     * 
-     * @param {string} [parameters.identity.type] The type of encryption being
-     * used. Currently the only supported type is 'SystemAssigned'. Possible
-     * values include: 'SystemAssigned'
-     * 
-     * @param {object} [parameters.tags] the value of custom properties.
-     * 
-     * @param {object} [parameters.properties] the Data Lake Store account
-     * properties.
-     * 
-     * @param {string} [parameters.properties.encryptionState] The current state
-     * of encryption for this Data Lake store account. Possible values include:
-     * 'Enabled', 'Disabled'
-     * 
-     * @param {object} [parameters.properties.encryptionConfig] The Key vault
-     * encryption configuration.
-     * 
-     * @param {string} [parameters.properties.encryptionConfig.type] The type of
-     * encryption configuration being used. Currently the only supported types
-     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
-     * 'UserManaged', 'ServiceManaged'
-     * 
-     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
-     * The Key vault information for connecting to user managed encryption keys.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
-     * The resource identifier for the user managed Key Vault being used to
-     * encrypt.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
-     * The name of the user managed encryption key.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
-     * The version of the user managed encryption key.
-     * 
-     * @param {string} [parameters.properties.endpoint] the gateway host.
-     * 
-     * @param {string} [parameters.properties.defaultGroup] the default owner
-     * group for all new folders and files created in the Data Lake Store account.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
-    beginCreate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
-
-    /**
      * Updates the specified Data Lake Store account information.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
@@ -278,54 +360,21 @@ export interface Account {
      * @param {object} parameters Parameters supplied to update the Data Lake
      * Store account.
      * 
-     * @param {string} [parameters.location] the account regional location.
+     * @param {object} [parameters.tags] Resource tags
      * 
-     * @param {string} [parameters.name] the account name.
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake store account. Disabling the firewall
+     * does not remove existing rules, they will just be ignored until the
+     * firewall is re-enabled. Possible values include: 'Enabled', 'Disabled'
      * 
-     * @param {object} [parameters.identity] The Key vault encryption identity, if
-     * any.
+     * @param {string} [parameters.trustedIdProviderState] The current state of
+     * the trusted identity provider feature for this Data Lake store account.
+     * Disabling trusted identity provider functionality does not remove the
+     * providers, they will just be ignored until this feature is re-enabled.
+     * Possible values include: 'Enabled', 'Disabled'
      * 
-     * @param {string} [parameters.identity.type] The type of encryption being
-     * used. Currently the only supported type is 'SystemAssigned'. Possible
-     * values include: 'SystemAssigned'
-     * 
-     * @param {object} [parameters.tags] the value of custom properties.
-     * 
-     * @param {object} [parameters.properties] the Data Lake Store account
-     * properties.
-     * 
-     * @param {string} [parameters.properties.encryptionState] The current state
-     * of encryption for this Data Lake store account. Possible values include:
-     * 'Enabled', 'Disabled'
-     * 
-     * @param {object} [parameters.properties.encryptionConfig] The Key vault
-     * encryption configuration.
-     * 
-     * @param {string} [parameters.properties.encryptionConfig.type] The type of
-     * encryption configuration being used. Currently the only supported types
-     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
-     * 'UserManaged', 'ServiceManaged'
-     * 
-     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
-     * The Key vault information for connecting to user managed encryption keys.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
-     * The resource identifier for the user managed Key Vault being used to
-     * encrypt.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
-     * The name of the user managed encryption key.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
-     * The version of the user managed encryption key.
-     * 
-     * @param {string} [parameters.properties.endpoint] the gateway host.
-     * 
-     * @param {string} [parameters.properties.defaultGroup] the default owner
-     * group for all new folders and files created in the Data Lake Store account.
+     * @param {string} [parameters.defaultGroup] the default owner group for all
+     * new folders and files created in the Data Lake Store account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -335,79 +384,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    update(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
-    update(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
-
-    /**
-     * Updates the specified Data Lake Store account information.
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Store account.
-     * 
-     * @param {string} name The name of the Data Lake Store account to update.
-     * 
-     * @param {object} parameters Parameters supplied to update the Data Lake
-     * Store account.
-     * 
-     * @param {string} [parameters.location] the account regional location.
-     * 
-     * @param {string} [parameters.name] the account name.
-     * 
-     * @param {object} [parameters.identity] The Key vault encryption identity, if
-     * any.
-     * 
-     * @param {string} [parameters.identity.type] The type of encryption being
-     * used. Currently the only supported type is 'SystemAssigned'. Possible
-     * values include: 'SystemAssigned'
-     * 
-     * @param {object} [parameters.tags] the value of custom properties.
-     * 
-     * @param {object} [parameters.properties] the Data Lake Store account
-     * properties.
-     * 
-     * @param {string} [parameters.properties.encryptionState] The current state
-     * of encryption for this Data Lake store account. Possible values include:
-     * 'Enabled', 'Disabled'
-     * 
-     * @param {object} [parameters.properties.encryptionConfig] The Key vault
-     * encryption configuration.
-     * 
-     * @param {string} [parameters.properties.encryptionConfig.type] The type of
-     * encryption configuration being used. Currently the only supported types
-     * are 'UserManaged' and 'ServiceManaged'. Possible values include:
-     * 'UserManaged', 'ServiceManaged'
-     * 
-     * @param {object} [parameters.properties.encryptionConfig.keyVaultMetaInfo]
-     * The Key vault information for connecting to user managed encryption keys.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId]
-     * The resource identifier for the user managed Key Vault being used to
-     * encrypt.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName]
-     * The name of the user managed encryption key.
-     * 
-     * @param {string}
-     * [parameters.properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
-     * The version of the user managed encryption key.
-     * 
-     * @param {string} [parameters.properties.endpoint] the gateway host.
-     * 
-     * @param {string} [parameters.properties.defaultGroup] the default owner
-     * group for all new folders and files created in the Data Lake Store account.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginUpdate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
-    beginUpdate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
+    update(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccountUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
+    update(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccountUpdateParameters, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
 
     /**
      * Deletes the specified Data Lake Store account.
@@ -428,26 +406,6 @@ export interface Account {
      */
     deleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Deletes the specified Data Lake Store account.
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Store account.
-     * 
-     * @param {string} accountName The name of the Data Lake Store account to
-     * delete.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets the specified Data Lake Store account.
@@ -506,10 +464,6 @@ export interface Account {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories/$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -523,21 +477,13 @@ export interface Account {
      * request a count of the matching resources included with the resources in
      * the response, e.g. Categories?$count=true. Optional.
      * 
-     * @param {string} [options.search] A free form search. A free-text search
-     * expression to match for whether a particular entry should be included in
-     * the feed, e.g. Categories?$search=blue OR green. Optional.
-     * 
-     * @param {string} [options.format] The desired return format. Return the
-     * response in particular formatxii without access to request headers for
-     * standard content-type negotiation (e.g Orders?$format=json). Optional.
-     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
 
     /**
@@ -553,10 +499,6 @@ export interface Account {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories/$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -570,29 +512,76 @@ export interface Account {
      * request a count of the matching resources included with the resources in
      * the response, e.g. Categories?$count=true. Optional.
      * 
-     * @param {string} [options.search] A free form search. A free-text search
-     * expression to match for whether a particular entry should be included in
-     * the feed, e.g. Categories?$search=blue OR green. Optional.
-     * 
-     * @param {string} [options.format] The desired return format. Return the
-     * response in particular formatxii without access to request headers for
-     * standard content-type negotiation (e.g Orders?$format=json). Optional.
-     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
+    list(options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
     list(callback: ServiceCallback<models.DataLakeStoreAccountListResult>): void;
 
     /**
-     * Lists the Data Lake Store firewall rules within the specified Data Lake
-     * Store account.
+     * Creates the specified Data Lake Store account.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} name The name of the Data Lake Store account to create.
+     * 
+     * @param {object} parameters Parameters supplied to create the Data Lake
+     * Store account.
+     * 
+     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * any.
+     * 
+     * @param {string} [parameters.encryptionState] The current state of
+     * encryption for this Data Lake store account. Possible values include:
+     * 'Enabled', 'Disabled'
+     * 
+     * @param {object} [parameters.encryptionConfig] The Key vault encryption
+     * configuration.
+     * 
+     * @param {string} parameters.encryptionConfig.type The type of encryption
+     * configuration being used. Currently the only supported types are
+     * 'UserManaged' and 'ServiceManaged'. Possible values include:
+     * 'UserManaged', 'ServiceManaged'
+     * 
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key
+     * vault information for connecting to user managed encryption keys.
+     * 
+     * @param {string}
+     * parameters.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId The
+     * resource identifier for the user managed Key Vault being used to encrypt.
+     * 
+     * @param {string}
+     * parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyName The name of
+     * the user managed encryption key.
+     * 
+     * @param {string}
+     * parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion The
+     * version of the user managed encryption key.
+     * 
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake store account. Possible values
+     * include: 'Enabled', 'Disabled'
+     * 
+     * @param {array} [parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake store account.
+     * 
+     * @param {string} [parameters.trustedIdProviderState] The current state of
+     * the trusted identity provider feature for this Data Lake store account.
+     * Possible values include: 'Enabled', 'Disabled'
+     * 
+     * @param {array} [parameters.trustedIdProviders] The list of trusted identity
+     * providers associated with this Data Lake store account.
+     * 
+     * @param {string} [parameters.defaultGroup] the default owner group for all
+     * new folders and files created in the Data Lake Store account.
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -602,8 +591,66 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listFirewallRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
-    listFirewallRulesNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeStoreFirewallRuleListResult>): void;
+    beginCreate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
+    beginCreate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccount, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
+
+    /**
+     * Updates the specified Data Lake Store account information.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} name The name of the Data Lake Store account to update.
+     * 
+     * @param {object} parameters Parameters supplied to update the Data Lake
+     * Store account.
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake store account. Disabling the firewall
+     * does not remove existing rules, they will just be ignored until the
+     * firewall is re-enabled. Possible values include: 'Enabled', 'Disabled'
+     * 
+     * @param {string} [parameters.trustedIdProviderState] The current state of
+     * the trusted identity provider feature for this Data Lake store account.
+     * Disabling trusted identity provider functionality does not remove the
+     * providers, they will just be ignored until this feature is re-enabled.
+     * Possible values include: 'Enabled', 'Disabled'
+     * 
+     * @param {string} [parameters.defaultGroup] the default owner group for all
+     * new folders and files created in the Data Lake Store account.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginUpdate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccountUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
+    beginUpdate(resourceGroupName: string, name: string, parameters: models.DataLakeStoreAccountUpdateParameters, callback: ServiceCallback<models.DataLakeStoreAccount>): void;
+
+    /**
+     * Deletes the specified Data Lake Store account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     * 
+     * @param {string} accountName The name of the Data Lake Store account to
+     * delete.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Lists the Data Lake Store accounts within a specific resource group. The
