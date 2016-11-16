@@ -27,11 +27,11 @@ export interface StorageAccounts {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to retrieve Azure storage account details.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to retrieve Azure storage account details.
      * 
-     * @param {string} storageAccountName The name of the Azure Storage account
-     * for which to retrieve the details.
+     * @param {string} storageAccountName The name of the Azure Storage account for
+     * which to retrieve the details.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -45,14 +45,14 @@ export interface StorageAccounts {
     get(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.StorageAccountInfo>): void;
 
     /**
-     * Updates the specified Data Lake Analytics account to remove an Azure
-     * Storage account.
+     * Updates the specified Data Lake Analytics account to remove an Azure Storage
+     * account.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to remove the Azure Storage account.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to remove the Azure Storage account.
      * 
      * @param {string} storageAccountName The name of the Azure Storage account to
      * remove
@@ -194,11 +194,11 @@ export interface StorageAccounts {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which an Azure Storage account's SAS token is being requested.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which an Azure Storage account's SAS token is being requested.
      * 
-     * @param {string} storageAccountName The name of the Azure storage account
-     * for which the SAS token is being requested.
+     * @param {string} storageAccountName The name of the Azure storage account for
+     * which the SAS token is being requested.
      * 
      * @param {string} containerName The name of the Azure storage container for
      * which the SAS token is being requested.
@@ -244,8 +244,8 @@ export interface StorageAccounts {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -328,8 +328,8 @@ export interface DataLakeStoreAccounts {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to retrieve the Data Lake Store account details.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to retrieve the Data Lake Store account details.
      * 
      * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
      * account to retrieve
@@ -352,8 +352,8 @@ export interface DataLakeStoreAccounts {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to remove the Data Lake Store account.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to remove the Data Lake Store account.
      * 
      * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
      * account to remove
@@ -399,9 +399,9 @@ export interface DataLakeStoreAccounts {
     add(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, callback: ServiceCallback<void>): void;
 
     /**
-     * Gets the first page of Data Lake Store accounts linked to the specified
-     * Data Lake Analytics account. The response includes a link to the next
-     * page, if any.
+     * Gets the first page of Data Lake Store accounts linked to the specified Data
+     * Lake Analytics account. The response includes a link to the next page, if
+     * any.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
@@ -428,8 +428,8 @@ export interface DataLakeStoreAccounts {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -441,9 +441,9 @@ export interface DataLakeStoreAccounts {
     listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
 
     /**
-     * Gets the first page of Data Lake Store accounts linked to the specified
-     * Data Lake Analytics account. The response includes a link to the next
-     * page, if any.
+     * Gets the first page of Data Lake Store accounts linked to the specified Data
+     * Lake Analytics account. The response includes a link to the next page, if
+     * any.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -494,8 +494,8 @@ export interface Account {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -529,8 +529,8 @@ export interface Account {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -595,14 +595,14 @@ export interface Account {
      * @param {object} parameters Parameters supplied to the create Data Lake
      * Analytics account operation.
      * 
-     * @param {string} parameters.defaultDataLakeStoreAccount the default data
-     * lake storage account associated with this Data Lake Analytics account.
+     * @param {string} parameters.defaultDataLakeStoreAccount the default data lake
+     * storage account associated with this Data Lake Analytics account.
      * 
      * @param {number} [parameters.maxDegreeOfParallelism] the maximum supported
      * degree of parallelism for this account.
      * 
-     * @param {number} [parameters.queryStoreRetention] the number of days that
-     * job metadata is retained.
+     * @param {number} [parameters.queryStoreRetention] the number of days that job
+     * metadata is retained.
      * 
      * @param {number} [parameters.maxJobCount] the maximum supported jobs running
      * under the account at the same time.
@@ -696,14 +696,14 @@ export interface Account {
      * @param {object} parameters Parameters supplied to the create Data Lake
      * Analytics account operation.
      * 
-     * @param {string} parameters.defaultDataLakeStoreAccount the default data
-     * lake storage account associated with this Data Lake Analytics account.
+     * @param {string} parameters.defaultDataLakeStoreAccount the default data lake
+     * storage account associated with this Data Lake Analytics account.
      * 
      * @param {number} [parameters.maxDegreeOfParallelism] the maximum supported
      * degree of parallelism for this account.
      * 
-     * @param {number} [parameters.queryStoreRetention] the number of days that
-     * job metadata is retained.
+     * @param {number} [parameters.queryStoreRetention] the number of days that job
+     * metadata is retained.
      * 
      * @param {number} [parameters.maxJobCount] the maximum supported jobs running
      * under the account at the same time.

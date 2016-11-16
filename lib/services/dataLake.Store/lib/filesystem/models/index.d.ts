@@ -62,8 +62,8 @@ export interface AclStatus {
  * @member {object} [aclStatus] the AclStatus object for a given file or
  * directory.
  * 
- * @member {array} [aclStatus.entries] the list of ACLSpec entries on a file
- * or directory.
+ * @member {array} [aclStatus.entries] the list of ACLSpec entries on a file or
+ * directory.
  * 
  * @member {string} [aclStatus.group] the group owner, an AAD Object ID.
  * 
@@ -137,16 +137,16 @@ export interface ContentSummaryResult {
  * 
  * @member {number} [childrenNum] the number of children in the directory.
  * 
- * @member {number} [expirationTime] Gets the expiration time, if any, as
- * ticks since the epoch. If the value is 0 or DateTime.MaxValue there is no
+ * @member {number} [expirationTime] Gets the expiration time, if any, as ticks
+ * since the epoch. If the value is 0 or DateTime.MaxValue there is no
  * expiration.
  * 
  * @member {string} [group] the group owner.
  * 
  * @member {number} [length] the number of bytes in a file.
  * 
- * @member {number} [modificationTime] the modification time as ticks since
- * the epoch.
+ * @member {number} [modificationTime] the modification time as ticks since the
+ * epoch.
  * 
  * @member {string} [owner] the user who is the owner.
  * 
@@ -178,8 +178,8 @@ export interface FileStatusProperties {
  * @constructor
  * Data Lake Store file status list information.
  *
- * @member {array} [fileStatus] the object containing the list of properties
- * of the files.
+ * @member {array} [fileStatus] the object containing the list of properties of
+ * the files.
  * 
  */
 export interface FileStatuses {
@@ -212,8 +212,8 @@ export interface FileStatusesResult {
  * @member {object} [fileStatus] the file status object associated with the
  * specified path.
  * 
- * @member {number} [fileStatus.accessTime] the last access time as ticks
- * since the epoch.
+ * @member {number} [fileStatus.accessTime] the last access time as ticks since
+ * the epoch.
  * 
  * @member {number} [fileStatus.blockSize] the block size for the file.
  * 
@@ -221,8 +221,8 @@ export interface FileStatusesResult {
  * directory.
  * 
  * @member {number} [fileStatus.expirationTime] Gets the expiration time, if
- * any, as ticks since the epoch. If the value is 0 or DateTime.MaxValue
- * there is no expiration.
+ * any, as ticks since the epoch. If the value is 0 or DateTime.MaxValue there
+ * is no expiration.
  * 
  * @member {string} [fileStatus.group] the group owner.
  * 
@@ -305,8 +305,8 @@ export interface AdlsSecurityException extends AdlsRemoteException {
  * @class
  * Initializes a new instance of the AdlsIOException class.
  * @constructor
- * A WebHDFS exception thrown indicating there was an IO (read or write)
- * error. Thrown when a 403 error response code is returned (forbidden).
+ * A WebHDFS exception thrown indicating there was an IO (read or write) error.
+ * Thrown when a 403 error response code is returned (forbidden).
  *
  */
 export interface AdlsIOException extends AdlsRemoteException {
@@ -316,8 +316,8 @@ export interface AdlsIOException extends AdlsRemoteException {
  * @class
  * Initializes a new instance of the AdlsFileNotFoundException class.
  * @constructor
- * A WebHDFS exception thrown indicating the file or folder could not be
- * found. Thrown when a 404 error response code is returned (not found).
+ * A WebHDFS exception thrown indicating the file or folder could not be found.
+ * Thrown when a 404 error response code is returned (not found).
  *
  */
 export interface AdlsFileNotFoundException extends AdlsRemoteException {
@@ -363,11 +363,23 @@ export interface AdlsRuntimeException extends AdlsRemoteException {
  * Initializes a new instance of the AdlsAccessControlException class.
  * @constructor
  * A WebHDFS exception thrown indicating that access is denied due to
- * insufficient permissions. Thrown when a 403 error response code is
- * returned (forbidden).
+ * insufficient permissions. Thrown when a 403 error response code is returned
+ * (forbidden).
  *
  */
 export interface AdlsAccessControlException extends AdlsRemoteException {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AdlsThrottledException class.
+ * @constructor
+ * A WebHDFS exception thrown indicating that the request is being throttled.
+ * Reducing the number of requests or request size helps to mitigate this
+ * error.
+ *
+ */
+export interface AdlsThrottledException extends AdlsRemoteException {
 }
 
 /**
@@ -379,9 +391,8 @@ export interface AdlsAccessControlException extends AdlsRemoteException {
  * @member {object} [remoteException] the object representing the actual
  * WebHDFS exception being returned.
  * 
- * @member {string} [remoteException.javaClassName] the full class package
- * name for the exception thrown, such as
- * 'java.lang.IllegalArgumentException'.
+ * @member {string} [remoteException.javaClassName] the full class package name
+ * for the exception thrown, such as 'java.lang.IllegalArgumentException'.
  * 
  * @member {string} [remoteException.message] the message associated with the
  * exception that was thrown, such as 'Invalid value for webhdfs parameter

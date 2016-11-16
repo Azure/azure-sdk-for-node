@@ -21,8 +21,8 @@ exports.CloudError = msRestAzure.CloudError;
  * @member {string} [name] the account name associated with the Azure storage
  * account.
  * 
- * @member {string} accessKey the access key associated with this Azure
- * Storage account that will be used to connect to it.
+ * @member {string} accessKey the access key associated with this Azure Storage
+ * account that will be used to connect to it.
  * 
  * @member {string} [suffix] the optional suffix for the storage account.
  * 
@@ -43,8 +43,8 @@ export interface StorageAccountInfo {
  * @member {string} name the account name associated with the Azure storage
  * account to add to the Data Lake analytics account being created.
  * 
- * @member {string} accessKey the access key associated with this Azure
- * Storage account that will be used to connect to it.
+ * @member {string} accessKey the access key associated with this Azure Storage
+ * account that will be used to connect to it.
  * 
  * @member {string} [suffix] the optional suffix for the storage account.
  * 
@@ -113,8 +113,8 @@ export interface SasTokenInfo {
  * @class
  * Initializes a new instance of the ListSasTokensResult class.
  * @constructor
- * The SAS response that contains the storage account, container and
- * associated SAS token for connection use.
+ * The SAS response that contains the storage account, container and associated
+ * SAS token for connection use.
  *
  * @member {array} [value]
  * 
@@ -132,8 +132,8 @@ export interface ListSasTokensResult {
  * @constructor
  * Data Lake Store account information.
  *
- * @member {string} name the account name of the Data Lake Store account to
- * add to the Data Lake Analytics account being created.
+ * @member {string} name the account name of the Data Lake Store account to add
+ * to the Data Lake Analytics account being created.
  * 
  * @member {string} [suffix] the optional suffix for the Data Lake Store
  * account.
@@ -197,8 +197,8 @@ export interface AddDataLakeStoreParameters {
  * Storage account parameters for a storage account being added to a Data Lake
  * Analytics account.
  *
- * @member {string} accessKey the access key associated with this Azure
- * Storage account that will be used to connect to it.
+ * @member {string} accessKey the access key associated with this Azure Storage
+ * account that will be used to connect to it.
  * 
  * @member {string} [suffix] the optional suffix for the storage account.
  * 
@@ -309,11 +309,11 @@ export interface Resource extends BaseResource {
  * maximum value of parallelism the user can set for the account..
  * 
  * @member {number} [systemMaxJobCount] the system defined maximum supported
- * jobs running under the account at the same time, which restricts the
- * maximum number of running jobs the user can set for the account.
+ * jobs running under the account at the same time, which restricts the maximum
+ * number of running jobs the user can set for the account.
  * 
- * @member {array} dataLakeStoreAccounts the list of Data Lake storage
- * accounts associated with this account.
+ * @member {array} dataLakeStoreAccounts the list of Data Lake storage accounts
+ * associated with this account.
  * 
  * @member {array} [storageAccounts] the list of Azure Blob storage accounts
  * associated with this account.
@@ -444,8 +444,8 @@ export interface ListStorageContainersResult extends Array<StorageContainer> {
  * @class
  * Initializes a new instance of the ListSasTokensResult class.
  * @constructor
- * The SAS response that contains the storage account, container and
- * associated SAS token for connection use.
+ * The SAS response that contains the storage account, container and associated
+ * SAS token for connection use.
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
  * 
