@@ -8,31 +8,48 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
  * Initializes a new instance of the PoolUsageMetrics class.
  * @constructor
- * Usage metrics for a pool across an aggregation interval.
+ * @summary Usage metrics for a pool across an aggregation interval.
  *
- * @member {string} poolId The id of the pool whose metrics are being
- * aggregated.
+ * @member {string} poolId The ID of the pool whose metrics are aggregated in
+ * this entry.
  * 
- * @member {date} startTime The start time of the aggregation interval.
+ * @member {date} startTime The start time of the aggregation interval covered
+ * by this entry.
  * 
- * @member {date} endTime The end time of the aggregation interval.
+ * @member {date} endTime The end time of the aggregation interval covered by
+ * this entry.
  * 
- * @member {string} vmSize The size of virtual machines in the pool. All VMs
- * in a pool are the same size.
+ * @member {string} vmSize The size of virtual machines in the pool. All VMs in
+ * a pool are the same size. For information about available sizes of virtual
+ * machines for Cloud Services pools (pools created with
+ * cloudServiceConfiguration), see Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
- * @member {number} totalCoreHours The total core hours used in the pool
- * during this aggregation interval.
+ * @member {number} totalCoreHours The total core hours used in the pool during
+ * this aggregation interval.
  * 
- * @member {number} dataIngressGiB The cross data center network ingress in
- * GiB to the pool during this interval.
+ * @member {number} dataIngressGiB The cross data center network ingress to the
+ * pool during this interval, in GiB.
  * 
- * @member {number} dataEgressGiB The cross data center network egress in GiB
- * from the pool during this interval.
+ * @member {number} dataEgressGiB The cross data center network egress from the
+ * pool during this interval, in GiB.
  * 
  */
 export interface PoolUsageMetrics {
@@ -47,36 +64,27 @@ export interface PoolUsageMetrics {
 
 /**
  * @class
- * Initializes a new instance of the NodeAgentSku class.
+ * Initializes a new instance of the PoolListPoolUsageMetricsResult class.
  * @constructor
- * @summary A node agent SKU supported by the Batch service.
+ * @summary The result of a listing the usage metrics for an account.
  *
- * The Batch node agent is a program that runs on each node in the pool, and
- * provides the command-and-control interface between the node and the Batch
- * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
- *
- * @member {string} [id] The node agent SKU id.
+ * @member {array} [value] The pool usage metrics data.
  * 
- * @member {array} [verifiedImageReferences] The list of images verified to be
- * compatible with this node agent SKU. This collection is not exhaustive
- * (the node agent may be compatible with other images).
- * 
- * @member {string} [osType] The type of operating system compatible with the
- * node agent SKU. Possible values include: 'linux', 'windows', 'unmapped'
+ * @member {string} [odatanextLink] The URL to get the next set of results.
  * 
  */
-export interface NodeAgentSku {
-  id?: string;
-  verifiedImageReferences?: ImageReference[];
-  osType?: string;
+export interface PoolListPoolUsageMetricsResult {
+  value?: PoolUsageMetrics[];
+  odatanextLink?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ImageReference class.
  * @constructor
- * @summary A reference to an Azure Virtual Machines Marketplace image.
+ * @summary A reference to an Azure Virtual Machines Marketplace image. To get
+ * the list of all imageReferences verified by Azure Batch, see the 'List
+ * supported node agent SKUs' operation.
  *
  * @member {string} publisher The publisher of the Azure Virtual Machines
  * Marketplace image. For example, Canonical or MicrosoftWindowsServer.
@@ -88,8 +96,8 @@ export interface NodeAgentSku {
  * image. For example, 14.04.0-LTS or 2012-R2-Datacenter.
  * 
  * @member {string} [version] The version of the Azure Virtual Machines
- * Marketplace image. A value of 'latest' can be specified to select the
- * latest version of an image. If omitted, the default is 'latest'.
+ * Marketplace image. A value of 'latest' can be specified to select the latest
+ * version of an image. If omitted, the default is 'latest'.
  * 
  */
 export interface ImageReference {
@@ -97,6 +105,50 @@ export interface ImageReference {
   offer: string;
   sku: string;
   version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeAgentSku class.
+ * @constructor
+ * @summary A node agent SKU supported by the Batch service.
+ *
+ * The Batch node agent is a program that runs on each node in the pool, and
+ * provides the command-and-control interface between the node and the Batch
+ * service. There are different implementations of the node agent, known as
+ * SKUs, for different operating systems.
+ *
+ * @member {string} [id] The ID of the node agent SKU.
+ * 
+ * @member {array} [verifiedImageReferences] The list of images verified to be
+ * compatible with this node agent SKU. This collection is not exhaustive (the
+ * node agent may be compatible with other images).
+ * 
+ * @member {string} [osType] The type of operating system (e.g. Windows or
+ * Linux) compatible with the node agent SKU. Possible values include: 'linux',
+ * 'windows', 'unmapped'
+ * 
+ */
+export interface NodeAgentSku {
+  id?: string;
+  verifiedImageReferences?: ImageReference[];
+  osType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccountListNodeAgentSkusResult class.
+ * @constructor
+ * @summary The result of listing the supported node agent SKUs.
+ *
+ * @member {array} [value] The list of supported node agent SKUs.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface AccountListNodeAgentSkusResult {
+  value?: NodeAgentSku[];
+  odatanextLink?: string;
 }
 
 /**
@@ -142,8 +194,8 @@ export interface UsageStatistics {
  * @member {number} avgMemoryGiB The average memory usage in GiB across all
  * nodes in the pool.
  * 
- * @member {number} peakMemoryGiB The peak memory usage in GiB across all
- * nodes in the pool.
+ * @member {number} peakMemoryGiB The peak memory usage in GiB across all nodes
+ * in the pool.
  * 
  * @member {number} avgDiskGiB The average used disk space in GiB across all
  * nodes in the pool.
@@ -160,8 +212,8 @@ export interface UsageStatistics {
  * @member {number} diskReadGiB The total amount of data in GiB of disk reads
  * across all nodes in the pool.
  * 
- * @member {number} diskWriteGiB The total amount of data in GiB of disk
- * writes across all nodes in the pool.
+ * @member {number} diskWriteGiB The total amount of data in GiB of disk writes
+ * across all nodes in the pool.
  * 
  * @member {number} networkReadGiB The total amount of data in GiB of network
  * reads across all nodes in the pool.
@@ -190,8 +242,8 @@ export interface ResourceStatistics {
  * @class
  * Initializes a new instance of the PoolStatistics class.
  * @constructor
- * @summary Contains utilization and resource usage statistics for the
- * lifetime of a pool.
+ * @summary Contains utilization and resource usage statistics for the lifetime
+ * of a pool.
  *
  * @member {string} url The URL for the statistics.
  * 
@@ -268,8 +320,8 @@ export interface PoolStatistics {
  * across all cores and all compute nodes) consumed by all tasks in the job.
  * 
  * @member {moment.duration} kernelCPUTime The total kernel mode CPU time
- * (summed across all cores and all compute nodes) consumed by all tasks in
- * the job.
+ * (summed across all cores and all compute nodes) consumed by all tasks in the
+ * job.
  * 
  * @member {moment.duration} wallClockTime The total wall clock time of all
  * tasks in the job.
@@ -277,29 +329,32 @@ export interface PoolStatistics {
  * @member {number} readIOps The total number of disk read operations made by
  * all tasks in the job.
  * 
- * @member {number} writeIOps The total number of disk write operations made
+ * @member {number} writeIOps The total number of disk write operations made by
+ * all tasks in the job.
+ * 
+ * @member {number} readIOGiB The total amount of data in GiB read from disk by
+ * all tasks in the job.
+ * 
+ * @member {number} writeIOGiB The total amount of data in GiB written to disk
  * by all tasks in the job.
  * 
- * @member {number} readIOGiB The total gibibytes read from disk by all tasks
- * in the job.
- * 
- * @member {number} writeIOGiB The total gibibytes written to disk by all
- * tasks in the job.
- * 
  * @member {number} numSucceededTasks The total number of tasks successfully
- * completed in the job during the given time range.
+ * completed in the job during the given time range. A task completes
+ * successfully if it returns exit code 0.
  * 
  * @member {number} numFailedTasks The total number of tasks in the job that
- * failed during the given time range.
+ * failed during the given time range. A task fails if it exhausts its maximum
+ * retry count without returning exit code 0.
  * 
- * @member {number} numTaskRetries The total number of retries on all the
- * tasks in the job during the given time range.
+ * @member {number} numTaskRetries The total number of retries on all the tasks
+ * in the job during the given time range.
  * 
  * @member {moment.duration} waitTime The total wait time of all tasks in the
  * job. The wait time for a task is defined as the elapsed time between the
  * creation of the task and the start of task execution. (If the task is
  * retried due to failures, the wait time is the time to the most recent task
- * execution.)
+ * execution.) This value is only reported in the account lifetime statistics;
+ * it is not included in the job statistics.
  * 
  */
 export interface JobStatistics {
@@ -349,7 +404,10 @@ export interface NameValuePair {
  * error, intended to be suitable for display in a user interface.
  * 
  * @member {array} [values] A list of additional error details related to the
- * certificate deletion error.
+ * certificate deletion error. This list includes details such as the active
+ * pools and nodes referencing this certificate. However, if a large number of
+ * resources reference the certificate, the list contains only about the first
+ * hundred.
  * 
  */
 export interface DeleteCertificateError {
@@ -366,11 +424,10 @@ export interface DeleteCertificateError {
  * authenticate operations on the machine.
  *
  * @member {string} [thumbprint] The X.509 thumbprint of the certificate. This
- * is a sequence of up to 40 hex digits (it may include spaces but these are
- * removed).
+ * is a sequence of up to 40 hex digits.
  * 
  * @member {string} [thumbprintAlgorithm] The algorithm used to derive the
- * thumbprint. This must be sha1.
+ * thumbprint.
  * 
  * @member {string} [url] The URL of the certificate.
  * 
@@ -380,9 +437,9 @@ export interface DeleteCertificateError {
  * @member {date} [stateTransitionTime] The time at which the certificate
  * entered its current state.
  * 
- * @member {string} [previousState] The previous state of the certificate.
- * This property is not set if the certificate is in its initial Active
- * state. Possible values include: 'active', 'deleting', 'deletefailed'
+ * @member {string} [previousState] The previous state of the certificate. This
+ * property is not set if the certificate is in its initial Active state.
+ * Possible values include: 'active', 'deleting', 'deletefailed'
  * 
  * @member {date} [previousStateTransitionTime] The time at which the
  * certificate entered its previous state. This property is not set if the
@@ -392,14 +449,17 @@ export interface DeleteCertificateError {
  * base-64 encoded .cer file.
  * 
  * @member {object} [deleteCertificateError] The error that occurred on the
- * last attempt to delete this certificate.  This property is set only if the
+ * last attempt to delete this certificate. This property is set only if the
  * certificate is in the DeleteFailed state.
  * 
  * @member {string} [deleteCertificateError.code]
  * 
  * @member {string} [deleteCertificateError.message]
  * 
- * @member {array} [deleteCertificateError.values]
+ * @member {array} [deleteCertificateError.values] This list includes details
+ * such as the active pools and nodes referencing this certificate. However, if
+ * a large number of resources reference the certificate, the list contains
+ * only about the first hundred.
  * 
  */
 export interface Certificate {
@@ -421,10 +481,13 @@ export interface Certificate {
  * @summary A reference to an application package to be deployed to compute
  * nodes.
  *
- * @member {string} applicationId The id of the application to deploy.
+ * @member {string} applicationId The ID of the application to deploy.
  * 
  * @member {string} [version] The version of the application to deploy. If
- * omitted, the default version is deployed.
+ * omitted, the default version is deployed. If this is omitted, and no default
+ * version is specified for this application, the request fails with the error
+ * code InvalidApplicationPackageReferences. If you are calling the REST API
+ * directly, the HTTP status code is 409.
  * 
  */
 export interface ApplicationPackageReference {
@@ -439,8 +502,8 @@ export interface ApplicationPackageReference {
  * @summary Contains information about an application in an Azure Batch
  * account.
  *
- * @member {string} id A string that uniquely identifies the application
- * within the account.
+ * @member {string} id A string that uniquely identifies the application within
+ * the account.
  * 
  * @member {string} displayName The display name for the application.
  * 
@@ -461,8 +524,8 @@ export interface ApplicationSummary {
  * @summary A certificate that can be installed on compute nodes and can be
  * used to authenticate operations on the machine.
  *
- * @member {string} thumbprint The X.509 thumbprint of the certificate. This
- * is a sequence of up to 40 hex digits (it may include spaces but these are
+ * @member {string} thumbprint The X.509 thumbprint of the certificate. This is
+ * a sequence of up to 40 hex digits (it may include spaces but these are
  * removed).
  * 
  * @member {string} thumbprintAlgorithm The algorithm used to derive the
@@ -474,8 +537,9 @@ export interface ApplicationSummary {
  * @member {string} [certificateFormat] The format of the certificate data.
  * Possible values include: 'pfx', 'cer', 'unmapped'
  * 
- * @member {string} [password] The password to access the certificate's
- * private key.
+ * @member {string} [password] The password to access the certificate's private
+ * key. This is required if the certificate format is pfx. It should be omitted
+ * if the certificate format is cer.
  * 
  */
 export interface CertificateAddParameter {
@@ -488,11 +552,28 @@ export interface CertificateAddParameter {
 
 /**
  * @class
+ * Initializes a new instance of the CertificateListResult class.
+ * @constructor
+ * @summary The result of listing the certificates in the account.
+ *
+ * @member {array} [value] The list of certificates.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CertificateListResult {
+  value?: Certificate[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FileProperties class.
  * @constructor
  * @summary The properties of a file on a compute node.
  *
- * @member {date} [creationTime] The file creation time.
+ * @member {date} [creationTime] The file creation time. The creation time is
+ * not returned for files on Linux compute nodes.
  * 
  * @member {date} lastModified The time at which the file was last modified.
  * 
@@ -500,8 +581,8 @@ export interface CertificateAddParameter {
  * 
  * @member {string} [contentType] The content type of the file.
  * 
- * @member {string} [fileMode] The file mode attribute in octal format. This
- * property will be returned only from a Linux compute node.
+ * @member {string} [fileMode] The file mode attribute in octal format. The
+ * file mode is returned only for files on Linux compute nodes.
  * 
  */
 export interface FileProperties {
@@ -526,7 +607,8 @@ export interface FileProperties {
  * 
  * @member {object} [properties] The file properties.
  * 
- * @member {date} [properties.creationTime]
+ * @member {date} [properties.creationTime] The creation time is not returned
+ * for files on Linux compute nodes.
  * 
  * @member {date} [properties.lastModified]
  * 
@@ -534,8 +616,8 @@ export interface FileProperties {
  * 
  * @member {string} [properties.contentType]
  * 
- * @member {string} [properties.fileMode] This property will be returned only
- * from a Linux compute node.
+ * @member {string} [properties.fileMode] The file mode is returned only for
+ * files on Linux compute nodes.
  * 
  */
 export interface NodeFile {
@@ -547,28 +629,69 @@ export interface NodeFile {
 
 /**
  * @class
+ * Initializes a new instance of the NodeFileListResult class.
+ * @constructor
+ * @summary The result of listing the files on a compute node, or the files
+ * associated with a task on a node.
+ *
+ * @member {array} [value] The list of files.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface NodeFileListResult {
+  value?: NodeFile[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Schedule class.
  * @constructor
  * @summary The schedule according to which jobs will be created
  *
  * @member {date} [doNotRunUntil] The earliest time at which any job may be
- * created under this job schedule. If you do not specify a doNotRunUntil
- * time, the schedule becomes ready to create jobs immediately.
+ * created under this job schedule. If you do not specify a doNotRunUntil time,
+ * the schedule becomes ready to create jobs immediately.
  * 
  * @member {date} [doNotRunAfter] A time after which no job will be created
  * under this job schedule. The schedule will move to the completed state as
  * soon as this deadline is past and there is no active job under this job
- * schedule.
+ * schedule. If you do not specify a doNotRunAfter time, and you are creating a
+ * recurring job schedule, the job schedule will remain active until you
+ * explicitly terminate it.
  * 
- * @member {moment.duration} [startWindow] The time interval, starting from
- * the time at which the schedule indicates a job should be created, within
- * which a job must be created. If a job is not created within the
- * startWindow interval, then the 'opportunity' is lost; no job will be
- * created until the next recurrence of the schedule.
+ * @member {moment.duration} [startWindow] The time interval, starting from the
+ * time at which the schedule indicates a job should be created, within which a
+ * job must be created. If a job is not created within the startWindow
+ * interval, then the 'opportunity' is lost; no job will be created until the
+ * next recurrence of the schedule. If the schedule is recurring, and the
+ * startWindow is longer than the recurrence interval, then this is equivalent
+ * to an infinite startWindow, because the job that is 'due' in one
+ * recurrenceInterval is not carried forward into the next recurrence interval.
+ * The default is infinite. The minimum value is 1 minute. If you specify a
+ * lower value, the Batch service rejects the schedule with an error; if you
+ * are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
- * @member {moment.duration} [recurrenceInterval] The time interval between
- * the start times of two successive jobs under the job schedule. A job
- * schedule can have at most one active job under it at any given time.
+ * @member {moment.duration} [recurrenceInterval] The time interval between the
+ * start times of two successive jobs under the job schedule. A job schedule
+ * can have at most one active job under it at any given time. Because a job
+ * schedule can have at most one active job under it at any given time, if it
+ * is time to create a new job under a job schedule, but the previous job is
+ * still running, the Batch service will not create the new job until the
+ * previous job finishes. If the previous job does not finish within the
+ * startWindow period of the new recurrenceInterval, then no new job will be
+ * scheduled for that interval. For recurring jobs, you should normally specify
+ * a jobManagerTask in the jobSpecification. If you do not use jobManagerTask,
+ * you will need an external process to monitor when jobs are created, add
+ * tasks to the jobs and terminate the jobs ready for the next recurrence. The
+ * default is that the schedule does not recur: one job is created, within the
+ * startWindow after the doNotRunUntil time, and the schedule is complete as
+ * soon as that job finishes. The minimum value is 1 minute. If you specify a
+ * lower value, the Batch service rejects the schedule with an error; if you
+ * are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
  */
 export interface Schedule {
@@ -582,16 +705,24 @@ export interface Schedule {
  * @class
  * Initializes a new instance of the JobConstraints class.
  * @constructor
- * @summary Specifies the execution constraints for jobs created on a schedule.
+ * @summary The execution constraints for a job.
  *
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
- * the job may run, measured from the time the job starts. If the job does
- * not complete within the time limit, the Batch service terminates it and
- * any tasks that are still running.
+ * the job may run, measured from the time the job is created. If the job does
+ * not complete within the time limit, the Batch service terminates it and any
+ * tasks that are still running. In this case, the termination reason will be
+ * MaxWallClockTimeExpiry. If this property is not specified, there is no time
+ * limit on how long the job may run.
  * 
  * @member {number} [maxTaskRetryCount] The maximum number of times each task
  * may be retried. The Batch service retries a task if its exit code is
- * nonzero.
+ * nonzero. Note that this value specifically controls the number of retries.
+ * The Batch service will try each task once, and may then retry up to this
+ * limit. For example, if the maximum retry count is 3, Batch tries a task up
+ * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+ * the Batch service does not retry tasks. If the maximum retry count is -1,
+ * the Batch service retries tasks without limit. The default value is 0 (no
+ * retries).
  * 
  */
 export interface JobConstraints {
@@ -603,18 +734,24 @@ export interface JobConstraints {
  * @class
  * Initializes a new instance of the ResourceFile class.
  * @constructor
- * A file to be downloaded from Azure blob storage to a compute node.
+ * @summary A file to be downloaded from Azure blob storage to a compute node.
  *
  * @member {string} blobSource The URL of the file within Azure Blob Storage.
- * This URL should include a shared access signature if the blob is not
- * publicly readable.
+ * This URL must be readable using anonymous access; that is, the Batch service
+ * does not present any credentials when downloading the blob. There are two
+ * ways to get such a URL for a blob in Azure storage: include a Shared Access
+ * Signature (SAS) granting read permissions on the blob, or set the ACL for
+ * the blob or its container to allow public access.
  * 
- * @member {string} filePath The location to which to download the file,
- * relative to the task's working directory.
+ * @member {string} filePath The location on the compute node to which to
+ * download the file, relative to the task's working directory.
  * 
- * @member {string} [fileMode] The file mode attribute in octal format. This
- * property will be ignored if it is specified for a resourceFile which will
- * be downloaded to a Windows compute node.
+ * @member {string} [fileMode] The file permission mode attribute in octal
+ * format. This property applies only to files being downloaded to Linux
+ * compute nodes. It will be ignored if it is specified for a resourceFile
+ * which will be downloaded to a Windows node. If this property is not
+ * specified for a Linux node, then a default value of 0770 is applied to the
+ * file.
  * 
  */
 export interface ResourceFile {
@@ -641,34 +778,115 @@ export interface EnvironmentSetting {
 
 /**
  * @class
+ * Initializes a new instance of the ExitOptions class.
+ * @constructor
+ * @summary How the Batch service should respond to a particular exit
+ * condition.
+ *
+ * @member {string} [jobAction] An action to take on the job containing the
+ * task, if the task completes with the given exit condition and the job’s
+ * onTaskFailed property is 'performexitoptionsjobaction'. The default is none
+ * for exit code 0 and terminate for all other exit conditions. It is an error
+ * to specify this if the job's onTaskFailed is noaction. The add task request
+ * fails with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request). Possible values
+ * include: 'none', 'disable', 'terminate'
+ * 
+ */
+export interface ExitOptions {
+  jobAction?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExitCodeMapping class.
+ * @constructor
+ * @summary How the Batch service should respond if a task exits with a
+ * particular exit code.
+ *
+ * @member {number} code A process exit code.
+ * 
+ * @member {object} exitOptions How the Batch service should respond if the
+ * task exits with this exit code.
+ * 
+ * @member {string} [exitOptions.jobAction] The default is none for exit code 0
+ * and terminate for all other exit conditions. It is an error to specify this
+ * if the job's onTaskFailed is noaction. The add task request fails with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request). Possible values include: 'none',
+ * 'disable', 'terminate'
+ * 
+ */
+export interface ExitCodeMapping {
+  code: number;
+  exitOptions: ExitOptions;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExitCodeRangeMapping class.
+ * @constructor
+ * @summary A range of exit codes and how the Batch service should respond to
+ * exit codes within that range.
+ *
+ * @member {number} start The first exit code in the range.
+ * 
+ * @member {number} end The last exit code in the range.
+ * 
+ * @member {object} exitOptions How the Batch service should respond if the
+ * task exits with an exit code in the range start to end (inclusive).
+ * 
+ * @member {string} [exitOptions.jobAction] The default is none for exit code 0
+ * and terminate for all other exit conditions. It is an error to specify this
+ * if the job's onTaskFailed is noaction. The add task request fails with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request). Possible values include: 'none',
+ * 'disable', 'terminate'
+ * 
+ */
+export interface ExitCodeRangeMapping {
+  start: number;
+  end: number;
+  exitOptions: ExitOptions;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExitConditions class.
  * @constructor
- * Specifies how the Batch service should respond when the task completes.
+ * @summary Specifies how the Batch service should respond when the task
+ * completes.
  *
- * @member {array} [exitCodes] A list of individual task exit codes and how
- * the Batch service should respond to them.
+ * @member {array} [exitCodes] A list of individual task exit codes and how the
+ * Batch service should respond to them.
  * 
- * @member {array} [exitCodeRanges] A list of task exit codes ranges and how
- * the Batch service should respond to them.
+ * @member {array} [exitCodeRanges] A list of task exit code ranges and how the
+ * Batch service should respond to them.
  * 
  * @member {object} [schedulingError] How the Batch service should respond if
  * the task fails with a scheduling error.
  * 
- * @member {string} [schedulingError.jobAction] An action to take on the job
- * containing the task, if the task completes with the given exit condition
- * and the job’s onTaskFailed property is 'performexitoptionsjobaction'.
- * Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [schedulingError.jobAction] The default is none for exit
+ * code 0 and terminate for all other exit conditions. It is an error to
+ * specify this if the job's onTaskFailed is noaction. The add task request
+ * fails with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request). Possible values
+ * include: 'none', 'disable', 'terminate'
  * 
  * @member {object} [default] How the Batch service should respond if the task
  * fails with an exit condition not covered by any of the other properties –
- * that is, any nonzero exit code not listed in the exitCodes or
- * exitCodeRanges collection, or a scheduling error if the schedulingError
- * property is not present.
+ * that is, any nonzero exit code not listed in the exitCodes or exitCodeRanges
+ * collection, or a scheduling error if the schedulingError property is not
+ * present. Note that the default condition does not include exit code 0. If
+ * you want non-default behaviour on exit code 0, you must list it explicitly
+ * using the exitCodes or exitCodeRanges collection.
  * 
- * @member {string} [default.jobAction] An action to take on the job
- * containing the task, if the task completes with the given exit condition
- * and the job’s onTaskFailed property is 'performexitoptionsjobaction'.
- * Possible values include: 'none', 'disable', 'terminate'
+ * @member {string} [default.jobAction] The default is none for exit code 0 and
+ * terminate for all other exit conditions. It is an error to specify this if
+ * the job's onTaskFailed is noaction. The add task request fails with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request). Possible values include: 'none',
+ * 'disable', 'terminate'
  * 
  */
 export interface ExitConditions {
@@ -680,88 +898,29 @@ export interface ExitConditions {
 
 /**
  * @class
- * Initializes a new instance of the ExitCodeMapping class.
- * @constructor
- * How the Batch service should respond if a task exits with a particular exit
- * code.
- *
- * @member {number} code A process exit code.
- * 
- * @member {object} exitOptions How the Batch service should respond if the
- * task exits with this exit code.
- * 
- * @member {string} [exitOptions.jobAction] An action to take on the job
- * containing the task, if the task completes with the given exit condition
- * and the job’s onTaskFailed property is 'performexitoptionsjobaction'.
- * Possible values include: 'none', 'disable', 'terminate'
- * 
- */
-export interface ExitCodeMapping {
-  code: number;
-  exitOptions: ExitOptions;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExitOptions class.
- * @constructor
- * How the Batch service should respond to a particular exit condition.
- *
- * @member {string} [jobAction] An action to take on the job containing the
- * task, if the task completes with the given exit condition and the job’s
- * onTaskFailed property is 'performexitoptionsjobaction'. Possible values
- * include: 'none', 'disable', 'terminate'
- * 
- */
-export interface ExitOptions {
-  jobAction?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExitCodeRangeMapping class.
- * @constructor
- * A range of exit codes and how the Batch service should respond to exit
- * codes within that range.
- *
- * @member {number} start The first exit code in the range.
- * 
- * @member {number} end The last exit code in the range.
- * 
- * @member {object} exitOptions An exitOptions specifying how the Batch
- * service should respond if the task exits with an exit code in the range
- * start to end.
- * 
- * @member {string} [exitOptions.jobAction] An action to take on the job
- * containing the task, if the task completes with the given exit condition
- * and the job’s onTaskFailed property is 'performexitoptionsjobaction'.
- * Possible values include: 'none', 'disable', 'terminate'
- * 
- */
-export interface ExitCodeRangeMapping {
-  start: number;
-  end: number;
-  exitOptions: ExitOptions;
-}
-
-/**
- * @class
  * Initializes a new instance of the TaskConstraints class.
  * @constructor
- * @summary Constraints to apply to the Job Manager task.
+ * @summary Execution constraints to apply to a task.
  *
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
  * the task may run, measured from the time the task starts. If the task does
- * not complete within the time limit, the Batch service terminates it.
+ * not complete within the time limit, the Batch service terminates it. If this
+ * is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [retentionTime] The minimum time to retain the
- * working directory for the task on the compute node where it ran, from the
- * time it completes execution. After this time, the Batch service may delete
- * the working directory and all its contents. The default is infinite.
+ * task directory on the compute node where it ran, from the time it completes
+ * execution. After this time, the Batch service may delete the task directory
+ * and all its contents. The default is infinite, i.e. the task directory will
+ * be retained until the compute node is removed or reimaged.
  * 
  * @member {number} [maxTaskRetryCount] The maximum number of times the task
  * may be retried. The Batch service retries a task if its exit code is
- * nonzero.
+ * nonzero. Note that this value specifically controls the number of retries.
+ * The Batch service will try the task once, and may then retry up to this
+ * limit. For example, if the maximum retry count is 3, Batch tries the task up
+ * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+ * the Batch service does not retry the task. If the maximum retry count is -1,
+ * the Batch service retries the task without limit.
  * 
  */
 export interface TaskConstraints {
@@ -776,19 +935,25 @@ export interface TaskConstraints {
  * @constructor
  * @summary Specifies details of a Job Manager task.
  *
- * @member {string} id A string that uniquely identifies the Job Manager task.
+ * @member {string} id A string that uniquely identifies the Job Manager
+ * taskwithin the job. The id can contain any combination of alphanumeric
+ * characters including hyphens and underscores and cannot contain more than 64
+ * characters.
  * 
- * @member {string} [displayName] The display name of the Job Manager task.
+ * @member {string} [displayName] The display name of the Job Manager task. It
+ * need not be unique and can contain any Unicode characters up to a maximum
+ * length of 1024.
  * 
  * @member {string} commandLine The command line of the Job Manager task. The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line.
+ * download to the compute node before running the command line. Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Manager task.
@@ -796,30 +961,58 @@ export interface TaskConstraints {
  * @member {object} [constraints] Constraints that apply to the Job Manager
  * task.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If this is not
+ * specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean} [killJobOnCompletion] Whether completion of the Job
- * Manager task signifies completion of the entire job.
+ * Manager task signifies completion of the entire job. If true, when the Job
+ * Manager task completes, the Batch service marks the job as complete. If any
+ * tasks are still running at this time (other than Job Release), those tasks
+ * are terminated. If false, the completion of the Job Manager task does not
+ * affect the job status. In this case, you should either use the
+ * onAllTasksComplete attribute to terminate the job, or have a client or user
+ * terminate the job explicitly. An example of this is if the Job Manager
+ * creates a set of tasks but then takes no further role in their execution.
+ * The default value is true. If you are using the onAllTasksComplete and
+ * onTaskFailure attributes to control job lifetime, and using the job manager
+ * task only to create the tasks for the job (not to monitor progress), then it
+ * is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [runElevated] Whether to run the Job Manager task in
  * elevated mode. The default value is false.
  * 
  * @member {boolean} [runExclusive] Whether the Job Manager task requires
  * exclusive use of the compute node where it runs. If true, no other tasks
- * will run on the same compute node for as long as the Job Manager is
- * running. If false, other tasks can run simultaneously with the Job Manager
- * on a compute node. The Job Manager task counts normally against the node's
- * concurrent task limit, so this is only relevant if the node allows
- * multiple concurrent tasks.
+ * will run on the same compute node for as long as the Job Manager is running.
+ * If false, other tasks can run simultaneously with the Job Manager on a
+ * compute node. The Job Manager task counts normally against the node's
+ * concurrent task limit, so this is only relevant if the node allows multiple
+ * concurrent tasks. The default value is true.
  * 
  * @member {array} [applicationPackageReferences] A list of application
  * packages that the Batch service will deploy to the compute node before
- * running the command line.
+ * running the command line. Application packages are downloaded and deployed
+ * to a shared directory, not the task directory. Therefore, if a referenced
+ * package is already on the compute node, and is up to date, then it is not
+ * re-downloaded; the existing copy on the compute node is used. If a
+ * referenced application package cannot be installed, for example because the
+ * package has been deleted or because download failed, the task fails with a
+ * scheduling error. This property is currently not supported on jobs running
+ * on pools created using the virtualMachineConfiguration (IaaS) property. If a
+ * task specifying applicationPackageReferences runs on such a pool, it fails
+ * with a scheduling error with code TaskSchedulingConstraintFailed.
  * 
  */
 export interface JobManagerTask {
@@ -843,45 +1036,71 @@ export interface JobManagerTask {
  * given compute node.
  *
  * @member {string} [id] A string that uniquely identifies the job preparation
- * task within the job. The id can contain any combination of alphanumeric
- * characters including hyphens and underscores and cannot contain more than
- * 64 characters.
+ * task within the job. The ID can contain any combination of alphanumeric
+ * characters including hyphens and underscores and cannot contain more than 64
+ * characters. If you do not specify this property, the Batch service assigns a
+ * default value of 'jobpreparation'. No other task in the job can have the
+ * same id as the Job Preparation task. If you try to submit a task with the
+ * same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobPreparationTask; if you are calling the REST API directly,
+ * the HTTP status code is 409 (Conflict).
  * 
  * @member {string} commandLine The command line of the Job Preparation task.
  * The command line does not run under a shell, and therefore cannot take
  * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line.
+ * download to the compute node before running the command line. Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Preparation task.
  * 
- * @member {object} [constraints] Constraints that apply to the Job
- * Preparation task.
+ * @member {object} [constraints] Constraints that apply to the Job Preparation
+ * task.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If this is not
+ * specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
- * @member {boolean} [waitForSuccess] Whether the Batch service should wait
- * for the Job Preparation task to complete successfully before scheduling
- * any other tasks of the job on the compute node.
+ * @member {boolean} [waitForSuccess] Whether the Batch service should wait for
+ * the Job Preparation task to complete successfully before scheduling any
+ * other tasks of the job on the compute node. If true and the Job Preparation
+ * task fails on a compute node, the Batch service retries the Job Preparation
+ * task up to its maximum retry count (as specified in the constraints
+ * element). If the task has still not completed successfully after all
+ * retries, then the Batch service will not schedule tasks of the job to the
+ * compute node. The compute node remains active and eligible to run tasks of
+ * other jobs. If false, the Batch service will not wait for the Job
+ * Preparation task to complete. In this case, other tasks of the job can start
+ * executing on the compute node while the Job Preparation task is still
+ * running; and even if the Job Preparation task fails, new tasks will continue
+ * to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [runElevated] Whether to run the Job Preparation task in
  * elevated mode. The default value is false.
  * 
  * @member {boolean} [rerunOnNodeRebootAfterSuccess] Whether the Batch service
- * should rerun the Job Preparation task after a compute node reboots. Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * should rerun the Job Preparation task after a compute node reboots. The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
  */
 export interface JobPreparationTask {
@@ -902,33 +1121,43 @@ export interface JobPreparationTask {
  * @summary A Job Release task to run on job completion on any compute node
  * where the job has run.
  *
- * @member {string} [id] A string that uniquely identifies the Job Release
- * task within the job. The id can contain any combination of alphanumeric
- * characters including hyphens and underscores and cannot contain more than
- * 64 characters.
+ * @member {string} [id] A string that uniquely identifies the Job Release task
+ * within the job. The ID can contain any combination of alphanumeric
+ * characters including hyphens and underscores and cannot contain more than 64
+ * characters. If you do not specify this property, the Batch service assigns a
+ * default value of 'jobrelease'. No other task in the job can have the same id
+ * as the Job Release task. If you try to submit a task with the same id, the
+ * Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} commandLine The command line of the Job Release task. The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line.
+ * download to the compute node before running the command line. Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Release task.
  * 
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
- * the Job Release task may run on a given compute node, measured from the
- * time the task starts. If the task does not complete within the time limit,
- * the Batch service terminates it. The default value is 15 minutes.
+ * the Job Release task may run on a given compute node, measured from the time
+ * the task starts. If the task does not complete within the time limit, the
+ * Batch service terminates it. The default value is 15 minutes. You may not
+ * specify a timeout longer than 15 minutes. If you do, the Batch service
+ * rejects it with an error; if you are calling the REST API directly, the HTTP
+ * status code is 400 (Bad Request).
  * 
  * @member {moment.duration} [retentionTime] The minimum time to retain the
- * working directory for the Job Release task on the compute node. After this
- * time, the Batch service may delete the working directory and all its
- * contents.  The default is infinite.
+ * task directory for the Job Release task on the compute node. After this
+ * time, the Batch service may delete the task directory and all its contents.
+ * The default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
  * @member {boolean} [runElevated] Whether to run the Job Release task in
  * elevated mode. The default value is false.
@@ -950,8 +1179,8 @@ export interface JobReleaseTask {
  * @constructor
  * @summary Specifies how tasks should be distributed across compute nodes.
  *
- * @member {string} nodeFillType How tasks should be distributed across
- * compute nodes. Possible values include: 'spread', 'pack', 'unmapped'
+ * @member {string} nodeFillType How tasks should be distributed across compute
+ * nodes. Possible values include: 'spread', 'pack', 'unmapped'
  * 
  */
 export interface TaskSchedulingPolicy {
@@ -965,12 +1194,12 @@ export interface TaskSchedulingPolicy {
  * @summary A task which is run when a compute node joins a pool in the Azure
  * Batch service, or when the compute node is rebooted or reimaged.
  *
- * @member {string} commandLine The command line of the start task. The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * @member {string} commandLine The command line of the start task. The command
+ * line does not run under a shell, and therefore cannot take advantage of
+ * shell features such as environment variable expansion. If you want to take
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line.
@@ -982,11 +1211,26 @@ export interface TaskSchedulingPolicy {
  * mode. The default value is false.
  * 
  * @member {number} [maxTaskRetryCount] The maximum number of times the task
- * may be retried.
+ * may be retried. The Batch service retries a task if its exit code is
+ * nonzero. Note that this value specifically controls the number of retries.
+ * The Batch service will try the task once, and may then retry up to this
+ * limit. For example, if the maximum retry count is 3, Batch tries the task up
+ * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+ * the Batch service does not retry the task. If the maximum retry count is -1,
+ * the Batch service retries the task without limit.
  * 
- * @member {boolean} [waitForSuccess] Whether the Batch service should wait
- * for the start task to complete successfully (that is, to exit with exit
- * code 0) before scheduling any tasks on the compute node.
+ * @member {boolean} [waitForSuccess] Whether the Batch service should wait for
+ * the start task to complete successfully (that is, to exit with exit code 0)
+ * before scheduling any tasks on the compute node. If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
  */
 export interface StartTask {
@@ -1007,17 +1251,26 @@ export interface StartTask {
  *
  * @member {string} thumbprint The thumbprint of the certificate.
  * 
- * @member {string} thumbprintAlgorithm The algorithm with which the
- * thumbprint is associated. This must be sha1.
+ * @member {string} thumbprintAlgorithm The algorithm with which the thumbprint
+ * is associated. This must be sha1.
  * 
  * @member {string} [storeLocation] The location of the certificate store on
- * the compute node into which to install the certificate. The default value
- * is CurrentUser. Possible values include: 'currentuser', 'localmachine',
- * 'unmapped'
+ * the compute node into which to install the certificate. The default value is
+ * CurrentUser. This property is applicable only for pools configured with
+ * Windows nodes (that is, created with cloudServiceConfiguration, or with
+ * virtualMachineConfiguration using a Windows image reference). For Linux
+ * compute nodes, the certificates are stored in a directory inside the task
+ * working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is
+ * supplied to the task to query for this location. For certificates with
+ * visibility of remoteuser, a certs directory is created in the user's home
+ * directory (e.g., /home/<user-name>/certs) where certificates are placed.
+ * Possible values include: 'currentuser', 'localmachine', 'unmapped'
  * 
  * @member {string} [storeName] The name of the certificate store on the
- * compute node into which to install the certificate. The default value is
- * My.
+ * compute node into which to install the certificate. The default value is My.
+ * This property is applicable only for pools configured with Windows nodes
+ * (that is, created with cloudServiceConfiguration, or with
+ * virtualMachineConfiguration using a Windows image reference).
  * 
  * @member {array} [visibility] Which user accounts on the compute node should
  * have access to the private data of the certificate. The default is all
@@ -1038,8 +1291,8 @@ export interface CertificateReference {
  * @constructor
  * @summary A name-value pair associated with a Batch service resource.
  *
- * The Batch service does not assign any meaning to this metadata; it is
- * solely for the use of user code.
+ * The Batch service does not assign any meaning to this metadata; it is solely
+ * for the use of user code.
  *
  * @member {string} name The name of the metadata item.
  * 
@@ -1053,30 +1306,181 @@ export interface MetadataItem {
 
 /**
  * @class
+ * Initializes a new instance of the CloudServiceConfiguration class.
+ * @constructor
+ * @summary The configuration for nodes in a pool based on the Azure Cloud
+ * Services platform.
+ *
+ * @member {string} osFamily The Azure Guest OS family to be installed on the
+ * virtual machines in the pool. Possible values are: 2 – OS Family 2,
+ * equivalent to Windows Server 2008 R2 SP1. 3 – OS Family 3, equivalent to
+ * Windows Server 2012. 4 – OS Family 4, equivalent to Windows Server 2012 R2.
+ * For more information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
+ * 
+ * @member {string} [targetOSVersion] The Azure Guest OS version to be
+ * installed on the virtual machines in the pool. The default value is * which
+ * specifies the latest operating system version for the specified OS family.
+ * 
+ * @member {string} [currentOSVersion] The Azure Guest OS Version currently
+ * installed on the virtual machines in the pool. This may differ from
+ * targetOSVersion if the pool state is Upgrading. In this case some virtual
+ * machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
+ * 
+ */
+export interface CloudServiceConfiguration {
+  osFamily: string;
+  targetOSVersion?: string;
+  currentOSVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WindowsConfiguration class.
+ * @constructor
+ * @summary Windows operating system settings to apply to the virtual machine.
+ *
+ * @member {boolean} [enableAutomaticUpdates] Whether automatic updates are
+ * enabled on the virtual machine. If omitted, the default value is true.
+ * 
+ */
+export interface WindowsConfiguration {
+  enableAutomaticUpdates?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineConfiguration class.
+ * @constructor
+ * @summary The configuration for compute nodes in a pool based on the Azure
+ * Virtual Machines infrastructure.
+ *
+ * @member {object} imageReference A reference to the Azure Virtual Machines
+ * Marketplace image to use.
+ * 
+ * @member {string} [imageReference.publisher] For example, Canonical or
+ * MicrosoftWindowsServer.
+ * 
+ * @member {string} [imageReference.offer] For example, UbuntuServer or
+ * WindowsServer.
+ * 
+ * @member {string} [imageReference.sku] For example, 14.04.0-LTS or
+ * 2012-R2-Datacenter.
+ * 
+ * @member {string} [imageReference.version] A value of 'latest' can be
+ * specified to select the latest version of an image. If omitted, the default
+ * is 'latest'.
+ * 
+ * @member {string} nodeAgentSKUId The SKU of the Batch node agent to be
+ * provisioned on compute nodes in the pool. The Batch node agent is a program
+ * that runs on each node in the pool, and provides the command-and-control
+ * interface between the node and the Batch service. There are different
+ * implementations of the node agent, known as SKUs, for different operating
+ * systems. You must specify a node agent SKU which matches the selected image
+ * reference. To get the list of supported node agent SKUs along with their
+ * list of verified image references, see the 'List supported node agent SKUs'
+ * operation.
+ * 
+ * @member {object} [windowsConfiguration] Windows operating system settings on
+ * the virtual machine. This property must not be specified if the
+ * imageReference property specifies a Linux OS image.
+ * 
+ * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] If omitted,
+ * the default value is true.
+ * 
+ */
+export interface VirtualMachineConfiguration {
+  imageReference: ImageReference;
+  nodeAgentSKUId: string;
+  windowsConfiguration?: WindowsConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkConfiguration class.
+ * @constructor
+ * The network configuration for a pool.
+ *
+ * @member {string} [subnetId] The ARM resource identifier of the virtual
+ * network subnet which the compute nodes of the pool will join. This is of the
+ * form
+ * /subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
+ * 
+ */
+export interface NetworkConfiguration {
+  subnetId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PoolSpecification class.
  * @constructor
  * @summary Specification for creating a new pool.
  *
- * @member {string} [displayName] The display name for the pool.
+ * @member {string} [displayName] The display name for the pool. The display
+ * name need not be unique and can contain any Unicode characters up to a
+ * maximum length of 1024.
  * 
  * @member {string} vmSize The size of the virtual machines in the pool. All
- * virtual machines in a pool are the same size.
+ * virtual machines in a pool are the same size. For information about
+ * available sizes of virtual machines for Cloud Services pools (pools created
+ * with cloudServiceConfiguration), see Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
- * @member {object} [cloudServiceConfiguration] The cloud service
- * configuration for the pool. This property and VirtualMachineConfiguration
- * are mutually exclusive and one of the properties must be specified.
+ * @member {object} [cloudServiceConfiguration] The cloud service configuration
+ * for the pool. This property must be specified if the pool needs to be
+ * created with Azure PaaS VMs. This property and virtualMachineConfiguration
+ * are mutually exclusive and one of the properties must be specified. If
+ * neither is specified then the Batch service returns an error; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  * 
- * @member {string} [cloudServiceConfiguration.osFamily]
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
+ * – OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 – OS Family 3,
+ * equivalent to Windows Server 2012. 4 – OS Family 4, equivalent to Windows
+ * Server 2012 R2. For more information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
  * specified OS family.
  * 
- * @member {string} [cloudServiceConfiguration.currentOSVersion]
+ * @member {string} [cloudServiceConfiguration.currentOSVersion] This may
+ * differ from targetOSVersion if the pool state is Upgrading. In this case
+ * some virtual machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
  * 
  * @member {object} [virtualMachineConfiguration] The virtual machine
- * configuration for the pool. This property and CloudServiceConfiguration
- * are mutually exclusive and one of the properties must be specified.
+ * configuration for the pool. This property must be specified if the pool
+ * needs to be created with Azure IaaS VMs. This property and
+ * cloudServiceConfiguration are mutually exclusive and one of the properties
+ * must be specified. If neither is specified then the Batch service returns an
+ * error; if you are calling the REST API directly, the HTTP status code is 400
+ * (Bad Request).
  * 
  * @member {object} [virtualMachineConfiguration.imageReference]
  * 
@@ -1090,25 +1494,30 @@ export interface MetadataItem {
  * example, 14.04.0-LTS or 2012-R2-Datacenter.
  * 
  * @member {string} [virtualMachineConfiguration.imageReference.version] A
- * value of 'latest' can be specified to select the latest version of an
- * image. If omitted, the default is 'latest'.
+ * value of 'latest' can be specified to select the latest version of an image.
+ * If omitted, the default is 'latest'.
  * 
- * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch
- * node agent is a program that runs on each node in the pool, and provides
- * the command-and-control interface between the node and the Batch service.
- * There are different implementations of the node agent, known as SKUs, for
- * different operating systems.
+ * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
+ * agent is a program that runs on each node in the pool, and provides the
+ * command-and-control interface between the node and the Batch service. There
+ * are different implementations of the node agent, known as SKUs, for
+ * different operating systems. You must specify a node agent SKU which matches
+ * the selected image reference. To get the list of supported node agent SKUs
+ * along with their list of verified image references, see the 'List supported
+ * node agent SKUs' operation.
  * 
  * @member {object} [virtualMachineConfiguration.windowsConfiguration] This
  * property must not be specified if the imageReference property specifies a
  * Linux OS image.
  * 
  * @member {boolean}
- * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
- * If omitted, the default value is true.
+ * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates] If
+ * omitted, the default value is true.
  * 
  * @member {number} [maxTasksPerNode] The maximum number of tasks that can run
- * concurrently on a single compute node in the pool.
+ * concurrently on a single compute node in the pool. The default value is 1.
+ * The maximum value of this setting depends on the size of the compute nodes
+ * in the pool (the vmSize setting).
  * 
  * @member {object} [taskSchedulingPolicy] How tasks are distributed among
  * compute nodes in the pool.
@@ -1117,41 +1526,69 @@ export interface MetadataItem {
  * include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration} [resizeTimeout] The timeout for allocation of
- * compute nodes to the pool.
+ * compute nodes to the pool. This timeout applies only to manual scaling; it
+ * has no effect when enableAutoScale is set to true. The default value is 15
+ * minutes. The minimum value is 5 minutes. If you specify a value less than 5
+ * minutes, the Batch service rejects the request with an error; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {number} [targetDedicated] The desired number of compute nodes in
- * the pool.
+ * the pool. This property must not be specified if enableAutoScale is set to
+ * true. It is required if enableAutoScale is set to false.
  * 
  * @member {boolean} [enableAutoScale] Whether the pool size should
- * automatically adjust over time.
+ * automatically adjust over time. If false, the targetDedicated element is
+ * required. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  * 
  * @member {string} [autoScaleFormula] The formula for the desired number of
- * compute nodes in the pool.
+ * compute nodes in the pool. This property must not be specified if
+ * enableAutoScale is set to false. It is required if enableAutoScale is set to
+ * true. The formula is checked for validity before the pool is created. If the
+ * formula is not valid, the Batch service rejects the request with detailed
+ * error information.
  * 
- * @member {moment.duration} [autoScaleEvaluationInterval] A time interval for
- * the desired AutoScale evaluation period in the pool.
+ * @member {moment.duration} [autoScaleEvaluationInterval] The time interval at
+ * which to automatically adjust the pool size according to the autoscale
+ * formula. The default value is 15 minutes. The minimum and maximum value are
+ * 5 minutes and 168 hours respectively. If you specify a value less than 5
+ * minutes or greater than 168 hours, the Batch service rejects the request
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean} [enableInterNodeCommunication] Whether the pool permits
- * direct communication between nodes.
+ * direct communication between nodes. Enabling inter-node communication limits
+ * the maximum size of the pool due to deployment restrictions on the nodes of
+ * the pool. This may result in the pool not reaching its desired size. The
+ * default value is false.
  * 
  * @member {object} [networkConfiguration] The network configuration for the
  * pool.
  * 
- * @member {string} [networkConfiguration.subnetId] The ARM resource
- * identifier of the virtual network subnet which the compute nodes of the
- * pool will join. The virtual network must be in the same region and
- * subscription as the Azure Batch account. This property can only be
- * specified for pools created with a cloudServiceConfiguration.
+ * @member {string} [networkConfiguration.subnetId] The virtual network must be
+ * in the same region and subscription as the Azure Batch account. The
+ * specified subnet should have enough free IP addresses to accommodate the
+ * number of nodes in the pool. If the subnet doesn't have enough free IP
+ * addresses, the pool will partially allocate compute nodes, and a resize
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. This property can only be specified
+ * for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [startTask] A task to run on each compute node as it joins
- * the pool. The task runs when the node is added to the pool or when the
- * node is restarted.
+ * the pool. The task runs when the node is added to the pool or when the node
+ * is restarted.
  * 
- * @member {string} [startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [startTask.resourceFiles]
  * 
@@ -1159,18 +1596,43 @@ export interface MetadataItem {
  * 
  * @member {boolean} [startTask.runElevated]
  * 
- * @member {number} [startTask.maxTaskRetryCount]
+ * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
+ * task if its exit code is nonzero. Note that this value specifically controls
+ * the number of retries. The Batch service will try the task once, and may
+ * then retry up to this limit. For example, if the maximum retry count is 3,
+ * Batch tries the task up to 4 times (one initial try and 3 retries). If the
+ * maximum retry count is 0, the Batch service does not retry the task. If the
+ * maximum retry count is -1, the Batch service retries the task without limit.
  * 
- * @member {boolean} [startTask.waitForSuccess]
+ * @member {boolean} [startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
  * @member {array} [certificateReferences] A list of certificates to be
- * installed on each compute node in the pool.
+ * installed on each compute node in the pool. For Windows compute nodes, the
+ * Batch service installs the certificates to the specified certificate store
+ * and location. For Linux compute nodes, the certificates are stored in a
+ * directory inside the task working directory and an environment variable
+ * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+ * location. For certificates with visibility of remoteuser, a certs directory
+ * is created in the user's home directory (e.g., /home/<user-name>/certs)
+ * where certificates are placed.
  * 
  * @member {array} [applicationPackageReferences] The list of application
- * packages to be installed on each compute node in the pool.
+ * packages to be installed on each compute node in the pool. This property is
+ * currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * pool as metadata.
+ * pool as metadata. The Batch service does not assign any meaning to metadata;
+ * it is solely for the use of user code.
  * 
  */
 export interface PoolSpecification {
@@ -1195,210 +1657,181 @@ export interface PoolSpecification {
 
 /**
  * @class
- * Initializes a new instance of the CloudServiceConfiguration class.
- * @constructor
- * @summary The configuration for nodes in a pool based on the Azure Cloud
- * Services platform.
- *
- * @member {string} osFamily The Azure Guest OS family to be installed on the
- * virtual machines in the pool.
- * 
- * @member {string} [targetOSVersion] The Azure Guest OS version to be
- * installed on the virtual machines in the pool. The default value is *
- * which specifies the latest operating system version for the specified OS
- * family.
- * 
- * @member {string} [currentOSVersion] The Azure Guest OS Version currently
- * installed on the virtual machines in the pool. This may differ from
- * targetOSVersion if the pool state is Upgrading.
- * 
- */
-export interface CloudServiceConfiguration {
-  osFamily: string;
-  targetOSVersion?: string;
-  currentOSVersion?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineConfiguration class.
- * @constructor
- * @summary The configuration for compute nodes in a pool based on the Azure
- * Virtual Machines infrastructure.
- *
- * @member {object} imageReference A reference to the Azure Virtual Machines
- * Marketplace image to use.
- * 
- * @member {string} [imageReference.publisher] For example, Canonical or
- * MicrosoftWindowsServer.
- * 
- * @member {string} [imageReference.offer] For example, UbuntuServer or
- * WindowsServer.
- * 
- * @member {string} [imageReference.sku] For example, 14.04.0-LTS or
- * 2012-R2-Datacenter.
- * 
- * @member {string} [imageReference.version] A value of 'latest' can be
- * specified to select the latest version of an image. If omitted, the
- * default is 'latest'.
- * 
- * @member {string} nodeAgentSKUId The SKU of Batch Node Agent to be
- * provisioned on the compute node. The Batch node agent is a program that
- * runs on each node in the pool, and provides the command-and-control
- * interface between the node and the Batch service. There are different
- * implementations of the node agent, known as SKUs, for different operating
- * systems.
- * 
- * @member {object} [windowsConfiguration] Windows operating system settings
- * on the virtual machine. This property must not be specified if the
- * imageReference property specifies a Linux OS image.
- * 
- * @member {boolean} [windowsConfiguration.enableAutomaticUpdates] If omitted,
- * the default value is true.
- * 
- */
-export interface VirtualMachineConfiguration {
-  imageReference: ImageReference;
-  nodeAgentSKUId: string;
-  windowsConfiguration?: WindowsConfiguration;
-}
-
-/**
- * @class
- * Initializes a new instance of the WindowsConfiguration class.
- * @constructor
- * @summary Windows operating system settings to apply to the virtual machine.
- *
- * @member {boolean} [enableAutomaticUpdates] Whether automatic updates are
- * enabled on the virtual machine. If omitted, the default value is true.
- * 
- */
-export interface WindowsConfiguration {
-  enableAutomaticUpdates?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the NetworkConfiguration class.
- * @constructor
- * The network configuration for a pool.
- *
- * @member {string} [subnetId] The ARM resource identifier of the virtual
- * network subnet which the compute nodes of the pool will join. The virtual
- * network must be in the same region and subscription as the Azure Batch
- * account. This property can only be specified for pools created with a
- * cloudServiceConfiguration.
- * 
- */
-export interface NetworkConfiguration {
-  subnetId?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AutoPoolSpecification class.
  * @constructor
  * @summary Specifies characteristics for a temporary 'auto pool'. The Batch
  * service will create this auto pool when the job is submitted.
  *
  * @member {string} [autoPoolIdPrefix] A prefix to be added to the unique
- * identifier when a pool is automatically created. The prefix can be up to
- * 20 characters long.
+ * identifier when a pool is automatically created. The Batch service assigns
+ * each auto pool a unique identifier on creation. To distinguish between pools
+ * created for different purposes, you can specify this element to add a prefix
+ * to the id that is assigned. The prefix can be up to 20 characters long.
  * 
  * @member {string} poolLifetimeOption The minimum lifetime of created auto
- * pools, and how multiple jobs on a schedule are assigned to pools. Possible
- * values include: 'jobschedule', 'job', 'unmapped'
+ * pools, and how multiple jobs on a schedule are assigned to pools. When the
+ * pool lifetime scope is jobschedule level, the Batch service keeps track of
+ * the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
+ * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
  * @member {boolean} [keepAlive] Whether to keep an auto pool alive after its
- * lifetime expires.
+ * lifetime expires. If false, the Batch service deletes the pool once its
+ * lifetime (as determined by the poolLifetimeOption setting) expires; that is,
+ * when the job or job schedule completes. If true, the Batch service does not
+ * delete the pool automatically. It is up to the user to delete auto pools
+ * created with this option.
  * 
  * @member {object} [pool] The pool specification for the auto pool.
  * 
- * @member {string} [pool.displayName]
+ * @member {string} [pool.displayName] The display name need not be unique and
+ * can contain any Unicode characters up to a maximum length of 1024.
  * 
- * @member {string} [pool.vmSize]
+ * @member {string} [pool.vmSize] For information about available sizes of
+ * virtual machines for Cloud Services pools (pools created with
+ * cloudServiceConfiguration), see Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
- * @member {object} [pool.cloudServiceConfiguration] This property and
- * VirtualMachineConfiguration are mutually exclusive and one of the
- * properties must be specified.
+ * @member {object} [pool.cloudServiceConfiguration] This property must be
+ * specified if the pool needs to be created with Azure PaaS VMs. This property
+ * and virtualMachineConfiguration are mutually exclusive and one of the
+ * properties must be specified. If neither is specified then the Batch service
+ * returns an error; if you are calling the REST API directly, the HTTP status
+ * code is 400 (Bad Request).
  * 
- * @member {string} [pool.cloudServiceConfiguration.osFamily]
+ * @member {string} [pool.cloudServiceConfiguration.osFamily] Possible values
+ * are: 2 – OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 – OS
+ * Family 3, equivalent to Windows Server 2012. 4 – OS Family 4, equivalent to
+ * Windows Server 2012 R2. For more information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string} [pool.cloudServiceConfiguration.targetOSVersion] The
  * default value is * which specifies the latest operating system version for
  * the specified OS family.
  * 
- * @member {string} [pool.cloudServiceConfiguration.currentOSVersion]
+ * @member {string} [pool.cloudServiceConfiguration.currentOSVersion] This may
+ * differ from targetOSVersion if the pool state is Upgrading. In this case
+ * some virtual machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
  * 
- * @member {object} [pool.virtualMachineConfiguration] This property and
- * CloudServiceConfiguration are mutually exclusive and one of the properties
- * must be specified.
+ * @member {object} [pool.virtualMachineConfiguration] This property must be
+ * specified if the pool needs to be created with Azure IaaS VMs. This property
+ * and cloudServiceConfiguration are mutually exclusive and one of the
+ * properties must be specified. If neither is specified then the Batch service
+ * returns an error; if you are calling the REST API directly, the HTTP status
+ * code is 400 (Bad Request).
  * 
  * @member {object} [pool.virtualMachineConfiguration.imageReference]
  * 
- * @member {string}
- * [pool.virtualMachineConfiguration.imageReference.publisher] For example,
- * Canonical or MicrosoftWindowsServer.
+ * @member {string} [pool.virtualMachineConfiguration.imageReference.publisher]
+ * For example, Canonical or MicrosoftWindowsServer.
  * 
- * @member {string} [pool.virtualMachineConfiguration.imageReference.offer]
- * For example, UbuntuServer or WindowsServer.
+ * @member {string} [pool.virtualMachineConfiguration.imageReference.offer] For
+ * example, UbuntuServer or WindowsServer.
  * 
  * @member {string} [pool.virtualMachineConfiguration.imageReference.sku] For
  * example, 14.04.0-LTS or 2012-R2-Datacenter.
  * 
- * @member {string} [pool.virtualMachineConfiguration.imageReference.version]
- * A value of 'latest' can be specified to select the latest version of an
- * image. If omitted, the default is 'latest'.
+ * @member {string} [pool.virtualMachineConfiguration.imageReference.version] A
+ * value of 'latest' can be specified to select the latest version of an image.
+ * If omitted, the default is 'latest'.
  * 
- * @member {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The
- * Batch node agent is a program that runs on each node in the pool, and
- * provides the command-and-control interface between the node and the Batch
- * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * @member {string} [pool.virtualMachineConfiguration.nodeAgentSKUId] The Batch
+ * node agent is a program that runs on each node in the pool, and provides the
+ * command-and-control interface between the node and the Batch service. There
+ * are different implementations of the node agent, known as SKUs, for
+ * different operating systems. You must specify a node agent SKU which matches
+ * the selected image reference. To get the list of supported node agent SKUs
+ * along with their list of verified image references, see the 'List supported
+ * node agent SKUs' operation.
  * 
  * @member {object} [pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
- * @member {number} [pool.maxTasksPerNode]
+ * @member {number} [pool.maxTasksPerNode] The default value is 1. The maximum
+ * value of this setting depends on the size of the compute nodes in the pool
+ * (the vmSize setting).
  * 
- * @member {object} [pool.taskSchedulingPolicy] How tasks are distributed
- * among compute nodes in the pool.
+ * @member {object} [pool.taskSchedulingPolicy] How tasks are distributed among
+ * compute nodes in the pool.
  * 
  * @member {string} [pool.taskSchedulingPolicy.nodeFillType] Possible values
  * include: 'spread', 'pack', 'unmapped'
  * 
- * @member {moment.duration} [pool.resizeTimeout]
+ * @member {moment.duration} [pool.resizeTimeout] This timeout applies only to
+ * manual scaling; it has no effect when enableAutoScale is set to true. The
+ * default value is 15 minutes. The minimum value is 5 minutes. If you specify
+ * a value less than 5 minutes, the Batch service rejects the request with an
+ * error; if you are calling the REST API directly, the HTTP status code is 400
+ * (Bad Request).
  * 
- * @member {number} [pool.targetDedicated]
+ * @member {number} [pool.targetDedicated] This property must not be specified
+ * if enableAutoScale is set to true. It is required if enableAutoScale is set
+ * to false.
  * 
- * @member {boolean} [pool.enableAutoScale]
+ * @member {boolean} [pool.enableAutoScale] If false, the targetDedicated
+ * element is required. If true, the autoScaleFormula element is required. The
+ * pool automatically resizes according to the formula. The default value is
+ * false.
  * 
- * @member {string} [pool.autoScaleFormula]
+ * @member {string} [pool.autoScaleFormula] This property must not be specified
+ * if enableAutoScale is set to false. It is required if enableAutoScale is set
+ * to true. The formula is checked for validity before the pool is created. If
+ * the formula is not valid, the Batch service rejects the request with
+ * detailed error information.
  * 
- * @member {moment.duration} [pool.autoScaleEvaluationInterval]
+ * @member {moment.duration} [pool.autoScaleEvaluationInterval] The default
+ * value is 15 minutes. The minimum and maximum value are 5 minutes and 168
+ * hours respectively. If you specify a value less than 5 minutes or greater
+ * than 168 hours, the Batch service rejects the request with an invalid
+ * property value error; if you are calling the REST API directly, the HTTP
+ * status code is 400 (Bad Request).
  * 
- * @member {boolean} [pool.enableInterNodeCommunication]
+ * @member {boolean} [pool.enableInterNodeCommunication] Enabling inter-node
+ * communication limits the maximum size of the pool due to deployment
+ * restrictions on the nodes of the pool. This may result in the pool not
+ * reaching its desired size. The default value is false.
  * 
  * @member {object} [pool.networkConfiguration]
  * 
- * @member {string} [pool.networkConfiguration.subnetId] The ARM resource
- * identifier of the virtual network subnet which the compute nodes of the
- * pool will join. The virtual network must be in the same region and
- * subscription as the Azure Batch account. This property can only be
- * specified for pools created with a cloudServiceConfiguration.
+ * @member {string} [pool.networkConfiguration.subnetId] The virtual network
+ * must be in the same region and subscription as the Azure Batch account. The
+ * specified subnet should have enough free IP addresses to accommodate the
+ * number of nodes in the pool. If the subnet doesn't have enough free IP
+ * addresses, the pool will partially allocate compute nodes, and a resize
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. This property can only be specified
+ * for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [pool.startTask]
  * 
  * @member {string} [pool.startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * under a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [pool.startTask.resourceFiles]
  * 
@@ -1406,15 +1839,41 @@ export interface NetworkConfiguration {
  * 
  * @member {boolean} [pool.startTask.runElevated]
  * 
- * @member {number} [pool.startTask.maxTaskRetryCount]
+ * @member {number} [pool.startTask.maxTaskRetryCount] The Batch service
+ * retries a task if its exit code is nonzero. Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
- * @member {boolean} [pool.startTask.waitForSuccess]
+ * @member {boolean} [pool.startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
- * @member {array} [pool.certificateReferences]
+ * @member {array} [pool.certificateReferences] For Windows compute nodes, the
+ * Batch service installs the certificates to the specified certificate store
+ * and location. For Linux compute nodes, the certificates are stored in a
+ * directory inside the task working directory and an environment variable
+ * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+ * location. For certificates with visibility of remoteuser, a certs directory
+ * is created in the user's home directory (e.g., /home/<user-name>/certs)
+ * where certificates are placed.
  * 
- * @member {array} [pool.applicationPackageReferences]
+ * @member {array} [pool.applicationPackageReferences] This property is
+ * currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
- * @member {array} [pool.metadata]
+ * @member {array} [pool.metadata] The Batch service does not assign any
+ * meaning to metadata; it is solely for the use of user code.
  * 
  */
 export interface AutoPoolSpecification {
@@ -1430,35 +1889,77 @@ export interface AutoPoolSpecification {
  * @constructor
  * @summary Specifies how a job should be assigned to a pool.
  *
- * @member {string} [poolId] The id of an existing pool. All the tasks of the
- * job will run on the specified pool. You must specify either poolId or
- * autoPoolSpecification, but not both.
+ * @member {string} [poolId] The ID of an existing pool. All the tasks of the
+ * job will run on the specified pool. You must ensure that the pool referenced
+ * by this property exists. If the pool does not exist at the time the Batch
+ * service tries to schedule a job, no tasks for the job will run until you
+ * create a pool with that id. Note that the Batch service will not reject the
+ * job request; it will simply not run tasks until the pool exists. You must
+ * specify either the pool ID or the auto pool specification, but not both.
  * 
  * @member {object} [autoPoolSpecification] Characteristics for a temporary
  * 'auto pool'. The Batch service will create this auto pool when the job is
- * submitted. You must specify either poolId or autoPoolSpecification, but
- * not both.
+ * submitted. If auto pool creation fails, the Batch service moves the job to a
+ * completed state, and the pool creation error is set in the job's scheduling
+ * error property. The Batch service manages the lifetime (both creation and,
+ * unless keepAlive is specified, deletion) of the auto pool. Any user actions
+ * that affect the lifetime of the auto pool while the job is active will
+ * result in unexpected behavior. You must specify either the pool ID or the
+ * auto pool specification, but not both.
  * 
- * @member {string} [autoPoolSpecification.autoPoolIdPrefix] The prefix can be
- * up to 20 characters long.
+ * @member {string} [autoPoolSpecification.autoPoolIdPrefix] The Batch service
+ * assigns each auto pool a unique identifier on creation. To distinguish
+ * between pools created for different purposes, you can specify this element
+ * to add a prefix to the id that is assigned. The prefix can be up to 20
+ * characters long.
  * 
- * @member {string} [autoPoolSpecification.poolLifetimeOption] Possible values
- * include: 'jobschedule', 'job', 'unmapped'
+ * @member {string} [autoPoolSpecification.poolLifetimeOption] When the pool
+ * lifetime scope is jobschedule level, the Batch service keeps track of the
+ * last autopool created for the jobschedule, and deletes that pool when the
+ * jobschedule completes. Batch will also delete this pool if the user updates
+ * the auto pool specification in a way that changes this lifetime. Possible
+ * values include: 'jobschedule', 'job', 'unmapped'
  * 
- * @member {boolean} [autoPoolSpecification.keepAlive]
+ * @member {boolean} [autoPoolSpecification.keepAlive] If false, the Batch
+ * service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [autoPoolSpecification.pool]
  * 
- * @member {string} [autoPoolSpecification.pool.displayName]
+ * @member {string} [autoPoolSpecification.pool.displayName] The display name
+ * need not be unique and can contain any Unicode characters up to a maximum
+ * length of 1024.
  * 
- * @member {string} [autoPoolSpecification.pool.vmSize]
+ * @member {string} [autoPoolSpecification.pool.vmSize] For information about
+ * available sizes of virtual machines for Cloud Services pools (pools created
+ * with cloudServiceConfiguration), see Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
- * @member {object} [autoPoolSpecification.pool.cloudServiceConfiguration]
- * This property and VirtualMachineConfiguration are mutually exclusive and
- * one of the properties must be specified.
+ * @member {object} [autoPoolSpecification.pool.cloudServiceConfiguration] This
+ * property must be specified if the pool needs to be created with Azure PaaS
+ * VMs. This property and virtualMachineConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
- * [autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * [autoPoolSpecification.pool.cloudServiceConfiguration.osFamily] Possible
+ * values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 –
+ * OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4, equivalent
+ * to Windows Server 2012 R2. For more information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion] The
@@ -1466,11 +1967,18 @@ export interface AutoPoolSpecification {
  * the specified OS family.
  * 
  * @member {string}
- * [autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * [autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion] This
+ * may differ from targetOSVersion if the pool state is Upgrading. In this case
+ * some virtual machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
  * 
  * @member {object} [autoPoolSpecification.pool.virtualMachineConfiguration]
- * This property and CloudServiceConfiguration are mutually exclusive and one
- * of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * IaaS VMs. This property and cloudServiceConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -1493,59 +2001,95 @@ export interface AutoPoolSpecification {
  * image. If omitted, the default is 'latest'.
  * 
  * @member {string}
- * [autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId]
- * The Batch node agent is a program that runs on each node in the pool, and
+ * [autoPoolSpecification.pool.virtualMachineConfiguration.nodeAgentSKUId] The
+ * Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
- * @member {number} [autoPoolSpecification.pool.maxTasksPerNode]
+ * @member {number} [autoPoolSpecification.pool.maxTasksPerNode] The default
+ * value is 1. The maximum value of this setting depends on the size of the
+ * compute nodes in the pool (the vmSize setting).
  * 
- * @member {object} [autoPoolSpecification.pool.taskSchedulingPolicy] How
- * tasks are distributed among compute nodes in the pool.
+ * @member {object} [autoPoolSpecification.pool.taskSchedulingPolicy] How tasks
+ * are distributed among compute nodes in the pool.
  * 
  * @member {string}
  * [autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType] Possible
  * values include: 'spread', 'pack', 'unmapped'
  * 
- * @member {moment.duration} [autoPoolSpecification.pool.resizeTimeout]
+ * @member {moment.duration} [autoPoolSpecification.pool.resizeTimeout] This
+ * timeout applies only to manual scaling; it has no effect when
+ * enableAutoScale is set to true. The default value is 15 minutes. The minimum
+ * value is 5 minutes. If you specify a value less than 5 minutes, the Batch
+ * service rejects the request with an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
- * @member {number} [autoPoolSpecification.pool.targetDedicated]
+ * @member {number} [autoPoolSpecification.pool.targetDedicated] This property
+ * must not be specified if enableAutoScale is set to true. It is required if
+ * enableAutoScale is set to false.
  * 
- * @member {boolean} [autoPoolSpecification.pool.enableAutoScale]
+ * @member {boolean} [autoPoolSpecification.pool.enableAutoScale] If false, the
+ * targetDedicated element is required. If true, the autoScaleFormula element
+ * is required. The pool automatically resizes according to the formula. The
+ * default value is false.
  * 
- * @member {string} [autoPoolSpecification.pool.autoScaleFormula]
+ * @member {string} [autoPoolSpecification.pool.autoScaleFormula] This property
+ * must not be specified if enableAutoScale is set to false. It is required if
+ * enableAutoScale is set to true. The formula is checked for validity before
+ * the pool is created. If the formula is not valid, the Batch service rejects
+ * the request with detailed error information.
  * 
  * @member {moment.duration}
- * [autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * [autoPoolSpecification.pool.autoScaleEvaluationInterval] The default value
+ * is 15 minutes. The minimum and maximum value are 5 minutes and 168 hours
+ * respectively. If you specify a value less than 5 minutes or greater than 168
+ * hours, the Batch service rejects the request with an invalid property value
+ * error; if you are calling the REST API directly, the HTTP status code is 400
+ * (Bad Request).
  * 
  * @member {boolean} [autoPoolSpecification.pool.enableInterNodeCommunication]
+ * Enabling inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object} [autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string} [autoPoolSpecification.pool.networkConfiguration.subnetId]
- * The ARM resource identifier of the virtual network subnet which the
- * compute nodes of the pool will join. The virtual network must be in the
- * same region and subscription as the Azure Batch account. This property can
- * only be specified for pools created with a cloudServiceConfiguration.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [autoPoolSpecification.pool.startTask]
  * 
  * @member {string} [autoPoolSpecification.pool.startTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array} [autoPoolSpecification.pool.startTask.resourceFiles]
  * 
@@ -1554,14 +2098,40 @@ export interface AutoPoolSpecification {
  * @member {boolean} [autoPoolSpecification.pool.startTask.runElevated]
  * 
  * @member {number} [autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * The Batch service retries a task if its exit code is nonzero. Note that this
+ * value specifically controls the number of retries. The Batch service will
+ * try the task once, and may then retry up to this limit. For example, if the
+ * maximum retry count is 3, Batch tries the task up to 4 times (one initial
+ * try and 3 retries). If the maximum retry count is 0, the Batch service does
+ * not retry the task. If the maximum retry count is -1, the Batch service
+ * retries the task without limit.
  * 
- * @member {boolean} [autoPoolSpecification.pool.startTask.waitForSuccess]
+ * @member {boolean} [autoPoolSpecification.pool.startTask.waitForSuccess] If
+ * true and the start task fails on a compute node, the Batch service retries
+ * the start task up to its maximum retry count (maxTaskRetryCount). If the
+ * task has still not completed successfully after all retries, then the Batch
+ * service marks the compute node unusable, and will not schedule tasks to it.
+ * This condition can be detected via the node state and scheduling error
+ * detail. If false, the Batch service will not wait for the start task to
+ * complete. In this case, other tasks can start executing on the compute node
+ * while the start task is still running; and even if the start task fails, new
+ * tasks will continue to be scheduled on the node. The default is false.
  * 
- * @member {array} [autoPoolSpecification.pool.certificateReferences]
+ * @member {array} [autoPoolSpecification.pool.certificateReferences] For
+ * Windows compute nodes, the Batch service installs the certificates to the
+ * specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array} [autoPoolSpecification.pool.applicationPackageReferences]
+ * This property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
- * @member {array} [autoPoolSpecification.pool.metadata]
+ * @member {array} [autoPoolSpecification.pool.metadata] The Batch service does
+ * not assign any meaning to metadata; it is solely for the use of user code.
  * 
  */
 export interface PoolInformation {
@@ -1576,158 +2146,310 @@ export interface PoolInformation {
  * @summary Specifies details of the jobs to be created on a schedule.
  *
  * @member {number} [priority] The priority of jobs created under this
- * schedule.  Priority values can range from -1000 to 1000, with -1000 being
- * the lowest priority and 1000 being the highest priority. The default value
- * is 0.
+ * schedule. Priority values can range from -1000 to 1000, with -1000 being the
+ * lowest priority and 1000 being the highest priority. The default value is 0.
+ * This priority is used as the default for all jobs under the job schedule.
+ * You can update a job's priority after it has been created using by using the
+ * update job API.
  * 
  * @member {string} [displayName] The display name for jobs created under this
- * schedule. The name need not be unique and can contain any Unicode
- * characters up to a maximum length of 1024.
+ * schedule. The name need not be unique and can contain any Unicode characters
+ * up to a maximum length of 1024.
  * 
  * @member {boolean} [usesTaskDependencies] The flag that determines if this
  * job will use tasks with dependencies.
  * 
+ * @member {string} [onAllTasksComplete] The action the Batch service should
+ * take when all tasks in a job created under this schedule are in the
+ * completed state. Note that if a job contains no tasks, then all tasks are
+ * considered complete. This option is therefore most commonly used with a job
+ * manager task; if you want to use automatic job termination without a job
+ * manager, you should initially set onAllTasksComplete to noaction and update
+ * the job properties to set onAllTasksComplete to terminatejob once you have
+ * finished adding tasks. The default is noaction. Possible values include:
+ * 'noAction', 'terminateJob'
+ * 
+ * @member {string} [onTaskFailure] The action the Batch service should take
+ * when any task fails in a job created under this schedule. A task is
+ * considered to have failed if it completes with a non-zero exit code and has
+ * exhausted its retry count, or if it had a scheduling error. The default is
+ * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * 
  * @member {object} [constraints] The execution constraints for jobs created
  * under this schedule.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If the job does not
+ * complete within the time limit, the Batch service terminates it and any
+ * tasks that are still running. In this case, the termination reason will be
+ * MaxWallClockTimeExpiry. If this property is not specified, there is no time
+ * limit on how long the job may run.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try each
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries a task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * tasks. If the maximum retry count is -1, the Batch service retries tasks
+ * without limit. The default value is 0 (no retries).
  * 
  * @member {object} [jobManagerTask] The details of a Job Manager task to be
- * launched when a job is started under this schedule.
+ * launched when a job is started under this schedule. If the job does not
+ * specify a Job Manager task, the user must explicitly add tasks to the job
+ * using the Task API. If the job does specify a Job Manager task, the Batch
+ * service creates the Job Manager task when the job is created, and will try
+ * to schedule the Job Manager task before scheduling other tasks in the job.
  * 
- * @member {string} [jobManagerTask.id]
+ * @member {string} [jobManagerTask.id] The id can contain any combination of
+ * alphanumeric characters including hyphens and underscores and cannot contain
+ * more than 64 characters.
  * 
- * @member {string} [jobManagerTask.displayName]
+ * @member {string} [jobManagerTask.displayName] It need not be unique and can
+ * contain any Unicode characters up to a maximum length of 1024.
  * 
  * @member {string} [jobManagerTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * under a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobManagerTask.resourceFiles]
+ * @member {array} [jobManagerTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobManagerTask.environmentSettings]
  * 
  * @member {object} [jobManagerTask.constraints]
  * 
- * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime]
+ * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime] If
+ * this is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [jobManagerTask.constraints.retentionTime] The
- * default is infinite.
+ * default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
- * @member {number} [jobManagerTask.constraints.maxTaskRetryCount]
+ * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try the task once, and may then retry up to this limit. For example, if
+ * the maximum retry count is 3, Batch tries the task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobManagerTask.killJobOnCompletion]
+ * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
+ * Manager task completes, the Batch service marks the job as complete. If any
+ * tasks are still running at this time (other than Job Release), those tasks
+ * are terminated. If false, the completion of the Job Manager task does not
+ * affect the job status. In this case, you should either use the
+ * onAllTasksComplete attribute to terminate the job, or have a client or user
+ * terminate the job explicitly. An example of this is if the Job Manager
+ * creates a set of tasks but then takes no further role in their execution.
+ * The default value is true. If you are using the onAllTasksComplete and
+ * onTaskFailure attributes to control job lifetime, and using the job manager
+ * task only to create the tasks for the job (not to monitor progress), then it
+ * is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [jobManagerTask.runElevated]
  * 
- * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks
- * will run on the same compute node for as long as the Job Manager is
- * running. If false, other tasks can run simultaneously with the Job Manager
- * on a compute node. The Job Manager task counts normally against the node's
- * concurrent task limit, so this is only relevant if the node allows
- * multiple concurrent tasks.
+ * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks will
+ * run on the same compute node for as long as the Job Manager is running. If
+ * false, other tasks can run simultaneously with the Job Manager on a compute
+ * node. The Job Manager task counts normally against the node's concurrent
+ * task limit, so this is only relevant if the node allows multiple concurrent
+ * tasks. The default value is true.
  * 
- * @member {array} [jobManagerTask.applicationPackageReferences]
+ * @member {array} [jobManagerTask.applicationPackageReferences] Application
+ * packages are downloaded and deployed to a shared directory, not the task
+ * directory. Therefore, if a referenced package is already on the compute
+ * node, and is up to date, then it is not re-downloaded; the existing copy on
+ * the compute node is used. If a referenced application package cannot be
+ * installed, for example because the package has been deleted or because
+ * download failed, the task fails with a scheduling error. This property is
+ * currently not supported on jobs running on pools created using the
+ * virtualMachineConfiguration (IaaS) property. If a task specifying
+ * applicationPackageReferences runs on such a pool, it fails with a scheduling
+ * error with code TaskSchedulingConstraintFailed.
  * 
  * @member {object} [jobPreparationTask] The Job Preparation task for jobs
- * created under this schedule.
+ * created under this schedule. If a job has a Job Preparation task, the Batch
+ * service will run the Job Preparation task on a compute node before starting
+ * any tasks of that job on that compute node.
  * 
- * @member {string} [jobPreparationTask.id] The id can contain any combination
+ * @member {string} [jobPreparationTask.id] The ID can contain any combination
  * of alphanumeric characters including hyphens and underscores and cannot
- * contain more than 64 characters.
+ * contain more than 64 characters. If you do not specify this property, the
+ * Batch service assigns a default value of 'jobpreparation'. No other task in
+ * the job can have the same id as the Job Preparation task. If you try to
+ * submit a task with the same id, the Batch service rejects the request with
+ * error code TaskIdSameAsJobPreparationTask; if you are calling the REST API
+ * directly, the HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobPreparationTask.commandLine] The command line does not
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
- * such features, you should invoke the shell in the command line, for
- * example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * such features, you should invoke the shell in the command line, for example
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobPreparationTask.resourceFiles]
+ * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobPreparationTask.environmentSettings]
  * 
  * @member {object} [jobPreparationTask.constraints]
  * 
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
+ * If this is not specified, there is no time limit on how long the task may
+ * run.
  * 
- * @member {moment.duration} [jobPreparationTask.constraints.retentionTime]
- * The default is infinite.
+ * @member {moment.duration} [jobPreparationTask.constraints.retentionTime] The
+ * default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
- * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount]
+ * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
+ * that this value specifically controls the number of retries. The Batch
+ * service will try the task once, and may then retry up to this limit. For
+ * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+ * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobPreparationTask.waitForSuccess]
+ * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
+ * Preparation task fails on a compute node, the Batch service retries the Job
+ * Preparation task up to its maximum retry count (as specified in the
+ * constraints element). If the task has still not completed successfully after
+ * all retries, then the Batch service will not schedule tasks of the job to
+ * the compute node. The compute node remains active and eligible to run tasks
+ * of other jobs. If false, the Batch service will not wait for the Job
+ * Preparation task to complete. In this case, other tasks of the job can start
+ * executing on the compute node while the Job Preparation task is still
+ * running; and even if the Job Preparation task fails, new tasks will continue
+ * to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [jobPreparationTask.runElevated]
  * 
- * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
  * @member {object} [jobReleaseTask] The Job Release task for jobs created
- * under this schedule.
+ * under this schedule. The primary purpose of the Job Release task is to undo
+ * changes to compute nodes made by the Job Preparation task. Example
+ * activities include deleting local files, or shutting down services that were
+ * started as part of job preparation. A Job Release task cannot be specified
+ * without also specifying a Job Preparation task for the job. The Batch
+ * service runs the Job Release task on the compute nodes that have run the Job
+ * Preparation task.
  * 
- * @member {string} [jobReleaseTask.id] The id can contain any combination of
- * alphanumeric characters including hyphens and underscores and cannot
- * contain more than 64 characters.
+ * @member {string} [jobReleaseTask.id] The ID can contain any combination of
+ * alphanumeric characters including hyphens and underscores and cannot contain
+ * more than 64 characters. If you do not specify this property, the Batch
+ * service assigns a default value of 'jobrelease'. No other task in the job
+ * can have the same id as the Job Release task. If you try to submit a task
+ * with the same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobReleaseTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * under a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobReleaseTask.resourceFiles]
+ * @member {array} [jobReleaseTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobReleaseTask.environmentSettings]
  * 
  * @member {moment.duration} [jobReleaseTask.maxWallClockTime]
  * 
- * @member {moment.duration} [jobReleaseTask.retentionTime]  The default is
- * infinite.
+ * @member {moment.duration} [jobReleaseTask.retentionTime] The default is
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
  * @member {boolean} [jobReleaseTask.runElevated] The default value is false.
  * 
  * @member {array} [commonEnvironmentSettings] A list of common environment
- * variable settings. These environment variables are set for all tasks in
- * jobs created under this schedule (including the Job Manager, Job
- * Preparation and Job Release tasks).
+ * variable settings. These environment variables are set for all tasks in jobs
+ * created under this schedule (including the Job Manager, Job Preparation and
+ * Job Release tasks). Individual tasks can override an environment setting
+ * specified here by specifying the same setting name with a different value.
  * 
- * @member {object} poolInfo The pool on which the Batch service runs the
- * tasks of jobs created under this schedule.
+ * @member {object} poolInfo The pool on which the Batch service runs the tasks
+ * of jobs created under this schedule.
  * 
- * @member {string} [poolInfo.poolId] You must specify either poolId or
- * autoPoolSpecification, but not both.
+ * @member {string} [poolInfo.poolId] You must ensure that the pool referenced
+ * by this property exists. If the pool does not exist at the time the Batch
+ * service tries to schedule a job, no tasks for the job will run until you
+ * create a pool with that id. Note that the Batch service will not reject the
+ * job request; it will simply not run tasks until the pool exists. You must
+ * specify either the pool ID or the auto pool specification, but not both.
  * 
- * @member {object} [poolInfo.autoPoolSpecification] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {object} [poolInfo.autoPoolSpecification] If auto pool creation
+ * fails, the Batch service moves the job to a completed state, and the pool
+ * creation error is set in the job's scheduling error property. The Batch
+ * service manages the lifetime (both creation and, unless keepAlive is
+ * specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive]
+ * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool]
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.displayName]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
- * property and VirtualMachineConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure PaaS
+ * VMs. This property and virtualMachineConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -1736,11 +2458,19 @@ export interface PoolInformation {
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
- * property and CloudServiceConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure IaaS
+ * VMs. This property and cloudServiceConfiguration are mutually exclusive and
+ * one of the properties must be specified. If neither is specified then the
+ * Batch service returns an error; if you are calling the REST API directly,
+ * the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -1767,18 +2497,23 @@ export interface PoolInformation {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
  * How tasks are distributed among compute nodes in the pool.
@@ -1788,37 +2523,67 @@ export interface PoolInformation {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
+ * only to manual scaling; it has no effect when enableAutoScale is set to
+ * true. The default value is 15 minutes. The minimum value is 5 minutes. If
+ * you specify a value less than 5 minutes, the Batch service rejects the
+ * request with an error; if you are calling the REST API directly, the HTTP
+ * status code is 400 (Bad Request).
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval] The
+ * default value is 15 minutes. The minimum and maximum value are 5 minutes and
+ * 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication] Enabling
+ * inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * ARM resource identifier of the virtual network subnet which the compute
- * nodes of the pool will join. The virtual network must be in the same
- * region and subscription as the Azure Batch account. This property can only
- * be specified for pools created with a cloudServiceConfiguration.
+ * virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * 
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.startTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
  * MyCommand" in Linux.
  * 
  * @member {array}
@@ -1831,26 +2596,56 @@ export interface PoolInformation {
  * [poolInfo.autoPoolSpecification.pool.startTask.runElevated]
  * 
  * @member {number}
- * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
+ * service retries a task if its exit code is nonzero. Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] If true and
+ * the start task fails on a compute node, the Batch service retries the start
+ * task up to its maximum retry count (maxTaskRetryCount). If the task has
+ * still not completed successfully after all retries, then the Batch service
+ * marks the compute node unusable, and will not schedule tasks to it. This
+ * condition can be detected via the node state and scheduling error detail. If
+ * false, the Batch service will not wait for the start task to complete. In
+ * this case, other tasks can start executing on the compute node while the
+ * start task is still running; and even if the start task fails, new tasks
+ * will continue to be scheduled on the node. The default is false.
  * 
  * @member {array} [poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
+ * property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
- * @member {array} [poolInfo.autoPoolSpecification.pool.metadata]
+ * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with each
- * job created under this schedule as metadata.
+ * job created under this schedule as metadata. The Batch service does not
+ * assign any meaning to metadata; it is solely for the use of user code.
  * 
  */
 export interface JobSpecification {
   priority?: number;
   displayName?: string;
   usesTaskDependencies?: boolean;
+  onAllTasksComplete?: string;
+  onTaskFailure?: string;
   constraints?: JobConstraints;
   jobManagerTask?: JobManagerTask;
   jobPreparationTask?: JobPreparationTask;
@@ -1867,7 +2662,7 @@ export interface JobSpecification {
  * @summary Information about the most recent job to run under the job
  * schedule.
  *
- * @member {string} [id] The id of the job.
+ * @member {string} [id] The ID of the job.
  * 
  * @member {string} [url] The URL of the job.
  * 
@@ -1881,21 +2676,25 @@ export interface RecentJob {
  * @class
  * Initializes a new instance of the JobScheduleExecutionInformation class.
  * @constructor
- * @summary Specifies how tasks should be run in a job associated with a job
- * schedule.
+ * @summary Contains information about jobs that have been and will be run
+ * under a job schedule.
  *
  * @member {date} [nextRunTime] The next time at which a job will be created
- * under this schedule.
+ * under this schedule. This property is meaningful only if the schedule is in
+ * the active state when the time comes around. For example, if the schedule is
+ * disabled, no job will be created at nextRunTime unless the job is enabled
+ * before then.
  * 
- * @member {object} [recentJob] Information about the most recent job under
- * the job schedule.
+ * @member {object} [recentJob] Information about the most recent job under the
+ * job schedule. This property is present only if the at least one job has run
+ * under the schedule.
  * 
  * @member {string} [recentJob.id]
  * 
  * @member {string} [recentJob.url]
  * 
- * @member {date} [endTime] The time at which the schedule ended. This
- * property is set only if the job schedule is in the completed state.
+ * @member {date} [endTime] The time at which the schedule ended. This property
+ * is set only if the job schedule is in the completed state.
  * 
  */
 export interface JobScheduleExecutionInformation {
@@ -1924,40 +2723,45 @@ export interface JobScheduleExecutionInformation {
  * created under the schedule.
  * 
  * @member {moment.duration} kernelCPUTime The total kernel mode CPU time
- * (summed across all cores and all compute nodes) consumed by all tasks in
- * all jobs created under the schedule.
+ * (summed across all cores and all compute nodes) consumed by all tasks in all
+ * jobs created under the schedule.
  * 
- * @member {moment.duration} wallClockTime The total wall clock time of all
- * the tasks in all the jobs created under the schedule.
+ * @member {moment.duration} wallClockTime The total wall clock time of all the
+ * tasks in all the jobs created under the schedule. The wall clock time is the
+ * elapsed time from when the task started running on a compute node to when it
+ * finished (or to the last time the statistics were updated, if the task had
+ * not finished by then). If a task was retried, this includes the wall clock
+ * time of all the task retries.
  * 
  * @member {number} readIOps The total number of disk read operations made by
  * all tasks in all jobs created under the schedule.
  * 
- * @member {number} writeIOps The total number of disk write operations made
- * by all tasks in all jobs created under the schedule.
+ * @member {number} writeIOps The total number of disk write operations made by
+ * all tasks in all jobs created under the schedule.
  * 
  * @member {number} readIOGiB The total gibibytes read from disk by all tasks
  * in all jobs created under the schedule.
  * 
- * @member {number} writeIOGiB The total gibibytes written to disk by all
- * tasks in all jobs created under the schedule.
+ * @member {number} writeIOGiB The total gibibytes written to disk by all tasks
+ * in all jobs created under the schedule.
  * 
  * @member {number} numSucceededTasks The total number of tasks successfully
- * completed during the given time range in jobs created under the schedule.
- * A task completes successfully if it returns exit code 0.
+ * completed during the given time range in jobs created under the schedule. A
+ * task completes successfully if it returns exit code 0.
  * 
- * @member {number} numFailedTasks The total number of tasks that failed
- * during the given time range in jobs created under the schedule. A task
- * fails if it exhausts its maximum retry count without returning exit code 0.
+ * @member {number} numFailedTasks The total number of tasks that failed during
+ * the given time range in jobs created under the schedule. A task fails if it
+ * exhausts its maximum retry count without returning exit code 0.
  * 
- * @member {number} numTaskRetries The total number of retries during the
- * given time range on all tasks in all jobs created under the schedule.
+ * @member {number} numTaskRetries The total number of retries during the given
+ * time range on all tasks in all jobs created under the schedule.
  * 
  * @member {moment.duration} waitTime The total wait time of all tasks in all
- * jobs created under the schedule. The wait time for a task is defined as
- * the elapsed time between the creation of the task and the start of task
+ * jobs created under the schedule. The wait time for a task is defined as the
+ * elapsed time between the creation of the task and the start of task
  * execution. (If the task is retried due to failures, the wait time is the
- * time to the most recent task execution.).
+ * time to the most recent task execution.). This value is only reported in the
+ * account lifetime statistics; it is not included in the job statistics.
  * 
  */
 export interface JobScheduleStatistics {
@@ -1981,8 +2785,8 @@ export interface JobScheduleStatistics {
  * @class
  * Initializes a new instance of the CloudJobSchedule class.
  * @constructor
- * @summary A job schedule that allows recurring jobs by specifying when to
- * run jobs and a specification used to create each job.
+ * @summary A job schedule that allows recurring jobs by specifying when to run
+ * jobs and a specification used to create each job.
  *
  * @member {string} [id] A string that uniquely identifies the schedule within
  * the account. It is common to use a GUID for the id.
@@ -1991,25 +2795,33 @@ export interface JobScheduleStatistics {
  * 
  * @member {string} [url] The URL of the job schedule.
  * 
- * @member {string} [eTag] The ETag of the job schedule.
+ * @member {string} [eTag] The ETag of the job schedule. This is an opaque
+ * string. You can use it to detect whether the job schedule has changed
+ * between requests. In particular, you can be pass the ETag with an Update Job
+ * Schedule request to specify that your changes should take effect only if
+ * nobody else has modified the schedule in the meantime.
  * 
  * @member {date} [lastModified] The last modified time of the job schedule.
+ * This is the last time at which the schedule level data, such as the job
+ * specification or recurrence information, changed. It does not factor in
+ * job-level changes such as new jobs being created or jobs changing state.
  * 
  * @member {date} [creationTime] The creation time of the job schedule.
  * 
  * @member {string} [state] The current state of the job schedule. Possible
- * values include: 'active', 'completed', 'disabled', 'terminating',
- * 'deleting'
+ * values include: 'active', 'completed', 'disabled', 'terminating', 'deleting'
  * 
  * @member {date} [stateTransitionTime] The time at which the job schedule
  * entered the current state.
  * 
  * @member {string} [previousState] The previous state of the job schedule.
- * Possible values include: 'active', 'completed', 'disabled', 'terminating',
- * 'deleting'
+ * This property is not present if the job schedule is in its initial active
+ * state. Possible values include: 'active', 'completed', 'disabled',
+ * 'terminating', 'deleting'
  * 
  * @member {date} [previousStateTransitionTime] The time at which the job
- * schedule entered its previous state.
+ * schedule entered its previous state. This property is not present if the job
+ * schedule is in its initial active state.
  * 
  * @member {object} [schedule] The schedule according to which jobs will be
  * created.
@@ -2017,176 +2829,349 @@ export interface JobScheduleStatistics {
  * @member {date} [schedule.doNotRunUntil] If you do not specify a
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
- * @member {date} [schedule.doNotRunAfter]
+ * @member {date} [schedule.doNotRunAfter] If you do not specify a
+ * doNotRunAfter time, and you are creating a recurring job schedule, the job
+ * schedule will remain active until you explicitly terminate it.
  * 
  * @member {moment.duration} [schedule.startWindow] If a job is not created
- * within the startWindow interval, then the 'opportunity' is lost; no job
- * will be created until the next recurrence of the schedule.
+ * within the startWindow interval, then the 'opportunity' is lost; no job will
+ * be created until the next recurrence of the schedule. If the schedule is
+ * recurring, and the startWindow is longer than the recurrence interval, then
+ * this is equivalent to an infinite startWindow, because the job that is 'due'
+ * in one recurrenceInterval is not carried forward into the next recurrence
+ * interval. The default is infinite. The minimum value is 1 minute. If you
+ * specify a lower value, the Batch service rejects the schedule with an error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
- * @member {moment.duration} [schedule.recurrenceInterval]
+ * @member {moment.duration} [schedule.recurrenceInterval] Because a job
+ * schedule can have at most one active job under it at any given time, if it
+ * is time to create a new job under a job schedule, but the previous job is
+ * still running, the Batch service will not create the new job until the
+ * previous job finishes. If the previous job does not finish within the
+ * startWindow period of the new recurrenceInterval, then no new job will be
+ * scheduled for that interval. For recurring jobs, you should normally specify
+ * a jobManagerTask in the jobSpecification. If you do not use jobManagerTask,
+ * you will need an external process to monitor when jobs are created, add
+ * tasks to the jobs and terminate the jobs ready for the next recurrence. The
+ * default is that the schedule does not recur: one job is created, within the
+ * startWindow after the doNotRunUntil time, and the schedule is complete as
+ * soon as that job finishes. The minimum value is 1 minute. If you specify a
+ * lower value, the Batch service rejects the schedule with an error; if you
+ * are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
- * @member {object} [jobSpecification] The details of the jobs to be created
- * on this schedule.
+ * @member {object} [jobSpecification] The details of the jobs to be created on
+ * this schedule.
  * 
- * @member {number} [jobSpecification.priority]  Priority values can range
- * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
- * the highest priority. The default value is 0.
+ * @member {number} [jobSpecification.priority] Priority values can range from
+ * -1000 to 1000, with -1000 being the lowest priority and 1000 being the
+ * highest priority. The default value is 0. This priority is used as the
+ * default for all jobs under the job schedule. You can update a job's priority
+ * after it has been created using by using the update job API.
  * 
  * @member {string} [jobSpecification.displayName] The name need not be unique
  * and can contain any Unicode characters up to a maximum length of 1024.
  * 
  * @member {boolean} [jobSpecification.usesTaskDependencies]
  * 
+ * @member {string} [jobSpecification.onAllTasksComplete] Note that if a job
+ * contains no tasks, then all tasks are considered complete. This option is
+ * therefore most commonly used with a job manager task; if you want to use
+ * automatic job termination without a job manager, you should initially set
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * 
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
+ * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * 
  * @member {object} [jobSpecification.constraints]
  * 
- * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
+ * the job does not complete within the time limit, the Batch service
+ * terminates it and any tasks that are still running. In this case, the
+ * termination reason will be MaxWallClockTimeExpiry. If this property is not
+ * specified, there is no time limit on how long the job may run.
  * 
- * @member {number} [jobSpecification.constraints.maxTaskRetryCount]
+ * @member {number} [jobSpecification.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try each task once, and may then retry up to this limit. For example,
+ * if the maximum retry count is 3, Batch tries a task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry tasks. If the maximum retry count is -1, the Batch
+ * service retries tasks without limit. The default value is 0 (no retries).
  * 
- * @member {object} [jobSpecification.jobManagerTask]
+ * @member {object} [jobSpecification.jobManagerTask] If the job does not
+ * specify a Job Manager task, the user must explicitly add tasks to the job
+ * using the Task API. If the job does specify a Job Manager task, the Batch
+ * service creates the Job Manager task when the job is created, and will try
+ * to schedule the Job Manager task before scheduling other tasks in the job.
  * 
- * @member {string} [jobSpecification.jobManagerTask.id]
+ * @member {string} [jobSpecification.jobManagerTask.id] The id can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters.
  * 
- * @member {string} [jobSpecification.jobManagerTask.displayName]
+ * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
+ * be unique and can contain any Unicode characters up to a maximum length of
+ * 1024.
  * 
  * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobManagerTask.resourceFiles]
+ * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobManagerTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
+ * not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
  * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try the task once, and may then retry up to this limit. For example, if
+ * the maximum retry count is 3, Batch tries the task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion]
+ * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
+ * true, when the Job Manager task completes, the Batch service marks the job
+ * as complete. If any tasks are still running at this time (other than Job
+ * Release), those tasks are terminated. If false, the completion of the Job
+ * Manager task does not affect the job status. In this case, you should either
+ * use the onAllTasksComplete attribute to terminate the job, or have a client
+ * or user terminate the job explicitly. An example of this is if the Job
+ * Manager creates a set of tasks but then takes no further role in their
+ * execution. The default value is true. If you are using the
+ * onAllTasksComplete and onTaskFailure attributes to control job lifetime, and
+ * using the job manager task only to create the tasks for the job (not to
+ * monitor progress), then it is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [jobSpecification.jobManagerTask.runElevated]
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true,
- * no other tasks will run on the same compute node for as long as the Job
- * Manager is running. If false, other tasks can run simultaneously with the
- * Job Manager on a compute node. The Job Manager task counts normally
- * against the node's concurrent task limit, so this is only relevant if the
- * node allows multiple concurrent tasks.
+ * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
+ * other tasks will run on the same compute node for as long as the Job Manager
+ * is running. If false, other tasks can run simultaneously with the Job
+ * Manager on a compute node. The Job Manager task counts normally against the
+ * node's concurrent task limit, so this is only relevant if the node allows
+ * multiple concurrent tasks. The default value is true.
  * 
  * @member {array}
- * [jobSpecification.jobManagerTask.applicationPackageReferences]
+ * [jobSpecification.jobManagerTask.applicationPackageReferences] Application
+ * packages are downloaded and deployed to a shared directory, not the task
+ * directory. Therefore, if a referenced package is already on the compute
+ * node, and is up to date, then it is not re-downloaded; the existing copy on
+ * the compute node is used. If a referenced application package cannot be
+ * installed, for example because the package has been deleted or because
+ * download failed, the task fails with a scheduling error. This property is
+ * currently not supported on jobs running on pools created using the
+ * virtualMachineConfiguration (IaaS) property. If a task specifying
+ * applicationPackageReferences runs on such a pool, it fails with a scheduling
+ * error with code TaskSchedulingConstraintFailed.
  * 
- * @member {object} [jobSpecification.jobPreparationTask]
+ * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
+ * Preparation task, the Batch service will run the Job Preparation task on a
+ * compute node before starting any tasks of that job on that compute node.
  * 
- * @member {string} [jobSpecification.jobPreparationTask.id] The id can
- * contain any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobPreparationTask.id] The ID can contain
+ * any combination of alphanumeric characters including hyphens and underscores
+ * and cannot contain more than 64 characters. If you do not specify this
+ * property, the Batch service assigns a default value of 'jobpreparation'. No
+ * other task in the job can have the same id as the Job Preparation task. If
+ * you try to submit a task with the same id, the Batch service rejects the
+ * request with error code TaskIdSameAsJobPreparationTask; if you are calling
+ * the REST API directly, the HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
- * @member {array} [jobSpecification.jobPreparationTask.resourceFiles]
+ * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
+ * listed under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime] If this
+ * is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.retentionTime] The
- * default is infinite.
+ * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
+ * is infinite, i.e. the task directory will be retained until the compute node
+ * is removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
+ * that this value specifically controls the number of retries. The Batch
+ * service will try the task once, and may then retry up to this limit. For
+ * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+ * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess]
+ * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
+ * true and the Job Preparation task fails on a compute node, the Batch service
+ * retries the Job Preparation task up to its maximum retry count (as specified
+ * in the constraints element). If the task has still not completed
+ * successfully after all retries, then the Batch service will not schedule
+ * tasks of the job to the compute node. The compute node remains active and
+ * eligible to run tasks of other jobs. If false, the Batch service will not
+ * wait for the Job Preparation task to complete. In this case, other tasks of
+ * the job can start executing on the compute node while the Job Preparation
+ * task is still running; and even if the Job Preparation task fails, new tasks
+ * will continue to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [jobSpecification.jobPreparationTask.runElevated]
  * 
  * @member {boolean}
- * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
- * @member {object} [jobSpecification.jobReleaseTask]
+ * @member {object} [jobSpecification.jobReleaseTask] The primary purpose of
+ * the Job Release task is to undo changes to compute nodes made by the Job
+ * Preparation task. Example activities include deleting local files, or
+ * shutting down services that were started as part of job preparation. A Job
+ * Release task cannot be specified without also specifying a Job Preparation
+ * task for the job. The Batch service runs the Job Release task on the compute
+ * nodes that have run the Job Preparation task.
  * 
- * @member {string} [jobSpecification.jobReleaseTask.id] The id can contain
- * any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobReleaseTask.id] The ID can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters. If you do not specify this property,
+ * the Batch service assigns a default value of 'jobrelease'. No other task in
+ * the job can have the same id as the Job Release task. If you try to submit a
+ * task with the same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobReleaseTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobReleaseTask.resourceFiles]
+ * @member {array} [jobSpecification.jobReleaseTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * 
- * @member {moment.duration}
- * [jobSpecification.jobReleaseTask.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite.
+ * The default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] The default
  * value is false.
  * 
- * @member {array} [jobSpecification.commonEnvironmentSettings]
+ * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
+ * tasks can override an environment setting specified here by specifying the
+ * same setting name with a different value.
  * 
  * @member {object} [jobSpecification.poolInfo]
  * 
- * @member {string} [jobSpecification.poolInfo.poolId] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {string} [jobSpecification.poolInfo.poolId] You must ensure that the
+ * pool referenced by this property exists. If the pool does not exist at the
+ * time the Batch service tries to schedule a job, no tasks for the job will
+ * run until you create a pool with that id. Note that the Batch service will
+ * not reject the job request; it will simply not run tasks until the pool
+ * exists. You must specify either the pool ID or the auto pool specification,
+ * but not both.
  * 
- * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] You must
- * specify either poolId or autoPoolSpecification, but not both.
+ * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] If auto
+ * pool creation fails, the Batch service moves the job to a completed state,
+ * and the pool creation error is set in the job's scheduling error property.
+ * The Batch service manages the lifetime (both creation and, unless keepAlive
+ * is specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive]
+ * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [jobSpecification.poolInfo.autoPoolSpecification.pool]
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
- * This property and VirtualMachineConfiguration are mutually exclusive and
- * one of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * PaaS VMs. This property and virtualMachineConfiguration are mutually
+ * exclusive and one of the properties must be specified. If neither is
+ * specified then the Batch service returns an error; if you are calling the
+ * REST API directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -2195,11 +3180,19 @@ export interface JobScheduleStatistics {
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
- * This property and CloudServiceConfiguration are mutually exclusive and one
- * of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * IaaS VMs. This property and cloudServiceConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -2226,19 +3219,24 @@ export interface JobScheduleStatistics {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -2249,32 +3247,63 @@ export interface JobScheduleStatistics {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
+ * timeout applies only to manual scaling; it has no effect when
+ * enableAutoScale is set to true. The default value is 15 minutes. The minimum
+ * value is 5 minutes. If you specify a value less than 5 minutes, the Batch
+ * service rejects the request with an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * The default value is 15 minutes. The minimum and maximum value are 5 minutes
+ * and 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * Enabling inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
- * The ARM resource identifier of the virtual network subnet which the
- * compute nodes of the pool will join. The virtual network must be in the
- * same region and subscription as the Azure Batch account. This property can
- * only be specified for pools created with a cloudServiceConfiguration.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -2283,9 +3312,9 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
  * The command line does not run under a shell, and therefore cannot take
  * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -2298,27 +3327,60 @@ export interface JobScheduleStatistics {
  * 
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * The Batch service retries a task if its exit code is nonzero. Note that this
+ * value specifically controls the number of retries. The Batch service will
+ * try the task once, and may then retry up to this limit. For example, if the
+ * maximum retry count is 3, Batch tries the task up to 4 times (one initial
+ * try and 3 retries). If the maximum retry count is 0, the Batch service does
+ * not retry the task. If the maximum retry count is -1, the Batch service
+ * retries the task without limit.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * If true and the start task fails on a compute node, the Batch service
+ * retries the start task up to its maximum retry count (maxTaskRetryCount). If
+ * the task has still not completed successfully after all retries, then the
+ * Batch service marks the compute node unusable, and will not schedule tasks
+ * to it. This condition can be detected via the node state and scheduling
+ * error detail. If false, the Batch service will not wait for the start task
+ * to complete. In this case, other tasks can start executing on the compute
+ * node while the start task is still running; and even if the start task
+ * fails, new tasks will continue to be scheduled on the node. The default is
+ * false.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * This property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
  * @member {array}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
- * @member {array} [jobSpecification.metadata]
+ * @member {array} [jobSpecification.metadata] The Batch service does not
+ * assign any meaning to metadata; it is solely for the use of user code.
  * 
  * @member {object} [executionInfo] Information about jobs that have been and
  * will be run under this schedule.
  * 
- * @member {date} [executionInfo.nextRunTime]
+ * @member {date} [executionInfo.nextRunTime] This property is meaningful only
+ * if the schedule is in the active state when the time comes around. For
+ * example, if the schedule is disabled, no job will be created at nextRunTime
+ * unless the job is enabled before then.
  * 
- * @member {object} [executionInfo.recentJob]
+ * @member {object} [executionInfo.recentJob] This property is present only if
+ * the at least one job has run under the schedule.
  * 
  * @member {string} [executionInfo.recentJob.id]
  * 
@@ -2328,7 +3390,8 @@ export interface JobScheduleStatistics {
  * schedule is in the completed state.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * schedule as metadata.
+ * schedule as metadata. The Batch service does not assign any meaning to
+ * metadata; it is solely for the use of user code.
  * 
  * @member {object} [stats] The lifetime resource usage statistics for the job
  * schedule.
@@ -2343,7 +3406,11 @@ export interface JobScheduleStatistics {
  * 
  * @member {moment.duration} [stats.kernelCPUTime]
  * 
- * @member {moment.duration} [stats.wallClockTime]
+ * @member {moment.duration} [stats.wallClockTime] The wall clock time is the
+ * elapsed time from when the task started running on a compute node to when it
+ * finished (or to the last time the statistics were updated, if the task had
+ * not finished by then). If a task was retried, this includes the wall clock
+ * time of all the task retries.
  * 
  * @member {number} [stats.readIOps]
  * 
@@ -2359,7 +3426,8 @@ export interface JobScheduleStatistics {
  * 
  * @member {number} [stats.numTaskRetries]
  * 
- * @member {moment.duration} [stats.waitTime]
+ * @member {moment.duration} [stats.waitTime] This value is only reported in
+ * the account lifetime statistics; it is not included in the job statistics.
  * 
  */
 export interface CloudJobSchedule {
@@ -2384,13 +3452,18 @@ export interface CloudJobSchedule {
  * @class
  * Initializes a new instance of the JobScheduleAddParameter class.
  * @constructor
- * @summary A job schedule that allows recurring jobs by specifying when to
- * run jobs and a specification used to create each job.
+ * @summary A job schedule that allows recurring jobs by specifying when to run
+ * jobs and a specification used to create each job.
  *
  * @member {string} id A string that uniquely identifies the schedule within
- * the account.
+ * the account. The ID can contain any combination of alphanumeric characters
+ * including hyphens and underscores, and cannot contain more than 64
+ * characters. The id is case-preserving and case-insensitive (that is, you may
+ * not have two ids within an account that differ only by case).
  * 
- * @member {string} [displayName] The display name for the schedule.
+ * @member {string} [displayName] The display name for the schedule. The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
  * @member {object} schedule The schedule according to which jobs will be
  * created.
@@ -2398,176 +3471,349 @@ export interface CloudJobSchedule {
  * @member {date} [schedule.doNotRunUntil] If you do not specify a
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
- * @member {date} [schedule.doNotRunAfter]
+ * @member {date} [schedule.doNotRunAfter] If you do not specify a
+ * doNotRunAfter time, and you are creating a recurring job schedule, the job
+ * schedule will remain active until you explicitly terminate it.
  * 
  * @member {moment.duration} [schedule.startWindow] If a job is not created
- * within the startWindow interval, then the 'opportunity' is lost; no job
- * will be created until the next recurrence of the schedule.
+ * within the startWindow interval, then the 'opportunity' is lost; no job will
+ * be created until the next recurrence of the schedule. If the schedule is
+ * recurring, and the startWindow is longer than the recurrence interval, then
+ * this is equivalent to an infinite startWindow, because the job that is 'due'
+ * in one recurrenceInterval is not carried forward into the next recurrence
+ * interval. The default is infinite. The minimum value is 1 minute. If you
+ * specify a lower value, the Batch service rejects the schedule with an error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
- * @member {moment.duration} [schedule.recurrenceInterval]
+ * @member {moment.duration} [schedule.recurrenceInterval] Because a job
+ * schedule can have at most one active job under it at any given time, if it
+ * is time to create a new job under a job schedule, but the previous job is
+ * still running, the Batch service will not create the new job until the
+ * previous job finishes. If the previous job does not finish within the
+ * startWindow period of the new recurrenceInterval, then no new job will be
+ * scheduled for that interval. For recurring jobs, you should normally specify
+ * a jobManagerTask in the jobSpecification. If you do not use jobManagerTask,
+ * you will need an external process to monitor when jobs are created, add
+ * tasks to the jobs and terminate the jobs ready for the next recurrence. The
+ * default is that the schedule does not recur: one job is created, within the
+ * startWindow after the doNotRunUntil time, and the schedule is complete as
+ * soon as that job finishes. The minimum value is 1 minute. If you specify a
+ * lower value, the Batch service rejects the schedule with an error; if you
+ * are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
  * @member {object} jobSpecification The details of the jobs to be created on
  * this schedule.
  * 
- * @member {number} [jobSpecification.priority]  Priority values can range
- * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
- * the highest priority. The default value is 0.
+ * @member {number} [jobSpecification.priority] Priority values can range from
+ * -1000 to 1000, with -1000 being the lowest priority and 1000 being the
+ * highest priority. The default value is 0. This priority is used as the
+ * default for all jobs under the job schedule. You can update a job's priority
+ * after it has been created using by using the update job API.
  * 
  * @member {string} [jobSpecification.displayName] The name need not be unique
  * and can contain any Unicode characters up to a maximum length of 1024.
  * 
  * @member {boolean} [jobSpecification.usesTaskDependencies]
  * 
+ * @member {string} [jobSpecification.onAllTasksComplete] Note that if a job
+ * contains no tasks, then all tasks are considered complete. This option is
+ * therefore most commonly used with a job manager task; if you want to use
+ * automatic job termination without a job manager, you should initially set
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * 
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
+ * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * 
  * @member {object} [jobSpecification.constraints]
  * 
- * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
+ * the job does not complete within the time limit, the Batch service
+ * terminates it and any tasks that are still running. In this case, the
+ * termination reason will be MaxWallClockTimeExpiry. If this property is not
+ * specified, there is no time limit on how long the job may run.
  * 
- * @member {number} [jobSpecification.constraints.maxTaskRetryCount]
+ * @member {number} [jobSpecification.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try each task once, and may then retry up to this limit. For example,
+ * if the maximum retry count is 3, Batch tries a task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry tasks. If the maximum retry count is -1, the Batch
+ * service retries tasks without limit. The default value is 0 (no retries).
  * 
- * @member {object} [jobSpecification.jobManagerTask]
+ * @member {object} [jobSpecification.jobManagerTask] If the job does not
+ * specify a Job Manager task, the user must explicitly add tasks to the job
+ * using the Task API. If the job does specify a Job Manager task, the Batch
+ * service creates the Job Manager task when the job is created, and will try
+ * to schedule the Job Manager task before scheduling other tasks in the job.
  * 
- * @member {string} [jobSpecification.jobManagerTask.id]
+ * @member {string} [jobSpecification.jobManagerTask.id] The id can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters.
  * 
- * @member {string} [jobSpecification.jobManagerTask.displayName]
+ * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
+ * be unique and can contain any Unicode characters up to a maximum length of
+ * 1024.
  * 
  * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobManagerTask.resourceFiles]
+ * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobManagerTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
+ * not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
  * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try the task once, and may then retry up to this limit. For example, if
+ * the maximum retry count is 3, Batch tries the task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion]
+ * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
+ * true, when the Job Manager task completes, the Batch service marks the job
+ * as complete. If any tasks are still running at this time (other than Job
+ * Release), those tasks are terminated. If false, the completion of the Job
+ * Manager task does not affect the job status. In this case, you should either
+ * use the onAllTasksComplete attribute to terminate the job, or have a client
+ * or user terminate the job explicitly. An example of this is if the Job
+ * Manager creates a set of tasks but then takes no further role in their
+ * execution. The default value is true. If you are using the
+ * onAllTasksComplete and onTaskFailure attributes to control job lifetime, and
+ * using the job manager task only to create the tasks for the job (not to
+ * monitor progress), then it is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [jobSpecification.jobManagerTask.runElevated]
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true,
- * no other tasks will run on the same compute node for as long as the Job
- * Manager is running. If false, other tasks can run simultaneously with the
- * Job Manager on a compute node. The Job Manager task counts normally
- * against the node's concurrent task limit, so this is only relevant if the
- * node allows multiple concurrent tasks.
+ * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
+ * other tasks will run on the same compute node for as long as the Job Manager
+ * is running. If false, other tasks can run simultaneously with the Job
+ * Manager on a compute node. The Job Manager task counts normally against the
+ * node's concurrent task limit, so this is only relevant if the node allows
+ * multiple concurrent tasks. The default value is true.
  * 
  * @member {array}
- * [jobSpecification.jobManagerTask.applicationPackageReferences]
+ * [jobSpecification.jobManagerTask.applicationPackageReferences] Application
+ * packages are downloaded and deployed to a shared directory, not the task
+ * directory. Therefore, if a referenced package is already on the compute
+ * node, and is up to date, then it is not re-downloaded; the existing copy on
+ * the compute node is used. If a referenced application package cannot be
+ * installed, for example because the package has been deleted or because
+ * download failed, the task fails with a scheduling error. This property is
+ * currently not supported on jobs running on pools created using the
+ * virtualMachineConfiguration (IaaS) property. If a task specifying
+ * applicationPackageReferences runs on such a pool, it fails with a scheduling
+ * error with code TaskSchedulingConstraintFailed.
  * 
- * @member {object} [jobSpecification.jobPreparationTask]
+ * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
+ * Preparation task, the Batch service will run the Job Preparation task on a
+ * compute node before starting any tasks of that job on that compute node.
  * 
- * @member {string} [jobSpecification.jobPreparationTask.id] The id can
- * contain any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobPreparationTask.id] The ID can contain
+ * any combination of alphanumeric characters including hyphens and underscores
+ * and cannot contain more than 64 characters. If you do not specify this
+ * property, the Batch service assigns a default value of 'jobpreparation'. No
+ * other task in the job can have the same id as the Job Preparation task. If
+ * you try to submit a task with the same id, the Batch service rejects the
+ * request with error code TaskIdSameAsJobPreparationTask; if you are calling
+ * the REST API directly, the HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
- * @member {array} [jobSpecification.jobPreparationTask.resourceFiles]
+ * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
+ * listed under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime] If this
+ * is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.retentionTime] The
- * default is infinite.
+ * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
+ * is infinite, i.e. the task directory will be retained until the compute node
+ * is removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
+ * that this value specifically controls the number of retries. The Batch
+ * service will try the task once, and may then retry up to this limit. For
+ * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+ * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess]
+ * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
+ * true and the Job Preparation task fails on a compute node, the Batch service
+ * retries the Job Preparation task up to its maximum retry count (as specified
+ * in the constraints element). If the task has still not completed
+ * successfully after all retries, then the Batch service will not schedule
+ * tasks of the job to the compute node. The compute node remains active and
+ * eligible to run tasks of other jobs. If false, the Batch service will not
+ * wait for the Job Preparation task to complete. In this case, other tasks of
+ * the job can start executing on the compute node while the Job Preparation
+ * task is still running; and even if the Job Preparation task fails, new tasks
+ * will continue to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [jobSpecification.jobPreparationTask.runElevated]
  * 
  * @member {boolean}
- * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
- * @member {object} [jobSpecification.jobReleaseTask]
+ * @member {object} [jobSpecification.jobReleaseTask] The primary purpose of
+ * the Job Release task is to undo changes to compute nodes made by the Job
+ * Preparation task. Example activities include deleting local files, or
+ * shutting down services that were started as part of job preparation. A Job
+ * Release task cannot be specified without also specifying a Job Preparation
+ * task for the job. The Batch service runs the Job Release task on the compute
+ * nodes that have run the Job Preparation task.
  * 
- * @member {string} [jobSpecification.jobReleaseTask.id] The id can contain
- * any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobReleaseTask.id] The ID can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters. If you do not specify this property,
+ * the Batch service assigns a default value of 'jobrelease'. No other task in
+ * the job can have the same id as the Job Release task. If you try to submit a
+ * task with the same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobReleaseTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobReleaseTask.resourceFiles]
+ * @member {array} [jobSpecification.jobReleaseTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * 
- * @member {moment.duration}
- * [jobSpecification.jobReleaseTask.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite.
+ * The default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] The default
  * value is false.
  * 
- * @member {array} [jobSpecification.commonEnvironmentSettings]
+ * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
+ * tasks can override an environment setting specified here by specifying the
+ * same setting name with a different value.
  * 
  * @member {object} [jobSpecification.poolInfo]
  * 
- * @member {string} [jobSpecification.poolInfo.poolId] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {string} [jobSpecification.poolInfo.poolId] You must ensure that the
+ * pool referenced by this property exists. If the pool does not exist at the
+ * time the Batch service tries to schedule a job, no tasks for the job will
+ * run until you create a pool with that id. Note that the Batch service will
+ * not reject the job request; it will simply not run tasks until the pool
+ * exists. You must specify either the pool ID or the auto pool specification,
+ * but not both.
  * 
- * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] You must
- * specify either poolId or autoPoolSpecification, but not both.
+ * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] If auto
+ * pool creation fails, the Batch service moves the job to a completed state,
+ * and the pool creation error is set in the job's scheduling error property.
+ * The Batch service manages the lifetime (both creation and, unless keepAlive
+ * is specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive]
+ * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [jobSpecification.poolInfo.autoPoolSpecification.pool]
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
- * This property and VirtualMachineConfiguration are mutually exclusive and
- * one of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * PaaS VMs. This property and virtualMachineConfiguration are mutually
+ * exclusive and one of the properties must be specified. If neither is
+ * specified then the Batch service returns an error; if you are calling the
+ * REST API directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -2576,11 +3822,19 @@ export interface CloudJobSchedule {
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
- * This property and CloudServiceConfiguration are mutually exclusive and one
- * of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * IaaS VMs. This property and cloudServiceConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -2607,19 +3861,24 @@ export interface CloudJobSchedule {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -2630,32 +3889,63 @@ export interface CloudJobSchedule {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
+ * timeout applies only to manual scaling; it has no effect when
+ * enableAutoScale is set to true. The default value is 15 minutes. The minimum
+ * value is 5 minutes. If you specify a value less than 5 minutes, the Batch
+ * service rejects the request with an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * The default value is 15 minutes. The minimum and maximum value are 5 minutes
+ * and 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * Enabling inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
- * The ARM resource identifier of the virtual network subnet which the
- * compute nodes of the pool will join. The virtual network must be in the
- * same region and subscription as the Azure Batch account. This property can
- * only be specified for pools created with a cloudServiceConfiguration.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -2664,9 +3954,9 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
  * The command line does not run under a shell, and therefore cannot take
  * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -2679,23 +3969,53 @@ export interface CloudJobSchedule {
  * 
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * The Batch service retries a task if its exit code is nonzero. Note that this
+ * value specifically controls the number of retries. The Batch service will
+ * try the task once, and may then retry up to this limit. For example, if the
+ * maximum retry count is 3, Batch tries the task up to 4 times (one initial
+ * try and 3 retries). If the maximum retry count is 0, the Batch service does
+ * not retry the task. If the maximum retry count is -1, the Batch service
+ * retries the task without limit.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * If true and the start task fails on a compute node, the Batch service
+ * retries the start task up to its maximum retry count (maxTaskRetryCount). If
+ * the task has still not completed successfully after all retries, then the
+ * Batch service marks the compute node unusable, and will not schedule tasks
+ * to it. This condition can be detected via the node state and scheduling
+ * error detail. If false, the Batch service will not wait for the start task
+ * to complete. In this case, other tasks can start executing on the compute
+ * node while the start task is still running; and even if the start task
+ * fails, new tasks will continue to be scheduled on the node. The default is
+ * false.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * This property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
  * @member {array}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
- * @member {array} [jobSpecification.metadata]
+ * @member {array} [jobSpecification.metadata] The Batch service does not
+ * assign any meaning to metadata; it is solely for the use of user code.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * schedule as metadata.
+ * schedule as metadata. The Batch service does not assign any meaning to
+ * metadata; it is solely for the use of user code.
  * 
  */
 export interface JobScheduleAddParameter {
@@ -2708,12 +4028,28 @@ export interface JobScheduleAddParameter {
 
 /**
  * @class
+ * Initializes a new instance of the CloudJobScheduleListResult class.
+ * @constructor
+ * @summary The result of listing the job schedules in an account.
+ *
+ * @member {array} [value] The list of job schedules.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudJobScheduleListResult {
+  value?: CloudJobSchedule[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobSchedulingError class.
  * @constructor
  * @summary An error encountered by the Batch service when scheduling a job.
  *
- * @member {string} category The category of the job scheduling error.
- * Possible values include: 'usererror', 'servererror', 'unmapped'
+ * @member {string} category The category of the job scheduling error. Possible
+ * values include: 'usererror', 'servererror', 'unmapped'
  * 
  * @member {string} [code] An identifier for the job scheduling error. Codes
  * are invariant and are intended to be consumed programmatically.
@@ -2739,15 +4075,23 @@ export interface JobSchedulingError {
  * @summary Contains information about the execution of a job in the Azure
  * Batch service.
  *
- * @member {date} startTime The start time of the job.
+ * @member {date} startTime The start time of the job. This is the time at
+ * which the job was created.
  * 
  * @member {date} [endTime] The completion time of the job. This property is
  * set only if the job is in the completed state.
  * 
- * @member {string} [poolId] The id of the pool to which this job is assigned.
+ * @member {string} [poolId] The ID of the pool to which this job is assigned.
+ * This element contains the actual pool where the job is assigned. When you
+ * get job details from the service, they also contain a poolInfo element,
+ * which contains the pool configuration data from when the job was added or
+ * updated. That poolInfo element may also contain a poolId element. If it
+ * does, the two IDs are the same. If it does not, it means the job ran on an
+ * auto pool, and this property contains the id of that auto pool.
  * 
  * @member {object} [schedulingError] Details of any error encountered by the
- * service in starting the job.
+ * service in starting the job. This property is not set if there was no error
+ * starting the job.
  * 
  * @member {string} [schedulingError.category] Possible values include:
  * 'usererror', 'servererror', 'unmapped'
@@ -2759,7 +4103,17 @@ export interface JobSchedulingError {
  * @member {array} [schedulingError.details]
  * 
  * @member {string} [terminateReason] A string describing the reason the job
- * ended.
+ * ended. This property is set only if the job is in the completed state. If
+ * the Batch service terminates the job, it sets the reason as follows:
+ * JMComplete – the Job Manager task completed, and killJobOnCompletion was set
+ * to true. MaxWallClockTimeExpiry – the job reached its maxWallClockTime
+ * constraint. TerminateJobSchedule – the job ran as part of a schedule, and
+ * the schedule terminated. AllTasksComplete – the job's onAllTasksComplete
+ * attribute is set to terminatejob, and all tasks in the job are complete.
+ * TaskFailed – the job's onTaskFailure attribute is set to
+ * performexitoptionsjobaction, and a task in the job failed with an exit
+ * condition that specified a jobAction of terminatejob. Any other string is a
+ * user-defined reason specified in a call to the 'Terminate a job' operation.
  * 
  */
 export interface JobExecutionInformation {
@@ -2777,7 +4131,7 @@ export interface JobExecutionInformation {
  * @summary An Azure Batch job.
  *
  * @member {string} [id] A string that uniquely identifies the job within the
- * account. The id can contain any combination of alphanumeric characters
+ * account. The ID can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
  * characters. It is common to use a GUID for the id.
  * 
@@ -2788,9 +4142,16 @@ export interface JobExecutionInformation {
  * 
  * @member {string} [url] The URL of the job.
  * 
- * @member {string} [eTag] The ETag of the job.
+ * @member {string} [eTag] The ETag of the job. This is an opaque string. You
+ * can use it to detect whether the job has changed between requests. In
+ * particular, you can be pass the ETag when updating a job to specify that
+ * your changes should take effect only if nobody else has modified the job in
+ * the meantime.
  * 
- * @member {date} [lastModified] The last modified time of the job.
+ * @member {date} [lastModified] The last modified time of the job. This is the
+ * last time at which the job level data, such as the job state or priority,
+ * changed. It does not factor in task-level changes such as adding new tasks
+ * or tasks changing state.
  * 
  * @member {date} [creationTime] The creation time of the job.
  * 
@@ -2810,147 +4171,271 @@ export interface JobExecutionInformation {
  * entered its previous state. This property is not set if the job is in its
  * initial Active state.
  * 
- * @member {number} [priority] The priority of the job.  Priority values can
+ * @member {number} [priority] The priority of the job. Priority values can
  * range from -1000 to 1000, with -1000 being the lowest priority and 1000
  * being the highest priority. The default value is 0.
  * 
  * @member {object} [constraints] The execution constraints for the job.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If the job does not
+ * complete within the time limit, the Batch service terminates it and any
+ * tasks that are still running. In this case, the termination reason will be
+ * MaxWallClockTimeExpiry. If this property is not specified, there is no time
+ * limit on how long the job may run.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try each
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries a task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * tasks. If the maximum retry count is -1, the Batch service retries tasks
+ * without limit. The default value is 0 (no retries).
  * 
  * @member {object} [jobManagerTask] Details of a Job Manager task to be
  * launched when the job is started.
  * 
- * @member {string} [jobManagerTask.id]
+ * @member {string} [jobManagerTask.id] The id can contain any combination of
+ * alphanumeric characters including hyphens and underscores and cannot contain
+ * more than 64 characters.
  * 
- * @member {string} [jobManagerTask.displayName]
+ * @member {string} [jobManagerTask.displayName] It need not be unique and can
+ * contain any Unicode characters up to a maximum length of 1024.
  * 
  * @member {string} [jobManagerTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * under a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobManagerTask.resourceFiles]
+ * @member {array} [jobManagerTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobManagerTask.environmentSettings]
  * 
  * @member {object} [jobManagerTask.constraints]
  * 
- * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime]
+ * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime] If
+ * this is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [jobManagerTask.constraints.retentionTime] The
- * default is infinite.
+ * default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
- * @member {number} [jobManagerTask.constraints.maxTaskRetryCount]
+ * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try the task once, and may then retry up to this limit. For example, if
+ * the maximum retry count is 3, Batch tries the task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobManagerTask.killJobOnCompletion]
+ * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
+ * Manager task completes, the Batch service marks the job as complete. If any
+ * tasks are still running at this time (other than Job Release), those tasks
+ * are terminated. If false, the completion of the Job Manager task does not
+ * affect the job status. In this case, you should either use the
+ * onAllTasksComplete attribute to terminate the job, or have a client or user
+ * terminate the job explicitly. An example of this is if the Job Manager
+ * creates a set of tasks but then takes no further role in their execution.
+ * The default value is true. If you are using the onAllTasksComplete and
+ * onTaskFailure attributes to control job lifetime, and using the job manager
+ * task only to create the tasks for the job (not to monitor progress), then it
+ * is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [jobManagerTask.runElevated]
  * 
- * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks
- * will run on the same compute node for as long as the Job Manager is
- * running. If false, other tasks can run simultaneously with the Job Manager
- * on a compute node. The Job Manager task counts normally against the node's
- * concurrent task limit, so this is only relevant if the node allows
- * multiple concurrent tasks.
+ * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks will
+ * run on the same compute node for as long as the Job Manager is running. If
+ * false, other tasks can run simultaneously with the Job Manager on a compute
+ * node. The Job Manager task counts normally against the node's concurrent
+ * task limit, so this is only relevant if the node allows multiple concurrent
+ * tasks. The default value is true.
  * 
- * @member {array} [jobManagerTask.applicationPackageReferences]
+ * @member {array} [jobManagerTask.applicationPackageReferences] Application
+ * packages are downloaded and deployed to a shared directory, not the task
+ * directory. Therefore, if a referenced package is already on the compute
+ * node, and is up to date, then it is not re-downloaded; the existing copy on
+ * the compute node is used. If a referenced application package cannot be
+ * installed, for example because the package has been deleted or because
+ * download failed, the task fails with a scheduling error. This property is
+ * currently not supported on jobs running on pools created using the
+ * virtualMachineConfiguration (IaaS) property. If a task specifying
+ * applicationPackageReferences runs on such a pool, it fails with a scheduling
+ * error with code TaskSchedulingConstraintFailed.
  * 
- * @member {object} [jobPreparationTask] The Job Preparation task.
+ * @member {object} [jobPreparationTask] The Job Preparation task. The Job
+ * Preparation task is a special task run on each node before any other task of
+ * the job.
  * 
- * @member {string} [jobPreparationTask.id] The id can contain any combination
+ * @member {string} [jobPreparationTask.id] The ID can contain any combination
  * of alphanumeric characters including hyphens and underscores and cannot
- * contain more than 64 characters.
+ * contain more than 64 characters. If you do not specify this property, the
+ * Batch service assigns a default value of 'jobpreparation'. No other task in
+ * the job can have the same id as the Job Preparation task. If you try to
+ * submit a task with the same id, the Batch service rejects the request with
+ * error code TaskIdSameAsJobPreparationTask; if you are calling the REST API
+ * directly, the HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobPreparationTask.commandLine] The command line does not
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
- * such features, you should invoke the shell in the command line, for
- * example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * such features, you should invoke the shell in the command line, for example
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobPreparationTask.resourceFiles]
+ * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobPreparationTask.environmentSettings]
  * 
  * @member {object} [jobPreparationTask.constraints]
  * 
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
+ * If this is not specified, there is no time limit on how long the task may
+ * run.
  * 
- * @member {moment.duration} [jobPreparationTask.constraints.retentionTime]
- * The default is infinite.
+ * @member {moment.duration} [jobPreparationTask.constraints.retentionTime] The
+ * default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
- * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount]
+ * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
+ * that this value specifically controls the number of retries. The Batch
+ * service will try the task once, and may then retry up to this limit. For
+ * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+ * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobPreparationTask.waitForSuccess]
+ * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
+ * Preparation task fails on a compute node, the Batch service retries the Job
+ * Preparation task up to its maximum retry count (as specified in the
+ * constraints element). If the task has still not completed successfully after
+ * all retries, then the Batch service will not schedule tasks of the job to
+ * the compute node. The compute node remains active and eligible to run tasks
+ * of other jobs. If false, the Batch service will not wait for the Job
+ * Preparation task to complete. In this case, other tasks of the job can start
+ * executing on the compute node while the Job Preparation task is still
+ * running; and even if the Job Preparation task fails, new tasks will continue
+ * to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [jobPreparationTask.runElevated]
  * 
- * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
- * @member {object} [jobReleaseTask] The Job Release task.
+ * @member {object} [jobReleaseTask] The Job Release task. The Job Release task
+ * is a special task run at the end of the job on each node that has run any
+ * other task of the job.
  * 
- * @member {string} [jobReleaseTask.id] The id can contain any combination of
- * alphanumeric characters including hyphens and underscores and cannot
- * contain more than 64 characters.
+ * @member {string} [jobReleaseTask.id] The ID can contain any combination of
+ * alphanumeric characters including hyphens and underscores and cannot contain
+ * more than 64 characters. If you do not specify this property, the Batch
+ * service assigns a default value of 'jobrelease'. No other task in the job
+ * can have the same id as the Job Release task. If you try to submit a task
+ * with the same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobReleaseTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * under a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobReleaseTask.resourceFiles]
+ * @member {array} [jobReleaseTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobReleaseTask.environmentSettings]
  * 
  * @member {moment.duration} [jobReleaseTask.maxWallClockTime]
  * 
- * @member {moment.duration} [jobReleaseTask.retentionTime]  The default is
- * infinite.
+ * @member {moment.duration} [jobReleaseTask.retentionTime] The default is
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
  * @member {boolean} [jobReleaseTask.runElevated] The default value is false.
  * 
  * @member {array} [commonEnvironmentSettings] The list of common environment
- * variable settings. These environment variables are set for all tasks in
- * the job (including the Job Manager, Job Preparation and Job Release tasks).
+ * variable settings. These environment variables are set for all tasks in the
+ * job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
- * @member {object} [poolInfo] The pool on which the Batch service runs the
- * job's tasks.
+ * @member {object} [poolInfo] The pool settings associated with the job.
  * 
- * @member {string} [poolInfo.poolId] You must specify either poolId or
- * autoPoolSpecification, but not both.
+ * @member {string} [poolInfo.poolId] You must ensure that the pool referenced
+ * by this property exists. If the pool does not exist at the time the Batch
+ * service tries to schedule a job, no tasks for the job will run until you
+ * create a pool with that id. Note that the Batch service will not reject the
+ * job request; it will simply not run tasks until the pool exists. You must
+ * specify either the pool ID or the auto pool specification, but not both.
  * 
- * @member {object} [poolInfo.autoPoolSpecification] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {object} [poolInfo.autoPoolSpecification] If auto pool creation
+ * fails, the Batch service moves the job to a completed state, and the pool
+ * creation error is set in the job's scheduling error property. The Batch
+ * service manages the lifetime (both creation and, unless keepAlive is
+ * specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive]
+ * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool]
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.displayName]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
- * property and VirtualMachineConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure PaaS
+ * VMs. This property and virtualMachineConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -2959,11 +4444,19 @@ export interface JobExecutionInformation {
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
- * property and CloudServiceConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure IaaS
+ * VMs. This property and cloudServiceConfiguration are mutually exclusive and
+ * one of the properties must be specified. If neither is specified then the
+ * Batch service returns an error; if you are calling the REST API directly,
+ * the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -2990,18 +4483,23 @@ export interface JobExecutionInformation {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
  * How tasks are distributed among compute nodes in the pool.
@@ -3011,37 +4509,67 @@ export interface JobExecutionInformation {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
+ * only to manual scaling; it has no effect when enableAutoScale is set to
+ * true. The default value is 15 minutes. The minimum value is 5 minutes. If
+ * you specify a value less than 5 minutes, the Batch service rejects the
+ * request with an error; if you are calling the REST API directly, the HTTP
+ * status code is 400 (Bad Request).
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval] The
+ * default value is 15 minutes. The minimum and maximum value are 5 minutes and
+ * 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication] Enabling
+ * inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * ARM resource identifier of the virtual network subnet which the compute
- * nodes of the pool will join. The virtual network must be in the same
- * region and subscription as the Azure Batch account. This property can only
- * be specified for pools created with a cloudServiceConfiguration.
+ * virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * 
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.startTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
  * MyCommand" in Linux.
  * 
  * @member {array}
@@ -3054,41 +4582,83 @@ export interface JobExecutionInformation {
  * [poolInfo.autoPoolSpecification.pool.startTask.runElevated]
  * 
  * @member {number}
- * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
+ * service retries a task if its exit code is nonzero. Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] If true and
+ * the start task fails on a compute node, the Batch service retries the start
+ * task up to its maximum retry count (maxTaskRetryCount). If the task has
+ * still not completed successfully after all retries, then the Batch service
+ * marks the compute node unusable, and will not schedule tasks to it. This
+ * condition can be detected via the node state and scheduling error detail. If
+ * false, the Batch service will not wait for the start task to complete. In
+ * this case, other tasks can start executing on the compute node while the
+ * start task is still running; and even if the start task fails, new tasks
+ * will continue to be scheduled on the node. The default is false.
  * 
  * @member {array} [poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
+ * property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
- * @member {array} [poolInfo.autoPoolSpecification.pool.metadata]
+ * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
  * @member {string} [onAllTasksComplete] The action the Batch service should
- * take when all tasks in the job are in the completed state. Possible values
- * include: 'noAction', 'terminateJob'
+ * take when all tasks in the job are in the completed state. Permitted values
+ * are: noaction – do nothing. The job remains active unless terminated or
+ * disabled by some other means. terminatejob – terminate the job. The job's
+ * terminateReason is set to 'AllTasksComplete'. The default is noaction.
+ * Possible values include: 'noAction', 'terminateJob'
  * 
  * @member {string} [onTaskFailure] The action the Batch service should take
  * when any task in the job fails. A task is considered to have failed if it
- * completes with a non-zero exit code and has exhausted its retry count, or
- * if it had a scheduling error. Possible values include: 'noAction',
- * 'performExitOptionsJobAction'
+ * completes with a non-zero exit code and has exhausted its retry count, or if
+ * it had a scheduling error. Permitted values are: noaction – do nothing.
+ * performexitoptionsjobaction – take the action associated with the task exit
+ * condition in the task's exitConditions collection. (This may still result in
+ * no action being taken, if that is what the task specifies.) The default is
+ * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * job as metadata.
+ * job as metadata. The Batch service does not assign any meaning to metadata;
+ * it is solely for the use of user code.
  * 
  * @member {object} [executionInfo] The execution information for the job.
  * 
- * @member {date} [executionInfo.startTime]
+ * @member {date} [executionInfo.startTime] This is the time at which the job
+ * was created.
  * 
  * @member {date} [executionInfo.endTime] This property is set only if the job
  * is in the completed state.
  * 
- * @member {string} [executionInfo.poolId]
+ * @member {string} [executionInfo.poolId] This element contains the actual
+ * pool where the job is assigned. When you get job details from the service,
+ * they also contain a poolInfo element, which contains the pool configuration
+ * data from when the job was added or updated. That poolInfo element may also
+ * contain a poolId element. If it does, the two IDs are the same. If it does
+ * not, it means the job ran on an auto pool, and this property contains the id
+ * of that auto pool.
  * 
- * @member {object} [executionInfo.schedulingError]
+ * @member {object} [executionInfo.schedulingError] This property is not set if
+ * there was no error starting the job.
  * 
  * @member {string} [executionInfo.schedulingError.category] Possible values
  * include: 'usererror', 'servererror', 'unmapped'
@@ -3099,7 +4669,18 @@ export interface JobExecutionInformation {
  * 
  * @member {array} [executionInfo.schedulingError.details]
  * 
- * @member {string} [executionInfo.terminateReason]
+ * @member {string} [executionInfo.terminateReason] This property is set only
+ * if the job is in the completed state. If the Batch service terminates the
+ * job, it sets the reason as follows: JMComplete – the Job Manager task
+ * completed, and killJobOnCompletion was set to true. MaxWallClockTimeExpiry –
+ * the job reached its maxWallClockTime constraint. TerminateJobSchedule – the
+ * job ran as part of a schedule, and the schedule terminated. AllTasksComplete
+ * – the job's onAllTasksComplete attribute is set to terminatejob, and all
+ * tasks in the job are complete. TaskFailed – the job's onTaskFailure
+ * attribute is set to performexitoptionsjobaction, and a task in the job
+ * failed with an exit condition that specified a jobAction of terminatejob.
+ * Any other string is a user-defined reason specified in a call to the
+ * 'Terminate a job' operation.
  * 
  * @member {object} [stats] Resource usage statistics for the entire lifetime
  * of the job.
@@ -3124,16 +4705,19 @@ export interface JobExecutionInformation {
  * 
  * @member {number} [stats.writeIOGiB]
  * 
- * @member {number} [stats.numSucceededTasks]
+ * @member {number} [stats.numSucceededTasks] A task completes successfully if
+ * it returns exit code 0.
  * 
- * @member {number} [stats.numFailedTasks]
+ * @member {number} [stats.numFailedTasks] A task fails if it exhausts its
+ * maximum retry count without returning exit code 0.
  * 
  * @member {number} [stats.numTaskRetries]
  * 
  * @member {moment.duration} [stats.waitTime] The wait time for a task is
  * defined as the elapsed time between the creation of the task and the start
- * of task execution. (If the task is retried due to failures, the wait time
- * is the time to the most recent task execution.)
+ * of task execution. (If the task is retried due to failures, the wait time is
+ * the time to the most recent task execution.) This value is only reported in
+ * the account lifetime statistics; it is not included in the job statistics.
  * 
  */
 export interface CloudJob {
@@ -3169,11 +4753,13 @@ export interface CloudJob {
  * @summary An Azure Batch job to add.
  *
  * @member {string} id A string that uniquely identifies the job within the
- * account. The id can contain any combination of alphanumeric characters
+ * account. The ID can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
  * characters. It is common to use a GUID for the id.
  * 
- * @member {string} [displayName] The display name for the job.
+ * @member {string} [displayName] The display name for the job. The display
+ * name need not be unique and can contain any Unicode characters up to a
+ * maximum length of 1024.
  * 
  * @member {number} [priority] The priority of the job.  Priority values can
  * range from -1000 to 1000, with -1000 being the lowest priority and 1000
@@ -3181,141 +4767,282 @@ export interface CloudJob {
  * 
  * @member {object} [constraints] The execution constraints for the job.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If the job does not
+ * complete within the time limit, the Batch service terminates it and any
+ * tasks that are still running. In this case, the termination reason will be
+ * MaxWallClockTimeExpiry. If this property is not specified, there is no time
+ * limit on how long the job may run.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try each
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries a task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * tasks. If the maximum retry count is -1, the Batch service retries tasks
+ * without limit. The default value is 0 (no retries).
  * 
  * @member {object} [jobManagerTask] Details of a Job Manager task to be
- * launched when the job is started.
+ * launched when the job is started. If the job does not specify a Job Manager
+ * task, the user must explicitly add tasks to the job. If the job does specify
+ * a Job Manager task, the Batch service creates the Job Manager task when the
+ * job is created, and will try to schedule the Job Manager task before
+ * scheduling other tasks in the job. The Job Manager task's typical purpose is
+ * to control and/or monitor job execution, for example by deciding what
+ * additional tasks to run, determining when the work is complete, etc.
+ * (However, a Job Manager task is not restricted to these activities – it is a
+ * fully-fledged task in the system and perform whatever actions are required
+ * for the job.) For example, a Job Manager task might download a file
+ * specified as a parameter, analyze the contents of that file and submit
+ * additional tasks based on those contents.
  * 
- * @member {string} [jobManagerTask.id]
+ * @member {string} [jobManagerTask.id] The id can contain any combination of
+ * alphanumeric characters including hyphens and underscores and cannot contain
+ * more than 64 characters.
  * 
- * @member {string} [jobManagerTask.displayName]
+ * @member {string} [jobManagerTask.displayName] It need not be unique and can
+ * contain any Unicode characters up to a maximum length of 1024.
  * 
  * @member {string} [jobManagerTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * under a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobManagerTask.resourceFiles]
+ * @member {array} [jobManagerTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobManagerTask.environmentSettings]
  * 
  * @member {object} [jobManagerTask.constraints]
  * 
- * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime]
+ * @member {moment.duration} [jobManagerTask.constraints.maxWallClockTime] If
+ * this is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [jobManagerTask.constraints.retentionTime] The
- * default is infinite.
+ * default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
- * @member {number} [jobManagerTask.constraints.maxTaskRetryCount]
+ * @member {number} [jobManagerTask.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try the task once, and may then retry up to this limit. For example, if
+ * the maximum retry count is 3, Batch tries the task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobManagerTask.killJobOnCompletion]
+ * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
+ * Manager task completes, the Batch service marks the job as complete. If any
+ * tasks are still running at this time (other than Job Release), those tasks
+ * are terminated. If false, the completion of the Job Manager task does not
+ * affect the job status. In this case, you should either use the
+ * onAllTasksComplete attribute to terminate the job, or have a client or user
+ * terminate the job explicitly. An example of this is if the Job Manager
+ * creates a set of tasks but then takes no further role in their execution.
+ * The default value is true. If you are using the onAllTasksComplete and
+ * onTaskFailure attributes to control job lifetime, and using the job manager
+ * task only to create the tasks for the job (not to monitor progress), then it
+ * is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [jobManagerTask.runElevated]
  * 
- * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks
- * will run on the same compute node for as long as the Job Manager is
- * running. If false, other tasks can run simultaneously with the Job Manager
- * on a compute node. The Job Manager task counts normally against the node's
- * concurrent task limit, so this is only relevant if the node allows
- * multiple concurrent tasks.
+ * @member {boolean} [jobManagerTask.runExclusive] If true, no other tasks will
+ * run on the same compute node for as long as the Job Manager is running. If
+ * false, other tasks can run simultaneously with the Job Manager on a compute
+ * node. The Job Manager task counts normally against the node's concurrent
+ * task limit, so this is only relevant if the node allows multiple concurrent
+ * tasks. The default value is true.
  * 
- * @member {array} [jobManagerTask.applicationPackageReferences]
+ * @member {array} [jobManagerTask.applicationPackageReferences] Application
+ * packages are downloaded and deployed to a shared directory, not the task
+ * directory. Therefore, if a referenced package is already on the compute
+ * node, and is up to date, then it is not re-downloaded; the existing copy on
+ * the compute node is used. If a referenced application package cannot be
+ * installed, for example because the package has been deleted or because
+ * download failed, the task fails with a scheduling error. This property is
+ * currently not supported on jobs running on pools created using the
+ * virtualMachineConfiguration (IaaS) property. If a task specifying
+ * applicationPackageReferences runs on such a pool, it fails with a scheduling
+ * error with code TaskSchedulingConstraintFailed.
  * 
- * @member {object} [jobPreparationTask] The Job Preparation task.
+ * @member {object} [jobPreparationTask] The Job Preparation task. If a job has
+ * a Job Preparation task, the Batch service will run the Job Preparation task
+ * on a compute node before starting any tasks of that job on that compute
+ * node.
  * 
- * @member {string} [jobPreparationTask.id] The id can contain any combination
+ * @member {string} [jobPreparationTask.id] The ID can contain any combination
  * of alphanumeric characters including hyphens and underscores and cannot
- * contain more than 64 characters.
+ * contain more than 64 characters. If you do not specify this property, the
+ * Batch service assigns a default value of 'jobpreparation'. No other task in
+ * the job can have the same id as the Job Preparation task. If you try to
+ * submit a task with the same id, the Batch service rejects the request with
+ * error code TaskIdSameAsJobPreparationTask; if you are calling the REST API
+ * directly, the HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobPreparationTask.commandLine] The command line does not
  * run under a shell, and therefore cannot take advantage of shell features
  * such as environment variable expansion. If you want to take advantage of
- * such features, you should invoke the shell in the command line, for
- * example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * such features, you should invoke the shell in the command line, for example
+ * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobPreparationTask.resourceFiles]
+ * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobPreparationTask.environmentSettings]
  * 
  * @member {object} [jobPreparationTask.constraints]
  * 
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
+ * If this is not specified, there is no time limit on how long the task may
+ * run.
  * 
- * @member {moment.duration} [jobPreparationTask.constraints.retentionTime]
- * The default is infinite.
+ * @member {moment.duration} [jobPreparationTask.constraints.retentionTime] The
+ * default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
- * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount]
+ * @member {number} [jobPreparationTask.constraints.maxTaskRetryCount] Note
+ * that this value specifically controls the number of retries. The Batch
+ * service will try the task once, and may then retry up to this limit. For
+ * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+ * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobPreparationTask.waitForSuccess]
+ * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
+ * Preparation task fails on a compute node, the Batch service retries the Job
+ * Preparation task up to its maximum retry count (as specified in the
+ * constraints element). If the task has still not completed successfully after
+ * all retries, then the Batch service will not schedule tasks of the job to
+ * the compute node. The compute node remains active and eligible to run tasks
+ * of other jobs. If false, the Batch service will not wait for the Job
+ * Preparation task to complete. In this case, other tasks of the job can start
+ * executing on the compute node while the Job Preparation task is still
+ * running; and even if the Job Preparation task fails, new tasks will continue
+ * to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [jobPreparationTask.runElevated]
  * 
- * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * @member {boolean} [jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
- * @member {object} [jobReleaseTask] The Job Release task.
+ * @member {object} [jobReleaseTask] The Job Release task. A Job Release task
+ * cannot be specified without also specifying a Job Preparation task for the
+ * job. The Batch service runs the Job Release task on the compute nodes that
+ * have run the Job Preparation task. The primary purpose of the Job Release
+ * task is to undo changes to compute nodes made by the Job Preparation task.
+ * Example activities include deleting local files, or shutting down services
+ * that were started as part of job preparation.
  * 
- * @member {string} [jobReleaseTask.id] The id can contain any combination of
- * alphanumeric characters including hyphens and underscores and cannot
- * contain more than 64 characters.
+ * @member {string} [jobReleaseTask.id] The ID can contain any combination of
+ * alphanumeric characters including hyphens and underscores and cannot contain
+ * more than 64 characters. If you do not specify this property, the Batch
+ * service assigns a default value of 'jobrelease'. No other task in the job
+ * can have the same id as the Job Release task. If you try to submit a task
+ * with the same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobReleaseTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * under a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
- * @member {array} [jobReleaseTask.resourceFiles]
+ * @member {array} [jobReleaseTask.resourceFiles] Files listed under this
+ * element are located in the task's working directory.
  * 
  * @member {array} [jobReleaseTask.environmentSettings]
  * 
  * @member {moment.duration} [jobReleaseTask.maxWallClockTime]
  * 
- * @member {moment.duration} [jobReleaseTask.retentionTime]  The default is
- * infinite.
+ * @member {moment.duration} [jobReleaseTask.retentionTime] The default is
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
  * @member {boolean} [jobReleaseTask.runElevated] The default value is false.
  * 
  * @member {array} [commonEnvironmentSettings] The list of common environment
- * variable settings. These environment variables are set for all tasks in
- * the job (including the Job Manager, Job Preparation and Job Release tasks).
+ * variable settings. These environment variables are set for all tasks in the
+ * job (including the Job Manager, Job Preparation and Job Release tasks).
  * 
- * @member {object} poolInfo The pool on which the Batch service runs the
- * job's tasks.
+ * @member {object} poolInfo The pool on which the Batch service runs the job's
+ * tasks.
  * 
- * @member {string} [poolInfo.poolId] You must specify either poolId or
- * autoPoolSpecification, but not both.
+ * @member {string} [poolInfo.poolId] You must ensure that the pool referenced
+ * by this property exists. If the pool does not exist at the time the Batch
+ * service tries to schedule a job, no tasks for the job will run until you
+ * create a pool with that id. Note that the Batch service will not reject the
+ * job request; it will simply not run tasks until the pool exists. You must
+ * specify either the pool ID or the auto pool specification, but not both.
  * 
- * @member {object} [poolInfo.autoPoolSpecification] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {object} [poolInfo.autoPoolSpecification] If auto pool creation
+ * fails, the Batch service moves the job to a completed state, and the pool
+ * creation error is set in the job's scheduling error property. The Batch
+ * service manages the lifetime (both creation and, unless keepAlive is
+ * specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive]
+ * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool]
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.displayName]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
- * property and VirtualMachineConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure PaaS
+ * VMs. This property and virtualMachineConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -3324,11 +5051,19 @@ export interface CloudJob {
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
- * property and CloudServiceConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure IaaS
+ * VMs. This property and cloudServiceConfiguration are mutually exclusive and
+ * one of the properties must be specified. If neither is specified then the
+ * Batch service returns an error; if you are calling the REST API directly,
+ * the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -3355,18 +5090,23 @@ export interface CloudJob {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
  * How tasks are distributed among compute nodes in the pool.
@@ -3376,37 +5116,67 @@ export interface CloudJob {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
+ * only to manual scaling; it has no effect when enableAutoScale is set to
+ * true. The default value is 15 minutes. The minimum value is 5 minutes. If
+ * you specify a value less than 5 minutes, the Batch service rejects the
+ * request with an error; if you are calling the REST API directly, the HTTP
+ * status code is 400 (Bad Request).
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval] The
+ * default value is 15 minutes. The minimum and maximum value are 5 minutes and
+ * 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication] Enabling
+ * inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * ARM resource identifier of the virtual network subnet which the compute
- * nodes of the pool will join. The virtual network must be in the same
- * region and subscription as the Azure Batch account. This property can only
- * be specified for pools created with a cloudServiceConfiguration.
+ * virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * 
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.startTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
  * MyCommand" in Linux.
  * 
  * @member {array}
@@ -3419,30 +5189,69 @@ export interface CloudJob {
  * [poolInfo.autoPoolSpecification.pool.startTask.runElevated]
  * 
  * @member {number}
- * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
+ * service retries a task if its exit code is nonzero. Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] If true and
+ * the start task fails on a compute node, the Batch service retries the start
+ * task up to its maximum retry count (maxTaskRetryCount). If the task has
+ * still not completed successfully after all retries, then the Batch service
+ * marks the compute node unusable, and will not schedule tasks to it. This
+ * condition can be detected via the node state and scheduling error detail. If
+ * false, the Batch service will not wait for the start task to complete. In
+ * this case, other tasks can start executing on the compute node while the
+ * start task is still running; and even if the start task fails, new tasks
+ * will continue to be scheduled on the node. The default is false.
  * 
  * @member {array} [poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
+ * property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
- * @member {array} [poolInfo.autoPoolSpecification.pool.metadata]
+ * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
  * @member {string} [onAllTasksComplete] The action the Batch service should
- * take when all tasks in the job are in the completed state. Possible values
- * include: 'noAction', 'terminateJob'
+ * take when all tasks in the job are in the completed state. Note that if a
+ * job contains no tasks, then all tasks are considered complete. This option
+ * is therefore most commonly used with a job manager task; if you want to use
+ * automatic job termination without a job manager, you should initially set
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks.
+ * Permitted values are: noaction – do nothing. The job remains active unless
+ * terminated or disabled by some other means. terminatejob – terminate the
+ * job. The job’s terminateReason is set to 'AllTasksComplete'. The default is
+ * noaction. Possible values include: 'noAction', 'terminateJob'
  * 
  * @member {string} [onTaskFailure] The action the Batch service should take
  * when any task in the job fails. A task is considered to have failed if it
- * completes with a non-zero exit code and has exhausted its retry count, or
- * if it had a scheduling error. Possible values include: 'noAction',
- * 'performExitOptionsJobAction'
+ * completes with a non-zero exit code and has exhausted its retry count, or if
+ * it had a scheduling error. Permitted values are: noaction – do nothing.
+ * performexitoptionsjobaction – take the action associated with the task exit
+ * condition in the task's exitConditions collection. (This may still result in
+ * no action being taken, if that is what the task specifies.) The default is
+ * noaction. Possible values include: 'noAction', 'performExitOptionsJobAction'
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * job as metadata.
+ * job as metadata. The Batch service does not assign any meaning to metadata;
+ * it is solely for the use of user code.
  * 
  * @member {boolean} [usesTaskDependencies] The flag that determines if this
  * job will use tasks with dependencies.
@@ -3462,6 +5271,22 @@ export interface JobAddParameter {
   onTaskFailure?: string;
   metadata?: MetadataItem[];
   usesTaskDependencies?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudJobListResult class.
+ * @constructor
+ * @summary The result of listing the jobs in an account.
+ *
+ * @member {array} [value] The list of jobs.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudJobListResult {
+  value?: CloudJob[];
+  odatanextLink?: string;
 }
 
 /**
@@ -3503,24 +5328,28 @@ export interface TaskSchedulingError {
  * @member {date} [endTime] The time at which the Job Preparation task
  * completed. This property is set only if the task is in the Completed state.
  * 
- * @member {string} state The current state of the Job Preparation task.
- * Possible values include: 'running', 'completed'
+ * @member {string} state The current state of the Job Preparation task on the
+ * compute node. Possible values are: running – the task is currently running
+ * (including retrying). completed – the task has exited with exit code 0, or
+ * the task has exhausted its retry limit, or the Batch service was unable to
+ * start the task due to scheduling errors. Possible values include: 'running',
+ * 'completed'
  * 
  * @member {string} [taskRootDirectory] The root directory of the Job
  * Preparation task on the compute node. You can use this path to retrieve
  * files created by the task, such as log files.
  * 
- * @member {string} [taskRootDirectoryUrl] The URL to the root directory of
- * the Job Preparation task on the compute node.
+ * @member {string} [taskRootDirectoryUrl] The URL to the root directory of the
+ * Job Preparation task on the compute node.
  * 
  * @member {number} [exitCode] The exit code of the program specified on the
  * task command line. This parameter is returned only if the task is in the
  * completed state. The exit code for a process reflects the specific
- * convention implemented by the application developer for that process. If
- * you use the exit code value to make decisions in your code, be sure that
- * you know the exit code convention used by the application process. Note
- * that the exit code may also be generated by the compute node operating
- * system, such as when a process is forcibly terminated.
+ * convention implemented by the application developer for that process. If you
+ * use the exit code value to make decisions in your code, be sure that you
+ * know the exit code convention used by the application process. Note that the
+ * exit code may also be generated by the compute node operating system, such
+ * as when a process is forcibly terminated.
  * 
  * @member {object} [schedulingError] The error encountered by the Batch
  * service when starting the task.
@@ -3534,14 +5363,17 @@ export interface TaskSchedulingError {
  * 
  * @member {array} [schedulingError.details]
  * 
- * @member {number} retryCount The number of times the task has been retried
- * by the Batch service. Every time the task exits with a non-zero exit code,
- * it is deemed a task failure. The Batch service will retry the task up to
- * the limit specified by the constraints.
+ * @member {number} retryCount The number of times the task has been retried by
+ * the Batch service. Every time the task exits with a non-zero exit code, it
+ * is deemed a task failure. The Batch service will retry the task up to the
+ * limit specified by the constraints.
  * 
  * @member {date} [lastRetryTime] The most recent time at which a retry of the
- * Job Preparation task started running. This property is set only if the
- * task was retried (i.e. retryCount is nonzero).
+ * Job Preparation task started running. This property is set only if the task
+ * was retried (i.e. retryCount is nonzero). If present, this is typically the
+ * same as startTime, but may be different if the task has been restarted for
+ * reasons other than retry; for example, if the compute node was rebooted
+ * during a retry, then the startTime is updated but the lastRetryTime is not.
  * 
  */
 export interface JobPreparationTaskExecutionInformation {
@@ -3560,8 +5392,8 @@ export interface JobPreparationTaskExecutionInformation {
  * @class
  * Initializes a new instance of the JobReleaseTaskExecutionInformation class.
  * @constructor
- * @summary Contains information about the execution of a Job Release task on
- * a compute node.
+ * @summary Contains information about the execution of a Job Release task on a
+ * compute node.
  *
  * @member {date} startTime The time at which the task started running. Note
  * that every time the task is restarted, this value is updated.
@@ -3569,27 +5401,30 @@ export interface JobPreparationTaskExecutionInformation {
  * @member {date} [endTime] The time at which the Job Release task completed.
  * This property is set only if the task is in the Completed state.
  * 
- * @member {string} state The current state of the Job Release task. Possible
- * values include: 'running', 'completed'
+ * @member {string} state The current state of the Job Release task on the
+ * compute node. Possible values are: running – the task is currently running
+ * (including retrying). completed – the task has exited, or the Batch service
+ * was unable to start the task due to scheduling errors. Possible values
+ * include: 'running', 'completed'
  * 
  * @member {string} [taskRootDirectory] The root directory of the Job Release
- * task on the compute node. You can use this path to retrieve files created
- * by the task, such as log files.
+ * task on the compute node. You can use this path to retrieve files created by
+ * the task, such as log files.
  * 
- * @member {string} [taskRootDirectoryUrl] The URL to the root directory of
- * the Job Release task on the compute node.
+ * @member {string} [taskRootDirectoryUrl] The URL to the root directory of the
+ * Job Release task on the compute node.
  * 
  * @member {number} [exitCode] The exit code of the program specified on the
  * task command line. This parameter is returned only if the task is in the
  * completed state. The exit code for a process reflects the specific
- * convention implemented by the application developer for that process. If
- * you use the exit code value to make decisions in your code, be sure that
- * you know the exit code convention used by the application process. Note
- * that the exit code may also be generated by the compute node operating
- * system, such as when a process is forcibly terminated.
+ * convention implemented by the application developer for that process. If you
+ * use the exit code value to make decisions in your code, be sure that you
+ * know the exit code convention used by the application process. Note that the
+ * exit code may also be generated by the compute node operating system, such
+ * as when a process is forcibly terminated.
  * 
- * @member {object} [schedulingError] The scheduling error encountered by the
- * Batch service when starting the task.
+ * @member {object} [schedulingError] The error encountered by the Batch
+ * service when starting the task.
  * 
  * @member {string} [schedulingError.category] Possible values include:
  * 'usererror', 'servererror', 'unmapped'
@@ -3618,10 +5453,10 @@ export interface JobReleaseTaskExecutionInformation {
  * @summary The status of the Job Preparation and Job Release tasks on a
  * compute node.
  *
- * @member {string} [poolId] The id of the pool containing the compute node to
+ * @member {string} [poolId] The ID of the pool containing the compute node to
  * which this entry refers.
  * 
- * @member {string} [nodeId] The id of the compute node to which this entry
+ * @member {string} [nodeId] The ID of the compute node to which this entry
  * refers.
  * 
  * @member {string} [nodeUrl] The URL of the compute node to which this entry
@@ -3637,20 +5472,23 @@ export interface JobReleaseTaskExecutionInformation {
  * set only if the task is in the Completed state.
  * 
  * @member {string} [jobPreparationTaskExecutionInfo.state] Possible values
- * include: 'running', 'completed'
+ * are: running – the task is currently running (including retrying). completed
+ * – the task has exited with exit code 0, or the task has exhausted its retry
+ * limit, or the Batch service was unable to start the task due to scheduling
+ * errors. Possible values include: 'running', 'completed'
  * 
  * @member {string} [jobPreparationTaskExecutionInfo.taskRootDirectory]
  * 
  * @member {string} [jobPreparationTaskExecutionInfo.taskRootDirectoryUrl]
  * 
  * @member {number} [jobPreparationTaskExecutionInfo.exitCode] This parameter
- * is returned only if the task is in the completed state. The exit code for
- * a process reflects the specific convention implemented by the application
- * developer for that process. If you use the exit code value to make
- * decisions in your code, be sure that you know the exit code convention
- * used by the application process. Note that the exit code may also be
- * generated by the compute node operating system, such as when a process is
- * forcibly terminated.
+ * is returned only if the task is in the completed state. The exit code for a
+ * process reflects the specific convention implemented by the application
+ * developer for that process. If you use the exit code value to make decisions
+ * in your code, be sure that you know the exit code convention used by the
+ * application process. Note that the exit code may also be generated by the
+ * compute node operating system, such as when a process is forcibly
+ * terminated.
  * 
  * @member {object} [jobPreparationTaskExecutionInfo.schedulingError]
  * 
@@ -3665,20 +5503,26 @@ export interface JobReleaseTaskExecutionInformation {
  * 
  * @member {number} [jobPreparationTaskExecutionInfo.retryCount]
  * 
- * @member {date} [jobPreparationTaskExecutionInfo.lastRetryTime] This
- * property is set only if the task was retried (i.e. retryCount is nonzero).
+ * @member {date} [jobPreparationTaskExecutionInfo.lastRetryTime] This property
+ * is set only if the task was retried (i.e. retryCount is nonzero). If
+ * present, this is typically the same as startTime, but may be different if
+ * the task has been restarted for reasons other than retry; for example, if
+ * the compute node was rebooted during a retry, then the startTime is updated
+ * but the lastRetryTime is not.
  * 
  * @member {object} [jobReleaseTaskExecutionInfo] Information about the
- * execution status of the Job Release task on this compute node. This
- * property is set only if the Job Release task has run on the node.
+ * execution status of the Job Release task on this compute node. This property
+ * is set only if the Job Release task has run on the node.
  * 
  * @member {date} [jobReleaseTaskExecutionInfo.startTime]
  * 
  * @member {date} [jobReleaseTaskExecutionInfo.endTime] This property is set
  * only if the task is in the Completed state.
  * 
- * @member {string} [jobReleaseTaskExecutionInfo.state] Possible values
- * include: 'running', 'completed'
+ * @member {string} [jobReleaseTaskExecutionInfo.state] Possible values are:
+ * running – the task is currently running (including retrying). completed –
+ * the task has exited, or the Batch service was unable to start the task due
+ * to scheduling errors. Possible values include: 'running', 'completed'
  * 
  * @member {string} [jobReleaseTaskExecutionInfo.taskRootDirectory]
  * 
@@ -3687,11 +5531,11 @@ export interface JobReleaseTaskExecutionInformation {
  * @member {number} [jobReleaseTaskExecutionInfo.exitCode] This parameter is
  * returned only if the task is in the completed state. The exit code for a
  * process reflects the specific convention implemented by the application
- * developer for that process. If you use the exit code value to make
- * decisions in your code, be sure that you know the exit code convention
- * used by the application process. Note that the exit code may also be
- * generated by the compute node operating system, such as when a process is
- * forcibly terminated.
+ * developer for that process. If you use the exit code value to make decisions
+ * in your code, be sure that you know the exit code convention used by the
+ * application process. Note that the exit code may also be generated by the
+ * compute node operating system, such as when a process is forcibly
+ * terminated.
  * 
  * @member {object} [jobReleaseTaskExecutionInfo.schedulingError]
  * 
@@ -3711,6 +5555,24 @@ export interface JobPreparationAndReleaseTaskExecutionInformation {
   nodeUrl?: string;
   jobPreparationTaskExecutionInfo?: JobPreparationTaskExecutionInformation;
   jobReleaseTaskExecutionInfo?: JobReleaseTaskExecutionInformation;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudJobListPreparationAndReleaseTaskStatusResult class.
+ * @constructor
+ * @summary The result of listing the status of the job preparation and job
+ * release tasks for a job.
+ *
+ * @member {array} [value] A list of Job Preparation and Job Release task
+ * execution information.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudJobListPreparationAndReleaseTaskStatusResult {
+  value?: JobPreparationAndReleaseTaskExecutionInformation[];
+  odatanextLink?: string;
 }
 
 /**
@@ -3747,8 +5609,8 @@ export interface AutoScaleRunError {
  * evaluated.
  * 
  * @member {string} [results] The final values of all variables used in the
- * evaluation of the autoscale formula. Each variable value is returned in
- * the form $variable=value, and variables are separated by semicolons.
+ * evaluation of the autoscale formula. Each variable value is returned in the
+ * form $variable=value, and variables are separated by semicolons.
  * 
  * @member {object} [error] Details of the error encountered evaluating the
  * autoscale formula on the pool, if the evaluation was unsuccessful.
@@ -3795,50 +5657,93 @@ export interface ResizeError {
  * @summary A pool in the Azure Batch service.
  *
  * @member {string} [id] A string that uniquely identifies the pool within the
- * account. The id can contain any combination of alphanumeric characters
+ * account. The ID can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
  * characters. It is common to use a GUID for the id.
  * 
- * @member {string} [displayName] The display name for the pool.
+ * @member {string} [displayName] The display name for the pool. The display
+ * name need not be unique and can contain any Unicode characters up to a
+ * maximum length of 1024.
  * 
  * @member {string} [url] The URL of the pool.
  * 
- * @member {string} [eTag] The ETag of the pool.
+ * @member {string} [eTag] The ETag of the pool. This is an opaque string. You
+ * can use it to detect whether the pool has changed between requests. In
+ * particular, you can be pass the ETag when updating a pool to specify that
+ * your changes should take effect only if nobody else has modified the pool in
+ * the meantime.
  * 
- * @member {date} [lastModified] The last modified time of the pool.
+ * @member {date} [lastModified] The last modified time of the pool. This is
+ * the last time at which the pool level data, such as the targetDedicated or
+ * enableAutoscale settings, changed. It does not factor in node-level changes
+ * such as a compute node changing state.
  * 
  * @member {date} [creationTime] The creation time of the pool.
  * 
- * @member {string} [state] The current state of the pool. Possible values
+ * @member {string} [state] The current state of the pool. Possible values are:
+ * active – The pool is available to run tasks subject to the availability of
+ * compute nodes. deleting – The user has requested that the pool be deleted,
+ * but the delete operation has not yet completed. upgrading – The user has
+ * requested that the operating system of the pool's nodes be upgraded, but the
+ * upgrade operation has not yet completed (that is, some nodes in the pool
+ * have not yet been upgraded). While upgrading, the pool may be able to run
+ * tasks (with reduced capacity) but this is not guaranteed. Possible values
  * include: 'active', 'deleting', 'upgrading'
  * 
  * @member {date} [stateTransitionTime] The time at which the pool entered its
  * current state.
  * 
  * @member {string} [allocationState] Whether the pool is resizing. Possible
- * values include: 'steady', 'resizing', 'stopping'
+ * values are: steady – The pool is not resizing. There are no changes to the
+ * number of nodes in the pool in progress. A pool enters this state when it is
+ * created and when no operations are being performed on the pool to change the
+ * number of dedicated nodes. resizing - The pool is resizing; that is, compute
+ * nodes are being added to or removed from the pool. stopping - The pool was
+ * resizing, but the user has requested that the resize be stopped, but the
+ * stop request has not yet been completed. Possible values include: 'steady',
+ * 'resizing', 'stopping'
  * 
  * @member {date} [allocationStateTransitionTime] The time at which the pool
  * entered its current allocation state.
  * 
  * @member {string} [vmSize] The size of virtual machines in the pool. All
- * virtual machines in a pool are the same size.
+ * virtual machines in a pool are the same size. For information about
+ * available sizes of virtual machines for Cloud Services pools (pools created
+ * with cloudServiceConfiguration), see Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
- * @member {object} [cloudServiceConfiguration] The cloud service
- * configuration for the pool. This property and virtualMachineConfiguration
- * are mutually exclusive and one of the properties must be specified.
+ * @member {object} [cloudServiceConfiguration] The cloud service configuration
+ * for the pool. This property and virtualMachineConfiguration are mutually
+ * exclusive and one of the properties must be specified.
  * 
- * @member {string} [cloudServiceConfiguration.osFamily]
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
+ * – OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 – OS Family 3,
+ * equivalent to Windows Server 2012. 4 – OS Family 4, equivalent to Windows
+ * Server 2012 R2. For more information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
  * specified OS family.
  * 
- * @member {string} [cloudServiceConfiguration.currentOSVersion]
+ * @member {string} [cloudServiceConfiguration.currentOSVersion] This may
+ * differ from targetOSVersion if the pool state is Upgrading. In this case
+ * some virtual machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
  * 
  * @member {object} [virtualMachineConfiguration] The virtual machine
- * configuration for the pool. This property and cloudServiceConfiguration
- * are mutually exclusive and one of the properties must be specified.
+ * configuration for the pool. This property and cloudServiceConfiguration are
+ * mutually exclusive and one of the properties must be specified.
  * 
  * @member {object} [virtualMachineConfiguration.imageReference]
  * 
@@ -3852,26 +5757,30 @@ export interface ResizeError {
  * example, 14.04.0-LTS or 2012-R2-Datacenter.
  * 
  * @member {string} [virtualMachineConfiguration.imageReference.version] A
- * value of 'latest' can be specified to select the latest version of an
- * image. If omitted, the default is 'latest'.
+ * value of 'latest' can be specified to select the latest version of an image.
+ * If omitted, the default is 'latest'.
  * 
- * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch
- * node agent is a program that runs on each node in the pool, and provides
- * the command-and-control interface between the node and the Batch service.
- * There are different implementations of the node agent, known as SKUs, for
- * different operating systems.
+ * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
+ * agent is a program that runs on each node in the pool, and provides the
+ * command-and-control interface between the node and the Batch service. There
+ * are different implementations of the node agent, known as SKUs, for
+ * different operating systems. You must specify a node agent SKU which matches
+ * the selected image reference. To get the list of supported node agent SKUs
+ * along with their list of verified image references, see the 'List supported
+ * node agent SKUs' operation.
  * 
  * @member {object} [virtualMachineConfiguration.windowsConfiguration] This
  * property must not be specified if the imageReference property specifies a
  * Linux OS image.
  * 
  * @member {boolean}
- * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
- * If omitted, the default value is true.
+ * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates] If
+ * omitted, the default value is true.
  * 
  * @member {moment.duration} [resizeTimeout] The timeout for allocation of
  * compute nodes to the pool. This is the timeout for the most recent resize
- * operation. The default value is 10 minutes.
+ * operation. (The initial sizing when the pool is created counts as a resize.)
+ * The default value is 15 minutes.
  * 
  * @member {object} [resizeError] Details of any error encountered while
  * performing the last resize on the pool. This property is set only if an
@@ -3884,25 +5793,29 @@ export interface ResizeError {
  * 
  * @member {array} [resizeError.values]
  * 
- * @member {number} [currentDedicated] The number of compute nodes currently
- * in the pool.
+ * @member {number} [currentDedicated] The number of compute nodes currently in
+ * the pool.
  * 
  * @member {number} [targetDedicated] The desired number of compute nodes in
- * the pool. This property must have the default value if enableAutoScale is
- * true. It is required if enableAutoScale is false.
+ * the pool. This property is not set if enableAutoScale is true. It is
+ * required if enableAutoScale is false.
  * 
  * @member {boolean} [enableAutoScale] Whether the pool size should
- * automatically adjust over time. If true, the autoScaleFormula property
- * must be set. If false, the targetDedicated property must be set.
+ * automatically adjust over time. If true, the autoScaleFormula property must
+ * be set. If false, the targetDedicated property must be set.
  * 
  * @member {string} [autoScaleFormula] A formula for the desired number of
- * compute nodes in the pool.
+ * compute nodes in the pool. This property is set only if the pool
+ * automatically scales, i.e. enableAutoScale is true.
  * 
- * @member {moment.duration} [autoScaleEvaluationInterval] A time interval for
- * the desired AutoScale evaluation period in the pool.
+ * @member {moment.duration} [autoScaleEvaluationInterval] The time interval at
+ * which to automatically adjust the pool size according to the autoscale
+ * formula. This property is set only if the pool automatically scales, i.e.
+ * enableAutoScale is true.
  * 
  * @member {object} [autoScaleRun] The results and errors from the last
- * execution of the autoscale formula.
+ * execution of the autoscale formula. This property is set only if the pool
+ * automatically scales, i.e. enableAutoScale is true.
  * 
  * @member {date} [autoScaleRun.timestamp]
  * 
@@ -3918,25 +5831,36 @@ export interface ResizeError {
  * @member {array} [autoScaleRun.error.values]
  * 
  * @member {boolean} [enableInterNodeCommunication] Whether the pool permits
- * direct communication between nodes.
+ * direct communication between nodes. This imposes restrictions on which nodes
+ * can be assigned to the pool. Specifying this value can reduce the chance of
+ * the requested number of nodes to be allocated in the pool.
  * 
  * @member {object} [networkConfiguration] The network configuration for the
  * pool.
  * 
- * @member {string} [networkConfiguration.subnetId] The ARM resource
- * identifier of the virtual network subnet which the compute nodes of the
- * pool will join. The virtual network must be in the same region and
- * subscription as the Azure Batch account. This property can only be
- * specified for pools created with a cloudServiceConfiguration.
+ * @member {string} [networkConfiguration.subnetId] The virtual network must be
+ * in the same region and subscription as the Azure Batch account. The
+ * specified subnet should have enough free IP addresses to accommodate the
+ * number of nodes in the pool. If the subnet doesn't have enough free IP
+ * addresses, the pool will partially allocate compute nodes, and a resize
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. This property can only be specified
+ * for pools created with a cloudServiceConfiguration.
  * 
- * @member {object} [startTask] A task specified to run on each compute node
- * as it joins the pool.
+ * @member {object} [startTask] A task specified to run on each compute node as
+ * it joins the pool.
  * 
- * @member {string} [startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [startTask.resourceFiles]
  * 
@@ -3944,12 +5868,34 @@ export interface ResizeError {
  * 
  * @member {boolean} [startTask.runElevated]
  * 
- * @member {number} [startTask.maxTaskRetryCount]
+ * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
+ * task if its exit code is nonzero. Note that this value specifically controls
+ * the number of retries. The Batch service will try the task once, and may
+ * then retry up to this limit. For example, if the maximum retry count is 3,
+ * Batch tries the task up to 4 times (one initial try and 3 retries). If the
+ * maximum retry count is 0, the Batch service does not retry the task. If the
+ * maximum retry count is -1, the Batch service retries the task without limit.
  * 
- * @member {boolean} [startTask.waitForSuccess]
+ * @member {boolean} [startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
  * @member {array} [certificateReferences] The list of certificates to be
- * installed on each compute node in the pool.
+ * installed on each compute node in the pool. For Windows compute nodes, the
+ * Batch service installs the certificates to the specified certificate store
+ * and location. For Linux compute nodes, the certificates are stored in a
+ * directory inside the task working directory and an environment variable
+ * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+ * location. For certificates with visibility of remoteuser, a certs directory
+ * is created in the user's home directory (e.g., /home/<user-name>/certs)
+ * where certificates are placed.
  * 
  * @member {array} [applicationPackageReferences] The list of application
  * packages to be installed on each compute node in the pool.
@@ -4052,30 +5998,53 @@ export interface CloudPool {
  * @summary A pool in the Azure Batch service to add.
  *
  * @member {string} id A string that uniquely identifies the pool within the
- * account. The id can contain any combination of alphanumeric characters
+ * account. The ID can contain any combination of alphanumeric characters
  * including hyphens and underscores, and cannot contain more than 64
- * characters. It is common to use a GUID for the id.
+ * characters. The ID is case-preserving and case-insensitive (that is, you may
+ * not have two pool IDs within an account that differ only by case).
  * 
- * @member {string} [displayName] The display name for the pool.
+ * @member {string} [displayName] The display name for the pool. The display
+ * name need not be unique and can contain any Unicode characters up to a
+ * maximum length of 1024.
  * 
  * @member {string} vmSize The size of virtual machines in the pool. All
- * virtual machines in a pool are the same size.
+ * virtual machines in a pool are the same size. For information about
+ * available sizes of virtual machines for Cloud Services pools (pools created
+ * with cloudServiceConfiguration), see Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
- * @member {object} [cloudServiceConfiguration] The cloud service
- * configuration for the pool.  This property and virtualMachineConfiguration
- * are mutually exclusive and one of the properties must be specified.
+ * @member {object} [cloudServiceConfiguration] The cloud service configuration
+ * for the pool. This property and virtualMachineConfiguration are mutually
+ * exclusive and one of the properties must be specified.
  * 
- * @member {string} [cloudServiceConfiguration.osFamily]
+ * @member {string} [cloudServiceConfiguration.osFamily] Possible values are: 2
+ * – OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 – OS Family 3,
+ * equivalent to Windows Server 2012. 4 – OS Family 4, equivalent to Windows
+ * Server 2012 R2. For more information, see Azure Guest OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string} [cloudServiceConfiguration.targetOSVersion] The default
  * value is * which specifies the latest operating system version for the
  * specified OS family.
  * 
- * @member {string} [cloudServiceConfiguration.currentOSVersion]
+ * @member {string} [cloudServiceConfiguration.currentOSVersion] This may
+ * differ from targetOSVersion if the pool state is Upgrading. In this case
+ * some virtual machines may be on the targetOSVersion and some may be on the
+ * currentOSVersion during the upgrade process. Once all virtual machines have
+ * upgraded, currentOSVersion is updated to be the same as targetOSVersion.
  * 
  * @member {object} [virtualMachineConfiguration] The virtual machine
- * configuration for the pool. This property and cloudServiceConfiguration
- * are mutually exclusive and one of the properties must be specified.
+ * configuration for the pool. This property and cloudServiceConfiguration are
+ * mutually exclusive and one of the properties must be specified.
  * 
  * @member {object} [virtualMachineConfiguration.imageReference]
  * 
@@ -4089,60 +6058,92 @@ export interface CloudPool {
  * example, 14.04.0-LTS or 2012-R2-Datacenter.
  * 
  * @member {string} [virtualMachineConfiguration.imageReference.version] A
- * value of 'latest' can be specified to select the latest version of an
- * image. If omitted, the default is 'latest'.
+ * value of 'latest' can be specified to select the latest version of an image.
+ * If omitted, the default is 'latest'.
  * 
- * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch
- * node agent is a program that runs on each node in the pool, and provides
- * the command-and-control interface between the node and the Batch service.
- * There are different implementations of the node agent, known as SKUs, for
- * different operating systems.
+ * @member {string} [virtualMachineConfiguration.nodeAgentSKUId] The Batch node
+ * agent is a program that runs on each node in the pool, and provides the
+ * command-and-control interface between the node and the Batch service. There
+ * are different implementations of the node agent, known as SKUs, for
+ * different operating systems. You must specify a node agent SKU which matches
+ * the selected image reference. To get the list of supported node agent SKUs
+ * along with their list of verified image references, see the 'List supported
+ * node agent SKUs' operation.
  * 
  * @member {object} [virtualMachineConfiguration.windowsConfiguration] This
  * property must not be specified if the imageReference property specifies a
  * Linux OS image.
  * 
  * @member {boolean}
- * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
- * If omitted, the default value is true.
+ * [virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates] If
+ * omitted, the default value is true.
  * 
  * @member {moment.duration} [resizeTimeout] The timeout for allocation of
- * compute nodes to the pool. The default value is 10 minutes.
+ * compute nodes to the pool. This timeout applies only to manual scaling; it
+ * has no effect when enableAutoScale is set to true. The default value is 15
+ * minutes. The minimum value is 5 minutes. If you specify a value less than 5
+ * minutes, the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {number} [targetDedicated] The desired number of compute nodes in
  * the pool. This property must have the default value if enableAutoScale is
  * true. It is required if enableAutoScale is false.
  * 
  * @member {boolean} [enableAutoScale] Whether the pool size should
- * automatically adjust over time. If true, the autoScaleFormula property
- * must be set. If false, the targetDedicated property must be set.
+ * automatically adjust over time. If true, the autoScaleFormula property must
+ * be set. If false, the targetDedicated property must be set. The default
+ * value is false.
  * 
  * @member {string} [autoScaleFormula] A formula for the desired number of
- * compute nodes in the pool.
+ * compute nodes in the pool. This property must not be specified if
+ * enableAutoScale is set to false. It is required if enableAutoScale is set to
+ * true. The formula is checked for validity before the pool is created. If the
+ * formula is not valid, the Batch service rejects the request with detailed
+ * error information. For more information about specifying this formula, see
+ * 'Automatically scale compute nodes in an Azure Batch pool'
+ * (https://azure.microsoft.com/documentation/articles/batch-automatic-scaling/).
  * 
- * @member {moment.duration} [autoScaleEvaluationInterval] A time interval for
- * the desired autoscale evaluation period in the pool.
+ * @member {moment.duration} [autoScaleEvaluationInterval] The time interval at
+ * which to automatically adjust the pool size according to the autoscale
+ * formula. The default value is 15 minutes. The minimum and maximum value are
+ * 5 minutes and 168 hours respectively. If you specify a value less than 5
+ * minutes or greater than 168 hours, the Batch service returns an error; if
+ * you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
  * @member {boolean} [enableInterNodeCommunication] Whether the pool permits
- * direct communication between nodes.
+ * direct communication between nodes. Enabling inter-node communication limits
+ * the maximum size of the pool due to deployment restrictions on the nodes of
+ * the pool. This may result in the pool not reaching its desired size. The
+ * default value is false.
  * 
  * @member {object} [networkConfiguration] The network configuration for the
  * pool.
  * 
- * @member {string} [networkConfiguration.subnetId] The ARM resource
- * identifier of the virtual network subnet which the compute nodes of the
- * pool will join. The virtual network must be in the same region and
- * subscription as the Azure Batch account. This property can only be
- * specified for pools created with a cloudServiceConfiguration.
+ * @member {string} [networkConfiguration.subnetId] The virtual network must be
+ * in the same region and subscription as the Azure Batch account. The
+ * specified subnet should have enough free IP addresses to accommodate the
+ * number of nodes in the pool. If the subnet doesn't have enough free IP
+ * addresses, the pool will partially allocate compute nodes, and a resize
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. This property can only be specified
+ * for pools created with a cloudServiceConfiguration.
  * 
- * @member {object} [startTask] A task specified to run on each compute node
- * as it joins the pool.
+ * @member {object} [startTask] A task specified to run on each compute node as
+ * it joins the pool. The task runs when the node is added to the pool or when
+ * the node is restarted.
  * 
- * @member {string} [startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [startTask.resourceFiles]
  * 
@@ -4150,18 +6151,44 @@ export interface CloudPool {
  * 
  * @member {boolean} [startTask.runElevated]
  * 
- * @member {number} [startTask.maxTaskRetryCount]
+ * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
+ * task if its exit code is nonzero. Note that this value specifically controls
+ * the number of retries. The Batch service will try the task once, and may
+ * then retry up to this limit. For example, if the maximum retry count is 3,
+ * Batch tries the task up to 4 times (one initial try and 3 retries). If the
+ * maximum retry count is 0, the Batch service does not retry the task. If the
+ * maximum retry count is -1, the Batch service retries the task without limit.
  * 
- * @member {boolean} [startTask.waitForSuccess]
+ * @member {boolean} [startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
  * @member {array} [certificateReferences] The list of certificates to be
- * installed on each compute node in the pool.
+ * installed on each compute node in the pool. For Windows compute nodes, the
+ * Batch service installs the certificates to the specified certificate store
+ * and location. For Linux compute nodes, the certificates are stored in a
+ * directory inside the task working directory and an environment variable
+ * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+ * location. For certificates with visibility of remoteuser, a certs directory
+ * is created in the user's home directory (e.g., /home/<user-name>/certs)
+ * where certificates are placed.
  * 
  * @member {array} [applicationPackageReferences] The list of application
- * packages to be installed on each compute node in the pool.
+ * packages to be installed on each compute node in the pool. This property is
+ * currently not supported on pools created using the
+ * virtualMachineConfiguration (IaaS) property.
  * 
  * @member {number} [maxTasksPerNode] The maximum number of tasks that can run
- * concurrently on a single compute node in the pool.
+ * concurrently on a single compute node in the pool. The default value is 1.
+ * The maximum value of this setting depends on the size of the compute nodes
+ * in the pool (the vmSize setting).
  * 
  * @member {object} [taskSchedulingPolicy] How the Batch service distributes
  * tasks between compute nodes in the pool.
@@ -4170,7 +6197,8 @@ export interface CloudPool {
  * include: 'spread', 'pack', 'unmapped'
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * pool as metadata.
+ * pool as metadata. The Batch service does not assign any meaning to metadata;
+ * it is solely for the use of user code.
  * 
  */
 export interface PoolAddParameter {
@@ -4196,15 +6224,47 @@ export interface PoolAddParameter {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationListResult class.
+ * @constructor
+ * @summary The result of listing the applications available in an account.
+ *
+ * @member {array} [value] The list of applications available in the account.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface ApplicationListResult {
+  value?: ApplicationSummary[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudPoolListResult class.
+ * @constructor
+ * @summary The result of listing the pools in an account.
+ *
+ * @member {array} [value] The list of pools.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudPoolListResult {
+  value?: CloudPool[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AffinityInformation class.
  * @constructor
  * @summary A locality hint that can be used by the Batch service to select a
  * compute node on which to start a task.
  *
  * @member {string} affinityId An opaque string representing the location of a
- * compute node or a task that has run previously. You can pass the
- * affinityId of a compute node or task to indicate that this task needs to
- * be placed close to the node or task.
+ * compute node or a task that has run previously. You can pass the affinityId
+ * of a compute node or task to indicate that this task needs to be placed
+ * close to the node or task.
  * 
  */
 export interface AffinityInformation {
@@ -4217,24 +6277,29 @@ export interface AffinityInformation {
  * @constructor
  * @summary Information about the execution of a task.
  *
- * @member {date} [startTime] The time at which the task started running. If
- * the task has been restarted or retried, this is the most recent time at
- * which the task started running.
+ * @member {date} [startTime] The time at which the task started running.
+ * 'Running' corresponds to the running state, so if the task specifies
+ * resource files or application packages, then the start time reflects the
+ * time at which the task started downloading or deploying these. If the task
+ * has been restarted or retried, this is the most recent time at which the
+ * task started running. This property is present only for tasks that are in
+ * the running or completed state.
  * 
- * @member {date} [endTime] The time at which the task completed. This
- * property is set only if the task is in the Completed state.
+ * @member {date} [endTime] The time at which the task completed. This property
+ * is set only if the task is in the Completed state.
  * 
  * @member {number} [exitCode] The exit code of the program specified on the
- * task command line. This parameter is returned only if the task is in the
- * completed state. The exit code for a process reflects the specific
- * convention implemented by the application developer for that process. If
- * you use the exit code value to make decisions in your code, be sure that
- * you know the exit code convention used by the application process. Note
- * that the exit code may also be generated by the compute node operating
- * system, such as when a process is forcibly terminated.
+ * task command line. This property is set only if the task is in the completed
+ * state. In general, the exit code for a process reflects the specific
+ * convention implemented by the application developer for that process. If you
+ * use the exit code value to make decisions in your code, be sure that you
+ * know the exit code convention used by the application process. However, if
+ * the Batch service terminates the task (due to timeout, or user termination
+ * via the API) you may see an operating system-defined exit code.
  * 
  * @member {object} [schedulingError] Details of any error encountered
- * scheduling the task.
+ * scheduling the task. This property is set only if the task is in the
+ * completed state.
  * 
  * @member {string} [schedulingError.category] Possible values include:
  * 'usererror', 'servererror', 'unmapped'
@@ -4245,17 +6310,27 @@ export interface AffinityInformation {
  * 
  * @member {array} [schedulingError.details]
  * 
- * @member {number} retryCount The number of times the task has been retried
- * by the Batch service.
+ * @member {number} retryCount The number of times the task has been retried by
+ * the Batch service. The task is retried if it exits with a nonzero exit code,
+ * up to the specified maxTaskRetryCount.
  * 
  * @member {date} [lastRetryTime] The most recent time at which a retry of the
- * task started running.
+ * task started running. This element is present only if the task was retried
+ * (i.e. retryCount is nonzero). If present, this is typically the same as
+ * startTime, but may be different if the task has been restarted for reasons
+ * other than retry; for example, if the compute node was rebooted during a
+ * retry, then the startTime is updated but the lastRetryTime is not.
  * 
- * @member {number} requeueCount The number of times the task has been
- * requeued by the Batch service as the result of a user request.
+ * @member {number} requeueCount The number of times the task has been requeued
+ * by the Batch service as the result of a user request. When the user removes
+ * nodes from a pool (by resizing/shrinking the pool) or when the job is being
+ * disabled, the user can specify that running tasks on the nodes be requeued
+ * for execution. This count tracks how many times the task has been requeued
+ * for these reasons.
  * 
  * @member {date} [lastRequeueTime] The most recent time at which the task has
- * been requeued by the Batch service as the result of a user request.
+ * been requeued by the Batch service as the result of a user request. This
+ * property is set only if the requeueCount is nonzero.
  * 
  */
 export interface TaskExecutionInformation {
@@ -4281,15 +6356,15 @@ export interface TaskExecutionInformation {
  * 
  * @member {string} [nodeUrl] The URL of the node on which the task ran. .
  * 
- * @member {string} [poolId] The id of the pool on which the task ran.
+ * @member {string} [poolId] The ID of the pool on which the task ran.
  * 
- * @member {string} [nodeId] The id of the node on which the task ran.
+ * @member {string} [nodeId] The ID of the node on which the task ran.
  * 
  * @member {string} [taskRootDirectory] The root directory of the task on the
  * compute node.
  * 
- * @member {string} [taskRootDirectoryUrl] The URL to the root directory of
- * the task on the compute node.
+ * @member {string} [taskRootDirectoryUrl] The URL to the root directory of the
+ * task on the compute node.
  * 
  */
 export interface ComputeNodeInformation {
@@ -4310,16 +6385,19 @@ export interface ComputeNodeInformation {
  * Multi-instance tasks are commonly used to support MPI tasks.
  *
  * @member {number} numberOfInstances The number of compute nodes required by
- * the multi-instance task.
+ * the task.
  * 
- * @member {string} [coordinationCommandLine] The command to run on the
- * compute node instances for coordinating among the subtasks.
+ * @member {string} [coordinationCommandLine] The command line to run on all
+ * the compute nodes to enable them to coordinate when the primary runs the
+ * main task command. A typical coordination command line launches a background
+ * service and verifies that the service is ready to process inter-node
+ * messages.
  * 
- * @member {array} [commonResourceFiles] A list of files that the Batch
- * service will download before running the coordination command line. The
- * difference between common resource files and task resource files is that
- * common resource files are downloaded for all subtasks including the
- * primary, whereas task resource files are downloaded only for the primary.
+ * @member {array} [commonResourceFiles] A list of files that the Batch service
+ * will download before running the coordination command line. The difference
+ * between common resource files and task resource files is that common
+ * resource files are downloaded for all subtasks including the primary,
+ * whereas task resource files are downloaded only for the primary.
  * 
  */
 export interface MultiInstanceSettings {
@@ -4350,22 +6428,25 @@ export interface MultiInstanceSettings {
  * (summed across all cores and all compute nodes) consumed by the task.
  * 
  * @member {moment.duration} wallClockTime The total wall clock time of the
- * task.
+ * task. The wall clock time is the elapsed time from when the task started
+ * running on a compute node to when it finished (or to the last time the
+ * statistics were updated, if the task had not finished by then). If the task
+ * was retried, this includes the wall clock time of all the task retries.
  * 
  * @member {number} readIOps The total number of disk read operations made by
  * the task.
  * 
- * @member {number} writeIOps The total number of disk write operations made
- * by the task.
+ * @member {number} writeIOps The total number of disk write operations made by
+ * the task.
  * 
  * @member {number} readIOGiB The total gibibytes read from disk by the task.
  * 
  * @member {number} writeIOGiB The total gibibytes written to disk by the task.
  * 
- * @member {moment.duration} waitTime The total wait time of the task. The
- * wait time for a task is defined as the elapsed time between the creation
- * of the task and the start of task execution. (If the task is retried due
- * to failures, the wait time is the time to the most recent task execution.).
+ * @member {moment.duration} waitTime The total wait time of the task. The wait
+ * time for a task is defined as the elapsed time between the creation of the
+ * task and the start of task execution. (If the task is retried due to
+ * failures, the wait time is the time to the most recent task execution.).
  * 
  */
 export interface TaskStatistics {
@@ -4384,35 +6465,18 @@ export interface TaskStatistics {
 
 /**
  * @class
- * Initializes a new instance of the TaskDependencies class.
- * @constructor
- * @summary Specifies any dependencies of a task. Any task that is explicitly
- * specified or within a dependency range must complete before the dependant
- * task will be scheduled.
- *
- * @member {array} [taskIds] The list of task ids that must complete before
- * this task can be scheduled.
- * 
- * @member {array} [taskIdRanges] The list of task ranges that must complete
- * before this task can be scheduled.
- * 
- */
-export interface TaskDependencies {
-  taskIds?: string[];
-  taskIdRanges?: TaskIdRange[];
-}
-
-/**
- * @class
  * Initializes a new instance of the TaskIdRange class.
  * @constructor
- * @summary A range of task ids that a task can depend on. All tasks with ids
+ * @summary A range of task IDs that a task can depend on. All tasks with IDs
  * in the range must complete successfully before the dependent task can be
  * scheduled.
  *
- * @member {number} start The first task id in the range.
+ * The start and end of the range are inclusive. For example, if a range has
+ * start 9 and end 12, then it represents tasks '9', '10', '11' and '12'.
+ *
+ * @member {number} start The first task ID in the range.
  * 
- * @member {number} end The last task id in the range.
+ * @member {number} end The last task ID in the range.
  * 
  */
 export interface TaskIdRange {
@@ -4422,20 +6486,47 @@ export interface TaskIdRange {
 
 /**
  * @class
+ * Initializes a new instance of the TaskDependencies class.
+ * @constructor
+ * @summary Specifies any dependencies of a task. Any task that is explicitly
+ * specified or within a dependency range must complete before the dependant
+ * task will be scheduled.
+ *
+ * @member {array} [taskIds] The list of task IDs that this task depends on.
+ * All tasks in this list must complete successfully before the dependent task
+ * can be scheduled.
+ * 
+ * @member {array} [taskIdRanges] The list of task ID ranges that this task
+ * depends on. All tasks in all ranges must complete successfully before the
+ * dependent task can be scheduled.
+ * 
+ */
+export interface TaskDependencies {
+  taskIds?: string[];
+  taskIdRanges?: TaskIdRange[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the CloudTask class.
  * @constructor
  * @summary An Azure Batch task.
  *
  * @member {string} [id] A string that uniquely identifies the task within the
- * job. The id can contain any combination of alphanumeric characters
- * including hyphens and underscores, and cannot contain more than 64
- * characters. It is common to use a GUID for the id.
+ * job. The ID can contain any combination of alphanumeric characters including
+ * hyphens and underscores, and cannot contain more than 64 characters.
  * 
- * @member {string} [displayName] A display name for the task.
+ * @member {string} [displayName] A display name for the task. The display name
+ * need not be unique and can contain any Unicode characters up to a maximum
+ * length of 1024.
  * 
  * @member {string} [url] The URL of the task.
  * 
- * @member {string} [eTag] The ETag of the task.
+ * @member {string} [eTag] The ETag of the task. This is an opaque string. You
+ * can use it to detect whether the task has changed between requests. In
+ * particular, you can be pass the ETag when updating a task to specify that
+ * your changes should take effect only if nobody else has modified the task in
+ * the meantime.
  * 
  * @member {date} [lastModified] The last modified time of the task.
  * 
@@ -4444,32 +6535,30 @@ export interface TaskIdRange {
  * @member {object} [exitConditions] How the Batch service should respond when
  * the task completes.
  * 
- * @member {array} [exitConditions.exitCodes] A list of individual task exit
- * codes and how the Batch service should respond to them.
+ * @member {array} [exitConditions.exitCodes]
  * 
- * @member {array} [exitConditions.exitCodeRanges] A list of task exit codes
- * ranges and how the Batch service should respond to them.
+ * @member {array} [exitConditions.exitCodeRanges]
  * 
- * @member {object} [exitConditions.schedulingError] How the Batch service
- * should respond if the task fails with a scheduling error.
+ * @member {object} [exitConditions.schedulingError]
  * 
- * @member {string} [exitConditions.schedulingError.jobAction] An action to
- * take on the job containing the task, if the task completes with the given
- * exit condition and the job’s onTaskFailed property is
- * 'performexitoptionsjobaction'. Possible values include: 'none', 'disable',
- * 'terminate'
+ * @member {string} [exitConditions.schedulingError.jobAction] The default is
+ * none for exit code 0 and terminate for all other exit conditions. It is an
+ * error to specify this if the job's onTaskFailed is noaction. The add task
+ * request fails with an invalid property value error; if you are calling the
+ * REST API directly, the HTTP status code is 400 (Bad Request). Possible
+ * values include: 'none', 'disable', 'terminate'
  * 
- * @member {object} [exitConditions.default] How the Batch service should
- * respond if the task fails with an exit condition not covered by any of the
- * other properties – that is, any nonzero exit code not listed in the
- * exitCodes or exitCodeRanges collection, or a scheduling error if the
- * schedulingError property is not present.
+ * @member {object} [exitConditions.default] Note that the default condition
+ * does not include exit code 0. If you want non-default behaviour on exit code
+ * 0, you must list it explicitly using the exitCodes or exitCodeRanges
+ * collection.
  * 
- * @member {string} [exitConditions.default.jobAction] An action to take on
- * the job containing the task, if the task completes with the given exit
- * condition and the job’s onTaskFailed property is
- * 'performexitoptionsjobaction'. Possible values include: 'none', 'disable',
- * 'terminate'
+ * @member {string} [exitConditions.default.jobAction] The default is none for
+ * exit code 0 and terminate for all other exit conditions. It is an error to
+ * specify this if the job's onTaskFailed is noaction. The add task request
+ * fails with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request). Possible values
+ * include: 'none', 'disable', 'terminate'
  * 
  * @member {string} [state] The current state of the task. Possible values
  * include: 'active', 'preparing', 'running', 'completed'
@@ -4486,18 +6575,18 @@ export interface TaskIdRange {
  * initial Active state.
  * 
  * @member {string} [commandLine] The command line of the task. For
- * multi-instance tasks, the command line is executed on the primary subtask
- * after all the subtasks have finished executing the coordianation command
- * line. The command line does not run under a shell, and therefore cannot
- * take advantage of shell features such as environment variable expansion.
- * If you want to take advantage of such features, you should invoke the
- * shell in the command line, for example using "cmd /c MyCommand" in Windows
- * or "/bin/sh -c MyCommand" in Linux.
+ * multi-instance tasks, the command line is executed as the primary task,
+ * after the primary task and all subtasks have finished executing the
+ * coordination command line. The command line does not run under a shell, and
+ * therefore cannot take advantage of shell features such as environment
+ * variable expansion. If you want to take advantage of such features, you
+ * should invoke the shell in the command line, for example using "cmd /c
+ * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary subtask is executed.
+ * compute node on which the primary task is executed.
  * 
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the task.
@@ -4506,40 +6595,54 @@ export interface TaskIdRange {
  * Batch service to select a compute node on which to start the new task.
  * 
  * @member {string} [affinityInfo.affinityId] You can pass the affinityId of a
- * compute node or task to indicate that this task needs to be placed close
- * to the node or task.
+ * compute node or task to indicate that this task needs to be placed close to
+ * the node or task.
  * 
  * @member {object} [constraints] The execution constraints that apply to this
  * task.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If this is not
+ * specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean} [runElevated] Whether to run the task in elevated mode.
  * 
  * @member {object} [executionInfo] Information about the execution of the
  * task.
  * 
- * @member {date} [executionInfo.startTime] If the task has been restarted or
- * retried, this is the most recent time at which the task started running.
+ * @member {date} [executionInfo.startTime] 'Running' corresponds to the
+ * running state, so if the task specifies resource files or application
+ * packages, then the start time reflects the time at which the task started
+ * downloading or deploying these. If the task has been restarted or retried,
+ * this is the most recent time at which the task started running. This
+ * property is present only for tasks that are in the running or completed
+ * state.
  * 
- * @member {date} [executionInfo.endTime] This property is set only if the
- * task is in the Completed state.
+ * @member {date} [executionInfo.endTime] This property is set only if the task
+ * is in the Completed state.
  * 
- * @member {number} [executionInfo.exitCode] This parameter is returned only
- * if the task is in the completed state. The exit code for a process
+ * @member {number} [executionInfo.exitCode] This property is set only if the
+ * task is in the completed state. In general, the exit code for a process
  * reflects the specific convention implemented by the application developer
  * for that process. If you use the exit code value to make decisions in your
- * code, be sure that you know the exit code convention used by the
- * application process. Note that the exit code may also be generated by the
- * compute node operating system, such as when a process is forcibly
- * terminated.
+ * code, be sure that you know the exit code convention used by the application
+ * process. However, if the Batch service terminates the task (due to timeout,
+ * or user termination via the API) you may see an operating system-defined
+ * exit code.
  * 
- * @member {object} [executionInfo.schedulingError]
+ * @member {object} [executionInfo.schedulingError] This property is set only
+ * if the task is in the completed state.
  * 
  * @member {string} [executionInfo.schedulingError.category] Possible values
  * include: 'usererror', 'servererror', 'unmapped'
@@ -4550,13 +6653,24 @@ export interface TaskIdRange {
  * 
  * @member {array} [executionInfo.schedulingError.details]
  * 
- * @member {number} [executionInfo.retryCount]
+ * @member {number} [executionInfo.retryCount] The task is retried if it exits
+ * with a nonzero exit code, up to the specified maxTaskRetryCount.
  * 
- * @member {date} [executionInfo.lastRetryTime]
+ * @member {date} [executionInfo.lastRetryTime] This element is present only if
+ * the task was retried (i.e. retryCount is nonzero). If present, this is
+ * typically the same as startTime, but may be different if the task has been
+ * restarted for reasons other than retry; for example, if the compute node was
+ * rebooted during a retry, then the startTime is updated but the lastRetryTime
+ * is not.
  * 
- * @member {number} [executionInfo.requeueCount]
+ * @member {number} [executionInfo.requeueCount] When the user removes nodes
+ * from a pool (by resizing/shrinking the pool) or when the job is being
+ * disabled, the user can specify that running tasks on the nodes be requeued
+ * for execution. This count tracks how many times the task has been requeued
+ * for these reasons.
  * 
- * @member {date} [executionInfo.lastRequeueTime]
+ * @member {date} [executionInfo.lastRequeueTime] This property is set only if
+ * the requeueCount is nonzero.
  * 
  * @member {object} [nodeInfo] Information about the compute node on which the
  * task ran.
@@ -4573,12 +6687,15 @@ export interface TaskIdRange {
  * 
  * @member {string} [nodeInfo.taskRootDirectoryUrl]
  * 
- * @member {object} [multiInstanceSettings] Information about how to run the
+ * @member {object} [multiInstanceSettings] An object that indicates that the
+ * task is a multi-instance task, and contains information about how to run the
  * multi-instance task.
  * 
  * @member {number} [multiInstanceSettings.numberOfInstances]
  * 
- * @member {string} [multiInstanceSettings.coordinationCommandLine]
+ * @member {string} [multiInstanceSettings.coordinationCommandLine] A typical
+ * coordination command line launches a background service and verifies that
+ * the service is ready to process inter-node messages.
  * 
  * @member {array} [multiInstanceSettings.commonResourceFiles] The difference
  * between common resource files and task resource files is that common
@@ -4597,7 +6714,11 @@ export interface TaskIdRange {
  * 
  * @member {moment.duration} [stats.kernelCPUTime]
  * 
- * @member {moment.duration} [stats.wallClockTime]
+ * @member {moment.duration} [stats.wallClockTime] The wall clock time is the
+ * elapsed time from when the task started running on a compute node to when it
+ * finished (or to the last time the statistics were updated, if the task had
+ * not finished by then). If the task was retried, this includes the wall clock
+ * time of all the task retries.
  * 
  * @member {number} [stats.readIOps]
  * 
@@ -4609,7 +6730,10 @@ export interface TaskIdRange {
  * 
  * @member {moment.duration} [stats.waitTime]
  * 
- * @member {object} [dependsOn] Any dependencies this task has.
+ * @member {object} [dependsOn] The tasks that this task depends on. The task
+ * will not be scheduled until all depended-on tasks have completed
+ * successfully. (If any depended-on tasks fail and exhaust their retry counts,
+ * the task will never be scheduled.)
  * 
  * @member {array} [dependsOn.taskIds]
  * 
@@ -4653,55 +6777,56 @@ export interface CloudTask {
  * @summary An Azure Batch task to add.
  *
  * @member {string} id A string that uniquely identifies the task within the
- * job. The id can contain any combination of alphanumeric characters
- * including hyphens and underscores, and cannot contain more than 64
- * characters. It is common to use a GUID for the id.
+ * job. The ID can contain any combination of alphanumeric characters including
+ * hyphens and underscores, and cannot contain more than 64 characters. The ID
+ * is case-preserving and case-insensitive (that is, you may not have two IDs
+ * within a job that differ only by case).
  * 
- * @member {string} [displayName] A display name for the task.
+ * @member {string} [displayName] A display name for the task. The display name
+ * need not be unique and can contain any Unicode characters up to a maximum
+ * length of 1024.
  * 
  * @member {string} commandLine The command line of the task. For
- * multi-instance tasks, the command line is executed on the primary subtask
- * after all the subtasks have finished executing the coordianation command
- * line. The command line does not run under a shell, and therefore cannot
- * take advantage of shell features such as environment variable expansion.
- * If you want to take advantage of such features, you should invoke the
- * shell in the command line, for example using "cmd /c MyCommand" in Windows
- * or "/bin/sh -c MyCommand" in Linux.
+ * multi-instance tasks, the command line is executed as the primary task,
+ * after the primary task and all subtasks have finished executing the
+ * coordination command line. The command line does not run under a shell, and
+ * therefore cannot take advantage of shell features such as environment
+ * variable expansion. If you want to take advantage of such features, you
+ * should invoke the shell in the command line, for example using "cmd /c
+ * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {object} [exitConditions] How the Batch service should respond when
  * the task completes.
  * 
- * @member {array} [exitConditions.exitCodes] A list of individual task exit
- * codes and how the Batch service should respond to them.
+ * @member {array} [exitConditions.exitCodes]
  * 
- * @member {array} [exitConditions.exitCodeRanges] A list of task exit codes
- * ranges and how the Batch service should respond to them.
+ * @member {array} [exitConditions.exitCodeRanges]
  * 
- * @member {object} [exitConditions.schedulingError] How the Batch service
- * should respond if the task fails with a scheduling error.
+ * @member {object} [exitConditions.schedulingError]
  * 
- * @member {string} [exitConditions.schedulingError.jobAction] An action to
- * take on the job containing the task, if the task completes with the given
- * exit condition and the job’s onTaskFailed property is
- * 'performexitoptionsjobaction'. Possible values include: 'none', 'disable',
- * 'terminate'
+ * @member {string} [exitConditions.schedulingError.jobAction] The default is
+ * none for exit code 0 and terminate for all other exit conditions. It is an
+ * error to specify this if the job's onTaskFailed is noaction. The add task
+ * request fails with an invalid property value error; if you are calling the
+ * REST API directly, the HTTP status code is 400 (Bad Request). Possible
+ * values include: 'none', 'disable', 'terminate'
  * 
- * @member {object} [exitConditions.default] How the Batch service should
- * respond if the task fails with an exit condition not covered by any of the
- * other properties – that is, any nonzero exit code not listed in the
- * exitCodes or exitCodeRanges collection, or a scheduling error if the
- * schedulingError property is not present.
+ * @member {object} [exitConditions.default] Note that the default condition
+ * does not include exit code 0. If you want non-default behaviour on exit code
+ * 0, you must list it explicitly using the exitCodes or exitCodeRanges
+ * collection.
  * 
- * @member {string} [exitConditions.default.jobAction] An action to take on
- * the job containing the task, if the task completes with the given exit
- * condition and the job’s onTaskFailed property is
- * 'performexitoptionsjobaction'. Possible values include: 'none', 'disable',
- * 'terminate'
+ * @member {string} [exitConditions.default.jobAction] The default is none for
+ * exit code 0 and terminate for all other exit conditions. It is an error to
+ * specify this if the job's onTaskFailed is noaction. The add task request
+ * fails with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request). Possible values
+ * include: 'none', 'disable', 'terminate'
  * 
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary subtask is executed.
+ * compute node on which the primary task is executed.
  * 
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the task.
@@ -4710,34 +6835,53 @@ export interface CloudTask {
  * Batch service to select a compute node on which to start the new task.
  * 
  * @member {string} [affinityInfo.affinityId] You can pass the affinityId of a
- * compute node or task to indicate that this task needs to be placed close
- * to the node or task.
+ * compute node or task to indicate that this task needs to be placed close to
+ * the node or task.
  * 
  * @member {object} [constraints] The execution constraints that apply to this
- * task.
+ * task. If you do not specify constraints, the maxTaskRetryCount is the
+ * maxTaskRetryCount specified for the job, and the maxWallClockTime and
+ * retentionTime are infinite.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If this is not
+ * specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean} [runElevated] Whether to run the task in elevated mode.
+ * The default value is false.
  * 
- * @member {object} [multiInstanceSettings] Information about how to run the
+ * @member {object} [multiInstanceSettings] An object that indicates that the
+ * task is a multi-instance task, and contains information about how to run the
  * multi-instance task.
  * 
  * @member {number} [multiInstanceSettings.numberOfInstances]
  * 
- * @member {string} [multiInstanceSettings.coordinationCommandLine]
+ * @member {string} [multiInstanceSettings.coordinationCommandLine] A typical
+ * coordination command line launches a background service and verifies that
+ * the service is ready to process inter-node messages.
  * 
  * @member {array} [multiInstanceSettings.commonResourceFiles] The difference
  * between common resource files and task resource files is that common
  * resource files are downloaded for all subtasks including the primary,
  * whereas task resource files are downloaded only for the primary.
  * 
- * @member {object} [dependsOn] Any other tasks that this task depends on.
+ * @member {object} [dependsOn] The tasks that this task depends on. The task
+ * will not be scheduled until all depended-on tasks have completed
+ * successfully. (If any depended-on tasks fail and exhaust their retry counts,
+ * the task will never be scheduled.) If the job does not have
+ * usesTaskDependencies set to true, and this element is present, the request
+ * fails with error code TaskDependenciesNotSpecifiedOnJob.
  * 
  * @member {array} [dependsOn.taskIds]
  * 
@@ -4778,75 +6922,6 @@ export interface TaskAddCollectionParameter {
 
 /**
  * @class
- * Initializes a new instance of the TaskAddResult class.
- * @constructor
- * @summary Result for a single task added as part of an add task collection
- * operation.
- *
- * @member {string} status The status of the add task request. Possible values
- * include: 'success', 'clienterror', 'servererror', 'unmapped'
- * 
- * @member {string} taskId The id of the task for which this is the result.
- * 
- * @member {string} [eTag] The ETag of the task, if the task was successfully
- * added.
- * 
- * @member {date} [lastModified] The last modified time of the task.
- * 
- * @member {string} [location] The URL of the task, if the task was
- * successfully added.
- * 
- * @member {object} [error] The error encountered while attempting to add the
- * task.
- * 
- * @member {string} [error.code]
- * 
- * @member {object} [error.message]
- * 
- * @member {string} [error.message.lang]
- * 
- * @member {string} [error.message.value]
- * 
- * @member {array} [error.values]
- * 
- */
-export interface TaskAddResult {
-  status: string;
-  taskId: string;
-  eTag?: string;
-  lastModified?: Date;
-  location?: string;
-  error?: BatchError;
-}
-
-/**
- * @class
- * Initializes a new instance of the BatchError class.
- * @constructor
- * @summary An error response received from the Azure Batch service.
- *
- * @member {string} [code] An identifier for the error. Codes are invariant
- * and are intended to be consumed programmatically.
- * 
- * @member {object} [message] A message describing the error, intended to be
- * suitable for display in a user interface.
- * 
- * @member {string} [message.lang]
- * 
- * @member {string} [message.value]
- * 
- * @member {array} [values] A collection of key-value pairs containing
- * additional details about the error.
- * 
- */
-export interface BatchError {
-  code?: string;
-  message?: ErrorMessage;
-  values?: BatchErrorDetail[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ErrorMessage class.
  * @constructor
  * @summary An error message received in an Azure Batch error response.
@@ -4882,9 +6957,78 @@ export interface BatchErrorDetail {
 
 /**
  * @class
+ * Initializes a new instance of the BatchError class.
+ * @constructor
+ * @summary An error response received from the Azure Batch service.
+ *
+ * @member {string} [code] An identifier for the error. Codes are invariant and
+ * are intended to be consumed programmatically.
+ * 
+ * @member {object} [message] A message describing the error, intended to be
+ * suitable for display in a user interface.
+ * 
+ * @member {string} [message.lang]
+ * 
+ * @member {string} [message.value]
+ * 
+ * @member {array} [values] A collection of key-value pairs containing
+ * additional details about the error.
+ * 
+ */
+export interface BatchError {
+  code?: string;
+  message?: ErrorMessage;
+  values?: BatchErrorDetail[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TaskAddResult class.
+ * @constructor
+ * @summary Result for a single task added as part of an add task collection
+ * operation.
+ *
+ * @member {string} status The status of the add task request. Possible values
+ * include: 'success', 'clienterror', 'servererror', 'unmapped'
+ * 
+ * @member {string} taskId The ID of the task for which this is the result.
+ * 
+ * @member {string} [eTag] The ETag of the task, if the task was successfully
+ * added.
+ * 
+ * @member {date} [lastModified] The last modified time of the task.
+ * 
+ * @member {string} [location] The URL of the task, if the task was
+ * successfully added.
+ * 
+ * @member {object} [error] The error encountered while attempting to add the
+ * task.
+ * 
+ * @member {string} [error.code]
+ * 
+ * @member {object} [error.message]
+ * 
+ * @member {string} [error.message.lang]
+ * 
+ * @member {string} [error.message.value]
+ * 
+ * @member {array} [error.values]
+ * 
+ */
+export interface TaskAddResult {
+  status: string;
+  taskId: string;
+  eTag?: string;
+  lastModified?: Date;
+  location?: string;
+  error?: BatchError;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TaskAddCollectionResult class.
  * @constructor
- * @summary Response to a TaskOperations.AddCollection request.
+ * @summary The result of adding a collection of tasks to a job.
  *
  * @member {array} [value] The results of the add task collection operation.
  * 
@@ -4899,7 +7043,7 @@ export interface TaskAddCollectionResult {
  * @constructor
  * @summary Information about an Azure Batch subtask.
  *
- * @member {number} [id] The id of the subtask.
+ * @member {number} [id] The ID of the subtask.
  * 
  * @member {object} [nodeInfo] Information about the compute node on which the
  * subtask ran.
@@ -4916,21 +7060,22 @@ export interface TaskAddCollectionResult {
  * 
  * @member {string} [nodeInfo.taskRootDirectoryUrl]
  * 
- * @member {date} [startTime] The time at which the subtask started running.
- * If the subtask has been restarted or retried, this is the most recent time
- * at which the subtask started running.
+ * @member {date} [startTime] The time at which the subtask started running. If
+ * the subtask has been restarted or retried, this is the most recent time at
+ * which the subtask started running.
  * 
  * @member {date} [endTime] The time at which the subtask completed. This
  * property is set only if the subtask is in the Completed state.
  * 
  * @member {number} [exitCode] The exit code of the program specified on the
- * subtask command line. This parameter is returned only if the subtask is in
- * the completed state. The exit code for a process reflects the specific
- * convention implemented by the application developer for that process. If
- * you use the exit code value to make decisions in your code, be sure that
- * you know the exit code convention used by the application process. Note
- * that the exit code may also be generated by the compute node operating
- * system, such as when a process is forcibly terminated.
+ * subtask command line. This property is set only if the subtask is in the
+ * completed state. In general, the exit code for a process reflects the
+ * specific convention implemented by the application developer for that
+ * process. If you use the exit code value to make decisions in your code, be
+ * sure that you know the exit code convention used by the application process.
+ * However, if the Batch service terminates the subtask (due to timeout, or
+ * user termination via the API) you may see an operating system-defined exit
+ * code.
  * 
  * @member {object} [schedulingError] Details of any error encountered
  * scheduling the subtask.
@@ -4951,12 +7096,12 @@ export interface TaskAddCollectionResult {
  * its current state.
  * 
  * @member {string} [previousState] The previous state of the subtask. This
- * property is not set if the subtask is in its initial Active state.
- * Possible values include: 'active', 'preparing', 'running', 'completed'
+ * property is not set if the subtask is in its initial running state. Possible
+ * values include: 'active', 'preparing', 'running', 'completed'
  * 
  * @member {date} [previousStateTransitionTime] The time at which the subtask
  * entered its previous state. This property is not set if the subtask is in
- * its initial Active state.
+ * its initial running state.
  * 
  */
 export interface SubtaskInformation {
@@ -4976,13 +7121,29 @@ export interface SubtaskInformation {
  * @class
  * Initializes a new instance of the CloudTaskListSubtasksResult class.
  * @constructor
- * @summary Response to a CloudTaskOperations.ListSubtasks request.
+ * @summary The result of listing the subtasks of a task.
  *
- * @member {array} [value] The list of information of subtasks.
+ * @member {array} [value] The list of subtasks.
  * 
  */
 export interface CloudTaskListSubtasksResult {
   value?: SubtaskInformation[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudTaskListResult class.
+ * @constructor
+ * @summary The result of listing the tasks in a job.
+ *
+ * @member {array} [value] The list of tasks.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudTaskListResult {
+  value?: CloudTask[];
+  odatanextLink?: string;
 }
 
 /**
@@ -4993,11 +7154,11 @@ export interface CloudTaskListSubtasksResult {
  *
  * @member {string} [taskUrl] The URL of the task.
  * 
- * @member {string} [jobId] The id of the job to which the task belongs.
+ * @member {string} [jobId] The ID of the job to which the task belongs.
  * 
- * @member {string} [taskId] The id of the task.
+ * @member {string} [taskId] The ID of the task.
  * 
- * @member {number} [subtaskId] The id of the subtask if the task is a
+ * @member {number} [subtaskId] The ID of the subtask if the task is a
  * multi-instance task.
  * 
  * @member {string} taskState The current state of the task. Possible values
@@ -5006,22 +7167,28 @@ export interface CloudTaskListSubtasksResult {
  * @member {object} [executionInfo] Information about the execution of the
  * task.
  * 
- * @member {date} [executionInfo.startTime] If the task has been restarted or
- * retried, this is the most recent time at which the task started running.
+ * @member {date} [executionInfo.startTime] 'Running' corresponds to the
+ * running state, so if the task specifies resource files or application
+ * packages, then the start time reflects the time at which the task started
+ * downloading or deploying these. If the task has been restarted or retried,
+ * this is the most recent time at which the task started running. This
+ * property is present only for tasks that are in the running or completed
+ * state.
  * 
- * @member {date} [executionInfo.endTime] This property is set only if the
- * task is in the Completed state.
+ * @member {date} [executionInfo.endTime] This property is set only if the task
+ * is in the Completed state.
  * 
- * @member {number} [executionInfo.exitCode] This parameter is returned only
- * if the task is in the completed state. The exit code for a process
+ * @member {number} [executionInfo.exitCode] This property is set only if the
+ * task is in the completed state. In general, the exit code for a process
  * reflects the specific convention implemented by the application developer
  * for that process. If you use the exit code value to make decisions in your
- * code, be sure that you know the exit code convention used by the
- * application process. Note that the exit code may also be generated by the
- * compute node operating system, such as when a process is forcibly
- * terminated.
+ * code, be sure that you know the exit code convention used by the application
+ * process. However, if the Batch service terminates the task (due to timeout,
+ * or user termination via the API) you may see an operating system-defined
+ * exit code.
  * 
- * @member {object} [executionInfo.schedulingError]
+ * @member {object} [executionInfo.schedulingError] This property is set only
+ * if the task is in the completed state.
  * 
  * @member {string} [executionInfo.schedulingError.category] Possible values
  * include: 'usererror', 'servererror', 'unmapped'
@@ -5032,13 +7199,24 @@ export interface CloudTaskListSubtasksResult {
  * 
  * @member {array} [executionInfo.schedulingError.details]
  * 
- * @member {number} [executionInfo.retryCount]
+ * @member {number} [executionInfo.retryCount] The task is retried if it exits
+ * with a nonzero exit code, up to the specified maxTaskRetryCount.
  * 
- * @member {date} [executionInfo.lastRetryTime]
+ * @member {date} [executionInfo.lastRetryTime] This element is present only if
+ * the task was retried (i.e. retryCount is nonzero). If present, this is
+ * typically the same as startTime, but may be different if the task has been
+ * restarted for reasons other than retry; for example, if the compute node was
+ * rebooted during a retry, then the startTime is updated but the lastRetryTime
+ * is not.
  * 
- * @member {number} [executionInfo.requeueCount]
+ * @member {number} [executionInfo.requeueCount] When the user removes nodes
+ * from a pool (by resizing/shrinking the pool) or when the job is being
+ * disabled, the user can specify that running tasks on the nodes be requeued
+ * for execution. This count tracks how many times the task has been requeued
+ * for these reasons.
  * 
- * @member {date} [executionInfo.lastRequeueTime]
+ * @member {date} [executionInfo.lastRequeueTime] This property is set only if
+ * the requeueCount is nonzero.
  * 
  */
 export interface TaskInformation {
@@ -5057,20 +7235,30 @@ export interface TaskInformation {
  * @summary Information about a start task running on a compute node.
  *
  * @member {string} state The state of the start task on the compute node.
- * Possible values include: 'running', 'completed'
+ * Possible values are: running – The start task is currently running.
+ * completed – The start task has exited with exit code 0, or the start task
+ * has failed and the retry limit has reached, or the start task process did
+ * not run due to scheduling errors. Possible values include: 'running',
+ * 'completed'
  * 
  * @member {date} startTime The time at which the start task started running.
+ * This value is reset every time the task is restarted or retried (that is,
+ * this is the most recent time at which the start task started running).
  * 
  * @member {date} [endTime] The time at which the start task stopped running.
+ * This is the end time of the most recent run of the start task, if that run
+ * has completed (even if that run failed and a retry is pending). This element
+ * is not present if the start task is currently running.
  * 
  * @member {number} [exitCode] The exit code of the program specified on the
- * task command line. This parameter is returned only if the task is in the
- * completed state. The exit code for a process reflects the specific
- * convention implemented by the application developer for that process. If
- * you use the exit code value to make decisions in your code, be sure that
- * you know the exit code convention used by the application process. Note
- * that the exit code may also be generated by the compute node operating
- * system, such as when a process is forcibly terminated.
+ * start task command line. This property is set only if the start task is in
+ * the completed state. In general, the exit code for a process reflects the
+ * specific convention implemented by the application developer for that
+ * process. If you use the exit code value to make decisions in your code, be
+ * sure that you know the exit code convention used by the application process.
+ * However, if the Batch service terminates the start task (due to timeout, or
+ * user termination via the API) you may see an operating system-defined exit
+ * code.
  * 
  * @member {object} [schedulingError] Any error encountered scheduling the
  * start task.
@@ -5084,11 +7272,16 @@ export interface TaskInformation {
  * 
  * @member {array} [schedulingError.details]
  * 
- * @member {number} retryCount The number of times the task has been retried
- * by the Batch service.
+ * @member {number} retryCount The number of times the task has been retried by
+ * the Batch service. The task is retried if it exits with a nonzero exit code,
+ * up to the specified MaxTaskRetryCount.
  * 
  * @member {date} [lastRetryTime] The most recent time at which a retry of the
- * task started running.
+ * task started running. This element is present only if the task was retried
+ * (i.e. retryCount is nonzero). If present, this is typically the same as
+ * startTime, but may be different if the task has been restarted for reasons
+ * other than retry; for example, if the compute node was rebooted during a
+ * retry, then the startTime is updated but the lastRetryTime is not.
  * 
  */
 export interface StartTaskInformation {
@@ -5129,49 +7322,69 @@ export interface ComputeNodeError {
  * @constructor
  * @summary A compute node in the Batch service.
  *
- * @member {string} [id] The id of the compute node.
+ * @member {string} [id] The ID of the compute node. Every node that is added
+ * to a pool is assigned a unique ID. Whenever a node is removed from a pool,
+ * all of its local files are deleted, and the ID is reclaimed and could be
+ * reused for new nodes.
  * 
  * @member {string} [url] The URL of the compute node.
  * 
  * @member {string} [state] The current state of the compute node. Possible
  * values include: 'idle', 'rebooting', 'reimaging', 'running', 'unusable',
- * 'creating', 'starting', 'waitingforstarttask', 'starttaskfailed',
- * 'unknown', 'leavingpool', 'offline'
+ * 'creating', 'starting', 'waitingforstarttask', 'starttaskfailed', 'unknown',
+ * 'leavingpool', 'offline'
  * 
- * @member {string} [schedulingState] Whether the compute node should be
- * available for task scheduling. Possible values include: 'enabled',
- * 'disabled'
+ * @member {string} [schedulingState] Whether the compute node is available for
+ * task scheduling. Possible values are: enabled – Tasks can be scheduled on
+ * the node. disabled – No new tasks will be scheduled on the node. Tasks
+ * already running on the node may still run to completion. All nodes start
+ * with scheduling enabled. Possible values include: 'enabled', 'disabled'
  * 
  * @member {date} [stateTransitionTime] The time at which the compute node
  * entered its current state.
  * 
  * @member {date} [lastBootTime] The time at which the compute node was
- * started.
+ * started. This property may not be present if the node state is unusable.
  * 
  * @member {date} [allocationTime] The time at which this compute node was
  * allocated to the pool.
  * 
- * @member {string} [ipAddress] The IP address that other compute nodes can
- * use to communicate with this compute node.
+ * @member {string} [ipAddress] The IP address that other compute nodes can use
+ * to communicate with this compute node. Every node that is added to a pool is
+ * assigned a unique IP address. Whenever a node is removed from a pool, all of
+ * its local files are deleted, and the IP address is reclaimed and could be
+ * reused for new nodes.
  * 
- * @member {string} [affinityId] An identifier which can be passed in the Add
- * Task API to request that the task be scheduled close to this compute node.
+ * @member {string} [affinityId] An identifier which can be passed when adding
+ * a task to request that the task be scheduled close to this compute node.
  * 
  * @member {string} [vmSize] The size of the virtual machine hosting the
- * compute node.
+ * compute node. For information about available sizes of virtual machines for
+ * Cloud Services pools (pools created with cloudServiceConfiguration), see
+ * Sizes for Cloud Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {number} [totalTasksRun] The total number of job tasks completed on
- * the compute node. This includes Job Preparation, Job Release and Job
- * Manager tasks, but not the pool start task.
+ * the compute node. This includes Job Preparation, Job Release and Job Manager
+ * tasks, but not the pool start task.
  * 
  * @member {number} [runningTasksCount] The total number of currently running
  * job tasks on the compute node. This includes Job Preparation, Job Release,
  * and Job Manager tasks, but not the pool start task.
  * 
  * @member {number} [totalTasksSucceeded] The total number of job tasks which
- * completed successfully (with exitCode 0) on the compute node. This
- * includes Job Preparation, Job Release, and Job Manager tasks, but not the
- * pool start task.
+ * completed successfully (with exitCode 0) on the compute node. This includes
+ * Job Preparation, Job Release, and Job Manager tasks, but not the pool start
+ * task.
  * 
  * @member {array} [recentTasks] The list of tasks that are currently running
  * on the compute node.
@@ -5179,11 +7392,11 @@ export interface ComputeNodeError {
  * @member {object} [startTask] The task specified to run on the compute node
  * as it joins the pool.
  * 
- * @member {string} [startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [startTask.resourceFiles]
  * 
@@ -5191,28 +7404,51 @@ export interface ComputeNodeError {
  * 
  * @member {boolean} [startTask.runElevated]
  * 
- * @member {number} [startTask.maxTaskRetryCount]
+ * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
+ * task if its exit code is nonzero. Note that this value specifically controls
+ * the number of retries. The Batch service will try the task once, and may
+ * then retry up to this limit. For example, if the maximum retry count is 3,
+ * Batch tries the task up to 4 times (one initial try and 3 retries). If the
+ * maximum retry count is 0, the Batch service does not retry the task. If the
+ * maximum retry count is -1, the Batch service retries the task without limit.
  * 
- * @member {boolean} [startTask.waitForSuccess]
+ * @member {boolean} [startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
  * @member {object} [startTaskInfo] Runtime information about the execution of
  * the start task on the compute node.
  * 
- * @member {string} [startTaskInfo.state] Possible values include: 'running',
- * 'completed'
+ * @member {string} [startTaskInfo.state] Possible values are: running – The
+ * start task is currently running. completed – The start task has exited with
+ * exit code 0, or the start task has failed and the retry limit has reached,
+ * or the start task process did not run due to scheduling errors. Possible
+ * values include: 'running', 'completed'
  * 
- * @member {date} [startTaskInfo.startTime]
+ * @member {date} [startTaskInfo.startTime] This value is reset every time the
+ * task is restarted or retried (that is, this is the most recent time at which
+ * the start task started running).
  * 
- * @member {date} [startTaskInfo.endTime]
+ * @member {date} [startTaskInfo.endTime] This is the end time of the most
+ * recent run of the start task, if that run has completed (even if that run
+ * failed and a retry is pending). This element is not present if the start
+ * task is currently running.
  * 
- * @member {number} [startTaskInfo.exitCode] This parameter is returned only
- * if the task is in the completed state. The exit code for a process
- * reflects the specific convention implemented by the application developer
- * for that process. If you use the exit code value to make decisions in your
- * code, be sure that you know the exit code convention used by the
- * application process. Note that the exit code may also be generated by the
- * compute node operating system, such as when a process is forcibly
- * terminated.
+ * @member {number} [startTaskInfo.exitCode] This property is set only if the
+ * start task is in the completed state. In general, the exit code for a
+ * process reflects the specific convention implemented by the application
+ * developer for that process. If you use the exit code value to make decisions
+ * in your code, be sure that you know the exit code convention used by the
+ * application process. However, if the Batch service terminates the start task
+ * (due to timeout, or user termination via the API) you may see an operating
+ * system-defined exit code.
  * 
  * @member {object} [startTaskInfo.schedulingError]
  * 
@@ -5225,12 +7461,24 @@ export interface ComputeNodeError {
  * 
  * @member {array} [startTaskInfo.schedulingError.details]
  * 
- * @member {number} [startTaskInfo.retryCount]
+ * @member {number} [startTaskInfo.retryCount] The task is retried if it exits
+ * with a nonzero exit code, up to the specified MaxTaskRetryCount.
  * 
- * @member {date} [startTaskInfo.lastRetryTime]
+ * @member {date} [startTaskInfo.lastRetryTime] This element is present only if
+ * the task was retried (i.e. retryCount is nonzero). If present, this is
+ * typically the same as startTime, but may be different if the task has been
+ * restarted for reasons other than retry; for example, if the compute node was
+ * rebooted during a retry, then the startTime is updated but the lastRetryTime
+ * is not.
  * 
  * @member {array} [certificateReferences] The list of certificates installed
- * on the compute node.
+ * on the compute node. For Windows compute nodes, the Batch service installs
+ * the certificates to the specified certificate store and location. For Linux
+ * compute nodes, the certificates are stored in a directory inside the task
+ * working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is
+ * supplied to the task to query for this location. For certificates with
+ * visibility of remoteuser, a certs directory is created in the user's home
+ * directory (e.g., /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array} [errors] The list of errors that are currently being
  * encountered by the compute node.
@@ -5259,6 +7507,22 @@ export interface ComputeNode {
 
 /**
  * @class
+ * Initializes a new instance of the ComputeNodeListResult class.
+ * @constructor
+ * @summary The result of listing the compute nodes in a pool.
+ *
+ * @member {array} [value] The list of compute nodes.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface ComputeNodeListResult {
+  value?: ComputeNode[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ComputeNodeUser class.
  * @constructor
  * @summary An user account on a compute node.
@@ -5266,15 +7530,24 @@ export interface ComputeNode {
  * @member {string} name The user name of the account.
  * 
  * @member {boolean} [isAdmin] Whether the account should be an administrator
- * on the compute node.
+ * on the compute node. The default value is false.
  * 
  * @member {date} [expiryTime] The time at which the account should expire. If
- * omitted, the default is 1 day from the current time.
+ * omitted, the default is 1 day from the current time. For Linux compute
+ * nodes, the expiryTime has a precision up to a day.
  * 
- * @member {string} [password] The password of the account.
+ * @member {string} [password] The password of the account. The password is
+ * required for Windows nodes (those created with 'cloudServiceConfiguration',
+ * or created with 'virtualMachineConfiguration' using a Windows image
+ * reference). For Linux compute nodes, the password can optionally be
+ * specified along with the sshPublicKey property.
  * 
  * @member {string} [sshPublicKey] The SSH public key that can be used for
- * remote login to the compute node.
+ * remote login to the compute node. The public key should be compatible with
+ * OpenSSH encoding and should be base 64 encoded. This property can be
+ * specified only for Linux nodes. If this is specified for a Windows node,
+ * then the Batch service rejects the request; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  */
 export interface ComputeNodeUser {
@@ -5289,7 +7562,7 @@ export interface ComputeNodeUser {
  * @class
  * Initializes a new instance of the ComputeNodeGetRemoteLoginSettingsResult class.
  * @constructor
- * @summary Response to a ComputeNodeOperation.GetRemoteLoginSettings request.
+ * @summary The remote login settings for a compute node.
  *
  * @member {string} remoteLoginIPAddress The IP address used for remote login
  * to the compute node.
@@ -5307,184 +7580,360 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @class
  * Initializes a new instance of the JobSchedulePatchParameter class.
  * @constructor
- * @summary Parameters for a CloudJobScheduleOperations.Patch request.
+ * @summary The set of changes to be made to a job schedule.
  *
  * @member {object} [schedule] The schedule according to which jobs will be
- * created.
+ * created. If you do not specify this element, the existing schedule is left
+ * unchanged.
  * 
  * @member {date} [schedule.doNotRunUntil] If you do not specify a
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
- * @member {date} [schedule.doNotRunAfter]
+ * @member {date} [schedule.doNotRunAfter] If you do not specify a
+ * doNotRunAfter time, and you are creating a recurring job schedule, the job
+ * schedule will remain active until you explicitly terminate it.
  * 
  * @member {moment.duration} [schedule.startWindow] If a job is not created
- * within the startWindow interval, then the 'opportunity' is lost; no job
- * will be created until the next recurrence of the schedule.
+ * within the startWindow interval, then the 'opportunity' is lost; no job will
+ * be created until the next recurrence of the schedule. If the schedule is
+ * recurring, and the startWindow is longer than the recurrence interval, then
+ * this is equivalent to an infinite startWindow, because the job that is 'due'
+ * in one recurrenceInterval is not carried forward into the next recurrence
+ * interval. The default is infinite. The minimum value is 1 minute. If you
+ * specify a lower value, the Batch service rejects the schedule with an error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
- * @member {moment.duration} [schedule.recurrenceInterval]
+ * @member {moment.duration} [schedule.recurrenceInterval] Because a job
+ * schedule can have at most one active job under it at any given time, if it
+ * is time to create a new job under a job schedule, but the previous job is
+ * still running, the Batch service will not create the new job until the
+ * previous job finishes. If the previous job does not finish within the
+ * startWindow period of the new recurrenceInterval, then no new job will be
+ * scheduled for that interval. For recurring jobs, you should normally specify
+ * a jobManagerTask in the jobSpecification. If you do not use jobManagerTask,
+ * you will need an external process to monitor when jobs are created, add
+ * tasks to the jobs and terminate the jobs ready for the next recurrence. The
+ * default is that the schedule does not recur: one job is created, within the
+ * startWindow after the doNotRunUntil time, and the schedule is complete as
+ * soon as that job finishes. The minimum value is 1 minute. If you specify a
+ * lower value, the Batch service rejects the schedule with an error; if you
+ * are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
- * @member {object} [jobSpecification] The details of the jobs to be created
- * on this schedule.
+ * @member {object} [jobSpecification] The details of the jobs to be created on
+ * this schedule. Updates affect only jobs that are started after the update
+ * has taken place. Any currently active job continues with the older
+ * specification.
  * 
- * @member {number} [jobSpecification.priority]  Priority values can range
- * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
- * the highest priority. The default value is 0.
+ * @member {number} [jobSpecification.priority] Priority values can range from
+ * -1000 to 1000, with -1000 being the lowest priority and 1000 being the
+ * highest priority. The default value is 0. This priority is used as the
+ * default for all jobs under the job schedule. You can update a job's priority
+ * after it has been created using by using the update job API.
  * 
  * @member {string} [jobSpecification.displayName] The name need not be unique
  * and can contain any Unicode characters up to a maximum length of 1024.
  * 
  * @member {boolean} [jobSpecification.usesTaskDependencies]
  * 
+ * @member {string} [jobSpecification.onAllTasksComplete] Note that if a job
+ * contains no tasks, then all tasks are considered complete. This option is
+ * therefore most commonly used with a job manager task; if you want to use
+ * automatic job termination without a job manager, you should initially set
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * 
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
+ * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * 
  * @member {object} [jobSpecification.constraints]
  * 
- * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
+ * the job does not complete within the time limit, the Batch service
+ * terminates it and any tasks that are still running. In this case, the
+ * termination reason will be MaxWallClockTimeExpiry. If this property is not
+ * specified, there is no time limit on how long the job may run.
  * 
- * @member {number} [jobSpecification.constraints.maxTaskRetryCount]
+ * @member {number} [jobSpecification.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try each task once, and may then retry up to this limit. For example,
+ * if the maximum retry count is 3, Batch tries a task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry tasks. If the maximum retry count is -1, the Batch
+ * service retries tasks without limit. The default value is 0 (no retries).
  * 
- * @member {object} [jobSpecification.jobManagerTask]
+ * @member {object} [jobSpecification.jobManagerTask] If the job does not
+ * specify a Job Manager task, the user must explicitly add tasks to the job
+ * using the Task API. If the job does specify a Job Manager task, the Batch
+ * service creates the Job Manager task when the job is created, and will try
+ * to schedule the Job Manager task before scheduling other tasks in the job.
  * 
- * @member {string} [jobSpecification.jobManagerTask.id]
+ * @member {string} [jobSpecification.jobManagerTask.id] The id can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters.
  * 
- * @member {string} [jobSpecification.jobManagerTask.displayName]
+ * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
+ * be unique and can contain any Unicode characters up to a maximum length of
+ * 1024.
  * 
  * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobManagerTask.resourceFiles]
+ * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobManagerTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
+ * not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
  * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try the task once, and may then retry up to this limit. For example, if
+ * the maximum retry count is 3, Batch tries the task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion]
+ * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
+ * true, when the Job Manager task completes, the Batch service marks the job
+ * as complete. If any tasks are still running at this time (other than Job
+ * Release), those tasks are terminated. If false, the completion of the Job
+ * Manager task does not affect the job status. In this case, you should either
+ * use the onAllTasksComplete attribute to terminate the job, or have a client
+ * or user terminate the job explicitly. An example of this is if the Job
+ * Manager creates a set of tasks but then takes no further role in their
+ * execution. The default value is true. If you are using the
+ * onAllTasksComplete and onTaskFailure attributes to control job lifetime, and
+ * using the job manager task only to create the tasks for the job (not to
+ * monitor progress), then it is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [jobSpecification.jobManagerTask.runElevated]
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true,
- * no other tasks will run on the same compute node for as long as the Job
- * Manager is running. If false, other tasks can run simultaneously with the
- * Job Manager on a compute node. The Job Manager task counts normally
- * against the node's concurrent task limit, so this is only relevant if the
- * node allows multiple concurrent tasks.
+ * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
+ * other tasks will run on the same compute node for as long as the Job Manager
+ * is running. If false, other tasks can run simultaneously with the Job
+ * Manager on a compute node. The Job Manager task counts normally against the
+ * node's concurrent task limit, so this is only relevant if the node allows
+ * multiple concurrent tasks. The default value is true.
  * 
  * @member {array}
- * [jobSpecification.jobManagerTask.applicationPackageReferences]
+ * [jobSpecification.jobManagerTask.applicationPackageReferences] Application
+ * packages are downloaded and deployed to a shared directory, not the task
+ * directory. Therefore, if a referenced package is already on the compute
+ * node, and is up to date, then it is not re-downloaded; the existing copy on
+ * the compute node is used. If a referenced application package cannot be
+ * installed, for example because the package has been deleted or because
+ * download failed, the task fails with a scheduling error. This property is
+ * currently not supported on jobs running on pools created using the
+ * virtualMachineConfiguration (IaaS) property. If a task specifying
+ * applicationPackageReferences runs on such a pool, it fails with a scheduling
+ * error with code TaskSchedulingConstraintFailed.
  * 
- * @member {object} [jobSpecification.jobPreparationTask]
+ * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
+ * Preparation task, the Batch service will run the Job Preparation task on a
+ * compute node before starting any tasks of that job on that compute node.
  * 
- * @member {string} [jobSpecification.jobPreparationTask.id] The id can
- * contain any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobPreparationTask.id] The ID can contain
+ * any combination of alphanumeric characters including hyphens and underscores
+ * and cannot contain more than 64 characters. If you do not specify this
+ * property, the Batch service assigns a default value of 'jobpreparation'. No
+ * other task in the job can have the same id as the Job Preparation task. If
+ * you try to submit a task with the same id, the Batch service rejects the
+ * request with error code TaskIdSameAsJobPreparationTask; if you are calling
+ * the REST API directly, the HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
- * @member {array} [jobSpecification.jobPreparationTask.resourceFiles]
+ * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
+ * listed under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime] If this
+ * is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.retentionTime] The
- * default is infinite.
+ * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
+ * is infinite, i.e. the task directory will be retained until the compute node
+ * is removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
+ * that this value specifically controls the number of retries. The Batch
+ * service will try the task once, and may then retry up to this limit. For
+ * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+ * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess]
+ * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
+ * true and the Job Preparation task fails on a compute node, the Batch service
+ * retries the Job Preparation task up to its maximum retry count (as specified
+ * in the constraints element). If the task has still not completed
+ * successfully after all retries, then the Batch service will not schedule
+ * tasks of the job to the compute node. The compute node remains active and
+ * eligible to run tasks of other jobs. If false, the Batch service will not
+ * wait for the Job Preparation task to complete. In this case, other tasks of
+ * the job can start executing on the compute node while the Job Preparation
+ * task is still running; and even if the Job Preparation task fails, new tasks
+ * will continue to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [jobSpecification.jobPreparationTask.runElevated]
  * 
  * @member {boolean}
- * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
- * @member {object} [jobSpecification.jobReleaseTask]
+ * @member {object} [jobSpecification.jobReleaseTask] The primary purpose of
+ * the Job Release task is to undo changes to compute nodes made by the Job
+ * Preparation task. Example activities include deleting local files, or
+ * shutting down services that were started as part of job preparation. A Job
+ * Release task cannot be specified without also specifying a Job Preparation
+ * task for the job. The Batch service runs the Job Release task on the compute
+ * nodes that have run the Job Preparation task.
  * 
- * @member {string} [jobSpecification.jobReleaseTask.id] The id can contain
- * any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobReleaseTask.id] The ID can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters. If you do not specify this property,
+ * the Batch service assigns a default value of 'jobrelease'. No other task in
+ * the job can have the same id as the Job Release task. If you try to submit a
+ * task with the same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobReleaseTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobReleaseTask.resourceFiles]
+ * @member {array} [jobSpecification.jobReleaseTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * 
- * @member {moment.duration}
- * [jobSpecification.jobReleaseTask.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite.
+ * The default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] The default
  * value is false.
  * 
- * @member {array} [jobSpecification.commonEnvironmentSettings]
+ * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
+ * tasks can override an environment setting specified here by specifying the
+ * same setting name with a different value.
  * 
  * @member {object} [jobSpecification.poolInfo]
  * 
- * @member {string} [jobSpecification.poolInfo.poolId] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {string} [jobSpecification.poolInfo.poolId] You must ensure that the
+ * pool referenced by this property exists. If the pool does not exist at the
+ * time the Batch service tries to schedule a job, no tasks for the job will
+ * run until you create a pool with that id. Note that the Batch service will
+ * not reject the job request; it will simply not run tasks until the pool
+ * exists. You must specify either the pool ID or the auto pool specification,
+ * but not both.
  * 
- * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] You must
- * specify either poolId or autoPoolSpecification, but not both.
+ * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] If auto
+ * pool creation fails, the Batch service moves the job to a completed state,
+ * and the pool creation error is set in the job's scheduling error property.
+ * The Batch service manages the lifetime (both creation and, unless keepAlive
+ * is specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive]
+ * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [jobSpecification.poolInfo.autoPoolSpecification.pool]
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
- * This property and VirtualMachineConfiguration are mutually exclusive and
- * one of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * PaaS VMs. This property and virtualMachineConfiguration are mutually
+ * exclusive and one of the properties must be specified. If neither is
+ * specified then the Batch service returns an error; if you are calling the
+ * REST API directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -5493,11 +7942,19 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
- * This property and CloudServiceConfiguration are mutually exclusive and one
- * of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * IaaS VMs. This property and cloudServiceConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -5524,19 +7981,24 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -5547,32 +8009,63 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
+ * timeout applies only to manual scaling; it has no effect when
+ * enableAutoScale is set to true. The default value is 15 minutes. The minimum
+ * value is 5 minutes. If you specify a value less than 5 minutes, the Batch
+ * service rejects the request with an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * The default value is 15 minutes. The minimum and maximum value are 5 minutes
+ * and 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * Enabling inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
- * The ARM resource identifier of the virtual network subnet which the
- * compute nodes of the pool will join. The virtual network must be in the
- * same region and subscription as the Azure Batch account. This property can
- * only be specified for pools created with a cloudServiceConfiguration.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -5581,9 +8074,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
  * The command line does not run under a shell, and therefore cannot take
  * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -5596,23 +8089,53 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * 
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * The Batch service retries a task if its exit code is nonzero. Note that this
+ * value specifically controls the number of retries. The Batch service will
+ * try the task once, and may then retry up to this limit. For example, if the
+ * maximum retry count is 3, Batch tries the task up to 4 times (one initial
+ * try and 3 retries). If the maximum retry count is 0, the Batch service does
+ * not retry the task. If the maximum retry count is -1, the Batch service
+ * retries the task without limit.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * If true and the start task fails on a compute node, the Batch service
+ * retries the start task up to its maximum retry count (maxTaskRetryCount). If
+ * the task has still not completed successfully after all retries, then the
+ * Batch service marks the compute node unusable, and will not schedule tasks
+ * to it. This condition can be detected via the node state and scheduling
+ * error detail. If false, the Batch service will not wait for the start task
+ * to complete. In this case, other tasks can start executing on the compute
+ * node while the start task is still running; and even if the start task
+ * fails, new tasks will continue to be scheduled on the node. The default is
+ * false.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * This property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
  * @member {array}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
- * @member {array} [jobSpecification.metadata]
+ * @member {array} [jobSpecification.metadata] The Batch service does not
+ * assign any meaning to metadata; it is solely for the use of user code.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * job schedule as metadata.
+ * job schedule as metadata. If you do not specify this element, existing
+ * metadata is left unchanged.
  * 
  */
 export interface JobSchedulePatchParameter {
@@ -5625,185 +8148,360 @@ export interface JobSchedulePatchParameter {
  * @class
  * Initializes a new instance of the JobScheduleUpdateParameter class.
  * @constructor
- * @summary Parameters for a CloudJobScheduleOperations.Update request.
+ * @summary The set of changes to be made to a job schedule.
  *
  * @member {object} schedule The schedule according to which jobs will be
- * created. If you do not specify this element, it is equivalent to passing
- * the default schedule: that is, a single job scheduled to run immediately.
+ * created. If you do not specify this element, it is equivalent to passing the
+ * default schedule: that is, a single job scheduled to run immediately.
  * 
  * @member {date} [schedule.doNotRunUntil] If you do not specify a
  * doNotRunUntil time, the schedule becomes ready to create jobs immediately.
  * 
- * @member {date} [schedule.doNotRunAfter]
+ * @member {date} [schedule.doNotRunAfter] If you do not specify a
+ * doNotRunAfter time, and you are creating a recurring job schedule, the job
+ * schedule will remain active until you explicitly terminate it.
  * 
  * @member {moment.duration} [schedule.startWindow] If a job is not created
- * within the startWindow interval, then the 'opportunity' is lost; no job
- * will be created until the next recurrence of the schedule.
+ * within the startWindow interval, then the 'opportunity' is lost; no job will
+ * be created until the next recurrence of the schedule. If the schedule is
+ * recurring, and the startWindow is longer than the recurrence interval, then
+ * this is equivalent to an infinite startWindow, because the job that is 'due'
+ * in one recurrenceInterval is not carried forward into the next recurrence
+ * interval. The default is infinite. The minimum value is 1 minute. If you
+ * specify a lower value, the Batch service rejects the schedule with an error;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
- * @member {moment.duration} [schedule.recurrenceInterval]
+ * @member {moment.duration} [schedule.recurrenceInterval] Because a job
+ * schedule can have at most one active job under it at any given time, if it
+ * is time to create a new job under a job schedule, but the previous job is
+ * still running, the Batch service will not create the new job until the
+ * previous job finishes. If the previous job does not finish within the
+ * startWindow period of the new recurrenceInterval, then no new job will be
+ * scheduled for that interval. For recurring jobs, you should normally specify
+ * a jobManagerTask in the jobSpecification. If you do not use jobManagerTask,
+ * you will need an external process to monitor when jobs are created, add
+ * tasks to the jobs and terminate the jobs ready for the next recurrence. The
+ * default is that the schedule does not recur: one job is created, within the
+ * startWindow after the doNotRunUntil time, and the schedule is complete as
+ * soon as that job finishes. The minimum value is 1 minute. If you specify a
+ * lower value, the Batch service rejects the schedule with an error; if you
+ * are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request).
  * 
  * @member {object} jobSpecification Details of the jobs to be created on this
- * schedule.
+ * schedule. Updates affect only jobs that are started after the update has
+ * taken place. Any currently active job continues with the older
+ * specification.
  * 
- * @member {number} [jobSpecification.priority]  Priority values can range
- * from -1000 to 1000, with -1000 being the lowest priority and 1000 being
- * the highest priority. The default value is 0.
+ * @member {number} [jobSpecification.priority] Priority values can range from
+ * -1000 to 1000, with -1000 being the lowest priority and 1000 being the
+ * highest priority. The default value is 0. This priority is used as the
+ * default for all jobs under the job schedule. You can update a job's priority
+ * after it has been created using by using the update job API.
  * 
  * @member {string} [jobSpecification.displayName] The name need not be unique
  * and can contain any Unicode characters up to a maximum length of 1024.
  * 
  * @member {boolean} [jobSpecification.usesTaskDependencies]
  * 
+ * @member {string} [jobSpecification.onAllTasksComplete] Note that if a job
+ * contains no tasks, then all tasks are considered complete. This option is
+ * therefore most commonly used with a job manager task; if you want to use
+ * automatic job termination without a job manager, you should initially set
+ * onAllTasksComplete to noaction and update the job properties to set
+ * onAllTasksComplete to terminatejob once you have finished adding tasks. The
+ * default is noaction. Possible values include: 'noAction', 'terminateJob'
+ * 
+ * @member {string} [jobSpecification.onTaskFailure] The default is noaction.
+ * Possible values include: 'noAction', 'performExitOptionsJobAction'
+ * 
  * @member {object} [jobSpecification.constraints]
  * 
- * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.constraints.maxWallClockTime] If
+ * the job does not complete within the time limit, the Batch service
+ * terminates it and any tasks that are still running. In this case, the
+ * termination reason will be MaxWallClockTimeExpiry. If this property is not
+ * specified, there is no time limit on how long the job may run.
  * 
- * @member {number} [jobSpecification.constraints.maxTaskRetryCount]
+ * @member {number} [jobSpecification.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try each task once, and may then retry up to this limit. For example,
+ * if the maximum retry count is 3, Batch tries a task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry tasks. If the maximum retry count is -1, the Batch
+ * service retries tasks without limit. The default value is 0 (no retries).
  * 
- * @member {object} [jobSpecification.jobManagerTask]
+ * @member {object} [jobSpecification.jobManagerTask] If the job does not
+ * specify a Job Manager task, the user must explicitly add tasks to the job
+ * using the Task API. If the job does specify a Job Manager task, the Batch
+ * service creates the Job Manager task when the job is created, and will try
+ * to schedule the Job Manager task before scheduling other tasks in the job.
  * 
- * @member {string} [jobSpecification.jobManagerTask.id]
+ * @member {string} [jobSpecification.jobManagerTask.id] The id can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters.
  * 
- * @member {string} [jobSpecification.jobManagerTask.displayName]
+ * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
+ * be unique and can contain any Unicode characters up to a maximum length of
+ * 1024.
  * 
  * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobManagerTask.resourceFiles]
+ * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobManagerTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobManagerTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobManagerTask.constraints.maxWallClockTime] If this is
+ * not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
  * [jobSpecification.jobManagerTask.constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobManagerTask.constraints.maxTaskRetryCount] Note that
+ * this value specifically controls the number of retries. The Batch service
+ * will try the task once, and may then retry up to this limit. For example, if
+ * the maximum retry count is 3, Batch tries the task up to 4 times (one
+ * initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion]
+ * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
+ * true, when the Job Manager task completes, the Batch service marks the job
+ * as complete. If any tasks are still running at this time (other than Job
+ * Release), those tasks are terminated. If false, the completion of the Job
+ * Manager task does not affect the job status. In this case, you should either
+ * use the onAllTasksComplete attribute to terminate the job, or have a client
+ * or user terminate the job explicitly. An example of this is if the Job
+ * Manager creates a set of tasks but then takes no further role in their
+ * execution. The default value is true. If you are using the
+ * onAllTasksComplete and onTaskFailure attributes to control job lifetime, and
+ * using the job manager task only to create the tasks for the job (not to
+ * monitor progress), then it is important to set killJobOnCompletion to false.
  * 
  * @member {boolean} [jobSpecification.jobManagerTask.runElevated]
  * 
- * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true,
- * no other tasks will run on the same compute node for as long as the Job
- * Manager is running. If false, other tasks can run simultaneously with the
- * Job Manager on a compute node. The Job Manager task counts normally
- * against the node's concurrent task limit, so this is only relevant if the
- * node allows multiple concurrent tasks.
+ * @member {boolean} [jobSpecification.jobManagerTask.runExclusive] If true, no
+ * other tasks will run on the same compute node for as long as the Job Manager
+ * is running. If false, other tasks can run simultaneously with the Job
+ * Manager on a compute node. The Job Manager task counts normally against the
+ * node's concurrent task limit, so this is only relevant if the node allows
+ * multiple concurrent tasks. The default value is true.
  * 
  * @member {array}
- * [jobSpecification.jobManagerTask.applicationPackageReferences]
+ * [jobSpecification.jobManagerTask.applicationPackageReferences] Application
+ * packages are downloaded and deployed to a shared directory, not the task
+ * directory. Therefore, if a referenced package is already on the compute
+ * node, and is up to date, then it is not re-downloaded; the existing copy on
+ * the compute node is used. If a referenced application package cannot be
+ * installed, for example because the package has been deleted or because
+ * download failed, the task fails with a scheduling error. This property is
+ * currently not supported on jobs running on pools created using the
+ * virtualMachineConfiguration (IaaS) property. If a task specifying
+ * applicationPackageReferences runs on such a pool, it fails with a scheduling
+ * error with code TaskSchedulingConstraintFailed.
  * 
- * @member {object} [jobSpecification.jobPreparationTask]
+ * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
+ * Preparation task, the Batch service will run the Job Preparation task on a
+ * compute node before starting any tasks of that job on that compute node.
  * 
- * @member {string} [jobSpecification.jobPreparationTask.id] The id can
- * contain any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobPreparationTask.id] The ID can contain
+ * any combination of alphanumeric characters including hyphens and underscores
+ * and cannot contain more than 64 characters. If you do not specify this
+ * property, the Batch service assigns a default value of 'jobpreparation'. No
+ * other task in the job can have the same id as the Job Preparation task. If
+ * you try to submit a task with the same id, the Batch service rejects the
+ * request with error code TaskIdSameAsJobPreparationTask; if you are calling
+ * the REST API directly, the HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
- * @member {array} [jobSpecification.jobPreparationTask.resourceFiles]
+ * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
+ * listed under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * 
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime]
+ * [jobSpecification.jobPreparationTask.constraints.maxWallClockTime] If this
+ * is not specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration}
- * [jobSpecification.jobPreparationTask.constraints.retentionTime] The
- * default is infinite.
+ * [jobSpecification.jobPreparationTask.constraints.retentionTime] The default
+ * is infinite, i.e. the task directory will be retained until the compute node
+ * is removed or reimaged.
  * 
  * @member {number}
- * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
+ * [jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount] Note
+ * that this value specifically controls the number of retries. The Batch
+ * service will try the task once, and may then retry up to this limit. For
+ * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+ * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+ * service does not retry the task. If the maximum retry count is -1, the Batch
+ * service retries the task without limit.
  * 
- * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess]
+ * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
+ * true and the Job Preparation task fails on a compute node, the Batch service
+ * retries the Job Preparation task up to its maximum retry count (as specified
+ * in the constraints element). If the task has still not completed
+ * successfully after all retries, then the Batch service will not schedule
+ * tasks of the job to the compute node. The compute node remains active and
+ * eligible to run tasks of other jobs. If false, the Batch service will not
+ * wait for the Job Preparation task to complete. In this case, other tasks of
+ * the job can start executing on the compute node while the Job Preparation
+ * task is still running; and even if the Job Preparation task fails, new tasks
+ * will continue to be scheduled on the node. The default value is true.
  * 
  * @member {boolean} [jobSpecification.jobPreparationTask.runElevated]
  * 
  * @member {boolean}
- * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] Note
- * that the Job Preparation task should still be written to be idempotent
- * because it can be rerun if the compute node is rebooted while Job
- * Preparation task is still running. The default value is true.
+ * [jobSpecification.jobPreparationTask.rerunOnNodeRebootAfterSuccess] The Job
+ * Preparation task is always rerun if a compute node is reimaged, or if the
+ * Job Preparation task did not complete (e.g. because the reboot occurred
+ * while the task was running). Therefore, you should always write a Job
+ * Preparation task to be idempotent and to behave correctly if run multiple
+ * times. The default value is true.
  * 
- * @member {object} [jobSpecification.jobReleaseTask]
+ * @member {object} [jobSpecification.jobReleaseTask] The primary purpose of
+ * the Job Release task is to undo changes to compute nodes made by the Job
+ * Preparation task. Example activities include deleting local files, or
+ * shutting down services that were started as part of job preparation. A Job
+ * Release task cannot be specified without also specifying a Job Preparation
+ * task for the job. The Batch service runs the Job Release task on the compute
+ * nodes that have run the Job Preparation task.
  * 
- * @member {string} [jobSpecification.jobReleaseTask.id] The id can contain
- * any combination of alphanumeric characters including hyphens and
- * underscores and cannot contain more than 64 characters.
+ * @member {string} [jobSpecification.jobReleaseTask.id] The ID can contain any
+ * combination of alphanumeric characters including hyphens and underscores and
+ * cannot contain more than 64 characters. If you do not specify this property,
+ * the Batch service assigns a default value of 'jobrelease'. No other task in
+ * the job can have the same id as the Job Release task. If you try to submit a
+ * task with the same id, the Batch service rejects the request with error code
+ * TaskIdSameAsJobReleaseTask; if you are calling the REST API directly, the
+ * HTTP status code is 409 (Conflict).
  * 
  * @member {string} [jobSpecification.jobReleaseTask.commandLine] The command
  * line does not run under a shell, and therefore cannot take advantage of
  * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * 
- * @member {array} [jobSpecification.jobReleaseTask.resourceFiles]
+ * @member {array} [jobSpecification.jobReleaseTask.resourceFiles] Files listed
+ * under this element are located in the task's working directory.
  * 
  * @member {array} [jobSpecification.jobReleaseTask.environmentSettings]
  * 
- * @member {moment.duration}
- * [jobSpecification.jobReleaseTask.maxWallClockTime]
+ * @member {moment.duration} [jobSpecification.jobReleaseTask.maxWallClockTime]
  * 
  * @member {moment.duration} [jobSpecification.jobReleaseTask.retentionTime]
- * The default is infinite.
+ * The default is infinite, i.e. the task directory will be retained until the
+ * compute node is removed or reimaged.
  * 
  * @member {boolean} [jobSpecification.jobReleaseTask.runElevated] The default
  * value is false.
  * 
- * @member {array} [jobSpecification.commonEnvironmentSettings]
+ * @member {array} [jobSpecification.commonEnvironmentSettings] Individual
+ * tasks can override an environment setting specified here by specifying the
+ * same setting name with a different value.
  * 
  * @member {object} [jobSpecification.poolInfo]
  * 
- * @member {string} [jobSpecification.poolInfo.poolId] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {string} [jobSpecification.poolInfo.poolId] You must ensure that the
+ * pool referenced by this property exists. If the pool does not exist at the
+ * time the Batch service tries to schedule a job, no tasks for the job will
+ * run until you create a pool with that id. Note that the Batch service will
+ * not reject the job request; it will simply not run tasks until the pool
+ * exists. You must specify either the pool ID or the auto pool specification,
+ * but not both.
  * 
- * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] You must
- * specify either poolId or autoPoolSpecification, but not both.
+ * @member {object} [jobSpecification.poolInfo.autoPoolSpecification] If auto
+ * pool creation fails, the Batch service moves the job to a completed state,
+ * and the pool creation error is set in the job's scheduling error property.
+ * The Batch service manages the lifetime (both creation and, unless keepAlive
+ * is specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * [jobSpecification.poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * [jobSpecification.poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive]
+ * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [jobSpecification.poolInfo.autoPoolSpecification.pool]
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration]
- * This property and VirtualMachineConfiguration are mutually exclusive and
- * one of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * PaaS VMs. This property and virtualMachineConfiguration are mutually
+ * exclusive and one of the properties must be specified. If neither is
+ * specified then the Batch service returns an error; if you are calling the
+ * REST API directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -5812,11 +8510,19 @@ export interface JobSchedulePatchParameter {
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration]
- * This property and CloudServiceConfiguration are mutually exclusive and one
- * of the properties must be specified.
+ * This property must be specified if the pool needs to be created with Azure
+ * IaaS VMs. This property and cloudServiceConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -5843,19 +8549,24 @@ export interface JobSchedulePatchParameter {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
@@ -5866,32 +8577,63 @@ export interface JobSchedulePatchParameter {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
+ * timeout applies only to manual scaling; it has no effect when
+ * enableAutoScale is set to true. The default value is 15 minutes. The minimum
+ * value is 5 minutes. If you specify a value less than 5 minutes, the Batch
+ * service rejects the request with an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
  * @member {boolean}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
  * @member {string}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * The default value is 15 minutes. The minimum and maximum value are 5 minutes
+ * and 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * Enabling inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId]
- * The ARM resource identifier of the virtual network subnet which the
- * compute nodes of the pool will join. The virtual network must be in the
- * same region and subscription as the Azure Batch account. This property can
- * only be specified for pools created with a cloudServiceConfiguration.
+ * The virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -5900,9 +8642,9 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
  * The command line does not run under a shell, and therefore cannot take
  * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in
- * the command line, for example using "cmd /c MyCommand" in Windows or
- * "/bin/sh -c MyCommand" in Linux.
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
@@ -5915,25 +8657,53 @@ export interface JobSchedulePatchParameter {
  * 
  * @member {number}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * The Batch service retries a task if its exit code is nonzero. Note that this
+ * value specifically controls the number of retries. The Batch service will
+ * try the task once, and may then retry up to this limit. For example, if the
+ * maximum retry count is 3, Batch tries the task up to 4 times (one initial
+ * try and 3 retries). If the maximum retry count is 0, the Batch service does
+ * not retry the task. If the maximum retry count is -1, the Batch service
+ * retries the task without limit.
  * 
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * If true and the start task fails on a compute node, the Batch service
+ * retries the start task up to its maximum retry count (maxTaskRetryCount). If
+ * the task has still not completed successfully after all retries, then the
+ * Batch service marks the compute node unusable, and will not schedule tasks
+ * to it. This condition can be detected via the node state and scheduling
+ * error detail. If false, the Batch service will not wait for the start task
+ * to complete. In this case, other tasks can start executing on the compute
+ * node while the start task is still running; and even if the start task
+ * fails, new tasks will continue to be scheduled on the node. The default is
+ * false.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * This property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
  * @member {array}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata]
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
- * @member {array} [jobSpecification.metadata]
+ * @member {array} [jobSpecification.metadata] The Batch service does not
+ * assign any meaning to metadata; it is solely for the use of user code.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
  * job schedule as metadata. If you do not specify this element, it takes the
- * default value of an empty list; in effect, any existing metadata is
- * deleted.
+ * default value of an empty list; in effect, any existing metadata is deleted.
  * 
  */
 export interface JobScheduleUpdateParameter {
@@ -5946,10 +8716,14 @@ export interface JobScheduleUpdateParameter {
  * @class
  * Initializes a new instance of the JobDisableParameter class.
  * @constructor
- * @summary Parameters for a CloudJobOperations.Disable request.
+ * @summary Options when disabling a job.
  *
  * @member {string} disableTasks What to do with active tasks associated with
- * the job. Possible values include: 'requeue', 'terminate', 'wait'
+ * the job. Possible values are: requeue – Terminate running tasks and requeue
+ * them. The tasks will run again when the job is enabled. terminate –
+ * Terminate running tasks. The tasks will not run again. wait – Allow
+ * currently running tasks to complete. Possible values include: 'requeue',
+ * 'terminate', 'wait'
  * 
  */
 export interface JobDisableParameter {
@@ -5960,7 +8734,7 @@ export interface JobDisableParameter {
  * @class
  * Initializes a new instance of the JobTerminateParameter class.
  * @constructor
- * @summary Parameters for a CloudJobOperations.Terminate request.
+ * @summary Options when terminating a job.
  *
  * @member {string} [terminateReason] The text you want to appear as the job's
  * TerminateReason. The default is 'UserTerminate'.
@@ -5974,7 +8748,7 @@ export interface JobTerminateParameter {
  * @class
  * Initializes a new instance of the JobPatchParameter class.
  * @constructor
- * @summary Parameters for a CloudJobOperations.Patch request.
+ * @summary The set of changes to be made to a job.
  *
  * @member {number} [priority] The priority of the job. Priority values can
  * range from -1000 to 1000, with -1000 being the lowest priority and 1000
@@ -5982,51 +8756,111 @@ export interface JobTerminateParameter {
  * unchanged.
  * 
  * @member {string} [onAllTasksComplete] Specifies an action the Batch service
- * should take when all tasks in the job are in the completed state. Possible
- * values include: 'noAction', 'terminateJob'
+ * should take when all tasks in the job are in the completed state. If
+ * omitted, the completion behavior is left unchanged. You may not change the
+ * value from terminatejob to noaction – that is, once you have engaged
+ * automatic job termination, you cannot turn it off again. If you try to do
+ * this, the request fails with an 'invalid property value' error response; if
+ * you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'noAction', 'terminateJob'
  * 
  * @member {object} [constraints] The execution constraints for the job. If
  * omitted, the existing execution constraints are left unchanged.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If the job does not
+ * complete within the time limit, the Batch service terminates it and any
+ * tasks that are still running. In this case, the termination reason will be
+ * MaxWallClockTimeExpiry. If this property is not specified, there is no time
+ * limit on how long the job may run.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try each
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries a task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * tasks. If the maximum retry count is -1, the Batch service retries tasks
+ * without limit. The default value is 0 (no retries).
  * 
  * @member {object} [poolInfo] The pool on which the Batch service runs the
  * job's tasks. You may change the pool for a job only when the job is
  * disabled. The Patch Job call will fail if you include the poolInfo element
  * and the job is not disabled. If you specify an autoPoolSpecification
  * specification in the poolInfo, only the keepAlive property can be updated,
- * and then only if the auto pool has a poolLifetimeOption of job. If
- * omitted, the job continues to run on its current pool.
+ * and then only if the auto pool has a poolLifetimeOption of job. If omitted,
+ * the job continues to run on its current pool.
  * 
- * @member {string} [poolInfo.poolId] You must specify either poolId or
- * autoPoolSpecification, but not both.
+ * @member {string} [poolInfo.poolId] You must ensure that the pool referenced
+ * by this property exists. If the pool does not exist at the time the Batch
+ * service tries to schedule a job, no tasks for the job will run until you
+ * create a pool with that id. Note that the Batch service will not reject the
+ * job request; it will simply not run tasks until the pool exists. You must
+ * specify either the pool ID or the auto pool specification, but not both.
  * 
- * @member {object} [poolInfo.autoPoolSpecification] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {object} [poolInfo.autoPoolSpecification] If auto pool creation
+ * fails, the Batch service moves the job to a completed state, and the pool
+ * creation error is set in the job's scheduling error property. The Batch
+ * service manages the lifetime (both creation and, unless keepAlive is
+ * specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive]
+ * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool]
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.displayName]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
- * property and VirtualMachineConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure PaaS
+ * VMs. This property and virtualMachineConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -6035,11 +8869,19 @@ export interface JobTerminateParameter {
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
- * property and CloudServiceConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure IaaS
+ * VMs. This property and cloudServiceConfiguration are mutually exclusive and
+ * one of the properties must be specified. If neither is specified then the
+ * Batch service returns an error; if you are calling the REST API directly,
+ * the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -6066,18 +8908,23 @@ export interface JobTerminateParameter {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
  * How tasks are distributed among compute nodes in the pool.
@@ -6087,37 +8934,67 @@ export interface JobTerminateParameter {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
+ * only to manual scaling; it has no effect when enableAutoScale is set to
+ * true. The default value is 15 minutes. The minimum value is 5 minutes. If
+ * you specify a value less than 5 minutes, the Batch service rejects the
+ * request with an error; if you are calling the REST API directly, the HTTP
+ * status code is 400 (Bad Request).
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval] The
+ * default value is 15 minutes. The minimum and maximum value are 5 minutes and
+ * 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication] Enabling
+ * inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * ARM resource identifier of the virtual network subnet which the compute
- * nodes of the pool will join. The virtual network must be in the same
- * region and subscription as the Azure Batch account. This property can only
- * be specified for pools created with a cloudServiceConfiguration.
+ * virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * 
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.startTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
  * MyCommand" in Linux.
  * 
  * @member {array}
@@ -6130,17 +9007,44 @@ export interface JobTerminateParameter {
  * [poolInfo.autoPoolSpecification.pool.startTask.runElevated]
  * 
  * @member {number}
- * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
+ * service retries a task if its exit code is nonzero. Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] If true and
+ * the start task fails on a compute node, the Batch service retries the start
+ * task up to its maximum retry count (maxTaskRetryCount). If the task has
+ * still not completed successfully after all retries, then the Batch service
+ * marks the compute node unusable, and will not schedule tasks to it. This
+ * condition can be detected via the node state and scheduling error detail. If
+ * false, the Batch service will not wait for the start task to complete. In
+ * this case, other tasks can start executing on the compute node while the
+ * start task is still running; and even if the start task fails, new tasks
+ * will continue to be scheduled on the node. The default is false.
  * 
  * @member {array} [poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
+ * property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
- * @member {array} [poolInfo.autoPoolSpecification.pool.metadata]
+ * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
  * job as metadata. If omitted, the existing job metadata is left unchanged.
@@ -6158,7 +9062,7 @@ export interface JobPatchParameter {
  * @class
  * Initializes a new instance of the JobUpdateParameter class.
  * @constructor
- * @summary Parameters for a CloudJobOperations.Update request.
+ * @summary The set of changes to be made to a job.
  *
  * @member {number} [priority] The priority of the job. Priority values can
  * range from -1000 to 1000, with -1000 being the lowest priority and 1000
@@ -6167,45 +9071,99 @@ export interface JobPatchParameter {
  * @member {object} [constraints] The execution constraints for the job. If
  * omitted, the constraints are cleared.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If the job does not
+ * complete within the time limit, the Batch service terminates it and any
+ * tasks that are still running. In this case, the termination reason will be
+ * MaxWallClockTimeExpiry. If this property is not specified, there is no time
+ * limit on how long the job may run.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try each
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries a task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * tasks. If the maximum retry count is -1, the Batch service retries tasks
+ * without limit. The default value is 0 (no retries).
  * 
- * @member {object} poolInfo The pool on which the Batch service runs the
- * job's tasks. You may change the pool for a job only when the job is
- * disabled. The Update Job call will fail if you include the poolInfo
- * element and the job is not disabled. If you specify an
- * autoPoolSpecification specification in the poolInfo, only the keepAlive
- * property can be updated, and then only if the auto pool has a
- * poolLifetimeOption of job.
+ * @member {object} poolInfo The pool on which the Batch service runs the job's
+ * tasks. You may change the pool for a job only when the job is disabled. The
+ * Update Job call will fail if you include the poolInfo element and the job is
+ * not disabled. If you specify an autoPoolSpecification specification in the
+ * poolInfo, only the keepAlive property can be updated, and then only if the
+ * auto pool has a poolLifetimeOption of job.
  * 
- * @member {string} [poolInfo.poolId] You must specify either poolId or
- * autoPoolSpecification, but not both.
+ * @member {string} [poolInfo.poolId] You must ensure that the pool referenced
+ * by this property exists. If the pool does not exist at the time the Batch
+ * service tries to schedule a job, no tasks for the job will run until you
+ * create a pool with that id. Note that the Batch service will not reject the
+ * job request; it will simply not run tasks until the pool exists. You must
+ * specify either the pool ID or the auto pool specification, but not both.
  * 
- * @member {object} [poolInfo.autoPoolSpecification] You must specify either
- * poolId or autoPoolSpecification, but not both.
+ * @member {object} [poolInfo.autoPoolSpecification] If auto pool creation
+ * fails, the Batch service moves the job to a completed state, and the pool
+ * creation error is set in the job's scheduling error property. The Batch
+ * service manages the lifetime (both creation and, unless keepAlive is
+ * specified, deletion) of the auto pool. Any user actions that affect the
+ * lifetime of the auto pool while the job is active will result in unexpected
+ * behavior. You must specify either the pool ID or the auto pool
+ * specification, but not both.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The
- * prefix can be up to 20 characters long.
+ * @member {string} [poolInfo.autoPoolSpecification.autoPoolIdPrefix] The Batch
+ * service assigns each auto pool a unique identifier on creation. To
+ * distinguish between pools created for different purposes, you can specify
+ * this element to add a prefix to the id that is assigned. The prefix can be
+ * up to 20 characters long.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption]
+ * @member {string} [poolInfo.autoPoolSpecification.poolLifetimeOption] When
+ * the pool lifetime scope is jobschedule level, the Batch service keeps track
+ * of the last autopool created for the jobschedule, and deletes that pool when
+ * the jobschedule completes. Batch will also delete this pool if the user
+ * updates the auto pool specification in a way that changes this lifetime.
  * Possible values include: 'jobschedule', 'job', 'unmapped'
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive]
+ * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
+ * Batch service deletes the pool once its lifetime (as determined by the
+ * poolLifetimeOption setting) expires; that is, when the job or job schedule
+ * completes. If true, the Batch service does not delete the pool
+ * automatically. It is up to the user to delete auto pools created with this
+ * option.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool]
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.displayName]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.displayName] The
+ * display name need not be unique and can contain any Unicode characters up to
+ * a maximum length of 1024.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.vmSize] For
+ * information about available sizes of virtual machines for Cloud Services
+ * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
+ * Services
+ * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+ * Batch supports all Cloud Services VM sizes except ExtraSmall. For
+ * information about available VM sizes for pools using images from the Virtual
+ * Machines Marketplace (pools created with virtualMachineConfiguration) see
+ * Sizes for Virtual Machines (Linux)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
+ * or Sizes for Virtual Machines (Windows)
+ * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
+ * Batch supports all Azure VM sizes except STANDARD_A0 and those with premium
+ * storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration] This
- * property and VirtualMachineConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure PaaS
+ * VMs. This property and virtualMachineConfiguration are mutually exclusive
+ * and one of the properties must be specified. If neither is specified then
+ * the Batch service returns an error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.osFamily]
+ * Possible values are: 2 – OS Family 2, equivalent to Windows Server 2008 R2
+ * SP1. 3 – OS Family 3, equivalent to Windows Server 2012. 4 – OS Family 4,
+ * equivalent to Windows Server 2012 R2. For more information, see Azure Guest
+ * OS Releases
+ * (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.targetOSVersion]
@@ -6214,11 +9172,19 @@ export interface JobPatchParameter {
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.cloudServiceConfiguration.currentOSVersion]
+ * This may differ from targetOSVersion if the pool state is Upgrading. In this
+ * case some virtual machines may be on the targetOSVersion and some may be on
+ * the currentOSVersion during the upgrade process. Once all virtual machines
+ * have upgraded, currentOSVersion is updated to be the same as
+ * targetOSVersion.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration] This
- * property and CloudServiceConfiguration are mutually exclusive and one of
- * the properties must be specified.
+ * property must be specified if the pool needs to be created with Azure IaaS
+ * VMs. This property and cloudServiceConfiguration are mutually exclusive and
+ * one of the properties must be specified. If neither is specified then the
+ * Batch service returns an error; if you are calling the REST API directly,
+ * the HTTP status code is 400 (Bad Request).
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.imageReference]
@@ -6245,18 +9211,23 @@ export interface JobPatchParameter {
  * The Batch node agent is a program that runs on each node in the pool, and
  * provides the command-and-control interface between the node and the Batch
  * service. There are different implementations of the node agent, known as
- * SKUs, for different operating systems.
+ * SKUs, for different operating systems. You must specify a node agent SKU
+ * which matches the selected image reference. To get the list of supported
+ * node agent SKUs along with their list of verified image references, see the
+ * 'List supported node agent SKUs' operation.
  * 
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration]
- * This property must not be specified if the imageReference property
- * specifies a Linux OS image.
+ * This property must not be specified if the imageReference property specifies
+ * a Linux OS image.
  * 
  * @member {boolean}
  * [poolInfo.autoPoolSpecification.pool.virtualMachineConfiguration.windowsConfiguration.enableAutomaticUpdates]
  * If omitted, the default value is true.
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.maxTasksPerNode] The
+ * default value is 1. The maximum value of this setting depends on the size of
+ * the compute nodes in the pool (the vmSize setting).
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy]
  * How tasks are distributed among compute nodes in the pool.
@@ -6266,37 +9237,67 @@ export interface JobPatchParameter {
  * Possible values include: 'spread', 'pack', 'unmapped'
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.resizeTimeout]
+ * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
+ * only to manual scaling; it has no effect when enableAutoScale is set to
+ * true. The default value is 15 minutes. The minimum value is 5 minutes. If
+ * you specify a value less than 5 minutes, the Batch service rejects the
+ * request with an error; if you are calling the REST API directly, the HTTP
+ * status code is 400 (Bad Request).
  * 
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated]
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
+ * property must not be specified if enableAutoScale is set to true. It is
+ * required if enableAutoScale is set to false.
  * 
- * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale]
+ * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
+ * false, the targetDedicated element is required. If true, the
+ * autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  * 
- * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula]
+ * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
+ * property must not be specified if enableAutoScale is set to false. It is
+ * required if enableAutoScale is set to true. The formula is checked for
+ * validity before the pool is created. If the formula is not valid, the Batch
+ * service rejects the request with detailed error information.
  * 
  * @member {moment.duration}
- * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval]
+ * [poolInfo.autoPoolSpecification.pool.autoScaleEvaluationInterval] The
+ * default value is 15 minutes. The minimum and maximum value are 5 minutes and
+ * 168 hours respectively. If you specify a value less than 5 minutes or
+ * greater than 168 hours, the Batch service rejects the request with an
+ * invalid property value error; if you are calling the REST API directly, the
+ * HTTP status code is 400 (Bad Request).
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication]
+ * [poolInfo.autoPoolSpecification.pool.enableInterNodeCommunication] Enabling
+ * inter-node communication limits the maximum size of the pool due to
+ * deployment restrictions on the nodes of the pool. This may result in the
+ * pool not reaching its desired size. The default value is false.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.networkConfiguration]
  * 
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.networkConfiguration.subnetId] The
- * ARM resource identifier of the virtual network subnet which the compute
- * nodes of the pool will join. The virtual network must be in the same
- * region and subscription as the Azure Batch account. This property can only
- * be specified for pools created with a cloudServiceConfiguration.
+ * virtual network must be in the same region and subscription as the Azure
+ * Batch account. The specified subnet should have enough free IP addresses to
+ * accommodate the number of nodes in the pool. If the subnet doesn't have
+ * enough free IP addresses, the pool will partially allocate compute nodes,
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. This property
+ * can only be specified for pools created with a cloudServiceConfiguration.
  * 
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * 
- * @member {string}
- * [poolInfo.autoPoolSpecification.pool.startTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
  * MyCommand" in Linux.
  * 
  * @member {array}
@@ -6309,25 +9310,55 @@ export interface JobPatchParameter {
  * [poolInfo.autoPoolSpecification.pool.startTask.runElevated]
  * 
  * @member {number}
- * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount]
+ * [poolInfo.autoPoolSpecification.pool.startTask.maxTaskRetryCount] The Batch
+ * service retries a task if its exit code is nonzero. Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  * @member {boolean}
- * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess]
+ * [poolInfo.autoPoolSpecification.pool.startTask.waitForSuccess] If true and
+ * the start task fails on a compute node, the Batch service retries the start
+ * task up to its maximum retry count (maxTaskRetryCount). If the task has
+ * still not completed successfully after all retries, then the Batch service
+ * marks the compute node unusable, and will not schedule tasks to it. This
+ * condition can be detected via the node state and scheduling error detail. If
+ * false, the Batch service will not wait for the start task to complete. In
+ * this case, other tasks can start executing on the compute node while the
+ * start task is still running; and even if the start task fails, new tasks
+ * will continue to be scheduled on the node. The default is false.
  * 
  * @member {array} [poolInfo.autoPoolSpecification.pool.certificateReferences]
+ * For Windows compute nodes, the Batch service installs the certificates to
+ * the specified certificate store and location. For Linux compute nodes, the
+ * certificates are stored in a directory inside the task working directory and
+ * an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
+ * property is currently not supported on auto pools created with the
+ * virtualMachineConfiguration (IaaS) property.
  * 
- * @member {array} [poolInfo.autoPoolSpecification.pool.metadata]
+ * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
+ * service does not assign any meaning to metadata; it is solely for the use of
+ * user code.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * job as metadata. If omitted, it takes the default value of an empty list;
- * in effect, any existing metadata is deleted.
+ * job as metadata. If omitted, it takes the default value of an empty list; in
+ * effect, any existing metadata is deleted.
  * 
  * @member {string} [onAllTasksComplete] Specifies an action the Batch service
- * should take when all tasks in the job are in the completed state. Possible
- * values include: 'noAction', 'terminateJob'
+ * should take when all tasks in the job are in the completed state. If
+ * omitted, the completion behavior is set to noaction. If the current value is
+ * terminatejob, this is an error because a job's completion behavior may not
+ * be changed from terminatejob to noaction. Possible values include:
+ * 'noAction', 'terminateJob'
  * 
  */
 export interface JobUpdateParameter {
@@ -6342,13 +9373,26 @@ export interface JobUpdateParameter {
  * @class
  * Initializes a new instance of the PoolEnableAutoScaleParameter class.
  * @constructor
- * @summary Parameters for a CloudPoolOperations.EnableAutoScale request.
+ * @summary Options for enabling automatic scaling on a pool.
  *
  * @member {string} [autoScaleFormula] The formula for the desired number of
- * compute nodes in the pool.
+ * compute nodes in the pool. The formula is checked for validity before it is
+ * applied to the pool. If the formula is not valid, the Batch service rejects
+ * the request with detailed error information. For more information about
+ * specifying this formula, see Automatically scale compute nodes in an Azure
+ * Batch pool
+ * (https://azure.microsoft.com/en-us/documentation/articles/batch-automatic-scaling).
  * 
- * @member {moment.duration} [autoScaleEvaluationInterval] A time interval for
- * the desired autoscale evaluation period in the pool.
+ * @member {moment.duration} [autoScaleEvaluationInterval] The time interval at
+ * which to automatically adjust the pool size according to the autoscale
+ * formula. The default value is 15 minutes. The minimum and maximum value are
+ * 5 minutes and 168 hours respectively. If you specify a value less than 5
+ * minutes or greater than 168 hours, the Batch service rejects the request
+ * with an invalid property value error; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request). If you specify a new
+ * interval, then the existing autoscale evaluation schedule will be stopped
+ * and a new autoscale evaluation schedule will be started, with its starting
+ * time being the time when this request was issued.
  * 
  */
 export interface PoolEnableAutoScaleParameter {
@@ -6360,10 +9404,15 @@ export interface PoolEnableAutoScaleParameter {
  * @class
  * Initializes a new instance of the PoolEvaluateAutoScaleParameter class.
  * @constructor
- * @summary Parameters for a CloudJobOperations.EvaluateAutoScale request.
+ * @summary Options for evaluating an automatic scaling formula on a pool.
  *
- * @member {string} autoScaleFormula A formula for the desired number of
- * compute nodes in the pool.
+ * @member {string} autoScaleFormula The formula for the desired number of
+ * compute nodes in the pool. The formula is validated and its results
+ * calculated, but it is not applied to the pool. To apply the formula to the
+ * pool, 'Enable automatic scaling on a pool'. For more information about
+ * specifying this formula, see Automatically scale compute nodes in an Azure
+ * Batch pool
+ * (https://azure.microsoft.com/en-us/documentation/articles/batch-automatic-scaling).
  * 
  */
 export interface PoolEvaluateAutoScaleParameter {
@@ -6374,18 +9423,20 @@ export interface PoolEvaluateAutoScaleParameter {
  * @class
  * Initializes a new instance of the PoolResizeParameter class.
  * @constructor
- * @summary Parameters for a CloudPoolOperations.Resize request.
+ * @summary Options for changing the size of a pool.
  *
  * @member {number} targetDedicated The desired number of compute nodes in the
  * pool.
  * 
  * @member {moment.duration} [resizeTimeout] The timeout for allocation of
  * compute nodes to the pool or removal of compute nodes from the pool. The
- * default value is 10 minutes.
+ * default value is 15 minutes. The minimum value is 5 minutes. If you specify
+ * a value less than 5 minutes, the Batch service returns an error; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  * 
- * @member {string} [nodeDeallocationOption] When nodes may be removed from
- * the pool, if the pool size is decreasing. Possible values include:
- * 'requeue', 'terminate', 'taskcompletion', 'retaineddata'
+ * @member {string} [nodeDeallocationOption] When nodes may be removed from the
+ * pool, if the pool size is decreasing. The default value is requeue. Possible
+ * values include: 'requeue', 'terminate', 'taskcompletion', 'retaineddata'
  * 
  */
 export interface PoolResizeParameter {
@@ -6398,16 +9449,18 @@ export interface PoolResizeParameter {
  * @class
  * Initializes a new instance of the PoolUpdatePropertiesParameter class.
  * @constructor
- * @summary Parameters for a CloudPoolOperations.UpdateProperties request.
+ * @summary The set of changes to be made to a pool.
  *
  * @member {object} [startTask] A task to run on each compute node as it joins
- * the pool. If omitted, any existing start task is removed from the pool.
+ * the pool. The task runs when the node is added to the pool or when the node
+ * is restarted. If this element is present, it overwrites any existing start
+ * task. If omitted, any existing start task is removed from the pool.
  * 
- * @member {string} [startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [startTask.resourceFiles]
  * 
@@ -6415,21 +9468,47 @@ export interface PoolResizeParameter {
  * 
  * @member {boolean} [startTask.runElevated]
  * 
- * @member {number} [startTask.maxTaskRetryCount]
+ * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
+ * task if its exit code is nonzero. Note that this value specifically controls
+ * the number of retries. The Batch service will try the task once, and may
+ * then retry up to this limit. For example, if the maximum retry count is 3,
+ * Batch tries the task up to 4 times (one initial try and 3 retries). If the
+ * maximum retry count is 0, the Batch service does not retry the task. If the
+ * maximum retry count is -1, the Batch service retries the task without limit.
  * 
- * @member {boolean} [startTask.waitForSuccess]
+ * @member {boolean} [startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
- * @member {array} certificateReferences A list of certificates to be
- * installed on each compute node in the pool. If you specify an empty
- * collection, any existing certificate references are removed from the pool.
+ * @member {array} certificateReferences A list of certificates to be installed
+ * on each compute node in the pool. If you specify an empty collection, any
+ * existing certificate references are removed from the pool. For Windows
+ * compute nodes, the Batch service installs the certificates to the specified
+ * certificate store and location. For Linux compute nodes, the certificates
+ * are stored in a directory inside the task working directory and an
+ * environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to
+ * query for this location. For certificates with visibility of remoteuser, a
+ * certs directory is created in the user's home directory (e.g.,
+ * /home/<user-name>/certs) where certificates are placed.
  * 
  * @member {array} applicationPackageReferences A list of application packages
- * to be installed on each compute node in the pool. If you specify an empty
- * collection, any existing application packages references are removed from
- * the pool.
+ * to be installed on each compute node in the pool. Changes to application
+ * package references affect all new compute nodes joining the pool, but do not
+ * affect compute nodes that are already in the pool until they are rebooted or
+ * reimaged. The list replaces any existing application package references. If
+ * omitted, or if you specify an empty collection, any existing application
+ * packages references are removed from the pool.
  * 
- * @member {array} metadata A list of name-value pairs associated with the
- * pool as metadata. If you specify an empty collection, any existing
+ * @member {array} metadata A list of name-value pairs associated with the pool
+ * as metadata. This list replaces any existing metadata configured on the
+ * pool. If omitted, or if you specify an empty collection, any existing
  * metadata is removed from the pool.
  * 
  */
@@ -6444,7 +9523,8 @@ export interface PoolUpdatePropertiesParameter {
  * @class
  * Initializes a new instance of the PoolUpgradeOSParameter class.
  * @constructor
- * @summary Parameters for a CloudPoolOperations.UpgradeOS request.
+ * @summary Options for upgrading the operating system of compute nodes in a
+ * pool.
  *
  * @member {string} targetOSVersion The Azure Guest OS version to be installed
  * on the virtual machines in the pool.
@@ -6458,16 +9538,17 @@ export interface PoolUpgradeOSParameter {
  * @class
  * Initializes a new instance of the PoolPatchParameter class.
  * @constructor
- * @summary Parameters for a CloudPoolOperations.Patch request.
+ * @summary The set of changes to be made to a pool.
  *
  * @member {object} [startTask] A task to run on each compute node as it joins
- * the pool. If omitted, any existing start task is left unchanged.
+ * the pool. The task runs when the node is added to the pool or when the node
+ * is restarted. If omitted, any existing start task is left unchanged.
  * 
- * @member {string} [startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such
- * as environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * 
  * @member {array} [startTask.resourceFiles]
  * 
@@ -6475,20 +9556,50 @@ export interface PoolUpgradeOSParameter {
  * 
  * @member {boolean} [startTask.runElevated]
  * 
- * @member {number} [startTask.maxTaskRetryCount]
+ * @member {number} [startTask.maxTaskRetryCount] The Batch service retries a
+ * task if its exit code is nonzero. Note that this value specifically controls
+ * the number of retries. The Batch service will try the task once, and may
+ * then retry up to this limit. For example, if the maximum retry count is 3,
+ * Batch tries the task up to 4 times (one initial try and 3 retries). If the
+ * maximum retry count is 0, the Batch service does not retry the task. If the
+ * maximum retry count is -1, the Batch service retries the task without limit.
  * 
- * @member {boolean} [startTask.waitForSuccess]
+ * @member {boolean} [startTask.waitForSuccess] If true and the start task
+ * fails on a compute node, the Batch service retries the start task up to its
+ * maximum retry count (maxTaskRetryCount). If the task has still not completed
+ * successfully after all retries, then the Batch service marks the compute
+ * node unusable, and will not schedule tasks to it. This condition can be
+ * detected via the node state and scheduling error detail. If false, the Batch
+ * service will not wait for the start task to complete. In this case, other
+ * tasks can start executing on the compute node while the start task is still
+ * running; and even if the start task fails, new tasks will continue to be
+ * scheduled on the node. The default is false.
  * 
  * @member {array} [certificateReferences] A list of certificates to be
  * installed on each compute node in the pool. If omitted, any existing
- * certificate references are left unchanged.
+ * certificate references are left unchanged. For Windows compute nodes, the
+ * Batch service installs the certificates to the specified certificate store
+ * and location. For Linux compute nodes, the certificates are stored in a
+ * directory inside the task working directory and an environment variable
+ * AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this
+ * location. For certificates with visibility of remoteuser, a certs directory
+ * is created in the user's home directory (e.g., /home/<user-name>/certs)
+ * where certificates are placed.
  * 
  * @member {array} [applicationPackageReferences] A list of application
- * packages to be installed on each compute node in the pool. If omitted, any
- * existing application package references are left unchanged.
+ * packages to be installed on each compute node in the pool. Changes to
+ * application package references affect all new compute nodes joining the
+ * pool, but do not affect compute nodes that are already in the pool until
+ * they are rebooted or reimaged. If this element is present, it replaces any
+ * existing application package references. If you specify an empty collection,
+ * then all application package references are removed from the pool. If
+ * omitted, any existing application package references are left unchanged.
  * 
  * @member {array} [metadata] A list of name-value pairs associated with the
- * pool as metadata. If omitted, any existing metadata is left unchanged.
+ * pool as metadata. If this element is present, it replaces any existing
+ * metadata configured on the pool. If you specify an empty collection, any
+ * metadata is removed from the pool. If omitted, any existing metadata is left
+ * unchanged.
  * 
  */
 export interface PoolPatchParameter {
@@ -6502,17 +9613,25 @@ export interface PoolPatchParameter {
  * @class
  * Initializes a new instance of the TaskUpdateParameter class.
  * @constructor
- * @summary Parameters for a CloudTaskOperations.Update request.
+ * @summary The set of changes to be made to a task.
  *
  * @member {object} [constraints] Constraints that apply to this task. If
  * omitted, the task is given the default constraints.
  * 
- * @member {moment.duration} [constraints.maxWallClockTime]
+ * @member {moment.duration} [constraints.maxWallClockTime] If this is not
+ * specified, there is no time limit on how long the task may run.
  * 
  * @member {moment.duration} [constraints.retentionTime] The default is
- * infinite.
+ * infinite, i.e. the task directory will be retained until the compute node is
+ * removed or reimaged.
  * 
- * @member {number} [constraints.maxTaskRetryCount]
+ * @member {number} [constraints.maxTaskRetryCount] Note that this value
+ * specifically controls the number of retries. The Batch service will try the
+ * task once, and may then retry up to this limit. For example, if the maximum
+ * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
+ * retries). If the maximum retry count is 0, the Batch service does not retry
+ * the task. If the maximum retry count is -1, the Batch service retries the
+ * task without limit.
  * 
  */
 export interface TaskUpdateParameter {
@@ -6523,15 +9642,26 @@ export interface TaskUpdateParameter {
  * @class
  * Initializes a new instance of the NodeUpdateUserParameter class.
  * @constructor
- * @summary Parameters for a ComputeNodeOperations.UpdateUser request.
+ * @summary The set of changes to be made to a user account on a node.
  *
- * @member {string} [password] The password of the account.
+ * @member {string} [password] The password of the account. The password is
+ * required for Windows nodes (those created with 'cloudServiceConfiguration',
+ * or created with 'virtualMachineConfiguration' using a Windows image
+ * reference). For Linux compute nodes, the password can optionally be
+ * specified along with the sshPublicKey property. If omitted, any existing
+ * password is removed.
  * 
  * @member {date} [expiryTime] The time at which the account should expire. If
- * omitted, the default is 1 day from the current time.
+ * omitted, the default is 1 day from the current time. For Linux compute
+ * nodes, the expiryTime has a precision up to a day.
  * 
  * @member {string} [sshPublicKey] The SSH public key that can be used for
- * remote login to the compute node.
+ * remote login to the compute node. The public key should be compatible with
+ * OpenSSH encoding and should be base 64 encoded. This property can be
+ * specified only for Linux nodes. If this is specified for a Windows node,
+ * then the Batch service rejects the request; if you are calling the REST API
+ * directly, the HTTP status code is 400 (Bad Request). If omitted, any
+ * existing SSH public key is removed.
  * 
  */
 export interface NodeUpdateUserParameter {
@@ -6544,12 +9674,11 @@ export interface NodeUpdateUserParameter {
  * @class
  * Initializes a new instance of the NodeRebootParameter class.
  * @constructor
- * @summary Parameters for a ComputeNodeOperations.Reboot request.
+ * @summary Options for rebooting a compute node.
  *
- * @member {string} [nodeRebootOption] When to reboot the compute node and
- * what to do with currently running tasks. The default value is requeue.
- * Possible values include: 'requeue', 'terminate', 'taskcompletion',
- * 'retaineddata'
+ * @member {string} [nodeRebootOption] When to reboot the compute node and what
+ * to do with currently running tasks. The default value is requeue. Possible
+ * values include: 'requeue', 'terminate', 'taskcompletion', 'retaineddata'
  * 
  */
 export interface NodeRebootParameter {
@@ -6560,7 +9689,7 @@ export interface NodeRebootParameter {
  * @class
  * Initializes a new instance of the NodeReimageParameter class.
  * @constructor
- * @summary Parameters for a ComputeNodeOperations.Reimage request.
+ * @summary Options for reimaging a compute node.
  *
  * @member {string} [nodeReimageOption] When to reimage the compute node and
  * what to do with currently running tasks. The default value is requeue.
@@ -6576,10 +9705,10 @@ export interface NodeReimageParameter {
  * @class
  * Initializes a new instance of the NodeDisableSchedulingParameter class.
  * @constructor
- * @summary Parameters for a ComputeNodeOperations.DisableScheduling request.
+ * @summary Options for disabling scheduling on a compute node.
  *
  * @member {string} [nodeDisableSchedulingOption] What to do with currently
- * running tasks when disable task scheduling on the compute node. The
+ * running tasks when disabling task scheduling on the compute node. The
  * default value is requeue. Possible values include: 'requeue', 'terminate',
  * 'taskcompletion'
  * 
@@ -6592,17 +9721,21 @@ export interface NodeDisableSchedulingParameter {
  * @class
  * Initializes a new instance of the NodeRemoveParameter class.
  * @constructor
- * @summary Parameters for a ComputeNodeOperations.Remove request.
+ * @summary Options for removing compute nodes from a pool.
  *
  * @member {array} nodeList A list containing the ids of the compute nodes to
  * be removed from the specified pool.
  * 
- * @member {moment.duration} [resizeTimeout] The timeout for removal of
- * compute nodes to the pool. The default value is 10 minutes.
+ * @member {moment.duration} [resizeTimeout] The timeout for removal of compute
+ * nodes to the pool. The default value is 15 minutes. The minimum value is 5
+ * minutes. If you specify a value less than 5 minutes, the Batch service
+ * returns an error; if you are calling the REST API directly, the HTTP status
+ * code is 400 (Bad Request).
  * 
- * @member {string} [nodeDeallocationOption] When compute nodes may be removed
- * from the pool. Possible values include: 'requeue', 'terminate',
- * 'taskcompletion', 'retaineddata'
+ * @member {string} [nodeDeallocationOption] When to remove compute nodes and
+ * what to do with currently running tasks. The default value is requeue.
+ * Possible values include: 'requeue', 'terminate', 'taskcompletion',
+ * 'retaineddata'
  * 
  */
 export interface NodeRemoveParameter {
@@ -6618,18 +9751,19 @@ export interface NodeRemoveParameter {
  * Additional parameters for the Application_list operation.
  *
  * @member {number} [maxResults] The maximum number of items to return in the
- * response.
+ * response. A maximum of 1000 applications can be returned. Default value:
+ * 1000 .
  * 
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -6654,12 +9788,12 @@ export interface ApplicationListOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -6680,26 +9814,32 @@ export interface ApplicationGetOptions {
  * Additional parameters for the Pool_listPoolUsageMetrics operation.
  *
  * @member {date} [startTime] The earliest time from which to include metrics.
- * This must be at least two and a half hours before the current time.
+ * This must be at least two and a half hours before the current time. If not
+ * specified this defaults to the start time of the last aggregation interval
+ * currently available.
  * 
- * @member {date} [endTime] The latest time from which to include metrics.
- * This must be at least two hours before the current time.
+ * @member {date} [endTime] The latest time from which to include metrics. This
+ * must be at least two hours before the current time. If not specified this
+ * defaults to the end time of the last aggregation interval currently
+ * available.
  * 
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause. If this is not specified
+ * the response includes all pools that existed in the account in the time
+ * range of the returned aggregation intervals.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
- * response.
+ * response. A maximum of 1000 results will be returned. Default value: 1000 .
  * 
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -6719,42 +9859,6 @@ export interface PoolListPoolUsageMetricsOptions {
 
 /**
  * @class
- * Initializes a new instance of the AccountListNodeAgentSkusOptions class.
- * @constructor
- * Additional parameters for the Account_listNodeAgentSkus operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface AccountListNodeAgentSkusOptions {
-  filter?: string;
-  maxResults?: number;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
  * Initializes a new instance of the PoolGetAllPoolsLifetimeStatisticsOptions class.
  * @constructor
  * Additional parameters for the Pool_getAllPoolsLifetimeStatistics operation.
@@ -6763,12 +9867,12 @@ export interface AccountListNodeAgentSkusOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -6776,1459 +9880,6 @@ export interface AccountListNodeAgentSkusOptions {
  * 
  */
 export interface PoolGetAllPoolsLifetimeStatisticsOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobGetAllJobsLifetimeStatisticsOptions class.
- * @constructor
- * Additional parameters for the Job_getAllJobsLifetimeStatistics operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobGetAllJobsLifetimeStatisticsOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateAddOptions class.
- * @constructor
- * Additional parameters for the Certificate_add operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface CertificateAddOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateListOptions class.
- * @constructor
- * Additional parameters for the Certificate_list operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {string} [select] An OData $select clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface CertificateListOptions {
-  filter?: string;
-  select?: string;
-  maxResults?: number;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateCancelDeletionOptions class.
- * @constructor
- * Additional parameters for the Certificate_cancelDeletion operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface CertificateCancelDeletionOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateDeleteMethodOptions class.
- * @constructor
- * Additional parameters for the Certificate_deleteMethod operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface CertificateDeleteMethodOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the CertificateGetOptions class.
- * @constructor
- * Additional parameters for the Certificate_get operation.
- *
- * @member {string} [select] An OData $select clause.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface CertificateGetOptions {
-  select?: string;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileDeleteFromTaskOptions class.
- * @constructor
- * Additional parameters for the File_deleteFromTask operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface FileDeleteFromTaskOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileGetFromTaskOptions class.
- * @constructor
- * Additional parameters for the File_getFromTask operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ocpRange] The byte range to be retrieved. The default is
- * to retrieve the entire file. The format is bytes=startRange-endRange.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface FileGetFromTaskOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ocpRange?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileGetNodeFilePropertiesFromTaskOptions class.
- * @constructor
- * Additional parameters for the File_getNodeFilePropertiesFromTask operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface FileGetNodeFilePropertiesFromTaskOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileDeleteFromComputeNodeOptions class.
- * @constructor
- * Additional parameters for the File_deleteFromComputeNode operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface FileDeleteFromComputeNodeOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileGetFromComputeNodeOptions class.
- * @constructor
- * Additional parameters for the File_getFromComputeNode operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ocpRange] The byte range to be retrieved. The default is
- * to retrieve the entire file. The format is bytes=startRange-endRange.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface FileGetFromComputeNodeOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ocpRange?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileGetNodeFilePropertiesFromComputeNodeOptions class.
- * @constructor
- * Additional parameters for the File_getNodeFilePropertiesFromComputeNode
- * operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface FileGetNodeFilePropertiesFromComputeNodeOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileListFromTaskOptions class.
- * @constructor
- * Additional parameters for the File_listFromTask operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface FileListFromTaskOptions {
-  filter?: string;
-  maxResults?: number;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileListFromComputeNodeOptions class.
- * @constructor
- * Additional parameters for the File_listFromComputeNode operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface FileListFromComputeNodeOptions {
-  filter?: string;
-  maxResults?: number;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleExistsOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_exists operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobScheduleExistsOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleDeleteMethodOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_deleteMethod operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobScheduleDeleteMethodOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleGetOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_get operation.
- *
- * @member {string} [select] An OData $select clause.
- * 
- * @member {string} [expand] An OData $expand clause.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobScheduleGetOptions {
-  select?: string;
-  expand?: string;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobSchedulePatchOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_patch operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobSchedulePatchOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleUpdateOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_update operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobScheduleUpdateOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleDisableOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_disable operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobScheduleDisableOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleEnableOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_enable operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobScheduleEnableOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleTerminateOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_terminate operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobScheduleTerminateOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleAddOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_add operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobScheduleAddOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleListOptions class.
- * @constructor
- * Additional parameters for the JobSchedule_list operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {string} [select] An OData $select clause.
- * 
- * @member {string} [expand] An OData $expand clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobScheduleListOptions {
-  filter?: string;
-  select?: string;
-  expand?: string;
-  maxResults?: number;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobDeleteMethodOptions class.
- * @constructor
- * Additional parameters for the Job_deleteMethod operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobDeleteMethodOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobGetOptions class.
- * @constructor
- * Additional parameters for the Job_get operation.
- *
- * @member {string} [select] An OData $select clause.
- * 
- * @member {string} [expand] An OData $expand clause.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobGetOptions {
-  select?: string;
-  expand?: string;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobPatchOptions class.
- * @constructor
- * Additional parameters for the Job_patch operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobPatchOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobUpdateOptions class.
- * @constructor
- * Additional parameters for the Job_update operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobUpdateOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobDisableOptions class.
- * @constructor
- * Additional parameters for the Job_disable operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobDisableOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobEnableOptions class.
- * @constructor
- * Additional parameters for the Job_enable operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobEnableOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobTerminateOptions class.
- * @constructor
- * Additional parameters for the Job_terminate operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- * @member {string} [ifMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag is an exact match as
- * specified.
- * 
- * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
- * perform the operation only if the resource's ETag does not match the
- * specified ETag.
- * 
- * @member {date} [ifModifiedSince] Specify this header to perform the
- * operation only if the resource has been modified since the specified
- * date/time.
- * 
- * @member {date} [ifUnmodifiedSince] Specify this header to perform the
- * operation only if the resource has not been modified since the specified
- * date/time.
- * 
- */
-export interface JobTerminateOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-  ifMatch?: string;
-  ifNoneMatch?: string;
-  ifModifiedSince?: Date;
-  ifUnmodifiedSince?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobAddOptions class.
- * @constructor
- * Additional parameters for the Job_add operation.
- *
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobAddOptions {
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListOptions class.
- * @constructor
- * Additional parameters for the Job_list operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {string} [select] An OData $select clause.
- * 
- * @member {string} [expand] An OData $expand clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobListOptions {
-  filter?: string;
-  select?: string;
-  expand?: string;
-  maxResults?: number;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListFromJobScheduleOptions class.
- * @constructor
- * Additional parameters for the Job_listFromJobSchedule operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {string} [select] An OData $select clause.
- * 
- * @member {string} [expand] An OData $expand clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobListFromJobScheduleOptions {
-  filter?: string;
-  select?: string;
-  expand?: string;
-  maxResults?: number;
-  timeout?: number;
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListPreparationAndReleaseTaskStatusOptions class.
- * @constructor
- * Additional parameters for the Job_listPreparationAndReleaseTaskStatus
- * operation.
- *
- * @member {string} [filter] An OData $filter clause.
- * 
- * @member {string} [select] An OData $select clause.
- * 
- * @member {number} [maxResults] The maximum number of items to return in the
- * response.
- * 
- * @member {number} [timeout] The maximum time that the server can spend
- * processing the request, in seconds. The default is 30 seconds. Default
- * value: 30 .
- * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobListPreparationAndReleaseTaskStatusOptions {
-  filter?: string;
-  select?: string;
-  maxResults?: number;
   timeout?: number;
   clientRequestId?: string;
   returnClientRequestId?: boolean;
@@ -8245,12 +9896,12 @@ export interface JobListPreparationAndReleaseTaskStatusOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8277,18 +9928,18 @@ export interface PoolAddOptions {
  * @member {string} [expand] An OData $expand clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
- * response.
+ * response. A maximum of 1000 pools can be returned. Default value: 1000 .
  * 
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8316,12 +9967,12 @@ export interface PoolListOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8365,12 +10016,12 @@ export interface PoolDeleteMethodOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8418,12 +10069,12 @@ export interface PoolExistsOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8469,12 +10120,12 @@ export interface PoolGetOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8518,12 +10169,12 @@ export interface PoolPatchOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8547,12 +10198,12 @@ export interface PoolDisableAutoScaleOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8596,12 +10247,12 @@ export interface PoolEnableAutoScaleOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8625,12 +10276,12 @@ export interface PoolEvaluateAutoScaleOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8674,12 +10325,12 @@ export interface PoolResizeOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8723,12 +10374,12 @@ export interface PoolStopResizeOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8752,12 +10403,12 @@ export interface PoolUpdatePropertiesOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8801,12 +10452,12 @@ export interface PoolUpgradeOSOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8842,6 +10493,1497 @@ export interface PoolRemoveNodesOptions {
 
 /**
  * @class
+ * Initializes a new instance of the AccountListNodeAgentSkusOptions class.
+ * @constructor
+ * Additional parameters for the Account_listNodeAgentSkus operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 results will be returned. Default value: 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface AccountListNodeAgentSkusOptions {
+  filter?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobGetAllJobsLifetimeStatisticsOptions class.
+ * @constructor
+ * Additional parameters for the Job_getAllJobsLifetimeStatistics operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobGetAllJobsLifetimeStatisticsOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobDeleteMethodOptions class.
+ * @constructor
+ * Additional parameters for the Job_deleteMethod operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobDeleteMethodOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobGetOptions class.
+ * @constructor
+ * Additional parameters for the Job_get operation.
+ *
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {string} [expand] An OData $expand clause.
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobGetOptions {
+  select?: string;
+  expand?: string;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobPatchOptions class.
+ * @constructor
+ * Additional parameters for the Job_patch operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobPatchOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobUpdateOptions class.
+ * @constructor
+ * Additional parameters for the Job_update operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobUpdateOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobDisableOptions class.
+ * @constructor
+ * Additional parameters for the Job_disable operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobDisableOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobEnableOptions class.
+ * @constructor
+ * Additional parameters for the Job_enable operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobEnableOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobTerminateOptions class.
+ * @constructor
+ * Additional parameters for the Job_terminate operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobTerminateOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobAddOptions class.
+ * @constructor
+ * Additional parameters for the Job_add operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobAddOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobListOptions class.
+ * @constructor
+ * Additional parameters for the Job_list operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {string} [expand] An OData $expand clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 jobs can be returned. Default value: 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobListOptions {
+  filter?: string;
+  select?: string;
+  expand?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobListFromJobScheduleOptions class.
+ * @constructor
+ * Additional parameters for the Job_listFromJobSchedule operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {string} [expand] An OData $expand clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 jobs can be returned. Default value: 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobListFromJobScheduleOptions {
+  filter?: string;
+  select?: string;
+  expand?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobListPreparationAndReleaseTaskStatusOptions class.
+ * @constructor
+ * Additional parameters for the Job_listPreparationAndReleaseTaskStatus
+ * operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 tasks can be returned. Default value: 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobListPreparationAndReleaseTaskStatusOptions {
+  filter?: string;
+  select?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateAddOptions class.
+ * @constructor
+ * Additional parameters for the Certificate_add operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface CertificateAddOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateListOptions class.
+ * @constructor
+ * Additional parameters for the Certificate_list operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 certificates can be returned. Default value:
+ * 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface CertificateListOptions {
+  filter?: string;
+  select?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateCancelDeletionOptions class.
+ * @constructor
+ * Additional parameters for the Certificate_cancelDeletion operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface CertificateCancelDeletionOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateDeleteMethodOptions class.
+ * @constructor
+ * Additional parameters for the Certificate_deleteMethod operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface CertificateDeleteMethodOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateGetOptions class.
+ * @constructor
+ * Additional parameters for the Certificate_get operation.
+ *
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface CertificateGetOptions {
+  select?: string;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileDeleteFromTaskOptions class.
+ * @constructor
+ * Additional parameters for the File_deleteFromTask operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface FileDeleteFromTaskOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileGetFromTaskOptions class.
+ * @constructor
+ * Additional parameters for the File_getFromTask operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ocpRange] The byte range to be retrieved. The default is
+ * to retrieve the entire file. The format is bytes=startRange-endRange.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface FileGetFromTaskOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ocpRange?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileGetNodeFilePropertiesFromTaskOptions class.
+ * @constructor
+ * Additional parameters for the File_getNodeFilePropertiesFromTask operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface FileGetNodeFilePropertiesFromTaskOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileDeleteFromComputeNodeOptions class.
+ * @constructor
+ * Additional parameters for the File_deleteFromComputeNode operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface FileDeleteFromComputeNodeOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileGetFromComputeNodeOptions class.
+ * @constructor
+ * Additional parameters for the File_getFromComputeNode operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ocpRange] The byte range to be retrieved. The default is
+ * to retrieve the entire file. The format is bytes=startRange-endRange.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface FileGetFromComputeNodeOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ocpRange?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileGetNodeFilePropertiesFromComputeNodeOptions class.
+ * @constructor
+ * Additional parameters for the File_getNodeFilePropertiesFromComputeNode
+ * operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface FileGetNodeFilePropertiesFromComputeNodeOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileListFromTaskOptions class.
+ * @constructor
+ * Additional parameters for the File_listFromTask operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface FileListFromTaskOptions {
+  filter?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileListFromComputeNodeOptions class.
+ * @constructor
+ * Additional parameters for the File_listFromComputeNode operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface FileListFromComputeNodeOptions {
+  filter?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleExistsOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_exists operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobScheduleExistsOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleDeleteMethodOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_deleteMethod operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobScheduleDeleteMethodOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleGetOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_get operation.
+ *
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {string} [expand] An OData $expand clause.
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobScheduleGetOptions {
+  select?: string;
+  expand?: string;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobSchedulePatchOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_patch operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobSchedulePatchOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleUpdateOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_update operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobScheduleUpdateOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleDisableOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_disable operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobScheduleDisableOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleEnableOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_enable operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobScheduleEnableOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleTerminateOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_terminate operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ * @member {string} [ifMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag is an exact match as
+ * specified.
+ * 
+ * @member {string} [ifNoneMatch] An ETag is specified. Specify this header to
+ * perform the operation only if the resource's ETag does not match the
+ * specified ETag.
+ * 
+ * @member {date} [ifModifiedSince] Specify this header to perform the
+ * operation only if the resource has been modified since the specified
+ * date/time.
+ * 
+ * @member {date} [ifUnmodifiedSince] Specify this header to perform the
+ * operation only if the resource has not been modified since the specified
+ * date/time.
+ * 
+ */
+export interface JobScheduleTerminateOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+  ifMatch?: string;
+  ifNoneMatch?: string;
+  ifModifiedSince?: Date;
+  ifUnmodifiedSince?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleAddOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_add operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobScheduleAddOptions {
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleListOptions class.
+ * @constructor
+ * Additional parameters for the JobSchedule_list operation.
+ *
+ * @member {string} [filter] An OData $filter clause.
+ * 
+ * @member {string} [select] An OData $select clause.
+ * 
+ * @member {string} [expand] An OData $expand clause.
+ * 
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 job schedules can be returned. Default value:
+ * 1000 .
+ * 
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ * 
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobScheduleListOptions {
+  filter?: string;
+  select?: string;
+  expand?: string;
+  maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TaskAddOptions class.
  * @constructor
  * Additional parameters for the Task_add operation.
@@ -8850,12 +11992,12 @@ export interface PoolRemoveNodesOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8882,18 +12024,18 @@ export interface TaskAddOptions {
  * @member {string} [expand] An OData $expand clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
- * response.
+ * response. A maximum of 1000 tasks can be returned. Default value: 1000 .
  * 
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8921,12 +12063,12 @@ export interface TaskListOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -8950,12 +12092,12 @@ export interface TaskAddCollectionOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9003,12 +12145,12 @@ export interface TaskDeleteMethodOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9054,12 +12196,12 @@ export interface TaskGetOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9105,12 +12247,12 @@ export interface TaskUpdateOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9135,12 +12277,12 @@ export interface TaskListSubtasksOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9184,12 +12326,12 @@ export interface TaskTerminateOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9233,12 +12375,12 @@ export interface TaskReactivateOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9262,12 +12404,12 @@ export interface ComputeNodeAddUserOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9291,12 +12433,12 @@ export interface ComputeNodeDeleteUserOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9322,12 +12464,12 @@ export interface ComputeNodeUpdateUserOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9352,12 +12494,12 @@ export interface ComputeNodeGetOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9381,12 +12523,12 @@ export interface ComputeNodeRebootOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9410,12 +12552,12 @@ export interface ComputeNodeReimageOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9439,12 +12581,12 @@ export interface ComputeNodeDisableSchedulingOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9468,12 +12610,12 @@ export interface ComputeNodeEnableSchedulingOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9497,12 +12639,12 @@ export interface ComputeNodeGetRemoteLoginSettingsOptions {
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9522,23 +12664,23 @@ export interface ComputeNodeGetRemoteDesktopOptions {
  * @constructor
  * Additional parameters for the ComputeNode_list operation.
  *
- * @member {string} [filter] An OData $filter clause.
+ * @member {string} [filter] An OData $filter clause..
  * 
  * @member {string} [select] An OData $select clause.
  * 
  * @member {number} [maxResults] The maximum number of items to return in the
- * response.
+ * response. A maximum of 1000 nodes can be returned. Default value: 1000 .
  * 
  * @member {number} [timeout] The maximum time that the server can spend
  * processing the request, in seconds. The default is 30 seconds. Default
  * value: 30 .
  * 
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9561,12 +12703,12 @@ export interface ComputeNodeListOptions {
  * @constructor
  * Additional parameters for the listNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9585,12 +12727,12 @@ export interface ApplicationListNextOptions {
  * @constructor
  * Additional parameters for the listPoolUsageMetricsNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9605,16 +12747,40 @@ export interface PoolListPoolUsageMetricsNextOptions {
 
 /**
  * @class
+ * Initializes a new instance of the PoolListNextOptions class.
+ * @constructor
+ * Additional parameters for the listNext operation.
+ *
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface PoolListNextOptions {
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AccountListNodeAgentSkusNextOptions class.
  * @constructor
  * Additional parameters for the listNodeAgentSkusNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9629,112 +12795,16 @@ export interface AccountListNodeAgentSkusNextOptions {
 
 /**
  * @class
- * Initializes a new instance of the CertificateListNextOptions class.
- * @constructor
- * Additional parameters for the listNext operation.
- *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface CertificateListNextOptions {
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileListFromTaskNextOptions class.
- * @constructor
- * Additional parameters for the listFromTaskNext operation.
- *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface FileListFromTaskNextOptions {
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileListFromComputeNodeNextOptions class.
- * @constructor
- * Additional parameters for the listFromComputeNodeNext operation.
- *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface FileListFromComputeNodeNextOptions {
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobScheduleListNextOptions class.
- * @constructor
- * Additional parameters for the listNext operation.
- *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
- * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
- * 
- * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
- * 
- * @member {date} [ocpDate] The time the request was issued. If not specified,
- * this header will be automatically populated with the current system clock
- * time.
- * 
- */
-export interface JobScheduleListNextOptions {
-  clientRequestId?: string;
-  returnClientRequestId?: boolean;
-  ocpDate?: Date;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9753,12 +12823,12 @@ export interface JobListNextOptions {
  * @constructor
  * Additional parameters for the listFromJobScheduleNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9778,12 +12848,12 @@ export interface JobListFromJobScheduleNextOptions {
  * Additional parameters for the listPreparationAndReleaseTaskStatusNext
  * operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9798,23 +12868,95 @@ export interface JobListPreparationAndReleaseTaskStatusNextOptions {
 
 /**
  * @class
- * Initializes a new instance of the PoolListNextOptions class.
+ * Initializes a new instance of the CertificateListNextOptions class.
  * @constructor
  * Additional parameters for the listNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
  * time.
  * 
  */
-export interface PoolListNextOptions {
+export interface CertificateListNextOptions {
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileListFromTaskNextOptions class.
+ * @constructor
+ * Additional parameters for the listFromTaskNext operation.
+ *
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface FileListFromTaskNextOptions {
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileListFromComputeNodeNextOptions class.
+ * @constructor
+ * Additional parameters for the listFromComputeNodeNext operation.
+ *
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface FileListFromComputeNodeNextOptions {
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobScheduleListNextOptions class.
+ * @constructor
+ * Additional parameters for the listNext operation.
+ *
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ * 
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ * 
+ * @member {date} [ocpDate] The time the request was issued. If not specified,
+ * this header will be automatically populated with the current system clock
+ * time.
+ * 
+ */
+export interface JobScheduleListNextOptions {
   clientRequestId?: string;
   returnClientRequestId?: boolean;
   ocpDate?: Date;
@@ -9826,12 +12968,12 @@ export interface PoolListNextOptions {
  * @constructor
  * Additional parameters for the listNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9850,12 +12992,12 @@ export interface TaskListNextOptions {
  * @constructor
  * Additional parameters for the listNext operation.
  *
- * @member {string} [clientRequestId] The caller-generated request identity,
- * in the form of a GUID with no decoration such as curly braces, e.g.
+ * @member {string} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
  * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
  * 
  * @member {boolean} [returnClientRequestId] Whether the server should return
- * the client-request-id identifier in the response.
+ * the client-request-id in the response. Default value: false .
  * 
  * @member {date} [ocpDate] The time the request was issued. If not specified,
  * this header will be automatically populated with the current system clock
@@ -9868,12 +13010,191 @@ export interface ComputeNodeListNextOptions {
   ocpDate?: Date;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ApplicationListResult class.
+ * @constructor
+ * @summary The result of listing the applications available in an account.
+ *
+ * @member {array} [value] The list of applications available in the account.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface ApplicationListResult {
+  value?: ApplicationSummary[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PoolListPoolUsageMetricsResult class.
+ * @constructor
+ * @summary The result of a listing the usage metrics for an account.
+ *
+ * @member {array} [value] The pool usage metrics data.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface PoolListPoolUsageMetricsResult {
+  value?: PoolUsageMetrics[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudPoolListResult class.
+ * @constructor
+ * @summary The result of listing the pools in an account.
+ *
+ * @member {array} [value] The list of pools.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudPoolListResult {
+  value?: CloudPool[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccountListNodeAgentSkusResult class.
+ * @constructor
+ * @summary The result of listing the supported node agent SKUs.
+ *
+ * @member {array} [value] The list of supported node agent SKUs.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface AccountListNodeAgentSkusResult {
+  value?: NodeAgentSku[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudJobListResult class.
+ * @constructor
+ * @summary The result of listing the jobs in an account.
+ *
+ * @member {array} [value] The list of jobs.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudJobListResult {
+  value?: CloudJob[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudJobListPreparationAndReleaseTaskStatusResult class.
+ * @constructor
+ * @summary The result of listing the status of the job preparation and job
+ * release tasks for a job.
+ *
+ * @member {array} [value] A list of Job Preparation and Job Release task
+ * execution information.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudJobListPreparationAndReleaseTaskStatusResult {
+  value?: JobPreparationAndReleaseTaskExecutionInformation[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateListResult class.
+ * @constructor
+ * @summary The result of listing the certificates in the account.
+ *
+ * @member {array} [value] The list of certificates.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CertificateListResult {
+  value?: Certificate[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeFileListResult class.
+ * @constructor
+ * @summary The result of listing the files on a compute node, or the files
+ * associated with a task on a node.
+ *
+ * @member {array} [value] The list of files.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface NodeFileListResult {
+  value?: NodeFile[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudJobScheduleListResult class.
+ * @constructor
+ * @summary The result of listing the job schedules in an account.
+ *
+ * @member {array} [value] The list of job schedules.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudJobScheduleListResult {
+  value?: CloudJobSchedule[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudTaskListResult class.
+ * @constructor
+ * @summary The result of listing the tasks in a job.
+ *
+ * @member {array} [value] The list of tasks.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface CloudTaskListResult {
+  value?: CloudTask[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputeNodeListResult class.
+ * @constructor
+ * @summary The result of listing the compute nodes in a pool.
+ *
+ * @member {array} [value] The list of compute nodes.
+ * 
+ * @member {string} [odatanextLink] The URL to get the next set of results.
+ * 
+ */
+export interface ComputeNodeListResult {
+  value?: ComputeNode[];
+  odatanextLink?: string;
+}
+
 
 /**
  * @class
  * Initializes a new instance of the ApplicationListResult class.
  * @constructor
- * @summary Response to a ApplicationOperations.List request.
+ * @summary The result of listing the applications available in an account.
  *
  * @member {string} [odatanextLink]
  * 
@@ -9886,7 +13207,7 @@ export interface ApplicationListResult extends Array<ApplicationSummary> {
  * @class
  * Initializes a new instance of the PoolListPoolUsageMetricsResult class.
  * @constructor
- * @summary Response to an AccountOperation.ListPoolUsageMetrics request.
+ * @summary The result of a listing the usage metrics for an account.
  *
  * @member {string} [odatanextLink]
  * 
@@ -9897,11 +13218,24 @@ export interface PoolListPoolUsageMetricsResult extends Array<PoolUsageMetrics> 
 
 /**
  * @class
+ * Initializes a new instance of the CloudPoolListResult class.
+ * @constructor
+ * @summary The result of listing the pools in an account.
+ *
+ * @member {string} [odatanextLink]
+ * 
+ */
+export interface CloudPoolListResult extends Array<CloudPool> {
+  odatanextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AccountListNodeAgentSkusResult class.
  * @constructor
- * @summary Response to an AccountOperation.ListNodeAgentSkus request.
+ * @summary The result of listing the supported node agent SKUs.
  *
- * @member {string} [odatanextLink] The URL to get the next set of results.
+ * @member {string} [odatanextLink]
  * 
  */
 export interface AccountListNodeAgentSkusResult extends Array<NodeAgentSku> {
@@ -9910,50 +13244,9 @@ export interface AccountListNodeAgentSkusResult extends Array<NodeAgentSku> {
 
 /**
  * @class
- * Initializes a new instance of the CertificateListResult class.
- * @constructor
- * @summary Response to a CertificateOperation.List request.
- *
- * @member {string} [odatanextLink]
- * 
- */
-export interface CertificateListResult extends Array<Certificate> {
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the NodeFileListResult class.
- * @constructor
- * @summary Response to a FileOperation.ListFromComputeNode or
- * FileOperation.ListFromTask request.
- *
- * @member {string} [odatanextLink]
- * 
- */
-export interface NodeFileListResult extends Array<NodeFile> {
-  odatanextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CloudJobScheduleListResult class.
- * @constructor
- * @summary Response to a CloudJobScheduleOperation.List request.
- *
- * @member {string} [odatanextLink]
- * 
- */
-export interface CloudJobScheduleListResult extends Array<CloudJobSchedule> {
-  odatanextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the CloudJobListResult class.
  * @constructor
- * @summary Response to a CloudJobOperation.List or ListFromJobSchedule
- * request.
+ * @summary The result of listing the jobs in an account.
  *
  * @member {string} [odatanextLink]
  * 
@@ -9966,8 +13259,8 @@ export interface CloudJobListResult extends Array<CloudJob> {
  * @class
  * Initializes a new instance of the CloudJobListPreparationAndReleaseTaskStatusResult class.
  * @constructor
- * @summary Response to a
- * CloudJobOperations.ListPreparationAndReleaseTaskStatus request.
+ * @summary The result of listing the status of the job preparation and job
+ * release tasks for a job.
  *
  * @member {string} [odatanextLink]
  * 
@@ -9978,14 +13271,41 @@ export interface CloudJobListPreparationAndReleaseTaskStatusResult extends Array
 
 /**
  * @class
- * Initializes a new instance of the CloudPoolListResult class.
+ * Initializes a new instance of the CertificateListResult class.
  * @constructor
- * @summary Response to a CloudPoolOperations.List request.
+ * @summary The result of listing the certificates in the account.
  *
  * @member {string} [odatanextLink]
  * 
  */
-export interface CloudPoolListResult extends Array<CloudPool> {
+export interface CertificateListResult extends Array<Certificate> {
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeFileListResult class.
+ * @constructor
+ * @summary The result of listing the files on a compute node, or the files
+ * associated with a task on a node.
+ *
+ * @member {string} [odatanextLink]
+ * 
+ */
+export interface NodeFileListResult extends Array<NodeFile> {
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CloudJobScheduleListResult class.
+ * @constructor
+ * @summary The result of listing the job schedules in an account.
+ *
+ * @member {string} [odatanextLink]
+ * 
+ */
+export interface CloudJobScheduleListResult extends Array<CloudJobSchedule> {
   odatanextLink?: string;
 }
 
@@ -9993,7 +13313,7 @@ export interface CloudPoolListResult extends Array<CloudPool> {
  * @class
  * Initializes a new instance of the CloudTaskListResult class.
  * @constructor
- * @summary Response to a CloudTaskOperations.List request.
+ * @summary The result of listing the tasks in a job.
  *
  * @member {string} [odatanextLink]
  * 
@@ -10006,7 +13326,7 @@ export interface CloudTaskListResult extends Array<CloudTask> {
  * @class
  * Initializes a new instance of the ComputeNodeListResult class.
  * @constructor
- * @summary Response to a ComputeNodeOperation.List request.
+ * @summary The result of listing the compute nodes in a pool.
  *
  * @member {string} [odatanextLink]
  * 
