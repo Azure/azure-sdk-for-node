@@ -6315,6 +6315,8 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled] Enable
      * request tracing
      * 
@@ -6369,6 +6371,9 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
+     * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
      * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
@@ -6650,6 +6655,8 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled] Enable
      * request tracing
      * 
@@ -6704,6 +6711,9 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
+     * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
      * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
@@ -7039,6 +7049,8 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled] Enable
      * request tracing
      * 
@@ -7093,6 +7105,9 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
+     * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
      * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
@@ -7377,6 +7392,8 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteEnvelope.siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled] Enable
      * request tracing
      * 
@@ -7431,6 +7448,9 @@ export interface Sites {
      * 
      * @param {string} [siteEnvelope.siteConfig.javaContainerVersion] Java
      * container version
+     * 
+     * @param {string} [siteEnvelope.siteConfig.appCommandLine] App Command Line
+     * to launch
      * 
      * @param {string} [siteEnvelope.siteConfig.managedPipelineMode] Managed
      * pipeline mode. Possible values include: 'Integrated', 'Classic'
@@ -8757,6 +8777,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
      * 
      * @param {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -8803,6 +8825,8 @@ export interface Sites {
      * @param {string} [siteConfig.javaContainer] Java container
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
+     * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
      * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'
@@ -8949,6 +8973,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
      * 
      * @param {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -8995,6 +9021,8 @@ export interface Sites {
      * @param {string} [siteConfig.javaContainer] Java container
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
+     * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
      * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'
@@ -9162,6 +9190,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
      * 
      * @param {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -9208,6 +9238,8 @@ export interface Sites {
      * @param {string} [siteConfig.javaContainer] Java container
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
+     * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
      * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'
@@ -9357,6 +9389,8 @@ export interface Sites {
      * 
      * @param {string} [siteConfig.pythonVersion] Version of Python
      * 
+     * @param {string} [siteConfig.nodeVersion] Version of Node
+     * 
      * @param {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
      * 
      * @param {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -9403,6 +9437,8 @@ export interface Sites {
      * @param {string} [siteConfig.javaContainer] Java container
      * 
      * @param {string} [siteConfig.javaContainerVersion] Java container version
+     * 
+     * @param {string} [siteConfig.appCommandLine] App Command Line to launch
      * 
      * @param {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
      * Possible values include: 'Integrated', 'Classic'

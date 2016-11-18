@@ -971,6 +971,8 @@ export interface ServerFarmWithRichSku extends Resource {
  * 
  * @member {string} [siteConfig.pythonVersion] Version of Python
  * 
+ * @member {string} [siteConfig.nodeVersion] Version of Node
+ * 
  * @member {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
  * 
  * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -1018,6 +1020,8 @@ export interface ServerFarmWithRichSku extends Resource {
  * @member {string} [siteConfig.javaContainer] Java container
  * 
  * @member {string} [siteConfig.javaContainerVersion] Java container version
+ * 
+ * @member {string} [siteConfig.appCommandLine] App Command Line to launch
  * 
  * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
@@ -1297,6 +1301,8 @@ export interface HostNameSslState {
  * 
  * @member {string} [pythonVersion] Version of Python
  * 
+ * @member {string} [nodeVersion] Version of Node
+ * 
  * @member {boolean} [requestTracingEnabled] Enable request tracing
  * 
  * @member {date} [requestTracingExpirationTime] Request tracing expiration
@@ -1340,6 +1346,8 @@ export interface HostNameSslState {
  * @member {string} [javaContainer] Java container
  * 
  * @member {string} [javaContainerVersion] Java container version
+ * 
+ * @member {string} [appCommandLine] App Command Line to launch
  * 
  * @member {string} [managedPipelineMode] Managed pipeline mode. Possible
  * values include: 'Integrated', 'Classic'
@@ -1444,6 +1452,7 @@ export interface SiteConfig extends Resource {
   netFrameworkVersion?: string;
   phpVersion?: string;
   pythonVersion?: string;
+  nodeVersion?: string;
   requestTracingEnabled?: boolean;
   requestTracingExpirationTime?: Date;
   remoteDebuggingEnabled?: boolean;
@@ -1465,6 +1474,7 @@ export interface SiteConfig extends Resource {
   javaVersion?: string;
   javaContainer?: string;
   javaContainerVersion?: string;
+  appCommandLine?: string;
   managedPipelineMode?: string;
   virtualApplications?: VirtualApplication[];
   loadBalancing?: string;
@@ -3749,6 +3759,8 @@ export interface CsmSiteRecoveryEntity {
  * 
  * @member {string} [siteConfig.pythonVersion] Version of Python
  * 
+ * @member {string} [siteConfig.nodeVersion] Version of Node
+ * 
  * @member {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
  * 
  * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -3796,6 +3808,8 @@ export interface CsmSiteRecoveryEntity {
  * @member {string} [siteConfig.javaContainer] Java container
  * 
  * @member {string} [siteConfig.javaContainerVersion] Java container version
+ * 
+ * @member {string} [siteConfig.appCommandLine] App Command Line to launch
  * 
  * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
