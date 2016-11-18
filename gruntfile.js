@@ -19,6 +19,7 @@ module.exports = function(grunt) {
   var _ = require('underscore');
   var path = require('path');
   var fs = require('fs');
+  var util = require('util');
   var jsdocOptions = {
     destination: 'docs',
     template: 'node_modules/minami',
@@ -85,6 +86,7 @@ module.exports = function(grunt) {
   };
 
   var packagesLatestSymlinkMapping = Object.keys(packageVersions).map(function(name){
+    if (!packageVersions[name].version) packageVersions[name].version = '0.0.1';
     return {src: path.join('docs', name, packageVersions[name].version), dest: path.join('docs', name, 'latest')};
   });
 

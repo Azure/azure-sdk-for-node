@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Account
+ * StorageAccounts
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsAccountManagementClient.
  */
-export interface Account {
+export interface StorageAccounts {
 
     /**
      * Gets the specified Azure Storage account linked to the given Data Lake
@@ -27,11 +27,11 @@ export interface Account {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to retrieve Azure storage account details.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to retrieve Azure storage account details.
      * 
-     * @param {string} storageAccountName The name of the Azure Storage account
-     * for which to retrieve the details.
+     * @param {string} storageAccountName The name of the Azure Storage account for
+     * which to retrieve the details.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -41,18 +41,18 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountInfo>): void;
-    getStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.StorageAccountInfo>): void;
+    get(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountInfo>): void;
+    get(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.StorageAccountInfo>): void;
 
     /**
-     * Updates the specified Data Lake Analytics account to remove an Azure
-     * Storage account.
+     * Updates the specified Data Lake Analytics account to remove an Azure Storage
+     * account.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to remove the Azure Storage account.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to remove the Azure Storage account.
      * 
      * @param {string} storageAccountName The name of the Azure Storage account to
      * remove
@@ -65,8 +65,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Updates the Data Lake Analytics account to replace Azure Storage blob
@@ -80,19 +80,18 @@ export interface Account {
      * 
      * @param {string} storageAccountName The Azure Storage account to modify
      * 
-     * @param {object} parameters The parameters containing the access key and
-     * suffix to update the storage account with.
-     * 
-     * @param {object} [parameters.properties] the properties for the Azure
-     * Storage account being added.
-     * 
-     * @param {string} [parameters.properties.accessKey] the access key associated
-     * with this Azure Storage account that will be used to connect to it.
-     * 
-     * @param {string} [parameters.properties.suffix] the optional suffix for the
-     * Data Lake account.
-     * 
      * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.parameters] The parameters containing the access
+     * key and suffix to update the storage account with, if any. Passing nothing
+     * results in no change.
+     * 
+     * @param {string} [options.parameters.accessKey] the updated access key
+     * associated with this Azure Storage account that will be used to connect to
+     * it.
+     * 
+     * @param {string} [options.parameters.suffix] the optional suffix for the
+     * storage account.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -100,8 +99,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    updateStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, accountName: string, storageAccountName: string, options: { parameters? : models.UpdateStorageAccountParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Updates the specified Data Lake Analytics account to add an Azure Storage
@@ -119,14 +118,11 @@ export interface Account {
      * @param {object} parameters The parameters containing the access key and
      * optional suffix for the Azure Storage Account.
      * 
-     * @param {object} [parameters.properties] the properties for the Azure
-     * Storage account being added.
+     * @param {string} parameters.accessKey the access key associated with this
+     * Azure Storage account that will be used to connect to it.
      * 
-     * @param {string} [parameters.properties.accessKey] the access key associated
-     * with this Azure Storage account that will be used to connect to it.
-     * 
-     * @param {string} [parameters.properties.suffix] the optional suffix for the
-     * Data Lake account.
+     * @param {string} [parameters.suffix] the optional suffix for the storage
+     * account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -136,8 +132,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    addStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    addStorageAccount(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, callback: ServiceCallback<void>): void;
+    add(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    add(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Gets the specified Azure Storage container associated with the given Data
@@ -163,8 +159,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BlobContainer>): void;
-    getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, callback: ServiceCallback<models.BlobContainer>): void;
+    getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageContainer>): void;
+    getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, callback: ServiceCallback<models.StorageContainer>): void;
 
     /**
      * Lists the Azure Storage containers, if any, associated with the specified
@@ -188,8 +184,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-    listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
+    listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+    listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.ListStorageContainersResult>): void;
 
     /**
      * Gets the SAS token associated with the specified Data Lake Analytics and
@@ -198,11 +194,11 @@ export interface Account {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
      * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which an Azure Storage account's SAS token is being requested.
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which an Azure Storage account's SAS token is being requested.
      * 
-     * @param {string} storageAccountName The name of the Azure storage account
-     * for which the SAS token is being requested.
+     * @param {string} storageAccountName The name of the Azure storage account for
+     * which the SAS token is being requested.
      * 
      * @param {string} containerName The name of the Azure storage container for
      * which the SAS token is being requested.
@@ -217,86 +213,6 @@ export interface Account {
      */
     listSasTokens(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
     listSasTokens(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
-
-    /**
-     * Gets the specified Data Lake Store account details in the specified Data
-     * Lake Analytics account.
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Analytics account.
-     * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to retrieve the Data Lake Store account details.
-     * 
-     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
-     * account to retrieve
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountInfo>): void;
-    getDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<models.DataLakeStoreAccountInfo>): void;
-
-    /**
-     * Updates the Data Lake Analytics account specified to remove the specified
-     * Data Lake Store account.
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Analytics account.
-     * 
-     * @param {string} accountName The name of the Data Lake Analytics account
-     * from which to remove the Data Lake Store account.
-     * 
-     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
-     * account to remove
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Updates the specified Data Lake Analytics account to include the additional
-     * Data Lake Store account.
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Analytics account.
-     * 
-     * @param {string} accountName The name of the Data Lake Analytics account to
-     * which to add the Data Lake Store account.
-     * 
-     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
-     * account to add.
-     * 
-     * @param {object} parameters The details of the Data Lake Store account.
-     * 
-     * @param {object} [parameters.properties] the properties for the Data Lake
-     * Store account being added.
-     * 
-     * @param {string} [parameters.properties.suffix] the optional suffix for the
-     * Data Lake Store account.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    addDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    addDataLakeStoreAccount(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Gets the first page of Azure Storage accounts, if any, linked to the
@@ -318,10 +234,6 @@ export interface Account {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories/$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -332,16 +244,8 @@ export interface Account {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
-     * 
-     * @param {string} [options.search] A free form search. A free-text search
-     * expression to match for whether a particular entry should be included in
-     * the feed, e.g. Categories?$search=blue OR green. Optional.
-     * 
-     * @param {string} [options.format] The desired return format. Return the
-     * response in particular formatxii without access to request headers for
-     * standard content-type negotiation (e.g Orders?$format=json). Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -349,13 +253,155 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listStorageAccounts(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
-    listStorageAccounts(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
 
     /**
-     * Gets the first page of Data Lake Store accounts linked to the specified
-     * Data Lake Analytics account. The response includes a link to the next
-     * page, if any.
+     * Lists the Azure Storage containers, if any, associated with the specified
+     * Data Lake Analytics and Azure Storage account combination. The response
+     * includes a link to the next page of results, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listStorageContainersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+    listStorageContainersNext(nextPageLink: string, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+
+    /**
+     * Gets the SAS token associated with the specified Data Lake Analytics and
+     * Azure Storage account and container combination.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listSasTokensNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
+    listSasTokensNext(nextPageLink: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
+
+    /**
+     * Gets the first page of Azure Storage accounts, if any, linked to the
+     * specified Data Lake Analytics account. The response includes a link to the
+     * next page, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+    listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+}
+
+/**
+ * @class
+ * DataLakeStoreAccounts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeAnalyticsAccountManagementClient.
+ */
+export interface DataLakeStoreAccounts {
+
+    /**
+     * Gets the specified Data Lake Store account details in the specified Data
+     * Lake Analytics account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     * 
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to retrieve the Data Lake Store account details.
+     * 
+     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
+     * account to retrieve
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountInfo>): void;
+    get(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<models.DataLakeStoreAccountInfo>): void;
+
+    /**
+     * Updates the Data Lake Analytics account specified to remove the specified
+     * Data Lake Store account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     * 
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to remove the Data Lake Store account.
+     * 
+     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
+     * account to remove
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Updates the specified Data Lake Analytics account to include the additional
+     * Data Lake Store account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     * 
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to add the Data Lake Store account.
+     * 
+     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
+     * account to add.
+     * 
+     * @param {object} parameters The details of the Data Lake Store account.
+     * 
+     * @param {string} [parameters.suffix] the optional suffix for the Data Lake
+     * Store account.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    add(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    add(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, parameters: models.AddDataLakeStoreParameters, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets the first page of Data Lake Store accounts linked to the specified Data
+     * Lake Analytics account. The response includes a link to the next page, if
+     * any.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Analytics account.
@@ -372,10 +418,6 @@ export interface Account {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories/$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -386,16 +428,8 @@ export interface Account {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
-     * 
-     * @param {string} [options.search] A free form search. A free-text search
-     * expression to match for whether a particular entry should be included in
-     * the feed, e.g. Categories?$search=blue OR green. Optional.
-     * 
-     * @param {string} [options.format] The desired return format. Return the
-     * response in particular formatxii without access to request headers for
-     * standard content-type negotiation (e.g Orders?$format=json). Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -403,8 +437,36 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listDataLakeStoreAccounts(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
-    listDataLakeStoreAccounts(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+
+    /**
+     * Gets the first page of Data Lake Store accounts linked to the specified Data
+     * Lake Analytics account. The response includes a link to the next page, if
+     * any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+}
+
+/**
+ * @class
+ * Account
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeAnalyticsAccountManagementClient.
+ */
+export interface Account {
 
     /**
      * Gets the first page of Data Lake Analytics accounts, if any, within a
@@ -422,10 +484,6 @@ export interface Account {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories/$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -436,16 +494,8 @@ export interface Account {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
-     * 
-     * @param {string} [options.search] A free form search. A free-text search
-     * expression to match for whether a particular entry should be included in
-     * the feed, e.g. Categories?$search=blue OR green. Optional.
-     * 
-     * @param {string} [options.format] The return format. Return the response in
-     * particular formatxii without access to request headers for standard
-     * content-type negotiation (e.g Orders?$format=json). Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -453,7 +503,7 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
 
     /**
@@ -469,10 +519,6 @@ export interface Account {
      * @param {number} [options.skip] The number of items to skip over before
      * returning elements. Optional.
      * 
-     * @param {string} [options.expand] OData expansion. Expand related resources
-     * in line with the retrieved resources, e.g. Categories/$expand=Products
-     * would expand Product data in line with each Category entry. Optional.
-     * 
      * @param {string} [options.select] OData Select statement. Limits the
      * properties on each entry to just those requested, e.g.
      * Categories?$select=CategoryName,Description. Optional.
@@ -483,16 +529,8 @@ export interface Account {
      * Categories?$orderby=CategoryName desc. Optional.
      * 
      * @param {boolean} [options.count] The Boolean value of true or false to
-     * request a count of the matching resources included with the resources in
-     * the response, e.g. Categories?$count=true. Optional.
-     * 
-     * @param {string} [options.search] A free form search. A free-text search
-     * expression to match for whether a particular entry should be included in
-     * the feed, e.g. Categories?$search=blue OR green. Optional.
-     * 
-     * @param {string} [options.format] The desired return format. Return the
-     * response in particular formatxii without access to request headers for
-     * standard content-type negotiation (e.g Orders?$format=json). Optional.
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -500,7 +538,7 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    list(options: { filter? : string, top? : number, skip? : number, expand? : string, select? : string, orderby? : string, count? : boolean, search? : string, format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    list(options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
     list(callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
 
     /**
@@ -545,6 +583,86 @@ export interface Account {
     deleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
 
     /**
+     * Creates the specified Data Lake Analytics account. This supplies the user
+     * with computation services for Data Lake Analytics workloads
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.the account will be associated
+     * with.
+     * 
+     * @param {string} name The name of the Data Lake Analytics account to create.
+     * 
+     * @param {object} parameters Parameters supplied to the create Data Lake
+     * Analytics account operation.
+     * 
+     * @param {string} parameters.defaultDataLakeStoreAccount the default data lake
+     * storage account associated with this Data Lake Analytics account.
+     * 
+     * @param {number} [parameters.maxDegreeOfParallelism] the maximum supported
+     * degree of parallelism for this account.
+     * 
+     * @param {number} [parameters.queryStoreRetention] the number of days that job
+     * metadata is retained.
+     * 
+     * @param {number} [parameters.maxJobCount] the maximum supported jobs running
+     * under the account at the same time.
+     * 
+     * @param {array} parameters.dataLakeStoreAccounts the list of Data Lake
+     * storage accounts associated with this account.
+     * 
+     * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
+     * accounts associated with this account.
+     * 
+     * @param {string} parameters.location Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    create(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    create(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+
+    /**
+     * Updates the Data Lake Analytics account object specified by the accountName
+     * with the contents of the account object.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     * 
+     * @param {string} name The name of the Data Lake Analytics account to update.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.parameters] Parameters supplied to the update Data
+     * Lake Analytics account operation.
+     * 
+     * @param {object} [options.parameters.tags] Resource tags
+     * 
+     * @param {number} [options.parameters.maxDegreeOfParallelism] the maximum
+     * supported degree of parallelism for this account.
+     * 
+     * @param {number} [options.parameters.queryStoreRetention] the number of days
+     * that job metadata is retained.
+     * 
+     * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
+     * running under the account at the same time.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    update(resourceGroupName: string, name: string, options: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    update(resourceGroupName: string, name: string, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+
+    /**
      * Begins the delete delete process for the Data Lake Analytics account object
      * specified by the account name.
      *
@@ -578,79 +696,27 @@ export interface Account {
      * @param {object} parameters Parameters supplied to the create Data Lake
      * Analytics account operation.
      * 
-     * @param {string} [parameters.location] the account regional location.
+     * @param {string} parameters.defaultDataLakeStoreAccount the default data lake
+     * storage account associated with this Data Lake Analytics account.
      * 
-     * @param {string} [parameters.name] the account name.
+     * @param {number} [parameters.maxDegreeOfParallelism] the maximum supported
+     * degree of parallelism for this account.
      * 
-     * @param {object} [parameters.tags] the value of custom properties.
+     * @param {number} [parameters.queryStoreRetention] the number of days that job
+     * metadata is retained.
      * 
-     * @param {object} [parameters.properties] the properties defined by Data Lake
-     * Analytics all properties are specific to each resource provider.
+     * @param {number} [parameters.maxJobCount] the maximum supported jobs running
+     * under the account at the same time.
      * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
-     * default data lake storage account associated with this Data Lake Analytics
-     * account.
+     * @param {array} parameters.dataLakeStoreAccounts the list of Data Lake
+     * storage accounts associated with this account.
      * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
-     * supported degree of parallelism for this account.
+     * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
+     * accounts associated with this account.
      * 
-     * @param {number} [parameters.properties.maxJobCount] the maximum supported
-     * jobs running under the account at the same time.
+     * @param {string} parameters.location Resource location
      * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
-     * Data Lake storage accounts associated with this account.
-     * 
-     * @param {array} [parameters.properties.storageAccounts] the list of Azure
-     * Blob storage accounts associated with this account.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    create(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
-    create(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
-
-    /**
-     * Creates the specified Data Lake Analytics account. This supplies the user
-     * with computation services for Data Lake Analytics workloads
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Analytics account.the account will be associated
-     * with.
-     * 
-     * @param {string} name The name of the Data Lake Analytics account to create.
-     * 
-     * @param {object} parameters Parameters supplied to the create Data Lake
-     * Analytics account operation.
-     * 
-     * @param {string} [parameters.location] the account regional location.
-     * 
-     * @param {string} [parameters.name] the account name.
-     * 
-     * @param {object} [parameters.tags] the value of custom properties.
-     * 
-     * @param {object} [parameters.properties] the properties defined by Data Lake
-     * Analytics all properties are specific to each resource provider.
-     * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
-     * default data lake storage account associated with this Data Lake Analytics
-     * account.
-     * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
-     * supported degree of parallelism for this account.
-     * 
-     * @param {number} [parameters.properties.maxJobCount] the maximum supported
-     * jobs running under the account at the same time.
-     * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
-     * Data Lake storage accounts associated with this account.
-     * 
-     * @param {array} [parameters.properties.storageAccounts] the list of Azure
-     * Blob storage accounts associated with this account.
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -672,35 +738,21 @@ export interface Account {
      * 
      * @param {string} name The name of the Data Lake Analytics account to update.
      * 
-     * @param {object} parameters Parameters supplied to the update Data Lake
-     * Analytics account operation.
+     * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [parameters.location] the account regional location.
+     * @param {object} [options.parameters] Parameters supplied to the update Data
+     * Lake Analytics account operation.
      * 
-     * @param {string} [parameters.name] the account name.
+     * @param {object} [options.parameters.tags] Resource tags
      * 
-     * @param {object} [parameters.tags] the value of custom properties.
-     * 
-     * @param {object} [parameters.properties] the properties defined by Data Lake
-     * Analytics all properties are specific to each resource provider.
-     * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
-     * default data lake storage account associated with this Data Lake Analytics
-     * account.
-     * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
+     * @param {number} [options.parameters.maxDegreeOfParallelism] the maximum
      * supported degree of parallelism for this account.
      * 
-     * @param {number} [parameters.properties.maxJobCount] the maximum supported
-     * jobs running under the account at the same time.
+     * @param {number} [options.parameters.queryStoreRetention] the number of days
+     * that job metadata is retained.
      * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
-     * Data Lake storage accounts associated with this account.
-     * 
-     * @param {array} [parameters.properties.storageAccounts] the list of Azure
-     * Blob storage accounts associated with this account.
-     * 
-     * @param {object} [options] Optional Parameters.
+     * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
+     * running under the account at the same time.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -708,131 +760,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    update(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
-    update(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
-
-    /**
-     * Updates the Data Lake Analytics account object specified by the accountName
-     * with the contents of the account object.
-     *
-     * @param {string} resourceGroupName The name of the Azure resource group that
-     * contains the Data Lake Analytics account.
-     * 
-     * @param {string} name The name of the Data Lake Analytics account to update.
-     * 
-     * @param {object} parameters Parameters supplied to the update Data Lake
-     * Analytics account operation.
-     * 
-     * @param {string} [parameters.location] the account regional location.
-     * 
-     * @param {string} [parameters.name] the account name.
-     * 
-     * @param {object} [parameters.tags] the value of custom properties.
-     * 
-     * @param {object} [parameters.properties] the properties defined by Data Lake
-     * Analytics all properties are specific to each resource provider.
-     * 
-     * @param {string} [parameters.properties.defaultDataLakeStoreAccount] the
-     * default data lake storage account associated with this Data Lake Analytics
-     * account.
-     * 
-     * @param {number} [parameters.properties.maxDegreeOfParallelism] the maximum
-     * supported degree of parallelism for this account.
-     * 
-     * @param {number} [parameters.properties.maxJobCount] the maximum supported
-     * jobs running under the account at the same time.
-     * 
-     * @param {array} [parameters.properties.dataLakeStoreAccounts] the list of
-     * Data Lake storage accounts associated with this account.
-     * 
-     * @param {array} [parameters.properties.storageAccounts] the list of Azure
-     * Blob storage accounts associated with this account.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginUpdate(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
-    beginUpdate(resourceGroupName: string, name: string, parameters: models.DataLakeAnalyticsAccount, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
-
-    /**
-     * Lists the Azure Storage containers, if any, associated with the specified
-     * Data Lake Analytics and Azure Storage account combination. The response
-     * includes a link to the next page of results, if any.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listStorageContainersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-    listStorageContainersNext(nextPageLink: string, callback: ServiceCallback<models.ListBlobContainersResult>): void;
-
-    /**
-     * Gets the SAS token associated with the specified Data Lake Analytics and
-     * Azure Storage account and container combination.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listSasTokensNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
-    listSasTokensNext(nextPageLink: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
-
-    /**
-     * Gets the first page of Azure Storage accounts, if any, linked to the
-     * specified Data Lake Analytics account. The response includes a link to the
-     * next page, if any.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listStorageAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
-    listStorageAccountsNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
-
-    /**
-     * Gets the first page of Data Lake Store accounts linked to the specified
-     * Data Lake Analytics account. The response includes a link to the next
-     * page, if any.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listDataLakeStoreAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
-    listDataLakeStoreAccountsNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    beginUpdate(resourceGroupName: string, name: string, options: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    beginUpdate(resourceGroupName: string, name: string, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
 
     /**
      * Gets the first page of Data Lake Analytics accounts, if any, within a

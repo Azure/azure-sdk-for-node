@@ -9,6 +9,7 @@ var ProxyFilter = require('./filters/proxyFilter');
 var RedirectFilter = require('./filters/redirectFilter');
 var SigningFilter = require('./filters/signingFilter');
 var ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
+var SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilter');
 var requestPipeline = require('./requestPipeline');
 var utils = require('./utils');
 
@@ -52,6 +53,7 @@ function ServiceClient(credentials, options) {
   options.filters.push(RedirectFilter.create());
   if (!options.noRetryPolicy) {
     options.filters.push(new ExponentialRetryPolicyFilter());
+    options.filters.push(new SystemErrorRetryPolicyFilter());
   }
 
   this.pipeline = requestPipeline.create(options.requestOptions).apply(requestPipeline, options.filters);

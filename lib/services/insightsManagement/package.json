@@ -12,7 +12,7 @@
     "Kulkarni, Jagadish <jagadisk@microsoft.com>",
     "Calderon-Meza, Guillermo <gucalder@microsoft.com>"
   ],
-  "version": "0.14.0-preview",
+  "version": "0.14.1-preview",
   "description": "Microsoft Azure Insights Management Client Library for node",
   "tags": [
     "azure",
@@ -25,8 +25,8 @@
   "main": "./lib/insightsManagementClient.js",
   "license": "MIT",
   "dependencies": {
-    "ms-rest": "^1.15.0",
-    "ms-rest-azure": "^1.15.0",
+    "ms-rest": "^1.15.2",
+    "ms-rest-azure": "^1.15.2",
     "moment": "^2.14.1"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",

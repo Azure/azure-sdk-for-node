@@ -2,52 +2,52 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/purge?api-version=2016-04-02', '*')
+.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/cdnTestEndpoint4987/purge?api-version=2016-10-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"invalidPath!\\\". ContentPath for purge action must be a relative path: either for a single resource \\\"/path/pic.jpg\\\" or a wild card \\\"/path/*\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '235',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '137362ca-6402-4ebe-a97d-591d4c6a1cf8',
-  'x-ms-client-request-id': '3ba7d98a-a522-4fb1-b5f4-2ee931692e67',
+  'x-ms-request-id': 'd94d562a-6db7-4cfd-a8aa-14251b0725b2',
+  'x-ms-client-request-id': '7f1f963d-f6ec-4d30-8020-96a76a0e3195',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '8e840fed-03a9-4481-8fc8-c41554002077',
-  'x-ms-routing-request-id': 'CENTRALUS:20160511T224622Z:8e840fed-03a9-4481-8fc8-c41554002077',
-  date: 'Wed, 11 May 2016 22:46:21 GMT',
+  'x-ms-correlation-request-id': '22afbecb-1cca-479a-a21a-13b34d11e7a2',
+  'x-ms-routing-request-id': 'WESTUS2:20161028T014114Z:22afbecb-1cca-479a-a21a-13b34d11e7a2',
+  date: 'Fri, 28 Oct 2016 01:41:13 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/cdnTestEndpoint8618/purge?api-version=2016-04-02', '*')
+.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/cdnTestEndpoint4987/purge?api-version=2016-10-02', '*')
   .reply(400, "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Invalid ContentPath \\\"invalidPath!\\\". ContentPath for purge action must be a relative path: either for a single resource \\\"/path/pic.jpg\\\" or a wild card \\\"/path/*\\\".\"\r\n  }\r\n}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '235',
   'content-type': 'application/json; charset=utf-8',
   'content-language': 'en-US',
   expires: '-1',
-  'x-ms-request-id': '137362ca-6402-4ebe-a97d-591d4c6a1cf8',
-  'x-ms-client-request-id': '3ba7d98a-a522-4fb1-b5f4-2ee931692e67',
+  'x-ms-request-id': 'd94d562a-6db7-4cfd-a8aa-14251b0725b2',
+  'x-ms-client-request-id': '7f1f963d-f6ec-4d30-8020-96a76a0e3195',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '8e840fed-03a9-4481-8fc8-c41554002077',
-  'x-ms-routing-request-id': 'CENTRALUS:20160511T224622Z:8e840fed-03a9-4481-8fc8-c41554002077',
-  date: 'Wed, 11 May 2016 22:46:21 GMT',
+  'x-ms-correlation-request-id': '22afbecb-1cca-479a-a21a-13b34d11e7a2',
+  'x-ms-routing-request-id': 'WESTUS2:20161028T014114Z:22afbecb-1cca-479a-a21a-13b34d11e7a2',
+  date: 'Fri, 28 Oct 2016 01:41:13 GMT',
   connection: 'close' });
  return result; }]];

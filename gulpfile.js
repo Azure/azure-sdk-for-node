@@ -7,6 +7,10 @@ var path = require('path');
 var exec = require('child_process').exec;
 
 var mappings = {
+  'analysisservices': {
+    'dir': 'analysisServices/lib',
+    'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json', 
+  },
   'authorization': {
     'dir': 'authorizationManagement/lib',
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 
@@ -24,7 +28,7 @@ var mappings = {
   },
   'cdn': {
     'dir': 'cdnManagement/lib',
-    'source': 'arm-cdn/2016-04-02/swagger/cdn.json',
+    'source': 'arm-cdn/2016-10-02/swagger/cdn.json',
     'ft': 2
   },
   'compute': {
@@ -132,6 +136,10 @@ var mappings = {
     'dir': 'resourceManagement/lib/lock',
     'source': 'arm-resources/locks/2015-01-01/swagger/locks.json'
   },
+  'resource.link': {
+    'dir': 'resourceManagement/lib/link',
+    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
+  },
   'resource.feature': {
     'dir': 'resourceManagement/lib/feature',
     'source': 'arm-resources/features/2015-12-01/swagger/features.json'
@@ -170,7 +178,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20161004';
+var defaultAutoRestVersion = '0.17.0-Nightly20161019';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

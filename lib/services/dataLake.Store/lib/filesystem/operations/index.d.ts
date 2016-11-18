@@ -23,15 +23,17 @@ export interface FileSystem {
 
     /**
      * Appends to the specified file. This method supports multiple concurrent
-     * appends to the file. NOTE: Concurrent append and normal (serial) append
-     * CANNOT be used interchangeably. Once a file has been appended to using
-     * either append option, it can only be appended to using that append option.
+     * appends to the file. NOTE: ConcurrentAppend and normal (serial) Append
+     * CANNOT be used interchangeably; once a file has been appended to using
+     * either of these append options, it can only be appended to using that append
+     * option. ConcurrentAppend DOES NOT guarantee order and can result in
+     * duplicated data landing in the target file.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
      * 
-     * @param {string} filePath The Data Lake Store path (starting with '/') of
-     * the file to which to append using concurrent append.
+     * @param {string} filePath The Data Lake Store path (starting with '/') of the
+     * file to which to append using concurrent append.
      * 
      * @param {object} streamContents The file contents to include when appending
      * to the file.
@@ -50,6 +52,39 @@ export interface FileSystem {
      */
     concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, options: { appendMode? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
+
+    /**
+     * Sets or removes the expiration time on the specified file. This operation
+     * can only be executed against files. Folders are not supported.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
+     * @param {string} filePath The Data Lake Store path (starting with '/') of the
+     * file on which to set or remove the expiration time.
+     * 
+     * @param {string} expiryOption Indicates the type of expiration to use for the
+     * file: 1. NeverExpire: ExpireTime is ignored. 2. RelativeToNow: ExpireTime is
+     * an integer in milliseconds representing the expiration date relative to when
+     * file expiration is updated. 3. RelativeToCreationDate: ExpireTime is an
+     * integer in milliseconds representing the expiration date relative to file
+     * creation. 4. Absolute: ExpireTime is an integer in milliseconds, as a Unix
+     * timestamp relative to 1/1/1970 00:00:00. Possible values include:
+     * 'NeverExpire', 'RelativeToNow', 'RelativeToCreationDate', 'Absolute'
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {number} [options.expireTime] The time that the file will expire,
+     * corresponding to the ExpiryOption that was set.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    setFileExpiry(accountName: string, filePath: string, expiryOption: string, options: { expireTime? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setFileExpiry(accountName: string, filePath: string, expiryOption: string, callback: ServiceCallback<void>): void;
 
     /**
      * Checks if the specified access is available at the given path.
@@ -101,12 +136,12 @@ export interface FileSystem {
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
      * 
-     * @param {string} destinationPath The Data Lake Store path (starting with
-     * '/') of the destination file resulting from the concatenation.
+     * @param {string} destinationPath The Data Lake Store path (starting with '/')
+     * of the destination file resulting from the concatenation.
      * 
      * @param {array} sources A list of comma seperated Data Lake Store paths
-     * (starting with '/') of the files to concatenate, in the order in which
-     * they should be concatenated.
+     * (starting with '/') of the files to concatenate, in the order in which they
+     * should be concatenated.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -142,8 +177,8 @@ export interface FileSystem {
      * source stream folder if all streams are in the same folder instead. This
      * results in a substantial performance improvement when the only streams in
      * the folder are part of the concatenation operation. WARNING: This includes
-     * the deletion of any other files that are not source files. Only set this
-     * to true when source files are the only files in the source directory.
+     * the deletion of any other files that are not source files. Only set this to
+     * true when source files are the only files in the source directory.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -161,8 +196,8 @@ export interface FileSystem {
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
      * 
-     * @param {string} listFilePath The Data Lake Store path (starting with '/')
-     * of the directory to list.
+     * @param {string} listFilePath The Data Lake Store path (starting with '/') of
+     * the directory to list.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -171,8 +206,8 @@ export interface FileSystem {
      * 
      * @param {string} [options.listAfter] Gets or sets the item or lexographical
      * index after which to begin returning results. For example, a file list of
-     * 'a','b','d' and listAfter='b' will return 'd', and a listAfter='c' will
-     * also return 'd'. Optional.
+     * 'a','b','d' and listAfter='b' will return 'd', and a listAfter='c' will also
+     * return 'd'. Optional.
      * 
      * @param {string} [options.listBefore] Gets or sets the item or lexographical
      * index before which to begin returning results. For example, a file list of
@@ -194,8 +229,8 @@ export interface FileSystem {
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
      * 
-     * @param {string} getContentSummaryFilePath The Data Lake Store path
-     * (starting with '/') of the file for which to retrieve the summary.
+     * @param {string} getContentSummaryFilePath The Data Lake Store path (starting
+     * with '/') of the file for which to retrieve the summary.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -230,11 +265,11 @@ export interface FileSystem {
 
     /**
      * Appends to the specified file. This method does not support multiple
-     * concurrent appends to the file. NOTE: Concurrent append and normal
-     * (serial) append CANNOT be used interchangeably. Once a file has been
-     * appended to using either append option, it can only be appended to using
-     * that append option. Use the ConcurrentAppend option if you would like
-     * support for concurrent appends.
+     * concurrent appends to the file. NOTE: Concurrent append and normal (serial)
+     * append CANNOT be used interchangeably. Once a file has been appended to
+     * using either append option, it can only be appended to using that append
+     * option. Use the ConcurrentAppend option if you would like support for
+     * concurrent appends.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
@@ -250,13 +285,20 @@ export interface FileSystem {
      * @param {number} [options.offset] The optional offset in the stream to begin
      * the append operation. Default is to append at the end of the stream.
      * 
+     * @param {string} [options.syncFlag] Optionally indicates what to do after
+     * completion of the append. DATA indicates more data is coming so no sync
+     * takes place, METADATA indicates a sync should be done to refresh metadata of
+     * the file only. CLOSE indicates that both the stream and metadata should be
+     * refreshed upon append completion. Possible values include: 'DATA',
+     * 'METADATA', 'CLOSE'
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { offset? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { offset? : number, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     append(accountName: string, directFilePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
@@ -271,11 +313,18 @@ export interface FileSystem {
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.streamContents] The file contents to include when
-     * creating the file. This parameter is optional, resulting in an empty file
-     * if not specified.
+     * creating the file. This parameter is optional, resulting in an empty file if
+     * not specified.
      * 
-     * @param {boolean} [options.overwrite] The indication of if the file should
-     * be overwritten.
+     * @param {boolean} [options.overwrite] The indication of if the file should be
+     * overwritten.
+     * 
+     * @param {string} [options.syncFlag] Optionally indicates what to do after
+     * completion of the append. DATA indicates more data is coming so no sync
+     * takes place, METADATA indicates a sync should be done to refresh metadata of
+     * the file only. CLOSE indicates that both the stream and metadata should be
+     * refreshed upon append completion. Possible values include: 'DATA',
+     * 'METADATA', 'CLOSE'
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -283,7 +332,7 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    create(accountName: string, directFilePath: string, options: { streamContents? : stream.Readable, overwrite? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(accountName: string, directFilePath: string, options: { streamContents? : stream.Readable, overwrite? : boolean, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     create(accountName: string, directFilePath: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -297,9 +346,10 @@ export interface FileSystem {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {number} [options.length]
+     * @param {number} [options.length] The number of bytes that the server will
+     * attempt to retrieve. It will retrieve <= length bytes.
      * 
-     * @param {number} [options.offset]
+     * @param {number} [options.offset] The byte offset to start reading data from.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -380,6 +430,48 @@ export interface FileSystem {
     removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
 
     /**
+     * Removes the existing Default Access Control List (ACL) of the specified
+     * directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
+     * @param {string} defaultAclFilePath The Data Lake Store path (starting with
+     * '/') of the directory with the default ACL being removed.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    removeDefaultAcl(accountName: string, defaultAclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeDefaultAcl(accountName: string, defaultAclFilePath: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Removes the existing Access Control List (ACL) of the specified file or
+     * directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     * 
+     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory with the ACL being removed.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    removeAcl(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeAcl(accountName: string, aclFilePath: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Gets Access Control List (ACL) entries for the specified file or directory.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
@@ -405,8 +497,8 @@ export interface FileSystem {
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
      * 
-     * @param {string} filePath The Data Lake Store path (starting with '/') of
-     * the file or directory to delete.
+     * @param {string} filePath The Data Lake Store path (starting with '/') of the
+     * file or directory to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 

@@ -8,22 +8,27 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
- * Initializes a new instance of the FirewallRuleProperties class.
+ * Initializes a new instance of the SubResource class.
  * @constructor
- * Data Lake Store firewall rule properties information
+ * The Resource model definition for a nested resource.
  *
- * @member {string} [startIpAddress] the start IP address for the firewall
- * rule.
+ * @member {string} [id] Resource Id
  * 
- * @member {string} [endIpAddress] the end IP address for the firewall rule.
+ * @member {string} [name] Resource name
+ * 
+ * @member {string} [type] Resource type
  * 
  */
-export interface FirewallRuleProperties {
-  startIpAddress?: string;
-  endIpAddress?: string;
+export interface SubResource extends BaseResource {
+  id?: string;
+  name?: string;
+  type?: string;
 }
 
 /**
@@ -32,39 +37,67 @@ export interface FirewallRuleProperties {
  * @constructor
  * Data Lake Store firewall rule information
  *
- * @member {string} [name] the firewall rule's name.
+ * @member {string} startIpAddress the start IP address for the firewall rule.
  * 
- * @member {string} [type] the namespace and type of the firewall Rule.
- * 
- * @member {string} [id] the firewall rule's subscription ID.
- * 
- * @member {string} [location] the firewall rule's regional location.
- * 
- * @member {object} [properties] the properties of the firewall rule.
- * 
- * @member {string} [properties.startIpAddress] the start IP address for the
- * firewall rule.
- * 
- * @member {string} [properties.endIpAddress] the end IP address for the
- * firewall rule.
+ * @member {string} endIpAddress the end IP address for the firewall rule.
  * 
  */
-export interface FirewallRule {
-  name?: string;
-  type?: string;
-  id?: string;
-  location?: string;
-  properties?: FirewallRuleProperties;
+export interface FirewallRule extends SubResource {
+  startIpAddress: string;
+  endIpAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrustedIdProvider class.
+ * @constructor
+ * Data Lake Store firewall rule information
+ *
+ * @member {string} idProvider The URL of this trusted identity provider
+ * 
+ */
+export interface TrustedIdProvider extends SubResource {
+  idProvider: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeStoreTrustedIdProviderListResult class.
+ * @constructor
+ * Data Lake Store trusted identity provider list information.
+ *
+ * @member {array} [value] the results of the list operation
+ * 
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ * 
+ */
+export interface DataLakeStoreTrustedIdProviderListResult {
+  value?: TrustedIdProvider[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeStoreFirewallRuleListResult class.
+ * @constructor
+ * Data Lake Store firewall rule list information.
+ *
+ * @member {array} [value] the results of the list operation
+ * 
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ * 
+ */
+export interface DataLakeStoreFirewallRuleListResult {
+  value?: FirewallRule[];
+  nextLink?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the EncryptionIdentity class.
  * @constructor
- * @member {string} [type] The type of encryption being used. Currently the
- * only supported type is 'SystemAssigned'. Possible values include:
- * 'SystemAssigned'
- * 
+ * The encryption identity properties.
+ *
  * @member {uuid} [principalId] The principal identifier associated with the
  * encryption.
  * 
@@ -73,7 +106,6 @@ export interface FirewallRule {
  * 
  */
 export interface EncryptionIdentity {
-  type?: string;
   principalId?: string;
   tenantId?: string;
 }
@@ -82,7 +114,9 @@ export interface EncryptionIdentity {
  * @class
  * Initializes a new instance of the EncryptionConfig class.
  * @constructor
- * @member {string} [type] The type of encryption configuration being used.
+ * The encryption configuration for the account.
+ *
+ * @member {string} type The type of encryption configuration being used.
  * Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
  * Possible values include: 'UserManaged', 'ServiceManaged'
  * 
@@ -100,7 +134,7 @@ export interface EncryptionIdentity {
  * 
  */
 export interface EncryptionConfig {
-  type?: string;
+  type: string;
   keyVaultMetaInfo?: KeyVaultMetaInfo;
 }
 
@@ -108,35 +142,100 @@ export interface EncryptionConfig {
  * @class
  * Initializes a new instance of the KeyVaultMetaInfo class.
  * @constructor
- * @member {string} [keyVaultResourceId] The resource identifier for the user
+ * Metadata information used by account encryption.
+ *
+ * @member {string} keyVaultResourceId The resource identifier for the user
  * managed Key Vault being used to encrypt.
  * 
- * @member {string} [encryptionKeyName] The name of the user managed
- * encryption key.
+ * @member {string} encryptionKeyName The name of the user managed encryption
+ * key.
  * 
- * @member {string} [encryptionKeyVersion] The version of the user managed
+ * @member {string} encryptionKeyVersion The version of the user managed
  * encryption key.
  * 
  */
 export interface KeyVaultMetaInfo {
-  keyVaultResourceId?: string;
-  encryptionKeyName?: string;
-  encryptionKeyVersion?: string;
+  keyVaultResourceId: string;
+  encryptionKeyName: string;
+  encryptionKeyVersion: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the DataLakeStoreAccountProperties class.
+ * Initializes a new instance of the DataLakeStoreAccountUpdateParameters class.
  * @constructor
- * Data Lake Store account properties information
+ * Data Lake Store account information to update
  *
+ * @member {object} [tags] Resource tags
+ * 
+ * @member {string} [firewallState] The current state of the IP address
+ * firewall for this Data Lake store account. Disabling the firewall does not
+ * remove existing rules, they will just be ignored until the firewall is
+ * re-enabled. Possible values include: 'Enabled', 'Disabled'
+ * 
+ * @member {string} [trustedIdProviderState] The current state of the trusted
+ * identity provider feature for this Data Lake store account. Disabling
+ * trusted identity provider functionality does not remove the providers,
+ * they will just be ignored until this feature is re-enabled. Possible
+ * values include: 'Enabled', 'Disabled'
+ * 
+ * @member {string} [defaultGroup] the default owner group for all new folders
+ * and files created in the Data Lake Store account.
+ * 
+ */
+export interface DataLakeStoreAccountUpdateParameters {
+  tags?: { [propertyName: string]: string };
+  firewallState?: string;
+  trustedIdProviderState?: string;
+  defaultGroup?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [id] Resource Id
+ * 
+ * @member {string} [name] Resource name
+ * 
+ * @member {string} [type] Resource type
+ * 
+ * @member {string} location Resource location
+ * 
+ * @member {object} [tags] Resource tags
+ * 
+ */
+export interface Resource extends BaseResource {
+  id?: string;
+  name?: string;
+  type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeStoreAccount class.
+ * @constructor
+ * Data Lake Store account information
+ *
+ * @member {object} [identity] The Key vault encryption identity, if any.
+ * 
+ * @member {uuid} [identity.principalId] The principal identifier associated
+ * with the encryption.
+ * 
+ * @member {uuid} [identity.tenantId] The tenant identifier associated with
+ * the encryption.
+ * 
  * @member {string} [provisioningState] the status of the Data Lake Store
  * account while being provisioned. Possible values include: 'Failed',
  * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
  * 'Deleting', 'Deleted'
  * 
  * @member {string} [state] the status of the Data Lake Store account after
- * provisioning has completed. Possible values include: 'active', 'suspended'
+ * provisioning has completed. Possible values include: 'Active', 'Suspended'
  * 
  * @member {date} [creationTime] the account creation time.
  * 
@@ -166,6 +265,20 @@ export interface KeyVaultMetaInfo {
  * @member {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
  * The version of the user managed encryption key.
  * 
+ * @member {string} [firewallState] The current state of the IP address
+ * firewall for this Data Lake store account. Possible values include:
+ * 'Enabled', 'Disabled'
+ * 
+ * @member {array} [firewallRules] The list of firewall rules associated with
+ * this Data Lake store account.
+ * 
+ * @member {string} [trustedIdProviderState] The current state of the trusted
+ * identity provider feature for this Data Lake store account. Possible
+ * values include: 'Enabled', 'Disabled'
+ * 
+ * @member {array} [trustedIdProviders] The list of trusted identity providers
+ * associated with this Data Lake store account.
+ * 
  * @member {date} [lastModifiedTime] the account last modified time.
  * 
  * @member {string} [endpoint] the gateway host.
@@ -174,13 +287,18 @@ export interface KeyVaultMetaInfo {
  * and files created in the Data Lake Store account.
  * 
  */
-export interface DataLakeStoreAccountProperties {
+export interface DataLakeStoreAccount extends Resource {
+  identity?: EncryptionIdentity;
   provisioningState?: string;
   state?: string;
   creationTime?: Date;
   encryptionState?: string;
   encryptionProvisioningState?: string;
   encryptionConfig?: EncryptionConfig;
+  firewallState?: string;
+  firewallRules?: FirewallRule[];
+  trustedIdProviderState?: string;
+  trustedIdProviders?: TrustedIdProvider[];
   lastModifiedTime?: Date;
   endpoint?: string;
   defaultGroup?: string;
@@ -188,92 +306,18 @@ export interface DataLakeStoreAccountProperties {
 
 /**
  * @class
- * Initializes a new instance of the DataLakeStoreAccount class.
+ * Initializes a new instance of the DataLakeStoreAccountListResult class.
  * @constructor
- * Data Lake Store account information
+ * Data Lake Store account list information response.
  *
- * @member {string} [location] the account regional location.
+ * @member {array} [value] the results of the list operation
  * 
- * @member {string} [name] the account name.
- * 
- * @member {string} [type] the namespace and type of the account.
- * 
- * @member {string} [id] the account subscription ID.
- * 
- * @member {object} [identity] The Key vault encryption identity, if any.
- * 
- * @member {string} [identity.type] The type of encryption being used.
- * Currently the only supported type is 'SystemAssigned'. Possible values
- * include: 'SystemAssigned'
- * 
- * @member {uuid} [identity.principalId] The principal identifier associated
- * with the encryption.
- * 
- * @member {uuid} [identity.tenantId] The tenant identifier associated with
- * the encryption.
- * 
- * @member {object} [tags] the value of custom properties.
- * 
- * @member {object} [properties] the Data Lake Store account properties.
- * 
- * @member {string} [properties.provisioningState] the status of the Data Lake
- * Store account while being provisioned. Possible values include: 'Failed',
- * 'Creating', 'Running', 'Succeeded', 'Patching', 'Suspending', 'Resuming',
- * 'Deleting', 'Deleted'
- * 
- * @member {string} [properties.state] the status of the Data Lake Store
- * account after provisioning has completed. Possible values include:
- * 'active', 'suspended'
- * 
- * @member {date} [properties.creationTime] the account creation time.
- * 
- * @member {string} [properties.encryptionState] The current state of
- * encryption for this Data Lake store account. Possible values include:
- * 'Enabled', 'Disabled'
- * 
- * @member {string} [properties.encryptionProvisioningState] The current state
- * of encryption provisioning for this Data Lake store account. Possible
- * values include: 'Creating', 'Succeeded'
- * 
- * @member {object} [properties.encryptionConfig] The Key vault encryption
- * configuration.
- * 
- * @member {string} [properties.encryptionConfig.type] The type of encryption
- * configuration being used. Currently the only supported types are
- * 'UserManaged' and 'ServiceManaged'. Possible values include:
- * 'UserManaged', 'ServiceManaged'
- * 
- * @member {object} [properties.encryptionConfig.keyVaultMetaInfo] The Key
- * vault information for connecting to user managed encryption keys.
- * 
- * @member {string}
- * [properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId] The
- * resource identifier for the user managed Key Vault being used to encrypt.
- * 
- * @member {string}
- * [properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName] The name
- * of the user managed encryption key.
- * 
- * @member {string}
- * [properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion] The
- * version of the user managed encryption key.
- * 
- * @member {date} [properties.lastModifiedTime] the account last modified time.
- * 
- * @member {string} [properties.endpoint] the gateway host.
- * 
- * @member {string} [properties.defaultGroup] the default owner group for all
- * new folders and files created in the Data Lake Store account.
+ * @member {string} [nextLink] the link (url) to the next page of results.
  * 
  */
-export interface DataLakeStoreAccount {
-  location?: string;
-  name?: string;
-  type?: string;
-  id?: string;
-  identity?: EncryptionIdentity;
-  tags?: { [propertyName: string]: string };
-  properties?: DataLakeStoreAccountProperties;
+export interface DataLakeStoreAccountListResult {
+  value?: DataLakeStoreAccount[];
+  nextLink?: string;
 }
 
 /**
@@ -344,46 +388,6 @@ export interface ErrorModel {
   innerError?: InnerError;
 }
 
-/**
- * @class
- * Initializes a new instance of the AzureAsyncOperationResult class.
- * @constructor
- * The response body contains the status of the specified asynchronous
- * operation, indicating whether it has succeeded, is in progress, or has
- * failed. Note that this status is distinct from the HTTP status code
- * returned for the Get Operation Status operation itself. If the
- * asynchronous operation succeeded, the response body includes the HTTP
- * status code for the successful request. If the asynchronous operation
- * failed, the response body includes the HTTP status code for the failed
- * request and error information regarding the failure.
- *
- * @member {string} [status] the status of the AzureAsuncOperation. Possible
- * values include: 'InProgress', 'Succeeded', 'Failed'
- * 
- * @member {object} [error]
- * 
- * @member {string} [error.code] the HTTP status code or error code associated
- * with this error
- * 
- * @member {string} [error.message] the error message to display.
- * 
- * @member {string} [error.target] the target of the error.
- * 
- * @member {array} [error.details] the list of error details
- * 
- * @member {object} [error.innerError] the inner exceptions or errors, if any
- * 
- * @member {string} [error.innerError.trace] the stack trace for the error
- * 
- * @member {string} [error.innerError.context] the context for the error
- * message
- * 
- */
-export interface AzureAsyncOperationResult {
-  status?: string;
-  error?: ErrorModel;
-}
-
 
 /**
  * @class
@@ -393,11 +397,21 @@ export interface AzureAsyncOperationResult {
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
  * 
- * @member {number} [count] the total count of results that are available, but
- * might not be returned in the current page.
- * 
  */
 export interface DataLakeStoreFirewallRuleListResult extends Array<FirewallRule> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeStoreTrustedIdProviderListResult class.
+ * @constructor
+ * Data Lake Store trusted identity provider list information.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ * 
+ */
+export interface DataLakeStoreTrustedIdProviderListResult extends Array<TrustedIdProvider> {
   nextLink?: string;
 }
 
@@ -408,9 +422,6 @@ export interface DataLakeStoreFirewallRuleListResult extends Array<FirewallRule>
  * Data Lake Store account list information response.
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
- * 
- * @member {number} [count] the total count of results that are available, but
- * might not be returned in the current page.
  * 
  */
 export interface DataLakeStoreAccountListResult extends Array<DataLakeStoreAccount> {

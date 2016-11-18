@@ -150,7 +150,7 @@ The queue object contains a number of useful bits of information on the queue:
     "EntityAvailabilityStatus": "Available",
     "_": {
         "ContentRootElement": "QueueDescription",
-        "id": "https://yourSBNamespace.servicebus.windows.net/yourqueue?api-version=2013-07",
+        "id": "https://yourSBNamespace.servicebus.windows.net/yourqueue?api-version=2016-07",
         "title": "yourqueue",
         "published": "2016-02-15T00:11:14Z",
         "updated": "2016-02-16T02:19:28Z",

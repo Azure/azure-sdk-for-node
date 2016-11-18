@@ -56,11 +56,11 @@ describe('Cdn Management Custom Domain', function() {
       client = new StorageManagementClient(suite.credentials, suite.subscriptionId);
       defaultLocation = process.env['AZURE_TEST_LOCATION'];
       profileName = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);
-      endpointName = 'testEndpoint-06466c93-ab2d-4268-b3ec-38bbc2a12e90';
+      endpointName = 'testEndpoint-1ccf2a61-a627-4715-8744-314680c0c1b8';
       customDomainName1 = suite.generateId(customDomainPrefix, createdCustomDomains, suite.isMocked);
       customDomainName2 = suite.generateId(customDomainPrefix, createdCustomDomains, suite.isMocked);
-      customDomainHostName1 = 'sdk-1-06466c93-ab2d-4268-b3ec-38bbc2a12e90.azureedge-test.net';
-      customDomainHostName2 = 'sdk-2-06466c93-ab2d-4268-b3ec-38bbc2a12e90.azureedge-test.net';
+      customDomainHostName1 = 'sdk-1-1ccf2a61-a627-4715-8744-314680c0c1b8.azureedge-test.net';
+      customDomainHostName2 = 'sdk-2-1ccf2a61-a627-4715-8744-314680c0c1b8.azureedge-test.net';
       standardCreateParameters = {
         location: 'West US',
         tags: {
@@ -111,11 +111,11 @@ describe('Cdn Management Custom Domain', function() {
 
   describe('cdn customDomains', function() {
     it('should return zero custom domain when list by endpoint', function (done) {
-      client.profiles.create(profileName, standardCreateParameters, groupName, function (err, result, request, response) {
+      client.profiles.create(groupName, profileName, standardCreateParameters, function (err, result, request, response) {
         should.not.exist(err);
-        client.endpoints.create(endpointName, validEndpointProperties, profileName, groupName, function (err, result, request, response) {
+        client.endpoints.create(groupName, profileName, endpointName, validEndpointProperties, function (err, result, request, response) {
           should.not.exist(err);
-          client.customDomains.listByEndpoint(endpointName, profileName, groupName, function (err, result, request, response) {
+          client.customDomains.listByEndpoint(groupName, profileName, endpointName, function (err, result, request, response) {
             should.not.exist(err);
             var customDomains = result;
             customDomains.length.should.equal(0);
@@ -126,7 +126,7 @@ describe('Cdn Management Custom Domain', function() {
     })
         
     it('should pass validate custom domain test with registered host name', function (done) {
-      client.endpoints.validateCustomDomain(endpointName, profileName, groupName, customDomainHostName1, function (err, result, request, response) {
+      client.endpoints.validateCustomDomain(groupName, profileName, endpointName, customDomainHostName1, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.customDomainValidated.should.equal(true);
@@ -135,7 +135,7 @@ describe('Cdn Management Custom Domain', function() {
     })
         
     it('should not pass validate custom domain test with non-registered host name', function (done) {
-      client.endpoints.validateCustomDomain(endpointName, profileName, groupName, 'sdk-3-6029da3a-835e-4506-b4ea-bd5375165cdf.azureedge-test.net', function (err, result, request, response) {
+      client.endpoints.validateCustomDomain(groupName, profileName, endpointName, 'sdk-3-6029da3a-835e-4506-b4ea-bd5375165cdf.azureedge-test.net', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.customDomainValidated.should.equal(false);
@@ -144,7 +144,7 @@ describe('Cdn Management Custom Domain', function() {
     })
         
     it('should have error when validating incorrect custom domain', function (done) {
-      client.endpoints.validateCustomDomain(endpointName, profileName, groupName, '??sdk-3-6029da3a-835e-4506-b4ea-bd5375165cdf??', function (err, result, request, response) {
+      client.endpoints.validateCustomDomain(groupName, profileName, endpointName, '??sdk-3-6029da3a-835e-4506-b4ea-bd5375165cdf??', function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         done();
@@ -152,14 +152,14 @@ describe('Cdn Management Custom Domain', function() {
     })
 
     it('should create custom domain on running endpoint and succeed', function(done) {
-      client.customDomains.create(customDomainName1, endpointName, profileName, groupName, customDomainHostName1, function(err, result, request, response) {
+      client.customDomains.create(groupName, profileName, endpointName, customDomainName1, customDomainHostName1, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
     })
 
     it('should return one custom domain when list by endpoint', function(done) {
-      client.customDomains.listByEndpoint(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.customDomains.listByEndpoint(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
         var customDomains = result;
         customDomains.length.should.equal(1);
@@ -168,26 +168,19 @@ describe('Cdn Management Custom Domain', function() {
     })
 
     it('should get the cutom domain by name', function(done) {
-      client.customDomains.get(customDomainName1, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.customDomains.get(groupName, profileName, endpointName, customDomainName1, function(err, result, request, response) {
         should.not.exist(err);
         var customDomain = result;
         customDomain.name.should.equal(customDomainName1);
         customDomain.hostName.should.equal(customDomainHostName1);
         done();
       });
-    })
-
-    it('should fail when update on running endpoint', function(done) {
-      client.customDomains.update(customDomainName1, endpointName, profileName, groupName, 'customdomain11.hello.com', function(err, result, request, response) {
-        should.exist(err);
-        done();
-      });
     });
 
     it('should successfully create custom domain on stopped endpoint', function(done) {
-      client.endpoints.stop(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.stop(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
-        client.customDomains.create(customDomainName2, endpointName, profileName, groupName, customDomainHostName2, function(err, result, request, response) {
+        client.customDomains.create(groupName, profileName, endpointName, customDomainName2, customDomainHostName2, function(err, result, request, response) {
           should.not.exist(err);
           done();
         });
@@ -195,39 +188,32 @@ describe('Cdn Management Custom Domain', function() {
     });
 
     it('should return 2 custom domains when listing', function(done) {
-      client.customDomains.listByEndpoint(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.customDomains.listByEndpoint(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
         var customDomains = result;
         customDomains.length.should.equal(2);
         done();
       });
-    })
-
-    it('should fail when update on stopped endpoint', function(done) {
-      client.customDomains.update(customDomainName2, endpointName, profileName, groupName, 'customdomain22.hello.com', function(err, result, request, response) {
-        should.exist(err);
-        done();
-      });
     });
 
     it('should successfully delete custom domain', function(done) {
-      client.customDomains.deleteIfExists(customDomainName2, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.customDomains.deleteMethod(groupName, profileName, endpointName, customDomainName2, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
     });
 
     it('should return 1 custom domain again when listing', function(done) {
-      client.customDomains.listByEndpoint(endpointName, profileName, groupName, function(err, result, request, response) {
-        should.not.exist(err);
-        var customDomains = result;
-        customDomains.length.should.equal(1);
-        done();
-      });
-    })
+        client.customDomains.listByEndpoint(groupName, profileName, endpointName, function(err, result, request, response) {
+            should.not.exist(err);
+            var customDomains = result;
+            customDomains.length.should.equal(1);
+            done();
+        });
+    });
 
     it('should fail on getting the deleted custom domain', function(done) {
-      client.customDomains.get(customDomainName2, endpointName, profileName, groupName, function(err, result, request, response) {
+      client.customDomains.get(groupName, profileName, endpointName, customDomainName2, function(err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         done();
@@ -235,9 +221,9 @@ describe('Cdn Management Custom Domain', function() {
     })
 
     it('should successfully delete custom domain when endpoint is running', function(done) {
-      client.endpoints.start(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.start(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
-        client.customDomains.deleteIfExists(customDomainName1, endpointName, profileName, groupName, function(err, result, request, response) {
+        client.customDomains.deleteMethod(groupName, profileName, endpointName, customDomainName1, function(err, result, request, response) {
           should.not.exist(err);
           done();
         });
@@ -245,7 +231,7 @@ describe('Cdn Management Custom Domain', function() {
     });
 
     it('should return zero custom domain now when list by endpoint', function(done) {
-      client.customDomains.listByEndpoint(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.customDomains.listByEndpoint(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
         var customDomains = result;
         customDomains.length.should.equal(0);

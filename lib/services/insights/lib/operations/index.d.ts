@@ -79,12 +79,12 @@ export interface Events {
      * more information please see
      * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
      * 
-     * @param {string} [options.select] The list of property names to be returned.
-     * Possible values are: authorization, channels, claims, correlationId,
-     * description, eventDataId, eventName, eventTimestamp, httpRequest, level,
-     * operationId, operationName, properties, resourceGroupName,
-     * resourceProviderName, resourceId, status, submissionTimestamp, subStatus,
-     * subscriptionId
+     * @param {string} [options.select] The comma separated list of property names
+     * to be returned. Possible values are: authorization, channels, claims,
+     * correlationId, description, eventDataId, eventName, eventTimestamp,
+     * httpRequest, level, operationId, operationName, properties,
+     * resourceGroupName, resourceProviderName, resourceId, status,
+     * submissionTimestamp, subStatus, subscriptionId
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -130,12 +130,12 @@ export interface TenantEvents {
      * more information please see
      * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
      * 
-     * @param {string} [options.select] The list of property names to be returned.
-     * Possible values are: authorization, channels, claims, correlationId,
-     * description, eventDataId, eventName, eventTimestamp, httpRequest, level,
-     * operationId, operationName, properties, resourceGroupName,
-     * resourceProviderName, resourceId, status, submissionTimestamp, subStatus,
-     * subscriptionId
+     * @param {string} [options.select] The comma separated list of property names
+     * to be returned. Possible values are: authorization, channels, claims,
+     * correlationId, description, eventDataId, eventName, eventTimestamp,
+     * httpRequest, level, operationId, operationName, properties,
+     * resourceGroupName, resourceProviderName, resourceId, status,
+     * submissionTimestamp, subStatus, subscriptionId
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request

@@ -120,7 +120,7 @@ describe('Cdn Management Profile', function() {
   describe('cdn profiles', function() {
 
     it('should list profiles by SubscriptionId and return none', function(done) {
-      client.profiles.listBySubscriptionId(function(err, result, request, response) {
+      client.profiles.list(function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profiles = result;
@@ -140,7 +140,7 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should create a standard profile correctly', function(done) {
-      client.profiles.create(profileName1, standardCreateParameters, groupName1, function(err, result, request, response) {
+      client.profiles.create(groupName1, profileName1, standardCreateParameters, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profile = result;
@@ -151,7 +151,7 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should list profiles by SubscriptionId and return one profile', function(done) {
-      client.profiles.listBySubscriptionId(function(err, result, request, response) {
+      client.profiles.list(function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profiles = result;
@@ -177,7 +177,7 @@ describe('Cdn Management Profile', function() {
         tag3: 'val3'
       };
 
-      client.profiles.update(profileName1, groupName1, tags, function(err, result, request, response) {
+      client.profiles.update(groupName1, profileName1, tags, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profile = result;
@@ -190,7 +190,7 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should generate SSO uri correctly', function(done) {
-      client.profiles.generateSsoUri(profileName1, groupName1, function(err, result, request, response) {
+      client.profiles.generateSsoUri(groupName1, profileName1, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         done();
@@ -198,7 +198,7 @@ describe('Cdn Management Profile', function() {
     })
 
     it('should create a premium profile correctly', function(done) {
-      client.profiles.create(profileName2, premiumCreateParameters, groupName2, function(err, result, request, response) {
+      client.profiles.create(groupName2, profileName2, premiumCreateParameters, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profile = result;
@@ -209,7 +209,7 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should list profiles by SubscriptionId and return 2 profiles', function(done) {
-      client.profiles.listBySubscriptionId(function(err, result, request, response) {
+      client.profiles.list(function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profiles = result;
@@ -229,7 +229,7 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should delete first profile and succeed', function(done) {
-      client.profiles.deleteIfExists(profileName1, groupName1, function(err, result, request, response) {
+      client.profiles.deleteMethod(groupName1, profileName1, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
@@ -246,7 +246,7 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should list profiles by SubscriptionId again and return one profile', function(done) {
-      client.profiles.listBySubscriptionId(function(err, result, request, response) {
+      client.profiles.list(function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profiles = result;
@@ -256,21 +256,21 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should try to delete profile that was already deleted and succeed', function(done) {
-      client.profiles.deleteIfExists(profileName1, groupName1, function(err, result, request, response) {
+      client.profiles.deleteMethod(groupName1, profileName1, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
     });
 
     it('should delete second profile and succeed', function(done) {
-      client.profiles.deleteIfExists(profileName2, groupName2, function(err, result, request, response) {
+      client.profiles.deleteMethod(groupName2, profileName2, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
     });
 
     it('should create a standard akamai profile correctly', function (done) {
-      client.profiles.create(profileName3, akamaiCreateParameters, groupName1, function (err, result, request, response) {
+      client.profiles.create(groupName1, profileName3, akamaiCreateParameters, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var profile = result;
@@ -281,7 +281,7 @@ describe('Cdn Management Profile', function() {
     });
 
     it('should delete akamai profile and succeed', function (done) {
-      client.profiles.deleteIfExists(profileName3, groupName1, function (err, result, request, response) {
+      client.profiles.deleteMethod(groupName1, profileName3, function (err, result, request, response) {
         should.not.exist(err);
         done();
       });
