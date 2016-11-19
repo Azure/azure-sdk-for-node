@@ -192,6 +192,48 @@ describe('Key Vault secrets', function () {
     });
   });
 
+  describe('disabled secret', function () {
+    it('should work', function (done) {
+
+      this.timeout(10000);
+
+      var createdBundle;
+      var secretId;
+
+      function createDisabledSecret(next) {
+        client.setSecret(vaultUri, SECRET_NAME, SECRET_VALUE, 
+            { secretAttributes: { enabled: false }}, function (err, secretBundle) {
+          if (err) throw err;
+          createdBundle = secretBundle;
+          secretId = KeyVault.parseSecretIdentifier(createdBundle.id);
+          next();
+        });
+      }
+
+      function getDisabledSecret(next) {
+        client.getSecret(secretId.identifier, function (err, secretBundle) {
+          if (!err || !err.body.error.code || !err.body.error.innerError.code) throw new Error('Unexpected error object: ' + JSON.stringify(err, null, ' '));
+          next();
+        });
+      }
+
+      function deleteSecret(next) {
+        client.deleteSecret(secretId.vault, secretId.name, function (err, secretBundle) {
+          if (err) throw err;
+          next();
+        });
+      }
+
+      series([
+        createDisabledSecret,
+        getDisabledSecret,
+        deleteSecret,
+        function () { done(); }
+      ]);
+
+    });
+  });
+
   describe('list', function () {
     it('should work', function (done) {
 
