@@ -25,7 +25,7 @@ try {
 }
 
 module.exports = Home;
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var entityGen = azure.TableUtilities.entityGenerator;
 
 function Home(client) {
