@@ -19,7 +19,7 @@ declare class ResourceManagementClient {
      *
      * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
-     * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+     * @param {string} subscriptionId - The ID of the target subscription.
      *
      * @param {string} [baseUri] - The base URI of the service.
      *
@@ -32,7 +32,7 @@ declare class ResourceManagementClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
-     * @param {string} [options.apiVersion] - Client Api Version.
+     * @param {string} [options.apiVersion] - The API version to use for this operation.
      *
      * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
      *
