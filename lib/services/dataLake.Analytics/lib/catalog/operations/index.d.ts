@@ -49,8 +49,8 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSecret>): void;
-    createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, callback: ServiceCallback<models.USqlSecret>): void;
+    createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Modifies the specified secret for use with external data sources in the
