@@ -72,7 +72,7 @@ var standardCreateParameters = {
 	}
 };
 
-client.profiles.create("your-profile-name", standardCreateParameters, "your-resource-group-name", function(err, result, request, response) {
+client.profiles.create("your-resource-group-name", "your-profile-name", standardCreateParameters, function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -82,8 +82,18 @@ client.profiles.create("your-profile-name", standardCreateParameters, "your-reso
 	}
 });
 
+//Get profile resource usage
+client.profiles.listResourceUsage("your-resource-group-name", "your-profile-name", function(err, result, request, response) {
+	if (err) {
+        console.log(err);
+    } else {
+		var usages = result;
+		console.log(usages);
+	}
+});
+
 //Delete profile
-client.profiles.deleteIfExists("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.profiles.deleteIfExists("your-resource-group-name", "your-profile-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     }
@@ -96,7 +106,7 @@ var tags = {
 	tag3: 'val3'
 };
 
-client.profiles.update("your-profile-name", "your-resource-group-name", tags, function(err, result, request, response) {
+client.profiles.update("your-resource-group-name", "your-profile-name", tags, function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -108,7 +118,7 @@ client.profiles.update("your-profile-name", "your-resource-group-name", tags, fu
 });
 
 //Generate sso uri
-client.profiles.generateSsoUri("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.profiles.generateSsoUri("your-resource-group-name", "your-profile-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -120,7 +130,7 @@ client.profiles.generateSsoUri("your-profile-name", "your-resource-group-name", 
 ### Endpoint operations
 ```javascript
 //List endpoint by profile
-client.endpoints.listByProfile("your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.listByProfile("your-resource-group-name", "your-profile-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -138,15 +148,34 @@ var endpointProperties = {
 	origins: [{
 		name: 'newname',
 		hostName: 'newname.azure.com'
-	}]
+	}],
+  geoFilters : [
+    {
+      "relativePath": "/mycar",
+      "action": "Allow",
+      "countryCodes": [
+          "DZ"
+      ]
+    }
+  ]
 }
 
-client.endpoints.create("your-endpoint-name", validEndpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.create("your-resource-group-name", "your-profile-name", "your-endpoint-name", endpointProperties, function(err, result, request, response) {
     if (err) {
         console.log(err);
     } else {
 		var endpoint = result;
 		console.log(endpoint);
+	}
+});
+
+//Get endpoint resource usage
+client.endpoints.listResourceUsage("your-resource-group-name", "your-profile-name", "your-endpoint-name", function(err, result, request, response) {
+	if (err) {
+        console.log(err);
+    } else {
+		var usages = result;
+		console.log(usages);
 	}
 });
 
@@ -159,7 +188,7 @@ var newEndpointProperties = {
 	}
   }
 
-client.endpoints.update("your-endpoint-name", newEndpointProperties, "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.update("your-resource-group-name", "your-profile-name", "your-endpoint-name", newEndpointProperties, function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -169,7 +198,7 @@ client.endpoints.update("your-endpoint-name", newEndpointProperties, "your-profi
 });
 
 //Get Endpoint
-client.endpoints.get("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.get("your-resource-group-name", "your-profile-name", "your-endpoint-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -184,7 +213,7 @@ var purgeContentPaths = [
 	'/pictures/pic1.jpg'
 ]
 
-client.endpoints.purgeContent("your-endpoint-name", "your-profile-name", "your-resource-group-name", purgeContentPaths, function(err, result, request, response) {
+client.endpoints.purgeContent("your-resource-group-name", "your-profile-name", "your-endpoint-name", purgeContentPaths, function(err, result, request, response) {
 	if (err) {
         console.log(err);
     }
@@ -196,28 +225,28 @@ var loadContentPaths = [
 	'/pictures/pic1.jpg'
 ]
 
-client.endpoints.loadContent("your-endpoint-name", "your-profile-name", "your-resource-group-name", loadContentPaths, function(err, result, request, response) {
+client.endpoints.loadContent("your-resource-group-name", "your-profile-name", "your-endpoint-name", loadContentPaths, function(err, result, request, response) {
 	if (err) {
         console.log(err);
     }
 });
 
 //Stop
-client.endpoints.stop("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.stop("your-resource-group-name", "your-profile-name", "your-endpoint-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     }
 });
 
 //Start
-client.endpoints.start("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.start("your-resource-group-name", "your-profile-name", "your-endpoint-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     }
 });
 
 //Validate custom domain
-client.endpoints.validateCustomDomain("your-endpoint-name", "your-profile-name", "your-resource-group-name", "your-hostName.whatever.com", function (err, result, request, response) {
+client.endpoints.validateCustomDomain("your-resource-group-name", "your-profile-name", "your-endpoint-name", "your-hostName.whatever.com", function (err, result, request, response) {
 	if (err) {
         console.log(err);
     } else {
@@ -226,7 +255,7 @@ client.endpoints.validateCustomDomain("your-endpoint-name", "your-profile-name",
 });
 
 //Delete endpoint
-client.endpoints.deleteIfExists("your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.endpoints.deleteIfExists("your-resource-group-name", "your-profile-name", "your-endpoint-name", function(err, result, request, response) {
 	if (err) {
         console.log(err);
     }
@@ -236,7 +265,7 @@ client.endpoints.deleteIfExists("your-endpoint-name", "your-profile-name", "your
 ### Origin operations
 ```javascript
 //List Origins
-client.origins.listByEndpoint("your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
+client.origins.listByEndpoint("your-resource-group-name", "your-profile-name", "your-endpoint-name", function (err, result, request, response) {
 	if (err) {
 		console.log(err);
 	} else {
@@ -246,7 +275,7 @@ client.origins.listByEndpoint("your-endpoint-name", "your-profile-name", "your-r
 });
 
 //Get origin
-client.origins.get("your-origin-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
+client.origins.get("your-resource-group-name", "your-profile-name", "your-endpoint-name", "your-origin-name", function (err, result, request, response) {
 	if (err) {
 		console.log(err);
 	} else {
@@ -261,14 +290,14 @@ var updateParameters = {
 	httpPort: 9874,
 	httpsPort: 9090
 }
-client.origins.update("your-origin-name", updateParameters, "your-endpoint-name", "your-profile-name", "your-resource-group-name", function(err, result, request, response) {
+client.origins.update("your-resource-group-name", "your-profile-name", "your-endpoint-name", "your-origin-name", updateParameters, function(err, result, request, response) {
     if (err) {
 		console.log(err);
 	}
 }
 
 //Delete origin
-client.origins.deleteIfExists("your-origin-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
+client.origins.deleteIfExists("your-resource-group-name", "your-profile-name", "your-endpoint-name", "your-origin-name", function (err, result, request, response) {
 	if (err) {
 		console.log(err);
 	}
@@ -278,7 +307,7 @@ client.origins.deleteIfExists("your-origin-name", "your-endpoint-name", "your-pr
 ### Custom domain operations
 ```javascript
 //List custom domain by endpoint
-client.customDomains.listByEndpoint("your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
+client.customDomains.listByEndpoint("your-resource-group-name", "your-profile-name", "your-endpoint-name", function (err, result, request, response) {
 		if (err) {
 		console.log(err);
 	} else {
@@ -288,14 +317,14 @@ client.customDomains.listByEndpoint("your-endpoint-name", "your-profile-name", "
 });
 
 //Create custom domain
-client.customDomains.create("your-custom-domain-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", "customdomainhostname.hello.com", function (err, result, request, response) {
+client.customDomains.create("your-resource-group-name", "your-profile-name", "your-endpoint-name", "your-custom-domain-name", "customdomainhostname.hello.com", function (err, result, request, response) {
 	if (err) {
 		console.log(err);
 	}
 });
 
 //Get custom domain
-client.customDomains.get("your-custom-domain-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
+client.customDomains.get("your-resource-group-name", "your-profile-name", "your-endpoint-name", "your-custom-domain-name", function (err, result, request, response) {
 	if (err) {
 		console.log(err);
 	} else {
@@ -305,7 +334,7 @@ client.customDomains.get("your-custom-domain-name", "your-endpoint-name", "your-
 });
 
 //Delete custom domain
-client.customDomains.deleteIfExists("your-custom-domain-name", "your-endpoint-name", "your-profile-name", "your-resource-group-name", function (err, result, request, response) {
+client.customDomains.deleteIfExists("your-resource-group-name", "your-profile-name", "your-endpoint-name", "your-custom-domain-name", function (err, result, request, response) {
 	if (err) {
 		console.log(err);
 	}
@@ -330,6 +359,29 @@ client.operations.list(function(err, result, request, response) {
 		console.log(err);
 	} else {
 		console.log(result);
+	}
+});
+```
+
+### List edge nodes of Azure CDN
+```javascript
+client.edgeNodes.list(function(err, result, request, response) {
+	if (err) {
+		console.log(err);
+	} else {
+    ...
+	}
+});
+```
+
+### Get resource usage of subscription
+```javascript
+client.checkResourceUsage(function(err, result, request, response) {
+	if (err) {
+		console.log(err);
+	} else {
+    console.log(result);
+    ...
 	}
 });
 ```

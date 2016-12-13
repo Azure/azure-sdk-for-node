@@ -7,4 +7,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['cdnTestGroup6953','cdnTestProfile3038','cdnTestEndpoint4750'];};
+ exports.randomTestIdsGenerated = function() { return ['cdnTestGroup2048','cdnTestProfile57','cdnTestEndpoint7750'];};

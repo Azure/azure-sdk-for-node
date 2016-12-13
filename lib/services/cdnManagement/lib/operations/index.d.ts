@@ -21,7 +21,7 @@ import * as models from '../models';
 export interface Profiles {
 
     /**
-     * Lists all the CDN profiles within an Azure subscription.
+     * Lists all of the CDN profiles within an Azure subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -35,7 +35,7 @@ export interface Profiles {
     list(callback: ServiceCallback<models.ProfileListResult>): void;
 
     /**
-     * Lists all the CDN profiles within a resource group.
+     * Lists all of the CDN profiles within a resource group.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -84,7 +84,8 @@ export interface Profiles {
      * 
      * @param {object} profile Profile properties needed to create a new profile.
      * 
-     * @param {object} profile.sku The SKU (pricing tier) of the CDN profile.
+     * @param {object} profile.sku The pricing tier (defines a CDN provider,
+     * feature list and rate) of the CDN profile.
      * 
      * @param {string} [profile.sku.name] Name of the pricing tier. Possible
      * values include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
@@ -117,7 +118,8 @@ export interface Profiles {
      * 
      * @param {object} profile Profile properties needed to create a new profile.
      * 
-     * @param {object} profile.sku The SKU (pricing tier) of the CDN profile.
+     * @param {object} profile.sku The pricing tier (defines a CDN provider,
+     * feature list and rate) of the CDN profile.
      * 
      * @param {string} [profile.sku.name] Name of the pricing tier. Possible
      * values include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
@@ -186,7 +188,7 @@ export interface Profiles {
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
-     * profile will result in the deletion of all subresources including
+     * profile will result in the deletion of all of the sub-resources including
      * endpoints, origins and custom domains.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -208,7 +210,7 @@ export interface Profiles {
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
-     * profile will result in the deletion of all subresources including
+     * profile will result in the deletion of all of the sub-resources including
      * endpoints, origins and custom domains.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -254,7 +256,27 @@ export interface Profiles {
     generateSsoUri(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.SsoUri>): void;
 
     /**
-     * Lists all the CDN profiles within an Azure subscription.
+     * Checks the quota and actual usage of endpoints under the given CDN profile.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     * 
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listResourceUsage(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
+    /**
+     * Lists all of the CDN profiles within an Azure subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -271,7 +293,7 @@ export interface Profiles {
     listNext(nextPageLink: string, callback: ServiceCallback<models.ProfileListResult>): void;
 
     /**
-     * Lists all the CDN profiles within a resource group.
+     * Lists all of the CDN profiles within a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -286,6 +308,23 @@ export interface Profiles {
      */
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ProfileListResult>): void;
+
+    /**
+     * Checks the quota and actual usage of endpoints under the given CDN profile.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 }
 
 /**
@@ -341,7 +380,8 @@ export interface Endpoints {
     get(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
 
     /**
-     * Creates a new CDN endpoint with the specified parameters.
+     * Creates a new CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -354,21 +394,21 @@ export interface Endpoints {
      * 
      * @param {object} endpoint Endpoint properties
      * 
-     * @param {string} [endpoint.originHostHeader] The host header the CDN
-     * provider will send along with content requests to origins. The default
-     * value is the host name of the origin.
+     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
+     * with content requests to origin. The default value is the host name of the
+     * origin.
      * 
-     * @param {string} [endpoint.originPath] The path used for origin requests.
+     * @param {string} [endpoint.originPath] The path used when CDN sends request
+     * to origin.
      * 
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
-     * which compression will be applied. The value for the elements should be a
-     * valid MIME type.
+     * which compression applies. The value should be a valid MIME type.
      * 
      * @param {boolean} [endpoint.isCompressionEnabled] Indicates whether content
-     * compression is enabled. The default value is false. If compression is
-     * enabled, the content transferred from the CDN endpoint to the end user
-     * will be compressed. The requested content must be larger than 1 byte and
-     * smaller than 1 MB.
+     * compression is enabled on CDN. Default value is false. If compression is
+     * enabled, content will be served as compressed if user requests for a
+     * compressed version. Content won't be compressed on CDN when requested
+     * content is smaller than 1 byte or larger than 1 MB.
      * 
      * @param {boolean} [endpoint.isHttpAllowed] Indicates whether HTTP traffic is
      * allowed on the endpoint. Default value is true. At least one protocol
@@ -383,16 +423,15 @@ export interface Endpoints {
      * 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
      * @param {string} [endpoint.optimizationType] Customer can specify what
-     * scenario they want this CDN endpoint to optimize. (e.g. Download, Media
-     * services, and etc.) With this information we can apply scenario driven
-     * optimization.
+     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
+     * services. With this information we can apply scenario driven optimization.
      * 
-     * @param {array} [endpoint.geoFilters] The list of geo filters for the CDN
-     * endpoint.
+     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
+     * within a CDN endpoint. Each geo filter defines an acess rule to a
+     * specified path or content, e.g. block APAC for path /pictures/
      * 
-     * @param {array} endpoint.origins The set of origins for the CDN endpoint.
-     * When multiple origins exist, the first origin will be used as primary and
-     * rest will be used as failover options.
+     * @param {array} endpoint.origins The source of the content being delivered
+     * via CDN.
      * 
      * @param {string} endpoint.location Resource location.
      * 
@@ -410,7 +449,8 @@ export interface Endpoints {
     create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
 
     /**
-     * Creates a new CDN endpoint with the specified parameters.
+     * Creates a new CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -423,21 +463,21 @@ export interface Endpoints {
      * 
      * @param {object} endpoint Endpoint properties
      * 
-     * @param {string} [endpoint.originHostHeader] The host header the CDN
-     * provider will send along with content requests to origins. The default
-     * value is the host name of the origin.
+     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
+     * with content requests to origin. The default value is the host name of the
+     * origin.
      * 
-     * @param {string} [endpoint.originPath] The path used for origin requests.
+     * @param {string} [endpoint.originPath] The path used when CDN sends request
+     * to origin.
      * 
      * @param {array} [endpoint.contentTypesToCompress] List of content types on
-     * which compression will be applied. The value for the elements should be a
-     * valid MIME type.
+     * which compression applies. The value should be a valid MIME type.
      * 
      * @param {boolean} [endpoint.isCompressionEnabled] Indicates whether content
-     * compression is enabled. The default value is false. If compression is
-     * enabled, the content transferred from the CDN endpoint to the end user
-     * will be compressed. The requested content must be larger than 1 byte and
-     * smaller than 1 MB.
+     * compression is enabled on CDN. Default value is false. If compression is
+     * enabled, content will be served as compressed if user requests for a
+     * compressed version. Content won't be compressed on CDN when requested
+     * content is smaller than 1 byte or larger than 1 MB.
      * 
      * @param {boolean} [endpoint.isHttpAllowed] Indicates whether HTTP traffic is
      * allowed on the endpoint. Default value is true. At least one protocol
@@ -452,16 +492,15 @@ export interface Endpoints {
      * 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
      * @param {string} [endpoint.optimizationType] Customer can specify what
-     * scenario they want this CDN endpoint to optimize. (e.g. Download, Media
-     * services, and etc.) With this information we can apply scenario driven
-     * optimization.
+     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
+     * services. With this information we can apply scenario driven optimization.
      * 
-     * @param {array} [endpoint.geoFilters] The list of geo filters for the CDN
-     * endpoint.
+     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
+     * within a CDN endpoint. Each geo filter defines an acess rule to a
+     * specified path or content, e.g. block APAC for path /pictures/
      * 
-     * @param {array} endpoint.origins The set of origins for the CDN endpoint.
-     * When multiple origins exist, the first origin will be used as primary and
-     * rest will be used as failover options.
+     * @param {array} endpoint.origins The source of the content being delivered
+     * via CDN.
      * 
      * @param {string} endpoint.location Resource location.
      * 
@@ -479,10 +518,11 @@ export interface Endpoints {
     beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
 
     /**
-     * Updates an existing CDN endpoint with the specified parameters. Only tags
-     * and OriginHostHeader can be updated after creating an endpoint. To update
-     * origins, use the Update Origin operation. To update custom domains, use
-     * the Update Custom Domain operation.
+     * Updates an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile. Only tags and Origin
+     * HostHeader can be updated after creating an endpoint. To update origins,
+     * use the Update Origin operation. To update custom domains, use the Update
+     * Custom Domain operation.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -498,21 +538,21 @@ export interface Endpoints {
      * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      * 
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
-     * the CDN provider will send along with content requests to origins. The
-     * default value is the host name of the origin.
+     * CDN sends along with content requests to origin. The default value is the
+     * host name of the origin.
      * 
-     * @param {string} [endpointUpdateProperties.originPath] The path used for
-     * origin requests.
+     * @param {string} [endpointUpdateProperties.originPath] The path used when
+     * CDN sends request to origin.
      * 
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
-     * content types on which compression will be applied. The value for the
-     * elements should be a valid MIME type.
+     * content types on which compression applies. The value should be a valid
+     * MIME type.
      * 
      * @param {boolean} [endpointUpdateProperties.isCompressionEnabled] Indicates
-     * whether content compression is enabled. The default value is false. If
-     * compression is enabled, the content transferred from the CDN endpoint to
-     * the end user will be compressed. The requested content must be larger than
-     * 1 byte and smaller than 1 MB.
+     * whether content compression is enabled on CDN. Default value is false. If
+     * compression is enabled, content will be served as compressed if user
+     * requests for a compressed version. Content won't be compressed on CDN when
+     * requested content is smaller than 1 byte or larger than 1 MB.
      * 
      * @param {boolean} [endpointUpdateProperties.isHttpAllowed] Indicates whether
      * HTTP traffic is allowed on the endpoint. Default value is true. At least
@@ -527,12 +567,13 @@ export interface Endpoints {
      * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
      * @param {string} [endpointUpdateProperties.optimizationType] Customer can
-     * specify what scenario they want this CDN endpoint to optimize. (e.g.
-     * Download, Media services, and etc.) With this information we can apply
-     * scenario driven optimization.
+     * specify what scenario they want this CDN endpoint to optimize, e.g.
+     * Download, Media services. With this information we can apply scenario
+     * driven optimization.
      * 
-     * @param {array} [endpointUpdateProperties.geoFilters] The list of geo
-     * filters for the CDN endpoint.
+     * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
+     * user geo access within a CDN endpoint. Each geo filter defines an acess
+     * rule to a specified path or content, e.g. block APAC for path /pictures/
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -546,10 +587,11 @@ export interface Endpoints {
     update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
 
     /**
-     * Updates an existing CDN endpoint with the specified parameters. Only tags
-     * and OriginHostHeader can be updated after creating an endpoint. To update
-     * origins, use the Update Origin operation. To update custom domains, use
-     * the Update Custom Domain operation.
+     * Updates an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile. Only tags and Origin
+     * HostHeader can be updated after creating an endpoint. To update origins,
+     * use the Update Origin operation. To update custom domains, use the Update
+     * Custom Domain operation.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -565,21 +607,21 @@ export interface Endpoints {
      * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
      * 
      * @param {string} [endpointUpdateProperties.originHostHeader] The host header
-     * the CDN provider will send along with content requests to origins. The
-     * default value is the host name of the origin.
+     * CDN sends along with content requests to origin. The default value is the
+     * host name of the origin.
      * 
-     * @param {string} [endpointUpdateProperties.originPath] The path used for
-     * origin requests.
+     * @param {string} [endpointUpdateProperties.originPath] The path used when
+     * CDN sends request to origin.
      * 
      * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
-     * content types on which compression will be applied. The value for the
-     * elements should be a valid MIME type.
+     * content types on which compression applies. The value should be a valid
+     * MIME type.
      * 
      * @param {boolean} [endpointUpdateProperties.isCompressionEnabled] Indicates
-     * whether content compression is enabled. The default value is false. If
-     * compression is enabled, the content transferred from the CDN endpoint to
-     * the end user will be compressed. The requested content must be larger than
-     * 1 byte and smaller than 1 MB.
+     * whether content compression is enabled on CDN. Default value is false. If
+     * compression is enabled, content will be served as compressed if user
+     * requests for a compressed version. Content won't be compressed on CDN when
+     * requested content is smaller than 1 byte or larger than 1 MB.
      * 
      * @param {boolean} [endpointUpdateProperties.isHttpAllowed] Indicates whether
      * HTTP traffic is allowed on the endpoint. Default value is true. At least
@@ -594,12 +636,13 @@ export interface Endpoints {
      * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
      * 
      * @param {string} [endpointUpdateProperties.optimizationType] Customer can
-     * specify what scenario they want this CDN endpoint to optimize. (e.g.
-     * Download, Media services, and etc.) With this information we can apply
-     * scenario driven optimization.
+     * specify what scenario they want this CDN endpoint to optimize, e.g.
+     * Download, Media services. With this information we can apply scenario
+     * driven optimization.
      * 
-     * @param {array} [endpointUpdateProperties.geoFilters] The list of geo
-     * filters for the CDN endpoint.
+     * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
+     * user geo access within a CDN endpoint. Each geo filter defines an acess
+     * rule to a specified path or content, e.g. block APAC for path /pictures/
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -613,7 +656,8 @@ export interface Endpoints {
     beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
 
     /**
-     * Deletes an existing CDN endpoint with the specified parameters.
+     * Deletes an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -636,7 +680,8 @@ export interface Endpoints {
     deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Deletes an existing CDN endpoint with the specified parameters.
+     * Deletes an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -659,7 +704,7 @@ export interface Endpoints {
     beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Starts an existing stopped CDN endpoint.
+     * Starts an existing CDN endpoint that is on a stopped state.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -682,7 +727,7 @@ export interface Endpoints {
     start(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
 
     /**
-     * Starts an existing stopped CDN endpoint.
+     * Starts an existing CDN endpoint that is on a stopped state.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -751,7 +796,7 @@ export interface Endpoints {
     beginStop(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
 
     /**
-     * Forcibly purges CDN endpoint content.
+     * Removes a content from CDN.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -777,7 +822,7 @@ export interface Endpoints {
     purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
 
     /**
-     * Forcibly purges CDN endpoint content.
+     * Removes a content from CDN.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -803,7 +848,7 @@ export interface Endpoints {
     beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
 
     /**
-     * Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
+     * Pre-loads a content to CDN. Available for Verizon Profiles.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -814,8 +859,8 @@ export interface Endpoints {
      * @param {string} endpointName Name of the endpoint under the profile which
      * is unique globally.
      * 
-     * @param {array} contentPaths The path to the content to be loaded. Should
-     * describe a file path.
+     * @param {array} contentPaths The path to the content to be loaded. Path
+     * should be a relative file URL of the origin.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -829,7 +874,7 @@ export interface Endpoints {
     loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
 
     /**
-     * Forcibly pre-loads CDN endpoint content. Available for Verizon Profiles.
+     * Pre-loads a content to CDN. Available for Verizon Profiles.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -840,8 +885,8 @@ export interface Endpoints {
      * @param {string} endpointName Name of the endpoint under the profile which
      * is unique globally.
      * 
-     * @param {array} contentPaths The path to the content to be loaded. Should
-     * describe a file path.
+     * @param {array} contentPaths The path to the content to be loaded. Path
+     * should be a relative file URL of the origin.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -855,8 +900,8 @@ export interface Endpoints {
     beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
 
     /**
-     * Validates a custom domain mapping to ensure it maps to the correct CNAME in
-     * DNS.
+     * Validates the custom domain mapping to ensure it maps to the correct CDN
+     * endpoint in DNS.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -882,6 +927,30 @@ export interface Endpoints {
     validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
 
     /**
+     * Checks the quota and usage of geo filters and custom domains under the
+     * given endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     * 
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     * 
+     * @param {string} endpointName Name of the endpoint under the profile which
+     * is unique globally.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
+    /**
      * Lists existing CDN endpoints.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -897,6 +966,24 @@ export interface Endpoints {
      */
     listByProfileNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointListResult>): void;
     listByProfileNext(nextPageLink: string, callback: ServiceCallback<models.EndpointListResult>): void;
+
+    /**
+     * Checks the quota and usage of geo filters and custom domains under the
+     * given endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 }
 
 /**
@@ -908,7 +995,7 @@ export interface Endpoints {
 export interface Origins {
 
     /**
-     * Lists the existing CDN origins within an endpoint.
+     * Lists all of the existing origins within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -931,7 +1018,7 @@ export interface Origins {
     listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.OriginListResult>): void;
 
     /**
-     * Gets an existing CDN origin within an endpoint.
+     * Gets an existing origin within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -957,7 +1044,7 @@ export interface Origins {
     get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, callback: ServiceCallback<models.Origin>): void;
 
     /**
-     * Updates an existing CDN origin within an endpoint.
+     * Updates an existing origin within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -994,7 +1081,7 @@ export interface Origins {
     update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
 
     /**
-     * Updates an existing CDN origin within an endpoint.
+     * Updates an existing origin within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -1031,7 +1118,7 @@ export interface Origins {
     beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
 
     /**
-     * Lists the existing CDN origins within an endpoint.
+     * Lists all of the existing origins within an endpoint.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1057,7 +1144,7 @@ export interface Origins {
 export interface CustomDomains {
 
     /**
-     * Lists the existing CDN custom domains within an endpoint.
+     * Lists all of the existing custom domains within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -1080,7 +1167,7 @@ export interface CustomDomains {
     listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.CustomDomainListResult>): void;
 
     /**
-     * Gets an existing CDN custom domain within an endpoint.
+     * Gets an exisitng custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -1106,7 +1193,7 @@ export interface CustomDomains {
     get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
 
     /**
-     * Creates a new CDN custom domain within an endpoint.
+     * Creates a new custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -1135,7 +1222,7 @@ export interface CustomDomains {
     create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
 
     /**
-     * Creates a new CDN custom domain within an endpoint.
+     * Creates a new custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -1164,7 +1251,7 @@ export interface CustomDomains {
     beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
 
     /**
-     * Deletes an existing CDN custom domain within an endpoint.
+     * Deletes an existing custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -1190,7 +1277,7 @@ export interface CustomDomains {
     deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
 
     /**
-     * Deletes an existing CDN custom domain within an endpoint.
+     * Deletes an existing custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -1216,7 +1303,7 @@ export interface CustomDomains {
     beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
 
     /**
-     * Lists the existing CDN custom domains within an endpoint.
+     * Lists all of the existing custom domains within an endpoint.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1231,4 +1318,27 @@ export interface CustomDomains {
      */
     listByEndpointNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomainListResult>): void;
     listByEndpointNext(nextPageLink: string, callback: ServiceCallback<models.CustomDomainListResult>): void;
+}
+
+/**
+ * @class
+ * EdgeNodes
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the CdnManagementClient.
+ */
+export interface EdgeNodes {
+
+    /**
+     * Lists all the edge nodes of a CDN service.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EdgenodeResult>): void;
+    list(callback: ServiceCallback<models.EdgenodeResult>): void;
 }

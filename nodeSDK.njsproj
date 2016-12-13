@@ -1456,10 +1456,14 @@
     <Compile Include="test\services\batch\batchClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
-	<Compile Include="test\services\cdnManagement\cdnCheckNameAvailability-tests.js">
-	  <TestFramework>Mocha</TestFramework>
+    <Compile Include="test\services\cdnManagement\cdnCheckNameAvailability-tests.js">
+      <TestFramework>Mocha</TestFramework>
     </Compile>
+    <Compile Include="test\services\cdnManagement\cdnCheckResourceUsage-tests.js" />
     <Compile Include="test\services\cdnManagement\cdnCustomDomain-tests.js">
+      <TestFramework>Mocha</TestFramework>
+    </Compile>
+    <Compile Include="test\services\cdnManagement\cdnEdgeNode-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
     <Compile Include="test\services\cdnManagement\cdnEndpoint-tests.js">

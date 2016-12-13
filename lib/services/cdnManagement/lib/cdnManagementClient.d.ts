@@ -61,11 +61,11 @@ declare class CdnManagementClient {
     endpoints: operations.Endpoints;
     origins: operations.Origins;
     customDomains: operations.CustomDomains;
+    edgeNodes: operations.EdgeNodes;
 
             /**
-         * Check the availability of a resource name without creating the resource.
-         * This is needed for resources where name is globally unique, such as a CDN
-         * endpoint.
+         * Check the availability of a resource name. This is needed for resources
+         * where name is globally unique, such as a CDN endpoint.
          *
          * @param {string} name The resource name to validate.
          * 
@@ -81,6 +81,21 @@ declare class CdnManagementClient {
         checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
 
         /**
+         * Check the quota and actual usage of the CDN profiles under the given
+         * subscription.
+         *
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        checkResourceUsage(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+        checkResourceUsage(callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
+        /**
          * Lists all of the available CDN REST API operations.
          *
          * @param {object} [options] Optional Parameters.
@@ -93,6 +108,24 @@ declare class CdnManagementClient {
          */
         listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
         listOperations(callback: ServiceCallback<models.OperationListResult>): void;
+
+        /**
+         * Check the quota and actual usage of the CDN profiles under the given
+         * subscription.
+         *
+         * @param {string} nextPageLink The NextLink from the previous successful call
+         * to List operation.
+         * 
+         * @param {object} [options] Optional Parameters.
+         * 
+         * @param {object} [options.customHeaders] Headers that will be added to the
+         * request
+         * 
+         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+         * doc in ms-rest index.d.ts for details
+         */
+        checkResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+        checkResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 
         /**
          * Lists all of the available CDN REST API operations.

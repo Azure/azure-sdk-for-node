@@ -46,7 +46,8 @@ export interface Resource extends BaseResource {
  * addition to creating shared configuration settings and selecting pricing
  * tiers and providers.
  *
- * @member {object} sku The SKU (pricing tier) of the CDN profile.
+ * @member {object} sku The pricing tier (defines a CDN provider, feature list
+ * and rate) of the CDN profile.
  * 
  * @member {string} [sku.name] Name of the pricing tier. Possible values
  * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
@@ -68,7 +69,8 @@ export interface Profile extends Resource {
  * @class
  * Initializes a new instance of the Sku class.
  * @constructor
- * The SKU (pricing tier) of the CDN profile.
+ * The pricing tier (defines a CDN provider, feature list and rate) of the CDN
+ * profile.
  *
  * @member {string} [name] Name of the pricing tier. Possible values include:
  * 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
@@ -83,7 +85,7 @@ export interface Sku {
  * @class
  * Initializes a new instance of the ProfileUpdateParameters class.
  * @constructor
- * Profile properties required for profile update.
+ * Properties required to update a profile.
  *
  * @member {object} tags Profile tags
  * 
@@ -96,9 +98,9 @@ export interface ProfileUpdateParameters extends BaseResource {
  * @class
  * Initializes a new instance of the SsoUri class.
  * @constructor
- * SSO URI required to login to third party web portal.
+ * SSO URI required to login to the supplemental portal.
  *
- * @member {string} [ssoUriValue] The URI used to login to third party web
+ * @member {string} [ssoUriValue] The URI used to login to the supplemental
  * portal.
  * 
  */
@@ -111,25 +113,25 @@ export interface SsoUri {
  * Initializes a new instance of the Endpoint class.
  * @constructor
  * CDN endpoint is the entity within a CDN profile containing configuration
- * information regarding caching behaviors and origins. The CDN endpoint is
- * exposed using the URL format <endpointname>.azureedge.net by default, but
- * custom domains can also be created.
+ * information such as origin, protocol, content caching and delivery
+ * behavior. The CDN endpoint uses the URL format
+ * <endpointname>.azureedge.net.
  *
- * @member {string} [originHostHeader] The host header the CDN provider will
- * send along with content requests to origins. The default value is the host
- * name of the origin.
+ * @member {string} [originHostHeader] The host header CDN sends along with
+ * content requests to origin. The default value is the host name of the
+ * origin.
  * 
- * @member {string} [originPath] The path used for origin requests.
+ * @member {string} [originPath] The path used when CDN sends request to
+ * origin.
  * 
  * @member {array} [contentTypesToCompress] List of content types on which
- * compression will be applied. The value for the elements should be a valid
- * MIME type.
+ * compression applies. The value should be a valid MIME type.
  * 
  * @member {boolean} [isCompressionEnabled] Indicates whether content
- * compression is enabled. The default value is false. If compression is
- * enabled, the content transferred from the CDN endpoint to the end user
- * will be compressed. The requested content must be larger than 1 byte and
- * smaller than 1 MB.
+ * compression is enabled on CDN. Default value is false. If compression is
+ * enabled, content will be served as compressed if user requests for a
+ * compressed version. Content won't be compressed on CDN when requested
+ * content is smaller than 1 byte or larger than 1 MB.
  * 
  * @member {boolean} [isHttpAllowed] Indicates whether HTTP traffic is allowed
  * on the endpoint. Default value is true. At least one protocol (HTTP or
@@ -144,17 +146,17 @@ export interface SsoUri {
  * 'BypassCaching', 'UseQueryString', 'NotSet'
  * 
  * @member {string} [optimizationType] Customer can specify what scenario they
- * want this CDN endpoint to optimize. (e.g. Download, Media services, and
- * etc.) With this information we can apply scenario driven optimization.
+ * want this CDN endpoint to optimize, e.g. Download, Media services. With
+ * this information we can apply scenario driven optimization.
  * 
- * @member {array} [geoFilters] The list of geo filters for the CDN endpoint.
+ * @member {array} [geoFilters] List of rules defining user geo access within
+ * a CDN endpoint. Each geo filter defines an acess rule to a specified path
+ * or content, e.g. block APAC for path /pictures/
  * 
- * @member {string} [hostName] The host name of the endpoint
- * {endpointName}.{DNSZone}
+ * @member {string} [hostName] The host name of the endpoint structured as
+ * {endpointName}.{DNSZone}, e.g. consoto.azureedge.net
  * 
- * @member {array} origins The set of origins for the CDN endpoint. When
- * multiple origins exist, the first origin will be used as primary and rest
- * will be used as failover options.
+ * @member {array} origins The source of the content being delivered via CDN.
  * 
  * @member {string} [resourceState] Resource status of the endpoint. Possible
  * values include: 'Creating', 'Deleting', 'Running', 'Starting', 'Stopped',
@@ -183,12 +185,12 @@ export interface Endpoint extends Resource {
  * @class
  * Initializes a new instance of the DeepCreatedOrigin class.
  * @constructor
- * Origins to be added when creating a CDN endpoint.
+ * Origin to be added when creating a CDN endpoint.
  *
  * @member {string} name Origin name
  * 
- * @member {string} hostName The address of the origin. Domain names, IPv4
- * addresses, and IPv6 addresses are supported.
+ * @member {string} hostName The address of the origin. It can be a domain
+ * names, IPv4 address, or IPv6 address.
  * 
  * @member {number} [httpPort] The value of the HTTP port. Must be between 1
  * and 65535
@@ -208,25 +210,25 @@ export interface DeepCreatedOrigin extends BaseResource {
  * @class
  * Initializes a new instance of the EndpointUpdateParameters class.
  * @constructor
- * Endpoint properties required for new endpoint creation.
+ * Properties required to create a new endpoint.
  *
  * @member {object} [tags] Endpoint tags.
  * 
- * @member {string} [originHostHeader] The host header the CDN provider will
- * send along with content requests to origins. The default value is the host
- * name of the origin.
+ * @member {string} [originHostHeader] The host header CDN sends along with
+ * content requests to origin. The default value is the host name of the
+ * origin.
  * 
- * @member {string} [originPath] The path used for origin requests.
+ * @member {string} [originPath] The path used when CDN sends request to
+ * origin.
  * 
  * @member {array} [contentTypesToCompress] List of content types on which
- * compression will be applied. The value for the elements should be a valid
- * MIME type.
+ * compression applies. The value should be a valid MIME type.
  * 
  * @member {boolean} [isCompressionEnabled] Indicates whether content
- * compression is enabled. The default value is false. If compression is
- * enabled, the content transferred from the CDN endpoint to the end user
- * will be compressed. The requested content must be larger than 1 byte and
- * smaller than 1 MB.
+ * compression is enabled on CDN. Default value is false. If compression is
+ * enabled, content will be served as compressed if user requests for a
+ * compressed version. Content won't be compressed on CDN when requested
+ * content is smaller than 1 byte or larger than 1 MB.
  * 
  * @member {boolean} [isHttpAllowed] Indicates whether HTTP traffic is allowed
  * on the endpoint. Default value is true. At least one protocol (HTTP or
@@ -241,10 +243,12 @@ export interface DeepCreatedOrigin extends BaseResource {
  * 'BypassCaching', 'UseQueryString', 'NotSet'
  * 
  * @member {string} [optimizationType] Customer can specify what scenario they
- * want this CDN endpoint to optimize. (e.g. Download, Media services, and
- * etc.) With this information we can apply scenario driven optimization.
+ * want this CDN endpoint to optimize, e.g. Download, Media services. With
+ * this information we can apply scenario driven optimization.
  * 
- * @member {array} [geoFilters] The list of geo filters for the CDN endpoint.
+ * @member {array} [geoFilters] List of rules defining user geo access within
+ * a CDN endpoint. Each geo filter defines an acess rule to a specified path
+ * or content, e.g. block APAC for path /pictures/
  * 
  */
 export interface EndpointUpdateParameters extends BaseResource {
@@ -264,16 +268,16 @@ export interface EndpointUpdateParameters extends BaseResource {
  * @class
  * Initializes a new instance of the GeoFilter class.
  * @constructor
- * Geo filter of a CDN endpoint.
+ * Rules defining user geo access within a CDN endpoint.
  *
  * @member {string} relativePath Relative path applicable to geo filter. (e.g.
  * '/mypictures', '/mypicture/kitty.jpg', and etc.)
  * 
- * @member {string} action Action of the geo filter. Possible values include:
- * 'Block', 'Allow'
+ * @member {string} action Action of the geo filter, i.e. allow or block
+ * access. Possible values include: 'Block', 'Allow'
  * 
- * @member {array} countryCodes Two letter country codes of the geo filter.
- * (e.g. AU, MX, and etc.)
+ * @member {array} countryCodes Two letter country codes defining user country
+ * access in a geo filter, e.g. AU, MX, US.
  * 
  */
 export interface GeoFilter {
@@ -286,7 +290,7 @@ export interface GeoFilter {
  * @class
  * Initializes a new instance of the PurgeParameters class.
  * @constructor
- * Parameters required for endpoint purge.
+ * Parameters required for content purge.
  *
  * @member {array} contentPaths The path to the content to be purged. Can
  * describe a file path or a wild card directory.
@@ -300,10 +304,10 @@ export interface PurgeParameters {
  * @class
  * Initializes a new instance of the LoadParameters class.
  * @constructor
- * Parameters required for endpoint load.
+ * Parameters required for content load.
  *
- * @member {array} contentPaths The path to the content to be loaded. Should
- * describe a file path.
+ * @member {array} contentPaths The path to the content to be loaded. Path
+ * should be a relative file URL of the origin.
  * 
  */
 export interface LoadParameters {
@@ -368,9 +372,7 @@ export interface OriginUpdateParameters extends BaseResource {
  * @class
  * Initializes a new instance of the CustomDomain class.
  * @constructor
- * CDN CustomDomain represents a mapping between a user-specified domain name
- * and a CDN endpoint. This is to use custom domain names to represent the
- * URLs for branding purposes.
+ * Customer provided domain for branding purposes, e.g. www.consoto.com.
  *
  * @member {string} hostName The host name of the custom domain. Must be a
  * domain name.
@@ -380,8 +382,8 @@ export interface OriginUpdateParameters extends BaseResource {
  * 
  * @member {string} [validationData] Special validation or data may be
  * required when delivering CDN to some regions due to local compliance
- * reasons. (e.g. ICP license number of a custom domain is required to
- * deliver content in China.)
+ * reasons. E.g. ICP license number of a custom domain is required to deliver
+ * content in China.
  * 
  * @member {string} [provisioningState] Provisioning status of the custom
  * domain.
@@ -412,7 +414,7 @@ export interface CustomDomainParameters {
  * @class
  * Initializes a new instance of the ValidateCustomDomainInput class.
  * @constructor
- * Input of the custom domain to be validated.
+ * Input of the custom domain to be validated for DNS mapping.
  *
  * @member {string} hostName The host name of the custom domain. Must be a
  * domain name.
@@ -433,8 +435,8 @@ export interface ValidateCustomDomainInput {
  * 
  * @member {string} [reason] The reason why the custom domain is not valid.
  * 
- * @member {string} [message] The message describing why the custom domain is
- * not valid.
+ * @member {string} [message] Error message describing why the custom domain
+ * is not valid.
  * 
  */
 export interface ValidateCustomDomainOutput {
@@ -474,6 +476,28 @@ export interface CheckNameAvailabilityOutput {
   nameAvailable?: boolean;
   reason?: string;
   message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceUsage class.
+ * @constructor
+ * Output of check resource usage API.
+ *
+ * @member {string} [resourceType] Resource type of the usages.
+ * 
+ * @member {string} [unit] Unit of the usage. e.g. Count.
+ * 
+ * @member {number} [currentValue] Actual value of the resource type.
+ * 
+ * @member {number} [limit] Quota of the resource type.
+ * 
+ */
+export interface ResourceUsage {
+  resourceType?: string;
+  unit?: string;
+  currentValue?: number;
+  limit?: number;
 }
 
 /**
@@ -522,6 +546,76 @@ export interface OperationDisplay {
 
 /**
  * @class
+ * Initializes a new instance of the EdgenodeResult class.
+ * @constructor
+ * Result of the request to list CDN edgenodes. It contains a list of ip
+ * address group and a URL link to get the next set of results.
+ *
+ * @member {object} [value] Edge node of CDN service.
+ * 
+ */
+export interface EdgenodeResult {
+  value?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EdgeNode class.
+ * @constructor
+ * Edge node of CDN service.
+ *
+ * @member {string} [name] Ip adress group that contains Ipv4 and Ipv6
+ * addresses
+ * 
+ * @member {string} [resourceGroup] The resource group of the edge node.
+ * 
+ * @member {array} [ipAddressGroups] List of ip address groups.
+ * 
+ */
+export interface EdgeNode {
+  name?: string;
+  resourceGroup?: string;
+  ipAddressGroups?: IpAddressGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IpAddressGroup class.
+ * @constructor
+ * CDN Ip address group
+ *
+ * @member {string} [deliveryRegion] The delivery region of the ip address
+ * group
+ * 
+ * @member {array} [ipv4Addresses] The list of ip v4 addresses.
+ * 
+ * @member {array} [ipv6Addresses] The list of ip v6 addresses.
+ * 
+ */
+export interface IpAddressGroup {
+  deliveryRegion?: string;
+  ipv4Addresses?: CidrIpAddress[];
+  ipv6Addresses?: CidrIpAddress[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CidrIpAddress class.
+ * @constructor
+ * CIDR Ip address
+ *
+ * @member {string} [baseIpAddress] Ip adress itself.
+ * 
+ * @member {string} [prefixLength] The length of the prefix of the ip address.
+ * 
+ */
+export interface CidrIpAddress {
+  baseIpAddress?: string;
+  prefixLength?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
  * Error reponse indicates CDN service is not able to process the incoming
@@ -551,6 +645,20 @@ export interface ErrorResponse {
  * 
  */
 export interface ProfileListResult extends Array<Profile> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceUsageListResult class.
+ * @constructor
+ * Output of check resource usage API.
+ *
+ * @member {string} [nextLink] URL to get the next set of custom domain
+ * objects if there are any.
+ * 
+ */
+export interface ResourceUsageListResult extends Array<ResourceUsage> {
   nextLink?: string;
 }
 
