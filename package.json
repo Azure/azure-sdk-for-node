@@ -68,7 +68,7 @@
     "azure-arm-resource": "1.5.1-preview",
     "azure-arm-sb": "0.1.0",
     "azure-arm-servermanagement": "0.1.4",
-    "azure-arm-storage": "0.14.0-preview",
+    "azure-arm-storage": "0.13.4-preview",
     "azure-arm-trafficmanager": "0.11.0",
     "azure-arm-website": "0.11.2",
     "azure-arm-datalake-analytics": "0.4.3",
