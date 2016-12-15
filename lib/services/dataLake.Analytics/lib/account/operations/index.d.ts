@@ -615,6 +615,12 @@ export interface Account {
      * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
      * accounts associated with this account.
      *
+     * @param {string} [parameters.newTier] the billing tier to use for next month.
+     * Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -655,6 +661,12 @@ export interface Account {
      *
      * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
      * running under the account at the same time.
+     *
+     * @param {string} [options.parameters.newTier] the billing tier to use for
+     * next month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -718,6 +730,12 @@ export interface Account {
      * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
      * accounts associated with this account.
      *
+     * @param {string} [parameters.newTier] the billing tier to use for next month.
+     * Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -758,6 +776,12 @@ export interface Account {
      *
      * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
      * running under the account at the same time.
+     *
+     * @param {string} [options.parameters.newTier] the billing tier to use for
+     * next month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
