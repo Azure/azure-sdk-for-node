@@ -165,7 +165,7 @@ var mappings = {
     'dir': 'storageManagement2/lib',
     'source': 'arm-storage/2016-05-01/swagger/storage.json',
     'ft': 2,
-    'ClientName': 'SotrageManagementClient'
+    'ClientName': 'StorageManagementClient'
   },
   'traffic':{
     'dir': 'trafficManagerManagement2/lib',
