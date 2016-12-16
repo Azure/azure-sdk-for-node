@@ -3,9 +3,10 @@
   "author": "Microsoft Corporation",
   "contributors": [
     "Wang, Yugang <yugangw@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>"
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Stempniewicz, Lukasz <lukaszs@microsoft.com>"
   ],
-  "version": "0.11.2",
+  "version": "0.11.5",
   "description": "Microsoft Azure WebSite Management Client Library for node",
   "tags": [
     "azure",

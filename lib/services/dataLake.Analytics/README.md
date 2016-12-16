@@ -12,8 +12,9 @@ Right now it supports:
 ## Features
 
 - Account management: create, get, list, update, and delete.
+- Account storage management: add, get, list update and delete Data Lake Store accounts and Azure Storage accounts from an existing Data Lake analytics account.
 - Job management: submit, get, list, cancel.
-- Catalog management: get, list, create (secrets), update (secrets), delete (secrets).
+- Catalog management: get, list, create (secrets and credentials), update (secrets and credentials), delete (secrets and credentials).
 
 ## How to Install
 
@@ -61,16 +62,13 @@ var accountToCreate = {
     testtag1: 'testvalue1',
     testtag2: 'testvalue2'
   },
-  name: accountName,
   location: location,
-  properties: {
-    defaultDataLakeStoreAccount: datalakeStoreAccountName,
-    dataLakeStoreAccounts: [
-      {
-        name: datalakeStoreAccountName
-      }
-    ]
-  }
+  defaultDataLakeStoreAccount: datalakeStoreAccountName,
+  dataLakeStoreAccounts: [
+    {
+      name: datalakeStoreAccountName
+    }
+  ]
 };
 
 client.account.create(resourceGroupName, accountName, accountToCreate, function (err, result, request, response) {

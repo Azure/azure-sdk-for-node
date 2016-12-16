@@ -7,6 +7,10 @@ var path = require('path');
 var exec = require('child_process').exec;
 
 var mappings = {
+  'analysisservices': {
+    'dir': 'analysisServices/lib',
+    'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json', 
+  },
   'authorization': {
     'dir': 'authorizationManagement/lib',
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 
@@ -24,7 +28,7 @@ var mappings = {
   },
   'cdn': {
     'dir': 'cdnManagement/lib',
-    'source': 'arm-cdn/2016-04-02/swagger/cdn.json',
+    'source': 'arm-cdn/2016-10-02/swagger/cdn.json',
     'ft': 2
   },
   'compute': {
@@ -75,6 +79,18 @@ var mappings = {
     'dir': 'intune/lib',
     'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
   },
+  'insights': {
+    'dir': 'insights/lib',
+    'source': 'insights/compositeInsightsClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
+  'insights.management': {
+    'dir': 'insightsManagement/lib',
+    'source': 'arm-insights/compositeInsightsManagementClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
   'iothub': {
     'dir': 'iothub/lib',
     'source': 'arm-iothub/2016-02-03/swagger/iothub.json',
@@ -92,7 +108,7 @@ var mappings = {
   },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2016-06-01/swagger/network.json',
+    'source': 'arm-network/2016-09-01/swagger/network.json',
     'ft': 1
   },
   'notificationHubs':{
@@ -110,7 +126,7 @@ var mappings = {
   },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2016-07-01/swagger/resources.json'
+    'source': 'arm-resources/resources/2016-09-01/swagger/resources.json'
   },
   'resource.subscription': {
     'dir': 'resourceManagement/lib/subscription',
@@ -119,6 +135,10 @@ var mappings = {
   'resource.lock': {
     'dir': 'resourceManagement/lib/lock',
     'source': 'arm-resources/locks/2015-01-01/swagger/locks.json'
+  },
+  'resource.link': {
+    'dir': 'resourceManagement/lib/link',
+    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
   },
   'resource.feature': {
     'dir': 'resourceManagement/lib/feature',
@@ -158,7 +178,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20160831';
+var defaultAutoRestVersion = '0.17.0-Nightly20161019';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

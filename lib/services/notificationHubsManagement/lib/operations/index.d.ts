@@ -27,12 +27,27 @@ export interface Namespaces {
      *
      * @param {object} parameters The namespace name.
      * 
-     * @param {boolean} [parameters.isAvailiable] True if the name is available
-     * and can be used to create new Namespace/NotificationHub. Otherwise false.
+     * @param {string} parameters.name Resource name
      * 
      * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [parameters.sku] The sku of the created namespace
+     * 
+     * @param {string} parameters.sku.name Name of the notification hub sku.
+     * Possible values include: 'Free', 'Basic', 'Standard'
+     * 
+     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * 
+     * @param {string} [parameters.sku.size] The Sku size
+     * 
+     * @param {string} [parameters.sku.family] The Sku Family
+     * 
+     * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * 
+     * @param {boolean} [parameters.isAvailiable] True if the name is available
+     * and can be used to create new Namespace/NotificationHub. Otherwise false.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -95,6 +110,19 @@ export interface Namespaces {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
+     * @param {object} [parameters.sku] The sku of the created namespace
+     * 
+     * @param {string} parameters.sku.name Name of the notification hub sku.
+     * Possible values include: 'Free', 'Basic', 'Standard'
+     * 
+     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * 
+     * @param {string} [parameters.sku.size] The Sku size
+     * 
+     * @param {string} [parameters.sku.family] The Sku Family
+     * 
+     * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -105,6 +133,42 @@ export interface Namespaces {
      */
     createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
     createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, callback: ServiceCallback<models.NamespaceResource>): void;
+
+    /**
+     * Patches the existing namespace
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {object} parameters Parameters supplied to patch a Namespace
+     * Resource.
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [parameters.sku] The sku of the created namespace
+     * 
+     * @param {string} parameters.sku.name Name of the notification hub sku.
+     * Possible values include: 'Free', 'Basic', 'Standard'
+     * 
+     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * 
+     * @param {string} [parameters.sku.size] The Sku size
+     * 
+     * @param {string} [parameters.sku.family] The Sku Family
+     * 
+     * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    patch(resourceGroupName: string, namespaceName: string, parameters: models.NamespacePatchParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
+    patch(resourceGroupName: string, namespaceName: string, parameters: models.NamespacePatchParameters, callback: ServiceCallback<models.NamespaceResource>): void;
 
     /**
      * Deletes an existing namespace. This operation also removes all associated
@@ -182,6 +246,19 @@ export interface Namespaces {
      * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [parameters.sku] The sku of the created namespace
+     * 
+     * @param {string} parameters.sku.name Name of the notification hub sku.
+     * Possible values include: 'Free', 'Basic', 'Standard'
+     * 
+     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * 
+     * @param {string} [parameters.sku.size] The Sku size
+     * 
+     * @param {string} [parameters.sku.family] The Sku Family
+     * 
+     * @param {number} [parameters.sku.capacity] The capacity of the resource
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -404,12 +481,27 @@ export interface NotificationHubs {
      * 
      * @param {object} parameters The notificationHub name.
      * 
-     * @param {boolean} [parameters.isAvailiable] True if the name is available
-     * and can be used to create new Namespace/NotificationHub. Otherwise false.
+     * @param {string} parameters.name Resource name
      * 
      * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [parameters.sku] The sku of the created namespace
+     * 
+     * @param {string} parameters.sku.name Name of the notification hub sku.
+     * Possible values include: 'Free', 'Basic', 'Standard'
+     * 
+     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * 
+     * @param {string} [parameters.sku.size] The Sku size
+     * 
+     * @param {string} [parameters.sku.family] The Sku Family
+     * 
+     * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * 
+     * @param {boolean} [parameters.isAvailiable] True if the name is available
+     * and can be used to create new Namespace/NotificationHub. Otherwise false.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -512,6 +604,19 @@ export interface NotificationHubs {
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
+     * @param {object} [parameters.sku] The sku of the created namespace
+     * 
+     * @param {string} parameters.sku.name Name of the notification hub sku.
+     * Possible values include: 'Free', 'Basic', 'Standard'
+     * 
+     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * 
+     * @param {string} [parameters.sku.size] The Sku size
+     * 
+     * @param {string} [parameters.sku.family] The Sku Family
+     * 
+     * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -585,6 +690,19 @@ export interface NotificationHubs {
      * @param {string} parameters.location Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [parameters.sku] The sku of the created namespace
+     * 
+     * @param {string} parameters.sku.name Name of the notification hub sku.
+     * Possible values include: 'Free', 'Basic', 'Standard'
+     * 
+     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * 
+     * @param {string} [parameters.sku.size] The Sku size
+     * 
+     * @param {string} [parameters.sku.family] The Sku Family
+     * 
+     * @param {number} [parameters.sku.capacity] The capacity of the resource
      * 
      * @param {object} [options] Optional Parameters.
      * 

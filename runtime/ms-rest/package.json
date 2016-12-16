@@ -3,9 +3,9 @@
   "author": {
     "name": "Microsoft Corporation",
     "email": "azsdkteam@microsoft.com",
-    "url": "https://github.com/Azure/AutoRest"
+    "url": "https://github.com/Azure/azure-sdk-for-node"
   },
-  "version": "1.14.2",
+  "version": "1.15.2",
   "description": "Client Runtime for Node.js client libraries generated using AutoRest",
   "tags": ["node", "microsoft", "autorest", "clientruntime"],
   "keywords": ["node", "microsoft", "autorest", "clientruntime"],
@@ -13,12 +13,11 @@
   "typings": "./lib/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "underscore": "^1.4.0",
     "tunnel": "~0.0.2",
-    "request": "2.69.0",
+    "request": "~2.74.0",
     "duplexer": "~0.1.1",
     "through": "~2.3.4",
-    "moment": "^2.9.0"
+    "moment": "^2.14.1"
   },
   "devDependencies": {
     "jshint": "2.6.3",
@@ -27,13 +26,13 @@
     "should": "5.2.0",
     "node-uuid": "*"
   },
-  "homepage": "https://github.com/Azure/AutoRest",
+  "homepage": "https://github.com/Azure/azure-sdk-for-node/runtime/ms-rest",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/AutoRest.git"
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/AutoRest/issues"
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
     "test": "npm install && npm -s run-script jshint && npm -s run-script unit",

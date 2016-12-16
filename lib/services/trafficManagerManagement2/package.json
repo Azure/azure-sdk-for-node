@@ -9,10 +9,10 @@
     "Janczuk, Tomasz <tjanczuk@microsoft.com>",
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>",
-	"Guerra, Alberto <alguerra@microsoft.com>"
+    "Guerra, Alberto <alguerra@microsoft.com>"
   ],
-  "version": "0.10.7",
-  "description": "Microsoft Azure Traffic Manager Management Client Library for node",
+  "version": "0.11.0",
+  "description": "Microsoft Azure ARM Traffic Manager Management Client Library for node",
   "tags": [
     "azure",
     "sdk"
@@ -21,10 +21,11 @@
     "node",
     "azure"
   ],
-  "main": "./lib/trafficManager.js",
+  "main": "./lib/trafficManagerManagementClient.js",
   "license": "MIT",
   "dependencies": {
-    "azure-common": "^0.9.13"
+    "ms-rest-azure": "^1.15.0",
+    "ms-rest": "^1.15.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

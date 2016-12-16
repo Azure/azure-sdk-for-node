@@ -4,7 +4,7 @@
   "contributors": [
     "Borkar, Smitha <smithab@microsoft.com>"
   ],
-  "version": "0.2.2-preview",
+  "version": "0.2.3-preview",
   "description": "Microsoft Azure Notification Hubs Resource Provider Management Client Library for Node",
   "tags": [
     "azure",

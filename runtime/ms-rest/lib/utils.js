@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
-var _ = require('underscore');
 var Constants = require('./constants');
 
 /**
@@ -21,7 +20,7 @@ exports.urlIsHTTPS = function (urlToCheck) {
 * @return {bool} True if the value is null or undefined, false otherwise.
 */
 exports.objectIsNull = function (value) {
-  return _.isNull(value) || _.isUndefined(value);
+  return value === null || value === undefined;
 };
 
 /**
@@ -91,6 +90,29 @@ exports.stripRequest = function (request) {
 exports.isValidUuid = function(uuid) {
   var validUuidRegex = new RegExp('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$', 'ig');
   return validUuidRegex.test(uuid);
+};
+
+/**
+ * Provides an array of values of an object. For example 
+ * for a given object { 'a': 'foo', 'b': 'bar' }, the method returns ['foo', 'bar'].
+ * 
+ * @param {object} obj - An object whose properties need to be enumerated so that it's values can be provided as an array
+ * 
+ * @return {array} result - An array of values of the given object.
+ */
+exports.objectValues = function (obj) {
+  var result = [];
+  if (obj && obj instanceof Object) {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        result.push(obj[key]);
+      }
+    }
+  } else {
+    throw new Error(util.format('The provided object "%s" is not a valid object that can be ' + 
+      'enumerated to provide its values as an array.', util.inspect(obj, {depth: null})));
+  }
+  return result;
 };
 
 exports = module.exports;

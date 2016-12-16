@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Account
+ * BatchAccountOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchManagementClient.
  */
-export interface Account {
+export interface BatchAccountOperations {
 
     /**
      * Creates a new Batch account with the specified parameters. Existing
@@ -37,8 +37,8 @@ export interface Account {
      * 
      * @param {object} parameters Additional parameters for account creation.
      * 
-     * @param {string} [parameters.location] The region in which the account is
-     * created.
+     * @param {string} parameters.location The region in which to create the
+     * account.
      * 
      * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
@@ -46,8 +46,8 @@ export interface Account {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} [parameters.autoStorage.storageAccountId] The resource id
-     * of the storage account to be used for auto storage account.
+     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -57,8 +57,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    create(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountResource>): void;
-    create(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, callback: ServiceCallback<models.AccountResource>): void;
+    create(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccount>): void;
+    create(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, callback: ServiceCallback<models.BatchAccount>): void;
 
     /**
      * Creates a new Batch account with the specified parameters. Existing
@@ -77,8 +77,8 @@ export interface Account {
      * 
      * @param {object} parameters Additional parameters for account creation.
      * 
-     * @param {string} [parameters.location] The region in which the account is
-     * created.
+     * @param {string} parameters.location The region in which to create the
+     * account.
      * 
      * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
@@ -86,8 +86,8 @@ export interface Account {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} [parameters.autoStorage.storageAccountId] The resource id
-     * of the storage account to be used for auto storage account.
+     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -97,8 +97,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountResource>): void;
-    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, callback: ServiceCallback<models.AccountResource>): void;
+    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccount>): void;
+    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, callback: ServiceCallback<models.BatchAccount>): void;
 
     /**
      * Updates the properties of an existing Batch account.
@@ -116,8 +116,8 @@ export interface Account {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} [parameters.autoStorage.storageAccountId] The resource id
-     * of the storage account to be used for auto storage account.
+     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -127,8 +127,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    update(resourceGroupName: string, accountName: string, parameters: models.BatchAccountUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountResource>): void;
-    update(resourceGroupName: string, accountName: string, parameters: models.BatchAccountUpdateParameters, callback: ServiceCallback<models.AccountResource>): void;
+    update(resourceGroupName: string, accountName: string, parameters: models.BatchAccountUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccount>): void;
+    update(resourceGroupName: string, accountName: string, parameters: models.BatchAccountUpdateParameters, callback: ServiceCallback<models.BatchAccount>): void;
 
     /**
      * Deletes the specified Batch account.
@@ -184,8 +184,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountResource>): void;
-    get(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.AccountResource>): void;
+    get(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccount>): void;
+    get(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.BatchAccount>): void;
 
     /**
      * Gets information about the Batch accounts associated with the subscription.
@@ -258,11 +258,11 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccountRegenerateKeyResult>): void;
-    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, callback: ServiceCallback<models.BatchAccountRegenerateKeyResult>): void;
+    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccountKeys>): void;
+    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, callback: ServiceCallback<models.BatchAccountKeys>): void;
 
     /**
-     * Lists the account keys for the specified Batch account.
+     * Gets the account keys for the specified Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
@@ -277,8 +277,8 @@ export interface Account {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listKeys(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccountListKeyResult>): void;
-    listKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.BatchAccountListKeyResult>): void;
+    getKeys(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccountKeys>): void;
+    getKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.BatchAccountKeys>): void;
 
     /**
      * Gets information about the Batch accounts associated with the subscription.
@@ -318,11 +318,11 @@ export interface Account {
 
 /**
  * @class
- * ApplicationOperations
+ * ApplicationPackageOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchManagementClient.
  */
-export interface ApplicationOperations {
+export interface ApplicationPackageOperations {
 
     /**
      * Activates the specified application package.
@@ -332,7 +332,7 @@ export interface ApplicationOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} id The id of the application.
+     * @param {string} applicationId The id of the application.
      * 
      * @param {string} version The version of the application to activate.
      * 
@@ -346,8 +346,86 @@ export interface ApplicationOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    activateApplicationPackage(resourceGroupName: string, accountName: string, id: string, version: string, format: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    activateApplicationPackage(resourceGroupName: string, accountName: string, id: string, version: string, format: string, callback: ServiceCallback<void>): void;
+    activate(resourceGroupName: string, accountName: string, applicationId: string, version: string, format: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    activate(resourceGroupName: string, accountName: string, applicationId: string, version: string, format: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Creates an application package record.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     * 
+     * @param {string} accountName The name of the Batch account.
+     * 
+     * @param {string} applicationId The id of the application.
+     * 
+     * @param {string} version The version of the application.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    create(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationPackage>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<models.ApplicationPackage>): void;
+
+    /**
+     * Deletes an application package record and its associated binary file.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     * 
+     * @param {string} accountName The name of the Batch account.
+     * 
+     * @param {string} applicationId The id of the application.
+     * 
+     * @param {string} version The version of the application to delete.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets information about the specified application package.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account.
+     * 
+     * @param {string} accountName The name of the Batch account.
+     * 
+     * @param {string} applicationId The id of the application.
+     * 
+     * @param {string} version The version of the application.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationPackage>): void;
+    get(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<models.ApplicationPackage>): void;
+}
+
+/**
+ * @class
+ * ApplicationOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchManagementClient.
+ */
+export interface ApplicationOperations {
 
     /**
      * Adds an application to the specified Batch account.
@@ -376,8 +454,8 @@ export interface ApplicationOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    addApplication(resourceGroupName: string, accountName: string, applicationId: string, options: { parameters? : models.AddApplicationParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
-    addApplication(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<models.Application>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, options: { parameters? : models.AddApplicationParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<models.Application>): void;
 
     /**
      * Deletes an application.
@@ -397,8 +475,8 @@ export interface ApplicationOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteApplication(resourceGroupName: string, accountName: string, applicationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteApplication(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets information about the specified application.
@@ -418,8 +496,8 @@ export interface ApplicationOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getApplication(resourceGroupName: string, accountName: string, applicationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
-    getApplication(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<models.Application>): void;
+    get(resourceGroupName: string, accountName: string, applicationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    get(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<models.Application>): void;
 
     /**
      * Updates settings for the specified application.
@@ -451,77 +529,8 @@ export interface ApplicationOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateApplication(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    updateApplication(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, callback: ServiceCallback<void>): void;
-
-    /**
-     * Creates an application package record.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     * 
-     * @param {string} accountName The name of the Batch account.
-     * 
-     * @param {string} applicationId The id of the application.
-     * 
-     * @param {string} version The version of the application.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    addApplicationPackage(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AddApplicationPackageResult>): void;
-    addApplicationPackage(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<models.AddApplicationPackageResult>): void;
-
-    /**
-     * Deletes an application package record and its associated binary file.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     * 
-     * @param {string} accountName The name of the Batch account.
-     * 
-     * @param {string} applicationId The id of the application.
-     * 
-     * @param {string} version The version of the application to delete.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteApplicationPackage(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteApplicationPackage(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Gets information about the specified application package.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
-     * 
-     * @param {string} accountName The name of the Batch account.
-     * 
-     * @param {string} applicationId The id of the application.
-     * 
-     * @param {string} version The version of the application.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getApplicationPackage(resourceGroupName: string, accountName: string, applicationId: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GetApplicationPackageResult>): void;
-    getApplicationPackage(resourceGroupName: string, accountName: string, applicationId: string, version: string, callback: ServiceCallback<models.GetApplicationPackageResult>): void;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Lists all of the applications in the specified account.
@@ -565,14 +574,15 @@ export interface ApplicationOperations {
 
 /**
  * @class
- * Subscription
+ * Location
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchManagementClient.
  */
-export interface Subscription {
+export interface Location {
 
     /**
-     * Gets the Batch service quotas for the specified suscription.
+     * Gets the Batch service quotas for the specified subscription at the given
+     * location.
      *
      * @param {string} locationName The desired region for the quotas.
      * 
@@ -584,6 +594,6 @@ export interface Subscription {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getSubscriptionQuotas(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SubscriptionQuotasGetResult>): void;
-    getSubscriptionQuotas(locationName: string, callback: ServiceCallback<models.SubscriptionQuotasGetResult>): void;
+    getQuotas(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchLocationQuota>): void;
+    getQuotas(locationName: string, callback: ServiceCallback<models.BatchLocationQuota>): void;
 }

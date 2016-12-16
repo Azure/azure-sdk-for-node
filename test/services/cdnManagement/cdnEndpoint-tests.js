@@ -38,7 +38,12 @@ var client;
 var profileName;
 var groupName;
 var endpointName;
+var akamaiProfileName;
+var akamaiEndpointName;
 var standardCreateParameters;
+var akamaiProfileParameters;
+var akamaiEndpointProperties;
+var geoFilterUpdateProperties;
 var emptyEndpointProperties;
 var validEndpointProperties;
 var purgeContentPaths;
@@ -55,6 +60,9 @@ describe('Cdn Management Endpoint', function() {
       defaultLocation = process.env['AZURE_TEST_LOCATION'];
       profileName = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);
       endpointName = suite.generateId(endpointPrefix, createdEndpoints, suite.isMocked);
+      akamaiProfileName = suite.generateId(profilePrefix, createdProfiles, suite.isMocked);   
+      akamaiEndpointName = suite.generateId(endpointPrefix, createdEndpoints, suite.isMocked);
+
       standardCreateParameters = {
         location: 'West US',
         tags: {
@@ -65,6 +73,18 @@ describe('Cdn Management Endpoint', function() {
           name: 'Standard_Verizon'
         }
       };
+            
+      akamaiProfileParameters = {
+        location: 'West US',
+        tags: {
+            tag1: 'val1',
+            tag2: 'val2'
+        },
+        sku: {
+            name: 'Standard_Akamai'
+        }
+      };
+
       emptyEndpointProperties = {
 
       }
@@ -78,6 +98,40 @@ describe('Cdn Management Endpoint', function() {
           hostName: 'newname.azure.com'
         }]
       }
+            
+      akamaiEndpointProperties = {
+        location: 'West US',
+        tags: {
+            tag1: 'val1'
+        },
+        origins: [{
+          name: 'newakamainame',
+          hostName: 'newakamainame.azure.com'
+        }],
+        geoFilters : [
+          {
+            "relativePath": "/mypicture",
+            "action": "Block",
+            "countryCodes": [
+              "AT"
+            ]
+          }
+        ]
+      }
+            
+      geoFilterUpdateProperties =
+      {
+        geoFilters : [
+          {
+            "relativePath": "/mycar",
+            "action": "Allow",
+            "countryCodes": [
+              "DZ"
+            ]
+          }
+        ]
+      }
+
       purgeContentPaths = [
         '/movies/*',
         '/pictures/pic1.jpg'
@@ -116,9 +170,9 @@ describe('Cdn Management Endpoint', function() {
 
   describe('cdn endpoints', function() {
     it('should list endpoints and got none', function (done) {
-      client.profiles.create(profileName, standardCreateParameters, groupName, function (err, result, request, response) {
+      client.profiles.create(groupName, profileName, standardCreateParameters, function (err, result, request, response) {
         should.not.exist(err);    
-        client.endpoints.listByProfile(profileName, groupName, function(err, result, request, response) {
+        client.endpoints.listByProfile(groupName, profileName, function(err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           var endpoints = result;
@@ -129,7 +183,7 @@ describe('Cdn Management Endpoint', function() {
     });
 
     it('should fail endpoint creation once missing required missing properties', function(done) {
-      client.endpoints.create(endpointName, emptyEndpointProperties, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.create(groupName, profileName, endpointName, emptyEndpointProperties, function(err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
         done();
@@ -137,7 +191,7 @@ describe('Cdn Management Endpoint', function() {
     })
 
     it('should create endpoint correctly with correct properties', function(done) {
-      client.endpoints.create(endpointName, validEndpointProperties, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.create(groupName, profileName, endpointName, validEndpointProperties, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var endpoint = result;
@@ -151,7 +205,7 @@ describe('Cdn Management Endpoint', function() {
     })
 
     it('should list endpoints and got one', function(done) {
-      client.endpoints.listByProfile(profileName, groupName, function(err, result, request, response) {
+      client.endpoints.listByProfile(groupName, profileName, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var endpoints = result;
@@ -161,7 +215,7 @@ describe('Cdn Management Endpoint', function() {
     });
 
     it('should not update any property when empty payload is passed', function(done) {
-      client.endpoints.update(endpointName, emptyEndpointProperties, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.update(groupName, profileName, endpointName, emptyEndpointProperties, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var endpoint = result;
@@ -172,7 +226,7 @@ describe('Cdn Management Endpoint', function() {
         endpoint.origins[0].hostName.should.equal('newname.azure.com');
         done();
       });
-    })
+    });
 
     it('should update properties that are specified in payload when update but not origins', function(done) {
       var updateProperties = {
@@ -183,7 +237,7 @@ describe('Cdn Management Endpoint', function() {
         }
       }
 
-      client.endpoints.update(endpointName, updateProperties, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.update(groupName, profileName, endpointName, updateProperties, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var endpoint = result;
@@ -196,7 +250,7 @@ describe('Cdn Management Endpoint', function() {
     });
 
     it('should default to start', function(done) {
-      client.endpoints.get(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.get(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
         var endpoint = result;
         endpoint.resourceState.should.equal('Running');
@@ -205,51 +259,51 @@ describe('Cdn Management Endpoint', function() {
     });
 
     it('should purge content successfully with valid paths', function(done) {
-      client.endpoints.purgeContent(endpointName, profileName, groupName, purgeContentPaths, function(err, result, request, response) {
+      client.endpoints.purgeContent(groupName, profileName, endpointName, purgeContentPaths, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
     });
 
     it('should fail purge content with none existing endpoint', function(done) {
-      client.endpoints.purgeContent('someFakeEndpoint', profileName, groupName, purgeContentPaths, function(err, result, request, response) {
+      client.endpoints.purgeContent(groupName, profileName, 'someFakeEndpoint', purgeContentPaths, function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should fail purge content with invalid paths', function(done) {
-      client.endpoints.purgeContent(endpointName, profileName, groupName, ['invalidPath!'], function(err, result, request, response) {
+      client.endpoints.purgeContent(groupName, profileName, endpointName, ['invalidPath!'], function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should load content successfully with valid paths', function(done) {
-      client.endpoints.loadContent(endpointName, profileName, groupName, loadContentPaths, function(err, result, request, response) {
+      client.endpoints.loadContent(groupName, profileName, endpointName, loadContentPaths, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
     });
 
     it('should fail load content with none existing endpoint', function(done) {
-      client.endpoints.loadContent('someFakeEndpoint', profileName, groupName, loadContentPaths, function(err, result, request, response) {
+      client.endpoints.loadContent(groupName, profileName, 'someFakeEndpoint', loadContentPaths, function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should fail load content with with invalid paths', function(done) {
-      client.endpoints.loadContent(endpointName, profileName, groupName, ['/movies/*'], function(err, result, request, response) {
+      client.endpoints.loadContent(groupName, profileName, endpointName, ['/movies/*'], function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should stop', function(done) {
-      client.endpoints.stop(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.stop(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
-        client.endpoints.get(endpointName, profileName, groupName, function(err, result, request, response) {
+        client.endpoints.get(groupName, profileName, endpointName, function(err, result, request, response) {
           should.not.exist(err);
           var endpoint = result;
           endpoint.resourceState.should.equal('Stopped');
@@ -259,23 +313,23 @@ describe('Cdn Management Endpoint', function() {
     });
 
     it('should fail in purge when endpoint stopped', function(done) {
-      client.endpoints.purgeContent(endpointName, profileName, groupName, purgeContentPaths, function(err, result, request, response) {
+      client.endpoints.purgeContent(groupName, profileName, endpointName, purgeContentPaths, function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should fail in load when endpoint stopped', function(done) {
-      client.endpoints.loadContent(endpointName, profileName, groupName, loadContentPaths, function(err, result, request, response) {
+      client.endpoints.loadContent(groupName, profileName, endpointName, loadContentPaths, function(err, result, request, response) {
         should.exist(err);
         done();
       });
     });
 
     it('should start again', function(done) {
-      client.endpoints.start(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.start(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
-        client.endpoints.get(endpointName, profileName, groupName, function(err, result, request, response) {
+        client.endpoints.get(groupName, profileName, endpointName, function(err, result, request, response) {
           should.not.exist(err);
           var endpoint = result;
           endpoint.resourceState.should.equal('Running');
@@ -285,18 +339,53 @@ describe('Cdn Management Endpoint', function() {
     });
 
     it('should delete existing endpoints successfully', function(done) {
-      client.endpoints.deleteIfExists(endpointName, profileName, groupName, function(err, result, request, response) {
+      client.endpoints.deleteMethod(groupName, profileName, endpointName, function(err, result, request, response) {
         should.not.exist(err);
         done();
       });
     });
 
     it('should not list any endpoints under same profile', function(done) {
-      client.endpoints.listByProfile(profileName, groupName, function(err, result, request, response) {
+      client.endpoints.listByProfile(groupName, profileName, akamaiEndpointProperties, function(err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         var endpoints = result;
         endpoints.length.should.equal(0);
+        done();
+      });
+    });
+
+    it('should create akamai profile and endpoint with geo filters successfully', function(done) {
+      client.profiles.create(groupName, akamaiProfileName, akamaiProfileParameters, function(err, result, request, response) {
+        should.not.exist(err);
+        client.endpoints.create(groupName, akamaiProfileName, akamaiEndpointName, akamaiEndpointProperties, function(err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          var endpoint = result;
+          endpoint.name.should.equal(akamaiEndpointName);
+          endpoint.origins.length.should.equal(1);
+          endpoint.geoFilters.length.should.equal(1);
+          endpoint.geoFilters[0].relativePath.should.equal("/mypicture");
+          endpoint.geoFilters[0].action.should.equal("Block");
+          endpoint.geoFilters[0].countryCodes.length.should.equal(1);
+          endpoint.geoFilters[0].countryCodes[0].should.equal("AT");
+          done();
+        });
+      });
+    });
+
+    it('should update endpoint with geo filters successfully', function(done) {
+      client.endpoints.update(groupName, akamaiProfileName, akamaiEndpointName, geoFilterUpdateProperties, function(err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        var endpoint = result;
+        endpoint.name.should.equal(akamaiEndpointName);
+        endpoint.origins.length.should.equal(1);
+        endpoint.geoFilters.length.should.equal(1);
+        endpoint.geoFilters[0].relativePath.should.equal("/mycar");
+        endpoint.geoFilters[0].action.should.equal("Allow");
+        endpoint.geoFilters[0].countryCodes.length.should.equal(1);
+        endpoint.geoFilters[0].countryCodes[0].should.equal("DZ");
         done();
       });
     });

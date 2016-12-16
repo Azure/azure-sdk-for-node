@@ -17,7 +17,7 @@ declare class BatchManagementClient {
      * Initializes a new instance of the BatchManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
+     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
      * @param {string} subscriptionId - A unique identifier of a Microsoft Azure subscription. The subscription id forms part of the URI for every service call.
      *
@@ -56,9 +56,10 @@ declare class BatchManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
-    account: operations.Account;
+    batchAccountOperations: operations.BatchAccountOperations;
+    applicationPackageOperations: operations.ApplicationPackageOperations;
     applicationOperations: operations.ApplicationOperations;
-    subscription: operations.Subscription;
+    location: operations.Location;
     }
 
 export = BatchManagementClient;

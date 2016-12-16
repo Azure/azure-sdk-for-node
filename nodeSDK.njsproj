@@ -139,8 +139,6 @@
     <Compile Include="lib\services\cdnManagement\lib\operations\customDomains.js" />
     <Compile Include="lib\services\cdnManagement\lib\operations\endpoints.js" />
     <Compile Include="lib\services\cdnManagement\lib\operations\index.js" />
-    <Compile Include="lib\services\cdnManagement\lib\operations\nameAvailability.js" />
-    <Compile Include="lib\services\cdnManagement\lib\operations\operations.js" />
     <Compile Include="lib\services\cdnManagement\lib\operations\origins.js" />
     <Compile Include="lib\services\cdnManagement\lib\operations\profiles.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\dataLakeAnalyticsAccountManagementClient.js" />
@@ -1458,8 +1456,8 @@
     <Compile Include="test\services\batch\batchClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>
-    <Compile Include="test\services\cdnManagement\cdnCheckNameAvailability-tests.js">
-      <TestFramework>Mocha</TestFramework>
+	<Compile Include="test\services\cdnManagement\cdnCheckNameAvailability-tests.js">
+	  <TestFramework>Mocha</TestFramework>
     </Compile>
     <Compile Include="test\services\cdnManagement\cdnCustomDomain-tests.js">
       <TestFramework>Mocha</TestFramework>

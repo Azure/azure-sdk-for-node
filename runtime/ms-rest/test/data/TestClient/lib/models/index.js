@@ -19,3 +19,18 @@ exports.Invoice = require('./invoice');
 exports.SubProduct = require('./subProduct');
 exports.ProductListResult = require('./productListResult');
 exports.ProductListResultNextLink = require('./productListResultNextLink');
+exports.Pet = require('./pet');
+exports.Cat = require('./cat');
+exports.Dog = require('./dog');
+exports.Fish = require('./fish');
+exports.Shark = require('./shark');
+exports.Sawshark = require('./sawshark');
+exports.PetGallery = require('./petgallery');
+exports.discriminators = {
+  'Fish' : exports.Fish,
+  'Fish.shark' : exports.Shark,
+  'Fish.sawshark' : exports.Sawshark,
+  'Pet' : exports.Pet,
+  'Pet.Cat' : exports.Cat,
+  'Pet.Dog' : exports.Dog
+};

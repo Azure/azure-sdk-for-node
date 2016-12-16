@@ -4,7 +4,7 @@
   "contributors": [
     "Wu, Xing <xingwu@microsoft.com>"
   ],
-  "version": "0.5.1",
+  "version": "0.5.3",
   "description": "Microsoft Azure Batch Service Client Library for node",
   "tags": [
     "azure",

@@ -335,7 +335,11 @@ describe('Batch Service', function () {
 
     it('should enable autoscale successfully', function (done) {
       var options = { autoScaleFormula: '$TargetDedicated=2', autoScaleEvaluationInterval: moment.duration({ minutes: 6 }) };
-      client.pool.enableAutoScale('nodesdktestpool1', options, function (err, result, request, response) {
+
+      var requestModelMapper = new client.models['PoolEnableAutoScaleParameter']().mapper();
+      var model = client.deserialize(requestModelMapper, options, 'poolEnableAutoScaleParameter');
+      
+      client.pool.enableAutoScale('nodesdktestpool1', model, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -608,6 +612,15 @@ describe('Batch Service', function () {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);
+        done();
+      });
+    });
+
+    it('should reactivate a task successfully', function (done) {
+      client.task.reactivate('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask', function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(204);
         done();
       });
     });
@@ -905,7 +918,11 @@ describe('Batch Service', function () {
         id: 'NodeSDKTestSchedule', jobSpecification: { id: 'HelloWorldJobNodeSDKTest', poolInfo: { poolId: 'nodesdktestpool1' } },
         schedule: { doNotRunUntil: "2017-12-25T00:00:00.00", startWindow: moment.duration({ minutes: 6 }) }
       };
-      client.jobSchedule.add(options, function (err, result, request, response) {
+
+      var requestModelMapper = new client.models['JobScheduleAddParameter']().mapper();
+      var model = client.deserialize(requestModelMapper, options, 'jobScheduleAddParameter');
+      
+      client.jobSchedule.add(model, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(201);
@@ -957,7 +974,11 @@ describe('Batch Service', function () {
 
     it('should update a job schedule successfully', function (done) {
       var options = { schedule: { recurrenceInterval: moment.duration({ hours: 6 }) }, jobSpecification: { poolInfo: { poolId: 'nodesdktestpool2' }}};
-      client.jobSchedule.update('NodeSDKTestSchedule', options, function (err, result, request, response) {
+
+      var requestModelMapper = new client.models['JobScheduleUpdateParameter']().mapper();
+      var model = client.deserialize(requestModelMapper, options, 'jobScheduleUpdateParameter');
+      
+      client.jobSchedule.update('NodeSDKTestSchedule', model, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -969,7 +990,11 @@ describe('Batch Service', function () {
       var options = {
         schedule: { recurrenceInterval: moment.duration({ hours: 3 }), startWindow: moment.duration({ hours: 1 }) }
       };
-      client.jobSchedule.patch('NodeSDKTestSchedule', options, function (err, result, request, response) {
+
+      var requestModelMapper = new client.models['JobSchedulePatchParameter']().mapper();
+      var model = client.deserialize(requestModelMapper, options, 'jobSchedulePatchParameter');
+      
+      client.jobSchedule.patch('NodeSDKTestSchedule', model, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);

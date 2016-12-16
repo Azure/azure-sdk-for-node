@@ -21,12 +21,24 @@ import * as models from '../models';
 export interface Deployments {
 
     /**
-     * Delete deployment.
+     * @summary Deletes a deployment from the deployment history.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * A template deployment that is currently running cannot be deleted. Deleting
+     * a template deployment removes the associated deployment operations.
+     * Deleting a template deployment does not affect the state of the resource
+     * group. This is an asynchronous operation that returns a status of 202
+     * until the template deployment is successfully deleted. The Location
+     * response header contains the URI that is used to obtain the status of the
+     * process. While the process is running, a call to the URI in the Location
+     * header returns a status of 202. When the process finishes, the URI in the
+     * Location header returns a status of 204 on success. If the asynchronous
+     * request failed, the URI in the Location header returns an error-level
+     * status code.
+     *
+     * @param {string} resourceGroupName The name of the resource group with the
+     * deployment to delete. The name is case insensitive.
      * 
-     * @param {string} deploymentName The name of the deployment to be deleted.
+     * @param {string} deploymentName The name of the deployment to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -40,12 +52,24 @@ export interface Deployments {
     deleteMethod(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Delete deployment.
+     * @summary Deletes a deployment from the deployment history.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * A template deployment that is currently running cannot be deleted. Deleting
+     * a template deployment removes the associated deployment operations.
+     * Deleting a template deployment does not affect the state of the resource
+     * group. This is an asynchronous operation that returns a status of 202
+     * until the template deployment is successfully deleted. The Location
+     * response header contains the URI that is used to obtain the status of the
+     * process. While the process is running, a call to the URI in the Location
+     * header returns a status of 202. When the process finishes, the URI in the
+     * Location header returns a status of 204 on success. If the asynchronous
+     * request failed, the URI in the Location header returns an error-level
+     * status code.
+     *
+     * @param {string} resourceGroupName The name of the resource group with the
+     * deployment to delete. The name is case insensitive.
      * 
-     * @param {string} deploymentName The name of the deployment to be deleted.
+     * @param {string} deploymentName The name of the deployment to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -59,12 +83,12 @@ export interface Deployments {
     beginDeleteMethod(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Checks whether deployment exists.
+     * Checks whether the deployment exists.
      *
-     * @param {string} resourceGroupName The name of the resource group to check.
-     * The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group with the
+     * deployment to check. The name is case insensitive.
      * 
-     * @param {string} deploymentName The name of the deployment.
+     * @param {string} deploymentName The name of the deployment to check.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -78,10 +102,14 @@ export interface Deployments {
     checkExistence(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<boolean>): void;
 
     /**
-     * Create a named template deployment using a template.
+     * @summary Deploys resources to a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * You can provide the template and parameters directly in the request or link
+     * to JSON files.
+     *
+     * @param {string} resourceGroupName The name of the resource group to deploy
+     * the resources to. The name is case insensitive. The resource group must
+     * already exist.
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
@@ -89,40 +117,60 @@ export interface Deployments {
      * 
      * @param {object} [parameters.properties] The deployment properties.
      * 
-     * @param {object} [parameters.properties.template] The template content. It
-     * can be a JObject or a well formed JSON string. Use only one of Template or
-     * TemplateLink.
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
      * 
-     * @param {object} [parameters.properties.templateLink] The template URI. Use
-     * only one of Template or TemplateLink.
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property,
+     * but not both.
      * 
-     * @param {string} parameters.properties.templateLink.uri URI referencing the
-     * template.
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
      * 
      * @param {string} [parameters.properties.templateLink.contentVersion] If
-     * included it must match the ContentVersion in the template.
+     * included, must match the ContentVersion in the template.
      * 
-     * @param {object} [parameters.properties.parameters] Deployment parameters.
-     * It can be a JObject or a well formed JSON string. Use only one of
-     * Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parameters] Name and value pairs
+     * that define the deployment parameters for the template. You use this
+     * element when you want to provide the parameter values directly in the
+     * request rather than link to an existing parameter file. Use either the
+     * parametersLink property or the parameters property, but not both. It can
+     * be a JObject or a well formed JSON string.
      * 
-     * @param {object} [parameters.properties.parametersLink] The parameters URI.
-     * Use only one of Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parametersLink] The URI of
+     * parameters file. You use this element to link to an existing parameters
+     * file. Use either the parametersLink property or the parameters property,
+     * but not both.
      * 
-     * @param {string} parameters.properties.parametersLink.uri URI referencing
-     * the template.
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
      * 
      * @param {string} [parameters.properties.parametersLink.contentVersion] If
-     * included it must match the ContentVersion in the template.
+     * included, must match the ContentVersion in the template.
      * 
-     * @param {string} parameters.properties.mode The deployment mode. Possible
-     * values include: 'Incremental', 'Complete'
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In
+     * Incremental mode, resources are deployed without deleting existing
+     * resources that are not included in the template. In Complete mode,
+     * resources are deployed and existing resources in the resource group that
+     * are not included in the template are deleted. Be careful when using
+     * Complete mode as you may unintentionally delete resources. Possible values
+     * include: 'Incremental', 'Complete'
      * 
      * @param {object} [parameters.properties.debugSetting] The debug setting of
      * the deployment.
      * 
-     * @param {string} [parameters.properties.debugSetting.detailLevel] The debug
-     * detail level.
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are
+     * none, requestContent, responseContent, or both requestContent and
+     * responseContent separated by a comma. The default is none. When setting
+     * this value, carefully consider the type of information you are passing in
+     * during deployment. By logging information about the request or response,
+     * you could potentially expose sensitive data that is retrieved through the
+     * deployment operations.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -136,10 +184,14 @@ export interface Deployments {
     createOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
-     * Create a named template deployment using a template.
+     * @summary Deploys resources to a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * You can provide the template and parameters directly in the request or link
+     * to JSON files.
+     *
+     * @param {string} resourceGroupName The name of the resource group to deploy
+     * the resources to. The name is case insensitive. The resource group must
+     * already exist.
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
@@ -147,40 +199,60 @@ export interface Deployments {
      * 
      * @param {object} [parameters.properties] The deployment properties.
      * 
-     * @param {object} [parameters.properties.template] The template content. It
-     * can be a JObject or a well formed JSON string. Use only one of Template or
-     * TemplateLink.
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
      * 
-     * @param {object} [parameters.properties.templateLink] The template URI. Use
-     * only one of Template or TemplateLink.
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property,
+     * but not both.
      * 
-     * @param {string} parameters.properties.templateLink.uri URI referencing the
-     * template.
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
      * 
      * @param {string} [parameters.properties.templateLink.contentVersion] If
-     * included it must match the ContentVersion in the template.
+     * included, must match the ContentVersion in the template.
      * 
-     * @param {object} [parameters.properties.parameters] Deployment parameters.
-     * It can be a JObject or a well formed JSON string. Use only one of
-     * Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parameters] Name and value pairs
+     * that define the deployment parameters for the template. You use this
+     * element when you want to provide the parameter values directly in the
+     * request rather than link to an existing parameter file. Use either the
+     * parametersLink property or the parameters property, but not both. It can
+     * be a JObject or a well formed JSON string.
      * 
-     * @param {object} [parameters.properties.parametersLink] The parameters URI.
-     * Use only one of Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parametersLink] The URI of
+     * parameters file. You use this element to link to an existing parameters
+     * file. Use either the parametersLink property or the parameters property,
+     * but not both.
      * 
-     * @param {string} parameters.properties.parametersLink.uri URI referencing
-     * the template.
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
      * 
      * @param {string} [parameters.properties.parametersLink.contentVersion] If
-     * included it must match the ContentVersion in the template.
+     * included, must match the ContentVersion in the template.
      * 
-     * @param {string} parameters.properties.mode The deployment mode. Possible
-     * values include: 'Incremental', 'Complete'
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In
+     * Incremental mode, resources are deployed without deleting existing
+     * resources that are not included in the template. In Complete mode,
+     * resources are deployed and existing resources in the resource group that
+     * are not included in the template are deleted. Be careful when using
+     * Complete mode as you may unintentionally delete resources. Possible values
+     * include: 'Incremental', 'Complete'
      * 
      * @param {object} [parameters.properties.debugSetting] The debug setting of
      * the deployment.
      * 
-     * @param {string} [parameters.properties.debugSetting.detailLevel] The debug
-     * detail level.
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are
+     * none, requestContent, responseContent, or both requestContent and
+     * responseContent separated by a comma. The default is none. When setting
+     * this value, carefully consider the type of information you are passing in
+     * during deployment. By logging information about the request or response,
+     * you could potentially expose sensitive data that is retrieved through the
+     * deployment operations.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -194,12 +266,12 @@ export interface Deployments {
     beginCreateOrUpdate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
-     * Get a deployment.
+     * Gets a deployment.
      *
-     * @param {string} resourceGroupName The name of the resource group to get.
-     * The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      * 
-     * @param {string} deploymentName The name of the deployment.
+     * @param {string} deploymentName The name of the deployment to get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -213,12 +285,17 @@ export interface Deployments {
     get(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentExtended>): void;
 
     /**
-     * Cancel a currently running template deployment.
+     * @summary Cancels a currently running template deployment.
+     *
+     * You can cancel a deployment only if the provisioningState is Accepted or
+     * Running. After the deployment is canceled, the provisioningState is set to
+     * Canceled. Canceling a template deployment stops the currently running
+     * template deployment and leaves the resource group partially deployed.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
      * 
-     * @param {string} deploymentName The name of the deployment.
+     * @param {string} deploymentName The name of the deployment to cancel.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -232,51 +309,72 @@ export interface Deployments {
     cancel(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Validate a deployment template.
+     * Validates whether the specified template is syntactically correct and will
+     * be accepted by Azure Resource Manager..
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group the
+     * template will be deployed to. The name is case insensitive.
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {object} parameters Deployment to validate.
+     * @param {object} parameters Parameters to validate.
      * 
      * @param {object} [parameters.properties] The deployment properties.
      * 
-     * @param {object} [parameters.properties.template] The template content. It
-     * can be a JObject or a well formed JSON string. Use only one of Template or
-     * TemplateLink.
+     * @param {object} [parameters.properties.template] The template content. You
+     * use this element when you want to pass the template syntax directly in the
+     * request rather than link to an existing template. It can be a JObject or
+     * well-formed JSON string. Use either the templateLink property or the
+     * template property, but not both.
      * 
-     * @param {object} [parameters.properties.templateLink] The template URI. Use
-     * only one of Template or TemplateLink.
+     * @param {object} [parameters.properties.templateLink] The URI of the
+     * template. Use either the templateLink property or the template property,
+     * but not both.
      * 
-     * @param {string} parameters.properties.templateLink.uri URI referencing the
-     * template.
+     * @param {string} parameters.properties.templateLink.uri The URI of the
+     * template to deploy.
      * 
      * @param {string} [parameters.properties.templateLink.contentVersion] If
-     * included it must match the ContentVersion in the template.
+     * included, must match the ContentVersion in the template.
      * 
-     * @param {object} [parameters.properties.parameters] Deployment parameters.
-     * It can be a JObject or a well formed JSON string. Use only one of
-     * Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parameters] Name and value pairs
+     * that define the deployment parameters for the template. You use this
+     * element when you want to provide the parameter values directly in the
+     * request rather than link to an existing parameter file. Use either the
+     * parametersLink property or the parameters property, but not both. It can
+     * be a JObject or a well formed JSON string.
      * 
-     * @param {object} [parameters.properties.parametersLink] The parameters URI.
-     * Use only one of Parameters or ParametersLink.
+     * @param {object} [parameters.properties.parametersLink] The URI of
+     * parameters file. You use this element to link to an existing parameters
+     * file. Use either the parametersLink property or the parameters property,
+     * but not both.
      * 
-     * @param {string} parameters.properties.parametersLink.uri URI referencing
-     * the template.
+     * @param {string} parameters.properties.parametersLink.uri The URI of the
+     * parameters file.
      * 
      * @param {string} [parameters.properties.parametersLink.contentVersion] If
-     * included it must match the ContentVersion in the template.
+     * included, must match the ContentVersion in the template.
      * 
-     * @param {string} parameters.properties.mode The deployment mode. Possible
-     * values include: 'Incremental', 'Complete'
+     * @param {string} parameters.properties.mode The mode that is used to deploy
+     * resources. This value can be either Incremental or Complete. In
+     * Incremental mode, resources are deployed without deleting existing
+     * resources that are not included in the template. In Complete mode,
+     * resources are deployed and existing resources in the resource group that
+     * are not included in the template are deleted. Be careful when using
+     * Complete mode as you may unintentionally delete resources. Possible values
+     * include: 'Incremental', 'Complete'
      * 
      * @param {object} [parameters.properties.debugSetting] The debug setting of
      * the deployment.
      * 
-     * @param {string} [parameters.properties.debugSetting.detailLevel] The debug
-     * detail level.
+     * @param {string} [parameters.properties.debugSetting.detailLevel] Specifies
+     * the type of information to log for debugging. The permitted values are
+     * none, requestContent, responseContent, or both requestContent and
+     * responseContent separated by a comma. The default is none. When setting
+     * this value, carefully consider the type of information you are passing in
+     * during deployment. By logging information about the request or response,
+     * you could potentially expose sensitive data that is retrieved through the
+     * deployment operations.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -290,12 +388,13 @@ export interface Deployments {
     validate(resourceGroupName: string, deploymentName: string, parameters: models.Deployment, callback: ServiceCallback<models.DeploymentValidateResult>): void;
 
     /**
-     * Exports a deployment template.
+     * Exports the template used for specified deployment.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
      * 
-     * @param {string} deploymentName The name of the deployment.
+     * @param {string} deploymentName The name of the deployment from which to get
+     * the template.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -309,17 +408,18 @@ export interface Deployments {
     exportTemplate(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentExportResult>): void;
 
     /**
-     * Get a list of deployments.
+     * Get all the deployments for a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group to filter
-     * by. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group with the
+     * deployments to get. The name is case insensitive.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * example, you can use $filter=provisioningState eq '{state}'.
      * 
-     * @param {number} [options.top] Query parameters. If null is passed returns
-     * all deployments.
+     * @param {number} [options.top] The number of results to get. If null is
+     * passed, returns all deployments.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -331,7 +431,7 @@ export interface Deployments {
     list(resourceGroupName: string, callback: ServiceCallback<models.DeploymentListResult>): void;
 
     /**
-     * Get a list of deployments.
+     * Get all the deployments for a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -357,10 +457,10 @@ export interface Deployments {
 export interface Providers {
 
     /**
-     * Unregisters provider from a subscription.
+     * Unregisters a subscription from a resource provider.
      *
-     * @param {string} resourceProviderNamespace Namespace of the resource
-     * provider.
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider to unregister.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -374,10 +474,10 @@ export interface Providers {
     unregister(resourceProviderNamespace: string, callback: ServiceCallback<models.Provider>): void;
 
     /**
-     * Registers provider to be used with a subscription.
+     * Registers a subscription with a resource provider.
      *
-     * @param {string} resourceProviderNamespace Namespace of the resource
-     * provider.
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider to register.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -391,15 +491,17 @@ export interface Providers {
     register(resourceProviderNamespace: string, callback: ServiceCallback<models.Provider>): void;
 
     /**
-     * Gets a list of resource providers.
+     * Gets all resource providers for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {number} [options.top] Query parameters. If null is passed returns
-     * all deployments.
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed returns all deployments.
      * 
-     * @param {string} [options.expand] The $expand query parameter. e.g. To
-     * include property aliases in response, use $expand=resourceTypes/aliases.
+     * @param {string} [options.expand] The properties to include in the results.
+     * For example, use &$expand=metadata in the query string to retrieve
+     * resource provider metadata. To include property aliases in response, use
+     * $expand=resourceTypes/aliases.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -411,15 +513,15 @@ export interface Providers {
     list(callback: ServiceCallback<models.ProviderListResult>): void;
 
     /**
-     * Gets a resource provider.
+     * Gets the specified resource provider.
      *
-     * @param {string} resourceProviderNamespace Namespace of the resource
+     * @param {string} resourceProviderNamespace The namespace of the resource
      * provider.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.expand] The $expand query parameter. e.g. To
-     * include property aliases in response, use $expand=resourceTypes/aliases.
+     * @param {string} [options.expand] The $expand query parameter. For example,
+     * to include property aliases in response, use $expand=resourceTypes/aliases.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -431,7 +533,7 @@ export interface Providers {
     get(resourceProviderNamespace: string, callback: ServiceCallback<models.Provider>): void;
 
     /**
-     * Gets a list of resource providers.
+     * Gets all resource providers for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -457,10 +559,10 @@ export interface Providers {
 export interface ResourceGroups {
 
     /**
-     * Get all of the resources under a subscription.
+     * Get all the resources for a resource group.
      *
-     * @param {string} resourceGroupName Query parameters. If null is passed
-     * returns all resource groups.
+     * @param {string} resourceGroupName The resource group with the resources to
+     * get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -468,8 +570,8 @@ export interface ResourceGroups {
      * 
      * @param {string} [options.expand] The $expand query parameter
      * 
-     * @param {number} [options.top] Query parameters. If null is passed returns
-     * all resource groups.
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed, returns all resources.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -481,7 +583,7 @@ export interface ResourceGroups {
     listResources(resourceGroupName: string, callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
-     * Checks whether resource group exists.
+     * Checks whether a resource group exists.
      *
      * @param {string} resourceGroupName The name of the resource group to check.
      * The name is case insensitive.
@@ -498,22 +600,24 @@ export interface ResourceGroups {
     checkExistence(resourceGroupName: string, callback: ServiceCallback<boolean>): void;
 
     /**
-     * Create a resource group.
+     * Creates a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group to be
-     * created or updated.
+     * @param {string} resourceGroupName The name of the resource group to create
+     * or update.
      * 
-     * @param {object} parameters Parameters supplied to the create or update
-     * resource group service operation.
+     * @param {object} parameters Parameters supplied to the create or update a
+     * resource group.
      * 
-     * @param {string} [parameters.name] The Name of the resource group.
+     * @param {string} [parameters.name] The name of the resource group.
      * 
      * @param {object} [parameters.properties]
      * 
      * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. Has to be one
-     * of the supported Azure Locations, such as West US, East US, West Europe,
-     * East Asia, etc.
+     * cannot be changed after the resource group has been created. It muct be
+     * one of the supported Azure locations.
+     * 
+     * @param {string} [parameters.managedBy] The ID of the resource that manages
+     * this resource group.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -529,10 +633,14 @@ export interface ResourceGroups {
     createOrUpdate(resourceGroupName: string, parameters: models.ResourceGroup, callback: ServiceCallback<models.ResourceGroup>): void;
 
     /**
-     * Delete resource group.
+     * @summary Deletes a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group to be
-     * deleted. The name is case insensitive.
+     * When you delete a resource group, all of its resources are also deleted.
+     * Deleting a resource group deletes all of its template deployments and
+     * currently stored operations.
+     *
+     * @param {string} resourceGroupName The name of the resource group to delete.
+     * The name is case insensitive.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -546,10 +654,14 @@ export interface ResourceGroups {
     deleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Delete resource group.
+     * @summary Deletes a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group to be
-     * deleted. The name is case insensitive.
+     * When you delete a resource group, all of its resources are also deleted.
+     * Deleting a resource group deletes all of its template deployments and
+     * currently stored operations.
+     *
+     * @param {string} resourceGroupName The name of the resource group to delete.
+     * The name is case insensitive.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -563,7 +675,7 @@ export interface ResourceGroups {
     beginDeleteMethod(resourceGroupName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Get a resource group.
+     * Gets a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group to get.
      * The name is case insensitive.
@@ -580,25 +692,27 @@ export interface ResourceGroups {
     get(resourceGroupName: string, callback: ServiceCallback<models.ResourceGroup>): void;
 
     /**
+     * @summary Updates a resource group.
+     *
      * Resource groups can be updated through a simple PATCH operation to a group
      * address. The format of the request is the same as that for creating a
-     * resource groups, though if a field is unspecified current value will be
-     * carried over.
+     * resource group. If a field is unspecified, the current value is retained.
      *
-     * @param {string} resourceGroupName The name of the resource group to be
-     * created or updated. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group to update.
+     * The name is case insensitive.
      * 
-     * @param {object} parameters Parameters supplied to the update state resource
-     * group service operation.
+     * @param {object} parameters Parameters supplied to update a resource group.
      * 
-     * @param {string} [parameters.name] The Name of the resource group.
+     * @param {string} [parameters.name] The name of the resource group.
      * 
      * @param {object} [parameters.properties]
      * 
      * @param {string} parameters.location The location of the resource group. It
-     * cannot be changed after the resource group has been created. Has to be one
-     * of the supported Azure Locations, such as West US, East US, West Europe,
-     * East Asia, etc.
+     * cannot be changed after the resource group has been created. It muct be
+     * one of the supported Azure locations.
+     * 
+     * @param {string} [parameters.managedBy] The ID of the resource that manages
+     * this resource group.
      * 
      * @param {object} [parameters.tags] The tags attached to the resource group.
      * 
@@ -616,14 +730,13 @@ export interface ResourceGroups {
     /**
      * Captures the specified resource group as a template.
      *
-     * @param {string} resourceGroupName The name of the resource group to be
-     * created or updated.
+     * @param {string} resourceGroupName The name of the resource group to export
+     * as a template.
      * 
-     * @param {object} parameters Parameters supplied to the export template
-     * resource group operation.
+     * @param {object} parameters Parameters for exporting the template.
      * 
-     * @param {array} [parameters.resources] The ids of the resources. The only
-     * supported string currently is '*' (all resources). Future api updates will
+     * @param {array} [parameters.resources] The IDs of the resources. The only
+     * supported string currently is '*' (all resources). Future updates will
      * support exporting specific resources.
      * 
      * @param {string} [parameters.options] The export template options. Supported
@@ -642,14 +755,14 @@ export interface ResourceGroups {
     exportTemplate(resourceGroupName: string, parameters: models.ExportTemplateRequest, callback: ServiceCallback<models.ResourceGroupExportResult>): void;
 
     /**
-     * Gets a collection of resource groups.
+     * Gets all the resource groups for a subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] Query parameters. If null is passed returns
-     * all resource groups.
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed, returns all resource groups.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -661,7 +774,7 @@ export interface ResourceGroups {
     list(callback: ServiceCallback<models.ResourceGroupListResult>): void;
 
     /**
-     * Get all of the resources under a subscription.
+     * Get all the resources for a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -678,7 +791,7 @@ export interface ResourceGroups {
     listResourcesNext(nextPageLink: string, callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
-     * Gets a collection of resource groups.
+     * Gets all the resource groups for a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -704,14 +817,20 @@ export interface ResourceGroups {
 export interface Resources {
 
     /**
-     * Move resources from one resource group to another. The resources being
-     * moved should all be in the same resource group.
+     * @summary Moves resources from one resource group to another resource group.
      *
-     * @param {string} sourceResourceGroupName Source resource group name.
+     * The resources to move must be in the same source resource group. The target
+     * resource group may be in a different subscription. When moving resources,
+     * both the source group and the target group are locked for the duration of
+     * the operation. Write and delete operations are blocked on the groups until
+     * the move completes.
+     *
+     * @param {string} sourceResourceGroupName The name of the resource group
+     * containing the rsources to move.
      * 
-     * @param {object} parameters move resources' parameters.
+     * @param {object} parameters Parameters for moving resources.
      * 
-     * @param {array} [parameters.resources] The ids of the resources.
+     * @param {array} [parameters.resources] The IDs of the resources.
      * 
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      * 
@@ -727,14 +846,20 @@ export interface Resources {
     moveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
 
     /**
-     * Move resources from one resource group to another. The resources being
-     * moved should all be in the same resource group.
+     * @summary Moves resources from one resource group to another resource group.
      *
-     * @param {string} sourceResourceGroupName Source resource group name.
+     * The resources to move must be in the same source resource group. The target
+     * resource group may be in a different subscription. When moving resources,
+     * both the source group and the target group are locked for the duration of
+     * the operation. Write and delete operations are blocked on the groups until
+     * the move completes.
+     *
+     * @param {string} sourceResourceGroupName The name of the resource group
+     * containing the rsources to move.
      * 
-     * @param {object} parameters move resources' parameters.
+     * @param {object} parameters Parameters for moving resources.
      * 
-     * @param {array} [parameters.resources] The ids of the resources.
+     * @param {array} [parameters.resources] The IDs of the resources.
      * 
      * @param {string} [parameters.targetResourceGroup] The target resource group.
      * 
@@ -750,7 +875,7 @@ export interface Resources {
     beginMoveResources(sourceResourceGroupName: string, parameters: models.ResourcesMoveInfo, callback: ServiceCallback<void>): void;
 
     /**
-     * Get all of the resources under a subscription.
+     * Get all the resources in a subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -758,8 +883,8 @@ export interface Resources {
      * 
      * @param {string} [options.expand] The $expand query parameter.
      * 
-     * @param {number} [options.top] Query parameters. If null is passed returns
-     * all resource groups.
+     * @param {number} [options.top] The number of results to return. If null is
+     * passed, returns all resource groups.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -771,20 +896,22 @@ export interface Resources {
     list(callback: ServiceCallback<models.ResourceListResult>): void;
 
     /**
-     * Checks whether resource exists.
+     * Checks whether a resource exists.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the resource to check. The name is case insensitive.
      * 
-     * @param {string} resourceProviderNamespace Resource identity.
+     * @param {string} resourceProviderNamespace The resource provider of the
+     * resource to check.
      * 
-     * @param {string} parentResourcePath Resource identity.
+     * @param {string} parentResourcePath The parent resource identity.
      * 
-     * @param {string} resourceType Resource identity.
+     * @param {string} resourceType The resource type.
      * 
-     * @param {string} resourceName Resource identity.
+     * @param {string} resourceName The name of the resource to check whether it
+     * exists.
      * 
-     * @param {string} apiVersion Api version to use.
+     * @param {string} apiVersion The API version to use for the operation.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -798,20 +925,21 @@ export interface Resources {
     checkExistence(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<boolean>): void;
 
     /**
-     * Delete resource and all of its resources.
+     * Deletes a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource to delete. The name is case insensitive.
      * 
-     * @param {string} resourceProviderNamespace Resource identity.
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
      * 
-     * @param {string} parentResourcePath Resource identity.
+     * @param {string} parentResourcePath The parent resource identity.
      * 
-     * @param {string} resourceType Resource identity.
+     * @param {string} resourceType The resource type.
      * 
-     * @param {string} resourceName Resource identity.
+     * @param {string} resourceName The name of the resource to delete.
      * 
-     * @param {string} apiVersion Api version to use.
+     * @param {string} apiVersion The API version to use for the operation.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -825,20 +953,269 @@ export interface Resources {
     deleteMethod(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Create a resource.
+     * Deletes a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource to delete. The name is case insensitive.
      * 
-     * @param {string} resourceProviderNamespace Resource identity.
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
      * 
-     * @param {string} parentResourcePath Resource identity.
+     * @param {string} parentResourcePath The parent resource identity.
      * 
-     * @param {string} resourceType Resource identity.
+     * @param {string} resourceType The resource type.
      * 
-     * @param {string} resourceName Resource identity.
+     * @param {string} resourceName The name of the resource to delete.
      * 
-     * @param {string} apiVersion Api version to use.
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Creates a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group for the
+     * resource. The name is case insensitive.
+     * 
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     * 
+     * @param {string} parentResourcePath The parent resource identity.
+     * 
+     * @param {string} resourceType The resource type of the resource to create.
+     * 
+     * @param {string} resourceName The name of the resource to create.
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} parameters Parameters for creating or updating the resource.
+     * 
+     * @param {object} [parameters.plan] The plan of the resource.
+     * 
+     * @param {string} [parameters.plan.name] The plan ID.
+     * 
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     * 
+     * @param {string} [parameters.plan.product] The offer ID.
+     * 
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     * 
+     * @param {object} [parameters.properties] The resource properties.
+     * 
+     * @param {string} [parameters.kind] The kind of the resource.
+     * 
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     * 
+     * @param {object} [parameters.sku] The SKU of the resource.
+     * 
+     * @param {string} [parameters.sku.name] The SKU name.
+     * 
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     * 
+     * @param {string} [parameters.sku.size] The SKU size.
+     * 
+     * @param {string} [parameters.sku.family] The SKU family.
+     * 
+     * @param {string} [parameters.sku.model] The SKU model.
+     * 
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     * 
+     * @param {object} [parameters.identity] The identity of the resource.
+     * 
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     * 
+     * @param {string} [parameters.location] Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    createOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+
+    /**
+     * Creates a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group for the
+     * resource. The name is case insensitive.
+     * 
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     * 
+     * @param {string} parentResourcePath The parent resource identity.
+     * 
+     * @param {string} resourceType The resource type of the resource to create.
+     * 
+     * @param {string} resourceName The name of the resource to create.
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} parameters Parameters for creating or updating the resource.
+     * 
+     * @param {object} [parameters.plan] The plan of the resource.
+     * 
+     * @param {string} [parameters.plan.name] The plan ID.
+     * 
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     * 
+     * @param {string} [parameters.plan.product] The offer ID.
+     * 
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     * 
+     * @param {object} [parameters.properties] The resource properties.
+     * 
+     * @param {string} [parameters.kind] The kind of the resource.
+     * 
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     * 
+     * @param {object} [parameters.sku] The SKU of the resource.
+     * 
+     * @param {string} [parameters.sku.name] The SKU name.
+     * 
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     * 
+     * @param {string} [parameters.sku.size] The SKU size.
+     * 
+     * @param {string} [parameters.sku.family] The SKU family.
+     * 
+     * @param {string} [parameters.sku.model] The SKU model.
+     * 
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     * 
+     * @param {object} [parameters.identity] The identity of the resource.
+     * 
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     * 
+     * @param {string} [parameters.location] Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreateOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    beginCreateOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+
+    /**
+     * Gets a resource.
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the resource to get. The name is case insensitive.
+     * 
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     * 
+     * @param {string} parentResourcePath The parent resource identity.
+     * 
+     * @param {string} resourceType The resource type of the resource.
+     * 
+     * @param {string} resourceName The name of the resource to get.
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<models.GenericResource>): void;
+
+    /**
+     * Checks by ID whether a resource exists.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource,
+     * including the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    checkExistenceById(resourceId: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
+    checkExistenceById(resourceId: string, apiVersion: string, callback: ServiceCallback<boolean>): void;
+
+    /**
+     * Deletes a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource,
+     * including the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteById(resourceId: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteById(resourceId: string, apiVersion: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Deletes a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource,
+     * including the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteById(resourceId: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteById(resourceId: string, apiVersion: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Create a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource,
+     * including the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
      * 
      * @param {object} parameters Create or update resource parameters.
      * 
@@ -856,29 +1233,29 @@ export interface Resources {
      * 
      * @param {string} [parameters.kind] The kind of the resource.
      * 
-     * @param {string} [parameters.managedBy] Id of the resource that manages this
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
      * resource.
      * 
-     * @param {object} [parameters.sku] The sku of the resource.
+     * @param {object} [parameters.sku] The SKU of the resource.
      * 
-     * @param {string} [parameters.sku.name] The sku name.
+     * @param {string} [parameters.sku.name] The SKU name.
      * 
-     * @param {string} [parameters.sku.tier] The sku tier.
+     * @param {string} [parameters.sku.tier] The SKU tier.
      * 
-     * @param {string} [parameters.sku.size] The sku size.
+     * @param {string} [parameters.sku.size] The SKU size.
      * 
-     * @param {string} [parameters.sku.family] The sku family.
+     * @param {string} [parameters.sku.family] The SKU family.
      * 
-     * @param {string} [parameters.sku.model] The sku model.
+     * @param {string} [parameters.sku.model] The SKU model.
      * 
-     * @param {number} [parameters.sku.capacity] The sku capacity.
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
      * 
      * @param {object} [parameters.identity] The identity of the resource.
      * 
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned'
      * 
-     * @param {string} parameters.location Resource location
+     * @param {string} [parameters.location] Resource location
      * 
      * @param {object} [parameters.tags] Resource tags
      * 
@@ -890,24 +1267,59 @@ export interface Resources {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    createOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
-    createOrUpdate(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+    createOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    createOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
 
     /**
-     * Returns a resource belonging to a resource group.
+     * Create a resource by ID.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * @param {string} resourceId The fully qualified ID of the resource,
+     * including the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
      * 
-     * @param {string} resourceProviderNamespace Resource identity.
+     * @param {string} apiVersion The API version to use for the operation.
      * 
-     * @param {string} parentResourcePath Resource identity.
+     * @param {object} parameters Create or update resource parameters.
      * 
-     * @param {string} resourceType Resource identity.
+     * @param {object} [parameters.plan] The plan of the resource.
      * 
-     * @param {string} resourceName Resource identity.
+     * @param {string} [parameters.plan.name] The plan ID.
      * 
-     * @param {string} apiVersion Api version to use.
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     * 
+     * @param {string} [parameters.plan.product] The offer ID.
+     * 
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     * 
+     * @param {object} [parameters.properties] The resource properties.
+     * 
+     * @param {string} [parameters.kind] The kind of the resource.
+     * 
+     * @param {string} [parameters.managedBy] ID of the resource that manages this
+     * resource.
+     * 
+     * @param {object} [parameters.sku] The SKU of the resource.
+     * 
+     * @param {string} [parameters.sku.name] The SKU name.
+     * 
+     * @param {string} [parameters.sku.tier] The SKU tier.
+     * 
+     * @param {string} [parameters.sku.size] The SKU size.
+     * 
+     * @param {string} [parameters.sku.family] The SKU family.
+     * 
+     * @param {string} [parameters.sku.model] The SKU model.
+     * 
+     * @param {number} [parameters.sku.capacity] The SKU capacity.
+     * 
+     * @param {object} [parameters.identity] The identity of the resource.
+     * 
+     * @param {string} [parameters.identity.type] The identity type. Possible
+     * values include: 'SystemAssigned'
+     * 
+     * @param {string} [parameters.location] Resource location
+     * 
+     * @param {object} [parameters.tags] Resource tags
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -917,11 +1329,31 @@ export interface Resources {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
-    get(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, apiVersion: string, callback: ServiceCallback<models.GenericResource>): void;
+    beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
 
     /**
-     * Get all of the resources under a subscription.
+     * Gets a resource by ID.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource,
+     * including the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     * 
+     * @param {string} apiVersion The API version to use for the operation.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getById(resourceId: string, apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+    getById(resourceId: string, apiVersion: string, callback: ServiceCallback<models.GenericResource>): void;
+
+    /**
+     * Get all the resources in a subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -947,11 +1379,11 @@ export interface Resources {
 export interface Tags {
 
     /**
-     * Delete a subscription resource tag value.
+     * Deletes a tag value.
      *
      * @param {string} tagName The name of the tag.
      * 
-     * @param {string} tagValue The value of the tag.
+     * @param {string} tagValue The value of the tag to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -965,11 +1397,11 @@ export interface Tags {
     deleteValue(tagName: string, tagValue: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Create a subscription resource tag value.
+     * Creates a tag value. The name of the tag must already exist.
      *
      * @param {string} tagName The name of the tag.
      * 
-     * @param {string} tagValue The value of the tag.
+     * @param {string} tagValue The value of the tag to create.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -983,9 +1415,13 @@ export interface Tags {
     createOrUpdateValue(tagName: string, tagValue: string, callback: ServiceCallback<models.TagValue>): void;
 
     /**
-     * Create a subscription resource tag.
+     * @summary Creates a tag in the subscription.
      *
-     * @param {string} tagName The name of the tag.
+     * The tag name can have a maximum of 512 characters and is case insensitive.
+     * Tag names created by Azure have prefixes of microsoft, azure, or windows.
+     * You cannot create tags with one of these prefixes.
+     *
+     * @param {string} tagName The name of the tag to create.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -999,7 +1435,9 @@ export interface Tags {
     createOrUpdate(tagName: string, callback: ServiceCallback<models.TagDetails>): void;
 
     /**
-     * Delete a subscription resource tag.
+     * @summary Deletes a tag from the subscription.
+     *
+     * You must remove all values from a resource tag before you can delete it.
      *
      * @param {string} tagName The name of the tag.
      * 
@@ -1015,7 +1453,8 @@ export interface Tags {
     deleteMethod(tagName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Get a list of subscription resource tags.
+     * Gets the names and values of all resource tags that are defined in a
+     * subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -1029,7 +1468,8 @@ export interface Tags {
     list(callback: ServiceCallback<models.TagsListResult>): void;
 
     /**
-     * Get a list of subscription resource tags.
+     * Gets the names and values of all resource tags that are defined in a
+     * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1055,14 +1495,14 @@ export interface Tags {
 export interface DeploymentOperations {
 
     /**
-     * Get a list of deployments operations.
+     * Gets a deployments operation.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
      * 
      * @param {string} deploymentName The name of the deployment.
      * 
-     * @param {string} operationId Operation Id.
+     * @param {string} operationId The ID of the operation to get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1076,16 +1516,17 @@ export interface DeploymentOperations {
     get(resourceGroupName: string, deploymentName: string, operationId: string, callback: ServiceCallback<models.DeploymentOperation>): void;
 
     /**
-     * Gets a list of deployments operations.
+     * Gets all deployments operations for a deployment.
      *
      * @param {string} resourceGroupName The name of the resource group. The name
      * is case insensitive.
      * 
-     * @param {string} deploymentName The name of the deployment.
+     * @param {string} deploymentName The name of the deployment with the
+     * operation to get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {number} [options.top] Query parameters.
+     * @param {number} [options.top] The number of results to return.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1097,7 +1538,7 @@ export interface DeploymentOperations {
     list(resourceGroupName: string, deploymentName: string, callback: ServiceCallback<models.DeploymentOperationsListResult>): void;
 
     /**
-     * Gets a list of deployments operations.
+     * Gets all deployments operations for a deployment.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

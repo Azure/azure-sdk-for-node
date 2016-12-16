@@ -2,42 +2,42 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'West US';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'b4871d65-b439-4433-8702-08fa2cc15808';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/someFakeEndpoint/load?api-version=2016-04-02', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup107' was not found.\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint/load?api-version=2016-10-02', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup2266' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '37165423-3275-4d1d-b830-3723c0d0f1e9',
-  'x-ms-correlation-request-id': '37165423-3275-4d1d-b830-3723c0d0f1e9',
-  'x-ms-routing-request-id': 'CENTRALUS:20160511T224654Z:37165423-3275-4d1d-b830-3723c0d0f1e9',
+  'x-ms-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
+  'x-ms-correlation-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
+  'x-ms-routing-request-id': 'CENTRALUS:20161028T014450Z:2546c958-32a1-4398-8922-aa6e978749a5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 11 May 2016 22:46:53 GMT',
+  date: 'Fri, 28 Oct 2016 01:44:49 GMT',
   connection: 'close',
-  'content-length': '187' });
+  'content-length': '188' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/b4871d65-b439-4433-8702-08fa2cc15808/resourceGroups/cdnTestGroup107/providers/Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/someFakeEndpoint/load?api-version=2016-04-02', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile3498/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup107' was not found.\"}}", { 'cache-control': 'no-cache',
+.post('/subscriptions/8fbd19e9-e8e0-4224-89f6-b1d5d86fb4c4/resourceGroups/cdnTestGroup2266/providers/Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint/load?api-version=2016-10-02', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.Cdn/profiles/cdnTestProfile6758/endpoints/someFakeEndpoint' under resource group 'cdnTestGroup2266' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '37165423-3275-4d1d-b830-3723c0d0f1e9',
-  'x-ms-correlation-request-id': '37165423-3275-4d1d-b830-3723c0d0f1e9',
-  'x-ms-routing-request-id': 'CENTRALUS:20160511T224654Z:37165423-3275-4d1d-b830-3723c0d0f1e9',
+  'x-ms-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
+  'x-ms-correlation-request-id': '2546c958-32a1-4398-8922-aa6e978749a5',
+  'x-ms-routing-request-id': 'CENTRALUS:20161028T014450Z:2546c958-32a1-4398-8922-aa6e978749a5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Wed, 11 May 2016 22:46:53 GMT',
+  date: 'Fri, 28 Oct 2016 01:44:49 GMT',
   connection: 'close',
-  'content-length': '187' });
+  'content-length': '188' });
  return result; }]];

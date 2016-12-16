@@ -1,11 +1,11 @@
 
-# Creating a ServicePrincipal for scripting scenarios
+# Creating a ServicePrincipal for scripting scenarios in 3 different ways
 One does not want to login interactively all the time. Azure provides service principal authentication as a secure way for silent login.
 
-## Via Portal
+## 1. via Portal
 [This article](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/) provides detailed steps on creating a service principal via portal.
 
-## Via XplatCLI in 3 simple steps
+## 2. via XplatCLI in 3 simple steps
 Pre-requisite:
 - Install the latest version of cli from the [latest github release](https://github.com/Azure/azure-xplat-cli/releases) or from [npm](https://npmjs.com/package/azure-cli).
 
@@ -30,7 +30,7 @@ Let us create a serviceprincipal with a password. The default start-date will be
 > ###### NOTE: The AppId a.k.a the serviceprincipal name in **GUID** format that gets created in this command is also known as clientId. It is the id given by ADAL for itself to identify your application. You can use this as the clientId during user authentication (creating UserTokenCredentials object).
 
 ```
-D:\sdk>azure ad sp create -n testap908 --home-page http://www.bing.com --identifier-uris https://testap674.com/home -p P@ssw0rd
+D:\sdk>azure ad sp create -n testap908 -p P@ssw0rd
 info:    Executing command ad sp create
 + Creating application testap674
 + Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
@@ -38,7 +38,7 @@ data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
 data:    Display Name:            testap674
 data:    Service Principal Names:
 data:                             56894bd4-0fde-41d8-a0d7-5bsslccety2   <<<<<<<<<<<<<<<<<<<<< also known as clientId
-data:                             https://testap674.com/home
+data:                             https://testap908
 info:    ad sp create command OK
 ```
 
@@ -79,6 +79,8 @@ info:    Added subscription TestSubscription
 +
 info:    login command OK
 ```
+## 3. via running a simple node.js script
+You can run a script to create an SP programmaticaly in node.js. Please see the link over [here](./ServicePrincipal) for more info.
 
 ## Using authentication in your node.js script
 

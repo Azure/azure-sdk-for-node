@@ -55,7 +55,6 @@ var accountToCreate = {
     testtag1: 'testvalue1',
     testtag2: 'testvalue2'
   },
-  name: accountName,
   location: location
 };
 
