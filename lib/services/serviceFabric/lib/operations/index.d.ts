@@ -995,7 +995,7 @@ export interface Services {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.partitionKeyType] The type of the partition key
+     * @param {number} [options.partitionKeyType] The type of the partition key
      * 
      * @param {string} [options.partitionKeyValue] The value of the partition key
      * 
@@ -1007,7 +1007,7 @@ export interface Services {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    resolve(serviceName: string, options: { partitionKeyType? : string, partitionKeyValue? : string, previousRspVersion? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResolvedServicePartition>): void;
+    resolve(serviceName: string, options: { partitionKeyType? : number, partitionKeyValue? : string, previousRspVersion? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResolvedServicePartition>): void;
     resolve(serviceName: string, callback: ServiceCallback<models.ResolvedServicePartition>): void;
 }
 
