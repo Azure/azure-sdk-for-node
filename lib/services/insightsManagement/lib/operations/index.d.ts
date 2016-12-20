@@ -56,7 +56,7 @@ export interface AutoscaleSettings {
      * @param {array} [parameters.notifications] the collection of notifications.
      * 
      * @param {boolean} [parameters.enabled] the enabled flag. Specifies whether
-     * automatic scaling is enabled for the resource.
+     * automatic scaling is enabled for the resource. The default value is 'true'.
      * 
      * @param {string} parameters.autoscaleSettingResourceName the name of the
      * autoscale setting.
@@ -137,11 +137,11 @@ export interface AutoscaleSettings {
 
 /**
  * @class
- * ServiceDiagnosticSettings
+ * ServiceDiagnosticSettingsOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the InsightsManagementClient.
  */
-export interface ServiceDiagnosticSettings {
+export interface ServiceDiagnosticSettingsOperations {
 
     /**
      * Gets the active diagnostic settings for the specified resource.
@@ -166,17 +166,22 @@ export interface ServiceDiagnosticSettings {
      * 
      * @param {object} parameters Parameters supplied to the operation.
      * 
-     * @param {string} [parameters.storageAccountId] the resource id of the
-     * storage account.
+     * @param {string} [parameters.storageAccountId] The resource ID of the storage
+     * account to which you would like to send Diagnostic Logs.
      * 
-     * @param {string} [parameters.serviceBusRuleId] the id of the service bus
-     * rule.
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule ID of the
+     * service bus namespace in which you would like to have Event Hubs created for
+     * streaming Diagnostic Logs. The rule ID is of the format: '{service bus
+     * resource ID}/authorizationrules/{key name}'.
      * 
-     * @param {array} [parameters.metrics] the list of metrics.
+     * @param {array} [parameters.metrics] the list of metric settings.
      * 
-     * @param {array} [parameters.logs] the list of logs.
+     * @param {array} [parameters.logs] the list of logs settings.
      * 
-     * @param {string} [parameters.workspaceId] the OMS workspace Id.
+     * @param {string} [parameters.workspaceId] The workspace ID (resource ID of a
+     * Log Analytics workspace) for a Log Analytics workspace to which you would
+     * like to send Diagnostic Logs. Example:
+     * /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
      * 
      * @param {string} [parameters.name] Azure resource name
      * 
@@ -198,62 +203,6 @@ export interface ServiceDiagnosticSettings {
 
 /**
  * @class
- * AlertRuleIncidents
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the InsightsManagementClient.
- */
-export interface AlertRuleIncidents {
-
-    /**
-     * Gets an incident associated to an alert rule
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} ruleName The name of the rule.
-     * 
-     * @param {string} incidentName The name of the incident to retrieve.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    get(resourceGroupName: string, ruleName: string, incidentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Incident>): void;
-    get(resourceGroupName: string, ruleName: string, incidentName: string, callback: ServiceCallback<models.Incident>): void;
-}
-
-/**
- * @class
- * Incidents
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the InsightsManagementClient.
- */
-export interface Incidents {
-
-    /**
-     * Gets a list of incidents associated to an alert rule
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} ruleName The name of the rule.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listByAlertRule(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IncidentListResult>): void;
-    listByAlertRule(resourceGroupName: string, ruleName: string, callback: ServiceCallback<models.IncidentListResult>): void;
-}
-
-/**
- * @class
  * AlertRules
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the InsightsManagementClient.
@@ -261,7 +210,9 @@ export interface Incidents {
 export interface AlertRules {
 
     /**
-     * Creates or updates an alert rule
+     * Creates or updates an alert rule.
+     * Request method: PUT		Request URI:
+     * https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/microsoft.insights/alertRules/{alert-rule-name}?api-version={api-version}
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -280,10 +231,10 @@ export interface AlertRules {
      * @param {object} [parameters.condition] the condition that results in the
      * alert rule being activated.
      * 
-     * @param {string} parameters.condition.odatatype Polymorhpic Discriminator
+     * @param {string} parameters.condition.odatatype Polymorphic Discriminator
      * 
-     * @param {array} [parameters.actions] the actions that are performed when the
-     * alert rule becomes active, and when an alert condition is resolved.
+     * @param {array} [parameters.actions] the array of actions that are performed
+     * when the alert rule becomes active, and when an alert condition is resolved.
      * 
      * @param {string} [parameters.name] Azure resource name
      * 
@@ -361,6 +312,53 @@ export interface AlertRules {
 
 /**
  * @class
+ * AlertRuleIncidents
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the InsightsManagementClient.
+ */
+export interface AlertRuleIncidents {
+
+    /**
+     * Gets an incident associated to an alert rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} ruleName The name of the rule.
+     * 
+     * @param {string} incidentName The name of the incident to retrieve.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, ruleName: string, incidentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Incident>): void;
+    get(resourceGroupName: string, ruleName: string, incidentName: string, callback: ServiceCallback<models.Incident>): void;
+
+    /**
+     * Gets a list of incidents associated to an alert rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} ruleName The name of the rule.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByAlertRule(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IncidentListResult>): void;
+    listByAlertRule(resourceGroupName: string, ruleName: string, callback: ServiceCallback<models.IncidentListResult>): void;
+}
+
+/**
+ * @class
  * LogProfiles
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the InsightsManagementClient.
@@ -400,33 +398,36 @@ export interface LogProfiles {
     get(logProfileName: string, callback: ServiceCallback<models.LogProfileResource>): void;
 
     /**
-     * Create or update the log profile.
+     * Create or update a log profile in Azure Monitoring REST API.
      *
      * @param {string} logProfileName The name of the log profile.
      * 
      * @param {object} parameters Parameters supplied to the operation.
      * 
      * @param {string} parameters.storageAccountId the resource id of the storage
-     * account.
+     * account to which you would like to send the Activity Log.
      * 
-     * @param {string} [parameters.serviceBusRuleId] the resource id of the
-     * service bus rule.
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule ID of the
+     * service bus namespace in which you would like to have Event Hubs created for
+     * streaming the Activity Log. The rule ID is of the format: '{service bus
+     * resource ID}/authorizationrules/{key name}'.
      * 
-     * @param {array} parameters.locations the comma separated list of valid ARM
-     * locations plus global. This are the locations where the logs are generated
-     * from.
+     * @param {array} parameters.locations List of regions for which Activity Log
+     * events should be stored or streamed. It is a comma separated list of valid
+     * ARM locations including the 'global' location.
      * 
-     * @param {array} [parameters.categories]  the categories of the logs. These
-     * categories are created as is convenient to the user.
+     * @param {array} [parameters.categories] the categories of the logs. These
+     * categories are created as is convenient to the user. Some values are:
+     * 'Write', 'Delete', and/or 'Action.'
      * 
-     * @param {object} [parameters.retentionPolicy] the retention policy for this
-     * log.
+     * @param {object} [parameters.retentionPolicy] the retention policy for the
+     * events in the log.
      * 
      * @param {boolean} parameters.retentionPolicy.enabled a value indicating
      * whether the retention policy is enabled.
      * 
      * @param {number} parameters.retentionPolicy.days the number of days for the
-     * retention.
+     * retention in days. A value of 0 will retain the events indefinitely.
      * 
      * @param {string} [parameters.name] Azure resource name
      * 

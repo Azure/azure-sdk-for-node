@@ -53,10 +53,9 @@ declare class InsightsManagementClient {
 
     // Operation groups
     autoscaleSettings: operations.AutoscaleSettings;
-    serviceDiagnosticSettings: operations.ServiceDiagnosticSettings;
-    alertRuleIncidents: operations.AlertRuleIncidents;
-    incidents: operations.Incidents;
+    serviceDiagnosticSettingsOperations: operations.ServiceDiagnosticSettingsOperations;
     alertRules: operations.AlertRules;
+    alertRuleIncidents: operations.AlertRuleIncidents;
     logProfiles: operations.LogProfiles;
     }
 
