@@ -270,11 +270,11 @@ export interface TrustedIdProviders {
 
 /**
  * @class
- * Account
+ * AccountOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeStoreAccountManagementClient.
  */
-export interface Account {
+export interface AccountOperations {
 
     /**
      * Creates the specified Data Lake Store account.
@@ -334,6 +334,10 @@ export interface Account {
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
      *
+     * @param {string} [parameters.newTier] the billing tier to use for next month.
+     * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+     * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -375,6 +379,10 @@ export interface Account {
      *
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
+     *
+     * @param {string} [parameters.newTier] the billing tier to use for next month.
+     * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+     * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -577,6 +585,10 @@ export interface Account {
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
      *
+     * @param {string} [parameters.newTier] the billing tier to use for next month.
+     * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+     * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -618,6 +630,10 @@ export interface Account {
      *
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
+     *
+     * @param {string} [parameters.newTier] the billing tier to use for next month.
+     * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+     * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
      *
      * @param {object} [options] Optional Parameters.
      *

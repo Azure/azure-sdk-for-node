@@ -25,7 +25,7 @@ exports.CloudError = msRestAzure.CloudError;
  * @member {string} [type] Resource type
  *
  */
-export interface SubResource extends BaseResource {
+export interface SubResource {
   id?: string;
   name?: string;
   type?: string;
@@ -182,12 +182,17 @@ export interface EncryptionConfig {
  * @member {string} [defaultGroup] the default owner group for all new folders
  * and files created in the Data Lake Store account.
  *
+ * @member {string} [newTier] the billing tier to use for next month. Possible
+ * values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+ * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+ *
  */
 export interface DataLakeStoreAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
   firewallState?: string;
   trustedIdProviderState?: string;
   defaultGroup?: string;
+  newTier?: string;
 }
 
 /**
@@ -286,6 +291,15 @@ export interface Resource extends BaseResource {
  * @member {string} [defaultGroup] the default owner group for all new folders
  * and files created in the Data Lake Store account.
  *
+ * @member {string} [newTier] the billing tier to use for next month. Possible
+ * values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+ * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+ *
+ * @member {string} [currentTier] the billing tier in use for the current
+ * month. Possible values include: 'Consumption', 'Commitment_1TB',
+ * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+ * 'Commitment_5PB'
+ *
  */
 export interface DataLakeStoreAccount extends Resource {
   identity?: EncryptionIdentity;
@@ -302,6 +316,8 @@ export interface DataLakeStoreAccount extends Resource {
   lastModifiedTime?: Date;
   endpoint?: string;
   defaultGroup?: string;
+  newTier?: string;
+  currentTier?: string;
 }
 
 /**
