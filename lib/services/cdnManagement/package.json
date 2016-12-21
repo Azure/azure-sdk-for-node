@@ -6,7 +6,7 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wan, Qinyuan <qinwa@microsoft.com>"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Microsoft Azure CDN Resource Provider Management Client Library for Node",
   "tags": [
     "azure",
