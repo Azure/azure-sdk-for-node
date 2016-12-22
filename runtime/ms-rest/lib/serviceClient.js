@@ -11,6 +11,7 @@ var SigningFilter = require('./filters/signingFilter');
 var ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
 var SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilter');
 var requestPipeline = require('./requestPipeline');
+var WebResource = require('./webResource');
 var utils = require('./utils');
 
 /**
@@ -137,6 +138,45 @@ ServiceClient.prototype.addFilter = function (newFilter) {
 
   this.pipeline = requestPipeline.createWithSink(this.pipeline, newFilter);
   return this;
+};
+
+ServiceClient.prototype.makeRequest = function makeRequest(requestOptions, callback) {
+  if (requestOptions === null || requestOptions === undefined || typeof requestOptions !== 'object') {
+    throw new Error('requestOptions cannot be null or undefined and it must be of type object.');
+  }
+
+  if (callback === null || callback === undefined) {
+    throw new Error('callback cannot be null or undefined.');
+  }
+  if (requestOptions.webResource && (requestOptions.url || requestOptions.headers || requestOptions.body || requestOptions.method)) {
+    throw new Error('Please provide either the webResource object or other options like url, method, headers, body, etc.');
+  }
+
+  var httpRequest = new WebResource();
+  if (!requestOptions.webResource) {
+    if (requestOptions.url === null || requestOptions.url === undefined || typeof requestOptions.url.valueOf() !== 'string') {
+      throw new Error('requestOptions.url cannot be null or undefined and it must be of type string.');
+    }
+    if (requestOptions.method === null || requestOptions.method === undefined || typeof requestOptions.method.valueOf() !== 'string') {
+      throw new Error('requestOptions.method cannot be null or undefined and it must be of type string.');
+    }
+    if (!requestOptions.headers) {
+      requestOptions.headers = {};
+    }
+    if (requestOptions.body === undefined) {
+      requestOptions.body = null;
+    }
+    //prepare the webResource object for making the request
+    httpRequest.prepare(requestOptions);
+  } else {
+    //validate the webResource object.
+    httpRequest = httpRequest.validateProperties(requestOptions.webResource);
+  }
+  //send request
+  this.pipeline(httpRequest, function (err, response, responseBody) {
+    return callback(err, httpRequest, response, responseBody);
+  });
+  
 };
 
 module.exports = ServiceClient;

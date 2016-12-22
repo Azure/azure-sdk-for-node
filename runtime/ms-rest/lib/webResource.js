@@ -20,6 +20,9 @@ var HttpVerbs = HttpConstants.HttpVerbs;
 function WebResource() {
   this.rawResponse = false;
   this.queryString = {};
+  this.url = null;
+  this.method = null;
+  this.headers = {};
 }
 
 /**
@@ -291,6 +294,77 @@ WebResource.prototype.pipeInput = function(inputStream, destStream) {
   }
 
   return destStream;
+};
+
+WebResource.prototype.prepare = function prepare(options) {
+  if (options === null || options === undefined  || typeof options !== 'object') {
+    throw new Error('options cannot be null or undefined and must be of type object')
+  }
+  if (!options.pathTemplate && (options.url === null || options.url === undefined || typeof options.url.valueOf() !== 'string')) {
+    throw new Error('options.url cannot be null or undefined and it must be of type string.');
+  }
+  if (options.method === null || options.method === undefined || typeof options.method.valueOf() !== 'string') {
+    throw new Error('options.method cannot be null or undefined and it must be of type string.');
+  }
+
+  if (options.url) {
+    this.url = options.url;
+  }
+
+  //set the method
+  this.method = options.method;
+
+  if (options.pathTemplate) {
+    if (!options.baseUrl) {
+      options.baseUrl = 'https://management.azure.com';
+    }
+    var baseUrl = options.baseUrl;
+    var url = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + options.pathTemplate;
+    var segments = url.match(/({\w*\s*\w*})/ig);
+    if (segments && segments.length) {
+      if (options.pathParameters === null || options.pathParameters === undefined || typeof options.pathParameters !== 'object') {
+        throw new Error('pathTemplate: ' + options.pathTemplate + ' has been provided. Hence, options.pathParameters ' + 
+          'cannot be null or undefined and must be of type \'object\'.');
+      }
+      segments.forEach(function (item) {
+        var pathParamName = item.slice(1, -1);
+        var pathParam = options.pathParameters[pathParamName];
+        if (pathParam === null || pathParam === undefined || !(typeof pathParam === 'string' || typeof pathParam === 'object')) {
+          throw new Error('pathTemplate: ' + options.pathTemplate + ' contains the path parameter ' + pathParamName + 
+            ' however, it is not present in options.pathParameters - ' + util.inspect(options.pathParameters, { depth: null } +
+            '. The value of the path parameter can either be a string of the form { ' + pathParamName + ': \'some sample value\' } or ' +
+            'it can be an object of the form { ' + pathParamName + ': { value: \'some sample value\', skipUrlEncoding: true } }.'));
+        }
+
+        if (typeof pathParam.valueOf() === 'string') {
+          url = url.replace(item, encodeURIComponent(pathParam));
+        }
+
+        if (typeof pathParam.valueOf() === 'object') {
+          if (!pathParam.value) {
+            throw new Error('options.pathParameters[' + pathParamName + '] is of type \'object\' but it does not contain a value property.');
+          }
+          if (pathParam.skipUrlEncoding) {
+            url = url.replace(item, pathParam.value);
+          } else {
+            url = url.replace(item, encodeURIComponent(pathParam.value));
+          }
+        }
+      });
+      if (options.queryParameters) {
+        if (typeof options.queryParameters !== 'object') {
+          throw new Error('options.queryParameters must be of type object. It should be a JSON object ' +
+            'of \'query-parameter-name\' as the key and the \'query-parameter-value\' as the value.');
+        }
+        url += '?';
+        var queryString = '';
+        for (var queryParam in options.queryParameters) {
+          queryString += queryParam + '=' + options.queryParameters[queryParam];
+        }
+        url += queryString;
+      }
+    }
+  }
 };
 
 module.exports = WebResource;
