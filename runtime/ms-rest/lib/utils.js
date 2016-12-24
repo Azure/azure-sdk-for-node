@@ -115,4 +115,13 @@ exports.objectValues = function (obj) {
   return result;
 };
 
+/**
+* Generated UUID
+*
+* @return {string} RFC4122 v4 UUID.
+*/
+exports.generateUuid = function () {
+  return uuid.v4();
+};
+
 exports = module.exports;
