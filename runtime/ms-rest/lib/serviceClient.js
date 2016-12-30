@@ -141,182 +141,10 @@ ServiceClient.prototype.addFilter = function (newFilter) {
 };
 
 /**
- * Private method: Prepares the HTTP Request object before sending the request based on the provided options.
- *
- * @param {object} options It is the same options that is an input to the sendRequest method. Please see the documentation over there.
- *
- * @return {object} WebResource Returns the prepared WebResource (HTTP Request) object that needs to be given to the request pipeline.
- */
-function _prepareRequest(options) {
-  if (options === null || options === undefined || typeof options !== 'object') {
-    throw new Error('options cannot be null or undefined and must be of type object')
-  }
-
-  if (options.method === null || options.method === undefined || typeof options.method.valueOf() !== 'string') {
-    throw new Error('options.method cannot be null or undefined and it must be of type string.');
-  }
-
-  if (options.url && options.pathTemplate) {
-    throw new Error('options.url and options.pathTemplate are mutually exclusive. Please provide either of them.')
-  }
-
-
-  if ((options.pathTemplate === null || options.pathTemplate === undefined || typeof options.pathTemplate.valueOf() !== 'string') && (options.url === null || options.url === undefined || typeof options.url.valueOf() !== 'string')) {
-    throw new Error('Please provide either options.pathTemplate or options.url. Currently none of them were provided.');
-  }
-
-  var httpRequest = new WebResource();
-  //set the url if it is provided.
-  if (options.url) {
-    if (typeof options.url !== 'string') {
-      throw new Error('options.url must be of type \'string\'.');
-    }
-    httpRequest.url = options.url;
-  }
-
-  //set the method
-  if (options.method) {
-    var validMethods = ['GET', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'POST', 'PATCH'];
-    if (validMethods.indexOf(options.method.toUpperCase()) === -1) {
-      throw new Error('The provided method \'' + options.method + '\' is invalid. Supported HTTP methods are: ' + JSON.stringify(validMethods));
-    }
-  }
-  httpRequest.method = options.method.toUpperCase();
-
-  //construct the url if path template is provided
-  if (options.pathTemplate) {
-    if (typeof options.pathTemplate !== 'string') {
-      throw new Error('options.pathTemplate must be of type \'string\'.');
-    }
-    if (!options.baseUrl) {
-      options.baseUrl = 'https://management.azure.com';
-    }
-    var baseUrl = options.baseUrl;
-    var url = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + options.pathTemplate;
-    var segments = url.match(/({\w*\s*\w*})/ig);
-    if (segments && segments.length) {
-      if (options.pathParameters === null || options.pathParameters === undefined || typeof options.pathParameters !== 'object') {
-        throw new Error('pathTemplate: ' + options.pathTemplate + ' has been provided. Hence, options.pathParameters ' +
-          'cannot be null or undefined and must be of type \'object\'.');
-      }
-      segments.forEach(function (item) {
-        var pathParamName = item.slice(1, -1);
-        var pathParam = options.pathParameters[pathParamName];
-        if (pathParam === null || pathParam === undefined || !(typeof pathParam === 'string' || typeof pathParam === 'object')) {
-          throw new Error('pathTemplate: ' + options.pathTemplate + ' contains the path parameter ' + pathParamName +
-            ' however, it is not present in options.pathParameters - ' + util.inspect(options.pathParameters, { depth: null } +
-            '. The value of the path parameter can either be a string of the form { ' + pathParamName + ': \'some sample value\' } or ' +
-            'it can be an object of the form { ' + pathParamName + ': { value: \'some sample value\', skipUrlEncoding: true } }.'));
-        }
-
-        if (typeof pathParam.valueOf() === 'string') {
-          url = url.replace(item, encodeURIComponent(pathParam));
-        }
-
-        if (typeof pathParam.valueOf() === 'object') {
-          if (!pathParam.value) {
-            throw new Error('options.pathParameters[' + pathParamName + '] is of type \'object\' but it does not contain a \'value\' property.');
-          }
-          if (pathParam.skipUrlEncoding) {
-            url = url.replace(item, pathParam.value);
-          } else {
-            url = url.replace(item, encodeURIComponent(pathParam.value));
-          }
-        }
-      });
-    }
-    httpRequest.url = url;
-  }
-
-  //append query parameters to the url if they are provided. They can be provided with pathTemplate or url option.
-  if (options.queryParameters) {
-    if (typeof options.queryParameters !== 'object') {
-      throw new Error('options.queryParameters must be of type object. It should be a JSON object ' +
-        'of \'query-parameter-name\' as the key and the \'query-parameter-value\' as the value. ' +
-        'The \'query-parameter-value\' may be a string or an object of the form { value: \'query-parameter-value\', skipUrlEncoding: true }.');
-    }
-    //append question mark if it is not present in the url
-    if (httpRequest.url && httpRequest.url.indexOf('?') === -1) {
-      httpRequest.url += '?';
-    }
-    //construct queryString
-    var queryParams = [];
-    var queryParameters = options.queryParameters;
-    for (var queryParamName in queryParameters) {
-      var queryParam = queryParameters[queryParamName];
-      if (queryParam) {
-        if (typeof queryParam === 'string') {
-          queryParams.push(queryParamName + '=' + encodeURIComponent(queryParam));
-        }
-        if (typeof queryParam === 'object') {
-          if (!queryParam.value) {
-            throw new Error('options.queryParameters[' + queryParamName + '] is of type \'object\' but it does not contain a \'value\' property.');
-          }
-          if (queryParam.skipUrlEncoding) {
-            queryParams.push(queryParamName + '=' + queryParameters[queryParamName]);
-          } else {
-            queryParams.push(queryParamName + '=' + encodeURIComponent(queryParameters[queryParamName]));
-          }
-        }
-      }
-    }//end-of-for
-    //append the queryString
-    httpRequest.url += queryParams.join('&');
-  }
-
-  //add headers to the request if they are provided
-  if (options.headers) {
-    var headers = options.headers;
-    for (var headerName in headers) {
-      if (headers.hasOwnProperty(headerName)) {
-        httpRequest.headers[headerName] = headers[headerName];
-      }
-    }
-  }
-  //ensure accept-language is set correctly
-  if (!httpRequest.headers['accept-language']) {
-    httpRequest.headers['accept-language'] = 'en-US';
-  }
-  //ensure the request-id is set correctly
-  if (!httpRequest.headers['x-ms-client-request-id'] && !options.disableClientRequestId) {
-    httpRequest.headers['x-ms-client-request-id'] = utils.generateUuid();
-  }
-  //ensure content-type is set correctly
-  if (httpRequest.headers['Content-Type'] &&
-      typeof httpRequest.headers['Content-Type'].valueOf() === 'string' &&
-      !httpRequest.headers['Content-Type'].endsWith('; charset=utf-8')) {
-    httpRequest.headers['Content-Type'] += '; charset=utf-8';
-  }
-
-  //default
-  if (!httpRequest.headers['Content-Type']) {
-    httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
-  }
-
-  //set the request body. request.js automatically sets the Content-Length request header, so we need not set it explicilty
-  httpRequest.body = null;
-  if (options.body !== null && options.body !== undefined) {
-    //body as a stream special case. set the body as-is and check for some special request headers specific to sending a stream. 
-    if (options.bodyIsStream) {
-      httpRequest.body = options.body;
-      if (!httpRequest.headers['Transfer-Encoding']) {
-        httpRequest.headers['Transfer-Encoding'] = 'chunked';
-      }
-      if (httpRequest.headers['Content-Type'] !== 'application/octet-stream') {
-        httpRequest.headers['Content-Type'] = 'application/octet-stream';
-      }
-    } else {
-      httpRequest.body = JSON.stringify(options.body);
-    }
-  }
-
-  return httpRequest;
-}
-
-/**
  * Sends the request and returns the response.
  *
- * @param {object} options The request options that should be provided to send a request successfully
+ * @param {object|WebResource} options The request options that should be provided to send a request successfully. 
+ * It can either be an options object (a simple json object) or the WebResource object with all the required properties set to make a request.
  *
  * @param {string} options.method The HTTP request method. Valid values are 'GET', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'POST', 'PATCH'.
  *
@@ -361,6 +189,8 @@ function _prepareRequest(options) {
  *
  * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
  *
+ * @param {boolean} [options.disableJsonStringifyOnBody] - Indicates whether this method should JSON.stringify() the request body. Default value: false.
+ *
  * @param {boolean} [options.bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).
  *
  * @param {function} callback
@@ -386,7 +216,13 @@ ServiceClient.prototype.sendRequest = function sendRequest(options, callback) {
 
   var httpRequest = null;
   try {
-    httpRequest = _prepareRequest(options);
+    if (options instanceof WebResource) {
+      options.validateRequestProperties();
+      httpRequest = options;
+    } else {
+      httpRequest = new WebResource();
+      httpRequest = httpRequest.prepare(options);
+    }
   } catch (error) {
     return callback(error);
   }
