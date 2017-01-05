@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Catalog
+ * CatalogOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsCatalogManagementClient.
  */
-export interface Catalog {
+export interface CatalogOperations {
 
     /**
      * Creates the specified secret for use with external data sources in the
@@ -80,8 +80,8 @@ export interface Catalog {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSecret>): void;
-    updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, callback: ServiceCallback<models.USqlSecret>): void;
+    updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, callback: ServiceCallback<void>): void;
 
     /**
      * Gets the specified secret in the specified database. This is deprecated and

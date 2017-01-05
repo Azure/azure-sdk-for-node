@@ -54,7 +54,7 @@ declare class DataLakeAnalyticsJobManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
-    job: operations.Job;
+    jobOperations: operations.JobOperations;
     }
 
 export = DataLakeAnalyticsJobManagementClient;
