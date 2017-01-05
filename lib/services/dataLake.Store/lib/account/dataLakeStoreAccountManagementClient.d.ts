@@ -58,7 +58,7 @@ declare class DataLakeStoreAccountManagementClient {
     // Operation groups
     firewallRules: operations.FirewallRules;
     trustedIdProviders: operations.TrustedIdProviders;
-    account: operations.Account;
+    accountOperations: operations.AccountOperations;
     }
 
 export = DataLakeStoreAccountManagementClient;
