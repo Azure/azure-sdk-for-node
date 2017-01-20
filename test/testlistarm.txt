@@ -12,6 +12,8 @@ services/cdnManagement/cdnProfile-tests.js
 services/cdnManagement/cdnEndpoint-tests.js
 services/cdnManagement/cdnOrigin-tests.js
 services/cdnManagement/cdnCustomDomain-tests.js
+services/cdnManagement/cdnCheckResourceUsage-tests.js
+services/cdnManagement/cdnEdgeNode-tests.js
 services/cdnManagement/cdnCheckNameAvailability-tests.js
 services/cdnManagement/cdnOperation-tests.js
 services/batchManagement/batchManagementClient-tests.js

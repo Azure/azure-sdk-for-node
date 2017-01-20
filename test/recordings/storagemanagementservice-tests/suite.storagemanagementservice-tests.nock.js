@@ -2,9 +2,9 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'westus';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '28adf6bf-ce46-4eb0-ba29-b6d1a69ab859';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '2aa30309-3723-4112-bd0b-79e9f65fc52d';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['nodeTestGroup9264','testacc9889'];};
+ exports.randomTestIdsGenerated = function() { return ['nodeTestGroup678','testacc2792'];};

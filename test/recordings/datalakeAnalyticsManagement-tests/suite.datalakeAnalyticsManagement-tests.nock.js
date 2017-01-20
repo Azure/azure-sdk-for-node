@@ -3,9 +3,9 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'East US 2';
   process.env['AZURE_TEST_RESOURCE_GROUP'] = 'xplattestadlarg05';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '53d9063d-87ae-4ea8-be90-3686c3b8669f';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '2aa30309-3723-4112-bd0b-79e9f65fc52d';
 };
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadla2766','xplattestadla5327','xplattestadla9247','xplattestadls2746','xplattestadls2413','xplattestadls5848','adlacatalogitem8858','adlacatalogitem4681','adlacatalogitem9762','adlacatalogitem2229','adlacatalogitem5382','adlacatalogitem6766','adlacatalogitem3402','adlacatalogitem9970'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadla5088','xplattestadla5343','xplattestadla8758','xplattestadls9781','xplattestadls9997','xplattestadls8672','adlacatalogitem4910','adlacatalogitem1952','adlacatalogitem692','adlacatalogitem2548','adlacatalogitem2810','adlacatalogitem1559','adlacatalogitem5878','adlacatalogitem8855'];};
