@@ -96,6 +96,237 @@ export interface ClusterHealths {
 
 /**
  * @class
+ * ClusterUpgrades
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricClient.
+ */
+export interface ClusterUpgrades {
+
+    /**
+     * Start cluster upgrades
+     *
+     * @param {object} startClusterUpgrade The upgrade of the start cluster
+     * 
+     * @param {string} [startClusterUpgrade.configVersion]
+     * 
+     * @param {string} [startClusterUpgrade.codeVersion]
+     * 
+     * @param {string} [startClusterUpgrade.upgradeKind]
+     * 
+     * @param {string} [startClusterUpgrade.rollingUpgradeMode] Possible values
+     * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+     * 
+     * @param {number}
+     * [startClusterUpgrade.upgradeReplicaSetCheckTimeoutInSeconds]
+     * 
+     * @param {boolean} [startClusterUpgrade.forceRestart]
+     * 
+     * @param {boolean} [startClusterUpgrade.enableDeltaHealthEvaluation]
+     * 
+     * @param {object} [startClusterUpgrade.monitoringPolicy]
+     * 
+     * @param {object} [startClusterUpgrade.clusterUpgradeHealthPolicy]
+     * 
+     * @param {number}
+     * [startClusterUpgrade.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
+     * 
+     * @param {number}
+     * [startClusterUpgrade.clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+     * 
+     * @param {object} [startClusterUpgrade.applicationHealthPolicyMap]
+     * 
+     * @param {boolean}
+     * [startClusterUpgrade.applicationHealthPolicyMap.considerWarningAsError]
+     * 
+     * @param {number}
+     * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyDeployedApplications]
+     * 
+     * @param {number}
+     * [startClusterUpgrade.applicationHealthPolicyMap.defaultServiceTypeHealthPolicy]
+     * 
+     * @param {number}
+     * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyServices]
+     * 
+     * @param {number}
+     * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyPartitionsPerService]
+     * 
+     * @param {number}
+     * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyReplicasPerPartition]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    start(startClusterUpgrade: models.StartClusterUpgrade, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    start(startClusterUpgrade: models.StartClusterUpgrade, callback: ServiceCallback<string>): void;
+
+    /**
+     * Update cluster upgrades
+     *
+     * @param {object} updateClusterUpgrade The description of the update cluster
+     * upgrade
+     * 
+     * @param {string} [updateClusterUpgrade.upgradeKind]
+     * 
+     * @param {object} [updateClusterUpgrade.updateDescription]
+     * 
+     * @param {string} [updateClusterUpgrade.updateDescription.rollingUpgradeMode]
+     * Possible values include: 'Invalid', 'UnmonitoredAuto',
+     * 'UnmonitoredManual', 'Monitored'
+     * 
+     * @param {boolean} [updateClusterUpgrade.updateDescription.forceRestart]
+     * 
+     * @param {string} [updateClusterUpgrade.updateDescription.failureAction]
+     * 
+     * @param {number}
+     * [updateClusterUpgrade.updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.updateDescription.healthCheckWaitDurationInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.updateDescription.healthCheckStableDurationInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.updateDescription.upgradeTimeoutInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.updateDescription.upgradeDomainTimeoutInMilliseconds]
+     * 
+     * @param {object} [updateClusterUpgrade.clusterHealthPolicy]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.clusterHealthPolicy.rollingUpgradeMode] Possible
+     * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+     * 'Monitored'
+     * 
+     * @param {boolean} [updateClusterUpgrade.clusterHealthPolicy.forceRestart]
+     * 
+     * @param {string} [updateClusterUpgrade.clusterHealthPolicy.failureAction]
+     * 
+     * @param {number}
+     * [updateClusterUpgrade.clusterHealthPolicy.upgradeReplicaSetCheckTimeoutInSeconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.clusterHealthPolicy.healthCheckWaitDurationInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.clusterHealthPolicy.healthCheckStableDurationInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.clusterHealthPolicy.healthCheckRetryTimeoutInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.clusterHealthPolicy.upgradeTimeoutInMilliseconds]
+     * 
+     * @param {string}
+     * [updateClusterUpgrade.clusterHealthPolicy.upgradeDomainTimeoutInMilliseconds]
+     * 
+     * @param {boolean} [updateClusterUpgrade.enableDeltaHealthEvaluations]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    update(updateClusterUpgrade: models.UpdateClusterUpgrade, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    update(updateClusterUpgrade: models.UpdateClusterUpgrade, callback: ServiceCallback<string>): void;
+
+    /**
+     * Resume cluster upgrades
+     *
+     * @param {object} resumeClusterUpgrade The upgrade of the cluster
+     * 
+     * @param {string} [resumeClusterUpgrade.upgradeDomain]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    resume(resumeClusterUpgrade: models.ResumeClusterUpgrade, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    resume(resumeClusterUpgrade: models.ResumeClusterUpgrade, callback: ServiceCallback<string>): void;
+
+    /**
+     * Rollback cluster upgrades
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    rollback(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    rollback(callback: ServiceCallback<string>): void;
+}
+
+/**
+ * @class
+ * ClusterPackages
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricClient.
+ */
+export interface ClusterPackages {
+
+    /**
+     * Register cluster packages
+     *
+     * @param {object} registerClusterPackage The package of the register cluster
+     * 
+     * @param {string} [registerClusterPackage.codeFilePath]
+     * 
+     * @param {string} [registerClusterPackage.clusterManifestFilePath]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    register(registerClusterPackage: models.RegisterClusterPackage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    register(registerClusterPackage: models.RegisterClusterPackage, callback: ServiceCallback<string>): void;
+
+    /**
+     * Unregister cluster packages
+     *
+     * @param {object} unregisterClusterPackage The package of the unregister
+     * cluster
+     * 
+     * @param {string} [unregisterClusterPackage.codeVersion]
+     * 
+     * @param {string} [unregisterClusterPackage.configVersion]
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    unregister(unregisterClusterPackage: models.UnregisterClusterPackage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    unregister(unregisterClusterPackage: models.UnregisterClusterPackage, callback: ServiceCallback<string>): void;
+}
+
+/**
+ * @class
  * Nodes
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricClient.
@@ -1158,69 +1389,66 @@ export interface ApplicationUpgrades {
      *
      * @param {string} applicationName The name of the application
      * 
-     * @param {object} startApplicationUpgradeDescription The description of the
-     * start application upgrade
+     * @param {object} startApplicationUpgrade The description of the start
+     * application upgrade
      * 
-     * @param {string} [startApplicationUpgradeDescription.name]
+     * @param {string} [startApplicationUpgrade.name]
      * 
-     * @param {string}
-     * [startApplicationUpgradeDescription.targetApplicationTypeVersion]
+     * @param {string} [startApplicationUpgrade.targetApplicationTypeVersion]
      * 
-     * @param {array} [startApplicationUpgradeDescription.parameters]
+     * @param {array} [startApplicationUpgrade.parameters]
      * 
-     * @param {string} [startApplicationUpgradeDescription.upgradeKind] Possible
-     * values include: 'Invalid', 'Rolling'
+     * @param {string} [startApplicationUpgrade.upgradeKind] Possible values
+     * include: 'Invalid', 'Rolling'
      * 
-     * @param {string} [startApplicationUpgradeDescription.rollingUpgradeMode]
-     * Possible values include: 'Invalid', 'UnmonitoredAuto',
-     * 'UnmonitoredManual', 'Monitored'
+     * @param {string} [startApplicationUpgrade.rollingUpgradeMode] Possible
+     * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+     * 'Monitored'
      * 
      * @param {number}
-     * [startApplicationUpgradeDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+     * [startApplicationUpgrade.upgradeReplicaSetCheckTimeoutInSeconds]
      * 
-     * @param {boolean} [startApplicationUpgradeDescription.forceRestart]
+     * @param {boolean} [startApplicationUpgrade.forceRestart]
      * 
-     * @param {object} [startApplicationUpgradeDescription.monitoringPolicy]
+     * @param {object} [startApplicationUpgrade.monitoringPolicy]
      * 
-     * @param {string}
-     * [startApplicationUpgradeDescription.monitoringPolicy.failureAction]
-     * 
-     * @param {string}
-     * [startApplicationUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
+     * @param {string} [startApplicationUpgrade.monitoringPolicy.failureAction]
      * 
      * @param {string}
-     * [startApplicationUpgradeDescription.monitoringPolicy.healthCheckStableDurationInMilliseconds]
+     * [startApplicationUpgrade.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
      * 
      * @param {string}
-     * [startApplicationUpgradeDescription.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
+     * [startApplicationUpgrade.monitoringPolicy.healthCheckStableDurationInMilliseconds]
      * 
      * @param {string}
-     * [startApplicationUpgradeDescription.monitoringPolicy.upgradeTimeoutInMilliseconds]
+     * [startApplicationUpgrade.monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
      * 
      * @param {string}
-     * [startApplicationUpgradeDescription.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+     * [startApplicationUpgrade.monitoringPolicy.upgradeTimeoutInMilliseconds]
      * 
-     * @param {object}
-     * [startApplicationUpgradeDescription.applicationHealthPolicy]
+     * @param {string}
+     * [startApplicationUpgrade.monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
+     * 
+     * @param {object} [startApplicationUpgrade.applicationHealthPolicy]
      * 
      * @param {boolean}
-     * [startApplicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
+     * [startApplicationUpgrade.applicationHealthPolicy.considerWarningAsError]
      * 
      * @param {number}
-     * [startApplicationUpgradeDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * [startApplicationUpgrade.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
      * 
      * @param {object}
-     * [startApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * [startApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
      * The policy of the default service type health
      * 
      * @param {number}
-     * [startApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+     * [startApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
      * 
      * @param {number}
-     * [startApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+     * [startApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
      * 
      * @param {number}
-     * [startApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+     * [startApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1230,74 +1458,70 @@ export interface ApplicationUpgrades {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    start(applicationName: string, startApplicationUpgradeDescription: models.StartApplicationUpgradeDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-    start(applicationName: string, startApplicationUpgradeDescription: models.StartApplicationUpgradeDescription, callback: ServiceCallback<string>): void;
+    start(applicationName: string, startApplicationUpgrade: models.StartApplicationUpgrade, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    start(applicationName: string, startApplicationUpgrade: models.StartApplicationUpgrade, callback: ServiceCallback<string>): void;
 
     /**
      * Update application upgrades
      *
      * @param {string} applicationName The name of the application
      * 
-     * @param {object} updateApplicationUpgradeDescription The description of the
+     * @param {object} updateApplicationUpgrade The description of the update
      * application upgrade
      * 
-     * @param {string} [updateApplicationUpgradeDescription.name]
+     * @param {string} [updateApplicationUpgrade.name]
      * 
-     * @param {string} [updateApplicationUpgradeDescription.upgradeKind]
+     * @param {string} [updateApplicationUpgrade.upgradeKind]
      * 
-     * @param {object} [updateApplicationUpgradeDescription.updateDescription] The
-     * description of the update
-     * 
-     * @param {string}
-     * [updateApplicationUpgradeDescription.updateDescription.rollingUpgradeMode]
-     * Possible values include: 'Invalid', 'UnmonitoredAuto',
-     * 'UnmonitoredManual', 'Monitored'
-     * 
-     * @param {boolean}
-     * [updateApplicationUpgradeDescription.updateDescription.forceRestart]
+     * @param {object} [updateApplicationUpgrade.updateDescription]
      * 
      * @param {string}
-     * [updateApplicationUpgradeDescription.updateDescription.failureAction]
+     * [updateApplicationUpgrade.updateDescription.rollingUpgradeMode] Possible
+     * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
+     * 'Monitored'
+     * 
+     * @param {boolean} [updateApplicationUpgrade.updateDescription.forceRestart]
+     * 
+     * @param {string} [updateApplicationUpgrade.updateDescription.failureAction]
      * 
      * @param {number}
-     * [updateApplicationUpgradeDescription.updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+     * [updateApplicationUpgrade.updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
      * 
      * @param {string}
-     * [updateApplicationUpgradeDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
+     * [updateApplicationUpgrade.updateDescription.healthCheckWaitDurationInMilliseconds]
      * 
      * @param {string}
-     * [updateApplicationUpgradeDescription.updateDescription.healthCheckStableDurationInMilliseconds]
+     * [updateApplicationUpgrade.updateDescription.healthCheckStableDurationInMilliseconds]
      * 
      * @param {string}
-     * [updateApplicationUpgradeDescription.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+     * [updateApplicationUpgrade.updateDescription.healthCheckRetryTimeoutInMilliseconds]
      * 
      * @param {string}
-     * [updateApplicationUpgradeDescription.updateDescription.upgradeTimeoutInMilliseconds]
+     * [updateApplicationUpgrade.updateDescription.upgradeTimeoutInMilliseconds]
      * 
      * @param {string}
-     * [updateApplicationUpgradeDescription.updateDescription.upgradeDomainTimeoutInMilliseconds]
+     * [updateApplicationUpgrade.updateDescription.upgradeDomainTimeoutInMilliseconds]
      * 
-     * @param {object}
-     * [updateApplicationUpgradeDescription.applicationHealthPolicy]
+     * @param {object} [updateApplicationUpgrade.applicationHealthPolicy]
      * 
      * @param {boolean}
-     * [updateApplicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
+     * [updateApplicationUpgrade.applicationHealthPolicy.considerWarningAsError]
      * 
      * @param {number}
-     * [updateApplicationUpgradeDescription.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * [updateApplicationUpgrade.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
      * 
      * @param {object}
-     * [updateApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * [updateApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
      * The policy of the default service type health
      * 
      * @param {number}
-     * [updateApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
+     * [updateApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
      * 
      * @param {number}
-     * [updateApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
+     * [updateApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
      * 
      * @param {number}
-     * [updateApplicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
+     * [updateApplicationUpgrade.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1307,8 +1531,8 @@ export interface ApplicationUpgrades {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    update(applicationName: string, updateApplicationUpgradeDescription: models.UpdateApplicationUpgradeDescription, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-    update(applicationName: string, updateApplicationUpgradeDescription: models.UpdateApplicationUpgradeDescription, callback: ServiceCallback<string>): void;
+    update(applicationName: string, updateApplicationUpgrade: models.UpdateApplicationUpgrade, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    update(applicationName: string, updateApplicationUpgrade: models.UpdateApplicationUpgrade, callback: ServiceCallback<string>): void;
 
     /**
      * Resume application upgrades

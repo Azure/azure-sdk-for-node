@@ -7,6 +7,36 @@
 
 /**
  * @class
+ * Initializes a new instance of the RegisterClusterPackage class.
+ * @constructor
+ * The package of the register cluster
+ * @member {string} [codeFilePath]
+ * 
+ * @member {string} [clusterManifestFilePath]
+ * 
+ */
+export interface RegisterClusterPackage {
+    codeFilePath?: string;
+    clusterManifestFilePath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UnregisterClusterPackage class.
+ * @constructor
+ * The package of the unregister cluster
+ * @member {string} [codeVersion]
+ * 
+ * @member {string} [configVersion]
+ * 
+ */
+export interface UnregisterClusterPackage {
+    codeVersion?: string;
+    configVersion?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Node class.
  * @constructor
  * The node
@@ -1970,6 +2000,109 @@ export interface ApplicationHealthDeployedApplicationHealthStatesItem {
 
 /**
  * @class
+ * Initializes a new instance of the ClusterUpgradeHealthPolicy class.
+ * @constructor
+ * The upgrade health policy of the cluster
+ * @member {number} [maxPercentDeltaUnhealthyNodes]
+ * 
+ * @member {number} [maxPercentUpgradeDomainDeltaUnhealthyNodes]
+ * 
+ */
+export interface ClusterUpgradeHealthPolicy {
+    maxPercentDeltaUnhealthyNodes?: number;
+    maxPercentUpgradeDomainDeltaUnhealthyNodes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationHealthPolicyMap class.
+ * @constructor
+ * The application health policy of the cluster
+ * @member {boolean} [considerWarningAsError]
+ * 
+ * @member {number} [maxPercentUnhealthyDeployedApplications]
+ * 
+ * @member {number} [defaultServiceTypeHealthPolicy]
+ * 
+ * @member {number} [maxPercentUnhealthyServices]
+ * 
+ * @member {number} [maxPercentUnhealthyPartitionsPerService]
+ * 
+ * @member {number} [maxPercentUnhealthyReplicasPerPartition]
+ * 
+ */
+export interface ApplicationHealthPolicyMap {
+    considerWarningAsError?: boolean;
+    maxPercentUnhealthyDeployedApplications?: number;
+    defaultServiceTypeHealthPolicy?: number;
+    maxPercentUnhealthyServices?: number;
+    maxPercentUnhealthyPartitionsPerService?: number;
+    maxPercentUnhealthyReplicasPerPartition?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StartClusterUpgrade class.
+ * @constructor
+ * The upgrade of the cluster
+ * @member {string} [configVersion]
+ * 
+ * @member {string} [codeVersion]
+ * 
+ * @member {string} [upgradeKind]
+ * 
+ * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * 
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
+ * 
+ * @member {boolean} [forceRestart]
+ * 
+ * @member {boolean} [enableDeltaHealthEvaluation]
+ * 
+ * @member {object} [monitoringPolicy]
+ * 
+ * @member {object} [clusterUpgradeHealthPolicy]
+ * 
+ * @member {number} [clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
+ * 
+ * @member {number}
+ * [clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+ * 
+ * @member {object} [applicationHealthPolicyMap]
+ * 
+ * @member {boolean} [applicationHealthPolicyMap.considerWarningAsError]
+ * 
+ * @member {number}
+ * [applicationHealthPolicyMap.maxPercentUnhealthyDeployedApplications]
+ * 
+ * @member {number}
+ * [applicationHealthPolicyMap.defaultServiceTypeHealthPolicy]
+ * 
+ * @member {number} [applicationHealthPolicyMap.maxPercentUnhealthyServices]
+ * 
+ * @member {number}
+ * [applicationHealthPolicyMap.maxPercentUnhealthyPartitionsPerService]
+ * 
+ * @member {number}
+ * [applicationHealthPolicyMap.maxPercentUnhealthyReplicasPerPartition]
+ * 
+ */
+export interface StartClusterUpgrade {
+    configVersion?: string;
+    codeVersion?: string;
+    upgradeKind?: string;
+    rollingUpgradeMode?: string;
+    upgradeReplicaSetCheckTimeoutInSeconds?: number;
+    forceRestart?: boolean;
+    enableDeltaHealthEvaluation?: boolean;
+    monitoringPolicy?: any;
+    clusterUpgradeHealthPolicy?: ClusterUpgradeHealthPolicy;
+    applicationHealthPolicyMap?: ApplicationHealthPolicyMap;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationUpgrade class.
  * @constructor
  * The upgrade of the application
@@ -3040,7 +3173,7 @@ export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
 
 /**
  * @class
- * Initializes a new instance of the StartApplicationUpgradeDescription class.
+ * Initializes a new instance of the StartApplicationUpgrade class.
  * @constructor
  * The description of the start application upgrade
  * @member {string} [name]
@@ -3092,7 +3225,7 @@ export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
  * 
  */
-export interface StartApplicationUpgradeDescription {
+export interface StartApplicationUpgrade {
     name?: string;
     targetApplicationTypeVersion?: string;
     parameters?: string[];
@@ -3106,14 +3239,152 @@ export interface StartApplicationUpgradeDescription {
 
 /**
  * @class
- * Initializes a new instance of the UpdateApplicationUpgradeDescription class.
+ * Initializes a new instance of the UpdateDescription class.
+ * @constructor
+ * The description of the update
+ * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * 
+ * @member {boolean} [forceRestart]
+ * 
+ * @member {string} [failureAction]
+ * 
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
+ * 
+ * @member {string} [healthCheckWaitDurationInMilliseconds]
+ * 
+ * @member {string} [healthCheckStableDurationInMilliseconds]
+ * 
+ * @member {string} [healthCheckRetryTimeoutInMilliseconds]
+ * 
+ * @member {string} [upgradeTimeoutInMilliseconds]
+ * 
+ * @member {string} [upgradeDomainTimeoutInMilliseconds]
+ * 
+ */
+export interface UpdateDescription {
+    rollingUpgradeMode?: string;
+    forceRestart?: boolean;
+    failureAction?: string;
+    upgradeReplicaSetCheckTimeoutInSeconds?: number;
+    healthCheckWaitDurationInMilliseconds?: string;
+    healthCheckStableDurationInMilliseconds?: string;
+    healthCheckRetryTimeoutInMilliseconds?: string;
+    upgradeTimeoutInMilliseconds?: string;
+    upgradeDomainTimeoutInMilliseconds?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterHealthPolicy class.
+ * @constructor
+ * The policy of the cluster health
+ * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
+ * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * 
+ * @member {boolean} [forceRestart]
+ * 
+ * @member {string} [failureAction]
+ * 
+ * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
+ * 
+ * @member {string} [healthCheckWaitDurationInMilliseconds]
+ * 
+ * @member {string} [healthCheckStableDurationInMilliseconds]
+ * 
+ * @member {string} [healthCheckRetryTimeoutInMilliseconds]
+ * 
+ * @member {string} [upgradeTimeoutInMilliseconds]
+ * 
+ * @member {string} [upgradeDomainTimeoutInMilliseconds]
+ * 
+ */
+export interface ClusterHealthPolicy {
+    rollingUpgradeMode?: string;
+    forceRestart?: boolean;
+    failureAction?: string;
+    upgradeReplicaSetCheckTimeoutInSeconds?: number;
+    healthCheckWaitDurationInMilliseconds?: string;
+    healthCheckStableDurationInMilliseconds?: string;
+    healthCheckRetryTimeoutInMilliseconds?: string;
+    upgradeTimeoutInMilliseconds?: string;
+    upgradeDomainTimeoutInMilliseconds?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateClusterUpgrade class.
+ * @constructor
+ * The description of the update cluster upgrade
+ * @member {string} [upgradeKind]
+ * 
+ * @member {object} [updateDescription]
+ * 
+ * @member {string} [updateDescription.rollingUpgradeMode] Possible values
+ * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * 
+ * @member {boolean} [updateDescription.forceRestart]
+ * 
+ * @member {string} [updateDescription.failureAction]
+ * 
+ * @member {number} [updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+ * 
+ * @member {string} [updateDescription.healthCheckWaitDurationInMilliseconds]
+ * 
+ * @member {string}
+ * [updateDescription.healthCheckStableDurationInMilliseconds]
+ * 
+ * @member {string} [updateDescription.healthCheckRetryTimeoutInMilliseconds]
+ * 
+ * @member {string} [updateDescription.upgradeTimeoutInMilliseconds]
+ * 
+ * @member {string} [updateDescription.upgradeDomainTimeoutInMilliseconds]
+ * 
+ * @member {object} [clusterHealthPolicy]
+ * 
+ * @member {string} [clusterHealthPolicy.rollingUpgradeMode] Possible values
+ * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+ * 
+ * @member {boolean} [clusterHealthPolicy.forceRestart]
+ * 
+ * @member {string} [clusterHealthPolicy.failureAction]
+ * 
+ * @member {number}
+ * [clusterHealthPolicy.upgradeReplicaSetCheckTimeoutInSeconds]
+ * 
+ * @member {string}
+ * [clusterHealthPolicy.healthCheckWaitDurationInMilliseconds]
+ * 
+ * @member {string}
+ * [clusterHealthPolicy.healthCheckStableDurationInMilliseconds]
+ * 
+ * @member {string}
+ * [clusterHealthPolicy.healthCheckRetryTimeoutInMilliseconds]
+ * 
+ * @member {string} [clusterHealthPolicy.upgradeTimeoutInMilliseconds]
+ * 
+ * @member {string} [clusterHealthPolicy.upgradeDomainTimeoutInMilliseconds]
+ * 
+ * @member {boolean} [enableDeltaHealthEvaluations]
+ * 
+ */
+export interface UpdateClusterUpgrade {
+    upgradeKind?: string;
+    updateDescription?: UpdateDescription;
+    clusterHealthPolicy?: ClusterHealthPolicy;
+    enableDeltaHealthEvaluations?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateApplicationUpgrade class.
  * @constructor
  * The description of the update application upgrade
  * @member {string} [name]
  * 
  * @member {string} [upgradeKind]
  * 
- * @member {object} [updateDescription] The description of the update
+ * @member {object} [updateDescription]
  * 
  * @member {string} [updateDescription.rollingUpgradeMode] Possible values
  * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
@@ -3155,48 +3426,23 @@ export interface StartApplicationUpgradeDescription {
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
  * 
  */
-export interface UpdateApplicationUpgradeDescription {
+export interface UpdateApplicationUpgrade {
     name?: string;
     upgradeKind?: string;
-    updateDescription?: UpdateApplicationUpgradeDescriptionUpdateDescription;
+    updateDescription?: UpdateDescription;
     applicationHealthPolicy?: ApplicationHealthPolicy;
 }
 
 /**
  * @class
- * Initializes a new instance of the UpdateApplicationUpgradeDescriptionUpdateDescription class.
+ * Initializes a new instance of the ResumeClusterUpgrade class.
  * @constructor
- * The description of the update
- * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
- * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
- * 
- * @member {boolean} [forceRestart]
- * 
- * @member {string} [failureAction]
- * 
- * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
- * 
- * @member {string} [healthCheckWaitDurationInMilliseconds]
- * 
- * @member {string} [healthCheckStableDurationInMilliseconds]
- * 
- * @member {string} [healthCheckRetryTimeoutInMilliseconds]
- * 
- * @member {string} [upgradeTimeoutInMilliseconds]
- * 
- * @member {string} [upgradeDomainTimeoutInMilliseconds]
+ * The upgrade of the resume cluster
+ * @member {string} [upgradeDomain]
  * 
  */
-export interface UpdateApplicationUpgradeDescriptionUpdateDescription {
-    rollingUpgradeMode?: string;
-    forceRestart?: boolean;
-    failureAction?: string;
-    upgradeReplicaSetCheckTimeoutInSeconds?: number;
-    healthCheckWaitDurationInMilliseconds?: string;
-    healthCheckStableDurationInMilliseconds?: string;
-    healthCheckRetryTimeoutInMilliseconds?: string;
-    upgradeTimeoutInMilliseconds?: string;
-    upgradeDomainTimeoutInMilliseconds?: string;
+export interface ResumeClusterUpgrade {
+    upgradeDomain?: string;
 }
 
 /**
