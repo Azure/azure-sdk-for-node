@@ -97,7 +97,10 @@ export interface StorageAccounts {
      * @param {object} [parameters.encryption.services.blob] The encryption
      * function of the blob storage service.
      *
-     * @param {boolean} [parameters.encryption.services.blob.enabled] A boolean
+     * @param {object} [parameters.encryption.services.file] The encryption
+     * function of the file storage service.
+     *
+     * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
@@ -216,7 +219,10 @@ export interface StorageAccounts {
      * @param {object} [parameters.encryption.services.blob] The encryption
      * function of the blob storage service.
      *
-     * @param {boolean} [parameters.encryption.services.blob.enabled] A boolean
+     * @param {object} [parameters.encryption.services.file] The encryption
+     * function of the file storage service.
+     *
+     * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
@@ -505,7 +511,10 @@ export interface StorageAccounts {
      * @param {object} [parameters.encryption.services.blob] The encryption
      * function of the blob storage service.
      *
-     * @param {boolean} [parameters.encryption.services.blob.enabled] A boolean
+     * @param {object} [parameters.encryption.services.file] The encryption
+     * function of the file storage service.
+     *
+     * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
