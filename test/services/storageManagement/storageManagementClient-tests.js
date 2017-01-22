@@ -101,12 +101,12 @@ describe('Storage Management', function () {
     it('should create an account correctly with encryption', function (done) {
       accountNameEncryption = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       createParametersEncryption = {
-        location: 'eastasia',
+        location: 'eastus2euap',
         sku: {
           name: accType,
         },
         kind: 'Storage',
-        encryption: {services: {blob: {enabled: true}}}
+        encryption: {services: {blob: {enabled: true}, file: {enabled: true}}}
       };
       client.storageAccounts.create(groupName, accountNameEncryption, createParametersEncryption, function (err, result, request, response) {
         should.not.exist(err);

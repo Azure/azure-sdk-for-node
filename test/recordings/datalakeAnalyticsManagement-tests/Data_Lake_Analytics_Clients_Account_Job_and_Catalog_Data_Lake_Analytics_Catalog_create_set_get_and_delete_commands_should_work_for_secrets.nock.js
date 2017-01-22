@@ -3,431 +3,431 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'East US 2';
   process.env['AZURE_TEST_RESOURCE_GROUP'] = 'xplattestadlarg05';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '2aa30309-3723-4112-bd0b-79e9f65fc52d';
+  process.env['AZURE_SUBSCRIPTION_ID'] = 'ce4a7590-4722-4bcf-a2c6-e473e9f11778';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01', '*')
+.put('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '11dc0f26-83d9-422f-9822-e9576f531ac0',
+  'x-ms-request-id': '128b20fa-ec44-4c5e-8bec-ded47f7d5791',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:27 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01', '*')
+.put('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '11dc0f26-83d9-422f-9822-e9576f531ac0',
+  'x-ms-request-id': '128b20fa-ec44-4c5e-8bec-ded47f7d5791',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:27 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01', '*')
+.patch('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '9e89f563-7950-45e4-a20d-259e0b214110',
+  'x-ms-request-id': '974a1fe5-8cef-4505-8432-d96c5dfb4285',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:28 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01', '*')
+.patch('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '9e89f563-7950-45e4-a20d-259e0b214110',
+  'x-ms-request-id': '974a1fe5-8cef-4505-8432-d96c5dfb4285',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:28 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/catalog/usql/databases/master/secrets/adlacatalogitem1559dup?api-version=2016-11-01', '*')
+.put('/catalog/usql/databases/master/secrets/adlacatalogitem4483dup?api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '745d13b8-e8e9-456e-ab24-f91d66b5f9e7',
+  'x-ms-request-id': 'da7d3bf3-0190-491a-b7d7-610fabe2442f',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:30 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/catalog/usql/databases/master/secrets/adlacatalogitem1559dup?api-version=2016-11-01', '*')
+.put('/catalog/usql/databases/master/secrets/adlacatalogitem4483dup?api-version=2016-11-01', '*')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '745d13b8-e8e9-456e-ab24-f91d66b5f9e7',
+  'x-ms-request-id': 'da7d3bf3-0190-491a-b7d7-610fabe2442f',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:30 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/catalog/usql/databases/master/secrets/adlacatalogitem1559dup?api-version=2016-11-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"ResourceAlreadyExists\",\"message\":\"The resource 'mafs://accounts/xplattestadls9781/fs/catalog/database/8b1eeae6-f6ce-43e0-bdcc-0463fd56ea75/credential/adlacatalogitem1559dup' already exists. Trace: 2871ad4a-c729-4cff-8712-dfda598ee143 Time: 2016-12-19T18:44:32.3142854-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.put('/catalog/usql/databases/master/secrets/adlacatalogitem4483dup?api-version=2016-11-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"ResourceAlreadyExists\",\"message\":\"The resource 'mafs://accounts/xplattestadls5550/fs/catalog/database/e40ff434-7bd7-473b-98b4-6d1aa045f983/credential/adlacatalogitem4483dup' already exists. Trace: c9c55841-69bc-4bd5-886a-1e4b381178b6 Time: 2017-01-21T22:52:29.8458393-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '2871ad4a-c729-4cff-8712-dfda598ee143',
+  'x-ms-request-id': 'c9c55841-69bc-4bd5-886a-1e4b381178b6',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:31 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/catalog/usql/databases/master/secrets/adlacatalogitem1559dup?api-version=2016-11-01', '*')
-  .reply(409, "{\"error\":{\"code\":\"ResourceAlreadyExists\",\"message\":\"The resource 'mafs://accounts/xplattestadls9781/fs/catalog/database/8b1eeae6-f6ce-43e0-bdcc-0463fd56ea75/credential/adlacatalogitem1559dup' already exists. Trace: 2871ad4a-c729-4cff-8712-dfda598ee143 Time: 2016-12-19T18:44:32.3142854-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.put('/catalog/usql/databases/master/secrets/adlacatalogitem4483dup?api-version=2016-11-01', '*')
+  .reply(409, "{\"error\":{\"code\":\"ResourceAlreadyExists\",\"message\":\"The resource 'mafs://accounts/xplattestadls5550/fs/catalog/database/e40ff434-7bd7-473b-98b4-6d1aa045f983/credential/adlacatalogitem4483dup' already exists. Trace: c9c55841-69bc-4bd5-886a-1e4b381178b6 Time: 2017-01-21T22:52:29.8458393-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '2871ad4a-c729-4cff-8712-dfda598ee143',
+  'x-ms-request-id': 'c9c55841-69bc-4bd5-886a-1e4b381178b6',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:31 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01', '*')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00Z\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.put('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01', '*')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00Z\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'dff9558a-2a8a-4177-bf30-48c58847eb80',
+  'x-ms-request-id': '7c74cd70-ebe2-4514-9204-0e9423a96175',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:32 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01', '*')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00Z\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.put('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01', '*')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00Z\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'dff9558a-2a8a-4177-bf30-48c58847eb80',
+  'x-ms-request-id': '7c74cd70-ebe2-4514-9204-0e9423a96175',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:32 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:31 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-12-20T02:44:33.588447+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem8855 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem1559\\\";\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT1.2203893S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2017-01-22T06:52:31.8248729+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem4991 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem4483\\\";\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0.9444061S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '4450a8a7-2505-4ddf-80f6-714486d4ac1f',
+  'x-ms-request-id': '06b5daa8-227a-4c68-aa64-47b4457a8820',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:34 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-12-20T02:44:33.588447+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem8855 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem1559\\\";\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT1.2203893S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"state\":\"Compiling\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2017-01-22T06:52:31.8248729+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"default\",\"rootProcessNodeId\":\"00000000-0000-0000-0000-000000000000\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem4991 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem4483\\\";\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT0.9444061S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0S\",\"totalRunningTime\":\"PT0S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '4450a8a7-2505-4ddf-80f6-714486d4ac1f',
+  'x-ms-request-id': '06b5daa8-227a-4c68-aa64-47b4457a8820',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:44:34 GMT',
+  date: 'Sun, 22 Jan 2017 06:52:32 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"startTime\":\"2016-12-20T02:44:59.467431+00:00\",\"endTime\":\"2016-12-20T02:45:05.3979451+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-12-20T02:44:33.588447+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2016-12-20T02:44:45.4202458+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2016-12-20T02:44:45.4358711+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:a7516e71-3f0e-45bf-a023-91299f4e9d5a\"},{\"newState\":\"Starting\",\"timeStamp\":\"2016-12-20T02:44:45.4514977+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2016-12-20T02:44:59.467431+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-12-20T02:45:05.3979451+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"a7516e71-3f0e-45bf-a023-91299f4e9d5a\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem8855 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem1559\\\";\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"yarnApplicationId\":61176,\"yarnApplicationTimeStamp\":1481793190043,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.8317988S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156253S\",\"totalRunningTime\":\"PT5.9305141S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"startTime\":\"2017-01-22T06:52:57.2625783+00:00\",\"endTime\":\"2017-01-22T06:53:02.7001336+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2017-01-22T06:52:31.8248729+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2017-01-22T06:52:43.121851+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2017-01-22T06:52:43.1374616+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:d1374e70-e497-4b8f-b603-953312194668\"},{\"newState\":\"Starting\",\"timeStamp\":\"2017-01-22T06:52:43.1530873+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2017-01-22T06:52:57.2625783+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2017-01-22T06:53:02.7001336+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"d1374e70-e497-4b8f-b603-953312194668\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem4991 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem4483\\\";\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"yarnApplicationId\":160305,\"yarnApplicationTimeStamp\":1484053522062,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.2969781S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156106S\",\"totalRunningTime\":\"PT5.4375553S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '6b0a6a1a-54b9-44a6-83db-815eb5a537f2',
+  'x-ms-request-id': '83aea353-ae7b-434d-af9a-4d9b425742ab',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:05 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"startTime\":\"2016-12-20T02:44:59.467431+00:00\",\"endTime\":\"2016-12-20T02:45:05.3979451+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-12-20T02:44:33.588447+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2016-12-20T02:44:45.4202458+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2016-12-20T02:44:45.4358711+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:a7516e71-3f0e-45bf-a023-91299f4e9d5a\"},{\"newState\":\"Starting\",\"timeStamp\":\"2016-12-20T02:44:45.4514977+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2016-12-20T02:44:59.467431+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-12-20T02:45:05.3979451+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"a7516e71-3f0e-45bf-a023-91299f4e9d5a\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem8855 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem1559\\\";\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"yarnApplicationId\":61176,\"yarnApplicationTimeStamp\":1481793190043,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.8317988S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156253S\",\"totalRunningTime\":\"PT5.9305141S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"startTime\":\"2017-01-22T06:52:57.2625783+00:00\",\"endTime\":\"2017-01-22T06:53:02.7001336+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2017-01-22T06:52:31.8248729+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2017-01-22T06:52:43.121851+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2017-01-22T06:52:43.1374616+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:d1374e70-e497-4b8f-b603-953312194668\"},{\"newState\":\"Starting\",\"timeStamp\":\"2017-01-22T06:52:43.1530873+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2017-01-22T06:52:57.2625783+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2017-01-22T06:53:02.7001336+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"d1374e70-e497-4b8f-b603-953312194668\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem4991 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem4483\\\";\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"yarnApplicationId\":160305,\"yarnApplicationTimeStamp\":1484053522062,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.2969781S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156106S\",\"totalRunningTime\":\"PT5.4375553S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '6b0a6a1a-54b9-44a6-83db-815eb5a537f2',
+  'x-ms-request-id': '83aea353-ae7b-434d-af9a-4d9b425742ab',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:05 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:03 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"startTime\":\"2016-12-20T02:44:59.467431+00:00\",\"endTime\":\"2016-12-20T02:45:05.3979451+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-12-20T02:44:33.588447+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2016-12-20T02:44:45.4202458+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2016-12-20T02:44:45.4358711+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:a7516e71-3f0e-45bf-a023-91299f4e9d5a\"},{\"newState\":\"Starting\",\"timeStamp\":\"2016-12-20T02:44:45.4514977+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2016-12-20T02:44:59.467431+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-12-20T02:45:05.3979451+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"a7516e71-3f0e-45bf-a023-91299f4e9d5a\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem8855 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem1559\\\";\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"yarnApplicationId\":61176,\"yarnApplicationTimeStamp\":1481793190043,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.8317988S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156253S\",\"totalRunningTime\":\"PT5.9305141S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"startTime\":\"2017-01-22T06:52:57.2625783+00:00\",\"endTime\":\"2017-01-22T06:53:02.7001336+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2017-01-22T06:52:31.8248729+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2017-01-22T06:52:43.121851+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2017-01-22T06:52:43.1374616+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:d1374e70-e497-4b8f-b603-953312194668\"},{\"newState\":\"Starting\",\"timeStamp\":\"2017-01-22T06:52:43.1530873+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2017-01-22T06:52:57.2625783+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2017-01-22T06:53:02.7001336+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"d1374e70-e497-4b8f-b603-953312194668\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem4991 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem4483\\\";\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"yarnApplicationId\":160305,\"yarnApplicationTimeStamp\":1484053522062,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.2969781S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156106S\",\"totalRunningTime\":\"PT5.4375553S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '06e0b6d8-7111-45a3-8e86-1c5abafc5b91',
+  'x-ms-request-id': 'a4413d39-5f2f-414c-9df0-290d06d871c8',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:07 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/Jobs/9a1e8fe1-e1b4-4649-a077-566af92b65f9?api-version=2016-11-01')
-  .reply(200, "{\"jobId\":\"9a1e8fe1-e1b4-4649-a077-566af92b65f9\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrpexample@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2016-12-20T02:44:33.2759793+00:00\",\"startTime\":\"2016-12-20T02:44:59.467431+00:00\",\"endTime\":\"2016-12-20T02:45:05.3979451+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2016-12-20T02:44:33.2759793+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2016-12-20T02:44:33.588447+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2016-12-20T02:44:45.4202458+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2016-12-20T02:44:45.4358711+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:a7516e71-3f0e-45bf-a023-91299f4e9d5a\"},{\"newState\":\"Starting\",\"timeStamp\":\"2016-12-20T02:44:45.4514977+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2016-12-20T02:44:59.467431+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2016-12-20T02:45:05.3979451+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrpexample@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"a7516e71-3f0e-45bf-a023-91299f4e9d5a\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem8855 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem1559\\\";\",\"algebraFilePath\":\"adl://xplattestadls9781.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/12/20/02/44/9a1e8fe1-e1b4-4649-a077-566af92b65f9/algebra.xml\",\"yarnApplicationId\":61176,\"yarnApplicationTimeStamp\":1481793190043,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.8317988S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156253S\",\"totalRunningTime\":\"PT5.9305141S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/Jobs/9febbf58-219f-4d94-b60d-5f627b117dc3?api-version=2016-11-01')
+  .reply(200, "{\"jobId\":\"9febbf58-219f-4d94-b60d-5f627b117dc3\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-01-22T06:52:31.4967459+00:00\",\"startTime\":\"2017-01-22T06:52:57.2625783+00:00\",\"endTime\":\"2017-01-22T06:53:02.7001336+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"stateAuditRecords\":[{\"newState\":\"New\",\"timeStamp\":\"2017-01-22T06:52:31.4967459+00:00\",\"details\":\"userName:;submitMachine:N/A\"},{\"newState\":\"Compiling\",\"timeStamp\":\"2017-01-22T06:52:31.8248729+00:00\",\"details\":\"CcsAttempts:1;Status:Dispatched\"},{\"newState\":\"Queued\",\"timeStamp\":\"2017-01-22T06:52:43.121851+00:00\"},{\"newState\":\"Scheduling\",\"timeStamp\":\"2017-01-22T06:52:43.1374616+00:00\",\"details\":\"Detail:Dispatching job to cluster.;rootProcessId:d1374e70-e497-4b8f-b603-953312194668\"},{\"newState\":\"Starting\",\"timeStamp\":\"2017-01-22T06:52:43.1530873+00:00\",\"details\":\"runtimeVersion:kobo_live_signed_5224047\"},{\"newState\":\"Running\",\"timeStamp\":\"2017-01-22T06:52:57.2625783+00:00\",\"details\":\"runAttempt:1\"},{\"newState\":\"Ended\",\"timeStamp\":\"2017-01-22T06:53:02.7001336+00:00\",\"details\":\"result:Succeeded\"}],\"properties\":{\"owner\":\"jasonsrptest2@SPI\",\"resources\":[{\"name\":\"__ScopeCodeGen__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGenEngine__.pdb\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.pdb\",\"type\":\"VertexResource\"},{\"name\":\"ScopeVertexDef.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/ScopeVertexDef.xml\",\"type\":\"VertexResource\"},{\"name\":\"__ScopeCodeGen__.dll.cs\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGen__.dll.cs\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.dll.cpp\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.dll.cpp\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOutput__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOutput__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenCompileOptions__.txt\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenCompileOptions__.txt\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeCodeGenEngine__.cppresources\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeCodeGenEngine__.cppresources\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerTrace.log\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerTrace.log\",\"type\":\"StatisticsResource\"},{\"name\":\"__SystemInternalInfo__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__SystemInternalInfo__.xml\",\"type\":\"StatisticsResource\"},{\"name\":\"__CompilerPlan.json\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__CompilerPlan.json\",\"type\":\"StatisticsResource\"},{\"name\":\"diagnosticsjson\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/diagnosticsjson\",\"type\":\"StatisticsResource\"},{\"name\":\"query.abr\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/query.abr\",\"type\":\"StatisticsResource\"},{\"name\":\"Profile\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/profile\",\"type\":\"StatisticsResource\"},{\"name\":\"__ScopeRuntimeStatistics__.xml\",\"resourcePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/__ScopeRuntimeStatistics__.xml\",\"type\":\"StatisticsResource\"}],\"runtimeVersion\":\"kobo_live_signed_5224047\",\"rootProcessNodeId\":\"d1374e70-e497-4b8f-b603-953312194668\",\"script\":\"USE master; CREATE CREDENTIAL adlacatalogitem4991 WITH USER_NAME = \\\"scope@rkm4grspxa\\\", IDENTITY = \\\"adlacatalogitem4483\\\";\",\"algebraFilePath\":\"adl://xplattestadls5550.azuredatalakestore.net/system/jobservice/jobs/Usql/2017/01/22/06/52/9febbf58-219f-4d94-b60d-5f627b117dc3/algebra.xml\",\"yarnApplicationId\":160305,\"yarnApplicationTimeStamp\":1484053522062,\"compileMode\":\"Semantic\",\"errorSource\":\"Unknown\",\"totalCompilationTime\":\"PT11.2969781S\",\"totalPausedTime\":\"PT0S\",\"totalQueuedTime\":\"PT0.0156106S\",\"totalRunningTime\":\"PT5.4375553S\",\"expirationTimeUtc\":\"0001-01-01T00:00:00\",\"type\":\"USql\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '06e0b6d8-7111-45a3-8e86-1c5abafc5b91',
+  'x-ms-request-id': 'a4413d39-5f2f-414c-9df0-290d06d871c8',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:07 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:05 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .get('/catalog/usql/databases/master/credentials?api-version=2016-11-01')
-  .reply(200, "{\"value\":[{\"credentialName\":\"adlacatalogitem8855\"}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+  .reply(200, "{\"value\":[{\"credentialName\":\"adlacatalogitem4991\"}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ad6230f6-1d3b-4745-990b-d629d09d0d5b',
+  'x-ms-request-id': '560e663c-a942-44b0-b786-c4b10b2ac2af',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:08 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .get('/catalog/usql/databases/master/credentials?api-version=2016-11-01')
-  .reply(200, "{\"value\":[{\"credentialName\":\"adlacatalogitem8855\"}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+  .reply(200, "{\"value\":[{\"credentialName\":\"adlacatalogitem4991\"}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'ad6230f6-1d3b-4745-990b-d629d09d0d5b',
+  'x-ms-request-id': '560e663c-a942-44b0-b786-c4b10b2ac2af',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:08 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/master/credentials/adlacatalogitem8855?api-version=2016-11-01')
-  .reply(200, "{\"credentialName\":\"adlacatalogitem8855\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/catalog/usql/databases/master/credentials/adlacatalogitem4991?api-version=2016-11-01')
+  .reply(200, "{\"credentialName\":\"adlacatalogitem4991\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '8937c737-6481-4c6d-8566-90b726b43e8d',
+  'x-ms-request-id': 'a623e980-f28f-49e2-b185-04d9e1aa898b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:10 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/master/credentials/adlacatalogitem8855?api-version=2016-11-01')
-  .reply(200, "{\"credentialName\":\"adlacatalogitem8855\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/catalog/usql/databases/master/credentials/adlacatalogitem4991?api-version=2016-11-01')
+  .reply(200, "{\"credentialName\":\"adlacatalogitem4991\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '8937c737-6481-4c6d-8566-90b726b43e8d',
+  'x-ms-request-id': 'a623e980-f28f-49e2-b185-04d9e1aa898b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:10 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01')
-  .reply(200, "{\"creationTime\":\"2016-12-20T02:44:27.5198671Z\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01')
+  .reply(200, "{\"creationTime\":\"2017-01-22T06:52:23.7744883Z\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '918b5773-9fff-42a1-b2bf-8153c7998585',
+  'x-ms-request-id': 'ee8e624d-29e9-44ee-ba1d-9317125a870c',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:11 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .get('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01')
-  .reply(200, "{\"creationTime\":\"2016-12-20T02:44:27.5198671Z\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .get('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01')
+  .reply(200, "{\"creationTime\":\"2017-01-22T06:52:23.7744883Z\"}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '918b5773-9fff-42a1-b2bf-8153c7998585',
+  'x-ms-request-id': 'ee8e624d-29e9-44ee-ba1d-9317125a870c',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:11 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .delete('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .delete('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': 'c14d407a-d1fa-46e4-911c-9152ae13aee5',
+  'x-ms-request-id': '8a5c42be-9d1d-43cd-bfb9-3fbf126cd36b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:12 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
-  .delete('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
+  .delete('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': 'c14d407a-d1fa-46e4-911c-9152ae13aee5',
+  'x-ms-request-id': '8a5c42be-9d1d-43cd-bfb9-3fbf126cd36b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:12 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:10 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls9781/fs/catalog/database/8b1eeae6-f6ce-43e0-bdcc-0463fd56ea75/credential/adlacatalogitem1559' does not exist. Trace: c82df4a3-fd29-4f15-a4b7-2928fef2e9b2 Time: 2016-12-19T18:45:14.7733757-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.patch('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls5550/fs/catalog/database/e40ff434-7bd7-473b-98b4-6d1aa045f983/credential/adlacatalogitem4483' does not exist. Trace: 255f320d-d636-4399-a15a-5e06a99db208 Time: 2017-01-21T22:53:12.8798731-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'c82df4a3-fd29-4f15-a4b7-2928fef2e9b2',
+  'x-ms-request-id': '255f320d-d636-4399-a15a-5e06a99db208',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:13 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/catalog/usql/databases/master/secrets/adlacatalogitem1559?api-version=2016-11-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls9781/fs/catalog/database/8b1eeae6-f6ce-43e0-bdcc-0463fd56ea75/credential/adlacatalogitem1559' does not exist. Trace: c82df4a3-fd29-4f15-a4b7-2928fef2e9b2 Time: 2016-12-19T18:45:14.7733757-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.patch('/catalog/usql/databases/master/secrets/adlacatalogitem4483?api-version=2016-11-01', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls5550/fs/catalog/database/e40ff434-7bd7-473b-98b4-6d1aa045f983/credential/adlacatalogitem4483' does not exist. Trace: 255f320d-d636-4399-a15a-5e06a99db208 Time: 2017-01-21T22:53:12.8798731-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'c82df4a3-fd29-4f15-a4b7-2928fef2e9b2',
+  'x-ms-request-id': '255f320d-d636-4399-a15a-5e06a99db208',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:13 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:12 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .delete('/catalog/usql/databases/master/secrets?api-version=2016-11-01')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '4d156803-c496-468f-a9ee-e37f434e49ef',
+  'x-ms-request-id': '31347021-8486-4e8a-b8de-1b7933de7858',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:15 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .delete('/catalog/usql/databases/master/secrets?api-version=2016-11-01')
   .reply(200, "", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   expires: '-1',
-  'x-ms-request-id': '4d156803-c496-468f-a9ee-e37f434e49ef',
+  'x-ms-request-id': '31347021-8486-4e8a-b8de-1b7933de7858',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:15 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:14 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('http://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/catalog/usql/databases/master/secrets/adlacatalogitem1559dup?api-version=2016-11-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls9781/fs/catalog/database/8b1eeae6-f6ce-43e0-bdcc-0463fd56ea75/credential/adlacatalogitem1559dup' does not exist. Trace: df61a6e6-55e5-4b88-8d3a-3d8e9d83ed5c Time: 2016-12-19T18:45:17.8775968-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.patch('/catalog/usql/databases/master/secrets/adlacatalogitem4483dup?api-version=2016-11-01', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls5550/fs/catalog/database/e40ff434-7bd7-473b-98b4-6d1aa045f983/credential/adlacatalogitem4483dup' does not exist. Trace: da7c7cef-da39-444e-8e60-50f6e28d80a3 Time: 2017-01-21T22:53:16.2992315-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'df61a6e6-55e5-4b88-8d3a-3d8e9d83ed5c',
+  'x-ms-request-id': 'da7c7cef-da39-444e-8e60-50f6e28d80a3',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:17 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla8758.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla3781.azuredatalakeanalytics.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.patch('/catalog/usql/databases/master/secrets/adlacatalogitem1559dup?api-version=2016-11-01', '*')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls9781/fs/catalog/database/8b1eeae6-f6ce-43e0-bdcc-0463fd56ea75/credential/adlacatalogitem1559dup' does not exist. Trace: df61a6e6-55e5-4b88-8d3a-3d8e9d83ed5c Time: 2016-12-19T18:45:17.8775968-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+.patch('/catalog/usql/databases/master/secrets/adlacatalogitem4483dup?api-version=2016-11-01', '*')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource 'mafs://accounts/xplattestadls5550/fs/catalog/database/e40ff434-7bd7-473b-98b4-6d1aa045f983/credential/adlacatalogitem4483dup' does not exist. Trace: da7c7cef-da39-444e-8e60-50f6e28d80a3 Time: 2017-01-21T22:53:16.2992315-08:00\"}}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'df61a6e6-55e5-4b88-8d3a-3d8e9d83ed5c',
+  'x-ms-request-id': 'da7c7cef-da39-444e-8e60-50f6e28d80a3',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 20 Dec 2016 02:45:17 GMT',
+  date: 'Sun, 22 Jan 2017 06:53:15 GMT',
   connection: 'close' });
  return result; }]];
- exports.uuidsGenerated = function() { return ['9a1e8fe1-e1b4-4649-a077-566af92b65f9'];};
+ exports.uuidsGenerated = function() { return ['9febbf58-219f-4d94-b60d-5f627b117dc3'];};
