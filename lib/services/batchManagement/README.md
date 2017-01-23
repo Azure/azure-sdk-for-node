@@ -22,7 +22,7 @@ npm install azure-arm-batch
  // the user will get a DeviceTokenCredentials object.
  msRestAzure.interactiveLogin(function(err, credentials) {
   var client = new batchManagementClient(credentials, 'your-subscription-id');
-  client.account.list(rgName, function(err, result, request, response) {
+  client.batchAccountOperations.list(rgName, function(err, result, request, response) {
     if (err) console.log(err);
     console.log(result);
   });
