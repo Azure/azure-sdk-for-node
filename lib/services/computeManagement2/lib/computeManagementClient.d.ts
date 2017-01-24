@@ -17,9 +17,9 @@ declare class ComputeManagementClient {
      * Initializes a new instance of the ComputeManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Gets Azure subscription credentials.
+     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
-     * @param {string} subscriptionId - subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+     * @param {string} subscriptionId - Subscription credentials that uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
      *
      * @param {string} [baseUri] - The base URI of the service.
      *
@@ -61,7 +61,7 @@ declare class ComputeManagementClient {
     virtualMachines: operations.VirtualMachines;
     virtualMachineScaleSets: operations.VirtualMachineScaleSets;
     virtualMachineScaleSetVMs: operations.VirtualMachineScaleSetVMs;
-    containerServiceOperations: operations.ContainerServiceOperations;
+    containerServices: operations.ContainerServices;
     }
 
 export = ComputeManagementClient;
