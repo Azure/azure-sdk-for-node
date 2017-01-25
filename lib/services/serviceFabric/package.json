@@ -4,7 +4,7 @@
   "contributors": [
     "Chen, Jeffrey <jefchen@microsoft.com>"
   ],
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Microsoft Azure Service Fabric for node",
   "tags": [
     "azure",
