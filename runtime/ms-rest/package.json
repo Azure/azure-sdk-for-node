@@ -24,7 +24,7 @@
     "xunit-file": "0.0.5",
     "mocha": "2.4.5",
     "should": "5.2.0",
-    "node-uuid": "*"
+    "uuid": "^3.0.0"
   },
   "homepage": "https://github.com/Azure/azure-sdk-for-node/runtime/ms-rest",
   "repository": {

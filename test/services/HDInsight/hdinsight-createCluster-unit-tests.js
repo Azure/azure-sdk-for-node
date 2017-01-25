@@ -20,7 +20,7 @@ var should = require('should');
 var _ = require('underscore');
 var HDInsightTestUtils = require('../../framework/hdinsight-test-utils');
 var azureUtil = require('azure-common').util;
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var Validate = require('azure-common').validate;
 
 // Test includes

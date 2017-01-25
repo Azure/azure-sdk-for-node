@@ -15,7 +15,7 @@
 //
 
 var azure = require('azure'),
-  uuid = require('node-uuid');
+  uuid = require('uuid');
 module.exports = EventService;
 
 function EventService(tableClient, blobClient) {
