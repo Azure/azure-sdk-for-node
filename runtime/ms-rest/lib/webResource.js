@@ -4,6 +4,7 @@
 // Module dependencies.
 var utils = require('./utils');
 var Constants = require('./constants');
+var util = require('util');
 var HeaderConstants = Constants.HeaderConstants;
 var HttpConstants = Constants.HttpConstants;
 var HttpConstants = Constants.HttpConstants;
