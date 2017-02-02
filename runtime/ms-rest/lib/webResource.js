@@ -306,12 +306,12 @@ WebResource.prototype.pipeInput = function(inputStream, destStream) {
 WebResource.prototype.validateRequestProperties = function validateRequestProperties() {
   if (!this.method || !this.url || !this.headers['Content-Type'] || !this.headers['accept-language']) {
     throw new Error('method, url, headers[\'Content-Type\'], headers[\'accept-language\'] are ' +
-      'required properties before making a request. Either provide them or use WebResource.prepare() method.')
+      'required properties before making a request. Either provide them or use WebResource.prepare() method.');
   }
-}
+};
 
 /**
- * Sends the request and returns the response.
+ * Prepares the request.
  *
  * @param {object} options The request options that should be provided to send a request successfully
  *
@@ -366,7 +366,7 @@ WebResource.prototype.validateRequestProperties = function validateRequestProper
  */
 WebResource.prototype.prepare = function prepare(options) {
   if (options === null || options === undefined || typeof options !== 'object') {
-    throw new Error('options cannot be null or undefined and must be of type object')
+    throw new Error('options cannot be null or undefined and must be of type object');
   }
 
   if (options.method === null || options.method === undefined || typeof options.method.valueOf() !== 'string') {
@@ -374,7 +374,7 @@ WebResource.prototype.prepare = function prepare(options) {
   }
 
   if (options.url && options.pathTemplate) {
-    throw new Error('options.url and options.pathTemplate are mutually exclusive. Please provide either of them.')
+    throw new Error('options.url and options.pathTemplate are mutually exclusive. Please provide either of them.');
   }
 
 
@@ -536,6 +536,6 @@ WebResource.prototype.prepare = function prepare(options) {
   }
 
   return this;
-}
+};
 
 module.exports = WebResource;
