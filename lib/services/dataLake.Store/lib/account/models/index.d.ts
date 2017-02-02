@@ -14,6 +14,26 @@ exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
+ * Initializes a new instance of the UpdateFirewallRuleParameters class.
+ * @constructor
+ * Data Lake Analytics firewall rule update parameters
+ *
+ * @member {string} [startIpAddress] the start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ *
+ * @member {string} [endIpAddress] the end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ *
+ */
+export interface UpdateFirewallRuleParameters {
+  startIpAddress?: string;
+  endIpAddress?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SubResource class.
  * @constructor
  * The Resource model definition for a nested resource.
@@ -25,7 +45,7 @@ exports.CloudError = msRestAzure.CloudError;
  * @member {string} [type] Resource type
  *
  */
-export interface SubResource extends BaseResource {
+export interface SubResource {
   id?: string;
   name?: string;
   type?: string;
@@ -38,8 +58,11 @@ export interface SubResource extends BaseResource {
  * Data Lake Store firewall rule information
  *
  * @member {string} startIpAddress the start IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
  *
- * @member {string} endIpAddress the end IP address for the firewall rule.
+ * @member {string} endIpAddress the end IP address for the firewall rule. This
+ * can be either ipv4 or ipv6. Start and End should be in the same protocol.
  *
  */
 export interface FirewallRule extends SubResource {
@@ -49,9 +72,22 @@ export interface FirewallRule extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the UpdateTrustedIdProviderParameters class.
+ * @constructor
+ * Data Lake Store Trusted Identity Provider update parameters
+ *
+ * @member {string} [idProvider] The URL of this trusted identity provider
+ *
+ */
+export interface UpdateTrustedIdProviderParameters {
+  idProvider?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TrustedIdProvider class.
  * @constructor
- * Data Lake Store firewall rule information
+ * Data Lake Store Trusted Identity Provider information
  *
  * @member {string} idProvider The URL of this trusted identity provider
  *
@@ -173,6 +209,11 @@ export interface EncryptionConfig {
  * remove existing rules, they will just be ignored until the firewall is
  * re-enabled. Possible values include: 'Enabled', 'Disabled'
  *
+ * @member {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ *
  * @member {string} [trustedIdProviderState] The current state of the trusted
  * identity provider feature for this Data Lake store account. Disabling
  * trusted identity provider functionality does not remove the providers, they
@@ -182,12 +223,18 @@ export interface EncryptionConfig {
  * @member {string} [defaultGroup] the default owner group for all new folders
  * and files created in the Data Lake Store account.
  *
+ * @member {string} [newTier] the commitment tier to use for next month.
+ * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+ * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+ *
  */
 export interface DataLakeStoreAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
   firewallState?: string;
+  firewallAllowAzureIps?: string;
   trustedIdProviderState?: string;
   defaultGroup?: string;
+  newTier?: string;
 }
 
 /**
@@ -269,6 +316,11 @@ export interface Resource extends BaseResource {
  * firewall for this Data Lake store account. Possible values include:
  * 'Enabled', 'Disabled'
  *
+ * @member {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ *
  * @member {array} [firewallRules] The list of firewall rules associated with
  * this Data Lake store account.
  *
@@ -286,6 +338,15 @@ export interface Resource extends BaseResource {
  * @member {string} [defaultGroup] the default owner group for all new folders
  * and files created in the Data Lake Store account.
  *
+ * @member {string} [newTier] the commitment tier to use for next month.
+ * Possible values include: 'Consumption', 'Commitment_1TB', 'Commitment_10TB',
+ * 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB', 'Commitment_5PB'
+ *
+ * @member {string} [currentTier] the commitment tier in use for the current
+ * month. Possible values include: 'Consumption', 'Commitment_1TB',
+ * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+ * 'Commitment_5PB'
+ *
  */
 export interface DataLakeStoreAccount extends Resource {
   identity?: EncryptionIdentity;
@@ -296,12 +357,15 @@ export interface DataLakeStoreAccount extends Resource {
   encryptionProvisioningState?: string;
   encryptionConfig?: EncryptionConfig;
   firewallState?: string;
+  firewallAllowAzureIps?: string;
   firewallRules?: FirewallRule[];
   trustedIdProviderState?: string;
   trustedIdProviders?: TrustedIdProvider[];
   lastModifiedTime?: Date;
   endpoint?: string;
   defaultGroup?: string;
+  newTier?: string;
+  currentTier?: string;
 }
 
 /**

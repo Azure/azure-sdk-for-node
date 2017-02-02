@@ -14,6 +14,169 @@ import * as models from '../models';
 
 /**
  * @class
+ * FirewallRules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeAnalyticsAccountManagementClient.
+ */
+export interface FirewallRules {
+
+    /**
+     * Creates or updates the specified firewall rule. During update, the firewall
+     * rule with the specified name will be replaced with this new firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * add or replace the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to create or
+     * update.
+     *
+     * @param {object} parameters Parameters supplied to create or update the
+     * firewall rule.
+     *
+     * @param {string} parameters.startIpAddress the start IP address for the
+     * firewall rule. This can be either ipv4 or ipv6. Start and End should be in
+     * the same protocol.
+     *
+     * @param {string} parameters.endIpAddress the end IP address for the firewall
+     * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+     * protocol.
+     *
+     * @param {string} [parameters.name] Resource name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, callback: ServiceCallback<models.FirewallRule>): void;
+
+    /**
+     * Updates the specified firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to update the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to update the
+     * firewall rule.
+     *
+     * @param {string} [options.parameters.startIpAddress] the start IP address for
+     * the firewall rule. This can be either ipv4 or ipv6. Start and End should be
+     * in the same protocol.
+     *
+     * @param {string} [options.parameters.endIpAddress] the end IP address for the
+     * firewall rule. This can be either ipv4 or ipv6. Start and End should be in
+     * the same protocol.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    update(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { parameters? : models.UpdateFirewallRuleParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    update(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<models.FirewallRule>): void;
+
+    /**
+     * Deletes the specified firewall rule from the specified Data Lake Analytics
+     * account
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to delete the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets the specified Data Lake Analytics firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    get(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<models.FirewallRule>): void;
+
+    /**
+     * Lists the Data Lake Analytics firewall rules within the specified Data Lake
+     * Analytics account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the firewall rules.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByAccount(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+
+    /**
+     * Lists the Data Lake Analytics firewall rules within the specified Data Lake
+     * Analytics account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+    listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+}
+
+/**
+ * @class
  * StorageAccounts
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsAccountManagementClient.
@@ -463,11 +626,11 @@ export interface DataLakeStoreAccounts {
 
 /**
  * @class
- * Account
+ * AccountOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsAccountManagementClient.
  */
-export interface Account {
+export interface AccountOperations {
 
     /**
      * Gets the first page of Data Lake Analytics accounts, if any, within a
@@ -615,6 +778,24 @@ export interface Account {
      * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
      * accounts associated with this account.
      *
+     * @param {string} [parameters.newTier] the commitment tier for the next month.
+     * Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -655,6 +836,24 @@ export interface Account {
      *
      * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
      * running under the account at the same time.
+     *
+     * @param {string} [options.parameters.newTier] the commitment tier to use for
+     * next month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [options.parameters.firewallState] The current state of the
+     * IP address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [options.parameters.firewallAllowAzureIps] The current state
+     * of allowing or disallowing IPs originating within Azure through the
+     * firewall. If the firewall is disabled, this is not enforced. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [options.parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -718,6 +917,24 @@ export interface Account {
      * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
      * accounts associated with this account.
      *
+     * @param {string} [parameters.newTier] the commitment tier for the next month.
+     * Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -758,6 +975,24 @@ export interface Account {
      *
      * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
      * running under the account at the same time.
+     *
+     * @param {string} [options.parameters.newTier] the commitment tier to use for
+     * next month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [options.parameters.firewallState] The current state of the
+     * IP address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [options.parameters.firewallAllowAzureIps] The current state
+     * of allowing or disallowing IPs originating within Azure through the
+     * firewall. If the firewall is disabled, this is not enforced. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [options.parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request

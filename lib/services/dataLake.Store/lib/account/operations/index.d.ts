@@ -27,8 +27,8 @@ export interface FirewallRules {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Store account.
      *
-     * @param {string} accountName The name of the Data Lake Store account to which
-     * to add the firewall rule.
+     * @param {string} accountName The name of the Data Lake Store account to add
+     * or replace the firewall rule.
      *
      * @param {string} firewallRuleName The name of the firewall rule to create or
      * update.
@@ -37,10 +37,12 @@ export interface FirewallRules {
      * firewall rule.
      *
      * @param {string} parameters.startIpAddress the start IP address for the
-     * firewall rule.
+     * firewall rule. This can be either ipv4 or ipv6. Start and End should be in
+     * the same protocol.
      *
      * @param {string} parameters.endIpAddress the end IP address for the firewall
-     * rule.
+     * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+     * protocol.
      *
      * @param {string} [parameters.name] Resource name
      *
@@ -54,6 +56,39 @@ export interface FirewallRules {
      */
     createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
     createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, callback: ServiceCallback<models.FirewallRule>): void;
+
+    /**
+     * Updates the specified firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     *
+     * @param {string} accountName The name of the Data Lake Store account to which
+     * to update the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to update the
+     * firewall rule.
+     *
+     * @param {string} [options.parameters.startIpAddress] the start IP address for
+     * the firewall rule. This can be either ipv4 or ipv6. Start and End should be
+     * in the same protocol.
+     *
+     * @param {string} [options.parameters.endIpAddress] the end IP address for the
+     * firewall rule. This can be either ipv4 or ipv6. Start and End should be in
+     * the same protocol.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    update(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { parameters? : models.UpdateFirewallRuleParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    update(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<models.FirewallRule>): void;
 
     /**
      * Deletes the specified firewall rule from the specified Data Lake Store
@@ -156,13 +191,13 @@ export interface TrustedIdProviders {
      * @param {string} resourceGroupName The name of the Azure resource group that
      * contains the Data Lake Store account.
      *
-     * @param {string} accountName The name of the Data Lake Store account to which
-     * to add the trusted identity provider.
+     * @param {string} accountName The name of the Data Lake Store account to add
+     * or replace the trusted identity provider.
      *
      * @param {string} trustedIdProviderName The name of the trusted identity
      * provider. This is used for differentiation of providers in the account.
      *
-     * @param {object} parameters Parameters supplied to create the create the
+     * @param {object} parameters Parameters supplied to create or replace the
      * trusted identity provider.
      *
      * @param {string} parameters.idProvider The URL of this trusted identity
@@ -180,6 +215,35 @@ export interface TrustedIdProviders {
      */
     createOrUpdate(resourceGroupName: string, accountName: string, trustedIdProviderName: string, parameters: models.TrustedIdProvider, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrustedIdProvider>): void;
     createOrUpdate(resourceGroupName: string, accountName: string, trustedIdProviderName: string, parameters: models.TrustedIdProvider, callback: ServiceCallback<models.TrustedIdProvider>): void;
+
+    /**
+     * Updates the specified trusted identity provider.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Store account.
+     *
+     * @param {string} accountName The name of the Data Lake Store account to which
+     * to update the trusted identity provider.
+     *
+     * @param {string} trustedIdProviderName The name of the trusted identity
+     * provider. This is used for differentiation of providers in the account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to update the
+     * trusted identity provider.
+     *
+     * @param {string} [options.parameters.idProvider] The URL of this trusted
+     * identity provider
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    update(resourceGroupName: string, accountName: string, trustedIdProviderName: string, options: { parameters? : models.UpdateTrustedIdProviderParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrustedIdProvider>): void;
+    update(resourceGroupName: string, accountName: string, trustedIdProviderName: string, callback: ServiceCallback<models.TrustedIdProvider>): void;
 
     /**
      * Deletes the specified trusted identity provider from the specified Data Lake
@@ -270,11 +334,11 @@ export interface TrustedIdProviders {
 
 /**
  * @class
- * Account
+ * AccountOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeStoreAccountManagementClient.
  */
-export interface Account {
+export interface AccountOperations {
 
     /**
      * Creates the specified Data Lake Store account.
@@ -321,6 +385,11 @@ export interface Account {
      * address firewall for this Data Lake store account. Possible values include:
      * 'Enabled', 'Disabled'
      *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
      * @param {array} [parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake store account.
      *
@@ -333,6 +402,11 @@ export interface Account {
      *
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
+     *
+     * @param {string} [parameters.newTier] the commitment tier to use for next
+     * month. Possible values include: 'Consumption', 'Commitment_1TB',
+     * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+     * 'Commitment_5PB'
      *
      * @param {string} parameters.location Resource location
      *
@@ -367,6 +441,11 @@ export interface Account {
      * does not remove existing rules, they will just be ignored until the firewall
      * is re-enabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
      * @param {string} [parameters.trustedIdProviderState] The current state of the
      * trusted identity provider feature for this Data Lake store account.
      * Disabling trusted identity provider functionality does not remove the
@@ -375,6 +454,11 @@ export interface Account {
      *
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
+     *
+     * @param {string} [parameters.newTier] the commitment tier to use for next
+     * month. Possible values include: 'Consumption', 'Commitment_1TB',
+     * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+     * 'Commitment_5PB'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -564,6 +648,11 @@ export interface Account {
      * address firewall for this Data Lake store account. Possible values include:
      * 'Enabled', 'Disabled'
      *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
      * @param {array} [parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake store account.
      *
@@ -576,6 +665,11 @@ export interface Account {
      *
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
+     *
+     * @param {string} [parameters.newTier] the commitment tier to use for next
+     * month. Possible values include: 'Consumption', 'Commitment_1TB',
+     * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+     * 'Commitment_5PB'
      *
      * @param {string} parameters.location Resource location
      *
@@ -610,6 +704,11 @@ export interface Account {
      * does not remove existing rules, they will just be ignored until the firewall
      * is re-enabled. Possible values include: 'Enabled', 'Disabled'
      *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
      * @param {string} [parameters.trustedIdProviderState] The current state of the
      * trusted identity provider feature for this Data Lake store account.
      * Disabling trusted identity provider functionality does not remove the
@@ -618,6 +717,11 @@ export interface Account {
      *
      * @param {string} [parameters.defaultGroup] the default owner group for all
      * new folders and files created in the Data Lake Store account.
+     *
+     * @param {string} [parameters.newTier] the commitment tier to use for next
+     * month. Possible values include: 'Consumption', 'Commitment_1TB',
+     * 'Commitment_10TB', 'Commitment_100TB', 'Commitment_500TB', 'Commitment_1PB',
+     * 'Commitment_5PB'
      *
      * @param {object} [options] Optional Parameters.
      *
