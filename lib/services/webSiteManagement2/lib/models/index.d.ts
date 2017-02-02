@@ -971,6 +971,8 @@ export interface ServerFarmWithRichSku extends Resource {
  * 
  * @member {string} [siteConfig.pythonVersion] Version of Python
  * 
+ * @member {string} [siteConfig.nodeVersion] Version of Node
+ * 
  * @member {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
  * 
  * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -1299,6 +1301,8 @@ export interface HostNameSslState {
  * 
  * @member {string} [pythonVersion] Version of Python
  * 
+ * @member {string} [nodeVersion] Version of Node
+ * 
  * @member {boolean} [requestTracingEnabled] Enable request tracing
  * 
  * @member {date} [requestTracingExpirationTime] Request tracing expiration
@@ -1448,6 +1452,7 @@ export interface SiteConfig extends Resource {
   netFrameworkVersion?: string;
   phpVersion?: string;
   pythonVersion?: string;
+  nodeVersion?: string;
   requestTracingEnabled?: boolean;
   requestTracingExpirationTime?: Date;
   remoteDebuggingEnabled?: boolean;
@@ -3753,6 +3758,8 @@ export interface CsmSiteRecoveryEntity {
  * @member {string} [siteConfig.phpVersion] Version of PHP
  * 
  * @member {string} [siteConfig.pythonVersion] Version of Python
+ * 
+ * @member {string} [siteConfig.nodeVersion] Version of Node
  * 
  * @member {boolean} [siteConfig.requestTracingEnabled] Enable request tracing
  * 

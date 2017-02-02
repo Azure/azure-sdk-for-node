@@ -68,7 +68,7 @@
     "azure-arm-resource": "1.5.1-preview",
     "azure-arm-sb": "0.1.0",
     "azure-arm-servermanagement": "0.1.4",
-    "azure-arm-storage": "0.13.3-preview",
+    "azure-arm-storage": "0.13.4-preview",
     "azure-arm-trafficmanager": "0.11.0",
     "azure-arm-website": "0.11.2",
     "azure-arm-datalake-analytics": "0.4.3",
@@ -120,9 +120,11 @@
     "url": "http://github.com/Azure/azure-sdk-for-node/issues"
   },
   "scripts": {
-    "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit",
+    "test": "npm -s run-script jshint && npm -s run-script unit-arm && npm -s run-script unit && npm -s run-script unit-msrest && npm -s run-script unit-msrestazure",
     "unit": "node scripts/unit.js testlist.txt",
     "unit-arm": "node scripts/unit-arm.js testlistarm.txt",
+    "unit-msrest": "cd runtime/ms-rest && npm test",
+    "unit-msrestazure": "cd runtime/ms-rest-azure && npm test",
     "setup": "node scripts/setup.js",
     "jshint": "jshint lib --reporter=jslint",
     "ci": "node scripts/unit.js testlist.txt",

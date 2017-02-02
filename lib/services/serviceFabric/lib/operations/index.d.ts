@@ -650,13 +650,15 @@ export interface ApplicationTypes {
      * 
      * @param {object} [options] Optional Parameters.
      * 
+     * @param {number} [options.timeout] The timeout in seconds
+     * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      * 
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    register(registerApplicationType: models.RegisterApplicationType, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    register(registerApplicationType: models.RegisterApplicationType, options: { timeout? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
     register(registerApplicationType: models.RegisterApplicationType, callback: ServiceCallback<string>): void;
 
     /**

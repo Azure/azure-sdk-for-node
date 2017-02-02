@@ -163,8 +163,9 @@ var mappings = {
   },
   'storage': {
     'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2016-01-01/swagger/storage.json',
-    'ft': 2
+    'source': 'arm-storage/2016-12-01/swagger/storage.json',
+    'ft': 2,
+    'ClientName': 'StorageManagementClient'
   },
   'traffic':{
     'dir': 'trafficManagerManagement2/lib',
@@ -178,7 +179,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '0.17.0-Nightly20161019';
+var defaultAutoRestVersion = '1.0.0-Nightly20161212';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];
@@ -242,6 +243,7 @@ function generateProject(project, specRoot, autoRestVersion) {
   var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT_NO_VERSION',
     autoRestExe, currentModeler, language, specPath, mappings[project].dir);
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
+  if (mappings[project].ClientName !== null && mappings[project].ClientName !== undefined) cmd += ' -ClientName ' + mappings[project].ClientName;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }
