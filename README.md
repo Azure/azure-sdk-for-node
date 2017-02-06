@@ -2,27 +2,40 @@
 
 [![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node)
 
-This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Services.
-## Non-Interactive Authentication
-If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](./Documentation/Authentication.md).
+This project provides a Node.js package that makes it easy to consume and manage
+Microsoft Azure Services.
 
-## Install from npm
+## Usage
 
-We provide both fine-grained modules for different Microsoft Azure services which you can install separately, and an all-up module which contains everything.
+_This module includes all of the individual Azure Node.js modules in a single
+place. If your application only needs access to specific management modules, see
+[the list of individual modules](https://github.com/Azure/azure-sdk-for-node#install-individual-modules)
+below._
 
-**Notice**: we haven't provided fine-grained modules for every supported Microsoft Azure services yet. This will come soon.
-
-### Install the all-up module
-
+```shell
+$ npm install azure
 ```
-npm install azure
-```
-&nbsp;
+
+This will allow you access to some helper methods as well as all of the
+individual modules. For example, by installing the `azure` module, you can
+directly require and use the `ms-rest-azure` common module. This organization
+method allows for submodules (and peer dependant modules) to always be in sync
+with each other.
+
+**Note**: we haven't provided fine-grained modules for every supported Microsoft
+Azure services yet. This will come soon. If there is a module that you find is
+missing, [open an issue](https://github.com/Azure/azure-sdk-for-node/issues)
+so that we may prioritize it in the backlog.
+
+### Authenticating
+
+There are three ways to authenticate using this module, use
+[this guide](./Documentation/Authentication.md) to determine which method to use.
 
 ### Install individual modules
 
-| **Azure Services**                                                                |
-| :-----------------------------------------------------------------------------    | :---------------------------      |
+| **Azure Service** | **Install Command** |
+| ----------------------------------------------------------------------------- | --------------------------- |
 | [Gallery](http://azure.microsoft.com/en-us/marketplace/)                          | `npm install azure-gallery`       |
 | [Graph](https://azure.microsoft.com/en-us/services/active-directory/)             | `npm install azure-graph`         |
 | [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-keyvault`      |
@@ -32,7 +45,6 @@ npm install azure
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-storage`       |
 | [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-batch`         |
-| &nbsp;                                                                            |                                   |
 | **Azure Resource Management (ARM)**                                                                                         |
 | [Authorization](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-configure/) | `npm install azure-arm-authorization`    |
 | [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-arm-batch`     |
@@ -59,7 +71,6 @@ npm install azure
 | [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficManager`|
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-arm-network`   |
 | [WebApps (WebSites)](http://azure.microsoft.com/en-us/services/app-service/web/)  | `npm install azure-arm-website`   |
-| &nbsp;                                                                            |                                   |
 | **Azure Service Management (ASM)**                                                                                          |
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            |  `npm install azure-asm-compute`  |
 | [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/)                 | `npm install azure-asm-hdinsight` |
@@ -73,9 +84,8 @@ npm install azure
 | [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-asm-trafficManager`  |
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-asm-network`   |
 | [WebSites](http://azure.microsoft.com/en-us/services/app-service/web/)            | `npm install azure-asm-website`   |
-| &nbsp;                                                                            |                                   |
 | **Base Libraries**                                                                |                                   |
-| Common Functionality (for ASM & ARM clients generated from old code generator)    | `npm install azure-common`        |
+| Common Functionality (for ASM & ARM clients)                                      | `npm install azure-common`        |
 | Common Functionality for ARM clients generated from Autorest (Generic)            | `npm install ms-rest`             |
 | Common Functionality for ARM clients generated from Autorest (Azure)              | `npm install ms-rest-azure`       |
 
