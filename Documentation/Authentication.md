@@ -2,8 +2,8 @@
 
 All service APIs require authentication via a `credentials` object when being
 instantiated. There are three ways of authenticating and creating the required
-`credentials` via the SDK: interactive login and service principal
-authentication.
+`credentials` via the SDK: basic authentication, interactive login, and service
+principal authentication.
 
 ## Basic Authentication
 
@@ -21,7 +21,7 @@ MsRest.loginWithUsernamePassword(process.env.AZURE_USER, process.env.AZURE_PASS,
   let storageClient = Azure.createARMStorageManagementClient(credentials, 'subscription-id');
 
   // ..use the client instance to manage service resources.
-})
+});
 ```
 
 ## Interactive login
