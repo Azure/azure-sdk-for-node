@@ -1,0 +1,17 @@
+{
+    "name": <%- JSON.stringify(name) %>,
+    "description": <%- JSON.stringify(description) %>,
+    "version": "0.1.0",
+    "main": "./out/src/index.js",
+    "dependencies": {
+        "ms-rest": "*",
+        "ms-rest-azure": "*",
+        "azure": "*"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "eslint": "*",
+        "@types/node": "*",
+        "@types/mocha": "*"
+    }
+}
