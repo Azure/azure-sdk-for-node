@@ -26,7 +26,7 @@ yo azure-node
 
 ## License
 
-Apache-2.0 © [Azure SDK Team](https://github.com/Azure/azure-sdk-for-node)
+MIT © [Azure SDK Team](https://github.com/Azure/azure-sdk-for-node)
 
 
 [npm-image]: https://badge.fury.io/js/generator-azure-node.svg
