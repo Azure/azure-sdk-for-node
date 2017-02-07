@@ -46,15 +46,16 @@ MsRest.interactiveLogin((err, credentials) => {
 ## Service Principal Authentication
 
 Interactive login, similar to how the CLI authenticates, is the easiest way to
-authenticate; however, when using the Node.js SDK programmatically, you will need
-to use service principal authentication. This essentially creates keys for your
-Azure Active Directory account that you can provide to the SDK to authenticate
-rather than requiring user intervention or username/password.
+authenticate; however, when using the Node.js SDK programmatically, you may want
+to use service principal authentication rather than providing your account
+credentials. This essentially creates keys for your Azure Active Directory
+account that you can provide to the SDK to authenticate rather than requiring
+user intervention or username/password.
 
 ### Creating a Service Principal
 
-There are two ways to create a Service Principal, the next sections will walk you
-through each method.
+There are three ways to create a Service Principal, the next sections will walk
+you through each method.
 
 #### 1. Azure Portal
 
@@ -65,11 +66,16 @@ Follow the steps outlined in the
 #### 2. Azure CLI
 
 This method can be used with either the
-[Azure Cross-Platform CLI (npm module)](https://github.com/Azure/azure-xplat-cli)
-or the
-[Azure CLI v2.0 (Python)](https://github.com/Azure/azure-cli).
+[Azure CLI v2.0 (Python)](https://github.com/Azure/azure-cli) or the
+[Azure Cross-Platform CLI (npm module)](https://github.com/Azure/azure-xplat-cli).
 
-_Using the Node.js cross-platform CLI_
+_using the Python Azure CLI v2.0 requires just one step_
+```shell
+$ az ad sp create-for-rbac
+```
+
+_Using the Node.js cross-platform CLI requires additional steps for setting up
+roles_
 ```shell
 $ azure login # or $ azure login -u user@domain.tld
 $ azure ad sp create -n sp-name -p sp-password
@@ -93,10 +99,54 @@ data:                             https://sp-name
 info:    ad sp create command OK
 ```
 
-_using the Python Azure CLI v2.0_
-```shell
-$ az ad sp create-for-rbac
+Next, you'll need to assign a role to the service principal that was just
+created. You can get a list of available roles by running `$ azure role list`
+
+_In this example we are creating the service principal as a Contributor at the
+subscription level. A contributor role looks like this in the list_
 ```
+data:    Name             : Contributor
+data:    Actions          : 0=*
+data:    NotActions       : 0=Microsoft.Authorization/*/Delete, 1=Microsoft.Authorization/*/Write
+data:    IsCustom         : false
+```
+
+This will associate the service principal to your current subscription. Use the
+service principal that was returned in the `create` step for the `--spn` option.
+
+```shell
+$ azure role assignment create --spn 56894bd4-0fde-41d8-a0d7-5bsslccety2 -o Contributor
+info:    Executing command role assignment create
++ Finding role with specified name
+data:    RoleAssignmentId     : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678/providers/Microsoft.Authorization/roleAssignments/987654-ea85-40a5-80c2-abcdferghtt
+data:    RoleDefinitionName   : Contributor
+data:    RoleDefinitionId     : jhfskjf-6180-42a0-ab88-5656eiu677e23e
+data:    Scope                : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678
+data:    Display Name         : sp-name
+data:    SignInName           :
+data:    ObjectId             : weewrerer-e329-4e9b-98c6-7878787
+data:    ObjectType           : ServicePrincipal
+data:
++
+info:    role assignment create command OK
+```
+
+The service principal can now be used to log in.
+```shell
+$ azure login -u 56894bd4-0fde-41d8-a0d7-5bsslccety2 -p P@ssw0rd --tenant <a guid OR your domain(contosocorp.com)> --service-principal
+info:    Executing command login
+info:    Added subscription TestSubscription
++
+info:    login command OK
+```
+
+#### 3. SDK
+
+Run the [Service Principal creation script](./ServicePrincipal) to
+programmatically create a service principal.
+
+
+### Using the Service Principal
 
 Now you can use the Service Principal keys to authenticate in the SDK.
 
