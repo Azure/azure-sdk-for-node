@@ -1,0 +1,64 @@
+{
+    "name": "azurenodeessentials",
+    "displayName": "Azure-Node-Essentials",
+    "description": "Azure NodeJs Essentials for VS Code",
+    "version": "0.1.0-preview",
+    "publisher": "azsdkteam@microsoft.com",
+    "engines": {
+        "vscode": "^0.10.0"
+    },
+    "keywords": [
+        "azure",
+        "cloud",
+        "azure-sdk"
+    ],
+    "icon": "resources/azure-icon.png",
+    "galleryBanner": {
+        "color": "#00abec",
+        "theme": "light"
+    },
+    "categories": [
+        "Other",
+        "Snippets"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./snippets/snippets.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "Azure-Node.template-deploy",
+                "title": "Generate code for template deployment",
+                "category": "Azure-Node"
+            }
+        ]
+    },
+    "scripts": {},
+    "dependencies": {
+        "npm": "*",
+        "escodegen": "^1.8.1",
+        "esprima": "^3.1.3"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "eslint": "^3.6.0",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    },
+    "extensionDependencies": [
+        "samverschueren.yo"
+    ]
+}
