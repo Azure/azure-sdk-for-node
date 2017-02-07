@@ -1,6 +1,6 @@
 {
   "name": "generator-azure-node",
-  "version": "0.1.0-preview",
+  "version": "0.1.0",
   "description": "Yeoman generator for Azure NodeJS projects",
   "homepage": "",
   "author": {
@@ -37,8 +37,11 @@
     "yeoman-test": "^1.5.1"
   },
   "repository": "https://github.com/Azure/azure-sdk-for-node",
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  },
   "scripts": {
     "test": "mocha"
   },
-  "license": "Apache-2.0"
+  "license": "MIT"
 }
