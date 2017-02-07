@@ -5629,7 +5629,7 @@ export interface JobExecutionInformation {
  * user code.
  *
  * @member {string} [onAllTasksComplete] The action the Batch service should
- * take when all tasks in the job are in the completed state. noAction -  do
+ * take when all tasks in the job are in the completed state. noAction - do
  * nothing. The job remains active unless terminated or disabled by some other
  * means. terminateJob - terminate the job. The job's terminateReason is set to
  * 'AllTasksComplete'. The default is noAction. Possible values include:
@@ -10402,14 +10402,14 @@ export interface JobTerminateParameter {
  * being the highest priority. If omitted, the priority of the job is left
  * unchanged.
  *
- * @member {string} [onAllTasksComplete] Specifies an action the Batch service
- * should take when all tasks in the job are in the completed state. If
- * omitted, the completion behavior is left unchanged. You may not change the
- * value from terminateJob to noAction - that is, once you have engaged
- * automatic job termination, you cannot turn it off again. If you try to do
- * this, the request fails with an 'invalid property value' error response; if
- * you are calling the REST API directly, the HTTP status code is 400 (Bad
- * Request). Possible values include: 'noAction', 'terminateJob'
+ * @member {string} [onAllTasksComplete] The action the Batch service should
+ * take when all tasks in the job are in the completed state. If omitted, the
+ * completion behavior is left unchanged. You may not change the value from
+ * terminateJob to noAction - that is, once you have engaged automatic job
+ * termination, you cannot turn it off again. If you try to do this, the
+ * request fails with an 'invalid property value' error response; if you are
+ * calling the REST API directly, the HTTP status code is 400 (Bad Request).
+ * Possible values include: 'noAction', 'terminateJob'
  *
  * @member {object} [constraints] The execution constraints for the job. If
  * omitted, the existing execution constraints are left unchanged.
@@ -11116,9 +11116,9 @@ export interface JobPatchParameter {
  * job as metadata. If omitted, it takes the default value of an empty list; in
  * effect, any existing metadata is deleted.
  *
- * @member {string} [onAllTasksComplete] Specifies an action the Batch service
- * should take when all tasks in the job are in the completed state. If
- * omitted, the completion behavior is set to noAction. If the current value is
+ * @member {string} [onAllTasksComplete] The action the Batch service should
+ * take when all tasks in the job are in the completed state. If omitted, the
+ * completion behavior is set to noAction. If the current value is
  * terminateJob, this is an error because a job's completion behavior may not
  * be changed from terminateJob to noAction. Possible values include:
  * 'noAction', 'terminateJob'
@@ -11197,9 +11197,10 @@ export interface PoolEvaluateAutoScaleParameter {
  * a value less than 5 minutes, the Batch service returns an error; if you are
  * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  *
- * @member {string} [nodeDeallocationOption] When nodes may be removed from the
- * pool, if the pool size is decreasing. The default value is requeue. Possible
- * values include: 'requeue', 'terminate', 'taskCompletion', 'retainedData'
+ * @member {string} [nodeDeallocationOption] Determines what to do with a node
+ * and its running task(s) if the pool size is decreasing. The default value is
+ * requeue. Possible values include: 'requeue', 'terminate', 'taskCompletion',
+ * 'retainedData'
  *
  */
 export interface PoolResizeParameter {
@@ -11533,10 +11534,10 @@ export interface NodeDisableSchedulingParameter {
  * returns an error; if you are calling the REST API directly, the HTTP status
  * code is 400 (Bad Request).
  *
- * @member {string} [nodeDeallocationOption] When to remove compute nodes and
- * what to do with currently running tasks. The default value is requeue.
- * Possible values include: 'requeue', 'terminate', 'taskCompletion',
- * 'retainedData'
+ * @member {string} [nodeDeallocationOption] Determines what to do with a node
+ * and its running task(s) after it has been selected for deallocation. The
+ * default value is requeue. Possible values include: 'requeue', 'terminate',
+ * 'taskCompletion', 'retainedData'
  *
  */
 export interface NodeRemoveParameter {

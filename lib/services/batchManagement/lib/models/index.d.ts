@@ -136,9 +136,9 @@ export interface Resource extends BaseResource {
  * Possible values include: 'Invalid', 'Creating', 'Deleting', 'Succeeded',
  * 'Failed', 'Cancelled'
  *
- * @member {string} [poolAllocationMode] The allocation mode for creating pools
- * in the Batch account. Possible values include: 'BatchService',
- * 'UserSubscription'
+ * @member {string} [poolAllocationMode] The allocation mode to use for
+ * creating pools in the Batch account. Possible values include:
+ * 'BatchService', 'UserSubscription'
  *
  * @member {object} [keyVaultReference] A reference to the Azure key vault
  * associated with the Batch account.
@@ -155,11 +155,11 @@ export interface Resource extends BaseResource {
  * @member {date} [autoStorage.lastKeySync] The UTC time at which storage keys
  * were last synchronized with the Batch account.
  *
- * @member {number} coreQuota The core quota for this Batch account.
+ * @member {number} [coreQuota] The core quota for this Batch account.
  *
- * @member {number} poolQuota The pool quota for this Batch account.
+ * @member {number} [poolQuota] The pool quota for this Batch account.
  *
- * @member {number} activeJobAndJobScheduleQuota The active job and job
+ * @member {number} [activeJobAndJobScheduleQuota] The active job and job
  * schedule quota for this Batch account.
  *
  */
@@ -169,9 +169,9 @@ export interface BatchAccount extends Resource {
   poolAllocationMode?: string;
   keyVaultReference?: KeyVaultReference;
   autoStorage?: AutoStorageProperties;
-  coreQuota: number;
-  poolQuota: number;
-  activeJobAndJobScheduleQuota: number;
+  coreQuota?: number;
+  poolQuota?: number;
+  activeJobAndJobScheduleQuota?: number;
 }
 
 /**
@@ -384,53 +384,6 @@ export interface UpdateApplicationParameters {
  */
 export interface BatchLocationQuota {
   accountQuota?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorDetail class.
- * @constructor
- * Specific detail about an error.
- *
- * @member {string} [code] An identifier for the error. Codes are invariant and
- * are intended to be consumed programmatically.
- *
- * @member {string} [message] A message describing the error, intended to be
- * suitable for display in a user interface.
- *
- * @member {string} [target] The target of the particular error. For example,
- * the name of the property in error.
- *
- */
-export interface ErrorDetail {
-  code?: string;
-  message?: string;
-  target?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorBody class.
- * @constructor
- * An error response from the Batch service.
- *
- * @member {string} [code] An identifier for the error. Codes are invariant and
- * are intended to be consumed programmatically.
- *
- * @member {string} [message] A message describing the error, intended to be
- * suitable for display in a user interface.
- *
- * @member {string} [target] The target of the particular error. For example,
- * the name of the property in error.
- *
- * @member {array} [details] A list of additional details about the error.
- *
- */
-export interface ErrorBody {
-  code?: string;
-  message?: string;
-  target?: string;
-  details?: ErrorDetail[];
 }
 
 /**

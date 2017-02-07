@@ -467,8 +467,8 @@ export interface Pool {
      * Possible values include: 'task', 'pool'
      *
      * @param {string} [pool.startTask.userIdentity.autoUser.elevationLevel] The
-     * elevation level of the auto user nonAdmin - The auto user is a standard user
-     * without elevated access. admin - The auto user is a user with elevated
+     * elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
      *
@@ -829,8 +829,8 @@ export interface Pool {
      *
      * @param {string}
      * [poolPatchParameter.startTask.userIdentity.autoUser.elevationLevel] The
-     * elevation level of the auto user nonAdmin - The auto user is a standard user
-     * without elevated access. admin - The auto user is a user with elevated
+     * elevation level of the auto user. nonAdmin - The auto user is a standard
+     * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
      *
@@ -1128,10 +1128,10 @@ export interface Pool {
      * if you are calling the REST API directly, the HTTP status code is 400 (Bad
      * Request).
      *
-     * @param {string} [poolResizeParameter.nodeDeallocationOption] When nodes may
-     * be removed from the pool, if the pool size is decreasing. The default value
-     * is requeue. Possible values include: 'requeue', 'terminate',
-     * 'taskCompletion', 'retainedData'
+     * @param {string} [poolResizeParameter.nodeDeallocationOption] Determines what
+     * to do with a node and its running task(s) if the pool size is decreasing.
+     * The default value is requeue. Possible values include: 'requeue',
+     * 'terminate', 'taskCompletion', 'retainedData'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1298,7 +1298,7 @@ export interface Pool {
      *
      * @param {string}
      * [poolUpdatePropertiesParameter.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user nonAdmin - The auto user is a standard
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
      * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
@@ -1473,10 +1473,10 @@ export interface Pool {
      * Batch service returns an error; if you are calling the REST API directly,
      * the HTTP status code is 400 (Bad Request).
      *
-     * @param {string} [nodeRemoveParameter.nodeDeallocationOption] When to remove
-     * compute nodes and what to do with currently running tasks. The default value
-     * is requeue. Possible values include: 'requeue', 'terminate',
-     * 'taskCompletion', 'retainedData'
+     * @param {string} [nodeRemoveParameter.nodeDeallocationOption] Determines what
+     * to do with a node and its running task(s) after it has been selected for
+     * deallocation. The default value is requeue. Possible values include:
+     * 'requeue', 'terminate', 'taskCompletion', 'retainedData'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1860,14 +1860,14 @@ export interface Job {
      * priority and 1000 being the highest priority. If omitted, the priority of
      * the job is left unchanged.
      *
-     * @param {string} [jobPatchParameter.onAllTasksComplete] Specifies an action
-     * the Batch service should take when all tasks in the job are in the completed
-     * state. If omitted, the completion behavior is left unchanged. You may not
-     * change the value from terminateJob to noAction - that is, once you have
-     * engaged automatic job termination, you cannot turn it off again. If you try
-     * to do this, the request fails with an 'invalid property value' error
-     * response; if you are calling the REST API directly, the HTTP status code is
-     * 400 (Bad Request). Possible values include: 'noAction', 'terminateJob'
+     * @param {string} [jobPatchParameter.onAllTasksComplete] The action the Batch
+     * service should take when all tasks in the job are in the completed state. If
+     * omitted, the completion behavior is left unchanged. You may not change the
+     * value from terminateJob to noAction - that is, once you have engaged
+     * automatic job termination, you cannot turn it off again. If you try to do
+     * this, the request fails with an 'invalid property value' error response; if
+     * you are calling the REST API directly, the HTTP status code is 400 (Bad
+     * Request). Possible values include: 'noAction', 'terminateJob'
      *
      * @param {object} [jobPatchParameter.constraints] The execution constraints
      * for the job. If omitted, the existing execution constraints are left
@@ -2222,7 +2222,7 @@ export interface Job {
      *
      * @param {string}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user nonAdmin - The auto user is a standard
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
      * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
@@ -2703,7 +2703,7 @@ export interface Job {
      *
      * @param {string}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user nonAdmin - The auto user is a standard
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
      * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
@@ -2765,12 +2765,12 @@ export interface Job {
      * associated with the job as metadata. If omitted, it takes the default value
      * of an empty list; in effect, any existing metadata is deleted.
      *
-     * @param {string} [jobUpdateParameter.onAllTasksComplete] Specifies an action
-     * the Batch service should take when all tasks in the job are in the completed
-     * state. If omitted, the completion behavior is set to noAction. If the
-     * current value is terminateJob, this is an error because a job's completion
-     * behavior may not be changed from terminateJob to noAction. Possible values
-     * include: 'noAction', 'terminateJob'
+     * @param {string} [jobUpdateParameter.onAllTasksComplete] The action the Batch
+     * service should take when all tasks in the job are in the completed state. If
+     * omitted, the completion behavior is set to noAction. If the current value is
+     * terminateJob, this is an error because a job's completion behavior may not
+     * be changed from terminateJob to noAction. Possible values include:
+     * 'noAction', 'terminateJob'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3610,7 +3610,7 @@ export interface Job {
      *
      * @param {string}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user nonAdmin - The auto user is a standard
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
      * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
@@ -5638,7 +5638,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user nonAdmin - The auto user is a standard
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
      * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
@@ -6479,7 +6479,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user nonAdmin - The auto user is a standard
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
      * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
@@ -7472,7 +7472,7 @@ export interface JobSchedule {
      *
      * @param {string}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.userIdentity.autoUser.elevationLevel]
-     * The elevation level of the auto user nonAdmin - The auto user is a standard
+     * The elevation level of the auto user. nonAdmin - The auto user is a standard
      * user without elevated access. admin - The auto user is a user with elevated
      * access and operates with full Administrator permissions. The default value
      * is nonAdmin. Possible values include: 'nonAdmin', 'admin'
@@ -7781,7 +7781,7 @@ export interface Task {
      * values include: 'task', 'pool'
      *
      * @param {string} [task.userIdentity.autoUser.elevationLevel] The elevation
-     * level of the auto user nonAdmin - The auto user is a standard user without
+     * level of the auto user. nonAdmin - The auto user is a standard user without
      * elevated access. admin - The auto user is a user with elevated access and
      * operates with full Administrator permissions. The default value is nonAdmin.
      * Possible values include: 'nonAdmin', 'admin'
