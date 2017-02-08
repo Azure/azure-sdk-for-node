@@ -35,6 +35,7 @@ function ensureDependenciesAreInstalled() {
     // Download and install template generator package.
     var extensionName = 'Azure-Node-Essentials';
     var generatorPackageName = 'generator-azure-node';
+    var generatorPackageVersion = '0.1.0';
 
     isNodeInstalled().then(function (result) {
         if (!result) {
@@ -43,12 +44,12 @@ function ensureDependenciesAreInstalled() {
         }
 
         // check the npm cache on this machine and determine if our dependency is present.
-        // if the dependency is present, there is nothing more to do.
-        // if it is not present, install it from npm. 
+        // if the dependency is present and is the latest version, there is nothing more to do.
+        // if it is not present or is not the latest, install it from npm. 
         npmList().then(function (listOfPackages) {
             var present = listOfPackages.some(function (item) {
                 if (item.startsWith(generatorPackageName)) {
-                    return true;
+                    return item.split('@')[1] === generatorPackageVersion;
                 }
                 return false;
             });
