@@ -33,7 +33,7 @@ function activate(context) {
 function ensureDependenciesAreInstalled() {
 
     // Download and install template generator package.
-    var extensionName = 'Azure-NodeJS-Essentials';
+    var extensionName = 'Azure-Node-Essentials';
     var generatorPackageName = 'generator-azure-node';
 
     isNodeInstalled().then(function (result) {
@@ -105,7 +105,7 @@ function npmList(path) {
     var cmdString = "npm ls --depth=0 " + (global ? "-g " : " ");
     return new Promise(function (resolve, reject) {
         exec(cmdString, { cwd: path ? path : "/" }, (error, stdout) => {
-            if (error) {
+            if (error && !stdout) {
                 return reject(error);
             }
 
