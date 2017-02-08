@@ -2,7 +2,7 @@
     "name": "azurenodeessentials",
     "displayName": "Azure Node Essentials",
     "description": "Azure Node SDK Essentials for VS Code",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "publisher": "azuresdkteam",
     "engines": {
         "vscode": "^1.8.0"
