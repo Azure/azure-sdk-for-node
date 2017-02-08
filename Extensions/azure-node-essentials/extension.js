@@ -113,21 +113,29 @@ function npmList(path) {
             packages = stdout.split('\n');
 
             packages = packages.filter(function (item) {
-                if (item.match(/^\+--.+/g) != null) {
+                if (item.match(/^\+--.+/g) != null || item.match(/^├──.+/g) != null) {
                     return true;
                 }
-                if (item.match(/^`--.+/g) != null) {
+                if (item.match(/^`--.+/g) != null || item.match(/^└──.+/g) != null) {
                     return true;
                 }
                 return undefined;
             });
 
             packages = packages.map(function (item) {
+                // windows
                 if (item.match(/^\+--.+/g) != null) {
                     return item.replace(/^\+--\s/g, "");
                 }
                 if (item.match(/^`--.+/g) != null) {
                     return item.replace(/^`--\s/g, "");
+                }
+                // mac
+                if (item.match(/^├──.+/g) != null) {
+                    return item.replace(/^├──\s/g, "");
+                }
+                if (item.match(/^└──.+/g) != null) {
+                    return item.replace(/^└──\s/g, "");
                 }
             })
             resolve(packages);
