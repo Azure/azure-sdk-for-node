@@ -70,7 +70,7 @@ function ensureDependenciesAreInstalled() {
                 } else {
                     actionPerformed = 'install';
                     // indicate to the user that the extension needs to perform some one-time startup tasks
-                    vscode.window.showInformationMessage(`${extensionName} is installing dependencies. This is a one time, long running operation. We will notify you when it is done.`);
+                    vscode.window.showInformationMessage(`${extensionName} is installing dependencies...`);
                 }
 
                 var installTask = utils.npmInstall([generatorPackageName], options);
@@ -88,7 +88,7 @@ function ensureDependenciesAreInstalled() {
         }).then(function (result) {
             if (result && result.status === true) {
                 if (result.action === 'install') {
-                    vscode.window.showInformationMessage(`${extensionName} has finished installing dependencies and is ready for use.`);
+                    vscode.window.showInformationMessage(`${extensionName} successfully installed dependencies and is ready for use.`);
                 } else if (result.action === 'upgrade') {
                     vscode.window.setStatusBarMessage(`${extensionName} successfully upgraded dependencies in the background.`);
                 }
