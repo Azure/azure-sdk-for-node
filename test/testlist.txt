@@ -24,7 +24,6 @@ services/blob/blobservice-gb-tests.js
 services/blob/blobservice-uploaddownload-tests.js
 services/blob/models/blobpagerangestream-test.js
 services/blob/filters-tests.js
-services/powerbiembedded/powerBIEmbeddedManagementClient-test.js
 services/queue/queueservice-tests.js
 services/serviceBus/internal/wraptokenmanager-tests.js
 services/serviceBus/apnsservice-tests.js
