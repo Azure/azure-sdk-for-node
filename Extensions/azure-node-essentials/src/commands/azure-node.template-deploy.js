@@ -31,5 +31,10 @@ exports.createCommand = function createCommand() {
       builder.insert(currentPos, callsite);
     });
 
+    // format the entire document.
+    // the code we inserted was generated as well-formatted but indenting is relative to the existing text
+    // in the document. Since we didn't examine existing text and are unaware of the indent depth where 
+    // generated code will be inserted, we have to reformat the whole document. If this leads to performance issues, we'll revisit this logic.
+    return vscode.commands.executeCommand("editor.action.formatDocument");
   });
 };
