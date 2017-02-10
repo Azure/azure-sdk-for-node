@@ -28,16 +28,16 @@
     "activationEvents": [
         "*"
     ],
-    "main": "./extension",
+    "main": "./src/extension",
     "contributes": {
         "snippets": [
             {
                 "language": "javascript",
-                "path": "./snippets/snippets.json"
+                "path": "./src/snippets/snippets.json"
             },
             {
                 "language": "typescript",
-                "path": "./snippets/snippets.json"
+                "path": "./src/snippets/snippets.json"
             }
         ],
         "commands": [
