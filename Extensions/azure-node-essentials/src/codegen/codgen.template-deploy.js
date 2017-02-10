@@ -34,11 +34,15 @@ exports.deployTemplate = function deployTemplate() {
 };
 
 exports.generateRequireStatements = function generateRequireStatements(document) {
-    const requiredModules = ['fs', 'azure-arm-resource'];
-    return codegenerator.generateRequireStatements(document, requiredModules);
+  const requiredModules = ['fs', 'azure-arm-resource', 'ms-rest', 'ms-rest-azure'];
+  return codegenerator.generateRequireStatements(document, requiredModules);
 };
 
 exports.deployTemplateCallSite = function deployTemplateCallSite() {
   var text = `${deployTemplateFunctionName}(credentials, function(err, result){ });`;
   return codegenerator.generateCode(text);
 };
+
+exports.getPackageDependencies = function getPackageDependencies() {
+  return ['azure-arm-resource', 'ms-rest', 'ms-rest-azure'];
+}
