@@ -34,17 +34,19 @@ function generateCodeInEditor() {
   // generate code to be inserted.
   const document = vscode.window.activeTextEditor.document;
   const lineCount = document.lineCount;
-  var imports = codegen.generateRequireStatements(document);
+  var importsAndLineNumber = codegen.generateRequireStatements(document);
   var methodBody = codegen.deployTemplate();
   var callsite = codegen.deployTemplateCallSite();
 
   vscode.window.activeTextEditor.edit((builder) => {
     // insert import statements.
-    // TODO: find the right insertion point (this can be 'use strict' stmt here.) 
-    // Insertion point is the line where import group starts or ends.
-    var importPos = new vscode.Position(0, 0);
-    for (var importStatement of imports) {
-      builder.insert(importPos, importStatement);
+    // Insertion point is the line where import group ends.
+    if (importsAndLineNumber) {
+      var importPos = new vscode.Position(importsAndLineNumber.line, 0);
+      var imports = importsAndLineNumber.code;
+      for (var importStatement of imports) {
+        builder.insert(importPos, importStatement);
+      }
     }
 
     // insert code for template deployment.

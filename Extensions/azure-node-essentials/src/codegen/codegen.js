@@ -14,6 +14,7 @@ exports.generateRequireStatements = function generateRequireStatements(document,
   var foundImportsGroup = false;
   var existingModules = new Set();
   var requireStatementMatcher = /var\s*\w+\s+=\s+require\(\'([a-zA-Z0-9_-]*)\'\);*\s*/;
+  var insertionLine = 0;
 
   // gather modules that are already imported in the document
   for (var index = 0; index < document.lineCount; index++) {
@@ -27,7 +28,9 @@ exports.generateRequireStatements = function generateRequireStatements(document,
       existingModules.add(matches[1]);
     } else if (foundImportsGroup) {
       // we've already discovered a require statement previously and this new line no longer matches the pattern.
-      // we've gone past the require statement group. Do not loop through entire source text. Bail now.
+      // we've gone past the require statement group. Do not loop through entire source text.
+      // record this line number, as we'll insert our require statements here. then, bail out of reading the source document.
+      insertionLine = index;
       break;
     }
   }
@@ -43,7 +46,12 @@ exports.generateRequireStatements = function generateRequireStatements(document,
     requireStatements.add(statement);
   }
 
-  return requireStatements;
+  var result = {
+    line: insertionLine,
+    code: requireStatements
+  };
+
+  return result;
 }
 
 /**
