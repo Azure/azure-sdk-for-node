@@ -61,10 +61,15 @@ exports.generateRequireStatement = function generateRequireStatement(name, packa
   return text;
 }
 
+// TODO: do this programmatically. Normalize 'name', strip dashes and other illegal chars. use pascal casing.
 exports.getNameAssignmentForModule = function getNameAssignmentForModule(module) {
   switch (module) {
     case 'azure-arm-resource':
       return 'ResourceManagement';
+    case 'ms-rest':
+      return 'msRest';
+    case 'ms-rest-azure':
+      return 'msRestAzure';
     default:
       return;
   }
