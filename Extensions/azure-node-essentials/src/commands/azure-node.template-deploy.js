@@ -1,5 +1,5 @@
 var vscode = require('vscode');
-var codegen = require('../codegen/codegen');
+var codegen = require('../codegen/codgen.template-deploy');
 
 exports.createCommand = function createCommand() {
   vscode.commands.registerCommand('Azure-Node.template-deploy', function () {
@@ -10,21 +10,22 @@ exports.createCommand = function createCommand() {
     }
 
     // generate code to be inserted.
-    var imports = codegen.importsForDeployTemplate();
-    var code = codegen.deployTemplate();
+    const document = vscode.window.activeTextEditor.document;
+    const lineCount = document.lineCount;
+    var imports = codegen.generateRequireStatements(document);
+    var methodBody = codegen.deployTemplate();
     var callsite = codegen.deployTemplateCallSite();
 
     vscode.window.activeTextEditor.edit((builder) => {
       // insert import statements.
       var importPos = new vscode.Position(0, 0);
-      for (var index = 0; index < imports.length; index++) {
-        builder.insert(importPos, imports[index]);
+      for (var importStatement of imports) {
+        builder.insert(importPos, importStatement);
       }
 
       // insert code for template deployment.
-      const lineCount = vscode.window.activeTextEditor.document.lineCount;
       const range = new vscode.Range(new vscode.Position(lineCount, 0), new vscode.Position(lineCount + 1, 0));
-      builder.replace(range, code);
+      builder.replace(range, methodBody);
 
       // fix callsite to invoke the function that was newly generated.
       const currentPos = new vscode.Position(vscode.window.activeTextEditor.selection.active.line, 0);
