@@ -52,7 +52,7 @@ exports.generateRequireStatements = function generateRequireStatements(document,
   };
 
   return result;
-}
+};
 
 /**
  * Generates a require('') statement with given information.
@@ -67,7 +67,7 @@ exports.generateRequireStatement = function generateRequireStatement(name, packa
 
   var text = `var ${name} = require('${packageName}');\r\n`;
   return text;
-}
+};
 
 // TODO: do this programmatically. Normalize 'name', strip dashes and other illegal chars. use pascal casing.
 exports.getNameAssignmentForModule = function getNameAssignmentForModule(module) {
@@ -81,11 +81,11 @@ exports.getNameAssignmentForModule = function getNameAssignmentForModule(module)
     default:
       return;
   }
-}
+};
 
 exports.generateNewLine = function generateNewLine() {
-  return generateCode('\r\n');
-}
+  return this.generateCode('\r\n');
+};
 
 // parse the text blob and emit code from the AST.
 exports.generateCode = function generateCode(text) {
@@ -105,4 +105,4 @@ exports.generateCode = function generateCode(text) {
 
   var code = escodegen.generate(ast, codegenOptions);
   return code;
-}
+};
