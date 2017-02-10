@@ -6,22 +6,27 @@ const deployTemplateFunctionName = 'deployTemplate';
 // Generates NodeJs code for arm template deployment.
 exports.deployTemplate = function deployTemplate() {
   var text = `function ${deployTemplateFunctionName}(credentials, callback){\
-      \
       // TODO: initialize these variables
       var subscriptionId;\
       var resourceGroupName;\
       var deploymentName;\
       var templateFilePath;\
       var templateParametersFilePath;\
-      \
-      var template = JSON.parse(fs.readFileSync(templateFilePath));\
-      var templateParameters = JSON.parse(fs.readFileSync(templateParametersFilePath));\
+      var template;\
+      var templateParameters;\
       var parameters = {\
         template: template,\
         parameters: templateParameters,\
         mode: \'Complete\'\
       };\
-      \
+      \r\n
+      try {\
+        template = JSON.parse(fs.readFileSync(templateFilePath));\
+        templateParameters = JSON.parse(fs.readFileSync(templateParametersFilePath));\
+      } catch (error) {\
+        console.error('Encountered error parsing template file:', error);\
+      }\
+      \r\n
       var resourceClient = new ResourceManagement.ResourceManagementClient(credentials, subscriptionId);\
       resourceClient.deployments.createOrUpdate(resourceGroupName, deploymentName, parameters, callback);\
     }`;
@@ -65,7 +70,9 @@ function generateCode(text) {
       indent: {
         style: '  '
       },
-    }
+      preserveBlankLines: true,
+    },
+    sourceCode: text
   };
 
   var code = escodegen.generate(ast, codegenOptions);
