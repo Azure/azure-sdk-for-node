@@ -121,7 +121,7 @@ describe('Batch Service', function () {
           should.exist(tokenResponse);
           should.exist(tokenResponse.accessToken); 
           verifyAadAuth(tokenResponse.accessToken, done);
-        });    
+        });
       }
       else
       {
@@ -278,6 +278,30 @@ describe('Batch Service', function () {
         should.exist(err);
         should.not.exist(result);
         err.statusCode.should.equal(400);
+        err.body.code.should.equal('InvalidPropertyValue');
+        done();
+      });
+    });
+
+    it('should add a pool with an osDisk and get expected error', function (done) {
+      var pool = {
+        id: 'nodesdkosdiskpool',
+        vmSize: 'small',
+        virtualMachineConfiguration: {
+          nodeAgentSKUId: 'batch.node.ubuntu 16.04',
+          osDisk: {
+            imageUris: [
+              'https://myaccount.blob.core.windows.net/vhds/myimage.vhd'
+            ],
+            caching: 'none'
+          }
+        },
+        targetDedicated: 0
+      };
+
+      client.pool.add(pool, function (err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
         err.body.code.should.equal('InvalidPropertyValue');
         done();
       });
