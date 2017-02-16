@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -15,7 +18,7 @@
  * @constructor
  * The properties related to auto storage account.
  *
- * @member {string} storageAccountId The resource id of the storage account to
+ * @member {string} storageAccountId The resource ID of the storage account to
  * be used for auto storage account.
  * 
  */
@@ -36,7 +39,7 @@ export interface AutoStorageBaseProperties {
  * @member {object} [autoStorage] The properties related to auto storage
  * account.
  * 
- * @member {string} [autoStorage.storageAccountId] The resource id of the
+ * @member {string} [autoStorage.storageAccountId] The resource ID of the
  * storage account to be used for auto storage account.
  * 
  */
@@ -53,7 +56,7 @@ export interface BatchAccountCreateParameters {
  * Contains information about the auto storage account associated with a Batch
  * account.
  *
- * @member {string} storageAccountId The resource id of the storage account to
+ * @member {string} storageAccountId The resource ID of the storage account to
  * be used for auto storage account.
  * 
  * @member {date} lastKeySync The UTC time at which storage keys were last
@@ -71,7 +74,7 @@ export interface AutoStorageProperties {
  * @constructor
  * A definition of an Azure resource.
  *
- * @member {string} [id] The id of the resource
+ * @member {string} [id] The ID of the resource
  * 
  * @member {string} [name] The name of the resource
  * 
@@ -103,10 +106,10 @@ export interface Resource extends BaseResource {
  * Possible values include: 'Invalid', 'Creating', 'Deleting', 'Succeeded',
  * 'Failed', 'Cancelled'
  * 
- * @member {object} [autoStorage] The properties and status of any auto
- * storage account associated with the account.
+ * @member {object} [autoStorage] The properties and status of any auto storage
+ * account associated with the account.
  * 
- * @member {string} [autoStorage.storageAccountId] The resource id of the
+ * @member {string} [autoStorage.storageAccountId] The resource ID of the
  * storage account to be used for auto storage account.
  * 
  * @member {date} [autoStorage.lastKeySync] The UTC time at which storage keys
@@ -140,13 +143,29 @@ export interface BatchAccount extends Resource {
  * @member {object} [autoStorage] The properties related to auto storage
  * account.
  * 
- * @member {string} [autoStorage.storageAccountId] The resource id of the
+ * @member {string} [autoStorage.storageAccountId] The resource ID of the
  * storage account to be used for auto storage account.
  * 
  */
 export interface BatchAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
   autoStorage?: AutoStorageBaseProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BatchAccountListResult class.
+ * @constructor
+ * Values returned by the List operation.
+ *
+ * @member {array} [value] The collection of returned Batch accounts.
+ * 
+ * @member {string} [nextLink] The continuation token.
+ * 
+ */
+export interface BatchAccountListResult {
+  value?: BatchAccount[];
+  nextLink?: string;
 }
 
 /**
@@ -244,7 +263,7 @@ export interface Application {
  * An application package which represents a particular version of an
  * application.
  *
- * @member {string} [id] The id of the application.
+ * @member {string} [id] The ID of the application.
  * 
  * @member {string} [version] The version of the application package.
  * 
@@ -257,8 +276,8 @@ export interface Application {
  * @member {string} [storageUrl] The storage URL at which the application
  * package is stored.
  * 
- * @member {date} [storageUrlExpiry] The UTC time at which the storage URL
- * will expire.
+ * @member {date} [storageUrlExpiry] The UTC time at which the storage URL will
+ * expire.
  * 
  * @member {date} [lastActivationTime] The time at which the package was last
  * activated, if the package is active.
@@ -272,6 +291,22 @@ export interface ApplicationPackage {
   storageUrl?: string;
   storageUrlExpiry?: Date;
   lastActivationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListApplicationsResult class.
+ * @constructor
+ * Response to an ApplicationOperations.ListApplications request.
+ *
+ * @member {array} [value] The list of applications.
+ * 
+ * @member {string} [nextLink] The URL to get the next set of results.
+ * 
+ */
+export interface ListApplicationsResult {
+  value?: Application[];
+  nextLink?: string;
 }
 
 /**
@@ -307,6 +342,53 @@ export interface UpdateApplicationParameters {
  */
 export interface BatchLocationQuota {
   accountQuota?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorDetail class.
+ * @constructor
+ * Specific detail about an error.
+ *
+ * @member {string} [code] An identifier for the error. Codes are invariant and
+ * are intended to be consumed programmatically.
+ * 
+ * @member {string} [message] A message describing the error, intended to be
+ * suitable for display in a user interface.
+ * 
+ * @member {string} [target] The target of the particular error. For example,
+ * the name of the property in error.
+ * 
+ */
+export interface ErrorDetail {
+  code?: string;
+  message?: string;
+  target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorBody class.
+ * @constructor
+ * An error response from the Batch service.
+ *
+ * @member {string} [code] An identifier for the error. Codes are invariant and
+ * are intended to be consumed programmatically.
+ * 
+ * @member {string} [message] A message describing the error, intended to be
+ * suitable for display in a user interface.
+ * 
+ * @member {string} [target] The target of the particular error. For example,
+ * the name of the property in error.
+ * 
+ * @member {array} [details] A list of additional details about the error.
+ * 
+ */
+export interface ErrorBody {
+  code?: string;
+  message?: string;
+  target?: string;
+  details?: ErrorDetail[];
 }
 
 

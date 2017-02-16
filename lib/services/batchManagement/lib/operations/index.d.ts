@@ -21,9 +21,9 @@ import * as models from '../models';
 export interface BatchAccountOperations {
 
     /**
-     * Creates a new Batch account with the specified parameters. Existing
-     * accounts cannot be updated with this API and should instead be updated
-     * with the Update Batch Account API.
+     * Creates a new Batch account with the specified parameters. Existing accounts
+     * cannot be updated with this API and should instead be updated with the
+     * Update Batch Account API.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the new Batch account.
@@ -46,7 +46,7 @@ export interface BatchAccountOperations {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * @param {string} parameters.autoStorage.storageAccountId The resource ID of
      * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
@@ -59,46 +59,6 @@ export interface BatchAccountOperations {
      */
     create(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccount>): void;
     create(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, callback: ServiceCallback<models.BatchAccount>): void;
-
-    /**
-     * Creates a new Batch account with the specified parameters. Existing
-     * accounts cannot be updated with this API and should instead be updated
-     * with the Update Batch Account API.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the new Batch account.
-     * 
-     * @param {string} accountName A name for the Batch account which must be
-     * unique within the region. Batch account names must be between 3 and 24
-     * characters in length and must use only numbers and lowercase letters. This
-     * name is used as part of the DNS name that is used to access the Batch
-     * service in the region in which the account is created. For example:
-     * http://accountname.region.batch.azure.com/.
-     * 
-     * @param {object} parameters Additional parameters for account creation.
-     * 
-     * @param {string} parameters.location The region in which to create the
-     * account.
-     * 
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the account.
-     * 
-     * @param {object} [parameters.autoStorage] The properties related to auto
-     * storage account.
-     * 
-     * @param {string} parameters.autoStorage.storageAccountId The resource id of
-     * the storage account to be used for auto storage account.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccount>): void;
-    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, callback: ServiceCallback<models.BatchAccount>): void;
 
     /**
      * Updates the properties of an existing Batch account.
@@ -116,7 +76,7 @@ export interface BatchAccountOperations {
      * @param {object} [parameters.autoStorage] The properties related to auto
      * storage account.
      * 
-     * @param {string} parameters.autoStorage.storageAccountId The resource id of
+     * @param {string} parameters.autoStorage.storageAccountId The resource ID of
      * the storage account to be used for auto storage account.
      * 
      * @param {object} [options] Optional Parameters.
@@ -148,25 +108,6 @@ export interface BatchAccountOperations {
      */
     deleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Deletes the specified Batch account.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account to be deleted.
-     * 
-     * @param {string} accountName The name of the account to be deleted.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets information about the specified Batch account.
@@ -205,8 +146,8 @@ export interface BatchAccountOperations {
      * Gets information about the Batch accounts associated within the specified
      * resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group whose
-     * Batch accounts to list.
+     * @param {string} resourceGroupName The name of the resource group whose Batch
+     * accounts to list.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -240,7 +181,7 @@ export interface BatchAccountOperations {
     synchronizeAutoStorageKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Regenerates the specified account key for the specified Batch account.
+     * Regenerates the specified account key for the Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
@@ -279,6 +220,65 @@ export interface BatchAccountOperations {
      */
     getKeys(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccountKeys>): void;
     getKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.BatchAccountKeys>): void;
+
+    /**
+     * Creates a new Batch account with the specified parameters. Existing accounts
+     * cannot be updated with this API and should instead be updated with the
+     * Update Batch Account API.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the new Batch account.
+     * 
+     * @param {string} accountName A name for the Batch account which must be
+     * unique within the region. Batch account names must be between 3 and 24
+     * characters in length and must use only numbers and lowercase letters. This
+     * name is used as part of the DNS name that is used to access the Batch
+     * service in the region in which the account is created. For example:
+     * http://accountname.region.batch.azure.com/.
+     * 
+     * @param {object} parameters Additional parameters for account creation.
+     * 
+     * @param {string} parameters.location The region in which to create the
+     * account.
+     * 
+     * @param {object} [parameters.tags] The user specified tags associated with
+     * the account.
+     * 
+     * @param {object} [parameters.autoStorage] The properties related to auto
+     * storage account.
+     * 
+     * @param {string} parameters.autoStorage.storageAccountId The resource ID of
+     * the storage account to be used for auto storage account.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchAccount>): void;
+    beginCreate(resourceGroupName: string, accountName: string, parameters: models.BatchAccountCreateParameters, callback: ServiceCallback<models.BatchAccount>): void;
+
+    /**
+     * Deletes the specified Batch account.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the Batch account to be deleted.
+     * 
+     * @param {string} accountName The name of the account to be deleted.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
 
     /**
      * Gets information about the Batch accounts associated with the subscription.
@@ -332,7 +332,7 @@ export interface ApplicationPackageOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {string} version The version of the application to activate.
      * 
@@ -357,7 +357,7 @@ export interface ApplicationPackageOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {string} version The version of the application.
      * 
@@ -380,7 +380,7 @@ export interface ApplicationPackageOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {string} version The version of the application to delete.
      * 
@@ -403,7 +403,7 @@ export interface ApplicationPackageOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {string} version The version of the application.
      * 
@@ -435,7 +435,7 @@ export interface ApplicationOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -465,7 +465,7 @@ export interface ApplicationOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -486,7 +486,7 @@ export interface ApplicationOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -507,7 +507,7 @@ export interface ApplicationOperations {
      * 
      * @param {string} accountName The name of the Batch account.
      * 
-     * @param {string} applicationId The id of the application.
+     * @param {string} applicationId The ID of the application.
      * 
      * @param {object} parameters The parameters for the request.
      * 
