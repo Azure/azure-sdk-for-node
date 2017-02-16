@@ -1,9 +1,0 @@
-{
-    "compilerOptions": {
-        "target": "ES5",
-        "module": "commonjs"
-    },
-    "files": [
-        "src/"
-    ]
-}
