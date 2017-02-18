@@ -35,9 +35,13 @@ export interface AutoStorageBaseProperties {
  * @member {string} id The resource ID of the Azure key vault associated with
  * the Batch account.
  *
+ * @member {string} url The Url of the Azure key vault associated with the
+ * Batch account.
+ *
  */
 export interface KeyVaultReference {
   id: string;
+  url: string;
 }
 
 /**
@@ -49,6 +53,12 @@ export interface KeyVaultReference {
  * @member {string} location The region in which to create the account.
  *
  * @member {object} [tags] The user specified tags associated with the account.
+ *
+ * @member {object} [autoStorage] The properties related to auto storage
+ * account.
+ *
+ * @member {string} [autoStorage.storageAccountId] The resource ID of the
+ * storage account to be used for auto storage account.
  *
  * @member {string} [poolAllocationMode] The allocation mode to use for
  * creating pools in the Batch account. The pool allocation mode also affects
@@ -64,19 +74,16 @@ export interface KeyVaultReference {
  * @member {string} [keyVaultReference.id] The resource ID of the Azure key
  * vault associated with the Batch account.
  *
- * @member {object} [autoStorage] The properties related to auto storage
- * account.
- *
- * @member {string} [autoStorage.storageAccountId] The resource ID of the
- * storage account to be used for auto storage account.
+ * @member {string} [keyVaultReference.url] The Url of the Azure key vault
+ * associated with the Batch account.
  *
  */
 export interface BatchAccountCreateParameters {
   location: string;
   tags?: { [propertyName: string]: string };
+  autoStorage?: AutoStorageBaseProperties;
   poolAllocationMode?: string;
   keyVaultReference?: KeyVaultReference;
-  autoStorage?: AutoStorageBaseProperties;
 }
 
 /**
@@ -146,6 +153,9 @@ export interface Resource extends BaseResource {
  * @member {string} [keyVaultReference.id] The resource ID of the Azure key
  * vault associated with the Batch account.
  *
+ * @member {string} [keyVaultReference.url] The Url of the Azure key vault
+ * associated with the Batch account.
+ *
  * @member {object} [autoStorage] The properties and status of any auto storage
  * account associated with the Batch account.
  *
@@ -188,10 +198,29 @@ export interface BatchAccount extends Resource {
  * @member {string} [autoStorage.storageAccountId] The resource ID of the
  * storage account to be used for auto storage account.
  *
+ * @member {string} [poolAllocationMode] The allocation mode to use for
+ * creating pools in the Batch account. The pool allocation mode also affects
+ * how clients may authenticate to the Batch Service API. If the mode is
+ * BatchService, clients may authenticate using access keys or Azure Active
+ * Directory. If the mode is UserSubscription, clients must use Azure Active
+ * Directory. The default is BatchService. Possible values include:
+ * 'BatchService', 'UserSubscription'
+ *
+ * @member {object} [keyVaultReference] A reference to the Azure key vault
+ * associated with the Batch account.
+ *
+ * @member {string} [keyVaultReference.id] The resource ID of the Azure key
+ * vault associated with the Batch account.
+ *
+ * @member {string} [keyVaultReference.url] The Url of the Azure key vault
+ * associated with the Batch account.
+ *
  */
 export interface BatchAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
   autoStorage?: AutoStorageBaseProperties;
+  poolAllocationMode?: string;
+  keyVaultReference?: KeyVaultReference;
 }
 
 /**
