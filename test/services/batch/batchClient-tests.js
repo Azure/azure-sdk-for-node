@@ -302,6 +302,7 @@ describe('Batch Service', function () {
       client.pool.add(pool, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
+        err.statusCode.should.equal(400);
         err.body.code.should.equal('InvalidPropertyValue');
         done();
       });
