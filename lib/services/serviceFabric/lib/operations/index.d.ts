@@ -105,53 +105,71 @@ export interface ClusterUpgrades {
     /**
      * Start cluster upgrades
      *
-     * @param {object} startClusterUpgrade The upgrade of the start cluster
+     * @param {object} startClusterUpgrade The description of the start cluster
+     * upgrade
      * 
-     * @param {string} [startClusterUpgrade.configVersion]
+     * @param {string} [startClusterUpgrade.configVersion] The version of the
+     * config
      * 
-     * @param {string} [startClusterUpgrade.codeVersion]
+     * @param {string} [startClusterUpgrade.codeVersion] The version of the code
      * 
-     * @param {string} [startClusterUpgrade.upgradeKind]
+     * @param {string} [startClusterUpgrade.upgradeKind] The kind of the upgrade
      * 
-     * @param {string} [startClusterUpgrade.rollingUpgradeMode] Possible values
-     * include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
+     * @param {string} [startClusterUpgrade.rollingUpgradeMode] The mode of the
+     * rolling upgrade. Possible values include: 'Invalid', 'UnmonitoredAuto',
+     * 'UnmonitoredManual', 'Monitored'
      * 
      * @param {number}
-     * [startClusterUpgrade.upgradeReplicaSetCheckTimeoutInSeconds]
+     * [startClusterUpgrade.upgradeReplicaSetCheckTimeoutInSeconds] The seconds
+     * of the upgrade replica set check timeout
      * 
-     * @param {boolean} [startClusterUpgrade.forceRestart]
+     * @param {boolean} [startClusterUpgrade.forceRestart] The flag of the force
+     * restart
      * 
-     * @param {boolean} [startClusterUpgrade.enableDeltaHealthEvaluation]
+     * @param {boolean} [startClusterUpgrade.enableDeltaHealthEvaluation] The
+     * evaluation of the enable delta health
      * 
-     * @param {object} [startClusterUpgrade.monitoringPolicy]
+     * @param {object} [startClusterUpgrade.monitoringPolicy] The policy of the
+     * monitoring
      * 
-     * @param {object} [startClusterUpgrade.clusterUpgradeHealthPolicy]
+     * @param {object} [startClusterUpgrade.clusterUpgradeHealthPolicy] The policy
+     * of the cluster upgrade health
      * 
      * @param {number}
      * [startClusterUpgrade.clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
+     * The max percent of the delta unhealthy nodes, values are [0-100]
      * 
      * @param {number}
      * [startClusterUpgrade.clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
+     * The max percent of the upgrade domain delta unhealthy nodes, values are
+     * [0-100]
      * 
-     * @param {object} [startClusterUpgrade.applicationHealthPolicyMap]
+     * @param {object} [startClusterUpgrade.applicationHealthPolicyMap] The map of
+     * the application health policy
      * 
      * @param {boolean}
      * [startClusterUpgrade.applicationHealthPolicyMap.considerWarningAsError]
+     * The boolean of the consider warning as error
      * 
      * @param {number}
      * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyDeployedApplications]
+     * The max percent of the unhealthy deployed applications
      * 
      * @param {number}
      * [startClusterUpgrade.applicationHealthPolicyMap.defaultServiceTypeHealthPolicy]
+     * The policy of the default service type health
      * 
      * @param {number}
      * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyServices]
+     * The policy of the default service type health
      * 
      * @param {number}
      * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyPartitionsPerService]
+     * The max percent unhealthy partitions per service
      * 
      * @param {number}
      * [startClusterUpgrade.applicationHealthPolicyMap.maxPercentUnhealthyReplicasPerPartition]
+     * The max percent unhealthy replicas per partition
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -170,66 +188,85 @@ export interface ClusterUpgrades {
      * @param {object} updateClusterUpgrade The description of the update cluster
      * upgrade
      * 
-     * @param {string} [updateClusterUpgrade.upgradeKind]
+     * @param {string} [updateClusterUpgrade.upgradeKind] The kind of the upgrade
      * 
-     * @param {object} [updateClusterUpgrade.updateDescription]
+     * @param {object} [updateClusterUpgrade.updateDescription] The description of
+     * the update
      * 
      * @param {string} [updateClusterUpgrade.updateDescription.rollingUpgradeMode]
-     * Possible values include: 'Invalid', 'UnmonitoredAuto',
-     * 'UnmonitoredManual', 'Monitored'
+     * The mode of the rolling upgrade. Possible values include: 'Invalid',
+     * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
      * 
-     * @param {boolean} [updateClusterUpgrade.updateDescription.forceRestart]
+     * @param {boolean} [updateClusterUpgrade.updateDescription.forceRestart] The
+     * flag of the force restart
      * 
-     * @param {string} [updateClusterUpgrade.updateDescription.failureAction]
+     * @param {string} [updateClusterUpgrade.updateDescription.failureAction] The
+     * action of the failure
      * 
      * @param {number}
      * [updateClusterUpgrade.updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+     * The seconds of the upgrade replica set check timeout
      * 
      * @param {string}
      * [updateClusterUpgrade.updateDescription.healthCheckWaitDurationInMilliseconds]
+     * The seconds of the health check wait duration
      * 
      * @param {string}
      * [updateClusterUpgrade.updateDescription.healthCheckStableDurationInMilliseconds]
+     * The seconds of the health check stable duration
      * 
      * @param {string}
      * [updateClusterUpgrade.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+     * The milliseconds of the health check retry timeout
      * 
      * @param {string}
-     * [updateClusterUpgrade.updateDescription.upgradeTimeoutInMilliseconds]
+     * [updateClusterUpgrade.updateDescription.upgradeTimeoutInMilliseconds] The
+     * milliseconds of the upgrade timeout
      * 
      * @param {string}
      * [updateClusterUpgrade.updateDescription.upgradeDomainTimeoutInMilliseconds]
+     * The milliseconds of the upgrade domain timeout
      * 
-     * @param {object} [updateClusterUpgrade.clusterHealthPolicy]
+     * @param {object} [updateClusterUpgrade.clusterHealthPolicy] The policy of
+     * the cluster health
      * 
      * @param {string}
-     * [updateClusterUpgrade.clusterHealthPolicy.rollingUpgradeMode] Possible
-     * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-     * 'Monitored'
+     * [updateClusterUpgrade.clusterHealthPolicy.rollingUpgradeMode] The mode of
+     * the rolling upgrade. Possible values include: 'Invalid',
+     * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
      * 
      * @param {boolean} [updateClusterUpgrade.clusterHealthPolicy.forceRestart]
+     * The flag of the force restart
      * 
      * @param {string} [updateClusterUpgrade.clusterHealthPolicy.failureAction]
+     * The action of the failure
      * 
      * @param {number}
      * [updateClusterUpgrade.clusterHealthPolicy.upgradeReplicaSetCheckTimeoutInSeconds]
+     * The seconds of the upgrade replica set check timeout
      * 
      * @param {string}
      * [updateClusterUpgrade.clusterHealthPolicy.healthCheckWaitDurationInMilliseconds]
+     * The milliseconds of the health check wait duration
      * 
      * @param {string}
      * [updateClusterUpgrade.clusterHealthPolicy.healthCheckStableDurationInMilliseconds]
+     * The milliseconds of the health check stable duration
      * 
      * @param {string}
      * [updateClusterUpgrade.clusterHealthPolicy.healthCheckRetryTimeoutInMilliseconds]
+     * The milliseconds of the health check retry timeout
      * 
      * @param {string}
      * [updateClusterUpgrade.clusterHealthPolicy.upgradeTimeoutInMilliseconds]
+     * The milliseconds of the upgrade timeout
      * 
      * @param {string}
      * [updateClusterUpgrade.clusterHealthPolicy.upgradeDomainTimeoutInMilliseconds]
+     * The milliseconds of the upgrade domain timeout
      * 
-     * @param {boolean} [updateClusterUpgrade.enableDeltaHealthEvaluations]
+     * @param {boolean} [updateClusterUpgrade.enableDeltaHealthEvaluations] The
+     * evaluations of the enable delta health
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -288,9 +325,11 @@ export interface ClusterPackages {
      *
      * @param {object} registerClusterPackage The package of the register cluster
      * 
-     * @param {string} [registerClusterPackage.codeFilePath]
+     * @param {string} [registerClusterPackage.codeFilePath] The path of the code
+     * file
      * 
-     * @param {string} [registerClusterPackage.clusterManifestFilePath]
+     * @param {string} [registerClusterPackage.clusterManifestFilePath] The
+     * relative path of the cluster manifest file
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -309,9 +348,11 @@ export interface ClusterPackages {
      * @param {object} unregisterClusterPackage The package of the unregister
      * cluster
      * 
-     * @param {string} [unregisterClusterPackage.codeVersion]
+     * @param {string} [unregisterClusterPackage.codeVersion] The version of the
+     * code
      * 
-     * @param {string} [unregisterClusterPackage.configVersion]
+     * @param {string} [unregisterClusterPackage.configVersion] The version of the
+     * config
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -1066,7 +1107,8 @@ export interface Applications {
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {boolean} [options.forceRemove] The force remove
+     * @param {boolean} [options.forceRemove] The force remove flag to skip
+     * services check
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1476,31 +1518,39 @@ export interface ApplicationUpgrades {
      * @param {object} [updateApplicationUpgrade.updateDescription]
      * 
      * @param {string}
-     * [updateApplicationUpgrade.updateDescription.rollingUpgradeMode] Possible
-     * values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-     * 'Monitored'
+     * [updateApplicationUpgrade.updateDescription.rollingUpgradeMode] The mode
+     * of the rolling upgrade. Possible values include: 'Invalid',
+     * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
      * 
      * @param {boolean} [updateApplicationUpgrade.updateDescription.forceRestart]
+     * The flag of the force restart
      * 
      * @param {string} [updateApplicationUpgrade.updateDescription.failureAction]
+     * The action of the failure
      * 
      * @param {number}
      * [updateApplicationUpgrade.updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
+     * The seconds of the upgrade replica set check timeout
      * 
      * @param {string}
      * [updateApplicationUpgrade.updateDescription.healthCheckWaitDurationInMilliseconds]
+     * The seconds of the health check wait duration
      * 
      * @param {string}
      * [updateApplicationUpgrade.updateDescription.healthCheckStableDurationInMilliseconds]
+     * The seconds of the health check stable duration
      * 
      * @param {string}
      * [updateApplicationUpgrade.updateDescription.healthCheckRetryTimeoutInMilliseconds]
+     * The milliseconds of the health check retry timeout
      * 
      * @param {string}
      * [updateApplicationUpgrade.updateDescription.upgradeTimeoutInMilliseconds]
+     * The milliseconds of the upgrade timeout
      * 
      * @param {string}
      * [updateApplicationUpgrade.updateDescription.upgradeDomainTimeoutInMilliseconds]
+     * The milliseconds of the upgrade domain timeout
      * 
      * @param {object} [updateApplicationUpgrade.applicationHealthPolicy]
      * 
