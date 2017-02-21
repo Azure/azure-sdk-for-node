@@ -163,7 +163,7 @@ var mappings = {
   },
   'storage': {
     'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2016-05-01/swagger/storage.json',
+    'source': 'arm-storage/2016-12-01/swagger/storage.json',
     'ft': 2,
     'ClientName': 'StorageManagementClient'
   },
