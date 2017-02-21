@@ -6,6 +6,7 @@
 var url = require('url');
 var Constants = require('./constants');
 var ProxyFilter = require('./filters/proxyFilter');
+var UserAgentFilter = require('./filters/userAgentFilter');
 var RedirectFilter = require('./filters/redirectFilter');
 var SigningFilter = require('./filters/signingFilter');
 var ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
@@ -13,6 +14,11 @@ var SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilt
 var requestPipeline = require('./requestPipeline');
 var WebResource = require('./webResource');
 var utils = require('./utils');
+var packageJson = require('../package.json');
+var moduleName = packageJson.name;
+var moduleVersion = packageJson.version;
+
+var userAgentInfo;
 
 /**
  * @class
@@ -34,7 +40,7 @@ function ServiceClient(credentials, options) {
   if (!options) {
     options = {};
   }
-  
+
   if (!options.requestOptions) {
     options.requestOptions = {};
   }
@@ -42,15 +48,20 @@ function ServiceClient(credentials, options) {
   if (!options.filters) {
     options.filters = [];
   }
-  
+
+  userAgentInfo = [];
+
   if (credentials && !credentials.signRequest) {
     throw new Error('credentials argument needs to implement signRequest method');
   }
+
+  this.addUserAgentInfo(`${moduleName}/${moduleVersion}`);
 
   if (credentials) {
     options.filters.push(SigningFilter.create(credentials));
   }
 
+  options.filters.push(UserAgentFilter.create(userAgentInfo));
   options.filters.push(RedirectFilter.create());
   if (!options.noRetryPolicy) {
     options.filters.push(new ExponentialRetryPolicyFilter());
@@ -58,7 +69,7 @@ function ServiceClient(credentials, options) {
   }
 
   this.pipeline = requestPipeline.create(options.requestOptions).apply(requestPipeline, options.filters);
-  
+
   // enable network tracing
   this._setDefaultProxy();
 }
@@ -105,7 +116,7 @@ ServiceClient.prototype._setDefaultProxy = function () {
         port: parsedUrl.port,
         protocol: parsedUrl.protocol
       },
-      utils.urlIsHTTPS(parsedUrl)));
+        utils.urlIsHTTPS(parsedUrl)));
   }
 };
 
@@ -232,6 +243,10 @@ ServiceClient.prototype.sendRequest = function sendRequest(options, callback) {
     var result = JSON.parse(responseBody);
     return callback(err, result, httpRequest, response);
   });
+};
+
+ServiceClient.prototype.addUserAgentInfo = function addUserAgentInfo(additionalUserAgentInfo) {
+  userAgentInfo.push(additionalUserAgentInfo);
 };
 
 module.exports = ServiceClient;
