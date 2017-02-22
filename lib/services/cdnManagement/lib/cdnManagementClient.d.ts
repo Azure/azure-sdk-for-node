@@ -92,8 +92,8 @@ declare class CdnManagementClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        checkResourceUsage(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-        checkResourceUsage(callback: ServiceCallback<models.ResourceUsageListResult>): void;
+        listResourceUsage(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+        listResourceUsage(callback: ServiceCallback<models.ResourceUsageListResult>): void;
 
         /**
          * Lists all of the available CDN REST API operations.
@@ -124,8 +124,8 @@ declare class CdnManagementClient {
          * @param {ServiceCallback} [callback] callback function; see ServiceCallback
          * doc in ms-rest index.d.ts for details
          */
-        checkResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-        checkResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+        listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+        listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 
         /**
          * Lists all of the available CDN REST API operations.

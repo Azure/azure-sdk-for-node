@@ -432,6 +432,10 @@ export interface OriginListResult {
  * @member {string} [resourceState] Resource status of the custom domain.
  * Possible values include: 'Creating', 'Active', 'Deleting'
  *
+ * @member {string} [customHttpsProvisioningState] Provisioning state of Custom
+ * Https of the custom domain. Possible values include: 'Enabling', 'Enabled',
+ * 'Disabling', 'Disabled', 'Failed'
+ *
  * @member {string} [validationData] Special validation or data may be required
  * when delivering CDN to some regions due to local compliance reasons. E.g.
  * ICP license number of a custom domain is required to deliver content in
@@ -444,6 +448,7 @@ export interface OriginListResult {
 export interface CustomDomain extends Resource {
   hostName: string;
   resourceState?: string;
+  customHttpsProvisioningState?: string;
   validationData?: string;
   provisioningState?: string;
 }
@@ -708,9 +713,13 @@ export interface EdgeNode extends Resource {
  *
  * @member {array} [value] Edge node of CDN service.
  *
+ * @member {string} [nextLink] URL to get the next set of edgenode list results
+ * if there are any.
+ *
  */
 export interface EdgenodeResult {
   value?: EdgeNode[];
+  nextLink?: string;
 }
 
 /**
@@ -839,6 +848,24 @@ export interface OperationListResult {
   nextLink?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the EdgenodeResult class.
+ * @constructor
+ * Result of the request to list CDN edgenodes. It contains a list of ip
+ * address group and a URL link to get the next set of results.
+ *
+ * @member {array} [value] Edge node of CDN service.
+ *
+ * @member {string} [nextLink] URL to get the next set of edgenode list results
+ * if there are any.
+ *
+ */
+export interface EdgenodeResult {
+  value?: EdgeNode[];
+  nextLink?: string;
+}
+
 
 /**
  * @class
@@ -926,5 +953,20 @@ export interface CustomDomainListResult extends Array<CustomDomain> {
  *
  */
 export interface OperationListResult extends Array<Operation> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EdgenodeResult class.
+ * @constructor
+ * Result of the request to list CDN edgenodes. It contains a list of ip
+ * address group and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of edgenode list results
+ * if there are any.
+ *
+ */
+export interface EdgenodeResult extends Array<EdgeNode> {
   nextLink?: string;
 }
