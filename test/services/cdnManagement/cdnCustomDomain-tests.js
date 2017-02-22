@@ -157,6 +157,20 @@ describe('Cdn Management Custom Domain', function() {
         done();
       });
     })
+        
+    it('should fail on disable custom https on custom domain that has already been in search state', function (done) {
+      client.customDomains.disableCustomHttps(groupName, profileName, endpointName, customDomainName1, function (err, result, request, response) {
+        should.exist(err);
+        done();
+      });
+    });
+        
+    it('should succeed on enable custom https on custom domain', function (done) {
+      client.customDomains.enableCustomHttps(groupName, profileName, endpointName, customDomainName1, function (err, result, request, response) {
+        should.not.exist(err);
+        done();
+      });
+    });
 
     it('should return one custom domain when list by endpoint', function(done) {
       client.customDomains.listByEndpoint(groupName, profileName, endpointName, function(err, result, request, response) {
