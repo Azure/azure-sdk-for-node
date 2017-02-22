@@ -304,6 +304,7 @@ describe('Batch Service', function () {
         should.not.exist(result);
         err.statusCode.should.equal(400);
         err.body.code.should.equal('InvalidPropertyValue');
+        err.body.values[0].value.should.equal('osDisk');
         done();
       });
     });
