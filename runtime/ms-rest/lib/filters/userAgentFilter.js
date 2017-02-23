@@ -14,14 +14,14 @@ var HeaderConstants = Constants.HeaderConstants;
 exports.create = function (userAgentInfo) {
   return function handle(resource, next, callback) {
     if (!resource.headers[HeaderConstants.USER_AGENT]) {
-      exports._tagRequest(resource, userAgentInfo);
+      exports.tagRequest(resource, userAgentInfo);
     }
 
     return next(resource, callback);
   };
 };
 
-exports._tagRequest = function (requestOptions, userAgentInfo) {
+exports.tagRequest = function (requestOptions, userAgentInfo) {
   var runtimeInfo = `Node/${process.version}`;
   var osInfo = `(${os.arch()}-${os.type()}-${os.release()})`;
 
