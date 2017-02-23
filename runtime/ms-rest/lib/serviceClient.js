@@ -18,8 +18,6 @@ var packageJson = require('../package.json');
 var moduleName = packageJson.name;
 var moduleVersion = packageJson.version;
 
-var userAgentInfo;
-
 /**
  * @class
  * Initializes a new instance of the ServiceClient class.
@@ -49,7 +47,7 @@ function ServiceClient(credentials, options) {
     options.filters = [];
   }
 
-  userAgentInfo = [];
+  this.userAgentInfo.value = [];
 
   if (credentials && !credentials.signRequest) {
     throw new Error('credentials argument needs to implement signRequest method');
@@ -61,7 +59,7 @@ function ServiceClient(credentials, options) {
     options.filters.push(SigningFilter.create(credentials));
   }
 
-  options.filters.push(UserAgentFilter.create(userAgentInfo));
+  options.filters.push(UserAgentFilter.create(this.userAgentInfo.value));
   options.filters.push(RedirectFilter.create());
   if (!options.noRetryPolicy) {
     options.filters.push(new ExponentialRetryPolicyFilter());
@@ -245,8 +243,19 @@ ServiceClient.prototype.sendRequest = function sendRequest(options, callback) {
   });
 };
 
+/**
+ * property to store various pieces of information we would finally concat to produce a user-agent header.
+ */
+ServiceClient.prototype.userAgentInfo = {
+  value: []
+};
+
+/**
+ * Adds custom information to user agent header
+ * @param {any} additionalUserAgentInfo - information to be added to user agent header, as string.
+ */
 ServiceClient.prototype.addUserAgentInfo = function addUserAgentInfo(additionalUserAgentInfo) {
-  userAgentInfo.push(additionalUserAgentInfo);
+  this.userAgentInfo.value.push(additionalUserAgentInfo);
 };
 
 module.exports = ServiceClient;
