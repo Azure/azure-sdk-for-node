@@ -21,7 +21,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "jshint": "2.6.3",
+    "jshint": "^2.9.4",
     "xunit-file": "0.0.5",
     "mocha": "2.4.5",
     "should": "5.2.0"
