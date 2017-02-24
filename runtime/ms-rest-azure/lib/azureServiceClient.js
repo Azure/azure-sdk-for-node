@@ -8,6 +8,9 @@ var msRest = require('ms-rest');
 var PollingState = require('./pollingState');
 var LroStates = require('./constants').LongRunningOperationStates;
 var WebResource = msRest.WebResource;
+var packageJson = require('../package.json');
+var moduleName = packageJson.name;
+var moduleVersion = packageJson.version;
 
 /**
  * @class
@@ -52,6 +55,8 @@ function AzureServiceClient(credentials, options) {
   if (options.longRunningOperationRetryTimeout !== null && options.longRunningOperationRetryTimeout !== undefined) {
     this.longRunningOperationRetryTimeout = options.longRunningOperationRetryTimeout;
   }
+
+  this.addUserAgentInfo(util.format('%s/%s', moduleName, moduleVersion));
 }
 
 util.inherits(AzureServiceClient, msRest.ServiceClient);
