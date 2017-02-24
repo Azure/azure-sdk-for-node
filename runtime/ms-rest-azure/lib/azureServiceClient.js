@@ -56,7 +56,7 @@ function AzureServiceClient(credentials, options) {
     this.longRunningOperationRetryTimeout = options.longRunningOperationRetryTimeout;
   }
 
-  this.addUserAgentInfo(`${moduleName}/${moduleVersion}`);
+  this.addUserAgentInfo(util.format('%s/%s', moduleName, moduleVersion));
 }
 
 util.inherits(AzureServiceClient, msRest.ServiceClient);

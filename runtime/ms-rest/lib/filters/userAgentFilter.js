@@ -22,9 +22,8 @@ exports.create = function (userAgentInfo) {
 };
 
 exports.tagRequest = function (requestOptions, userAgentInfo) {
-  var runtimeInfo = `Node/${process.version}`;
-  var osInfo = `(${os.arch()}-${os.type()}-${os.release()})`;
-
+  var runtimeInfo = util.format('Node/%s', process.version);
+  var osInfo = util.format('(%s-%s-%s)', os.arch(), os.type(), os.release());
   userAgentInfo.unshift(runtimeInfo, osInfo);
   requestOptions.headers[HeaderConstants.USER_AGENT] = userAgentInfo.join(' ');
 };
