@@ -13,6 +13,7 @@ var ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilt
 var SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilter');
 var requestPipeline = require('./requestPipeline');
 var WebResource = require('./webResource');
+var util = require('util');
 var utils = require('./utils');
 var packageJson = require('../package.json');
 var moduleName = packageJson.name;
@@ -53,7 +54,7 @@ function ServiceClient(credentials, options) {
     throw new Error('credentials argument needs to implement signRequest method');
   }
 
-  this.addUserAgentInfo(`${moduleName}/${moduleVersion}`);
+  this.addUserAgentInfo(util.format('%s/%s', moduleName, moduleVersion));
 
   if (credentials) {
     options.filters.push(SigningFilter.create(credentials));
