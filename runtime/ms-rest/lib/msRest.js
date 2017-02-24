@@ -17,6 +17,7 @@ exports.ProxyFilter = require('./filters/proxyFilter');
 exports.LogFilter = require('./filters/logFilter');
 exports.SigningFilter = require('./filters/signingFilter');
 exports.ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
+exports.UserAgentFilter = require('./filters/userAgentFilter');
 
 exports.requestPipeline = require('./requestPipeline');
 exports.stripResponse = utils.stripResponse;
