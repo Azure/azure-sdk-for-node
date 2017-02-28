@@ -26,14 +26,20 @@ declare class ServiceFabricClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
+     * @param {number} [options.timeout] - The timeout in seconds
+     *
      */
     constructor(apiVersion: string, baseUri: string, options: ServiceClientOptions);
 
     apiVersion: string;
 
+    timeout: number;
+
     // Operation groups
     clusterManifests: operations.ClusterManifests;
     clusterHealths: operations.ClusterHealths;
+    clusterUpgrades: operations.ClusterUpgrades;
+    clusterPackages: operations.ClusterPackages;
     nodes: operations.Nodes;
     nodeStates: operations.NodeStates;
     nodeHealths: operations.NodeHealths;
