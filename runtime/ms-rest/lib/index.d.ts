@@ -13,6 +13,19 @@ export interface RequestOptions {
 }
 
 /**
+ * HttpOperationResponse wrapper that provides the raw request, raw response and the deserialized response body.
+ * 
+ * @property {WebResource} request  - The raw request object
+ * @property {stream} response - The response stream
+ * @property {T} body - The deserialized response body of the expected type.
+ */
+export interface HttpOperationResponse<T> {
+  request: WebResource;
+  response: stream;
+  body: T;
+};
+
+/**
  * Service client options, used for all REST requests initiated by the service client.
  * 
  * @property {Array} [filters]                  - Filters to be added to the request pipeline

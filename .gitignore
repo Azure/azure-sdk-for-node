@@ -50,3 +50,6 @@ test/tmp/*
 .nuget
 packages
 
+# vscode #
+.vscode/launch.json
+
