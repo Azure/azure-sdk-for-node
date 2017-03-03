@@ -259,4 +259,64 @@ ServiceClient.prototype.addUserAgentInfo = function addUserAgentInfo(additionalU
   this.userAgentInfo.value.push(additionalUserAgentInfo);
 };
 
+/**
+ * Attempts to find package.json for the given azure nodejs package.
+ * If found, returns the name and version of the package by reading the package.json
+ * If package.json is not found, returns a default value.
+ * @param {any} managementClientDir - pass the directory of the specific azure management client.
+ */
+ServiceClient.prototype.getPackageJsonInfo = function getPackageJsonInfo(managementClientDir) {
+
+  // algorithm:
+  // package.json is placed next to the lib directory. So we try to find the lib directory first.
+  // In most packages we generate via autorest, the management client directly lives in the lib directory
+  // so, package.json could be found just one level above where management client lives.
+  // In some packages (azure-arm-resource), management client lives at one level deeper in the lib directory
+  // so, we have to traverse at least two levels higher to locate package.json.
+  // The algorithm for locating package.json would then be, start at the current directory where management client lives
+  // and keep searching up until the file is located. We also limit the search depth to 2, since we know the structure of 
+  // the clients we generate.
+  //
+
+  var packageJsonInfo = {
+    name: 'default',
+    version: '0.0.0'
+  };
+
+  var libPath = _getLibPath(managementClientDir, 2);
+  if (libPath) {
+    var packageJsonPath = path.join(libPath, '..', 'package.json');
+    if (fs.existsSync(packageJsonPath)) {
+      var data = require(packageJsonPath);
+      packageJsonInfo.name = data.name;
+      packageJsonInfo.version = data.version;
+    }
+  }
+
+  return packageJsonInfo;
+};
+
+// private helpers.
+function _getLibPath(currentDir, searchDepth) {
+  if (searchDepth < 1) {
+    return;
+  }
+
+  if (_isLibPath(currentDir)) {
+    return currentDir;
+  }
+  else {
+    // try one level up
+    return _getLibPath(path.join(currentDir, '..'), searchDepth - 1);
+  }
+};
+
+function _isLibPath(currentDir) {
+  var libDir = 'lib';
+
+  return currentDir.endsWith(path.sep) ?
+    currentDir.endsWith(libDir + path.sep) :
+    currentDir.endsWith(libDir);
+};
+
 module.exports = ServiceClient;
