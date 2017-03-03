@@ -265,7 +265,8 @@ ServiceClient.prototype.addUserAgentInfo = function addUserAgentInfo(additionalU
  * Attempts to find package.json for the given azure nodejs package.
  * If found, returns the name and version of the package by reading the package.json
  * If package.json is not found, returns a default value.
- * @param {any} managementClientDir - pass the directory of the specific azure management client.
+ * @param {string} managementClientDir - pass the directory of the specific azure management client.
+ * @returns {object} packageJsonInfo - "name" and "version" of the desired package.
  */
 ServiceClient.prototype.getPackageJsonInfo = function getPackageJsonInfo(managementClientDir) {
 
@@ -278,10 +279,9 @@ ServiceClient.prototype.getPackageJsonInfo = function getPackageJsonInfo(managem
   // The algorithm for locating package.json would then be, start at the current directory where management client lives
   // and keep searching up until the file is located. We also limit the search depth to 2, since we know the structure of 
   // the clients we generate.
-  //
 
   var packageJsonInfo = {
-    name: 'default',
+    name: 'NO_NAME',
     version: '0.0.0'
   };
 
