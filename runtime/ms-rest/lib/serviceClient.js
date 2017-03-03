@@ -302,21 +302,10 @@ function _getLibPath(currentDir, searchDepth) {
     return;
   }
 
-  if (_isLibPath(currentDir)) {
-    return currentDir;
-  }
-  else {
-    // try one level up
-    return _getLibPath(path.join(currentDir, '..'), searchDepth - 1);
-  }
-};
-
-function _isLibPath(currentDir) {
-  var libDir = 'lib';
-
-  return currentDir.endsWith(path.sep) ?
-    currentDir.endsWith(libDir + path.sep) :
-    currentDir.endsWith(libDir);
+  // if current directory is lib, return current dir, otherwise search one level up.
+  return (currentDir.endsWith('lib') || currentDir.endsWith('lib' + path.sep))
+    ? currentDir
+    : _getLibPath(path.join(currentDir, '..'), searchDepth - 1);
 };
 
 module.exports = ServiceClient;
