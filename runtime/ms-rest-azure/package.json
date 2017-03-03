@@ -21,7 +21,7 @@
     "azure-arm-resource": "^1.6.1-preview"
   },
   "devDependencies": {
-    "jshint": "2.6.3",
+    "jshint": "^2.9.4",
     "xunit-file": "0.0.5",
     "mocha": "2.4.5",
     "should": "5.2.0"
