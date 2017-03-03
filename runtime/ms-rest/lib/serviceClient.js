@@ -15,6 +15,8 @@ var requestPipeline = require('./requestPipeline');
 var WebResource = require('./webResource');
 var util = require('util');
 var utils = require('./utils');
+var path = require('path');
+var fs = require('fs');
 var packageJson = require('../package.json');
 var moduleName = packageJson.name;
 var moduleVersion = packageJson.version;
@@ -303,9 +305,9 @@ function _getLibPath(currentDir, searchDepth) {
   }
 
   // if current directory is lib, return current dir, otherwise search one level up.
-  return (currentDir.endsWith('lib') || currentDir.endsWith('lib' + path.sep))
-    ? currentDir
-    : _getLibPath(path.join(currentDir, '..'), searchDepth - 1);
-};
+  return (currentDir.endsWith('lib') || currentDir.endsWith('lib' + path.sep)) ?
+    currentDir :
+    _getLibPath(path.join(currentDir, '..'), searchDepth - 1);
+}
 
 module.exports = ServiceClient;
