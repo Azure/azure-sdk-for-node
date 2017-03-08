@@ -258,7 +258,9 @@ ServiceClient.prototype.userAgentInfo = {
  * @param {any} additionalUserAgentInfo - information to be added to user agent header, as string.
  */
 ServiceClient.prototype.addUserAgentInfo = function addUserAgentInfo(additionalUserAgentInfo) {
-  this.userAgentInfo.value.push(additionalUserAgentInfo);
+  if (!this.userAgentInfo.value.includes(additionalUserAgentInfo)) {
+    this.userAgentInfo.value.push(additionalUserAgentInfo);
+  }
 };
 
 /**
