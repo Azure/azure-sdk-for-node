@@ -13,17 +13,29 @@ var HeaderConstants = Constants.HeaderConstants;
 */
 exports.create = function (userAgentInfo) {
   return function handle(resource, next, callback) {
+    // This filter must be excuted last, before the request is sent over the wire.
+    // So, we call the next filter in the chain and finally when the call stack unwinds
+    // we tag the request with our payload.
+    var rest = next(resource, callback);
+    
     if (!resource.headers[HeaderConstants.USER_AGENT]) {
       exports.tagRequest(resource, userAgentInfo);
     }
 
-    return next(resource, callback);
+    return rest;
   };
 };
 
 exports.tagRequest = function (requestOptions, userAgentInfo) {
-  var runtimeInfo = util.format('Node/%s', process.version);
   var osInfo = util.format('(%s-%s-%s)', os.arch(), os.type(), os.release());
-  userAgentInfo.unshift(runtimeInfo, osInfo);
+  if(userAgentInfo.indexOf(osInfo) === -1){
+    userAgentInfo.unshift(osInfo);
+  }
+
+  var runtimeInfo = util.format('Node/%s', process.version);
+  if(userAgentInfo.indexOf(runtimeInfo) === -1){
+    userAgentInfo.unshift(runtimeInfo);
+  }
+  
   requestOptions.headers[HeaderConstants.USER_AGENT] = userAgentInfo.join(' ');
 };
