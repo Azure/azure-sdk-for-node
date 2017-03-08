@@ -28,12 +28,12 @@ exports.create = function (userAgentInfo) {
 
 exports.tagRequest = function (requestOptions, userAgentInfo) {
   var osInfo = util.format('(%s-%s-%s)', os.arch(), os.type(), os.release());
-  if(!userAgentInfo.includes(osInfo)){
+  if(userAgentInfo.indexOf(osInfo) === -1){
     userAgentInfo.unshift(osInfo);
   }
 
   var runtimeInfo = util.format('Node/%s', process.version);
-  if(!userAgentInfo.includes(runtimeInfo)){
+  if(userAgentInfo.indexOf(runtimeInfo) === -1){
     userAgentInfo.unshift(runtimeInfo);
   }
   
