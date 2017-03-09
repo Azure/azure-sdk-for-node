@@ -1300,6 +1300,28 @@ export interface BootDiagnosticsInstanceView {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineIdentity class.
+ * @constructor
+ * Identity for the virtual machine.
+ *
+ * @member {string} [principalId] The principal id of virtual machine identity.
+ *
+ * @member {string} [tenantId] The tenant id associated with the virtual
+ * machine.
+ *
+ * @member {string} [type] The type of identity used for the virtual machine.
+ * Currently, the only supported type is 'SystemAssigned', which implicitly
+ * creates an identity. Possible values include: 'SystemAssigned'
+ *
+ */
+export interface VirtualMachineIdentity {
+  principalId?: string;
+  tenantId?: string;
+  type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineInstanceView class.
  * @constructor
  * The instance view of a virtual machine.
@@ -1602,6 +1624,19 @@ export interface VirtualMachineInstanceView {
  *
  * @member {array} [resources] The virtual machine child extension resources.
  *
+ * @member {object} [identity] The identity of the virtual machine, if
+ * configured.
+ *
+ * @member {string} [identity.principalId] The principal id of virtual machine
+ * identity.
+ *
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * virtual machine.
+ *
+ * @member {string} [identity.type] The type of identity used for the virtual
+ * machine. Currently, the only supported type is 'SystemAssigned', which
+ * implicitly creates an identity. Possible values include: 'SystemAssigned'
+ *
  */
 export interface VirtualMachine extends Resource {
   plan?: Plan;
@@ -1616,6 +1651,7 @@ export interface VirtualMachine extends Resource {
   licenseType?: string;
   vmId?: string;
   resources?: VirtualMachineExtension[];
+  identity?: VirtualMachineIdentity;
 }
 
 /**
@@ -1824,6 +1860,29 @@ export interface Image extends Resource {
 export interface ImageListResult {
   value: Image[];
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetIdentity class.
+ * @constructor
+ * Identity for the virtual machine scale set.
+ *
+ * @member {string} [principalId] The principal id of virtual machine scale set
+ * identity.
+ *
+ * @member {string} [tenantId] The tenant id associated with the virtual
+ * machine scale set.
+ *
+ * @member {string} [type] The type of identity used for the virtual machine
+ * scale set. Currently, the only supported type is 'SystemAssigned', which
+ * implicitly creates an identity. Possible values include: 'SystemAssigned'
+ *
+ */
+export interface VirtualMachineScaleSetIdentity {
+  principalId?: string;
+  tenantId?: string;
+  type?: string;
 }
 
 /**
@@ -2480,6 +2539,20 @@ export interface VirtualMachineScaleSetVMProfile {
  * @member {boolean} [singlePlacementGroup] When true this limits the scale set
  * to a single placement group, of max size 100 virtual machines.
  *
+ * @member {object} [identity] The identity of the virtual machine scale set,
+ * if configured.
+ *
+ * @member {string} [identity.principalId] The principal id of virtual machine
+ * scale set identity.
+ *
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * virtual machine scale set.
+ *
+ * @member {string} [identity.type] The type of identity used for the virtual
+ * machine scale set. Currently, the only supported type is 'SystemAssigned',
+ * which implicitly creates an identity. Possible values include:
+ * 'SystemAssigned'
+ *
  */
 export interface VirtualMachineScaleSet extends Resource {
   sku?: Sku;
@@ -2489,6 +2562,7 @@ export interface VirtualMachineScaleSet extends Resource {
   provisioningState?: string;
   overprovision?: boolean;
   singlePlacementGroup?: boolean;
+  identity?: VirtualMachineScaleSetIdentity;
 }
 
 /**
