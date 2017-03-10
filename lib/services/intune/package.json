@@ -16,7 +16,7 @@
   ],
   "main": "./lib/intuneResourceManagementClient.js",
   "engines": {
-    "node": "^5.0.0"
+    "node": ">=5.0.0"
   },
   "license": "MIT",
   "dependencies": {
