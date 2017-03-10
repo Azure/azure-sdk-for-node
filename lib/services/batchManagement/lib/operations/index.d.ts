@@ -96,23 +96,6 @@ export interface BatchAccountOperations {
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
      * the storage account to be used for auto storage account.
      *
-     * @param {string} [parameters.poolAllocationMode] The allocation mode to use
-     * for creating pools in the Batch account. The pool allocation mode also
-     * affects how clients may authenticate to the Batch Service API. If the mode
-     * is BatchService, clients may authenticate using access keys or Azure Active
-     * Directory. If the mode is UserSubscription, clients must use Azure Active
-     * Directory. The default is BatchService. Possible values include:
-     * 'BatchService', 'UserSubscription'
-     *
-     * @param {object} [parameters.keyVaultReference] A reference to the Azure key
-     * vault associated with the Batch account.
-     *
-     * @param {string} parameters.keyVaultReference.id The resource ID of the Azure
-     * key vault associated with the Batch account.
-     *
-     * @param {string} parameters.keyVaultReference.url The Url of the Azure key
-     * vault associated with the Batch account.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
