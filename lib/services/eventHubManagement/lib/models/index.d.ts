@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -294,7 +297,7 @@ export interface EventHubProperties {
   createdAt?: Date;
   messageRetentionInDays?: number;
   partitionCount?: number;
-  partitionIds?: number[];
+  partitionIds?: string[];
   status?: string;
   updatedAt?: Date;
 }
@@ -326,7 +329,7 @@ export interface EventHubResource extends Resource {
   createdAt?: Date;
   messageRetentionInDays?: number;
   partitionCount?: number;
-  partitionIds?: number[];
+  partitionIds?: string[];
   status?: string;
   updatedAt?: Date;
 }
