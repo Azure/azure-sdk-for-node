@@ -69,6 +69,9 @@ export interface IotHubResource {
      * @param {array} [iotHubDescription.properties.ipFilterRules] The IP filter
      * rules.
      * 
+     * @param {string} [iotHubDescription.properties.provisioningState] The
+     * provisioning state.
+     * 
      * @param {string} [iotHubDescription.properties.hostName] The name of the
      * host.
      * 
@@ -178,6 +181,9 @@ export interface IotHubResource {
      * 
      * @param {array} [iotHubDescription.properties.ipFilterRules] The IP filter
      * rules.
+     * 
+     * @param {string} [iotHubDescription.properties.provisioningState] The
+     * provisioning state.
      * 
      * @param {string} [iotHubDescription.properties.hostName] The name of the
      * host.
