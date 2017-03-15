@@ -553,8 +553,11 @@ export interface GetObjectsParameters {
  * @constructor
  * Role assignment list operation result.
  *
+ * @member {string} [odatanextLink] the URL to get the next set of results.
+ * 
  */
 export interface ApplicationListResult extends Array<Application> {
+  odatanextLink?: string;
 }
 
 /**
