@@ -157,6 +157,8 @@ export interface ContentSummaryResult {
  * @member {string} [type] the type of the path object. Possible values
  * include: 'FILE', 'DIRECTORY'
  *
+ * @member {boolean} [aclBit] flag to indicate if extended acls are enabled
+ *
  */
 export interface FileStatusProperties {
   accessTime?: number;
@@ -170,6 +172,7 @@ export interface FileStatusProperties {
   pathSuffix?: string;
   permission?: string;
   type?: string;
+  aclBit?: boolean;
 }
 
 /**
@@ -240,6 +243,9 @@ export interface FileStatusesResult {
  *
  * @member {string} [fileStatus.type] the type of the path object. Possible
  * values include: 'FILE', 'DIRECTORY'
+ *
+ * @member {boolean} [fileStatus.aclBit] flag to indicate if extended acls are
+ * enabled
  *
  */
 export interface FileStatusResult {
