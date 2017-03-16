@@ -8,4 +8,4 @@ exports.setEnvironment = function() {
 
 exports.scopes = [];
 
- exports.randomTestIdsGenerated = function() { return ['xplattestadls9869','xplattestadls3113','xplattestadls2879'];};
+ exports.randomTestIdsGenerated = function() { return ['xplattestadls1164','xplattestadls7774','xplattestadls5855'];};

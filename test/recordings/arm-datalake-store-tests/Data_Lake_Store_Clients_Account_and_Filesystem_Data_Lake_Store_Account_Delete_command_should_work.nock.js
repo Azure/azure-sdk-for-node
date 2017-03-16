@@ -9,72 +9,72 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls3113?api-version=2016-11-01')
+  .delete('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls7774?api-version=2016-11-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'x-ms-request-id': '8dec5e2e-cb2d-488f-a000-c2535cf7fca0',
+  'x-ms-request-id': '5bbde766-09ff-49d9-b421-8b80d8c12e65',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'cf676823-eb60-43d2-b113-64b4981e7451',
-  'x-ms-routing-request-id': 'WESTUS2:20161111T215551Z:cf676823-eb60-43d2-b113-64b4981e7451',
+  'x-ms-correlation-request-id': 'f3e55937-e534-4282-bf24-f0cf126fc5d0',
+  'x-ms-routing-request-id': 'CENTRALUS:20170316T234026Z:f3e55937-e534-4282-bf24-f0cf126fc5d0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 11 Nov 2016 21:55:50 GMT',
+  date: 'Thu, 16 Mar 2017 23:40:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls3113?api-version=2016-11-01')
+  .delete('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls7774?api-version=2016-11-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  'x-ms-request-id': '8dec5e2e-cb2d-488f-a000-c2535cf7fca0',
+  'x-ms-request-id': '5bbde766-09ff-49d9-b421-8b80d8c12e65',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': 'cf676823-eb60-43d2-b113-64b4981e7451',
-  'x-ms-routing-request-id': 'WESTUS2:20161111T215551Z:cf676823-eb60-43d2-b113-64b4981e7451',
+  'x-ms-correlation-request-id': 'f3e55937-e534-4282-bf24-f0cf126fc5d0',
+  'x-ms-routing-request-id': 'CENTRALUS:20170316T234026Z:f3e55937-e534-4282-bf24-f0cf126fc5d0',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 11 Nov 2016 21:55:50 GMT',
+  date: 'Thu, 16 Mar 2017 23:40:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls3113?api-version=2016-11-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls3113' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls7774?api-version=2016-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls7774' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '47e4978f-7cdc-4d6d-895d-3180bf6b8d05',
-  'x-ms-correlation-request-id': '47e4978f-7cdc-4d6d-895d-3180bf6b8d05',
-  'x-ms-routing-request-id': 'WESTUS2:20161111T215551Z:47e4978f-7cdc-4d6d-895d-3180bf6b8d05',
+  'x-ms-request-id': '96087976-5acd-404d-9b72-c14ae13736ea',
+  'x-ms-correlation-request-id': '96087976-5acd-404d-9b72-c14ae13736ea',
+  'x-ms-routing-request-id': 'CENTRALUS:20170316T234026Z:96087976-5acd-404d-9b72-c14ae13736ea',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 11 Nov 2016 21:55:51 GMT',
+  date: 'Thu, 16 Mar 2017 23:40:25 GMT',
   connection: 'close',
   'content-length': '171' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls3113?api-version=2016-11-01')
-  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls3113' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/xplattestadlsrg01/providers/Microsoft.DataLakeStore/accounts/xplattestadls7774?api-version=2016-11-01')
+  .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.DataLakeStore/accounts/xplattestadls7774' under resource group 'xplattestadlsrg01' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': '47e4978f-7cdc-4d6d-895d-3180bf6b8d05',
-  'x-ms-correlation-request-id': '47e4978f-7cdc-4d6d-895d-3180bf6b8d05',
-  'x-ms-routing-request-id': 'WESTUS2:20161111T215551Z:47e4978f-7cdc-4d6d-895d-3180bf6b8d05',
+  'x-ms-request-id': '96087976-5acd-404d-9b72-c14ae13736ea',
+  'x-ms-correlation-request-id': '96087976-5acd-404d-9b72-c14ae13736ea',
+  'x-ms-routing-request-id': 'CENTRALUS:20170316T234026Z:96087976-5acd-404d-9b72-c14ae13736ea',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 11 Nov 2016 21:55:51 GMT',
+  date: 'Thu, 16 Mar 2017 23:40:25 GMT',
   connection: 'close',
   'content-length': '171' });
  return result; }]];
