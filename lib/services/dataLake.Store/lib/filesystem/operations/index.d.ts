@@ -104,10 +104,10 @@ export interface FileSystem {
      * @param {string} path The Data Lake Store path (starting with '/') of the
      * file or directory for which to check access.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} fsaction File system operation read/write/execute in string
+     * form, matching regex pattern '[rwx-]{3}'
      *
-     * @param {string} [options.fsaction] File system operation read/write/execute
-     * in string form, matching regex pattern '[rwx-]{3}'
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -115,8 +115,8 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    checkAccess(accountName: string, path: string, options: { fsaction? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    checkAccess(accountName: string, path: string, callback: ServiceCallback<void>): void;
+    checkAccess(accountName: string, path: string, fsaction: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    checkAccess(accountName: string, path: string, fsaction: string, callback: ServiceCallback<void>): void;
 
     /**
      * Creates a directory.
@@ -129,13 +129,16 @@ export interface FileSystem {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.permission] Optional octal permission with which
+     * the directory should be created.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    mkdirs(accountName: string, path: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+    mkdirs(accountName: string, path: string, options: { permission? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
     mkdirs(accountName: string, path: string, callback: ServiceCallback<models.FileOperationResult>): void;
 
     /**
@@ -148,7 +151,7 @@ export interface FileSystem {
      * @param {string} destinationPath The Data Lake Store path (starting with '/')
      * of the destination file resulting from the concatenation.
      *
-     * @param {array} sources A list of comma seperated Data Lake Store paths
+     * @param {array} sources A list of comma separated Data Lake Store paths
      * (starting with '/') of the files to concatenate, in the order in which they
      * should be concatenated.
      *
@@ -176,8 +179,8 @@ export interface FileSystem {
      * with '/') of the destination file resulting from the concatenation.
      *
      * @param {object} streamContents A list of Data Lake Store paths (starting
-     * with '/') of the source files. Must be in the format: sources=<comma
-     * separated list>
+     * with '/') of the source files. Must be a comma-separated path list in the
+     * format: sources=/file/path/1.txt,/file/path/2.txt,/file/path/lastfile.csv
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -223,13 +226,17 @@ export interface FileSystem {
      * 'a','b','d' and listBefore='d' will return 'a','b', and a listBefore='c'
      * will also return 'a','b'. Optional.
      *
+     * @param {boolean} [options.tooId] An optional switch to return friendly names
+     * in place of owner and group. tooid=false returns friendly names instead of
+     * the AAD Object ID. Default value is true, returning AAD object IDs.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listFileStatus(accountName: string, listFilePath: string, options: { listSize? : number, listAfter? : string, listBefore? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
+    listFileStatus(accountName: string, listFilePath: string, options: { listSize? : number, listAfter? : string, listBefore? : string, tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
     listFileStatus(accountName: string, listFilePath: string, callback: ServiceCallback<models.FileStatusesResult>): void;
 
     /**
@@ -263,20 +270,25 @@ export interface FileSystem {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.tooId] An optional switch to return friendly names
+     * in place of owner and group. tooid=false returns friendly names instead of
+     * the AAD Object ID. Default value is true, returning AAD object IDs.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getFileStatus(accountName: string, getFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusResult>): void;
+    getFileStatus(accountName: string, getFilePath: string, options: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusResult>): void;
     getFileStatus(accountName: string, getFilePath: string, callback: ServiceCallback<models.FileStatusResult>): void;
 
     /**
-     * Appends to the specified file. NOTE: The target must not contain data added
-     * by ConcurrentAppend. ConcurrentAppend and Append cannot be used
-     * interchangeably; once a target file has been modified using either of these
-     * append options, the other append option cannot be used on the target file.
+     * Used for serial appends to the specified file. NOTE: The target must not
+     * contain data added by ConcurrentAppend. ConcurrentAppend and Append cannot
+     * be used interchangeably; once a target file has been modified using either
+     * of these append options, the other append option cannot be used on the
+     * target file.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
@@ -299,13 +311,22 @@ export interface FileSystem {
      * refreshed upon append completion. Possible values include: 'DATA',
      * 'METADATA', 'CLOSE'
      *
+     * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
+     * single writer semantics, meaning that only clients that append to the file
+     * with the same leaseId will be allowed to do so.
+     *
+     * @param {uuid} [options.fileSessionId] Optional unique GUID per file
+     * indicating all the appends with the same fileSessionId are from the same
+     * client and same session. This will give a performance benefit when syncFlag
+     * is DATA or METADATA.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { offset? : number, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { offset? : number, syncFlag? : string, leaseId? : string, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     append(accountName: string, directFilePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
@@ -331,8 +352,16 @@ export interface FileSystem {
      * completion of the append. DATA indicates more data is coming so no sync
      * takes place, METADATA indicates a sync should be done to refresh metadata of
      * the file only. CLOSE indicates that both the stream and metadata should be
-     * refreshed upon append completion. Possible values include: 'DATA',
+     * refreshed upon create completion. Possible values include: 'DATA',
      * 'METADATA', 'CLOSE'
+     *
+     * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
+     * single writer semantics, meaning that only clients that append to the file
+     * with the same leaseId will be allowed to do so.
+     *
+     * @param {number} [options.permission] The octal representation of the unnamed
+     * user, mask and other permissions that should be set for the file when
+     * created. If not specified, it inherits these from the container.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -340,7 +369,7 @@ export interface FileSystem {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    create(accountName: string, directFilePath: string, options: { streamContents? : stream.Readable, overwrite? : boolean, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(accountName: string, directFilePath: string, options: { streamContents? : stream.Readable, overwrite? : boolean, syncFlag? : string, leaseId? : string, permission? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     create(accountName: string, directFilePath: string, callback: ServiceCallback<void>): void;
 
     /**
@@ -359,13 +388,17 @@ export interface FileSystem {
      *
      * @param {number} [options.offset] The byte offset to start reading data from.
      *
+     * @param {uuid} [options.fileSessionId] Optional unique GUID per file
+     * indicating all the reads with the same fileSessionId are from the same
+     * client and same session. This will give a performance benefit.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    open(accountName: string, directFilePath: string, options: { length? : number, offset? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    open(accountName: string, directFilePath: string, options: { length? : number, offset? : number, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
     open(accountName: string, directFilePath: string, callback: ServiceCallback<stream.Readable>): void;
 
     /**
@@ -490,13 +523,18 @@ export interface FileSystem {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.tooId] An optional switch to return friendly names
+     * in place of object ID for ACL entries. tooid=false returns friendly names
+     * instead of the AAD Object ID. Default value is true, returning AAD object
+     * IDs.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    getAclStatus(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AclStatusResult>): void;
+    getAclStatus(accountName: string, aclFilePath: string, options: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AclStatusResult>): void;
     getAclStatus(accountName: string, aclFilePath: string, callback: ServiceCallback<models.AclStatusResult>): void;
 
     /**

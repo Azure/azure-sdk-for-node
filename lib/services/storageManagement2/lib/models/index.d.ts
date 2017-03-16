@@ -125,9 +125,44 @@ export interface EncryptionService {
  * encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
  *
+ * @member {object} [file] The encryption function of the file storage service.
+ *
+ * @member {boolean} [file.enabled] A boolean indicating whether or not the
+ * service encrypts the data as it is stored.
+ *
+ * @member {date} [file.lastEnabledTime] Gets a rough estimate of the date/time
+ * when the encryption was last enabled by the user. Only returned when
+ * encryption is enabled. There might be some unencrypted blobs which were
+ * written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [table] The encryption function of the table storage
+ * service.
+ *
+ * @member {boolean} [table.enabled] A boolean indicating whether or not the
+ * service encrypts the data as it is stored.
+ *
+ * @member {date} [table.lastEnabledTime] Gets a rough estimate of the
+ * date/time when the encryption was last enabled by the user. Only returned
+ * when encryption is enabled. There might be some unencrypted blobs which were
+ * written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [queue] The encryption function of the queue storage
+ * service.
+ *
+ * @member {boolean} [queue.enabled] A boolean indicating whether or not the
+ * service encrypts the data as it is stored.
+ *
+ * @member {date} [queue.lastEnabledTime] Gets a rough estimate of the
+ * date/time when the encryption was last enabled by the user. Only returned
+ * when encryption is enabled. There might be some unencrypted blobs which were
+ * written after this time, as it is just a rough estimate.
+ *
  */
 export interface EncryptionServices {
   blob?: EncryptionService;
+  file?: EncryptionService;
+  table?: EncryptionService;
+  queue?: EncryptionService;
 }
 
 /**
@@ -145,6 +180,39 @@ export interface EncryptionServices {
  * not the service encrypts the data as it is stored.
  *
  * @member {date} [services.blob.lastEnabledTime] Gets a rough estimate of the
+ * date/time when the encryption was last enabled by the user. Only returned
+ * when encryption is enabled. There might be some unencrypted blobs which were
+ * written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [services.file] The encryption function of the file storage
+ * service.
+ *
+ * @member {boolean} [services.file.enabled] A boolean indicating whether or
+ * not the service encrypts the data as it is stored.
+ *
+ * @member {date} [services.file.lastEnabledTime] Gets a rough estimate of the
+ * date/time when the encryption was last enabled by the user. Only returned
+ * when encryption is enabled. There might be some unencrypted blobs which were
+ * written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [services.table] The encryption function of the table
+ * storage service.
+ *
+ * @member {boolean} [services.table.enabled] A boolean indicating whether or
+ * not the service encrypts the data as it is stored.
+ *
+ * @member {date} [services.table.lastEnabledTime] Gets a rough estimate of the
+ * date/time when the encryption was last enabled by the user. Only returned
+ * when encryption is enabled. There might be some unencrypted blobs which were
+ * written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [services.queue] The encryption function of the queue
+ * storage service.
+ *
+ * @member {boolean} [services.queue.enabled] A boolean indicating whether or
+ * not the service encrypts the data as it is stored.
+ *
+ * @member {date} [services.queue.lastEnabledTime] Gets a rough estimate of the
  * date/time when the encryption was last enabled by the user. Only returned
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
@@ -211,6 +279,39 @@ export interface Encryption {
  * whether or not the service encrypts the data as it is stored.
  *
  * @member {date} [encryption.services.blob.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.file] The encryption function of the
+ * file storage service.
+ *
+ * @member {boolean} [encryption.services.file.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.file.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.table] The encryption function of the
+ * table storage service.
+ *
+ * @member {boolean} [encryption.services.table.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.table.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.queue] The encryption function of the
+ * queue storage service.
+ *
+ * @member {boolean} [encryption.services.queue.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.queue.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
@@ -379,6 +480,39 @@ export interface Resource extends BaseResource {
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
  *
+ * @member {object} [encryption.services.file] The encryption function of the
+ * file storage service.
+ *
+ * @member {boolean} [encryption.services.file.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.file.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.table] The encryption function of the
+ * table storage service.
+ *
+ * @member {boolean} [encryption.services.table.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.table.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.queue] The encryption function of the
+ * queue storage service.
+ *
+ * @member {boolean} [encryption.services.queue.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.queue.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
@@ -512,6 +646,39 @@ export interface StorageAccountRegenerateKeyParameters {
  * whether or not the service encrypts the data as it is stored.
  *
  * @member {date} [encryption.services.blob.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.file] The encryption function of the
+ * file storage service.
+ *
+ * @member {boolean} [encryption.services.file.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.file.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.table] The encryption function of the
+ * table storage service.
+ *
+ * @member {boolean} [encryption.services.table.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.table.lastEnabledTime] Gets a rough
+ * estimate of the date/time when the encryption was last enabled by the user.
+ * Only returned when encryption is enabled. There might be some unencrypted
+ * blobs which were written after this time, as it is just a rough estimate.
+ *
+ * @member {object} [encryption.services.queue] The encryption function of the
+ * queue storage service.
+ *
+ * @member {boolean} [encryption.services.queue.enabled] A boolean indicating
+ * whether or not the service encrypts the data as it is stored.
+ *
+ * @member {date} [encryption.services.queue.lastEnabledTime] Gets a rough
  * estimate of the date/time when the encryption was last enabled by the user.
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.

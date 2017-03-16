@@ -18,12 +18,12 @@ var mappings = {
   },
   'batch.Management': {
     'dir': 'batchManagement/lib',
-    'source': 'arm-batch/2015-12-01/swagger/BatchManagement.json',
+    'source': 'arm-batch/2017-01-01/swagger/BatchManagement.json',
     'ft': 1
   },
   'batch.Service': {
     'dir': 'batch/lib',
-    'source': 'batch/2016-07-01.3.1/swagger/BatchService.json',
+    'source': 'batch/2017-01-01.4.0/swagger/BatchService.json',
     'ft': 1
   },
   'cdn': {
@@ -163,7 +163,7 @@ var mappings = {
   },
   'storage': {
     'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2016-05-01/swagger/storage.json',
+    'source': 'arm-storage/2016-12-01/swagger/storage.json',
     'ft': 2,
     'ClientName': 'StorageManagementClient'
   },
@@ -179,7 +179,7 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '1.0.0-Nightly20161212';
+var defaultAutoRestVersion = '1.0.0-Nightly20170201';
 var usingAutoRestVersion;
 var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 var project = args['project'];

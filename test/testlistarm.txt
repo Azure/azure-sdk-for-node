@@ -1,5 +1,6 @@
 common/framework-tests.js
 services/computeManagement/computeManagementClient-tests.js
+services/computeManagement/diskManagementClient-tests.js
 services/resourceManagement/resourceManagementClient-tests.js
 services/resourceManagement/authorizationClient-tests.js
 services/resourceManagement/featureClient-tests.js

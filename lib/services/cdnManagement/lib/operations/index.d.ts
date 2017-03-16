@@ -1248,6 +1248,58 @@ export interface CustomDomains {
     deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
 
     /**
+     * Disable https delivery of the custom domain.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+
+    /**
+     * Enable https delivery of the custom domain.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+
+    /**
      * Creates a new custom domain within an endpoint.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
@@ -1341,4 +1393,21 @@ export interface EdgeNodes {
      */
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EdgenodeResult>): void;
     list(callback: ServiceCallback<models.EdgenodeResult>): void;
+
+    /**
+     * Lists all the edge nodes of a CDN service.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EdgenodeResult>): void;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.EdgenodeResult>): void;
 }
