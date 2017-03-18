@@ -1,19 +1,19 @@
-var gulp = require('gulp');
-var args = require('yargs').argv;
-var colors = require('colors');
-var fs = require('fs');
-var util = require('util');
-var path = require('path');
-var exec = require('child_process').exec;
+const gulp = require('gulp');
+const args = require('yargs').argv;
+const colors = require('colors');
+const fs = require('fs');
+const util = require('util');
+const path = require('path');
+const execSync = require('child_process').execSync;
 
-var mappings = {
+const mappings = {
   'analysisservices': {
     'dir': 'analysisServices/lib',
-    'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json', 
+    'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json',
   },
   'authorization': {
     'dir': 'authorizationManagement/lib',
-    'source': 'arm-authorization/2015-07-01/swagger/authorization.json', 
+    'source': 'arm-authorization/2015-07-01/swagger/authorization.json',
     'ft': 1
   },
   'batch.Management': {
@@ -111,7 +111,7 @@ var mappings = {
     'source': 'arm-network/2016-09-01/swagger/network.json',
     'ft': 1
   },
-  'notificationHubs':{
+  'notificationHubs': {
     'dir': 'notificationHubsManagement/lib',
     'source': 'arm-notificationhubs/2016-03-01/swagger/notificationhubs.json'
   },
@@ -167,7 +167,7 @@ var mappings = {
     'ft': 2,
     'ClientName': 'StorageManagementClient'
   },
-  'traffic':{
+  'traffic': {
     'dir': 'trafficManagerManagement2/lib',
     'source': 'arm-trafficmanager/2015-11-01/swagger/trafficmanager.json',
     'ft': 1
@@ -179,55 +179,37 @@ var mappings = {
   }
 };
 
-var defaultAutoRestVersion = '1.0.0-Nightly20170201';
+const defaultAutoRestVersion = '1.0.1-20170317-2300-nightly';
 var usingAutoRestVersion;
-var specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
-var project = args['project'];
-var nugetExe = path.join('tools', 'nuget.exe');
-var autoRestExe = constructAutorestExePath(defaultAutoRestVersion);
-var nugetSource = 'https://www.myget.org/F/autorest/api/v2';
-var language = 'Azure.NodeJS';
-var modeler = 'Swagger';
-var isWindows = (process.platform.lastIndexOf('win') === 0);
-function clrCmd(cmd){
-  return isWindows ? cmd : ('mono ' + cmd);
-};
+const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
+const project = args['project'];
+const language = 'Azure.NodeJS';
+const modeler = 'Swagger';
 
-function constructAutorestExePath(version) {
-  return path.join('packages', 'Autorest.' + version, 'tools', 'AutoRest.exe');
-}
-function codegen(project, cb) {
-  var found = false;
-  if (mappings[project].autorestversion) {
-    usingAutoRestVersion = mappings[project].autoRestVersion;
-  } else {
-    usingAutoRestVersion = defaultAutoRestVersion;
-  }
-  autoRestExe = constructAutorestExePath(usingAutoRestVersion);
+function getAutorestVersion(version) {
+  if (!version) version = 'latest';
+  let getVersion, execHelp;
+  let result = true;
   try {
-    fs.statSync(autoRestExe);
-    found = true;
+    let getVersionCmd = `autorest --version=${version}`;
+    let execHelpCmd = `autorest --help`;
+    console.log(getVersionCmd);
+    getVersion = execSync(getVersionCmd, { encoding: 'utf8' });
+    //console.debug(getVersion);
+    console.log(execHelpCmd);
+    execHelp = execSync(execHelpCmd, { encoding: 'utf8' });
+    //console.debug(execHelp);
   } catch (err) {
-    if (!err.message.match(/^ENONET.*/ig)) {
-      cb(err);
-    }
+    result = false;
+    console.log(`An error occurred while getting the "${version}" of autorest and executing "autorest --help":\n ${util.inspect(err, { depth: null })}.`);
   }
-  if (found) {
-    generateProject(project, specRoot, usingAutoRestVersion);
-  } else {
-    var nugetCmd2 = clrCmd(nugetExe) + ' install Autorest -Source ' + nugetSource + ' -Version ' + usingAutoRestVersion + ' -o packages';
-    console.log('Downloading Autorest version: ' + nugetCmd2);
-    exec(nugetCmd2, function(err, stdout, stderr) {
-      console.log(stdout);
-      console.error(stderr);
-      generateProject(project, specRoot, usingAutoRestVersion);
-    });
-  }
+  return result;
 }
 
 function generateProject(project, specRoot, autoRestVersion) {
-  var currentModeler = modeler;
-  var specPath = specRoot + '/' + mappings[project].source;
+  let currentModeler = modeler;
+  let specPath = specRoot + '/' + mappings[project].source;
+  let result;
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
     language = mappings[project].language;
@@ -236,50 +218,98 @@ function generateProject(project, specRoot, autoRestVersion) {
   if (mappings[project].modeler && mappings[project].modeler.match(/^CompositeSwagger$/ig) !== null) {
     currentModeler = mappings[project].modeler;
   }
+  console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
 
-  console.log(util.format('Generating "%s" from spec file "%s" with language "%s" and AutoRest version "%s".', 
-    project,  specRoot + '/' + mappings[project].source, language, autoRestVersion));
-  autoRestExe = constructAutorestExePath(autoRestVersion);
-  var cmd = util.format('%s -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT_NO_VERSION',
-    autoRestExe, currentModeler, language, specPath, mappings[project].dir);
+  let cmd = util.format('autorest -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT_NO_VERSION --version=%s',
+    currentModeler, language, specPath, mappings[project].dir, autoRestVersion);
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].ClientName !== null && mappings[project].ClientName !== undefined) cmd += ' -ClientName ' + mappings[project].ClientName;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }
-  console.log('Executing: ' + clrCmd(cmd));
-  exec(clrCmd(cmd), function(err, stdout, stderr) {
-    console.log(stdout);
-    console.error(stderr);
-  });
+
+  try {
+    console.log('Executing command:');
+    console.log('------------------------------------------------------------');
+    console.log(cmd);
+    console.log('------------------------------------------------------------');
+    result = execSync(cmd, { encoding: 'utf8' });
+    console.log('Output:');
+    console.log(result);
+  } catch (err) {
+    console.log('Error:');
+    console.log(`An error occurred while generating client for project: "${project}":\n ${util.inspect(err, { depth: null })}`);
+  }
+  console.log(`>>>>>>>>>>>>>>>>>>>>>End: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>\n`);
+  return;
 }
 
-gulp.task('default', function() {
+function installAutorest() {
+  let installation;
+  let isSuccessful = true;
+  let autorestAlreadyInstalled = true;
+  try {
+    execSync(`autorest --help`);
+  } catch (error) {
+    autorestAlreadyInstalled = false;
+  }
+  try {
+    if (!autorestAlreadyInstalled) {
+      console.log('Looks like autorest is not installed on your machine. Installing autorest . . .');
+      let installCmd = 'npm install -g autorest';
+      console.log(installCmd);
+      installation = execSync(installCmd, { encoding: 'utf8' });
+      //console.debug('installation');
+    }
+    isSuccessful = getAutorestVersion();
+  } catch (err) {
+    isSuccessful = false;
+    console.log(`An error occurred while installing autorest via npm:\n ${util.inspect(err, { depth: null })}.`);
+  }
+  return isSuccessful;
+}
+
+function codegen(project, index) {
+  let versionSuccessfullyFound = false;
+  if (mappings[project].autorestversion) {
+    usingAutoRestVersion = mappings[project].autoRestVersion;
+  } else {
+    usingAutoRestVersion = defaultAutoRestVersion;
+  }
+  if (index === 0) {
+    versionSuccessfullyFound = getAutorestVersion(usingAutoRestVersion);
+    if (!versionSuccessfullyFound) {
+      process.exit(1);
+    }
+  }
+  return generateProject(project, specRoot, usingAutoRestVersion);
+}
+
+gulp.task('default', function () {
   console.log("Usage: gulp codegen [--spec-root <swagger specs root>] [--project <project name>]\n");
   console.log("--spec-root");
   console.log("\tRoot location of Swagger API specs, default value is \"https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master\"");
   console.log("--project\n\tProject to regenerate, default is all. List of available project names:");
-  Object.keys(mappings).forEach(function(i) {
-      console.log('\t' + i.magenta);
+  Object.keys(mappings).forEach(function (i) {
+    console.log('\t' + i.magenta);
   });
 });
 
-gulp.task('codegen', function(cb) {
-  var nugetCmd = clrCmd(nugetExe) + ' install Autorest -Source ' + nugetSource + ' -Version ' + defaultAutoRestVersion + ' -o packages';
-  console.log('Downloading default AutoRest version: ' + nugetCmd);
-  exec(nugetCmd, function(err, stdout, stderr) {
-    console.log(stdout);
-    console.error(stderr);
+gulp.task('codegen', function (cb) {
+  if (installAutorest()) {
     if (project === undefined) {
-      Object.keys(mappings).forEach(function(proj) {
-        codegen(proj, cb);
-      });
+      let arr = Object.keys(mappings);
+      for (let i = 0; i < arr.length; i++) {
+        codegen(arr[i], i);
+      }
     } else {
       if (mappings[project] === undefined) {
         console.error('Invalid project name "' + project + '"!');
         process.exit(1);
       }
-      codegen(project, cb);
+      codegen(project, null);
     }
-  });
+  } else {
+    process.exit(1);
+  }
 });
