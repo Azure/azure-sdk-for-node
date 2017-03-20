@@ -7,6 +7,10 @@ const path = require('path');
 const execSync = require('child_process').execSync;
 
 const mappings = {
+  'advisor': {
+    'dir': 'advisorManagement/lib',
+    'source': 'arm-advisor/2016-07-12-preview/swagger/advisor.json',
+  },
   'analysisservices': {
     'dir': 'analysisServices/lib',
     'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json',
@@ -15,6 +19,11 @@ const mappings = {
     'dir': 'authorizationManagement/lib',
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json',
     'ft': 1
+  },
+  'automation': {
+    'dir': 'automationManagement/lib',
+    'source': 'arm-automation/compositeAutomation.json',
+    'modeler': 'CompositeSwagger'
   },
   'batch.Management': {
     'dir': 'batchManagement/lib',
@@ -26,9 +35,23 @@ const mappings = {
     'source': 'batch/2017-01-01.4.0/swagger/BatchService.json',
     'ft': 1
   },
+  'billing': {
+    'dir': 'billingManagement/lib',
+    'source': 'arm-billing/2017-02-27-preview/swagger/billing.json',
+    'ft': 1
+  },
   'cdn': {
     'dir': 'cdnManagement/lib',
     'source': 'arm-cdn/2016-10-02/swagger/cdn.json',
+    'ft': 2
+  },
+  'coginitiveServices': {
+    'dir': 'coginitiveServicesManagement/lib',
+    'source': 'arm-cognitiveservices/2016-02-01-preview/swagger/cognitiveservices.json'
+  },
+  'commerce': {
+    'dir': 'commerce/lib',
+    'source': 'arm-commerce/2015-06-01-preview/swagger/commerce.json',
     'ft': 2
   },
   'compute': {
@@ -37,25 +60,33 @@ const mappings = {
     'ft': 1,
     'modeler': 'CompositeSwagger'
   },
+  'containerRegistry': {
+    'dir': 'containerRegistryManagement/lib',
+    'source': 'arm-containerregistry/2017-03-01/swagger/containerregistry.json'
+  },
+  'customerInsights': {
+    'dir': 'customerInsightsManagement/lib',
+    'source': 'arm-customer-insights/2017-01-01/swagger/customer-insights.json'
+  },
   'datalake.analytics.account': {
     'dir': 'dataLake.Analytics/lib/account',
-    'source': 'arm-datalake-analytics/account/2015-10-01-preview/swagger/account.json'
+    'source': 'arm-datalake-analytics/account/2016-11-01/swagger/account.json'
   },
   'datalake.analytics.job': {
     'dir': 'dataLake.Analytics/lib/job',
-    'source': 'arm-datalake-analytics/job/2016-03-20-preview/swagger/job.json'
+    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
   },
   'datalake.analytics.catalog': {
     'dir': 'dataLake.Analytics/lib/catalog',
-    'source': 'arm-datalake-analytics/catalog/2015-10-01-preview/swagger/catalog.json'
+    'source': 'arm-datalake-analytics/catalog/2016-11-01/swagger/catalog.json'
   },
   'datalake.store.account': {
     'dir': 'dataLake.Store/lib/account',
-    'source': 'arm-datalake-store/account/2015-10-01-preview/swagger/account.json'
+    'source': 'arm-datalake-store/account/2016-11-01/swagger/account.json'
   },
   'datalake.store.filesystem': {
     'dir': 'dataLake.Store/lib/filesystem',
-    'source': 'arm-datalake-store/filesystem/2015-10-01-preview/swagger/filesystem.json'
+    'source': 'arm-datalake-store/filesystem/2016-11-01/swagger/filesystem.json'
   },
   'devtestlabs': {
     'dir': 'devTestLabs/lib',
@@ -64,6 +95,10 @@ const mappings = {
   'dns': {
     'dir': 'dnsManagement/lib',
     'source': 'arm-dns/2016-04-01/swagger/dns.json'
+  },
+  'documentdb': {
+    'dir': 'documentdbManagement/lib',
+    'source': 'arm-documentdb/2015-04-08/swagger/documentdb.json'
   },
   'eventhub': {
     'dir': 'eventHubManagement/lib',
@@ -98,7 +133,7 @@ const mappings = {
   },
   'keyvault': {
     'dir': 'keyvault/lib',
-    'source': 'keyvault/2015-06-01/swagger/keyvault.json',
+    'source': 'keyvault/2016-10-01/swagger/keyvault.json',
     'ft': 1
   },
   'keyvaultmanagement': {
@@ -106,23 +141,49 @@ const mappings = {
     'source': 'arm-keyvault/2015-06-01/swagger/keyvault.json',
     'ft': 1
   },
+  'logic': {
+    'dir': 'logicManagement/lib',
+    'source': 'arm-logic/2016-06-01/swagger/logic.json',
+  },
+  'mediaServices': {
+    'dir': 'mediaServicesManagement/lib',
+    'source': 'arm-mediaservices/2015-10-01/swagger/media.json'
+  },
   'network': {
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/2016-09-01/swagger/network.json',
-    'ft': 1
+    'source': 'arm-network/compositeNetworkClient.json',
+    'modeler': 'CompositeSwagger'
   },
   'notificationHubs': {
     'dir': 'notificationHubsManagement/lib',
     'source': 'arm-notificationhubs/2016-03-01/swagger/notificationhubs.json'
   },
+  'operationalInsights': {
+    'dir': 'operationalInsightsManagement2/lib',
+    'source': 'arm-operationalInsights/compositeOperationalInsights.json',
+    'modeler': 'CompositeSwagger'
+  },
   'powerbiembedded': {
     'dir': 'powerbiembedded/lib',
     'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
+  },
+  'recoveryServices': {
+    'dir': 'recoveryServicesManagement',
+    'source': 'arm-recoveryservices/2016-06-01/swagger/recoveryservices.json'
+  },
+  'recoveryServicesBackup': {
+    'dir': 'recoveryServicesBackupManagement',
+    'source': 'arm-recoveryservicesbackup/compositeRecoveryServicesBackupClient.json',
+    'modeler': 'CompositeSwagger'
   },
   'rediscache': {
     'dir': 'rediscachemanagement/lib',
     'source': 'arm-redis/2016-04-01/swagger/redis.json',
     'ft': 1
+  },
+  'relay': {
+    'dir': 'relayManagement/lib',
+    'source': 'arm-relay/2016-07-01/swagger/relay.json'
   },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
@@ -134,7 +195,7 @@ const mappings = {
   },
   'resource.lock': {
     'dir': 'resourceManagement/lib/lock',
-    'source': 'arm-resources/locks/2015-01-01/swagger/locks.json'
+    'source': 'arm-resources/locks/2016-09-01/swagger/locks.json'
   },
   'resource.link': {
     'dir': 'resourceManagement/lib/link',
@@ -146,7 +207,23 @@ const mappings = {
   },
   'resource.policy': {
     'dir': 'resourceManagement/lib/policy',
-    'source': 'arm-resources/policy/2016-04-01/swagger/policy.json'
+    'source': 'arm-resources/policy/2016-12-01/swagger/policy.json'
+  },
+  'schedulerManagement': {
+    'dir': 'schedulerManagement2/lib',
+    'source': 'arm-scheduler/2016-03-01/swagger/scheduler.json'
+  },
+  'searchIndex': {
+    'dir': 'searchIndex/lib',
+    'source': 'search/2016-09-01/swagger/searchindex.json'
+  },
+  'searchService': {
+    'dir': 'searchService/lib',
+    'source': 'search/2016-09-01/swagger/searchservice.json'
+  },
+  'searchManagement': {
+    'dir': 'searchManagement/lib',
+    'source': 'arm-search/2015-08-19/swagger/search.json'
   },
   'servermanagement': {
     'dir': 'servermanagement/lib',
@@ -156,10 +233,23 @@ const mappings = {
     'dir': 'serviceBusManagement2/lib',
     'source': 'arm-servicebus/2015-08-01/swagger/servicebus.json'
   },
+  'serviceFabricManagement': {
+    'dir': 'serviceFabricManagement/lib',
+    'source': 'arm-servicefabric/2016-09-01/swagger/servicefabric.json'
+  },
   'serviceFabric': {
     'dir': 'serviceFabric/lib',
     'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
     'language': 'NodeJS'
+  },
+  'serviceMap': {
+    'dir': 'serviceMapManagement/lib',
+    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json'
+  },
+  'sql': {
+    'dir': 'sqlManagement2/lib',
+    'source': 'arm-sql/compositeSql.json',
+    'modeler': 'CompositeSwagger'
   },
   'storage': {
     'dir': 'storageManagement2/lib',
@@ -167,15 +257,20 @@ const mappings = {
     'ft': 2,
     'ClientName': 'StorageManagementClient'
   },
+  'storageImportExport': {
+    'dir': 'storageImportExportManagement/lib',
+    'source': 'arm-storageimportexport/2016-11-01/swagger/storageimportexport.json'
+  },
   'traffic': {
     'dir': 'trafficManagerManagement2/lib',
-    'source': 'arm-trafficmanager/2015-11-01/swagger/trafficmanager.json',
+    'source': 'arm-trafficmanager/2017-03-01/swagger/trafficmanager.json',
     'ft': 1
   },
   'website': {
     'dir': 'websiteManagement2/lib',
-    'source': 'arm-web/2015-08-01/swagger/service.json',
-    'ft': 1
+    'source': 'arm-web/compositeWebAppClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
   }
 };
 
