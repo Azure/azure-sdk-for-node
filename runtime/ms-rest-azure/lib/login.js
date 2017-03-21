@@ -4,7 +4,6 @@
 'use strict';
 const adal = require('adal-node');
 const async = require('async');
-const util = require('util');
 const azureConstants = require('./constants');
 const ApplicationTokenCredentials = require('./credentials/applicationTokenCredentials');
 const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
@@ -127,8 +126,7 @@ function _crossCheckUserNameWithToken(usernameFromMethodCall, userIdFromToken) {
   if (usernameFromMethodCall.toLowerCase() === userIdFromToken.toLowerCase()) {
     return userIdFromToken;
   } else {
-    throw new Error(util.format('The userId of \'%s\' in access token doesn\'t match the username from method call \'%s\'',
-      userIdFromToken, usernameFromMethodCall));
+    throw new Error(`The userId of "${userIdFromToken}" in access token doesn't match the username from method call "usernameFromMethodCall".`);
   }
 }
 

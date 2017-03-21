@@ -13,7 +13,7 @@ const ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFi
 const SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilter');
 const requestPipeline = require('./requestPipeline');
 const WebResource = require('./webResource');
-const util = require('util');
+const serializer = require('./serialization');
 const utils = require('./utils');
 const path = require('path');
 const fs = require('fs');
@@ -46,9 +46,24 @@ function _sendRequest(options, callback) {
   }
   //send request
   /* jshint validthis: true */
-  this.pipeline(httpRequest, function (err, response, responseBody) {
+  this.pipeline(httpRequest, (err, response, responseBody) => {
     if (responseBody === '') responseBody = null;
-    let result = JSON.parse(responseBody);
+    let parsedResponse, result;
+
+    try {
+      parsedResponse = JSON.parse(responseBody);
+      result = JSON.parse(responseBody);
+      if (parsedResponse !== null && parsedResponse !== undefined && options.deserializationMapper) {
+        result = serializer.deserialize(options.deserializationMapper, parsedResponse, 'result');
+      }
+    } catch (parseError) {
+      let e = `An error occurred while deserializing the responseBody ${responseBody}. The error is:\n ${JSON.stringify(parseError, null, 2)}.`;
+      e.request = httpRequest;
+      e.response = response;
+      e.statusCode = response.statusCode;
+      return callback(e);
+    }
+
     return callback(err, result, httpRequest, response);
   });
 }
@@ -137,7 +152,7 @@ class ServiceClient {
       throw new Error('credentials argument needs to implement signRequest method');
     }
 
-    this.addUserAgentInfo(util.format('%s/%s', moduleName, moduleVersion));
+    this.addUserAgentInfo(`${moduleName}/${moduleVersion}`);
 
     if (credentials) {
       options.filters.push(SigningFilter.create(credentials));
@@ -238,6 +253,10 @@ class ServiceClient {
    *
    * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
    *
+   * @param {object} [options.serializationMapper] - Provides information on how to serialize the request body.
+   * 
+   * @param {object} [options.deserializationMapper] - Provides information on how to deserialize the response body.
+   * 
    * @param {boolean} [options.disableJsonStringifyOnBody] - When set to true, this method will not apply `JSON.stringify()` to the request body. Default value: false.
    *
    * @param {boolean} [options.bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).
@@ -269,7 +288,7 @@ class ServiceClient {
     if (!optionalCallback) {
       return new Promise((resolve, reject) => {
         self._sendRequest(options, (err, result) => {
-          if (err)  {reject(err); }
+          if (err) { reject(err); }
           else { resolve(result); }
           return;
         });
@@ -328,6 +347,12 @@ class ServiceClient {
    *
    * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
    *
+   * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
+   *
+   * @param {object} [options.serializationMapper] - Provides information on how to serialize the request body.
+   * 
+   * @param {object} [options.deserializationMapper] - Provides information on how to deserialize the response body.
+   * 
    * @param {boolean} [options.disableJsonStringifyOnBody] - When set to true, this method will not apply `JSON.stringify()` to the request body. Default value: false.
    *
    * @param {boolean} [options.bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).
@@ -344,7 +369,7 @@ class ServiceClient {
       self._sendRequest(options, (err, result, request, response) => {
         let httpRes = new HttpOperationResponse(request, response);
         httpRes.body = result;
-        if (err) {reject(err); } 
+        if (err) { reject(err); }
         else { resolve(httpRes); }
         return;
       });

@@ -19,47 +19,49 @@
  * @member {string} [string]
  * 
  */
-function Invoice(parameters) {}
+class Invoice {
+  constructor(parameters) { }
 
 
-/**
- * Metadata of Invoice
- *
- * @returns {object} metadata of the Invoice
- *
- */
-Invoice.prototype.mapper = function () {
-  return {
-    type: {
-      name : 'Composite',
-      className: 'Invoice',
-      modelProperties: {
-        invId : {
-          serializedName: 'invoiceId',
-          required: true,
-          type : {
-            name: 'Number'
-          }
-        },
-         invDate: {
-          serializedName: 'invDate',
-          required: false,
-          type : {
-            name: 'Date'
-          }
-        },
-        invProducts: {
-          serializedName: 'invProducts',
-          required: false,
-          type : {
-            name: 'Sequence',
-            element: {
-              type: {
-                name: 'Dictionary',
-                value: {
-                  type: {
-                    name: 'Composite',
-                    className: 'Product'
+  /**
+   * Metadata of Invoice
+   *
+   * @returns {object} metadata of the Invoice
+   *
+   */
+  mapper() {
+    return {
+      type: {
+        name: 'Composite',
+        className: 'Invoice',
+        modelProperties: {
+          invId: {
+            serializedName: 'invoiceId',
+            required: true,
+            type: {
+              name: 'Number'
+            }
+          },
+          invDate: {
+            serializedName: 'invDate',
+            required: false,
+            type: {
+              name: 'Date'
+            }
+          },
+          invProducts: {
+            serializedName: 'invProducts',
+            required: false,
+            type: {
+              name: 'Sequence',
+              element: {
+                type: {
+                  name: 'Dictionary',
+                  value: {
+                    type: {
+                      name: 'Composite',
+                      className: 'Product'
+                    }
                   }
                 }
               }
@@ -67,8 +69,8 @@ Invoice.prototype.mapper = function () {
           }
         }
       }
-    }
-  };
-};
+    };
+  }
+}
 
 module.exports = Invoice;

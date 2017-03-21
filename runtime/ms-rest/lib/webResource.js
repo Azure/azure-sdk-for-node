@@ -4,9 +4,9 @@
 // Module dependencies.
 const utils = require('./utils');
 const Constants = require('./constants');
-const util = require('util');
 const HttpConstants = Constants.HttpConstants;
 const HttpVerbs = HttpConstants.HttpVerbs;
+const serializer = require('./serialization');
 
 /**
  * Creates a new WebResource object.
@@ -108,6 +108,10 @@ class WebResource {
    *
    * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
    *
+   * @param {object} [options.serializationMapper] - Provides information on how to serialize the request body.
+   * 
+   * @param {object} [options.deserializationMapper] - Provides information on how to deserialize the response body.
+   * 
    * @param {boolean} [options.disableJsonStringifyOnBody] - Indicates whether this method should JSON.stringify() the request body. Default value: false.
    *
    * @param {boolean} [options.bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).
@@ -142,7 +146,7 @@ class WebResource {
 
     //set the method
     if (options.method) {
-      var validMethods = ['GET', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'POST', 'PATCH'];
+      let validMethods = ['GET', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'POST', 'PATCH', 'TRACE'];
       if (validMethods.indexOf(options.method.toUpperCase()) === -1) {
         throw new Error('The provided method \'' + options.method + '\' is invalid. Supported HTTP methods are: ' + JSON.stringify(validMethods));
       }
@@ -157,22 +161,22 @@ class WebResource {
       if (!options.baseUrl) {
         options.baseUrl = 'https://management.azure.com';
       }
-      var baseUrl = options.baseUrl;
-      var url = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + (options.pathTemplate.startsWith('/') ? options.pathTemplate.slice(1) : options.pathTemplate);
-      var segments = url.match(/({\w*\s*\w*})/ig);
+      let baseUrl = options.baseUrl;
+      let url = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + (options.pathTemplate.startsWith('/') ? options.pathTemplate.slice(1) : options.pathTemplate);
+      let segments = url.match(/({\w*\s*\w*})/ig);
       if (segments && segments.length) {
         if (options.pathParameters === null || options.pathParameters === undefined || typeof options.pathParameters !== 'object') {
-          throw new Error('pathTemplate: ' + options.pathTemplate + ' has been provided. Hence, options.pathParameters ' +
-            'cannot be null or undefined and must be of type \'object\'.');
+          throw new Error(`pathTemplate: ${options.pathTemplate} has been provided. Hence, options.pathParameters ` +
+            `cannot be null or undefined and must be of type "object".`);
         }
         segments.forEach(function (item) {
-          var pathParamName = item.slice(1, -1);
-          var pathParam = options.pathParameters[pathParamName];
+          let pathParamName = item.slice(1, -1);
+          let pathParam = options.pathParameters[pathParamName];
           if (pathParam === null || pathParam === undefined || !(typeof pathParam === 'string' || typeof pathParam === 'object')) {
-            throw new Error('pathTemplate: ' + options.pathTemplate + ' contains the path parameter ' + pathParamName +
-              ' however, it is not present in options.pathParameters - ' + util.inspect(options.pathParameters, { depth: null } +
-                '. The value of the path parameter can either be a string of the form { ' + pathParamName + ': \'some sample value\' } or ' +
-                'it can be an object of the form { ' + pathParamName + ': { value: \'some sample value\', skipUrlEncoding: true } }.'));
+            throw new Error(`pathTemplate: ${options.pathTemplate} contains the path parameter ${pathParamName}` + 
+              ` however, it is not present in ${options.pathParameters} - ${JSON.stringify(options.pathParameters, null, 2)}.` +
+              `The value of the path parameter can either be a "string" of the form { ${pathParamName}: "some sample value" } or ` +
+              `it can be an "object" of the form { "${pathParamName}": { value: "some sample value", skipUrlEncoding: true } }.`);
           }
 
           if (typeof pathParam.valueOf() === 'string') {
@@ -181,7 +185,7 @@ class WebResource {
 
           if (typeof pathParam.valueOf() === 'object') {
             if (!pathParam.value) {
-              throw new Error('options.pathParameters[' + pathParamName + '] is of type \'object\' but it does not contain a \'value\' property.');
+              throw new Error(`options.pathParameters[${pathParamName}] is of type "object" but it does not contain a "value" property.`);
             }
             if (pathParam.skipUrlEncoding) {
               url = url.replace(item, pathParam.value);
@@ -197,21 +201,21 @@ class WebResource {
     //append query parameters to the url if they are provided. They can be provided with pathTemplate or url option.
     if (options.queryParameters) {
       if (typeof options.queryParameters !== 'object') {
-        throw new Error('options.queryParameters must be of type object. It should be a JSON object ' +
-          'of \'query-parameter-name\' as the key and the \'query-parameter-value\' as the value. ' +
-          'The \'query-parameter-value\' may be a string or an object of the form { value: \'query-parameter-value\', skipUrlEncoding: true }.');
+        throw new Error(`options.queryParameters must be of type object. It should be a JSON object ` +
+          `of "query-parameter-name" as the key and the "query-parameter-value" as the value. ` +
+          `The "query-parameter-value" may be fo type "string" or an "object" of the form { value: "query-parameter-value", skipUrlEncoding: true }.`);
       }
       //append question mark if it is not present in the url
       if (this.url && this.url.indexOf('?') === -1) {
         this.url += '?';
       }
       //construct queryString
-      var queryParams = [];
-      var queryParameters = options.queryParameters;
+      let queryParams = [];
+      let queryParameters = options.queryParameters;
       //We need to populate this.query as a dictionary if the request is being used for Sway's validateRequest(). 
       this.query = {};
-      for (var queryParamName in queryParameters) {
-        var queryParam = queryParameters[queryParamName];
+      for (let queryParamName in queryParameters) {
+        let queryParam = queryParameters[queryParamName];
         if (queryParam) {
           if (typeof queryParam === 'string') {
             queryParams.push(queryParamName + '=' + encodeURIComponent(queryParam));
@@ -219,7 +223,7 @@ class WebResource {
           }
           if (typeof queryParam === 'object') {
             if (!queryParam.value) {
-              throw new Error('options.queryParameters[' + queryParamName + '] is of type \'object\' but it does not contain a \'value\' property.');
+              throw new Error(`options.queryParameters[${queryParamName}] is of type "object" but it does not contain a "value" property.`);
             }
             if (queryParam.skipUrlEncoding) {
               queryParams.push(queryParamName + '=' + queryParameters[queryParamName]);
@@ -237,8 +241,8 @@ class WebResource {
 
     //add headers to the request if they are provided
     if (options.headers) {
-      var headers = options.headers;
-      for (var headerName in headers) {
+      let headers = options.headers;
+      for (let headerName in headers) {
         if (headers.hasOwnProperty(headerName)) {
           this.headers[headerName] = headers[headerName];
         }
@@ -277,10 +281,14 @@ class WebResource {
           this.headers['Content-Type'] = 'application/octet-stream';
         }
       } else {
+        let serializedBody = null;
+        if (options.serializationMapper) {
+          serializedBody = serializer.serialize(serializationMapper, options.body, 'requestBody');
+        }
         if (options.disableJsonStringifyOnBody) {
-          this.body = options.body;
+          this.body = serializedBody || options.body;
         } else {
-          this.body = JSON.stringify(options.body);
+          this.body = serializedBody ? JSON.stringify(serializedBody) : JSON.stringify(options.body);
         }
       }
     }

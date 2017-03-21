@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
 var url = require('url');
+
 /**
 * Creates a filter that handles server redirects for Http Statuscode 307.
 */

@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 var os = require('os');
-var util = require('util');
 var Constants = require('../constants');
 var HeaderConstants = Constants.HeaderConstants;
 
@@ -27,12 +26,12 @@ exports.create = function (userAgentInfo) {
 };
 
 exports.tagRequest = function (requestOptions, userAgentInfo) {
-  var osInfo = util.format('(%s-%s-%s)', os.arch(), os.type(), os.release());
+  var osInfo = `(${os.arch()}-${os.type()}-${os.release()})`;
   if(userAgentInfo.indexOf(osInfo) === -1){
     userAgentInfo.unshift(osInfo);
   }
 
-  var runtimeInfo = util.format('Node/%s', process.version);
+  var runtimeInfo = `Node/${process.version}`;
   if(userAgentInfo.indexOf(runtimeInfo) === -1){
     userAgentInfo.unshift(runtimeInfo);
   }

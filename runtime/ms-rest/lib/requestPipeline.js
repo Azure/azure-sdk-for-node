@@ -3,13 +3,12 @@
 
 'use strict';
 
-var request = require('request');
-var through = require('through');
-var duplexer = require('duplexer');
-var Constants = require('./constants');
-var utils = require('./utils');
-
-var HttpVerbs = Constants.HttpConstants.HttpVerbs;
+const request = require('request');
+const through = require('through');
+const duplexer = require('duplexer');
+const Constants = require('./constants');
+const utils = require('./utils');
+const HttpVerbs = Constants.HttpConstants.HttpVerbs;
 
 //
 // Request pipelines are functions that allow you to
@@ -27,7 +26,7 @@ var HttpVerbs = Constants.HttpConstants.HttpVerbs;
  *
  */
 exports.createWithSink = function(sink) {
-  var pipeline = sink;
+  let pipeline = sink;
 
   // The function that actually runs the pipeline. It starts simple
   function runFilteredRequest(options, callback) {
@@ -35,25 +34,25 @@ exports.createWithSink = function(sink) {
   }
 
   function makeFilteredPipeline(filter) {
-    var currentPipeline = pipeline;
+    let currentPipeline = pipeline;
     return function (options, callback) {
       return filter(options, currentPipeline, callback);
     };
   }
 
   // Add 'add' method so we can add filters.
-  runFilteredRequest.add = function () {
-    var argumentList = utils.objectValues(arguments);
-    argumentList.forEach(function (filter) {
+  runFilteredRequest.add = function add() {
+    let argumentList = utils.objectValues(arguments);
+    argumentList.forEach((filter) => {
       pipeline = makeFilteredPipeline(filter);
     });
   };
 
   // Add verb specific helper methods
-  var verbs = Object.keys(HttpVerbs);
-  verbs.forEach(function (method) {
-    runFilteredRequest[method] = (function (m) {
-      return function (options, callback) {
+  let verbs = Object.keys(HttpVerbs);
+  verbs.forEach((method) => {
+    runFilteredRequest[method] = ((m) => {
+      return (options, callback) => {
         options.method = m;
         return pipeline(options, callback);
       };
@@ -62,7 +61,7 @@ exports.createWithSink = function(sink) {
 
   // If user passed any other parameters, assume they're filters
   // and add them.
-  for(var i = 1; i < arguments.length; ++i) {
+  for(let i = 1; i < arguments.length; ++i) {
     runFilteredRequest.add(arguments[i]);
   }
 
@@ -81,19 +80,19 @@ exports.createWithSink = function(sink) {
  * @param callback function(err, result, response, body) callback function that
  * will be called at completion of the request.
  */
-exports.requestLibrarySink = function (requestOptions) {
+exports.requestLibrarySink = function requestLibrarySink (requestOptions) {
 
-  return function (options, callback) {
-    var defaultRequest = request.defaults(requestOptions);
-    var requestStream;
-    var bodyStream;
+  return (options, callback) => {
+    let defaultRequest = request.defaults(requestOptions);
+    let requestStream, bodyStream, requestHeaderStream;
+
     if (options.headersOnly) {
-      var requestHeaderStream = defaultRequest(options);
-      requestHeaderStream.on('error', function (err) {
+      requestHeaderStream = defaultRequest(options);
+      requestHeaderStream.on('error', (err) => {
         return callback(err);
       });
-      requestHeaderStream.on('response', function (response) {
-        requestHeaderStream.on('end', function () {
+      requestHeaderStream.on('response', (response) => {
+        requestHeaderStream.on('end', () => {
           return callback(null, response);
         });
       });      
@@ -106,22 +105,22 @@ exports.requestLibrarySink = function (requestOptions) {
       } else {
         requestStream = defaultRequest(options);
       }
-      requestStream.on('error', function (err) {
+      requestStream.on('error', (err) => {
         return callback(err);
       });
-      requestStream.on('response', function (response) {
+      requestStream.on('response', (response) => {
         return callback(null, response);
       });
       return requestStream;
     } else if (options.body && typeof options.body.pipe === 'function') {
       bodyStream = options.body;
       options.body = null;
-      return bodyStream.pipe(defaultRequest(options, function (err, response, body) {
+      return bodyStream.pipe(defaultRequest(options, (err, response, body) => {
         if (err) { return callback(err); }
         return callback(null, response, body);
       }));
     } else {
-      return defaultRequest(options, function (err, response, body) {
+      return defaultRequest(options, (err, response, body) => {
         if (err) { return callback(err); }
         return callback(null, response, body);
       });
@@ -162,11 +161,11 @@ exports.create = function (requestOptions) {
  *
  * @return the new filter.
  */
-exports.createCompositeFilter = function() {
-  var filter = arguments[0];
+exports.createCompositeFilter = function createCompositeFilter() {
+  let filter = arguments[0];
 
   function makePairedFilter(filterA, filterB) {
-    return function(options, next, callback) {
+    return (options, next, callback) => {
       function callFilterA(o, cb) {
         return filterA(o, next, cb);
       }
@@ -174,7 +173,7 @@ exports.createCompositeFilter = function() {
     };
   }
 
-  for(var i = 1; i < arguments.length; ++i) {
+  for(let i = 1; i < arguments.length; ++i) {
     filter = makePairedFilter(filter, arguments[i]);
   }
   return filter;
@@ -198,9 +197,9 @@ exports.createCompositeFilter = function() {
  * produces data from the output stream.
  */
 exports.interimStream = function(setPipes) {
-  var input = through();
-  var output = through();
-  var duplex = duplexer(input, output);
+  let input = through();
+  let output = through();
+  let duplex = duplexer(input, output);
   setPipes(input, output);
   return duplex;
 };

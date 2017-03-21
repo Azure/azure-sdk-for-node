@@ -252,7 +252,7 @@ export class BaseResource {
  *             @resolve {DeviceTokenCredentials} The DeviceTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function interactiveLogin(options?: InteractiveLoginOptions, optionalCallback?: { (err: Error, credentials: DeviceTokenCredentials): void }): void | Promise;
+export function interactiveLogin(options?: InteractiveLoginOptions, optionalCallback?: { (err: Error, credentials: DeviceTokenCredentials): void }): void | Promise<DeviceTokenCredentials>;
 
 /**
  * Provides a UserTokenCredentials object. This method is applicable only for organizational ids that are not 2FA enabled.
@@ -275,7 +275,7 @@ export function interactiveLogin(options?: InteractiveLoginOptions, optionalCall
  *             @resolve {UserTokenCredentials} The UserTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function loginWithUsernamePassword(username: string, password: string, options?: LoginWithUsernamePasswordOptions, optionalCallback?: { (err: Error, credentials: UserTokenCredentials): void }): void | Promise;
+export function loginWithUsernamePassword(username: string, password: string, options?: LoginWithUsernamePasswordOptions, optionalCallback?: { (err: Error, credentials: UserTokenCredentials): void }): void | Promise<UserTokenCredentials>;
 
 
 /**
@@ -302,4 +302,4 @@ export function loginWithUsernamePassword(username: string, password: string, op
  *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options?: AzureTokenCredentialsOptions, optionalCallback?: { (err: Error, credentials: ApplicationTokenCredentials): void }): void | Promise;
+export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options?: AzureTokenCredentialsOptions, optionalCallback?: { (err: Error, credentials: ApplicationTokenCredentials): void }): void | Promise<ApplicationTokenCredentials>;

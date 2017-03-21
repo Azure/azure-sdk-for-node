@@ -156,6 +156,12 @@ export interface UrlParameterValue {
  *
  * @property {object|string|boolean|array|number|null|undefined} [body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
  *
+ * @property {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
+ *
+ * @property {object} [options.serializationMapper] - Provides information on how to serialize the request body.
+ * 
+ * @property {object} [options.deserializationMapper] - Provides information on how to deserialize the response body.
+ * 
  * @property {boolean} [disableJsonStringifyOnBody] - Indicates whether this method should JSON.stringify() the request body. Default value: false.
  *
  * @property {boolean} [bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).

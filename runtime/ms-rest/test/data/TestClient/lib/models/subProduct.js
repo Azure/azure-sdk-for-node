@@ -19,61 +19,64 @@
  * @member {string} [string]
  * 
  */
-function SubProduct(parameters) {}
+class SubProduct {
+  constructor(parameters) {
+  }
 
 
-/**
- * Metadata of SubProduct
- *
- * @returns {object} metadata of the SubProduct
- *
- */
-SubProduct.prototype.mapper = function () {
-  return {
-    type: {
-      name : 'Composite',
-      className: 'SubProduct',
-      modelProperties: {
-        subId : {
-          serializedName: 'subId',
-          required: true,
-          type : {
-            name: 'Number'
-          }
-        },
-        subName : {
-          serializedName: 'subName',
-          required: true,
-          type : {
-            name: 'String'
-          }
-        },
-        provisioningState : {
-          serializedName: 'provisioningState',
-          required: false,
-          type : {
-            name: 'Enum',
-            allowedValues: ['Creating', 'Failed', 'Succeeded']
-          }
-        },
-        makeTime : {
-          serializedName: 'makeTime',
-          required: false,
-          type : {
-            name: 'DateTime'
-          }
-        },
-        invoiceInfo : {
-          serializedName: 'invoiceInfo',
-          required: false,
-          type : {
-            name: 'Composite',
-            className: 'Invoice'
+  /**
+   * Metadata of SubProduct
+   *
+   * @returns {object} metadata of the SubProduct
+   *
+   */
+  mapper() {
+    return {
+      type: {
+        name: 'Composite',
+        className: 'SubProduct',
+        modelProperties: {
+          subId: {
+            serializedName: 'subId',
+            required: true,
+            type: {
+              name: 'Number'
+            }
+          },
+          subName: {
+            serializedName: 'subName',
+            required: true,
+            type: {
+              name: 'String'
+            }
+          },
+          provisioningState: {
+            serializedName: 'provisioningState',
+            required: false,
+            type: {
+              name: 'Enum',
+              allowedValues: ['Creating', 'Failed', 'Succeeded']
+            }
+          },
+          makeTime: {
+            serializedName: 'makeTime',
+            required: false,
+            type: {
+              name: 'DateTime'
+            }
+          },
+          invoiceInfo: {
+            serializedName: 'invoiceInfo',
+            required: false,
+            type: {
+              name: 'Composite',
+              className: 'Invoice'
+            }
           }
         }
       }
-    }
-  };
-};
+    };
+  }
+}
 
 module.exports = SubProduct;

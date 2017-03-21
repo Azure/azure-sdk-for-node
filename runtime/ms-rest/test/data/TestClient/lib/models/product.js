@@ -19,89 +19,90 @@
  * @member {string} [string]
  * 
  */
-function Product() {}
+class Product {
+  constructor() { }
+  
+  /**
+   * Metadata of Product
+   *
+   * @returns {object} metadata of the Product
+   *
+   */
+  mapper() {
+    return {
+      type: {
+        name: 'Composite',
+        className: 'Product',
+        modelProperties: {
+          id: {
+            serializedName: 'id',
+            constraints: {
 
-
-/**
- * Metadata of Product
- *
- * @returns {object} metadata of the Product
- *
- */
-Product.prototype.mapper = function () {
-  return {
-    type: {
-      name : 'Composite',
-      className: 'Product',
-      modelProperties: {
-        id : {
-          serializedName: 'id',
-          constraints: {
-          
+            },
+            required: true,
+            type: {
+              name: 'Number'
+            }
           },
-          required: true,
-          type : {
-            name: 'Number'
-          }
-        },
-        name : {
-          serializedName: 'name',
-          required: true,
-          type : {
-            name: 'String'
-          }
-        },
-        provisioningState : {
-          serializedName: 'properties.provisioningState',
-          required: false,
-          type : {
-            name: 'Enum',
-            allowedValues: ['Creating', 'Failed', 'Succeeded']
-          }
-        },
-        tags : {
-          serializedName: 'tags',
-          required: false,
-          type : {
-            name: 'Dictionary',
-            value : {
-              type: {
-                name: 'String'
+          name: {
+            serializedName: 'name',
+            required: true,
+            type: {
+              name: 'String'
+            }
+          },
+          provisioningState: {
+            serializedName: 'properties.provisioningState',
+            required: false,
+            type: {
+              name: 'Enum',
+              allowedValues: ['Creating', 'Failed', 'Succeeded']
+            }
+          },
+          tags: {
+            serializedName: 'tags',
+            required: false,
+            type: {
+              name: 'Dictionary',
+              value: {
+                type: {
+                  name: 'String'
+                }
               }
             }
-          }
-        },
-        dispatchTime : {
-          serializedName: 'dispatchTime',
-          required: false,
-          type : {
-            name: 'DateTime'
-          }
-        },
-        invoiceInfo : {
-          serializedName: 'invoiceInfo',
-          required: false,
-          type : {
-            name: 'Composite',
-            className: 'Invoice'
-          }
-        },
-        subProducts : {
-          serializedName: 'subProducts',
-          required: false,
-          type : {
-            name: 'Sequence',
-            element: {
-              type: {
-                name: 'Composite',
-                className: 'SubProduct'
+          },
+          dispatchTime: {
+            serializedName: 'dispatchTime',
+            required: false,
+            type: {
+              name: 'DateTime'
+            }
+          },
+          invoiceInfo: {
+            serializedName: 'invoiceInfo',
+            required: false,
+            type: {
+              name: 'Composite',
+              className: 'Invoice'
+            }
+          },
+          subProducts: {
+            serializedName: 'subProducts',
+            required: false,
+            type: {
+              name: 'Sequence',
+              element: {
+                type: {
+                  name: 'Composite',
+                  className: 'SubProduct'
+                }
               }
             }
           }
         }
       }
-    }
-  };
-};
+    };
+  }
+}
 
 module.exports = Product;

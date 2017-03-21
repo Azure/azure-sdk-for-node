@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 'use strict';
 
-const util = require('util');
 const msRest = require('ms-rest');
 const LroStates = require('./constants').LongRunningOperationStates;
 
@@ -34,8 +33,8 @@ class PollingState {
         this.resource = resultOfInitialRequest.body;
       }
     } catch (error) {
-      let deserializationError = new Error(util.format('Error "%s" occurred in parsing the responseBody ' +
-        'while creating the PollingState for Long Running Operation- "%s"', error, resultOfInitialRequest.body));
+      let deserializationError = new Error(`Error "${error}" occurred in parsing the responseBody ' +
+        'while creating the PollingState for Long Running Operation- "${resultOfInitialRequest.body}"`);
       deserializationError.request = resultOfInitialRequest.request;
       deserializationError.response = resultOfInitialRequest.response;
       throw deserializationError;
@@ -134,20 +133,20 @@ class PollingState {
         parsedResponse = JSON.parse(this.response.body);
       }
     } catch (err) {
-      error.message = util.format('Error "%s" occurred while deserializing the error ' +
-        'message "%s" for long running operation.', err.message, this.response.body);
+      error.message = `Error "${err.message}" occurred while deserializing the error ` +
+        `message "${this.response.body}" for long running operation.`;
       return error;
     }
 
     if (err && err.message) {
-      errMsg = util.format('Long running operation failed with error: \'%s\'.', err.message);
+      errMsg = `Long running operation failed with error: "${err.message}".`;
     } else {
-      errMsg = util.format('Long running operation failed with status: \'%s\'.', this.status);
+      errMsg = `Long running operation failed with status: "${this.status}".`;
     }
 
     if (parsedResponse) {
       if (parsedResponse.error && parsedResponse.error.message) {
-        errMsg = util.format('Long running operation failed with error: \'%s\'.', parsedResponse.error.message);
+        errMsg = 'Long running operation failed with error: "${parsedResponse.error.message}".';
       }
       if (parsedResponse.error && parsedResponse.error.code) {
         errCode = parsedResponse.error.code;

@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 'use strict';
 
-const util = require('util');
 const async = require('async');
 const msRest = require('ms-rest');
 const PollingState = require('./pollingState');
@@ -57,7 +56,7 @@ class AzureServiceClient extends msRest.ServiceClient {
       this.longRunningOperationRetryTimeout = options.longRunningOperationRetryTimeout;
     }
 
-    this.addUserAgentInfo(util.format('%s/%s', moduleName, moduleVersion));
+    this.addUserAgentInfo(`${moduleName}/${moduleVersion}`);
   }
 
   /**
@@ -116,9 +115,8 @@ class AzureServiceClient extends msRest.ServiceClient {
     let initialRequestMethod = resultOfInitialRequest.request.method;
 
     if (this._checkResponseStatusCodeFailed(resultOfInitialRequest)) {
-      return callback(new Error(util.format('Unexpected polling status code from long running operation \'%s\' for method \'%s\'',
-        resultOfInitialRequest.response.statusCode,
-        initialRequestMethod)));
+      return callback(new Error(`Unexpected polling status code from long running operation ` + 
+      `"${resultOfInitialRequest.response.statusCode}" for method "${initialRequestMethod}"`));
     }
 
     let pollingState = null;
@@ -234,7 +232,7 @@ class AzureServiceClient extends msRest.ServiceClient {
 
         pollingState.error = {
           code: pollingState.Status,
-          message: util.format('Long running operation failed with status \'%s\'.', pollingState.status)
+          message: `Long running operation failed with status "${pollingState.status}".`
         };
         pollingState.resource = result.body;
       } else {
@@ -265,7 +263,7 @@ class AzureServiceClient extends msRest.ServiceClient {
       //we might not throw an error, but initialize here just in case.
       pollingState.error = {
         code: pollingState.status,
-        message: util.format('Long running operation failed with status \'%s\'.', pollingState.status)
+        message: `Long running operation failed with status "${pollingState.status}".`
       };
 
       pollingState.updateResponse(result.response);
@@ -309,8 +307,8 @@ class AzureServiceClient extends msRest.ServiceClient {
       }
       let statusCode = response.statusCode;
       if (statusCode !== 200 && statusCode !== 201 && statusCode !== 202 && statusCode !== 204) {
-        let error = new Error(util.format('Invalid status code with response body "%s" occurred ' +
-          'when polling for operation status.', responseBody));
+        let error = new Error(`Invalid status code with response body "${responseBody}" occurred ' +
+          'when polling for operation status.`);
         error.statusCode = response.statusCode;
         error.request = msRest.stripRequest(httpRequest);
         error.response = msRest.stripResponse(response);
@@ -319,7 +317,7 @@ class AzureServiceClient extends msRest.ServiceClient {
           error.body = JSON.parse(responseBody);
 
         } catch (badResponse) {
-          error.message += util.format(' Could not deserialize error response body - "%s" -.', responseBody);
+          error.message += ` Could not deserialize error response body - "${responseBody}" -.`;
           error.body = responseBody;
         }
 
@@ -334,8 +332,8 @@ class AzureServiceClient extends msRest.ServiceClient {
         try {
           result.body = JSON.parse(responseBody);
         } catch (deserializationError) {
-          let parseError = new Error(util.format('Error "%s" occurred in deserializing the response body - "%s" -' +
-            ' when polling for operation status.', deserializationError, responseBody));
+          let parseError = new Error(`Error "${JSON.stringify(deserializationError, null, 2)}" occurred in deserializing the response body - "${responseBody}" -` +
+            ` when polling for operation status.`);
           parseError.request = msRest.stripRequest(httpRequest);
           parseError.response = msRest.stripResponse(response);
           parseError.body = responseBody;
