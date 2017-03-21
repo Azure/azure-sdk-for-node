@@ -81,6 +81,11 @@ export interface Endpoints {
      * for the parent profile to be considered available. Only applicable to
      * endpoint of type 'NestedEndpoints'.
      * 
+     * @param {array} [parameters.geoMapping] Gets or sets the list of
+     * countries/regions mapped to this endpoint when using the ‘Geographic’
+     * traffic routing method. Please consult Traffic Manager Geographic
+     * documentation for a full list of accepted values.
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -176,6 +181,11 @@ export interface Endpoints {
      * for the parent profile to be considered available. Only applicable to
      * endpoint of type 'NestedEndpoints'.
      * 
+     * @param {array} [parameters.geoMapping] Gets or sets the list of
+     * countries/regions mapped to this endpoint when using the ‘Geographic’
+     * traffic routing method. Please consult Traffic Manager Geographic
+     * documentation for a full list of accepted values.
+     * 
      * @param {object} [options] Optional Parameters.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -209,8 +219,8 @@ export interface Endpoints {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeleteOperationResult>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, callback: ServiceCallback<models.DeleteOperationResult>): void;
 }
 
 /**
@@ -256,8 +266,8 @@ export interface Profiles {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    listAllInResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
-    listAllInResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByInResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByInResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
 
     /**
      * Lists all Traffic Manager profiles within a subscription.
@@ -308,7 +318,7 @@ export interface Profiles {
      * 
      * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
      * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', or 'Priority'.
+     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
      * 
      * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
      * Traffic Manager profile.
@@ -378,8 +388,8 @@ export interface Profiles {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeleteOperationResult>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.DeleteOperationResult>): void;
 
     /**
      * Update a Traffic Manager profile.
@@ -397,7 +407,7 @@ export interface Profiles {
      * 
      * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
      * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', or 'Priority'.
+     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
      * 
      * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
      * Traffic Manager profile.
@@ -449,4 +459,28 @@ export interface Profiles {
      */
     update(resourceGroupName: string, profileName: string, parameters: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
     update(resourceGroupName: string, profileName: string, parameters: models.Profile, callback: ServiceCallback<models.Profile>): void;
+}
+
+/**
+ * @class
+ * GeographicHierarchies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the TrafficManagerManagementClient.
+ */
+export interface GeographicHierarchies {
+
+    /**
+     * Gets the default Geographic Hierarchy used by the Geographic traffic
+     * routing method.
+     *
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getDefault(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrafficManagerGeographicHierarchy>): void;
+    getDefault(callback: ServiceCallback<models.TrafficManagerGeographicHierarchy>): void;
 }
