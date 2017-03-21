@@ -241,15 +241,18 @@ export class BaseResource {
  *
  * @param {InteractiveLoginOptions} [options] The parameter options.
  *
- * @param {function} callback
+ * @param {function} [optionalCallback] The optional callback.
  *
- * @returns {function} callback(err, credentials)
+ * @returns {function} optionalCallback(err, credentials) | Promise If a callback was passed as the last parameter then it returns the callback else returns a Promise.
  *
+ * optionalCallback(err, credentials)
  *                      {Error}  [err]                           - The Error object if an error occurred, null otherwise.
- *
  *                      {DeviceTokenCredentials} [credentials]   - The DeviceTokenCredentials object
+ *     {Promise} A promise is returned.
+ *             @resolve {DeviceTokenCredentials} The DeviceTokenCredentials object.
+ *             @reject {Error} - The error object.
  */
-export function interactiveLogin(options: InteractiveLoginOptions, callback: { (err: Error, credentials: DeviceTokenCredentials): void }): void;
+export function interactiveLogin(options?: InteractiveLoginOptions, optionalCallback?: { (err: Error, credentials: DeviceTokenCredentials): void }): void | Promise;
 
 /**
  * Provides a UserTokenCredentials object. This method is applicable only for organizational ids that are not 2FA enabled.
@@ -261,15 +264,18 @@ export function interactiveLogin(options: InteractiveLoginOptions, callback: { (
  *
  * @param {LoginWithUsernamePasswordOptions} [options] The parameter options.
  *
- * @param {function} callback
+ * @param {function} [optionalCallback] The optional callback.
  *
- * @returns {function} callback(err, credentials)
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
  *
+ *     optionalCallback(err, credentials)
  *                      {Error}  [err]                         - The Error object if an error occurred, null otherwise.
- *
  *                      {UserTokenCredentials} [credentials]   - The UserTokenCredentials object
+ *     {Promise} A promise is returned.
+ *             @resolve {UserTokenCredentials} The UserTokenCredentials object.
+ *             @reject {Error} - The error object.
  */
-export function loginWithUsernamePassword(username: string, password: string, options: LoginWithUsernamePasswordOptions, callback: { (err: Error, credentials: UserTokenCredentials): void }): void;
+export function loginWithUsernamePassword(username: string, password: string, options?: LoginWithUsernamePasswordOptions, optionalCallback?: { (err: Error, credentials: UserTokenCredentials): void }): void | Promise;
 
 
 /**
@@ -285,12 +291,15 @@ export function loginWithUsernamePassword(username: string, password: string, op
  *
  * @param {AzureTokenCredentialsOptions} [options] The parameter options.
  *
- * @param {function} callback
+ * @param {function} [optionalCallback] The optional callback.
  *
- * @returns {function} callback(err, credentials)
+ * @returns {function} optionalCallback(err, credentials) | Promise If a callback was passed as the last parameter then it returns the callback else returns a Promise.
  *
+ * optionalCallback(err, credentials)
  *                      {Error}  [err]                                - The Error object if an error occurred, null otherwise.
- *
  *                      {ApplicationTokenCredentials} [credentials]   - The ApplicationTokenCredentials object
+ *     {Promise} A promise is returned.
+ *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
+ *             @reject {Error} - The error object.
  */
-export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options: AzureTokenCredentialsOptions, callback: { (err: Error, credentials: ApplicationTokenCredentials): void }): void;
+export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options?: AzureTokenCredentialsOptions, optionalCallback?: { (err: Error, credentials: ApplicationTokenCredentials): void }): void | Promise;

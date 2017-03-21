@@ -3,10 +3,10 @@
 
 'use strict';
 
-var util = require('util');
-var moment = require('moment');
-var stream = require('stream');
-var utils = require('./utils');
+const util = require('util');
+const moment = require('moment');
+const stream = require('stream');
+const utils = require('./utils');
 
 /**
  * Serializes the JSON Object. It serializes Buffer object to a 
@@ -27,14 +27,14 @@ exports.serializeObject = function (toSerialize) {
     return toSerialize.toISOString();
   }
   else if (Array.isArray(toSerialize)) {
-    var array = [];
-    for (var i = 0; i < toSerialize.length; i++) {
+    let array = [];
+    for (let i = 0; i < toSerialize.length; i++) {
       array.push(exports.serializeObject.call(this, toSerialize[i]));
     }
     return array;
   } else if (typeof toSerialize === 'object') {
-    var dictionary = {};
-    for (var property in toSerialize) {
+    let dictionary = {};
+    for (let property in toSerialize) {
       dictionary[property] = exports.serializeObject.call(this, toSerialize[property]);
     }
     return dictionary;
@@ -54,8 +54,8 @@ exports.serializeObject = function (toSerialize) {
  * @returns {object|string|Array|number|boolean|Date|stream} A valid serialized Javascript object
  */
 exports.serialize = function (mapper, object, objectName) {
-  var payload = {};
-  var mapperType = mapper.type.name;
+  let payload = {};
+  let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
   //Throw if required and object is null or undefined
@@ -164,8 +164,8 @@ function serializeSequenceType(mapper, object, objectName) {
     throw new Error(util.format('\'element\' metadata for an Array must be defined in the ' + 
       'mapper and it must of type \'object\' in %s', objectName));
   }
-  var tempArray = [];
-  for (var i = 0; i < object.length; i++) {
+  let tempArray = [];
+  for (let i = 0; i < object.length; i++) {
     tempArray[i] = exports.serialize.call(this, mapper.type.element, object[i], objectName);
   }
   return tempArray;
@@ -180,8 +180,8 @@ function serializeDictionaryType(mapper, object, objectName) {
     throw new Error(util.format('\'value\' metadata for a Dictionary must be defined in the ' + 
       'mapper and it must of type \'object\' in %s', objectName));
   }
-  var tempDictionary = {};
-  for (var key in object) {
+  let tempDictionary = {};
+  for (let key in object) {
     if (object.hasOwnProperty(key)) {
       tempDictionary[key] = exports.serialize.call(this, mapper.type.value, object[key], objectName);
     }
@@ -196,12 +196,12 @@ function serializeCompositeType(mapper, object, objectName) {
     mapper = getPolymorphicMapper.call(this, mapper, object, objectName, 'serialize');
   }
   
-  var payload = {};
-  var modelMapper = {};
-  var mapperType = mapper.type.name;
+  let payload = {};
+  let modelMapper = {};
+  let mapperType = mapper.type.name;
   if (mapperType === 'Sequence') payload = [];
   if (object !== null && object !== undefined) {
-    var modelProps = mapper.type.modelProperties;
+    let modelProps = mapper.type.modelProperties;
     if (!modelProps) {
       if (!mapper.type.className) {
         throw new Error(util.format('Class name for model \'%s\' is not provided in the mapper \'%s\'',
@@ -222,14 +222,14 @@ function serializeCompositeType(mapper, object, objectName) {
       }
     }
     
-    for (var key in modelProps) {
+    for (let key in modelProps) {
       if (modelProps.hasOwnProperty(key)) {
-        var paths = splitSerializeName(modelProps[key].serializedName);
-        var propName = paths.pop();
+        let paths = splitSerializeName(modelProps[key].serializedName);
+        let propName = paths.pop();
 
-        var parentObject = payload;
+        let parentObject = payload;
         paths.forEach(function(pathName) {
-           var childObject = parentObject[pathName];
+           let childObject = parentObject[pathName];
            if ((childObject === null || childObject === undefined) && (object[key] !== null && object[key] !== undefined)) {
             parentObject[pathName] = {};
            }
@@ -249,10 +249,10 @@ function serializeCompositeType(mapper, object, objectName) {
         //serialize the property if it is present in the provided object instance
         if (((parentObject !== null && parentObject !== undefined) && (modelProps[key].defaultValue !== null && modelProps[key].defaultValue !== undefined)) || 
             (object[key] !== null && object[key] !== undefined)) {
-          var propertyObjectName = objectName;
+          let propertyObjectName = objectName;
           if (modelProps[key].serializedName !== '') propertyObjectName = objectName + '.' + modelProps[key].serializedName;
-          var propertyMapper = modelProps[key];
-          var serializedValue = exports.serialize.call(this, propertyMapper, object[key], propertyObjectName);
+          let propertyMapper = modelProps[key];
+          let serializedValue = exports.serialize.call(this, propertyMapper, object[key], propertyObjectName);
           parentObject[propName] = serializedValue;
         }
       }
@@ -297,7 +297,7 @@ function serializeEnumType(objectName, allowedValues, value) {
   if (!allowedValues) {
     throw new Error(util.format('Please provide a set of allowedValues to validate %s as an Enum Type.', objectName));
   }
-  var isPresent = allowedValues.some(function (item) {
+  let isPresent = allowedValues.some(function (item) {
     if (typeof item.valueOf() === 'string') {
       return item.toLowerCase() === value.toLowerCase();
     }
@@ -380,8 +380,8 @@ function serializeDateTypes(typeName, value, objectName) {
  */
 exports.deserialize = function (mapper, responseBody, objectName) {
   if (responseBody === null || responseBody === undefined) return responseBody;
-  var payload = {};
-  var mapperType = mapper.type.name;
+  let payload = {};
+  let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
   
@@ -417,8 +417,8 @@ function deserializeSequenceType(mapper, responseBody, objectName) {
       'mapper and it must of type \'object\' in %s', objectName));
   }
   if (responseBody) {
-    var tempArray = [];
-    for (var i = 0; i < responseBody.length; i++) {
+    let tempArray = [];
+    for (let i = 0; i < responseBody.length; i++) {
       tempArray[i] = exports.deserialize.call(this, mapper.type.element, responseBody[i], objectName);
     }
     return tempArray;
@@ -433,8 +433,8 @@ function deserializeDictionaryType(mapper, responseBody, objectName) {
       'mapper and it must of type \'object\' in %s', objectName));
   }
   if (responseBody) {
-    var tempDictionary = {};
-    for (var key in responseBody) {
+    let tempDictionary = {};
+    for (let key in responseBody) {
       if (responseBody.hasOwnProperty(key)) {
         tempDictionary[key] = exports.deserialize.call(this, mapper.type.value, responseBody[key], objectName);
       }
@@ -451,12 +451,12 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
     mapper = getPolymorphicMapper.call(this, mapper, responseBody, objectName, 'deserialize');
   }
   
-  var instance = {};
-  var modelMapper = {};
-  var mapperType = mapper.type.name;
+  let instance = {};
+  let modelMapper = {};
+  let mapperType = mapper.type.name;
   if (mapperType === 'Sequence') instance = [];
   if (responseBody !== null && responseBody !== undefined) {
-    var modelProps = mapper.type.modelProperties;
+    let modelProps = mapper.type.modelProperties;
     if (!modelProps) {
       if (!mapper.type.className) {
         throw new Error(util.format('Class name for model \'%s\' is not provided in the mapper \'%s\'',
@@ -477,26 +477,26 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
       }
     }
     
-    for (var key in modelProps) {
+    for (let key in modelProps) {
       if (modelProps.hasOwnProperty(key)) {
 
-        var jpath = ['responseBody'];
-        var paths = splitSerializeName(modelProps[key].serializedName);
+        let jpath = ['responseBody'];
+        let paths = splitSerializeName(modelProps[key].serializedName);
         paths.forEach(function(item){
             jpath.push(util.format('[\'%s\']', item));
         });
         //deserialize the property if it is present in the provided responseBody instance
-        var propertyInstance;
+        let propertyInstance;
         try {
           /*jslint evil: true */
           propertyInstance = eval(jpath.join(''));
         } catch (err) {
           continue;
         }
-        var propertyObjectName = objectName;
+        let propertyObjectName = objectName;
         if (modelProps[key].serializedName !== '') propertyObjectName = objectName + '.' + modelProps[key].serializedName;
-        var propertyMapper = modelProps[key];
-        var serializedValue;
+        let propertyMapper = modelProps[key];
+        let serializedValue;
         //paging
         if (util.isArray(responseBody[key]) && modelProps[key].serializedName === '') {
           propertyInstance = responseBody[key];
@@ -513,9 +513,9 @@ function deserializeCompositeType(mapper, responseBody, objectName) {
 }
 
 function splitSerializeName(prop) {
-  var classes = []; 
-  var partialclass = ''; 
-  var subwords = prop.split('.');
+  let classes = []; 
+  let partialclass = ''; 
+  let subwords = prop.split('.');
 
   subwords.forEach(function(item) {
     if (item.charAt(item.length - 1) === '\\') {
@@ -559,7 +559,7 @@ function getPolymorphicMapper(mapper, object, objectName, mode) {
 function _getPolymorphicMapperObjectVersion(mapper, object, objectName, mode) {
   /*jshint validthis: true */
   //check for polymorphic discriminator
-  var polymorphicPropertyName = '';
+  let polymorphicPropertyName = '';
   if (mode === 'serialize') {
     polymorphicPropertyName = 'clientName';
   } else if (mode === 'deserialize') {
@@ -581,7 +581,7 @@ function _getPolymorphicMapperObjectVersion(mapper, object, objectName, mode) {
       throw new Error(util.format('No discriminator field \'%s\' was found in \'%s\'.', 
         mapper.type.polymorphicDiscriminator[polymorphicPropertyName], objectName));
     }
-    var indexDiscriminator = null;
+    let indexDiscriminator = null;
     if (object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]] === mapper.type.uberParent) {
       indexDiscriminator = object[mapper.type.polymorphicDiscriminator[polymorphicPropertyName]];
     } else {
@@ -612,7 +612,7 @@ function _getPolymorphicMapperStringVersion(mapper, object, objectName) {
       throw new Error(util.format('No discriminator field \'%s\' was found in \'%s\'.', 
         mapper.type.polymorphicDiscriminator, objectName));
     }
-    var indexDiscriminator = null;
+    let indexDiscriminator = null;
     if (object[mapper.type.polymorphicDiscriminator] === mapper.type.uberParent) {
       indexDiscriminator = object[mapper.type.polymorphicDiscriminator];
     } else {
@@ -637,13 +637,13 @@ function bufferToBase64Url(buffer) {
     throw new Error('Please provide an input of type Buffer for converting to Base64Url.');
   }
   // Buffer to Base64.
-  var str = buffer.toString('base64');
+  let str = buffer.toString('base64');
   // Base64 to Base64Url.
   return trimEnd(str, '=').replace(/\+/g, '-').replace(/\//g, '_');
 }
 
 function trimEnd(str, ch) {
-  var len = str.length;
+  let len = str.length;
   while ((len - 1) >= 0 && str[len - 1] === ch) {
     --len;
   }

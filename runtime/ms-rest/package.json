@@ -10,11 +10,11 @@
   "tags": ["node", "microsoft", "autorest", "clientruntime"],
   "keywords": ["node", "microsoft", "autorest", "clientruntime"],
   "main": "./lib/msRest.js",
-  "typings": "./lib/index.d.ts",
+  "types": "./index.d.ts",
   "license": "MIT",
   "dependencies": {
     "tunnel": "~0.0.2",
-    "request": "~2.74.0",
+    "request": "^2.74.0",
     "duplexer": "~0.1.1",
     "through": "~2.3.4",
     "moment": "^2.14.1",

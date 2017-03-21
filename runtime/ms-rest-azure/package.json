@@ -10,7 +10,7 @@
   "tags": [ "node", "microsoft", "autorest", "azure", "clientruntime" ],
   "keywords": [ "node", "microsoft", "autorest", "azure", "clientruntime" ],
   "main": "./lib/msRestAzure.js",
-  "typings": "./lib/index.d.ts",
+  "types": "./index.d.ts",
   "license": "MIT",
   "dependencies": {
     "async": "0.2.7",

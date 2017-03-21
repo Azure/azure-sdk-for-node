@@ -1,13 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
-var util = require('util');
-var msrest = require('ms-rest');
-var adal = require('adal-node');
-var Constants = msrest.Constants;
-
-var azureConstants = require('../constants');
-var AzureEnvironment = require('../azureEnvironment');
+'use strict';
+const msrest = require('ms-rest');
+const adal = require('adal-node');
+const Constants = msrest.Constants;
+const azureConstants = require('../constants');
+const AzureEnvironment = require('../azureEnvironment');
 
 /**
 * Creates a new DeviceTokenCredentials object that gets a new access token using userCodeInfo (contains user_code, device_code)
@@ -29,80 +28,81 @@ var AzureEnvironment = require('../azureEnvironment');
 * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
 * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
 */
-function DeviceTokenCredentials(options) {
-  if (!options) {
-    options = {};
-  }
-
-  if (!options.username) {
-    options.username = 'user@example.com';
-  }
-
-  if (!options.environment) {
-    options.environment = AzureEnvironment.Azure;
-  }
-
-  if (!options.domain) {
-    options.domain = azureConstants.AAD_COMMON_TENANT;
-  }
-
-  if (!options.clientId) {
-    options.clientId = azureConstants.DEFAULT_ADAL_CLIENT_ID;
-  }
-  
-  if (!options.authorizationScheme) {
-    options.authorizationScheme = Constants.HeaderConstants.AUTHORIZATION_SCHEME;
-  }
-
-  if (!options.tokenCache) {
-    options.tokenCache = new adal.MemoryCache();
-  }
-
-  if (options.tokenAudience) {
-    if (options.tokenAudience.toLowerCase() !== 'graph') {
-      throw new Error('Valid value for \'tokenAudience\' is \'graph\'.');
+class DeviceTokenCredentials {
+  constructor(options) {
+    if (!options) {
+      options = {};
     }
-    if (options.domain.toLowerCase() === 'common') {
-      throw new Error('If the tokenAudience is specified as \'graph\' then \'domain\' cannot be the default \'commmon\' tenant. ' + 
-        'It must be the actual tenant (preferrably a string in a guid format).');
+
+    if (!options.username) {
+      options.username = 'user@example.com';
     }
+
+    if (!options.environment) {
+      options.environment = AzureEnvironment.Azure;
+    }
+
+    if (!options.domain) {
+      options.domain = azureConstants.AAD_COMMON_TENANT;
+    }
+
+    if (!options.clientId) {
+      options.clientId = azureConstants.DEFAULT_ADAL_CLIENT_ID;
+    }
+
+    if (!options.authorizationScheme) {
+      options.authorizationScheme = Constants.HeaderConstants.AUTHORIZATION_SCHEME;
+    }
+
+    if (!options.tokenCache) {
+      options.tokenCache = new adal.MemoryCache();
+    }
+
+    if (options.tokenAudience) {
+      if (options.tokenAudience.toLowerCase() !== 'graph') {
+        throw new Error('Valid value for \'tokenAudience\' is \'graph\'.');
+      }
+      if (options.domain.toLowerCase() === 'common') {
+        throw new Error('If the tokenAudience is specified as \'graph\' then \'domain\' cannot be the default \'commmon\' tenant. ' +
+          'It must be the actual tenant (preferrably a string in a guid format).');
+      }
+    }
+
+    this.tokenAudience = options.tokenAudience;
+    this.username = options.username;
+    this.environment = options.environment;
+    this.domain = options.domain;
+    this.clientId = options.clientId;
+    this.authorizationScheme = options.authorizationScheme;
+    this.tokenCache = options.tokenCache;
+    var authorityUrl = this.environment.activeDirectoryEndpointUrl + this.domain;
+    this.context = new adal.AuthenticationContext(authorityUrl, this.environment.validateAuthority, this.tokenCache);
   }
 
-  this.tokenAudience = options.tokenAudience;
-  this.username = options.username;
-  this.environment = options.environment;
-  this.domain = options.domain;
-  this.clientId = options.clientId;
-  this.authorizationScheme = options.authorizationScheme;
-  this.tokenCache = options.tokenCache;
-  var authorityUrl = this.environment.activeDirectoryEndpointUrl + this.domain;
-  this.context = new adal.AuthenticationContext(authorityUrl, this.environment.validateAuthority, this.tokenCache);
+  retrieveTokenFromCache(callback) {
+    var self = this;
+    var resource = self.environment.activeDirectoryResourceId;
+    if (self.tokenAudience && self.tokenAudience.toLowerCase() === 'graph') resource = self.environment.activeDirectoryGraphResourceId;
+    self.context.acquireToken(resource, self.username, self.clientId, function (err, result) {
+      if (err) return callback(err);
+      return callback(null, result.tokenType, result.accessToken);
+    });
+  }
+
+  /**
+  * Signs a request with the Authentication header.
+  *
+  * @param {webResource} The WebResource to be signed.
+  * @param {function(error)}  callback  The callback function.
+  * @return {undefined}
+  */
+  signRequest(webResource, callback) {
+    return this.retrieveTokenFromCache(function (err, scheme, token) {
+      if (err) return callback(err);
+      webResource.headers[Constants.HeaderConstants.AUTHORIZATION] = `${scheme} ${token}`;
+      return callback(null);
+    });
+  }
 }
-
-DeviceTokenCredentials.prototype.retrieveTokenFromCache = function (callback) {
-  var self = this;
-  var resource = self.environment.activeDirectoryResourceId;
-  if (self.tokenAudience && self.tokenAudience.toLowerCase() === 'graph') resource = self.environment.activeDirectoryGraphResourceId;
-  self.context.acquireToken(resource, self.username, self.clientId, function (err, result) {
-    if (err) return callback(err);
-    return callback(null, result.tokenType, result.accessToken);
-  });
-};
-
-
-/**
-* Signs a request with the Authentication header.
-*
-* @param {webResource} The WebResource to be signed.
-* @param {function(error)}  callback  The callback function.
-* @return {undefined}
-*/
-DeviceTokenCredentials.prototype.signRequest = function (webResource, callback) {
-  return this.retrieveTokenFromCache(function(err, scheme, token) {
-    if (err) return callback(err);
-    webResource.headers[Constants.HeaderConstants.AUTHORIZATION] = util.format('%s %s', scheme, token);
-    return callback(null);
-  });
-};
 
 module.exports = DeviceTokenCredentials;

@@ -8,46 +8,47 @@
  * Initializes a new instance of the Resource class.
  * @constructor
  */
-function BaseResource() {
-}
+class BaseResource {
+  constructor() { }
 
-/**
- * Defines the metadata of BaseResource
- *
- * @returns {object} metadata of BaseResource
- *
- */
-BaseResource.prototype.mapper = function () {
-  return {
-    required: false,
-    serializedName: 'BaseResource',
-    type: {
-      name: 'Composite',
-      className: 'BaseResource',
-      modelProperties: {
+  /**
+   * Defines the metadata of BaseResource
+   *
+   * @returns {object} metadata of BaseResource
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'BaseResource',
+      type: {
+        name: 'Composite',
+        className: 'BaseResource',
+        modelProperties: {
+        }
       }
-    }
-  };
-};
+    };
+  }
 
-/**
- * Validate the payload against the Resource schema
- *
- * @param {JSON} payload
- *
- */
-BaseResource.prototype.serialize = function () {
-  return {};
-};
+  /**
+   * Validate the payload against the Resource schema
+   *
+   * @param {JSON} payload
+   *
+   */
+  serialize() {
+    return {};
+  }
 
-/**
- * Deserialize the instance to Resource schema
- *
- * @param {JSON} instance
- *
- */
-BaseResource.prototype.deserialize = function (instance) {
-  return instance;
-};
+  /**
+   * Deserialize the instance to Resource schema
+   *
+   * @param {JSON} instance
+   *
+   */
+  deserialize(instance) {
+    return instance;
+  }
+}
 
 module.exports = BaseResource;
