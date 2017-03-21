@@ -5,7 +5,6 @@
 const utils = require('./utils');
 const Constants = require('./constants');
 const util = require('util');
-const HeaderConstants = Constants.HeaderConstants;
 const HttpConstants = Constants.HttpConstants;
 const HttpVerbs = HttpConstants.HttpVerbs;
 

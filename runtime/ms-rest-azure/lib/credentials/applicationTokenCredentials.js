@@ -8,6 +8,7 @@ const Constants = msrest.Constants;
 const AzureEnvironment = require('../azureEnvironment');
 
   function _removeInvalidEntry(query, callback) {
+    /* jshint validthis: true */
     let self = this;
     self.tokenCache.find(query, function (err, entries) {
       if (err) return callback(err);
@@ -22,6 +23,7 @@ const AzureEnvironment = require('../azureEnvironment');
   function _retrieveTokenFromCache(callback) {
     //For service principal userId and clientId are the same thing. Since the token has _clientId property we shall 
     //retrieve token using it.
+    /* jshint validthis: true */
     let self = this;
     let resource = self.environment.activeDirectoryResourceId;
     if (self.tokenAudience && self.tokenAudience.toLowerCase() === 'graph') resource = self.environment.activeDirectoryGraphResourceId;
@@ -139,7 +141,7 @@ class ApplicationTokenCredentials {
         return callback(null, result);
       }
     });
-  };
+  }
 
   /**
   * Signs a request with the Authentication header.

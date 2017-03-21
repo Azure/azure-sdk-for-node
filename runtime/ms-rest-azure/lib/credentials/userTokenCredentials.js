@@ -2,13 +2,13 @@
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
 'use strict';
-const util = require('util');
 const msrest = require('ms-rest');
 const adal = require('adal-node');
 const Constants = msrest.Constants;
 const AzureEnvironment = require('../azureEnvironment');
 
 function _retrieveTokenFromCache(callback) {
+  /* jshint validthis: true */
   let resource = this.environment.activeDirectoryResourceId;
   if (this.tokenAudience && this.tokenAudience.toLowerCase() === 'graph') resource = this.environment.activeDirectoryGraphResourceId;
   this.context.acquireToken(resource, this.username, this.clientId, function (err, result) {

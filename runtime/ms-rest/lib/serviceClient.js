@@ -45,6 +45,7 @@ function _sendRequest(options, callback) {
     return callback(error);
   }
   //send request
+  /* jshint validthis: true */
   this.pipeline(httpRequest, function (err, response, responseBody) {
     if (responseBody === '') responseBody = null;
     let result = JSON.parse(responseBody);
@@ -73,7 +74,7 @@ function _loadEnvironmentProxyValue() {
   }
 
   return proxyUrl;
-};
+}
 
 /**
  * Sets the service host default proxy from the environment.
@@ -81,6 +82,7 @@ function _loadEnvironmentProxyValue() {
  * It is useful for enabling Fiddler trace
  */
 function _setDefaultProxy() {
+  /* jshint validthis: true */
   let proxyUrl = this._loadEnvironmentProxyValue();
   if (proxyUrl) {
     let parsedUrl = url.parse(proxyUrl);
@@ -266,8 +268,9 @@ class ServiceClient {
     }
     if (!optionalCallback) {
       return new Promise((resolve, reject) => {
-        self._sendRequest(options, (err, result, httpRequest, response) => {
-          err ? reject(err) : resolve(result);
+        self._sendRequest(options, (err, result) => {
+          if (err)  {reject(err); }
+          else { resolve(result); }
           return;
         });
       });
@@ -341,7 +344,8 @@ class ServiceClient {
       self._sendRequest(options, (err, result, request, response) => {
         let httpRes = new HttpOperationResponse(request, response);
         httpRes.body = result;
-        err ? reject(err) : resolve(httpRes);
+        if (err) {reject(err); } 
+        else { resolve(httpRes); }
         return;
       });
     });

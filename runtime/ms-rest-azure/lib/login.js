@@ -14,6 +14,7 @@ const SubscriptionClient = require('azure-arm-resource').SubscriptionClient;
 
 // It will create a DeviceTokenCredentials object by default
 function _createCredentials(parameters) {
+  /* jshint validthis: true */
   let options = {};
   options.environment = this.environment;
   options.domain = this.domain;
@@ -67,6 +68,7 @@ function buildTenantList(credentials, callback) {
 }
 
 function getSubscriptionsFromTenants(tenantList, callback) {
+  /* jshint validthis: true */
   let self = this;
   let subscriptions = [];
   let userType = 'user';
@@ -131,6 +133,7 @@ function _crossCheckUserNameWithToken(usernameFromMethodCall, userIdFromToken) {
 }
 
 function _interactive(options, callback) {
+  /* jshint validthis: true */
   if (!callback && typeof options === 'function') {
     callback = options;
     options = {};
@@ -254,8 +257,9 @@ exports.interactive = function interactive(options, optionalCallback) {
   }
   if (!optionalCallback) {
     return new Promise((resolve, reject) => {
-      _checkNameAvailability(options, (err, credentials, subscriptions) => {
-        err ? reject(err) : resolve(credentials);
+      _interactive(options, (err, credentials) => {
+        if (err)  { reject(err); }
+        else { resolve(credentials); }
         return;
       });
     });
@@ -342,8 +346,9 @@ exports.withUsernamePassword = function withUsernamePassword(username, password,
   }
   if (!optionalCallback) {
     return new Promise((resolve, reject) => {
-      _withUsernamePassword(username, password, options, (err, credentials, subscriptions) => {
-        err ? reject(err) : resolve(credentials);
+      _withUsernamePassword(username, password, options, (err, credentials) => {
+        if (err)  { reject(err); }
+        else { resolve(credentials); }
         return;
       });
     });
@@ -409,8 +414,9 @@ exports.withServicePrincipalSecret = function withServicePrincipalSecret(clientI
   }
   if (!optionalCallback) {
     return new Promise((resolve, reject) => {
-      _withServicePrincipalSecret(clientId, secret, domain, options, (err, credentials, subscriptions) => {
-        err ? reject(err) : resolve(credentials);
+      _withServicePrincipalSecret(clientId, secret, domain, options, (err, credentials) => {
+        if (err)  { reject(err); }
+        else { resolve(credentials); }
         return;
       });
     });
