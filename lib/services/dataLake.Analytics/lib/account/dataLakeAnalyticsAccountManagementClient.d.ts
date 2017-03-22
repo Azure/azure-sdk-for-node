@@ -58,7 +58,7 @@ declare class DataLakeAnalyticsAccountManagementClient {
     // Operation groups
     storageAccounts: operations.StorageAccounts;
     dataLakeStoreAccounts: operations.DataLakeStoreAccounts;
-    account: operations.Account;
+    accountOperations: operations.AccountOperations;
     }
 
 export = DataLakeAnalyticsAccountManagementClient;
