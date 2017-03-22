@@ -233,12 +233,19 @@ export interface UpdateStorageAccountParameters {
  * @member {number} [maxJobCount] the maximum supported jobs running under the
  * account at the same time.
  *
+ * @member {string} [newTier] the billing tier to use for next month. Possible
+ * values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ *
  */
 export interface DataLakeAnalyticsAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
   maxDegreeOfParallelism?: number;
   queryStoreRetention?: number;
   maxJobCount?: number;
+  newTier?: string;
 }
 
 /**
@@ -313,6 +320,18 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [endpoint] the full CName endpoint for this account.
  *
+ * @member {string} [newTier] the billing tier to use for next month. Possible
+ * values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ *
+ * @member {string} [currentTier] the billing tier in use for the current
+ * month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ *
  */
 export interface DataLakeAnalyticsAccount extends Resource {
   provisioningState?: string;
@@ -328,6 +347,8 @@ export interface DataLakeAnalyticsAccount extends Resource {
   creationTime?: Date;
   lastModifiedTime?: Date;
   endpoint?: string;
+  newTier?: string;
+  currentTier?: string;
 }
 
 /**
