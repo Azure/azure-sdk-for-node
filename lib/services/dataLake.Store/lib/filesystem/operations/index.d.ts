@@ -22,12 +22,14 @@ import * as models from '../models';
 export interface FileSystem {
 
     /**
-     * Appends to the specified file. This method supports multiple concurrent
-     * appends to the file. NOTE: ConcurrentAppend and normal (serial) Append
-     * CANNOT be used interchangeably; once a file has been appended to using
-     * either of these append options, it can only be appended to using that append
-     * option. ConcurrentAppend DOES NOT guarantee order and can result in
-     * duplicated data landing in the target file.
+     * Appends to the specified file, optionally first creating the file if it does
+     * not yet exist. This method supports multiple concurrent appends to the file.
+     * NOTE: The target must not contain data added by Create or normal (serial)
+     * Append. ConcurrentAppend and Append cannot be used interchangeably; once a
+     * target file has been modified using either of these append options, the
+     * other append option cannot be used on the target file. ConcurrentAppend does
+     * not guarantee order and can result in duplicated data landing in the target
+     * file.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
@@ -174,8 +176,8 @@ export interface FileSystem {
      * with '/') of the destination file resulting from the concatenation.
      *
      * @param {object} streamContents A list of Data Lake Store paths (starting
-     * with '/') of the source files. Must be in the format: sources=<comma
-     * separated list>
+     * with '/') of the source files. Must be a comma-separated path list in the
+     * format: sources=/file/path/1.txt,/file/path/2.txt,/file/path/lastfile.csv
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -271,12 +273,10 @@ export interface FileSystem {
     getFileStatus(accountName: string, getFilePath: string, callback: ServiceCallback<models.FileStatusResult>): void;
 
     /**
-     * Appends to the specified file. This method does not support multiple
-     * concurrent appends to the file. NOTE: Concurrent append and normal (serial)
-     * append CANNOT be used interchangeably. Once a file has been appended to
-     * using either append option, it can only be appended to using that append
-     * option. Use the ConcurrentAppend option if you would like support for
-     * concurrent appends.
+     * Appends to the specified file. NOTE: The target must not contain data added
+     * by ConcurrentAppend. ConcurrentAppend and Append cannot be used
+     * interchangeably; once a target file has been modified using either of these
+     * append options, the other append option cannot be used on the target file.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.
@@ -309,7 +309,8 @@ export interface FileSystem {
     append(accountName: string, directFilePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
 
     /**
-     * Creates a file with optionally specified content.
+     * Creates a file with optionally specified content. NOTE: If content is
+     * provided, the resulting file cannot be modified using ConcurrentAppend.
      *
      * @param {string} accountName The Azure Data Lake Store account to execute
      * filesystem operations on.

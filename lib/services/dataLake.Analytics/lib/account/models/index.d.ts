@@ -25,7 +25,7 @@ exports.CloudError = msRestAzure.CloudError;
  * @member {string} [type] Resource type
  *
  */
-export interface SubResource extends BaseResource {
+export interface SubResource {
   id?: string;
   name: string;
   type?: string;
@@ -167,6 +167,45 @@ export interface DataLakeAnalyticsAccountListDataLakeStoreResult {
 
 /**
  * @class
+ * Initializes a new instance of the OptionalSubResource class.
+ * @constructor
+ * The Resource model definition for a nested resource with no required
+ * properties.
+ *
+ * @member {string} [id] Resource Id
+ *
+ * @member {string} [name] Resource name
+ *
+ * @member {string} [type] Resource type
+ *
+ */
+export interface OptionalSubResource {
+  id?: string;
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FirewallRule class.
+ * @constructor
+ * Data Lake Analytics firewall rule information
+ *
+ * @member {string} startIpAddress the start IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ *
+ * @member {string} endIpAddress the end IP address for the firewall rule. This
+ * can be either ipv4 or ipv6. Start and End should be in the same protocol.
+ *
+ */
+export interface FirewallRule extends OptionalSubResource {
+  startIpAddress: string;
+  endIpAddress: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AddDataLakeStoreParameters class.
  * @constructor
  * Additional Data Lake Store parameters.
@@ -233,12 +272,34 @@ export interface UpdateStorageAccountParameters {
  * @member {number} [maxJobCount] the maximum supported jobs running under the
  * account at the same time.
  *
+ * @member {string} [newTier] the commitment tier to use for next month.
+ * Possible values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ *
+ * @member {string} [firewallState] The current state of the IP address
+ * firewall for this Data Lake Analytics account. Possible values include:
+ * 'Enabled', 'Disabled'
+ *
+ * @member {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ *
+ * @member {array} [firewallRules] The list of firewall rules associated with
+ * this Data Lake Analytics account.
+ *
  */
 export interface DataLakeAnalyticsAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
   maxDegreeOfParallelism?: number;
   queryStoreRetention?: number;
   maxJobCount?: number;
+  newTier?: string;
+  firewallState?: string;
+  firewallAllowAzureIps?: string;
+  firewallRules?: FirewallRule[];
 }
 
 /**
@@ -313,6 +374,30 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [endpoint] the full CName endpoint for this account.
  *
+ * @member {string} [newTier] the commitment tier for the next month. Possible
+ * values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ *
+ * @member {string} [currentTier] the commitment tier in use for the current
+ * month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+ * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+ * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+ * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+ *
+ * @member {string} [firewallState] The current state of the IP address
+ * firewall for this Data Lake Analytics account. Possible values include:
+ * 'Enabled', 'Disabled'
+ *
+ * @member {string} [firewallAllowAzureIps] The current state of allowing or
+ * disallowing IPs originating within Azure through the firewall. If the
+ * firewall is disabled, this is not enforced. Possible values include:
+ * 'Enabled', 'Disabled'
+ *
+ * @member {array} [firewallRules] The list of firewall rules associated with
+ * this Data Lake Analytics account.
+ *
  */
 export interface DataLakeAnalyticsAccount extends Resource {
   provisioningState?: string;
@@ -328,6 +413,11 @@ export interface DataLakeAnalyticsAccount extends Resource {
   creationTime?: Date;
   lastModifiedTime?: Date;
   endpoint?: string;
+  newTier?: string;
+  currentTier?: string;
+  firewallState?: string;
+  firewallAllowAzureIps?: string;
+  firewallRules?: FirewallRule[];
 }
 
 /**
@@ -348,24 +438,54 @@ export interface DataLakeAnalyticsAccountListResult {
 
 /**
  * @class
- * Initializes a new instance of the ErrorDetails class.
+ * Initializes a new instance of the DataLakeAnalyticsFirewallRuleListResult class.
  * @constructor
- * Generic resource error details information.
+ * Data Lake Analytics firewall rule list information.
  *
- * @member {string} [code] the HTTP status code or error code associated with
- * this error
+ * @member {array} [value] the results of the list operation
  *
- * @member {string} [message] the error message localized based on
- * Accept-Language
- *
- * @member {string} [target] the target of the particular error (for example,
- * the name of the property in error).
+ * @member {string} [nextLink] the link (url) to the next page of results.
  *
  */
-export interface ErrorDetails {
-  code?: string;
-  message?: string;
-  target?: string;
+export interface DataLakeAnalyticsFirewallRuleListResult {
+  value?: FirewallRule[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateFirewallRuleParameters class.
+ * @constructor
+ * Data Lake Analytics firewall rule update parameters
+ *
+ * @member {string} [startIpAddress] the start IP address for the firewall
+ * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ *
+ * @member {string} [endIpAddress] the end IP address for the firewall rule.
+ * This can be either ipv4 or ipv6. Start and End should be in the same
+ * protocol.
+ *
+ */
+export interface UpdateFirewallRuleParameters {
+  startIpAddress?: string;
+  endIpAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeAnalyticsFirewallRuleListResult class.
+ * @constructor
+ * Data Lake Analytics firewall rule list information.
+ *
+ * @member {array} [value] the results of the list operation
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface DataLakeAnalyticsFirewallRuleListResult {
+  value?: FirewallRule[];
+  nextLink?: string;
 }
 
 /**
@@ -450,6 +570,19 @@ export interface DataLakeAnalyticsAccountListResult {
   nextLink?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the DataLakeAnalyticsFirewallRuleListResult class.
+ * @constructor
+ * Data Lake Analytics firewall rule list information.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface DataLakeAnalyticsFirewallRuleListResult extends Array<FirewallRule> {
+  nextLink?: string;
+}
 
 /**
  * @class
