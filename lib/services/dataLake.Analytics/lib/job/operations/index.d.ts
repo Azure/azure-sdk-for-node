@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Job
+ * JobOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsJobManagementClient.
  */
-export interface Job {
+export interface JobOperations {
 
     /**
      * Gets statistics of the specified job.
@@ -73,7 +73,8 @@ export interface Job {
      * USql). Possible values include: 'USql', 'Hive'
      *
      * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
-     * used for this job. This must be greater than 0.
+     * used for this job. This must be greater than 0, if set to less than 0 it
+     * will default to 1.
      *
      * @param {number} [parameters.priority] the priority value for the current
      * job. Lower numbers have a higher priority. By default, a job has a priority
@@ -158,7 +159,8 @@ export interface Job {
      * USql). Possible values include: 'USql', 'Hive'
      *
      * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
-     * used for this job. This must be greater than 0.
+     * used for this job. This must be greater than 0, if set to less than 0 it
+     * will default to 1.
      *
      * @param {number} [parameters.priority] the priority value for the current
      * job. Lower numbers have a higher priority. By default, a job has a priority
