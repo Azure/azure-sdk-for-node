@@ -94,7 +94,7 @@
     "grunt-devserver": "~0.6",
     "grunt-jsdoc": "~0.6",
     "grunt-gh-pages": "1.1.0",
-    "jshint": "2.6.3",
+    "jshint": "2.9.4",
     "minami": "git://github.com/devigned/minami#master",
     "mocha": "1.18.0",
     "nock": "0.16",
