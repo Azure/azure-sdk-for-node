@@ -6,6 +6,16 @@ export interface AzureServiceClientOptions extends msRest.ServiceClientOptions {
   longRunningOperationRetryTimeout?: any;
 }
 
+export class LongRunningPathTemplateBasedRequestPrepareOptions extends msRest.PathTemplateBasedRequestPrepareOptions {
+  deserializationMapperForTerminalResponse?: msRest.Mapper;
+  constructor(deserializationMapperForTerminalResponse?: msRest.Mapper);
+}
+
+export class LongRunningUrlBasedRequestPrepareOptions extends msRest.UrlRequestPrepareOptions {
+  deserializationMapperForTerminalResponse?: msRest.Mapper;
+  constructor(deserializationMapperForTerminalResponse?: msRest.Mapper);
+}
+
 export class AzureServiceClient extends msRest.ServiceClient {
   /**
   * @class
@@ -26,6 +36,9 @@ export class AzureServiceClient extends msRest.ServiceClient {
     * Long Running Operations. Default value is 30.
   */
   constructor(credentials: msRest.ServiceClientCredentials, options: AzureServiceClientOptions)
+  getLongRunningOperationResult(resultOfInitialRequest: msRest.HttpOperationResponse<T>, options?: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallback?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
+  sendLongRunningRequest(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallack?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
+  sendLongRunningRequestWithHttpOperationResponse(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<msRest.HttpOperationResponse<T>>;
 }
 
 export interface CloudError extends Error {
@@ -58,17 +71,17 @@ export class AzureEnvironment {
   * be validated with Azure AD. Default value is true.
   */
   constructor(parameters: any);
-  
+
   /**
    * The Environment name.
    */
   name: string;
-  
+
   /**
    * The management portal URL.
    */
   portalUrl: string;
-  
+
   /**
    * The management service endpoint.
    */
@@ -88,7 +101,7 @@ export class AzureEnvironment {
    * The resource ID to obtain AD tokens for (token audience).
    */
   activeDirectoryResourceId: string;
-  
+
   /**
    * The publish settings file URL.
    */
@@ -113,22 +126,22 @@ export class AzureEnvironment {
    * The Active Directory resource ID.
    */
   activeDirectoryGraphResourceId: string;
-  
+
   /**
    * The Active Directory api version.
    */
   activeDirectoryGraphApiVersion: string;
-  
+
   /**
    * The endpoint suffix for storage accounts.
    */
   storageEndpointSuffix: string;
-  
+
   /**
    * The keyvault service dns suffix.
    */
   keyVaultDnsSuffix: string;
-  
+
   /**
    * The data lake store filesystem service dns suffix.
    */
@@ -151,7 +164,7 @@ export interface AzureTokenCredentialsOptions {
    * The Azure environment to authenticate with.
    */
   environment?: AzureEnvironment;
-  
+
   /**
    * The authorization scheme. Default value is 'Bearer'.
    */
@@ -194,7 +207,7 @@ export interface InteractiveLoginOptions extends DeviceTokenCredentialsOptions {
   /**
    * The language code specifying how the message should be localized to. Default value 'en-us'.
    */
-  language?: string; 
+  language?: string;
 }
 
 export class ApplicationTokenCredentials extends msRest.ServiceClientCredentials {

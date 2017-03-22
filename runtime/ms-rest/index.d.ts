@@ -106,10 +106,62 @@ export class ExponentialRetryPolicyFilter {
   constructor(retryCount: number, retryInterval: number, minRetryInterval: number, maxRetryInterval: number);
 }
 
+export enum MapperType {
+  Base64Url,
+  Boolean,
+  ByteArray,
+  Composite,
+  Date,
+  DateTime,
+  DateTimeRfc1123,
+  Dictionary,
+  Enum,
+  Number,
+  Object,
+  Sequence,
+  String,
+  Stream,
+  TimeSpan,
+  UnixTime
+}
+
+export interface BaseMapperType {
+  name: MapperType
+}
+
+export interface DictionaryType extends BaseMapperType {
+  type: {
+    name: MapperType.Dictionary;
+    value: Mapper;
+  }
+}
+
+export interface Mapper extends BaseMapperType {
+  required: boolean;
+  serializedName: string;
+  type: BaseMapperType;
+}
+
+export interface CompositeType extends Mapper {
+  type: {
+    name: MapperType.Composite;
+    className: string;
+    modelProperties?: { [propertyName: string]: Mapper};
+  }
+}
+
+export interface SequenceType extends Mapper {
+  type: {
+    name: MapperType.Sequence;
+    element: Mapper;
+  }
+}
+
 export interface UrlParameterValue {
   value: string,
-  skipUrlEncoding: boolean
+  skipUrlEncoding: boolean;
 }
+
 /**
  * Defines the options that can be specified for preparing the Request (WebResource) that is given to the request pipeline.
  *
@@ -167,24 +219,26 @@ export interface UrlParameterValue {
  * @property {boolean} [bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).
  */
 export interface RequestPrepareOptions {
-  method: string,
-  queryParameters?: { [propertyName: string]: string | UrlParameterValue },
-  baseUrl?: string
-  pathParameters?: { [propertyName: string]: string | UrlParameterValue },
-  headers?: { [propertyName: string]: string },
-  disableClientRequestId?: boolean,
-  body?: object | string | boolean | array | number | null | undefined,
-  disableJsonStringifyOnBody?: boolean,
-  bodyIsStream?: boolean
+  method: string;
+  queryParameters?: { [propertyName: string]: string | UrlParameterValue };
+  baseUrl?: string;
+  pathParameters?: { [propertyName: string]: string | UrlParameterValue };
+  headers?: { [propertyName: string]: string };
+  disableClientRequestId?: boolean;
+  body?: object | string | boolean | array | number | null | undefined;
+  disableJsonStringifyOnBody?: boolean;
+  serializationMapper: Mapper;
+  deserializationMapper: Mapper;
+  bodyIsStream?: boolean;
 }
 
 export class PathTemplateBasedRequestPrepareOptions implements RequestPrepareOptions {
-  pathTemplate: string
+  pathTemplate: string;
   constructor(pathTemplate: string);
 }
 
 export class UrlBasedRequestPrepareOptions implements RequestPrepareOptions {
-  url: string
+  url: string;
   constructor(pathTemplate: string);
 }
 

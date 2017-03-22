@@ -263,7 +263,7 @@ class ServiceClient {
    *
    * @param {function} [optionalCallback] The optional callback.
    *
-   * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+   * @returns {function|Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
    * 
    *     {function} optionalCallback(err, result, request, response)
    *
