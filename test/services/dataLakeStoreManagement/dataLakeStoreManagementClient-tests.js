@@ -621,8 +621,7 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
                     should.not.exist(err);
                     should.exist(result);
                     response.statusCode.should.equal(200);
-                    // add one because the mask is not removed when the user is removed
-                    result.aclStatus.entries.length.should.be.equal(initialEntryNum + 1);
+                    result.aclStatus.entries.length.should.be.equal(initialEntryNum);
                     done();
                   });
                 });
@@ -645,6 +644,37 @@ describe('Data Lake Store Clients (Account and Filesystem)', function () {
         var aclSpec = result.aclStatus.entries.toString();
         // now replace the ACL spec with the exact same ACL spec with the addition of one new user as the default user.
         aclSpec = aclSpec + ',default:' + permissionToSet;
+        
+        // we also need to add the default entries now:
+        permissionLength = result.aclStatus.permission.length
+        ownerOctal = result.aclStatus.permission.charAt(permissionLength - 3)
+        groupOctal = result.aclStatus.permission.charAt(permissionLength - 2)
+        otherOctal = result.aclStatus.permission.charAt(permissionLength - 1)
+        
+        ownerAce = 'user::'
+        ownerAce += ownerOctal & 4 ? 'r' : '-'
+        ownerAce += ownerOctal & 2 ? 'w' : '-'
+        ownerAce += ownerOctal & 1 ? 'x' : '-'
+        
+        otherAce = 'other::'
+        otherAce += otherOctal & 4 ? 'r' : '-'
+        otherAce += otherOctal & 2 ? 'w' : '-'
+        otherAce += otherOctal & 1 ? 'x' : '-'
+        
+        maskOrGroupAce = 'group::'
+        maskOrGroupAce += groupOctal & 4 ? 'r' : '-'
+        maskOrGroupAce += groupOctal & 2 ? 'w' : '-'
+        maskOrGroupAce += groupOctal & 1 ? 'x' : '-'
+        
+        if (result.aclStatus.entries[0].startsWith("group::")) {
+          maskOrGroupAce = 'mask::'
+          maskOrGroupAce += groupOctal & 4 ? 'r' : '-'
+          maskOrGroupAce += groupOctal & 2 ? 'w' : '-'
+          maskOrGroupAce += groupOctal & 1 ? 'x' : '-'
+        }
+        
+        aclSpec += ',' + ownerAce + ',' + otherAce + ',' + maskOrGroupAce
+        
         adlsFileSystemClient.fileSystem.setAcl(filesystemAccountName, permissionFolder, aclSpec, function (err, result, request, response) {
           should.not.exist(err);
           should.not.exist(result);

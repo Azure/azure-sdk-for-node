@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Job
+ * JobOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsJobManagementClient.
  */
-export interface Job {
+export interface JobOperations {
 
     /**
      * Gets statistics of the specified job.
