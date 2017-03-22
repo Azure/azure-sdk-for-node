@@ -54,7 +54,7 @@ declare class DataLakeAnalyticsCatalogManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
-    catalog: operations.Catalog;
+    catalogOperations: operations.CatalogOperations;
     }
 
 export = DataLakeAnalyticsCatalogManagementClient;
