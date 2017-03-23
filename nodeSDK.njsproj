@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{72210dc5-a996-48d4-bb68-ba82b3544c77}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>
     </StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
@@ -145,26 +145,29 @@
     <Compile Include="lib\services\dataLake.Analytics\lib\account\dataLakeAnalyticsAccountManagementClient.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\addDataLakeStoreParameters.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\addStorageAccountParameters.js" />
-    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\createStorageAccountInfo.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\dataLakeAnalyticsAccount.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\dataLakeAnalyticsAccountListDataLakeStoreResult.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\dataLakeAnalyticsAccountListResult.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\dataLakeAnalyticsAccountListStorageAccountsResult.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\dataLakeAnalyticsAccountUpdateParameters.js" />
+    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\dataLakeAnalyticsFirewallRuleListResult.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\dataLakeStoreAccountInfo.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\errorDetails.js" />
-    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\errorModel.js" />
+    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\firewallRule.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\index.js" />
-    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\innerError.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\listSasTokensResult.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\listStorageContainersResult.js" />
+    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\optionalSubResource.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\resource.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\sasTokenInfo.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\storageAccountInfo.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\storageContainer.js" />
+    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\subResource.js" />
+    <Compile Include="lib\services\dataLake.Analytics\lib\account\models\updateFirewallRuleParameters.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\models\updateStorageAccountParameters.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\operations\account.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\operations\dataLakeStoreAccounts.js" />
+    <Compile Include="lib\services\dataLake.Analytics\lib\account\operations\firewallRules.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\operations\index.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\account\operations\storageAccounts.js" />
     <Compile Include="lib\services\dataLake.Analytics\lib\catalog\dataLakeAnalyticsCatalogManagementClient.js" />
@@ -242,14 +245,14 @@
     <Compile Include="lib\services\dataLake.Store\lib\account\models\encryptionConfig.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\encryptionIdentity.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\errorDetails.js" />
-    <Compile Include="lib\services\dataLake.Store\lib\account\models\errorModel.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\firewallRule.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\index.js" />
-    <Compile Include="lib\services\dataLake.Store\lib\account\models\innerError.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\keyVaultMetaInfo.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\resource.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\subResource.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\models\trustedIdProvider.js" />
+    <Compile Include="lib\services\dataLake.Store\lib\account\models\updateFirewallRuleParameters.js" />
+    <Compile Include="lib\services\dataLake.Store\lib\account\models\updateTrustedIdProviderParameters.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\operations\account.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\operations\firewallRules.js" />
     <Compile Include="lib\services\dataLake.Store\lib\account\operations\index.js" />
