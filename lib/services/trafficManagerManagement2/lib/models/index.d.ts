@@ -11,10 +11,21 @@
 
 /**
  * @class
+ * Initializes a new instance of the DeleteOperationResult class.
+ * @constructor
+ * The result of the request or operation.
+ * @member {boolean} [operationResult] The result of the operation or request.
+ * 
+ */
+export interface DeleteOperationResult {
+    operationResult?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Endpoint class.
  * @constructor
  * Class representing a Traffic Manager endpoint.
- *
  * @member {string} [id] Gets or sets the ID of the Traffic Manager endpoint.
  * 
  * @member {string} [name] Gets or sets the name of the Traffic Manager
@@ -57,19 +68,25 @@
  * parent profile to be considered available. Only applicable to endpoint of
  * type 'NestedEndpoints'.
  * 
+ * @member {array} [geoMapping] Gets or sets the list of countries/regions
+ * mapped to this endpoint when using the ‘Geographic’ traffic routing
+ * method. Please consult Traffic Manager Geographic documentation for a full
+ * list of accepted values.
+ * 
  */
 export interface Endpoint {
-  id?: string;
-  name?: string;
-  type?: string;
-  targetResourceId?: string;
-  target?: string;
-  endpointStatus?: string;
-  weight?: number;
-  priority?: number;
-  endpointLocation?: string;
-  endpointMonitorStatus?: string;
-  minChildEndpoints?: number;
+    id?: string;
+    name?: string;
+    type?: string;
+    targetResourceId?: string;
+    target?: string;
+    endpointStatus?: string;
+    weight?: number;
+    priority?: number;
+    endpointLocation?: string;
+    endpointMonitorStatus?: string;
+    minChildEndpoints?: number;
+    geoMapping?: string[];
 }
 
 /**
@@ -77,15 +94,14 @@ export interface Endpoint {
  * Initializes a new instance of the CheckTrafficManagerRelativeDnsNameAvailabilityParameters class.
  * @constructor
  * Parameters supplied to check Traffic Manager name operation.
- *
  * @member {string} [name] Gets or sets the name of the resource.
  * 
  * @member {string} [type] Gets or sets the type of the resource.
  * 
  */
 export interface CheckTrafficManagerRelativeDnsNameAvailabilityParameters {
-  name?: string;
-  type?: string;
+    name?: string;
+    type?: string;
 }
 
 /**
@@ -93,7 +109,6 @@ export interface CheckTrafficManagerRelativeDnsNameAvailabilityParameters {
  * Initializes a new instance of the DnsConfig class.
  * @constructor
  * Class containing DNS settings in a Traffic Manager profile.
- *
  * @member {string} [relativeName] Gets or sets the relative DNS name provided
  * by this Traffic Manager profile.  This value is combined with the DNS
  * domain name used by Azure Traffic Manager to form the fully-qualified
@@ -109,9 +124,9 @@ export interface CheckTrafficManagerRelativeDnsNameAvailabilityParameters {
  * 
  */
 export interface DnsConfig {
-  relativeName?: string;
-  fqdn?: string;
-  ttl?: number;
+    relativeName?: string;
+    fqdn?: string;
+    ttl?: number;
 }
 
 /**
@@ -119,7 +134,6 @@ export interface DnsConfig {
  * Initializes a new instance of the MonitorConfig class.
  * @constructor
  * Class containing endpoint monitoring settings in a Traffic Manager profile.
- *
  * @member {string} [profileMonitorStatus] Gets or sets the profile-level
  * monitoring status of the Traffic Manager profile.
  * 
@@ -134,16 +148,17 @@ export interface DnsConfig {
  * 
  */
 export interface MonitorConfig {
-  profileMonitorStatus?: string;
-  protocol?: string;
-  port?: number;
-  path?: string;
+    profileMonitorStatus?: string;
+    protocol?: string;
+    port?: number;
+    path?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
+ * The Resource model definition.
  * @member {string} [id] Resource Id
  * 
  * @member {string} [name] Resource name
@@ -156,11 +171,11 @@ export interface MonitorConfig {
  * 
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
+    id?: string;
+    name?: string;
+    type?: string;
+    location?: string;
+    tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -168,13 +183,12 @@ export interface Resource extends BaseResource {
  * Initializes a new instance of the Profile class.
  * @constructor
  * Class representing a Traffic Manager profile.
- *
  * @member {string} [profileStatus] Gets or sets the status of the Traffic
  * Manager profile.  Possible values are 'Enabled' and 'Disabled'.
  * 
  * @member {string} [trafficRoutingMethod] Gets or sets the traffic routing
  * method of the Traffic Manager profile.  Possible values are 'Performance',
- * 'Weighted', or 'Priority'.
+ * 'Weighted', 'Priority' or 'Geographic'.
  * 
  * @member {object} [dnsConfig] Gets or sets the DNS settings of the Traffic
  * Manager profile.
@@ -213,11 +227,11 @@ export interface Resource extends BaseResource {
  * 
  */
 export interface Profile extends Resource {
-  profileStatus?: string;
-  trafficRoutingMethod?: string;
-  dnsConfig?: DnsConfig;
-  monitorConfig?: MonitorConfig;
-  endpoints?: Endpoint[];
+    profileStatus?: string;
+    trafficRoutingMethod?: string;
+    dnsConfig?: DnsConfig;
+    monitorConfig?: MonitorConfig;
+    endpoints?: Endpoint[];
 }
 
 /**
@@ -225,7 +239,6 @@ export interface Profile extends Resource {
  * Initializes a new instance of the TrafficManagerNameAvailability class.
  * @constructor
  * Class representing a Traffic Manager Name Availability response.
- *
  * @member {string} [name] The relative name.
  * 
  * @member {string} [type] Traffic Manager profile resource type.
@@ -241,20 +254,50 @@ export interface Profile extends Resource {
  * 
  */
 export interface TrafficManagerNameAvailability {
-  name?: string;
-  type?: string;
-  nameAvailable?: boolean;
-  reason?: string;
-  message?: string;
+    name?: string;
+    type?: string;
+    nameAvailable?: boolean;
+    reason?: string;
+    message?: string;
 }
-
 
 /**
  * @class
- * Initializes a new instance of the ProfileListResult class.
+ * Initializes a new instance of the Region class.
  * @constructor
- * The list Traffic Manager profiles operation response.
- *
+ * Class representing a region in the Geographic hierarchy used with the
+ * Geographic traffic routing method.
+ * @member {string} [code] The code of the region
+ * 
+ * @member {string} [name] The name of the region
+ * 
+ * @member {array} [regions] The list of Regions grouped under this Region in
+ * the Geographic Hierarchy.
+ * 
  */
-export interface ProfileListResult extends Array<Profile> {
+export interface Region {
+    code?: string;
+    name?: string;
+    regions?: Region[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrafficManagerGeographicHierarchy class.
+ * @constructor
+ * Class representing the Geographic hierarchy used with the Geographic
+ * traffic routing method.
+ * @member {object} [geographicHierarchy] The region at the root of the
+ * hierarchy from all the regions in the hierarchy can be retrieved.
+ * 
+ * @member {string} [geographicHierarchy.code] The code of the region
+ * 
+ * @member {string} [geographicHierarchy.name] The name of the region
+ * 
+ * @member {array} [geographicHierarchy.regions] The list of Regions grouped
+ * under this Region in the Geographic Hierarchy.
+ * 
+ */
+export interface TrafficManagerGeographicHierarchy extends Resource {
+    geographicHierarchy?: Region;
 }

@@ -64,7 +64,15 @@ var Constants = {
     */
     AUTHORIZATION: 'authorization',
 
-    AUTHORIZATION_SCHEME: 'Bearer'
+    AUTHORIZATION_SCHEME: 'Bearer',
+
+    /**
+    * The UserAgent header.
+    *
+    * @const
+    * @type {string}
+    */
+    USER_AGENT: 'user-agent',
   }
 };
 

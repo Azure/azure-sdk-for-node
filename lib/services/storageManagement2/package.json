@@ -2,6 +2,7 @@
   "name": "azure-arm-storage",
   "author": "Microsoft Corporation",
   "contributors": [
+    "Jason, Yang <yabo@microsoft.com>",
     "Gerner, Emily <emgerner@microsoft.com>",
     "Wang, Jun <jwa@microsoft.com>",
     "Huang, Pengfei <phuang@microsoft.com>",
@@ -11,7 +12,7 @@
     "Wang, Yugang <yugangw@microsoft.com>",
     "Zavery, Amar <amzavery@microsoft.com>"
   ],
-  "version": "0.13.4-preview",
+  "version": "0.15.0-preview",
   "description": "Microsoft Azure Storage Resource Provider Management Client Library for Node",
   "tags": [
     "azure",

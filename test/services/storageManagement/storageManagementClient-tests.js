@@ -101,12 +101,12 @@ describe('Storage Management', function () {
     it('should create an account correctly with encryption', function (done) {
       accountNameEncryption = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       createParametersEncryption = {
-        location: 'eastasia',
+        location: 'eastus2euap',
         sku: {
           name: accType,
         },
         kind: 'Storage',
-        encryption: {services: {blob: {enabled: true}}}
+        encryption: {services: {blob: {enabled: true}, file: {enabled: true}}}
       };
       client.storageAccounts.create(groupName, accountNameEncryption, createParametersEncryption, function (err, result, request, response) {
         should.not.exist(err);
@@ -221,6 +221,48 @@ describe('Storage Management', function () {
       });
     });
     
+    it('should list the storage account SAS', function (done) {
+      var parameter = {
+        services : 'bftq',
+        resourceTypes : 'sco',
+        permissions : 'rdwlacup',
+        iPAddressOrRange : '0.0.0.0-255.255.255.255',
+        protocols : 'https,http',
+        sharedAccessStartTime : new Date().toISOString(),
+        sharedAccessExpiryTime :  new Date((new Date).setHours((new Date).getHours()+1)).toISOString(),
+        keyToSign : "key1"
+      };
+
+      client.storageAccounts.listAccountSAS(groupName, accountName, parameter, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        should.exist(result.accountSasToken);
+        done();
+      });
+    });
+
+    it('should list the storage service SAS', function (done) {
+      var parameter = {
+        canonicalizedResource : '/blob/'.concat(accountName).concat('/music'),
+        resource : 'c',
+        permissions : 'rdwlacup',
+        iPAddressOrRange : '0.0.0.0-255.255.255.255',
+        protocols : 'https,http',
+        sharedAccessStartTime : new Date().toISOString(),
+        sharedAccessExpiryTime :  new Date((new Date).setHours((new Date).getHours()+1)).toISOString(),
+        keyToSign : "key1"
+      };
+
+      client.storageAccounts.listServiceSAS(groupName, accountName, parameter, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        should.exist(result.serviceSasToken);
+        done();
+      });
+    });
+
     it('should delete the specified storage account', function (done) {
       client.storageAccounts.deleteMethod(groupName, accountName, function (err, result, request, response) {
         should.not.exist(err);

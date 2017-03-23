@@ -1,68 +1,128 @@
+# Authentication
 
-# Creating a ServicePrincipal for scripting scenarios in 3 different ways
-One does not want to login interactively all the time. Azure provides service principal authentication as a secure way for silent login.
+All service APIs require authentication via a `credentials` object when being
+instantiated. There are three ways of authenticating and creating the required
+`credentials` via the SDK: basic authentication, interactive login, and service
+principal authentication.
 
-## 1. via Portal
-[This article](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/) provides detailed steps on creating a service principal via portal.
+## Basic Authentication
 
-## 2. via XplatCLI in 3 simple steps
-Pre-requisite:
-- Install the latest version of cli from the [latest github release](https://github.com/Azure/azure-xplat-cli/releases) or from [npm](https://npmjs.com/package/azure-cli).
+Simply provide your username and password to authenticate with the API using your
+Azure account. It is encouraged that your username and password be stored in
+environment variables rather than in the source code for your project.
 
-```bash
-npm uninstall azure-cli -g
-npm cache clear -g
-npm install azure-cli -g
+```js
+const Azure = require('azure');
+const MsRest = require('ms-rest-azure');
+
+MsRest.loginWithUsernamePassword(process.env.AZURE_USER, process.env.AZURE_PASS, (err, credentials) => {
+  if (err) throw err;
+
+  let storageClient = Azure.createARMStorageManagementClient(credentials, 'subscription-id');
+
+  // ..use the client instance to manage service resources.
+});
 ```
-- Login to the azure-cli via azure login command to create a service principal for future use.
-  - For 2FA enabled user accounts  `azure login`
-  - For non 2FA enabled user accounts `azure login -u user1@constosocorp.com`
 
-After successful login, please follow the steps mentioned below to create a serviceprincipal:
-#### Step 0. Please make sure you have selected the correct subscription. The service principal will have access to your current subscription.
-- To list all your subscriptions: `azure account list`
-- To set the subscription of your choice: `azure account set "your subscription name"`
+## Interactive login
 
-#### Step 1. Create a service principal
+Interactive login will provide a link and a code that will allow the user to
+authenticate from a browser. Use this method when multiple accounts are used by
+the same script or when user intervention is preferred.
 
-Let us create a serviceprincipal with a password. The default start-date will be the day of application creation and the default end-date will be 1 year from the day of creation.
+```js
+const Azure = require('azure');
+const MsRest = require('ms-rest-azure');
 
-> ###### NOTE: The AppId a.k.a the serviceprincipal name in **GUID** format that gets created in this command is also known as clientId. It is the id given by ADAL for itself to identify your application. You can use this as the clientId during user authentication (creating UserTokenCredentials object).
+MsRest.interactiveLogin((err, credentials) => {
+  if (err) throw err;
 
+  let storageClient = Azure.createARMStorageManagementClient(credentials, 'subscription-id');
+
+  // ..use the client instance to manage service resources.
+});
 ```
-D:\sdk>azure ad sp create -n testap908 -p P@ssw0rd
-info:    Executing command ad sp create
-+ Creating application testap674
-+ Creating service principal for application 56894bd4-0fde-41d8-a0d7-5bsslccety2
+
+## Service Principal Authentication
+
+Interactive login, similar to how the CLI authenticates, is the easiest way to
+authenticate; however, when using the Node.js SDK programmatically, you may want
+to use service principal authentication rather than providing your account
+credentials. This essentially creates keys for your Azure Active Directory
+account that you can provide to the SDK to authenticate rather than requiring
+user intervention or username/password.
+
+### Creating a Service Principal
+
+There are three ways to create a Service Principal, the next sections will walk
+you through each method.
+
+#### 1. Azure Portal
+
+Follow the steps outlined in the
+[Azure Portal documentation](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/)
+ to generate the necessary keys.
+
+#### 2. Azure CLI
+
+This method can be used with either the
+[Azure CLI v2.0 (Python)](https://github.com/Azure/azure-cli) or the
+[Azure Cross-Platform CLI (npm module)](https://github.com/Azure/azure-xplat-cli).
+
+_using the Python Azure CLI v2.0 requires just one step_
+```shell
+$ az ad sp create-for-rbac
+```
+
+_Using the Node.js cross-platform CLI requires additional steps for setting up
+roles_
+```shell
+$ azure login # or $ azure login -u user@domain.tld
+$ azure ad sp create -n sp-name -p sp-password
+```
+
+This will create a new Service Principal and output the keys, copy the output for
+use in your script. Note: you can retrieve the keys later by running
+`$ azure ad sp list` in your terminal.
+
+The important fields are marked below (the other required field is the password
+that was provided when creating the service principal)
+
+```shell
++ Creating application sp-name
++ Creating service principal for application **56894bd4-0fde-41d8-a0d7-5bsslccety2**
 data:    Object Id:               weewrerer-e329-4e9b-98c6-7878787
-data:    Display Name:            testap674
+data:    Display Name:            sp-name
 data:    Service Principal Names:
-data:                             56894bd4-0fde-41d8-a0d7-5bsslccety2   <<<<<<<<<<<<<<<<<<<<< also known as clientId
-data:                             https://testap908
+data:                             **56894bd4-0fde-41d8-a0d7-5bsslccety2**
+data:                             https://sp-name
 info:    ad sp create command OK
 ```
 
-#### Step 2. Assigning a role to a ServicePrincipal by using the spn
+Next, you'll need to assign a role to the service principal that was just
+created. You can get a list of available roles by running `$ azure role list`
 
-- You can get a list of available roles by ```azure role list```
-- In this example we are creating the serviceprincipal as a Contributor at the subscription level.
-  - Definition of a Contributor
+_In this example we are creating the service principal as a Contributor at the
+subscription level. A contributor role looks like this in the list_
 ```
 data:    Name             : Contributor
 data:    Actions          : 0=*
 data:    NotActions       : 0=Microsoft.Authorization/*/Delete, 1=Microsoft.Authorization/*/Write
 data:    IsCustom         : false
 ```
-This will associate the serviceprincipal to your current subscription
-```
-D:\sdk>azure role assignment create --spn 56894bd4-0fde-41d8-a0d7-5bsslccety2 -o Contributor
+
+This will associate the service principal to your current subscription. Use the
+service principal that was returned in the `create` step for the `--spn` option.
+
+```shell
+$ azure role assignment create --spn 56894bd4-0fde-41d8-a0d7-5bsslccety2 -o Contributor
 info:    Executing command role assignment create
 + Finding role with specified name
 data:    RoleAssignmentId     : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678/providers/Microsoft.Authorization/roleAssignments/987654-ea85-40a5-80c2-abcdferghtt
 data:    RoleDefinitionName   : Contributor
 data:    RoleDefinitionId     : jhfskjf-6180-42a0-ab88-5656eiu677e23e
 data:    Scope                : /subscriptions/abcdefgh-1234-4cc9-89b5-12345678
-data:    Display Name         : testap674
+data:    Display Name         : sp-name
 data:    SignInName           :
 data:    ObjectId             : weewrerer-e329-4e9b-98c6-7878787
 data:    ObjectType           : ServicePrincipal
@@ -71,70 +131,39 @@ data:
 info:    role assignment create command OK
 ```
 
-#### Step 3. Login as a serviceprincipal
-```
-D:\sdk>azure login -u 56894bd4-0fde-41d8-a0d7-5bsslccety2 -p P@ssw0rd --tenant <a guid OR your domain(contosocorp.com) --service-principal
+The service principal can now be used to log in.
+```shell
+$ azure login -u 56894bd4-0fde-41d8-a0d7-5bsslccety2 -p P@ssw0rd --tenant <a guid OR your domain(contosocorp.com)> --service-principal
 info:    Executing command login
 info:    Added subscription TestSubscription
 +
 info:    login command OK
 ```
-## 3. via running a simple node.js script
-You can run a script to create an SP programmaticaly in node.js. Please see the link over [here](./ServicePrincipal) for more info.
 
-## Using authentication in your node.js script
+#### 3. SDK
 
-- **Interactive Login** is the simplest and the best way to authenticate.
-It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
-the user will get a DeviceTokenCredentials object.
-```javascript
- var someAzureServiceClient = require('azure-arm-someService');
- msRestAzure.interactiveLogin(function(err, credentials) {
-   if (err) {
-     console.log(err);
-     return;
-   }
-   var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
-   client.someOperationGroup.method(param1, param2, function(err, result) {
-     if (err) console.log(err);
-     console.log(result);
-   });
- });
-```
+Run the [Service Principal creation script](./ServicePrincipal) to
+programmatically create a service principal.
 
-> NOTE: Please provide the domain i.e. the tenantID, if you are going to authenticate with a LiveID(your outlook, yahoo, gmail, etc. account). This will give you the credential object pertaining to the specified tenant. This credential object can then be used for creating the client. Please refer to this [issue for detailed explanation](https://github.com/Azure/azure-sdk-for-node/issues/1821#issuecomment-237419366). 
 
-- **Service Principal Authentication**
-This is useful in automation scenarios. The experience for loginWithServicePrincipalSecret is the same as the one described above for [azure-cli in step 4](https://github.com/Azure/azure-sdk-for-node/blob/master/Documentation/Authentication.md#step-4-login-as-a-serviceprincipal).
-```javascript
- var someAzureServiceClient = require('azure-arm-someService');
- msRestAzure.loginWithServicePrincipalSecret(clientId, secret, domain, function(err, credentials) {
-   if (err) {
-    console.log(err);
-    return;
-   }
-   var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
-   client.someOperationGroup.method(param1, param2, function(err, result) {
-     if (err) console.log(err);
-     console.log(result);
-   });
- });
-```
+### Using the Service Principal
 
-- **Login with username and password**
-This mechanism will only work for non 2FA enabled organizational ids.
-Otherwise it is better to use the above mechanism (interactive login).
-```javascript
- var someAzureServiceClient = require('azure-arm-someService');
- msRestAzure.loginWithUsernamePassword(username, password, function(err, credentials) {
-   if (err) {
-     console.log(err);
-     return;
-   }
-   var client = new someAzureServiceClient(credentials, 'your-subscriptionId');
-   client.someOperationGroup.method(param1, param2, function(err, result) {
-     if (err) console.log(err);
-     console.log(result);
-   });
- });
+Now you can use the Service Principal keys to authenticate in the SDK.
+
+```js
+const Azure = require('azure');
+const MsRest = require('ms-rest-azure');
+
+MsRest.loginWithServicePrincipalSecret(
+  'clientId or appId',
+  'secret or password',
+  'domain or tenant',
+  (err, credentials) => {
+    if (err) throw err
+
+    let storageClient = Azure.createARMStorageManagementClient(credentials, 'subscription-id');
+
+    // ..use the client instance to manage service resources.
+  }
+);
 ```

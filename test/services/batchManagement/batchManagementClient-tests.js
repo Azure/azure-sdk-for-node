@@ -333,8 +333,8 @@ describe('Batch Management', function () {
       client.batchAccountOperations.update(groupName, 'batchtestnodesdk', tags, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.tags.name.should.equal('tagName');
-        result.tags.value.should.equal('tagValue');
+        result.tags.Name.should.equal('tagName');
+        result.tags.Value.should.equal('tagValue');
         done()
       });
     });
@@ -344,6 +344,38 @@ describe('Batch Management', function () {
         //Pending change in behavior for raised error
         should.exist(err);
         done();
+      });
+    });
+
+    it('should fail to create a BYOS account with bad KeyVault properties', function (done) {
+      var byosAccountName = 'batchtestnodesdkbyos';
+      var allocationMode = 'UserSubscription';
+
+      // Omit keyVaultReference
+      var params = { 
+        location: location,
+        poolAllocationMode: allocationMode
+      };
+
+      client.batchAccountOperations.create(groupName, byosAccountName, params, function (err, result, request, response) {
+        should.exist(err);
+        err.body.message.should.startWith('The specified Request Body is not syntactically valid.');
+
+        // Use malformed key vault parameter values
+        var params = { 
+          location: location,
+          poolAllocationMode: allocationMode,
+          keyVaultReference: {
+            id: 'abc',
+            url: 'def'
+          }
+        };
+
+        client.batchAccountOperations.create(groupName, byosAccountName, params, function (err, result, request, response) {
+          should.exist(err);
+          err.body.message.should.startWith('Property id \'abc\' at path \'properties.keyVaultReference.id\' is invalid. Expect fully qualified resource Id that start with \'/subscriptions/{subscriptionId}\' or \'/providers/{resourceProviderNamespace}/\'');
+          done();
+        });
       });
     });
   });

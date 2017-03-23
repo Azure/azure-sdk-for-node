@@ -9,9 +9,10 @@
     "Rohit Bhat <robhat@microsoft.com>",
     "Ahmed El Baz <ahelbaz@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>"
+    "Zavery, Amar <amzavery@microsoft.com>",
+    "Sun, Carissa <caris@microsoft.com>"
   ],
-  "version": "0.19.1",
+  "version": "0.20.0",
   "description": "Microsoft Azure Compute Resource Provider Management Client Library for node",
   "tags": [
     "azure",
