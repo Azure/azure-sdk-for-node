@@ -4,7 +4,7 @@ import * as http from 'http';
 /**
  * REST request options
  *  
- * @property {Object.<string, string>} customHeaders - Any additional HTTP headers to be added to the request
+ * @property {object.<string, string>} customHeaders - Any additional HTTP headers to be added to the request
  * @proprerty {boolean} jar - If true, remember cookies for future use
  */
 export interface RequestOptions {
@@ -63,9 +63,9 @@ export class ServiceClient {
    */
   addUserAgentInfo(additionalUserAgentInfo: any): void;
 
-  sendRequest(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions, optionalCallback?: ServiceCallback<TResult>): void | Promise;
+  sendRequest<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions, optionalCallback?: ServiceCallback<TResult>): void | Promise<TResult>;
 
-  sendRequestWithHttpOperationResponse(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise;
+  sendRequestWithHttpOperationResponse<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise<TResult>;
 }
 
 /**
@@ -131,12 +131,14 @@ export interface BaseMapperType {
 
 export interface DictionaryType extends BaseMapperType {
   type: {
-    name: MapperType.Dictionary;
+    name: MapperType;
     value: Mapper;
   }
 }
 
 export interface Mapper extends BaseMapperType {
+  readOnly?: boolean;
+  isConstant?: boolean;
   required: boolean;
   serializedName: string;
   type: BaseMapperType;
@@ -144,7 +146,7 @@ export interface Mapper extends BaseMapperType {
 
 export interface CompositeType extends Mapper {
   type: {
-    name: MapperType.Composite;
+    name: MapperType;
     className: string;
     modelProperties?: { [propertyName: string]: Mapper};
   }
@@ -152,7 +154,7 @@ export interface CompositeType extends Mapper {
 
 export interface SequenceType extends Mapper {
   type: {
-    name: MapperType.Sequence;
+    name: MapperType;
     element: Mapper;
   }
 }
@@ -225,21 +227,19 @@ export interface RequestPrepareOptions {
   pathParameters?: { [propertyName: string]: string | UrlParameterValue };
   headers?: { [propertyName: string]: string };
   disableClientRequestId?: boolean;
-  body?: object | string | boolean | array | number | null | undefined;
+  body?: any;
   disableJsonStringifyOnBody?: boolean;
   serializationMapper: Mapper;
   deserializationMapper: Mapper;
   bodyIsStream?: boolean;
 }
 
-export class PathTemplateBasedRequestPrepareOptions implements RequestPrepareOptions {
+export interface PathTemplateBasedRequestPrepareOptions extends RequestPrepareOptions {
   pathTemplate: string;
-  constructor(pathTemplate: string);
 }
 
-export class UrlBasedRequestPrepareOptions implements RequestPrepareOptions {
+export interface UrlBasedRequestPrepareOptions extends RequestPrepareOptions {
   url: string;
-  constructor(pathTemplate: string);
 }
 
 /**

@@ -6,14 +6,12 @@ export interface AzureServiceClientOptions extends msRest.ServiceClientOptions {
   longRunningOperationRetryTimeout?: any;
 }
 
-export class LongRunningPathTemplateBasedRequestPrepareOptions extends msRest.PathTemplateBasedRequestPrepareOptions {
+export interface LongRunningPathTemplateBasedRequestPrepareOptions extends msRest.PathTemplateBasedRequestPrepareOptions {
   deserializationMapperForTerminalResponse?: msRest.Mapper;
-  constructor(deserializationMapperForTerminalResponse?: msRest.Mapper);
 }
 
-export class LongRunningUrlBasedRequestPrepareOptions extends msRest.UrlRequestPrepareOptions {
+export interface LongRunningUrlBasedRequestPrepareOptions extends msRest.UrlBasedRequestPrepareOptions {
   deserializationMapperForTerminalResponse?: msRest.Mapper;
-  constructor(deserializationMapperForTerminalResponse?: msRest.Mapper);
 }
 
 export class AzureServiceClient extends msRest.ServiceClient {
@@ -36,9 +34,9 @@ export class AzureServiceClient extends msRest.ServiceClient {
     * Long Running Operations. Default value is 30.
   */
   constructor(credentials: msRest.ServiceClientCredentials, options: AzureServiceClientOptions)
-  getLongRunningOperationResult(resultOfInitialRequest: msRest.HttpOperationResponse<T>, options?: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallback?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
-  sendLongRunningRequest(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallack?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
-  sendLongRunningRequestWithHttpOperationResponse(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<msRest.HttpOperationResponse<T>>;
+  getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options?: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallback?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
+  sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallack?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
+  sendLongRunningRequestWithHttpOperationResponse<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<msRest.HttpOperationResponse<TResult>>;
 }
 
 export interface CloudError extends Error {
@@ -210,43 +208,49 @@ export interface InteractiveLoginOptions extends DeviceTokenCredentialsOptions {
   language?: string;
 }
 
-export class ApplicationTokenCredentials extends msRest.ServiceClientCredentials {
-  /**
-  * Creates a new ApplicationTokenCredentials object.
-  * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
-  * for detailed instructions on creating an Azure Active Directory application.
-  * @param {string} clientId The active directory application client id. 
-  * @param {string} domain The domain or tenant id containing this application.
-  * @param {string} secret The authentication secret for the application.
-  * @param {AzureTokenCredentialsOptions} options Object representing optional parameters.
-  */
-  constructor(clientId: string, domain: string, secret: string, options?: AzureTokenCredentialsOptions);
+/**
+ * Creates a new ApplicationTokenCredentials object.
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for detailed instructions on creating an Azure Active Directory application.
+ * @param {string} clientId The active directory application client id. 
+ * @param {string} domain The domain or tenant id containing this application.
+ * @param {string} secret The authentication secret for the application.
+ * @param {AzureTokenCredentialsOptions} options Object representing optional parameters.
+ */
+export interface ApplicationTokenCredentials extends msRest.ServiceClientCredentials {
+  clientId: string;
+  domain: string;
+  secret: string;
+  options?: AzureTokenCredentialsOptions;
 }
 
-export class UserTokenCredentials extends msRest.ServiceClientCredentials {
-  /**
-  * Creates a new UserTokenCredentials object.
-  * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
-  * for an example.
-  * @param {string} clientId The active directory application client id. 
-  * @param {string} domain The domain or tenant id containing this application.
-  * @param {string} username The user name for the Organization Id account.
-  * @param {string} password The password for the Organization Id account.
-  * @param {AzureTokenCredentialsOptions} options Object representing optional parameters.
-  */
-  constructor(clientId: string, domain: string, username: string, password: string, options?: AzureTokenCredentialsOptions);
+/**
+ * Creates a new UserTokenCredentials object.
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for an example.
+ * @param {string} clientId The active directory application client id. 
+ * @param {string} domain The domain or tenant id containing this application.
+ * @param {string} username The user name for the Organization Id account.
+ * @param {string} password The password for the Organization Id account.
+ * @param {AzureTokenCredentialsOptions} options Object representing optional parameters.
+ */
+export interface UserTokenCredentials extends msRest.ServiceClientCredentials {
+  clientId: string;
+  domain: string;
+  username: string;
+  password: string;
+  options?: AzureTokenCredentialsOptions;
 }
 
-export class DeviceTokenCredentials extends msRest.ServiceClientCredentials {
-  /**
-  * Creates a new DeviceTokenCredentials object.
-  * @param {DeviceTokenCredentialsOptions} options Object representing optional parameters.
-  */
-  constructor(options?: DeviceTokenCredentialsOptions);
+/**
+ * Creates a new DeviceTokenCredentials object.
+ * @param {DeviceTokenCredentialsOptions} options Object representing optional parameters.
+ */
+export interface DeviceTokenCredentials extends msRest.ServiceClientCredentials {
+  options?: DeviceTokenCredentialsOptions;
 }
 
-export class BaseResource {
-}
+export class BaseResource { }
 
 /**
  * Provides a url and code that needs to be copy and pasted in a browser and authenticated over there. If successful, the user will get a 
