@@ -196,7 +196,8 @@ export interface JobResource {
  * @member {string} [message] the error message.
  *
  * @member {string} [severity] the severity of the error. Possible values
- * include: 'Warning', 'Error', 'Info'
+ * include: 'Warning', 'Error', 'Info', 'SevereWarning', 'Deprecated',
+ * 'UserWarning'
  *
  * @member {number} [start] the starting index of the error.
  *
@@ -346,7 +347,8 @@ export interface HiveJobProperties extends JobProperties {
  * @member {number} [diagnosticCode] the diagnostic error code.
  *
  * @member {string} [severity] the severity level of the failure. Possible
- * values include: 'Warning', 'Error', 'Info'
+ * values include: 'Warning', 'Error', 'Info', 'SevereWarning', 'Deprecated',
+ * 'UserWarning'
  *
  * @member {string} [details] the details of the error message.
  *
@@ -427,7 +429,8 @@ export interface JobInnerError {
  * @member {number} [innerError.diagnosticCode] the diagnostic error code.
  *
  * @member {string} [innerError.severity] the severity level of the failure.
- * Possible values include: 'Warning', 'Error', 'Info'
+ * Possible values include: 'Warning', 'Error', 'Info', 'SevereWarning',
+ * 'Deprecated', 'UserWarning'
  *
  * @member {string} [innerError.details] the details of the error message.
  *
@@ -455,7 +458,8 @@ export interface JobInnerError {
  * @member {string} [innerError.description] the error message description
  *
  * @member {string} [severity] the severity level of the failure. Possible
- * values include: 'Warning', 'Error', 'Info'
+ * values include: 'Warning', 'Error', 'Info', 'SevereWarning', 'Deprecated',
+ * 'UserWarning'
  *
  * @member {string} [source] the ultimate source of the failure (usually either
  * SYSTEM or USER).
@@ -500,7 +504,8 @@ export interface JobErrorDetails {
  * job failed.
  *
  * @member {number} [degreeOfParallelism] the degree of parallelism used for
- * this job. This must be greater than 0. Default value: 1 .
+ * this job. This must be greater than 0, if set to less than 0 it will default
+ * to 1. Default value: 1 .
  *
  * @member {number} [priority] the priority value for the current job. Lower
  * numbers have a higher priority. By default, a job has a priority of 1000.

@@ -12,7 +12,7 @@ import { ServiceClientOptions, RequestOptions, ServiceCallback, ServiceClientCre
 import * as operations from "./operations";
 
 declare class DataLakeAnalyticsAccountManagementClient {
-    /**
+        /**
      * @class
      * Initializes a new instance of the DataLakeAnalyticsAccountManagementClient class.
      * @constructor
@@ -56,6 +56,7 @@ declare class DataLakeAnalyticsAccountManagementClient {
     generateClientRequestId: boolean;
 
     // Operation groups
+    firewallRules: operations.FirewallRules;
     storageAccounts: operations.StorageAccounts;
     dataLakeStoreAccounts: operations.DataLakeStoreAccounts;
     account: operations.Account;
