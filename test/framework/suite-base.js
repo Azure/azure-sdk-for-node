@@ -684,28 +684,28 @@ _.extend(SuiteBase.prototype, {
       if (msRestAzure.UserTokenCredentials.prototype.signRequest.restore) {
         msRestAzure.UserTokenCredentials.prototype.signRequest.restore();
       }
-      sinon.stub(msRestAzure.UserTokenCredentials.prototype, 'signRequest', function(webResource, callback) {
+      sinon.stub(msRestAzure.UserTokenCredentials.prototype, 'signRequest').callsFake(function(webResource, callback) {
         return callback(null);
       });
 
       if (msRestAzure.ApplicationTokenCredentials.prototype.signRequest.restore) {
         msRestAzure.ApplicationTokenCredentials.prototype.signRequest.restore();
       }
-      sinon.stub(msRestAzure.ApplicationTokenCredentials.prototype, 'signRequest', function(webResource, callback) {
+      sinon.stub(msRestAzure.ApplicationTokenCredentials.prototype, 'signRequest').callsFake(function(webResource, callback) {
         return callback(null);
       });
 
       if (this.createResourcegroup.restore) {
         this.createResourcegroup.restore();
       }
-      sinon.stub(this, 'createResourcegroup', function(groupName, location, callback) {
+      sinon.stub(this, 'createResourcegroup').callsFake(function(groupName, location, callback) {
         return callback(null);
       });
 
       if (this.deleteResourcegroup.restore) {
         this.deleteResourcegroup.restore();
       }
-      sinon.stub(this, 'deleteResourcegroup', function(groupName, callback) {
+      sinon.stub(this, 'deleteResourcegroup').callsFake(function(groupName, callback) {
         return callback(null);
       });
     }

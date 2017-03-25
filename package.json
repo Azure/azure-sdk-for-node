@@ -103,7 +103,7 @@
     "promise": "^7.1.1",
     "random-js": "1.0.4",
     "should": "^8.3.1",
-    "sinon": "*",
+    "sinon": "^2.1.0",
     "xmlbuilder": "0.4.3",
     "moment": "^2.14.1",
     "async": "^1.5.0",
