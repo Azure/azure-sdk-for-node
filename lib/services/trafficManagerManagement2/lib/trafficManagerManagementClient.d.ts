@@ -17,7 +17,7 @@ declare class TrafficManagerManagementClient {
      * Initializes a new instance of the TrafficManagerManagementClient class.
      * @constructor
      *
-     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
+     * @param {credentials} credentials - Gets Azure subscription credentials.
      *
      * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
      *
@@ -58,6 +58,7 @@ declare class TrafficManagerManagementClient {
     // Operation groups
     endpoints: operations.Endpoints;
     profiles: operations.Profiles;
+    geographicHierarchies: operations.GeographicHierarchies;
     }
 
 export = TrafficManagerManagementClient;
