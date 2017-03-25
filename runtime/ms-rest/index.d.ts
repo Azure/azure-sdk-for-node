@@ -5,11 +5,14 @@ import * as http from 'http';
  * REST request options
  *  
  * @property {object.<string, string>} customHeaders - Any additional HTTP headers to be added to the request
- * @proprerty {boolean} jar - If true, remember cookies for future use
+ * @proprerty {boolean} [jar] - If true, remember cookies for future use
  */
 export interface RequestOptions {
   customHeaders?: { [headerName: string]: string; };
-  jar: boolean;
+}
+
+export interface ClientRequestOptions extends RequestOptions {
+  jar?: boolean;
 }
 
 /**
@@ -29,12 +32,12 @@ export interface HttpOperationResponse<T> {
  * Service client options, used for all REST requests initiated by the service client.
  * 
  * @property {Array} [filters]                  - Filters to be added to the request pipeline
- * @property {RequestOptions} requestOptions    - Default RequestOptions to use for requests 
+ * @property {ClientRequestOptions} requestOptions    - Default ClientRequestOptions to use for requests 
  * @property {boolean}  noRetryPolicy           - If set to true, turn off default retry policy
  */
 export interface ServiceClientOptions {
   filters?: any[];
-  requestOptions?: RequestOptions;
+  requestOptions?: ClientRequestOptions;
   noRetryPolicy?: boolean;
 }
 
@@ -63,9 +66,9 @@ export class ServiceClient {
    */
   addUserAgentInfo(additionalUserAgentInfo: any): void;
 
-  sendRequest<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions, optionalCallback?: ServiceCallback<TResult>): void | Promise<TResult>;
-
-  sendRequestWithHttpOperationResponse<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise<TResult>;
+  sendRequest<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions, callback: ServiceCallback<TResult>): void;
+  sendRequest<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise<TResult>;
+  sendRequestWithHttpOperationResponse<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise<HttpOperationResult<TResult>>;
 }
 
 /**
@@ -262,7 +265,7 @@ export interface WebResource {
    * headers['accept-language'] are defined. It will throw an error if one of the above
    * mentioned properties are not defined.
    */
-  validateRequestProperties();
+  validateRequestProperties(): void;
 
   /**
    * Prepares the request.

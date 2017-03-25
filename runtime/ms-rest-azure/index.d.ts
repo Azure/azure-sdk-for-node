@@ -34,8 +34,11 @@ export class AzureServiceClient extends msRest.ServiceClient {
     * Long Running Operations. Default value is 30.
   */
   constructor(credentials: msRest.ServiceClientCredentials, options: AzureServiceClientOptions)
-  getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options?: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallback?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
-  sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, optionalCallack?: msRest.ServiceCallback<TResult>): void | Promise<TResult>;
+  getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options: msRest.RequestOptions, callback: msRest.ServiceCallback<TResult>): void;
+  getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, callback: msRest.ServiceCallback<TResult>): void;
+  getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options?: msRest.RequestOptions): Promise<TResult>;
+  sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, callback: msRest.ServiceCallback<TResult>): void;
+  sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<TResult>;
   sendLongRunningRequestWithHttpOperationResponse<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<msRest.HttpOperationResponse<TResult>>;
 }
 
@@ -269,7 +272,9 @@ export class BaseResource { }
  *             @resolve {DeviceTokenCredentials} The DeviceTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function interactiveLogin(options?: InteractiveLoginOptions, optionalCallback?: { (err: Error, credentials: DeviceTokenCredentials): void }): void | Promise<DeviceTokenCredentials>;
+export function interactiveLogin(options: InteractiveLoginOptions, optionalCallback: { (err: Error, credentials: DeviceTokenCredentials): void }): void;
+export function interactiveLogin(optionalCallback: { (err: Error, credentials: DeviceTokenCredentials): void }): void;
+export function interactiveLogin(options?: InteractiveLoginOptions): Promise<DeviceTokenCredentials>;
 
 /**
  * Provides a UserTokenCredentials object. This method is applicable only for organizational ids that are not 2FA enabled.
@@ -292,7 +297,9 @@ export function interactiveLogin(options?: InteractiveLoginOptions, optionalCall
  *             @resolve {UserTokenCredentials} The UserTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function loginWithUsernamePassword(username: string, password: string, options?: LoginWithUsernamePasswordOptions, optionalCallback?: { (err: Error, credentials: UserTokenCredentials): void }): void | Promise<UserTokenCredentials>;
+export function loginWithUsernamePassword(username: string, password: string, options: LoginWithUsernamePasswordOptions, callback: { (err: Error, credentials: UserTokenCredentials): void }): void;
+export function loginWithUsernamePassword(username: string, password: string, callback: { (err: Error, credentials: UserTokenCredentials): void }): void;
+export function loginWithUsernamePassword(username: string, password: string, options?: LoginWithUsernamePasswordOptions): Promise<UserTokenCredentials>;
 
 
 /**
@@ -319,4 +326,6 @@ export function loginWithUsernamePassword(username: string, password: string, op
  *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options?: AzureTokenCredentialsOptions, optionalCallback?: { (err: Error, credentials: ApplicationTokenCredentials): void }): void | Promise<ApplicationTokenCredentials>;
+export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options: AzureTokenCredentialsOptions, callback: { (err: Error, credentials: ApplicationTokenCredentials): void }): void;
+export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, callback: { (err: Error, credentials: ApplicationTokenCredentials): void }): void;
+export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options?: AzureTokenCredentialsOptions): Promise<ApplicationTokenCredentials>;

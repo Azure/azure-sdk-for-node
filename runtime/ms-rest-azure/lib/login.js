@@ -66,7 +66,7 @@ function buildTenantList(credentials, callback) {
   });
 }
 
-function getSubscriptionsFromTenants(tenantList, callback) {
+function _getSubscriptionsFromTenants(tenantList, callback) {
   /* jshint validthis: true */
   let self = this;
   let subscriptions = [];
@@ -156,25 +156,24 @@ function _interactive(options, callback) {
   if (!options.language) {
     options.language = azureConstants.DEFAULT_LANGUAGE;
   }
-
-  this.tokenAudience = options.tokenAudience;
-  this.environment = options.environment;
-  this.domain = options.domain;
-  this.clientId = options.clientId;
-  this.tokenCache = options.tokenCache;
-  this.language = options.language;
-  this.userCodeResponseLogger = options.userCodeResponseLogger;
-  let authorityUrl = this.environment.activeDirectoryEndpointUrl + this.domain;
-  this.context = new adal.AuthenticationContext(authorityUrl, this.environment.validateAuthority, this.tokenCache);
-  let self = this;
+  let interactiveOptions = {};
+  interactiveOptions.tokenAudience = options.tokenAudience;
+  interactiveOptions.environment = options.environment;
+  interactiveOptions.domain = options.domain;
+  interactiveOptions.clientId = options.clientId;
+  interactiveOptions.tokenCache = options.tokenCache;
+  interactiveOptions.language = options.language;
+  interactiveOptions.userCodeResponseLogger = options.userCodeResponseLogger;
+  let authorityUrl = interactiveOptions.environment.activeDirectoryEndpointUrl + interactiveOptions.domain;
+  interactiveOptions.context = new adal.AuthenticationContext(authorityUrl, interactiveOptions.environment.validateAuthority, interactiveOptions.tokenCache);
   let tenantList = [];
   async.waterfall([
     //acquire usercode
     function (callback) {
-      self.context.acquireUserCode(self.environment.activeDirectoryResourceId, self.clientId, self.language, function (err, userCodeResponse) {
+      interactiveOptions.context.acquireUserCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, interactiveOptions.language, function (err, userCodeResponse) {
         if (err) return callback(err);
-        if (self.userCodeResponseLogger) {
-          self.userCodeResponseLogger(userCodeResponse.message);
+        if (interactiveOptions.userCodeResponseLogger) {
+          interactiveOptions.userCodeResponseLogger(userCodeResponse.message);
         } else {
           console.log(userCodeResponse.message);
         }
@@ -183,32 +182,32 @@ function _interactive(options, callback) {
     },
     //acquire token with device code and set the username to userId received from tokenResponse.
     function (userCodeResponse, callback) {
-      self.context.acquireTokenWithDeviceCode(self.environment.activeDirectoryResourceId, self.clientId, userCodeResponse, function (err, tokenResponse) {
+      interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
         if (err) return callback(err);
-        self.username = tokenResponse.userId;
-        self.authorizationScheme = tokenResponse.tokenType;
+        interactiveOptions.username = tokenResponse.userId;
+        interactiveOptions.authorizationScheme = tokenResponse.tokenType;
         return callback(null);
       });
     },
     //get the list of tenants
     function (callback) {
-      let credentials = _createCredentials.call(self);
+      let credentials = _createCredentials.call(interactiveOptions);
       buildTenantList(credentials, callback);
     },
     //build the token cache by getting tokens for all the tenants. We will acquire token from adal only when a request is sent. This is good as we also need
     //to build the list of subscriptions across all tenants. So let's build both at the same time :).
     function (tenants, callback) {
       tenantList = tenants;
-      if (self.tokenAudience && self.tokenAudience.toLowerCase() === 'graph') {
+      if (interactiveOptions.tokenAudience && interactiveOptions.tokenAudience.toLowerCase() === 'graph') {
         // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
         return callback(null, []);
       } else {
-        return getSubscriptionsFromTenants.call(self, tenants, callback);
+        return _getSubscriptionsFromTenants.call(interactiveOptions, tenants, callback);
       }
     }
   ], function (err, subscriptions) {
     if (err) return callback(err);
-    return callback(null, _createCredentials.call(self), subscriptions);
+    return callback(null, _createCredentials.call(interactiveOptions), subscriptions);
   });
 }
 
@@ -253,10 +252,11 @@ exports.interactive = function interactive(options, optionalCallback) {
     optionalCallback = options;
     options = {};
   }
+  if (!options) options = {};
   if (!optionalCallback) {
     return new Promise((resolve, reject) => {
       _interactive(options, (err, credentials) => {
-        if (err)  { reject(err); }
+        if (err) { reject(err); }
         else { resolve(credentials); }
         return;
       });
@@ -300,7 +300,7 @@ function _withUsernamePassword(username, password, options, callback) {
           // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
           return callback(null, []);
         } else {
-          return getSubscriptionsFromTenants.call(options, tenants, callback);
+          return _getSubscriptionsFromTenants.call(options, tenants, callback);
         }
       },
     ], function (err, subscriptions) {
@@ -342,10 +342,11 @@ exports.withUsernamePassword = function withUsernamePassword(username, password,
     optionalCallback = options;
     options = {};
   }
+  if (!options) options = {};
   if (!optionalCallback) {
     return new Promise((resolve, reject) => {
       _withUsernamePassword(username, password, options, (err, credentials) => {
-        if (err)  { reject(err); }
+        if (err) { reject(err); }
         else { resolve(credentials); }
         return;
       });
@@ -372,7 +373,7 @@ function _withServicePrincipalSecret(clientId, secret, domain, options, callback
       // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
       return callback(null, creds, []);
     } else {
-      getSubscriptionsFromTenants.call(creds, [domain], function (err, subscriptions) {
+      _getSubscriptionsFromTenants.call(creds, [domain], function (err, subscriptions) {
         if (err) return callback(err);
         return callback(null, creds, subscriptions);
       });
@@ -410,10 +411,11 @@ exports.withServicePrincipalSecret = function withServicePrincipalSecret(clientI
     optionalCallback = options;
     options = {};
   }
+  if (!options) options = {};
   if (!optionalCallback) {
     return new Promise((resolve, reject) => {
       _withServicePrincipalSecret(clientId, secret, domain, options, (err, credentials) => {
-        if (err)  { reject(err); }
+        if (err) { reject(err); }
         else { resolve(credentials); }
         return;
       });
