@@ -6,7 +6,7 @@ node_js:
 
 matrix:
   allow_failures:
-    - "4"
+    - node_js: "4"
 
 # setup links to submodules
 before_install:
