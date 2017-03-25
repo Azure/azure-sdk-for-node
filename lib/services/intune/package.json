@@ -15,9 +15,6 @@
     "azure"
   ],
   "main": "./lib/intuneResourceManagementClient.js",
-  "engines": {
-    "node": "^5.0.0"
-  },
   "license": "MIT",
   "dependencies": {
     "ms-rest-azure": "^1.14.0",

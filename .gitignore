@@ -17,7 +17,7 @@ TestResults/*
 
 # Node #
 node_modules/
-npm-debug.log
+npm-debug.log.*
 azure_error
 checkstyle-result.xml
 test-result.xml

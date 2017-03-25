@@ -12,7 +12,8 @@
     "Zavery, Amar <amzavery@microsoft.com>",
     "Wang, Yugang <yugangw@microsoft.com>",
     "Mkrtchyan, Hovsep <hovsepm@microsoft.com>",
-    "Lu, Jianghao <jianghlu@microsoft.com>"
+    "Lu, Jianghao <jianghlu@microsoft.com>",
+    "Krishnan, Balaji <Balaji.Krishnan@microsoft.com>"
   ],
   "version": "1.2.0-preview",
   "description": "Microsoft Azure Client Library for node",
@@ -78,8 +79,8 @@
     "azure-servicefabric": "0.1.0",
     "mime": "~1.2.4",
     "underscore": "1.4.x",
-    "request": "2.74.0",
-    "node-uuid": "~1.4",
+    "request": "^2.81.0",
+    "uuid": "^3.0.1",
     "ms-rest-azure": "^1.15.0",
     "ms-rest": "^1.15.0",
     "moment": "^2.14.1"
@@ -87,7 +88,7 @@
   "devDependencies": {
     "adal-node": "^0.1.17",
     "azure-storage-legacy": "0.9.14",
-    "glob": "~5.0",
+    "glob": "^7.1.1",
     "grunt": "~0.4",
     "grunt-contrib-connect": "^0.10.1",
     "grunt-contrib-symlink": "^0.3.0",

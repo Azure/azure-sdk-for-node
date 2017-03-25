@@ -4,6 +4,7 @@ const colors = require('colors');
 const fs = require('fs');
 const util = require('util');
 const path = require('path');
+const glob = require('glob');
 const execSync = require('child_process').execSync;
 
 const mappings = {
@@ -301,6 +302,26 @@ function getAutorestVersion(version) {
   return result;
 }
 
+function clearProjectBeforeGenerating(projectDir) {
+  let modelsDir = `${projectDir}/models`;
+  let operationsDir = `${projectDir}/operations`;
+  let clientTypedefFile = path.basename(glob.sync(`${projectDir}/*.d.ts`)[0]);
+  let clientJSFile = `${clientTypedefFile.split('.')[0]}.js`;
+  let directoriesToBeDeleted = [modelsDir, operationsDir];
+  let filesToBeDeleted = [clientTypedefFile, clientJSFile];
+  directoriesToBeDeleted.forEach((dir) => {
+    if (fs.existsSync(dir)) {
+      fs.rmdirSync(dir);
+    }
+  });
+  filesToBeDeleted.forEach((file) => {
+    if (fs.existsSync(file)) {
+      fs.unlinkSync(file);
+    }
+  });
+  return;
+}
+
 function generateProject(project, specRoot, autoRestVersion) {
   let currentModeler = modeler;
   let specPath = specRoot + '/' + mappings[project].source;
@@ -314,9 +335,8 @@ function generateProject(project, specRoot, autoRestVersion) {
     currentModeler = mappings[project].modeler;
   }
   console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
-
-  let cmd = util.format('autorest -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT_NO_VERSION --version=%s',
-    currentModeler, language, specPath, mappings[project].dir, autoRestVersion);
+  let outputDir = `lib/services/${mappings[project].dir}`;
+  let cmd = `autorest -Modeler ${currentModeler} -CodeGenerator ${language} -Input ${specPath}  -outputDirectory ${outputDir} -Header MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].ClientName !== null && mappings[project].ClientName !== undefined) cmd += ' -ClientName ' + mappings[project].ClientName;
   if (mappings[project].args !== undefined) {
@@ -324,6 +344,8 @@ function generateProject(project, specRoot, autoRestVersion) {
   }
 
   try {
+    console.log(`Cleaning the output directory: "${outputDir}".`);
+    clearProjectBeforeGenerating(outputDir);
     console.log('Executing command:');
     console.log('------------------------------------------------------------');
     console.log(cmd);
