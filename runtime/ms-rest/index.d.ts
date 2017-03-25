@@ -68,7 +68,7 @@ export class ServiceClient {
 
   sendRequest<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions, callback: ServiceCallback<TResult>): void;
   sendRequest<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise<TResult>;
-  sendRequestWithHttpOperationResponse<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise<HttpOperationResult<TResult>>;
+  sendRequestWithHttpOperationResponse<TResult>(options: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): Promise<HttpOperationResponse<TResult>>;
 }
 
 /**
