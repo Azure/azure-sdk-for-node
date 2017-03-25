@@ -302,6 +302,20 @@ function getAutorestVersion(version) {
   return result;
 }
 
+function deleteFolderRecursive(path) {
+  if (fs.existsSync(path)) {
+    fs.readdirSync(path).forEach(function (file, index) {
+      var curPath = path + "/" + file;
+      if (fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteFolderRecursive(curPath);
+      } else { // delete file
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+};
+
 function clearProjectBeforeGenerating(projectDir) {
   let modelsDir = `${projectDir}/models`;
   let operationsDir = `${projectDir}/operations`;
@@ -311,7 +325,7 @@ function clearProjectBeforeGenerating(projectDir) {
   let filesToBeDeleted = [clientTypedefFile, clientJSFile];
   directoriesToBeDeleted.forEach((dir) => {
     if (fs.existsSync(dir)) {
-      fs.rmdirSync(dir);
+      deleteFolderRecursive(dir);
     }
   });
   filesToBeDeleted.forEach((file) => {
