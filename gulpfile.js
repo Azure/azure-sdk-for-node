@@ -16,6 +16,11 @@ const mappings = {
     'dir': 'analysisServices/lib',
     'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json',
   },
+  'apiManagement': {
+    'dir': 'apiManagement/lib',
+    'source': 'azure-rest-api-specs/arm-apimanagement/compositeApiManagementClient.json',
+    'modeler': 'CompositeSwagger'
+  },
   'authorization': {
     'dir': 'authorizationManagement/lib',
     'source': 'arm-authorization/2015-07-01/swagger/authorization.json',
@@ -73,13 +78,13 @@ const mappings = {
     'dir': 'dataLake.Analytics/lib/account',
     'source': 'arm-datalake-analytics/account/2016-11-01/swagger/account.json'
   },
-  'datalake.analytics.job': {
-    'dir': 'dataLake.Analytics/lib/job',
-    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
-  },
   'datalake.analytics.catalog': {
     'dir': 'dataLake.Analytics/lib/catalog',
     'source': 'arm-datalake-analytics/catalog/2016-11-01/swagger/catalog.json'
+  },
+  'datalake.analytics.job': {
+    'dir': 'dataLake.Analytics/lib/job',
+    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
   },
   'datalake.store.account': {
     'dir': 'dataLake.Store/lib/account',
@@ -146,6 +151,14 @@ const mappings = {
     'dir': 'logicManagement/lib',
     'source': 'arm-logic/2016-06-01/swagger/logic.json',
   },
+  'machinelearning.commitmentPlan': {
+    'dir': 'machinelearning/lib/commitmentPlan',
+    'source': 'arm-machinelearning/2016-05-01-preview/swagger/commitmentPlans.json'
+  },
+  'machinelearning.webservices': {
+    'dir': 'machinelearning/lib/webservices',
+    'source': 'arm-machinelearning/2016-05-01-preview/swagger/webservices.json'
+  },
   'mediaServices': {
     'dir': 'mediaServicesManagement/lib',
     'source': 'arm-mediaservices/2015-10-01/swagger/media.json'
@@ -186,6 +199,22 @@ const mappings = {
     'dir': 'relayManagement/lib',
     'source': 'arm-relay/2016-07-01/swagger/relay.json'
   },
+  'resource.feature': {
+    'dir': 'resourceManagement/lib/feature',
+    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
+  },
+  'resource.link': {
+    'dir': 'resourceManagement/lib/link',
+    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
+  },
+  'resource.lock': {
+    'dir': 'resourceManagement/lib/lock',
+    'source': 'arm-resources/locks/2016-09-01/swagger/locks.json'
+  },
+  'resource.policy': {
+    'dir': 'resourceManagement/lib/policy',
+    'source': 'arm-resources/policy/2016-12-01/swagger/policy.json'
+  },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
     'source': 'arm-resources/resources/2016-09-01/swagger/resources.json'
@@ -194,32 +223,16 @@ const mappings = {
     'dir': 'resourceManagement/lib/subscription',
     'source': 'arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json'
   },
-  'resource.lock': {
-    'dir': 'resourceManagement/lib/lock',
-    'source': 'arm-resources/locks/2016-09-01/swagger/locks.json'
-  },
-  'resource.link': {
-    'dir': 'resourceManagement/lib/link',
-    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
-  },
-  'resource.feature': {
-    'dir': 'resourceManagement/lib/feature',
-    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
-  },
-  'resource.policy': {
-    'dir': 'resourceManagement/lib/policy',
-    'source': 'arm-resources/policy/2016-12-01/swagger/policy.json'
-  },
   'schedulerManagement': {
     'dir': 'schedulerManagement2/lib',
     'source': 'arm-scheduler/2016-03-01/swagger/scheduler.json'
   },
-  'searchIndex': {
-    'dir': 'searchIndex/lib',
+  'search.index': {
+    'dir': 'search/lib/index',
     'source': 'search/2016-09-01/swagger/searchindex.json'
   },
-  'searchService': {
-    'dir': 'searchService/lib',
+  'search.service': {
+    'dir': 'searchService/lib/service',
     'source': 'search/2016-09-01/swagger/searchservice.json'
   },
   'searchManagement': {
@@ -228,9 +241,13 @@ const mappings = {
   },
   'servermanagement': {
     'dir': 'servermanagement/lib',
-    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
+    'source': 'arm-servermanagement/2016-07-01-preview/servermanagement.json'
   },
-  'servicebus.management': {
+    'serviceMap': {
+    'dir': 'serviceMapManagement/lib',
+    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json'
+  },
+  'servicebusManagement': {
     'dir': 'serviceBusManagement2/lib',
     'source': 'arm-servicebus/2015-08-01/swagger/servicebus.json'
   },
@@ -242,10 +259,6 @@ const mappings = {
     'dir': 'serviceFabric/lib',
     'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
     'language': 'NodeJS'
-  },
-  'serviceMap': {
-    'dir': 'serviceMapManagement/lib',
-    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json'
   },
   'sql': {
     'dir': 'sqlManagement2/lib',
