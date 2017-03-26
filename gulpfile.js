@@ -241,7 +241,7 @@ const mappings = {
   },
   'servermanagement': {
     'dir': 'servermanagement/lib',
-    'source': 'arm-servermanagement/2016-07-01-preview/servermanagement.json'
+    'source': 'arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json'
   },
     'serviceMap': {
     'dir': 'serviceMapManagement/lib',
@@ -288,12 +288,12 @@ const mappings = {
   }
 };
 
-const defaultAutoRestVersion = '1.0.1-20170322-2300-nightly';
+const defaultAutoRestVersion = '1.0.1-20170324-2300-nightly';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 const project = args['project'];
-const language = 'Azure.NodeJS';
-const modeler = 'Swagger';
+var language = 'Azure.NodeJS';
+var modeler = 'Swagger';
 
 function getAutorestVersion(version) {
   if (!version) version = 'latest';
@@ -332,7 +332,7 @@ function deleteFolderRecursive(path) {
 function clearProjectBeforeGenerating(projectDir) {
   let modelsDir = `${projectDir}/models`;
   let operationsDir = `${projectDir}/operations`;
-  let clientTypedefFile = path.basename(glob.sync(`${projectDir}/*.d.ts`)[0]);
+  let clientTypedefFile = path.basename(glob.sync(`${projectDir}/*.d.ts`)[0] || '');
   let clientJSFile = `${clientTypedefFile.split('.')[0]}.js`;
   let directoriesToBeDeleted = [modelsDir, operationsDir];
   let filesToBeDeleted = [clientTypedefFile, clientJSFile];
