@@ -19,7 +19,6 @@
     "ms-rest": "^2.0.0",
     "moment": "^2.14.1",
     "azure-arm-resource": "^1.6.1-preview",
-    "@types/moment": "^2.13.0",
     "@types/uuid": "^2.0.29",
     "@types/node": "^7.0.10"
   },

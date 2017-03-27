@@ -42,37 +42,18 @@ export class AzureServiceClient extends msRest.ServiceClient {
   sendLongRunningRequestWithHttpOperationResponse<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<msRest.HttpOperationResponse<TResult>>;
 }
 
-export interface CloudError extends Error {
-  code: string,
-  message: string,
-  target?: string,
-  details?: Array<CloudError>
+export type CloudErrorParameters = {
+  code: string;
+  message: string;
+  target?: string;
+  details?: Array<CloudError>;
+};
+
+export class CloudError extends Error {
+  constructor(parameters: CloudErrorParameters);
 }
 
-export class AzureEnvironment {
-  /**
-  * Initializes a new instance of the AzureEnvironment class.
-  * @param {string} parameters.name - The Environment name
-  * @param {string} parameters.portalUrl - The management portal URL
-  * @param {string} parameters.managementEndpointUrl - The management service endpoint
-  * @param {string} parameters.resourceManagerEndpointUrl - The resource management endpoint
-  * @param {string} parameters.activeDirectoryEndpointUrl - The Active Directory login endpoint
-  * @param {string} parameters.activeDirectoryResourceId - The resource ID to obtain AD tokens for (token audience)
-  * @param {string} [parameters.publishingProfileUrl] - The publish settings file URL
-  * @param {string} [parameters.sqlManagementEndpointUrl] - The sql server management endpoint for mobile commands
-  * @param {string} [parameters.sqlServerHostnameSuffix] - The dns suffix for sql servers
-  * @param {string} [parameters.galleryEndpointUrl] - The template gallery endpoint
-  * @param {string} [parameters.activeDirectoryGraphResourceId] - The Active Directory resource ID
-  * @param {string} [parameters.activeDirectoryGraphApiVersion] - The Active Directory api version
-  * @param {string} [parameters.storageEndpointSuffix] - The endpoint suffix for storage accounts
-  * @param {string} [parameters.keyVaultDnsSuffix] - The keyvault service dns suffix
-  * @param {string} [parameters.azureDataLakeStoreFileSystemEndpointSuffix] - The data lake store filesystem service dns suffix
-  * @param {string} [parameters.azureDataLakeAnalyticsCatalogAndJobEndpointSuffix] - The data lake analytics job and catalog service dns suffix
-  * @param {bool} [parameters.validateAuthority] - Determines whether the authentication endpoint should 
-  * be validated with Azure AD. Default value is true.
-  */
-  constructor(parameters: any);
-
+export type AzureEnvironmentParameters = {
   /**
    * The Environment name.
    */
@@ -157,8 +138,32 @@ export class AzureEnvironment {
    * Determines whether the authentication endpoint should be validated with Azure AD. Default value is true.
    */
   validateAuthority: boolean;
-}
+};
 
+export class AzureEnvironment {
+  /**
+  * Initializes a new instance of the AzureEnvironment class.
+  * @param {string} parameters.name - The Environment name
+  * @param {string} parameters.portalUrl - The management portal URL
+  * @param {string} parameters.managementEndpointUrl - The management service endpoint
+  * @param {string} parameters.resourceManagerEndpointUrl - The resource management endpoint
+  * @param {string} parameters.activeDirectoryEndpointUrl - The Active Directory login endpoint
+  * @param {string} parameters.activeDirectoryResourceId - The resource ID to obtain AD tokens for (token audience)
+  * @param {string} [parameters.publishingProfileUrl] - The publish settings file URL
+  * @param {string} [parameters.sqlManagementEndpointUrl] - The sql server management endpoint for mobile commands
+  * @param {string} [parameters.sqlServerHostnameSuffix] - The dns suffix for sql servers
+  * @param {string} [parameters.galleryEndpointUrl] - The template gallery endpoint
+  * @param {string} [parameters.activeDirectoryGraphResourceId] - The Active Directory resource ID
+  * @param {string} [parameters.activeDirectoryGraphApiVersion] - The Active Directory api version
+  * @param {string} [parameters.storageEndpointSuffix] - The endpoint suffix for storage accounts
+  * @param {string} [parameters.keyVaultDnsSuffix] - The keyvault service dns suffix
+  * @param {string} [parameters.azureDataLakeStoreFileSystemEndpointSuffix] - The data lake store filesystem service dns suffix
+  * @param {string} [parameters.azureDataLakeAnalyticsCatalogAndJobEndpointSuffix] - The data lake analytics job and catalog service dns suffix
+  * @param {bool} [parameters.validateAuthority] - Determines whether the authentication endpoint should 
+  * be validated with Azure AD. Default value is true.
+  */
+  constructor(parameters: AzureEnvironmentParameters);
+}
 
 export interface AzureTokenCredentialsOptions {
   /**
@@ -220,11 +225,8 @@ export interface InteractiveLoginOptions extends DeviceTokenCredentialsOptions {
  * @param {string} secret The authentication secret for the application.
  * @param {AzureTokenCredentialsOptions} options Object representing optional parameters.
  */
-export interface ApplicationTokenCredentials extends msRest.ServiceClientCredentials {
-  clientId: string;
-  domain: string;
-  secret: string;
-  options?: AzureTokenCredentialsOptions;
+export class ApplicationTokenCredentials implements msRest.ServiceClientCredentials {
+  constructor(clientId: string, domain: string, secret: string, options?: AzureTokenCredentialsOptions);
 }
 
 /**
@@ -237,20 +239,16 @@ export interface ApplicationTokenCredentials extends msRest.ServiceClientCredent
  * @param {string} password The password for the Organization Id account.
  * @param {AzureTokenCredentialsOptions} options Object representing optional parameters.
  */
-export interface UserTokenCredentials extends msRest.ServiceClientCredentials {
-  clientId: string;
-  domain: string;
-  username: string;
-  password: string;
-  options?: AzureTokenCredentialsOptions;
+export class UserTokenCredentials implements msRest.ServiceClientCredentials {
+  constructor(clientId: string, domain: string, username: string, password: string, options: AzureTokenCredentialsOptions);
 }
 
 /**
  * Creates a new DeviceTokenCredentials object.
  * @param {DeviceTokenCredentialsOptions} options Object representing optional parameters.
  */
-export interface DeviceTokenCredentials extends msRest.ServiceClientCredentials {
-  options?: DeviceTokenCredentialsOptions;
+export class DeviceTokenCredentials implements msRest.ServiceClientCredentials {
+  constructor(options?: DeviceTokenCredentialsOptions);
 }
 
 export class BaseResource { }

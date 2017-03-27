@@ -151,7 +151,7 @@ export interface CompositeType extends Mapper {
   type: {
     name: MapperType;
     className: string;
-    modelProperties?: { [propertyName: string]: Mapper};
+    modelProperties?: { [propertyName: string]: Mapper };
   }
 }
 
@@ -249,7 +249,7 @@ export interface UrlBasedRequestPrepareOptions extends RequestPrepareOptions {
  * This class provides an abstraction over a REST call by being library / implementation agnostic and wrapping the necessary
  * properties to initiate a request.
  */
-export interface WebResource {
+export class WebResource {
   /**
    * Hook up the given input stream to a destination output stream if the WebResource method
    * requires a request body and a body is not already set.
@@ -321,7 +321,7 @@ export interface WebResource {
    *
    * @returns {object} WebResource Returns the prepared WebResource (HTTP Request) object that needs to be given to the request pipeline.
    */
-  prepare(options?: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions) : WebResource;
+  prepare(options?: PathTemplateBasedRequestPrepareOptions | UrlBasedRequestPrepareOptions): WebResource;
 }
 
 /**
@@ -346,9 +346,9 @@ export interface ServiceClientCredentials {
  * @property {string} token               The token.
  * @property {string} [authorizationScheme] The authorization scheme. If not specified, the default of 'Bearer" is used.
  */
-export interface TokenCredentials extends ServiceClientCredentials {
-  token: string,
-  authorizationScheme?: string
+export class TokenCredentials implements ServiceClientCredentials {
+  constructor(token: string, authorizationScheme?: string);
+  signRequest(webResource: WebResource, callback: { (err: Error): void }): void;
 }
 
 /**
@@ -358,8 +358,7 @@ export interface TokenCredentials extends ServiceClientCredentials {
  * @property {string} password                 Password.
  * @property {string} [authorizationScheme]    The authorization scheme. Default ('Basic')
  */
-export interface BasicAuthenticationCredentials extends ServiceClientCredentials {
-  userName: string,
-  password: string,
-  authorizationScheme?: string
+export class BasicAuthenticationCredentials implements ServiceClientCredentials {
+  constructor(userName: string, password: string, authorizationScheme?: string);
+  signRequest(webResource: WebResource, callback: { (err: Error): void }): void;
 }

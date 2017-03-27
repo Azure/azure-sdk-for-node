@@ -20,7 +20,6 @@
     "moment": "^2.14.1",
     "uuid": "^3.0.1",
     "@types/request": "^0.0.42",
-    "@types/moment": "^2.13.0",
     "@types/uuid": "^2.0.29",
     "@types/node": "^7.0.10"
   },
