@@ -18,7 +18,7 @@ const mappings = {
   },
   'apiManagement': {
     'dir': 'apiManagement/lib',
-    'source': 'azure-rest-api-specs/arm-apimanagement/compositeApiManagementClient.json',
+    'source': 'arm-apimanagement/compositeApiManagementClient.json',
     'modeler': 'CompositeSwagger'
   },
   'authorization': {
@@ -174,7 +174,7 @@ const mappings = {
   },
   'operationalInsights': {
     'dir': 'operationalInsightsManagement2/lib',
-    'source': 'arm-operationalInsights/compositeOperationalInsights.json',
+    'source': 'arm-operationalinsights/compositeOperationalInsights.json',
     'modeler': 'CompositeSwagger'
   },
   'powerbiembedded': {
@@ -353,6 +353,7 @@ function generateProject(project, specRoot, autoRestVersion) {
   let currentModeler = modeler;
   let specPath = specRoot + '/' + mappings[project].source;
   let result;
+  language = 'Azure.NodeJS'
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
     language = mappings[project].language;
