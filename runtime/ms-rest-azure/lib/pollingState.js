@@ -146,7 +146,7 @@ class PollingState {
 
     if (parsedResponse) {
       if (parsedResponse.error && parsedResponse.error.message) {
-        errMsg = 'Long running operation failed with error: "${parsedResponse.error.message}".';
+        errMsg = `Long running operation failed with error: "${parsedResponse.error.message}".`;
       }
       if (parsedResponse.error && parsedResponse.error.code) {
         errCode = parsedResponse.error.code;

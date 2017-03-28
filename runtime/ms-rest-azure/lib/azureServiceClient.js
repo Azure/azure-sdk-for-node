@@ -285,8 +285,8 @@ function _getStatus(operationUrl, callback) {
     }
     let statusCode = response.statusCode;
     if (statusCode !== 200 && statusCode !== 201 && statusCode !== 202 && statusCode !== 204) {
-      let error = new Error(`Invalid status code with response body "${responseBody}" occurred ' +
-          'when polling for operation status.`);
+      let error = new Error(`Invalid status code with response body "${responseBody}" occurred ` +
+          `when polling for operation status.`);
       error.statusCode = response.statusCode;
       error.request = msRest.stripRequest(httpRequest);
       error.response = msRest.stripResponse(response);
@@ -295,7 +295,7 @@ function _getStatus(operationUrl, callback) {
         error.body = JSON.parse(responseBody);
 
       } catch (badResponse) {
-        error.message += ` Could not deserialize error response body - "${responseBody}" -.`;
+        error.message += ` Could not deserialize error response body - "${responseBody}".`;
         error.body = responseBody;
       }
 
@@ -310,7 +310,7 @@ function _getStatus(operationUrl, callback) {
       try {
         result.body = JSON.parse(responseBody);
       } catch (deserializationError) {
-        let parseError = new Error(`Error "${JSON.stringify(deserializationError, null, 2)}" occurred in deserializing the response body - "${responseBody}" -` +
+        let parseError = new Error(`Error "${deserializationError}" occurred in deserializing the response body - "${responseBody}" -` +
           ` when polling for operation status.`);
         parseError.request = msRest.stripRequest(httpRequest);
         parseError.response = msRest.stripResponse(response);
