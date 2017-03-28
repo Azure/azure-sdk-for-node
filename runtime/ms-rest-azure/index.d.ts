@@ -1,9 +1,11 @@
 import * as msRest from 'ms-rest';
 
 export interface AzureServiceClientOptions extends msRest.ServiceClientOptions {
-  // TODO: Make this property have right type
-  //  * @param {Array} [options.longRunningOperationRetryTimeout] - Retry timeout
-  longRunningOperationRetryTimeout?: any;
+  /**
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for 
+   * Long Running Operations.
+   */
+  longRunningOperationRetryTimeout?: number;
 }
 
 export interface LongRunningPathTemplateBasedRequestPrepareOptions extends msRest.PathTemplateBasedRequestPrepareOptions {
@@ -16,29 +18,31 @@ export interface LongRunningUrlBasedRequestPrepareOptions extends msRest.UrlBase
 
 export class AzureServiceClient extends msRest.ServiceClient {
   /**
-  * @class
-  * Initializes a new instance of the AzureServiceClient class.
-  * @constructor
-  * @param {ServiceClientCredentials} credentials - ApplicationTokenCredentials or 
-  * UserTokenCredentials object used for authentication.  
-  * 
-  * @param {object} options - The parameter options used by ServiceClient
-  * 
-  * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response. 
-    * Default value is: 'en-US'.
-    *  
-    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value 
-    * is generated and included in each request. Default is true.
-    * 
-    * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for 
-    * Long Running Operations. Default value is 30.
-  */
+   * @class
+   * Initializes a new instance of the AzureServiceClient class.
+   * @constructor
+   * @param {ServiceClientCredentials} credentials - ApplicationTokenCredentials or 
+   * UserTokenCredentials object used for authentication.  
+   * 
+   * @param {object} options - The parameter options used by ServiceClient
+   * 
+   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response. 
+   * Default value is: 'en-US'.
+   *  
+   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value 
+   * is generated and included in each request. Default is true.
+   * 
+   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for 
+   * Long Running Operations. Default value is 30.
+   */
   constructor(credentials: msRest.ServiceClientCredentials, options: AzureServiceClientOptions)
   getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options: msRest.RequestOptions, callback: msRest.ServiceCallback<TResult>): void;
   getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, callback: msRest.ServiceCallback<TResult>): void;
   getLongRunningOperationResult<TResult>(resultOfInitialRequest: msRest.HttpOperationResponse<TResult>, options?: msRest.RequestOptions): Promise<TResult>;
+  
   sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions, callback: msRest.ServiceCallback<TResult>): void;
   sendLongRunningRequest<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<TResult>;
+  
   sendLongRunningRequestWithHttpOperationResponse<TResult>(options: LongRunningUrlBasedRequestPrepareOptions | LongRunningPathTemplateBasedRequestPrepareOptions): Promise<msRest.HttpOperationResponse<TResult>>;
 }
 
@@ -142,26 +146,26 @@ export type AzureEnvironmentParameters = {
 
 export class AzureEnvironment {
   /**
-  * Initializes a new instance of the AzureEnvironment class.
-  * @param {string} parameters.name - The Environment name
-  * @param {string} parameters.portalUrl - The management portal URL
-  * @param {string} parameters.managementEndpointUrl - The management service endpoint
-  * @param {string} parameters.resourceManagerEndpointUrl - The resource management endpoint
-  * @param {string} parameters.activeDirectoryEndpointUrl - The Active Directory login endpoint
-  * @param {string} parameters.activeDirectoryResourceId - The resource ID to obtain AD tokens for (token audience)
-  * @param {string} [parameters.publishingProfileUrl] - The publish settings file URL
-  * @param {string} [parameters.sqlManagementEndpointUrl] - The sql server management endpoint for mobile commands
-  * @param {string} [parameters.sqlServerHostnameSuffix] - The dns suffix for sql servers
-  * @param {string} [parameters.galleryEndpointUrl] - The template gallery endpoint
-  * @param {string} [parameters.activeDirectoryGraphResourceId] - The Active Directory resource ID
-  * @param {string} [parameters.activeDirectoryGraphApiVersion] - The Active Directory api version
-  * @param {string} [parameters.storageEndpointSuffix] - The endpoint suffix for storage accounts
-  * @param {string} [parameters.keyVaultDnsSuffix] - The keyvault service dns suffix
-  * @param {string} [parameters.azureDataLakeStoreFileSystemEndpointSuffix] - The data lake store filesystem service dns suffix
-  * @param {string} [parameters.azureDataLakeAnalyticsCatalogAndJobEndpointSuffix] - The data lake analytics job and catalog service dns suffix
-  * @param {bool} [parameters.validateAuthority] - Determines whether the authentication endpoint should 
-  * be validated with Azure AD. Default value is true.
-  */
+   * Initializes a new instance of the AzureEnvironment class.
+   * @param {string} parameters.name - The Environment name
+   * @param {string} parameters.portalUrl - The management portal URL
+   * @param {string} parameters.managementEndpointUrl - The management service endpoint
+   * @param {string} parameters.resourceManagerEndpointUrl - The resource management endpoint
+   * @param {string} parameters.activeDirectoryEndpointUrl - The Active Directory login endpoint
+   * @param {string} parameters.activeDirectoryResourceId - The resource ID to obtain AD tokens for (token audience)
+   * @param {string} [parameters.publishingProfileUrl] - The publish settings file URL
+   * @param {string} [parameters.sqlManagementEndpointUrl] - The sql server management endpoint for mobile commands
+   * @param {string} [parameters.sqlServerHostnameSuffix] - The dns suffix for sql servers
+   * @param {string} [parameters.galleryEndpointUrl] - The template gallery endpoint
+   * @param {string} [parameters.activeDirectoryGraphResourceId] - The Active Directory resource ID
+   * @param {string} [parameters.activeDirectoryGraphApiVersion] - The Active Directory api version
+   * @param {string} [parameters.storageEndpointSuffix] - The endpoint suffix for storage accounts
+   * @param {string} [parameters.keyVaultDnsSuffix] - The keyvault service dns suffix
+   * @param {string} [parameters.azureDataLakeStoreFileSystemEndpointSuffix] - The data lake store filesystem service dns suffix
+   * @param {string} [parameters.azureDataLakeAnalyticsCatalogAndJobEndpointSuffix] - The data lake analytics job and catalog service dns suffix
+   * @param {bool} [parameters.validateAuthority] - Determines whether the authentication endpoint should 
+   * be validated with Azure AD. Default value is true.
+   */
   constructor(parameters: AzureEnvironmentParameters);
 }
 
@@ -227,6 +231,7 @@ export interface InteractiveLoginOptions extends DeviceTokenCredentialsOptions {
  */
 export class ApplicationTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(clientId: string, domain: string, secret: string, options?: AzureTokenCredentialsOptions);
+  signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
 /**
@@ -241,6 +246,7 @@ export class ApplicationTokenCredentials implements msRest.ServiceClientCredenti
  */
 export class UserTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(clientId: string, domain: string, username: string, password: string, options: AzureTokenCredentialsOptions);
+  signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
 /**
@@ -249,6 +255,7 @@ export class UserTokenCredentials implements msRest.ServiceClientCredentials {
  */
 export class DeviceTokenCredentials implements msRest.ServiceClientCredentials {
   constructor(options?: DeviceTokenCredentialsOptions);
+  signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
 export class BaseResource { }
