@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -124,8 +127,8 @@ export interface Artifact extends BaseResource {
  * @member {number} [artifactsApplied] The total count of the artifacts that
  * were successfully applied.
  * 
- * @member {number} [totalArtifacts] The total count of the artifacts that
- * were tentatively applied.
+ * @member {number} [totalArtifacts] The total count of the artifacts that were
+ * tentatively applied.
  * 
  */
 export interface ArtifactDeploymentStatusProperties {
@@ -153,8 +156,8 @@ export interface ArtifactDeploymentStatusProperties {
  * 
  * @member {string} [securityToken] The security token of the artifact source.
  * 
- * @member {string} [status] The status of the artifact source. Possible
- * values include: 'Enabled', 'Disabled'
+ * @member {string} [status] The status of the artifact source. Possible values
+ * include: 'Enabled', 'Disabled'
  * 
  * @member {string} [provisioningState] The provisioning status of the
  * resource.
@@ -360,8 +363,8 @@ export interface CustomImage extends BaseResource {
  * 
  * @member {object} [windowsOsInfo] The Windows OS information of the VM.
  * 
- * @member {string} [windowsOsInfo.windowsOsState] The state of the Windows
- * OS. Possible values include: 'NonSysprepped', 'SysprepRequested',
+ * @member {string} [windowsOsInfo.windowsOsState] The state of the Windows OS.
+ * Possible values include: 'NonSysprepped', 'SysprepRequested',
  * 'SysprepApplied'
  * 
  * @member {object} [linuxOsInfo] The Linux OS information of the VM.
@@ -535,14 +538,14 @@ export interface PolicyViolation {
  * 
  * @member {string} [formulaContent.notes] The notes of the virtual machine.
  * 
- * @member {string} [formulaContent.ownerObjectId] The object identifier of
- * the owner of the virtual machine.
+ * @member {string} [formulaContent.ownerObjectId] The object identifier of the
+ * owner of the virtual machine.
  * 
  * @member {string} [formulaContent.createdByUserId] The object identifier of
  * the creator of the virtual machine.
  * 
- * @member {string} [formulaContent.createdByUser] The email address of
- * creator of the virtual machine.
+ * @member {string} [formulaContent.createdByUser] The email address of creator
+ * of the virtual machine.
  * 
  * @member {string} [formulaContent.computeId] The resource identifier
  * (Microsoft.Compute) of the virtual machine.
@@ -575,8 +578,8 @@ export interface PolicyViolation {
  * @member {string} [formulaContent.labVirtualNetworkId] The lab virtual
  * network identifier of the virtual machine.
  * 
- * @member {boolean} [formulaContent.disallowPublicIpAddress] Indicates
- * whether the virtual machine is to be created without a public IP address.
+ * @member {boolean} [formulaContent.disallowPublicIpAddress] Indicates whether
+ * the virtual machine is to be created without a public IP address.
  * 
  * @member {array} [formulaContent.artifacts] The artifacts to be installed on
  * the virtual machine.
@@ -680,8 +683,8 @@ export interface Formula extends BaseResource {
  * @member {string} [createdByUserId] The object identifier of the creator of
  * the virtual machine.
  * 
- * @member {string} [createdByUser] The email address of creator of the
- * virtual machine.
+ * @member {string} [createdByUser] The email address of creator of the virtual
+ * machine.
  * 
  * @member {string} [computeId] The resource identifier (Microsoft.Compute) of
  * the virtual machine.
@@ -708,8 +711,8 @@ export interface Formula extends BaseResource {
  * 
  * @member {string} [labSubnetName] The lab subnet name of the virtual machine.
  * 
- * @member {string} [labVirtualNetworkId] The lab virtual network identifier
- * of the virtual machine.
+ * @member {string} [labVirtualNetworkId] The lab virtual network identifier of
+ * the virtual machine.
  * 
  * @member {boolean} [disallowPublicIpAddress] Indicates whether the virtual
  * machine is to be created without a public IP address.
@@ -723,8 +726,8 @@ export interface Formula extends BaseResource {
  * @member {string} [artifactDeploymentStatus.deploymentStatus] The deployment
  * status of the artifact.
  * 
- * @member {number} [artifactDeploymentStatus.artifactsApplied] The total
- * count of the artifacts that were successfully applied.
+ * @member {number} [artifactDeploymentStatus.artifactsApplied] The total count
+ * of the artifacts that were successfully applied.
  * 
  * @member {number} [artifactDeploymentStatus.totalArtifacts] The total count
  * of the artifacts that were tentatively applied.
@@ -1029,8 +1032,8 @@ export interface LabVhd {
  *
  * @member {string} [description] The description of the policy.
  * 
- * @member {string} [status] The status of the policy. Possible values
- * include: 'Enabled', 'Disabled'
+ * @member {string} [status] The status of the policy. Possible values include:
+ * 'Enabled', 'Disabled'
  * 
  * @member {string} [factName] The fact name of the policy. Possible values
  * include: 'UserOwnedLabVmCount', 'LabVmCount', 'LabVmSize', 'GalleryImage',
@@ -1074,6 +1077,166 @@ export interface Policy extends BaseResource {
   type?: string;
   location?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationArtifact class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationArtifact {
+  value?: Artifact[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationArtifactSource class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationArtifactSource {
+  value?: ArtifactSource[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationCustomImage class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationCustomImage {
+  value?: CustomImage[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationFormula class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationFormula {
+  value?: Formula[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationGalleryImage class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationGalleryImage {
+  value?: GalleryImage[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationLab class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationLab {
+  value?: Lab[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationLabVhd class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationLabVhd {
+  value?: LabVhd[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationLabVirtualMachine class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationLabVirtualMachine {
+  value?: LabVirtualMachine[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationPolicy class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationPolicy {
+  value?: Policy[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationSchedule class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationSchedule {
+  value?: Schedule[];
+  nextLink?: string;
 }
 
 /**
@@ -1155,6 +1318,22 @@ export interface WeekDetails {
 
 /**
  * @class
+ * Initializes a new instance of the ResponseWithContinuationVirtualNetwork class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {array} [value] Results of the list operation.
+ * 
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationVirtualNetwork {
+  value?: VirtualNetwork[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualNetwork class.
  * @constructor
  * A virtual network.
@@ -1163,8 +1342,8 @@ export interface WeekDetails {
  * 
  * @member {string} [description] The description of the virtual network.
  * 
- * @member {string} [externalProviderResourceId] The Microsoft.Network
- * resource identifier of the virtual network.
+ * @member {string} [externalProviderResourceId] The Microsoft.Network resource
+ * identifier of the virtual network.
  * 
  * @member {array} [subnetOverrides] The subnet overrides of the virtual
  * network.
@@ -1208,8 +1387,8 @@ export interface VirtualNetwork extends BaseResource {
  * 
  * @member {string} [labSubnetName]
  * 
- * @member {string} [allowPublicIp] Possible values include: 'Default',
- * 'Deny', 'Allow'
+ * @member {string} [allowPublicIp] Possible values include: 'Default', 'Deny',
+ * 'Allow'
  * 
  */
 export interface Subnet {
@@ -1287,6 +1466,19 @@ export interface SubscriptionNotificationProperties {
  * 
  */
 export interface ResponseWithContinuationLab extends Array<Lab> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResponseWithContinuationLabVhd class.
+ * @constructor
+ * The response of a list operation.
+ *
+ * @member {string} [nextLink] Link for next set of results.
+ * 
+ */
+export interface ResponseWithContinuationLabVhd extends Array<LabVhd> {
   nextLink?: string;
 }
 
@@ -1404,18 +1596,5 @@ export interface ResponseWithContinuationLabVirtualMachine extends Array<LabVirt
  * 
  */
 export interface ResponseWithContinuationVirtualNetwork extends Array<VirtualNetwork> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResponseWithContinuationLabVhd class.
- * @constructor
- * The response of a list operation.
- *
- * @member {string} [nextLink] Link for next set of results.
- * 
- */
-export interface ResponseWithContinuationLabVhd extends Array<LabVhd> {
   nextLink?: string;
 }

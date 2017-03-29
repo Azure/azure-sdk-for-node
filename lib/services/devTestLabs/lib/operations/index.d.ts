@@ -27,8 +27,8 @@ export interface LabOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -51,8 +51,8 @@ export interface LabOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -135,56 +135,6 @@ export interface LabOperations {
     createOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
 
     /**
-     * Create or replace an existing Lab. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} name The name of the lab.
-     * 
-     * @param {object} lab
-     * 
-     * @param {string} [lab.defaultStorageAccount] The lab's default storage
-     * account.
-     * 
-     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
-     * of the lab.
-     * 
-     * @param {string} [lab.vaultName] The name of the key vault of the lab.
-     * 
-     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
-     * values include: 'Standard', 'Premium'
-     * 
-     * @param {date} [lab.createdDate] The creation date of the lab.
-     * 
-     * @param {string} [lab.provisioningState] The provisioning status of the
-     * resource.
-     * 
-     * @param {string} [lab.uniqueIdentifier] The unique immutable identifier of a
-     * resource (Guid).
-     * 
-     * @param {string} [lab.id] The identifier of the resource.
-     * 
-     * @param {string} [lab.name] The name of the resource.
-     * 
-     * @param {string} [lab.type] The type of the resource.
-     * 
-     * @param {string} [lab.location] The location of the resource.
-     * 
-     * @param {object} [lab.tags] The tags of the resource.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
-    beginCreateOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
-
-    /**
      * Delete lab. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -201,24 +151,6 @@ export interface LabOperations {
      */
     deleteResource(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     deleteResource(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Delete lab. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} name The name of the lab.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteResource(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteResource(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
      * Modify properties of labs.
@@ -284,8 +216,8 @@ export interface LabOperations {
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.createdByUserId] The object identifier
-     * of the creator of the virtual machine.
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
      * 
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
@@ -316,8 +248,8 @@ export interface LabOperations {
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of
-     * the virtual machine.
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
+     * virtual machine.
      * 
      * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
      * network identifier of the virtual machine.
@@ -332,8 +264,8 @@ export interface LabOperations {
      * deployment status for the virtual machine.
      * 
      * @param {string}
-     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The
-     * deployment status of the artifact.
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
      * 
      * @param {number}
      * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
@@ -345,17 +277,17 @@ export interface LabOperations {
      * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
      * Azure Marketplace image reference of the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer
-     * of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
+     * the gallery image.
      * 
      * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
      * publisher of the gallery image.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of
-     * the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS
-     * type of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
      * 
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
@@ -386,124 +318,6 @@ export interface LabOperations {
      */
     createEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     createEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<void>): void;
-
-    /**
-     * Create virtual machines in a Lab. This operation can take a while to
-     * complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} name The name of the lab.
-     * 
-     * @param {object} labVirtualMachine
-     * 
-     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
-     * the owner of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.createdByUserId] The object identifier
-     * of the creator of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.createdByUser] The email address of
-     * creator of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.computeId] The resource identifier
-     * (Microsoft.Compute) of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.customImageId] The custom image
-     * identifier of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
-     * machine.
-     * 
-     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.userName] The user name of the virtual
-     * machine.
-     * 
-     * @param {string} [labVirtualMachine.password] The password of the virtual
-     * machine administrator.
-     * 
-     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
-     * machine administrator.
-     * 
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
-     * indicating whether this virtual machine uses an SSH key for authentication.
-     * 
-     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
-     * the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of
-     * the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
-     * network identifier of the virtual machine.
-     * 
-     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
-     * whether the virtual machine is to be created without a public IP address.
-     * 
-     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
-     * on the virtual machine.
-     * 
-     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
-     * deployment status for the virtual machine.
-     * 
-     * @param {string}
-     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The
-     * deployment status of the artifact.
-     * 
-     * @param {number}
-     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
-     * count of the artifacts that were successfully applied.
-     * 
-     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
-     * The total count of the artifacts that were tentatively applied.
-     * 
-     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
-     * Azure Marketplace image reference of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer
-     * of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of
-     * the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS
-     * type of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.version] The
-     * version of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.provisioningState] The provisioning
-     * status of the resource.
-     * 
-     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
-     * identifier of a resource (Guid).
-     * 
-     * @param {string} [labVirtualMachine.id] The identifier of the resource.
-     * 
-     * @param {string} [labVirtualMachine.name] The name of the resource.
-     * 
-     * @param {string} [labVirtualMachine.type] The type of the resource.
-     * 
-     * @param {string} [labVirtualMachine.location] The location of the resource.
-     * 
-     * @param {object} [labVirtualMachine.tags] The tags of the resource.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<void>): void;
 
     /**
      * Generate a URI for uploading custom disk images to a Lab.
@@ -545,6 +359,192 @@ export interface LabOperations {
      */
     listVhds(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResponseWithContinuationLabVhd>): void;
     listVhds(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResponseWithContinuationLabVhd>): void;
+
+    /**
+     * Create or replace an existing Lab. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the lab.
+     * 
+     * @param {object} lab
+     * 
+     * @param {string} [lab.defaultStorageAccount] The lab's default storage
+     * account.
+     * 
+     * @param {string} [lab.artifactsStorageAccount] The artifact storage account
+     * of the lab.
+     * 
+     * @param {string} [lab.vaultName] The name of the key vault of the lab.
+     * 
+     * @param {string} [lab.labStorageType] The type of the lab storage. Possible
+     * values include: 'Standard', 'Premium'
+     * 
+     * @param {date} [lab.createdDate] The creation date of the lab.
+     * 
+     * @param {string} [lab.provisioningState] The provisioning status of the
+     * resource.
+     * 
+     * @param {string} [lab.uniqueIdentifier] The unique immutable identifier of a
+     * resource (Guid).
+     * 
+     * @param {string} [lab.id] The identifier of the resource.
+     * 
+     * @param {string} [lab.name] The name of the resource.
+     * 
+     * @param {string} [lab.type] The type of the resource.
+     * 
+     * @param {string} [lab.location] The location of the resource.
+     * 
+     * @param {object} [lab.tags] The tags of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreateOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Lab>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, name: string, lab: models.Lab, callback: ServiceCallback<models.Lab>): void;
+
+    /**
+     * Delete lab. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the lab.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteResource(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Create virtual machines in a Lab. This operation can take a while to
+     * complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} name The name of the lab.
+     * 
+     * @param {object} labVirtualMachine
+     * 
+     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
+     * the owner of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.createdByUser] The email address of
+     * creator of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.computeId] The resource identifier
+     * (Microsoft.Compute) of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.customImageId] The custom image
+     * identifier of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
+     * machine.
+     * 
+     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.userName] The user name of the virtual
+     * machine.
+     * 
+     * @param {string} [labVirtualMachine.password] The password of the virtual
+     * machine administrator.
+     * 
+     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
+     * machine administrator.
+     * 
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
+     * 
+     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
+     * the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
+     * virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
+     * 
+     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
+     * whether the virtual machine is to be created without a public IP address.
+     * 
+     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
+     * on the virtual machine.
+     * 
+     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
+     * deployment status for the virtual machine.
+     * 
+     * @param {string}
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
+     * 
+     * @param {number}
+     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
+     * 
+     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
+     * The total count of the artifacts that were tentatively applied.
+     * 
+     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
+     * the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
+     * publisher of the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.version] The
+     * version of the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
+     * 
+     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
+     * 
+     * @param {string} [labVirtualMachine.name] The name of the resource.
+     * 
+     * @param {string} [labVirtualMachine.type] The type of the resource.
+     * 
+     * @param {string} [labVirtualMachine.location] The location of the resource.
+     * 
+     * @param {object} [labVirtualMachine.tags] The tags of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginCreateEnvironment(resourceGroupName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<void>): void;
 
     /**
      * List labs in a subscription.
@@ -617,8 +617,8 @@ export interface ArtifactSourceOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -668,8 +668,8 @@ export interface ArtifactSourceOperations {
      * 
      * @param {string} [artifactSource.uri] The URI of the artifact source.
      * 
-     * @param {string} [artifactSource.sourceType] The type of the artifact
-     * source. Possible values include: 'VsoGit', 'GitHub'
+     * @param {string} [artifactSource.sourceType] The type of the artifact source.
+     * Possible values include: 'VsoGit', 'GitHub'
      * 
      * @param {string} [artifactSource.folderPath] The folder path of the artifact
      * source.
@@ -746,8 +746,8 @@ export interface ArtifactSourceOperations {
      * 
      * @param {string} [artifactSource.uri] The URI of the artifact source.
      * 
-     * @param {string} [artifactSource.sourceType] The type of the artifact
-     * source. Possible values include: 'VsoGit', 'GitHub'
+     * @param {string} [artifactSource.sourceType] The type of the artifact source.
+     * Possible values include: 'VsoGit', 'GitHub'
      * 
      * @param {string} [artifactSource.folderPath] The folder path of the artifact
      * source.
@@ -827,8 +827,8 @@ export interface ArtifactOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -865,8 +865,8 @@ export interface ArtifactOperations {
     getResource(resourceGroupName: string, labName: string, artifactSourceName: string, name: string, callback: ServiceCallback<models.Artifact>): void;
 
     /**
-     * Generates an ARM template for the given artifact, uploads the required
-     * files to a storage account, and validates the generated artifact.
+     * Generates an ARM template for the given artifact, uploads the required files
+     * to a storage account, and validates the generated artifact.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -878,11 +878,11 @@ export interface ArtifactOperations {
      * 
      * @param {object} generateArmTemplateRequest
      * 
-     * @param {string} [generateArmTemplateRequest.virtualMachineName] The
-     * resource name of the virtual machine.
+     * @param {string} [generateArmTemplateRequest.virtualMachineName] The resource
+     * name of the virtual machine.
      * 
-     * @param {array} [generateArmTemplateRequest.parameters] The parameters of
-     * the ARM template.
+     * @param {array} [generateArmTemplateRequest.parameters] The parameters of the
+     * ARM template.
      * 
      * @param {string} [generateArmTemplateRequest.location] The location of the
      * virtual machine.
@@ -964,8 +964,8 @@ export interface CustomImageOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -1015,15 +1015,15 @@ export interface CustomImageOperations {
      * 
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
      * 
-     * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information
-     * of the VM.
+     * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
+     * the VM.
      * 
      * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
      * the Windows OS. Possible values include: 'NonSysprepped',
      * 'SysprepRequested', 'SysprepApplied'
      * 
-     * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of
-     * the VM.
+     * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
+     * VM.
      * 
      * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
      * Linux OS. Possible values include: 'NonDeprovisioned',
@@ -1076,6 +1076,26 @@ export interface CustomImageOperations {
     createOrUpdateResource(resourceGroupName: string, labName: string, name: string, customImage: models.CustomImage, callback: ServiceCallback<models.CustomImage>): void;
 
     /**
+     * Delete custom image. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the custom image.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Create or replace an existing custom image. This operation can take a while
      * to complete.
      *
@@ -1091,15 +1111,15 @@ export interface CustomImageOperations {
      * 
      * @param {string} [customImage.vm.sourceVmId] The source vm identifier.
      * 
-     * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information
-     * of the VM.
+     * @param {object} [customImage.vm.windowsOsInfo] The Windows OS information of
+     * the VM.
      * 
      * @param {string} [customImage.vm.windowsOsInfo.windowsOsState] The state of
      * the Windows OS. Possible values include: 'NonSysprepped',
      * 'SysprepRequested', 'SysprepApplied'
      * 
-     * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of
-     * the VM.
+     * @param {object} [customImage.vm.linuxOsInfo] The Linux OS information of the
+     * VM.
      * 
      * @param {string} [customImage.vm.linuxOsInfo.linuxOsState] The state of the
      * Linux OS. Possible values include: 'NonDeprovisioned',
@@ -1168,26 +1188,6 @@ export interface CustomImageOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Delete custom image. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the custom image.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
@@ -1228,8 +1228,8 @@ export interface FormulaOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -1288,8 +1288,8 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.notes] The notes of the virtual
      * machine.
      * 
-     * @param {string} [formula.formulaContent.ownerObjectId] The object
-     * identifier of the owner of the virtual machine.
+     * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
+     * of the owner of the virtual machine.
      * 
      * @param {string} [formula.formulaContent.createdByUserId] The object
      * identifier of the creator of the virtual machine.
@@ -1318,9 +1318,8 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
      * machine administrator.
      * 
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A
-     * value indicating whether this virtual machine uses an SSH key for
-     * authentication.
+     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      * 
      * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
      * name of the virtual machine.
@@ -1328,8 +1327,8 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.labSubnetName] The lab subnet name
      * of the virtual machine.
      * 
-     * @param {string} [formula.formulaContent.labVirtualNetworkId] The lab
-     * virtual network identifier of the virtual machine.
+     * @param {string} [formula.formulaContent.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
      * 
      * @param {boolean} [formula.formulaContent.disallowPublicIpAddress] Indicates
      * whether the virtual machine is to be created without a public IP address.
@@ -1345,27 +1344,27 @@ export interface FormulaOperations {
      * deployment status of the artifact.
      * 
      * @param {number}
-     * [formula.formulaContent.artifactDeploymentStatus.artifactsApplied] The
-     * total count of the artifacts that were successfully applied.
+     * [formula.formulaContent.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
      * 
      * @param {number}
      * [formula.formulaContent.artifactDeploymentStatus.totalArtifacts] The total
      * count of the artifacts that were tentatively applied.
      * 
-     * @param {object} [formula.formulaContent.galleryImageReference] The
-     * Microsoft Azure Marketplace image reference of the virtual machine.
+     * @param {object} [formula.formulaContent.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
      * 
      * @param {string} [formula.formulaContent.galleryImageReference.offer] The
      * offer of the gallery image.
      * 
-     * @param {string} [formula.formulaContent.galleryImageReference.publisher]
-     * The publisher of the gallery image.
+     * @param {string} [formula.formulaContent.galleryImageReference.publisher] The
+     * publisher of the gallery image.
      * 
      * @param {string} [formula.formulaContent.galleryImageReference.sku] The SKU
      * of the gallery image.
      * 
-     * @param {string} [formula.formulaContent.galleryImageReference.osType] The
-     * OS type of the gallery image.
+     * @param {string} [formula.formulaContent.galleryImageReference.osType] The OS
+     * type of the gallery image.
      * 
      * @param {string} [formula.formulaContent.galleryImageReference.version] The
      * version of the gallery image.
@@ -1421,6 +1420,26 @@ export interface FormulaOperations {
     createOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, callback: ServiceCallback<models.Formula>): void;
 
     /**
+     * Delete formula.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the formula.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Create or replace an existing Formula. This operation can take a while to
      * complete.
      *
@@ -1445,8 +1464,8 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.notes] The notes of the virtual
      * machine.
      * 
-     * @param {string} [formula.formulaContent.ownerObjectId] The object
-     * identifier of the owner of the virtual machine.
+     * @param {string} [formula.formulaContent.ownerObjectId] The object identifier
+     * of the owner of the virtual machine.
      * 
      * @param {string} [formula.formulaContent.createdByUserId] The object
      * identifier of the creator of the virtual machine.
@@ -1475,9 +1494,8 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.sshKey] The SSH key of the virtual
      * machine administrator.
      * 
-     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A
-     * value indicating whether this virtual machine uses an SSH key for
-     * authentication.
+     * @param {boolean} [formula.formulaContent.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
      * 
      * @param {string} [formula.formulaContent.fqdn] The fully-qualified domain
      * name of the virtual machine.
@@ -1485,8 +1503,8 @@ export interface FormulaOperations {
      * @param {string} [formula.formulaContent.labSubnetName] The lab subnet name
      * of the virtual machine.
      * 
-     * @param {string} [formula.formulaContent.labVirtualNetworkId] The lab
-     * virtual network identifier of the virtual machine.
+     * @param {string} [formula.formulaContent.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
      * 
      * @param {boolean} [formula.formulaContent.disallowPublicIpAddress] Indicates
      * whether the virtual machine is to be created without a public IP address.
@@ -1502,27 +1520,27 @@ export interface FormulaOperations {
      * deployment status of the artifact.
      * 
      * @param {number}
-     * [formula.formulaContent.artifactDeploymentStatus.artifactsApplied] The
-     * total count of the artifacts that were successfully applied.
+     * [formula.formulaContent.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
      * 
      * @param {number}
      * [formula.formulaContent.artifactDeploymentStatus.totalArtifacts] The total
      * count of the artifacts that were tentatively applied.
      * 
-     * @param {object} [formula.formulaContent.galleryImageReference] The
-     * Microsoft Azure Marketplace image reference of the virtual machine.
+     * @param {object} [formula.formulaContent.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
      * 
      * @param {string} [formula.formulaContent.galleryImageReference.offer] The
      * offer of the gallery image.
      * 
-     * @param {string} [formula.formulaContent.galleryImageReference.publisher]
-     * The publisher of the gallery image.
+     * @param {string} [formula.formulaContent.galleryImageReference.publisher] The
+     * publisher of the gallery image.
      * 
      * @param {string} [formula.formulaContent.galleryImageReference.sku] The SKU
      * of the gallery image.
      * 
-     * @param {string} [formula.formulaContent.galleryImageReference.osType] The
-     * OS type of the gallery image.
+     * @param {string} [formula.formulaContent.galleryImageReference.osType] The OS
+     * type of the gallery image.
      * 
      * @param {string} [formula.formulaContent.galleryImageReference.version] The
      * version of the gallery image.
@@ -1578,26 +1596,6 @@ export interface FormulaOperations {
     beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, formula: models.Formula, callback: ServiceCallback<models.Formula>): void;
 
     /**
-     * Delete formula.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the formula.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
      * List formulas in a given lab.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1634,8 +1632,8 @@ export interface GalleryImageOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -1721,8 +1719,8 @@ export interface PolicyOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -1790,8 +1788,8 @@ export interface PolicyOperations {
      * @param {string} [policy.provisioningState] The provisioning status of the
      * resource.
      * 
-     * @param {string} [policy.uniqueIdentifier] The unique immutable identifier
-     * of a resource (Guid).
+     * @param {string} [policy.uniqueIdentifier] The unique immutable identifier of
+     * a resource (Guid).
      * 
      * @param {string} [policy.id] The identifier of the resource.
      * 
@@ -1868,8 +1866,8 @@ export interface PolicyOperations {
      * @param {string} [policy.provisioningState] The provisioning status of the
      * resource.
      * 
-     * @param {string} [policy.uniqueIdentifier] The unique immutable identifier
-     * of a resource (Guid).
+     * @param {string} [policy.uniqueIdentifier] The unique immutable identifier of
+     * a resource (Guid).
      * 
      * @param {string} [policy.id] The identifier of the resource.
      * 
@@ -1929,8 +1927,8 @@ export interface ScheduleOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -2187,8 +2185,8 @@ export interface VirtualMachine {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -2239,8 +2237,8 @@ export interface VirtualMachine {
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.createdByUserId] The object identifier
-     * of the creator of the virtual machine.
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
      * 
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
@@ -2271,8 +2269,8 @@ export interface VirtualMachine {
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of
-     * the virtual machine.
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
+     * virtual machine.
      * 
      * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
      * network identifier of the virtual machine.
@@ -2287,8 +2285,8 @@ export interface VirtualMachine {
      * deployment status for the virtual machine.
      * 
      * @param {string}
-     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The
-     * deployment status of the artifact.
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
      * 
      * @param {number}
      * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
@@ -2300,17 +2298,17 @@ export interface VirtualMachine {
      * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
      * Azure Marketplace image reference of the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer
-     * of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
+     * the gallery image.
      * 
      * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
      * publisher of the gallery image.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of
-     * the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS
-     * type of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
      * 
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
@@ -2343,126 +2341,6 @@ export interface VirtualMachine {
     createOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
 
     /**
-     * Create or replace an existing Virtual Machine. This operation can take a
-     * while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the virtual Machine.
-     * 
-     * @param {object} labVirtualMachine
-     * 
-     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
-     * the owner of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.createdByUserId] The object identifier
-     * of the creator of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.createdByUser] The email address of
-     * creator of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.computeId] The resource identifier
-     * (Microsoft.Compute) of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.customImageId] The custom image
-     * identifier of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
-     * machine.
-     * 
-     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.userName] The user name of the virtual
-     * machine.
-     * 
-     * @param {string} [labVirtualMachine.password] The password of the virtual
-     * machine administrator.
-     * 
-     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
-     * machine administrator.
-     * 
-     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
-     * indicating whether this virtual machine uses an SSH key for authentication.
-     * 
-     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
-     * the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of
-     * the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
-     * network identifier of the virtual machine.
-     * 
-     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
-     * whether the virtual machine is to be created without a public IP address.
-     * 
-     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
-     * on the virtual machine.
-     * 
-     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
-     * deployment status for the virtual machine.
-     * 
-     * @param {string}
-     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The
-     * deployment status of the artifact.
-     * 
-     * @param {number}
-     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
-     * count of the artifacts that were successfully applied.
-     * 
-     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
-     * The total count of the artifacts that were tentatively applied.
-     * 
-     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
-     * Azure Marketplace image reference of the virtual machine.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer
-     * of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
-     * publisher of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of
-     * the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS
-     * type of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.galleryImageReference.version] The
-     * version of the gallery image.
-     * 
-     * @param {string} [labVirtualMachine.provisioningState] The provisioning
-     * status of the resource.
-     * 
-     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
-     * identifier of a resource (Guid).
-     * 
-     * @param {string} [labVirtualMachine.id] The identifier of the resource.
-     * 
-     * @param {string} [labVirtualMachine.name] The name of the resource.
-     * 
-     * @param {string} [labVirtualMachine.type] The type of the resource.
-     * 
-     * @param {string} [labVirtualMachine.location] The location of the resource.
-     * 
-     * @param {object} [labVirtualMachine.tags] The tags of the resource.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
-    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
-
-    /**
      * Delete virtual machine. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2483,26 +2361,6 @@ export interface VirtualMachine {
     deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Delete virtual machine. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the virtual Machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
      * Modify properties of virtual machines.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2518,8 +2376,8 @@ export interface VirtualMachine {
      * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
      * the owner of the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.createdByUserId] The object identifier
-     * of the creator of the virtual machine.
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
      * 
      * @param {string} [labVirtualMachine.createdByUser] The email address of
      * creator of the virtual machine.
@@ -2550,8 +2408,8 @@ export interface VirtualMachine {
      * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
      * the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of
-     * the virtual machine.
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
+     * virtual machine.
      * 
      * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
      * network identifier of the virtual machine.
@@ -2566,8 +2424,8 @@ export interface VirtualMachine {
      * deployment status for the virtual machine.
      * 
      * @param {string}
-     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The
-     * deployment status of the artifact.
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
      * 
      * @param {number}
      * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
@@ -2579,17 +2437,17 @@ export interface VirtualMachine {
      * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
      * Azure Marketplace image reference of the virtual machine.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer
-     * of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
+     * the gallery image.
      * 
      * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
      * publisher of the gallery image.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of
-     * the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
      * 
-     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS
-     * type of the gallery image.
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
      * 
      * @param {string} [labVirtualMachine.galleryImageReference.version] The
      * version of the gallery image.
@@ -2647,6 +2505,186 @@ export interface VirtualMachine {
     applyArtifacts(resourceGroupName: string, labName: string, name: string, applyArtifactsRequest: models.ApplyArtifactsRequest, callback: ServiceCallback<void>): void;
 
     /**
+     * Start a Lab VM. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the virtual Machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    start(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Stop a Lab VM. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the virtual Machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    stop(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Create or replace an existing Virtual Machine. This operation can take a
+     * while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the virtual Machine.
+     * 
+     * @param {object} labVirtualMachine
+     * 
+     * @param {string} [labVirtualMachine.notes] The notes of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.ownerObjectId] The object identifier of
+     * the owner of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.createdByUserId] The object identifier of
+     * the creator of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.createdByUser] The email address of
+     * creator of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.computeId] The resource identifier
+     * (Microsoft.Compute) of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.customImageId] The custom image
+     * identifier of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.osType] The OS type of the virtual
+     * machine.
+     * 
+     * @param {string} [labVirtualMachine.size] The size of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.userName] The user name of the virtual
+     * machine.
+     * 
+     * @param {string} [labVirtualMachine.password] The password of the virtual
+     * machine administrator.
+     * 
+     * @param {string} [labVirtualMachine.sshKey] The SSH key of the virtual
+     * machine administrator.
+     * 
+     * @param {boolean} [labVirtualMachine.isAuthenticationWithSshKey] A value
+     * indicating whether this virtual machine uses an SSH key for authentication.
+     * 
+     * @param {string} [labVirtualMachine.fqdn] The fully-qualified domain name of
+     * the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.labSubnetName] The lab subnet name of the
+     * virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.labVirtualNetworkId] The lab virtual
+     * network identifier of the virtual machine.
+     * 
+     * @param {boolean} [labVirtualMachine.disallowPublicIpAddress] Indicates
+     * whether the virtual machine is to be created without a public IP address.
+     * 
+     * @param {array} [labVirtualMachine.artifacts] The artifacts to be installed
+     * on the virtual machine.
+     * 
+     * @param {object} [labVirtualMachine.artifactDeploymentStatus] The artifact
+     * deployment status for the virtual machine.
+     * 
+     * @param {string}
+     * [labVirtualMachine.artifactDeploymentStatus.deploymentStatus] The deployment
+     * status of the artifact.
+     * 
+     * @param {number}
+     * [labVirtualMachine.artifactDeploymentStatus.artifactsApplied] The total
+     * count of the artifacts that were successfully applied.
+     * 
+     * @param {number} [labVirtualMachine.artifactDeploymentStatus.totalArtifacts]
+     * The total count of the artifacts that were tentatively applied.
+     * 
+     * @param {object} [labVirtualMachine.galleryImageReference] The Microsoft
+     * Azure Marketplace image reference of the virtual machine.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.offer] The offer of
+     * the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.publisher] The
+     * publisher of the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.sku] The SKU of the
+     * gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.osType] The OS type
+     * of the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.galleryImageReference.version] The
+     * version of the gallery image.
+     * 
+     * @param {string} [labVirtualMachine.provisioningState] The provisioning
+     * status of the resource.
+     * 
+     * @param {string} [labVirtualMachine.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
+     * @param {string} [labVirtualMachine.id] The identifier of the resource.
+     * 
+     * @param {string} [labVirtualMachine.name] The name of the resource.
+     * 
+     * @param {string} [labVirtualMachine.type] The type of the resource.
+     * 
+     * @param {string} [labVirtualMachine.location] The location of the resource.
+     * 
+     * @param {object} [labVirtualMachine.tags] The tags of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LabVirtualMachine>): void;
+    beginCreateOrUpdateResource(resourceGroupName: string, labName: string, name: string, labVirtualMachine: models.LabVirtualMachine, callback: ServiceCallback<models.LabVirtualMachine>): void;
+
+    /**
+     * Delete virtual machine. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the virtual Machine.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
      * Apply artifacts to Lab VM. This operation can take a while to complete.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -2688,48 +2726,8 @@ export interface VirtualMachine {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    start(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    start(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Start a Lab VM. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the virtual Machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginStart(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginStart(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Stop a Lab VM. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the virtual Machine.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    stop(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    stop(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
 
     /**
      * Stop a Lab VM. This operation can take a while to complete.
@@ -2788,8 +2786,8 @@ export interface VirtualNetworkOperations {
      * 
      * @param {string} [options.filter] The filter to apply on the operation.
      * 
-     * @param {number} [options.top] The maximum number of resources to return
-     * from the operation.
+     * @param {number} [options.top] The maximum number of resources to return from
+     * the operation.
      * 
      * @param {string} [options.orderBy] The ordering expression for the results,
      * using OData notation.
@@ -2875,6 +2873,76 @@ export interface VirtualNetworkOperations {
     createOrUpdateResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
 
     /**
+     * Delete virtual network. This operation can take a while to complete.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the virtual network.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Modify properties of virtual networks.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     * 
+     * @param {string} labName The name of the lab.
+     * 
+     * @param {string} name The name of the virtual network.
+     * 
+     * @param {object} virtualNetwork
+     * 
+     * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
+     * virtual network.
+     * 
+     * @param {string} [virtualNetwork.description] The description of the virtual
+     * network.
+     * 
+     * @param {string} [virtualNetwork.externalProviderResourceId] The
+     * Microsoft.Network resource identifier of the virtual network.
+     * 
+     * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
+     * virtual network.
+     * 
+     * @param {string} [virtualNetwork.provisioningState] The provisioning status
+     * of the resource.
+     * 
+     * @param {string} [virtualNetwork.uniqueIdentifier] The unique immutable
+     * identifier of a resource (Guid).
+     * 
+     * @param {string} [virtualNetwork.id] The identifier of the resource.
+     * 
+     * @param {string} [virtualNetwork.name] The name of the resource.
+     * 
+     * @param {string} [virtualNetwork.type] The type of the resource.
+     * 
+     * @param {string} [virtualNetwork.location] The location of the resource.
+     * 
+     * @param {object} [virtualNetwork.tags] The tags of the resource.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
+    patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
+
+    /**
      * Create or replace an existing virtual network. This operation can take a
      * while to complete.
      *
@@ -2942,78 +3010,8 @@ export interface VirtualNetworkOperations {
      * @param {ServiceCallback} [callback] callback function; see ServiceCallback
      * doc in ms-rest index.d.ts for details
      */
-    deleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Delete virtual network. This operation can take a while to complete.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the virtual network.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
     beginDeleteResource(resourceGroupName: string, labName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     beginDeleteResource(resourceGroupName: string, labName: string, name: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Modify properties of virtual networks.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} labName The name of the lab.
-     * 
-     * @param {string} name The name of the virtual network.
-     * 
-     * @param {object} virtualNetwork
-     * 
-     * @param {array} [virtualNetwork.allowedSubnets] The allowed subnets of the
-     * virtual network.
-     * 
-     * @param {string} [virtualNetwork.description] The description of the virtual
-     * network.
-     * 
-     * @param {string} [virtualNetwork.externalProviderResourceId] The
-     * Microsoft.Network resource identifier of the virtual network.
-     * 
-     * @param {array} [virtualNetwork.subnetOverrides] The subnet overrides of the
-     * virtual network.
-     * 
-     * @param {string} [virtualNetwork.provisioningState] The provisioning status
-     * of the resource.
-     * 
-     * @param {string} [virtualNetwork.uniqueIdentifier] The unique immutable
-     * identifier of a resource (Guid).
-     * 
-     * @param {string} [virtualNetwork.id] The identifier of the resource.
-     * 
-     * @param {string} [virtualNetwork.name] The name of the resource.
-     * 
-     * @param {string} [virtualNetwork.type] The type of the resource.
-     * 
-     * @param {string} [virtualNetwork.location] The location of the resource.
-     * 
-     * @param {object} [virtualNetwork.tags] The tags of the resource.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetwork>): void;
-    patchResource(resourceGroupName: string, labName: string, name: string, virtualNetwork: models.VirtualNetwork, callback: ServiceCallback<models.VirtualNetwork>): void;
 
     /**
      * List virtual networks in a given lab.
