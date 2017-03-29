@@ -19,7 +19,7 @@ declare class GraphRbacManagementClient {
      *
      * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
-     * @param {string} tenantID - the tenant Id.
+     * @param {string} tenantID - The tenant ID.
      *
      * @param {string} [baseUri] - The base URI of the service.
      *
