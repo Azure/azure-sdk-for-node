@@ -10,16 +10,11 @@ const execSync = require('child_process').execSync;
 const mappings = {
   'advisor': {
     'dir': 'advisorManagement/lib',
-    'source': 'arm-advisor/2016-07-12-preview/swagger/advisor.json',
+    'source': 'arm-advisor/2017-03-31/swagger/advisor.json',
   },
   'analysisservices': {
     'dir': 'analysisServices/lib',
     'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json',
-  },
-  'apiManagement': {
-    'dir': 'apiManagement/lib',
-    'source': 'arm-apimanagement/compositeApiManagementClient.json',
-    'modeler': 'CompositeSwagger'
   },
   'authorization': {
     'dir': 'authorizationManagement/lib',
@@ -243,7 +238,7 @@ const mappings = {
     'dir': 'servermanagement/lib',
     'source': 'arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json'
   },
-    'serviceMap': {
+  'serviceMap': {
     'dir': 'serviceMapManagement/lib',
     'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json'
   },
@@ -288,7 +283,7 @@ const mappings = {
   }
 };
 
-const defaultAutoRestVersion = '1.0.1-20170324-2300-nightly';
+const defaultAutoRestVersion = '1.0.1-20170328-2300-nightly';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 const project = args['project'];
