@@ -1119,6 +1119,14 @@ export interface VirtualMachines {
      * that is being used was licensed on-premises. This element is only used for
      * images that contain the Windows Server operating system.
      *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. Currently, the only supported type is 'SystemAssigned',
+     * which implicitly creates an identity. Possible values include:
+     * 'SystemAssigned'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -1604,6 +1612,14 @@ export interface VirtualMachines {
      * that is being used was licensed on-premises. This element is only used for
      * images that contain the Windows Server operating system.
      *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. Currently, the only supported type is 'SystemAssigned',
+     * which implicitly creates an identity. Possible values include:
+     * 'SystemAssigned'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -1988,6 +2004,14 @@ export interface VirtualMachineScaleSets {
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine
+     * scale set, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine scale set. Currently, the only supported type is
+     * 'SystemAssigned', which implicitly creates an identity. Possible values
+     * include: 'SystemAssigned'
      *
      * @param {string} parameters.location Resource location
      *
@@ -2472,6 +2496,14 @@ export interface VirtualMachineScaleSets {
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine
+     * scale set, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine scale set. Currently, the only supported type is
+     * 'SystemAssigned', which implicitly creates an identity. Possible values
+     * include: 'SystemAssigned'
      *
      * @param {string} parameters.location Resource location
      *
