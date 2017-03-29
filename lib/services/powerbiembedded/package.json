@@ -2,9 +2,10 @@
   "name": "azure-arm-powerbiembedded",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Mazzola, Matt <mattm@microsoft.com>"
+    "Mazzola, Matt <mattm@microsoft.com>",
+    "Hamud, Ali <alihamud@microsoft.com>"
   ],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Microsoft Azure Power BI Embedded Client Library for node",
   "tags": [
     "azure",
