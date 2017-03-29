@@ -25,8 +25,8 @@ export interface WorkspaceCollections {
      *
      * @param {string} resourceGroupName Azure resource group
      * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -41,14 +41,13 @@ export interface WorkspaceCollections {
 
     /**
      * Creates a new Power BI Workspace Collection with the specified properties.
-     * A Power BI Workspace Collection contains one or more Power BI Workspaces
-     * and can be used to provision keys that provide API access to those Power
-     * BI Workspaces.
+     * A Power BI Workspace Collection contains one or more workspaces, and can
+     * be used to provision keys that provide API access to those workspaces.
      *
      * @param {string} resourceGroupName Azure resource group
      * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
      * 
      * @param {object} body Create workspace collection request
      * 
@@ -73,8 +72,8 @@ export interface WorkspaceCollections {
      *
      * @param {string} resourceGroupName Azure resource group
      * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
      * 
      * @param {object} body Update workspace collection request
      * 
@@ -96,8 +95,8 @@ export interface WorkspaceCollections {
      *
      * @param {string} resourceGroupName Azure resource group
      * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -111,27 +110,8 @@ export interface WorkspaceCollections {
     deleteMethod(resourceGroupName: string, workspaceCollectionName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Delete a Power BI Workspace Collection.
-     *
-     * @param {string} resourceGroupName Azure resource group
-     * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    beginDeleteMethod(resourceGroupName: string, workspaceCollectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, workspaceCollectionName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Check that the specified Power BI Workspace Collection name is valid and
-     * not in use.
+     * Verify the specified Power BI Workspace Collection name is valid and not
+     * already in use.
      *
      * @param {string} location Azure location
      * 
@@ -153,7 +133,7 @@ export interface WorkspaceCollections {
     checkNameAvailability(location: string, body: models.CheckNameRequest, callback: ServiceCallback<models.CheckNameResponse>): void;
 
     /**
-     * Retrieves all existing Power BI Workspace Collections in the specified
+     * Retrieves all existing Power BI workspace collections in the specified
      * resource group.
      *
      * @param {string} resourceGroupName Azure resource group
@@ -170,7 +150,7 @@ export interface WorkspaceCollections {
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.WorkspaceCollectionList>): void;
 
     /**
-     * Retrieves all existing Power BI Workspace Collections in the specified
+     * Retrieves all existing Power BI workspace collections in the specified
      * subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -190,8 +170,8 @@ export interface WorkspaceCollections {
      *
      * @param {string} resourceGroupName Azure resource group
      * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -210,8 +190,8 @@ export interface WorkspaceCollections {
      *
      * @param {string} resourceGroupName Azure resource group
      * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
      * 
      * @param {object} body Access key to regenerate
      * 
@@ -237,8 +217,8 @@ export interface WorkspaceCollections {
      * 
      * @param {object} body Workspace migration request
      * 
-     * @param {string} [body.targetResourceGroup] Name of the resource group that
-     * the Power BI Workspace Collections will be migrated to.
+     * @param {string} [body.targetResourceGroup] Name of the resource group the
+     * Power BI workspace collections will be migrated to.
      * 
      * @param {array} [body.resources]
      * 
@@ -252,6 +232,25 @@ export interface WorkspaceCollections {
      */
     migrate(resourceGroupName: string, body: models.MigrateWorkspaceCollectionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
     migrate(resourceGroupName: string, body: models.MigrateWorkspaceCollectionRequest, callback: ServiceCallback<void>): void;
+
+    /**
+     * Delete a Power BI Workspace Collection.
+     *
+     * @param {string} resourceGroupName Azure resource group
+     * 
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    beginDeleteMethod(resourceGroupName: string, workspaceCollectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, workspaceCollectionName: string, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -263,13 +262,13 @@ export interface WorkspaceCollections {
 export interface Workspaces {
 
     /**
-     * Retrieves all existing Power BI Workspaces in the specified Workspace
-     * Collection.
+     * Retrieves all existing Power BI workspaces in the specified workspace
+     * collection.
      *
      * @param {string} resourceGroupName Azure resource group
      * 
-     * @param {string} workspaceCollectionName Power BI Embedded workspace
-     * collection name
+     * @param {string} workspaceCollectionName Power BI Embedded Workspace
+     * Collection name
      * 
      * @param {object} [options] Optional Parameters.
      * 
