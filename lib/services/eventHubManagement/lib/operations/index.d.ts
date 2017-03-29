@@ -21,8 +21,8 @@ import * as models from '../models';
 export interface Namespaces {
 
     /**
-     * Lists all the available namespaces within the subscription irrespective of
-     * the resourceGroups.
+     * Lists all the available namespaces within a subscription, irrespective of
+     * the resource groups.
      *
      * @param {object} [options] Optional Parameters.
      * 
@@ -36,7 +36,7 @@ export interface Namespaces {
     listBySubscription(callback: ServiceCallback<models.NamespaceListResult>): void;
 
     /**
-     * Lists the available namespaces within a resourceGroup.
+     * Lists the available namespaces within a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -52,32 +52,31 @@ export interface Namespaces {
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.NamespaceListResult>): void;
 
     /**
-     * Creates Updates namespace. Once created, this namespace's resource manifest
-     * is immutable. This operation is idempotent.
+     * Creates or updates a namespace. Once created, this namespace's resource
+     * manifest is immutable. This operation is idempotent.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {object} parameters Parameters supplied to create a Namespace
-     * Resource.
+     * @param {object} parameters Parameters for creating a namespace resource.
      * 
      * @param {string} parameters.location Namespace location.
      * 
      * @param {object} [parameters.sku]
      * 
-     * @param {string} [parameters.sku.name] Name of this Sku. Possible values
+     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      * 
-     * @param {string} parameters.sku.tier The tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} parameters.sku.tier The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      * 
-     * @param {number} [parameters.sku.capacity] The eventhub throughput units
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units.
      * 
      * @param {object} [parameters.tags] Namespace tags.
      * 
      * @param {string} [parameters.provisioningState] Provisioning state of the
-     * Namespace.
+     * namespace.
      * 
      * @param {string} [parameters.status] State of the namespace. Possible values
      * include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
@@ -89,10 +88,10 @@ export interface Namespaces {
      * @param {date} [parameters.updatedAt] The time the namespace was updated.
      * 
      * @param {string} [parameters.serviceBusEndpoint] Endpoint you can use to
-     * perform ServiceBus operations.
+     * perform Service Bus operations.
      * 
      * @param {boolean} [parameters.createACSNamespace] Indicates whether to
-     * create ACS namespace.
+     * create an ACS namespace.
      * 
      * @param {boolean} [parameters.enabled] Specifies whether this instance is
      * enabled.
@@ -109,32 +108,209 @@ export interface Namespaces {
     createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.NamespaceCreateOrUpdateParameters, callback: ServiceCallback<models.NamespaceResource>): void;
 
     /**
-     * Creates Updates namespace. Once created, this namespace's resource manifest
-     * is immutable. This operation is idempotent.
+     * Deletes an existing namespace. This operation also removes all associated
+     * resources under the namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The name of the namespace to delete.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteMethod(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets the description of the specified namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The name of the specified namespace.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
+    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.NamespaceResource>): void;
+
+    /**
+     * Gets a list of authorization rules for a namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+
+    /**
+     * Creates or updates an authorization rule for a namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {string} authorizationRuleName Namespace authorization rule name.
+     * 
+     * @param {object} parameters The shared access authorization rule.
+     * 
+     * @param {string} [parameters.location] Data center location.
+     * 
+     * @param {string} [parameters.name] Name of the authorization rule.
+     * 
+     * @param {array} parameters.rights The rights associated with the rule.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+
+    /**
+     * Deletes an authorization rule for a namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {string} authorizationRuleName Authorization rule name.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    deleteAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<void>): void;
+
+    /**
+     * Gets an authorization rule for a namespace by rule name.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {string} authorizationRuleName Authorization rule name.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
+
+    /**
+     * Gets the primary and secondary connection strings for the namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {string} authorizationRuleName The authorization rule name.
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
+
+    /**
+     * Regenerates the primary or secondary connection strings for the specified
+     * namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
+     * 
+     * @param {string} namespaceName The namespace name.
+     * 
+     * @param {string} authorizationRuleName The authorization rule name.
+     * 
+     * @param {object} parameters Parameters required to regenerate the connection
+     * string.
+     * 
+     * @param {string} [parameters.policykey] Key that needs to be regenerated.
+     * Possible values include: 'PrimaryKey', 'SecondaryKey'
+     * 
+     * @param {object} [options] Optional Parameters.
+     * 
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     * 
+     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
+     * doc in ms-rest index.d.ts for details
+     */
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
+
+    /**
+     * Creates or updates a namespace. Once created, this namespace's resource
+     * manifest is immutable. This operation is idempotent.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {object} parameters Parameters supplied to create a Namespace
-     * Resource.
+     * @param {object} parameters Parameters for creating a namespace resource.
      * 
      * @param {string} parameters.location Namespace location.
      * 
      * @param {object} [parameters.sku]
      * 
-     * @param {string} [parameters.sku.name] Name of this Sku. Possible values
+     * @param {string} [parameters.sku.name] Name of this SKU. Possible values
      * include: 'Basic', 'Standard', 'Premium'
      * 
-     * @param {string} parameters.sku.tier The tier of this particular SKU.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
+     * @param {string} parameters.sku.tier The billing tier of this particular
+     * SKU. Possible values include: 'Basic', 'Standard', 'Premium'
      * 
-     * @param {number} [parameters.sku.capacity] The eventhub throughput units
+     * @param {number} [parameters.sku.capacity] The Event Hubs throughput units.
      * 
      * @param {object} [parameters.tags] Namespace tags.
      * 
      * @param {string} [parameters.provisioningState] Provisioning state of the
-     * Namespace.
+     * namespace.
      * 
      * @param {string} [parameters.status] State of the namespace. Possible values
      * include: 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling',
@@ -146,10 +322,10 @@ export interface Namespaces {
      * @param {date} [parameters.updatedAt] The time the namespace was updated.
      * 
      * @param {string} [parameters.serviceBusEndpoint] Endpoint you can use to
-     * perform ServiceBus operations.
+     * perform Service Bus operations.
      * 
      * @param {boolean} [parameters.createACSNamespace] Indicates whether to
-     * create ACS namespace.
+     * create an ACS namespace.
      * 
      * @param {boolean} [parameters.enabled] Specifies whether this instance is
      * enabled.
@@ -169,28 +345,10 @@ export interface Namespaces {
      * Deletes an existing namespace. This operation also removes all associated
      * resources under the namespace.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group in which
+     * the namespace lives.
      * 
-     * @param {string} namespaceName The namespace name.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteMethod(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Deletes an existing namespace. This operation also removes all associated
-     * resources under the namespace.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name.
+     * @param {string} namespaceName The name of the namespace to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -204,157 +362,8 @@ export interface Namespaces {
     beginDeleteMethod(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Returns the description for the specified namespace.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NamespaceResource>): void;
-    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.NamespaceResource>): void;
-
-    /**
-     * Authorization rules for a namespace.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-
-    /**
-     * Creates an authorization rule for a namespace
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name.
-     * 
-     * @param {string} authorizationRuleName Namespace Aauthorization Rule Name.
-     * 
-     * @param {object} parameters The shared access authorization rule.
-     * 
-     * @param {string} [parameters.location] data center location.
-     * 
-     * @param {string} [parameters.name] Name of the AuthorizationRule.
-     * 
-     * @param {array} parameters.rights The rights associated with the rule.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-
-    /**
-     * Deletes a namespace authorization rule
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name.
-     * 
-     * @param {string} authorizationRuleName Authorization Rule Name.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    deleteAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-    deleteAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<void>): void;
-
-    /**
-     * Authorization rule for a namespace by name.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name
-     * 
-     * @param {string} authorizationRuleName Authorization rule name.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
-
-    /**
-     * Primary and Secondary ConnectionStrings to the namespace
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name.
-     * 
-     * @param {string} authorizationRuleName The authorizationRule name.
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-
-    /**
-     * Regenerats the Primary or Secondary ConnectionStrings to the namespace
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     * 
-     * @param {string} namespaceName The namespace name.
-     * 
-     * @param {string} authorizationRuleName The authorizationRule name.
-     * 
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
-     * 
-     * @param {string} [parameters.policykey] Key that needs to be regenerated .
-     * Possible values include: 'PrimaryKey', 'SecondaryKey'
-     * 
-     * @param {object} [options] Optional Parameters.
-     * 
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     * 
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
-     */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-
-    /**
-     * Lists all the available namespaces within the subscription irrespective of
-     * the resourceGroups.
+     * Lists all the available namespaces within a subscription, irrespective of
+     * the resource groups.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -371,7 +380,7 @@ export interface Namespaces {
     listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.NamespaceListResult>): void;
 
     /**
-     * Lists the available namespaces within a resourceGroup.
+     * Lists the available namespaces within a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -388,7 +397,7 @@ export interface Namespaces {
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.NamespaceListResult>): void;
 
     /**
-     * Authorization rules for a namespace.
+     * Gets a list of authorization rules for a namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -414,7 +423,7 @@ export interface Namespaces {
 export interface EventHubs {
 
     /**
-     * Enumerates the Event Hubs in a namespace.
+     * Gets all the Event Hubs in a namespace.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -432,16 +441,16 @@ export interface EventHubs {
     listAll(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.EventHubListResult>): void;
 
     /**
-     * Creates/Updates a new Event Hub as a nested resource within a namespace.
+     * Creates or updates a new Event Hub as a nested resource within a namespace.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {object} parameters Parameters supplied to create a EventHub
-     * Resource.
+     * @param {object} parameters Parameters supplied to create an Event Hub
+     * resource.
      * 
      * @param {string} parameters.location Location of the resource.
      * 
@@ -451,25 +460,25 @@ export interface EventHubs {
      * 
      * @param {object} [parameters.properties]
      * 
-     * @param {date} [parameters.properties.createdAt] Exact time the Event was
-     * created.
+     * @param {date} [parameters.properties.createdAt] Exact time the Event Hub
+     * was created.
      * 
      * @param {number} [parameters.properties.messageRetentionInDays] Number of
      * days to retain the events for this Event Hub.
      * 
      * @param {number} [parameters.properties.partitionCount] Number of partitions
-     * created for EventHub.
+     * created for the Event Hub.
      * 
      * @param {array} [parameters.properties.partitionIds] Current number of
      * shards on the Event Hub.
      * 
      * @param {string} [parameters.properties.status] Enumerates the possible
-     * values for the status of the EventHub. Possible values include: 'Active',
+     * values for the status of the Event Hub. Possible values include: 'Active',
      * 'Disabled', 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating',
      * 'Deleting', 'Renaming', 'Unknown'
      * 
      * @param {date} [parameters.properties.updatedAt] The exact time the message
-     * has been updated.
+     * was updated.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -483,13 +492,13 @@ export interface EventHubs {
     createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, parameters: models.EventHubCreateOrUpdateParameters, callback: ServiceCallback<models.EventHubResource>): void;
 
     /**
-     * Deletes an Event hub from the specified namespace and resource group.
+     * Deletes an Event Hub from the specified namespace and resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The name of the Event Hub to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -503,13 +512,13 @@ export interface EventHubs {
     deleteMethod(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Returns an Event Hub description for the specified Event Hub.
+     * Gets an Event Hubs description for the specified Event Hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -523,13 +532,13 @@ export interface EventHubs {
     get(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.EventHubResource>): void;
 
     /**
-     * Authorization rules for a EventHub.
+     * Gets the authorization rules for an Event Hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} namespaceName The NameSpace name
+     * @param {string} namespaceName The namespace name
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -543,7 +552,7 @@ export interface EventHubs {
     listAuthorizationRules(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
 
     /**
-     * Creates an authorization rule for the specified Event Hub.
+     * Creates or updates an authorization rule for the specified Event Hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
@@ -551,13 +560,13 @@ export interface EventHubs {
      * 
      * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {string} authorizationRuleName Aauthorization Rule Name.
+     * @param {string} authorizationRuleName The authorization rule name.
      * 
      * @param {object} parameters The shared access authorization rule.
      * 
-     * @param {string} [parameters.location] data center location.
+     * @param {string} [parameters.location] Data center location.
      * 
-     * @param {string} [parameters.name] Name of the AuthorizationRule.
+     * @param {string} [parameters.name] Name of the authorization rule.
      * 
      * @param {array} parameters.rights The rights associated with the rule.
      * 
@@ -573,15 +582,15 @@ export interface EventHubs {
     createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRuleCreateOrUpdateParameters, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
 
     /**
-     * Authorization rule for a EventHub by name.
+     * Gets an authorization rule for an Event Hub by rule name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} namespaceName The namespace name
+     * @param {string} namespaceName The namespace name.
      * 
      * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {string} authorizationRuleName Authorization rule name.
+     * @param {string} authorizationRuleName The authorization rule name.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -595,15 +604,15 @@ export interface EventHubs {
     getAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleResource>): void;
 
     /**
-     * Deletes a EventHub authorization rule
+     * Deletes an Event Hubs authorization rule.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The Eventhub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {string} authorizationRuleName Authorization Rule Name.
+     * @param {string} authorizationRuleName The authorization rule name.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -617,16 +626,16 @@ export interface EventHubs {
     deleteAuthorizationRule(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Returns the ACS and SAS connection strings for the Event Hub.
+     * Gets the ACS and SAS connection strings for the Event Hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The event hub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
      * @param {string} authorizationRuleName The connection string of the
-     * namespace for the specified authorizationRule.
+     * namespace for the specified authorization rule.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -646,14 +655,15 @@ export interface EventHubs {
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The event hub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {string} authorizationRuleName The connection string of the EventHub
-     * for the specified authorizationRule.
+     * @param {string} authorizationRuleName The connection string of the Event
+     * Hub for the specified authorization rule.
      * 
-     * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+     * @param {object} parameters Parameters supplied to regenerate the
+     * authorization rule.
      * 
-     * @param {string} [parameters.policykey] Key that needs to be regenerated .
+     * @param {string} [parameters.policykey] Key that needs to be regenerated.
      * Possible values include: 'PrimaryKey', 'SecondaryKey'
      * 
      * @param {object} [options] Optional Parameters.
@@ -668,7 +678,7 @@ export interface EventHubs {
     regenerateKeys(resourceGroupName: string, namespaceName: string, eventHubName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
 
     /**
-     * Enumerates the Event Hubs in a namespace.
+     * Gets all the Event Hubs in a namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -685,7 +695,7 @@ export interface EventHubs {
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.EventHubListResult>): void;
 
     /**
-     * Authorization rules for a EventHub.
+     * Gets the authorization rules for an Event Hub.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -711,18 +721,19 @@ export interface EventHubs {
 export interface ConsumerGroups {
 
     /**
-     * Creates/Updates a consumer group as a nested resource within a namespace.
+     * Creates or updates an Event Hubs consumer group as a nested resource within
+     * a namespace.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {string} consumerGroupName The Consumer Group name.
+     * @param {string} consumerGroupName The consumer group name.
      * 
-     * @param {object} parameters Parameters supplied to create a Consumer Group
-     * Resource.
+     * @param {object} parameters Parameters supplied to create a consumer group
+     * resource.
      * 
      * @param {string} parameters.location Location of the resource.
      * 
@@ -732,10 +743,9 @@ export interface ConsumerGroups {
      * 
      * @param {date} [parameters.createdAt] Exact time the message was created.
      * 
-     * @param {string} [parameters.eventHubPath] The path of the event hub.
+     * @param {string} [parameters.eventHubPath] The path of the Event Hub.
      * 
-     * @param {date} [parameters.updatedAt] The exact time the message has been
-     * updated.
+     * @param {date} [parameters.updatedAt] The exact time the message was updated.
      * 
      * @param {string} [parameters.userMetadata] The user metadata.
      * 
@@ -751,15 +761,15 @@ export interface ConsumerGroups {
     createOrUpdate(resourceGroupName: string, namespaceName: string, eventHubName: string, consumerGroupName: string, parameters: models.ConsumerGroupCreateOrUpdateParameters, callback: ServiceCallback<models.ConsumerGroupResource>): void;
 
     /**
-     * Deletes an ConsumerGroup from the specified EventHub and resource group.
+     * Deletes a consumer group from the specified Event Hub and resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {string} consumerGroupName The Consumer Group name.
+     * @param {string} consumerGroupName The Cconsumer group name.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -773,15 +783,15 @@ export interface ConsumerGroups {
     deleteMethod(resourceGroupName: string, namespaceName: string, eventHubName: string, consumerGroupName: string, callback: ServiceCallback<void>): void;
 
     /**
-     * Returns an Consumer Group description for the specified Consumer Group.
+     * Gets a description for the specified consumer group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
-     * @param {string} consumerGroupName The Consumer Group name.
+     * @param {string} consumerGroupName The consumer group name.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -795,14 +805,14 @@ export interface ConsumerGroups {
     get(resourceGroupName: string, namespaceName: string, eventHubName: string, consumerGroupName: string, callback: ServiceCallback<models.ConsumerGroupResource>): void;
 
     /**
-     * Enumerates the consumer groups in a namespace. An empty feed is returned if
+     * Gets all the consumer groups in a namespace. An empty feed is returned if
      * no consumer group exists in the namespace.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {string} namespaceName The namespace name.
      * 
-     * @param {string} eventHubName The EventHub name.
+     * @param {string} eventHubName The Event Hub name.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -816,7 +826,7 @@ export interface ConsumerGroups {
     listAll(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.ConsumerGroupListResult>): void;
 
     /**
-     * Enumerates the consumer groups in a namespace. An empty feed is returned if
+     * Gets all the consumer groups in a namespace. An empty feed is returned if
      * no consumer group exists in the namespace.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
