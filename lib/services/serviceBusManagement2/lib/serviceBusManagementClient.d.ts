@@ -19,7 +19,7 @@ declare class ServiceBusManagementClient {
      *
      * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
      *
-     * @param {string} subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+     * @param {string} subscriptionId - Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
      *
      * @param {string} [baseUri] - The base URI of the service.
      *
@@ -32,7 +32,7 @@ declare class ServiceBusManagementClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
-     * @param {string} [options.apiVersion] - Client Api Version.
+     * @param {string} [options.apiVersion] - Client API version.
      *
      * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
      *
