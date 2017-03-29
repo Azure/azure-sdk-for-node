@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -42,9 +45,9 @@ export interface RoleDefinitionFilter {
  * @constructor
  * Classic Administrator properties.
  *
- * @member {string} [emailAddress] Gets or sets the email address
+ * @member {string} [emailAddress] The email address of the administrator.
  * 
- * @member {string} [role] Gets or sets the role
+ * @member {string} [role] The role of the administrator.
  * 
  */
 export interface ClassicAdministratorProperties {
@@ -58,18 +61,18 @@ export interface ClassicAdministratorProperties {
  * @constructor
  * Classic Administrators
  *
- * @member {string} [id] Gets or sets the classic administrator id.
+ * @member {string} [id] The ID of the administrator.
  * 
- * @member {string} [name] Gets or sets the classic administrator name.
+ * @member {string} [name] The name of the administrator.
  * 
- * @member {string} [type] Gets or sets the classic administrator type.
+ * @member {string} [type] The type of the administrator.
  * 
- * @member {object} [properties] Gets or sets the classic administrator
- * properties.
+ * @member {object} [properties] Properties for the classic administrator.
  * 
- * @member {string} [properties.emailAddress] Gets or sets the email address
+ * @member {string} [properties.emailAddress] The email address of the
+ * administrator.
  * 
- * @member {string} [properties.role] Gets or sets the role
+ * @member {string} [properties.role] The role of the administrator.
  * 
  */
 export interface ClassicAdministrator {
@@ -81,13 +84,30 @@ export interface ClassicAdministrator {
 
 /**
  * @class
+ * Initializes a new instance of the ClassicAdministratorListResult class.
+ * @constructor
+ * ClassicAdministrator list result information.
+ *
+ * @member {array} [value] An array of administrators.
+ * 
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface ClassicAdministratorListResult {
+  value?: ClassicAdministrator[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Permission class.
  * @constructor
  * Role definition permissions.
  *
- * @member {array} [actions] Role definition allowed actions.
+ * @member {array} [actions] Allowed actions.
  * 
- * @member {array} [notActions] Role definition denied actions.
+ * @member {array} [notActions] Denied actions.
  * 
  */
 export interface Permission {
@@ -97,19 +117,36 @@ export interface Permission {
 
 /**
  * @class
+ * Initializes a new instance of the PermissionGetResult class.
+ * @constructor
+ * Permissions information.
+ *
+ * @member {array} [value] An array of permissions.
+ * 
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface PermissionGetResult {
+  value?: Permission[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ProviderOperation class.
  * @constructor
  * Operation
  *
- * @member {string} [name] Gets or sets the operation name
+ * @member {string} [name] The operation name.
  * 
- * @member {string} [displayName] Gets or sets the operation display name
+ * @member {string} [displayName] The operation display name.
  * 
- * @member {string} [description] Gets or sets the operation description
+ * @member {string} [description] The operation description.
  * 
- * @member {string} [origin] Gets or sets the operation origin
+ * @member {string} [origin] The operation origin.
  * 
- * @member {object} [properties] Gets or sets the operation properties
+ * @member {object} [properties] The operation properties.
  * 
  */
 export interface ProviderOperation {
@@ -126,11 +163,11 @@ export interface ProviderOperation {
  * @constructor
  * Resource Type
  *
- * @member {string} [name] Gets or sets the resource type name
+ * @member {string} [name] The resource type name.
  * 
- * @member {string} [displayName] Gets or sets the resource type display name
+ * @member {string} [displayName] The resource type display name.
  * 
- * @member {array} [operations] Gets or sets the resource type operations
+ * @member {array} [operations] The resource type operations.
  * 
  */
 export interface ResourceType {
@@ -145,17 +182,17 @@ export interface ResourceType {
  * @constructor
  * Provider Operations metadata
  *
- * @member {string} [id] Gets or sets the provider id.
+ * @member {string} [id] The provider id.
  * 
- * @member {string} [name] Gets or sets the provider name
+ * @member {string} [name] The provider name.
  * 
- * @member {string} [type] Gets or sets the provider type
+ * @member {string} [type] The provider type.
  * 
- * @member {string} [displayName] Gets or sets the provider display name
+ * @member {string} [displayName] The provider display name.
  * 
- * @member {array} [resourceTypes] Gets or sets the provider resource types
+ * @member {array} [resourceTypes] The provider resource types
  * 
- * @member {array} [operations] Gets or sets the provider operations
+ * @member {array} [operations] The provider operations.
  * 
  */
 export interface ProviderOperationsMetadata {
@@ -169,15 +206,32 @@ export interface ProviderOperationsMetadata {
 
 /**
  * @class
+ * Initializes a new instance of the ProviderOperationsMetadataListResult class.
+ * @constructor
+ * Provider operations metadata list
+ *
+ * @member {array} [value] The list of providers.
+ * 
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface ProviderOperationsMetadataListResult {
+  value?: ProviderOperationsMetadata[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RoleAssignmentPropertiesWithScope class.
  * @constructor
  * Role assignment properties with scope.
  *
- * @member {string} [scope] Gets or sets role assignment scope.
+ * @member {string} [scope] The role assignment scope.
  * 
- * @member {string} [roleDefinitionId] Gets or sets role definition id.
+ * @member {string} [roleDefinitionId] The role definition ID.
  * 
- * @member {string} [principalId] Gets or sets principal Id.
+ * @member {string} [principalId] The principal ID.
  * 
  */
 export interface RoleAssignmentPropertiesWithScope {
@@ -192,20 +246,19 @@ export interface RoleAssignmentPropertiesWithScope {
  * @constructor
  * Role Assignments
  *
- * @member {string} [id] Gets or sets role assignment id.
+ * @member {string} [id] The role assignment ID.
  * 
- * @member {string} [name] Gets or sets role assignment name.
+ * @member {string} [name] The role assignment name.
  * 
- * @member {string} [type] Gets or sets role assignment type.
+ * @member {string} [type] The role assignment type.
  * 
- * @member {object} [properties] Gets or sets role assignment properties.
+ * @member {object} [properties] Role assignment properties.
  * 
- * @member {string} [properties.scope] Gets or sets role assignment scope.
+ * @member {string} [properties.scope] The role assignment scope.
  * 
- * @member {string} [properties.roleDefinitionId] Gets or sets role definition
- * id.
+ * @member {string} [properties.roleDefinitionId] The role definition ID.
  * 
- * @member {string} [properties.principalId] Gets or sets principal Id.
+ * @member {string} [properties.principalId] The principal ID.
  * 
  */
 export interface RoleAssignment {
@@ -217,13 +270,33 @@ export interface RoleAssignment {
 
 /**
  * @class
+ * Initializes a new instance of the RoleAssignmentListResult class.
+ * @constructor
+ * Role assignment list operation result.
+ *
+ * @member {array} [value] Role assignment list.
+ * 
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface RoleAssignmentListResult {
+  value?: RoleAssignment[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RoleAssignmentProperties class.
  * @constructor
  * Role assignment properties.
  *
- * @member {string} [roleDefinitionId] Gets or sets role definition id.
+ * @member {string} [roleDefinitionId] The role definition ID used in the role
+ * assignment.
  * 
- * @member {string} [principalId] Gets or sets principal Id.
+ * @member {string} [principalId] The principal ID assigned to the role. This
+ * maps to the ID inside the Active Directory. It can point to a user,
+ * service principal, or security group.
  * 
  */
 export interface RoleAssignmentProperties {
@@ -237,12 +310,14 @@ export interface RoleAssignmentProperties {
  * @constructor
  * Role assignment create parameters.
  *
- * @member {object} [properties] Gets or sets role assignment properties.
+ * @member {object} [properties] Role assignment properties.
  * 
- * @member {string} [properties.roleDefinitionId] Gets or sets role definition
- * id.
+ * @member {string} [properties.roleDefinitionId] The role definition ID used
+ * in the role assignment.
  * 
- * @member {string} [properties.principalId] Gets or sets principal Id.
+ * @member {string} [properties.principalId] The principal ID assigned to the
+ * role. This maps to the ID inside the Active Directory. It can point to a
+ * user, service principal, or security group.
  * 
  */
 export interface RoleAssignmentCreateParameters {
@@ -255,16 +330,15 @@ export interface RoleAssignmentCreateParameters {
  * @constructor
  * Role definition properties.
  *
- * @member {string} [roleName] Gets or sets role name.
+ * @member {string} [roleName] The role name.
  * 
- * @member {string} [description] Gets or sets role definition description.
+ * @member {string} [description] The role definition description.
  * 
- * @member {string} [type] Gets or sets role type.
+ * @member {string} [type] The role type.
  * 
- * @member {array} [permissions] Gets or sets role definition permissions.
+ * @member {array} [permissions] Role definition permissions.
  * 
- * @member {array} [assignableScopes] Gets or sets role definition assignable
- * scopes.
+ * @member {array} [assignableScopes] Role definition assignable scopes.
  * 
  */
 export interface RoleDefinitionProperties {
@@ -281,26 +355,24 @@ export interface RoleDefinitionProperties {
  * @constructor
  * Role definition.
  *
- * @member {string} [id] Gets or sets role definition id.
+ * @member {string} [id] The role definition ID.
  * 
- * @member {string} [name] Gets or sets role definition name.
+ * @member {string} [name] The role definition name.
  * 
- * @member {string} [type] Gets or sets role definition type.
+ * @member {string} [type] The role definition type.
  * 
- * @member {object} [properties] Gets or sets role definition properties.
+ * @member {object} [properties] Role definition properties.
  * 
- * @member {string} [properties.roleName] Gets or sets role name.
+ * @member {string} [properties.roleName] The role name.
  * 
- * @member {string} [properties.description] Gets or sets role definition
- * description.
+ * @member {string} [properties.description] The role definition description.
  * 
- * @member {string} [properties.type] Gets or sets role type.
+ * @member {string} [properties.type] The role type.
  * 
- * @member {array} [properties.permissions] Gets or sets role definition
- * permissions.
+ * @member {array} [properties.permissions] Role definition permissions.
  * 
- * @member {array} [properties.assignableScopes] Gets or sets role definition
- * assignable scopes.
+ * @member {array} [properties.assignableScopes] Role definition assignable
+ * scopes.
  * 
  */
 export interface RoleDefinition {
@@ -310,6 +382,23 @@ export interface RoleDefinition {
   properties?: RoleDefinitionProperties;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the RoleDefinitionListResult class.
+ * @constructor
+ * Role definition list operation result.
+ *
+ * @member {array} [value] Role definition list.
+ * 
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface RoleDefinitionListResult {
+  value?: RoleDefinition[];
+  nextLink?: string;
+}
+
 
 /**
  * @class
@@ -317,8 +406,8 @@ export interface RoleDefinition {
  * @constructor
  * ClassicAdministrator list result information.
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * classic administrators results.
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
  * 
  */
 export interface ClassicAdministratorListResult extends Array<ClassicAdministrator> {
@@ -331,8 +420,8 @@ export interface ClassicAdministratorListResult extends Array<ClassicAdministrat
  * @constructor
  * Permissions information.
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * permissions results.
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
  * 
  */
 export interface PermissionGetResult extends Array<Permission> {
@@ -345,8 +434,8 @@ export interface PermissionGetResult extends Array<Permission> {
  * @constructor
  * Provider operations metadata list
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * provider operations metadata results.
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
  * 
  */
 export interface ProviderOperationsMetadataListResult extends Array<ProviderOperationsMetadata> {
@@ -359,8 +448,8 @@ export interface ProviderOperationsMetadataListResult extends Array<ProviderOper
  * @constructor
  * Role assignment list operation result.
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * role assignment results.
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
  * 
  */
 export interface RoleAssignmentListResult extends Array<RoleAssignment> {
@@ -373,8 +462,8 @@ export interface RoleAssignmentListResult extends Array<RoleAssignment> {
  * @constructor
  * Role definition list operation result.
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * role definitions results.
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
  * 
  */
 export interface RoleDefinitionListResult extends Array<RoleDefinition> {

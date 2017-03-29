@@ -21,9 +21,10 @@ import * as models from '../models';
 export interface ClassicAdministrators {
 
     /**
-     * Gets a list of classic administrators for the subscription.
+     * Gets service administrator, account administrator, and co-administrators
+     * for the subscription.
      *
-     * @param {string} apiVersion
+     * @param {string} apiVersion The API version to use for this operation.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -37,7 +38,8 @@ export interface ClassicAdministrators {
     list(apiVersion: string, callback: ServiceCallback<models.ClassicAdministratorListResult>): void;
 
     /**
-     * Gets a list of classic administrators for the subscription.
+     * Gets service administrator, account administrator, and co-administrators
+     * for the subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -63,10 +65,10 @@ export interface ClassicAdministrators {
 export interface Permissions {
 
     /**
-     * Gets a resource group permissions.
+     * Gets all permissions the caller has for a resource group.
      *
-     * @param {string} resourceGroupName Name of the resource group to get the
-     * permissions for.The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group to get the
+     * permissions for. The name is case insensitive.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -80,18 +82,20 @@ export interface Permissions {
     listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PermissionGetResult>): void;
 
     /**
-     * Gets a resource permissions.
+     * Gets all permissions the caller has for a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the resource. The name is case insensitive.
      * 
-     * @param {string} resourceProviderNamespace Resource
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
      * 
-     * @param {string} parentResourcePath Resource
+     * @param {string} parentResourcePath The parent resource identity.
      * 
-     * @param {string} resourceType Resource
+     * @param {string} resourceType The resource type of the resource.
      * 
-     * @param {string} resourceName Resource
+     * @param {string} resourceName The name of the resource to get the
+     * permissions for.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -105,7 +109,7 @@ export interface Permissions {
     listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.PermissionGetResult>): void;
 
     /**
-     * Gets a resource group permissions.
+     * Gets all permissions the caller has for a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -122,7 +126,7 @@ export interface Permissions {
     listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PermissionGetResult>): void;
 
     /**
-     * Gets a resource permissions.
+     * Gets all permissions the caller has for a resource.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -148,16 +152,16 @@ export interface Permissions {
 export interface ProviderOperationsMetadataOperations {
 
     /**
-     * Gets provider operations metadata
+     * Gets provider operations metadata for the specified resource provider.
      *
-     * @param {string} resourceProviderNamespace Namespace of the resource
+     * @param {string} resourceProviderNamespace The namespace of the resource
      * provider.
      * 
-     * @param {string} apiVersion
+     * @param {string} apiVersion The API version to use for the operation.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.expand]
+     * @param {string} [options.expand] Specifies whether to expand the values.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -169,13 +173,13 @@ export interface ProviderOperationsMetadataOperations {
     get(resourceProviderNamespace: string, apiVersion: string, callback: ServiceCallback<models.ProviderOperationsMetadata>): void;
 
     /**
-     * Gets provider operations metadata list
+     * Gets provider operations metadata for all resource providers.
      *
-     * @param {string} apiVersion
+     * @param {string} apiVersion The API version to use for this operation.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.expand]
+     * @param {string} [options.expand] Specifies whether to expand the values.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -187,7 +191,7 @@ export interface ProviderOperationsMetadataOperations {
     list(apiVersion: string, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
 
     /**
-     * Gets provider operations metadata list
+     * Gets provider operations metadata for all resource providers.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -213,21 +217,26 @@ export interface ProviderOperationsMetadataOperations {
 export interface RoleAssignments {
 
     /**
-     * Gets role assignments of the resource.
+     * Gets role assignments for a resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      * 
-     * @param {string} resourceProviderNamespace Resource identity.
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
      * 
-     * @param {string} parentResourcePath Resource identity.
+     * @param {string} parentResourcePath The parent resource identity.
      * 
-     * @param {string} resourceType Resource identity.
+     * @param {string} resourceType The resource type of the resource.
      * 
-     * @param {string} resourceName Resource identity.
+     * @param {string} resourceName The name of the resource to get role
+     * assignments for.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all role assignments at or above the scope.
+     * Use $filter=principalId eq {id} to return all role assignments at, above
+     * or below the scope for the specified principal.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -239,13 +248,16 @@ export interface RoleAssignments {
     listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
 
     /**
-     * Gets role assignments of the resource group.
+     * Gets role assignments for a resource group.
      *
-     * @param {string} resourceGroupName Resource group name.
+     * @param {string} resourceGroupName The name of the resource group.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all role assignments at or above the scope.
+     * Use $filter=principalId eq {id} to return all role assignments at, above
+     * or below the scope for the specified principal.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -257,11 +269,12 @@ export interface RoleAssignments {
     listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
 
     /**
-     * Delete role assignment.
+     * Deletes a role assignment.
      *
-     * @param {string} scope Scope.
+     * @param {string} scope The scope of the role assignment to delete.
      * 
-     * @param {string} roleAssignmentName Role assignment name.
+     * @param {string} roleAssignmentName The name of the role assignment to
+     * delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -275,21 +288,29 @@ export interface RoleAssignments {
     deleteMethod(scope: string, roleAssignmentName: string, callback: ServiceCallback<models.RoleAssignment>): void;
 
     /**
-     * Create role assignment.
+     * Creates a role assignment.
      *
-     * @param {string} scope Scope.
+     * @param {string} scope The scope of the role assignment to create. The scope
+     * can be any REST resource instance. For example, use
+     * '/subscriptions/{subscription-id}/' for a subscription,
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}'
+     * for a resource group, and
+     * '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}'
+     * for a resource.
      * 
-     * @param {string} roleAssignmentName Role assignment name.
+     * @param {string} roleAssignmentName The name of the role assignment to
+     * create. It can be any valid GUID.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.properties] Gets or sets role assignment
-     * properties.
+     * @param {object} [options.properties] Role assignment properties.
      * 
-     * @param {string} [options.properties.roleDefinitionId] Gets or sets role
-     * definition id.
+     * @param {string} [options.properties.roleDefinitionId] The role definition
+     * ID used in the role assignment.
      * 
-     * @param {string} [options.properties.principalId] Gets or sets principal Id.
+     * @param {string} [options.properties.principalId] The principal ID assigned
+     * to the role. This maps to the ID inside the Active Directory. It can point
+     * to a user, service principal, or security group.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -301,11 +322,11 @@ export interface RoleAssignments {
     create(scope: string, roleAssignmentName: string, callback: ServiceCallback<models.RoleAssignment>): void;
 
     /**
-     * Get single role assignment.
+     * Get the specified role assignment.
      *
-     * @param {string} scope Scope.
+     * @param {string} scope The scope of the role assignment.
      * 
-     * @param {string} roleAssignmentName Role assignment name.
+     * @param {string} roleAssignmentName The name of the role assignment to get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -319,9 +340,9 @@ export interface RoleAssignments {
     get(scope: string, roleAssignmentName: string, callback: ServiceCallback<models.RoleAssignment>): void;
 
     /**
-     * Delete role assignment.
+     * Deletes a role assignment.
      *
-     * @param {string} roleAssignmentId Role assignment Id
+     * @param {string} roleAssignmentId The ID of the role assignment to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -335,19 +356,20 @@ export interface RoleAssignments {
     deleteById(roleAssignmentId: string, callback: ServiceCallback<models.RoleAssignment>): void;
 
     /**
-     * Create role assignment by Id.
+     * Creates a role assignment by ID.
      *
-     * @param {string} roleAssignmentId Role assignment Id
+     * @param {string} roleAssignmentId The ID of the role assignment to create.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {object} [options.properties] Gets or sets role assignment
-     * properties.
+     * @param {object} [options.properties] Role assignment properties.
      * 
-     * @param {string} [options.properties.roleDefinitionId] Gets or sets role
-     * definition id.
+     * @param {string} [options.properties.roleDefinitionId] The role definition
+     * ID used in the role assignment.
      * 
-     * @param {string} [options.properties.principalId] Gets or sets principal Id.
+     * @param {string} [options.properties.principalId] The principal ID assigned
+     * to the role. This maps to the ID inside the Active Directory. It can point
+     * to a user, service principal, or security group.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -359,9 +381,9 @@ export interface RoleAssignments {
     createById(roleAssignmentId: string, callback: ServiceCallback<models.RoleAssignment>): void;
 
     /**
-     * Get single role assignment.
+     * Gets a role assignment by ID.
      *
-     * @param {string} roleAssignmentId Role assignment Id
+     * @param {string} roleAssignmentId The ID of the role assignment to get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -375,11 +397,14 @@ export interface RoleAssignments {
     getById(roleAssignmentId: string, callback: ServiceCallback<models.RoleAssignment>): void;
 
     /**
-     * Gets role assignments of the subscription.
+     * Gets all role assignments for the subscription.
      *
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all role assignments at or above the scope.
+     * Use $filter=principalId eq {id} to return all role assignments at, above
+     * or below the scope for the specified principal.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -391,13 +416,16 @@ export interface RoleAssignments {
     list(callback: ServiceCallback<models.RoleAssignmentListResult>): void;
 
     /**
-     * Gets role assignments of the scope.
+     * Gets role assignments for a scope.
      *
-     * @param {string} scope Scope.
+     * @param {string} scope The scope of the role assignments.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * $filter=atScope() to return all role assignments at or above the scope.
+     * Use $filter=principalId eq {id} to return all role assignments at, above
+     * or below the scope for the specified principal.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -409,7 +437,7 @@ export interface RoleAssignments {
     listForScope(scope: string, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
 
     /**
-     * Gets role assignments of the resource.
+     * Gets role assignments for a resource.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -426,7 +454,7 @@ export interface RoleAssignments {
     listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
 
     /**
-     * Gets role assignments of the resource group.
+     * Gets role assignments for a resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -443,7 +471,7 @@ export interface RoleAssignments {
     listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
 
     /**
-     * Gets role assignments of the subscription.
+     * Gets all role assignments for the subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -460,7 +488,7 @@ export interface RoleAssignments {
     listNext(nextPageLink: string, callback: ServiceCallback<models.RoleAssignmentListResult>): void;
 
     /**
-     * Gets role assignments of the scope.
+     * Gets role assignments for a scope.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -486,11 +514,11 @@ export interface RoleAssignments {
 export interface RoleDefinitions {
 
     /**
-     * Deletes the role definition.
+     * Deletes a role definition.
      *
-     * @param {string} scope Scope
+     * @param {string} scope The scope of the role definition.
      * 
-     * @param {string} roleDefinitionId Role definition id.
+     * @param {string} roleDefinitionId The ID of the role definition to delete.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -506,9 +534,9 @@ export interface RoleDefinitions {
     /**
      * Get role definition by name (GUID).
      *
-     * @param {string} scope Scope
+     * @param {string} scope The scope of the role definition.
      * 
-     * @param {string} roleDefinitionId Role definition Id
+     * @param {string} roleDefinitionId The ID of the role definition.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -524,33 +552,32 @@ export interface RoleDefinitions {
     /**
      * Creates or updates a role definition.
      *
-     * @param {string} scope Scope
+     * @param {string} scope The scope of the role definition.
      * 
-     * @param {string} roleDefinitionId Role definition id.
+     * @param {string} roleDefinitionId The ID of the role definition.
      * 
-     * @param {object} roleDefinition Role definition.
+     * @param {object} roleDefinition The values for the role definition.
      * 
-     * @param {string} [roleDefinition.id] Gets or sets role definition id.
+     * @param {string} [roleDefinition.id] The role definition ID.
      * 
-     * @param {string} [roleDefinition.name] Gets or sets role definition name.
+     * @param {string} [roleDefinition.name] The role definition name.
      * 
-     * @param {string} [roleDefinition.type] Gets or sets role definition type.
+     * @param {string} [roleDefinition.type] The role definition type.
      * 
-     * @param {object} [roleDefinition.properties] Gets or sets role definition
-     * properties.
+     * @param {object} [roleDefinition.properties] Role definition properties.
      * 
-     * @param {string} [roleDefinition.properties.roleName] Gets or sets role name.
+     * @param {string} [roleDefinition.properties.roleName] The role name.
      * 
-     * @param {string} [roleDefinition.properties.description] Gets or sets role
-     * definition description.
+     * @param {string} [roleDefinition.properties.description] The role definition
+     * description.
      * 
-     * @param {string} [roleDefinition.properties.type] Gets or sets role type.
+     * @param {string} [roleDefinition.properties.type] The role type.
      * 
-     * @param {array} [roleDefinition.properties.permissions] Gets or sets role
-     * definition permissions.
+     * @param {array} [roleDefinition.properties.permissions] Role definition
+     * permissions.
      * 
-     * @param {array} [roleDefinition.properties.assignableScopes] Gets or sets
-     * role definition assignable scopes.
+     * @param {array} [roleDefinition.properties.assignableScopes] Role definition
+     * assignable scopes.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -564,9 +591,10 @@ export interface RoleDefinitions {
     createOrUpdate(scope: string, roleDefinitionId: string, roleDefinition: models.RoleDefinition, callback: ServiceCallback<models.RoleDefinition>): void;
 
     /**
-     * Get role definition by name (GUID).
+     * Gets a role definition by ID.
      *
-     * @param {string} roleDefinitionId Fully qualified role definition Id
+     * @param {string} roleDefinitionId The fully qualified role definition ID to
+     * get.
      * 
      * @param {object} [options] Optional Parameters.
      * 
@@ -580,14 +608,14 @@ export interface RoleDefinitions {
     getById(roleDefinitionId: string, callback: ServiceCallback<models.RoleDefinition>): void;
 
     /**
-     * Get all role definitions that are applicable at scope and above. Use
-     * atScopeAndBelow filter to search below the given scope as well
+     * Get all role definitions that are applicable at scope and above.
      *
-     * @param {string} scope Scope
+     * @param {string} scope The scope of the role definition.
      * 
      * @param {object} [options] Optional Parameters.
      * 
-     * @param {string} [options.filter] The filter to apply on the operation.
+     * @param {string} [options.filter] The filter to apply on the operation. Use
+     * atScopeAndBelow filter to search below the given scope as well.
      * 
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -599,8 +627,7 @@ export interface RoleDefinitions {
     list(scope: string, callback: ServiceCallback<models.RoleDefinitionListResult>): void;
 
     /**
-     * Get all role definitions that are applicable at scope and above. Use
-     * atScopeAndBelow filter to search below the given scope as well
+     * Get all role definitions that are applicable at scope and above.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
