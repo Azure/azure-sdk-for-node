@@ -13,6 +13,7 @@ before_install:
   - npm install -g npm@1.4.23
   - npm run-script setup
   - npm install
+  - npm update -g npm
   #- cd ..
   #- git clone https://github.com/azure/azure-xplat-cli.git
   #- cd azure-xplat-cli
