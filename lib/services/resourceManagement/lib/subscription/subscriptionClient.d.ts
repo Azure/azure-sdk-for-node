@@ -30,7 +30,7 @@ declare class SubscriptionClient {
      *
      * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
      *
-     * @param {string} [options.apiVersion] - Client Api Version.
+     * @param {string} [options.apiVersion] - The API version to use for the operation.
      *
      * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
      *

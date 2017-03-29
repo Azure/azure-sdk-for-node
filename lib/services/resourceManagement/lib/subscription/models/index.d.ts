@@ -8,6 +8,9 @@
  * regenerated.
  */
 
+import * as msRestAzure from 'ms-rest-azure';
+exports.BaseResource = msRestAzure.BaseResource;
+exports.CloudError = msRestAzure.CloudError;
 
 /**
  * @class
@@ -15,10 +18,10 @@
  * @constructor
  * Location information.
  *
- * @member {string} [id] The fully qualified Id of the location. For example,
+ * @member {string} [id] The fully qualified ID of the location. For example,
  * /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
  * 
- * @member {string} [subscriptionId] The subscription Id.
+ * @member {string} [subscriptionId] The subscription ID.
  * 
  * @member {string} [name] The location name.
  * 
@@ -40,30 +43,44 @@ export interface Location {
 
 /**
  * @class
+ * Initializes a new instance of the LocationListResult class.
+ * @constructor
+ * Location list operation response.
+ *
+ * @member {array} [value] An array of locations.
+ * 
+ */
+export interface LocationListResult {
+  value?: Location[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the Subscription class.
  * @constructor
  * Subscription information.
  *
- * @member {string} [id] The fully qualified Id. For example,
- * /subscriptions/00000000-0000-0000-0000-000000000000.
+ * @member {string} [id] The fully qualified ID for the subscription. For
+ * example, /subscriptions/00000000-0000-0000-0000-000000000000.
  * 
- * @member {string} [subscriptionId] The subscription Id.
+ * @member {string} [subscriptionId] The subscription ID.
  * 
- * @member {string} [tenantId] The tenant Id.
+ * @member {string} [tenantId] The tenant ID.
  * 
  * @member {string} [displayName] The subscription display name.
  * 
- * @member {string} [state] The subscription state. Possible values include:
+ * @member {string} [state] The subscription state. Possible values are
+ * Enabled, Warned, PastDue, Disabled, and Deleted. Possible values include:
  * 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
  * 
  * @member {object} [subscriptionPolicies] The subscription policies.
  * 
  * @member {string} [subscriptionPolicies.locationPlacementId] The
- * subscription location placement Id. The Id indicates which regions are
+ * subscription location placement ID. The ID indicates which regions are
  * visible for a subscription. For example, a subscription with a location
  * placement Id of Public_2014-09-01 has access to Azure public regions.
  * 
- * @member {string} [subscriptionPolicies.quotaId] The subscription quota Id.
+ * @member {string} [subscriptionPolicies.quotaId] The subscription quota ID.
  * 
  * @member {string} [subscriptionPolicies.spendingLimit] The subscription
  * spending limit. Possible values include: 'On', 'Off', 'CurrentPeriodOff'
@@ -90,11 +107,11 @@ export interface Subscription {
  * Subscription policies.
  *
  * @member {string} [locationPlacementId] The subscription location placement
- * Id. The Id indicates which regions are visible for a subscription. For
+ * ID. The ID indicates which regions are visible for a subscription. For
  * example, a subscription with a location placement Id of Public_2014-09-01
  * has access to Azure public regions.
  * 
- * @member {string} [quotaId] The subscription quota Id.
+ * @member {string} [quotaId] The subscription quota ID.
  * 
  * @member {string} [spendingLimit] The subscription spending limit. Possible
  * values include: 'On', 'Off', 'CurrentPeriodOff'
@@ -108,20 +125,53 @@ export interface SubscriptionPolicies {
 
 /**
  * @class
+ * Initializes a new instance of the SubscriptionListResult class.
+ * @constructor
+ * Subscription list operation response.
+ *
+ * @member {array} [value] An array of subscriptions.
+ * 
+ * @member {string} nextLink The URL to get the next set of results.
+ * 
+ */
+export interface SubscriptionListResult {
+  value?: Subscription[];
+  nextLink: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TenantIdDescription class.
  * @constructor
  * Tenant Id information.
  *
- * @member {string} [id] The fully qualified Id. For example,
+ * @member {string} [id] The fully qualified ID of the tenant. For example,
  * /tenants/00000000-0000-0000-0000-000000000000.
  * 
- * @member {string} [tenantId] The tenantId. For example,
+ * @member {string} [tenantId] The tenant ID. For example,
  * 00000000-0000-0000-0000-000000000000.
  * 
  */
 export interface TenantIdDescription {
   id?: string;
   tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TenantListResult class.
+ * @constructor
+ * Tenant Ids information.
+ *
+ * @member {array} [value] An array of tenants.
+ * 
+ * @member {string} nextLink The URL to use for getting the next set of
+ * results.
+ * 
+ */
+export interface TenantListResult {
+  value?: TenantIdDescription[];
+  nextLink: string;
 }
 
 
@@ -154,7 +204,8 @@ export interface SubscriptionListResult extends Array<Subscription> {
  * @constructor
  * Tenant Ids information.
  *
- * @member {string} nextLink The URL to get the next set of results.
+ * @member {string} nextLink The URL to use for getting the next set of
+ * results.
  * 
  */
 export interface TenantListResult extends Array<TenantIdDescription> {
