@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-var utils = require('./utils');
+const utils = require('./utils');
 exports.Constants = require('./constants');
 
 exports.WebResource = require('./webResource');
@@ -28,10 +28,10 @@ exports.isValidUuid = utils.isValidUuid;
 exports.serializeObject = require('./serialization').serializeObject;
 exports.serialize = require('./serialization').serialize;
 exports.deserialize = require('./serialization').deserialize;
-var serialization = require('./serialization');
+const serialization = require('./serialization');
 
-exports.addSerializationMixin = function (destObject) {
-  ['serialize', 'serializeObject', 'deserialize'].forEach(function (property) {
+exports.addSerializationMixin = function addSerializationMixin(destObject) {
+  ['serialize', 'serializeObject', 'deserialize'].forEach((property) => {
     destObject[property] = serialization[property];
   });
 };

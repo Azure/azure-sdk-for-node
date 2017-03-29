@@ -10,8 +10,6 @@
 
 'use strict';
 
-var util = require('util');
-
 /**
  * @class
  * Initializes a new instance of the ProductListResult class.
@@ -21,33 +19,33 @@ var util = require('util');
  * properties.
  * 
  */
-function ProductListResult() {
-}
+class ProductListResult extends Array {
 
-util.inherits(ProductListResult, Array);
+  constructor() { super(); }
 
-ProductListResult.prototype.mapper = function () {
-  return {
-    type: {
-      name: 'Composite',
-      className: 'ProductListResult',
-      modelProperties: {
-        value: {
-          serializedName: '',
-          required: false,
-          type: {
-            name: 'Sequence',
-            element: {
-              type: {
-                name: 'Composite',
-                className: 'Product'
+  mapper() {
+    return {
+      type: {
+        name: 'Composite',
+        className: 'ProductListResult',
+        modelProperties: {
+          value: {
+            serializedName: '',
+            required: false,
+            type: {
+              name: 'Sequence',
+              element: {
+                type: {
+                  name: 'Composite',
+                  className: 'Product'
+                }
               }
             }
           }
         }
       }
-    }
-  };
+    };
+  }
 }
 
 module.exports = ProductListResult;

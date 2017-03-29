@@ -271,7 +271,7 @@ describe('AzureServiceClient', function () {
           should.exist(err);
           should.exist(err.response);
           should.exist(err.message);
-          err.message.should.match(/^Long running operation failed with error: 'Error.*occurred in deserializing the response body.*/ig);
+          err.message.should.match(/^Long running operation failed with error: "Error.*occurred in deserializing the response body.*/ig);
           done();
         });
       });
@@ -286,7 +286,7 @@ describe('AzureServiceClient', function () {
           should.exist(err);
           should.exist(err.response);
           should.exist(err.message);
-          err.message.should.match(/^Long running operation failed with error: 'Error.*occurred in deserializing the response body.*/ig);
+          err.message.should.match(/^Long running operation failed with error: "Error.*occurred in deserializing the response body.*/ig);
           done();
         });
       });

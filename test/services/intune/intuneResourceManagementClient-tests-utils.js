@@ -173,7 +173,7 @@ IntuneTestUtils.deletePolicies = function(client, location, policyType, ids, cal
   for (var i = 0; i < ids.length; i++) {
     client[pt].deleteMAMPolicy(location, ids[i], null, resolver);
   }
-}
+};
 
 IntuneTestUtils.deleteAllPolicies = function(client, location, policyType, callback) {
   var pt;
@@ -215,7 +215,7 @@ IntuneTestUtils.deleteAllPolicies = function(client, location, policyType, callb
       client[pt].deleteMAMPolicy(location, result[i].name, null, resolver);
     }
   });
-}
+};
 
 IntuneTestUtils.done = function(numberOfPendingEvents, resolver) {
   return function(pending, callback) {
@@ -230,7 +230,7 @@ IntuneTestUtils.done = function(numberOfPendingEvents, resolver) {
       }
     }
   }(numberOfPendingEvents, resolver);
-}
+};
 
 IntuneTestUtils.getAADUsersAndGroups = function(username, password, clientId, callback) {
   var graphServicePrincipalId = '00000002-0000-0000-c000-000000000000';

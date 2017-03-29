@@ -16,7 +16,7 @@
 
 var should = require('should');
 var mocha = require('mocha');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 var testutil = require('../../util/util');
 

@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
 'use strict';
-var util = require('util');
+
 /**
  * @class
  * Initializes a new instance of the AzureEnvironment class.
@@ -36,7 +36,7 @@ function AzureEnvironment(parameters) {
     'activeDirectoryEndpointUrl', 'activeDirectoryResourceId'];
     requiredParams.forEach(function (param) {
       if (!parameters[param] || typeof parameters[param].valueOf() !== 'string') {
-        throw new Error(util.format('Please provide "%s" for the environment and it must be of type "string".', param));
+        throw new Error(`Please provide "${param}" for the environment and it must be of type "string".`);
       }
     });
     //Assign provided parameters

@@ -12,8 +12,6 @@
 
 var models = require('./index');
 
-var util = require('util');
-
 /**
  * @class
  * Initializes a new instance of the Sawshark class.
@@ -21,46 +19,45 @@ var util = require('util');
  * @member {buffer} [picture]
  * 
  */
-function Sawshark() {
-  Sawshark['super_'].call(this);
-}
+class Sawshark extends models['Shark'] {
+  constructor() {
+    super();
+  }
 
-util.inherits(Sawshark, models['Shark']);
-
-/**
- * Defines the metadata of Sawshark
- *
- * @returns {object} metadata of Sawshark
- *
- */
-Sawshark.prototype.mapper = function () {
-  return {
-    required: false,
-    serializedName: 'sawshark',
-    type: {
-      name: 'Composite',
-      className: 'Sawshark',
-      modelProperties: {
-        species: {
-          required: false,
-          serializedName: 'species',
-          type: {
-            name: 'String'
-          }
-        },
-        length: {
-          required: true,
-          serializedName: 'length',
-          type: {
-            name: 'Number'
-          }
-        },
-        siblings: {
-          required: false,
-          serializedName: 'siblings',
-          type: {
-            name: 'Sequence',
-            element: {
+  /**
+   * Defines the metadata of Sawshark
+   *
+   * @returns {object} metadata of Sawshark
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'sawshark',
+      type: {
+        name: 'Composite',
+        className: 'Sawshark',
+        modelProperties: {
+          species: {
+            required: false,
+            serializedName: 'species',
+            type: {
+              name: 'String'
+            }
+          },
+          length: {
+            required: true,
+            serializedName: 'length',
+            type: {
+              name: 'Number'
+            }
+          },
+          siblings: {
+            required: false,
+            serializedName: 'siblings',
+            type: {
+              name: 'Sequence',
+              element: {
                 required: false,
                 serializedName: 'FishElementType',
                 type: {
@@ -72,40 +69,41 @@ Sawshark.prototype.mapper = function () {
                   uberParent: 'Fish',
                   className: 'Fish'
                 }
+              }
             }
-          }
-        },
-        fishtype: {
-          required: true,
-          serializedName: 'fish\\.type',
-          type: {
-            name: 'String'
-          }
-        },
-        age: {
-          required: false,
-          serializedName: 'age',
-          type: {
-            name: 'Number'
-          }
-        },
-        birthday: {
-          required: true,
-          serializedName: 'birthday',
-          type: {
-            name: 'DateTime'
-          }
-        },
-        picture: {
-          required: false,
-          serializedName: 'picture',
-          type: {
-            name: 'ByteArray'
+          },
+          fishtype: {
+            required: true,
+            serializedName: 'fish\\.type',
+            type: {
+              name: 'String'
+            }
+          },
+          age: {
+            required: false,
+            serializedName: 'age',
+            type: {
+              name: 'Number'
+            }
+          },
+          birthday: {
+            required: true,
+            serializedName: 'birthday',
+            type: {
+              name: 'DateTime'
+            }
+          },
+          picture: {
+            required: false,
+            serializedName: 'picture',
+            type: {
+              name: 'ByteArray'
+            }
           }
         }
       }
-    }
-  };
-};
+    };
+  }
+}
 
 module.exports = Sawshark;

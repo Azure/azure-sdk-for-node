@@ -1,9 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
-var util = require('util');
-
-var dump = util.inspect;
+'use strict';
 
 /**
  * logFilter = simple filter to do logging on requests and responses
@@ -11,7 +9,7 @@ var dump = util.inspect;
 exports.create = function (logger) {
   var log = logger ? logger.log : console.log;
   return function handle (options, next, callback) {
-    log('logFilter, request: %s', dump(options));
+    log('logFilter, request: %s', JSON.stringify(options, null, 2));
     return next(options, function (err, response, body) {
       if (err) {
         log('Error from response, message: ' + err.message);

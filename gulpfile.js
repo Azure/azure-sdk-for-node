@@ -4,6 +4,7 @@ const colors = require('colors');
 const fs = require('fs');
 const util = require('util');
 const path = require('path');
+const glob = require('glob');
 const execSync = require('child_process').execSync;
 
 const mappings = {
@@ -14,6 +15,11 @@ const mappings = {
   'analysisservices': {
     'dir': 'analysisServices/lib',
     'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json',
+  },
+  'apiManagement': {
+    'dir': 'apiManagement/lib',
+    'source': 'arm-apimanagement/compositeApiManagementClient.json',
+    'modeler': 'CompositeSwagger'
   },
   'authorization': {
     'dir': 'authorizationManagement/lib',
@@ -72,13 +78,13 @@ const mappings = {
     'dir': 'dataLake.Analytics/lib/account',
     'source': 'arm-datalake-analytics/account/2016-11-01/swagger/account.json'
   },
-  'datalake.analytics.job': {
-    'dir': 'dataLake.Analytics/lib/job',
-    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
-  },
   'datalake.analytics.catalog': {
     'dir': 'dataLake.Analytics/lib/catalog',
     'source': 'arm-datalake-analytics/catalog/2016-11-01/swagger/catalog.json'
+  },
+  'datalake.analytics.job': {
+    'dir': 'dataLake.Analytics/lib/job',
+    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
   },
   'datalake.store.account': {
     'dir': 'dataLake.Store/lib/account',
@@ -145,6 +151,14 @@ const mappings = {
     'dir': 'logicManagement/lib',
     'source': 'arm-logic/2016-06-01/swagger/logic.json',
   },
+  'machinelearning.commitmentPlan': {
+    'dir': 'machinelearning/lib/commitmentPlan',
+    'source': 'arm-machinelearning/2016-05-01-preview/swagger/commitmentPlans.json'
+  },
+  'machinelearning.webservices': {
+    'dir': 'machinelearning/lib/webservices',
+    'source': 'arm-machinelearning/2016-05-01-preview/swagger/webservices.json'
+  },
   'mediaServices': {
     'dir': 'mediaServicesManagement/lib',
     'source': 'arm-mediaservices/2015-10-01/swagger/media.json'
@@ -160,7 +174,7 @@ const mappings = {
   },
   'operationalInsights': {
     'dir': 'operationalInsightsManagement2/lib',
-    'source': 'arm-operationalInsights/compositeOperationalInsights.json',
+    'source': 'arm-operationalinsights/compositeOperationalInsights.json',
     'modeler': 'CompositeSwagger'
   },
   'powerbiembedded': {
@@ -185,6 +199,22 @@ const mappings = {
     'dir': 'relayManagement/lib',
     'source': 'arm-relay/2016-07-01/swagger/relay.json'
   },
+  'resource.feature': {
+    'dir': 'resourceManagement/lib/feature',
+    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
+  },
+  'resource.link': {
+    'dir': 'resourceManagement/lib/link',
+    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
+  },
+  'resource.lock': {
+    'dir': 'resourceManagement/lib/lock',
+    'source': 'arm-resources/locks/2016-09-01/swagger/locks.json'
+  },
+  'resource.policy': {
+    'dir': 'resourceManagement/lib/policy',
+    'source': 'arm-resources/policy/2016-12-01/swagger/policy.json'
+  },
   'resource': {
     'dir': 'resourceManagement/lib/resource',
     'source': 'arm-resources/resources/2016-09-01/swagger/resources.json'
@@ -193,32 +223,16 @@ const mappings = {
     'dir': 'resourceManagement/lib/subscription',
     'source': 'arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json'
   },
-  'resource.lock': {
-    'dir': 'resourceManagement/lib/lock',
-    'source': 'arm-resources/locks/2016-09-01/swagger/locks.json'
-  },
-  'resource.link': {
-    'dir': 'resourceManagement/lib/link',
-    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
-  },
-  'resource.feature': {
-    'dir': 'resourceManagement/lib/feature',
-    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
-  },
-  'resource.policy': {
-    'dir': 'resourceManagement/lib/policy',
-    'source': 'arm-resources/policy/2016-12-01/swagger/policy.json'
-  },
   'schedulerManagement': {
     'dir': 'schedulerManagement2/lib',
     'source': 'arm-scheduler/2016-03-01/swagger/scheduler.json'
   },
-  'searchIndex': {
-    'dir': 'searchIndex/lib',
+  'search.index': {
+    'dir': 'search/lib/index',
     'source': 'search/2016-09-01/swagger/searchindex.json'
   },
-  'searchService': {
-    'dir': 'searchService/lib',
+  'search.service': {
+    'dir': 'searchService/lib/service',
     'source': 'search/2016-09-01/swagger/searchservice.json'
   },
   'searchManagement': {
@@ -227,9 +241,13 @@ const mappings = {
   },
   'servermanagement': {
     'dir': 'servermanagement/lib',
-    'source': 'arm-servermanagement/2015-07-01-preview/servermanagement.json'
+    'source': 'arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json'
   },
-  'servicebus.management': {
+    'serviceMap': {
+    'dir': 'serviceMapManagement/lib',
+    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json'
+  },
+  'servicebusManagement': {
     'dir': 'serviceBusManagement2/lib',
     'source': 'arm-servicebus/2015-08-01/swagger/servicebus.json'
   },
@@ -241,10 +259,6 @@ const mappings = {
     'dir': 'serviceFabric/lib',
     'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
     'language': 'NodeJS'
-  },
-  'serviceMap': {
-    'dir': 'serviceMapManagement/lib',
-    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json'
   },
   'sql': {
     'dir': 'sqlManagement2/lib',
@@ -274,12 +288,12 @@ const mappings = {
   }
 };
 
-const defaultAutoRestVersion = '1.0.1-20170322-2300-nightly';
+const defaultAutoRestVersion = '1.0.1-20170324-2300-nightly';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 const project = args['project'];
-const language = 'Azure.NodeJS';
-const modeler = 'Swagger';
+var language = 'Azure.NodeJS';
+var modeler = 'Swagger';
 
 function getAutorestVersion(version) {
   if (!version) version = 'latest';
@@ -301,10 +315,45 @@ function getAutorestVersion(version) {
   return result;
 }
 
+function deleteFolderRecursive(path) {
+  if (fs.existsSync(path)) {
+    fs.readdirSync(path).forEach(function (file, index) {
+      var curPath = path + "/" + file;
+      if (fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteFolderRecursive(curPath);
+      } else { // delete file
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(path);
+  }
+};
+
+function clearProjectBeforeGenerating(projectDir) {
+  let modelsDir = `${projectDir}/models`;
+  let operationsDir = `${projectDir}/operations`;
+  let clientTypedefFile = path.basename(glob.sync(`${projectDir}/*.d.ts`)[0] || '');
+  let clientJSFile = `${clientTypedefFile.split('.')[0]}.js`;
+  let directoriesToBeDeleted = [modelsDir, operationsDir];
+  let filesToBeDeleted = [clientTypedefFile, clientJSFile];
+  directoriesToBeDeleted.forEach((dir) => {
+    if (fs.existsSync(dir)) {
+      deleteFolderRecursive(dir);
+    }
+  });
+  filesToBeDeleted.forEach((file) => {
+    if (fs.existsSync(file)) {
+      fs.unlinkSync(file);
+    }
+  });
+  return;
+}
+
 function generateProject(project, specRoot, autoRestVersion) {
   let currentModeler = modeler;
   let specPath = specRoot + '/' + mappings[project].source;
   let result;
+  language = 'Azure.NodeJS'
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
     language = mappings[project].language;
@@ -314,9 +363,8 @@ function generateProject(project, specRoot, autoRestVersion) {
     currentModeler = mappings[project].modeler;
   }
   console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
-
-  let cmd = util.format('autorest -Modeler %s -CodeGenerator %s -Input %s  -outputDirectory lib/services/%s -Header MICROSOFT_MIT_NO_VERSION --version=%s',
-    currentModeler, language, specPath, mappings[project].dir, autoRestVersion);
+  let outputDir = `lib/services/${mappings[project].dir}`;
+  let cmd = `autorest -Modeler ${currentModeler} -CodeGenerator ${language} -Input ${specPath}  -outputDirectory ${outputDir} -Header MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
   if (mappings[project].ClientName !== null && mappings[project].ClientName !== undefined) cmd += ' -ClientName ' + mappings[project].ClientName;
   if (mappings[project].args !== undefined) {
@@ -324,6 +372,8 @@ function generateProject(project, specRoot, autoRestVersion) {
   }
 
   try {
+    console.log(`Cleaning the output directory: "${outputDir}".`);
+    clearProjectBeforeGenerating(outputDir);
     console.log('Executing command:');
     console.log('------------------------------------------------------------');
     console.log(cmd);
