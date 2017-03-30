@@ -8,7 +8,7 @@
  * regenerated.
 */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as models from '../models';
 
 
@@ -19,6 +19,7 @@ import * as models from '../models';
  * instance of the DataLakeAnalyticsAccountManagementClient.
  */
 export interface FirewallRules {
+
 
     /**
      * Creates or updates the specified firewall rule. During update, the firewall
@@ -51,11 +52,71 @@ export interface FirewallRules {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FirewallRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FirewallRule>>;
+
+    /**
+     * Creates or updates the specified firewall rule. During update, the firewall
+     * rule with the specified name will be replaced with this new firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * add or replace the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to create or
+     * update.
+     *
+     * @param {object} parameters Parameters supplied to create or update the
+     * firewall rule.
+     *
+     * @param {string} parameters.startIpAddress the start IP address for the
+     * firewall rule. This can be either ipv4 or ipv6. Start and End should be in
+     * the same protocol.
+     *
+     * @param {string} parameters.endIpAddress the end IP address for the firewall
+     * rule. This can be either ipv4 or ipv6. Start and End should be in the same
+     * protocol.
+     *
+     * @param {string} [parameters.name] Resource name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FirewallRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FirewallRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FirewallRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FirewallRule>;
     createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, callback: ServiceCallback<models.FirewallRule>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, firewallRuleName: string, parameters: models.FirewallRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+
 
     /**
      * Updates the specified firewall rule.
@@ -84,11 +145,67 @@ export interface FirewallRules {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FirewallRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { parameters? : models.UpdateFirewallRuleParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, firewallRuleName: string, options?: { parameters? : models.UpdateFirewallRuleParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FirewallRule>>;
+
+    /**
+     * Updates the specified firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to update the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to update the
+     * firewall rule.
+     *
+     * @param {string} [options.parameters.startIpAddress] the start IP address for
+     * the firewall rule. This can be either ipv4 or ipv6. Start and End should be
+     * in the same protocol.
+     *
+     * @param {string} [options.parameters.endIpAddress] the end IP address for the
+     * firewall rule. This can be either ipv4 or ipv6. Start and End should be in
+     * the same protocol.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FirewallRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FirewallRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FirewallRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, firewallRuleName: string, options?: { parameters? : models.UpdateFirewallRuleParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.FirewallRule>;
     update(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<models.FirewallRule>): void;
+    update(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { parameters? : models.UpdateFirewallRuleParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+
 
     /**
      * Deletes the specified firewall rule from the specified Data Lake Analytics
@@ -107,11 +224,56 @@ export interface FirewallRules {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, firewallRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified firewall rule from the specified Data Lake Analytics
+     * account
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to delete the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Gets the specified Data Lake Analytics firewall rule.
@@ -129,11 +291,56 @@ export interface FirewallRules {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FirewallRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, firewallRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FirewallRule>>;
+
+    /**
+     * Gets the specified Data Lake Analytics firewall rule.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the firewall rule.
+     *
+     * @param {string} firewallRuleName The name of the firewall rule to retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FirewallRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FirewallRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FirewallRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, firewallRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FirewallRule>;
     get(resourceGroupName: string, accountName: string, firewallRuleName: string, callback: ServiceCallback<models.FirewallRule>): void;
+    get(resourceGroupName: string, accountName: string, firewallRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FirewallRule>): void;
+
 
     /**
      * Lists the Data Lake Analytics firewall rules within the specified Data Lake
@@ -150,11 +357,56 @@ export interface FirewallRules {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsFirewallRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByAccount(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+    listByAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsFirewallRuleListResult>>;
+
+    /**
+     * Lists the Data Lake Analytics firewall rules within the specified Data Lake
+     * Analytics account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the firewall rules.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsFirewallRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsFirewallRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsFirewallRuleListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccount(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsFirewallRuleListResult>;
     listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+
 
     /**
      * Lists the Data Lake Analytics firewall rules within the specified Data Lake
@@ -168,11 +420,52 @@ export interface FirewallRules {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsFirewallRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+    listByAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsFirewallRuleListResult>>;
+
+    /**
+     * Lists the Data Lake Analytics firewall rules within the specified Data Lake
+     * Analytics account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsFirewallRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsFirewallRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsFirewallRuleListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsFirewallRuleListResult>;
     listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsFirewallRuleListResult>): void;
 }
 
 /**
@@ -182,6 +475,7 @@ export interface FirewallRules {
  * instance of the DataLakeAnalyticsAccountManagementClient.
  */
 export interface StorageAccounts {
+
 
     /**
      * Gets the specified Azure Storage account linked to the given Data Lake
@@ -201,11 +495,58 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<StorageAccountInfo>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountInfo>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccountInfo>>;
+
+    /**
+     * Gets the specified Azure Storage account linked to the given Data Lake
+     * Analytics account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to retrieve Azure storage account details.
+     *
+     * @param {string} storageAccountName The name of the Azure Storage account for
+     * which to retrieve the details.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {StorageAccountInfo} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {StorageAccountInfo} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageAccountInfo} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccountInfo>;
     get(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.StorageAccountInfo>): void;
+    get(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountInfo>): void;
+
 
     /**
      * Updates the specified Data Lake Analytics account to remove an Azure Storage
@@ -225,11 +566,57 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the specified Data Lake Analytics account to remove an Azure Storage
+     * account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to remove the Azure Storage account.
+     *
+     * @param {string} storageAccountName The name of the Azure Storage account to
+     * remove
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Updates the Data Lake Analytics account to replace Azure Storage blob
@@ -259,11 +646,67 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, accountName: string, storageAccountName: string, options: { parameters? : models.UpdateStorageAccountParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { parameters? : models.UpdateStorageAccountParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the Data Lake Analytics account to replace Azure Storage blob
+     * account details, such as the access key and/or suffix.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * modify storage accounts in
+     *
+     * @param {string} storageAccountName The Azure Storage account to modify
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] The parameters containing the access
+     * key and suffix to update the storage account with, if any. Passing nothing
+     * results in no change.
+     *
+     * @param {string} [options.parameters.accessKey] the updated access key
+     * associated with this Azure Storage account that will be used to connect to
+     * it.
+     *
+     * @param {string} [options.parameters.suffix] the optional suffix for the
+     * storage account.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { parameters? : models.UpdateStorageAccountParameters, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     update(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, accountName: string, storageAccountName: string, options: { parameters? : models.UpdateStorageAccountParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Updates the specified Data Lake Analytics account to add an Azure Storage
@@ -292,11 +735,66 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    add(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addWithHttpOperationResponse(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the specified Data Lake Analytics account to add an Azure Storage
+     * account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to add the Azure Storage account.
+     *
+     * @param {string} storageAccountName The name of the Azure Storage account to
+     * add
+     *
+     * @param {object} parameters The parameters containing the access key and
+     * optional suffix for the Azure Storage Account.
+     *
+     * @param {string} parameters.accessKey the access key associated with this
+     * Azure Storage account that will be used to connect to it.
+     *
+     * @param {string} [parameters.suffix] the optional suffix for the storage
+     * account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    add(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     add(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, callback: ServiceCallback<void>): void;
+    add(resourceGroupName: string, accountName: string, storageAccountName: string, parameters: models.AddStorageAccountParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Gets the specified Azure Storage container associated with the given Data
@@ -319,11 +817,61 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<StorageContainer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageContainer>): void;
+    getStorageContainerWithHttpOperationResponse(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageContainer>>;
+
+    /**
+     * Gets the specified Azure Storage container associated with the given Data
+     * Lake Analytics and Azure Storage accounts.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to retrieve blob container.
+     *
+     * @param {string} storageAccountName The name of the Azure storage account
+     * from which to retrieve the blob container.
+     *
+     * @param {string} containerName The name of the Azure storage container to
+     * retrieve
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {StorageContainer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {StorageContainer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StorageContainer} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageContainer>;
     getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, callback: ServiceCallback<models.StorageContainer>): void;
+    getStorageContainer(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageContainer>): void;
+
 
     /**
      * Lists the Azure Storage containers, if any, associated with the specified
@@ -344,11 +892,60 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListStorageContainersResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+    listStorageContainersWithHttpOperationResponse(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListStorageContainersResult>>;
+
+    /**
+     * Lists the Azure Storage containers, if any, associated with the specified
+     * Data Lake Analytics and Azure Storage account combination. The response
+     * includes a link to the next page of results, if any.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to list Azure Storage blob containers.
+     *
+     * @param {string} storageAccountName The name of the Azure storage account
+     * from which to list blob containers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListStorageContainersResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListStorageContainersResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListStorageContainersResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListStorageContainersResult>;
     listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+    listStorageContainers(resourceGroupName: string, accountName: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+
 
     /**
      * Gets the SAS token associated with the specified Data Lake Analytics and
@@ -371,11 +968,61 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListSasTokensResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listSasTokens(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
+    listSasTokensWithHttpOperationResponse(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListSasTokensResult>>;
+
+    /**
+     * Gets the SAS token associated with the specified Data Lake Analytics and
+     * Azure Storage account and container combination.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which an Azure Storage account's SAS token is being requested.
+     *
+     * @param {string} storageAccountName The name of the Azure storage account for
+     * which the SAS token is being requested.
+     *
+     * @param {string} containerName The name of the Azure storage container for
+     * which the SAS token is being requested.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListSasTokensResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListSasTokensResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListSasTokensResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSasTokens(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListSasTokensResult>;
     listSasTokens(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
+    listSasTokens(resourceGroupName: string, accountName: string, storageAccountName: string, containerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
+
 
     /**
      * Gets the first page of Azure Storage accounts, if any, linked to the
@@ -413,11 +1060,78 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListStorageAccountsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByAccount(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+    listByAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListStorageAccountsResult>>;
+
+    /**
+     * Gets the first page of Azure Storage accounts, if any, linked to the
+     * specified Data Lake Analytics account. The response includes a link to the
+     * next page, if any.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to list Azure Storage accounts.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListStorageAccountsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListStorageAccountsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      DataLakeAnalyticsAccountListStorageAccountsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccount(resourceGroupName: string, accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListStorageAccountsResult>;
     listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+
 
     /**
      * Lists the Azure Storage containers, if any, associated with the specified
@@ -432,11 +1146,54 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListStorageContainersResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listStorageContainersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+    listStorageContainersNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListStorageContainersResult>>;
+
+    /**
+     * Lists the Azure Storage containers, if any, associated with the specified
+     * Data Lake Analytics and Azure Storage account combination. The response
+     * includes a link to the next page of results, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListStorageContainersResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListStorageContainersResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListStorageContainersResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listStorageContainersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListStorageContainersResult>;
     listStorageContainersNext(nextPageLink: string, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+    listStorageContainersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListStorageContainersResult>): void;
+
 
     /**
      * Gets the SAS token associated with the specified Data Lake Analytics and
@@ -450,11 +1207,52 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListSasTokensResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listSasTokensNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
+    listSasTokensNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListSasTokensResult>>;
+
+    /**
+     * Gets the SAS token associated with the specified Data Lake Analytics and
+     * Azure Storage account and container combination.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListSasTokensResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListSasTokensResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListSasTokensResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSasTokensNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListSasTokensResult>;
     listSasTokensNext(nextPageLink: string, callback: ServiceCallback<models.ListSasTokensResult>): void;
+    listSasTokensNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListSasTokensResult>): void;
+
 
     /**
      * Gets the first page of Azure Storage accounts, if any, linked to the
@@ -469,11 +1267,54 @@ export interface StorageAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListStorageAccountsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+    listByAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListStorageAccountsResult>>;
+
+    /**
+     * Gets the first page of Azure Storage accounts, if any, linked to the
+     * specified Data Lake Analytics account. The response includes a link to the
+     * next page, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListStorageAccountsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListStorageAccountsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      DataLakeAnalyticsAccountListStorageAccountsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListStorageAccountsResult>;
     listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListStorageAccountsResult>): void;
 }
 
 /**
@@ -483,6 +1324,7 @@ export interface StorageAccounts {
  * instance of the DataLakeAnalyticsAccountManagementClient.
  */
 export interface DataLakeStoreAccounts {
+
 
     /**
      * Gets the specified Data Lake Store account details in the specified Data
@@ -502,11 +1344,59 @@ export interface DataLakeStoreAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeStoreAccountInfo>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountInfo>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeStoreAccountInfo>>;
+
+    /**
+     * Gets the specified Data Lake Store account details in the specified Data
+     * Lake Analytics account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to retrieve the Data Lake Store account details.
+     *
+     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
+     * account to retrieve
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeStoreAccountInfo} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeStoreAccountInfo} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeStoreAccountInfo} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeStoreAccountInfo>;
     get(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<models.DataLakeStoreAccountInfo>): void;
+    get(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeStoreAccountInfo>): void;
+
 
     /**
      * Updates the Data Lake Analytics account specified to remove the specified
@@ -526,11 +1416,57 @@ export interface DataLakeStoreAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the Data Lake Analytics account specified to remove the specified
+     * Data Lake Store account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to remove the Data Lake Store account.
+     *
+     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
+     * account to remove
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Updates the specified Data Lake Analytics account to include the additional
@@ -556,11 +1492,63 @@ export interface DataLakeStoreAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    add(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { parameters? : models.AddDataLakeStoreParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    addWithHttpOperationResponse(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options?: { parameters? : models.AddDataLakeStoreParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the specified Data Lake Analytics account to include the additional
+     * Data Lake Store account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to add the Data Lake Store account.
+     *
+     * @param {string} dataLakeStoreAccountName The name of the Data Lake Store
+     * account to add.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] The details of the Data Lake Store
+     * account.
+     *
+     * @param {string} [options.parameters.suffix] the optional suffix for the Data
+     * Lake Store account.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    add(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options?: { parameters? : models.AddDataLakeStoreParameters, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     add(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, callback: ServiceCallback<void>): void;
+    add(resourceGroupName: string, accountName: string, dataLakeStoreAccountName: string, options: { parameters? : models.AddDataLakeStoreParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Gets the first page of Data Lake Store accounts linked to the specified Data
@@ -598,11 +1586,78 @@ export interface DataLakeStoreAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListDataLakeStoreResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByAccount(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    listByAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListDataLakeStoreResult>>;
+
+    /**
+     * Gets the first page of Data Lake Store accounts linked to the specified Data
+     * Lake Analytics account. The response includes a link to the next page, if
+     * any.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account for
+     * which to list Data Lake Store accounts.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListDataLakeStoreResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListDataLakeStoreResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      DataLakeAnalyticsAccountListDataLakeStoreResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccount(resourceGroupName: string, accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListDataLakeStoreResult>;
     listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+
 
     /**
      * Gets the first page of Data Lake Store accounts linked to the specified Data
@@ -617,11 +1672,54 @@ export interface DataLakeStoreAccounts {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListDataLakeStoreResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    listByAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListDataLakeStoreResult>>;
+
+    /**
+     * Gets the first page of Data Lake Store accounts linked to the specified Data
+     * Lake Analytics account. The response includes a link to the next page, if
+     * any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListDataLakeStoreResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListDataLakeStoreResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      DataLakeAnalyticsAccountListDataLakeStoreResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListDataLakeStoreResult>;
     listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListDataLakeStoreResult>): void;
 }
 
 /**
@@ -631,6 +1729,7 @@ export interface DataLakeStoreAccounts {
  * instance of the DataLakeAnalyticsAccountManagementClient.
  */
 export interface Account {
+
 
     /**
      * Gets the first page of Data Lake Analytics accounts, if any, within a
@@ -664,11 +1763,73 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListResult>>;
+
+    /**
+     * Gets the first page of Data Lake Analytics accounts, if any, within a
+     * specific resource group. This includes a link to the next page, if any.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccountListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListResult>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+
 
     /**
      * Gets the first page of Data Lake Analytics accounts, if any, within the
@@ -699,11 +1860,70 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listWithHttpOperationResponse(options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListResult>>;
+
+    /**
+     * Gets the first page of Data Lake Analytics accounts, if any, within the
+     * current subscription. This includes a link to the next page, if any.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccountListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListResult>;
     list(callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    list(options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+
 
     /**
      * Gets details of the specified Data Lake Analytics account.
@@ -719,11 +1939,55 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccount>>;
+
+    /**
+     * Gets details of the specified Data Lake Analytics account.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccount} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccount>;
     get(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    get(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+
 
     /**
      * Begins the delete delete process for the Data Lake Analytics account object
@@ -740,11 +2004,54 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Begins the delete delete process for the Data Lake Analytics account object
+     * specified by the account name.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * delete
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Creates the specified Data Lake Analytics account. This supplies the user
@@ -805,11 +2112,100 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    create(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccount>>;
+
+    /**
+     * Creates the specified Data Lake Analytics account. This supplies the user
+     * with computation services for Data Lake Analytics workloads
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.the account will be associated
+     * with.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * create.
+     *
+     * @param {object} parameters Parameters supplied to the create Data Lake
+     * Analytics account operation.
+     *
+     * @param {string} parameters.defaultDataLakeStoreAccount the default data lake
+     * storage account associated with this Data Lake Analytics account.
+     *
+     * @param {number} [parameters.maxDegreeOfParallelism] the maximum supported
+     * degree of parallelism for this account.
+     *
+     * @param {number} [parameters.queryStoreRetention] the number of days that job
+     * metadata is retained.
+     *
+     * @param {number} [parameters.maxJobCount] the maximum supported jobs running
+     * under the account at the same time.
+     *
+     * @param {array} parameters.dataLakeStoreAccounts the list of Data Lake
+     * storage accounts associated with this account.
+     *
+     * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
+     * accounts associated with this account.
+     *
+     * @param {string} [parameters.newTier] the commitment tier for the next month.
+     * Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccount} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccount>;
     create(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    create(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+
 
     /**
      * Updates the Data Lake Analytics account object specified by the accountName
@@ -858,11 +2254,88 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, accountName: string, options: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccount>>;
+
+    /**
+     * Updates the Data Lake Analytics account object specified by the accountName
+     * with the contents of the account object.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to the update Data
+     * Lake Analytics account operation.
+     *
+     * @param {object} [options.parameters.tags] Resource tags
+     *
+     * @param {number} [options.parameters.maxDegreeOfParallelism] the maximum
+     * supported degree of parallelism for this account.
+     *
+     * @param {number} [options.parameters.queryStoreRetention] the number of days
+     * that job metadata is retained.
+     *
+     * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
+     * running under the account at the same time.
+     *
+     * @param {string} [options.parameters.newTier] the commitment tier to use for
+     * next month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [options.parameters.firewallState] The current state of the
+     * IP address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [options.parameters.firewallAllowAzureIps] The current state
+     * of allowing or disallowing IPs originating within Azure through the
+     * firewall. If the firewall is disabled, this is not enforced. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [options.parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccount} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, options?: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccount>;
     update(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    update(resourceGroupName: string, accountName: string, options: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+
 
     /**
      * Begins the delete delete process for the Data Lake Analytics account object
@@ -879,11 +2352,54 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Begins the delete delete process for the Data Lake Analytics account object
+     * specified by the account name.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * delete
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Creates the specified Data Lake Analytics account. This supplies the user
@@ -944,11 +2460,100 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreate(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccount>>;
+
+    /**
+     * Creates the specified Data Lake Analytics account. This supplies the user
+     * with computation services for Data Lake Analytics workloads
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.the account will be associated
+     * with.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * create.
+     *
+     * @param {object} parameters Parameters supplied to the create Data Lake
+     * Analytics account operation.
+     *
+     * @param {string} parameters.defaultDataLakeStoreAccount the default data lake
+     * storage account associated with this Data Lake Analytics account.
+     *
+     * @param {number} [parameters.maxDegreeOfParallelism] the maximum supported
+     * degree of parallelism for this account.
+     *
+     * @param {number} [parameters.queryStoreRetention] the number of days that job
+     * metadata is retained.
+     *
+     * @param {number} [parameters.maxJobCount] the maximum supported jobs running
+     * under the account at the same time.
+     *
+     * @param {array} parameters.dataLakeStoreAccounts the list of Data Lake
+     * storage accounts associated with this account.
+     *
+     * @param {array} [parameters.storageAccounts] the list of Azure Blob storage
+     * accounts associated with this account.
+     *
+     * @param {string} [parameters.newTier] the commitment tier for the next month.
+     * Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [parameters.firewallState] The current state of the IP
+     * address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.firewallAllowAzureIps] The current state of
+     * allowing or disallowing IPs originating within Azure through the firewall.
+     * If the firewall is disabled, this is not enforced. Possible values include:
+     * 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccount} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccount>;
     beginCreate(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    beginCreate(resourceGroupName: string, accountName: string, parameters: models.DataLakeAnalyticsAccount, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+
 
     /**
      * Updates the Data Lake Analytics account object specified by the accountName
@@ -997,11 +2602,88 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdate(resourceGroupName: string, accountName: string, options: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccount>>;
+
+    /**
+     * Updates the Data Lake Analytics account object specified by the accountName
+     * with the contents of the account object.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to the update Data
+     * Lake Analytics account operation.
+     *
+     * @param {object} [options.parameters.tags] Resource tags
+     *
+     * @param {number} [options.parameters.maxDegreeOfParallelism] the maximum
+     * supported degree of parallelism for this account.
+     *
+     * @param {number} [options.parameters.queryStoreRetention] the number of days
+     * that job metadata is retained.
+     *
+     * @param {number} [options.parameters.maxJobCount] the maximum supported jobs
+     * running under the account at the same time.
+     *
+     * @param {string} [options.parameters.newTier] the commitment tier to use for
+     * next month. Possible values include: 'Consumption', 'Commitment_100AUHours',
+     * 'Commitment_500AUHours', 'Commitment_1000AUHours', 'Commitment_5000AUHours',
+     * 'Commitment_10000AUHours', 'Commitment_50000AUHours',
+     * 'Commitment_100000AUHours', 'Commitment_500000AUHours'
+     *
+     * @param {string} [options.parameters.firewallState] The current state of the
+     * IP address firewall for this Data Lake Analytics account. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [options.parameters.firewallAllowAzureIps] The current state
+     * of allowing or disallowing IPs originating within Azure through the
+     * firewall. If the firewall is disabled, this is not enforced. Possible values
+     * include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [options.parameters.firewallRules] The list of firewall rules
+     * associated with this Data Lake Analytics account.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccount} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, accountName: string, options?: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccount>;
     beginUpdate(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+    beginUpdate(resourceGroupName: string, accountName: string, options: { parameters? : models.DataLakeAnalyticsAccountUpdateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccount>): void;
+
 
     /**
      * Gets the first page of Data Lake Analytics accounts, if any, within a
@@ -1015,11 +2697,53 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListResult>>;
+
+    /**
+     * Gets the first page of Data Lake Analytics accounts, if any, within a
+     * specific resource group. This includes a link to the next page, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccountListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListResult>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+
 
     /**
      * Gets the first page of Data Lake Analytics accounts, if any, within the
@@ -1033,9 +2757,50 @@ export interface Account {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DataLakeAnalyticsAccountListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DataLakeAnalyticsAccountListResult>>;
+
+    /**
+     * Gets the first page of Data Lake Analytics accounts, if any, within the
+     * current subscription. This includes a link to the next page, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DataLakeAnalyticsAccountListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DataLakeAnalyticsAccountListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DataLakeAnalyticsAccountListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DataLakeAnalyticsAccountListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DataLakeAnalyticsAccountListResult>): void;
 }

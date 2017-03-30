@@ -1,0 +1,35 @@
+{
+  "name": "azure-arm-automation",
+  "author": "Microsoft Corporation",
+  "contributors": [
+
+    "Lingaiah, Viv <vivekl@microsoft.com>",
+    "Krishnan, Balaji <balajik@microsoft.com>",
+    "Zavery, Amar <amzavery@microsoft.com"
+  ],
+  "version": "1.0.0-preview",
+  "description": "Microsoft Advisor Management Client Library for node",
+  "tags": [
+    "azure",
+    "sdk"
+  ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
+  "main": "./lib/automationClient.js",
+  "types": "./lib/automationClient.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "ms-rest-azure": "^2.0.0",
+    "ms-rest": "^2.0.0"
+  },
+  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
+  }
+}

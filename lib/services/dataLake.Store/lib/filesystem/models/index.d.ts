@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -22,7 +25,7 @@ exports.CloudError = msRestAzure.CloudError;
  *
  */
 export interface FileOperationResult {
-  operationResult?: boolean;
+  readonly operationResult?: boolean;
 }
 
 /**
@@ -50,7 +53,7 @@ export interface AclStatus {
   group?: string;
   owner?: string;
   permission?: number;
-  stickyBit?: boolean;
+  readonly stickyBit?: boolean;
 }
 
 /**
@@ -96,10 +99,10 @@ export interface AclStatusResult {
  *
  */
 export interface ContentSummary {
-  directoryCount?: number;
-  fileCount?: number;
-  length?: number;
-  spaceConsumed?: number;
+  readonly directoryCount?: number;
+  readonly fileCount?: number;
+  readonly length?: number;
+  readonly spaceConsumed?: number;
 }
 
 /**
@@ -122,7 +125,7 @@ export interface ContentSummary {
  *
  */
 export interface ContentSummaryResult {
-  contentSummary?: ContentSummary;
+  readonly contentSummary?: ContentSummary;
 }
 
 /**
@@ -161,18 +164,18 @@ export interface ContentSummaryResult {
  *
  */
 export interface FileStatusProperties {
-  accessTime?: number;
-  blockSize?: number;
-  childrenNum?: number;
-  expirationTime?: number;
-  group?: string;
-  length?: number;
-  modificationTime?: number;
-  owner?: string;
-  pathSuffix?: string;
-  permission?: string;
-  type?: string;
-  aclBit?: boolean;
+  readonly accessTime?: number;
+  readonly blockSize?: number;
+  readonly childrenNum?: number;
+  readonly expirationTime?: number;
+  readonly group?: string;
+  readonly length?: number;
+  readonly modificationTime?: number;
+  readonly owner?: string;
+  readonly pathSuffix?: string;
+  readonly permission?: string;
+  readonly type?: string;
+  readonly aclBit?: boolean;
 }
 
 /**
@@ -186,7 +189,7 @@ export interface FileStatusProperties {
  *
  */
 export interface FileStatuses {
-  fileStatus?: FileStatusProperties[];
+  readonly fileStatus?: FileStatusProperties[];
 }
 
 /**
@@ -203,7 +206,7 @@ export interface FileStatuses {
  *
  */
 export interface FileStatusesResult {
-  fileStatuses?: FileStatuses;
+  readonly fileStatuses?: FileStatuses;
 }
 
 /**
@@ -249,7 +252,7 @@ export interface FileStatusesResult {
  *
  */
 export interface FileStatusResult {
-  fileStatus?: FileStatusProperties;
+  readonly fileStatus?: FileStatusProperties;
 }
 
 /**
@@ -269,8 +272,8 @@ export interface FileStatusResult {
  *
  */
 export interface AdlsRemoteException {
-  javaClassName?: string;
-  message?: string;
+  readonly javaClassName?: string;
+  readonly message?: string;
   exception: string;
 }
 
@@ -408,6 +411,6 @@ export interface AdlsThrottledException extends AdlsRemoteException {
  *
  */
 export interface AdlsError {
-  remoteException?: AdlsRemoteException;
+  readonly remoteException?: AdlsRemoteException;
 }
 

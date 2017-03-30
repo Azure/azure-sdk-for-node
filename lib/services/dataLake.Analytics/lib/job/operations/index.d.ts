@@ -8,7 +8,7 @@
  * regenerated.
 */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as models from '../models';
 
 
@@ -19,6 +19,7 @@ import * as models from '../models';
  * instance of the DataLakeAnalyticsJobManagementClient.
  */
 export interface Job {
+
 
     /**
      * Gets statistics of the specified job.
@@ -33,11 +34,53 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStatistics>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getStatistics(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStatistics>): void;
+    getStatisticsWithHttpOperationResponse(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStatistics>>;
+
+    /**
+     * Gets statistics of the specified job.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} jobIdentity Job Information ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStatistics} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStatistics} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStatistics} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getStatistics(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStatistics>;
     getStatistics(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobStatistics>): void;
+    getStatistics(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStatistics>): void;
+
 
     /**
      * Gets the job debug data information specified by the job ID.
@@ -52,11 +95,53 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobDataPath>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getDebugDataPath(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobDataPath>): void;
+    getDebugDataPathWithHttpOperationResponse(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobDataPath>>;
+
+    /**
+     * Gets the job debug data information specified by the job ID.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} jobIdentity JobInfo ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobDataPath} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobDataPath} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobDataPath} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getDebugDataPath(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobDataPath>;
     getDebugDataPath(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobDataPath>): void;
+    getDebugDataPath(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobDataPath>): void;
+
 
     /**
      * Builds (compiles) the specified job in the specified Data Lake Analytics
@@ -99,11 +184,81 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobInformation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    build(accountName: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+    buildWithHttpOperationResponse(accountName: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInformation>>;
+
+    /**
+     * Builds (compiles) the specified job in the specified Data Lake Analytics
+     * account for job correctness and validation.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {object} parameters The parameters to build a job.
+     *
+     * @param {string} parameters.name the friendly name of the job.
+     *
+     * @param {string} parameters.type the job type of the current job (Hive or
+     * USql). Possible values include: 'USql', 'Hive'
+     *
+     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
+     * used for this job. This must be greater than 0, if set to less than 0 it
+     * will default to 1.
+     *
+     * @param {number} [parameters.priority] the priority value for the current
+     * job. Lower numbers have a higher priority. By default, a job has a priority
+     * of 1000. This must be greater than 0.
+     *
+     * @param {array} [parameters.logFilePatterns] the list of log file name
+     * patterns to find in the logFolder. '*' is the only matching character
+     * allowed. Example format: jobExecution*.log or *mylog*.txt
+     *
+     * @param {object} parameters.properties the job specific properties.
+     *
+     * @param {string} [parameters.properties.runtimeVersion] the runtime version
+     * of the Data Lake Analytics engine to use for the specific type of job being
+     * run.
+     *
+     * @param {string} parameters.properties.script the script to run
+     *
+     * @param {string} parameters.properties.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobInformation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobInformation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    build(accountName: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
     build(accountName: string, parameters: models.JobInformation, callback: ServiceCallback<models.JobInformation>): void;
+    build(accountName: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+
 
     /**
      * Cancels the running job specified by the job ID.
@@ -118,11 +273,52 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    cancel(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    cancelWithHttpOperationResponse(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Cancels the running job specified by the job ID.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} jobIdentity JobInfo ID to cancel.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancel(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     cancel(accountName: string, jobIdentity: string, callback: ServiceCallback<void>): void;
+    cancel(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Gets the job information for the specified job ID.
@@ -137,11 +333,53 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobInformation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+    getWithHttpOperationResponse(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInformation>>;
+
+    /**
+     * Gets the job information for the specified job ID.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} jobIdentity JobInfo ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobInformation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobInformation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(accountName: string, jobIdentity: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
     get(accountName: string, jobIdentity: string, callback: ServiceCallback<models.JobInformation>): void;
+    get(accountName: string, jobIdentity: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+
 
     /**
      * Submits a job to the specified Data Lake Analytics account.
@@ -185,11 +423,82 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobInformation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+    createWithHttpOperationResponse(accountName: string, jobIdentity: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInformation>>;
+
+    /**
+     * Submits a job to the specified Data Lake Analytics account.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} jobIdentity The job ID (a GUID) for the job being submitted.
+     *
+     * @param {object} parameters The parameters to submit a job.
+     *
+     * @param {string} parameters.name the friendly name of the job.
+     *
+     * @param {string} parameters.type the job type of the current job (Hive or
+     * USql). Possible values include: 'USql', 'Hive'
+     *
+     * @param {number} [parameters.degreeOfParallelism] the degree of parallelism
+     * used for this job. This must be greater than 0, if set to less than 0 it
+     * will default to 1.
+     *
+     * @param {number} [parameters.priority] the priority value for the current
+     * job. Lower numbers have a higher priority. By default, a job has a priority
+     * of 1000. This must be greater than 0.
+     *
+     * @param {array} [parameters.logFilePatterns] the list of log file name
+     * patterns to find in the logFolder. '*' is the only matching character
+     * allowed. Example format: jobExecution*.log or *mylog*.txt
+     *
+     * @param {object} parameters.properties the job specific properties.
+     *
+     * @param {string} [parameters.properties.runtimeVersion] the runtime version
+     * of the Data Lake Analytics engine to use for the specific type of job being
+     * run.
+     *
+     * @param {string} parameters.properties.script the script to run
+     *
+     * @param {string} parameters.properties.type Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobInformation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobInformation} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInformation>;
     create(accountName: string, jobIdentity: string, parameters: models.JobInformation, callback: ServiceCallback<models.JobInformation>): void;
+    create(accountName: string, jobIdentity: string, parameters: models.JobInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInformation>): void;
+
 
     /**
      * Lists the jobs, if any, associated with the specified Data Lake Analytics
@@ -223,11 +532,72 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobInfoListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInfoListResult>): void;
+    listWithHttpOperationResponse(accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInfoListResult>>;
+
+    /**
+     * Lists the jobs, if any, associated with the specified Data Lake Analytics
+     * account. The response includes a link to the next page of results, if any.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobInfoListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobInfoListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobInfoListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInfoListResult>;
     list(accountName: string, callback: ServiceCallback<models.JobInfoListResult>): void;
+    list(accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInfoListResult>): void;
+
 
     /**
      * Lists the jobs, if any, associated with the specified Data Lake Analytics
@@ -241,9 +611,49 @@ export interface Job {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobInfoListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInfoListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobInfoListResult>>;
+
+    /**
+     * Lists the jobs, if any, associated with the specified Data Lake Analytics
+     * account. The response includes a link to the next page of results, if any.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobInfoListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobInfoListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobInfoListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobInfoListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.JobInfoListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobInfoListResult>): void;
 }

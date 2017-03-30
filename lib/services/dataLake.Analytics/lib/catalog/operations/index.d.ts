@@ -8,7 +8,7 @@
  * regenerated.
 */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as models from '../models';
 
 
@@ -19,6 +19,7 @@ import * as models from '../models';
  * instance of the DataLakeAnalyticsCatalogManagementClient.
  */
 export interface Catalog {
+
 
     /**
      * Creates the specified secret for use with external data sources in the
@@ -46,11 +47,65 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createSecretWithHttpOperationResponse(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates the specified secret for use with external data sources in the
+     * specified database. This is deprecated and will be removed in the next
+     * release. Please use CreateCredential instead.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database in which to create the
+     * secret.
+     *
+     * @param {string} secretName The name of the secret.
+     *
+     * @param {object} parameters The parameters required to create the secret
+     * (name and password)
+     *
+     * @param {string} parameters.password the password for the secret to pass in
+     *
+     * @param {string} [parameters.uri] the URI identifier for the secret in the
+     * format <hostname>:<port>
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, callback: ServiceCallback<void>): void;
+    createSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Modifies the specified secret for use with external data sources in the
@@ -77,11 +132,64 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateSecretWithHttpOperationResponse(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Modifies the specified secret for use with external data sources in the
+     * specified database. This is deprecated and will be removed in the next
+     * release. Please use UpdateCredential instead.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the secret.
+     *
+     * @param {string} secretName The name of the secret.
+     *
+     * @param {object} parameters The parameters required to modify the secret
+     * (name and password)
+     *
+     * @param {string} parameters.password the password for the secret to pass in
+     *
+     * @param {string} [parameters.uri] the URI identifier for the secret in the
+     * format <hostname>:<port>
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, callback: ServiceCallback<void>): void;
+    updateSecret(accountName: string, databaseName: string, secretName: string, parameters: models.DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Gets the specified secret in the specified database. This is deprecated and
@@ -99,11 +207,56 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlSecret>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getSecret(accountName: string, databaseName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSecret>): void;
+    getSecretWithHttpOperationResponse(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlSecret>>;
+
+    /**
+     * Gets the specified secret in the specified database. This is deprecated and
+     * will be removed in the next release. Please use GetCredential instead.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the secret.
+     *
+     * @param {string} secretName The name of the secret to get
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlSecret} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlSecret} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlSecret} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSecret(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlSecret>;
     getSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<models.USqlSecret>): void;
+    getSecret(accountName: string, databaseName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSecret>): void;
+
 
     /**
      * Deletes the specified secret in the specified database. This is deprecated
@@ -122,11 +275,56 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteSecret(accountName: string, databaseName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteSecretWithHttpOperationResponse(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified secret in the specified database. This is deprecated
+     * and will be removed in the next release. Please use DeleteCredential
+     * instead.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the secret.
+     *
+     * @param {string} secretName The name of the secret to delete
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteSecret(accountName: string, databaseName: string, secretName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteSecret(accountName: string, databaseName: string, secretName: string, callback: ServiceCallback<void>): void;
+    deleteSecret(accountName: string, databaseName: string, secretName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Deletes all secrets in the specified database. This is deprecated and will
@@ -143,11 +341,54 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteAllSecrets(accountName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteAllSecretsWithHttpOperationResponse(accountName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes all secrets in the specified database. This is deprecated and will
+     * be removed in the next release. In the future, please only drop individual
+     * credentials using DeleteCredential
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the secret.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAllSecrets(accountName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteAllSecrets(accountName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    deleteAllSecrets(accountName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Creates the specified credential for use with external data sources in the
@@ -178,11 +419,68 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createCredentialWithHttpOperationResponse(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates the specified credential for use with external data sources in the
+     * specified database.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database in which to create the
+     * credential.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} parameters The parameters required to create the credential
+     * (name and password)
+     *
+     * @param {string} parameters.password the password for the credential and user
+     * with access to the data source.
+     *
+     * @param {string} parameters.uri the URI identifier for the data source this
+     * credential can connect to in the format <hostname>:<port>
+     *
+     * @param {string} parameters.userId the object identifier for the user
+     * associated with this credential with access to the data source.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     createCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialCreateParameters, callback: ServiceCallback<void>): void;
+    createCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Modifies the specified credential for use with external data sources in the
@@ -217,11 +515,72 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    updateCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateCredentialWithHttpOperationResponse(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Modifies the specified credential for use with external data sources in the
+     * specified database
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * credential.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} parameters The parameters required to modify the credential
+     * (name and password)
+     *
+     * @param {string} [parameters.password] the current password for the
+     * credential and user with access to the data source. This is required if the
+     * requester is not the account owner.
+     *
+     * @param {string} [parameters.newPassword] the new password for the credential
+     * and user with access to the data source.
+     *
+     * @param {string} [parameters.uri] the URI identifier for the data source this
+     * credential can connect to in the format <hostname>:<port>
+     *
+     * @param {string} [parameters.userId] the object identifier for the user
+     * associated with this credential with access to the data source.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     updateCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialUpdateParameters, callback: ServiceCallback<void>): void;
+    updateCredential(accountName: string, databaseName: string, credentialName: string, parameters: models.DataLakeAnalyticsCatalogCredentialUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Retrieves the specified credential from the Data Lake Analytics catalog.
@@ -238,11 +597,55 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlCredential>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getCredential(accountName: string, databaseName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredential>): void;
+    getCredentialWithHttpOperationResponse(accountName: string, databaseName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlCredential>>;
+
+    /**
+     * Retrieves the specified credential from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the schema.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlCredential} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlCredential} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlCredential} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getCredential(accountName: string, databaseName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlCredential>;
     getCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<models.USqlCredential>): void;
+    getCredential(accountName: string, databaseName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredential>): void;
+
 
     /**
      * Deletes the specified credential in the specified database
@@ -272,11 +675,67 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteCredential(accountName: string, databaseName: string, credentialName: string, options: { parameters? : models.DataLakeAnalyticsCatalogCredentialDeleteParameters, cascade? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteCredentialWithHttpOperationResponse(accountName: string, databaseName: string, credentialName: string, options?: { parameters? : models.DataLakeAnalyticsCatalogCredentialDeleteParameters, cascade? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified credential in the specified database
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * credential.
+     *
+     * @param {string} credentialName The name of the credential to delete
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] The parameters to delete a credential
+     * if the current user is not the account owner.
+     *
+     * @param {string} [options.parameters.password] the current password for the
+     * credential and user with access to the data source. This is required if the
+     * requester is not the account owner.
+     *
+     * @param {boolean} [options.cascade] Indicates if the delete should be a
+     * cascading delete (which deletes all resources dependent on the credential as
+     * well as the credential) or not. If false will fail if there are any
+     * resources relying on the credential.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteCredential(accountName: string, databaseName: string, credentialName: string, options?: { parameters? : models.DataLakeAnalyticsCatalogCredentialDeleteParameters, cascade? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteCredential(accountName: string, databaseName: string, credentialName: string, callback: ServiceCallback<void>): void;
+    deleteCredential(accountName: string, databaseName: string, credentialName: string, options: { parameters? : models.DataLakeAnalyticsCatalogCredentialDeleteParameters, cascade? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Retrieves the list of credentials from the Data Lake Analytics catalog.
@@ -311,11 +770,73 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlCredentialList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listCredentials(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
+    listCredentialsWithHttpOperationResponse(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlCredentialList>>;
+
+    /**
+     * Retrieves the list of credentials from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the schema.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlCredentialList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlCredentialList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlCredentialList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listCredentials(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlCredentialList>;
     listCredentials(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlCredentialList>): void;
+    listCredentials(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
+
 
     /**
      * Retrieves the specified external data source from the Data Lake Analytics
@@ -334,11 +855,58 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlExternalDataSource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getExternalDataSource(accountName: string, databaseName: string, externalDataSourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSource>): void;
+    getExternalDataSourceWithHttpOperationResponse(accountName: string, databaseName: string, externalDataSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlExternalDataSource>>;
+
+    /**
+     * Retrieves the specified external data source from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * external data source.
+     *
+     * @param {string} externalDataSourceName The name of the external data source.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlExternalDataSource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlExternalDataSource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlExternalDataSource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getExternalDataSource(accountName: string, databaseName: string, externalDataSourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlExternalDataSource>;
     getExternalDataSource(accountName: string, databaseName: string, externalDataSourceName: string, callback: ServiceCallback<models.USqlExternalDataSource>): void;
+    getExternalDataSource(accountName: string, databaseName: string, externalDataSourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSource>): void;
+
 
     /**
      * Retrieves the list of external data sources from the Data Lake Analytics
@@ -375,11 +943,76 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlExternalDataSourceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listExternalDataSources(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
+    listExternalDataSourcesWithHttpOperationResponse(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlExternalDataSourceList>>;
+
+    /**
+     * Retrieves the list of external data sources from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * external data sources.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlExternalDataSourceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlExternalDataSourceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlExternalDataSourceList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listExternalDataSources(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlExternalDataSourceList>;
     listExternalDataSources(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
+    listExternalDataSources(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
+
 
     /**
      * Retrieves the specified procedure from the Data Lake Analytics catalog.
@@ -399,11 +1032,58 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlProcedure>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getProcedure(accountName: string, databaseName: string, schemaName: string, procedureName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedure>): void;
+    getProcedureWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, procedureName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlProcedure>>;
+
+    /**
+     * Retrieves the specified procedure from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * procedure.
+     *
+     * @param {string} schemaName The name of the schema containing the procedure.
+     *
+     * @param {string} procedureName The name of the procedure.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlProcedure} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlProcedure} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlProcedure} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getProcedure(accountName: string, databaseName: string, schemaName: string, procedureName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlProcedure>;
     getProcedure(accountName: string, databaseName: string, schemaName: string, procedureName: string, callback: ServiceCallback<models.USqlProcedure>): void;
+    getProcedure(accountName: string, databaseName: string, schemaName: string, procedureName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedure>): void;
+
 
     /**
      * Retrieves the list of procedures from the Data Lake Analytics catalog.
@@ -441,11 +1121,76 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlProcedureList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listProcedures(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedureList>): void;
+    listProceduresWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlProcedureList>>;
+
+    /**
+     * Retrieves the list of procedures from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * procedures.
+     *
+     * @param {string} schemaName The name of the schema containing the procedures.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlProcedureList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlProcedureList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlProcedureList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listProcedures(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlProcedureList>;
     listProcedures(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlProcedureList>): void;
+    listProcedures(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedureList>): void;
+
 
     /**
      * Retrieves the specified table from the Data Lake Analytics catalog.
@@ -464,11 +1209,57 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTable>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getTable(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTable>): void;
+    getTableWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, tableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTable>>;
+
+    /**
+     * Retrieves the specified table from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the table.
+     *
+     * @param {string} schemaName The name of the schema containing the table.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTable} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTable} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTable} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTable(accountName: string, databaseName: string, schemaName: string, tableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTable>;
     getTable(accountName: string, databaseName: string, schemaName: string, tableName: string, callback: ServiceCallback<models.USqlTable>): void;
+    getTable(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTable>): void;
+
 
     /**
      * Retrieves the list of tables from the Data Lake Analytics catalog.
@@ -505,11 +1296,75 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTables(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
+    listTablesWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableList>>;
+
+    /**
+     * Retrieves the list of tables from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the tables.
+     *
+     * @param {string} schemaName The name of the schema containing the tables.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTables(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableList>;
     listTables(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableList>): void;
+    listTables(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
+
 
     /**
      * Retrieves the specified table type from the Data Lake Analytics catalog.
@@ -529,11 +1384,58 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableType>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getTableType(accountName: string, databaseName: string, schemaName: string, tableTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableType>): void;
+    getTableTypeWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, tableTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableType>>;
+
+    /**
+     * Retrieves the specified table type from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the table
+     * type.
+     *
+     * @param {string} schemaName The name of the schema containing the table type.
+     *
+     * @param {string} tableTypeName The name of the table type to retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableType} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableType} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableType} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTableType(accountName: string, databaseName: string, schemaName: string, tableTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableType>;
     getTableType(accountName: string, databaseName: string, schemaName: string, tableTypeName: string, callback: ServiceCallback<models.USqlTableType>): void;
+    getTableType(accountName: string, databaseName: string, schemaName: string, tableTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableType>): void;
+
 
     /**
      * Retrieves the list of table types from the Data Lake Analytics catalog.
@@ -572,11 +1474,77 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableTypeList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTableTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
+    listTableTypesWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableTypeList>>;
+
+    /**
+     * Retrieves the list of table types from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the table
+     * types.
+     *
+     * @param {string} schemaName The name of the schema containing the table
+     * types.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableTypeList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableTypeList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableTypeList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTableTypes(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableTypeList>;
     listTableTypes(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableTypeList>): void;
+    listTableTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
+
 
     /**
      * Retrieves the specified view from the Data Lake Analytics catalog.
@@ -595,11 +1563,57 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlView>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getView(accountName: string, databaseName: string, schemaName: string, viewName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlView>): void;
+    getViewWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, viewName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlView>>;
+
+    /**
+     * Retrieves the specified view from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the view.
+     *
+     * @param {string} schemaName The name of the schema containing the view.
+     *
+     * @param {string} viewName The name of the view.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlView} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlView} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlView} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getView(accountName: string, databaseName: string, schemaName: string, viewName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlView>;
     getView(accountName: string, databaseName: string, schemaName: string, viewName: string, callback: ServiceCallback<models.USqlView>): void;
+    getView(accountName: string, databaseName: string, schemaName: string, viewName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlView>): void;
+
 
     /**
      * Retrieves the list of views from the Data Lake Analytics catalog.
@@ -636,11 +1650,75 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlViewList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listViews(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlViewList>): void;
+    listViewsWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlViewList>>;
+
+    /**
+     * Retrieves the list of views from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the views.
+     *
+     * @param {string} schemaName The name of the schema containing the views.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlViewList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlViewList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlViewList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listViews(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlViewList>;
     listViews(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlViewList>): void;
+    listViews(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlViewList>): void;
+
 
     /**
      * Retrieves the specified table statistics from the Data Lake Analytics
@@ -663,11 +1741,61 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableStatistics>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getTableStatistic(accountName: string, databaseName: string, schemaName: string, tableName: string, statisticsName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatistics>): void;
+    getTableStatisticWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, tableName: string, statisticsName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableStatistics>>;
+
+    /**
+     * Retrieves the specified table statistics from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * statistics.
+     *
+     * @param {string} schemaName The name of the schema containing the statistics.
+     *
+     * @param {string} tableName The name of the table containing the statistics.
+     *
+     * @param {string} statisticsName The name of the table statistics.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableStatistics} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableStatistics} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableStatistics} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTableStatistic(accountName: string, databaseName: string, schemaName: string, tableName: string, statisticsName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableStatistics>;
     getTableStatistic(accountName: string, databaseName: string, schemaName: string, tableName: string, statisticsName: string, callback: ServiceCallback<models.USqlTableStatistics>): void;
+    getTableStatistic(accountName: string, databaseName: string, schemaName: string, tableName: string, statisticsName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatistics>): void;
+
 
     /**
      * Retrieves the list of table statistics from the Data Lake Analytics catalog.
@@ -707,11 +1835,79 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableStatisticsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+    listTableStatisticsWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, tableName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableStatisticsList>>;
+
+    /**
+     * Retrieves the list of table statistics from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * statistics.
+     *
+     * @param {string} schemaName The name of the schema containing the statistics.
+     *
+     * @param {string} tableName The name of the table containing the statistics.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableStatisticsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableStatisticsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableStatisticsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableStatisticsList>;
     listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+    listTableStatistics(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+
 
     /**
      * Retrieves the specified table partition from the Data Lake Analytics
@@ -734,11 +1930,61 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTablePartition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getTablePartition(accountName: string, databaseName: string, schemaName: string, tableName: string, partitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartition>): void;
+    getTablePartitionWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, tableName: string, partitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTablePartition>>;
+
+    /**
+     * Retrieves the specified table partition from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * partition.
+     *
+     * @param {string} schemaName The name of the schema containing the partition.
+     *
+     * @param {string} tableName The name of the table containing the partition.
+     *
+     * @param {string} partitionName The name of the table partition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTablePartition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTablePartition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTablePartition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTablePartition(accountName: string, databaseName: string, schemaName: string, tableName: string, partitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTablePartition>;
     getTablePartition(accountName: string, databaseName: string, schemaName: string, tableName: string, partitionName: string, callback: ServiceCallback<models.USqlTablePartition>): void;
+    getTablePartition(accountName: string, databaseName: string, schemaName: string, tableName: string, partitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartition>): void;
+
 
     /**
      * Retrieves the list of table partitions from the Data Lake Analytics catalog.
@@ -778,11 +2024,79 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTablePartitionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+    listTablePartitionsWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, tableName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTablePartitionList>>;
+
+    /**
+     * Retrieves the list of table partitions from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * partitions.
+     *
+     * @param {string} schemaName The name of the schema containing the partitions.
+     *
+     * @param {string} tableName The name of the table containing the partitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTablePartitionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTablePartitionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTablePartitionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTablePartitionList>;
     listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+    listTablePartitions(accountName: string, databaseName: string, schemaName: string, tableName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+
 
     /**
      * Retrieves the list of types within the specified database and schema from
@@ -820,11 +2134,76 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTypeList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTypeList>): void;
+    listTypesWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTypeList>>;
+
+    /**
+     * Retrieves the list of types within the specified database and schema from
+     * the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the types.
+     *
+     * @param {string} schemaName The name of the schema containing the types.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTypeList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTypeList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTypeList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTypes(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTypeList>;
     listTypes(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTypeList>): void;
+    listTypes(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTypeList>): void;
+
 
     /**
      * Retrieves the specified table valued function from the Data Lake Analytics
@@ -846,11 +2225,61 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableValuedFunction>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getTableValuedFunction(accountName: string, databaseName: string, schemaName: string, tableValuedFunctionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunction>): void;
+    getTableValuedFunctionWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, tableValuedFunctionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableValuedFunction>>;
+
+    /**
+     * Retrieves the specified table valued function from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the table
+     * valued function.
+     *
+     * @param {string} schemaName The name of the schema containing the table
+     * valued function.
+     *
+     * @param {string} tableValuedFunctionName The name of the tableValuedFunction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableValuedFunction} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableValuedFunction} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableValuedFunction} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTableValuedFunction(accountName: string, databaseName: string, schemaName: string, tableValuedFunctionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableValuedFunction>;
     getTableValuedFunction(accountName: string, databaseName: string, schemaName: string, tableValuedFunctionName: string, callback: ServiceCallback<models.USqlTableValuedFunction>): void;
+    getTableValuedFunction(accountName: string, databaseName: string, schemaName: string, tableValuedFunctionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunction>): void;
+
 
     /**
      * Retrieves the list of table valued functions from the Data Lake Analytics
@@ -890,11 +2319,79 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableValuedFunctionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTableValuedFunctions(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
+    listTableValuedFunctionsWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableValuedFunctionList>>;
+
+    /**
+     * Retrieves the list of table valued functions from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the table
+     * valued functions.
+     *
+     * @param {string} schemaName The name of the schema containing the table
+     * valued functions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableValuedFunctionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableValuedFunctionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableValuedFunctionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTableValuedFunctions(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableValuedFunctionList>;
     listTableValuedFunctions(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
+    listTableValuedFunctions(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
+
 
     /**
      * Retrieves the specified assembly from the Data Lake Analytics catalog.
@@ -912,11 +2409,56 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlAssembly>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getAssembly(accountName: string, databaseName: string, assemblyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssembly>): void;
+    getAssemblyWithHttpOperationResponse(accountName: string, databaseName: string, assemblyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlAssembly>>;
+
+    /**
+     * Retrieves the specified assembly from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * assembly.
+     *
+     * @param {string} assemblyName The name of the assembly.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlAssembly} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlAssembly} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlAssembly} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAssembly(accountName: string, databaseName: string, assemblyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlAssembly>;
     getAssembly(accountName: string, databaseName: string, assemblyName: string, callback: ServiceCallback<models.USqlAssembly>): void;
+    getAssembly(accountName: string, databaseName: string, assemblyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssembly>): void;
+
 
     /**
      * Retrieves the list of assemblies from the Data Lake Analytics catalog.
@@ -952,11 +2494,74 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlAssemblyList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAssemblies(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssemblyList>): void;
+    listAssembliesWithHttpOperationResponse(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlAssemblyList>>;
+
+    /**
+     * Retrieves the list of assemblies from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the
+     * assembly.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlAssemblyList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlAssemblyList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlAssemblyList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAssemblies(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlAssemblyList>;
     listAssemblies(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlAssemblyList>): void;
+    listAssemblies(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssemblyList>): void;
+
 
     /**
      * Retrieves the specified schema from the Data Lake Analytics catalog.
@@ -973,11 +2578,55 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlSchema>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getSchema(accountName: string, databaseName: string, schemaName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchema>): void;
+    getSchemaWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlSchema>>;
+
+    /**
+     * Retrieves the specified schema from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the schema.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlSchema} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlSchema} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlSchema} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSchema(accountName: string, databaseName: string, schemaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlSchema>;
     getSchema(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlSchema>): void;
+    getSchema(accountName: string, databaseName: string, schemaName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchema>): void;
+
 
     /**
      * Retrieves the list of schemas from the Data Lake Analytics catalog.
@@ -1012,11 +2661,73 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlSchemaList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listSchemas(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchemaList>): void;
+    listSchemasWithHttpOperationResponse(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlSchemaList>>;
+
+    /**
+     * Retrieves the list of schemas from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database containing the schema.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlSchemaList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlSchemaList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlSchemaList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSchemas(accountName: string, databaseName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlSchemaList>;
     listSchemas(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlSchemaList>): void;
+    listSchemas(accountName: string, databaseName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchemaList>): void;
+
 
     /**
      * Retrieves the specified database from the Data Lake Analytics catalog.
@@ -1031,11 +2742,53 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getDatabase(accountName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabase>): void;
+    getDatabaseWithHttpOperationResponse(accountName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlDatabase>>;
+
+    /**
+     * Retrieves the specified database from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlDatabase} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getDatabase(accountName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlDatabase>;
     getDatabase(accountName: string, databaseName: string, callback: ServiceCallback<models.USqlDatabase>): void;
+    getDatabase(accountName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabase>): void;
+
 
     /**
      * Retrieves the list of databases from the Data Lake Analytics catalog.
@@ -1068,11 +2821,71 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlDatabaseList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listDatabases(accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabaseList>): void;
+    listDatabasesWithHttpOperationResponse(accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlDatabaseList>>;
+
+    /**
+     * Retrieves the list of databases from the Data Lake Analytics catalog.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account upon which
+     * to execute catalog operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter. Optional.
+     *
+     * @param {number} [options.top] The number of items to return. Optional.
+     *
+     * @param {number} [options.skip] The number of items to skip over before
+     * returning elements. Optional.
+     *
+     * @param {string} [options.select] OData Select statement. Limits the
+     * properties on each entry to just those requested, e.g.
+     * Categories?$select=CategoryName,Description. Optional.
+     *
+     * @param {string} [options.orderby] OrderBy clause. One or more
+     * comma-separated expressions with an optional "asc" (the default) or "desc"
+     * depending on the order you'd like the values sorted, e.g.
+     * Categories?$orderby=CategoryName desc. Optional.
+     *
+     * @param {boolean} [options.count] The Boolean value of true or false to
+     * request a count of the matching resources included with the resources in the
+     * response, e.g. Categories?$count=true. Optional.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlDatabaseList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlDatabaseList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlDatabaseList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDatabases(accountName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlDatabaseList>;
     listDatabases(accountName: string, callback: ServiceCallback<models.USqlDatabaseList>): void;
+    listDatabases(accountName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabaseList>): void;
+
 
     /**
      * Retrieves the list of credentials from the Data Lake Analytics catalog.
@@ -1085,11 +2898,51 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlCredentialList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listCredentialsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
+    listCredentialsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlCredentialList>>;
+
+    /**
+     * Retrieves the list of credentials from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlCredentialList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlCredentialList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlCredentialList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listCredentialsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlCredentialList>;
     listCredentialsNext(nextPageLink: string, callback: ServiceCallback<models.USqlCredentialList>): void;
+    listCredentialsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlCredentialList>): void;
+
 
     /**
      * Retrieves the list of external data sources from the Data Lake Analytics
@@ -1103,11 +2956,53 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlExternalDataSourceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listExternalDataSourcesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
+    listExternalDataSourcesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlExternalDataSourceList>>;
+
+    /**
+     * Retrieves the list of external data sources from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlExternalDataSourceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlExternalDataSourceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlExternalDataSourceList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listExternalDataSourcesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlExternalDataSourceList>;
     listExternalDataSourcesNext(nextPageLink: string, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
+    listExternalDataSourcesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlExternalDataSourceList>): void;
+
 
     /**
      * Retrieves the list of procedures from the Data Lake Analytics catalog.
@@ -1120,11 +3015,51 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlProcedureList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listProceduresNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedureList>): void;
+    listProceduresNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlProcedureList>>;
+
+    /**
+     * Retrieves the list of procedures from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlProcedureList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlProcedureList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlProcedureList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listProceduresNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlProcedureList>;
     listProceduresNext(nextPageLink: string, callback: ServiceCallback<models.USqlProcedureList>): void;
+    listProceduresNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlProcedureList>): void;
+
 
     /**
      * Retrieves the list of tables from the Data Lake Analytics catalog.
@@ -1137,11 +3072,51 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTablesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
+    listTablesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableList>>;
+
+    /**
+     * Retrieves the list of tables from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTablesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableList>;
     listTablesNext(nextPageLink: string, callback: ServiceCallback<models.USqlTableList>): void;
+    listTablesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
+
 
     /**
      * Retrieves the list of table types from the Data Lake Analytics catalog.
@@ -1154,11 +3129,51 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableTypeList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTableTypesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
+    listTableTypesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableTypeList>>;
+
+    /**
+     * Retrieves the list of table types from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableTypeList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableTypeList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableTypeList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTableTypesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableTypeList>;
     listTableTypesNext(nextPageLink: string, callback: ServiceCallback<models.USqlTableTypeList>): void;
+    listTableTypesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableTypeList>): void;
+
 
     /**
      * Retrieves the list of views from the Data Lake Analytics catalog.
@@ -1171,11 +3186,51 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlViewList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listViewsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlViewList>): void;
+    listViewsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlViewList>>;
+
+    /**
+     * Retrieves the list of views from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlViewList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlViewList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlViewList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listViewsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlViewList>;
     listViewsNext(nextPageLink: string, callback: ServiceCallback<models.USqlViewList>): void;
+    listViewsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlViewList>): void;
+
 
     /**
      * Retrieves the list of table statistics from the Data Lake Analytics catalog.
@@ -1188,11 +3243,52 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableStatisticsList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTableStatisticsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+    listTableStatisticsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableStatisticsList>>;
+
+    /**
+     * Retrieves the list of table statistics from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableStatisticsList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableStatisticsList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableStatisticsList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTableStatisticsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableStatisticsList>;
     listTableStatisticsNext(nextPageLink: string, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+    listTableStatisticsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableStatisticsList>): void;
+
 
     /**
      * Retrieves the list of table partitions from the Data Lake Analytics catalog.
@@ -1205,11 +3301,52 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTablePartitionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTablePartitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+    listTablePartitionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTablePartitionList>>;
+
+    /**
+     * Retrieves the list of table partitions from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTablePartitionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTablePartitionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTablePartitionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTablePartitionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTablePartitionList>;
     listTablePartitionsNext(nextPageLink: string, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+    listTablePartitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTablePartitionList>): void;
+
 
     /**
      * Retrieves the list of types within the specified database and schema from
@@ -1223,11 +3360,52 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTypeList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTypesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTypeList>): void;
+    listTypesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTypeList>>;
+
+    /**
+     * Retrieves the list of types within the specified database and schema from
+     * the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTypeList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTypeList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTypeList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTypesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTypeList>;
     listTypesNext(nextPageLink: string, callback: ServiceCallback<models.USqlTypeList>): void;
+    listTypesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTypeList>): void;
+
 
     /**
      * Retrieves the list of table valued functions from the Data Lake Analytics
@@ -1241,11 +3419,53 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlTableValuedFunctionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTableValuedFunctionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
+    listTableValuedFunctionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableValuedFunctionList>>;
+
+    /**
+     * Retrieves the list of table valued functions from the Data Lake Analytics
+     * catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlTableValuedFunctionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlTableValuedFunctionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlTableValuedFunctionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTableValuedFunctionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableValuedFunctionList>;
     listTableValuedFunctionsNext(nextPageLink: string, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
+    listTableValuedFunctionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableValuedFunctionList>): void;
+
 
     /**
      * Retrieves the list of assemblies from the Data Lake Analytics catalog.
@@ -1258,11 +3478,51 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlAssemblyList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAssembliesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssemblyList>): void;
+    listAssembliesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlAssemblyList>>;
+
+    /**
+     * Retrieves the list of assemblies from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlAssemblyList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlAssemblyList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlAssemblyList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAssembliesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlAssemblyList>;
     listAssembliesNext(nextPageLink: string, callback: ServiceCallback<models.USqlAssemblyList>): void;
+    listAssembliesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlAssemblyList>): void;
+
 
     /**
      * Retrieves the list of schemas from the Data Lake Analytics catalog.
@@ -1275,11 +3535,51 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlSchemaList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listSchemasNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchemaList>): void;
+    listSchemasNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlSchemaList>>;
+
+    /**
+     * Retrieves the list of schemas from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlSchemaList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlSchemaList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlSchemaList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSchemasNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlSchemaList>;
     listSchemasNext(nextPageLink: string, callback: ServiceCallback<models.USqlSchemaList>): void;
+    listSchemasNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlSchemaList>): void;
+
 
     /**
      * Retrieves the list of databases from the Data Lake Analytics catalog.
@@ -1292,9 +3592,48 @@ export interface Catalog {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<USqlDatabaseList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listDatabasesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabaseList>): void;
+    listDatabasesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlDatabaseList>>;
+
+    /**
+     * Retrieves the list of databases from the Data Lake Analytics catalog.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {USqlDatabaseList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {USqlDatabaseList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link USqlDatabaseList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listDatabasesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlDatabaseList>;
     listDatabasesNext(nextPageLink: string, callback: ServiceCallback<models.USqlDatabaseList>): void;
+    listDatabasesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlDatabaseList>): void;
 }

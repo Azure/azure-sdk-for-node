@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -123,11 +126,11 @@ export interface AutoStorageProperties {
  *
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly location?: string;
+  readonly tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -174,14 +177,14 @@ export interface Resource extends BaseResource {
  *
  */
 export interface BatchAccount extends Resource {
-  accountEndpoint?: string;
-  provisioningState?: string;
-  poolAllocationMode?: string;
-  keyVaultReference?: KeyVaultReference;
-  autoStorage?: AutoStorageProperties;
-  coreQuota?: number;
-  poolQuota?: number;
-  activeJobAndJobScheduleQuota?: number;
+  readonly accountEndpoint?: string;
+  readonly provisioningState?: string;
+  readonly poolAllocationMode?: string;
+  readonly keyVaultReference?: KeyVaultReference;
+  readonly autoStorage?: AutoStorageProperties;
+  readonly coreQuota?: number;
+  readonly poolQuota?: number;
+  readonly activeJobAndJobScheduleQuota?: number;
 }
 
 /**
@@ -246,8 +249,8 @@ export interface BatchAccountRegenerateKeyParameters {
  *
  */
 export interface BatchAccountKeys {
-  primary?: string;
-  secondary?: string;
+  readonly primary?: string;
+  readonly secondary?: string;
 }
 
 /**
@@ -308,13 +311,13 @@ export interface AddApplicationParameters {
  *
  */
 export interface ApplicationPackage {
-  id?: string;
-  version?: string;
-  state?: string;
-  format?: string;
-  storageUrl?: string;
-  storageUrlExpiry?: Date;
-  lastActivationTime?: Date;
+  readonly id?: string;
+  readonly version?: string;
+  readonly state?: string;
+  readonly format?: string;
+  readonly storageUrl?: string;
+  readonly storageUrlExpiry?: Date;
+  readonly lastActivationTime?: Date;
 }
 
 /**
@@ -393,7 +396,7 @@ export interface UpdateApplicationParameters {
  *
  */
 export interface BatchLocationQuota {
-  accountQuota?: number;
+  readonly accountQuota?: number;
 }
 
 /**

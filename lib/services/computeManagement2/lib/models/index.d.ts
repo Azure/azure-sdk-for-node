@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -87,9 +90,9 @@ export interface Sku {
  *
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
   location: string;
   tags?: { [propertyName: string]: string };
 }
@@ -124,7 +127,7 @@ export interface AvailabilitySet extends Resource {
   platformUpdateDomainCount?: number;
   platformFaultDomainCount?: number;
   virtualMachines?: SubResource[];
-  statuses?: InstanceViewStatus[];
+  readonly statuses?: InstanceViewStatus[];
   managed?: boolean;
   sku?: Sku;
 }
@@ -318,7 +321,7 @@ export interface VirtualMachineExtension extends Resource {
   autoUpgradeMinorVersion?: boolean;
   settings?: any;
   protectedSettings?: any;
-  provisioningState?: string;
+  readonly provisioningState?: string;
   instanceView?: VirtualMachineExtensionInstanceView;
 }
 
@@ -368,7 +371,7 @@ export interface OSDiskImage {
  *
  */
 export interface DataDiskImage {
-  lun?: number;
+  readonly lun?: number;
 }
 
 /**
@@ -1300,6 +1303,28 @@ export interface BootDiagnosticsInstanceView {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineIdentity class.
+ * @constructor
+ * Identity for the virtual machine.
+ *
+ * @member {string} [principalId] The principal id of virtual machine identity.
+ *
+ * @member {string} [tenantId] The tenant id associated with the virtual
+ * machine.
+ *
+ * @member {string} [type] The type of identity used for the virtual machine.
+ * Currently, the only supported type is 'SystemAssigned', which implicitly
+ * creates an identity. Possible values include: 'SystemAssigned'
+ *
+ */
+export interface VirtualMachineIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineInstanceView class.
  * @constructor
  * The instance view of a virtual machine.
@@ -1602,6 +1627,19 @@ export interface VirtualMachineInstanceView {
  *
  * @member {array} [resources] The virtual machine child extension resources.
  *
+ * @member {object} [identity] The identity of the virtual machine, if
+ * configured.
+ *
+ * @member {string} [identity.principalId] The principal id of virtual machine
+ * identity.
+ *
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * virtual machine.
+ *
+ * @member {string} [identity.type] The type of identity used for the virtual
+ * machine. Currently, the only supported type is 'SystemAssigned', which
+ * implicitly creates an identity. Possible values include: 'SystemAssigned'
+ *
  */
 export interface VirtualMachine extends Resource {
   plan?: Plan;
@@ -1611,11 +1649,12 @@ export interface VirtualMachine extends Resource {
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
   availabilitySet?: SubResource;
-  provisioningState?: string;
-  instanceView?: VirtualMachineInstanceView;
+  readonly provisioningState?: string;
+  readonly instanceView?: VirtualMachineInstanceView;
   licenseType?: string;
-  vmId?: string;
-  resources?: VirtualMachineExtension[];
+  readonly vmId?: string;
+  readonly resources?: VirtualMachineExtension[];
+  identity?: VirtualMachineIdentity;
 }
 
 /**
@@ -1806,7 +1845,7 @@ export interface ImageStorageProfile {
 export interface Image extends Resource {
   sourceVirtualMachine?: SubResource;
   storageProfile?: ImageStorageProfile;
-  provisioningState?: string;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -1824,6 +1863,29 @@ export interface Image extends Resource {
 export interface ImageListResult {
   value: Image[];
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetIdentity class.
+ * @constructor
+ * Identity for the virtual machine scale set.
+ *
+ * @member {string} [principalId] The principal id of virtual machine scale set
+ * identity.
+ *
+ * @member {string} [tenantId] The tenant id associated with the virtual
+ * machine scale set.
+ *
+ * @member {string} [type] The type of identity used for the virtual machine
+ * scale set. Currently, the only supported type is 'SystemAssigned', which
+ * implicitly creates an identity. Possible values include: 'SystemAssigned'
+ *
+ */
+export interface VirtualMachineScaleSetIdentity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+  type?: string;
 }
 
 /**
@@ -2124,7 +2186,7 @@ export interface VirtualMachineScaleSetNetworkProfile {
  *
  */
 export interface SubResourceReadOnly extends BaseResource {
-  id?: string;
+  readonly id?: string;
 }
 
 /**
@@ -2163,7 +2225,7 @@ export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
   autoUpgradeMinorVersion?: boolean;
   settings?: any;
   protectedSettings?: any;
-  provisioningState?: string;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -2480,15 +2542,30 @@ export interface VirtualMachineScaleSetVMProfile {
  * @member {boolean} [singlePlacementGroup] When true this limits the scale set
  * to a single placement group, of max size 100 virtual machines.
  *
+ * @member {object} [identity] The identity of the virtual machine scale set,
+ * if configured.
+ *
+ * @member {string} [identity.principalId] The principal id of virtual machine
+ * scale set identity.
+ *
+ * @member {string} [identity.tenantId] The tenant id associated with the
+ * virtual machine scale set.
+ *
+ * @member {string} [identity.type] The type of identity used for the virtual
+ * machine scale set. Currently, the only supported type is 'SystemAssigned',
+ * which implicitly creates an identity. Possible values include:
+ * 'SystemAssigned'
+ *
  */
 export interface VirtualMachineScaleSet extends Resource {
   sku?: Sku;
   plan?: Plan;
   upgradePolicy?: UpgradePolicy;
   virtualMachineProfile?: VirtualMachineScaleSetVMProfile;
-  provisioningState?: string;
+  readonly provisioningState?: string;
   overprovision?: boolean;
   singlePlacementGroup?: boolean;
+  identity?: VirtualMachineScaleSetIdentity;
 }
 
 /**
@@ -2531,8 +2608,8 @@ export interface VirtualMachineScaleSetVMInstanceRequiredIDs {
  *
  */
 export interface VirtualMachineStatusCodeCount {
-  code?: string;
-  count?: number;
+  readonly code?: string;
+  readonly count?: number;
 }
 
 /**
@@ -2546,7 +2623,7 @@ export interface VirtualMachineStatusCodeCount {
  *
  */
 export interface VirtualMachineScaleSetInstanceViewStatusesSummary {
-  statusesSummary?: VirtualMachineStatusCodeCount[];
+  readonly statusesSummary?: VirtualMachineStatusCodeCount[];
 }
 
 /**
@@ -2561,8 +2638,8 @@ export interface VirtualMachineScaleSetInstanceViewStatusesSummary {
  *
  */
 export interface VirtualMachineScaleSetVMExtensionsSummary {
-  name?: string;
-  statusesSummary?: VirtualMachineStatusCodeCount[];
+  readonly name?: string;
+  readonly statusesSummary?: VirtualMachineStatusCodeCount[];
 }
 
 /**
@@ -2582,8 +2659,8 @@ export interface VirtualMachineScaleSetVMExtensionsSummary {
  *
  */
 export interface VirtualMachineScaleSetInstanceView {
-  virtualMachine?: VirtualMachineScaleSetInstanceViewStatusesSummary;
-  extensions?: VirtualMachineScaleSetVMExtensionsSummary[];
+  readonly virtualMachine?: VirtualMachineScaleSetInstanceViewStatusesSummary;
+  readonly extensions?: VirtualMachineScaleSetVMExtensionsSummary[];
   statuses?: InstanceViewStatus[];
 }
 
@@ -2640,10 +2717,10 @@ export interface VirtualMachineScaleSetListWithLinkResult {
  *
  */
 export interface VirtualMachineScaleSetSkuCapacity {
-  minimum?: number;
-  maximum?: number;
-  defaultCapacity?: number;
-  scaleType?: string;
+  readonly minimum?: number;
+  readonly maximum?: number;
+  readonly defaultCapacity?: number;
+  readonly scaleType?: string;
 }
 
 /**
@@ -2675,9 +2752,9 @@ export interface VirtualMachineScaleSetSkuCapacity {
  *
  */
 export interface VirtualMachineScaleSetSku {
-  resourceType?: string;
-  sku?: Sku;
-  capacity?: VirtualMachineScaleSetSkuCapacity;
+  readonly resourceType?: string;
+  readonly sku?: Sku;
+  readonly capacity?: VirtualMachineScaleSetSkuCapacity;
 }
 
 /**
@@ -2966,21 +3043,21 @@ export interface VirtualMachineScaleSetListSkusResult {
  *
  */
 export interface VirtualMachineScaleSetVM extends Resource {
-  instanceId?: string;
-  sku?: Sku;
-  latestModelApplied?: boolean;
-  vmId?: string;
-  instanceView?: VirtualMachineInstanceView;
+  readonly instanceId?: string;
+  readonly sku?: Sku;
+  readonly latestModelApplied?: boolean;
+  readonly vmId?: string;
+  readonly instanceView?: VirtualMachineInstanceView;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
   osProfile?: OSProfile;
   networkProfile?: NetworkProfile;
   diagnosticsProfile?: DiagnosticsProfile;
   availabilitySet?: SubResource;
-  provisioningState?: string;
+  readonly provisioningState?: string;
   licenseType?: string;
   plan?: Plan;
-  resources?: VirtualMachineExtension[];
+  readonly resources?: VirtualMachineExtension[];
 }
 
 /**
@@ -3163,11 +3240,11 @@ export interface ComputeLongRunningOperationProperties {
  *
  */
 export interface OperationStatusResponse {
-  name?: string;
-  status?: string;
-  startTime?: Date;
-  endTime?: Date;
-  error?: ApiError;
+  readonly name?: string;
+  readonly status?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly error?: ApiError;
 }
 
 /**
@@ -3235,7 +3312,7 @@ export interface ContainerServiceOrchestratorProfile {
 export interface ContainerServiceMasterProfile {
   count?: number;
   dnsPrefix: string;
-  fqdn?: string;
+  readonly fqdn?: string;
 }
 
 /**
@@ -3275,7 +3352,7 @@ export interface ContainerServiceAgentPoolProfile {
   count: number;
   vmSize: string;
   dnsPrefix: string;
-  fqdn?: string;
+  readonly fqdn?: string;
 }
 
 /**
@@ -3360,7 +3437,7 @@ export interface ContainerServiceLinuxProfile {
  */
 export interface ContainerServiceVMDiagnostics {
   enabled: boolean;
-  storageUri?: string;
+  readonly storageUri?: string;
 }
 
 /**
@@ -3455,7 +3532,7 @@ export interface ContainerServiceDiagnosticsProfile {
  *
  */
 export interface ContainerService extends Resource {
-  provisioningState?: string;
+  readonly provisioningState?: string;
   orchestratorProfile?: ContainerServiceOrchestratorProfile;
   customProfile?: ContainerServiceCustomProfile;
   servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
@@ -3739,13 +3816,13 @@ export interface EncryptionSettings {
  */
 export interface Disk extends Resource {
   accountType?: string;
-  timeCreated?: Date;
+  readonly timeCreated?: Date;
   osType?: string;
   creationData: CreationData;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
-  ownerId?: string;
-  provisioningState?: string;
+  readonly ownerId?: string;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -3881,7 +3958,7 @@ export interface GrantAccessData {
  *
  */
 export interface AccessUri {
-  accessSAS?: string;
+  readonly accessSAS?: string;
 }
 
 /**
@@ -3974,13 +4051,13 @@ export interface AccessUri {
  */
 export interface Snapshot extends Resource {
   accountType?: string;
-  timeCreated?: Date;
+  readonly timeCreated?: Date;
   osType?: string;
   creationData: CreationData;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
-  ownerId?: string;
-  provisioningState?: string;
+  readonly ownerId?: string;
+  readonly provisioningState?: string;
 }
 
 /**

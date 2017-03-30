@@ -8,141 +8,340 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 import * as operations from "./operations";
 
 declare class CdnManagementClient {
-    /**
-     * @class
-     * Initializes a new instance of the CdnManagementClient class.
-     * @constructor
-     *
-     * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
-     *
-     * @param {string} subscriptionId - Azure Subscription ID.
-     *
-     * @param {string} [baseUri] - The base URI of the service.
-     *
-     * @param {object} [options] - The parameter options
-     *
-     * @param {Array} [options.filters] - Filters to be added to the request pipeline
-     *
-     * @param {object} [options.requestOptions] - Options for the underlying request object
-     * {@link https://github.com/request/request#requestoptions-callback Options doc}
-     *
-     * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
-     *
-     * @param {string} [options.apiVersion] - Version of the API to be used with the client request. Current version is 2016-10-02.
-     *
-     * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
-     *
-     * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
-     *
-     * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
-     *
-     */
-    constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri: string, options: ServiceClientOptions);
+  /**
+   * Initializes a new instance of the CdnManagementClient class.
+   * @constructor
+   *
+   * @class
+   * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
+   *
+   * @param {string} subscriptionId - Azure Subscription ID.
+   *
+   * @param {string} [baseUri] - The base URI of the service.
+   *
+   * @param {object} [options] - The parameter options
+   *
+   * @param {Array} [options.filters] - Filters to be added to the request pipeline
+   *
+   * @param {object} [options.requestOptions] - Options for the underlying request object
+   * {@link https://github.com/request/request#requestoptions-callback Options doc}
+   *
+   * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
+   *
+   * @param {string} [options.apiVersion] - Version of the API to be used with the client request. Current version is 2016-10-02.
+   *
+   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   *
+   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   *
+   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   *
+   */
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
 
-    credentials: ServiceClientCredentials;
+  credentials: ServiceClientCredentials;
 
-    subscriptionId: string;
+  subscriptionId: string;
 
-    apiVersion: string;
+  apiVersion: string;
 
-    acceptLanguage: string;
+  acceptLanguage: string;
 
-    longRunningOperationRetryTimeout: number;
+  longRunningOperationRetryTimeout: number;
 
-    generateClientRequestId: boolean;
+  generateClientRequestId: boolean;
 
-    // Operation groups
-    profiles: operations.Profiles;
-    endpoints: operations.Endpoints;
-    origins: operations.Origins;
-    customDomains: operations.CustomDomains;
-    edgeNodes: operations.EdgeNodes;
+  // Operation groups
+  profiles: operations.Profiles;
+  endpoints: operations.Endpoints;
+  origins: operations.Origins;
+  customDomains: operations.CustomDomains;
+  edgeNodes: operations.EdgeNodes;
 
-            /**
-         * Check the availability of a resource name. This is needed for resources
-         * where name is globally unique, such as a CDN endpoint.
-         *
-         * @param {string} name The resource name to validate.
-         *
-         * @param {object} [options] Optional Parameters.
-         *
-         * @param {object} [options.customHeaders] Headers that will be added to the
-         * request
-         *
-         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-         * doc in ms-rest index.d.ts for details
-         */
-        checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
-        checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
 
-        /**
-         * Check the quota and actual usage of the CDN profiles under the given
-         * subscription.
-         *
-         * @param {object} [options] Optional Parameters.
-         *
-         * @param {object} [options.customHeaders] Headers that will be added to the
-         * request
-         *
-         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-         * doc in ms-rest index.d.ts for details
-         */
-        listResourceUsage(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-        listResourceUsage(callback: ServiceCallback<models.ResourceUsageListResult>): void;
+  /**
+   * Check the availability of a resource name. This is needed for resources
+   * where name is globally unique, such as a CDN endpoint.
+   *
+   * @param {string} name The resource name to validate.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<CheckNameAvailabilityOutput>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityOutput>>;
 
-        /**
-         * Lists all of the available CDN REST API operations.
-         *
-         * @param {object} [options] Optional Parameters.
-         *
-         * @param {object} [options.customHeaders] Headers that will be added to the
-         * request
-         *
-         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-         * doc in ms-rest index.d.ts for details
-         */
-        listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
-        listOperations(callback: ServiceCallback<models.OperationListResult>): void;
+  /**
+   * Check the availability of a resource name. This is needed for resources
+   * where name is globally unique, such as a CDN endpoint.
+   *
+   * @param {string} name The resource name to validate.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {CheckNameAvailabilityOutput} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {CheckNameAvailabilityOutput} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link CheckNameAvailabilityOutput} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  checkNameAvailability(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityOutput>;
+  checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
+  checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityOutput>): void;
 
-        /**
-         * Check the quota and actual usage of the CDN profiles under the given
-         * subscription.
-         *
-         * @param {string} nextPageLink The NextLink from the previous successful call
-         * to List operation.
-         *
-         * @param {object} [options] Optional Parameters.
-         *
-         * @param {object} [options.customHeaders] Headers that will be added to the
-         * request
-         *
-         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-         * doc in ms-rest index.d.ts for details
-         */
-        listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
-        listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 
-        /**
-         * Lists all of the available CDN REST API operations.
-         *
-         * @param {string} nextPageLink The NextLink from the previous successful call
-         * to List operation.
-         *
-         * @param {object} [options] Optional Parameters.
-         *
-         * @param {object} [options.customHeaders] Headers that will be added to the
-         * request
-         *
-         * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-         * doc in ms-rest index.d.ts for details
-         */
-        listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
-        listOperationsNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+  /**
+   * Check the quota and actual usage of the CDN profiles under the given
+   * subscription.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listResourceUsageWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+  /**
+   * Check the quota and actual usage of the CDN profiles under the given
+   * subscription.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ResourceUsageListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listResourceUsage(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
+  listResourceUsage(callback: ServiceCallback<models.ResourceUsageListResult>): void;
+  listResourceUsage(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
+
+  /**
+   * Lists all of the available CDN REST API operations.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+  /**
+   * Lists all of the available CDN REST API operations.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {OperationListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link OperationListResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+  listOperations(callback: ServiceCallback<models.OperationListResult>): void;
+  listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+  /**
+   * Check the quota and actual usage of the CDN profiles under the given
+   * subscription.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listResourceUsageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+  /**
+   * Check the quota and actual usage of the CDN profiles under the given
+   * subscription.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ResourceUsageListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listResourceUsageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
+  listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+  listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
+
+  /**
+   * Lists all of the available CDN REST API operations.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listOperationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+  /**
+   * Lists all of the available CDN REST API operations.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {OperationListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link OperationListResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listOperationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+  listOperationsNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+  listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }
 
 export = CdnManagementClient;

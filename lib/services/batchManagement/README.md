@@ -1,7 +1,8 @@
 # Microsoft Azure SDK for Node.js - Batch Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Batch Resources. Right now it supports:
-- **Node.js version: 4.x.x or higher**
+- **Node.js version: 6.x.x or higher**
+- API Version: 2017-01-01
 
 ## How to Install
 
@@ -20,12 +21,14 @@ npm install azure-arm-batch
  // Interactive Login
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
  // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin(function(err, credentials) {
+ msRestAzure.interactiveLogin.then((credentials) => {
   var client = new batchManagementClient(credentials, 'your-subscription-id');
-  client.batchAccountOperations.list(rgName, function(err, result, request, response) {
-    if (err) console.log(err);
-    console.log(result);
+  client.batchAccountOperations.list(rgName).then((result) => {
+    console.dir(result, {depth: null, colors: true});
   });
+ }).catch ((err) => {
+   console.log('An error occurred.');
+   console.dir(err, {depth: null, colors: true});
  });
  ```
 
