@@ -1,3 +1,31 @@
+##2017.03.31 version 2.0.0-preview
+* Updated type definition (.d.ts) files for all the packages and improved typescript support .
+* Added Promise support for all the APIs. For each callback based API, we now have an overloaded method that returns a Promise.
+* Moved Javascript code to ES6 syntax
+* Minimum required node.js version is 6.10
+* Add client libraries for following ARM services
+  * Advisor Management
+  * Automation Management
+  * Billing Management
+  * Cognitive Services Management
+  * Container Registry Management
+  * Customer Insights Management
+  * DocumentDB Management
+  * Logic Management
+  * Machine Learning Management
+  * Media Services Management
+  * Operational Insights Management
+  * Recovery Services Backup Management
+  * Recovery Services Management
+  * Relay Management
+  * Scheduler Management
+  * Search Management
+  * ServiceMap Management
+  * SQL Management
+  * Storage Import Export Management
+  * Search Index
+  * Search Service
+
 ##2016.09.07 Version 1.2.0-preview
 * Added client libraries for following ARM services
   * Servicebus management
