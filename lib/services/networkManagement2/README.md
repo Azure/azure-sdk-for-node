@@ -1,8 +1,8 @@
 # Microsoft Azure SDK for Node.js - Network Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Network Resources.
-- **Node.js version: 4.x.x or higher**
-- **API version: 2016-09-01**
+- **Node.js version: 6.x.x or higher**
+- **API version: 2017-03-01**
 
 ## Features
 
@@ -44,6 +44,9 @@ npm install azure-arm-network
   });
  });
  ```
+
+ ## Detailed Sample
+A detailed sample for managing a load balancer than can be cloned and is ready to used can be found [here](https://github.com/Azure-Samples/network-node-manage-loadbalancer).
 
  ## Related projects
 

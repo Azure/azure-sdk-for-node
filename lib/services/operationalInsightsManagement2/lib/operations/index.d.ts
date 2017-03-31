@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * LinkedServices
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the AzureLogAnalytics.
+ * instance of the OperationalInsightsManagementClient.
  */
 export interface LinkedServices {
 
@@ -305,7 +305,7 @@ export interface LinkedServices {
  * @class
  * DataSources
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the AzureLogAnalytics.
+ * instance of the OperationalInsightsManagementClient.
  */
 export interface DataSources {
 
@@ -680,7 +680,7 @@ export interface DataSources {
  * @class
  * Workspaces
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the AzureLogAnalytics.
+ * instance of the OperationalInsightsManagementClient.
  */
 export interface Workspaces {
 
@@ -1956,7 +1956,7 @@ export interface Workspaces {
  * @class
  * StorageInsights
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the AzureLogAnalytics.
+ * instance of the OperationalInsightsManagementClient.
  */
 export interface StorageInsights {
 
@@ -2335,7 +2335,7 @@ export interface StorageInsights {
  * @class
  * SavedSearches
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the AzureLogAnalytics.
+ * instance of the OperationalInsightsManagementClient.
  */
 export interface SavedSearches {
 

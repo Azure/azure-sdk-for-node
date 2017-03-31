@@ -99,7 +99,8 @@ const mappings = {
   },
   'documentdb': {
     'dir': 'documentdbManagement/lib',
-    'source': 'arm-documentdb/2015-04-08/swagger/documentdb.json'
+    'source': 'arm-documentdb/2015-04-08/swagger/documentdb.json',
+    'clientName': 'DocumentdbManagementClient'
   },
   'eventhub': {
     'dir': 'eventHubManagement/lib',
@@ -170,18 +171,19 @@ const mappings = {
   'operationalInsights': {
     'dir': 'operationalInsightsManagement2/lib',
     'source': 'arm-operationalinsights/compositeOperationalInsights.json',
-    'modeler': 'CompositeSwagger'
+    'modeler': 'CompositeSwagger',
+    'clientName': 'OperationalInsightsManagementClient'
   },
   'powerbiembedded': {
     'dir': 'powerbiembedded/lib',
     'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
   },
   'recoveryServices': {
-    'dir': 'recoveryServicesManagement',
+    'dir': 'recoveryServicesManagement/lib',
     'source': 'arm-recoveryservices/2016-06-01/swagger/recoveryservices.json'
   },
   'recoveryServicesBackup': {
-    'dir': 'recoveryServicesBackupManagement',
+    'dir': 'recoveryServicesBackupManagement/lib',
     'source': 'arm-recoveryservicesbackup/compositeRecoveryServicesBackupClient.json',
     'modeler': 'CompositeSwagger'
   },
@@ -240,7 +242,8 @@ const mappings = {
   },
   'serviceMap': {
     'dir': 'serviceMapManagement/lib',
-    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json'
+    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json',
+    'clientName': 'ServicemapManagementClient'
   },
   'servicebusManagement': {
     'dir': 'serviceBusManagement2/lib',
@@ -264,11 +267,12 @@ const mappings = {
     'dir': 'storageManagement2/lib',
     'source': 'arm-storage/2016-12-01/swagger/storage.json',
     'ft': 2,
-    'ClientName': 'StorageManagementClient'
+    'clientName': 'StorageManagementClient'
   },
   'storageImportExport': {
     'dir': 'storageImportExportManagement/lib',
-    'source': 'arm-storageimportexport/2016-11-01/swagger/storageimportexport.json'
+    'source': 'arm-storageimportexport/2016-11-01/swagger/storageimportexport.json',
+    'clientName': 'StorageImportExportManagementClient'
   },
   'traffic': {
     'dir': 'trafficManagerManagement2/lib',
@@ -361,7 +365,7 @@ function generateProject(project, specRoot, autoRestVersion) {
   let outputDir = `lib/services/${mappings[project].dir}`;
   let cmd = `autorest -Modeler ${currentModeler} -CodeGenerator ${language} -Input ${specPath}  -outputDirectory ${outputDir} -Header MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
-  if (mappings[project].ClientName !== null && mappings[project].ClientName !== undefined) cmd += ' -ClientName ' + mappings[project].ClientName;
+  if (mappings[project].clientName !== null && mappings[project].clientName !== undefined) cmd += ' -ClientName ' + mappings[project].clientName;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }

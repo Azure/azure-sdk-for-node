@@ -11,9 +11,9 @@
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as operations from "./operations";
 
-declare class AzureLogAnalytics {
+declare class OperationalInsightsManagementClient {
   /**
-   * Initializes a new instance of the AzureLogAnalytics class.
+   * Initializes a new instance of the OperationalInsightsManagementClient class.
    * @constructor
    *
    * @class
@@ -59,4 +59,4 @@ declare class AzureLogAnalytics {
   savedSearches: operations.SavedSearches;
 }
 
-export = AzureLogAnalytics;
+export = OperationalInsightsManagementClient;

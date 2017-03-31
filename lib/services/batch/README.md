@@ -33,18 +33,23 @@ var client = new batch.ServiceClient(credentials, 'your-batch-endpoint');
 let options = {}
 options.jobListOptions = { maxResults : 10 };
 
-client.job.list(options, function (error, result) {
-    
-    var loop = function (nextLink) {
-        if (nextLink !== null && nextLink !== undefined) {
-            client.job.listNext(nextLink, function (err, res) {
-                console.log(res);
-                loop(res.odatanextLink);
-            });
-        }
-    };
+function loop(nextLink) {
+  if (nextLink !== null && nextLink !== undefined) {
+    return client.job.listNext(nextLink).then((res) => {
+      console.dir(res, {depth: null, colors: true});
+      return loop(res.odatanextLink);
+    });
+  }
+  return Promise.resolve();
+};
 
-    console.log(result);
-    loop(result.odatanextLink);
+
+client.job.list(options).then((result) => {
+  console.dir(result, {depth: null, colors: true});
+}).then((result) => {
+  return loop(result.odatanextLink);
+}).catch((err) => {
+  console.log('An error occurred.');
+  console.dir(err, {depth: null, colors: true});
 });
 ```

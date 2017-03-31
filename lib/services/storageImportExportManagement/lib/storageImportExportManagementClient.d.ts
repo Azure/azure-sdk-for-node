@@ -12,9 +12,9 @@ import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationRes
 import * as models from "./models";
 import * as operations from "./operations";
 
-declare class StorageImportExport {
+declare class StorageImportExportManagementClient {
   /**
-   * Initializes a new instance of the StorageImportExport class.
+   * Initializes a new instance of the StorageImportExportManagementClient class.
    * @constructor
    *
    * @class
@@ -226,4 +226,4 @@ declare class StorageImportExport {
   listSupportedOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SupportedOperationsListResult>): void;
 }
 
-export = StorageImportExport;
+export = StorageImportExportManagementClient;

@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * Machines
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceMap.
+ * instance of the ServicemapManagementClient.
  */
 export interface Machines {
 
@@ -951,7 +951,7 @@ export interface Machines {
  * @class
  * Processes
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceMap.
+ * instance of the ServicemapManagementClient.
  */
 export interface Processes {
 
@@ -1414,7 +1414,7 @@ export interface Processes {
  * @class
  * Ports
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceMap.
+ * instance of the ServicemapManagementClient.
  */
 export interface Ports {
 
@@ -1881,7 +1881,7 @@ export interface Ports {
  * @class
  * ClientGroups
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceMap.
+ * instance of the ServicemapManagementClient.
  */
 export interface ClientGroups {
 
@@ -2199,7 +2199,7 @@ export interface ClientGroups {
  * @class
  * Maps
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceMap.
+ * instance of the ServicemapManagementClient.
  */
 export interface Maps {
 
@@ -2287,7 +2287,7 @@ export interface Maps {
  * @class
  * Summaries
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceMap.
+ * instance of the ServicemapManagementClient.
  */
 export interface Summaries {
 
@@ -2373,7 +2373,7 @@ export interface Summaries {
  * @class
  * MachineGroups
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceMap.
+ * instance of the ServicemapManagementClient.
  */
 export interface MachineGroups {
 

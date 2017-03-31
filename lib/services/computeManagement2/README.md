@@ -30,7 +30,7 @@ npm install azure-arm-compute
  ```
 
 ## Detailed Sample
-A detailed sample for creating. getting, listing, powering off, restarting, deleting a vm can be found  [here](https://github.com/Azure/azure-sdk-for-node/blob/master/examples/ARM/compute/vm-sample.js).
+A detailed sample for creating, getting, listing, powering off, restarting, deleting a vm can be found [here](https://github.com/Azure-Samples/compute-node-manage-vm).
 
 ## Related projects
 

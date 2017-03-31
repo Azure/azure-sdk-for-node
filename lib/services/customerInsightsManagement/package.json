@@ -2,6 +2,7 @@
   "name": "azure-arm-customerinsights",
   "author": "Microsoft Corporation",
   "contributors": [
+    "Tao, James <jamestao@microsoft.com>"
   ],
   "version": "1.0.0-preview",
   "description": "Microsoft Azure Customer Insights Management Client Library for Node",

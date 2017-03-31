@@ -15,7 +15,7 @@ npm install azure-arm-cognitiveservices
 
 ## How to Use
 
-### Authentication, client creation and listing invoices as an example
+### Authentication, client creation and listing cognitiveServicesAccounts as an example
 
  ```javascript
  const msRestAzure = require('ms-rest-azure');

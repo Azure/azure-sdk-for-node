@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Graph Management
 
 This project provides a Node.js package that makes it easy to manage MicrosoftGraph Resources. Right now it supports:
-- **Node.js version: 4.x.x or higher**
+- **Node.js version: 6.x.x or higher**
 
 ## How to Install
 

@@ -18,7 +18,7 @@
   "types": "./lib/batchManagementClient.d.ts",
   "license":"MIT",
   "dependencies": {
-    "ms-rest": "^.0.0",
+    "ms-rest": "^2.0.0",
     "ms-rest-azure": "^2.0.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",

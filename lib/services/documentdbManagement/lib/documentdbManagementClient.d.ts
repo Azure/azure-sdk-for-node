@@ -11,15 +11,15 @@
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as operations from "./operations";
 
-declare class ServiceMap {
+declare class DocumentdbManagementClient {
   /**
-   * Initializes a new instance of the ServiceMap class.
+   * Initializes a new instance of the DocumentdbManagementClient class.
    * @constructor
    *
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Azure subscription identifier.
+   * @param {string} subscriptionId - Azure subscription ID.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -32,7 +32,7 @@ declare class ServiceMap {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.apiVersion] - API version.
+   * @param {string} [options.apiVersion] - Version of the API to be used with the client request. The current version is 2015-04-08.
    *
    * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
    *
@@ -56,13 +56,7 @@ declare class ServiceMap {
   generateClientRequestId: boolean;
 
   // Operation groups
-  machines: operations.Machines;
-  processes: operations.Processes;
-  ports: operations.Ports;
-  clientGroups: operations.ClientGroups;
-  maps: operations.Maps;
-  summaries: operations.Summaries;
-  machineGroups: operations.MachineGroups;
+  databaseAccounts: operations.DatabaseAccounts;
 }
 
-export = ServiceMap;
+export = DocumentdbManagementClient;

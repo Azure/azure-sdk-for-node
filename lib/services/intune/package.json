@@ -4,7 +4,7 @@
   "contributors": [
     "Watanabe Garcia, Otniel <otnielw@microsoft.com>"
   ],
-  "version": "0.2.1",
+  "version": "1.0.0-preview",
   "description": "Microsoft Intune Resource Management Client Library for node",
   "tags": [
     "azure",

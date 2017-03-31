@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * DatabaseAccounts
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the DocumentDB.
+ * instance of the DocumentdbManagementClient.
  */
 export interface DatabaseAccounts {
 
