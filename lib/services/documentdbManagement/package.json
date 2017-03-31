@@ -14,8 +14,8 @@
     "node",
     "azure"
   ],
-  "main": "./lib/documentdbMaangementClient.js",
-  "types": "./lib/documentdbMaangementClient.d.ts",
+  "main": "./lib/documentdbManagementClient.js",
+  "types": "./lib/documentdbManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.0.0",

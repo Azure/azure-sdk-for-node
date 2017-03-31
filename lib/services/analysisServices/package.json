@@ -17,7 +17,7 @@
     "azure"
   ],
   "main": "./lib/analysisServicesManagementClient.js",
-  "type": "./lib/analysisServicesManagementClient.d.ts",
+  "types": "./lib/analysisServicesManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.0.0",
