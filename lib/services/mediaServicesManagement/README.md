@@ -1,13 +1,13 @@
 # Microsoft Azure SDK for Node.js - MediaServicesManagement
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure DNS.
+This project provides a Node.js package that makes it easy to manage Microsoft Azure MediaServices.
 ## API-Version: 2015-10-01
 ## Minimum node.js version >= 6.x.x
 
 ## How to Install
 
 ```bash
-npm install azure-arm-dns
+npm install azure-arm-mediaservice
 ```
 
 ## How to Use
@@ -16,7 +16,7 @@ npm install azure-arm-dns
 
  ```javascript
  const msRestAzure = require('ms-rest-azure');
- const MediaServicesManagement = require("azure-arm-mediaservices");
+ const MediaServicesManagement = require('azure-arm-mediaservices');
  
  // Interactive Login
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 

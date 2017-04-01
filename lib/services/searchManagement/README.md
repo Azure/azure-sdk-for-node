@@ -1,6 +1,6 @@
 # Microsoft Azure SDK for Node.js - SearchManagement
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure DNS.
+This project provides a Node.js package that makes it easy to manage Microsoft Azure Search.
 ## API-Version: 2015-08-19
 ## Minimum node.js version >= 6.x.x
 

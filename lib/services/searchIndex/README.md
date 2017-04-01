@@ -1,12 +1,12 @@
 # Microsoft Azure SDK for Node.js - SearchIndex
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure DNS.
+This project provides a Node.js package that makes it easy to manage Microsoft Azure SearchIndex.
 ## Minimum node.js version >= 6.x.x
 ## API Version: 2016-09-01
 ## How to Install
 
 ```bash
-npm install azure-arm-dns
+npm install azure-arm-searchindex
 ```
 
 ## How to Use
@@ -15,7 +15,7 @@ npm install azure-arm-dns
 
  ```javascript
  const msRestAzure = require('ms-rest-azure');
- const SearchIndex = require("azure-arm-dns");
+ const SearchIndex = require("azure-arm-searchindex");
  
  // Interactive Login
  // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 

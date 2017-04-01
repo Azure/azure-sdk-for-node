@@ -1,6 +1,6 @@
 # Microsoft Azure SDK for Node.js - RelayManagement
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure DNS.
+This project provides a Node.js package that makes it easy to manage Microsoft Azure Relay.
 ## API-Version: 2016-07-01
 ## Minimum node.js version >= 6.x.x
 

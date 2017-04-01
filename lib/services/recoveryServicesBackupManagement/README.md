@@ -1,6 +1,6 @@
 # Microsoft Azure SDK for Node.js - RecoveryServicesBackupManagement
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure DNS.
+This project provides a Node.js package that makes it easy to manage Microsoft Azure RecoveryServicesBackup.
 ## Minimum node.js version >= 6.x.x
 
 ## How to Install
