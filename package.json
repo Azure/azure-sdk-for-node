@@ -80,6 +80,7 @@
     "azure-arm-scheduler": "1.0.0-preview",
     "azure-arm-search" :"1.0.0-preview",
     "azure-arm-servermanagement": "1.0.0-preview",
+    "azure-arm-servicefabric": "1.0.0-preview",
     "azure-arm-servicemap": "1.0.0-preview",
     "azure-arm-sql": "1.0.0-preview",
     "azure-arm-storage": "1.0.0-preview",
