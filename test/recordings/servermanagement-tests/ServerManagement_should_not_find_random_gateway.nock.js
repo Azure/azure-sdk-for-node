@@ -59,7 +59,7 @@ nock('https://login.microsoftonline.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-61408?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-61408?api-version=2016-07-01-preview')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.ServerManagement/gateways/sdk-test-gw-61408' under resource group 'rsmt-rnr-rg' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -76,7 +76,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-61408?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-61408?api-version=2016-07-01-preview')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.ServerManagement/gateways/sdk-test-gw-61408' under resource group 'rsmt-rnr-rg' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',

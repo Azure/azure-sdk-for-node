@@ -59,7 +59,7 @@ nock('https://login.microsoftonline.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/mygateway?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/mygateway?api-version=2016-07-01-preview')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/gateways/mygateway\",\"name\":\"mygateway\",\"type\":\"microsoft.servermanagement/gateways\",\"location\":\"centralus\",\"etag\":\"W/\\\"datetime'2016-05-05T20%3A42%3A15.1615612Z'\\\"\",\"properties\":{\"created\":\"2016-05-05T19:40:53.7694898Z\",\"updated\":\"2016-05-05T20:42:14.6264093Z\",\"autoUpgrade\":\"On\",\"desiredVersion\":null,\"minimumVersion\":\"1.0.0.0\",\"betaFeatures\":\"Off\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '474',
@@ -81,7 +81,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/mygateway?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/mygateway?api-version=2016-07-01-preview')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/gateways/mygateway\",\"name\":\"mygateway\",\"type\":\"microsoft.servermanagement/gateways\",\"location\":\"centralus\",\"etag\":\"W/\\\"datetime'2016-05-05T20%3A42%3A15.1615612Z'\\\"\",\"properties\":{\"created\":\"2016-05-05T19:40:53.7694898Z\",\"updated\":\"2016-05-05T20:42:14.6264093Z\",\"autoUpgrade\":\"On\",\"desiredVersion\":null,\"minimumVersion\":\"1.0.0.0\",\"betaFeatures\":\"Off\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '474',
