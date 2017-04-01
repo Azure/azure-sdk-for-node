@@ -130,7 +130,7 @@ export class KeyVaultClient {
    * @param {string} keyName The name for the new key. The system will generate
    * the version name for the new key.
    *
-   * @param {string} kty The type of key to create. For valid key types, see
+   * @param {string} keyType The type of key to create. For valid key types, see
    * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
    * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
    *
@@ -162,7 +162,7 @@ export class KeyVaultClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  createKeyWithHttpOperationResponse(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : Models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<msRest.HttpOperationResponse<Models.KeyBundle>>;
+  createKeyWithHttpOperationResponse(vaultBaseUrl: string, keyName: string, keyType: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : Models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<msRest.HttpOperationResponse<Models.KeyBundle>>;
 
   /**
    * Creates a new key, stores it, then returns key parameters and attributes to
@@ -176,7 +176,7 @@ export class KeyVaultClient {
    * @param {string} keyName The name for the new key. The system will generate
    * the version name for the new key.
    *
-   * @param {string} kty The type of key to create. For valid key types, see
+   * @param {string} keyType The type of key to create. For valid key types, see
    * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
    * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
    *
@@ -224,8 +224,8 @@ export class KeyVaultClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createKey(vaultBaseUrl: string, keyName: string, kty: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : Models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<Models.KeyBundle>;
-  createKey(vaultBaseUrl: string, keyName: string, kty: string, callback: msRest.ServiceCallback<Models.KeyBundle>): void;
+  createKey(vaultBaseUrl: string, keyName: string, keyType: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : Models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<Models.KeyBundle>;
+  createKey(vaultBaseUrl: string, keyName: string, keyType: string, callback: msRest.ServiceCallback<Models.KeyBundle>): void;
   createKey(vaultBaseUrl: string, keyName: string, keyType: string, options : CreateKeyOptions, callback: msRest.ServiceCallback<Models.KeyBundle>): void;
   
   /**
@@ -1811,10 +1811,12 @@ export class KeyVaultClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {object} contacts The contacts for the key vault certificate.
    *
-   * @param {array} [options.contactList] The contact list for the vault
+   * @param {array} [contacts.contactList] The contact list for the vault
    * certificates.
+   *
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1825,7 +1827,7 @@ export class KeyVaultClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, options?: { contactList? : Models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<msRest.HttpOperationResponse<Models.Contacts>>;
+  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, contacts: Models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<msRest.HttpOperationResponse<Models.Contacts>>;
 
   /**
    * Sets the certificate contacts for the specified key vault.
@@ -1833,10 +1835,12 @@ export class KeyVaultClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {object} contacts The contacts for the key vault certificate.
    *
-   * @param {array} [options.contactList] The contact list for the vault
+   * @param {array} [contacts.contactList] The contact list for the vault
    * certificates.
+   *
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1863,9 +1867,9 @@ export class KeyVaultClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  setCertificateContacts(vaultBaseUrl: string, options?: { contactList? : Models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<Models.Contacts>;
-  setCertificateContacts(vaultBaseUrl: string, callback: msRest.ServiceCallback<Models.Contacts>): void;
-  setCertificateContacts(vaultBaseUrl: string, options: { contactList? : Models.Contact[], customHeaders? : { [headerName: string]: string; } }, callback: msRest.ServiceCallback<Models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, contacts: Models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<Models.Contacts>;
+  setCertificateContacts(vaultBaseUrl: string, contacts: Models.Contacts, callback: msRest.ServiceCallback<Models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, contacts: Models.Contacts, options: { customHeaders? : { [headerName: string]: string; } }, callback: msRest.ServiceCallback<Models.Contacts>): void;
 
   /**
    * Lists the certificate contacts for a specified key vault.
