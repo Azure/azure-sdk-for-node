@@ -1863,10 +1863,12 @@ declare class KeyVaultClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {object} contacts The contacts for the key vault certificate.
    *
-   * @param {array} [options.contactList] The contact list for the vault
+   * @param {array} [contacts.contactList] The contact list for the vault
    * certificates.
+   *
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1877,7 +1879,7 @@ declare class KeyVaultClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, options?: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Contacts>>;
+  setCertificateContactsWithHttpOperationResponse(vaultBaseUrl: string, contacts: models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Contacts>>;
 
   /**
    * Sets the certificate contacts for the specified key vault.
@@ -1885,10 +1887,12 @@ declare class KeyVaultClient {
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {object} contacts The contacts for the key vault certificate.
    *
-   * @param {array} [options.contactList] The contact list for the vault
+   * @param {array} [contacts.contactList] The contact list for the vault
    * certificates.
+   *
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1915,9 +1919,9 @@ declare class KeyVaultClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  setCertificateContacts(vaultBaseUrl: string, options?: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }): Promise<models.Contacts>;
-  setCertificateContacts(vaultBaseUrl: string, callback: ServiceCallback<models.Contacts>): void;
-  setCertificateContacts(vaultBaseUrl: string, options: { contactList? : models.Contact[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Contacts>;
+  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, callback: ServiceCallback<models.Contacts>): void;
+  setCertificateContacts(vaultBaseUrl: string, contacts: models.Contacts, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Contacts>): void;
 
 
   /**
