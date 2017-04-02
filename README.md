@@ -32,6 +32,16 @@ so that we may prioritize it in the backlog.
 There are three ways to authenticate using this module, use
 [this guide](./Documentation/Authentication.md) to determine which method to use.
 
+### AzureNodeEssentials VSCode extension
+
+The [AzureNodeEssentials](https://marketplace.visualstudio.com/items?itemName=azuresdkteam.azurenodeessentials) extension helps you easily interact with Azure. 
+It helps you
+- create a project scaffolding
+- install correct dependencies
+- ready to use snippets for authentication and deploying templates to azure
+
+Please feel free to provide feedback for the extension by opening github issues over [here](https://github.com/Azure/azure-node-essentials).
+
 ### Install individual modules
 
 | **Azure Service** | **Install Command** |

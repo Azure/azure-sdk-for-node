@@ -93,7 +93,7 @@
     "azure-graph": "2.0.0-preview",
     "azure-insights": "1.0.0-preview",
     "azure-keyvault": "2.0.0-preview",
-    "azure-monitoring": "0.10.4",
+    "azure-monitoring": "0.10.5",
     "azure-sb": "0.10.4",
     "azure-search": "1.0.0-preview",
     "azure-servicefabric": "1.0.0-preview",
