@@ -1,5 +1,5 @@
 {
-  "name": "azure-searchindex",
+  "name": "azure-search",
   "author": "Microsoft Corporation",
   "contributors": [
     "Johnston, Bruce<brjohnst@microsoft.com>"
@@ -14,8 +14,8 @@
     "node",
     "azure"
   ],
-  "main": "./lib/searchIndexClient.js",
-  "types": "./lib/searchIndexClient.d.ts",
+  "main": "./lib/search.js",
+  "types": "./lib/search.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.0.0",
