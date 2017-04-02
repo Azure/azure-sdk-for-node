@@ -271,13 +271,13 @@ const mappings = {
     'source': 'arm-scheduler/2016-03-01/swagger/scheduler.json'
   },
   'searchindex': {
-    'packageName': 'azure-searchindex',
+    'packageName': 'azure-search',
     'dir': 'search/lib/index',
     'source': 'search/2016-09-01/swagger/searchindex.json'
   },
   'searchservice': {
-    'packageName': 'azure-searchservice',
-    'dir': 'searchService/lib/service',
+    'packageName': 'azure-search',
+    'dir': 'search/lib/service',
     'source': 'search/2016-09-01/swagger/searchservice.json'
   },
   'arm-search': {
