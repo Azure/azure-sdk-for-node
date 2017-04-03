@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/storageInsightListResult.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="DataSources.html">DataSources</a><ul class='methods'><li data-type='method'><a href="DataSources.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="DataSources.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="DataSources.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#get">get</a></li><li data-type='method'><a href="DataSources.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="DataSources.html#listByWorkspaceNext">listByWorkspaceNext</a></li><li data-type='method'><a href="DataSources.html#listByWorkspaceNextWithHttpOperationResponse">listByWorkspaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="LinkedServices.html">LinkedServices</a><ul class='methods'><li data-type='method'><a href="LinkedServices.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="LinkedServices.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="LinkedServices.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="LinkedServices.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="LinkedServices.html#get">get</a></li><li data-type='method'><a href="LinkedServices.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="LinkedServices.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="LinkedServices.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="OperationalInsightsManagementClient.html">OperationalInsightsManagementClient</a></li><li><a href="SavedSearches.html">SavedSearches</a><ul class='methods'><li data-type='method'><a href="SavedSearches.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="SavedSearches.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="SavedSearches.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#get">get</a></li><li data-type='method'><a href="SavedSearches.html#getResults">getResults</a></li><li data-type='method'><a href="SavedSearches.html#getResultsWithHttpOperationResponse">getResultsWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="SavedSearches.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="StorageInsights.html">StorageInsights</a><ul class='methods'><li data-type='method'><a href="StorageInsights.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="StorageInsights.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="StorageInsights.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#get">get</a></li><li data-type='method'><a href="StorageInsights.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspaceNext">listByWorkspaceNext</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspaceNextWithHttpOperationResponse">listByWorkspaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520list%2520linked%2520service%2520operation%2520response..html">The list linked service operation response.</a></li><li><a href="The%2520list%2520workspace%2520managmement%2520groups%2520operation%2520response..html">The list workspace managmement groups operation response.</a></li><li><a href="The%2520list%2520workspace%2520usages%2520operation%2520response..html">The list workspace usages operation response.</a></li><li><a href="The%2520list%2520workspaces%2520operation%2520response..html">The list workspaces operation response.</a></li><li><a href="Workspaces.html">Workspaces</a><ul class='methods'><li data-type='method'><a href="Workspaces.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Workspaces.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#beginGetSearchResults">beginGetSearchResults</a></li><li data-type='method'><a href="Workspaces.html#beginGetSearchResultsWithHttpOperationResponse">beginGetSearchResultsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Workspaces.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Workspaces.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#disableIntelligencePack">disableIntelligencePack</a></li><li data-type='method'><a href="Workspaces.html#disableIntelligencePackWithHttpOperationResponse">disableIntelligencePackWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#enableIntelligencePack">enableIntelligencePack</a></li><li data-type='method'><a href="Workspaces.html#enableIntelligencePackWithHttpOperationResponse">enableIntelligencePackWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#get">get</a></li><li data-type='method'><a href="Workspaces.html#getSchema">getSchema</a></li><li data-type='method'><a href="Workspaces.html#getSchemaWithHttpOperationResponse">getSchemaWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#getSearchResults">getSearchResults</a></li><li data-type='method'><a href="Workspaces.html#getSearchResultsWithHttpOperationResponse">getSearchResultsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#getSharedKeys">getSharedKeys</a></li><li data-type='method'><a href="Workspaces.html#getSharedKeysWithHttpOperationResponse">getSharedKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#list">list</a></li><li data-type='method'><a href="Workspaces.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Workspaces.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listIntelligencePacks">listIntelligencePacks</a></li><li data-type='method'><a href="Workspaces.html#listIntelligencePacksWithHttpOperationResponse">listIntelligencePacksWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listLinkTargets">listLinkTargets</a></li><li data-type='method'><a href="Workspaces.html#listLinkTargetsWithHttpOperationResponse">listLinkTargetsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listManagementGroups">listManagementGroups</a></li><li data-type='method'><a href="Workspaces.html#listManagementGroupsWithHttpOperationResponse">listManagementGroupsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listUsages">listUsages</a></li><li data-type='method'><a href="Workspaces.html#listUsagesWithHttpOperationResponse">listUsagesWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#updateSearchResults">updateSearchResults</a></li><li data-type='method'><a href="Workspaces.html#updateSearchResultsWithHttpOperationResponse">updateSearchResultsWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginGetSearchResults">_beginGetSearchResults</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_disableIntelligencePack">_disableIntelligencePack</a></li><li><a href="global.html#_enableIntelligencePack">_enableIntelligencePack</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getResults">_getResults</a></li><li><a href="global.html#_getSchema">_getSchema</a></li><li><a href="global.html#_getSearchResults">_getSearchResults</a></li><li><a href="global.html#_getSharedKeys">_getSharedKeys</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByWorkspace">_listByWorkspace</a></li><li><a href="global.html#_listByWorkspaceNext">_listByWorkspaceNext</a></li><li><a href="global.html#_listIntelligencePacks">_listIntelligencePacks</a></li><li><a href="global.html#_listLinkTargets">_listLinkTargets</a></li><li><a href="global.html#_listManagementGroups">_listManagementGroups</a></li><li><a href="global.html#_listUsages">_listUsages</a></li><li><a href="global.html#_updateSearchResults">_updateSearchResults</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#eTag">eTag</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#localizedValue">localizedValue</a></li><li><a href="global.html#location">location</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#numberOfDocuments">numberOfDocuments</a></li><li><a href="global.html#odataNextLink">odataNextLink</a></li><li><a href="global.html#order">order</a></li><li><a href="global.html#ownerType">ownerType</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#quotaPeriod">quotaPeriod</a></li><li><a href="global.html#resourceId">resourceId</a></li><li><a href="global.html#secondarySharedKey">secondarySharedKey</a></li><li><a href="global.html#sku">sku</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#version">version</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/storageInsightListResult.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the StorageInsightListResult class.
+ * @constructor
+ * The list storage insights operation response.
+ *
+ * @member {string} [odataNextLink] The link (url) to the next page of results.
+ *
+ */
+class StorageInsightListResult extends Array {
+  constructor() {
+    super();
+  }
+
+  /**
+   * Defines the metadata of StorageInsightListResult
+   *
+   * @returns {object} metadata of StorageInsightListResult
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'StorageInsightListResult',
+      type: {
+        name: 'Composite',
+        className: 'StorageInsightListResult',
+        modelProperties: {
+          value: {
+            required: false,
+            serializedName: '',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'StorageInsightElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'StorageInsight'
+                  }
+              }
+            }
+          },
+          odataNextLink: {
+            required: false,
+            serializedName: '@odata\\.nextLink',
+            type: {
+              name: 'String'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = StorageInsightListResult;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:42 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

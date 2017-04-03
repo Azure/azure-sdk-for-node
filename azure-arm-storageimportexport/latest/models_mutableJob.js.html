@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/mutableJob.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Jobs.html">Jobs</a><ul class='methods'><li data-type='method'><a href="Jobs.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Jobs.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Jobs.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#get">get</a></li><li data-type='method'><a href="Jobs.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#list">list</a></li><li data-type='method'><a href="Jobs.html#listBitLockerKeys">listBitLockerKeys</a></li><li data-type='method'><a href="Jobs.html#listBitLockerKeysWithHttpOperationResponse">listBitLockerKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Jobs.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Jobs.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listNext">listNext</a></li><li data-type='method'><a href="Jobs.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#move">move</a></li><li data-type='method'><a href="Jobs.html#moveWithHttpOperationResponse">moveWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#update">update</a></li><li data-type='method'><a href="Jobs.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="StorageImportExportManagementClient.html">StorageImportExportManagementClient</a><ul class='methods'><li data-type='method'><a href="StorageImportExportManagementClient.html#getLocation">getLocation</a></li><li data-type='method'><a href="StorageImportExportManagementClient.html#getLocationWithHttpOperationResponse">getLocationWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageImportExportManagementClient.html#listLocations">listLocations</a></li><li data-type='method'><a href="StorageImportExportManagementClient.html#listLocationsWithHttpOperationResponse">listLocationsWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageImportExportManagementClient.html#listSupportedOperations">listSupportedOperations</a></li><li data-type='method'><a href="StorageImportExportManagementClient.html#listSupportedOperationsWithHttpOperationResponse">listSupportedOperationsWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getLocation">_getLocation</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listBitLockerKeys">_listBitLockerKeys</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listLocations">_listLocations</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_listSupportedOperations">_listSupportedOperations</a></li><li><a href="global.html#_move">_move</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#address">address</a></li><li><a href="global.html#alternateLocations">alternateLocations</a></li><li><a href="global.html#backupDriveManifest">backupDriveManifest</a></li><li><a href="global.html#blobListblobPath">blobListblobPath</a></li><li><a href="global.html#carrierAccountNumber">carrierAccountNumber</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#email">email</a></li><li><a href="global.html#manifestHash">manifestHash</a></li><li><a href="global.html#manifestUri">manifestUri</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#provisioningState">provisioningState</a></li><li><a href="global.html#resources">resources</a></li><li><a href="global.html#shipDate">shipDate</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#target">target</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/mutableJob.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the MutableJob class.
+ * @constructor
+ * Describes the updatable properties of the job
+ *
+ * @member {object} [tags]
+ *
+ * @member {boolean} [cancelRequested] If specified, the value must be true.
+ * The service will attempt to cancel the job.
+ *
+ * @member {string} [state] If specified, the value must be Shipping, which
+ * tells the Import/Export service that the package for the job has been
+ * shipped. The ReturnAddress and DeliveryPackage properties must have been set
+ * either in this request or in a previous request, otherwise the request will
+ * fail. Possible values include: 'Shipping'
+ *
+ * @member {object} [returnAddress] Specifies the return address information
+ * for the job.
+ *
+ * @member {string} [returnAddress.recipientName] The name of the recipient who
+ * will receive the hard drives when they are returned.
+ *
+ * @member {string} [returnAddress.streetAddress1] The first line of the street
+ * address to use when returning the drives.
+ *
+ * @member {string} [returnAddress.streetAddress2] The second line of the
+ * street address to use when returning the drives.
+ *
+ * @member {string} [returnAddress.city] The city name to use when returning
+ * the drives.
+ *
+ * @member {string} [returnAddress.stateOrProvince] The state or province to
+ * use when returning the drives.
+ *
+ * @member {string} [returnAddress.postalCode] The postal code to use when
+ * returning the drives.
+ *
+ * @member {string} [returnAddress.countryOrRegion] The country or region to
+ * use when returning the drives.
+ *
+ * @member {string} [returnAddress.phone] Phone number of the recipient of the
+ * returned drives.
+ *
+ * @member {string} [returnAddress.email] Email address of the recipient of the
+ * returned drives.
+ *
+ * @member {object} [returnShipping] Specifies the return carrier and
+ * customer's account with the carrier.
+ *
+ * @member {string} [returnShipping.carrierName] The carrier's name.
+ *
+ * @member {string} [returnShipping.carrierAccountNumber] The customer's
+ * account number with the carrier.
+ *
+ * @member {object} [deliveryPackage] Contains information about the package
+ * being shipped by the customer to the Microsoft data center.
+ *
+ * @member {string} [deliveryPackage.carrierName] The name of the carrier that
+ * is used to ship the import or export drives.
+ *
+ * @member {string} [deliveryPackage.trackingNumber] The tracking number of the
+ * package.
+ *
+ * @member {number} [deliveryPackage.driveCount] The number of drives included
+ * in the package.
+ *
+ * @member {string} [deliveryPackage.shipDate] The date the package is shipped.
+ *
+ * @member {string} [logLevel] Indicates whether error logging or verbose
+ * logging is enabled.
+ *
+ * @member {boolean} [backupDriveManifest] Indicates whether the manifest files
+ * on the drives should be copied to block blobs.
+ *
+ */
+class MutableJob {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of MutableJob
+   *
+   * @returns {object} metadata of MutableJob
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'MutableJob',
+      type: {
+        name: 'Composite',
+        className: 'MutableJob',
+        modelProperties: {
+          tags: {
+            required: false,
+            serializedName: 'tags',
+            type: {
+              name: 'Object'
+            }
+          },
+          cancelRequested: {
+            required: false,
+            serializedName: 'properties.cancelRequested',
+            type: {
+              name: 'Boolean'
+            }
+          },
+          state: {
+            required: false,
+            serializedName: 'properties.state',
+            type: {
+              name: 'String'
+            }
+          },
+          returnAddress: {
+            required: false,
+            serializedName: 'properties.returnAddress',
+            type: {
+              name: 'Composite',
+              className: 'ReturnAddress'
+            }
+          },
+          returnShipping: {
+            required: false,
+            serializedName: 'properties.returnShipping',
+            type: {
+              name: 'Composite',
+              className: 'ReturnShipping'
+            }
+          },
+          deliveryPackage: {
+            required: false,
+            serializedName: 'properties.deliveryPackage',
+            type: {
+              name: 'Composite',
+              className: 'PackageInfomation'
+            }
+          },
+          logLevel: {
+            required: false,
+            serializedName: 'properties.logLevel',
+            type: {
+              name: 'String'
+            }
+          },
+          backupDriveManifest: {
+            required: false,
+            serializedName: 'properties.backupDriveManifest',
+            type: {
+              name: 'Boolean'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = MutableJob;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:41:09 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

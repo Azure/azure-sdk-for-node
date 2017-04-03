@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/healthReport.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ApplicationHealths.html">ApplicationHealths</a><ul class='methods'><li data-type='method'><a href="ApplicationHealths.html#get">get</a></li><li data-type='method'><a href="ApplicationHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ApplicationHealths.html#send">send</a></li><li data-type='method'><a href="ApplicationHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="ApplicationManifests.html">ApplicationManifests</a><ul class='methods'><li data-type='method'><a href="ApplicationManifests.html#get">get</a></li><li data-type='method'><a href="ApplicationManifests.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Applications.html">Applications</a><ul class='methods'><li data-type='method'><a href="Applications.html#create">create</a></li><li data-type='method'><a href="Applications.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="Applications.html#get">get</a></li><li data-type='method'><a href="Applications.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Applications.html#list">list</a></li><li data-type='method'><a href="Applications.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Applications.html#remove">remove</a></li><li data-type='method'><a href="Applications.html#removeWithHttpOperationResponse">removeWithHttpOperationResponse</a></li></ul></li><li><a href="ApplicationTypes.html">ApplicationTypes</a><ul class='methods'><li data-type='method'><a href="ApplicationTypes.html#get">get</a></li><li data-type='method'><a href="ApplicationTypes.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ApplicationTypes.html#list">list</a></li><li data-type='method'><a href="ApplicationTypes.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="ApplicationTypes.html#register">register</a></li><li data-type='method'><a href="ApplicationTypes.html#registerWithHttpOperationResponse">registerWithHttpOperationResponse</a></li><li data-type='method'><a href="ApplicationTypes.html#unregister">unregister</a></li><li data-type='method'><a href="ApplicationTypes.html#unregisterWithHttpOperationResponse">unregisterWithHttpOperationResponse</a></li></ul></li><li><a href="ApplicationUpgradeRollbacks.html">ApplicationUpgradeRollbacks</a><ul class='methods'><li data-type='method'><a href="ApplicationUpgradeRollbacks.html#start">start</a></li><li data-type='method'><a href="ApplicationUpgradeRollbacks.html#startWithHttpOperationResponse">startWithHttpOperationResponse</a></li></ul></li><li><a href="ApplicationUpgrades.html">ApplicationUpgrades</a><ul class='methods'><li data-type='method'><a href="ApplicationUpgrades.html#get">get</a></li><li data-type='method'><a href="ApplicationUpgrades.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ApplicationUpgrades.html#resume">resume</a></li><li data-type='method'><a href="ApplicationUpgrades.html#resumeWithHttpOperationResponse">resumeWithHttpOperationResponse</a></li><li data-type='method'><a href="ApplicationUpgrades.html#start">start</a></li><li data-type='method'><a href="ApplicationUpgrades.html#startWithHttpOperationResponse">startWithHttpOperationResponse</a></li><li data-type='method'><a href="ApplicationUpgrades.html#update">update</a></li><li data-type='method'><a href="ApplicationUpgrades.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="ClusterHealths.html">ClusterHealths</a><ul class='methods'><li data-type='method'><a href="ClusterHealths.html#get">get</a></li><li data-type='method'><a href="ClusterHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ClusterHealths.html#send">send</a></li><li data-type='method'><a href="ClusterHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="ClusterLoadInformations.html">ClusterLoadInformations</a><ul class='methods'><li data-type='method'><a href="ClusterLoadInformations.html#get">get</a></li><li data-type='method'><a href="ClusterLoadInformations.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ClusterManifests.html">ClusterManifests</a><ul class='methods'><li data-type='method'><a href="ClusterManifests.html#get">get</a></li><li data-type='method'><a href="ClusterManifests.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ClusterPackages.html">ClusterPackages</a><ul class='methods'><li data-type='method'><a href="ClusterPackages.html#register">register</a></li><li data-type='method'><a href="ClusterPackages.html#registerWithHttpOperationResponse">registerWithHttpOperationResponse</a></li><li data-type='method'><a href="ClusterPackages.html#unregister">unregister</a></li><li data-type='method'><a href="ClusterPackages.html#unregisterWithHttpOperationResponse">unregisterWithHttpOperationResponse</a></li></ul></li><li><a href="ClusterUpgrades.html">ClusterUpgrades</a><ul class='methods'><li data-type='method'><a href="ClusterUpgrades.html#resume">resume</a></li><li data-type='method'><a href="ClusterUpgrades.html#resumeWithHttpOperationResponse">resumeWithHttpOperationResponse</a></li><li data-type='method'><a href="ClusterUpgrades.html#rollback">rollback</a></li><li data-type='method'><a href="ClusterUpgrades.html#rollbackWithHttpOperationResponse">rollbackWithHttpOperationResponse</a></li><li data-type='method'><a href="ClusterUpgrades.html#start">start</a></li><li data-type='method'><a href="ClusterUpgrades.html#startWithHttpOperationResponse">startWithHttpOperationResponse</a></li><li data-type='method'><a href="ClusterUpgrades.html#update">update</a></li><li data-type='method'><a href="ClusterUpgrades.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedApplicationHealths.html">DeployedApplicationHealths</a><ul class='methods'><li data-type='method'><a href="DeployedApplicationHealths.html#get">get</a></li><li data-type='method'><a href="DeployedApplicationHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="DeployedApplicationHealths.html#send">send</a></li><li data-type='method'><a href="DeployedApplicationHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedApplications.html">DeployedApplications</a><ul class='methods'><li data-type='method'><a href="DeployedApplications.html#get">get</a></li><li data-type='method'><a href="DeployedApplications.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="DeployedApplications.html#list">list</a></li><li data-type='method'><a href="DeployedApplications.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedCodePackages.html">DeployedCodePackages</a><ul class='methods'><li data-type='method'><a href="DeployedCodePackages.html#get">get</a></li><li data-type='method'><a href="DeployedCodePackages.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedReplicaDetails.html">DeployedReplicaDetails</a><ul class='methods'><li data-type='method'><a href="DeployedReplicaDetails.html#get">get</a></li><li data-type='method'><a href="DeployedReplicaDetails.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedReplicas.html">DeployedReplicas</a><ul class='methods'><li data-type='method'><a href="DeployedReplicas.html#get">get</a></li><li data-type='method'><a href="DeployedReplicas.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedServicePackageHealths.html">DeployedServicePackageHealths</a><ul class='methods'><li data-type='method'><a href="DeployedServicePackageHealths.html#get">get</a></li><li data-type='method'><a href="DeployedServicePackageHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="DeployedServicePackageHealths.html#send">send</a></li><li data-type='method'><a href="DeployedServicePackageHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedServicePackages.html">DeployedServicePackages</a><ul class='methods'><li data-type='method'><a href="DeployedServicePackages.html#get">get</a></li><li data-type='method'><a href="DeployedServicePackages.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="DeployedServiceTypes.html">DeployedServiceTypes</a><ul class='methods'><li data-type='method'><a href="DeployedServiceTypes.html#get">get</a></li><li data-type='method'><a href="DeployedServiceTypes.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="NodeHealths.html">NodeHealths</a><ul class='methods'><li data-type='method'><a href="NodeHealths.html#get">get</a></li><li data-type='method'><a href="NodeHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="NodeHealths.html#send">send</a></li><li data-type='method'><a href="NodeHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="NodeLoadInformations.html">NodeLoadInformations</a><ul class='methods'><li data-type='method'><a href="NodeLoadInformations.html#get">get</a></li><li data-type='method'><a href="NodeLoadInformations.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Nodes.html">Nodes</a><ul class='methods'><li data-type='method'><a href="Nodes.html#disable">disable</a></li><li data-type='method'><a href="Nodes.html#disableWithHttpOperationResponse">disableWithHttpOperationResponse</a></li><li data-type='method'><a href="Nodes.html#enable">enable</a></li><li data-type='method'><a href="Nodes.html#enableWithHttpOperationResponse">enableWithHttpOperationResponse</a></li><li data-type='method'><a href="Nodes.html#get">get</a></li><li data-type='method'><a href="Nodes.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Nodes.html#list">list</a></li><li data-type='method'><a href="Nodes.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="NodeStates.html">NodeStates</a><ul class='methods'><li data-type='method'><a href="NodeStates.html#remove">remove</a></li><li data-type='method'><a href="NodeStates.html#removeWithHttpOperationResponse">removeWithHttpOperationResponse</a></li></ul></li><li><a href="PartitionHealths.html">PartitionHealths</a><ul class='methods'><li data-type='method'><a href="PartitionHealths.html#get">get</a></li><li data-type='method'><a href="PartitionHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="PartitionHealths.html#send">send</a></li><li data-type='method'><a href="PartitionHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="PartitionLists.html">PartitionLists</a><ul class='methods'><li data-type='method'><a href="PartitionLists.html#repair">repair</a></li><li data-type='method'><a href="PartitionLists.html#repairWithHttpOperationResponse">repairWithHttpOperationResponse</a></li></ul></li><li><a href="PartitionLoadInformations.html">PartitionLoadInformations</a><ul class='methods'><li data-type='method'><a href="PartitionLoadInformations.html#get">get</a></li><li data-type='method'><a href="PartitionLoadInformations.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="PartitionLoads.html">PartitionLoads</a><ul class='methods'><li data-type='method'><a href="PartitionLoads.html#reset">reset</a></li><li data-type='method'><a href="PartitionLoads.html#resetWithHttpOperationResponse">resetWithHttpOperationResponse</a></li></ul></li><li><a href="Partitions.html">Partitions</a><ul class='methods'><li data-type='method'><a href="Partitions.html#get">get</a></li><li data-type='method'><a href="Partitions.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Partitions.html#list">list</a></li><li data-type='method'><a href="Partitions.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Partitions.html#repair">repair</a></li><li data-type='method'><a href="Partitions.html#repairWithHttpOperationResponse">repairWithHttpOperationResponse</a></li></ul></li><li><a href="ReplicaHealths.html">ReplicaHealths</a><ul class='methods'><li data-type='method'><a href="ReplicaHealths.html#get">get</a></li><li data-type='method'><a href="ReplicaHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ReplicaHealths.html#send">send</a></li><li data-type='method'><a href="ReplicaHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="ReplicaLoadInformations.html">ReplicaLoadInformations</a><ul class='methods'><li data-type='method'><a href="ReplicaLoadInformations.html#get">get</a></li><li data-type='method'><a href="ReplicaLoadInformations.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Replicas.html">Replicas</a><ul class='methods'><li data-type='method'><a href="Replicas.html#get">get</a></li><li data-type='method'><a href="Replicas.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Replicas.html#list">list</a></li><li data-type='method'><a href="Replicas.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceDescriptions.html">ServiceDescriptions</a><ul class='methods'><li data-type='method'><a href="ServiceDescriptions.html#get">get</a></li><li data-type='method'><a href="ServiceDescriptions.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceFabricClient.html">ServiceFabricClient</a></li><li><a href="ServiceFromTemplates.html">ServiceFromTemplates</a><ul class='methods'><li data-type='method'><a href="ServiceFromTemplates.html#create">create</a></li><li data-type='method'><a href="ServiceFromTemplates.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceGroupDescriptions.html">ServiceGroupDescriptions</a><ul class='methods'><li data-type='method'><a href="ServiceGroupDescriptions.html#get">get</a></li><li data-type='method'><a href="ServiceGroupDescriptions.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceGroupFromTemplates.html">ServiceGroupFromTemplates</a><ul class='methods'><li data-type='method'><a href="ServiceGroupFromTemplates.html#create">create</a></li><li data-type='method'><a href="ServiceGroupFromTemplates.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceGroupMembers.html">ServiceGroupMembers</a><ul class='methods'><li data-type='method'><a href="ServiceGroupMembers.html#get">get</a></li><li data-type='method'><a href="ServiceGroupMembers.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceGroups.html">ServiceGroups</a><ul class='methods'><li data-type='method'><a href="ServiceGroups.html#create">create</a></li><li data-type='method'><a href="ServiceGroups.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="ServiceGroups.html#remove">remove</a></li><li data-type='method'><a href="ServiceGroups.html#removeWithHttpOperationResponse">removeWithHttpOperationResponse</a></li><li data-type='method'><a href="ServiceGroups.html#update">update</a></li><li data-type='method'><a href="ServiceGroups.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceHealths.html">ServiceHealths</a><ul class='methods'><li data-type='method'><a href="ServiceHealths.html#get">get</a></li><li data-type='method'><a href="ServiceHealths.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ServiceHealths.html#send">send</a></li><li data-type='method'><a href="ServiceHealths.html#sendWithHttpOperationResponse">sendWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceManifests.html">ServiceManifests</a><ul class='methods'><li data-type='method'><a href="ServiceManifests.html#get">get</a></li><li data-type='method'><a href="ServiceManifests.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Services.html">Services</a><ul class='methods'><li data-type='method'><a href="Services.html#create">create</a></li><li data-type='method'><a href="Services.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#get">get</a></li><li data-type='method'><a href="Services.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#list">list</a></li><li data-type='method'><a href="Services.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#remove">remove</a></li><li data-type='method'><a href="Services.html#removeWithHttpOperationResponse">removeWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#resolve">resolve</a></li><li data-type='method'><a href="Services.html#resolveWithHttpOperationResponse">resolveWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#update">update</a></li><li data-type='method'><a href="Services.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceTypes.html">ServiceTypes</a><ul class='methods'><li data-type='method'><a href="ServiceTypes.html#get">get</a></li><li data-type='method'><a href="ServiceTypes.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520report%2520of%2520the%2520application%2520health.html">The report of the application health</a></li><li><a href="The%2520report%2520of%2520the%2520cluster%2520health.html">The report of the cluster health</a></li><li><a href="The%2520report%2520of%2520the%2520deployed%2520application%2520health.html">The report of the deployed application health</a></li><li><a href="The%2520report%2520of%2520the%2520deployed%2520service%2520package%2520health.html">The report of the deployed service package health</a></li><li><a href="The%2520report%2520of%2520the%2520node%2520health.html">The report of the node health</a></li><li><a href="The%2520report%2520of%2520the%2520partition%2520health.html">The report of the partition health</a></li><li><a href="The%2520report%2520of%2520the%2520replica%2520health.html">The report of the replica health</a></li><li><a href="The%2520report%2520of%2520the%2520service%2520health.html">The report of the service health</a></li><li><a href="UpgradeProgresses.html">UpgradeProgresses</a><ul class='methods'><li data-type='method'><a href="UpgradeProgresses.html#get">get</a></li><li data-type='method'><a href="UpgradeProgresses.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_disable">_disable</a></li><li><a href="global.html#_enable">_enable</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_register">_register</a></li><li><a href="global.html#_remove">_remove</a></li><li><a href="global.html#_repair">_repair</a></li><li><a href="global.html#_reset">_reset</a></li><li><a href="global.html#_resolve">_resolve</a></li><li><a href="global.html#_resume">_resume</a></li><li><a href="global.html#_rollback">_rollback</a></li><li><a href="global.html#_send">_send</a></li><li><a href="global.html#_start">_start</a></li><li><a href="global.html#_unregister">_unregister</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#address">address</a></li><li><a href="global.html#aggregatedHealthState">aggregatedHealthState</a></li><li><a href="global.html#applicationHealthState">applicationHealthState</a></li><li><a href="global.html#applicationTypeBuildPath">applicationTypeBuildPath</a></li><li><a href="global.html#applicationTypeVersion">applicationTypeVersion</a></li><li><a href="global.html#clusterManifestFilePath">clusterManifestFilePath</a></li><li><a href="global.html#configVersion">configVersion</a></li><li><a href="global.html#considerWarningAsError">considerWarningAsError</a></li><li><a href="global.html#dataLossVersion">dataLossVersion</a></li><li><a href="global.html#deactivationIntent">deactivationIntent</a></li><li><a href="global.html#defaultParameterList">defaultParameterList</a></li><li><a href="global.html#deployedApplicationHealthStates">deployedApplicationHealthStates</a></li><li><a href="global.html#enableDeltaHealthEvaluations">enableDeltaHealthEvaluations</a></li><li><a href="global.html#exitCount">exitCount</a></li><li><a href="global.html#hasPersistedState">hasPersistedState</a></li><li><a href="global.html#hasSetupEntryPoint">hasSetupEntryPoint</a></li><li><a href="global.html#healthState">healthState</a></li><li><a href="global.html#highKey">highKey</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#instanceCount">instanceCount</a></li><li><a href="global.html#isDefaultMoveCostSpecified">isDefaultMoveCostSpecified</a></li><li><a href="global.html#isServiceGroup">isServiceGroup</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#lastErrorTransitionAt">lastErrorTransitionAt</a></li><li><a href="global.html#lastInBuildDurationInSeconds">lastInBuildDurationInSeconds</a></li><li><a href="global.html#lastSequenceNumber">lastSequenceNumber</a></li><li><a href="global.html#loadMetricInformation">loadMetricInformation</a></li><li><a href="global.html#manifest">manifest</a></li><li><a href="global.html#maxPercentDeltaUnhealthyNodes">maxPercentDeltaUnhealthyNodes</a></li><li><a href="global.html#maxPercentUnhealthyApplications">maxPercentUnhealthyApplications</a></li><li><a href="global.html#maxPercentUnhealthyDeployedApplications">maxPercentUnhealthyDeployedApplications</a></li><li><a href="global.html#maxPercentUnhealthyNodes">maxPercentUnhealthyNodes</a></li><li><a href="global.html#maxPercentUnhealthyPartitionsPerService">maxPercentUnhealthyPartitionsPerService</a></li><li><a href="global.html#maxPercentUnhealthyReplicasPerPartition">maxPercentUnhealthyReplicasPerPartition</a></li><li><a href="global.html#maxPercentUnhealthyServices">maxPercentUnhealthyServices</a></li><li><a href="global.html#maxPercentUpgradeDomainDeltaUnhealthyNodes">maxPercentUpgradeDomainDeltaUnhealthyNodes</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nodeDeactivationStatus">nodeDeactivationStatus</a></li><li><a href="global.html#nodeRemainingBufferedCapacity">nodeRemainingBufferedCapacity</a></li><li><a href="global.html#nodeUpgradeProgressList">nodeUpgradeProgressList</a></li><li><a href="global.html#parameterList">parameterList</a></li><li><a href="global.html#partitionHealthStates">partitionHealthStates</a></li><li><a href="global.html#removeWhenExpired">removeWhenExpired</a></li><li><a href="global.html#replicaHealthStates">replicaHealthStates</a></li><li><a href="global.html#reportedLoad">reportedLoad</a></li><li><a href="global.html#secondaryDefaultLoad">secondaryDefaultLoad</a></li><li><a href="global.html#secondaryLoadMetricReports">secondaryLoadMetricReports</a></li><li><a href="global.html#serviceCorrelationScheme">serviceCorrelationScheme</a></li><li><a href="global.html#serviceGroupMemberDescription">serviceGroupMemberDescription</a></li><li><a href="global.html#serviceKind">serviceKind</a></li><li><a href="global.html#serviceTypeName">serviceTypeName</a></li><li><a href="global.html#standByReplicaKeepDurationInMilliseconds">standByReplicaKeepDurationInMilliseconds</a></li><li><a href="global.html#status">status</a></li><li><a href="global.html#tempDirectory">tempDirectory</a></li><li><a href="global.html#totalCount">totalCount</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#unhealthyEvaluations">unhealthyEvaluations</a></li><li><a href="global.html#upgradeDomain">upgradeDomain</a></li><li><a href="global.html#upgradeDomainName">upgradeDomainName</a></li><li><a href="global.html#upgradeDomainTimeoutInMilliseconds">upgradeDomainTimeoutInMilliseconds</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#version">version</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/healthReport.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the HealthReport class.
+ * @constructor
+ * The report of the health
+ *
+ * @member {string} [sourceId]
+ *
+ * @member {string} [property]
+ *
+ * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
+ * 'Warning', 'Error', 'Unknown'
+ *
+ * @member {string} [description]
+ *
+ * @member {string} [timeToLiveInMilliSeconds]
+ *
+ * @member {string} [sequenceNumber]
+ *
+ * @member {boolean} [removeWhenExpired]
+ *
+ */
+class HealthReport {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of HealthReport
+   *
+   * @returns {object} metadata of HealthReport
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'HealthReport',
+      type: {
+        name: 'Composite',
+        className: 'HealthReport',
+        modelProperties: {
+          sourceId: {
+            required: false,
+            serializedName: 'SourceId',
+            type: {
+              name: 'String'
+            }
+          },
+          property: {
+            required: false,
+            serializedName: 'Property',
+            type: {
+              name: 'String'
+            }
+          },
+          healthState: {
+            required: false,
+            serializedName: 'HealthState',
+            type: {
+              name: 'String'
+            }
+          },
+          description: {
+            required: false,
+            serializedName: 'Description',
+            type: {
+              name: 'String'
+            }
+          },
+          timeToLiveInMilliSeconds: {
+            required: false,
+            serializedName: 'TimeToLiveInMilliSeconds',
+            type: {
+              name: 'String'
+            }
+          },
+          sequenceNumber: {
+            required: false,
+            serializedName: 'SequenceNumber',
+            type: {
+              name: 'String'
+            }
+          },
+          removeWhenExpired: {
+            required: false,
+            serializedName: 'RemoveWhenExpired',
+            type: {
+              name: 'Boolean'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = HealthReport;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:41:03 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

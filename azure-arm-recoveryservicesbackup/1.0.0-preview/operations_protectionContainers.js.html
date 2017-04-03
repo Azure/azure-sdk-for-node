@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>operations/protectionContainers.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Azure%2520SQL%2520workload-specific%2520container..html">Azure SQL workload-specific container.</a></li><li><a href="BackupEngines.html">BackupEngines</a><ul class='methods'><li data-type='method'><a href="BackupEngines.html#get">get</a></li><li data-type='method'><a href="BackupEngines.html#getNext">getNext</a></li><li data-type='method'><a href="BackupEngines.html#getNextWithHttpOperationResponse">getNextWithHttpOperationResponse</a></li><li data-type='method'><a href="BackupEngines.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="BackupOperationResults.html">BackupOperationResults</a><ul class='methods'><li data-type='method'><a href="BackupOperationResults.html#get">get</a></li><li data-type='method'><a href="BackupOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="BackupOperationStatuses.html">BackupOperationStatuses</a><ul class='methods'><li data-type='method'><a href="BackupOperationStatuses.html#get">get</a></li><li data-type='method'><a href="BackupOperationStatuses.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Backups.html">Backups</a><ul class='methods'><li data-type='method'><a href="Backups.html#trigger">trigger</a></li><li data-type='method'><a href="Backups.html#triggerWithHttpOperationResponse">triggerWithHttpOperationResponse</a></li></ul></li><li><a href="ExportJobsOperationResults.html">ExportJobsOperationResults</a><ul class='methods'><li data-type='method'><a href="ExportJobsOperationResults.html#get">get</a></li><li data-type='method'><a href="ExportJobsOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520classic%2520VM..html">IaaS VM workload-specific backup item representing a classic VM.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520classic-deployed%250Avirtual%2520machine..html">IaaS VM workload-specific backup item representing a classic-deployed
+virtual machine.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520Resource%250AManager-deployed%2520virtual%2520machine..html">IaaS VM workload-specific backup item representing a Resource
+Manager-deployed virtual machine.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520Resource%2520Manager%2520VM..html">IaaS VM workload-specific backup item representing a Resource Manager VM.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520the%2520classic%2520VM..html">IaaS VM workload-specific backup item representing the classic VM.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520the%2520Resource%2520Manager%2520VM..html">IaaS VM workload-specific backup item representing the Resource Manager VM.</a></li><li><a href="ItemLevelRecoveryConnections.html">ItemLevelRecoveryConnections</a><ul class='methods'><li data-type='method'><a href="ItemLevelRecoveryConnections.html#provision">provision</a></li><li data-type='method'><a href="ItemLevelRecoveryConnections.html#provisionWithHttpOperationResponse">provisionWithHttpOperationResponse</a></li><li data-type='method'><a href="ItemLevelRecoveryConnections.html#revoke">revoke</a></li><li data-type='method'><a href="ItemLevelRecoveryConnections.html#revokeWithHttpOperationResponse">revokeWithHttpOperationResponse</a></li></ul></li><li><a href="JobCancellations.html">JobCancellations</a><ul class='methods'><li data-type='method'><a href="JobCancellations.html#trigger">trigger</a></li><li data-type='method'><a href="JobCancellations.html#triggerWithHttpOperationResponse">triggerWithHttpOperationResponse</a></li></ul></li><li><a href="JobDetails.html">JobDetails</a><ul class='methods'><li data-type='method'><a href="JobDetails.html#get">get</a></li><li data-type='method'><a href="JobDetails.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="JobOperationResults.html">JobOperationResults</a><ul class='methods'><li data-type='method'><a href="JobOperationResults.html#get">get</a></li><li data-type='method'><a href="JobOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Jobs.html">Jobs</a><ul class='methods'><li data-type='method'><a href="Jobs.html#exportMethod">exportMethod</a></li><li data-type='method'><a href="Jobs.html#exportMethodWithHttpOperationResponse">exportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#list">list</a></li><li data-type='method'><a href="Jobs.html#listNext">listNext</a></li><li data-type='method'><a href="Jobs.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="List%2520of%2520BackupEngineBase%2520resources.html">List of BackupEngineBase resources</a></li><li><a href="List%2520of%2520Job%2520resources..html">List of Job resources.</a></li><li><a href="Long-term%2520policy%2520schedule..html">Long-term policy schedule.</a></li><li><a href="ProtectableItems.html">ProtectableItems</a><ul class='methods'><li data-type='method'><a href="ProtectableItems.html#list">list</a></li><li data-type='method'><a href="ProtectableItems.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectableItems.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectableItems.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectedItemOperationResults.html">ProtectedItemOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectedItemOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectedItemOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectedItemOperationStatuses.html">ProtectedItemOperationStatuses</a><ul class='methods'><li data-type='method'><a href="ProtectedItemOperationStatuses.html#get">get</a></li><li data-type='method'><a href="ProtectedItemOperationStatuses.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectedItems.html">ProtectedItems</a><ul class='methods'><li data-type='method'><a href="ProtectedItems.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ProtectedItems.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ProtectedItems.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#get">get</a></li><li data-type='method'><a href="ProtectedItems.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#list">list</a></li><li data-type='method'><a href="ProtectedItems.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectedItems.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionContainerOperationResults.html">ProtectionContainerOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectionContainerOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectionContainerOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionContainerRefreshOperationResults.html">ProtectionContainerRefreshOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectionContainerRefreshOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectionContainerRefreshOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionContainers.html">ProtectionContainers</a><ul class='methods'><li data-type='method'><a href="ProtectionContainers.html#get">get</a></li><li data-type='method'><a href="ProtectionContainers.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#list">list</a></li><li data-type='method'><a href="ProtectionContainers.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectionContainers.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#refresh">refresh</a></li><li data-type='method'><a href="ProtectionContainers.html#refreshWithHttpOperationResponse">refreshWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#unregister">unregister</a></li><li data-type='method'><a href="ProtectionContainers.html#unregisterWithHttpOperationResponse">unregisterWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionPolicies.html">ProtectionPolicies</a><ul class='methods'><li data-type='method'><a href="ProtectionPolicies.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ProtectionPolicies.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ProtectionPolicies.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#get">get</a></li><li data-type='method'><a href="ProtectionPolicies.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#list">list</a></li><li data-type='method'><a href="ProtectionPolicies.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectionPolicies.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionPolicyOperationResults.html">ProtectionPolicyOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectionPolicyOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectionPolicyOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionPolicyOperationStatuses.html">ProtectionPolicyOperationStatuses</a><ul class='methods'><li data-type='method'><a href="ProtectionPolicyOperationStatuses.html#get">get</a></li><li data-type='method'><a href="ProtectionPolicyOperationStatuses.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="RecoveryPoints.html">RecoveryPoints</a><ul class='methods'><li data-type='method'><a href="RecoveryPoints.html#get">get</a></li><li data-type='method'><a href="RecoveryPoints.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="RecoveryPoints.html#list">list</a></li><li data-type='method'><a href="RecoveryPoints.html#listNext">listNext</a></li><li data-type='method'><a href="RecoveryPoints.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="RecoveryPoints.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="RecoveryServicesBackupClient.html">RecoveryServicesBackupClient</a></li><li><a href="Restores.html">Restores</a><ul class='methods'><li data-type='method'><a href="Restores.html#trigger">trigger</a></li><li data-type='method'><a href="Restores.html#triggerWithHttpOperationResponse">triggerWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520backup%2520engine%2520type%2520when%2520Azure%2520Backup%2520Server%2520is%2520used%2520to%2520manage%2520the%250Abackups..html">The backup engine type when Azure Backup Server is used to manage the
+backups.</a></li><li><a href="The%2520backup%2520engine%2520type%2520when%2520Data%2520Protection%2520Manager%2520(DPM)%2520is%2520used%2520to%2520manage%250Abackups..html">The backup engine type when Data Protection Manager (DPM) is used to manage
+backups.</a></li><li><a href="The%2520list%2520of%2520ProtectedItem%2520resources..html">The list of ProtectedItem resources.</a></li><li><a href="The%2520list%2520of%2520ProtectionContainer%2520resources..html">The list of ProtectionContainer resources.</a></li><li><a href="The%2520list%2520of%2520ProtectionPolicy%2520resources..html">The list of ProtectionPolicy resources.</a></li><li><a href="The%2520list%2520of%2520RecoveryPoint%2520resources..html">The list of RecoveryPoint resources.</a></li><li><a href="The%2520list%2520of%2520WorkloadProtectableItem%2520resources..html">The list of WorkloadProtectableItem resources.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_exportMethod">_exportMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getNext">_getNext</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_provision">_provision</a></li><li><a href="global.html#_refresh">_refresh</a></li><li><a href="global.html#_revoke">_revoke</a></li><li><a href="global.html#_trigger">_trigger</a></li><li><a href="global.html#_unregister">_unregister</a></li><li><a href="global.html#backupEngineType">backupEngineType</a></li><li><a href="global.html#backupManagementType">backupManagementType</a></li><li><a href="global.html#blobSasKey">blobSasKey</a></li><li><a href="global.html#clientScripts">clientScripts</a></li><li><a href="global.html#containerName">containerName</a></li><li><a href="global.html#daysOfTheMonth">daysOfTheMonth</a></li><li><a href="global.html#durationType">durationType</a></li><li><a href="global.html#dynamicErrorMessage">dynamicErrorMessage</a></li><li><a href="global.html#endDate">endDate</a></li><li><a href="global.html#endTime">endTime</a></li><li><a href="global.html#eTag">eTag</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#failedJobsError">failedJobsError</a></li><li><a href="global.html#friendlyName">friendlyName</a></li><li><a href="global.html#headers">headers</a></li><li><a href="global.html#isInstantILRSessionActive">isInstantILRSessionActive</a></li><li><a href="global.html#isLast">isLast</a></li><li><a href="global.html#jobId">jobId</a></li><li><a href="global.html#jobList">jobList</a></li><li><a href="global.html#jobType">jobType</a></li><li><a href="global.html#keyBackupData">keyBackupData</a></li><li><a href="global.html#lastBackupStatus">lastBackupStatus</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#objectType">objectType</a></li><li><a href="global.html#osType">osType</a></li><li><a href="global.html#policyInconsistent">policyInconsistent</a></li><li><a href="global.html#policyState">policyState</a></li><li><a href="global.html#progressPercentage">progressPercentage</a></li><li><a href="global.html#protectableItemType">protectableItemType</a></li><li><a href="global.html#protectableObjectType">protectableObjectType</a></li><li><a href="global.html#protectedItemType">protectedItemType</a></li><li><a href="global.html#recommendations">recommendations</a></li><li><a href="global.html#recoveryPointAdditionalInfo">recoveryPointAdditionalInfo</a></li><li><a href="global.html#recoveryPointCount">recoveryPointCount</a></li><li><a href="global.html#recoveryPointExpiryTimeInUTC">recoveryPointExpiryTimeInUTC</a></li><li><a href="global.html#renewExistingRegistration">renewExistingRegistration</a></li><li><a href="global.html#resourceGroup">resourceGroup</a></li><li><a href="global.html#retentionPolicyType">retentionPolicyType</a></li><li><a href="global.html#schedulePolicyType">schedulePolicyType</a></li><li><a href="global.html#scheduleWeeklyFrequency">scheduleWeeklyFrequency</a></li><li><a href="global.html#secretData">secretData</a></li><li><a href="global.html#secretKeyVaultId">secretKeyVaultId</a></li><li><a href="global.html#status">status</a></li><li><a href="global.html#virtualMachineId">virtualMachineId</a></li><li><a href="global.html#weeksOfTheMonth">weeksOfTheMonth</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">operations/protectionContainers.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const msRest = require('ms-rest');
+const msRestAzure = require('ms-rest-azure');
+const WebResource = msRest.WebResource;
+
+/**
+ * Gets details of the specific container registered to your Recovery Services
+ * vault.
+ *
+ * @param {string} vaultName The name of the Recovery Services vault.
+ *
+ * @param {string} resourceGroupName The name of the resource group associated
+ * with the Recovery Services vault.
+ *
+ * @param {string} fabricName The fabric name associated with the container.
+ *
+ * @param {string} containerName The container name used for this GET
+ * operation.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link ProtectionContainerResource} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _get(vaultName, resourceGroupName, fabricName, containerName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  let apiVersion = '2016-06-01';
+  // Validate
+  try {
+    if (vaultName === null || vaultName === undefined || typeof vaultName.valueOf() !== 'string') {
+      throw new Error('vaultName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (fabricName === null || fabricName === undefined || typeof fabricName.valueOf() !== 'string') {
+      throw new Error('fabricName cannot be null or undefined and it must be of type string.');
+    }
+    if (containerName === null || containerName === undefined || typeof containerName.valueOf() !== 'string') {
+      throw new Error('containerName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}';
+  requestUrl = requestUrl.replace('{vaultName}', encodeURIComponent(vaultName));
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  requestUrl = requestUrl.replace('{fabricName}', encodeURIComponent(fabricName));
+  requestUrl = requestUrl.replace('{containerName}', encodeURIComponent(containerName));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['ProtectionContainerResource']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Lists the containers registered to the Recovery Services vault.
+ *
+ * @param {string} vaultName The name of the Recovery Services vault.
+ *
+ * @param {string} resourceGroupName The name of the resource group associated
+ * with the Recovery Services vault.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {string} [options.filter] The following equation is used to sort or
+ * filter the containers registered to the vault. providerType eq {AzureIaasVM,
+ * MAB, DPM, AzureBackupServer, AzureSql} and status eq {Unknown,
+ * NotRegistered, Registered, Registering} and friendlyName eq {containername}
+ * and backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer,
+ * AzureSql}.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link ProtectionContainerResourceList} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _list(vaultName, resourceGroupName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  let filter = (options &amp;&amp; options.filter !== undefined) ? options.filter : undefined;
+  let apiVersion = '2016-06-01';
+  // Validate
+  try {
+    if (vaultName === null || vaultName === undefined || typeof vaultName.valueOf() !== 'string') {
+      throw new Error('vaultName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (filter !== null &amp;&amp; filter !== undefined &amp;&amp; typeof filter.valueOf() !== 'string') {
+      throw new Error('filter must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionContainers';
+  requestUrl = requestUrl.replace('{vaultName}', encodeURIComponent(vaultName));
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (filter !== null &amp;&amp; filter !== undefined) {
+    queryParameters.push('$filter=' + encodeURIComponent(filter));
+  }
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['ProtectionContainerResourceList']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Discovers the containers in the subscription that can be protected in a
+ * Recovery Services vault. This is an asynchronous operation. To learn the
+ * status of the operation, use the GetRefreshOperationResult API.
+ *
+ * @param {string} vaultName The name of the Recovery Services vault.
+ *
+ * @param {string} resourceGroupName The name of the resource group associated
+ * with the Recovery Services vault.
+ *
+ * @param {string} fabricName The fabric name associated with the container.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object if an error did not occur.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _refresh(vaultName, resourceGroupName, fabricName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  let apiVersion = '2016-06-01';
+  // Validate
+  try {
+    if (vaultName === null || vaultName === undefined || typeof vaultName.valueOf() !== 'string') {
+      throw new Error('vaultName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (fabricName === null || fabricName === undefined || typeof fabricName.valueOf() !== 'string') {
+      throw new Error('fabricName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers';
+  requestUrl = requestUrl.replace('{vaultName}', encodeURIComponent(vaultName));
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  requestUrl = requestUrl.replace('{fabricName}', encodeURIComponent(fabricName));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 202) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Unregisters the given container from your Recovery Services vault.
+ *
+ * @param {string} resourceGroupName The name of the resource group associated
+ * with the Recovery Services vault.
+ *
+ * @param {string} vaultName The name of the Recovery Services vault.
+ *
+ * @param {string} identityName Name of the protection container to unregister.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object if an error did not occur.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _unregister(resourceGroupName, vaultName, identityName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  let apiVersion = '2016-06-01';
+  // Validate
+  try {
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (vaultName === null || vaultName === undefined || typeof vaultName.valueOf() !== 'string') {
+      throw new Error('vaultName cannot be null or undefined and it must be of type string.');
+    }
+    if (identityName === null || identityName === undefined || typeof identityName.valueOf() !== 'string') {
+      throw new Error('identityName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}';
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{vaultName}', encodeURIComponent(vaultName));
+  requestUrl = requestUrl.replace('{identityName}', encodeURIComponent(identityName));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'DELETE';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 204) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Lists the containers registered to the Recovery Services vault.
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link ProtectionContainerResourceList} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listNext(nextPageLink, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['ProtectionContainerResourceList']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * @class
+ * ProtectionContainers
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the RecoveryServicesBackupClient.
+ * Initializes a new instance of the ProtectionContainers class.
+ * @constructor
+ *
+ * @param {RecoveryServicesBackupClient} client Reference to the service client.
+ */
+class ProtectionContainers {
+  constructor(client) {
+    this.client = client;
+    this._get = _get;
+    this._list = _list;
+    this._refresh = _refresh;
+    this._unregister = _unregister;
+    this._listNext = _listNext;
+  }
+
+  /**
+   * Gets details of the specific container registered to your Recovery Services
+   * vault.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {string} fabricName The fabric name associated with the container.
+   *
+   * @param {string} containerName The container name used for this GET
+   * operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;ProtectionContainerResource>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  getWithHttpOperationResponse(vaultName, resourceGroupName, fabricName, containerName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._get(vaultName, resourceGroupName, fabricName, containerName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Gets details of the specific container registered to your Recovery Services
+   * vault.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {string} fabricName The fabric name associated with the container.
+   *
+   * @param {string} containerName The container name used for this GET
+   * operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {ProtectionContainerResource} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ProtectionContainerResource} for more
+   *                      information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  get(vaultName, resourceGroupName, fabricName, containerName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._get(vaultName, resourceGroupName, fabricName, containerName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._get(vaultName, resourceGroupName, fabricName, containerName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Lists the containers registered to the Recovery Services vault.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] The following equation is used to sort or
+   * filter the containers registered to the vault. providerType eq {AzureIaasVM,
+   * MAB, DPM, AzureBackupServer, AzureSql} and status eq {Unknown,
+   * NotRegistered, Registered, Registering} and friendlyName eq {containername}
+   * and backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer,
+   * AzureSql}.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;ProtectionContainerResourceList>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listWithHttpOperationResponse(vaultName, resourceGroupName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._list(vaultName, resourceGroupName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Lists the containers registered to the Recovery Services vault.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] The following equation is used to sort or
+   * filter the containers registered to the vault. providerType eq {AzureIaasVM,
+   * MAB, DPM, AzureBackupServer, AzureSql} and status eq {Unknown,
+   * NotRegistered, Registered, Registering} and friendlyName eq {containername}
+   * and backupManagementType eq {AzureIaasVM, MAB, DPM, AzureBackupServer,
+   * AzureSql}.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {ProtectionContainerResourceList} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ProtectionContainerResourceList} for more
+   *                      information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  list(vaultName, resourceGroupName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._list(vaultName, resourceGroupName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._list(vaultName, resourceGroupName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Discovers the containers in the subscription that can be protected in a
+   * Recovery Services vault. This is an asynchronous operation. To learn the
+   * status of the operation, use the GetRefreshOperationResult API.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {string} fabricName The fabric name associated with the container.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;null>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  refreshWithHttpOperationResponse(vaultName, resourceGroupName, fabricName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._refresh(vaultName, resourceGroupName, fabricName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Discovers the containers in the subscription that can be protected in a
+   * Recovery Services vault. This is an asynchronous operation. To learn the
+   * status of the operation, use the GetRefreshOperationResult API.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {string} fabricName The fabric name associated with the container.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  refresh(vaultName, resourceGroupName, fabricName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._refresh(vaultName, resourceGroupName, fabricName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._refresh(vaultName, resourceGroupName, fabricName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Unregisters the given container from your Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} identityName Name of the protection container to unregister.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;null>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  unregisterWithHttpOperationResponse(resourceGroupName, vaultName, identityName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._unregister(resourceGroupName, vaultName, identityName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Unregisters the given container from your Recovery Services vault.
+   *
+   * @param {string} resourceGroupName The name of the resource group associated
+   * with the Recovery Services vault.
+   *
+   * @param {string} vaultName The name of the Recovery Services vault.
+   *
+   * @param {string} identityName Name of the protection container to unregister.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  unregister(resourceGroupName, vaultName, identityName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._unregister(resourceGroupName, vaultName, identityName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._unregister(resourceGroupName, vaultName, identityName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Lists the containers registered to the Recovery Services vault.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;ProtectionContainerResourceList>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listNextWithHttpOperationResponse(nextPageLink, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listNext(nextPageLink, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Lists the containers registered to the Recovery Services vault.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {ProtectionContainerResourceList} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ProtectionContainerResourceList} for more
+   *                      information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listNext(nextPageLink, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listNext(nextPageLink, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listNext(nextPageLink, options, optionalCallback);
+    }
+  }
+
+}
+
+module.exports = ProtectionContainers;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:45 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

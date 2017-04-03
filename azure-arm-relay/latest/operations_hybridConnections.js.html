@@ -1,0 +1,3451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>operations/hybridConnections.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="HybridConnections.html">HybridConnections</a><ul class='methods'><li data-type='method'><a href="HybridConnections.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="HybridConnections.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="HybridConnections.html#createOrUpdateAuthorizationRuleWithHttpOperationResponse">createOrUpdateAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="HybridConnections.html#deleteAuthorizationRuleWithHttpOperationResponse">deleteAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="HybridConnections.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#get">get</a></li><li data-type='method'><a href="HybridConnections.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="HybridConnections.html#getAuthorizationRuleWithHttpOperationResponse">getAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRulesNextWithHttpOperationResponse">listAuthorizationRulesNextWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRulesWithHttpOperationResponse">listAuthorizationRulesWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespace">listByNamespace</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespaceNext">listByNamespaceNext</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespaceNextWithHttpOperationResponse">listByNamespaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespaceWithHttpOperationResponse">listByNamespaceWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listKeys">listKeys</a></li><li data-type='method'><a href="HybridConnections.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#regenerateKeys">regenerateKeys</a></li><li data-type='method'><a href="HybridConnections.html#regenerateKeysWithHttpOperationResponse">regenerateKeysWithHttpOperationResponse</a></li></ul></li><li><a href="Namespaces.html">Namespaces</a><ul class='methods'><li data-type='method'><a href="Namespaces.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Namespaces.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Namespaces.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#checkNameAvailabilityMethod">checkNameAvailabilityMethod</a></li><li data-type='method'><a href="Namespaces.html#checkNameAvailabilityMethodWithHttpOperationResponse">checkNameAvailabilityMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateAuthorizationRuleWithHttpOperationResponse">createOrUpdateAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#deleteAuthorizationRuleWithHttpOperationResponse">deleteAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Namespaces.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#get">get</a></li><li data-type='method'><a href="Namespaces.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#getAuthorizationRuleWithHttpOperationResponse">getAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#list">list</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesNextWithHttpOperationResponse">listAuthorizationRulesNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesWithHttpOperationResponse">listAuthorizationRulesWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listKeys">listKeys</a></li><li data-type='method'><a href="Namespaces.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listNext">listNext</a></li><li data-type='method'><a href="Namespaces.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#regenerateKeys">regenerateKeys</a></li><li data-type='method'><a href="Namespaces.html#regenerateKeysWithHttpOperationResponse">regenerateKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#update">update</a></li><li data-type='method'><a href="Namespaces.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="Operations.html">Operations</a><ul class='methods'><li data-type='method'><a href="Operations.html#list">list</a></li><li data-type='method'><a href="Operations.html#listNext">listNext</a></li><li data-type='method'><a href="Operations.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Operations.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="RelayManagementClient.html">RelayManagementClient</a></li><li><a href="Sku%2520of%2520the%2520Namespace..html">Sku of the Namespace.</a></li><li><a href="WCFRelays.html">WCFRelays</a><ul class='methods'><li data-type='method'><a href="WCFRelays.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="WCFRelays.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="WCFRelays.html#createOrUpdateAuthorizationRuleWithHttpOperationResponse">createOrUpdateAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="WCFRelays.html#deleteAuthorizationRuleWithHttpOperationResponse">deleteAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="WCFRelays.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#get">get</a></li><li data-type='method'><a href="WCFRelays.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="WCFRelays.html#getAuthorizationRuleWithHttpOperationResponse">getAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRulesNextWithHttpOperationResponse">listAuthorizationRulesNextWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRulesWithHttpOperationResponse">listAuthorizationRulesWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespace">listByNamespace</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespaceNext">listByNamespaceNext</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespaceNextWithHttpOperationResponse">listByNamespaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespaceWithHttpOperationResponse">listByNamespaceWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listKeys">listKeys</a></li><li data-type='method'><a href="WCFRelays.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#regenerateKeys">regenerateKeys</a></li><li data-type='method'><a href="WCFRelays.html#regenerateKeysWithHttpOperationResponse">regenerateKeysWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginDeleteMethod">_beginDeleteMethod</a></li><li><a href="global.html#_checkNameAvailabilityMethod">_checkNameAvailabilityMethod</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_createOrUpdateAuthorizationRule">_createOrUpdateAuthorizationRule</a></li><li><a href="global.html#_deleteAuthorizationRule">_deleteAuthorizationRule</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getAuthorizationRule">_getAuthorizationRule</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listAuthorizationRules">_listAuthorizationRules</a></li><li><a href="global.html#_listAuthorizationRulesNext">_listAuthorizationRulesNext</a></li><li><a href="global.html#_listByNamespace">_listByNamespace</a></li><li><a href="global.html#_listByNamespaceNext">_listByNamespaceNext</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listKeys">_listKeys</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_regenerateKeys">_regenerateKeys</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#keyName">keyName</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#metricId">metricId</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#operation">operation</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#policyKey">policyKey</a></li><li><a href="global.html#rights">rights</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#userMetadata">userMetadata</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">operations/hybridConnections.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const msRest = require('ms-rest');
+const msRestAzure = require('ms-rest-azure');
+const WebResource = msRest.WebResource;
+
+/**
+ * Lists the HybridConnection within the namespace.
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link HybridConnectionListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listByNamespace(resourceGroupName, namespaceName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['HybridConnectionListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Creates or Updates a service HybridConnection. This operation is idempotent.
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {object} parameters Parameters supplied to create a HybridConnection.
+ *
+ * @param {boolean} [parameters.requiresClientAuthorization] true if client
+ * authorization is needed for this HybridConnection; otherwise, false.
+ *
+ * @param {string} [parameters.userMetadata] usermetadata is a placeholder to
+ * store user-defined string data for the HybridConnection endpoint.e.g. it can
+ * be used to store  descriptive data, such as list of teams and their contact
+ * information also user-defined configuration settings can be stored.
+ *
+ * @param {string} [parameters.path] The path of the HybridConnection.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link HybridConnection} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _createOrUpdate(resourceGroupName, namespaceName, hybridConnectionName, parameters, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (parameters === null || parameters === undefined) {
+      throw new Error('parameters cannot be null or undefined.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  let requestContent = null;
+  let requestModel = null;
+  try {
+    if (parameters !== null &amp;&amp; parameters !== undefined) {
+      let requestModelMapper = new client.models['HybridConnection']().mapper();
+      requestModel = client.serialize(requestModelMapper, parameters, 'parameters');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    let serializationError = new Error(`Error "${error.message}" occurred in serializing the ` +
+        `payload - ${JSON.stringify(parameters, null, 2)}.`);
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['HybridConnection']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Deletes a HybridConnection .
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object if an error did not occur.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _deleteMethod(resourceGroupName, namespaceName, hybridConnectionName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'DELETE';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200 &amp;&amp; statusCode !== 204) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Returns the description for the specified HybridConnection.
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link HybridConnection} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _get(resourceGroupName, namespaceName, hybridConnectionName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['HybridConnection']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Authorization rules for a HybridConnection.
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link SharedAccessAuthorizationRuleListResult} for
+ *                      more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listAuthorizationRules(resourceGroupName, namespaceName, hybridConnectionName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['SharedAccessAuthorizationRuleListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Creates or Updates an authorization rule for a HybridConnection
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {string} authorizationRuleName The authorizationRule name.
+ *
+ * @param {object} parameters The shared access authorization rule.
+ *
+ * @param {array} parameters.rights The rights associated with the rule.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link SharedAccessAuthorizationRule} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _createOrUpdateAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (authorizationRuleName === null || authorizationRuleName === undefined || typeof authorizationRuleName.valueOf() !== 'string') {
+      throw new Error('authorizationRuleName cannot be null or undefined and it must be of type string.');
+    }
+    if (authorizationRuleName !== null &amp;&amp; authorizationRuleName !== undefined) {
+      if (authorizationRuleName.length > 50)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (authorizationRuleName.length &lt; 1)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (parameters === null || parameters === undefined) {
+      throw new Error('parameters cannot be null or undefined.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{authorizationRuleName}', encodeURIComponent(authorizationRuleName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  let requestContent = null;
+  let requestModel = null;
+  try {
+    if (parameters !== null &amp;&amp; parameters !== undefined) {
+      let requestModelMapper = new client.models['SharedAccessAuthorizationRule']().mapper();
+      requestModel = client.serialize(requestModelMapper, parameters, 'parameters');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    let serializationError = new Error(`Error "${error.message}" occurred in serializing the ` +
+        `payload - ${JSON.stringify(parameters, null, 2)}.`);
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['SharedAccessAuthorizationRule']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Deletes a HybridConnection authorization rule
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {string} authorizationRuleName The authorizationRule name.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object if an error did not occur.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _deleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (authorizationRuleName === null || authorizationRuleName === undefined || typeof authorizationRuleName.valueOf() !== 'string') {
+      throw new Error('authorizationRuleName cannot be null or undefined and it must be of type string.');
+    }
+    if (authorizationRuleName !== null &amp;&amp; authorizationRuleName !== undefined) {
+      if (authorizationRuleName.length > 50)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (authorizationRuleName.length &lt; 1)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{authorizationRuleName}', encodeURIComponent(authorizationRuleName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'DELETE';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200 &amp;&amp; statusCode !== 204) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * HybridConnection authorizationRule for a HybridConnection by name.
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {string} authorizationRuleName The authorizationRule name.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link SharedAccessAuthorizationRule} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _getAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (authorizationRuleName === null || authorizationRuleName === undefined || typeof authorizationRuleName.valueOf() !== 'string') {
+      throw new Error('authorizationRuleName cannot be null or undefined and it must be of type string.');
+    }
+    if (authorizationRuleName !== null &amp;&amp; authorizationRuleName !== undefined) {
+      if (authorizationRuleName.length > 50)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (authorizationRuleName.length &lt; 1)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{authorizationRuleName}', encodeURIComponent(authorizationRuleName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['SharedAccessAuthorizationRule']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Primary and Secondary ConnectionStrings to the HybridConnection.
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {string} authorizationRuleName The authorizationRule name.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link ResourceListKeys} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (authorizationRuleName === null || authorizationRuleName === undefined || typeof authorizationRuleName.valueOf() !== 'string') {
+      throw new Error('authorizationRuleName cannot be null or undefined and it must be of type string.');
+    }
+    if (authorizationRuleName !== null &amp;&amp; authorizationRuleName !== undefined) {
+      if (authorizationRuleName.length > 50)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (authorizationRuleName.length &lt; 1)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/ListKeys';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{authorizationRuleName}', encodeURIComponent(authorizationRuleName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['ResourceListKeys']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Regenerates the Primary or Secondary ConnectionStrings to the
+ * HybridConnection
+ *
+ * @param {string} resourceGroupName Name of the Resource group within the
+ * Azure subscription.
+ *
+ * @param {string} namespaceName The Namespace Name
+ *
+ * @param {string} hybridConnectionName The hybrid connection name.
+ *
+ * @param {string} authorizationRuleName The authorizationRule name.
+ *
+ * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+ *
+ * @param {string} [parameters.policyKey] Key that needs to be regenerated.
+ * Possible values include: 'PrimaryKey', 'SecondaryKey'
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link ResourceListKeys} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _regenerateKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (resourceGroupName !== null &amp;&amp; resourceGroupName !== undefined) {
+      if (resourceGroupName.length > 90)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MaxLength": 90');
+      }
+      if (resourceGroupName.length &lt; 1)
+      {
+        throw new Error('"resourceGroupName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (namespaceName === null || namespaceName === undefined || typeof namespaceName.valueOf() !== 'string') {
+      throw new Error('namespaceName cannot be null or undefined and it must be of type string.');
+    }
+    if (namespaceName !== null &amp;&amp; namespaceName !== undefined) {
+      if (namespaceName.length > 50)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (namespaceName.length &lt; 6)
+      {
+        throw new Error('"namespaceName" should satisfy the constraint - "MinLength": 6');
+      }
+    }
+    if (hybridConnectionName === null || hybridConnectionName === undefined || typeof hybridConnectionName.valueOf() !== 'string') {
+      throw new Error('hybridConnectionName cannot be null or undefined and it must be of type string.');
+    }
+    if (hybridConnectionName !== null &amp;&amp; hybridConnectionName !== undefined) {
+      if (hybridConnectionName.length > 50)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (hybridConnectionName.length &lt; 1)
+      {
+        throw new Error('"hybridConnectionName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (authorizationRuleName === null || authorizationRuleName === undefined || typeof authorizationRuleName.valueOf() !== 'string') {
+      throw new Error('authorizationRuleName cannot be null or undefined and it must be of type string.');
+    }
+    if (authorizationRuleName !== null &amp;&amp; authorizationRuleName !== undefined) {
+      if (authorizationRuleName.length > 50)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MaxLength": 50');
+      }
+      if (authorizationRuleName.length &lt; 1)
+      {
+        throw new Error('"authorizationRuleName" should satisfy the constraint - "MinLength": 1');
+      }
+    }
+    if (parameters === null || parameters === undefined) {
+      throw new Error('parameters cannot be null or undefined.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{namespaceName}', encodeURIComponent(namespaceName));
+  requestUrl = requestUrl.replace('{hybridConnectionName}', encodeURIComponent(hybridConnectionName));
+  requestUrl = requestUrl.replace('{authorizationRuleName}', encodeURIComponent(authorizationRuleName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'POST';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  let requestContent = null;
+  let requestModel = null;
+  try {
+    if (parameters !== null &amp;&amp; parameters !== undefined) {
+      let requestModelMapper = new client.models['RegenerateKeysParameters']().mapper();
+      requestModel = client.serialize(requestModelMapper, parameters, 'parameters');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    let serializationError = new Error(`Error "${error.message}" occurred in serializing the ` +
+        `payload - ${JSON.stringify(parameters, null, 2)}.`);
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['ResourceListKeys']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Lists the HybridConnection within the namespace.
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link HybridConnectionListResult} for more
+ *                      information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listByNamespaceNext(nextPageLink, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          let internalError = null;
+          if (parsedErrorResponse.error) internalError = parsedErrorResponse.error;
+          error.code = internalError ? internalError.code : parsedErrorResponse.code;
+          error.message = internalError ? internalError.message : parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['ErrorResponse']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['HybridConnectionListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Authorization rules for a HybridConnection.
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link SharedAccessAuthorizationRuleListResult} for
+ *                      more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listAuthorizationRulesNext(nextPageLink, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['SharedAccessAuthorizationRuleListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * @class
+ * HybridConnections
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the RelayManagementClient.
+ * Initializes a new instance of the HybridConnections class.
+ * @constructor
+ *
+ * @param {RelayManagementClient} client Reference to the service client.
+ */
+class HybridConnections {
+  constructor(client) {
+    this.client = client;
+    this._listByNamespace = _listByNamespace;
+    this._createOrUpdate = _createOrUpdate;
+    this._deleteMethod = _deleteMethod;
+    this._get = _get;
+    this._listAuthorizationRules = _listAuthorizationRules;
+    this._createOrUpdateAuthorizationRule = _createOrUpdateAuthorizationRule;
+    this._deleteAuthorizationRule = _deleteAuthorizationRule;
+    this._getAuthorizationRule = _getAuthorizationRule;
+    this._listKeys = _listKeys;
+    this._regenerateKeys = _regenerateKeys;
+    this._listByNamespaceNext = _listByNamespaceNext;
+    this._listAuthorizationRulesNext = _listAuthorizationRulesNext;
+  }
+
+  /**
+   * Lists the HybridConnection within the namespace.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;HybridConnectionListResult>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listByNamespaceWithHttpOperationResponse(resourceGroupName, namespaceName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listByNamespace(resourceGroupName, namespaceName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Lists the HybridConnection within the namespace.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {HybridConnectionListResult} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link HybridConnectionListResult} for more
+   *                      information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listByNamespace(resourceGroupName, namespaceName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listByNamespace(resourceGroupName, namespaceName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listByNamespace(resourceGroupName, namespaceName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Creates or Updates a service HybridConnection. This operation is idempotent.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} parameters Parameters supplied to create a HybridConnection.
+   *
+   * @param {boolean} [parameters.requiresClientAuthorization] true if client
+   * authorization is needed for this HybridConnection; otherwise, false.
+   *
+   * @param {string} [parameters.userMetadata] usermetadata is a placeholder to
+   * store user-defined string data for the HybridConnection endpoint.e.g. it can
+   * be used to store  descriptive data, such as list of teams and their contact
+   * information also user-defined configuration settings can be stored.
+   *
+   * @param {string} [parameters.path] The path of the HybridConnection.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;HybridConnection>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  createOrUpdateWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, parameters, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._createOrUpdate(resourceGroupName, namespaceName, hybridConnectionName, parameters, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Creates or Updates a service HybridConnection. This operation is idempotent.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} parameters Parameters supplied to create a HybridConnection.
+   *
+   * @param {boolean} [parameters.requiresClientAuthorization] true if client
+   * authorization is needed for this HybridConnection; otherwise, false.
+   *
+   * @param {string} [parameters.userMetadata] usermetadata is a placeholder to
+   * store user-defined string data for the HybridConnection endpoint.e.g. it can
+   * be used to store  descriptive data, such as list of teams and their contact
+   * information also user-defined configuration settings can be stored.
+   *
+   * @param {string} [parameters.path] The path of the HybridConnection.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {HybridConnection} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link HybridConnection} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createOrUpdate(resourceGroupName, namespaceName, hybridConnectionName, parameters, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._createOrUpdate(resourceGroupName, namespaceName, hybridConnectionName, parameters, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._createOrUpdate(resourceGroupName, namespaceName, hybridConnectionName, parameters, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Deletes a HybridConnection .
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;null>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  deleteMethodWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._deleteMethod(resourceGroupName, namespaceName, hybridConnectionName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Deletes a HybridConnection .
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteMethod(resourceGroupName, namespaceName, hybridConnectionName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._deleteMethod(resourceGroupName, namespaceName, hybridConnectionName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._deleteMethod(resourceGroupName, namespaceName, hybridConnectionName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Returns the description for the specified HybridConnection.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;HybridConnection>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  getWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._get(resourceGroupName, namespaceName, hybridConnectionName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Returns the description for the specified HybridConnection.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {HybridConnection} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link HybridConnection} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  get(resourceGroupName, namespaceName, hybridConnectionName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._get(resourceGroupName, namespaceName, hybridConnectionName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._get(resourceGroupName, namespaceName, hybridConnectionName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Authorization rules for a HybridConnection.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listAuthorizationRulesWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listAuthorizationRules(resourceGroupName, namespaceName, hybridConnectionName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Authorization rules for a HybridConnection.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link SharedAccessAuthorizationRuleListResult} for
+   *                      more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listAuthorizationRules(resourceGroupName, namespaceName, hybridConnectionName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listAuthorizationRules(resourceGroupName, namespaceName, hybridConnectionName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listAuthorizationRules(resourceGroupName, namespaceName, hybridConnectionName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Creates or Updates an authorization rule for a HybridConnection
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} parameters The shared access authorization rule.
+   *
+   * @param {array} parameters.rights The rights associated with the rule.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;SharedAccessAuthorizationRule>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._createOrUpdateAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Creates or Updates an authorization rule for a HybridConnection
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} parameters The shared access authorization rule.
+   *
+   * @param {array} parameters.rights The rights associated with the rule.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link SharedAccessAuthorizationRule} for more
+   *                      information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createOrUpdateAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._createOrUpdateAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._createOrUpdateAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Deletes a HybridConnection authorization rule
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;null>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  deleteAuthorizationRuleWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._deleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Deletes a HybridConnection authorization rule
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._deleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._deleteAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * HybridConnection authorizationRule for a HybridConnection by name.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;SharedAccessAuthorizationRule>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  getAuthorizationRuleWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._getAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * HybridConnection authorizationRule for a HybridConnection by name.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link SharedAccessAuthorizationRule} for more
+   *                      information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._getAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._getAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Primary and Secondary ConnectionStrings to the HybridConnection.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;ResourceListKeys>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listKeysWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Primary and Secondary ConnectionStrings to the HybridConnection.
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {ResourceListKeys} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ResourceListKeys} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Regenerates the Primary or Secondary ConnectionStrings to the
+   * HybridConnection
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+   *
+   * @param {string} [parameters.policyKey] Key that needs to be regenerated.
+   * Possible values include: 'PrimaryKey', 'SecondaryKey'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;ResourceListKeys>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  regenerateKeysWithHttpOperationResponse(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._regenerateKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Regenerates the Primary or Secondary ConnectionStrings to the
+   * HybridConnection
+   *
+   * @param {string} resourceGroupName Name of the Resource group within the
+   * Azure subscription.
+   *
+   * @param {string} namespaceName The Namespace Name
+   *
+   * @param {string} hybridConnectionName The hybrid connection name.
+   *
+   * @param {string} authorizationRuleName The authorizationRule name.
+   *
+   * @param {object} parameters Parameters supplied to regenerate Auth Rule.
+   *
+   * @param {string} [parameters.policyKey] Key that needs to be regenerated.
+   * Possible values include: 'PrimaryKey', 'SecondaryKey'
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {ResourceListKeys} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ResourceListKeys} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  regenerateKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._regenerateKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._regenerateKeys(resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName, parameters, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Lists the HybridConnection within the namespace.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;HybridConnectionListResult>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listByNamespaceNextWithHttpOperationResponse(nextPageLink, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listByNamespaceNext(nextPageLink, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Lists the HybridConnection within the namespace.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {HybridConnectionListResult} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link HybridConnectionListResult} for more
+   *                      information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listByNamespaceNext(nextPageLink, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listByNamespaceNext(nextPageLink, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listByNamespaceNext(nextPageLink, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Authorization rules for a HybridConnection.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listAuthorizationRulesNext(nextPageLink, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Authorization rules for a HybridConnection.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link SharedAccessAuthorizationRuleListResult} for
+   *                      more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listAuthorizationRulesNext(nextPageLink, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listAuthorizationRulesNext(nextPageLink, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listAuthorizationRulesNext(nextPageLink, options, optionalCallback);
+    }
+  }
+
+}
+
+module.exports = HybridConnections;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:48 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

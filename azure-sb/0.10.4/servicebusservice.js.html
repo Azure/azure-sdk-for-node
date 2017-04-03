@@ -41,21 +41,21 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>﻿// 
+            <pre class="prettyprint source linenums"><code>﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //   http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// 
+//
 // See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 
 // Module dependencies.
 var util = require('util');
@@ -81,7 +81,7 @@ var notificationHubResult = require('./models/notificationhubresult');
 
 /**
 * Creates a new ServiceBusService object.
-* 
+*
 * The azure module will read the environment variables AZURE_SERVICEBUS_NAMESPACE and AZURE_SERVICEBUS_ACCESS_KEY
 * for information required to connect to your Microsoft Azure Service Bus.
 * If these environment variables are not set, you must specify the account information
@@ -89,12 +89,12 @@ var notificationHubResult = require('./models/notificationhubresult');
 * @class
 * The ServiceBusServices allows you to work with Microsoft Azure Service Bus.
 * Service Bus provides both queues for sending and receiving messages, as well as push notifications for mobile devices.
-* 
+*
 * Service Bus queues provide both standard message queue functionality as well as publish/subscribe functioanlity.
 * For more information on Service Bus queues, as well as task focused information on using them from Node.js applications, see
 * [How to Use Service Bus Queues](https://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/service-bus-queues/)
 * and [How to Use Service Bus Topics/Subscriptions](https://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/service-bus-topics/).
-* 
+*
 * Service Bus provides push notifications through the Notification Hub.
 * While the ServiceBusService can be used to manage Notification Hubs, you must use
 * the {@link NotificationHubService} to send messages to mobile devices.
@@ -269,7 +269,7 @@ function validateCallback(callback) {
 *   if(!error) {
 *     // Process the message
 *   }
-* }); 
+* });
 */
 ServiceBusService.prototype.receiveQueueMessage = function (queuePath, optionsOrCallback, callback) {
   var options = null;
@@ -312,7 +312,7 @@ ServiceBusService.prototype.receiveQueueMessage = function (queuePath, optionsOr
 *       }
 *     });
 *   }
-* }); 
+* });
 */
 ServiceBusService.prototype.receiveSubscriptionMessage = function (topicPath, subscriptionPath, optionsOrCallback, callback) {
   var options = null;
@@ -430,7 +430,7 @@ ServiceBusService.prototype.renewLockForMessage = function (message, callback) {
 
 /**
 * Sends a queue message.
-* 
+*
 * @param {string}             queuePath                                           A string object that represents the name of the queue to which the message will be sent.
 * @param {object|string}      message                                             A message object that represents the message to send.
 * @param {string}             [message.body]                                      The message's text.
@@ -455,7 +455,7 @@ ServiceBusService.prototype.renewLockForMessage = function (message, callback) {
 *   if(!error) {
 *     // Message sent
 *   }
-* }); 
+* });
 */
 ServiceBusService.prototype.sendQueueMessage = function (queuePath, message, callback) {
   validateQueueName(queuePath);
@@ -491,7 +491,7 @@ ServiceBusService.prototype.sendQueueMessage = function (queuePath, message, cal
 *   if(!error) {
 *     // Message sent
 *   }
-* }); 
+* });
 */
 ServiceBusService.prototype.sendTopicMessage = function (topicPath, message, callback) {
   validateTopicName(topicPath);
@@ -605,6 +605,7 @@ ServiceBusService.prototype._receiveMessage = function (path, optionsOrCallback,
 * @param {bool}               [options.RequiresDuplicateDetection]                  Settable only at queue creation time.
 * @param {bool}               [options.DeadLetteringOnMessageExpiration]            This field controls how the Service Bus handles a message whose TTL has expired. If it is enabled and a message expires, the Service Bus moves the message from the queue into the queue’s dead-letter sub-queue. If disabled, message will be permanently deleted from the queue. Settable only at queue creation time.
 * @param {bool}               [options.DuplicateDetectionHistoryTimeWindow]         Specifies the time span during which the Service Bus detects message duplication.
+* @param {bool}               [options.EnablePartitioning]                          Specifies whether the queue should be partitioned.
 * @param {Function(error, createqueueresult, response)} callback                    `error` will contain information
 *                                                                                   if an error occurs; otherwise `createqueueresult` will contain
 *                                                                                   the new queue information.
@@ -629,6 +630,7 @@ ServiceBusService.prototype.createQueue = function (queuePath, optionsOrCallback
 * @param {bool}               [options.RequiresDuplicateDetection]                  Settable only at queue creation time.
 * @param {bool}               [options.DeadLetteringOnMessageExpiration]            This field controls how the Service Bus handles a message whose TTL has expired. If it is enabled and a message expires, the Service Bus moves the message from the queue into the queue’s dead-letter sub-queue. If disabled, message will be permanently deleted from the queue. Settable only at queue creation time.
 * @param {bool}               [options.DuplicateDetectionHistoryTimeWindow]         Specifies the time span during which the Service Bus detects message duplication.
+* @param {bool}               [options.EnablePartitioning]                          Specifies whether the queue should be partitioned.
 * @param {Function(error, queueCreated, response)} callback                         `error` will contain information
 *                                                                                   if an error occurs; otherwise `queueCreated` will contain
 *                                                                                   the new queue information.
@@ -642,7 +644,7 @@ ServiceBusService.prototype.createQueue = function (queuePath, optionsOrCallback
 *   if(!error) {
 *     // Queue created or exists
 *   }
-* }); 
+* });
 */
 ServiceBusService.prototype.createQueueIfNotExists = function (queuePath, optionsOrCallback, callback) {
   var options = null;
@@ -753,6 +755,8 @@ ServiceBusService.prototype.listQueues = function (optionsOrCallback, callback) 
 * @param {PTnHnMnS}           [options.DuplicateDetectionHistoryTimeWindow]               Specifies the time span during which the Service Bus will detect message duplication.
 * @param {bool}               [options.EnableBatchedOperations]                           Specifies if batched operations should be allowed.
 * @param {int}                [options.SizeInBytes]                                       Specifies the topic size in bytes.
+* @param {bool}               [options.SupportOrdering]                                   Specifies whether the topic supports message ordering.
+* @param {bool}               [options.EnablePartitioning]                                Specifies whether the topic should be partitioned
 * @param {Function(error, createtopicresult, response)} callback                          `error` will contain information
 *                                                                                         if an error occurs; otherwise `createtopicresult` will contain
 *                                                                                         the new topic information.
@@ -779,6 +783,8 @@ ServiceBusService.prototype.createTopic = function (topic, optionsOrCallback, ca
 * @param {int}                [options.MaxCorrelationFiltersPerTopic]                     Specifies the maximum number of correlation filter expressions (in total) that can be added to the subscriptions associated with the topic.
 * @param {bool}               [options.EnableDeadLetteringOnMessageExpiration]            Settable only at topic creation time.
 * @param {bool}               [options.EnableDeadLetteringOnFilterEvaluationExceptions]   Settable only at topic creation time.
+* @param {bool}               [options.SupportOrdering]                                   Specifies whether the topic supports message ordering.
+* @param {bool}               [options.EnablePartitioning]                                Specifies whether the topic should be partitioned
 * @param {Function(error, topicCreated, response)} callback                               `error` will contain information
 *                                                                                         if an error occurs; otherwise `topicCreated` will contain
 *                                                                                         the new topic information.
@@ -1203,7 +1209,8 @@ ServiceBusService.prototype.deleteNotificationHub = function (hubPath, callback)
   this._deleteResource(hubPath, callback);
 };
 
-module.exports = ServiceBusService;</code></pre>
+module.exports = ServiceBusService;
+</code></pre>
         </article>
     </section>
 
@@ -1215,7 +1222,7 @@ module.exports = ServiceBusService;</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Sep 07 2016 23:44:31 GMT-0700 (PDT) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:58 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

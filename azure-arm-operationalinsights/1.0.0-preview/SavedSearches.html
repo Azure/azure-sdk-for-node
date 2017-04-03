@@ -1,0 +1,4039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SavedSearches - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="DataSources.html">DataSources</a><ul class='methods'><li data-type='method'><a href="DataSources.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="DataSources.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="DataSources.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#get">get</a></li><li data-type='method'><a href="DataSources.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="DataSources.html#listByWorkspaceNext">listByWorkspaceNext</a></li><li data-type='method'><a href="DataSources.html#listByWorkspaceNextWithHttpOperationResponse">listByWorkspaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="LinkedServices.html">LinkedServices</a><ul class='methods'><li data-type='method'><a href="LinkedServices.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="LinkedServices.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="LinkedServices.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="LinkedServices.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="LinkedServices.html#get">get</a></li><li data-type='method'><a href="LinkedServices.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="LinkedServices.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="LinkedServices.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="OperationalInsightsManagementClient.html">OperationalInsightsManagementClient</a></li><li><a href="SavedSearches.html">SavedSearches</a><ul class='methods'><li data-type='method'><a href="SavedSearches.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="SavedSearches.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="SavedSearches.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#get">get</a></li><li data-type='method'><a href="SavedSearches.html#getResults">getResults</a></li><li data-type='method'><a href="SavedSearches.html#getResultsWithHttpOperationResponse">getResultsWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="SavedSearches.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="SavedSearches.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="StorageInsights.html">StorageInsights</a><ul class='methods'><li data-type='method'><a href="StorageInsights.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="StorageInsights.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="StorageInsights.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#get">get</a></li><li data-type='method'><a href="StorageInsights.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspace">listByWorkspace</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspaceNext">listByWorkspaceNext</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspaceNextWithHttpOperationResponse">listByWorkspaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="StorageInsights.html#listByWorkspaceWithHttpOperationResponse">listByWorkspaceWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520list%2520linked%2520service%2520operation%2520response..html">The list linked service operation response.</a></li><li><a href="The%2520list%2520workspace%2520managmement%2520groups%2520operation%2520response..html">The list workspace managmement groups operation response.</a></li><li><a href="The%2520list%2520workspace%2520usages%2520operation%2520response..html">The list workspace usages operation response.</a></li><li><a href="The%2520list%2520workspaces%2520operation%2520response..html">The list workspaces operation response.</a></li><li><a href="Workspaces.html">Workspaces</a><ul class='methods'><li data-type='method'><a href="Workspaces.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Workspaces.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#beginGetSearchResults">beginGetSearchResults</a></li><li data-type='method'><a href="Workspaces.html#beginGetSearchResultsWithHttpOperationResponse">beginGetSearchResultsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Workspaces.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Workspaces.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#disableIntelligencePack">disableIntelligencePack</a></li><li data-type='method'><a href="Workspaces.html#disableIntelligencePackWithHttpOperationResponse">disableIntelligencePackWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#enableIntelligencePack">enableIntelligencePack</a></li><li data-type='method'><a href="Workspaces.html#enableIntelligencePackWithHttpOperationResponse">enableIntelligencePackWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#get">get</a></li><li data-type='method'><a href="Workspaces.html#getSchema">getSchema</a></li><li data-type='method'><a href="Workspaces.html#getSchemaWithHttpOperationResponse">getSchemaWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#getSearchResults">getSearchResults</a></li><li data-type='method'><a href="Workspaces.html#getSearchResultsWithHttpOperationResponse">getSearchResultsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#getSharedKeys">getSharedKeys</a></li><li data-type='method'><a href="Workspaces.html#getSharedKeysWithHttpOperationResponse">getSharedKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#list">list</a></li><li data-type='method'><a href="Workspaces.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Workspaces.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listIntelligencePacks">listIntelligencePacks</a></li><li data-type='method'><a href="Workspaces.html#listIntelligencePacksWithHttpOperationResponse">listIntelligencePacksWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listLinkTargets">listLinkTargets</a></li><li data-type='method'><a href="Workspaces.html#listLinkTargetsWithHttpOperationResponse">listLinkTargetsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listManagementGroups">listManagementGroups</a></li><li data-type='method'><a href="Workspaces.html#listManagementGroupsWithHttpOperationResponse">listManagementGroupsWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listUsages">listUsages</a></li><li data-type='method'><a href="Workspaces.html#listUsagesWithHttpOperationResponse">listUsagesWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Workspaces.html#updateSearchResults">updateSearchResults</a></li><li data-type='method'><a href="Workspaces.html#updateSearchResultsWithHttpOperationResponse">updateSearchResultsWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginGetSearchResults">_beginGetSearchResults</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_disableIntelligencePack">_disableIntelligencePack</a></li><li><a href="global.html#_enableIntelligencePack">_enableIntelligencePack</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getResults">_getResults</a></li><li><a href="global.html#_getSchema">_getSchema</a></li><li><a href="global.html#_getSearchResults">_getSearchResults</a></li><li><a href="global.html#_getSharedKeys">_getSharedKeys</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByWorkspace">_listByWorkspace</a></li><li><a href="global.html#_listByWorkspaceNext">_listByWorkspaceNext</a></li><li><a href="global.html#_listIntelligencePacks">_listIntelligencePacks</a></li><li><a href="global.html#_listLinkTargets">_listLinkTargets</a></li><li><a href="global.html#_listManagementGroups">_listManagementGroups</a></li><li><a href="global.html#_listUsages">_listUsages</a></li><li><a href="global.html#_updateSearchResults">_updateSearchResults</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#end">end</a></li><li><a href="global.html#eTag">eTag</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#localizedValue">localizedValue</a></li><li><a href="global.html#location">location</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#numberOfDocuments">numberOfDocuments</a></li><li><a href="global.html#odataNextLink">odataNextLink</a></li><li><a href="global.html#order">order</a></li><li><a href="global.html#ownerType">ownerType</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#quotaPeriod">quotaPeriod</a></li><li><a href="global.html#resourceId">resourceId</a></li><li><a href="global.html#secondarySharedKey">secondarySharedKey</a></li><li><a href="global.html#sku">sku</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#version">version</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">SavedSearches</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        SavedSearches
+        </h2>
+        
+            <div class="class-description"><p>SavedSearches<br><strong>NOTE</strong>: An instance of this class is automatically created for an<br>instance of the OperationalInsightsManagementClient.<br>Initializes a new instance of the SavedSearches class.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="SavedSearches"><span class="type-signature"></span>new SavedSearches<span class="signature">(client)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="OperationalInsightsManagementClient.html">OperationalInsightsManagementClient</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Reference to the service client.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line860">line 860</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="createOrUpdate"><span class="type-signature"></span>createOrUpdate<span class="signature">(resourceGroupName, workspaceName, savedSearchName, parameters, options<span class="signature-attributes">opt</span>, optionalCallback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function|Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates or updates a saved search for a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The id of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The parameters required to save a search.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>etag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The etag of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>category</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The category of the saved search. This<br>helps the user to find a saved search faster.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>displayName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Saved search display name.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The query expression for the saved search.<br>Please see<br>https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference<br>for reference.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The version number of the query lanuage.<br>Only verion 1 is allowed here.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The tags attached to the saved search.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optionalCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional callback.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1071">line 1071</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>If a callback was passed as the last parameter<br>then it returns the callback else returns a Promise.</p>
+<p>{Promise} A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+|
+
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="createOrUpdateWithHttpOperationResponse"><span class="type-signature"></span>createOrUpdateWithHttpOperationResponse<span class="signature">(resourceGroupName, workspaceName, savedSearchName, parameters, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates or updates a saved search for a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The id of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>parameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The parameters required to save a search.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>etag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The etag of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>category</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The category of the saved search. This<br>helps the user to find a saved search faster.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>displayName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Saved search display name.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>query</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The query expression for the saved search.<br>Please see<br>https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-search-reference<br>for reference.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The version number of the query lanuage.<br>Only verion 1 is allowed here.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The tags attached to the saved search.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1001">line 1001</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deleteMethod"><span class="type-signature"></span>deleteMethod<span class="signature">(resourceGroupName, workspaceName, savedSearchName, options<span class="signature-attributes">opt</span>, optionalCallback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function|Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Deletes the specified saved search in a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optionalCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional callback.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line941">line 941</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>If a callback was passed as the last parameter<br>then it returns the callback else returns a Promise.</p>
+<p>{Promise} A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+|
+
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="deleteMethodWithHttpOperationResponse"><span class="type-signature"></span>deleteMethodWithHttpOperationResponse<span class="signature">(resourceGroupName, workspaceName, savedSearchName, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Deletes the specified saved search in a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line891">line 891</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(resourceGroupName, workspaceName, savedSearchName, options<span class="signature-attributes">opt</span>, optionalCallback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function|Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets the specified saved search for a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The id of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optionalCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional callback.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1163">line 1163</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>If a callback was passed as the last parameter<br>then it returns the callback else returns a Promise.</p>
+<p>{Promise} A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+|
+
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getResults"><span class="type-signature"></span>getResults<span class="signature">(resourceGroupName, workspaceName, savedSearchName, options<span class="signature-attributes">opt</span>, optionalCallback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function|Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets the results from a saved search for a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optionalCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional callback.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1344">line 1344</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>If a callback was passed as the last parameter<br>then it returns the callback else returns a Promise.</p>
+<p>{Promise} A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+|
+
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getResultsWithHttpOperationResponse"><span class="type-signature"></span>getResultsWithHttpOperationResponse<span class="signature">(resourceGroupName, workspaceName, savedSearchName, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets the results from a saved search for a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1293">line 1293</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getWithHttpOperationResponse"><span class="type-signature"></span>getWithHttpOperationResponse<span class="signature">(resourceGroupName, workspaceName, savedSearchName, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets the specified saved search for a given workspace.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>savedSearchName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The id of the saved search.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1112">line 1112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="listByWorkspace"><span class="type-signature"></span>listByWorkspace<span class="signature">(resourceGroupName, workspaceName, options<span class="signature-attributes">opt</span>, optionalCallback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function|Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets the saved searches for a given Log Analytics Workspace</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>optionalCallback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The optional callback.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1252">line 1252</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>If a callback was passed as the last parameter<br>then it returns the callback else returns a Promise.</p>
+<p>{Promise} A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+|
+
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="listByWorkspaceWithHttpOperationResponse"><span class="type-signature"></span>listByWorkspaceWithHttpOperationResponse<span class="signature">(resourceGroupName, workspaceName, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets the saved searches for a given Log Analytics Workspace</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>resourceGroupName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The name of the resource group to get. The<br>name is case insensitive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>workspaceName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Log Analytics workspace name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Optional Parameters.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>customHeaders</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Headers that will be added to the<br>request</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="operations_savedSearches.js.html">operations/savedSearches.js</a>, <a href="operations_savedSearches.js.html#line1202">line 1202</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A promise is returned</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:43 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

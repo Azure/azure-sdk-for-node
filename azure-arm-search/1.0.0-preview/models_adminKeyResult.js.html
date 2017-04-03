@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/adminKeyResult.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AdminKeys.html">AdminKeys</a><ul class='methods'><li data-type='method'><a href="AdminKeys.html#get">get</a></li><li data-type='method'><a href="AdminKeys.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="AdminKeys.html#regenerate">regenerate</a></li><li data-type='method'><a href="AdminKeys.html#regenerateWithHttpOperationResponse">regenerateWithHttpOperationResponse</a></li></ul></li><li><a href="QueryKeys.html">QueryKeys</a><ul class='methods'><li data-type='method'><a href="QueryKeys.html#create">create</a></li><li data-type='method'><a href="QueryKeys.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="QueryKeys.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="QueryKeys.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="QueryKeys.html#listBySearchService">listBySearchService</a></li><li data-type='method'><a href="QueryKeys.html#listBySearchServiceWithHttpOperationResponse">listBySearchServiceWithHttpOperationResponse</a></li></ul></li><li><a href="Response%2520containing%2520a%2520list%2520of%2520Azure%2520Search%2520services..html">Response containing a list of Azure Search services.</a></li><li><a href="Response%2520containing%2520the%2520query%2520API%2520keys%2520for%2520a%2520given%2520Azure%2520Search%2520service..html">Response containing the query API keys for a given Azure Search service.</a></li><li><a href="SearchManagementClient.html">SearchManagementClient</a></li><li><a href="Services.html">Services</a><ul class='methods'><li data-type='method'><a href="Services.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="Services.html#checkNameAvailabilityWithHttpOperationResponse">checkNameAvailabilityWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Services.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Services.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#get">get</a></li><li data-type='method'><a href="Services.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Services.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_checkNameAvailability">_checkNameAvailability</a></li><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listBySearchService">_listBySearchService</a></li><li><a href="global.html#_regenerate">_regenerate</a></li><li><a href="global.html#clientRequestId">clientRequestId</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#secondaryKey">secondaryKey</a></li><li><a href="global.html#tags">tags</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/adminKeyResult.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the AdminKeyResult class.
+ * @constructor
+ * Response containing the primary and secondary admin API keys for a given
+ * Azure Search service.
+ *
+ * @member {string} [primaryKey] The primary admin API key of the Search
+ * service.
+ *
+ * @member {string} [secondaryKey] The secondary admin API key of the Search
+ * service.
+ *
+ */
+class AdminKeyResult {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of AdminKeyResult
+   *
+   * @returns {object} metadata of AdminKeyResult
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'AdminKeyResult',
+      type: {
+        name: 'Composite',
+        className: 'AdminKeyResult',
+        modelProperties: {
+          primaryKey: {
+            required: false,
+            readOnly: true,
+            serializedName: 'primaryKey',
+            type: {
+              name: 'String'
+            }
+          },
+          secondaryKey: {
+            required: false,
+            readOnly: true,
+            serializedName: 'secondaryKey',
+            type: {
+              name: 'String'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = AdminKeyResult;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:56 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

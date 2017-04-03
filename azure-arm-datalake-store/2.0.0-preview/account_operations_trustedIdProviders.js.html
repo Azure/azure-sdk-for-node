@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>account/operations/trustedIdProviders.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520access%2520is%2520denied.%2520Thrown%2520when%2520a%250A401%2520error%2520response%2520code%2520is%2520returned%2520(Unauthorized)..html">A WebHDFS exception thrown indicating that access is denied. Thrown when a
+401 error response code is returned (Unauthorized).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520access%2520is%2520denied%2520due%2520to%250Ainsufficient%2520permissions.%2520Thrown%2520when%2520a%2520403%2520error%2520response%2520code%2520is%2520returned%250A(forbidden)..html">A WebHDFS exception thrown indicating that access is denied due to
+insufficient permissions. Thrown when a 403 error response code is returned
+(forbidden).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520one%2520more%2520arguments%2520is%2520incorrect.%250AThrown%2520when%2520a%2520400%2520error%2520response%2520code%2520is%2520returned%2520(bad%2520request)..html">A WebHDFS exception thrown indicating that one more arguments is incorrect.
+Thrown when a 400 error response code is returned (bad request).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520the%2520request%2520is%2520being%2520throttled.%250AReducing%2520the%2520number%2520of%2520requests%2520or%2520request%2520size%2520helps%2520to%2520mitigate%2520this%250Aerror..html">A WebHDFS exception thrown indicating that the request is being throttled.
+Reducing the number of requests or request size helps to mitigate this
+error.</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520that%2520the%2520requested%2520operation%2520is%2520not%250Asupported.%2520Thrown%2520when%2520a%2520400%2520error%2520response%2520code%2520is%2520returned%2520(bad%2520request)..html">A WebHDFS exception thrown indicating that the requested operation is not
+supported. Thrown when a 400 error response code is returned (bad request).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520the%2520append%2520or%2520read%2520is%2520from%2520a%2520bad%250Aoffset.%2520Thrown%2520when%2520a%2520400%2520error%2520response%2520code%2520is%2520returned%2520for%2520append%2520and%250Aopen%2520operations%2520(Bad%2520request)..html">A WebHDFS exception thrown indicating the append or read is from a bad
+offset. Thrown when a 400 error response code is returned for append and
+open operations (Bad request).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520the%2520file%2520or%2520folder%2520already%2520exists.%250AThrown%2520when%2520a%2520403%2520error%2520response%2520code%2520is%2520returned%2520(forbidden)..html">A WebHDFS exception thrown indicating the file or folder already exists.
+Thrown when a 403 error response code is returned (forbidden).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520the%2520file%2520or%2520folder%2520could%2520not%2520be%2520found.%250AThrown%2520when%2520a%2520404%2520error%2520response%2520code%2520is%2520returned%2520(not%2520found)..html">A WebHDFS exception thrown indicating the file or folder could not be found.
+Thrown when a 404 error response code is returned (not found).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520indicating%2520there%2520was%2520an%2520IO%2520(read%2520or%2520write)%2520error.%250AThrown%2520when%2520a%2520403%2520error%2520response%2520code%2520is%2520returned%2520(forbidden)..html">A WebHDFS exception thrown indicating there was an IO (read or write) error.
+Thrown when a 403 error response code is returned (forbidden).</a></li><li><a href="A%2520WebHDFS%2520exception%2520thrown%2520when%2520an%2520unexpected%2520error%2520occurs%2520during%2520an%250Aoperation.%2520Thrown%2520when%2520a%2520500%2520error%2520response%2520code%2520is%2520returned%2520(Internal%250Aserver%2520error)..html">A WebHDFS exception thrown when an unexpected error occurs during an
+operation. Thrown when a 500 error response code is returned (Internal
+server error).</a></li><li><a href="Account.html">Account</a><ul class='methods'><li data-type='method'><a href="Account.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Account.html#beginCreateWithHttpOperationResponse">beginCreateWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Account.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#beginUpdate">beginUpdate</a></li><li data-type='method'><a href="Account.html#beginUpdateWithHttpOperationResponse">beginUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#create">create</a></li><li data-type='method'><a href="Account.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Account.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#enableKeyVault">enableKeyVault</a></li><li data-type='method'><a href="Account.html#enableKeyVaultWithHttpOperationResponse">enableKeyVaultWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#get">get</a></li><li data-type='method'><a href="Account.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#list">list</a></li><li data-type='method'><a href="Account.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Account.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Account.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#listNext">listNext</a></li><li data-type='method'><a href="Account.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Account.html#update">update</a></li><li data-type='method'><a href="Account.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="DataLakeStoreAccountManagementClient.html">DataLakeStoreAccountManagementClient</a></li><li><a href="DataLakeStoreFileSystemManagementClient.html">DataLakeStoreFileSystemManagementClient</a></li><li><a href="FileSystem.html">FileSystem</a><ul class='methods'><li data-type='method'><a href="FileSystem.html#append">append</a></li><li data-type='method'><a href="FileSystem.html#appendWithHttpOperationResponse">appendWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#checkAccess">checkAccess</a></li><li data-type='method'><a href="FileSystem.html#checkAccessWithHttpOperationResponse">checkAccessWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#concat">concat</a></li><li data-type='method'><a href="FileSystem.html#concatWithHttpOperationResponse">concatWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#concurrentAppend">concurrentAppend</a></li><li data-type='method'><a href="FileSystem.html#concurrentAppendWithHttpOperationResponse">concurrentAppendWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#create">create</a></li><li data-type='method'><a href="FileSystem.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="FileSystem.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#getAclStatus">getAclStatus</a></li><li data-type='method'><a href="FileSystem.html#getAclStatusWithHttpOperationResponse">getAclStatusWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#getContentSummary">getContentSummary</a></li><li data-type='method'><a href="FileSystem.html#getContentSummaryWithHttpOperationResponse">getContentSummaryWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#getFileStatus">getFileStatus</a></li><li data-type='method'><a href="FileSystem.html#getFileStatusWithHttpOperationResponse">getFileStatusWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#listFileStatus">listFileStatus</a></li><li data-type='method'><a href="FileSystem.html#listFileStatusWithHttpOperationResponse">listFileStatusWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#mkdirs">mkdirs</a></li><li data-type='method'><a href="FileSystem.html#mkdirsWithHttpOperationResponse">mkdirsWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#modifyAclEntries">modifyAclEntries</a></li><li data-type='method'><a href="FileSystem.html#modifyAclEntriesWithHttpOperationResponse">modifyAclEntriesWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#msConcat">msConcat</a></li><li data-type='method'><a href="FileSystem.html#msConcatWithHttpOperationResponse">msConcatWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#open">open</a></li><li data-type='method'><a href="FileSystem.html#openWithHttpOperationResponse">openWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#removeAcl">removeAcl</a></li><li data-type='method'><a href="FileSystem.html#removeAclEntries">removeAclEntries</a></li><li data-type='method'><a href="FileSystem.html#removeAclEntriesWithHttpOperationResponse">removeAclEntriesWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#removeAclWithHttpOperationResponse">removeAclWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#removeDefaultAcl">removeDefaultAcl</a></li><li data-type='method'><a href="FileSystem.html#removeDefaultAclWithHttpOperationResponse">removeDefaultAclWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#rename">rename</a></li><li data-type='method'><a href="FileSystem.html#renameWithHttpOperationResponse">renameWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#setAcl">setAcl</a></li><li data-type='method'><a href="FileSystem.html#setAclWithHttpOperationResponse">setAclWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#setFileExpiry">setFileExpiry</a></li><li data-type='method'><a href="FileSystem.html#setFileExpiryWithHttpOperationResponse">setFileExpiryWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#setOwner">setOwner</a></li><li data-type='method'><a href="FileSystem.html#setOwnerWithHttpOperationResponse">setOwnerWithHttpOperationResponse</a></li><li data-type='method'><a href="FileSystem.html#setPermission">setPermission</a></li><li data-type='method'><a href="FileSystem.html#setPermissionWithHttpOperationResponse">setPermissionWithHttpOperationResponse</a></li></ul></li><li><a href="FirewallRules.html">FirewallRules</a><ul class='methods'><li data-type='method'><a href="FirewallRules.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="FirewallRules.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="FirewallRules.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#get">get</a></li><li data-type='method'><a href="FirewallRules.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#listByAccount">listByAccount</a></li><li data-type='method'><a href="FirewallRules.html#listByAccountNext">listByAccountNext</a></li><li data-type='method'><a href="FirewallRules.html#listByAccountNextWithHttpOperationResponse">listByAccountNextWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#listByAccountWithHttpOperationResponse">listByAccountWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#update">update</a></li><li data-type='method'><a href="FirewallRules.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="TrustedIdProviders.html">TrustedIdProviders</a><ul class='methods'><li data-type='method'><a href="TrustedIdProviders.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="TrustedIdProviders.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="TrustedIdProviders.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="TrustedIdProviders.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="TrustedIdProviders.html#get">get</a></li><li data-type='method'><a href="TrustedIdProviders.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="TrustedIdProviders.html#listByAccount">listByAccount</a></li><li data-type='method'><a href="TrustedIdProviders.html#listByAccountNext">listByAccountNext</a></li><li data-type='method'><a href="TrustedIdProviders.html#listByAccountNextWithHttpOperationResponse">listByAccountNextWithHttpOperationResponse</a></li><li data-type='method'><a href="TrustedIdProviders.html#listByAccountWithHttpOperationResponse">listByAccountWithHttpOperationResponse</a></li><li data-type='method'><a href="TrustedIdProviders.html#update">update</a></li><li data-type='method'><a href="TrustedIdProviders.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_append">_append</a></li><li><a href="global.html#_beginCreate">_beginCreate</a></li><li><a href="global.html#_beginDeleteMethod">_beginDeleteMethod</a></li><li><a href="global.html#_beginUpdate">_beginUpdate</a></li><li><a href="global.html#_checkAccess">_checkAccess</a></li><li><a href="global.html#_concat">_concat</a></li><li><a href="global.html#_concurrentAppend">_concurrentAppend</a></li><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_enableKeyVault">_enableKeyVault</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getAclStatus">_getAclStatus</a></li><li><a href="global.html#_getContentSummary">_getContentSummary</a></li><li><a href="global.html#_getFileStatus">_getFileStatus</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByAccount">_listByAccount</a></li><li><a href="global.html#_listByAccountNext">_listByAccountNext</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listFileStatus">_listFileStatus</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_mkdirs">_mkdirs</a></li><li><a href="global.html#_modifyAclEntries">_modifyAclEntries</a></li><li><a href="global.html#_msConcat">_msConcat</a></li><li><a href="global.html#_open">_open</a></li><li><a href="global.html#_removeAcl">_removeAcl</a></li><li><a href="global.html#_removeAclEntries">_removeAclEntries</a></li><li><a href="global.html#_removeDefaultAcl">_removeDefaultAcl</a></li><li><a href="global.html#_rename">_rename</a></li><li><a href="global.html#_setAcl">_setAcl</a></li><li><a href="global.html#_setFileExpiry">_setFileExpiry</a></li><li><a href="global.html#_setOwner">_setOwner</a></li><li><a href="global.html#_setPermission">_setPermission</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#aclBit">aclBit</a></li><li><a href="global.html#encryptionKeyVersion">encryptionKeyVersion</a></li><li><a href="global.html#endIpAddress">endIpAddress</a></li><li><a href="global.html#exception">exception</a></li><li><a href="global.html#fileStatus">fileStatus</a></li><li><a href="global.html#firewallAllowAzureIps">firewallAllowAzureIps</a></li><li><a href="global.html#idProvider">idProvider</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#operationResult">operationResult</a></li><li><a href="global.html#spaceConsumed">spaceConsumed</a></li><li><a href="global.html#stickyBit">stickyBit</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#target">target</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#type">type</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">account/operations/trustedIdProviders.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const msRest = require('ms-rest');
+const msRestAzure = require('ms-rest-azure');
+const WebResource = msRest.WebResource;
+
+/**
+ * Creates or updates the specified trusted identity provider. During update,
+ * the trusted identity provider with the specified name will be replaced with
+ * this new provider
+ *
+ * @param {string} resourceGroupName The name of the Azure resource group that
+ * contains the Data Lake Store account.
+ *
+ * @param {string} accountName The name of the Data Lake Store account to add
+ * or replace the trusted identity provider.
+ *
+ * @param {string} trustedIdProviderName The name of the trusted identity
+ * provider. This is used for differentiation of providers in the account.
+ *
+ * @param {object} parameters Parameters supplied to create or replace the
+ * trusted identity provider.
+ *
+ * @param {string} parameters.idProvider The URL of this trusted identity
+ * provider
+ *
+ * @param {string} [parameters.name] Resource name
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link TrustedIdProvider} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _createOrUpdate(resourceGroupName, accountName, trustedIdProviderName, parameters, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (trustedIdProviderName === null || trustedIdProviderName === undefined || typeof trustedIdProviderName.valueOf() !== 'string') {
+      throw new Error('trustedIdProviderName cannot be null or undefined and it must be of type string.');
+    }
+    if (parameters === null || parameters === undefined) {
+      throw new Error('parameters cannot be null or undefined.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{accountName}', encodeURIComponent(accountName));
+  requestUrl = requestUrl.replace('{trustedIdProviderName}', encodeURIComponent(trustedIdProviderName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'PUT';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  let requestContent = null;
+  let requestModel = null;
+  try {
+    if (parameters !== null &amp;&amp; parameters !== undefined) {
+      let requestModelMapper = new client.models['TrustedIdProvider']().mapper();
+      requestModel = client.serialize(requestModelMapper, parameters, 'parameters');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    let serializationError = new Error(`Error "${error.message}" occurred in serializing the ` +
+        `payload - ${JSON.stringify(parameters, null, 2)}.`);
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['TrustedIdProvider']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Updates the specified trusted identity provider.
+ *
+ * @param {string} resourceGroupName The name of the Azure resource group that
+ * contains the Data Lake Store account.
+ *
+ * @param {string} accountName The name of the Data Lake Store account to which
+ * to update the trusted identity provider.
+ *
+ * @param {string} trustedIdProviderName The name of the trusted identity
+ * provider. This is used for differentiation of providers in the account.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.parameters] Parameters supplied to update the
+ * trusted identity provider.
+ *
+ * @param {string} [options.parameters.idProvider] The URL of this trusted
+ * identity provider
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link TrustedIdProvider} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _update(resourceGroupName, accountName, trustedIdProviderName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  let parameters = (options &amp;&amp; options.parameters !== undefined) ? options.parameters : undefined;
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (trustedIdProviderName === null || trustedIdProviderName === undefined || typeof trustedIdProviderName.valueOf() !== 'string') {
+      throw new Error('trustedIdProviderName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{accountName}', encodeURIComponent(accountName));
+  requestUrl = requestUrl.replace('{trustedIdProviderName}', encodeURIComponent(trustedIdProviderName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'PATCH';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  // Serialize Request
+  let requestContent = null;
+  let requestModel = null;
+  try {
+    if (parameters !== null &amp;&amp; parameters !== undefined) {
+      let requestModelMapper = new client.models['UpdateTrustedIdProviderParameters']().mapper();
+      requestModel = client.serialize(requestModelMapper, parameters, 'parameters');
+      requestContent = JSON.stringify(requestModel);
+    }
+  } catch (error) {
+    let serializationError = new Error(`Error "${error.message}" occurred in serializing the ` +
+        `payload - ${JSON.stringify(parameters, null, 2)}.`);
+    return callback(serializationError);
+  }
+  httpRequest.body = requestContent;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['TrustedIdProvider']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Deletes the specified trusted identity provider from the specified Data Lake
+ * Store account
+ *
+ * @param {string} resourceGroupName The name of the Azure resource group that
+ * contains the Data Lake Store account.
+ *
+ * @param {string} accountName The name of the Data Lake Store account from
+ * which to delete the trusted identity provider.
+ *
+ * @param {string} trustedIdProviderName The name of the trusted identity
+ * provider to delete.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {null} [result]   - The deserialized result object if an error did not occur.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _deleteMethod(resourceGroupName, accountName, trustedIdProviderName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (trustedIdProviderName === null || trustedIdProviderName === undefined || typeof trustedIdProviderName.valueOf() !== 'string') {
+      throw new Error('trustedIdProviderName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{accountName}', encodeURIComponent(accountName));
+  requestUrl = requestUrl.replace('{trustedIdProviderName}', encodeURIComponent(trustedIdProviderName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'DELETE';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200 &amp;&amp; statusCode !== 204) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Gets the specified Data Lake Store trusted identity provider.
+ *
+ * @param {string} resourceGroupName The name of the Azure resource group that
+ * contains the Data Lake Store account.
+ *
+ * @param {string} accountName The name of the Data Lake Store account from
+ * which to get the trusted identity provider.
+ *
+ * @param {string} trustedIdProviderName The name of the trusted identity
+ * provider to retrieve.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link TrustedIdProvider} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _get(resourceGroupName, accountName, trustedIdProviderName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (trustedIdProviderName === null || trustedIdProviderName === undefined || typeof trustedIdProviderName.valueOf() !== 'string') {
+      throw new Error('trustedIdProviderName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{accountName}', encodeURIComponent(accountName));
+  requestUrl = requestUrl.replace('{trustedIdProviderName}', encodeURIComponent(trustedIdProviderName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['TrustedIdProvider']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Lists the Data Lake Store trusted identity providers within the specified
+ * Data Lake Store account.
+ *
+ * @param {string} resourceGroupName The name of the Azure resource group that
+ * contains the Data Lake Store account.
+ *
+ * @param {string} accountName The name of the Data Lake Store account from
+ * which to get the trusted identity providers.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link DataLakeStoreTrustedIdProviderListResult}
+ *                      for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listByAccount(resourceGroupName, accountName, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (resourceGroupName === null || resourceGroupName === undefined || typeof resourceGroupName.valueOf() !== 'string') {
+      throw new Error('resourceGroupName cannot be null or undefined and it must be of type string.');
+    }
+    if (accountName === null || accountName === undefined || typeof accountName.valueOf() !== 'string') {
+      throw new Error('accountName cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.apiVersion === null || this.client.apiVersion === undefined || typeof this.client.apiVersion.valueOf() !== 'string') {
+      throw new Error('this.client.apiVersion cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.subscriptionId === null || this.client.subscriptionId === undefined || typeof this.client.subscriptionId.valueOf() !== 'string') {
+      throw new Error('this.client.subscriptionId cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.client.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders';
+  requestUrl = requestUrl.replace('{resourceGroupName}', encodeURIComponent(resourceGroupName));
+  requestUrl = requestUrl.replace('{accountName}', encodeURIComponent(accountName));
+  requestUrl = requestUrl.replace('{subscriptionId}', encodeURIComponent(this.client.subscriptionId));
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(this.client.apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['DataLakeStoreTrustedIdProviderListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * Lists the Data Lake Store trusted identity providers within the specified
+ * Data Lake Store account.
+ *
+ * @param {string} nextPageLink The NextLink from the previous successful call
+ * to List operation.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link DataLakeStoreTrustedIdProviderListResult}
+ *                      for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listByAccountNext(nextPageLink, options, callback) {
+   /* jshint validthis: true */
+  let client = this.client;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  // Validate
+  try {
+    if (nextPageLink === null || nextPageLink === undefined || typeof nextPageLink.valueOf() !== 'string') {
+      throw new Error('nextPageLink cannot be null or undefined and it must be of type string.');
+    }
+    if (this.client.acceptLanguage !== null &amp;&amp; this.client.acceptLanguage !== undefined &amp;&amp; typeof this.client.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.client.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let requestUrl = '{nextLink}';
+  requestUrl = requestUrl.replace('{nextLink}', nextPageLink);
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.client.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.client.acceptLanguage !== undefined &amp;&amp; this.client.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.client.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['DataLakeStoreTrustedIdProviderListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * @class
+ * TrustedIdProviders
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeStoreAccountManagementClient.
+ * Initializes a new instance of the TrustedIdProviders class.
+ * @constructor
+ *
+ * @param {DataLakeStoreAccountManagementClient} client Reference to the service client.
+ */
+class TrustedIdProviders {
+  constructor(client) {
+    this.client = client;
+    this._createOrUpdate = _createOrUpdate;
+    this._update = _update;
+    this._deleteMethod = _deleteMethod;
+    this._get = _get;
+    this._listByAccount = _listByAccount;
+    this._listByAccountNext = _listByAccountNext;
+  }
+
+  /**
+   * Creates or updates the specified trusted identity provider. During update,
+   * the trusted identity provider with the specified name will be replaced with
+   * this new provider
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account to add
+   * or replace the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider. This is used for differentiation of providers in the account.
+   *
+   * @param {object} parameters Parameters supplied to create or replace the
+   * trusted identity provider.
+   *
+   * @param {string} parameters.idProvider The URL of this trusted identity
+   * provider
+   *
+   * @param {string} [parameters.name] Resource name
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;TrustedIdProvider>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  createOrUpdateWithHttpOperationResponse(resourceGroupName, accountName, trustedIdProviderName, parameters, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._createOrUpdate(resourceGroupName, accountName, trustedIdProviderName, parameters, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Creates or updates the specified trusted identity provider. During update,
+   * the trusted identity provider with the specified name will be replaced with
+   * this new provider
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account to add
+   * or replace the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider. This is used for differentiation of providers in the account.
+   *
+   * @param {object} parameters Parameters supplied to create or replace the
+   * trusted identity provider.
+   *
+   * @param {string} parameters.idProvider The URL of this trusted identity
+   * provider
+   *
+   * @param {string} [parameters.name] Resource name
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {TrustedIdProvider} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TrustedIdProvider} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  createOrUpdate(resourceGroupName, accountName, trustedIdProviderName, parameters, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._createOrUpdate(resourceGroupName, accountName, trustedIdProviderName, parameters, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._createOrUpdate(resourceGroupName, accountName, trustedIdProviderName, parameters, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Updates the specified trusted identity provider.
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account to which
+   * to update the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider. This is used for differentiation of providers in the account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.parameters] Parameters supplied to update the
+   * trusted identity provider.
+   *
+   * @param {string} [options.parameters.idProvider] The URL of this trusted
+   * identity provider
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;TrustedIdProvider>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  updateWithHttpOperationResponse(resourceGroupName, accountName, trustedIdProviderName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._update(resourceGroupName, accountName, trustedIdProviderName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Updates the specified trusted identity provider.
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account to which
+   * to update the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider. This is used for differentiation of providers in the account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.parameters] Parameters supplied to update the
+   * trusted identity provider.
+   *
+   * @param {string} [options.parameters.idProvider] The URL of this trusted
+   * identity provider
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {TrustedIdProvider} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TrustedIdProvider} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  update(resourceGroupName, accountName, trustedIdProviderName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._update(resourceGroupName, accountName, trustedIdProviderName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._update(resourceGroupName, accountName, trustedIdProviderName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Deletes the specified trusted identity provider from the specified Data Lake
+   * Store account
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account from
+   * which to delete the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider to delete.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;null>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  deleteMethodWithHttpOperationResponse(resourceGroupName, accountName, trustedIdProviderName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._deleteMethod(resourceGroupName, accountName, trustedIdProviderName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Deletes the specified trusted identity provider from the specified Data Lake
+   * Store account
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account from
+   * which to delete the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider to delete.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteMethod(resourceGroupName, accountName, trustedIdProviderName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._deleteMethod(resourceGroupName, accountName, trustedIdProviderName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._deleteMethod(resourceGroupName, accountName, trustedIdProviderName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Gets the specified Data Lake Store trusted identity provider.
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account from
+   * which to get the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider to retrieve.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;TrustedIdProvider>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  getWithHttpOperationResponse(resourceGroupName, accountName, trustedIdProviderName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._get(resourceGroupName, accountName, trustedIdProviderName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Gets the specified Data Lake Store trusted identity provider.
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account from
+   * which to get the trusted identity provider.
+   *
+   * @param {string} trustedIdProviderName The name of the trusted identity
+   * provider to retrieve.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {TrustedIdProvider} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link TrustedIdProvider} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  get(resourceGroupName, accountName, trustedIdProviderName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._get(resourceGroupName, accountName, trustedIdProviderName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._get(resourceGroupName, accountName, trustedIdProviderName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Lists the Data Lake Store trusted identity providers within the specified
+   * Data Lake Store account.
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account from
+   * which to get the trusted identity providers.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;DataLakeStoreTrustedIdProviderListResult>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listByAccountWithHttpOperationResponse(resourceGroupName, accountName, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listByAccount(resourceGroupName, accountName, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Lists the Data Lake Store trusted identity providers within the specified
+   * Data Lake Store account.
+   *
+   * @param {string} resourceGroupName The name of the Azure resource group that
+   * contains the Data Lake Store account.
+   *
+   * @param {string} accountName The name of the Data Lake Store account from
+   * which to get the trusted identity providers.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {DataLakeStoreTrustedIdProviderListResult} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DataLakeStoreTrustedIdProviderListResult}
+   *                      for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listByAccount(resourceGroupName, accountName, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listByAccount(resourceGroupName, accountName, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listByAccount(resourceGroupName, accountName, options, optionalCallback);
+    }
+  }
+
+  /**
+   * Lists the Data Lake Store trusted identity providers within the specified
+   * Data Lake Store account.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;DataLakeStoreTrustedIdProviderListResult>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listByAccountNextWithHttpOperationResponse(nextPageLink, options) {
+    let client = this.client;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listByAccountNext(nextPageLink, options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Lists the Data Lake Store trusted identity providers within the specified
+   * Data Lake Store account.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {DataLakeStoreTrustedIdProviderListResult} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DataLakeStoreTrustedIdProviderListResult}
+   *                      for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listByAccountNext(nextPageLink, options, optionalCallback) {
+    let client = this.client;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listByAccountNext(nextPageLink, options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listByAccountNext(nextPageLink, options, optionalCallback);
+    }
+  }
+
+}
+
+module.exports = TrustedIdProviders;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:09 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

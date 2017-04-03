@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/httpRequest.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="JobCollections.html">JobCollections</a><ul class='methods'><li data-type='method'><a href="JobCollections.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="JobCollections.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#beginDisable">beginDisable</a></li><li data-type='method'><a href="JobCollections.html#beginDisableWithHttpOperationResponse">beginDisableWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#beginEnable">beginEnable</a></li><li data-type='method'><a href="JobCollections.html#beginEnableWithHttpOperationResponse">beginEnableWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="JobCollections.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="JobCollections.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#disable">disable</a></li><li data-type='method'><a href="JobCollections.html#disableWithHttpOperationResponse">disableWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#enable">enable</a></li><li data-type='method'><a href="JobCollections.html#enableWithHttpOperationResponse">enableWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#get">get</a></li><li data-type='method'><a href="JobCollections.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="JobCollections.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="JobCollections.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#listBySubscription">listBySubscription</a></li><li data-type='method'><a href="JobCollections.html#listBySubscriptionNext">listBySubscriptionNext</a></li><li data-type='method'><a href="JobCollections.html#listBySubscriptionNextWithHttpOperationResponse">listBySubscriptionNextWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#listBySubscriptionWithHttpOperationResponse">listBySubscriptionWithHttpOperationResponse</a></li><li data-type='method'><a href="JobCollections.html#patch">patch</a></li><li data-type='method'><a href="JobCollections.html#patchWithHttpOperationResponse">patchWithHttpOperationResponse</a></li></ul></li><li><a href="Jobs.html">Jobs</a><ul class='methods'><li data-type='method'><a href="Jobs.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Jobs.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Jobs.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#get">get</a></li><li data-type='method'><a href="Jobs.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#list">list</a></li><li data-type='method'><a href="Jobs.html#listJobHistory">listJobHistory</a></li><li data-type='method'><a href="Jobs.html#listJobHistoryNext">listJobHistoryNext</a></li><li data-type='method'><a href="Jobs.html#listJobHistoryNextWithHttpOperationResponse">listJobHistoryNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listJobHistoryWithHttpOperationResponse">listJobHistoryWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listNext">listNext</a></li><li data-type='method'><a href="Jobs.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#patch">patch</a></li><li data-type='method'><a href="Jobs.html#patchWithHttpOperationResponse">patchWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#run">run</a></li><li data-type='method'><a href="Jobs.html#runWithHttpOperationResponse">runWithHttpOperationResponse</a></li></ul></li><li><a href="SchedulerManagementClient.html">SchedulerManagementClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginDeleteMethod">_beginDeleteMethod</a></li><li><a href="global.html#_beginDisable">_beginDisable</a></li><li><a href="global.html#_beginEnable">_beginEnable</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_disable">_disable</a></li><li><a href="global.html#_enable">_enable</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listBySubscription">_listBySubscription</a></li><li><a href="global.html#_listBySubscriptionNext">_listBySubscriptionNext</a></li><li><a href="global.html#_listJobHistory">_listJobHistory</a></li><li><a href="global.html#_listJobHistoryNext">_listJobHistoryNext</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_patch">_patch</a></li><li><a href="global.html#_run">_run</a></li><li><a href="global.html#certificateSubjectName">certificateSubjectName</a></li><li><a href="global.html#clientId">clientId</a></li><li><a href="global.html#headers">headers</a></li><li><a href="global.html#interval">interval</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#monthlyOccurrences">monthlyOccurrences</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextExecutionTime">nextExecutionTime</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#occurrence">occurrence</a></li><li><a href="global.html#password">password</a></li><li><a href="global.html#queueName">queueName</a></li><li><a href="global.html#repeatCount">repeatCount</a></li><li><a href="global.html#retryCount">retryCount</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#status">status</a></li><li><a href="global.html#topicPath">topicPath</a></li><li><a href="global.html#transportType">transportType</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#viaPartitionKey">viaPartitionKey</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/httpRequest.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the HttpRequest class.
+ * @constructor
+ * @member {object} [authentication] Gets or sets the authentication method of
+ * the request.
+ *
+ * @member {string} [authentication.type] Gets or sets the HTTP authentication
+ * type. Possible values include: 'NotSpecified', 'ClientCertificate',
+ * 'ActiveDirectoryOAuth', 'Basic'
+ *
+ * @member {string} [uri] Gets or sets the URI of the request.
+ *
+ * @member {string} [method] Gets or sets the method of the request.
+ *
+ * @member {string} [body] Gets or sets the request body.
+ *
+ * @member {object} [headers] Gets or sets the headers.
+ *
+ */
+class HttpRequest {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of HttpRequest
+   *
+   * @returns {object} metadata of HttpRequest
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'HttpRequest',
+      type: {
+        name: 'Composite',
+        className: 'HttpRequest',
+        modelProperties: {
+          authentication: {
+            required: false,
+            serializedName: 'authentication',
+            type: {
+              name: 'Composite',
+              className: 'HttpAuthentication'
+            }
+          },
+          uri: {
+            required: false,
+            serializedName: 'uri',
+            type: {
+              name: 'String'
+            }
+          },
+          method: {
+            required: false,
+            serializedName: 'method',
+            type: {
+              name: 'String'
+            }
+          },
+          body: {
+            required: false,
+            serializedName: 'body',
+            type: {
+              name: 'String'
+            }
+          },
+          headers: {
+            required: false,
+            serializedName: 'headers',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = HttpRequest;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:53 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

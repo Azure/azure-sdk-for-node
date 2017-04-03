@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/clusterUpdateParameters.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Clusters.html">Clusters</a><ul class='methods'><li data-type='method'><a href="Clusters.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Clusters.html#beginCreateWithHttpOperationResponse">beginCreateWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#beginUpdate">beginUpdate</a></li><li data-type='method'><a href="Clusters.html#beginUpdateWithHttpOperationResponse">beginUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#create">create</a></li><li data-type='method'><a href="Clusters.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Clusters.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#get">get</a></li><li data-type='method'><a href="Clusters.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#list">list</a></li><li data-type='method'><a href="Clusters.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Clusters.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Clusters.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#listNext">listNext</a></li><li data-type='method'><a href="Clusters.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Clusters.html#update">update</a></li><li data-type='method'><a href="Clusters.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="Operations.html">Operations</a><ul class='methods'><li data-type='method'><a href="Operations.html#list">list</a></li><li data-type='method'><a href="Operations.html#listNext">listNext</a></li><li data-type='method'><a href="Operations.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Operations.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ServiceFabricClient.html">ServiceFabricClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreate">_beginCreate</a></li><li><a href="global.html#_beginUpdate">_beginUpdate</a></li><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#applicationHealthPolicies">applicationHealthPolicies</a></li><li><a href="global.html#certificateIssuerThumbprint">certificateIssuerThumbprint</a></li><li><a href="global.html#certificateThumbprint">certificateThumbprint</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#endPort">endPort</a></li><li><a href="global.html#environment">environment</a></li><li><a href="global.html#maxPercentDeltaUnhealthyServices">maxPercentDeltaUnhealthyServices</a></li><li><a href="global.html#maxPercentUnhealthyServices">maxPercentUnhealthyServices</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#reverseProxyEndpointPort">reverseProxyEndpointPort</a></li><li><a href="global.html#serivceTypeDeltaHealthPolicies">serivceTypeDeltaHealthPolicies</a></li><li><a href="global.html#serivceTypeHealthPolicies">serivceTypeHealthPolicies</a></li><li><a href="global.html#tableEndpoint">tableEndpoint</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#value">value</a></li><li><a href="global.html#x509StoreName">x509StoreName</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/clusterUpdateParameters.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterUpdateParameters class.
+ * @constructor
+ * Cluster update request
+ *
+ * @member {string} [reliabilityLevel] Cluster reliability level. Possible
+ * values include: 'Invalid', 'Bronze', 'Silver', 'Gold', 'Platinum'
+ *
+ * @member {string} [upgradeMode] Cluster upgrade mode. Possible values
+ * include: 'Default', 'Automatic', 'Manual'
+ *
+ * @member {string} [clusterCodeVersion] The ServiceFabric code version, if set
+ * it, please make sure you have set upgradeMode to Manual, otherwise ,it will
+ * fail
+ *
+ * @member {object} [certificate] The cluster certificate settings, the new
+ * certificate should exist in Vmss or KeyVault,before you add it, it will
+ * override original value
+ *
+ * @member {string} [certificate.thumbprint] Primary certificate thumbprint
+ *
+ * @member {string} [certificate.thumbprintSecondary] Secondary certificate
+ * thumbprint
+ *
+ * @member {string} [certificate.x509StoreName] Certificate x509 store
+ * location. Possible values include: 'AddressBook', 'AuthRoot',
+ * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
+ * 'TrustedPublisher'
+ *
+ * @member {array} [clientCertificateThumbprints] The cluster client
+ * thumbprints, it will override existing collection
+ *
+ * @member {array} [fabricSettings] The new fabric settings for the cluster, Be
+ * noted, it will overwrite existing collection
+ *
+ * @member {object} [reverseProxyCertificate] Certificate for the reverse proxy
+ *
+ * @member {string} [reverseProxyCertificate.thumbprint] Primary certificate
+ * thumbprint
+ *
+ * @member {string} [reverseProxyCertificate.thumbprintSecondary] Secondary
+ * certificate thumbprint
+ *
+ * @member {string} [reverseProxyCertificate.x509StoreName] Certificate x509
+ * store location. Possible values include: 'AddressBook', 'AuthRoot',
+ * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
+ * 'TrustedPublisher'
+ *
+ * @member {array} [nodeTypes] The settings for NodeTypes, it will override
+ *
+ * @member {object} [tags] Cluster update parameters
+ *
+ */
+class ClusterUpdateParameters {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of ClusterUpdateParameters
+   *
+   * @returns {object} metadata of ClusterUpdateParameters
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'ClusterUpdateParameters',
+      type: {
+        name: 'Composite',
+        className: 'ClusterUpdateParameters',
+        modelProperties: {
+          reliabilityLevel: {
+            required: false,
+            serializedName: 'properties.reliabilityLevel',
+            type: {
+              name: 'String'
+            }
+          },
+          upgradeMode: {
+            required: false,
+            serializedName: 'properties.upgradeMode',
+            type: {
+              name: 'String'
+            }
+          },
+          clusterCodeVersion: {
+            required: false,
+            serializedName: 'properties.clusterCodeVersion',
+            type: {
+              name: 'String'
+            }
+          },
+          certificate: {
+            required: false,
+            serializedName: 'properties.certificate',
+            type: {
+              name: 'Composite',
+              className: 'CertificateDescription'
+            }
+          },
+          clientCertificateThumbprints: {
+            required: false,
+            serializedName: 'properties.clientCertificateThumbprints',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'ClientCertificateThumbprintElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'ClientCertificateThumbprint'
+                  }
+              }
+            }
+          },
+          fabricSettings: {
+            required: false,
+            serializedName: 'properties.fabricSettings',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'SettingsSectionDescriptionElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'SettingsSectionDescription'
+                  }
+              }
+            }
+          },
+          reverseProxyCertificate: {
+            required: false,
+            serializedName: 'properties.reverseProxyCertificate',
+            type: {
+              name: 'Composite',
+              className: 'CertificateDescription'
+            }
+          },
+          nodeTypes: {
+            required: false,
+            serializedName: 'properties.nodeTypes',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'NodeTypeDescriptionElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'NodeTypeDescription'
+                  }
+              }
+            }
+          },
+          tags: {
+            required: false,
+            serializedName: 'tags',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = ClusterUpdateParameters;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:41:04 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

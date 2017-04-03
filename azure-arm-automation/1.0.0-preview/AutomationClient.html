@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AutomationClient - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AutomationAccounts.html">AutomationAccounts</a><ul class='methods'><li data-type='method'><a href="AutomationAccounts.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="AutomationAccounts.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="AutomationAccounts.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="AutomationAccounts.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="AutomationAccounts.html#get">get</a></li><li data-type='method'><a href="AutomationAccounts.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="AutomationAccounts.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="AutomationAccounts.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="AutomationAccounts.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="AutomationAccounts.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="AutomationAccounts.html#listBySubscriptionId">listBySubscriptionId</a></li><li data-type='method'><a href="AutomationAccounts.html#listBySubscriptionIdNext">listBySubscriptionIdNext</a></li><li data-type='method'><a href="AutomationAccounts.html#listBySubscriptionIdNextWithHttpOperationResponse">listBySubscriptionIdNextWithHttpOperationResponse</a></li><li data-type='method'><a href="AutomationAccounts.html#listBySubscriptionIdWithHttpOperationResponse">listBySubscriptionIdWithHttpOperationResponse</a></li><li data-type='method'><a href="AutomationAccounts.html#update">update</a></li><li data-type='method'><a href="AutomationAccounts.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="AutomationClient.html">AutomationClient</a></li><li><a href="Operations.html">Operations</a><ul class='methods'><li data-type='method'><a href="Operations.html#list">list</a></li><li data-type='method'><a href="Operations.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520response%2520model%2520for%2520the%2520list%2520of%2520Automation%2520operations.html">The response model for the list of Automation operations</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listBySubscriptionId">_listBySubscriptionId</a></li><li><a href="global.html#_listBySubscriptionIdNext">_listBySubscriptionIdNext</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#capacity">capacity</a></li><li><a href="global.html#etag">etag</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#operation">operation</a></li><li><a href="global.html#tags">tags</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">AutomationClient</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        AutomationClient
+        </h2>
+        
+            <div class="class-description"><p>Initializes a new instance of the AutomationClient class.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="AutomationClient"><span class="type-signature"></span>new AutomationClient<span class="signature">(credentials, subscriptionId, baseUri<span class="signature-attributes">opt</span>, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>credentials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">credentials</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Credentials needed for the client to connect to Azure.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subscriptionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>baseUri</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The base URI of the service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The parameter options</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Filters to be added to the request pipeline</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>requestOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Options for the underlying request object<br><a href="https://github.com/request/request#requestoptions-callback">Options doc</a></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>noRetryPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If set to true, turn off default retry policy</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>acceptLanguage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the preferred language for the response.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>longRunningOperationRetryTimeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>generateClientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="automationClient.js.html">automationClient.js</a>, <a href="automationClient.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:39:48 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

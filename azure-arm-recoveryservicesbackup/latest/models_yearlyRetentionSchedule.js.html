@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/yearlyRetentionSchedule.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="Azure%2520SQL%2520workload-specific%2520container..html">Azure SQL workload-specific container.</a></li><li><a href="BackupEngines.html">BackupEngines</a><ul class='methods'><li data-type='method'><a href="BackupEngines.html#get">get</a></li><li data-type='method'><a href="BackupEngines.html#getNext">getNext</a></li><li data-type='method'><a href="BackupEngines.html#getNextWithHttpOperationResponse">getNextWithHttpOperationResponse</a></li><li data-type='method'><a href="BackupEngines.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="BackupOperationResults.html">BackupOperationResults</a><ul class='methods'><li data-type='method'><a href="BackupOperationResults.html#get">get</a></li><li data-type='method'><a href="BackupOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="BackupOperationStatuses.html">BackupOperationStatuses</a><ul class='methods'><li data-type='method'><a href="BackupOperationStatuses.html#get">get</a></li><li data-type='method'><a href="BackupOperationStatuses.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Backups.html">Backups</a><ul class='methods'><li data-type='method'><a href="Backups.html#trigger">trigger</a></li><li data-type='method'><a href="Backups.html#triggerWithHttpOperationResponse">triggerWithHttpOperationResponse</a></li></ul></li><li><a href="ExportJobsOperationResults.html">ExportJobsOperationResults</a><ul class='methods'><li data-type='method'><a href="ExportJobsOperationResults.html#get">get</a></li><li data-type='method'><a href="ExportJobsOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520classic%2520VM..html">IaaS VM workload-specific backup item representing a classic VM.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520classic-deployed%250Avirtual%2520machine..html">IaaS VM workload-specific backup item representing a classic-deployed
+virtual machine.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520Resource%250AManager-deployed%2520virtual%2520machine..html">IaaS VM workload-specific backup item representing a Resource
+Manager-deployed virtual machine.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520a%2520Resource%2520Manager%2520VM..html">IaaS VM workload-specific backup item representing a Resource Manager VM.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520the%2520classic%2520VM..html">IaaS VM workload-specific backup item representing the classic VM.</a></li><li><a href="IaaS%2520VM%2520workload-specific%2520backup%2520item%2520representing%2520the%2520Resource%2520Manager%2520VM..html">IaaS VM workload-specific backup item representing the Resource Manager VM.</a></li><li><a href="ItemLevelRecoveryConnections.html">ItemLevelRecoveryConnections</a><ul class='methods'><li data-type='method'><a href="ItemLevelRecoveryConnections.html#provision">provision</a></li><li data-type='method'><a href="ItemLevelRecoveryConnections.html#provisionWithHttpOperationResponse">provisionWithHttpOperationResponse</a></li><li data-type='method'><a href="ItemLevelRecoveryConnections.html#revoke">revoke</a></li><li data-type='method'><a href="ItemLevelRecoveryConnections.html#revokeWithHttpOperationResponse">revokeWithHttpOperationResponse</a></li></ul></li><li><a href="JobCancellations.html">JobCancellations</a><ul class='methods'><li data-type='method'><a href="JobCancellations.html#trigger">trigger</a></li><li data-type='method'><a href="JobCancellations.html#triggerWithHttpOperationResponse">triggerWithHttpOperationResponse</a></li></ul></li><li><a href="JobDetails.html">JobDetails</a><ul class='methods'><li data-type='method'><a href="JobDetails.html#get">get</a></li><li data-type='method'><a href="JobDetails.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="JobOperationResults.html">JobOperationResults</a><ul class='methods'><li data-type='method'><a href="JobOperationResults.html#get">get</a></li><li data-type='method'><a href="JobOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="Jobs.html">Jobs</a><ul class='methods'><li data-type='method'><a href="Jobs.html#exportMethod">exportMethod</a></li><li data-type='method'><a href="Jobs.html#exportMethodWithHttpOperationResponse">exportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#list">list</a></li><li data-type='method'><a href="Jobs.html#listNext">listNext</a></li><li data-type='method'><a href="Jobs.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Jobs.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="List%2520of%2520BackupEngineBase%2520resources.html">List of BackupEngineBase resources</a></li><li><a href="List%2520of%2520Job%2520resources..html">List of Job resources.</a></li><li><a href="Long-term%2520policy%2520schedule..html">Long-term policy schedule.</a></li><li><a href="ProtectableItems.html">ProtectableItems</a><ul class='methods'><li data-type='method'><a href="ProtectableItems.html#list">list</a></li><li data-type='method'><a href="ProtectableItems.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectableItems.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectableItems.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectedItemOperationResults.html">ProtectedItemOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectedItemOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectedItemOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectedItemOperationStatuses.html">ProtectedItemOperationStatuses</a><ul class='methods'><li data-type='method'><a href="ProtectedItemOperationStatuses.html#get">get</a></li><li data-type='method'><a href="ProtectedItemOperationStatuses.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectedItems.html">ProtectedItems</a><ul class='methods'><li data-type='method'><a href="ProtectedItems.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ProtectedItems.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ProtectedItems.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#get">get</a></li><li data-type='method'><a href="ProtectedItems.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#list">list</a></li><li data-type='method'><a href="ProtectedItems.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectedItems.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectedItems.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionContainerOperationResults.html">ProtectionContainerOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectionContainerOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectionContainerOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionContainerRefreshOperationResults.html">ProtectionContainerRefreshOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectionContainerRefreshOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectionContainerRefreshOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionContainers.html">ProtectionContainers</a><ul class='methods'><li data-type='method'><a href="ProtectionContainers.html#get">get</a></li><li data-type='method'><a href="ProtectionContainers.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#list">list</a></li><li data-type='method'><a href="ProtectionContainers.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectionContainers.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#refresh">refresh</a></li><li data-type='method'><a href="ProtectionContainers.html#refreshWithHttpOperationResponse">refreshWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionContainers.html#unregister">unregister</a></li><li data-type='method'><a href="ProtectionContainers.html#unregisterWithHttpOperationResponse">unregisterWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionPolicies.html">ProtectionPolicies</a><ul class='methods'><li data-type='method'><a href="ProtectionPolicies.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ProtectionPolicies.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ProtectionPolicies.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#get">get</a></li><li data-type='method'><a href="ProtectionPolicies.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#list">list</a></li><li data-type='method'><a href="ProtectionPolicies.html#listNext">listNext</a></li><li data-type='method'><a href="ProtectionPolicies.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ProtectionPolicies.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionPolicyOperationResults.html">ProtectionPolicyOperationResults</a><ul class='methods'><li data-type='method'><a href="ProtectionPolicyOperationResults.html#get">get</a></li><li data-type='method'><a href="ProtectionPolicyOperationResults.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="ProtectionPolicyOperationStatuses.html">ProtectionPolicyOperationStatuses</a><ul class='methods'><li data-type='method'><a href="ProtectionPolicyOperationStatuses.html#get">get</a></li><li data-type='method'><a href="ProtectionPolicyOperationStatuses.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li></ul></li><li><a href="RecoveryPoints.html">RecoveryPoints</a><ul class='methods'><li data-type='method'><a href="RecoveryPoints.html#get">get</a></li><li data-type='method'><a href="RecoveryPoints.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="RecoveryPoints.html#list">list</a></li><li data-type='method'><a href="RecoveryPoints.html#listNext">listNext</a></li><li data-type='method'><a href="RecoveryPoints.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="RecoveryPoints.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="RecoveryServicesBackupClient.html">RecoveryServicesBackupClient</a></li><li><a href="Restores.html">Restores</a><ul class='methods'><li data-type='method'><a href="Restores.html#trigger">trigger</a></li><li data-type='method'><a href="Restores.html#triggerWithHttpOperationResponse">triggerWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520backup%2520engine%2520type%2520when%2520Azure%2520Backup%2520Server%2520is%2520used%2520to%2520manage%2520the%250Abackups..html">The backup engine type when Azure Backup Server is used to manage the
+backups.</a></li><li><a href="The%2520backup%2520engine%2520type%2520when%2520Data%2520Protection%2520Manager%2520(DPM)%2520is%2520used%2520to%2520manage%250Abackups..html">The backup engine type when Data Protection Manager (DPM) is used to manage
+backups.</a></li><li><a href="The%2520list%2520of%2520ProtectedItem%2520resources..html">The list of ProtectedItem resources.</a></li><li><a href="The%2520list%2520of%2520ProtectionContainer%2520resources..html">The list of ProtectionContainer resources.</a></li><li><a href="The%2520list%2520of%2520ProtectionPolicy%2520resources..html">The list of ProtectionPolicy resources.</a></li><li><a href="The%2520list%2520of%2520RecoveryPoint%2520resources..html">The list of RecoveryPoint resources.</a></li><li><a href="The%2520list%2520of%2520WorkloadProtectableItem%2520resources..html">The list of WorkloadProtectableItem resources.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_exportMethod">_exportMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getNext">_getNext</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_provision">_provision</a></li><li><a href="global.html#_refresh">_refresh</a></li><li><a href="global.html#_revoke">_revoke</a></li><li><a href="global.html#_trigger">_trigger</a></li><li><a href="global.html#_unregister">_unregister</a></li><li><a href="global.html#backupEngineType">backupEngineType</a></li><li><a href="global.html#backupManagementType">backupManagementType</a></li><li><a href="global.html#blobSasKey">blobSasKey</a></li><li><a href="global.html#clientScripts">clientScripts</a></li><li><a href="global.html#containerName">containerName</a></li><li><a href="global.html#daysOfTheMonth">daysOfTheMonth</a></li><li><a href="global.html#durationType">durationType</a></li><li><a href="global.html#dynamicErrorMessage">dynamicErrorMessage</a></li><li><a href="global.html#endDate">endDate</a></li><li><a href="global.html#endTime">endTime</a></li><li><a href="global.html#eTag">eTag</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#failedJobsError">failedJobsError</a></li><li><a href="global.html#friendlyName">friendlyName</a></li><li><a href="global.html#headers">headers</a></li><li><a href="global.html#isInstantILRSessionActive">isInstantILRSessionActive</a></li><li><a href="global.html#isLast">isLast</a></li><li><a href="global.html#jobId">jobId</a></li><li><a href="global.html#jobList">jobList</a></li><li><a href="global.html#jobType">jobType</a></li><li><a href="global.html#keyBackupData">keyBackupData</a></li><li><a href="global.html#lastBackupStatus">lastBackupStatus</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#objectType">objectType</a></li><li><a href="global.html#osType">osType</a></li><li><a href="global.html#policyInconsistent">policyInconsistent</a></li><li><a href="global.html#policyState">policyState</a></li><li><a href="global.html#progressPercentage">progressPercentage</a></li><li><a href="global.html#protectableItemType">protectableItemType</a></li><li><a href="global.html#protectableObjectType">protectableObjectType</a></li><li><a href="global.html#protectedItemType">protectedItemType</a></li><li><a href="global.html#recommendations">recommendations</a></li><li><a href="global.html#recoveryPointAdditionalInfo">recoveryPointAdditionalInfo</a></li><li><a href="global.html#recoveryPointCount">recoveryPointCount</a></li><li><a href="global.html#recoveryPointExpiryTimeInUTC">recoveryPointExpiryTimeInUTC</a></li><li><a href="global.html#renewExistingRegistration">renewExistingRegistration</a></li><li><a href="global.html#resourceGroup">resourceGroup</a></li><li><a href="global.html#retentionPolicyType">retentionPolicyType</a></li><li><a href="global.html#schedulePolicyType">schedulePolicyType</a></li><li><a href="global.html#scheduleWeeklyFrequency">scheduleWeeklyFrequency</a></li><li><a href="global.html#secretData">secretData</a></li><li><a href="global.html#secretKeyVaultId">secretKeyVaultId</a></li><li><a href="global.html#status">status</a></li><li><a href="global.html#virtualMachineId">virtualMachineId</a></li><li><a href="global.html#weeksOfTheMonth">weeksOfTheMonth</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/yearlyRetentionSchedule.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the YearlyRetentionSchedule class.
+ * @constructor
+ * Yearly retention schedule.
+ *
+ * @member {string} [retentionScheduleFormatType] Retention schedule format for
+ * the yearly retention policy. Possible values include: 'Invalid', 'Daily',
+ * 'Weekly'
+ *
+ * @member {array} [monthsOfYear] List of the months of year for the yearly
+ * retention policy.
+ *
+ * @member {object} [retentionScheduleDaily] Daily retention format for the
+ * yearly retention policy.
+ *
+ * @member {array} [retentionScheduleDaily.daysOfTheMonth] List of days of the
+ * month.
+ *
+ * @member {object} [retentionScheduleWeekly] Weekly retention format for the
+ * yearly retention policy.
+ *
+ * @member {array} [retentionScheduleWeekly.daysOfTheWeek] List of days of the
+ * week.
+ *
+ * @member {array} [retentionScheduleWeekly.weeksOfTheMonth] List of weeks of
+ * the month.
+ *
+ * @member {array} [retentionTimes] Retention times for the retention policy.
+ *
+ * @member {object} [retentionDuration] Retention duration for the retention
+ * policy.
+ *
+ * @member {number} [retentionDuration.count] Count of the duration types.
+ * Retention duration is determined by the combining the Count times and
+ * durationType.
+ * For example, if Count = 3 and durationType = Weeks, then the retention
+ * duration is three weeks.
+ *
+ * @member {string} [retentionDuration.durationType] The retention duration
+ * type of the retention policy. Possible values include: 'Invalid', 'Days',
+ * 'Weeks', 'Months', 'Years'
+ *
+ */
+class YearlyRetentionSchedule {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of YearlyRetentionSchedule
+   *
+   * @returns {object} metadata of YearlyRetentionSchedule
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'YearlyRetentionSchedule',
+      type: {
+        name: 'Composite',
+        className: 'YearlyRetentionSchedule',
+        modelProperties: {
+          retentionScheduleFormatType: {
+            required: false,
+            serializedName: 'retentionScheduleFormatType',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'Invalid', 'Daily', 'Weekly' ]
+            }
+          },
+          monthsOfYear: {
+            required: false,
+            serializedName: 'monthsOfYear',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'MonthOfYearElementType',
+                  type: {
+                    name: 'Enum',
+                    allowedValues: [ 'Invalid', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
+                  }
+              }
+            }
+          },
+          retentionScheduleDaily: {
+            required: false,
+            serializedName: 'retentionScheduleDaily',
+            type: {
+              name: 'Composite',
+              className: 'DailyRetentionFormat'
+            }
+          },
+          retentionScheduleWeekly: {
+            required: false,
+            serializedName: 'retentionScheduleWeekly',
+            type: {
+              name: 'Composite',
+              className: 'WeeklyRetentionFormat'
+            }
+          },
+          retentionTimes: {
+            required: false,
+            serializedName: 'retentionTimes',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'DateElementType',
+                  type: {
+                    name: 'DateTime'
+                  }
+              }
+            }
+          },
+          retentionDuration: {
+            required: false,
+            serializedName: 'retentionDuration',
+            type: {
+              name: 'Composite',
+              className: 'RetentionDuration'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = YearlyRetentionSchedule;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:45 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

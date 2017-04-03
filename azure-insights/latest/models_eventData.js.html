@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/eventData.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="A%2520collection%2520of%2520event%2520categories.%2520Currently%2520possible%2520values%2520are_%250AAdministrative,%2520Security,%2520ServiceHealth,%2520Alert,%2520Recommendation,%2520Policy..html">A collection of event categories. Currently possible values are:
+Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.</a></li><li><a href="EventCategories.html">EventCategories</a><ul class='methods'><li data-type='method'><a href="EventCategories.html#list">list</a></li><li data-type='method'><a href="EventCategories.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Events.html">Events</a><ul class='methods'><li data-type='method'><a href="Events.html#list">list</a></li><li data-type='method'><a href="Events.html#listNext">listNext</a></li><li data-type='method'><a href="Events.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Events.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="InsightsClient.html">InsightsClient</a></li><li><a href="MetricDefinitions.html">MetricDefinitions</a><ul class='methods'><li data-type='method'><a href="MetricDefinitions.html#list">list</a></li><li data-type='method'><a href="MetricDefinitions.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Metrics.html">Metrics</a><ul class='methods'><li data-type='method'><a href="Metrics.html#list">list</a></li><li data-type='method'><a href="Metrics.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Represents%2520collection%2520of%2520metric%2520definitions..html">Represents collection of metric definitions.</a></li><li><a href="Represents%2520collection%2520of%2520usage%2520metrics..html">Represents collection of usage metrics.</a></li><li><a href="TenantEvents.html">TenantEvents</a><ul class='methods'><li data-type='method'><a href="TenantEvents.html#list">list</a></li><li data-type='method'><a href="TenantEvents.html#listNext">listNext</a></li><li data-type='method'><a href="TenantEvents.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="TenantEvents.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520collection%2520of%2520metric%2520value%2520sets..html">The collection of metric value sets.</a></li><li><a href="UsageMetrics.html">UsageMetrics</a><ul class='methods'><li data-type='method'><a href="UsageMetrics.html#list">list</a></li><li data-type='method'><a href="UsageMetrics.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#localizedValue">localizedValue</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#quotaPeriod">quotaPeriod</a></li><li><a href="global.html#retention">retention</a></li><li><a href="global.html#scope">scope</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#uri">uri</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/eventData.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the EventData class.
+ * @constructor
+ * The Azure event log entries are of type EventData
+ *
+ * @member {object} [authorization] the authorization used by the user who has
+ * performed the operation that led to this event. This captures the RBAC
+ * properties of the event. These usually include the 'action', 'role' and the
+ * 'scope'
+ *
+ * @member {string} [authorization.action] the permissible actions. For
+ * instance: microsoft.support/supporttickets/write
+ *
+ * @member {string} [authorization.role] the role of the user. For instance:
+ * Subscription Admin
+ *
+ * @member {string} [authorization.scope] the scope.
+ *
+ * @member {string} channels the event channels. The regular event logs, that
+ * you see in the Azure Management Portals, flow through the 'Operation'
+ * channel. Possible values include: 'Admin', 'Operation', 'Debug', 'Analytics'
+ *
+ * @member {object} [claims] key value pairs to identify ARM permissions.
+ *
+ * @member {string} [caller] the email address of the user who has performed
+ * the operation, the UPN claim or SPN claim based on availability.
+ *
+ * @member {string} [description] the description of the event.
+ *
+ * @member {string} [id] the Id of this event as required by ARM for RBAC. It
+ * contains the EventDataID and a timestamp information.
+ *
+ * @member {string} [eventDataId] the event data Id. This is a unique
+ * identifier for an event.
+ *
+ * @member {string} [correlationId] the correlation Id, usually a GUID in the
+ * string format. The correlation Id is shared among the events that belong to
+ * the same uber operation.
+ *
+ * @member {object} [eventName] the event name. This value should not be
+ * confused with OperationName. For practical purposes, OperationName might be
+ * more appealing to end users.
+ *
+ * @member {string} [eventName.value] the invariant value.
+ *
+ * @member {string} [eventName.localizedValue] the locale specific value.
+ *
+ * @member {object} [category] the event category.
+ *
+ * @member {string} [category.value] the invariant value.
+ *
+ * @member {string} [category.localizedValue] the locale specific value.
+ *
+ * @member {object} [httpRequest] the HTTP request info. Usually includes the
+ * 'clientRequestId', 'clientIpAddress' (IP address of the user who initiated
+ * the event) and 'method' (HTTP method e.g. PUT).
+ *
+ * @member {string} [httpRequest.clientRequestId] the client request id.
+ *
+ * @member {string} [httpRequest.clientIpAddress] the client Ip Address
+ *
+ * @member {string} [httpRequest.method] the Http request method.
+ *
+ * @member {string} [httpRequest.uri] the Uri.
+ *
+ * @member {string} level the event level. Possible values include: 'Critical',
+ * 'Error', 'Warning', 'Informational', 'Verbose'
+ *
+ * @member {string} [resourceGroupName] the resource group name of the impacted
+ * resource.
+ *
+ * @member {object} [resourceProviderName] the resource provider name of the
+ * impacted resource.
+ *
+ * @member {string} [resourceProviderName.value] the invariant value.
+ *
+ * @member {string} [resourceProviderName.localizedValue] the locale specific
+ * value.
+ *
+ * @member {string} [resourceId] the resource uri that uniquely identifies the
+ * resource that caused this event.
+ *
+ * @member {object} [resourceType] the resource type
+ *
+ * @member {string} [resourceType.value] the invariant value.
+ *
+ * @member {string} [resourceType.localizedValue] the locale specific value.
+ *
+ * @member {string} [operationId] It is usually a GUID shared among the events
+ * corresponding to single operation. This value should not be confused with
+ * EventName.
+ *
+ * @member {object} [operationName] the operation name.
+ *
+ * @member {string} [operationName.value] the invariant value.
+ *
+ * @member {string} [operationName.localizedValue] the locale specific value.
+ *
+ * @member {object} [properties] the set of &lt;Key, Value> pairs (usually a
+ * Dictionary&lt;String, String>) that includes details about the event.
+ *
+ * @member {object} [status] a string describing the status of the operation.
+ * Some typical values are: Started, In progress, Succeeded, Failed, Resolved.
+ *
+ * @member {string} [status.value] the invariant value.
+ *
+ * @member {string} [status.localizedValue] the locale specific value.
+ *
+ * @member {object} [subStatus] the event sub status. Most of the time, when
+ * included, this captures the HTTP status code of the REST call. Common values
+ * are: OK (HTTP Status Code: 200), Created (HTTP Status Code: 201), Accepted
+ * (HTTP Status Code: 202), No Content (HTTP Status Code: 204), Bad
+ * Request(HTTP Status Code: 400), Not Found (HTTP Status Code: 404), Conflict
+ * (HTTP Status Code: 409), Internal Server Error (HTTP Status Code: 500),
+ * Service Unavailable (HTTP Status Code:503), Gateway Timeout (HTTP Status
+ * Code: 504)
+ *
+ * @member {string} [subStatus.value] the invariant value.
+ *
+ * @member {string} [subStatus.localizedValue] the locale specific value.
+ *
+ * @member {date} eventTimestamp the timestamp of when the event was generated
+ * by the Azure service processing the request corresponding the event. It in
+ * ISO 8601 format.
+ *
+ * @member {date} submissionTimestamp the timestamp of when the event became
+ * available for querying via this API. It is in ISO 8601 format. This value
+ * should not be confused eventTimestamp. As there might be a delay between the
+ * occurence time of the event, and the time that the event is submitted to the
+ * Azure logging infrastructure.
+ *
+ * @member {string} [subscriptionId] the Azure subscription Id usually a GUID.
+ *
+ * @member {string} [tenantId] the Azure tenant Id
+ *
+ */
+class EventData {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of EventData
+   *
+   * @returns {object} metadata of EventData
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'EventData',
+      type: {
+        name: 'Composite',
+        className: 'EventData',
+        modelProperties: {
+          authorization: {
+            required: false,
+            serializedName: 'authorization',
+            type: {
+              name: 'Composite',
+              className: 'SenderAuthorization'
+            }
+          },
+          channels: {
+            required: true,
+            serializedName: 'channels',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'Admin', 'Operation', 'Debug', 'Analytics' ]
+            }
+          },
+          claims: {
+            required: false,
+            serializedName: 'claims',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          caller: {
+            required: false,
+            serializedName: 'caller',
+            type: {
+              name: 'String'
+            }
+          },
+          description: {
+            required: false,
+            serializedName: 'description',
+            type: {
+              name: 'String'
+            }
+          },
+          id: {
+            required: false,
+            serializedName: 'id',
+            type: {
+              name: 'String'
+            }
+          },
+          eventDataId: {
+            required: false,
+            serializedName: 'eventDataId',
+            type: {
+              name: 'String'
+            }
+          },
+          correlationId: {
+            required: false,
+            serializedName: 'correlationId',
+            type: {
+              name: 'String'
+            }
+          },
+          eventName: {
+            required: false,
+            serializedName: 'eventName',
+            type: {
+              name: 'Composite',
+              className: 'LocalizableString'
+            }
+          },
+          category: {
+            required: false,
+            serializedName: 'category',
+            type: {
+              name: 'Composite',
+              className: 'LocalizableString'
+            }
+          },
+          httpRequest: {
+            required: false,
+            serializedName: 'httpRequest',
+            type: {
+              name: 'Composite',
+              className: 'HttpRequestInfo'
+            }
+          },
+          level: {
+            required: true,
+            serializedName: 'level',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'Critical', 'Error', 'Warning', 'Informational', 'Verbose' ]
+            }
+          },
+          resourceGroupName: {
+            required: false,
+            serializedName: 'resourceGroupName',
+            type: {
+              name: 'String'
+            }
+          },
+          resourceProviderName: {
+            required: false,
+            serializedName: 'resourceProviderName',
+            type: {
+              name: 'Composite',
+              className: 'LocalizableString'
+            }
+          },
+          resourceId: {
+            required: false,
+            serializedName: 'resourceId',
+            type: {
+              name: 'String'
+            }
+          },
+          resourceType: {
+            required: false,
+            serializedName: 'resourceType',
+            type: {
+              name: 'Composite',
+              className: 'LocalizableString'
+            }
+          },
+          operationId: {
+            required: false,
+            serializedName: 'operationId',
+            type: {
+              name: 'String'
+            }
+          },
+          operationName: {
+            required: false,
+            serializedName: 'operationName',
+            type: {
+              name: 'Composite',
+              className: 'LocalizableString'
+            }
+          },
+          properties: {
+            required: false,
+            serializedName: 'properties',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          status: {
+            required: false,
+            serializedName: 'status',
+            type: {
+              name: 'Composite',
+              className: 'LocalizableString'
+            }
+          },
+          subStatus: {
+            required: false,
+            serializedName: 'subStatus',
+            type: {
+              name: 'Composite',
+              className: 'LocalizableString'
+            }
+          },
+          eventTimestamp: {
+            required: true,
+            serializedName: 'eventTimestamp',
+            type: {
+              name: 'DateTime'
+            }
+          },
+          submissionTimestamp: {
+            required: true,
+            serializedName: 'submissionTimestamp',
+            type: {
+              name: 'DateTime'
+            }
+          },
+          subscriptionId: {
+            required: false,
+            serializedName: 'subscriptionId',
+            type: {
+              name: 'String'
+            }
+          },
+          tenantId: {
+            required: false,
+            serializedName: 'tenantId',
+            type: {
+              name: 'String'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = EventData;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:20 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>commitmentPlan/models/planQuantity.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AzureMLCommitmentPlansManagementClient.html">AzureMLCommitmentPlansManagementClient</a></li><li><a href="AzureMLWebServicesManagementClient.html">AzureMLWebServicesManagementClient</a></li><li><a href="CommitmentAssociations.html">CommitmentAssociations</a><ul class='methods'><li data-type='method'><a href="CommitmentAssociations.html#get">get</a></li><li data-type='method'><a href="CommitmentAssociations.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentAssociations.html#list">list</a></li><li data-type='method'><a href="CommitmentAssociations.html#listNext">listNext</a></li><li data-type='method'><a href="CommitmentAssociations.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentAssociations.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentAssociations.html#move">move</a></li><li data-type='method'><a href="CommitmentAssociations.html#moveWithHttpOperationResponse">moveWithHttpOperationResponse</a></li></ul></li><li><a href="CommitmentPlans.html">CommitmentPlans</a><ul class='methods'><li data-type='method'><a href="CommitmentPlans.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="CommitmentPlans.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentPlans.html#get">get</a></li><li data-type='method'><a href="CommitmentPlans.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentPlans.html#list">list</a></li><li data-type='method'><a href="CommitmentPlans.html#listInResourceGroup">listInResourceGroup</a></li><li data-type='method'><a href="CommitmentPlans.html#listInResourceGroupNext">listInResourceGroupNext</a></li><li data-type='method'><a href="CommitmentPlans.html#listInResourceGroupNextWithHttpOperationResponse">listInResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentPlans.html#listInResourceGroupWithHttpOperationResponse">listInResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentPlans.html#listNext">listNext</a></li><li data-type='method'><a href="CommitmentPlans.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentPlans.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentPlans.html#patch">patch</a></li><li data-type='method'><a href="CommitmentPlans.html#patchWithHttpOperationResponse">patchWithHttpOperationResponse</a></li><li data-type='method'><a href="CommitmentPlans.html#remove">remove</a></li><li data-type='method'><a href="CommitmentPlans.html#removeWithHttpOperationResponse">removeWithHttpOperationResponse</a></li></ul></li><li><a href="UsageHistory.html">UsageHistory</a><ul class='methods'><li data-type='method'><a href="UsageHistory.html#list">list</a></li><li data-type='method'><a href="UsageHistory.html#listNext">listNext</a></li><li data-type='method'><a href="UsageHistory.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="UsageHistory.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="WebServices.html">WebServices</a><ul class='methods'><li data-type='method'><a href="WebServices.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="WebServices.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#beginPatch">beginPatch</a></li><li data-type='method'><a href="WebServices.html#beginPatchWithHttpOperationResponse">beginPatchWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#beginRemove">beginRemove</a></li><li data-type='method'><a href="WebServices.html#beginRemoveWithHttpOperationResponse">beginRemoveWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="WebServices.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#get">get</a></li><li data-type='method'><a href="WebServices.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#list">list</a></li><li data-type='method'><a href="WebServices.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="WebServices.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="WebServices.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#listKeys">listKeys</a></li><li data-type='method'><a href="WebServices.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#listNext">listNext</a></li><li data-type='method'><a href="WebServices.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#patch">patch</a></li><li data-type='method'><a href="WebServices.html#patchWithHttpOperationResponse">patchWithHttpOperationResponse</a></li><li data-type='method'><a href="WebServices.html#remove">remove</a></li><li data-type='method'><a href="WebServices.html#removeWithHttpOperationResponse">removeWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginPatch">_beginPatch</a></li><li><a href="global.html#_beginRemove">_beginRemove</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listInResourceGroup">_listInResourceGroup</a></li><li><a href="global.html#_listInResourceGroupNext">_listInResourceGroupNext</a></li><li><a href="global.html#_listKeys">_listKeys</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_move">_move</a></li><li><a href="global.html#_patch">_patch</a></li><li><a href="global.html#_remove">_remove</a></li><li><a href="global.html#creationDate">creationDate</a></li><li><a href="global.html#credentials">credentials</a></li><li><a href="global.html#destinationPlanId">destinationPlanId</a></li><li><a href="global.html#expiry">expiry</a></li><li><a href="global.html#globalParameters">globalParameters</a></li><li><a href="global.html#graphParameters">graphParameters</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#links">links</a></li><li><a href="global.html#maxConcurrentCalls">maxConcurrentCalls</a></li><li><a href="global.html#modeValuesInfo">modeValuesInfo</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#overageMeter">overageMeter</a></li><li><a href="global.html#packageType">packageType</a></li><li><a href="global.html#parameterKey">parameterKey</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#properties">properties</a></li><li><a href="global.html#secondary">secondary</a></li><li><a href="global.html#suspendPlanOnOverage">suspendPlanOnOverage</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#targetPortId">targetPortId</a></li><li><a href="global.html#tier">tier</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#usageDate">usageDate</a></li><li><a href="global.html#xMsIsordered">xMsIsordered</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">commitmentPlan/models/planQuantity.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the PlanQuantity class.
+ * @constructor
+ * Represents the quantity a commitment plan provides of a metered resource.
+ *
+ * @member {number} [allowance] The quantity added to the commitment plan at an
+ * interval specified by its allowance frequency.
+ *
+ * @member {number} [amount] The quantity available to the plan the last time
+ * usage was calculated.
+ *
+ * @member {string} [includedQuantityMeter] The Azure meter for usage against
+ * included quantities.
+ *
+ * @member {string} [overageMeter] The Azure meter for usage which exceeds
+ * included quantities.
+ *
+ */
+class PlanQuantity {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of PlanQuantity
+   *
+   * @returns {object} metadata of PlanQuantity
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'PlanQuantity',
+      type: {
+        name: 'Composite',
+        className: 'PlanQuantity',
+        modelProperties: {
+          allowance: {
+            required: false,
+            readOnly: true,
+            serializedName: 'allowance',
+            type: {
+              name: 'Number'
+            }
+          },
+          amount: {
+            required: false,
+            readOnly: true,
+            serializedName: 'amount',
+            type: {
+              name: 'Number'
+            }
+          },
+          includedQuantityMeter: {
+            required: false,
+            readOnly: true,
+            serializedName: 'includedQuantityMeter',
+            type: {
+              name: 'String'
+            }
+          },
+          overageMeter: {
+            required: false,
+            readOnly: true,
+            serializedName: 'overageMeter',
+            type: {
+              name: 'String'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = PlanQuantity;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:31 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

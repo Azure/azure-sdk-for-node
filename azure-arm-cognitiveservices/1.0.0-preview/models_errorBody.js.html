@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/errorBody.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="CognitiveServicesAccounts.html">CognitiveServicesAccounts</a><ul class='methods'><li data-type='method'><a href="CognitiveServicesAccounts.html#create">create</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#getProperties">getProperties</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#getPropertiesWithHttpOperationResponse">getPropertiesWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#list">list</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#listKeys">listKeys</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#listSkus">listSkus</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#listSkusWithHttpOperationResponse">listSkusWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#regenerateKey">regenerateKey</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#regenerateKeyWithHttpOperationResponse">regenerateKeyWithHttpOperationResponse</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#update">update</a></li><li data-type='method'><a href="CognitiveServicesAccounts.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="CognitiveServicesManagementClient.html">CognitiveServicesManagementClient</a></li><li><a href="The%2520list%2520of%2520cognitive%2520services%2520accounts%2520operation%2520response..html">The list of cognitive services accounts operation response.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_getProperties">_getProperties</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listKeys">_listKeys</a></li><li><a href="global.html#_listSkus">_listSkus</a></li><li><a href="global.html#_regenerateKey">_regenerateKey</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#key2">key2</a></li><li><a href="global.html#keyName">keyName</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#properties">properties</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#tier">tier</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/errorBody.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorBody class.
+ * @constructor
+ * @member {string} code error code
+ *
+ * @member {string} message error message
+ *
+ */
+class ErrorBody {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of ErrorBody
+   *
+   * @returns {object} metadata of ErrorBody
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'ErrorBody',
+      type: {
+        name: 'Composite',
+        className: 'ErrorBody',
+        modelProperties: {
+          code: {
+            required: true,
+            serializedName: 'code',
+            type: {
+              name: 'String'
+            }
+          },
+          message: {
+            required: true,
+            serializedName: 'message',
+            type: {
+              name: 'String'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = ErrorBody;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:39:55 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
