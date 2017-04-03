@@ -498,6 +498,7 @@ gulp.task('default', function () {
   });
 });
 
+//This task is used to generate libraries based on the mappings specified above.
 gulp.task('codegen', function (cb) {
   if (true) {
     if (project === undefined) {
@@ -517,6 +518,9 @@ gulp.task('codegen', function (cb) {
   }
 });
 
+//This task validates that the entry in "main" and "types" in package.json points to a file that exists on the disk.
+// for best results run on mac or linux. Windows is case insenstive for file paths. Hence it will not catch those issues.
+//If not tested this will cause "module not found" errors for customers when they try to use the package.
 gulp.task('validate-each-packagejson', (cb) => {
   let packagePaths = glob.sync(path.join(__dirname, '/lib/services', '/**/package.json'));
   packagePaths.forEach((packagePath) => {
@@ -540,6 +544,7 @@ gulp.task('validate-each-packagejson', (cb) => {
   });
 });
 
+//This task updates the dependencies in package.json to the relative service libraries inside lib/services directory.
 gulp.task('update-deps-rollup', (cb) => {
   let packagePaths = glob.sync(path.join(__dirname, './lib/services', '/**/package.json'));
   let rollupPackage = require('./package.json');
@@ -557,5 +562,36 @@ gulp.task('update-deps-rollup', (cb) => {
       console.log(`Could not find ${packageName} as a dependecy in rollup package.json file..`);
     }
   });
-  fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), {'encoding': 'utf8'});
+  fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
+});
+
+//This task ensures that all the exposed createSomeClient() methods, can correctly instantiate clients. By doing this we test,
+//that the "main" entry in package.json points to a file at the correct location. We test the signature of the client constructor 
+//is as expected. As of now HD Isnight is expected to fail as it is still using the Hyak generator. Once it moves to Autorest, it should
+//not fail.
+gulp.task('test-create-rollup', (cb) => {
+  const azure = require('./lib/azure');
+  const keys = Object.keys(azure).filter((key) => { return key.startsWith('create') && !key.startsWith('createASM') && key.endsWith('Client') && key !== 'createSchedulerClient'});
+  //console.dir(keys);
+  //console.log(keys.length);
+  const creds = { signRequest: {} };
+  const subId = '1234556';
+
+  keys.forEach((key) => {
+    console.log(key);
+    const Client = azure[key];
+    var c;
+    try {
+      if (key === 'createKeyVaultClient' || key === 'createSubscriptionManagementClient' ||
+        key === 'createDataLakeAnalyticsJobManagementClient' || key === 'createDataLakeStoreFileSystemManagementClient' ||
+        key === 'createDataLakeAnalyticsCatalogManagementClient') {
+        c = new Client(creds);
+      } else {
+        c = new Client(creds, subId);
+      }
+      //console.dir(Object.keys(c));
+    } catch (err) {
+      console.dir(err);
+    }
+  });
 });
