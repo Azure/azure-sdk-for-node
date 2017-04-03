@@ -55,7 +55,7 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-storage`       |
 | [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-batch`         |
-| **Azure Resource Management (ARM) (Constrol plane)**                                                                                         |
+| **Azure Resource Management (ARM) (Control plane)**                                                                                         |
 | [Advisor](https://docs.microsoft.com/en-us/rest/api/advisor/) | `npm install azure-arm-advisor`    |
 | [Automation](https://docs.microsoft.com/en-us/azure/automation/) | `npm install azure-arm-automation`    |
 | [Authorization](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-configure/) | `npm install azure-arm-authorization`    |
@@ -100,7 +100,7 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficManager`|
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-arm-network`   |
 | [WebApps (WebSites)](http://azure.microsoft.com/en-us/services/app-service/web/)  | `npm install azure-arm-website`   |
-| **Azure Service Management (ASM) (Constrol plane)**                                                                                          |
+| **Azure Service Management (ASM) (Control plane)**                                                                                          |
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            |  `npm install azure-asm-compute`  |
 | [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/)                 | `npm install azure-asm-hdinsight` |
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-asm-sb`        |
