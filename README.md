@@ -50,7 +50,6 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [Graph](https://azure.microsoft.com/en-us/services/active-directory/)             | `npm install azure-graph`         |
 | [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-keyvault`      |
 | [Monitoring](https://msdn.microsoft.com/library/azure/dn306639.aspx)              | `npm install azure-monitoring`    |
-| [Search](https://azure.microsoft.com/en-us/services/search/)                     | `npm install azure-search`       |
 | [Scheduler](http://azure.microsoft.com/en-us/services/scheduler/)                 | `npm install azure-scheduler`     |
 | [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)      | `npm install azure-servicefabric` |
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |

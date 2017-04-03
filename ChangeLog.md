@@ -26,7 +26,6 @@
   * ServiceMap Management ([azure-arm-servicemap](https://www.npmjs.com/search?q=azure-arm-servicemap))
   * SQL Management ([azure-arm-sql](https://www.npmjs.com/search?q=azure-arm-sql))
   * Storage Import Export Management ([azure-arm-storageimportexport](https://www.npmjs.com/search?q=azure-arm-storageimportexport))
-  * Search ([azure-search](https://www.npmjs.com/search?q=azure-search))
 * Runtime (ms-rest and ms-rest-azure)
   * Updated d.ts files for ms-rest and ms-rest-azure
   * All the login methods (interactiveLogin, loginWithServicePrincipalSecret, loginWithUsernamePassword) now support callbacks as well as Promises.

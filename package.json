@@ -95,7 +95,6 @@
     "azure-keyvault": "2.0.0-preview",
     "azure-monitoring": "0.10.5",
     "azure-sb": "0.10.4",
-    "azure-search": "1.0.0-preview",
     "azure-servicefabric": "1.0.0-preview",
     "azure-scheduler": "0.10.3",
     "azure-storage": "1.3.0",
