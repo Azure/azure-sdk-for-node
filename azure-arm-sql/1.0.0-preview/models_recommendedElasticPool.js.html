@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/recommendedElasticPool.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ARM%2520proxy%2520resource..html">ARM proxy resource.</a></li><li><a href="Capabilities.html">Capabilities</a><ul class='methods'><li data-type='method'><a href="Capabilities.html#listByLocation">listByLocation</a></li><li data-type='method'><a href="Capabilities.html#listByLocationWithHttpOperationResponse">listByLocationWithHttpOperationResponse</a></li></ul></li><li><a href="Databases.html">Databases</a><ul class='methods'><li data-type='method'><a href="Databases.html#beginCreateImportOperation">beginCreateImportOperation</a></li><li data-type='method'><a href="Databases.html#beginCreateImportOperationWithHttpOperationResponse">beginCreateImportOperationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Databases.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginExportMethod">beginExportMethod</a></li><li data-type='method'><a href="Databases.html#beginExportMethodWithHttpOperationResponse">beginExportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLink">beginFailoverReplicationLink</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLinkAllowDataLoss">beginFailoverReplicationLinkAllowDataLoss</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLinkAllowDataLossWithHttpOperationResponse">beginFailoverReplicationLinkAllowDataLossWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLinkWithHttpOperationResponse">beginFailoverReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginImportMethod">beginImportMethod</a></li><li data-type='method'><a href="Databases.html#beginImportMethodWithHttpOperationResponse">beginImportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginPause">beginPause</a></li><li data-type='method'><a href="Databases.html#beginPauseWithHttpOperationResponse">beginPauseWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginResume">beginResume</a></li><li data-type='method'><a href="Databases.html#beginResumeWithHttpOperationResponse">beginResumeWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createImportOperation">createImportOperation</a></li><li data-type='method'><a href="Databases.html#createImportOperationWithHttpOperationResponse">createImportOperationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Databases.html#createOrUpdateBlobAuditingPolicy">createOrUpdateBlobAuditingPolicy</a></li><li data-type='method'><a href="Databases.html#createOrUpdateBlobAuditingPolicyWithHttpOperationResponse">createOrUpdateBlobAuditingPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdateThreatDetectionPolicy">createOrUpdateThreatDetectionPolicy</a></li><li data-type='method'><a href="Databases.html#createOrUpdateThreatDetectionPolicyWithHttpOperationResponse">createOrUpdateThreatDetectionPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdateTransparentDataEncryptionConfiguration">createOrUpdateTransparentDataEncryptionConfiguration</a></li><li data-type='method'><a href="Databases.html#createOrUpdateTransparentDataEncryptionConfigurationWithHttpOperationResponse">createOrUpdateTransparentDataEncryptionConfigurationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Databases.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#deleteReplicationLink">deleteReplicationLink</a></li><li data-type='method'><a href="Databases.html#deleteReplicationLinkWithHttpOperationResponse">deleteReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#exportMethod">exportMethod</a></li><li data-type='method'><a href="Databases.html#exportMethodWithHttpOperationResponse">exportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLink">failoverReplicationLink</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLinkAllowDataLoss">failoverReplicationLinkAllowDataLoss</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLinkAllowDataLossWithHttpOperationResponse">failoverReplicationLinkAllowDataLossWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLinkWithHttpOperationResponse">failoverReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#get">get</a></li><li data-type='method'><a href="Databases.html#getBlobAuditingPolicy">getBlobAuditingPolicy</a></li><li data-type='method'><a href="Databases.html#getBlobAuditingPolicyWithHttpOperationResponse">getBlobAuditingPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getReplicationLink">getReplicationLink</a></li><li data-type='method'><a href="Databases.html#getReplicationLinkWithHttpOperationResponse">getReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getServiceTierAdvisor">getServiceTierAdvisor</a></li><li data-type='method'><a href="Databases.html#getServiceTierAdvisorWithHttpOperationResponse">getServiceTierAdvisorWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getThreatDetectionPolicy">getThreatDetectionPolicy</a></li><li data-type='method'><a href="Databases.html#getThreatDetectionPolicyWithHttpOperationResponse">getThreatDetectionPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getTransparentDataEncryptionConfiguration">getTransparentDataEncryptionConfiguration</a></li><li data-type='method'><a href="Databases.html#getTransparentDataEncryptionConfigurationWithHttpOperationResponse">getTransparentDataEncryptionConfigurationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#importMethod">importMethod</a></li><li data-type='method'><a href="Databases.html#importMethodWithHttpOperationResponse">importMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listByServer">listByServer</a></li><li data-type='method'><a href="Databases.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listReplicationLinks">listReplicationLinks</a></li><li data-type='method'><a href="Databases.html#listReplicationLinksWithHttpOperationResponse">listReplicationLinksWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listRestorePoints">listRestorePoints</a></li><li data-type='method'><a href="Databases.html#listRestorePointsWithHttpOperationResponse">listRestorePointsWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listServiceTierAdvisors">listServiceTierAdvisors</a></li><li data-type='method'><a href="Databases.html#listServiceTierAdvisorsWithHttpOperationResponse">listServiceTierAdvisorsWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listTransparentDataEncryptionActivity">listTransparentDataEncryptionActivity</a></li><li data-type='method'><a href="Databases.html#listTransparentDataEncryptionActivityWithHttpOperationResponse">listTransparentDataEncryptionActivityWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listUsages">listUsages</a></li><li data-type='method'><a href="Databases.html#listUsagesWithHttpOperationResponse">listUsagesWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#pause">pause</a></li><li data-type='method'><a href="Databases.html#pauseWithHttpOperationResponse">pauseWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#resume">resume</a></li><li data-type='method'><a href="Databases.html#resumeWithHttpOperationResponse">resumeWithHttpOperationResponse</a></li></ul></li><li><a href="ElasticPools.html">ElasticPools</a><ul class='methods'><li data-type='method'><a href="ElasticPools.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ElasticPools.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ElasticPools.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ElasticPools.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#get">get</a></li><li data-type='method'><a href="ElasticPools.html#getDatabase">getDatabase</a></li><li data-type='method'><a href="ElasticPools.html#getDatabaseWithHttpOperationResponse">getDatabaseWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listActivity">listActivity</a></li><li data-type='method'><a href="ElasticPools.html#listActivityWithHttpOperationResponse">listActivityWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listByServer">listByServer</a></li><li data-type='method'><a href="ElasticPools.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listDatabaseActivity">listDatabaseActivity</a></li><li data-type='method'><a href="ElasticPools.html#listDatabaseActivityWithHttpOperationResponse">listDatabaseActivityWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listDatabases">listDatabases</a></li><li data-type='method'><a href="ElasticPools.html#listDatabasesWithHttpOperationResponse">listDatabasesWithHttpOperationResponse</a></li></ul></li><li><a href="FirewallRules.html">FirewallRules</a><ul class='methods'><li data-type='method'><a href="FirewallRules.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="FirewallRules.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="FirewallRules.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#get">get</a></li><li data-type='method'><a href="FirewallRules.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#listByServer">listByServer</a></li><li data-type='method'><a href="FirewallRules.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li></ul></li><li><a href="RecommendedElasticPools.html">RecommendedElasticPools</a><ul class='methods'><li data-type='method'><a href="RecommendedElasticPools.html#get">get</a></li><li data-type='method'><a href="RecommendedElasticPools.html#getDatabases">getDatabases</a></li><li data-type='method'><a href="RecommendedElasticPools.html#getDatabasesWithHttpOperationResponse">getDatabasesWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listByServer">listByServer</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listDatabases">listDatabases</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listDatabasesWithHttpOperationResponse">listDatabasesWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listMetrics">listMetrics</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listMetricsWithHttpOperationResponse">listMetricsWithHttpOperationResponse</a></li></ul></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520get%2520database%2520service%2520objectives%2520request..html">Represents the response to a get database service objectives request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520get%2520server%2520request..html">Represents the response to a get server request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520metrics%2520request..html">Represents the response to a list database metrics request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520List%2520database%2520replication%2520link%2520request..html">Represents the response to a List database replication link request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520request..html">Represents the response to a list database request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520restore%2520points%2520request..html">Represents the response to a list database restore points request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520transparent%2520data%2520encryption%250Aactivity%2520request..html">Represents the response to a list database transparent data encryption
+activity request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520elastic%2520pool%2520activity%2520request..html">Represents the response to a list elastic pool activity request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520elastic%2520pool%2520database%2520activity%2520request..html">Represents the response to a list elastic pool database activity request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520elastic%2520pool%2520request..html">Represents the response to a list elastic pool request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520List%2520Firewall%2520Rules%2520request..html">Represents the response to a List Firewall Rules request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520recommended%2520elastic%2520pool%2520metrics%2520request..html">Represents the response to a list recommended elastic pool metrics request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520recommended%2520elastic%2520pool%2520request..html">Represents the response to a list recommended elastic pool request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520server%2520metrics%2520request..html">Represents the response to a list server metrics request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520service%2520tier%2520advisor%2520request..html">Represents the response to a list service tier advisor request.</a></li><li><a href="Servers.html">Servers</a><ul class='methods'><li data-type='method'><a href="Servers.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Servers.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Servers.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#get">get</a></li><li data-type='method'><a href="Servers.html#getServiceObjective">getServiceObjective</a></li><li data-type='method'><a href="Servers.html#getServiceObjectiveWithHttpOperationResponse">getServiceObjectiveWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#list">list</a></li><li data-type='method'><a href="Servers.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Servers.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#listServiceObjectives">listServiceObjectives</a></li><li data-type='method'><a href="Servers.html#listServiceObjectivesWithHttpOperationResponse">listServiceObjectivesWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#listUsages">listUsages</a></li><li data-type='method'><a href="Servers.html#listUsagesWithHttpOperationResponse">listUsagesWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="SqlManagementClient.html">SqlManagementClient</a><ul class='methods'><li data-type='method'><a href="SqlManagementClient.html#listOperations">listOperations</a></li><li data-type='method'><a href="SqlManagementClient.html#listOperationsWithHttpOperationResponse">listOperationsWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateImportOperation">_beginCreateImportOperation</a></li><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginExportMethod">_beginExportMethod</a></li><li><a href="global.html#_beginFailoverReplicationLink">_beginFailoverReplicationLink</a></li><li><a href="global.html#_beginFailoverReplicationLinkAllowDataLoss">_beginFailoverReplicationLinkAllowDataLoss</a></li><li><a href="global.html#_beginImportMethod">_beginImportMethod</a></li><li><a href="global.html#_beginPause">_beginPause</a></li><li><a href="global.html#_beginResume">_beginResume</a></li><li><a href="global.html#_createImportOperation">_createImportOperation</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_createOrUpdateBlobAuditingPolicy">_createOrUpdateBlobAuditingPolicy</a></li><li><a href="global.html#_createOrUpdateThreatDetectionPolicy">_createOrUpdateThreatDetectionPolicy</a></li><li><a href="global.html#_createOrUpdateTransparentDataEncryptionConfiguration">_createOrUpdateTransparentDataEncryptionConfiguration</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_deleteReplicationLink">_deleteReplicationLink</a></li><li><a href="global.html#_exportMethod">_exportMethod</a></li><li><a href="global.html#_failoverReplicationLink">_failoverReplicationLink</a></li><li><a href="global.html#_failoverReplicationLinkAllowDataLoss">_failoverReplicationLinkAllowDataLoss</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getBlobAuditingPolicy">_getBlobAuditingPolicy</a></li><li><a href="global.html#_getDatabase">_getDatabase</a></li><li><a href="global.html#_getDatabases">_getDatabases</a></li><li><a href="global.html#_getReplicationLink">_getReplicationLink</a></li><li><a href="global.html#_getServiceObjective">_getServiceObjective</a></li><li><a href="global.html#_getServiceTierAdvisor">_getServiceTierAdvisor</a></li><li><a href="global.html#_getThreatDetectionPolicy">_getThreatDetectionPolicy</a></li><li><a href="global.html#_getTransparentDataEncryptionConfiguration">_getTransparentDataEncryptionConfiguration</a></li><li><a href="global.html#_importMethod">_importMethod</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listActivity">_listActivity</a></li><li><a href="global.html#_listByLocation">_listByLocation</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByServer">_listByServer</a></li><li><a href="global.html#_listDatabaseActivity">_listDatabaseActivity</a></li><li><a href="global.html#_listDatabases">_listDatabases</a></li><li><a href="global.html#_listMetrics">_listMetrics</a></li><li><a href="global.html#_listOperations">_listOperations</a></li><li><a href="global.html#_listReplicationLinks">_listReplicationLinks</a></li><li><a href="global.html#_listRestorePoints">_listRestorePoints</a></li><li><a href="global.html#_listServiceObjectives">_listServiceObjectives</a></li><li><a href="global.html#_listServiceTierAdvisors">_listServiceTierAdvisors</a></li><li><a href="global.html#_listTransparentDataEncryptionActivity">_listTransparentDataEncryptionActivity</a></li><li><a href="global.html#_listUsages">_listUsages</a></li><li><a href="global.html#_pause">_pause</a></li><li><a href="global.html#_resume">_resume</a></li><li><a href="global.html#authenticationType">authenticationType</a></li><li><a href="global.html#changeValueRelative">changeValueRelative</a></li><li><a href="global.html#confidence">confidence</a></li><li><a href="global.html#earliestRestoreDate">earliestRestoreDate</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#endIpAddress">endIpAddress</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#inRangeTimeRatio">inRangeTimeRatio</a></li><li><a href="global.html#isStorageSecondaryKeyInUse">isStorageSecondaryKeyInUse</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#location">location</a></li><li><a href="global.html#maxSizeBytes">maxSizeBytes</a></li><li><a href="global.html#metrics">metrics</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#nextResetTime">nextResetTime</a></li><li><a href="global.html#operation">operation</a></li><li><a href="global.html#percentComplete">percentComplete</a></li><li><a href="global.html#replicationState">replicationState</a></li><li><a href="global.html#reportedImpact">reportedImpact</a></li><li><a href="global.html#requestedDtuGuarantee">requestedDtuGuarantee</a></li><li><a href="global.html#sampleName">sampleName</a></li><li><a href="global.html#sizeGB">sizeGB</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#status">status</a></li><li><a href="global.html#supportedEditions">supportedEditions</a></li><li><a href="global.html#supportedMaxSizes">supportedMaxSizes</a></li><li><a href="global.html#supportedServerVersions">supportedServerVersions</a></li><li><a href="global.html#supportedServiceLevelObjectives">supportedServiceLevelObjectives</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useServerDefault">useServerDefault</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/recommendedElasticPool.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedElasticPool class.
+ * @constructor
+ * Represents a recommented elastic pool.
+ *
+ * @member {string} [databaseEdition] The edition of the recommended elastic
+ * pool. The ElasticPoolEdition enumeration contains all the valid editions.
+ * Possible values include: 'Basic', 'Standard', 'Premium'
+ *
+ * @member {number} [dtu] The DTU for the recommended elastic pool.
+ *
+ * @member {number} [databaseDtuMin] The minimum DTU for the database.
+ *
+ * @member {number} [databaseDtuMax] The maximum DTU for the database.
+ *
+ * @member {number} [storageMB] Gets storage size in megabytes.
+ *
+ * @member {date} [observationPeriodStart] The observation period start
+ * (ISO8601 format).
+ *
+ * @member {date} [observationPeriodEnd] The observation period start (ISO8601
+ * format).
+ *
+ * @member {number} [maxObservedDtu] Gets maximum observed DTU.
+ *
+ * @member {number} [maxObservedStorageMB] Gets maximum observed storage in
+ * megabytes.
+ *
+ * @member {array} [databases] The list of databases in this pool. Expanded
+ * property
+ *
+ * @member {array} [metrics] The list of databases housed in the server.
+ * Expanded property
+ *
+ */
+class RecommendedElasticPool extends models['ProxyResource'] {
+  constructor() {
+    super();
+  }
+
+  /**
+   * Defines the metadata of RecommendedElasticPool
+   *
+   * @returns {object} metadata of RecommendedElasticPool
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'RecommendedElasticPool',
+      type: {
+        name: 'Composite',
+        className: 'RecommendedElasticPool',
+        modelProperties: {
+          id: {
+            required: false,
+            readOnly: true,
+            serializedName: 'id',
+            type: {
+              name: 'String'
+            }
+          },
+          name: {
+            required: false,
+            readOnly: true,
+            serializedName: 'name',
+            type: {
+              name: 'String'
+            }
+          },
+          type: {
+            required: false,
+            readOnly: true,
+            serializedName: 'type',
+            type: {
+              name: 'String'
+            }
+          },
+          databaseEdition: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.databaseEdition',
+            type: {
+              name: 'String'
+            }
+          },
+          dtu: {
+            required: false,
+            serializedName: 'properties.dtu',
+            type: {
+              name: 'Number'
+            }
+          },
+          databaseDtuMin: {
+            required: false,
+            serializedName: 'properties.databaseDtuMin',
+            type: {
+              name: 'Number'
+            }
+          },
+          databaseDtuMax: {
+            required: false,
+            serializedName: 'properties.databaseDtuMax',
+            type: {
+              name: 'Number'
+            }
+          },
+          storageMB: {
+            required: false,
+            serializedName: 'properties.storageMB',
+            type: {
+              name: 'Number'
+            }
+          },
+          observationPeriodStart: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.observationPeriodStart',
+            type: {
+              name: 'DateTime'
+            }
+          },
+          observationPeriodEnd: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.observationPeriodEnd',
+            type: {
+              name: 'DateTime'
+            }
+          },
+          maxObservedDtu: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.maxObservedDtu',
+            type: {
+              name: 'Number'
+            }
+          },
+          maxObservedStorageMB: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.maxObservedStorageMB',
+            type: {
+              name: 'Number'
+            }
+          },
+          databases: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.databases',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'DatabaseElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'Database'
+                  }
+              }
+            }
+          },
+          metrics: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.metrics',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'RecommendedElasticPoolMetricElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'RecommendedElasticPoolMetric'
+                  }
+              }
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = RecommendedElasticPool;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:41:08 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

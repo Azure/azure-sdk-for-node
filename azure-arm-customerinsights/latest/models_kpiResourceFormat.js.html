@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/kpiResourceFormat.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AuthorizationPolicies.html">AuthorizationPolicies</a><ul class='methods'><li data-type='method'><a href="AuthorizationPolicies.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="AuthorizationPolicies.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="AuthorizationPolicies.html#get">get</a></li><li data-type='method'><a href="AuthorizationPolicies.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="AuthorizationPolicies.html#listByHub">listByHub</a></li><li data-type='method'><a href="AuthorizationPolicies.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="AuthorizationPolicies.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="AuthorizationPolicies.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li><li data-type='method'><a href="AuthorizationPolicies.html#regeneratePrimaryKey">regeneratePrimaryKey</a></li><li data-type='method'><a href="AuthorizationPolicies.html#regeneratePrimaryKeyWithHttpOperationResponse">regeneratePrimaryKeyWithHttpOperationResponse</a></li><li data-type='method'><a href="AuthorizationPolicies.html#regenerateSecondaryKey">regenerateSecondaryKey</a></li><li data-type='method'><a href="AuthorizationPolicies.html#regenerateSecondaryKeyWithHttpOperationResponse">regenerateSecondaryKeyWithHttpOperationResponse</a></li></ul></li><li><a href="ConnectorMappings.html">ConnectorMappings</a><ul class='methods'><li data-type='method'><a href="ConnectorMappings.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ConnectorMappings.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ConnectorMappings.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ConnectorMappings.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="ConnectorMappings.html#get">get</a></li><li data-type='method'><a href="ConnectorMappings.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ConnectorMappings.html#listByConnector">listByConnector</a></li><li data-type='method'><a href="ConnectorMappings.html#listByConnectorNext">listByConnectorNext</a></li><li data-type='method'><a href="ConnectorMappings.html#listByConnectorNextWithHttpOperationResponse">listByConnectorNextWithHttpOperationResponse</a></li><li data-type='method'><a href="ConnectorMappings.html#listByConnectorWithHttpOperationResponse">listByConnectorWithHttpOperationResponse</a></li></ul></li><li><a href="Connectors.html">Connectors</a><ul class='methods'><li data-type='method'><a href="Connectors.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Connectors.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Connectors.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Connectors.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Connectors.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Connectors.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Connectors.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Connectors.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Connectors.html#get">get</a></li><li data-type='method'><a href="Connectors.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Connectors.html#listByHub">listByHub</a></li><li data-type='method'><a href="Connectors.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Connectors.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Connectors.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="CustomerInsightsManagementClient.html">CustomerInsightsManagementClient</a></li><li><a href="Hubs.html">Hubs</a><ul class='methods'><li data-type='method'><a href="Hubs.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Hubs.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Hubs.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Hubs.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#get">get</a></li><li data-type='method'><a href="Hubs.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#list">list</a></li><li data-type='method'><a href="Hubs.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Hubs.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Hubs.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#listNext">listNext</a></li><li data-type='method'><a href="Hubs.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Hubs.html#update">update</a></li><li data-type='method'><a href="Hubs.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="Images.html">Images</a><ul class='methods'><li data-type='method'><a href="Images.html#getUploadUrlForData">getUploadUrlForData</a></li><li data-type='method'><a href="Images.html#getUploadUrlForDataWithHttpOperationResponse">getUploadUrlForDataWithHttpOperationResponse</a></li><li data-type='method'><a href="Images.html#getUploadUrlForEntityType">getUploadUrlForEntityType</a></li><li data-type='method'><a href="Images.html#getUploadUrlForEntityTypeWithHttpOperationResponse">getUploadUrlForEntityTypeWithHttpOperationResponse</a></li></ul></li><li><a href="Interactions.html">Interactions</a><ul class='methods'><li data-type='method'><a href="Interactions.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Interactions.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Interactions.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Interactions.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Interactions.html#get">get</a></li><li data-type='method'><a href="Interactions.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Interactions.html#listByHub">listByHub</a></li><li data-type='method'><a href="Interactions.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Interactions.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Interactions.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="Kpi.html">Kpi</a><ul class='methods'><li data-type='method'><a href="Kpi.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Kpi.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Kpi.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Kpi.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Kpi.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Kpi.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Kpi.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Kpi.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Kpi.html#get">get</a></li><li data-type='method'><a href="Kpi.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Kpi.html#listByHub">listByHub</a></li><li data-type='method'><a href="Kpi.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Kpi.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Kpi.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li><li data-type='method'><a href="Kpi.html#reprocess">reprocess</a></li><li data-type='method'><a href="Kpi.html#reprocessWithHttpOperationResponse">reprocessWithHttpOperationResponse</a></li></ul></li><li><a href="Links.html">Links</a><ul class='methods'><li data-type='method'><a href="Links.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Links.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Links.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Links.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Links.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Links.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Links.html#get">get</a></li><li data-type='method'><a href="Links.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Links.html#listByHub">listByHub</a></li><li data-type='method'><a href="Links.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Links.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Links.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="Profiles.html">Profiles</a><ul class='methods'><li data-type='method'><a href="Profiles.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Profiles.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Profiles.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Profiles.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Profiles.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Profiles.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Profiles.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Profiles.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Profiles.html#get">get</a></li><li data-type='method'><a href="Profiles.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Profiles.html#listByHub">listByHub</a></li><li data-type='method'><a href="Profiles.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Profiles.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Profiles.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="RelationshipLinks.html">RelationshipLinks</a><ul class='methods'><li data-type='method'><a href="RelationshipLinks.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="RelationshipLinks.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="RelationshipLinks.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="RelationshipLinks.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="RelationshipLinks.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RelationshipLinks.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="RelationshipLinks.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RelationshipLinks.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="RelationshipLinks.html#get">get</a></li><li data-type='method'><a href="RelationshipLinks.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="RelationshipLinks.html#listByHub">listByHub</a></li><li data-type='method'><a href="RelationshipLinks.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="RelationshipLinks.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="RelationshipLinks.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="Relationships.html">Relationships</a><ul class='methods'><li data-type='method'><a href="Relationships.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Relationships.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Relationships.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Relationships.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Relationships.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Relationships.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Relationships.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Relationships.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Relationships.html#get">get</a></li><li data-type='method'><a href="Relationships.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Relationships.html#listByHub">listByHub</a></li><li data-type='method'><a href="Relationships.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Relationships.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Relationships.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="RoleAssignments.html">RoleAssignments</a><ul class='methods'><li data-type='method'><a href="RoleAssignments.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="RoleAssignments.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="RoleAssignments.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="RoleAssignments.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="RoleAssignments.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="RoleAssignments.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="RoleAssignments.html#get">get</a></li><li data-type='method'><a href="RoleAssignments.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="RoleAssignments.html#listByHub">listByHub</a></li><li data-type='method'><a href="RoleAssignments.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="RoleAssignments.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="RoleAssignments.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="Roles.html">Roles</a><ul class='methods'><li data-type='method'><a href="Roles.html#listByHub">listByHub</a></li><li data-type='method'><a href="Roles.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Roles.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Roles.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="Views.html">Views</a><ul class='methods'><li data-type='method'><a href="Views.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Views.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Views.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Views.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Views.html#get">get</a></li><li data-type='method'><a href="Views.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Views.html#listByHub">listByHub</a></li><li data-type='method'><a href="Views.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="Views.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Views.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li><li><a href="WidgetTypes.html">WidgetTypes</a><ul class='methods'><li data-type='method'><a href="WidgetTypes.html#get">get</a></li><li data-type='method'><a href="WidgetTypes.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="WidgetTypes.html#listByHub">listByHub</a></li><li data-type='method'><a href="WidgetTypes.html#listByHubNext">listByHubNext</a></li><li data-type='method'><a href="WidgetTypes.html#listByHubNextWithHttpOperationResponse">listByHubNextWithHttpOperationResponse</a></li><li data-type='method'><a href="WidgetTypes.html#listByHubWithHttpOperationResponse">listByHubWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginDeleteMethod">_beginDeleteMethod</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getUploadUrlForData">_getUploadUrlForData</a></li><li><a href="global.html#_getUploadUrlForEntityType">_getUploadUrlForEntityType</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByConnector">_listByConnector</a></li><li><a href="global.html#_listByConnectorNext">_listByConnectorNext</a></li><li><a href="global.html#_listByHub">_listByHub</a></li><li><a href="global.html#_listByHubNext">_listByHubNext</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_regeneratePrimaryKey">_regeneratePrimaryKey</a></li><li><a href="global.html#_regenerateSecondaryKey">_regenerateSecondaryKey</a></li><li><a href="global.html#_reprocess">_reprocess</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#accessToken">accessToken</a></li><li><a href="global.html#arraySeparator">arraySeparator</a></li><li><a href="global.html#connectionKeyVaultUrl">connectionKeyVaultUrl</a></li><li><a href="global.html#created">created</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#destinationFolder">destinationFolder</a></li><li><a href="global.html#errorLimit">errorLimit</a></li><li><a href="global.html#exceptions">exceptions</a></li><li><a href="global.html#expression">expression</a></li><li><a href="global.html#extracts">extracts</a></li><li><a href="global.html#fieldMappings">fieldMappings</a></li><li><a href="global.html#fieldType">fieldType</a></li><li><a href="global.html#increasingKpi">increasingKpi</a></li><li><a href="global.html#interval">interval</a></li><li><a href="global.html#isEncrypted">isEncrypted</a></li><li><a href="global.html#isProfile">isProfile</a></li><li><a href="global.html#largeImage">largeImage</a></li><li><a href="global.html#linkType">linkType</a></li><li><a href="global.html#localizedValueNames">localizedValueNames</a></li><li><a href="global.html#maxUnits">maxUnits</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#primaryParticipantProfilePropertyName">primaryParticipantProfilePropertyName</a></li><li><a href="global.html#principalMetadata">principalMetadata</a></li><li><a href="global.html#profilePropertyName">profilePropertyName</a></li><li><a href="global.html#referenceOnly">referenceOnly</a></li><li><a href="global.html#relatedProfileKeyProperty">relatedProfileKeyProperty</a></li><li><a href="global.html#relationshipFieldName">relationshipFieldName</a></li><li><a href="global.html#relativePath">relativePath</a></li><li><a href="global.html#role">role</a></li><li><a href="global.html#salesforceConnectionStringSecretUrl">salesforceConnectionStringSecretUrl</a></li><li><a href="global.html#salesforcetables">salesforcetables</a></li><li><a href="global.html#schemaItemPropLink">schemaItemPropLink</a></li><li><a href="global.html#secondaryKey">secondaryKey</a></li><li><a href="global.html#strongIds">strongIds</a></li><li><a href="global.html#tableSchema">tableSchema</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#typeName">typeName</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/kpiResourceFormat.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the KpiResourceFormat class.
+ * @constructor
+ * The KPI resource format.
+ *
+ * @member {string} entityType The mapping entity type. Possible values
+ * include: 'None', 'Profile', 'Interaction', 'Relationship'
+ *
+ * @member {string} entityTypeName The mapping entity name.
+ *
+ * @member {string} [tenantId] The hub name.
+ *
+ * @member {string} [kpiName] The KPI name.
+ *
+ * @member {object} [displayName] Localized display name for the KPI.
+ *
+ * @member {object} [description] Localized description for the KPI.
+ *
+ * @member {string} calculationWindow The calculation window. Possible values
+ * include: 'Hour', 'Day', 'Week', 'Month'
+ *
+ * @member {string} functionProperty The computation function for the KPI.
+ * Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count', 'None'
+ *
+ * @member {string} expression The computation expression for the KPI.
+ *
+ * @member {string} [unit] The unit of measurement for the KPI.
+ *
+ * @member {string} [filter] The filter expression for the KPI.
+ *
+ * @member {array} [groupBy] the group by properties for the KPI.
+ *
+ * @member {array} [groupByMetadata] The KPI GroupByMetadata.
+ *
+ * @member {array} [participantProfilesMetadata] The participant profiles.
+ *
+ * @member {string} [provisioningState] The provisioning state.
+ *
+ * @member {object} [thresHolds] The KPI thresholds.
+ *
+ * @member {number} [thresHolds.lowerLimit] The lower threshold limit.
+ *
+ * @member {number} [thresHolds.upperLimit] The upper threshold limit.
+ *
+ * @member {boolean} [thresHolds.increasingKpi] Whether or not the KPI is an
+ * increasing KPI.
+ *
+ * @member {array} [aliases] The aliases.
+ *
+ * @member {array} [extracts] The KPI extracts.
+ *
+ */
+class KpiResourceFormat extends models['ProxyResource'] {
+  constructor() {
+    super();
+  }
+
+  /**
+   * Defines the metadata of KpiResourceFormat
+   *
+   * @returns {object} metadata of KpiResourceFormat
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'KpiResourceFormat',
+      type: {
+        name: 'Composite',
+        className: 'KpiResourceFormat',
+        modelProperties: {
+          id: {
+            required: false,
+            readOnly: true,
+            serializedName: 'id',
+            type: {
+              name: 'String'
+            }
+          },
+          name: {
+            required: false,
+            readOnly: true,
+            serializedName: 'name',
+            type: {
+              name: 'String'
+            }
+          },
+          type: {
+            required: false,
+            readOnly: true,
+            serializedName: 'type',
+            type: {
+              name: 'String'
+            }
+          },
+          entityType: {
+            required: true,
+            serializedName: 'properties.entityType',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'None', 'Profile', 'Interaction', 'Relationship' ]
+            }
+          },
+          entityTypeName: {
+            required: true,
+            serializedName: 'properties.entityTypeName',
+            type: {
+              name: 'String'
+            }
+          },
+          tenantId: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.tenantId',
+            type: {
+              name: 'String'
+            }
+          },
+          kpiName: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.kpiName',
+            type: {
+              name: 'String'
+            }
+          },
+          displayName: {
+            required: false,
+            serializedName: 'properties.displayName',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          description: {
+            required: false,
+            serializedName: 'properties.description',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          calculationWindow: {
+            required: true,
+            serializedName: 'properties.calculationWindow',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'Hour', 'Day', 'Week', 'Month' ]
+            }
+          },
+          functionProperty: {
+            required: true,
+            serializedName: 'properties.function',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count', 'None' ]
+            }
+          },
+          expression: {
+            required: true,
+            serializedName: 'properties.expression',
+            type: {
+              name: 'String'
+            }
+          },
+          unit: {
+            required: false,
+            serializedName: 'properties.unit',
+            type: {
+              name: 'String'
+            }
+          },
+          filter: {
+            required: false,
+            serializedName: 'properties.filter',
+            type: {
+              name: 'String'
+            }
+          },
+          groupBy: {
+            required: false,
+            serializedName: 'properties.groupBy',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          groupByMetadata: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.groupByMetadata',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'KpiGroupByMetadataElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'KpiGroupByMetadata'
+                  }
+              }
+            }
+          },
+          participantProfilesMetadata: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.participantProfilesMetadata',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'KpiParticipantProfilesMetadataElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'KpiParticipantProfilesMetadata'
+                  }
+              }
+            }
+          },
+          provisioningState: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.provisioningState',
+            type: {
+              name: 'String'
+            }
+          },
+          thresHolds: {
+            required: false,
+            serializedName: 'properties.thresHolds',
+            type: {
+              name: 'Composite',
+              className: 'KpiThresholds'
+            }
+          },
+          aliases: {
+            required: false,
+            serializedName: 'properties.aliases',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'KpiAliasElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'KpiAlias'
+                  }
+              }
+            }
+          },
+          extracts: {
+            required: false,
+            serializedName: 'properties.extracts',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'KpiExtractElementType',
+                  type: {
+                    name: 'Composite',
+                    className: 'KpiExtract'
+                  }
+              }
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = KpiResourceFormat;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:05 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>service/models/keywordMarkerTokenFilter.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="DataSources.html">DataSources</a><ul class='methods'><li data-type='method'><a href="DataSources.html#create">create</a></li><li data-type='method'><a href="DataSources.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="DataSources.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="DataSources.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#get">get</a></li><li data-type='method'><a href="DataSources.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="DataSources.html#list">list</a></li><li data-type='method'><a href="DataSources.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Defines%2520a%2520data%2520change%2520detection%2520policy%2520that%2520captures%2520changes%2520using%2520the%250AIntegrated%2520Change%2520Tracking%2520feature%2520of%2520Azure%2520SQL%2520Database..html">Defines a data change detection policy that captures changes using the
+Integrated Change Tracking feature of Azure SQL Database.</a></li><li><a href="DocumentsProxy.html">DocumentsProxy</a><ul class='methods'><li data-type='method'><a href="DocumentsProxy.html#count">count</a></li><li data-type='method'><a href="DocumentsProxy.html#countWithHttpOperationResponse">countWithHttpOperationResponse</a></li></ul></li><li><a href="Indexers.html">Indexers</a><ul class='methods'><li data-type='method'><a href="Indexers.html#create">create</a></li><li data-type='method'><a href="Indexers.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Indexers.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexers.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexers.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Indexers.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexers.html#get">get</a></li><li data-type='method'><a href="Indexers.html#getStatus">getStatus</a></li><li data-type='method'><a href="Indexers.html#getStatusWithHttpOperationResponse">getStatusWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexers.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexers.html#list">list</a></li><li data-type='method'><a href="Indexers.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexers.html#reset">reset</a></li><li data-type='method'><a href="Indexers.html#resetWithHttpOperationResponse">resetWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexers.html#run">run</a></li><li data-type='method'><a href="Indexers.html#runWithHttpOperationResponse">runWithHttpOperationResponse</a></li></ul></li><li><a href="Indexes.html">Indexes</a><ul class='methods'><li data-type='method'><a href="Indexes.html#analyze">analyze</a></li><li data-type='method'><a href="Indexes.html#analyzeWithHttpOperationResponse">analyzeWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexes.html#create">create</a></li><li data-type='method'><a href="Indexes.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Indexes.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexes.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexes.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Indexes.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexes.html#get">get</a></li><li data-type='method'><a href="Indexes.html#getStatistics">getStatistics</a></li><li data-type='method'><a href="Indexes.html#getStatisticsWithHttpOperationResponse">getStatisticsWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexes.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Indexes.html#list">list</a></li><li data-type='method'><a href="Indexes.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="SearchIndexClient.html">SearchIndexClient</a></li><li><a href="SearchServiceClient.html">SearchServiceClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_analyze">_analyze</a></li><li><a href="global.html#_count">_count</a></li><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getStatistics">_getStatistics</a></li><li><a href="global.html#_getStatus">_getStatus</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_reset">_reset</a></li><li><a href="global.html#_run">_run</a></li><li><a href="global.html#articles">articles</a></li><li><a href="global.html#boostingDistance">boostingDistance</a></li><li><a href="global.html#boostingDuration">boostingDuration</a></li><li><a href="global.html#charFilters">charFilters</a></li><li><a href="global.html#clientRequestId">clientRequestId</a></li><li><a href="global.html#connectionString">connectionString</a></li><li><a href="global.html#consumeAllTokens">consumeAllTokens</a></li><li><a href="global.html#dataSources">dataSources</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#eTag">eTag</a></li><li><a href="global.html#expand">expand</a></li><li><a href="global.html#filterToken">filterToken</a></li><li><a href="global.html#functionAggregation">functionAggregation</a></li><li><a href="global.html#group">group</a></li><li><a href="global.html#highWaterMarkColumnName">highWaterMarkColumnName</a></li><li><a href="global.html#ifNoneMatch">ifNoneMatch</a></li><li><a href="global.html#ignoreCase">ignoreCase</a></li><li><a href="global.html#indexers">indexers</a></li><li><a href="global.html#indexes">indexes</a></li><li><a href="global.html#language">language</a></li><li><a href="global.html#length">length</a></li><li><a href="global.html#lowerCaseKeepWords">lowerCaseKeepWords</a></li><li><a href="global.html#mappings">mappings</a></li><li><a href="global.html#max">max</a></li><li><a href="global.html#maxAgeInSeconds">maxAgeInSeconds</a></li><li><a href="global.html#maxGram">maxGram</a></li><li><a href="global.html#maxTokenLength">maxTokenLength</a></li><li><a href="global.html#odatatype">odatatype</a></li><li><a href="global.html#onlyLongestMatch">onlyLongestMatch</a></li><li><a href="global.html#onlyOnSamePosition">onlyOnSamePosition</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#position">position</a></li><li><a href="global.html#preserveOriginal">preserveOriginal</a></li><li><a href="global.html#protectedWords">protectedWords</a></li><li><a href="global.html#query">query</a></li><li><a href="global.html#removeTrailingStopWords">removeTrailingStopWords</a></li><li><a href="global.html#replacement">replacement</a></li><li><a href="global.html#replaceOriginalTokens">replaceOriginalTokens</a></li><li><a href="global.html#results">results</a></li><li><a href="global.html#rules">rules</a></li><li><a href="global.html#shouldBoostBeyondRangeByConstant">shouldBoostBeyondRangeByConstant</a></li><li><a href="global.html#side">side</a></li><li><a href="global.html#softDeleteMarkerValue">softDeleteMarkerValue</a></li><li><a href="global.html#sourceFields">sourceFields</a></li><li><a href="global.html#startTime">startTime</a></li><li><a href="global.html#stopwords">stopwords</a></li><li><a href="global.html#tagsParameter">tagsParameter</a></li><li><a href="global.html#tokens">tokens</a></li><li><a href="global.html#top">top</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useQueryMode">useQueryMode</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">service/models/keywordMarkerTokenFilter.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the KeywordMarkerTokenFilter class.
+ * @constructor
+ * Marks terms as keywords. This token filter is implemented using Apache
+ * Lucene.
+ *
+ * @member {array} keywords A list of words to mark as keywords.
+ *
+ * @member {boolean} [ignoreCase] A value indicating whether to ignore case. If
+ * true, all words are converted to lower case first. Default is false. Default
+ * value: false .
+ *
+ */
+class KeywordMarkerTokenFilter extends models['TokenFilter'] {
+  constructor() {
+    super();
+  }
+
+  /**
+   * Defines the metadata of KeywordMarkerTokenFilter
+   *
+   * @returns {object} metadata of KeywordMarkerTokenFilter
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: '#Microsoft.Azure.Search.KeywordMarkerTokenFilter',
+      type: {
+        name: 'Composite',
+        className: 'KeywordMarkerTokenFilter',
+        modelProperties: {
+          name: {
+            required: true,
+            serializedName: 'name',
+            type: {
+              name: 'String'
+            }
+          },
+          odatatype: {
+            required: true,
+            serializedName: '@odata\\.type',
+            type: {
+              name: 'String'
+            }
+          },
+          keywords: {
+            required: true,
+            serializedName: 'keywords',
+            type: {
+              name: 'Sequence',
+              element: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          ignoreCase: {
+            required: false,
+            serializedName: 'ignoreCase',
+            defaultValue: false,
+            type: {
+              name: 'Boolean'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = KeywordMarkerTokenFilter;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:55 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

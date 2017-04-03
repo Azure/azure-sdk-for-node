@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sqlManagementClient.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ARM%2520proxy%2520resource..html">ARM proxy resource.</a></li><li><a href="Capabilities.html">Capabilities</a><ul class='methods'><li data-type='method'><a href="Capabilities.html#listByLocation">listByLocation</a></li><li data-type='method'><a href="Capabilities.html#listByLocationWithHttpOperationResponse">listByLocationWithHttpOperationResponse</a></li></ul></li><li><a href="Databases.html">Databases</a><ul class='methods'><li data-type='method'><a href="Databases.html#beginCreateImportOperation">beginCreateImportOperation</a></li><li data-type='method'><a href="Databases.html#beginCreateImportOperationWithHttpOperationResponse">beginCreateImportOperationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Databases.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginExportMethod">beginExportMethod</a></li><li data-type='method'><a href="Databases.html#beginExportMethodWithHttpOperationResponse">beginExportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLink">beginFailoverReplicationLink</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLinkAllowDataLoss">beginFailoverReplicationLinkAllowDataLoss</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLinkAllowDataLossWithHttpOperationResponse">beginFailoverReplicationLinkAllowDataLossWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginFailoverReplicationLinkWithHttpOperationResponse">beginFailoverReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginImportMethod">beginImportMethod</a></li><li data-type='method'><a href="Databases.html#beginImportMethodWithHttpOperationResponse">beginImportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginPause">beginPause</a></li><li data-type='method'><a href="Databases.html#beginPauseWithHttpOperationResponse">beginPauseWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#beginResume">beginResume</a></li><li data-type='method'><a href="Databases.html#beginResumeWithHttpOperationResponse">beginResumeWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createImportOperation">createImportOperation</a></li><li data-type='method'><a href="Databases.html#createImportOperationWithHttpOperationResponse">createImportOperationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Databases.html#createOrUpdateBlobAuditingPolicy">createOrUpdateBlobAuditingPolicy</a></li><li data-type='method'><a href="Databases.html#createOrUpdateBlobAuditingPolicyWithHttpOperationResponse">createOrUpdateBlobAuditingPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdateThreatDetectionPolicy">createOrUpdateThreatDetectionPolicy</a></li><li data-type='method'><a href="Databases.html#createOrUpdateThreatDetectionPolicyWithHttpOperationResponse">createOrUpdateThreatDetectionPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdateTransparentDataEncryptionConfiguration">createOrUpdateTransparentDataEncryptionConfiguration</a></li><li data-type='method'><a href="Databases.html#createOrUpdateTransparentDataEncryptionConfigurationWithHttpOperationResponse">createOrUpdateTransparentDataEncryptionConfigurationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Databases.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#deleteReplicationLink">deleteReplicationLink</a></li><li data-type='method'><a href="Databases.html#deleteReplicationLinkWithHttpOperationResponse">deleteReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#exportMethod">exportMethod</a></li><li data-type='method'><a href="Databases.html#exportMethodWithHttpOperationResponse">exportMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLink">failoverReplicationLink</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLinkAllowDataLoss">failoverReplicationLinkAllowDataLoss</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLinkAllowDataLossWithHttpOperationResponse">failoverReplicationLinkAllowDataLossWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#failoverReplicationLinkWithHttpOperationResponse">failoverReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#get">get</a></li><li data-type='method'><a href="Databases.html#getBlobAuditingPolicy">getBlobAuditingPolicy</a></li><li data-type='method'><a href="Databases.html#getBlobAuditingPolicyWithHttpOperationResponse">getBlobAuditingPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getReplicationLink">getReplicationLink</a></li><li data-type='method'><a href="Databases.html#getReplicationLinkWithHttpOperationResponse">getReplicationLinkWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getServiceTierAdvisor">getServiceTierAdvisor</a></li><li data-type='method'><a href="Databases.html#getServiceTierAdvisorWithHttpOperationResponse">getServiceTierAdvisorWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getThreatDetectionPolicy">getThreatDetectionPolicy</a></li><li data-type='method'><a href="Databases.html#getThreatDetectionPolicyWithHttpOperationResponse">getThreatDetectionPolicyWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getTransparentDataEncryptionConfiguration">getTransparentDataEncryptionConfiguration</a></li><li data-type='method'><a href="Databases.html#getTransparentDataEncryptionConfigurationWithHttpOperationResponse">getTransparentDataEncryptionConfigurationWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#importMethod">importMethod</a></li><li data-type='method'><a href="Databases.html#importMethodWithHttpOperationResponse">importMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listByServer">listByServer</a></li><li data-type='method'><a href="Databases.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listReplicationLinks">listReplicationLinks</a></li><li data-type='method'><a href="Databases.html#listReplicationLinksWithHttpOperationResponse">listReplicationLinksWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listRestorePoints">listRestorePoints</a></li><li data-type='method'><a href="Databases.html#listRestorePointsWithHttpOperationResponse">listRestorePointsWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listServiceTierAdvisors">listServiceTierAdvisors</a></li><li data-type='method'><a href="Databases.html#listServiceTierAdvisorsWithHttpOperationResponse">listServiceTierAdvisorsWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listTransparentDataEncryptionActivity">listTransparentDataEncryptionActivity</a></li><li data-type='method'><a href="Databases.html#listTransparentDataEncryptionActivityWithHttpOperationResponse">listTransparentDataEncryptionActivityWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#listUsages">listUsages</a></li><li data-type='method'><a href="Databases.html#listUsagesWithHttpOperationResponse">listUsagesWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#pause">pause</a></li><li data-type='method'><a href="Databases.html#pauseWithHttpOperationResponse">pauseWithHttpOperationResponse</a></li><li data-type='method'><a href="Databases.html#resume">resume</a></li><li data-type='method'><a href="Databases.html#resumeWithHttpOperationResponse">resumeWithHttpOperationResponse</a></li></ul></li><li><a href="ElasticPools.html">ElasticPools</a><ul class='methods'><li data-type='method'><a href="ElasticPools.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="ElasticPools.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="ElasticPools.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="ElasticPools.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#get">get</a></li><li data-type='method'><a href="ElasticPools.html#getDatabase">getDatabase</a></li><li data-type='method'><a href="ElasticPools.html#getDatabaseWithHttpOperationResponse">getDatabaseWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listActivity">listActivity</a></li><li data-type='method'><a href="ElasticPools.html#listActivityWithHttpOperationResponse">listActivityWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listByServer">listByServer</a></li><li data-type='method'><a href="ElasticPools.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listDatabaseActivity">listDatabaseActivity</a></li><li data-type='method'><a href="ElasticPools.html#listDatabaseActivityWithHttpOperationResponse">listDatabaseActivityWithHttpOperationResponse</a></li><li data-type='method'><a href="ElasticPools.html#listDatabases">listDatabases</a></li><li data-type='method'><a href="ElasticPools.html#listDatabasesWithHttpOperationResponse">listDatabasesWithHttpOperationResponse</a></li></ul></li><li><a href="FirewallRules.html">FirewallRules</a><ul class='methods'><li data-type='method'><a href="FirewallRules.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="FirewallRules.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="FirewallRules.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#get">get</a></li><li data-type='method'><a href="FirewallRules.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="FirewallRules.html#listByServer">listByServer</a></li><li data-type='method'><a href="FirewallRules.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li></ul></li><li><a href="RecommendedElasticPools.html">RecommendedElasticPools</a><ul class='methods'><li data-type='method'><a href="RecommendedElasticPools.html#get">get</a></li><li data-type='method'><a href="RecommendedElasticPools.html#getDatabases">getDatabases</a></li><li data-type='method'><a href="RecommendedElasticPools.html#getDatabasesWithHttpOperationResponse">getDatabasesWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listByServer">listByServer</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listByServerWithHttpOperationResponse">listByServerWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listDatabases">listDatabases</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listDatabasesWithHttpOperationResponse">listDatabasesWithHttpOperationResponse</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listMetrics">listMetrics</a></li><li data-type='method'><a href="RecommendedElasticPools.html#listMetricsWithHttpOperationResponse">listMetricsWithHttpOperationResponse</a></li></ul></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520get%2520database%2520service%2520objectives%2520request..html">Represents the response to a get database service objectives request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520get%2520server%2520request..html">Represents the response to a get server request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520metrics%2520request..html">Represents the response to a list database metrics request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520List%2520database%2520replication%2520link%2520request..html">Represents the response to a List database replication link request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520request..html">Represents the response to a list database request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520restore%2520points%2520request..html">Represents the response to a list database restore points request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520database%2520transparent%2520data%2520encryption%250Aactivity%2520request..html">Represents the response to a list database transparent data encryption
+activity request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520elastic%2520pool%2520activity%2520request..html">Represents the response to a list elastic pool activity request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520elastic%2520pool%2520database%2520activity%2520request..html">Represents the response to a list elastic pool database activity request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520elastic%2520pool%2520request..html">Represents the response to a list elastic pool request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520List%2520Firewall%2520Rules%2520request..html">Represents the response to a List Firewall Rules request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520recommended%2520elastic%2520pool%2520metrics%2520request..html">Represents the response to a list recommended elastic pool metrics request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520recommended%2520elastic%2520pool%2520request..html">Represents the response to a list recommended elastic pool request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520server%2520metrics%2520request..html">Represents the response to a list server metrics request.</a></li><li><a href="Represents%2520the%2520response%2520to%2520a%2520list%2520service%2520tier%2520advisor%2520request..html">Represents the response to a list service tier advisor request.</a></li><li><a href="Servers.html">Servers</a><ul class='methods'><li data-type='method'><a href="Servers.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Servers.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Servers.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#get">get</a></li><li data-type='method'><a href="Servers.html#getServiceObjective">getServiceObjective</a></li><li data-type='method'><a href="Servers.html#getServiceObjectiveWithHttpOperationResponse">getServiceObjectiveWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#list">list</a></li><li data-type='method'><a href="Servers.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Servers.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#listServiceObjectives">listServiceObjectives</a></li><li data-type='method'><a href="Servers.html#listServiceObjectivesWithHttpOperationResponse">listServiceObjectivesWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#listUsages">listUsages</a></li><li data-type='method'><a href="Servers.html#listUsagesWithHttpOperationResponse">listUsagesWithHttpOperationResponse</a></li><li data-type='method'><a href="Servers.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="SqlManagementClient.html">SqlManagementClient</a><ul class='methods'><li data-type='method'><a href="SqlManagementClient.html#listOperations">listOperations</a></li><li data-type='method'><a href="SqlManagementClient.html#listOperationsWithHttpOperationResponse">listOperationsWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateImportOperation">_beginCreateImportOperation</a></li><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginExportMethod">_beginExportMethod</a></li><li><a href="global.html#_beginFailoverReplicationLink">_beginFailoverReplicationLink</a></li><li><a href="global.html#_beginFailoverReplicationLinkAllowDataLoss">_beginFailoverReplicationLinkAllowDataLoss</a></li><li><a href="global.html#_beginImportMethod">_beginImportMethod</a></li><li><a href="global.html#_beginPause">_beginPause</a></li><li><a href="global.html#_beginResume">_beginResume</a></li><li><a href="global.html#_createImportOperation">_createImportOperation</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_createOrUpdateBlobAuditingPolicy">_createOrUpdateBlobAuditingPolicy</a></li><li><a href="global.html#_createOrUpdateThreatDetectionPolicy">_createOrUpdateThreatDetectionPolicy</a></li><li><a href="global.html#_createOrUpdateTransparentDataEncryptionConfiguration">_createOrUpdateTransparentDataEncryptionConfiguration</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_deleteReplicationLink">_deleteReplicationLink</a></li><li><a href="global.html#_exportMethod">_exportMethod</a></li><li><a href="global.html#_failoverReplicationLink">_failoverReplicationLink</a></li><li><a href="global.html#_failoverReplicationLinkAllowDataLoss">_failoverReplicationLinkAllowDataLoss</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getBlobAuditingPolicy">_getBlobAuditingPolicy</a></li><li><a href="global.html#_getDatabase">_getDatabase</a></li><li><a href="global.html#_getDatabases">_getDatabases</a></li><li><a href="global.html#_getReplicationLink">_getReplicationLink</a></li><li><a href="global.html#_getServiceObjective">_getServiceObjective</a></li><li><a href="global.html#_getServiceTierAdvisor">_getServiceTierAdvisor</a></li><li><a href="global.html#_getThreatDetectionPolicy">_getThreatDetectionPolicy</a></li><li><a href="global.html#_getTransparentDataEncryptionConfiguration">_getTransparentDataEncryptionConfiguration</a></li><li><a href="global.html#_importMethod">_importMethod</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listActivity">_listActivity</a></li><li><a href="global.html#_listByLocation">_listByLocation</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByServer">_listByServer</a></li><li><a href="global.html#_listDatabaseActivity">_listDatabaseActivity</a></li><li><a href="global.html#_listDatabases">_listDatabases</a></li><li><a href="global.html#_listMetrics">_listMetrics</a></li><li><a href="global.html#_listOperations">_listOperations</a></li><li><a href="global.html#_listReplicationLinks">_listReplicationLinks</a></li><li><a href="global.html#_listRestorePoints">_listRestorePoints</a></li><li><a href="global.html#_listServiceObjectives">_listServiceObjectives</a></li><li><a href="global.html#_listServiceTierAdvisors">_listServiceTierAdvisors</a></li><li><a href="global.html#_listTransparentDataEncryptionActivity">_listTransparentDataEncryptionActivity</a></li><li><a href="global.html#_listUsages">_listUsages</a></li><li><a href="global.html#_pause">_pause</a></li><li><a href="global.html#_resume">_resume</a></li><li><a href="global.html#authenticationType">authenticationType</a></li><li><a href="global.html#changeValueRelative">changeValueRelative</a></li><li><a href="global.html#confidence">confidence</a></li><li><a href="global.html#earliestRestoreDate">earliestRestoreDate</a></li><li><a href="global.html#enabled">enabled</a></li><li><a href="global.html#endIpAddress">endIpAddress</a></li><li><a href="global.html#errorMessage">errorMessage</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#inRangeTimeRatio">inRangeTimeRatio</a></li><li><a href="global.html#isStorageSecondaryKeyInUse">isStorageSecondaryKeyInUse</a></li><li><a href="global.html#kind">kind</a></li><li><a href="global.html#location">location</a></li><li><a href="global.html#maxSizeBytes">maxSizeBytes</a></li><li><a href="global.html#metrics">metrics</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#nextResetTime">nextResetTime</a></li><li><a href="global.html#operation">operation</a></li><li><a href="global.html#percentComplete">percentComplete</a></li><li><a href="global.html#replicationState">replicationState</a></li><li><a href="global.html#reportedImpact">reportedImpact</a></li><li><a href="global.html#requestedDtuGuarantee">requestedDtuGuarantee</a></li><li><a href="global.html#sampleName">sampleName</a></li><li><a href="global.html#sizeGB">sizeGB</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#status">status</a></li><li><a href="global.html#supportedEditions">supportedEditions</a></li><li><a href="global.html#supportedMaxSizes">supportedMaxSizes</a></li><li><a href="global.html#supportedServerVersions">supportedServerVersions</a></li><li><a href="global.html#supportedServiceLevelObjectives">supportedServiceLevelObjectives</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#useServerDefault">useServerDefault</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">sqlManagementClient.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+/* jshint latedef:false */
+/* jshint forin:false */
+/* jshint noempty:false */
+
+'use strict';
+
+const msRest = require('ms-rest');
+const msRestAzure = require('ms-rest-azure');
+const ServiceClient = msRestAzure.AzureServiceClient;
+const WebResource = msRest.WebResource;
+
+const models = require('./models');
+const operations = require('./operations');
+
+
+/**
+ * Lists all of the available SQL Rest API operations.
+ *
+ * @param {object} [options] Optional Parameters.
+ *
+ * @param {object} [options.customHeaders] Headers that will be added to the
+ * request
+ *
+ * @param {function} callback - The callback.
+ *
+ * @returns {function} callback(err, result, request, response)
+ *
+ *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+ *
+ *                      {object} [result]   - The deserialized result object if an error did not occur.
+ *                      See {@link OperationListResult} for more information.
+ *
+ *                      {object} [request]  - The HTTP Request object if an error did not occur.
+ *
+ *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+ */
+function _listOperations(options, callback) {
+   /* jshint validthis: true */
+  let client = this;
+  if(!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = null;
+  }
+  if (!callback) {
+    throw new Error('callback cannot be null.');
+  }
+  let apiVersion = '2014-04-01';
+  // Validate
+  try {
+    if (this.acceptLanguage !== null &amp;&amp; this.acceptLanguage !== undefined &amp;&amp; typeof this.acceptLanguage.valueOf() !== 'string') {
+      throw new Error('this.acceptLanguage must be of type string.');
+    }
+  } catch (error) {
+    return callback(error);
+  }
+
+  // Construct URL
+  let baseUrl = this.baseUri;
+  let requestUrl = baseUrl + (baseUrl.endsWith('/') ? '' : '/') + 'providers/Microsoft.Sql/operations';
+  let queryParameters = [];
+  queryParameters.push('api-version=' + encodeURIComponent(apiVersion));
+  if (queryParameters.length > 0) {
+    requestUrl += '?' + queryParameters.join('&amp;');
+  }
+
+  // Create HTTP transport objects
+  let httpRequest = new WebResource();
+  httpRequest.method = 'GET';
+  httpRequest.headers = {};
+  httpRequest.url = requestUrl;
+  // Set Headers
+  if (this.generateClientRequestId) {
+      httpRequest.headers['x-ms-client-request-id'] = msRestAzure.generateUuid();
+  }
+  if (this.acceptLanguage !== undefined &amp;&amp; this.acceptLanguage !== null) {
+    httpRequest.headers['accept-language'] = this.acceptLanguage;
+  }
+  if(options) {
+    for(let headerName in options['customHeaders']) {
+      if (options['customHeaders'].hasOwnProperty(headerName)) {
+        httpRequest.headers[headerName] = options['customHeaders'][headerName];
+      }
+    }
+  }
+  httpRequest.headers['Content-Type'] = 'application/json; charset=utf-8';
+  httpRequest.body = null;
+  // Send Request
+  return client.pipeline(httpRequest, (err, response, responseBody) => {
+    if (err) {
+      return callback(err);
+    }
+    let statusCode = response.statusCode;
+    if (statusCode !== 200) {
+      let error = new Error(responseBody);
+      error.statusCode = response.statusCode;
+      error.request = msRest.stripRequest(httpRequest);
+      error.response = msRest.stripResponse(response);
+      if (responseBody === '') responseBody = null;
+      let parsedErrorResponse;
+      try {
+        parsedErrorResponse = JSON.parse(responseBody);
+        if (parsedErrorResponse) {
+          if (parsedErrorResponse.error) parsedErrorResponse = parsedErrorResponse.error;
+          if (parsedErrorResponse.code) error.code = parsedErrorResponse.code;
+          if (parsedErrorResponse.message) error.message = parsedErrorResponse.message;
+        }
+        if (parsedErrorResponse !== null &amp;&amp; parsedErrorResponse !== undefined) {
+          let resultMapper = new client.models['CloudError']().mapper();
+          error.body = client.deserialize(resultMapper, parsedErrorResponse, 'error.body');
+        }
+      } catch (defaultError) {
+        error.message = `Error "${defaultError.message}" occurred in deserializing the responseBody ` +
+                         `- "${responseBody}" for the default response.`;
+        return callback(error);
+      }
+      return callback(error);
+    }
+    // Create Result
+    let result = null;
+    if (responseBody === '') responseBody = null;
+    // Deserialize Response
+    if (statusCode === 200) {
+      let parsedResponse = null;
+      try {
+        parsedResponse = JSON.parse(responseBody);
+        result = JSON.parse(responseBody);
+        if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined) {
+          let resultMapper = new client.models['OperationListResult']().mapper();
+          result = client.deserialize(resultMapper, parsedResponse, 'result');
+        }
+      } catch (error) {
+        let deserializationError = new Error(`Error ${error} occurred in deserializing the responseBody - ${responseBody}`);
+        deserializationError.request = msRest.stripRequest(httpRequest);
+        deserializationError.response = msRest.stripResponse(response);
+        return callback(deserializationError);
+      }
+    }
+
+    return callback(null, result, httpRequest, response);
+  });
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SqlManagementClient class.
+ * @constructor
+ *
+ * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
+ *
+ * @param {string} subscriptionId - The subscription ID that identifies an Azure subscription.
+ *
+ * @param {string} [baseUri] - The base URI of the service.
+ *
+ * @param {object} [options] - The parameter options
+ *
+ * @param {Array} [options.filters] - Filters to be added to the request pipeline
+ *
+ * @param {object} [options.requestOptions] - Options for the underlying request object
+ * {@link https://github.com/request/request#requestoptions-callback Options doc}
+ *
+ * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
+ *
+ * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+ *
+ * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+ *
+ * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+ *
+ */
+class SqlManagementClient extends ServiceClient {
+  constructor(credentials, subscriptionId, baseUri, options) {
+    if (credentials === null || credentials === undefined) {
+      throw new Error('\'credentials\' cannot be null.');
+    }
+    if (subscriptionId === null || subscriptionId === undefined) {
+      throw new Error('\'subscriptionId\' cannot be null.');
+    }
+
+    if (!options) options = {};
+
+    super(credentials, options);
+
+    this.acceptLanguage = 'en-US';
+    this.longRunningOperationRetryTimeout = 30;
+    this.generateClientRequestId = true;
+    this.baseUri = baseUri;
+    if (!this.baseUri) {
+      this.baseUri = 'https://management.azure.com';
+    }
+    this.credentials = credentials;
+    this.subscriptionId = subscriptionId;
+
+    let packageInfo = this.getPackageJsonInfo(__dirname);
+    this.addUserAgentInfo(`${packageInfo.name}/${packageInfo.version}`);
+    if(options.acceptLanguage !== null &amp;&amp; options.acceptLanguage !== undefined) {
+      this.acceptLanguage = options.acceptLanguage;
+    }
+    if(options.longRunningOperationRetryTimeout !== null &amp;&amp; options.longRunningOperationRetryTimeout !== undefined) {
+      this.longRunningOperationRetryTimeout = options.longRunningOperationRetryTimeout;
+    }
+    if(options.generateClientRequestId !== null &amp;&amp; options.generateClientRequestId !== undefined) {
+      this.generateClientRequestId = options.generateClientRequestId;
+    }
+    this.capabilities = new operations.Capabilities(this);
+    this.firewallRules = new operations.FirewallRules(this);
+    this.databases = new operations.Databases(this);
+    this.servers = new operations.Servers(this);
+    this.elasticPools = new operations.ElasticPools(this);
+    this.recommendedElasticPools = new operations.RecommendedElasticPools(this);
+    this.models = models;
+    this._listOperations = _listOperations;
+    msRest.addSerializationMixin(this);
+  }
+
+  /**
+   * Lists all of the available SQL Rest API operations.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse&lt;OperationListResult>} - The deserialized result object.
+   *
+   * @reject {Error} - The error object.
+   */
+  listOperationsWithHttpOperationResponse(options) {
+    let client = this;
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._listOperations(options, (err, result, request, response) => {
+        let httpOperationResponse = new msRest.HttpOperationResponse(request, response);
+        httpOperationResponse.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpOperationResponse); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Lists all of the available SQL Rest API operations.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {function} [optionalCallback] - The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter
+   * then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned
+   *
+   *                      @resolve {OperationListResult} - The deserialized result object.
+   *
+   *                      @reject {Error} - The error object.
+   *
+   * {function} optionalCallback(err, result, request, response)
+   *
+   *                      {Error}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {object} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link OperationListResult} for more information.
+   *
+   *                      {object} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {stream} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listOperations(options, optionalCallback) {
+    let client = this;
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = null;
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._listOperations(options, (err, result, request, response) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._listOperations(options, optionalCallback);
+    }
+  }
+
+}
+
+module.exports = SqlManagementClient;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:41:08 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

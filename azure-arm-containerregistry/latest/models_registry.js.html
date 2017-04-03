@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/registry.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ContainerRegistryManagementClient.html">ContainerRegistryManagementClient</a></li><li><a href="Operations.html">Operations</a><ul class='methods'><li data-type='method'><a href="Operations.html#list">list</a></li><li data-type='method'><a href="Operations.html#listNext">listNext</a></li><li data-type='method'><a href="Operations.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Operations.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Registries.html">Registries</a><ul class='methods'><li data-type='method'><a href="Registries.html#beginCreate">beginCreate</a></li><li data-type='method'><a href="Registries.html#beginCreateWithHttpOperationResponse">beginCreateWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="Registries.html#checkNameAvailabilityWithHttpOperationResponse">checkNameAvailabilityWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#create">create</a></li><li data-type='method'><a href="Registries.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Registries.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#get">get</a></li><li data-type='method'><a href="Registries.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#list">list</a></li><li data-type='method'><a href="Registries.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Registries.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Registries.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#listCredentials">listCredentials</a></li><li data-type='method'><a href="Registries.html#listCredentialsWithHttpOperationResponse">listCredentialsWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#listNext">listNext</a></li><li data-type='method'><a href="Registries.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#regenerateCredential">regenerateCredential</a></li><li data-type='method'><a href="Registries.html#regenerateCredentialWithHttpOperationResponse">regenerateCredentialWithHttpOperationResponse</a></li><li data-type='method'><a href="Registries.html#update">update</a></li><li data-type='method'><a href="Registries.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreate">_beginCreate</a></li><li><a href="global.html#_checkNameAvailability">_checkNameAvailability</a></li><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listCredentials">_listCredentials</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_regenerateCredential">_regenerateCredential</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#accessKey">accessKey</a></li><li><a href="global.html#description">description</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#passwords">passwords</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#tier">tier</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/registry.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the Registry class.
+ * @constructor
+ * An object that represents a container registry.
+ *
+ * @member {object} sku The SKU of the container registry.
+ *
+ * @member {string} [sku.name] The SKU name of the the container registry.
+ * Required for registry creation. Allowed value: Basic.
+ *
+ * @member {string} [sku.tier] The SKU tier based on the SKU name. Possible
+ * values include: 'Basic'
+ *
+ * @member {string} [loginServer] The URL that can be used to log into the
+ * container registry.
+ *
+ * @member {date} [creationDate] The creation date of the container registry in
+ * ISO8601 format.
+ *
+ * @member {string} [provisioningState] The status of the container registry at
+ * the time the operation was called. Possible values include: 'Creating',
+ * 'Succeeded'
+ *
+ * @member {boolean} [adminUserEnabled] The value that indicates whether the
+ * admin user is enabled. This value is false by default. Default value: false
+ * .
+ *
+ * @member {object} [storageAccount] The properties of the storage account for
+ * the container registry.
+ *
+ * @member {string} [storageAccount.name] The name of the storage account.
+ *
+ */
+class Registry extends models['Resource'] {
+  constructor() {
+    super();
+  }
+
+  /**
+   * Defines the metadata of Registry
+   *
+   * @returns {object} metadata of Registry
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'Registry',
+      type: {
+        name: 'Composite',
+        className: 'Registry',
+        modelProperties: {
+          id: {
+            required: false,
+            readOnly: true,
+            serializedName: 'id',
+            type: {
+              name: 'String'
+            }
+          },
+          name: {
+            required: false,
+            readOnly: true,
+            serializedName: 'name',
+            type: {
+              name: 'String'
+            }
+          },
+          type: {
+            required: false,
+            readOnly: true,
+            serializedName: 'type',
+            type: {
+              name: 'String'
+            }
+          },
+          location: {
+            required: true,
+            serializedName: 'location',
+            type: {
+              name: 'String'
+            }
+          },
+          tags: {
+            required: false,
+            serializedName: 'tags',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          sku: {
+            required: true,
+            serializedName: 'sku',
+            type: {
+              name: 'Composite',
+              className: 'Sku'
+            }
+          },
+          loginServer: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.loginServer',
+            type: {
+              name: 'String'
+            }
+          },
+          creationDate: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.creationDate',
+            type: {
+              name: 'DateTime'
+            }
+          },
+          provisioningState: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.provisioningState',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'Creating', 'Succeeded' ]
+            }
+          },
+          adminUserEnabled: {
+            required: false,
+            serializedName: 'properties.adminUserEnabled',
+            defaultValue: false,
+            type: {
+              name: 'Boolean'
+            }
+          },
+          storageAccount: {
+            required: false,
+            serializedName: 'properties.storageAccount',
+            type: {
+              name: 'Composite',
+              className: 'StorageAccountProperties'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = Registry;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:03 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/serviceKeys.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="MediaServiceOperations.html">MediaServiceOperations</a><ul class='methods'><li data-type='method'><a href="MediaServiceOperations.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="MediaServiceOperations.html#checkNameAvailabilityWithHttpOperationResponse">checkNameAvailabilityWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#create">create</a></li><li data-type='method'><a href="MediaServiceOperations.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="MediaServiceOperations.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#get">get</a></li><li data-type='method'><a href="MediaServiceOperations.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="MediaServiceOperations.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#listKeys">listKeys</a></li><li data-type='method'><a href="MediaServiceOperations.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#regenerateKey">regenerateKey</a></li><li data-type='method'><a href="MediaServiceOperations.html#regenerateKeyWithHttpOperationResponse">regenerateKeyWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#syncStorageKeys">syncStorageKeys</a></li><li data-type='method'><a href="MediaServiceOperations.html#syncStorageKeysWithHttpOperationResponse">syncStorageKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="MediaServiceOperations.html#update">update</a></li><li data-type='method'><a href="MediaServiceOperations.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="MediaServicesManagementClient.html">MediaServicesManagementClient</a></li><li><a href="The%2520collection%2520of%2520Media%2520Service%2520resources..html">The collection of Media Service resources.</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_checkNameAvailability">_checkNameAvailability</a></li><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listKeys">_listKeys</a></li><li><a href="global.html#_regenerateKey">_regenerateKey</a></li><li><a href="global.html#_syncStorageKeys">_syncStorageKeys</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#isPrimary">isPrimary</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#keyType">keyType</a></li><li><a href="global.html#majorVersion">majorVersion</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#scope">scope</a></li><li><a href="global.html#storageAccounts">storageAccounts</a></li><li><a href="global.html#tags">tags</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/serviceKeys.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceKeys class.
+ * @constructor
+ * The response body for a ListKeys API.
+ *
+ * @member {string} [primaryAuthEndpoint] The primary authorization endpoint.
+ *
+ * @member {string} [secondaryAuthEndpoint] The secondary authorization
+ * endpoint.
+ *
+ * @member {string} [primaryKey] The primary key for the Media Service
+ * resource.
+ *
+ * @member {string} [secondaryKey] The secondary key for the Media Service
+ * resource.
+ *
+ * @member {string} [scope] The authorization scope.
+ *
+ */
+class ServiceKeys {
+  constructor() {
+  }
+
+  /**
+   * Defines the metadata of ServiceKeys
+   *
+   * @returns {object} metadata of ServiceKeys
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'ServiceKeys',
+      type: {
+        name: 'Composite',
+        className: 'ServiceKeys',
+        modelProperties: {
+          primaryAuthEndpoint: {
+            required: false,
+            serializedName: 'primaryAuthEndpoint',
+            type: {
+              name: 'String'
+            }
+          },
+          secondaryAuthEndpoint: {
+            required: false,
+            serializedName: 'secondaryAuthEndpoint',
+            type: {
+              name: 'String'
+            }
+          },
+          primaryKey: {
+            required: false,
+            serializedName: 'primaryKey',
+            type: {
+              name: 'String'
+            }
+          },
+          secondaryKey: {
+            required: false,
+            serializedName: 'secondaryKey',
+            type: {
+              name: 'String'
+            }
+          },
+          scope: {
+            required: false,
+            serializedName: 'scope',
+            type: {
+              name: 'String'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = ServiceKeys;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:32 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

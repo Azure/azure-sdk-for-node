@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>RelayManagementClient - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="HybridConnections.html">HybridConnections</a><ul class='methods'><li data-type='method'><a href="HybridConnections.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="HybridConnections.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="HybridConnections.html#createOrUpdateAuthorizationRuleWithHttpOperationResponse">createOrUpdateAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="HybridConnections.html#deleteAuthorizationRuleWithHttpOperationResponse">deleteAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="HybridConnections.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#get">get</a></li><li data-type='method'><a href="HybridConnections.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="HybridConnections.html#getAuthorizationRuleWithHttpOperationResponse">getAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRulesNextWithHttpOperationResponse">listAuthorizationRulesNextWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listAuthorizationRulesWithHttpOperationResponse">listAuthorizationRulesWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespace">listByNamespace</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespaceNext">listByNamespaceNext</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespaceNextWithHttpOperationResponse">listByNamespaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listByNamespaceWithHttpOperationResponse">listByNamespaceWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#listKeys">listKeys</a></li><li data-type='method'><a href="HybridConnections.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="HybridConnections.html#regenerateKeys">regenerateKeys</a></li><li data-type='method'><a href="HybridConnections.html#regenerateKeysWithHttpOperationResponse">regenerateKeysWithHttpOperationResponse</a></li></ul></li><li><a href="Namespaces.html">Namespaces</a><ul class='methods'><li data-type='method'><a href="Namespaces.html#beginCreateOrUpdate">beginCreateOrUpdate</a></li><li data-type='method'><a href="Namespaces.html#beginCreateOrUpdateWithHttpOperationResponse">beginCreateOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#beginDeleteMethod">beginDeleteMethod</a></li><li data-type='method'><a href="Namespaces.html#beginDeleteMethodWithHttpOperationResponse">beginDeleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#checkNameAvailabilityMethod">checkNameAvailabilityMethod</a></li><li data-type='method'><a href="Namespaces.html#checkNameAvailabilityMethodWithHttpOperationResponse">checkNameAvailabilityMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateAuthorizationRuleWithHttpOperationResponse">createOrUpdateAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#deleteAuthorizationRuleWithHttpOperationResponse">deleteAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Namespaces.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#get">get</a></li><li data-type='method'><a href="Namespaces.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="Namespaces.html#getAuthorizationRuleWithHttpOperationResponse">getAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#list">list</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesNextWithHttpOperationResponse">listAuthorizationRulesNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listAuthorizationRulesWithHttpOperationResponse">listAuthorizationRulesWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroupNext">listByResourceGroupNext</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroupNextWithHttpOperationResponse">listByResourceGroupNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listKeys">listKeys</a></li><li data-type='method'><a href="Namespaces.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listNext">listNext</a></li><li data-type='method'><a href="Namespaces.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#regenerateKeys">regenerateKeys</a></li><li data-type='method'><a href="Namespaces.html#regenerateKeysWithHttpOperationResponse">regenerateKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="Namespaces.html#update">update</a></li><li data-type='method'><a href="Namespaces.html#updateWithHttpOperationResponse">updateWithHttpOperationResponse</a></li></ul></li><li><a href="Operations.html">Operations</a><ul class='methods'><li data-type='method'><a href="Operations.html#list">list</a></li><li data-type='method'><a href="Operations.html#listNext">listNext</a></li><li data-type='method'><a href="Operations.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Operations.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="RelayManagementClient.html">RelayManagementClient</a></li><li><a href="Sku%2520of%2520the%2520Namespace..html">Sku of the Namespace.</a></li><li><a href="WCFRelays.html">WCFRelays</a><ul class='methods'><li data-type='method'><a href="WCFRelays.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="WCFRelays.html#createOrUpdateAuthorizationRule">createOrUpdateAuthorizationRule</a></li><li data-type='method'><a href="WCFRelays.html#createOrUpdateAuthorizationRuleWithHttpOperationResponse">createOrUpdateAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#deleteAuthorizationRule">deleteAuthorizationRule</a></li><li data-type='method'><a href="WCFRelays.html#deleteAuthorizationRuleWithHttpOperationResponse">deleteAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="WCFRelays.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#get">get</a></li><li data-type='method'><a href="WCFRelays.html#getAuthorizationRule">getAuthorizationRule</a></li><li data-type='method'><a href="WCFRelays.html#getAuthorizationRuleWithHttpOperationResponse">getAuthorizationRuleWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRules">listAuthorizationRules</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRulesNext">listAuthorizationRulesNext</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRulesNextWithHttpOperationResponse">listAuthorizationRulesNextWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listAuthorizationRulesWithHttpOperationResponse">listAuthorizationRulesWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespace">listByNamespace</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespaceNext">listByNamespaceNext</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespaceNextWithHttpOperationResponse">listByNamespaceNextWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listByNamespaceWithHttpOperationResponse">listByNamespaceWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#listKeys">listKeys</a></li><li data-type='method'><a href="WCFRelays.html#listKeysWithHttpOperationResponse">listKeysWithHttpOperationResponse</a></li><li data-type='method'><a href="WCFRelays.html#regenerateKeys">regenerateKeys</a></li><li data-type='method'><a href="WCFRelays.html#regenerateKeysWithHttpOperationResponse">regenerateKeysWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_beginCreateOrUpdate">_beginCreateOrUpdate</a></li><li><a href="global.html#_beginDeleteMethod">_beginDeleteMethod</a></li><li><a href="global.html#_checkNameAvailabilityMethod">_checkNameAvailabilityMethod</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_createOrUpdateAuthorizationRule">_createOrUpdateAuthorizationRule</a></li><li><a href="global.html#_deleteAuthorizationRule">_deleteAuthorizationRule</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getAuthorizationRule">_getAuthorizationRule</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listAuthorizationRules">_listAuthorizationRules</a></li><li><a href="global.html#_listAuthorizationRulesNext">_listAuthorizationRulesNext</a></li><li><a href="global.html#_listByNamespace">_listByNamespace</a></li><li><a href="global.html#_listByNamespaceNext">_listByNamespaceNext</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listByResourceGroupNext">_listByResourceGroupNext</a></li><li><a href="global.html#_listKeys">_listKeys</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_regenerateKeys">_regenerateKeys</a></li><li><a href="global.html#_update">_update</a></li><li><a href="global.html#keyName">keyName</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#metricId">metricId</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#operation">operation</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#policyKey">policyKey</a></li><li><a href="global.html#rights">rights</a></li><li><a href="global.html#tags">tags</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#userMetadata">userMetadata</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">RelayManagementClient</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        RelayManagementClient
+        </h2>
+        
+            <div class="class-description"><p>Initializes a new instance of the RelayManagementClient class.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="RelayManagementClient"><span class="type-signature"></span>new RelayManagementClient<span class="signature">(credentials, subscriptionId, baseUri<span class="signature-attributes">opt</span>, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>credentials</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">credentials</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Credentials needed for the client to connect to Azure.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>subscriptionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>baseUri</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The base URI of the service.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The parameter options</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Filters to be added to the request pipeline</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>requestOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Options for the underlying request object<br><a href="https://github.com/request/request#requestoptions-callback">Options doc</a></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>noRetryPolicy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>If set to true, turn off default retry policy</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>apiVersion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Client Api Version.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>acceptLanguage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the preferred language for the response.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>longRunningOperationRetryTimeout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>generateClientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="relayManagementClient.js.html">relayManagementClient.js</a>, <a href="relayManagementClient.js.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:48 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

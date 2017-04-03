@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>insightsClient.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="A%2520collection%2520of%2520event%2520categories.%2520Currently%2520possible%2520values%2520are_%250AAdministrative,%2520Security,%2520ServiceHealth,%2520Alert,%2520Recommendation,%2520Policy..html">A collection of event categories. Currently possible values are:
+Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.</a></li><li><a href="EventCategories.html">EventCategories</a><ul class='methods'><li data-type='method'><a href="EventCategories.html#list">list</a></li><li data-type='method'><a href="EventCategories.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Events.html">Events</a><ul class='methods'><li data-type='method'><a href="Events.html#list">list</a></li><li data-type='method'><a href="Events.html#listNext">listNext</a></li><li data-type='method'><a href="Events.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Events.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="InsightsClient.html">InsightsClient</a></li><li><a href="MetricDefinitions.html">MetricDefinitions</a><ul class='methods'><li data-type='method'><a href="MetricDefinitions.html#list">list</a></li><li data-type='method'><a href="MetricDefinitions.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Metrics.html">Metrics</a><ul class='methods'><li data-type='method'><a href="Metrics.html#list">list</a></li><li data-type='method'><a href="Metrics.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Represents%2520collection%2520of%2520metric%2520definitions..html">Represents collection of metric definitions.</a></li><li><a href="Represents%2520collection%2520of%2520usage%2520metrics..html">Represents collection of usage metrics.</a></li><li><a href="TenantEvents.html">TenantEvents</a><ul class='methods'><li data-type='method'><a href="TenantEvents.html#list">list</a></li><li data-type='method'><a href="TenantEvents.html#listNext">listNext</a></li><li data-type='method'><a href="TenantEvents.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="TenantEvents.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="The%2520collection%2520of%2520metric%2520value%2520sets..html">The collection of metric value sets.</a></li><li><a href="UsageMetrics.html">UsageMetrics</a><ul class='methods'><li data-type='method'><a href="UsageMetrics.html#list">list</a></li><li data-type='method'><a href="UsageMetrics.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#localizedValue">localizedValue</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#quotaPeriod">quotaPeriod</a></li><li><a href="global.html#retention">retention</a></li><li><a href="global.html#scope">scope</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#uri">uri</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">insightsClient.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+/* jshint latedef:false */
+/* jshint forin:false */
+/* jshint noempty:false */
+
+'use strict';
+
+const msRest = require('ms-rest');
+const msRestAzure = require('ms-rest-azure');
+const ServiceClient = msRestAzure.AzureServiceClient;
+
+const models = require('./models');
+const operations = require('./operations');
+
+
+/**
+ * @class
+ * Initializes a new instance of the InsightsClient class.
+ * @constructor
+ *
+ * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
+ *
+ * @param {string} subscriptionId - The Azure subscription Id.
+ *
+ * @param {string} [baseUri] - The base URI of the service.
+ *
+ * @param {object} [options] - The parameter options
+ *
+ * @param {Array} [options.filters] - Filters to be added to the request pipeline
+ *
+ * @param {object} [options.requestOptions] - Options for the underlying request object
+ * {@link https://github.com/request/request#requestoptions-callback Options doc}
+ *
+ * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
+ *
+ * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+ *
+ * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+ *
+ * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+ *
+ */
+class InsightsClient extends ServiceClient {
+  constructor(credentials, subscriptionId, baseUri, options) {
+    if (credentials === null || credentials === undefined) {
+      throw new Error('\'credentials\' cannot be null.');
+    }
+    if (subscriptionId === null || subscriptionId === undefined) {
+      throw new Error('\'subscriptionId\' cannot be null.');
+    }
+
+    if (!options) options = {};
+
+    super(credentials, options);
+
+    this.acceptLanguage = 'en-US';
+    this.longRunningOperationRetryTimeout = 30;
+    this.generateClientRequestId = true;
+    this.baseUri = baseUri;
+    if (!this.baseUri) {
+      this.baseUri = 'https://management.azure.com';
+    }
+    this.credentials = credentials;
+    this.subscriptionId = subscriptionId;
+
+    let packageInfo = this.getPackageJsonInfo(__dirname);
+    this.addUserAgentInfo(`${packageInfo.name}/${packageInfo.version}`);
+    if(options.acceptLanguage !== null &amp;&amp; options.acceptLanguage !== undefined) {
+      this.acceptLanguage = options.acceptLanguage;
+    }
+    if(options.longRunningOperationRetryTimeout !== null &amp;&amp; options.longRunningOperationRetryTimeout !== undefined) {
+      this.longRunningOperationRetryTimeout = options.longRunningOperationRetryTimeout;
+    }
+    if(options.generateClientRequestId !== null &amp;&amp; options.generateClientRequestId !== undefined) {
+      this.generateClientRequestId = options.generateClientRequestId;
+    }
+    this.usageMetrics = new operations.UsageMetrics(this);
+    this.eventCategories = new operations.EventCategories(this);
+    this.events = new operations.Events(this);
+    this.tenantEvents = new operations.TenantEvents(this);
+    this.metricDefinitions = new operations.MetricDefinitions(this);
+    this.metrics = new operations.Metrics(this);
+    this.models = models;
+    msRest.addSerializationMixin(this);
+  }
+
+}
+
+module.exports = InsightsClient;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:20 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

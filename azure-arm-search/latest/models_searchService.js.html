@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>models/searchService.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="AdminKeys.html">AdminKeys</a><ul class='methods'><li data-type='method'><a href="AdminKeys.html#get">get</a></li><li data-type='method'><a href="AdminKeys.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="AdminKeys.html#regenerate">regenerate</a></li><li data-type='method'><a href="AdminKeys.html#regenerateWithHttpOperationResponse">regenerateWithHttpOperationResponse</a></li></ul></li><li><a href="QueryKeys.html">QueryKeys</a><ul class='methods'><li data-type='method'><a href="QueryKeys.html#create">create</a></li><li data-type='method'><a href="QueryKeys.html#createWithHttpOperationResponse">createWithHttpOperationResponse</a></li><li data-type='method'><a href="QueryKeys.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="QueryKeys.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="QueryKeys.html#listBySearchService">listBySearchService</a></li><li data-type='method'><a href="QueryKeys.html#listBySearchServiceWithHttpOperationResponse">listBySearchServiceWithHttpOperationResponse</a></li></ul></li><li><a href="Response%2520containing%2520a%2520list%2520of%2520Azure%2520Search%2520services..html">Response containing a list of Azure Search services.</a></li><li><a href="Response%2520containing%2520the%2520query%2520API%2520keys%2520for%2520a%2520given%2520Azure%2520Search%2520service..html">Response containing the query API keys for a given Azure Search service.</a></li><li><a href="SearchManagementClient.html">SearchManagementClient</a></li><li><a href="Services.html">Services</a><ul class='methods'><li data-type='method'><a href="Services.html#checkNameAvailability">checkNameAvailability</a></li><li data-type='method'><a href="Services.html#checkNameAvailabilityWithHttpOperationResponse">checkNameAvailabilityWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#createOrUpdate">createOrUpdate</a></li><li data-type='method'><a href="Services.html#createOrUpdateWithHttpOperationResponse">createOrUpdateWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#deleteMethod">deleteMethod</a></li><li data-type='method'><a href="Services.html#deleteMethodWithHttpOperationResponse">deleteMethodWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#get">get</a></li><li data-type='method'><a href="Services.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Services.html#listByResourceGroup">listByResourceGroup</a></li><li data-type='method'><a href="Services.html#listByResourceGroupWithHttpOperationResponse">listByResourceGroupWithHttpOperationResponse</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_checkNameAvailability">_checkNameAvailability</a></li><li><a href="global.html#_create">_create</a></li><li><a href="global.html#_createOrUpdate">_createOrUpdate</a></li><li><a href="global.html#_deleteMethod">_deleteMethod</a></li><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_listByResourceGroup">_listByResourceGroup</a></li><li><a href="global.html#_listBySearchService">_listBySearchService</a></li><li><a href="global.html#_regenerate">_regenerate</a></li><li><a href="global.html#clientRequestId">clientRequestId</a></li><li><a href="global.html#key">key</a></li><li><a href="global.html#message">message</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#secondaryKey">secondaryKey</a></li><li><a href="global.html#tags">tags</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">models/searchService.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for
+ * license information.
+ *
+ * Code generated by Microsoft (R) AutoRest Code Generator.
+ * Changes may cause incorrect behavior and will be lost if the code is
+ * regenerated.
+ */
+
+'use strict';
+
+const models = require('./index');
+
+/**
+ * @class
+ * Initializes a new instance of the SearchService class.
+ * @constructor
+ * Describes an Azure Search service and its current state.
+ *
+ * @member {number} [replicaCount] The number of replicas in the Search
+ * service. If specified, it must be a value between 1 and 12 inclusive for
+ * standard SKUs or between 1 and 3 inclusive for basic SKU. Default value: 1 .
+ *
+ * @member {number} [partitionCount] The number of partitions in the Search
+ * service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1
+ * are only valid for standard SKUs. For 'standard3' services with hostingMode
+ * set to 'highDensity', the allowed values are between 1 and 3. Default value:
+ * 1 .
+ *
+ * @member {string} [hostingMode] Applicable only for the standard3 SKU. You
+ * can set this property to enable up to 3 high density partitions that allow
+ * up to 1000 indexes, which is much higher than the maximum indexes allowed
+ * for any other SKU. For the standard3 SKU, the value is either 'default' or
+ * 'highDensity'. For all other SKUs, this value must be 'default'. Possible
+ * values include: 'default', 'highDensity'. Default value: 'default' .
+ *
+ * @member {string} [status] The status of the Search service. Possible values
+ * include: 'running': The Search service is running and no provisioning
+ * operations are underway. 'provisioning': The Search service is being
+ * provisioned or scaled up or down. 'deleting': The Search service is being
+ * deleted. 'degraded': The Search service is degraded. This can occur when the
+ * underlying search units are not healthy. The Search service is most likely
+ * operational, but performance might be slow and some requests might be
+ * dropped. 'disabled': The Search service is disabled. In this state, the
+ * service will reject all API requests. 'error': The Search service is in an
+ * error state. If your service is in the degraded, disabled, or error states,
+ * it means the Azure Search team is actively investigating the underlying
+ * issue. Dedicated services in these states are still chargeable based on the
+ * number of search units provisioned. Possible values include: 'running',
+ * 'provisioning', 'deleting', 'degraded', 'disabled', 'error'
+ *
+ * @member {string} [statusDetails] The details of the Search service status.
+ *
+ * @member {string} [provisioningState] The state of the last provisioning
+ * operation performed on the Search service. Provisioning is an intermediate
+ * state that occurs while service capacity is being established. After
+ * capacity is set up, provisioningState changes to either 'succeeded' or
+ * 'failed'. Client applications can poll provisioning status (the recommended
+ * polling interval is from 30 seconds to one minute) by using the Get Search
+ * Service operation to see when an operation is completed. If you are using
+ * the free service, this value tends to come back as 'succeeded' directly in
+ * the call to Create Search service. This is because the free service uses
+ * capacity that is already set up. Possible values include: 'succeeded',
+ * 'provisioning', 'failed'
+ *
+ * @member {object} sku The SKU of the Search Service, which determines price
+ * tier and capacity limits.
+ *
+ * @member {string} [sku.name] The SKU of the Search service. Valid values
+ * include: 'free': Shared service. 'basic': Dedicated service with up to 3
+ * replicas. 'standard': Dedicated service with up to 12 partitions and 12
+ * replicas. 'standard2': Similar to standard, but with more capacity per
+ * search unit. 'standard3': Offers maximum capacity per search unit with up to
+ * 12 partitions and 12 replicas (or up to 3 partitions with more indexes if
+ * you also set the hostingMode property to 'highDensity'). Possible values
+ * include: 'free', 'basic', 'standard', 'standard2', 'standard3'
+ *
+ */
+class SearchService extends models['Resource'] {
+  constructor() {
+    super();
+  }
+
+  /**
+   * Defines the metadata of SearchService
+   *
+   * @returns {object} metadata of SearchService
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'SearchService',
+      type: {
+        name: 'Composite',
+        className: 'SearchService',
+        modelProperties: {
+          id: {
+            required: false,
+            readOnly: true,
+            serializedName: 'id',
+            type: {
+              name: 'String'
+            }
+          },
+          name: {
+            required: false,
+            readOnly: true,
+            serializedName: 'name',
+            type: {
+              name: 'String'
+            }
+          },
+          type: {
+            required: false,
+            readOnly: true,
+            serializedName: 'type',
+            type: {
+              name: 'String'
+            }
+          },
+          location: {
+            required: true,
+            serializedName: 'location',
+            type: {
+              name: 'String'
+            }
+          },
+          tags: {
+            required: false,
+            serializedName: 'tags',
+            type: {
+              name: 'Dictionary',
+              value: {
+                  required: false,
+                  serializedName: 'StringElementType',
+                  type: {
+                    name: 'String'
+                  }
+              }
+            }
+          },
+          replicaCount: {
+            required: false,
+            serializedName: 'properties.replicaCount',
+            defaultValue: 1,
+            constraints: {
+              InclusiveMaximum: 12,
+              InclusiveMinimum: 1
+            },
+            type: {
+              name: 'Number'
+            }
+          },
+          partitionCount: {
+            required: false,
+            serializedName: 'properties.partitionCount',
+            defaultValue: 1,
+            constraints: {
+              InclusiveMaximum: 12,
+              InclusiveMinimum: 1
+            },
+            type: {
+              name: 'Number'
+            }
+          },
+          hostingMode: {
+            required: false,
+            serializedName: 'properties.hostingMode',
+            defaultValue: 'default',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'default', 'highDensity' ]
+            }
+          },
+          status: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.status',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'running', 'provisioning', 'deleting', 'degraded', 'disabled', 'error' ]
+            }
+          },
+          statusDetails: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.statusDetails',
+            type: {
+              name: 'String'
+            }
+          },
+          provisioningState: {
+            required: false,
+            readOnly: true,
+            serializedName: 'properties.provisioningState',
+            type: {
+              name: 'Enum',
+              allowedValues: [ 'succeeded', 'provisioning', 'failed' ]
+            }
+          },
+          sku: {
+            required: true,
+            serializedName: 'sku',
+            type: {
+              name: 'Composite',
+              className: 'Sku'
+            }
+          }
+        }
+      }
+    };
+  }
+}
+
+module.exports = SearchService;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Apr 03 2017 13:40:56 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
