@@ -12,7 +12,7 @@ npm install azure-sb
 ## How to Use
 
 ```node
-var azure = require('azure');
+var azure = require('azure-sb');
 
 function checkForMessages(sbService, queueName, callback) {
   sbService.receiveQueueMessage(queueName, { isPeekLock: true }, function (err, lockedMessage) {
