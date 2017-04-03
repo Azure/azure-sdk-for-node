@@ -99,6 +99,9 @@ export interface Jobs {
     /**
      * Returns all active and completed import/export jobs in a resource group.
      *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {number} [options.top] An integer value that specifies how many jobs
@@ -122,10 +125,13 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
 
     /**
      * Returns all active and completed import/export jobs in a resource group.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -166,13 +172,16 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
-    listByResourceGroup(callback: ServiceCallback<models.JobListResult>): void;
-    listByResourceGroup(options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.JobListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { top? : number, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
 
 
     /**
      * Gets information about an existing import/export job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -187,10 +196,13 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    getWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * Gets information about an existing import/export job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -221,9 +233,9 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    get(jobName: string, callback: ServiceCallback<models.Job>): void;
-    get(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    get(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    get(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
+    get(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
@@ -231,6 +243,9 @@ export interface Jobs {
      * operation to notify the Import/Export service that the hard drives
      * comprising the import or export job have been shipped to the Microsoft data
      * center. It can also be used to cancel an existing job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -318,13 +333,16 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(jobName: string, jobProperties: models.MutableJob, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * Updates specific properties of the import/export job. You can call this
      * operation to notify the Import/Export service that the hard drives
      * comprising the import or export job have been shipped to the Microsoft data
      * center. It can also be used to cancel an existing job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -428,14 +446,17 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(jobName: string, jobProperties: models.MutableJob, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    update(jobName: string, jobProperties: models.MutableJob, callback: ServiceCallback<models.Job>): void;
-    update(jobName: string, jobProperties: models.MutableJob, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    update(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    update(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, callback: ServiceCallback<models.Job>): void;
+    update(resourceGroupName: string, jobName: string, jobProperties: models.MutableJob, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * Creates a new import/export job or updates an existing import/export job in
      * the specified subscription.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -556,11 +577,14 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(jobName: string, jobProperties: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, jobName: string, jobProperties: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
 
     /**
      * Creates a new import/export job or updates an existing import/export job in
      * the specified subscription.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -697,14 +721,17 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(jobName: string, jobProperties: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
-    createOrUpdate(jobName: string, jobProperties: models.Job, callback: ServiceCallback<models.Job>): void;
-    createOrUpdate(jobName: string, jobProperties: models.Job, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+    createOrUpdate(resourceGroupName: string, jobName: string, jobProperties: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    createOrUpdate(resourceGroupName: string, jobName: string, jobProperties: models.Job, callback: ServiceCallback<models.Job>): void;
+    createOrUpdate(resourceGroupName: string, jobName: string, jobProperties: models.Job, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
 
 
     /**
      * Deletes an existing import/export job. Only import/export jobs in the
      * Creating or Completed states can be deleted.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -719,11 +746,14 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an existing import/export job. Only import/export jobs in the
      * Creating or Completed states can be deleted.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -753,15 +783,18 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(jobName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, jobName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Moves the specified import/export jobs from the resource group to a target
      * resource group. The target resource group may be in a different
      * subscription.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {object} moveJobsParameters Parameters to be provided to move a job
      * from one resource group to another.
@@ -784,12 +817,15 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    moveWithHttpOperationResponse(moveJobsParameters: models.MoveJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    moveWithHttpOperationResponse(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Moves the specified import/export jobs from the resource group to a target
      * resource group. The target resource group may be in a different
      * subscription.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {object} moveJobsParameters Parameters to be provided to move a job
      * from one resource group to another.
@@ -827,13 +863,16 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    move(moveJobsParameters: models.MoveJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    move(moveJobsParameters: models.MoveJobParameters, callback: ServiceCallback<void>): void;
-    move(moveJobsParameters: models.MoveJobParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    move(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    move(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, callback: ServiceCallback<void>): void;
+    move(resourceGroupName: string, moveJobsParameters: models.MoveJobParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Lists the BitLocker keys for all drives in the specified import/export job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -848,10 +887,13 @@ export interface Jobs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBitLockerKeysWithHttpOperationResponse(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BitLockerKeysListResult>>;
+    listBitLockerKeysWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BitLockerKeysListResult>>;
 
     /**
      * Lists the BitLocker keys for all drives in the specified import/export job.
+     *
+     * @param {string} resourceGroupName The resource group name uniquely
+     * identifies the resource group within the user subscription.
      *
      * @param {string} jobName The name of the import/export job.
      *
@@ -883,9 +925,9 @@ export interface Jobs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBitLockerKeys(jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BitLockerKeysListResult>;
-    listBitLockerKeys(jobName: string, callback: ServiceCallback<models.BitLockerKeysListResult>): void;
-    listBitLockerKeys(jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BitLockerKeysListResult>): void;
+    listBitLockerKeys(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BitLockerKeysListResult>;
+    listBitLockerKeys(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.BitLockerKeysListResult>): void;
+    listBitLockerKeys(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BitLockerKeysListResult>): void;
 
 
     /**

@@ -22,8 +22,6 @@ declare class StorageImportExportManagementClient {
    *
    * @param {string} subscriptionId - The subscription ID for the Azure user.
    *
-   * @param {string} resourceGroupName - The resource group name uniquely identifies the resource group within the user subscription.
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -40,15 +38,13 @@ declare class StorageImportExportManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, baseUri?: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
-
-  resourceGroupName: string;
 
   acceptLanguage: string;
 
