@@ -99,7 +99,7 @@
     "azure-scheduler": "0.10.3",
     "azure-storage": "1.3.0",
     "mime": "~1.2.4",
-    "ms-rest-azure": "^2.0.0",
+    "ms-rest-azure": "^2.0.1",
     "ms-rest": "^2.0.0",
     "moment": "^2.18.1",
     "underscore": "1.4.x",
