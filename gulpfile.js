@@ -571,7 +571,7 @@ gulp.task('update-deps-rollup', (cb) => {
 //not fail.
 gulp.task('test-create-rollup', (cb) => {
   const azure = require('./lib/azure');
-  const keys = Object.keys(azure).filter((key) => { return key.startsWith('create') && !key.startsWith('createASM') && key.endsWith('Client') && key !== 'createSchedulerClient'});
+  const keys = Object.keys(azure).filter((key) => { return key.startsWith('create') && !key.startsWith('createASM') && key.endsWith('Client') && key !== 'createSchedulerClient' });
   //console.dir(keys);
   //console.log(keys.length);
   const creds = { signRequest: {} };
