@@ -18,22 +18,22 @@ function _retrieveTokenFromCache(callback) {
 }
 
 /**
-* Creates a new UserTokenCredentials object.
-*
-* @constructor
-* @param {string} clientId The active directory application client id. 
-* See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
-* for an example.
-* @param {string} domain The domain or tenant id containing this application.
-* @param {string} username The user name for the Organization Id account.
-* @param {string} password The password for the Organization Id account.
-* @param {object} [options] Object representing optional parameters.
-* @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
-* then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
-* @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
-* @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
-* @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
-*/
+ * Creates a new UserTokenCredentials object.
+ *
+ * @constructor
+ * @param {string} clientId The active directory application client id. 
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for an example.
+ * @param {string} domain The domain or tenant id containing this application.
+ * @param {string} username The user name for the Organization Id account.
+ * @param {string} password The password for the Organization Id account.
+ * @param {object} [options] Object representing optional parameters.
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
+ * then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
+ * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
+ * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
+ */
 class UserTokenCredentials {
   constructor(clientId, domain, username, password, options) {
     if (!Boolean(clientId) || typeof clientId.valueOf() !== 'string') {

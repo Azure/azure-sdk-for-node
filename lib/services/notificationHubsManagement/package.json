@@ -4,7 +4,7 @@
   "contributors": [
     "Borkar, Smitha <smithab@microsoft.com>"
   ],
-  "version": "0.2.3-preview",
+  "version": "1.0.0-preview",
   "description": "Microsoft Azure Notification Hubs Resource Provider Management Client Library for Node",
   "tags": [
     "azure",
@@ -15,10 +15,11 @@
     "azure"
   ],
   "main": "./lib/notificationHubsManagementClient.js",
+  "types": "./lib/notificationHubsManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {
-    "ms-rest": "^1.14.0",
-    "ms-rest-azure": "^1.14.0"
+    "ms-rest": "^2.0.0",
+    "ms-rest-azure": "^2.0.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

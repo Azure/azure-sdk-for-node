@@ -1,8 +1,8 @@
 # Microsoft Azure SDK for Node.js - Cdn
 
 This project provides a Node.js package for accessing the Azure Cdn Client. Right now it supports:
-- **Node.js version: 4.x.x or higher**
-- **API version: **
+- **Node.js version: 6.x.x or higher**
+- **API version: 2016-10-02**
 
 ## Features
 - Manage Cdn Profile: create, update, delete, list, get.

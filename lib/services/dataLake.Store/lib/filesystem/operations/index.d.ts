@@ -8,7 +8,7 @@
  * regenerated.
 */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as stream from 'stream';
 import * as models from '../models';
 
@@ -20,6 +20,7 @@ import * as models from '../models';
  * instance of the DataLakeStoreFileSystemManagementClient.
  */
 export interface FileSystem {
+
 
     /**
      * Appends to the specified file, optionally first creating the file if it does
@@ -56,11 +57,74 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, options: { appendMode? : string, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    concurrentAppendWithHttpOperationResponse(accountName: string, filePath: string, streamContents: stream.Readable, options?: { appendMode? : string, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Appends to the specified file, optionally first creating the file if it does
+     * not yet exist. This method supports multiple concurrent appends to the file.
+     * NOTE: The target must not contain data added by Create or normal (serial)
+     * Append. ConcurrentAppend and Append cannot be used interchangeably; once a
+     * target file has been modified using either of these append options, the
+     * other append option cannot be used on the target file. ConcurrentAppend does
+     * not guarantee order and can result in duplicated data landing in the target
+     * file.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} filePath The Data Lake Store path (starting with '/') of the
+     * file to which to append using concurrent append.
+     *
+     * @param {object} streamContents The file contents to include when appending
+     * to the file.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.appendMode] Indicates the concurrent append call
+     * should create the file if it doesn't exist or just open the existing file
+     * for append. Possible values include: 'autocreate'
+     *
+     * @param {string} [options.syncFlag] Optionally indicates what to do after
+     * completion of the concurrent append. DATA indicates more data is coming so
+     * no sync takes place, METADATA indicates a sync should be done to refresh
+     * metadata of the file only. CLOSE indicates that both the stream and metadata
+     * should be refreshed upon append completion. Possible values include: 'DATA',
+     * 'METADATA', 'CLOSE'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, options?: { appendMode? : string, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
+    concurrentAppend(accountName: string, filePath: string, streamContents: stream.Readable, options: { appendMode? : string, syncFlag? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Sets or removes the expiration time on the specified file. This operation
@@ -89,11 +153,66 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    setFileExpiry(accountName: string, filePath: string, expiryOption: string, options: { expireTime? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setFileExpiryWithHttpOperationResponse(accountName: string, filePath: string, expiryOption: string, options?: { expireTime? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Sets or removes the expiration time on the specified file. This operation
+     * can only be executed against files. Folders are not supported.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} filePath The Data Lake Store path (starting with '/') of the
+     * file on which to set or remove the expiration time.
+     *
+     * @param {string} expiryOption Indicates the type of expiration to use for the
+     * file: 1. NeverExpire: ExpireTime is ignored. 2. RelativeToNow: ExpireTime is
+     * an integer in milliseconds representing the expiration date relative to when
+     * file expiration is updated. 3. RelativeToCreationDate: ExpireTime is an
+     * integer in milliseconds representing the expiration date relative to file
+     * creation. 4. Absolute: ExpireTime is an integer in milliseconds, as a Unix
+     * timestamp relative to 1/1/1970 00:00:00. Possible values include:
+     * 'NeverExpire', 'RelativeToNow', 'RelativeToCreationDate', 'Absolute'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.expireTime] The time that the file will expire,
+     * corresponding to the ExpiryOption that was set.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    setFileExpiry(accountName: string, filePath: string, expiryOption: string, options?: { expireTime? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     setFileExpiry(accountName: string, filePath: string, expiryOption: string, callback: ServiceCallback<void>): void;
+    setFileExpiry(accountName: string, filePath: string, expiryOption: string, options: { expireTime? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Checks if the specified access is available at the given path.
@@ -112,11 +231,56 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    checkAccess(accountName: string, path: string, fsaction: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    checkAccessWithHttpOperationResponse(accountName: string, path: string, fsaction: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Checks if the specified access is available at the given path.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} path The Data Lake Store path (starting with '/') of the
+     * file or directory for which to check access.
+     *
+     * @param {string} fsaction File system operation read/write/execute in string
+     * form, matching regex pattern '[rwx-]{3}'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkAccess(accountName: string, path: string, fsaction: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     checkAccess(accountName: string, path: string, fsaction: string, callback: ServiceCallback<void>): void;
+    checkAccess(accountName: string, path: string, fsaction: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Creates a directory.
@@ -135,11 +299,57 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileOperationResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    mkdirs(accountName: string, path: string, options: { permission? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+    mkdirsWithHttpOperationResponse(accountName: string, path: string, options?: { permission? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileOperationResult>>;
+
+    /**
+     * Creates a directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} path The Data Lake Store path (starting with '/') of the
+     * directory to create.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.permission] Optional octal permission with which
+     * the directory should be created.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileOperationResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileOperationResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileOperationResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    mkdirs(accountName: string, path: string, options?: { permission? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileOperationResult>;
     mkdirs(accountName: string, path: string, callback: ServiceCallback<models.FileOperationResult>): void;
+    mkdirs(accountName: string, path: string, options: { permission? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+
 
     /**
      * Concatenates the list of source files into the destination file, removing
@@ -160,11 +370,58 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    concat(accountName: string, destinationPath: string, sources: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    concatWithHttpOperationResponse(accountName: string, destinationPath: string, sources: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Concatenates the list of source files into the destination file, removing
+     * all source files upon success.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} destinationPath The Data Lake Store path (starting with '/')
+     * of the destination file resulting from the concatenation.
+     *
+     * @param {array} sources A list of comma separated Data Lake Store paths
+     * (starting with '/') of the files to concatenate, in the order in which they
+     * should be concatenated.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    concat(accountName: string, destinationPath: string, sources: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     concat(accountName: string, destinationPath: string, sources: string[], callback: ServiceCallback<void>): void;
+    concat(accountName: string, destinationPath: string, sources: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Concatenates the list of source files into the destination file, deleting
@@ -195,11 +452,68 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    msConcat(accountName: string, msConcatDestinationPath: string, streamContents: stream.Readable, options: { deleteSourceDirectory? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    msConcatWithHttpOperationResponse(accountName: string, msConcatDestinationPath: string, streamContents: stream.Readable, options?: { deleteSourceDirectory? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Concatenates the list of source files into the destination file, deleting
+     * all source files upon success. This method accepts more source file paths
+     * than the Concat method. This method and the parameters it accepts are
+     * subject to change for usability in an upcoming version.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} msConcatDestinationPath The Data Lake Store path (starting
+     * with '/') of the destination file resulting from the concatenation.
+     *
+     * @param {object} streamContents A list of Data Lake Store paths (starting
+     * with '/') of the source files. Must be a comma-separated path list in the
+     * format: sources=/file/path/1.txt,/file/path/2.txt,/file/path/lastfile.csv
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.deleteSourceDirectory] Indicates that as an
+     * optimization instead of deleting each individual source stream, delete the
+     * source stream folder if all streams are in the same folder instead. This
+     * results in a substantial performance improvement when the only streams in
+     * the folder are part of the concatenation operation. WARNING: This includes
+     * the deletion of any other files that are not source files. Only set this to
+     * true when source files are the only files in the source directory.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    msConcat(accountName: string, msConcatDestinationPath: string, streamContents: stream.Readable, options?: { deleteSourceDirectory? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     msConcat(accountName: string, msConcatDestinationPath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
+    msConcat(accountName: string, msConcatDestinationPath: string, streamContents: stream.Readable, options: { deleteSourceDirectory? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Get the list of file status objects specified by the file path, with
@@ -233,11 +547,72 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileStatusesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listFileStatus(accountName: string, listFilePath: string, options: { listSize? : number, listAfter? : string, listBefore? : string, tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
+    listFileStatusWithHttpOperationResponse(accountName: string, listFilePath: string, options?: { listSize? : number, listAfter? : string, listBefore? : string, tooId? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileStatusesResult>>;
+
+    /**
+     * Get the list of file status objects specified by the file path, with
+     * optional pagination parameters
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} listFilePath The Data Lake Store path (starting with '/') of
+     * the directory to list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.listSize] Gets or sets the number of items to
+     * return. Optional.
+     *
+     * @param {string} [options.listAfter] Gets or sets the item or lexographical
+     * index after which to begin returning results. For example, a file list of
+     * 'a','b','d' and listAfter='b' will return 'd', and a listAfter='c' will also
+     * return 'd'. Optional.
+     *
+     * @param {string} [options.listBefore] Gets or sets the item or lexographical
+     * index before which to begin returning results. For example, a file list of
+     * 'a','b','d' and listBefore='d' will return 'a','b', and a listBefore='c'
+     * will also return 'a','b'. Optional.
+     *
+     * @param {boolean} [options.tooId] An optional switch to return friendly names
+     * in place of owner and group. tooid=false returns friendly names instead of
+     * the AAD Object ID. Default value is true, returning AAD object IDs.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileStatusesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileStatusesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileStatusesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listFileStatus(accountName: string, listFilePath: string, options?: { listSize? : number, listAfter? : string, listBefore? : string, tooId? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileStatusesResult>;
     listFileStatus(accountName: string, listFilePath: string, callback: ServiceCallback<models.FileStatusesResult>): void;
+    listFileStatus(accountName: string, listFilePath: string, options: { listSize? : number, listAfter? : string, listBefore? : string, tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusesResult>): void;
+
 
     /**
      * Gets the file content summary object specified by the file path.
@@ -253,11 +628,54 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContentSummaryResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getContentSummary(accountName: string, getContentSummaryFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContentSummaryResult>): void;
+    getContentSummaryWithHttpOperationResponse(accountName: string, getContentSummaryFilePath: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContentSummaryResult>>;
+
+    /**
+     * Gets the file content summary object specified by the file path.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} getContentSummaryFilePath The Data Lake Store path (starting
+     * with '/') of the file for which to retrieve the summary.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContentSummaryResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContentSummaryResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContentSummaryResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContentSummary(accountName: string, getContentSummaryFilePath: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContentSummaryResult>;
     getContentSummary(accountName: string, getContentSummaryFilePath: string, callback: ServiceCallback<models.ContentSummaryResult>): void;
+    getContentSummary(accountName: string, getContentSummaryFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContentSummaryResult>): void;
+
 
     /**
      * Get the file status object specified by the file path.
@@ -277,11 +695,58 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileStatusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getFileStatus(accountName: string, getFilePath: string, options: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusResult>): void;
+    getFileStatusWithHttpOperationResponse(accountName: string, getFilePath: string, options?: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileStatusResult>>;
+
+    /**
+     * Get the file status object specified by the file path.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} getFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory for which to retrieve the status.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.tooId] An optional switch to return friendly names
+     * in place of owner and group. tooid=false returns friendly names instead of
+     * the AAD Object ID. Default value is true, returning AAD object IDs.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileStatusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileStatusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileStatusResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getFileStatus(accountName: string, getFilePath: string, options?: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileStatusResult>;
     getFileStatus(accountName: string, getFilePath: string, callback: ServiceCallback<models.FileStatusResult>): void;
+    getFileStatus(accountName: string, getFilePath: string, options: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileStatusResult>): void;
+
 
     /**
      * Used for serial appends to the specified file. NOTE: The target must not
@@ -323,11 +788,79 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { offset? : number, syncFlag? : string, leaseId? : string, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    appendWithHttpOperationResponse(accountName: string, directFilePath: string, streamContents: stream.Readable, options?: { offset? : number, syncFlag? : string, leaseId? : string, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Used for serial appends to the specified file. NOTE: The target must not
+     * contain data added by ConcurrentAppend. ConcurrentAppend and Append cannot
+     * be used interchangeably; once a target file has been modified using either
+     * of these append options, the other append option cannot be used on the
+     * target file.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} directFilePath The Data Lake Store path (starting with '/')
+     * of the file to which to append.
+     *
+     * @param {object} streamContents The file contents to include when appending
+     * to the file.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.offset] The optional offset in the stream to begin
+     * the append operation. Default is to append at the end of the stream.
+     *
+     * @param {string} [options.syncFlag] Optionally indicates what to do after
+     * completion of the append. DATA indicates more data is coming so no sync
+     * takes place, METADATA indicates a sync should be done to refresh metadata of
+     * the file only. CLOSE indicates that both the stream and metadata should be
+     * refreshed upon append completion. Possible values include: 'DATA',
+     * 'METADATA', 'CLOSE'
+     *
+     * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
+     * single writer semantics, meaning that only clients that append to the file
+     * with the same leaseId will be allowed to do so.
+     *
+     * @param {uuid} [options.fileSessionId] Optional unique GUID per file
+     * indicating all the appends with the same fileSessionId are from the same
+     * client and same session. This will give a performance benefit when syncFlag
+     * is DATA or METADATA.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options?: { offset? : number, syncFlag? : string, leaseId? : string, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     append(accountName: string, directFilePath: string, streamContents: stream.Readable, callback: ServiceCallback<void>): void;
+    append(accountName: string, directFilePath: string, streamContents: stream.Readable, options: { offset? : number, syncFlag? : string, leaseId? : string, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Creates a file with optionally specified content. NOTE: If content is
@@ -366,11 +899,76 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    create(accountName: string, directFilePath: string, options: { streamContents? : stream.Readable, overwrite? : boolean, syncFlag? : string, leaseId? : string, permission? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createWithHttpOperationResponse(accountName: string, directFilePath: string, options?: { streamContents? : stream.Readable, overwrite? : boolean, syncFlag? : string, leaseId? : string, permission? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a file with optionally specified content. NOTE: If content is
+     * provided, the resulting file cannot be modified using ConcurrentAppend.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} directFilePath The Data Lake Store path (starting with '/')
+     * of the file to create.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.streamContents] The file contents to include when
+     * creating the file. This parameter is optional, resulting in an empty file if
+     * not specified.
+     *
+     * @param {boolean} [options.overwrite] The indication of if the file should be
+     * overwritten.
+     *
+     * @param {string} [options.syncFlag] Optionally indicates what to do after
+     * completion of the append. DATA indicates more data is coming so no sync
+     * takes place, METADATA indicates a sync should be done to refresh metadata of
+     * the file only. CLOSE indicates that both the stream and metadata should be
+     * refreshed upon create completion. Possible values include: 'DATA',
+     * 'METADATA', 'CLOSE'
+     *
+     * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
+     * single writer semantics, meaning that only clients that append to the file
+     * with the same leaseId will be allowed to do so.
+     *
+     * @param {number} [options.permission] The octal representation of the unnamed
+     * user, mask and other permissions that should be set for the file when
+     * created. If not specified, it inherits these from the container.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(accountName: string, directFilePath: string, options?: { streamContents? : stream.Readable, overwrite? : boolean, syncFlag? : string, leaseId? : string, permission? : number, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     create(accountName: string, directFilePath: string, callback: ServiceCallback<void>): void;
+    create(accountName: string, directFilePath: string, options: { streamContents? : stream.Readable, overwrite? : boolean, syncFlag? : string, leaseId? : string, permission? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Opens and reads from the specified file.
@@ -395,11 +993,62 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    open(accountName: string, directFilePath: string, options: { length? : number, offset? : number, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    openWithHttpOperationResponse(accountName: string, directFilePath: string, options?: { length? : number, offset? : number, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * Opens and reads from the specified file.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} directFilePath The Data Lake Store path (starting with '/')
+     * of the file to open.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.length] The number of bytes that the server will
+     * attempt to retrieve. It will retrieve <= length bytes.
+     *
+     * @param {number} [options.offset] The byte offset to start reading data from.
+     *
+     * @param {uuid} [options.fileSessionId] Optional unique GUID per file
+     * indicating all the reads with the same fileSessionId are from the same
+     * client and same session. This will give a performance benefit.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    open(accountName: string, directFilePath: string, options?: { length? : number, offset? : number, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
     open(accountName: string, directFilePath: string, callback: ServiceCallback<stream.Readable>): void;
+    open(accountName: string, directFilePath: string, options: { length? : number, offset? : number, fileSessionId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
 
     /**
      * Sets the Access Control List (ACL) for a file or folder.
@@ -418,11 +1067,56 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    setAcl(accountName: string, setAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setAclWithHttpOperationResponse(accountName: string, setAclFilePath: string, aclspec: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Sets the Access Control List (ACL) for a file or folder.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} setAclFilePath The Data Lake Store path (starting with '/')
+     * of the file or directory on which to set the ACL.
+     *
+     * @param {string} aclspec The ACL spec included in ACL creation operations in
+     * the format '[default:]user|group|other::r|-w|-x|-'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    setAcl(accountName: string, setAclFilePath: string, aclspec: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     setAcl(accountName: string, setAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
+    setAcl(accountName: string, setAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Modifies existing Access Control List (ACL) entries on a file or folder.
@@ -441,11 +1135,56 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    modifyAclEntries(accountName: string, modifyAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    modifyAclEntriesWithHttpOperationResponse(accountName: string, modifyAclFilePath: string, aclspec: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Modifies existing Access Control List (ACL) entries on a file or folder.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} modifyAclFilePath The Data Lake Store path (starting with
+     * '/') of the file or directory with the ACL being modified.
+     *
+     * @param {string} aclspec The ACL specification included in ACL modification
+     * operations in the format '[default:]user|group|other::r|-w|-x|-'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    modifyAclEntries(accountName: string, modifyAclFilePath: string, aclspec: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     modifyAclEntries(accountName: string, modifyAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
+    modifyAclEntries(accountName: string, modifyAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Removes existing Access Control List (ACL) entries for a file or folder.
@@ -464,11 +1203,56 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeAclEntriesWithHttpOperationResponse(accountName: string, removeAclFilePath: string, aclspec: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes existing Access Control List (ACL) entries for a file or folder.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} removeAclFilePath The Data Lake Store path (starting with
+     * '/') of the file or directory with the ACL being removed.
+     *
+     * @param {string} aclspec The ACL spec included in ACL removal operations in
+     * the format '[default:]user|group|other'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, callback: ServiceCallback<void>): void;
+    removeAclEntries(accountName: string, removeAclFilePath: string, aclspec: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Removes the existing Default Access Control List (ACL) of the specified
@@ -485,11 +1269,54 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    removeDefaultAcl(accountName: string, defaultAclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeDefaultAclWithHttpOperationResponse(accountName: string, defaultAclFilePath: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the existing Default Access Control List (ACL) of the specified
+     * directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} defaultAclFilePath The Data Lake Store path (starting with
+     * '/') of the directory with the default ACL being removed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeDefaultAcl(accountName: string, defaultAclFilePath: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     removeDefaultAcl(accountName: string, defaultAclFilePath: string, callback: ServiceCallback<void>): void;
+    removeDefaultAcl(accountName: string, defaultAclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Removes the existing Access Control List (ACL) of the specified file or
@@ -506,11 +1333,54 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    removeAcl(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    removeAclWithHttpOperationResponse(accountName: string, aclFilePath: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the existing Access Control List (ACL) of the specified file or
+     * directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory with the ACL being removed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeAcl(accountName: string, aclFilePath: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     removeAcl(accountName: string, aclFilePath: string, callback: ServiceCallback<void>): void;
+    removeAcl(accountName: string, aclFilePath: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Gets Access Control List (ACL) entries for the specified file or directory.
@@ -531,11 +1401,59 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AclStatusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getAclStatus(accountName: string, aclFilePath: string, options: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AclStatusResult>): void;
+    getAclStatusWithHttpOperationResponse(accountName: string, aclFilePath: string, options?: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AclStatusResult>>;
+
+    /**
+     * Gets Access Control List (ACL) entries for the specified file or directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} aclFilePath The Data Lake Store path (starting with '/') of
+     * the file or directory for which to get the ACL.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.tooId] An optional switch to return friendly names
+     * in place of object ID for ACL entries. tooid=false returns friendly names
+     * instead of the AAD Object ID. Default value is true, returning AAD object
+     * IDs.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AclStatusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AclStatusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AclStatusResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAclStatus(accountName: string, aclFilePath: string, options?: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.AclStatusResult>;
     getAclStatus(accountName: string, aclFilePath: string, callback: ServiceCallback<models.AclStatusResult>): void;
+    getAclStatus(accountName: string, aclFilePath: string, options: { tooId? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AclStatusResult>): void;
+
 
     /**
      * Deletes the requested file or directory, optionally recursively.
@@ -554,11 +1472,57 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileOperationResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(accountName: string, filePath: string, options: { recursive? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+    deleteMethodWithHttpOperationResponse(accountName: string, filePath: string, options?: { recursive? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileOperationResult>>;
+
+    /**
+     * Deletes the requested file or directory, optionally recursively.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} filePath The Data Lake Store path (starting with '/') of the
+     * file or directory to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.recursive] The optional switch indicating if the
+     * delete should be recursive
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileOperationResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileOperationResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileOperationResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(accountName: string, filePath: string, options?: { recursive? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileOperationResult>;
     deleteMethod(accountName: string, filePath: string, callback: ServiceCallback<models.FileOperationResult>): void;
+    deleteMethod(accountName: string, filePath: string, options: { recursive? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+
 
     /**
      * Rename a file or directory.
@@ -576,11 +1540,56 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileOperationResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    rename(accountName: string, renameFilePath: string, destination: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+    renameWithHttpOperationResponse(accountName: string, renameFilePath: string, destination: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileOperationResult>>;
+
+    /**
+     * Rename a file or directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} renameFilePath The Data Lake Store path (starting with '/')
+     * of the file or directory to move/rename.
+     *
+     * @param {string} destination The path to move/rename the file or folder to
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileOperationResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileOperationResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileOperationResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    rename(accountName: string, renameFilePath: string, destination: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileOperationResult>;
     rename(accountName: string, renameFilePath: string, destination: string, callback: ServiceCallback<models.FileOperationResult>): void;
+    rename(accountName: string, renameFilePath: string, destination: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileOperationResult>): void;
+
 
     /**
      * Sets the owner of a file or directory.
@@ -602,11 +1611,59 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    setOwner(accountName: string, setOwnerFilePath: string, options: { owner? : string, group? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setOwnerWithHttpOperationResponse(accountName: string, setOwnerFilePath: string, options?: { owner? : string, group? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Sets the owner of a file or directory.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} setOwnerFilePath The Data Lake Store path (starting with
+     * '/') of the file or directory for which to set the owner.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.owner] The AAD Object ID of the user owner of the
+     * file or directory. If empty, the property will remain unchanged.
+     *
+     * @param {string} [options.group] The AAD Object ID of the group owner of the
+     * file or directory. If empty, the property will remain unchanged.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    setOwner(accountName: string, setOwnerFilePath: string, options?: { owner? : string, group? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     setOwner(accountName: string, setOwnerFilePath: string, callback: ServiceCallback<void>): void;
+    setOwner(accountName: string, setOwnerFilePath: string, options: { owner? : string, group? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Sets the permission of the file or folder.
@@ -625,9 +1682,53 @@ export interface FileSystem {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    setPermission(accountName: string, setPermissionFilePath: string, options: { permission? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    setPermissionWithHttpOperationResponse(accountName: string, setPermissionFilePath: string, options?: { permission? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Sets the permission of the file or folder.
+     *
+     * @param {string} accountName The Azure Data Lake Store account to execute
+     * filesystem operations on.
+     *
+     * @param {string} setPermissionFilePath The Data Lake Store path (starting
+     * with '/') of the file or directory for which to set the permission.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.permission] A string representation of the
+     * permission (i.e 'rwx'). If empty, this property remains unchanged.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    setPermission(accountName: string, setPermissionFilePath: string, options?: { permission? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     setPermission(accountName: string, setPermissionFilePath: string, callback: ServiceCallback<void>): void;
+    setPermission(accountName: string, setPermissionFilePath: string, options: { permission? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }

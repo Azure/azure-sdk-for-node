@@ -4,7 +4,7 @@
   "contributors": [
     "Commerce Platform Usage Team <cpusage@microsoft.com>"
   ],
-  "version": "0.1.2",
+  "version": "1.0.0-preview",
   "description": "Microsoft Azure Commerce Usage Aggregates Management Client Library for Node",
   "tags": [
     "azure",
@@ -14,10 +14,12 @@
     "node",
     "azure"
   ],
-  "main": "./lib/commerce.js",
-  "license": "Apache-2.0",
+  "main": "./lib/usageManagementClient.js",
+  "types": "./lib/usageManagementClient.d.ts",
+  "license": "MIT",
   "dependencies": {
-    "azure-common": "^0.9.13"
+    "ms-rest": "^2.0.0",
+    "ms-rest-azure": "^2.0.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

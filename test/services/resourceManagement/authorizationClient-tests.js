@@ -83,7 +83,7 @@ describe('Authorization Client', function () {
       client.managementLocks.createOrUpdateAtResourceGroupLevel(groupName, lockName, lockParameters, function (err, result) {
         should.not.exist(err);
         should.exist(result);
-        client.managementLocks.get(lockName, function (error, result) {
+        client.managementLocks.getAtSubscriptionLevel(lockName, function (error, result) {
           //should.not.exist(err);
           //should.exist(result);
           client.managementLocks.listAtResourceGroupLevel(groupName, { properties: { level: lockLevel } }, function (err, result, request, response) {

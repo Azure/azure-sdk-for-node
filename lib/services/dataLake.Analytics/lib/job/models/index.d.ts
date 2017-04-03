@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -76,26 +79,26 @@ exports.CloudError = msRestAzure.CloudError;
  *
  */
 export interface JobStatisticsVertexStage {
-  dataRead?: number;
-  dataReadCrossPod?: number;
-  dataReadIntraPod?: number;
-  dataToRead?: number;
-  dataWritten?: number;
-  duplicateDiscardCount?: number;
-  failedCount?: number;
-  maxVertexDataRead?: number;
-  minVertexDataRead?: number;
-  readFailureCount?: number;
-  revocationCount?: number;
-  runningCount?: number;
-  scheduledCount?: number;
-  stageName?: string;
-  succeededCount?: number;
-  tempDataWritten?: number;
-  totalCount?: number;
-  totalFailedTime?: moment.Duration;
-  totalProgress?: number;
-  totalSucceededTime?: moment.Duration;
+  readonly dataRead?: number;
+  readonly dataReadCrossPod?: number;
+  readonly dataReadIntraPod?: number;
+  readonly dataToRead?: number;
+  readonly dataWritten?: number;
+  readonly duplicateDiscardCount?: number;
+  readonly failedCount?: number;
+  readonly maxVertexDataRead?: number;
+  readonly minVertexDataRead?: number;
+  readonly readFailureCount?: number;
+  readonly revocationCount?: number;
+  readonly runningCount?: number;
+  readonly scheduledCount?: number;
+  readonly stageName?: string;
+  readonly succeededCount?: number;
+  readonly tempDataWritten?: number;
+  readonly totalCount?: number;
+  readonly totalFailedTime?: moment.Duration;
+  readonly totalProgress?: number;
+  readonly totalSucceededTime?: moment.Duration;
 }
 
 /**
@@ -112,9 +115,9 @@ export interface JobStatisticsVertexStage {
  *
  */
 export interface JobStatistics {
-  lastUpdateTimeUtc?: Date;
-  finalizingTimeUtc?: Date;
-  stages?: JobStatisticsVertexStage[];
+  readonly lastUpdateTimeUtc?: Date;
+  readonly finalizingTimeUtc?: Date;
+  readonly stages?: JobStatisticsVertexStage[];
 }
 
 /**
@@ -131,9 +134,9 @@ export interface JobStatistics {
  *
  */
 export interface JobDataPath {
-  jobId?: string;
-  command?: string;
-  paths?: string[];
+  readonly jobId?: string;
+  readonly command?: string;
+  readonly paths?: string[];
 }
 
 /**
@@ -153,10 +156,10 @@ export interface JobDataPath {
  *
  */
 export interface JobStateAuditRecord {
-  newState?: string;
-  timeStamp?: Date;
-  requestedByUser?: string;
-  details?: string;
+  readonly newState?: string;
+  readonly timeStamp?: Date;
+  readonly requestedByUser?: string;
+  readonly details?: string;
 }
 
 /**
@@ -203,12 +206,12 @@ export interface JobResource {
  *
  */
 export interface Diagnostics {
-  columnNumber?: number;
-  end?: number;
-  lineNumber?: number;
-  message?: string;
-  severity?: string;
-  start?: number;
+  readonly columnNumber?: number;
+  readonly end?: number;
+  readonly lineNumber?: number;
+  readonly message?: string;
+  readonly severity?: string;
+  readonly start?: number;
 }
 
 /**
@@ -302,14 +305,14 @@ export interface USqlJobProperties extends JobProperties {
   statistics?: JobStatistics;
   debugData?: JobDataPath;
   diagnostics?: Diagnostics[];
-  algebraFilePath?: string;
-  totalCompilationTime?: moment.Duration;
-  totalPauseTime?: moment.Duration;
-  totalQueuedTime?: moment.Duration;
-  totalRunningTime?: moment.Duration;
-  rootProcessNodeId?: string;
-  yarnApplicationId?: string;
-  yarnApplicationTimeStamp?: number;
+  readonly algebraFilePath?: string;
+  readonly totalCompilationTime?: moment.Duration;
+  readonly totalPauseTime?: moment.Duration;
+  readonly totalQueuedTime?: moment.Duration;
+  readonly totalRunningTime?: moment.Duration;
+  readonly rootProcessNodeId?: string;
+  readonly yarnApplicationId?: string;
+  readonly yarnApplicationTimeStamp?: number;
   compileMode?: string;
 }
 
@@ -332,10 +335,10 @@ export interface USqlJobProperties extends JobProperties {
  *
  */
 export interface HiveJobProperties extends JobProperties {
-  logsLocation?: string;
-  outputLocation?: string;
-  statementCount?: number;
-  executedStatementCount?: number;
+  readonly logsLocation?: string;
+  readonly outputLocation?: string;
+  readonly statementCount?: number;
+  readonly executedStatementCount?: number;
 }
 
 /**
@@ -376,17 +379,17 @@ export interface HiveJobProperties extends JobProperties {
  *
  */
 export interface JobInnerError {
-  diagnosticCode?: number;
-  severity?: string;
-  details?: string;
-  component?: string;
-  errorId?: string;
-  helpLink?: string;
-  internalDiagnostics?: string;
-  message?: string;
-  resolution?: string;
-  source?: string;
-  description?: string;
+  readonly diagnosticCode?: number;
+  readonly severity?: string;
+  readonly details?: string;
+  readonly component?: string;
+  readonly errorId?: string;
+  readonly helpLink?: string;
+  readonly internalDiagnostics?: string;
+  readonly message?: string;
+  readonly resolution?: string;
+  readonly source?: string;
+  readonly description?: string;
 }
 
 /**
@@ -469,20 +472,20 @@ export interface JobInnerError {
  *
  */
 export interface JobErrorDetails {
-  description?: string;
-  details?: string;
-  endOffset?: number;
-  errorId?: string;
-  filePath?: string;
-  helpLink?: string;
-  internalDiagnostics?: string;
-  lineNumber?: number;
-  message?: string;
-  resolution?: string;
-  innerError?: JobInnerError;
-  severity?: string;
-  source?: string;
-  startOffset?: number;
+  readonly description?: string;
+  readonly details?: string;
+  readonly endOffset?: number;
+  readonly errorId?: string;
+  readonly filePath?: string;
+  readonly helpLink?: string;
+  readonly internalDiagnostics?: string;
+  readonly lineNumber?: number;
+  readonly message?: string;
+  readonly resolution?: string;
+  readonly innerError?: JobInnerError;
+  readonly severity?: string;
+  readonly source?: string;
+  readonly startOffset?: number;
 }
 
 /**
@@ -548,21 +551,21 @@ export interface JobErrorDetails {
  *
  */
 export interface JobInformation {
-  jobId?: string;
+  readonly jobId?: string;
   name: string;
   type: string;
-  submitter?: string;
-  errorMessage?: JobErrorDetails[];
+  readonly submitter?: string;
+  readonly errorMessage?: JobErrorDetails[];
   degreeOfParallelism?: number;
   priority?: number;
-  submitTime?: Date;
-  startTime?: Date;
-  endTime?: Date;
-  state?: string;
-  result?: string;
-  logFolder?: string;
+  readonly submitTime?: Date;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly state?: string;
+  readonly result?: string;
+  readonly logFolder?: string;
   logFilePatterns?: string[];
-  stateAuditRecords?: JobStateAuditRecord[];
+  readonly stateAuditRecords?: JobStateAuditRecord[];
   properties: JobProperties;
 }
 
@@ -578,8 +581,8 @@ export interface JobInformation {
  *
  */
 export interface JobInfoListResult {
-  value?: JobInformation[];
-  nextLink?: string;
+  readonly value?: JobInformation[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -594,8 +597,8 @@ export interface JobInfoListResult {
  *
  */
 export interface JobInfoListResult {
-  value?: JobInformation[];
-  nextLink?: string;
+  readonly value?: JobInformation[];
+  readonly nextLink?: string;
 }
 
 
@@ -609,5 +612,5 @@ export interface JobInfoListResult {
  *
  */
 export interface JobInfoListResult extends Array<JobInformation> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
