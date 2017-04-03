@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -45,9 +48,9 @@ export interface StorageAccountCheckNameAvailabilityParameters {
  *
  */
 export interface CheckNameAvailabilityResult {
-  nameAvailable?: boolean;
-  reason?: string;
-  message?: string;
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
 }
 
 /**
@@ -67,7 +70,7 @@ export interface CheckNameAvailabilityResult {
  */
 export interface Sku {
   name: string;
-  tier?: string;
+  readonly tier?: string;
 }
 
 /**
@@ -106,7 +109,7 @@ export interface CustomDomain {
  */
 export interface EncryptionService {
   enabled?: boolean;
-  lastEnabledTime?: Date;
+  readonly lastEnabledTime?: Date;
 }
 
 /**
@@ -161,8 +164,8 @@ export interface EncryptionService {
 export interface EncryptionServices {
   blob?: EncryptionService;
   file?: EncryptionService;
-  table?: EncryptionService;
-  queue?: EncryptionService;
+  readonly table?: EncryptionService;
+  readonly queue?: EncryptionService;
 }
 
 /**
@@ -348,10 +351,10 @@ export interface StorageAccountCreateParameters {
  *
  */
 export interface Endpoints {
-  blob?: string;
-  queue?: string;
-  table?: string;
-  file?: string;
+  readonly blob?: string;
+  readonly queue?: string;
+  readonly table?: string;
+  readonly file?: string;
 }
 
 /**
@@ -373,9 +376,9 @@ export interface Endpoints {
  *
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
   location?: string;
   tags?: { [propertyName: string]: string };
 }
@@ -519,20 +522,20 @@ export interface Resource extends BaseResource {
  *
  */
 export interface StorageAccount extends Resource {
-  sku?: Sku;
-  kind?: string;
-  provisioningState?: string;
-  primaryEndpoints?: Endpoints;
-  primaryLocation?: string;
-  statusOfPrimary?: string;
-  lastGeoFailoverTime?: Date;
-  secondaryLocation?: string;
-  statusOfSecondary?: string;
-  creationTime?: Date;
-  customDomain?: CustomDomain;
-  secondaryEndpoints?: Endpoints;
-  encryption?: Encryption;
-  accessTier?: string;
+  readonly sku?: Sku;
+  readonly kind?: string;
+  readonly provisioningState?: string;
+  readonly primaryEndpoints?: Endpoints;
+  readonly primaryLocation?: string;
+  readonly statusOfPrimary?: string;
+  readonly lastGeoFailoverTime?: Date;
+  readonly secondaryLocation?: string;
+  readonly statusOfSecondary?: string;
+  readonly creationTime?: Date;
+  readonly customDomain?: CustomDomain;
+  readonly secondaryEndpoints?: Endpoints;
+  readonly encryption?: Encryption;
+  readonly accessTier?: string;
 }
 
 /**
@@ -550,9 +553,9 @@ export interface StorageAccount extends Resource {
  *
  */
 export interface StorageAccountKey {
-  keyName?: string;
-  value?: string;
-  permissions?: string;
+  readonly keyName?: string;
+  readonly value?: string;
+  readonly permissions?: string;
 }
 
 /**
@@ -566,7 +569,7 @@ export interface StorageAccountKey {
  *
  */
 export interface StorageAccountListResult {
-  value?: StorageAccount[];
+  readonly value?: StorageAccount[];
 }
 
 /**
@@ -580,7 +583,7 @@ export interface StorageAccountListResult {
  *
  */
 export interface StorageAccountListKeysResult {
-  keys?: StorageAccountKey[];
+  readonly keys?: StorageAccountKey[];
 }
 
 /**
@@ -709,8 +712,8 @@ export interface StorageAccountUpdateParameters {
  *
  */
 export interface UsageName {
-  value?: string;
-  localizedValue?: string;
+  readonly value?: string;
+  readonly localizedValue?: string;
 }
 
 /**
@@ -738,10 +741,10 @@ export interface UsageName {
  *
  */
 export interface Usage {
-  unit?: string;
-  currentValue?: number;
-  limit?: number;
-  name?: UsageName;
+  readonly unit?: string;
+  readonly currentValue?: number;
+  readonly limit?: number;
+  readonly name?: UsageName;
 }
 
 /**
@@ -814,7 +817,7 @@ export interface AccountSasParameters {
  *
  */
 export interface ListAccountSasResponse {
-  accountSasToken?: string;
+  readonly accountSasToken?: string;
 }
 
 /**
@@ -909,7 +912,7 @@ export interface ServiceSasParameters {
  *
  */
 export interface ListServiceSasResponse {
-  serviceSasToken?: string;
+  readonly serviceSasToken?: string;
 }
 
 /**
@@ -923,7 +926,7 @@ export interface ListServiceSasResponse {
  *
  */
 export interface StorageAccountListResult {
-  value?: StorageAccount[];
+  readonly value?: StorageAccount[];
 }
 
 /**

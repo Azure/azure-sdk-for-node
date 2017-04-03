@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -46,9 +49,9 @@ export interface Sku {
  *
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
   location: string;
   tags?: { [propertyName: string]: string };
 }
@@ -77,8 +80,8 @@ export interface Resource extends BaseResource {
  */
 export interface Profile extends Resource {
   sku: Sku;
-  resourceState?: string;
-  provisioningState?: string;
+  readonly resourceState?: string;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -217,10 +220,10 @@ export interface Endpoint extends Resource {
   queryStringCachingBehavior?: string;
   optimizationType?: string;
   geoFilters?: GeoFilter[];
-  hostName?: string;
+  readonly hostName?: string;
   origins: DeepCreatedOrigin[];
-  resourceState?: string;
-  provisioningState?: string;
+  readonly resourceState?: string;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -376,8 +379,8 @@ export interface Origin extends Resource {
   hostName: string;
   httpPort?: number;
   httpsPort?: number;
-  resourceState?: string;
-  provisioningState?: string;
+  readonly resourceState?: string;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -447,10 +450,10 @@ export interface OriginListResult {
  */
 export interface CustomDomain extends Resource {
   hostName: string;
-  resourceState?: string;
-  customHttpsProvisioningState?: string;
+  readonly resourceState?: string;
+  readonly customHttpsProvisioningState?: string;
   validationData?: string;
-  provisioningState?: string;
+  readonly provisioningState?: string;
 }
 
 /**

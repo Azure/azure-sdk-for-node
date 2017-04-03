@@ -1,8 +1,7 @@
 # Microsoft Azure SDK for Node.js - ServerManagement
 
 This project provides a Node.js package that makes it easy to manage Azure ServerManagement Resources. Right now it supports:
-- **Node.js version: 5.0.0 or higher**
-- **API version: 2015-07-01-preview**
+- **Node.js version: 6.0.0 or higher**
 
 ## Features
 

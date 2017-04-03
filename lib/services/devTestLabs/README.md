@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - DevTest Labs Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure DevTest Labs. Right now it supports:
-- **Node.js version: 0.13.0 or higher**
+- **Node.js version: 6.x.x or higher**
 
 ## How to Install
 

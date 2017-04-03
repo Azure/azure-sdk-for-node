@@ -46,20 +46,20 @@ const AzureEnvironment = require('../azureEnvironment');
   }
 
 /**
-* Creates a new ApplicationTokenCredentials object.
-* See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
-* for detailed instructions on creating an Azure Active Directory application.
-* @constructor
-* @param {string} clientId The active directory application client id. 
-* @param {string} domain The domain or tenant id containing this application.
-* @param {string} secret The authentication secret for the application.
-* @param {object} [options] Object representing optional parameters.
-* @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
-* then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
-* @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
-* @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
-* @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
-*/
+ * Creates a new ApplicationTokenCredentials object.
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for detailed instructions on creating an Azure Active Directory application.
+ * @constructor
+ * @param {string} clientId The active directory application client id. 
+ * @param {string} domain The domain or tenant id containing this application.
+ * @param {string} secret The authentication secret for the application.
+ * @param {object} [options] Object representing optional parameters.
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
+ * then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
+ * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
+ * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
+ */
 class ApplicationTokenCredentials {
   constructor(clientId, domain, secret, options) {
     if (!Boolean(clientId) || typeof clientId.valueOf() !== 'string') {

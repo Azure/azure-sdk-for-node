@@ -8,7 +8,7 @@
  * regenerated.
 */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as models from '../models';
 
 
@@ -19,6 +19,7 @@ import * as models from '../models';
  * instance of the ComputeManagementClient.
  */
 export interface AvailabilitySets {
+
 
     /**
      * Create or update an availability set.
@@ -57,11 +58,77 @@ export interface AvailabilitySets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilitySet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySet>>;
+
+    /**
+     * Create or update an availability set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} name The name of the availability set.
+     *
+     * @param {object} parameters Parameters supplied to the Create Availability
+     * Set operation.
+     *
+     * @param {number} [parameters.platformUpdateDomainCount] Update Domain count.
+     *
+     * @param {number} [parameters.platformFaultDomainCount] Fault Domain count.
+     *
+     * @param {array} [parameters.virtualMachines] A list of references to all
+     * virtual machines in the availability set.
+     *
+     * @param {boolean} [parameters.managed] If the availability set supports
+     * managed disks.
+     *
+     * @param {object} [parameters.sku] Sku of the availability set
+     *
+     * @param {string} [parameters.sku.name] The sku name.
+     *
+     * @param {string} [parameters.sku.tier] The sku tier.
+     *
+     * @param {number} [parameters.sku.capacity] The sku capacity.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilitySet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilitySet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilitySet} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySet>;
     createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, callback: ServiceCallback<models.AvailabilitySet>): void;
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
+
 
     /**
      * Delete an availability set.
@@ -75,11 +142,53 @@ export interface AvailabilitySets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Delete an availability set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} availabilitySetName The name of the availability set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Retrieves information about an availability set.
@@ -93,11 +202,52 @@ export interface AvailabilitySets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilitySet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySet>>;
+
+    /**
+     * Retrieves information about an availability set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} availabilitySetName The name of the availability set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilitySet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilitySet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilitySet} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySet>;
     get(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.AvailabilitySet>): void;
+    get(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
+
 
     /**
      * Lists all availability sets in a resource group.
@@ -109,11 +259,51 @@ export interface AvailabilitySets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AvailabilitySetListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySetListResult>>;
+
+    /**
+     * Lists all availability sets in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AvailabilitySetListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AvailabilitySetListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AvailabilitySetListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySetListResult>;
     list(resourceGroupName: string, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
+
 
     /**
      * Lists all available virtual machine sizes that can be used to create a new
@@ -128,11 +318,53 @@ export interface AvailabilitySets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizesWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
+
+    /**
+     * Lists all available virtual machine sizes that can be used to create a new
+     * virtual machine in an existing availability set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} availabilitySetName The name of the availability set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineSizeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 }
 
 /**
@@ -142,6 +374,7 @@ export interface AvailabilitySets {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachineExtensionImages {
+
 
     /**
      * Gets a virtual machine extension image.
@@ -159,11 +392,57 @@ export interface VirtualMachineExtensionImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineExtensionImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(location: string, publisherName: string, type: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionImage>): void;
+    getWithHttpOperationResponse(location: string, publisherName: string, type: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtensionImage>>;
+
+    /**
+     * Gets a virtual machine extension image.
+     *
+     * @param {string} location
+     *
+     * @param {string} publisherName
+     *
+     * @param {string} type
+     *
+     * @param {string} version
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineExtensionImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineExtensionImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineExtensionImage} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(location: string, publisherName: string, type: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtensionImage>;
     get(location: string, publisherName: string, type: string, version: string, callback: ServiceCallback<models.VirtualMachineExtensionImage>): void;
+    get(location: string, publisherName: string, type: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionImage>): void;
+
 
     /**
      * Gets a list of virtual machine extension image types.
@@ -177,11 +456,51 @@ export interface VirtualMachineExtensionImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listTypes(location: string, publisherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionImage[]>): void;
+    listTypesWithHttpOperationResponse(location: string, publisherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtensionImage[]>>;
+
+    /**
+     * Gets a list of virtual machine extension image types.
+     *
+     * @param {string} location
+     *
+     * @param {string} publisherName
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listTypes(location: string, publisherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtensionImage[]>;
     listTypes(location: string, publisherName: string, callback: ServiceCallback<models.VirtualMachineExtensionImage[]>): void;
+    listTypes(location: string, publisherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionImage[]>): void;
+
 
     /**
      * Gets a list of virtual machine extension image versions.
@@ -203,11 +522,58 @@ export interface VirtualMachineExtensionImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listVersions(location: string, publisherName: string, type: string, options: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionImage[]>): void;
+    listVersionsWithHttpOperationResponse(location: string, publisherName: string, type: string, options?: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtensionImage[]>>;
+
+    /**
+     * Gets a list of virtual machine extension image versions.
+     *
+     * @param {string} location
+     *
+     * @param {string} publisherName
+     *
+     * @param {string} type
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderby]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVersions(location: string, publisherName: string, type: string, options?: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtensionImage[]>;
     listVersions(location: string, publisherName: string, type: string, callback: ServiceCallback<models.VirtualMachineExtensionImage[]>): void;
+    listVersions(location: string, publisherName: string, type: string, options: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtensionImage[]>): void;
 }
 
 /**
@@ -217,6 +583,7 @@ export interface VirtualMachineExtensionImages {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachineExtensions {
+
 
     /**
      * The operation to create or update the extension.
@@ -280,11 +647,103 @@ export interface VirtualMachineExtensions {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineExtension>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtension>>;
+
+    /**
+     * The operation to create or update the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine where the extension
+     * should be create or updated.
+     *
+     * @param {string} vmExtensionName The name of the virtual machine extension.
+     *
+     * @param {object} extensionParameters Parameters supplied to the Create
+     * Virtual Machine Extension operation.
+     *
+     * @param {string} [extensionParameters.forceUpdateTag] How the extension
+     * handler should be forced to update even if the extension configuration has
+     * not changed.
+     *
+     * @param {string} [extensionParameters.publisher] The name of the extension
+     * handler publisher.
+     *
+     * @param {string} [extensionParameters.virtualMachineExtensionType] The type
+     * of the extension handler.
+     *
+     * @param {string} [extensionParameters.typeHandlerVersion] The type version of
+     * the extension handler.
+     *
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Whether the
+     * extension handler should be automatically upgraded across minor versions.
+     *
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     *
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     *
+     * @param {object} [extensionParameters.instanceView] The virtual machine
+     * extension instance view.
+     *
+     * @param {string} [extensionParameters.instanceView.name] The virtual machine
+     * extension name.
+     *
+     * @param {string} [extensionParameters.instanceView.type] The full type of the
+     * extension handler which includes both publisher and type.
+     *
+     * @param {string} [extensionParameters.instanceView.typeHandlerVersion] The
+     * type version of the extension handler.
+     *
+     * @param {array} [extensionParameters.instanceView.substatuses] The resource
+     * status information.
+     *
+     * @param {array} [extensionParameters.instanceView.statuses] The resource
+     * status information.
+     *
+     * @param {string} extensionParameters.location Resource location
+     *
+     * @param {object} [extensionParameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineExtension} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineExtension} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineExtension} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtension>;
     createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    createOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+
 
     /**
      * The operation to delete the extension.
@@ -301,11 +760,56 @@ export interface VirtualMachineExtensions {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to delete the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine where the extension
+     * should be deleted.
+     *
+     * @param {string} vmExtensionName The name of the virtual machine extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to get the extension.
@@ -325,11 +829,59 @@ export interface VirtualMachineExtensions {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineExtension>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtension>>;
+
+    /**
+     * The operation to get the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine containing the
+     * extension.
+     *
+     * @param {string} vmExtensionName The name of the virtual machine extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineExtension} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineExtension} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineExtension} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtension>;
     get(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    get(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+
 
     /**
      * The operation to create or update the extension.
@@ -393,11 +945,103 @@ export interface VirtualMachineExtensions {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineExtension>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineExtension>>;
+
+    /**
+     * The operation to create or update the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine where the extension
+     * should be create or updated.
+     *
+     * @param {string} vmExtensionName The name of the virtual machine extension.
+     *
+     * @param {object} extensionParameters Parameters supplied to the Create
+     * Virtual Machine Extension operation.
+     *
+     * @param {string} [extensionParameters.forceUpdateTag] How the extension
+     * handler should be forced to update even if the extension configuration has
+     * not changed.
+     *
+     * @param {string} [extensionParameters.publisher] The name of the extension
+     * handler publisher.
+     *
+     * @param {string} [extensionParameters.virtualMachineExtensionType] The type
+     * of the extension handler.
+     *
+     * @param {string} [extensionParameters.typeHandlerVersion] The type version of
+     * the extension handler.
+     *
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Whether the
+     * extension handler should be automatically upgraded across minor versions.
+     *
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     *
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     *
+     * @param {object} [extensionParameters.instanceView] The virtual machine
+     * extension instance view.
+     *
+     * @param {string} [extensionParameters.instanceView.name] The virtual machine
+     * extension name.
+     *
+     * @param {string} [extensionParameters.instanceView.type] The full type of the
+     * extension handler which includes both publisher and type.
+     *
+     * @param {string} [extensionParameters.instanceView.typeHandlerVersion] The
+     * type version of the extension handler.
+     *
+     * @param {array} [extensionParameters.instanceView.substatuses] The resource
+     * status information.
+     *
+     * @param {array} [extensionParameters.instanceView.statuses] The resource
+     * status information.
+     *
+     * @param {string} extensionParameters.location Resource location
+     *
+     * @param {object} [extensionParameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineExtension} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineExtension} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineExtension} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineExtension>;
     beginCreateOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, vmExtensionName: string, extensionParameters: models.VirtualMachineExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineExtension>): void;
+
 
     /**
      * The operation to delete the extension.
@@ -414,11 +1058,55 @@ export interface VirtualMachineExtensions {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to delete the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine where the extension
+     * should be deleted.
+     *
+     * @param {string} vmExtensionName The name of the virtual machine extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 }
 
 /**
@@ -428,6 +1116,7 @@ export interface VirtualMachineExtensions {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachineImages {
+
 
     /**
      * Gets a virtual machine image.
@@ -447,11 +1136,58 @@ export interface VirtualMachineImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(location: string, publisherName: string, offer: string, skus: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImage>): void;
+    getWithHttpOperationResponse(location: string, publisherName: string, offer: string, skus: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineImage>>;
+
+    /**
+     * Gets a virtual machine image.
+     *
+     * @param {string} location The name of a supported Azure region.
+     *
+     * @param {string} publisherName A valid image publisher.
+     *
+     * @param {string} offer A valid image publisher offer.
+     *
+     * @param {string} skus A valid image SKU.
+     *
+     * @param {string} version A valid image SKU version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(location: string, publisherName: string, offer: string, skus: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineImage>;
     get(location: string, publisherName: string, offer: string, skus: string, version: string, callback: ServiceCallback<models.VirtualMachineImage>): void;
+    get(location: string, publisherName: string, offer: string, skus: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImage>): void;
+
 
     /**
      * Gets a list of all virtual machine image versions for the specified
@@ -476,11 +1212,62 @@ export interface VirtualMachineImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(location: string, publisherName: string, offer: string, skus: string, options: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listWithHttpOperationResponse(location: string, publisherName: string, offer: string, skus: string, options?: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineImageResource[]>>;
+
+    /**
+     * Gets a list of all virtual machine image versions for the specified
+     * location, publisher, offer, and SKU.
+     *
+     * @param {string} location The name of a supported Azure region.
+     *
+     * @param {string} publisherName A valid image publisher.
+     *
+     * @param {string} offer A valid image publisher offer.
+     *
+     * @param {string} skus A valid image SKU.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.top]
+     *
+     * @param {string} [options.orderby]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, publisherName: string, offer: string, skus: string, options?: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineImageResource[]>;
     list(location: string, publisherName: string, offer: string, skus: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    list(location: string, publisherName: string, offer: string, skus: string, options: { filter? : string, top? : number, orderby? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+
 
     /**
      * Gets a list of virtual machine image offers for the specified location and
@@ -495,11 +1282,52 @@ export interface VirtualMachineImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listOffers(location: string, publisherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listOffersWithHttpOperationResponse(location: string, publisherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineImageResource[]>>;
+
+    /**
+     * Gets a list of virtual machine image offers for the specified location and
+     * publisher.
+     *
+     * @param {string} location The name of a supported Azure region.
+     *
+     * @param {string} publisherName A valid image publisher.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOffers(location: string, publisherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineImageResource[]>;
     listOffers(location: string, publisherName: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listOffers(location: string, publisherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+
 
     /**
      * Gets a list of virtual machine image publishers for the specified Azure
@@ -512,11 +1340,50 @@ export interface VirtualMachineImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listPublishers(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listPublishersWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineImageResource[]>>;
+
+    /**
+     * Gets a list of virtual machine image publishers for the specified Azure
+     * location.
+     *
+     * @param {string} location The name of a supported Azure region.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listPublishers(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineImageResource[]>;
     listPublishers(location: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listPublishers(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+
 
     /**
      * Gets a list of virtual machine image SKUs for the specified location,
@@ -533,11 +1400,53 @@ export interface VirtualMachineImages {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listSkus(location: string, publisherName: string, offer: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listSkusWithHttpOperationResponse(location: string, publisherName: string, offer: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineImageResource[]>>;
+
+    /**
+     * Gets a list of virtual machine image SKUs for the specified location,
+     * publisher, and offer.
+     *
+     * @param {string} location The name of a supported Azure region.
+     *
+     * @param {string} publisherName A valid image publisher.
+     *
+     * @param {string} offer A valid image publisher offer.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSkus(location: string, publisherName: string, offer: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineImageResource[]>;
     listSkus(location: string, publisherName: string, offer: string, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
+    listSkus(location: string, publisherName: string, offer: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineImageResource[]>): void;
 }
 
 /**
@@ -547,6 +1456,7 @@ export interface VirtualMachineImages {
  * instance of the ComputeManagementClient.
  */
 export interface UsageOperations {
+
 
     /**
      * Gets, for the specified location, the current compute resource usage
@@ -560,11 +1470,52 @@ export interface UsageOperations {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListUsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListUsagesResult>>;
+
+    /**
+     * Gets, for the specified location, the current compute resource usage
+     * information as well as the limits for compute resources under the
+     * subscription.
+     *
+     * @param {string} location The location for which resource usage is queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListUsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListUsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListUsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListUsagesResult>;
     list(location: string, callback: ServiceCallback<models.ListUsagesResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
+
 
     /**
      * Gets, for the specified location, the current compute resource usage
@@ -579,11 +1530,52 @@ export interface UsageOperations {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ListUsagesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListUsagesResult>>;
+
+    /**
+     * Gets, for the specified location, the current compute resource usage
+     * information as well as the limits for compute resources under the
+     * subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ListUsagesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ListUsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ListUsagesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListUsagesResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ListUsagesResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListUsagesResult>): void;
 }
 
 /**
@@ -593,6 +1585,7 @@ export interface UsageOperations {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachineSizes {
+
 
     /**
      * Lists all available virtual machine sizes for a subscription in a location.
@@ -605,11 +1598,51 @@ export interface VirtualMachineSizes {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
+
+    /**
+     * Lists all available virtual machine sizes for a subscription in a location.
+     *
+     * @param {string} location The location upon which virtual-machine-sizes is
+     * queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineSizeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
     list(location: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
 }
 
 /**
@@ -619,6 +1652,7 @@ export interface VirtualMachineSizes {
  * instance of the ComputeManagementClient.
  */
 export interface Images {
+
 
     /**
      * Create or update an image.
@@ -672,11 +1706,92 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Create or update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Create Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] The storage profile.
+     *
+     * @param {object} parameters.storageProfile.osDisk The OS disk.
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType The Operating System
+     * type. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] The caching type.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] The initial
+     * managed disk size in GB for blank data disks, and the new desired size for
+     * existing OS and Data disks.
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] The data disks.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
     createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, callback: ServiceCallback<models.Image>): void;
+    createOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
 
     /**
      * Deletes an Image.
@@ -690,11 +1805,53 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes an Image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Gets an image.
@@ -711,11 +1868,55 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, imageName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Gets an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, imageName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
     get(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.Image>): void;
+    get(resourceGroupName: string, imageName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
 
     /**
      * Gets the list of images under a resource group.
@@ -727,11 +1928,50 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of images under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ImageListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+
 
     /**
      * Gets the list of Images in the subscription. Use nextLink property in the
@@ -743,11 +1983,50 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of Images in the subscription. Use nextLink property in the
+     * response to get the next page of Images. Do this till nextLink is not null
+     * to fetch all the Images.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
     list(callback: ServiceCallback<models.ImageListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+
 
     /**
      * Create or update an image.
@@ -801,11 +2080,92 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Image>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Image>>;
+
+    /**
+     * Create or update an image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} parameters Parameters supplied to the Create Image
+     * operation.
+     *
+     * @param {object} [parameters.sourceVirtualMachine] The source virtual machine
+     * from which Image is created.
+     *
+     * @param {object} [parameters.storageProfile] The storage profile.
+     *
+     * @param {object} parameters.storageProfile.osDisk The OS disk.
+     *
+     * @param {string} parameters.storageProfile.osDisk.osType The Operating System
+     * type. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} parameters.storageProfile.osDisk.osState The OS State.
+     * Possible values include: 'Generalized', 'Specialized'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.snapshot] The snapshot.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The
+     * managedDisk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {string} [parameters.storageProfile.osDisk.blobUri] The Virtual Hard
+     * Disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] The caching type.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] The initial
+     * managed disk size in GB for blank data disks, and the new desired size for
+     * existing OS and Data disks.
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] The data disks.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Image} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Image} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Image} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Image>;
     beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, callback: ServiceCallback<models.Image>): void;
+    beginCreateOrUpdate(resourceGroupName: string, imageName: string, parameters: models.Image, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Image>): void;
+
 
     /**
      * Deletes an Image.
@@ -819,11 +2179,53 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes an Image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} imageName The name of the image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Gets the list of images under a resource group.
@@ -836,11 +2238,51 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of images under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ImageListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+
 
     /**
      * Gets the list of Images in the subscription. Use nextLink property in the
@@ -855,11 +2297,52 @@ export interface Images {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageListResult>>;
+
+    /**
+     * Gets the list of Images in the subscription. Use nextLink property in the
+     * response to get the next page of Images. Do this till nextLink is not null
+     * to fetch all the Images.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ImageListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageListResult>): void;
 }
 
 /**
@@ -869,6 +2352,7 @@ export interface Images {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachines {
+
 
     /**
      * Captures the VM by copying virtual hard disks of the VM and outputs a
@@ -895,11 +2379,66 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineCaptureResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    captureWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineCaptureResult>>;
+
+    /**
+     * Captures the VM by copying virtual hard disks of the VM and outputs a
+     * template that can be used to create similar VMs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Capture Virtual
+     * Machine operation.
+     *
+     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
+     * prefix.
+     *
+     * @param {string} parameters.destinationContainerName The destination
+     * container name.
+     *
+     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
+     * destination virtual hard disk, in case of conflict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineCaptureResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineCaptureResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineCaptureResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineCaptureResult>;
     capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    capture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+
 
     /**
      * The operation to create or update a virtual machine.
@@ -1119,6 +2658,14 @@ export interface VirtualMachines {
      * that is being used was licensed on-premises. This element is only used for
      * images that contain the Windows Server operating system.
      *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. Currently, the only supported type is 'SystemAssigned',
+     * which implicitly creates an identity. Possible values include:
+     * 'SystemAssigned'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -1128,11 +2675,275 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * The operation to create or update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Create Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] The purchase plan when deploying virtual
+     * machine from VM Marketplace images.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] The hardware profile.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] The virtual machine size
+     * name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
+     * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
+     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1',
+     * 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
+     * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
+     * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
+     * 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2',
+     * 'Standard_DS1', 'Standard_DS2', 'Standard_DS3', 'Standard_DS4',
+     * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
+     * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
+     * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
+     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+     *
+     * @param {object} [parameters.storageProfile] The storage profile.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] The image
+     * reference.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] The image
+     * offer.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] The image
+     * version. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor
+     * and Build are decimal numbers. Specify 'latest' to use the latest version of
+     * the image.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] The OS disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] The Operating
+     * System type. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] The
+     * disk encryption settings.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey] The
+     * disk encryption key which is a Key Vault Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey] The
+     * key encryption key which is Key Vault Key.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before using
+     * it to attach to the virtual machine. If SourceImage is provided, the
+     * destination virtual hard disk must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] The virtual
+     * hard disk's URI. Must be a valid URI to a virtual hard disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] The caching type.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption The create
+     * option. Possible values include: 'fromImage', 'empty', 'attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] The initial
+     * disk size, in GB, for blank data disks, and the new desired size for
+     * resizing existing OS and data disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] The
+     * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] The data disks.
+     *
+     * @param {object} [parameters.osProfile] The OS profile.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account.
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account.
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] The Windows
+     * configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether the virtual machine agent should be provisioned on the Virtual
+     * Machine. If not specified, then the default behavior is to set it to true.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether Windows updates are automatically installed on the VM.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] The
+     * time zone of the VM
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Additional base-64 encoded XML formatted information that can be included in
+     * the Unattend.xml file.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] The
+     * Windows Remote Management configuration of the VM
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] The Linux
+     * configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] The SSH
+     * configuration for linux VMs.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {array} [parameters.osProfile.secrets] The list of certificates for
+     * addition to the VM.
+     *
+     * @param {object} [parameters.networkProfile] The network profile.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource IDs for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] The diagnostics profile.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] The reference Id of the
+     * availability set to which the virtual machine belongs.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system.
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. Currently, the only supported type is 'SystemAssigned',
+     * which implicitly creates an identity. Possible values include:
+     * 'SystemAssigned'
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
     createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
+    createOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
 
     /**
      * The operation to delete a virtual machine.
@@ -1146,11 +2957,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to delete a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Retrieves information about the model view or the instance view of a virtual
@@ -1168,11 +3021,56 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, vmName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * Retrieves information about the model view or the instance view of a virtual
+     * machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation. Possible values include: 'instanceView'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, vmName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
     get(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachine>): void;
+    get(resourceGroupName: string, vmName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
 
     /**
      * Converts virtual machine disks from blob-based to managed disks. Virtual
@@ -1187,11 +3085,54 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    convertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    convertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Converts virtual machine disks from blob-based to managed disks. Virtual
+     * machine must be stop-deallocated before invoking this operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    convertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     convertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    convertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Shuts down the virtual machine and releases the compute resources. You are
@@ -1206,11 +3147,54 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Shuts down the virtual machine and releases the compute resources. You are
+     * not billed for the compute resources that this virtual machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Sets the state of the virtual machine to generalized.
@@ -1224,11 +3208,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    generalize(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    generalizeWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Sets the state of the virtual machine to generalized.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generalize(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     generalize(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    generalize(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Lists all of the virtual machines in the specified resource group. Use the
@@ -1241,11 +3267,52 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified resource group. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
     list(resourceGroupName: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
 
     /**
      * Lists all of the virtual machines in the specified subscription. Use the
@@ -1256,11 +3323,50 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified subscription. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
     listAll(callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
 
     /**
      * Lists all available virtual machine sizes to which the specified virtual
@@ -1275,11 +3381,54 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineSizeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAvailableSizes(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizesWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineSizeListResult>>;
+
+    /**
+     * Lists all available virtual machine sizes to which the specified virtual
+     * machine can be resized.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineSizeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineSizeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineSizeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableSizes(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
     listAvailableSizes(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+    listAvailableSizes(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
+
 
     /**
      * The operation to power off (stop) a virtual machine. The virtual machine can
@@ -1295,11 +3444,55 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    powerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to power off (stop) a virtual machine. The virtual machine can
+     * be restarted with the same provisioned resources. You are still charged for
+     * this virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    powerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     powerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to restart a virtual machine.
@@ -1313,11 +3506,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to restart a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     restart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to start a virtual machine.
@@ -1331,11 +3566,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    startWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to start a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     start(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to redeploy a virtual machine.
@@ -1349,11 +3626,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    redeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    redeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Captures the VM by copying virtual hard disks of the VM and outputs a
@@ -1380,11 +3699,66 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineCaptureResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    beginCaptureWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineCaptureResult>>;
+
+    /**
+     * Captures the VM by copying virtual hard disks of the VM and outputs a
+     * template that can be used to create similar VMs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Capture Virtual
+     * Machine operation.
+     *
+     * @param {string} parameters.vhdPrefix The captured virtual hard disk's name
+     * prefix.
+     *
+     * @param {string} parameters.destinationContainerName The destination
+     * container name.
+     *
+     * @param {boolean} parameters.overwriteVhds Specifies whether to overwrite the
+     * destination virtual hard disk, in case of conflict.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineCaptureResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineCaptureResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineCaptureResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineCaptureResult>;
     beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+    beginCapture(resourceGroupName: string, vmName: string, parameters: models.VirtualMachineCaptureParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineCaptureResult>): void;
+
 
     /**
      * The operation to create or update a virtual machine.
@@ -1604,6 +3978,14 @@ export interface VirtualMachines {
      * that is being used was licensed on-premises. This element is only used for
      * images that contain the Windows Server operating system.
      *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. Currently, the only supported type is 'SystemAssigned',
+     * which implicitly creates an identity. Possible values include:
+     * 'SystemAssigned'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -1613,11 +3995,275 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachine>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachine>>;
+
+    /**
+     * The operation to create or update a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Create Virtual Machine
+     * operation.
+     *
+     * @param {object} [parameters.plan] The purchase plan when deploying virtual
+     * machine from VM Marketplace images.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.hardwareProfile] The hardware profile.
+     *
+     * @param {string} [parameters.hardwareProfile.vmSize] The virtual machine size
+     * name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
+     * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
+     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1',
+     * 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
+     * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
+     * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
+     * 'Standard_D12_v2', 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_D15_v2',
+     * 'Standard_DS1', 'Standard_DS2', 'Standard_DS3', 'Standard_DS4',
+     * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
+     * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
+     * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
+     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
+     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
+     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+     *
+     * @param {object} [parameters.storageProfile] The storage profile.
+     *
+     * @param {object} [parameters.storageProfile.imageReference] The image
+     * reference.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.publisher] The
+     * image publisher.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.offer] The image
+     * offer.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.sku] The image
+     * SKU.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.version] The image
+     * version. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor
+     * and Build are decimal numbers. Specify 'latest' to use the latest version of
+     * the image.
+     *
+     * @param {string} [parameters.storageProfile.imageReference.id] Resource Id
+     *
+     * @param {object} [parameters.storageProfile.osDisk] The OS disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.osType] The Operating
+     * System type. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {object} [parameters.storageProfile.osDisk.encryptionSettings] The
+     * disk encryption settings.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey] The
+     * disk encryption key which is a Key Vault Secret.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.secretUrl
+     * The URL referencing a secret in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.diskEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the secret.
+     *
+     * @param {object}
+     * [parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey] The
+     * key encryption key which is Key Vault Key.
+     *
+     * @param {string}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.keyUrl
+     * The URL referencing a key in a Key Vault.
+     *
+     * @param {object}
+     * parameters.storageProfile.osDisk.encryptionSettings.keyEncryptionKey.sourceVault
+     * The relative URL of the Key Vault containing the key.
+     *
+     * @param {boolean}
+     * [parameters.storageProfile.osDisk.encryptionSettings.enabled] Specifies
+     * whether disk encryption should be enabled on the virtual machine.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.vhd] The virtual hard
+     * disk.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.image] The source user
+     * image virtual hard disk. The virtual hard disk will be copied before using
+     * it to attach to the virtual machine. If SourceImage is provided, the
+     * destination virtual hard disk must not exist.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.image.uri] The virtual
+     * hard disk's URI. Must be a valid URI to a virtual hard disk.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.caching] The caching type.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {string} parameters.storageProfile.osDisk.createOption The create
+     * option. Possible values include: 'fromImage', 'empty', 'attach'
+     *
+     * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] The initial
+     * disk size, in GB, for blank data disks, and the new desired size for
+     * resizing existing OS and data disks.
+     *
+     * @param {object} [parameters.storageProfile.osDisk.managedDisk] The managed
+     * disk parameters.
+     *
+     * @param {string}
+     * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] The
+     * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
+     * Id
+     *
+     * @param {array} [parameters.storageProfile.dataDisks] The data disks.
+     *
+     * @param {object} [parameters.osProfile] The OS profile.
+     *
+     * @param {string} [parameters.osProfile.computerName] Specifies the host OS
+     * name of the virtual machine.
+     *
+     * @param {string} [parameters.osProfile.adminUsername] Specifies the name of
+     * the administrator account.
+     *
+     * @param {string} [parameters.osProfile.adminPassword] Specifies the password
+     * of the administrator account.
+     *
+     * @param {string} [parameters.osProfile.customData] Specifies a base-64
+     * encoded string of custom data. The base-64 encoded string is decoded to a
+     * binary array that is saved as a file on the Virtual Machine. The maximum
+     * length of the binary array is 65535 bytes
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration] The Windows
+     * configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.provisionVMAgent] Indicates
+     * whether the virtual machine agent should be provisioned on the Virtual
+     * Machine. If not specified, then the default behavior is to set it to true.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.windowsConfiguration.enableAutomaticUpdates] Indicates
+     * whether Windows updates are automatically installed on the VM.
+     *
+     * @param {string} [parameters.osProfile.windowsConfiguration.timeZone] The
+     * time zone of the VM
+     *
+     * @param {array}
+     * [parameters.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Additional base-64 encoded XML formatted information that can be included in
+     * the Unattend.xml file.
+     *
+     * @param {object} [parameters.osProfile.windowsConfiguration.winRM] The
+     * Windows Remote Management configuration of the VM
+     *
+     * @param {array} [parameters.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration] The Linux
+     * configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object} [parameters.osProfile.linuxConfiguration.ssh] The SSH
+     * configuration for linux VMs.
+     *
+     * @param {array} [parameters.osProfile.linuxConfiguration.ssh.publicKeys] The
+     * list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {array} [parameters.osProfile.secrets] The list of certificates for
+     * addition to the VM.
+     *
+     * @param {object} [parameters.networkProfile] The network profile.
+     *
+     * @param {array} [parameters.networkProfile.networkInterfaces] Specifies the
+     * list of resource IDs for the network interfaces associated with the virtual
+     * machine.
+     *
+     * @param {object} [parameters.diagnosticsProfile] The diagnostics profile.
+     *
+     * @param {object} [parameters.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
+     *
+     * @param {boolean} [parameters.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string} [parameters.diagnosticsProfile.bootDiagnostics.storageUri]
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
+     *
+     * @param {object} [parameters.availabilitySet] The reference Id of the
+     * availability set to which the virtual machine belongs.
+     *
+     * @param {string} [parameters.availabilitySet.id] Resource Id
+     *
+     * @param {string} [parameters.licenseType] Specifies that the image or disk
+     * that is being used was licensed on-premises. This element is only used for
+     * images that contain the Windows Server operating system.
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine,
+     * if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine. Currently, the only supported type is 'SystemAssigned',
+     * which implicitly creates an identity. Possible values include:
+     * 'SystemAssigned'
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachine} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachine} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachine} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachine>;
     beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, callback: ServiceCallback<models.VirtualMachine>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmName: string, parameters: models.VirtualMachine, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachine>): void;
+
 
     /**
      * The operation to delete a virtual machine.
@@ -1631,11 +4277,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to delete a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Converts virtual machine disks from blob-based to managed disks. Virtual
@@ -1650,11 +4338,54 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginConvertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Converts virtual machine disks from blob-based to managed disks. Virtual
+     * machine must be stop-deallocated before invoking this operation.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginConvertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Shuts down the virtual machine and releases the compute resources. You are
@@ -1669,11 +4400,54 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Shuts down the virtual machine and releases the compute resources. You are
+     * not billed for the compute resources that this virtual machine uses.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to power off (stop) a virtual machine. The virtual machine can
@@ -1689,11 +4463,55 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to power off (stop) a virtual machine. The virtual machine can
+     * be restarted with the same provisioned resources. You are still charged for
+     * this virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPowerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to restart a virtual machine.
@@ -1707,11 +4525,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginRestart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to restart a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginRestart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to start a virtual machine.
@@ -1725,11 +4585,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to start a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * The operation to redeploy a virtual machine.
@@ -1743,11 +4645,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginRedeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to redeploy a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRedeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginRedeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRedeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Lists all of the virtual machines in the specified resource group. Use the
@@ -1761,11 +4705,53 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified resource group. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+
 
     /**
      * Lists all of the virtual machines in the specified subscription. Use the
@@ -1779,11 +4765,52 @@ export interface VirtualMachines {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineListResult>>;
+
+    /**
+     * Lists all of the virtual machines in the specified subscription. Use the
+     * nextLink property in the response to get the next page of virtual machines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineListResult>;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineListResult>): void;
 }
 
 /**
@@ -1793,6 +4820,7 @@ export interface VirtualMachines {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachineScaleSets {
+
 
     /**
      * Create or update a VM scale set.
@@ -1989,6 +5017,14 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
+     * @param {object} [parameters.identity] The identity of the virtual machine
+     * scale set, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine scale set. Currently, the only supported type is
+     * 'SystemAssigned', which implicitly creates an identity. Possible values
+     * include: 'SystemAssigned'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -1998,11 +5034,253 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSet>>;
+
+    /**
+     * Create or update a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} name The name of the VM scale set to create or update.
+     *
+     * @param {object} parameters The scale set object.
+     *
+     * @param {object} [parameters.sku] The virtual machine scale set sku.
+     *
+     * @param {string} [parameters.sku.name] The sku name.
+     *
+     * @param {string} [parameters.sku.tier] The sku tier.
+     *
+     * @param {number} [parameters.sku.capacity] The sku capacity.
+     *
+     * @param {object} [parameters.plan] The purchase plan when deploying a virtual
+     * machine scale set from VM Marketplace images.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.upgradePolicy] The upgrade policy.
+     *
+     * @param {string} [parameters.upgradePolicy.mode] The upgrade mode. Possible
+     * values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.virtualMachineProfile] The virtual machine
+     * profile.
+     *
+     * @param {object} [parameters.virtualMachineProfile.osProfile] The virtual
+     * machine scale set OS profile.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] The computer
+     * name prefix.
+     *
+     * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
+     * The admin user name.
+     *
+     * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
+     * The admin user password.
+     *
+     * @param {string} [parameters.virtualMachineProfile.osProfile.customData] A
+     * base-64 encoded string of custom data.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] The
+     * Windows Configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
+     * Indicates whether the virtual machine agent should be provisioned on the
+     * Virtual Machine. If not specified, then the default behavior is to set it to
+     * true.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
+     * Indicates whether Windows updates are automatically installed on the VM.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
+     * The time zone of the VM
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Additional base-64 encoded XML formatted information that can be included in
+     * the Unattend.xml file.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM] The
+     * Windows Remote Management configuration of the VM
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] The Linux
+     * Configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] The SSH
+     * configuration for linux VMs.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
+     * The list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] The List
+     * of certificates for addition to the VM.
+     *
+     * @param {object} [parameters.virtualMachineProfile.storageProfile] The
+     * virtual machine scale set storage profile.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference] The image
+     * reference.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
+     * The image publisher.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] The
+     * image offer.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] The
+     * image SKU.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.version] The
+     * image version. The allowed formats are Major.Minor.Build or 'latest'. Major,
+     * Minor and Build are decimal numbers. Specify 'latest' to use the latest
+     * version of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.id] Resource
+     * Id
+     *
+     * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk] The
+     * OS disk.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] The caching
+     * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.virtualMachineProfile.storageProfile.osDisk.createOption The
+     * create option. Possible values include: 'fromImage', 'empty', 'attach'
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] The
+     * Operating System type. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
+     * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
+     * it to attach to the Virtual Machine. If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] The
+     * virtual hard disk's URI. Must be a valid URI to a virtual hard disk.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers] The
+     * list of virtual hard disk container uris.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk] The
+     * managed disk parameters.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
+     * The Storage Account type. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
+     *
+     * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
+     * The data disks.
+     *
+     * @param {object} [parameters.virtualMachineProfile.networkProfile] The
+     * virtual machine scale set network profile.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
+     * The list of network configurations.
+     *
+     * @param {object} [parameters.virtualMachineProfile.extensionProfile] The
+     * virtual machine scale set extension profile.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.extensionProfile.extensions] The virtual
+     * machine scale set child extension resources.
+     *
+     * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
+     * Machine Scale Set should be overprovisioned.
+     *
+     * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
+     * scale set to a single placement group, of max size 100 virtual machines.
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine
+     * scale set, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine scale set. Currently, the only supported type is
+     * 'SystemAssigned', which implicitly creates an identity. Possible values
+     * include: 'SystemAssigned'
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSet} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
     createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+
 
     /**
      * Deallocates specific virtual machines in a VM scale set. Shuts down the
@@ -2021,11 +5299,58 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deallocates specific virtual machines in a VM scale set. Shuts down the
+     * virtual machines and releases the compute resources. You are not billed for
+     * the compute resources that this virtual machine scale set deallocates.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Deletes a VM scale set.
@@ -2039,11 +5364,53 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Display information about a virtual machine scale set.
@@ -2057,11 +5424,53 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSet>>;
+
+    /**
+     * Display information about a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSet} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
     get(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    get(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+
 
     /**
      * Deletes virtual machines in a VM scale set.
@@ -2077,11 +5486,55 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes virtual machines in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {array} instanceIds The virtual machine scale set instance ids.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Gets the status of a VM scale set instance.
@@ -2095,11 +5548,53 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetInstanceView>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getInstanceView(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetInstanceView>): void;
+    getInstanceViewWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetInstanceView>>;
+
+    /**
+     * Gets the status of a VM scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetInstanceView} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetInstanceView} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetInstanceView} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getInstanceView(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetInstanceView>;
     getInstanceView(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetInstanceView>): void;
+    getInstanceView(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetInstanceView>): void;
+
 
     /**
      * Gets a list of all VM scale sets under a resource group.
@@ -2111,11 +5606,51 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListResult>>;
+
+    /**
+     * Gets a list of all VM scale sets under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListResult>;
     list(resourceGroupName: string, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+
 
     /**
      * Gets a list of all VM Scale Sets in the subscription, regardless of the
@@ -2128,11 +5663,52 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListWithLinkResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListWithLinkResult>>;
+
+    /**
+     * Gets a list of all VM Scale Sets in the subscription, regardless of the
+     * associated resource group. Use nextLink property in the response to get the
+     * next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+     * the VM Scale Sets.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListWithLinkResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListWithLinkResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListWithLinkResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListWithLinkResult>;
     listAll(callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+
 
     /**
      * Gets a list of SKUs available for your VM scale set, including the minimum
@@ -2147,11 +5723,54 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListSkusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listSkus(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+    listSkusWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListSkusResult>>;
+
+    /**
+     * Gets a list of SKUs available for your VM scale set, including the minimum
+     * and maximum VM instances allowed for each SKU.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListSkusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListSkusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListSkusResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSkus(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListSkusResult>;
     listSkus(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+    listSkus(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+
 
     /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
@@ -2170,11 +5789,58 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Power off (stop) one or more virtual machines in a VM scale set. Note that
+     * resources are still attached and you are getting charged for the resources.
+     * Instead, use deallocate to release resources and avoid charges.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    powerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     powerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Restarts one or more virtual machines in a VM scale set.
@@ -2191,11 +5857,56 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Restarts one or more virtual machines in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Starts one or more virtual machines in a VM scale set.
@@ -2212,11 +5923,56 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Starts one or more virtual machines in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Upgrades one or more virtual machines to the latest SKU set in the VM scale
@@ -2233,11 +5989,56 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    updateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Upgrades one or more virtual machines to the latest SKU set in the VM scale
+     * set model.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {array} instanceIds The virtual machine scale set instance ids.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
@@ -2252,11 +6053,54 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    reimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Reimages (upgrade the operating system) one or more virtual machines in a VM
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    reimage(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
@@ -2272,11 +6116,55 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Reimages all the disks ( including data disks ) in the virtual machines in a
+     * virtual machine scale set. This operation is only supported for managed
+     * disks.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     reimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Create or update a VM scale set.
@@ -2473,6 +6361,14 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
+     * @param {object} [parameters.identity] The identity of the virtual machine
+     * scale set, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine scale set. Currently, the only supported type is
+     * 'SystemAssigned', which implicitly creates an identity. Possible values
+     * include: 'SystemAssigned'
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -2482,11 +6378,253 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSet>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSet>>;
+
+    /**
+     * Create or update a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} name The name of the VM scale set to create or update.
+     *
+     * @param {object} parameters The scale set object.
+     *
+     * @param {object} [parameters.sku] The virtual machine scale set sku.
+     *
+     * @param {string} [parameters.sku.name] The sku name.
+     *
+     * @param {string} [parameters.sku.tier] The sku tier.
+     *
+     * @param {number} [parameters.sku.capacity] The sku capacity.
+     *
+     * @param {object} [parameters.plan] The purchase plan when deploying a virtual
+     * machine scale set from VM Marketplace images.
+     *
+     * @param {string} [parameters.plan.name] The plan ID.
+     *
+     * @param {string} [parameters.plan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.plan.product] The offer ID.
+     *
+     * @param {string} [parameters.plan.promotionCode] The promotion code.
+     *
+     * @param {object} [parameters.upgradePolicy] The upgrade policy.
+     *
+     * @param {string} [parameters.upgradePolicy.mode] The upgrade mode. Possible
+     * values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.virtualMachineProfile] The virtual machine
+     * profile.
+     *
+     * @param {object} [parameters.virtualMachineProfile.osProfile] The virtual
+     * machine scale set OS profile.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.osProfile.computerNamePrefix] The computer
+     * name prefix.
+     *
+     * @param {string} [parameters.virtualMachineProfile.osProfile.adminUsername]
+     * The admin user name.
+     *
+     * @param {string} [parameters.virtualMachineProfile.osProfile.adminPassword]
+     * The admin user password.
+     *
+     * @param {string} [parameters.virtualMachineProfile.osProfile.customData] A
+     * base-64 encoded string of custom data.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration] The
+     * Windows Configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent]
+     * Indicates whether the virtual machine agent should be provisioned on the
+     * Virtual Machine. If not specified, then the default behavior is to set it to
+     * true.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates]
+     * Indicates whether Windows updates are automatically installed on the VM.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.timeZone]
+     * The time zone of the VM
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent]
+     * Additional base-64 encoded XML formatted information that can be included in
+     * the Unattend.xml file.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM] The
+     * Windows Remote Management configuration of the VM
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.windowsConfiguration.winRM.listeners]
+     * The list of Windows Remote Management listeners
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration] The Linux
+     * Configuration of the OS profile.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication]
+     * Specifies whether password authentication should be disabled.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh] The SSH
+     * configuration for linux VMs.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.osProfile.linuxConfiguration.ssh.publicKeys]
+     * The list of SSH public keys used to authenticate with linux based VMs.
+     *
+     * @param {array} [parameters.virtualMachineProfile.osProfile.secrets] The List
+     * of certificates for addition to the VM.
+     *
+     * @param {object} [parameters.virtualMachineProfile.storageProfile] The
+     * virtual machine scale set storage profile.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference] The image
+     * reference.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.publisher]
+     * The image publisher.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.offer] The
+     * image offer.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.sku] The
+     * image SKU.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.version] The
+     * image version. The allowed formats are Major.Minor.Build or 'latest'. Major,
+     * Minor and Build are decimal numbers. Specify 'latest' to use the latest
+     * version of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.imageReference.id] Resource
+     * Id
+     *
+     * @param {object} [parameters.virtualMachineProfile.storageProfile.osDisk] The
+     * OS disk.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.name] The disk name.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.caching] The caching
+     * type. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {string}
+     * parameters.virtualMachineProfile.storageProfile.osDisk.createOption The
+     * create option. Possible values include: 'fromImage', 'empty', 'attach'
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] The
+     * Operating System type. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
+     * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
+     * it to attach to the Virtual Machine. If SourceImage is provided, the
+     * destination VirtualHardDisk should not exist.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.image.uri] The
+     * virtual hard disk's URI. Must be a valid URI to a virtual hard disk.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.vhdContainers] The
+     * list of virtual hard disk container uris.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk] The
+     * managed disk parameters.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
+     * The Storage Account type. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
+     *
+     * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
+     * The data disks.
+     *
+     * @param {object} [parameters.virtualMachineProfile.networkProfile] The
+     * virtual machine scale set network profile.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
+     * The list of network configurations.
+     *
+     * @param {object} [parameters.virtualMachineProfile.extensionProfile] The
+     * virtual machine scale set extension profile.
+     *
+     * @param {array}
+     * [parameters.virtualMachineProfile.extensionProfile.extensions] The virtual
+     * machine scale set child extension resources.
+     *
+     * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
+     * Machine Scale Set should be overprovisioned.
+     *
+     * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
+     * scale set to a single placement group, of max size 100 virtual machines.
+     *
+     * @param {object} [parameters.identity] The identity of the virtual machine
+     * scale set, if configured.
+     *
+     * @param {string} [parameters.identity.type] The type of identity used for the
+     * virtual machine scale set. Currently, the only supported type is
+     * 'SystemAssigned', which implicitly creates an identity. Possible values
+     * include: 'SystemAssigned'
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSet} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSet} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSet} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
     beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+
 
     /**
      * Deallocates specific virtual machines in a VM scale set. Shuts down the
@@ -2505,11 +6643,58 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deallocates specific virtual machines in a VM scale set. Shuts down the
+     * virtual machines and releases the compute resources. You are not billed for
+     * the compute resources that this virtual machine scale set deallocates.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Deletes a VM scale set.
@@ -2523,11 +6708,53 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Deletes virtual machines in a VM scale set.
@@ -2543,11 +6770,55 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes virtual machines in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {array} instanceIds The virtual machine scale set instance ids.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
@@ -2566,11 +6837,58 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Power off (stop) one or more virtual machines in a VM scale set. Note that
+     * resources are still attached and you are getting charged for the resources.
+     * Instead, use deallocate to release resources and avoid charges.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginPowerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Restarts one or more virtual machines in a VM scale set.
@@ -2587,11 +6905,56 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Restarts one or more virtual machines in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginRestart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Starts one or more virtual machines in a VM scale set.
@@ -2608,11 +6971,56 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Starts one or more virtual machines in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginStart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Upgrades one or more virtual machines to the latest SKU set in the VM scale
@@ -2629,11 +7037,56 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginUpdateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Upgrades one or more virtual machines to the latest SKU set in the VM scale
+     * set model.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {array} instanceIds The virtual machine scale set instance ids.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
@@ -2648,11 +7101,54 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Reimages (upgrade the operating system) one or more virtual machines in a VM
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginReimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
@@ -2668,11 +7164,55 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Reimages all the disks ( including data disks ) in the virtual machines in a
+     * virtual machine scale set. This operation is only supported for managed
+     * disks.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginReimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Gets a list of all VM scale sets under a resource group.
@@ -2685,11 +7225,52 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListResult>>;
+
+    /**
+     * Gets a list of all VM scale sets under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListResult>): void;
+
 
     /**
      * Gets a list of all VM Scale Sets in the subscription, regardless of the
@@ -2705,11 +7286,55 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListWithLinkResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListWithLinkResult>>;
+
+    /**
+     * Gets a list of all VM Scale Sets in the subscription, regardless of the
+     * associated resource group. Use nextLink property in the response to get the
+     * next page of VM Scale Sets. Do this till nextLink is not null to fetch all
+     * the VM Scale Sets.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListWithLinkResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListWithLinkResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListWithLinkResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListWithLinkResult>;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListWithLinkResult>): void;
+
 
     /**
      * Gets a list of SKUs available for your VM scale set, including the minimum
@@ -2723,11 +7348,52 @@ export interface VirtualMachineScaleSets {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListSkusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+    listSkusNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListSkusResult>>;
+
+    /**
+     * Gets a list of SKUs available for your VM scale set, including the minimum
+     * and maximum VM instances allowed for each SKU.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListSkusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListSkusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListSkusResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListSkusResult>;
     listSkusNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+    listSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
 }
 
 /**
@@ -2737,6 +7403,7 @@ export interface VirtualMachineScaleSets {
  * instance of the ComputeManagementClient.
  */
 export interface VirtualMachineScaleSetVMs {
+
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -2753,11 +7420,56 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Reimages (upgrade the operating system) a specific virtual machine in a VM
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Allows you to re-image all the disks ( including data disks ) in the a
@@ -2775,11 +7487,57 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Allows you to re-image all the disks ( including data disks ) in the a
+     * virtual machine scale set instance. This operation is only supported for
+     * managed disks.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Deallocates a specific virtual machine in a VM scale set. Shuts down the
@@ -2798,11 +7556,58 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deallocates a specific virtual machine in a VM scale set. Shuts down the
+     * virtual machine and releases the compute resources it uses. You are not
+     * billed for the compute resources of this virtual machine once it is
+     * deallocated.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Deletes a virtual machine from a VM scale set.
@@ -2818,11 +7623,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a virtual machine from a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Gets a virtual machine from a VM scale set.
@@ -2838,11 +7687,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetVM>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVM>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetVM>>;
+
+    /**
+     * Gets a virtual machine from a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetVM} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetVM} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetVM} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetVM>;
     get(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.VirtualMachineScaleSetVM>): void;
+    get(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVM>): void;
+
 
     /**
      * Gets the status of a virtual machine from a VM scale set.
@@ -2858,11 +7751,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetVMInstanceView>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    getInstanceView(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMInstanceView>): void;
+    getInstanceViewWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetVMInstanceView>>;
+
+    /**
+     * Gets the status of a virtual machine from a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetVMInstanceView} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetVMInstanceView} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetVMInstanceView} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getInstanceView(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetVMInstanceView>;
     getInstanceView(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMInstanceView>): void;
+    getInstanceView(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMInstanceView>): void;
+
 
     /**
      * Gets a list of all virtual machines in a VM scale sets.
@@ -2883,11 +7820,60 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetVMListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(resourceGroupName: string, virtualMachineScaleSetName: string, options: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    listWithHttpOperationResponse(resourceGroupName: string, virtualMachineScaleSetName: string, options?: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetVMListResult>>;
+
+    /**
+     * Gets a list of all virtual machines in a VM scale sets.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply to the operation.
+     *
+     * @param {string} [options.select] The list parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply to the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetVMListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetVMListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetVMListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, virtualMachineScaleSetName: string, options?: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetVMListResult>;
     list(resourceGroupName: string, virtualMachineScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    list(resourceGroupName: string, virtualMachineScaleSetName: string, options: { filter? : string, select? : string, expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+
 
     /**
      * Power off (stop) a virtual machine in a VM scale set. Note that resources
@@ -2905,11 +7891,57 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Power off (stop) a virtual machine in a VM scale set. Note that resources
+     * are still attached and you are getting charged for the resources. Instead,
+     * use deallocate to release resources and avoid charges.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Restarts a virtual machine in a VM scale set.
@@ -2925,11 +7957,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Restarts a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Starts a virtual machine in a VM scale set.
@@ -2945,11 +8021,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Starts a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -2966,11 +8086,56 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Reimages (upgrade the operating system) a specific virtual machine in a VM
+     * scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Allows you to re-image all the disks ( including data disks ) in the a
@@ -2988,11 +8153,57 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Allows you to re-image all the disks ( including data disks ) in the a
+     * virtual machine scale set instance. This operation is only supported for
+     * managed disks.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Deallocates a specific virtual machine in a VM scale set. Shuts down the
@@ -3011,11 +8222,58 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deallocates a specific virtual machine in a VM scale set. Shuts down the
+     * virtual machine and releases the compute resources it uses. You are not
+     * billed for the compute resources of this virtual machine once it is
+     * deallocated.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Deletes a virtual machine from a VM scale set.
@@ -3031,11 +8289,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a virtual machine from a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Power off (stop) a virtual machine in a VM scale set. Note that resources
@@ -3053,11 +8355,57 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Power off (stop) a virtual machine in a VM scale set. Note that resources
+     * are still attached and you are getting charged for the resources. Instead,
+     * use deallocate to release resources and avoid charges.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Restarts a virtual machine in a VM scale set.
@@ -3073,11 +8421,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Restarts a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Starts a virtual machine in a VM scale set.
@@ -3093,11 +8485,55 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Starts a virtual machine in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {string} instanceId The instance ID of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Gets a list of all virtual machines in a VM scale sets.
@@ -3110,11 +8546,51 @@ export interface VirtualMachineScaleSetVMs {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetVMListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetVMListResult>>;
+
+    /**
+     * Gets a list of all virtual machines in a VM scale sets.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetVMListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetVMListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetVMListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetVMListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetVMListResult>): void;
 }
 
 /**
@@ -3124,6 +8600,7 @@ export interface VirtualMachineScaleSetVMs {
  * instance of the ComputeManagementClient.
  */
 export interface ContainerServices {
+
 
     /**
      * @summary Gets a list of container services in the specified subscription.
@@ -3137,11 +8614,53 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
     list(callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
 
     /**
      * @summary Creates or updates a container service.
@@ -3227,11 +8746,124 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
+     *
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
+     *
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom', 'Kubernetes'
+     *
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     *
+     * @param {string} parameters.customProfile.orchestrator The name of the custom
+     * orchestrator to use.
+     *
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     *
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     *
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     *
+     * @param {object} parameters.masterProfile Properties of master agents.
+     *
+     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
+     *
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
+     *
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
+     *
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * username to use for Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
+     *
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
+     *
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * username to use for Linux VMs.
+     *
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
+     *
+     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
+     * keys used to authenticate with Linux-based VMs.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
+     * agent.
+     *
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
+     *
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
+     * the VM diagnostic agent is provisioned on the VM.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerService} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerService} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
     createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
+    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+
 
     /**
      * @summary Gets the properties of the specified container service.
@@ -3251,11 +8883,58 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
+
+    /**
+     * @summary Gets the properties of the specified container service.
+     *
+     * Gets the properties of the specified container service in the specified
+     * subscription and resource group. The operation returns the properties
+     * including state, orchestrator, number of masters and agents, and FQDNs of
+     * masters and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerService} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerService} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
     get(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<models.ContainerService>): void;
+    get(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+
 
     /**
      * @summary Deletes the specified container service.
@@ -3276,11 +8955,58 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted individually.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * @summary Gets a list of container services in the specified resource group.
@@ -3297,11 +9023,56 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and resource
+     * group. The operation returns properties of each container service including
+     * state, orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
 
     /**
      * @summary Creates or updates a container service.
@@ -3387,11 +9158,124 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
+     *
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
+     *
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom', 'Kubernetes'
+     *
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     *
+     * @param {string} parameters.customProfile.orchestrator The name of the custom
+     * orchestrator to use.
+     *
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     *
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     *
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     *
+     * @param {object} parameters.masterProfile Properties of master agents.
+     *
+     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
+     *
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
+     *
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
+     *
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * username to use for Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
+     *
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
+     *
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * username to use for Linux VMs.
+     *
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
+     *
+     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
+     * keys used to authenticate with Linux-based VMs.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
+     * agent.
+     *
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
+     *
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
+     * the VM diagnostic agent is provisioned on the VM.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerService} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerService} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
     beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
+    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+
 
     /**
      * @summary Deletes the specified container service.
@@ -3412,11 +9296,58 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted individually.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * @summary Gets a list of container services in the specified subscription.
@@ -3433,11 +9364,56 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
 
     /**
      * @summary Gets a list of container services in the specified resource group.
@@ -3455,11 +9431,56 @@ export interface ContainerServices {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and resource
+     * group. The operation returns properties of each container service including
+     * state, orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
 }
 
 /**
@@ -3469,6 +9490,7 @@ export interface ContainerServices {
  * instance of the ComputeManagementClient.
  */
 export interface Disks {
+
 
     /**
      * Creates or updates a disk.
@@ -3561,11 +9583,131 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Creates or updates a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} disk Disk object supplied in the body of the Put disk
+     * operation.
+     *
+     * @param {string} [disk.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [disk.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} disk.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
+     * this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {string} disk.location Resource location
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
     createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
+    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
 
     /**
      * Updates (patches) a disk.
@@ -3656,11 +9798,129 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Updates (patches) a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} disk Disk object supplied in the body of the Patch disk
+     * operation.
+     *
+     * @param {string} [disk.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [disk.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} [disk.creationData] disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
+     * this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
     update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
+    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
 
     /**
      * Gets information about a disk.
@@ -3675,11 +9935,53 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Gets information about a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
     get(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.Disk>): void;
+    get(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
 
     /**
      * Deletes a disk.
@@ -3694,11 +9996,54 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Lists all the disks under a resource group.
@@ -3710,11 +10055,50 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+
 
     /**
      * Lists all the disks under a subscription.
@@ -3724,11 +10108,48 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
     list(callback: ServiceCallback<models.DiskList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+
 
     /**
      * Grants access to a disk.
@@ -3752,11 +10173,62 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get disk access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
     grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
 
     /**
      * Revokes access to a disk.
@@ -3771,11 +10243,54 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Revokes access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     revokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Creates or updates a disk.
@@ -3868,11 +10383,131 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Creates or updates a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} disk Disk object supplied in the body of the Put disk
+     * operation.
+     *
+     * @param {string} [disk.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [disk.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} disk.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
+     * this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {string} disk.location Resource location
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
     beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
+    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
 
     /**
      * Updates (patches) a disk.
@@ -3963,11 +10598,129 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Disk>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+
+    /**
+     * Updates (patches) a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} disk Disk object supplied in the body of the Patch disk
+     * operation.
+     *
+     * @param {string} [disk.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [disk.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} [disk.creationData] disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} disk.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [disk.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [disk.creationData.imageReference] Disk source information.
+     *
+     * @param {string} disk.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [disk.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
+     * this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [disk.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [disk.encryptionSettings] Encryption settings for disk or
+     * snapshot
+     *
+     * @param {boolean} [disk.encryptionSettings.enabled] Set this flag to true and
+     * provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [disk.encryptionSettings.diskEncryptionKey] Key Vault Secret
+     * Url and vault id of the disk encryption key
+     *
+     * @param {object} disk.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} disk.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [disk.encryptionSettings.keyEncryptionKey] Key Vault Key Url
+     * and vault id of the key encryption key
+     *
+     * @param {object} disk.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} [disk.encryptionSettings.keyEncryptionKey.sourceVault.id]
+     * Resource Id
+     *
+     * @param {string} disk.encryptionSettings.keyEncryptionKey.keyUrl Url pointing
+     * to a key or secret in KeyVault
+     *
+     * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Disk} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Disk} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Disk} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
     beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
+    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+
 
     /**
      * Deletes a disk.
@@ -3982,11 +10735,54 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Grants access to a disk.
@@ -4010,11 +10806,62 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get disk access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
     beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
 
     /**
      * Revokes access to a disk.
@@ -4029,11 +10876,54 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Revokes access to a disk.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} diskName The name of the disk within the given subscription
+     * and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginRevokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Lists all the disks under a resource group.
@@ -4046,11 +10936,51 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+
 
     /**
      * Lists all the disks under a subscription.
@@ -4063,11 +10993,50 @@ export interface Disks {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DiskList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+
+    /**
+     * Lists all the disks under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DiskList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DiskList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DiskList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.DiskList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
 }
 
 /**
@@ -4077,6 +11046,7 @@ export interface Disks {
  * instance of the ComputeManagementClient.
  */
 export interface Snapshots {
+
 
     /**
      * Creates or updates a snapshot.
@@ -4170,11 +11140,132 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Creates or updates a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Put
+     * disk operation.
+     *
+     * @param {string} [snapshot.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [snapshot.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} snapshot.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
+     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {string} snapshot.location Resource location
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
     createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
+    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
 
     /**
      * Updates (patches) a snapshot.
@@ -4266,11 +11357,130 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Updates (patches) a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Patch
+     * snapshot operation.
+     *
+     * @param {string} [snapshot.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [snapshot.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} [snapshot.creationData] disk source information.
+     * CreationData information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
+     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
     update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
+    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
 
     /**
      * Gets information about a snapshot.
@@ -4285,11 +11495,53 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Gets information about a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
     get(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.Snapshot>): void;
+    get(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
 
     /**
      * Deletes a snapshot.
@@ -4304,11 +11556,54 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     deleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Lists snapshots under a resource group.
@@ -4320,11 +11615,50 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+
 
     /**
      * Lists snapshots under a subscription.
@@ -4334,11 +11668,48 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
     list(callback: ServiceCallback<models.SnapshotList>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+
 
     /**
      * Grants access to a snapshot.
@@ -4362,11 +11733,62 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get snapshot access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
     grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
 
     /**
      * Revokes access to a snapshot.
@@ -4381,11 +11803,54 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Revokes access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     revokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Creates or updates a snapshot.
@@ -4479,11 +11944,132 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Creates or updates a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Put
+     * disk operation.
+     *
+     * @param {string} [snapshot.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [snapshot.osType] The Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} snapshot.creationData Disk source information. CreationData
+     * information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
+     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {string} snapshot.location Resource location
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
     beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
+    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
 
     /**
      * Updates (patches) a snapshot.
@@ -4575,11 +12161,130 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Snapshot>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+
+    /**
+     * Updates (patches) a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} snapshot Snapshot object supplied in the body of the Patch
+     * snapshot operation.
+     *
+     * @param {string} [snapshot.accountType] the storage account type of the disk.
+     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {string} [snapshot.osType] the Operating System type. Possible values
+     * include: 'Windows', 'Linux'
+     *
+     * @param {object} [snapshot.creationData] disk source information.
+     * CreationData information cannot be changed after the disk has been created.
+     *
+     * @param {string} snapshot.creationData.createOption Possible values include:
+     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     *
+     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
+     * Import, the Azure Resource Manager identifier of the storage account
+     * containing the blob to import as a disk. Required only if the blob is in a
+     * different subscription
+     *
+     * @param {object} [snapshot.creationData.imageReference] Disk source
+     * information.
+     *
+     * @param {string} snapshot.creationData.imageReference.id A relative uri
+     * containing either a Platform Imgage Repository or user image reference.
+     *
+     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
+     * created from an image's data disk, this is an index that indicates which of
+     * the data disks in the image to use. For OS disks, this field is null.
+     *
+     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
+     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
+     * creationOption is Copy, this is a relative Uri containing the id of the
+     * source snapshot to be copied into a managed disk.
+     *
+     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
+     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
+     * is Restore, this is the ARM-like id of the source disk restore point.
+     *
+     * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
+     * this field is mandatory and it indicates the size of the VHD to create. If
+     * this field is present for updates or creation with other options, it
+     * indicates a resize. Resizes are only allowed if the disk is not attached to
+     * a running VM, and can only increase the disk's size.
+     *
+     * @param {object} [snapshot.encryptionSettings] Encryption settings for disk
+     * or snapshot
+     *
+     * @param {boolean} [snapshot.encryptionSettings.enabled] Set this flag to true
+     * and provide DiskEncryptionKey and optional KeyEncryptionKey to enable
+     * encryption. Set this flag to false and remove DiskEncryptionKey and
+     * KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the
+     * request object, the existing settings remain unchanged.
+     *
+     * @param {object} [snapshot.encryptionSettings.diskEncryptionKey] Key Vault
+     * Secret Url and vault id of the disk encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.diskEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string} snapshot.encryptionSettings.diskEncryptionKey.secretUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.encryptionSettings.keyEncryptionKey] Key Vault Key
+     * Url and vault id of the key encryption key
+     *
+     * @param {object} snapshot.encryptionSettings.keyEncryptionKey.sourceVault
+     * Resource id of the KeyVault containing the key or secret
+     *
+     * @param {string}
+     * [snapshot.encryptionSettings.keyEncryptionKey.sourceVault.id] Resource Id
+     *
+     * @param {string} snapshot.encryptionSettings.keyEncryptionKey.keyUrl Url
+     * pointing to a key or secret in KeyVault
+     *
+     * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Snapshot} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Snapshot} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Snapshot} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
     beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
+    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+
 
     /**
      * Deletes a snapshot.
@@ -4594,11 +12299,54 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Grants access to a snapshot.
@@ -4622,11 +12370,62 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccessUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+
+    /**
+     * Grants access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} grantAccessData Access data object supplied in the body of
+     * the get snapshot access operation.
+     *
+     * @param {string} grantAccessData.access Possible values include: 'None',
+     * 'Read'
+     *
+     * @param {number} grantAccessData.durationInSeconds Time duration in seconds
+     * until the SAS access expires.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccessUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccessUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccessUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
     beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+
 
     /**
      * Revokes access to a snapshot.
@@ -4641,11 +12440,54 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Revokes access to a snapshot.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} snapshotName The name of the snapshot within the given
+     * subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginRevokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
 
     /**
      * Lists snapshots under a resource group.
@@ -4658,11 +12500,51 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+
 
     /**
      * Lists snapshots under a subscription.
@@ -4675,9 +12557,48 @@ export interface Snapshots {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SnapshotList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+
+    /**
+     * Lists snapshots under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SnapshotList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SnapshotList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SnapshotList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotList>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
 }

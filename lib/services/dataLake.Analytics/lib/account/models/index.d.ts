@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -26,9 +29,9 @@ exports.CloudError = msRestAzure.CloudError;
  *
  */
 export interface SubResource {
-  id?: string;
+  readonly id?: string;
   name: string;
-  type?: string;
+  readonly type?: string;
 }
 
 /**
@@ -65,10 +68,10 @@ export interface StorageAccountInfo extends SubResource {
  *
  */
 export interface StorageContainer {
-  name?: string;
-  id?: string;
-  type?: string;
-  lastModifiedTime?: Date;
+  readonly name?: string;
+  readonly id?: string;
+  readonly type?: string;
+  readonly lastModifiedTime?: Date;
 }
 
 /**
@@ -84,8 +87,8 @@ export interface StorageContainer {
  *
  */
 export interface ListStorageContainersResult {
-  value?: StorageContainer[];
-  nextLink?: string;
+  readonly value?: StorageContainer[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -99,7 +102,7 @@ export interface ListStorageContainersResult {
  *
  */
 export interface SasTokenInfo {
-  accessToken?: string;
+  readonly accessToken?: string;
 }
 
 /**
@@ -115,8 +118,8 @@ export interface SasTokenInfo {
  *
  */
 export interface ListSasTokensResult {
-  value?: SasTokenInfo[];
-  nextLink?: string;
+  readonly value?: SasTokenInfo[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -145,8 +148,8 @@ export interface DataLakeStoreAccountInfo extends SubResource {
  *
  */
 export interface DataLakeAnalyticsAccountListStorageAccountsResult {
-  value?: StorageAccountInfo[];
-  nextLink?: string;
+  readonly value?: StorageAccountInfo[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -161,8 +164,8 @@ export interface DataLakeAnalyticsAccountListStorageAccountsResult {
  *
  */
 export interface DataLakeAnalyticsAccountListDataLakeStoreResult {
-  value?: DataLakeStoreAccountInfo[];
-  nextLink?: string;
+  readonly value?: DataLakeStoreAccountInfo[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -180,9 +183,9 @@ export interface DataLakeAnalyticsAccountListDataLakeStoreResult {
  *
  */
 export interface OptionalSubResource {
-  id?: string;
+  readonly id?: string;
   name?: string;
-  type?: string;
+  readonly type?: string;
 }
 
 /**
@@ -320,9 +323,9 @@ export interface DataLakeAnalyticsAccountUpdateParameters {
  *
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
   location: string;
   tags?: { [propertyName: string]: string };
 }
@@ -400,21 +403,21 @@ export interface Resource extends BaseResource {
  *
  */
 export interface DataLakeAnalyticsAccount extends Resource {
-  provisioningState?: string;
-  state?: string;
+  readonly provisioningState?: string;
+  readonly state?: string;
   defaultDataLakeStoreAccount: string;
   maxDegreeOfParallelism?: number;
   queryStoreRetention?: number;
   maxJobCount?: number;
-  systemMaxDegreeOfParallelism?: number;
-  systemMaxJobCount?: number;
+  readonly systemMaxDegreeOfParallelism?: number;
+  readonly systemMaxJobCount?: number;
   dataLakeStoreAccounts: DataLakeStoreAccountInfo[];
   storageAccounts?: StorageAccountInfo[];
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  endpoint?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
   newTier?: string;
-  currentTier?: string;
+  readonly currentTier?: string;
   firewallState?: string;
   firewallAllowAzureIps?: string;
   firewallRules?: FirewallRule[];
@@ -432,8 +435,8 @@ export interface DataLakeAnalyticsAccount extends Resource {
  *
  */
 export interface DataLakeAnalyticsAccountListResult {
-  value?: DataLakeAnalyticsAccount[];
-  nextLink?: string;
+  readonly value?: DataLakeAnalyticsAccount[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -448,8 +451,8 @@ export interface DataLakeAnalyticsAccountListResult {
  *
  */
 export interface DataLakeAnalyticsFirewallRuleListResult {
-  value?: FirewallRule[];
-  nextLink?: string;
+  readonly value?: FirewallRule[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -484,8 +487,8 @@ export interface UpdateFirewallRuleParameters {
  *
  */
 export interface DataLakeAnalyticsFirewallRuleListResult {
-  value?: FirewallRule[];
-  nextLink?: string;
+  readonly value?: FirewallRule[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -501,8 +504,8 @@ export interface DataLakeAnalyticsFirewallRuleListResult {
  *
  */
 export interface ListStorageContainersResult {
-  value?: StorageContainer[];
-  nextLink?: string;
+  readonly value?: StorageContainer[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -518,8 +521,8 @@ export interface ListStorageContainersResult {
  *
  */
 export interface ListSasTokensResult {
-  value?: SasTokenInfo[];
-  nextLink?: string;
+  readonly value?: SasTokenInfo[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -534,8 +537,8 @@ export interface ListSasTokensResult {
  *
  */
 export interface DataLakeAnalyticsAccountListStorageAccountsResult {
-  value?: StorageAccountInfo[];
-  nextLink?: string;
+  readonly value?: StorageAccountInfo[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -550,8 +553,8 @@ export interface DataLakeAnalyticsAccountListStorageAccountsResult {
  *
  */
 export interface DataLakeAnalyticsAccountListDataLakeStoreResult {
-  value?: DataLakeStoreAccountInfo[];
-  nextLink?: string;
+  readonly value?: DataLakeStoreAccountInfo[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -566,8 +569,8 @@ export interface DataLakeAnalyticsAccountListDataLakeStoreResult {
  *
  */
 export interface DataLakeAnalyticsAccountListResult {
-  value?: DataLakeAnalyticsAccount[];
-  nextLink?: string;
+  readonly value?: DataLakeAnalyticsAccount[];
+  readonly nextLink?: string;
 }
 
 
@@ -581,7 +584,7 @@ export interface DataLakeAnalyticsAccountListResult {
  *
  */
 export interface DataLakeAnalyticsFirewallRuleListResult extends Array<FirewallRule> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -595,7 +598,7 @@ export interface DataLakeAnalyticsFirewallRuleListResult extends Array<FirewallR
  *
  */
 export interface ListStorageContainersResult extends Array<StorageContainer> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -609,7 +612,7 @@ export interface ListStorageContainersResult extends Array<StorageContainer> {
  *
  */
 export interface ListSasTokensResult extends Array<SasTokenInfo> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -622,7 +625,7 @@ export interface ListSasTokensResult extends Array<SasTokenInfo> {
  *
  */
 export interface DataLakeAnalyticsAccountListStorageAccountsResult extends Array<StorageAccountInfo> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -635,7 +638,7 @@ export interface DataLakeAnalyticsAccountListStorageAccountsResult extends Array
  *
  */
 export interface DataLakeAnalyticsAccountListDataLakeStoreResult extends Array<DataLakeStoreAccountInfo> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -648,5 +651,5 @@ export interface DataLakeAnalyticsAccountListDataLakeStoreResult extends Array<D
  *
  */
 export interface DataLakeAnalyticsAccountListResult extends Array<DataLakeAnalyticsAccount> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }

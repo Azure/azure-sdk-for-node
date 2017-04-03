@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Key Vault Management
 
 This project provides a Node.js package for managing vaults on Azure Key Vault. Right now it supports:
-- **Node.js version: 4.x.x or higher**
+- **Node.js version: 6.x.x or higher**
 - **REST API version: 2015-06-01**
 
 ## Features
@@ -14,26 +14,29 @@ This project provides a Node.js package for managing vaults on Azure Key Vault. 
 npm install azure-arm-keyvault
 ```
 
+## Detailed Sample
+A sample that can be cloned and run can be found [here](https://github.com/Azure-Samples/key-vault-node-getting-started).
+
 ## How to Use
 
 The following example creates a new vault.
 
 ```javascript
-var msRestAzure = require('ms-rest-azure');
-var keyVaultManagementClient = require('azure-arm-keyvault');
+const msRestAzure = require('ms-rest-azure');
+const KeyVaultManagementClient = require('azure-arm-keyvault');
 
 // Interactive Login
-msRestAzure.interactiveLogin(function(err, credentials) {
-  var client = new keyVaultManagementClient(credentials, '<your-subscription-id>');
-
-  client.vaults.list(function(err, result) {
-    if (err) console.log(err);
-    console.log(result);
-  });
-
-  var resourceGroup = '<resource group name>';
-  var vaultName = 'myNewVault';
-  var parameters = {
+const client;
+msRestAzure.interactiveLogin().then((credentials) => {
+  client = new KeyVaultManagementClient(credentials, '<your-subscription-id>');
+  return client.vaults.list();
+}).then((vaults) => {
+  console.dir(vaults, {depth: null, colors: true});
+  return;
+}).then(() => {
+  let resourceGroup = '<resource group name>';
+  let vaultName = 'myNewVault';
+  let parameters = {
     location : "East US",
     properties : {
       sku : {
@@ -46,12 +49,15 @@ msRestAzure.interactiveLogin(function(err, credentials) {
     },
     tags : {}
   };
-
   console.info('Creating vault...');
-  client.vaults.createOrUpdate(resourceGroup, vaultName, parameters, function (err, result) {
-    if (err) throw err;
-    console.log(result);
-  });
+  return client.vaults.createOrUpdate(resourceGroup, vaultName, parameters);
+}).then((vault) => {
+  console.dir(vault, {depth: null, colors: true});
+  return;
+}).catch((err) => {
+  console.log('An error occured');
+  console.dir(err, {depth: null, colors: true});
+  return;
 });
 ```
 

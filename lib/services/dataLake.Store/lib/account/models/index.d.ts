@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -46,9 +49,9 @@ export interface UpdateFirewallRuleParameters {
  *
  */
 export interface SubResource {
-  id?: string;
+  readonly id?: string;
   name?: string;
-  type?: string;
+  readonly type?: string;
 }
 
 /**
@@ -108,8 +111,8 @@ export interface TrustedIdProvider extends SubResource {
  *
  */
 export interface DataLakeStoreTrustedIdProviderListResult {
-  value?: TrustedIdProvider[];
-  nextLink?: string;
+  readonly value?: TrustedIdProvider[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -124,8 +127,8 @@ export interface DataLakeStoreTrustedIdProviderListResult {
  *
  */
 export interface DataLakeStoreFirewallRuleListResult {
-  value?: FirewallRule[];
-  nextLink?: string;
+  readonly value?: FirewallRule[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -142,8 +145,8 @@ export interface DataLakeStoreFirewallRuleListResult {
  *
  */
 export interface EncryptionIdentity {
-  principalId?: string;
-  tenantId?: string;
+  readonly principalId?: string;
+  readonly tenantId?: string;
 }
 
 /**
@@ -255,9 +258,9 @@ export interface DataLakeStoreAccountUpdateParameters {
  *
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
   location: string;
   tags?: { [propertyName: string]: string };
 }
@@ -350,21 +353,21 @@ export interface Resource extends BaseResource {
  */
 export interface DataLakeStoreAccount extends Resource {
   identity?: EncryptionIdentity;
-  provisioningState?: string;
-  state?: string;
-  creationTime?: Date;
+  readonly provisioningState?: string;
+  readonly state?: string;
+  readonly creationTime?: Date;
   encryptionState?: string;
-  encryptionProvisioningState?: string;
+  readonly encryptionProvisioningState?: string;
   encryptionConfig?: EncryptionConfig;
   firewallState?: string;
   firewallRules?: FirewallRule[];
   trustedIdProviderState?: string;
   trustedIdProviders?: TrustedIdProvider[];
-  lastModifiedTime?: Date;
-  endpoint?: string;
+  readonly lastModifiedTime?: Date;
+  readonly endpoint?: string;
   defaultGroup?: string;
   newTier?: string;
-  currentTier?: string;
+  readonly currentTier?: string;
   firewallAllowAzureIps?: string;
 }
 
@@ -380,8 +383,8 @@ export interface DataLakeStoreAccount extends Resource {
  *
  */
 export interface DataLakeStoreAccountListResult {
-  value?: DataLakeStoreAccount[];
-  nextLink?: string;
+  readonly value?: DataLakeStoreAccount[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -401,9 +404,9 @@ export interface DataLakeStoreAccountListResult {
  *
  */
 export interface ErrorDetails {
-  code?: string;
-  message?: string;
-  target?: string;
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
 }
 
 /**
@@ -418,8 +421,8 @@ export interface ErrorDetails {
  *
  */
 export interface DataLakeStoreFirewallRuleListResult {
-  value?: FirewallRule[];
-  nextLink?: string;
+  readonly value?: FirewallRule[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -434,8 +437,8 @@ export interface DataLakeStoreFirewallRuleListResult {
  *
  */
 export interface DataLakeStoreTrustedIdProviderListResult {
-  value?: TrustedIdProvider[];
-  nextLink?: string;
+  readonly value?: TrustedIdProvider[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -450,8 +453,8 @@ export interface DataLakeStoreTrustedIdProviderListResult {
  *
  */
 export interface DataLakeStoreAccountListResult {
-  value?: DataLakeStoreAccount[];
-  nextLink?: string;
+  readonly value?: DataLakeStoreAccount[];
+  readonly nextLink?: string;
 }
 
 
@@ -465,7 +468,7 @@ export interface DataLakeStoreAccountListResult {
  *
  */
 export interface DataLakeStoreFirewallRuleListResult extends Array<FirewallRule> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -478,7 +481,7 @@ export interface DataLakeStoreFirewallRuleListResult extends Array<FirewallRule>
  *
  */
 export interface DataLakeStoreTrustedIdProviderListResult extends Array<TrustedIdProvider> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -491,5 +494,5 @@ export interface DataLakeStoreTrustedIdProviderListResult extends Array<TrustedI
  *
  */
 export interface DataLakeStoreAccountListResult extends Array<DataLakeStoreAccount> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }

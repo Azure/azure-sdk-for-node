@@ -8,9 +8,12 @@
  * regenerated.
  */
 
-import * as msRestAzure from 'ms-rest-azure';
-exports.BaseResource = msRestAzure.BaseResource;
-exports.CloudError = msRestAzure.CloudError;
+import { BaseResource } from 'ms-rest-azure';
+import { CloudError } from 'ms-rest-azure';
+
+export { BaseResource } from 'ms-rest-azure';
+export { CloudError } from 'ms-rest-azure';
+
 
 /**
  * @class
@@ -190,7 +193,7 @@ export interface CatalogItemList {
  *
  */
 export interface USqlExternalDataSourceList extends CatalogItemList {
-  value?: USqlExternalDataSource[];
+  readonly value?: USqlExternalDataSource[];
 }
 
 /**
@@ -216,7 +219,7 @@ export interface USqlCredential extends CatalogItem {
  *
  */
 export interface USqlCredentialList extends CatalogItemList {
-  value?: USqlCredential[];
+  readonly value?: USqlCredential[];
 }
 
 /**
@@ -253,7 +256,7 @@ export interface USqlProcedure extends CatalogItem {
  *
  */
 export interface USqlProcedureList extends CatalogItemList {
-  value?: USqlProcedure[];
+  readonly value?: USqlProcedure[];
 }
 
 /**
@@ -555,7 +558,7 @@ export interface USqlTable extends CatalogItem {
  *
  */
 export interface USqlTableList extends CatalogItemList {
-  value?: USqlTable[];
+  readonly value?: USqlTable[];
 }
 
 /**
@@ -630,7 +633,7 @@ export interface USqlType extends CatalogItem {
  *
  */
 export interface USqlTableType extends USqlType {
-  columns?: TypeFieldInfo[];
+  readonly columns?: TypeFieldInfo[];
 }
 
 /**
@@ -644,7 +647,7 @@ export interface USqlTableType extends USqlType {
  *
  */
 export interface USqlTableTypeList extends CatalogItemList {
-  value?: USqlTableType[];
+  readonly value?: USqlTableType[];
 }
 
 /**
@@ -681,7 +684,7 @@ export interface USqlView extends CatalogItem {
  *
  */
 export interface USqlViewList extends CatalogItemList {
-  value?: USqlView[];
+  readonly value?: USqlView[];
 }
 
 /**
@@ -739,7 +742,7 @@ export interface USqlTablePartition extends CatalogItem {
  *
  */
 export interface USqlTablePartitionList extends CatalogItemList {
-  value?: USqlTablePartition[];
+  readonly value?: USqlTablePartition[];
 }
 
 /**
@@ -808,7 +811,7 @@ export interface USqlTableStatistics extends CatalogItem {
  *
  */
 export interface USqlTableStatisticsList extends CatalogItemList {
-  value?: USqlTableStatistics[];
+  readonly value?: USqlTableStatistics[];
 }
 
 /**
@@ -822,7 +825,7 @@ export interface USqlTableStatisticsList extends CatalogItemList {
  *
  */
 export interface USqlTypeList extends CatalogItemList {
-  value?: USqlType[];
+  readonly value?: USqlType[];
 }
 
 /**
@@ -859,7 +862,7 @@ export interface USqlTableValuedFunction extends CatalogItem {
  *
  */
 export interface USqlTableValuedFunctionList extends CatalogItemList {
-  value?: USqlTableValuedFunction[];
+  readonly value?: USqlTableValuedFunction[];
 }
 
 /**
@@ -975,7 +978,7 @@ export interface USqlAssemblyClr extends CatalogItem {
  *
  */
 export interface USqlAssemblyList extends CatalogItemList {
-  value?: USqlAssemblyClr[];
+  readonly value?: USqlAssemblyClr[];
 }
 
 /**
@@ -1004,7 +1007,7 @@ export interface USqlSchema extends CatalogItem {
  *
  */
 export interface USqlSchemaList extends CatalogItemList {
-  value?: USqlSchema[];
+  readonly value?: USqlSchema[];
 }
 
 /**
@@ -1030,7 +1033,7 @@ export interface USqlDatabase extends CatalogItem {
  *
  */
 export interface USqlDatabaseList extends CatalogItemList {
-  value?: USqlDatabase[];
+  readonly value?: USqlDatabase[];
 }
 
 /**
@@ -1043,7 +1046,7 @@ export interface USqlDatabaseList extends CatalogItemList {
  *
  */
 export interface USqlCredentialList extends CatalogItemList {
-  value?: USqlCredential[];
+  readonly value?: USqlCredential[];
 }
 
 /**
@@ -1056,7 +1059,7 @@ export interface USqlCredentialList extends CatalogItemList {
  *
  */
 export interface USqlExternalDataSourceList extends CatalogItemList {
-  value?: USqlExternalDataSource[];
+  readonly value?: USqlExternalDataSource[];
 }
 
 /**
@@ -1070,7 +1073,7 @@ export interface USqlExternalDataSourceList extends CatalogItemList {
  *
  */
 export interface USqlProcedureList extends CatalogItemList {
-  value?: USqlProcedure[];
+  readonly value?: USqlProcedure[];
 }
 
 /**
@@ -1084,7 +1087,7 @@ export interface USqlProcedureList extends CatalogItemList {
  *
  */
 export interface USqlTableList extends CatalogItemList {
-  value?: USqlTable[];
+  readonly value?: USqlTable[];
 }
 
 /**
@@ -1098,7 +1101,7 @@ export interface USqlTableList extends CatalogItemList {
  *
  */
 export interface USqlTableTypeList extends CatalogItemList {
-  value?: USqlTableType[];
+  readonly value?: USqlTableType[];
 }
 
 /**
@@ -1112,7 +1115,7 @@ export interface USqlTableTypeList extends CatalogItemList {
  *
  */
 export interface USqlViewList extends CatalogItemList {
-  value?: USqlView[];
+  readonly value?: USqlView[];
 }
 
 /**
@@ -1126,7 +1129,7 @@ export interface USqlViewList extends CatalogItemList {
  *
  */
 export interface USqlTableStatisticsList extends CatalogItemList {
-  value?: USqlTableStatistics[];
+  readonly value?: USqlTableStatistics[];
 }
 
 /**
@@ -1140,7 +1143,7 @@ export interface USqlTableStatisticsList extends CatalogItemList {
  *
  */
 export interface USqlTablePartitionList extends CatalogItemList {
-  value?: USqlTablePartition[];
+  readonly value?: USqlTablePartition[];
 }
 
 /**
@@ -1154,7 +1157,7 @@ export interface USqlTablePartitionList extends CatalogItemList {
  *
  */
 export interface USqlTypeList extends CatalogItemList {
-  value?: USqlType[];
+  readonly value?: USqlType[];
 }
 
 /**
@@ -1168,7 +1171,7 @@ export interface USqlTypeList extends CatalogItemList {
  *
  */
 export interface USqlTableValuedFunctionList extends CatalogItemList {
-  value?: USqlTableValuedFunction[];
+  readonly value?: USqlTableValuedFunction[];
 }
 
 /**
@@ -1181,7 +1184,7 @@ export interface USqlTableValuedFunctionList extends CatalogItemList {
  *
  */
 export interface USqlAssemblyList extends CatalogItemList {
-  value?: USqlAssemblyClr[];
+  readonly value?: USqlAssemblyClr[];
 }
 
 /**
@@ -1194,7 +1197,7 @@ export interface USqlAssemblyList extends CatalogItemList {
  *
  */
 export interface USqlSchemaList extends CatalogItemList {
-  value?: USqlSchema[];
+  readonly value?: USqlSchema[];
 }
 
 /**
@@ -1207,7 +1210,7 @@ export interface USqlSchemaList extends CatalogItemList {
  *
  */
 export interface USqlDatabaseList extends CatalogItemList {
-  value?: USqlDatabase[];
+  readonly value?: USqlDatabase[];
 }
 
 

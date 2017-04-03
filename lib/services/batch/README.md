@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Batch Service
 
 This project provides a Node.js package that makes it easy to work with Microsoft Azure Batch Service. Right now it supports:
-- **Node.js version: 4.x.x or higher**
+- **Node.js version: 6.x.x or higher**
 
 ## How to Install
 
@@ -30,21 +30,26 @@ var client = new batch.ServiceClient(credentials, 'your-batch-endpoint');
 ## List all Jobs under account
 
 ```javascript
-options = {}
+let options = {}
 options.jobListOptions = { maxResults : 10 };
 
-client.job.list(options, function (error, result) {
-    
-    var loop = function (nextLink) {
-        if (nextLink !== null && nextLink !== undefined) {
-            client.job.listNext(nextLink, function (err, res) {
-                console.log(res);
-                loop(res.odatanextLink);
-            });
-        }
-    };
+function loop(nextLink) {
+  if (nextLink !== null && nextLink !== undefined) {
+    return client.job.listNext(nextLink).then((res) => {
+      console.dir(res, {depth: null, colors: true});
+      return loop(res.odatanextLink);
+    });
+  }
+  return Promise.resolve();
+};
 
-    console.log(result);
-    loop(result.odatanextLink);
+
+client.job.list(options).then((result) => {
+  console.dir(result, {depth: null, colors: true});
+}).then((result) => {
+  return loop(result.odatanextLink);
+}).catch((err) => {
+  console.log('An error occurred.');
+  console.dir(err, {depth: null, colors: true});
 });
 ```

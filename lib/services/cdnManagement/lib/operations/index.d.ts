@@ -8,7 +8,7 @@
  * regenerated.
 */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback } from 'ms-rest';
+import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
 import * as models from '../models';
 
 
@@ -20,6 +20,7 @@ import * as models from '../models';
  */
 export interface Profiles {
 
+
     /**
      * Lists all of the CDN profiles within an Azure subscription.
      *
@@ -28,11 +29,48 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+
+    /**
+     * Lists all of the CDN profiles within an Azure subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProfileListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
     list(callback: ServiceCallback<models.ProfileListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+
 
     /**
      * Lists all of the CDN profiles within a resource group.
@@ -45,11 +83,51 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+
+    /**
+     * Lists all of the CDN profiles within a resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProfileListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+
 
     /**
      * Gets a CDN profile with the specified profile name under the specified
@@ -66,11 +144,55 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Profile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+
+    /**
+     * Gets a CDN profile with the specified profile name under the specified
+     * subscription and resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Profile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Profile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Profile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
     get(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.Profile>): void;
+    get(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+
 
     /**
      * Creates a new CDN profile with a profile name under the specified
@@ -100,11 +222,68 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Profile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    create(resourceGroupName: string, profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    createWithHttpOperationResponse(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+
+    /**
+     * Creates a new CDN profile with a profile name under the specified
+     * subscription and resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} profile Profile properties needed to create a new profile.
+     *
+     * @param {object} profile.sku The pricing tier (defines a CDN provider,
+     * feature list and rate) of the CDN profile.
+     *
+     * @param {string} [profile.sku.name] Name of the pricing tier. Possible values
+     * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
+     * 'Standard_Akamai', 'Standard_ChinaCdn'
+     *
+     * @param {string} profile.location Resource location.
+     *
+     * @param {object} [profile.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Profile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Profile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Profile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
     create(resourceGroupName: string, profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
+    create(resourceGroupName: string, profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
@@ -123,11 +302,57 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Profile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+
+    /**
+     * Updates an existing CDN profile with the specified profile name under the
+     * specified subscription and resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} tags Profile tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Profile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Profile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Profile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
     update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, callback: ServiceCallback<models.Profile>): void;
+    update(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
@@ -145,11 +370,55 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an existing CDN profile with the specified parameters. Deleting a
+     * profile will result in the deletion of all of the sub-resources including
+     * endpoints, origins and custom domains.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
@@ -170,11 +439,59 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SsoUri>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    generateSsoUri(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsoUri>): void;
+    generateSsoUriWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SsoUri>>;
+
+    /**
+     * Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
+     * Supplemnetal portal is used to configure advanced feature capabilities that
+     * are not yet available in the Azure portal, such as core reports in a
+     * standard profile; rules engine, advanced HTTP reports, and real-time stats
+     * and alerts in a premium profile. The SSO URI changes approximately every 10
+     * minutes.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SsoUri} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SsoUri} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SsoUri} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generateSsoUri(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SsoUri>;
     generateSsoUri(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.SsoUri>): void;
+    generateSsoUri(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SsoUri>): void;
+
 
     /**
      * Checks the quota and actual usage of endpoints under the given CDN profile.
@@ -190,11 +507,55 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listResourceUsage(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+    /**
+     * Checks the quota and actual usage of endpoints under the given CDN profile.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceUsageListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listResourceUsage(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
     listResourceUsage(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
 
     /**
      * Creates a new CDN profile with a profile name under the specified
@@ -224,11 +585,68 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Profile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+
+    /**
+     * Creates a new CDN profile with a profile name under the specified
+     * subscription and resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} profile Profile properties needed to create a new profile.
+     *
+     * @param {object} profile.sku The pricing tier (defines a CDN provider,
+     * feature list and rate) of the CDN profile.
+     *
+     * @param {string} [profile.sku.name] Name of the pricing tier. Possible values
+     * include: 'Standard_Verizon', 'Premium_Verizon', 'Custom_Verizon',
+     * 'Standard_Akamai', 'Standard_ChinaCdn'
+     *
+     * @param {string} profile.location Resource location.
+     *
+     * @param {object} [profile.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Profile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Profile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Profile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
     beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, callback: ServiceCallback<models.Profile>): void;
+    beginCreate(resourceGroupName: string, profileName: string, profile: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+
 
     /**
      * Updates an existing CDN profile with the specified profile name under the
@@ -247,11 +665,57 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Profile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdate(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Profile>>;
+
+    /**
+     * Updates an existing CDN profile with the specified profile name under the
+     * specified subscription and resource group.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} tags Profile tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Profile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Profile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Profile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
     beginUpdate(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, callback: ServiceCallback<models.Profile>): void;
+    beginUpdate(resourceGroupName: string, profileName: string, tags: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
+
 
     /**
      * Deletes an existing CDN profile with the specified parameters. Deleting a
@@ -269,11 +733,55 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an existing CDN profile with the specified parameters. Deleting a
+     * profile will result in the deletion of all of the sub-resources including
+     * endpoints, origins and custom domains.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Lists all of the CDN profiles within an Azure subscription.
@@ -286,11 +794,51 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+
+    /**
+     * Lists all of the CDN profiles within an Azure subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProfileListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ProfileListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+
 
     /**
      * Lists all of the CDN profiles within a resource group.
@@ -303,11 +851,51 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+
+    /**
+     * Lists all of the CDN profiles within a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProfileListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ProfileListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+
 
     /**
      * Checks the quota and actual usage of endpoints under the given CDN profile.
@@ -320,11 +908,51 @@ export interface Profiles {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+    /**
+     * Checks the quota and actual usage of endpoints under the given CDN profile.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceUsageListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listResourceUsageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
     listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 }
 
 /**
@@ -334,6 +962,7 @@ export interface Profiles {
  * instance of the CdnManagementClient.
  */
 export interface Endpoints {
+
 
     /**
      * Lists existing CDN endpoints.
@@ -349,11 +978,54 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EndpointListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByProfile(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointListResult>): void;
+    listByProfileWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EndpointListResult>>;
+
+    /**
+     * Lists existing CDN endpoints.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EndpointListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EndpointListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EndpointListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByProfile(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EndpointListResult>;
     listByProfile(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.EndpointListResult>): void;
+    listByProfile(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointListResult>): void;
+
 
     /**
      * Gets an existing CDN endpoint with the specified endpoint name under the
@@ -373,11 +1045,58 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Gets an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     get(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    get(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Creates a new CDN endpoint with the specified endpoint name under the
@@ -442,11 +1161,103 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    createWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Creates a new CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} endpoint Endpoint properties
+     *
+     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
+     * with content requests to origin. The default value is the host name of the
+     * origin.
+     *
+     * @param {string} [endpoint.originPath] The path used when CDN sends request
+     * to origin.
+     *
+     * @param {array} [endpoint.contentTypesToCompress] List of content types on
+     * which compression applies. The value should be a valid MIME type.
+     *
+     * @param {boolean} [endpoint.isCompressionEnabled] Indicates whether content
+     * compression is enabled on CDN. Default value is false. If compression is
+     * enabled, content will be served as compressed if user requests for a
+     * compressed version. Content won't be compressed on CDN when requested
+     * content is smaller than 1 byte or larger than 1 MB.
+     *
+     * @param {boolean} [endpoint.isHttpAllowed] Indicates whether HTTP traffic is
+     * allowed on the endpoint. Default value is true. At least one protocol (HTTP
+     * or HTTPS) must be allowed.
+     *
+     * @param {boolean} [endpoint.isHttpsAllowed] Indicates whether HTTPS traffic
+     * is allowed on the endpoint. Default value is true. At least one protocol
+     * (HTTP or HTTPS) must be allowed.
+     *
+     * @param {string} [endpoint.queryStringCachingBehavior] Defines the query
+     * string caching behavior. Possible values include: 'IgnoreQueryString',
+     * 'BypassCaching', 'UseQueryString', 'NotSet'
+     *
+     * @param {string} [endpoint.optimizationType] Customer can specify what
+     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
+     * services. With this information we can apply scenario driven optimization.
+     *
+     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
+     * within a CDN endpoint. Each geo filter defines an acess rule to a specified
+     * path or content, e.g. block APAC for path /pictures/
+     *
+     * @param {array} endpoint.origins The source of the content being delivered
+     * via CDN.
+     *
+     * @param {string} endpoint.location Resource location.
+     *
+     * @param {object} [endpoint.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
+    create(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Updates an existing CDN endpoint with the specified endpoint name under the
@@ -511,11 +1322,103 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Updates an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile. Only tags and Origin
+     * HostHeader can be updated after creating an endpoint. To update origins, use
+     * the Update Origin operation. To update custom domains, use the Update Custom
+     * Domain operation.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} endpointUpdateProperties Endpoint update properties
+     *
+     * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
+     *
+     * @param {string} [endpointUpdateProperties.originHostHeader] The host header
+     * CDN sends along with content requests to origin. The default value is the
+     * host name of the origin.
+     *
+     * @param {string} [endpointUpdateProperties.originPath] The path used when CDN
+     * sends request to origin.
+     *
+     * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
+     * content types on which compression applies. The value should be a valid MIME
+     * type.
+     *
+     * @param {boolean} [endpointUpdateProperties.isCompressionEnabled] Indicates
+     * whether content compression is enabled on CDN. Default value is false. If
+     * compression is enabled, content will be served as compressed if user
+     * requests for a compressed version. Content won't be compressed on CDN when
+     * requested content is smaller than 1 byte or larger than 1 MB.
+     *
+     * @param {boolean} [endpointUpdateProperties.isHttpAllowed] Indicates whether
+     * HTTP traffic is allowed on the endpoint. Default value is true. At least one
+     * protocol (HTTP or HTTPS) must be allowed.
+     *
+     * @param {boolean} [endpointUpdateProperties.isHttpsAllowed] Indicates whether
+     * HTTPS traffic is allowed on the endpoint. Default value is true. At least
+     * one protocol (HTTP or HTTPS) must be allowed.
+     *
+     * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
+     * Defines the query string caching behavior. Possible values include:
+     * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     *
+     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
+     * specify what scenario they want this CDN endpoint to optimize, e.g.
+     * Download, Media services. With this information we can apply scenario driven
+     * optimization.
+     *
+     * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
+     * user geo access within a CDN endpoint. Each geo filter defines an acess rule
+     * to a specified path or content, e.g. block APAC for path /pictures/
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
+    update(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Deletes an existing CDN endpoint with the specified endpoint name under the
@@ -535,11 +1438,57 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Starts an existing CDN endpoint that is on a stopped state.
@@ -558,11 +1507,57 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    start(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    startWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Starts an existing CDN endpoint that is on a stopped state.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     start(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    start(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Stops an existing running CDN endpoint.
@@ -581,11 +1576,57 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    stop(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    stopWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Stops an existing running CDN endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     stop(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    stop(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Removes a content from CDN.
@@ -607,11 +1648,59 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    purgeContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes a content from CDN.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {array} contentPaths The path to the content to be purged. Can
+     * describe a file path or a wild card directory.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    purgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Pre-loads a content to CDN. Available for Verizon Profiles.
@@ -633,11 +1722,59 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    loadContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Pre-loads a content to CDN. Available for Verizon Profiles.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {array} contentPaths The path to the content to be loaded. Path
+     * should be a relative file URL of the origin.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    loadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Validates the custom domain mapping to ensure it maps to the correct CDN
@@ -660,11 +1797,62 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ValidateCustomDomainOutput>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
+    validateCustomDomainWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateCustomDomainOutput>>;
+
+    /**
+     * Validates the custom domain mapping to ensure it maps to the correct CDN
+     * endpoint in DNS.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} hostName The host name of the custom domain. Must be a
+     * domain name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ValidateCustomDomainOutput} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ValidateCustomDomainOutput} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ValidateCustomDomainOutput} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateCustomDomainOutput>;
     validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
+    validateCustomDomain(resourceGroupName: string, profileName: string, endpointName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateCustomDomainOutput>): void;
+
 
     /**
      * Checks the quota and usage of geo filters and custom domains under the given
@@ -684,11 +1872,59 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+    /**
+     * Checks the quota and usage of geo filters and custom domains under the given
+     * endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceUsageListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
     listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsage(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+
 
     /**
      * Creates a new CDN endpoint with the specified endpoint name under the
@@ -753,11 +1989,103 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Creates a new CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} endpoint Endpoint properties
+     *
+     * @param {string} [endpoint.originHostHeader] The host header CDN sends along
+     * with content requests to origin. The default value is the host name of the
+     * origin.
+     *
+     * @param {string} [endpoint.originPath] The path used when CDN sends request
+     * to origin.
+     *
+     * @param {array} [endpoint.contentTypesToCompress] List of content types on
+     * which compression applies. The value should be a valid MIME type.
+     *
+     * @param {boolean} [endpoint.isCompressionEnabled] Indicates whether content
+     * compression is enabled on CDN. Default value is false. If compression is
+     * enabled, content will be served as compressed if user requests for a
+     * compressed version. Content won't be compressed on CDN when requested
+     * content is smaller than 1 byte or larger than 1 MB.
+     *
+     * @param {boolean} [endpoint.isHttpAllowed] Indicates whether HTTP traffic is
+     * allowed on the endpoint. Default value is true. At least one protocol (HTTP
+     * or HTTPS) must be allowed.
+     *
+     * @param {boolean} [endpoint.isHttpsAllowed] Indicates whether HTTPS traffic
+     * is allowed on the endpoint. Default value is true. At least one protocol
+     * (HTTP or HTTPS) must be allowed.
+     *
+     * @param {string} [endpoint.queryStringCachingBehavior] Defines the query
+     * string caching behavior. Possible values include: 'IgnoreQueryString',
+     * 'BypassCaching', 'UseQueryString', 'NotSet'
+     *
+     * @param {string} [endpoint.optimizationType] Customer can specify what
+     * scenario they want this CDN endpoint to optimize, e.g. Download, Media
+     * services. With this information we can apply scenario driven optimization.
+     *
+     * @param {array} [endpoint.geoFilters] List of rules defining user geo access
+     * within a CDN endpoint. Each geo filter defines an acess rule to a specified
+     * path or content, e.g. block APAC for path /pictures/
+     *
+     * @param {array} endpoint.origins The source of the content being delivered
+     * via CDN.
+     *
+     * @param {string} endpoint.location Resource location.
+     *
+     * @param {object} [endpoint.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, callback: ServiceCallback<models.Endpoint>): void;
+    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, endpoint: models.Endpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Updates an existing CDN endpoint with the specified endpoint name under the
@@ -822,11 +2150,103 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Updates an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile. Only tags and Origin
+     * HostHeader can be updated after creating an endpoint. To update origins, use
+     * the Update Origin operation. To update custom domains, use the Update Custom
+     * Domain operation.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} endpointUpdateProperties Endpoint update properties
+     *
+     * @param {object} [endpointUpdateProperties.tags] Endpoint tags.
+     *
+     * @param {string} [endpointUpdateProperties.originHostHeader] The host header
+     * CDN sends along with content requests to origin. The default value is the
+     * host name of the origin.
+     *
+     * @param {string} [endpointUpdateProperties.originPath] The path used when CDN
+     * sends request to origin.
+     *
+     * @param {array} [endpointUpdateProperties.contentTypesToCompress] List of
+     * content types on which compression applies. The value should be a valid MIME
+     * type.
+     *
+     * @param {boolean} [endpointUpdateProperties.isCompressionEnabled] Indicates
+     * whether content compression is enabled on CDN. Default value is false. If
+     * compression is enabled, content will be served as compressed if user
+     * requests for a compressed version. Content won't be compressed on CDN when
+     * requested content is smaller than 1 byte or larger than 1 MB.
+     *
+     * @param {boolean} [endpointUpdateProperties.isHttpAllowed] Indicates whether
+     * HTTP traffic is allowed on the endpoint. Default value is true. At least one
+     * protocol (HTTP or HTTPS) must be allowed.
+     *
+     * @param {boolean} [endpointUpdateProperties.isHttpsAllowed] Indicates whether
+     * HTTPS traffic is allowed on the endpoint. Default value is true. At least
+     * one protocol (HTTP or HTTPS) must be allowed.
+     *
+     * @param {string} [endpointUpdateProperties.queryStringCachingBehavior]
+     * Defines the query string caching behavior. Possible values include:
+     * 'IgnoreQueryString', 'BypassCaching', 'UseQueryString', 'NotSet'
+     *
+     * @param {string} [endpointUpdateProperties.optimizationType] Customer can
+     * specify what scenario they want this CDN endpoint to optimize, e.g.
+     * Download, Media services. With this information we can apply scenario driven
+     * optimization.
+     *
+     * @param {array} [endpointUpdateProperties.geoFilters] List of rules defining
+     * user geo access within a CDN endpoint. Each geo filter defines an acess rule
+     * to a specified path or content, e.g. block APAC for path /pictures/
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, callback: ServiceCallback<models.Endpoint>): void;
+    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, endpointUpdateProperties: models.EndpointUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Deletes an existing CDN endpoint with the specified endpoint name under the
@@ -846,11 +2266,57 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an existing CDN endpoint with the specified endpoint name under the
+     * specified subscription, resource group and profile.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Starts an existing CDN endpoint that is on a stopped state.
@@ -869,11 +2335,57 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginStart(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Starts an existing CDN endpoint that is on a stopped state.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStart(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     beginStart(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    beginStart(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Stops an existing running CDN endpoint.
@@ -892,11 +2404,57 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Endpoint>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginStop(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+    beginStopWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Endpoint>>;
+
+    /**
+     * Stops an existing running CDN endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Endpoint} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Endpoint} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Endpoint} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStop(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Endpoint>;
     beginStop(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.Endpoint>): void;
+    beginStop(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Endpoint>): void;
+
 
     /**
      * Removes a content from CDN.
@@ -918,11 +2476,59 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPurgeContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes a content from CDN.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {array} contentPaths The path to the content to be purged. Can
+     * describe a file path or a wild card directory.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    beginPurgeContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Pre-loads a content to CDN. Available for Verizon Profiles.
@@ -944,11 +2550,59 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginLoadContentWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Pre-loads a content to CDN. Available for Verizon Profiles.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {array} contentPaths The path to the content to be loaded. Path
+     * should be a relative file URL of the origin.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], callback: ServiceCallback<void>): void;
+    beginLoadContent(resourceGroupName: string, profileName: string, endpointName: string, contentPaths: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
 
     /**
      * Lists existing CDN endpoints.
@@ -961,11 +2615,51 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EndpointListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByProfileNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointListResult>): void;
+    listByProfileNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EndpointListResult>>;
+
+    /**
+     * Lists existing CDN endpoints.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EndpointListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EndpointListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EndpointListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByProfileNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EndpointListResult>;
     listByProfileNext(nextPageLink: string, callback: ServiceCallback<models.EndpointListResult>): void;
+    listByProfileNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointListResult>): void;
+
 
     /**
      * Checks the quota and usage of geo filters and custom domains under the given
@@ -979,11 +2673,52 @@ export interface Endpoints {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceUsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceUsageListResult>>;
+
+    /**
+     * Checks the quota and usage of geo filters and custom domains under the given
+     * endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceUsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceUsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceUsageListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listResourceUsageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceUsageListResult>;
     listResourceUsageNext(nextPageLink: string, callback: ServiceCallback<models.ResourceUsageListResult>): void;
+    listResourceUsageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceUsageListResult>): void;
 }
 
 /**
@@ -993,6 +2728,7 @@ export interface Endpoints {
  * instance of the CdnManagementClient.
  */
 export interface Origins {
+
 
     /**
      * Lists all of the existing origins within an endpoint.
@@ -1011,11 +2747,57 @@ export interface Origins {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OriginListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OriginListResult>): void;
+    listByEndpointWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OriginListResult>>;
+
+    /**
+     * Lists all of the existing origins within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OriginListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OriginListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OriginListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OriginListResult>;
     listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.OriginListResult>): void;
+    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OriginListResult>): void;
+
 
     /**
      * Gets an existing origin within an endpoint.
@@ -1037,11 +2819,60 @@ export interface Origins {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Origin>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, originName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
+
+    /**
+     * Gets an existing origin within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} originName Name of the origin which is unique within the
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Origin} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Origin} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Origin} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
     get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, callback: ServiceCallback<models.Origin>): void;
+    get(resourceGroupName: string, profileName: string, endpointName: string, originName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+
 
     /**
      * Updates an existing origin within an endpoint.
@@ -1074,11 +2905,71 @@ export interface Origins {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Origin>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+    updateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
+
+    /**
+     * Updates an existing origin within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} originName Name of the origin which is unique within the
+     * endpoint.
+     *
+     * @param {object} originUpdateProperties Origin properties
+     *
+     * @param {string} [originUpdateProperties.hostName] The address of the origin.
+     * Domain names, IPv4 addresses, and IPv6 addresses are supported.
+     *
+     * @param {number} [originUpdateProperties.httpPort] The value of the HTTP
+     * port. Must be between 1 and 65535.
+     *
+     * @param {number} [originUpdateProperties.httpsPort] The value of the HTTPS
+     * port. Must be between 1 and 65535.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Origin} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Origin} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Origin} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
     update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
+    update(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+
 
     /**
      * Updates an existing origin within an endpoint.
@@ -1111,11 +3002,71 @@ export interface Origins {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Origin>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Origin>>;
+
+    /**
+     * Updates an existing origin within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} originName Name of the origin which is unique within the
+     * endpoint.
+     *
+     * @param {object} originUpdateProperties Origin properties
+     *
+     * @param {string} [originUpdateProperties.hostName] The address of the origin.
+     * Domain names, IPv4 addresses, and IPv6 addresses are supported.
+     *
+     * @param {number} [originUpdateProperties.httpPort] The value of the HTTP
+     * port. Must be between 1 and 65535.
+     *
+     * @param {number} [originUpdateProperties.httpsPort] The value of the HTTPS
+     * port. Must be between 1 and 65535.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Origin} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Origin} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Origin} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Origin>;
     beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, callback: ServiceCallback<models.Origin>): void;
+    beginUpdate(resourceGroupName: string, profileName: string, endpointName: string, originName: string, originUpdateProperties: models.OriginUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Origin>): void;
+
 
     /**
      * Lists all of the existing origins within an endpoint.
@@ -1128,11 +3079,50 @@ export interface Origins {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OriginListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByEndpointNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OriginListResult>): void;
+    listByEndpointNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OriginListResult>>;
+
+    /**
+     * Lists all of the existing origins within an endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OriginListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OriginListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OriginListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByEndpointNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OriginListResult>;
     listByEndpointNext(nextPageLink: string, callback: ServiceCallback<models.OriginListResult>): void;
+    listByEndpointNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OriginListResult>): void;
 }
 
 /**
@@ -1142,6 +3132,7 @@ export interface Origins {
  * instance of the CdnManagementClient.
  */
 export interface CustomDomains {
+
 
     /**
      * Lists all of the existing custom domains within an endpoint.
@@ -1160,11 +3151,58 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomainListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomainListResult>): void;
+    listByEndpointWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomainListResult>>;
+
+    /**
+     * Lists all of the existing custom domains within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomainListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomainListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomainListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomainListResult>;
     listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, callback: ServiceCallback<models.CustomDomainListResult>): void;
+    listByEndpoint(resourceGroupName: string, profileName: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomainListResult>): void;
+
 
     /**
      * Gets an exisitng custom domain within an endpoint.
@@ -1186,11 +3224,60 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+
+    /**
+     * Gets an exisitng custom domain within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
     get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    get(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+
 
     /**
      * Creates a new custom domain within an endpoint.
@@ -1215,11 +3302,63 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    createWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+
+    /**
+     * Creates a new custom domain within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {string} hostName The host name of the custom domain. Must be a
+     * domain name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
     create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    create(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+
 
     /**
      * Deletes an existing custom domain within an endpoint.
@@ -1241,11 +3380,60 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+
+    /**
+     * Deletes an existing custom domain within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
     deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+
 
     /**
      * Disable https delivery of the custom domain.
@@ -1267,11 +3455,60 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    disableCustomHttpsWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+
+    /**
+     * Disable https delivery of the custom domain.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
     disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    disableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+
 
     /**
      * Enable https delivery of the custom domain.
@@ -1293,11 +3530,60 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    enableCustomHttpsWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+
+    /**
+     * Enable https delivery of the custom domain.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
     enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    enableCustomHttps(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+
 
     /**
      * Creates a new custom domain within an endpoint.
@@ -1322,11 +3608,63 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+
+    /**
+     * Creates a new custom domain within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {string} hostName The host name of the custom domain. Must be a
+     * domain name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
     beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    beginCreate(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, hostName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+
 
     /**
      * Deletes an existing custom domain within an endpoint.
@@ -1348,11 +3686,60 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomain>>;
+
+    /**
+     * Deletes an existing custom domain within an endpoint.
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} profileName Name of the CDN profile which is unique within
+     * the resource group.
+     *
+     * @param {string} endpointName Name of the endpoint under the profile which is
+     * unique globally.
+     *
+     * @param {string} customDomainName Name of the custom domain within an
+     * endpoint.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomain>;
     beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, callback: ServiceCallback<models.CustomDomain>): void;
+    beginDeleteMethod(resourceGroupName: string, profileName: string, endpointName: string, customDomainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomain>): void;
+
 
     /**
      * Lists all of the existing custom domains within an endpoint.
@@ -1365,11 +3752,51 @@ export interface CustomDomains {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CustomDomainListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listByEndpointNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomainListResult>): void;
+    listByEndpointNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CustomDomainListResult>>;
+
+    /**
+     * Lists all of the existing custom domains within an endpoint.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CustomDomainListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CustomDomainListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CustomDomainListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByEndpointNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CustomDomainListResult>;
     listByEndpointNext(nextPageLink: string, callback: ServiceCallback<models.CustomDomainListResult>): void;
+    listByEndpointNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CustomDomainListResult>): void;
 }
 
 /**
@@ -1380,6 +3807,7 @@ export interface CustomDomains {
  */
 export interface EdgeNodes {
 
+
     /**
      * Lists all the edge nodes of a CDN service.
      *
@@ -1388,11 +3816,48 @@ export interface EdgeNodes {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EdgenodeResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EdgenodeResult>): void;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EdgenodeResult>>;
+
+    /**
+     * Lists all the edge nodes of a CDN service.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EdgenodeResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EdgenodeResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EdgenodeResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EdgenodeResult>;
     list(callback: ServiceCallback<models.EdgenodeResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EdgenodeResult>): void;
+
 
     /**
      * Lists all the edge nodes of a CDN service.
@@ -1405,9 +3870,48 @@ export interface EdgeNodes {
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
-     * @param {ServiceCallback} [callback] callback function; see ServiceCallback
-     * doc in ms-rest index.d.ts for details
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EdgenodeResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
      */
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EdgenodeResult>): void;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EdgenodeResult>>;
+
+    /**
+     * Lists all the edge nodes of a CDN service.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EdgenodeResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EdgenodeResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EdgenodeResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EdgenodeResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.EdgenodeResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EdgenodeResult>): void;
 }

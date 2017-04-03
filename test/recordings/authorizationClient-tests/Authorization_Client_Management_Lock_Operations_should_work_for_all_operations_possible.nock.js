@@ -9,7 +9,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01', '*')
+.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2016-09-01', '*')
   .reply(201, "{\"properties\":{\"level\":\"CanNotDelete\",\"notes\":\"Optional text.\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1\",\"type\":\"Microsoft.Authorization/locks\",\"name\":\"testlock1\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '264',
@@ -27,7 +27,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01', '*')
+.put('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2016-09-01', '*')
   .reply(201, "{\"properties\":{\"level\":\"CanNotDelete\",\"notes\":\"Optional text.\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1\",\"type\":\"Microsoft.Authorization/locks\",\"name\":\"testlock1\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '264',
@@ -44,7 +44,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks/testlock1?api-version=2016-09-01')
   .reply(404, "{\"error\":{\"code\":\"LockNotFound\",\"message\":\"The lock 'testlock1' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '86',
@@ -61,7 +61,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks/testlock1?api-version=2016-09-01')
   .reply(404, "{\"error\":{\"code\":\"LockNotFound\",\"message\":\"The lock 'testlock1' could not be found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '86',
@@ -78,7 +78,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks?api-version=2015-01-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks?api-version=2016-09-01')
   .reply(200, "{\"value\":[{\"properties\":{\"level\":\"CanNotDelete\",\"notes\":\"Optional text.\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1\",\"type\":\"Microsoft.Authorization/locks\",\"name\":\"testlock1\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '276',
@@ -96,7 +96,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks?api-version=2015-01-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks?api-version=2016-09-01')
   .reply(200, "{\"value\":[{\"properties\":{\"level\":\"CanNotDelete\",\"notes\":\"Optional text.\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1\",\"type\":\"Microsoft.Authorization/locks\",\"name\":\"testlock1\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '276',
@@ -114,7 +114,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks?api-version=2015-01-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks?api-version=2016-09-01')
   .reply(200, "{\"value\":[{\"properties\":{\"level\":\"CanNotDelete\",\"notes\":\"Optional text.\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1\",\"type\":\"Microsoft.Authorization/locks\",\"name\":\"testlock1\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '276',
@@ -132,7 +132,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks?api-version=2015-01-01')
+  .get('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/providers/Microsoft.Authorization/locks?api-version=2016-09-01')
   .reply(200, "{\"value\":[{\"properties\":{\"level\":\"CanNotDelete\",\"notes\":\"Optional text.\"},\"id\":\"/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1\",\"type\":\"Microsoft.Authorization/locks\",\"name\":\"testlock1\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '276',
@@ -150,7 +150,7 @@ nock('https://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01')
+  .delete('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2016-09-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
@@ -166,7 +166,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2015-01-01')
+  .delete('/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/nodeTestGroup4712/providers/Microsoft.Authorization/locks/testlock1?api-version=2016-09-01')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',

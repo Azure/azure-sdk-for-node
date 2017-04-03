@@ -60,7 +60,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview', '*')
+.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview', '*')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/gateways/sdk-test-gw-12727\",\"name\":\"sdk-test-gw-12727\",\"type\":\"microsoft.servermanagement/gateways\",\"location\":\"centralus\",\"etag\":\"W/\\\"datetime'2016-05-06T16%3A52%3A39.2775638Z'\\\"\",\"properties\":{\"created\":\"2016-05-06T16:52:37.5508612Z\",\"updated\":\"2016-05-06T16:52:37.5508612Z\",\"autoUpgrade\":\"On\",\"desiredVersion\":null,\"minimumVersion\":\"1.0.0.0\",\"betaFeatures\":\"Off\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '490',
@@ -83,7 +83,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview', '*')
+.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview', '*')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/gateways/sdk-test-gw-12727\",\"name\":\"sdk-test-gw-12727\",\"type\":\"microsoft.servermanagement/gateways\",\"location\":\"centralus\",\"etag\":\"W/\\\"datetime'2016-05-06T16%3A52%3A39.2775638Z'\\\"\",\"properties\":{\"created\":\"2016-05-06T16:52:37.5508612Z\",\"updated\":\"2016-05-06T16:52:37.5508612Z\",\"autoUpgrade\":\"On\",\"desiredVersion\":null,\"minimumVersion\":\"1.0.0.0\",\"betaFeatures\":\"Off\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '490',
@@ -157,7 +157,7 @@ nock('https://login.microsoftonline.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/gateways/sdk-test-gw-12727\",\"name\":\"sdk-test-gw-12727\",\"type\":\"microsoft.servermanagement/gateways\",\"location\":\"centralus\",\"etag\":\"W/\\\"datetime'2016-05-06T16%3A52%3A39.2775638Z'\\\"\",\"properties\":{\"created\":\"2016-05-06T16:52:37.5508612Z\",\"updated\":\"2016-05-06T16:52:37.5508612Z\",\"autoUpgrade\":\"On\",\"desiredVersion\":null,\"minimumVersion\":\"1.0.0.0\",\"betaFeatures\":\"Off\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '490',
@@ -179,7 +179,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/gateways/sdk-test-gw-12727\",\"name\":\"sdk-test-gw-12727\",\"type\":\"microsoft.servermanagement/gateways\",\"location\":\"centralus\",\"etag\":\"W/\\\"datetime'2016-05-06T16%3A52%3A39.2775638Z'\\\"\",\"properties\":{\"created\":\"2016-05-06T16:52:37.5508612Z\",\"updated\":\"2016-05-06T16:52:37.5508612Z\",\"autoUpgrade\":\"On\",\"desiredVersion\":null,\"minimumVersion\":\"1.0.0.0\",\"betaFeatures\":\"Off\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '490',
@@ -253,7 +253,7 @@ nock('https://login.microsoftonline.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview')
+  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
@@ -274,7 +274,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview')
+  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
@@ -347,7 +347,7 @@ nock('https://login.microsoftonline.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.ServerManagement/gateways/sdk-test-gw-12727' under resource group 'rsmt-rnr-rg' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
@@ -364,7 +364,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2015-07-01-preview')
+  .get('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/gateways/sdk-test-gw-12727?api-version=2016-07-01-preview')
   .reply(404, "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource 'Microsoft.ServerManagement/gateways/sdk-test-gw-12727' under resource group 'rsmt-rnr-rg' was not found.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
