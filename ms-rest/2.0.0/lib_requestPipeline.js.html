@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/requestPipeline.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BasicAuthenticationCredentials.html">BasicAuthenticationCredentials</a><ul class='methods'><li data-type='method'><a href="BasicAuthenticationCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="HttpOperationResponse.html">HttpOperationResponse</a></li><li><a href="ServiceClient.html">ServiceClient</a><ul class='methods'><li data-type='method'><a href="ServiceClient.html#addFilter">addFilter</a></li><li data-type='method'><a href="ServiceClient.html#addUserAgentInfo">addUserAgentInfo</a></li><li data-type='method'><a href="ServiceClient.html#getPackageJsonInfo">getPackageJsonInfo</a></li><li data-type='method'><a href="ServiceClient.html#sendRequest">sendRequest</a></li><li data-type='method'><a href="ServiceClient.html#sendRequestWithHttpOperationResponse">sendRequestWithHttpOperationResponse</a></li></ul></li><li><a href="SystemErrorRetryPolicyFilter.html">SystemErrorRetryPolicyFilter</a></li><li><a href="TestClient.html">TestClient</a></li><li><a href="TokenCredentials.html">TokenCredentials</a><ul class='methods'><li data-type='method'><a href="TokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="WebResource.html">WebResource</a><ul class='methods'><li data-type='method'><a href="WebResource.html#pipeInput">pipeInput</a></li><li data-type='method'><a href="WebResource.html#prepare">prepare</a></li><li data-type='method'><a href="WebResource.html#validateRequestProperties">validateRequestProperties</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_setDefaultProxy">_setDefaultProxy</a></li><li><a href="global.html#birthday">birthday</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#deserialize">deserialize</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#fishtype">fishtype</a></li><li><a href="global.html#food">food</a></li><li><a href="global.html#generateUuid">generateUuid</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#hates">hates</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isValidUuid">isValidUuid</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectValues">objectValues</a></li><li><a href="global.html#picture">picture</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#serialize">serialize</a></li><li><a href="global.html#serializeObject">serializeObject</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#string">string</a></li><li><a href="global.html#stripRequest">stripRequest</a></li><li><a href="global.html#stripResponse">stripResponse</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">lib/requestPipeline.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information. 
+
+'use strict';
+
+const request = require('request');
+const through = require('through');
+const duplexer = require('duplexer');
+const Constants = require('./constants');
+const utils = require('./utils');
+const HttpVerbs = Constants.HttpConstants.HttpVerbs;
+
+//
+// Request pipelines are functions that allow you to
+// add filters to modify requests and responses
+// before / after the actual HTTP request.
+//
+
+/**
+ *
+ * create a new http client pipeline that ends with a call to the
+ * request library using the given sink function to actually make
+ * the http request.
+ *
+ * @return function(request, callback) - function to make a request.
+ *
+ */
+exports.createWithSink = function(sink) {
+  let pipeline = sink;
+
+  // The function that actually runs the pipeline. It starts simple
+  function runFilteredRequest(options, callback) {
+    return pipeline(options, callback);
+  }
+
+  function makeFilteredPipeline(filter) {
+    let currentPipeline = pipeline;
+    return function (options, callback) {
+      return filter(options, currentPipeline, callback);
+    };
+  }
+
+  // Add 'add' method so we can add filters.
+  runFilteredRequest.add = function add() {
+    let argumentList = utils.objectValues(arguments);
+    argumentList.forEach((filter) => {
+      pipeline = makeFilteredPipeline(filter);
+    });
+  };
+
+  // Add verb specific helper methods
+  let verbs = Object.keys(HttpVerbs);
+  verbs.forEach((method) => {
+    runFilteredRequest[method] = ((m) => {
+      return (options, callback) => {
+        options.method = m;
+        return pipeline(options, callback);
+      };
+    })(method);
+  });
+
+  // If user passed any other parameters, assume they're filters
+  // and add them.
+  for(let i = 1; i &lt; arguments.length; ++i) {
+    runFilteredRequest.add(arguments[i]);
+  }
+
+  return runFilteredRequest;
+};
+
+/**
+ * This function acts as the final sink for a request, actually
+ * going out over the wire.
+ *
+ * @param {Object} [requestOptions] - The request options
+ * {@link https://github.com/request/request#requestoptions-callback Options doc}
+ *
+ * @private
+ * @param options The request to perform
+ * @param callback function(err, result, response, body) callback function that
+ * will be called at completion of the request.
+ */
+exports.requestLibrarySink = function requestLibrarySink (requestOptions) {
+
+  return (options, callback) => {
+    let defaultRequest = request.defaults(requestOptions);
+    let requestStream, bodyStream, requestHeaderStream;
+
+    if (options.headersOnly) {
+      requestHeaderStream = defaultRequest(options);
+      requestHeaderStream.on('error', (err) => {
+        return callback(err);
+      });
+      requestHeaderStream.on('response', (response) => {
+        requestHeaderStream.on('end', () => {
+          return callback(null, response);
+        });
+      });      
+      return requestHeaderStream;
+    } else if (options.streamedResponse) {
+      if (options.body &amp;&amp; typeof options.body.pipe === 'function') {
+        bodyStream = options.body;
+        options.body = null;
+        requestStream = bodyStream.pipe(defaultRequest(options));
+      } else {
+        requestStream = defaultRequest(options);
+      }
+      requestStream.on('error', (err) => {
+        return callback(err);
+      });
+      requestStream.on('response', (response) => {
+        return callback(null, response);
+      });
+      return requestStream;
+    } else if (options.body &amp;&amp; typeof options.body.pipe === 'function') {
+      bodyStream = options.body;
+      options.body = null;
+      return bodyStream.pipe(defaultRequest(options, (err, response, body) => {
+        if (err) { return callback(err); }
+        return callback(null, response, body);
+      }));
+    } else {
+      return defaultRequest(options, (err, response, body) => {
+        if (err) { return callback(err); }
+        return callback(null, response, body);
+      });
+    }
+  };
+};
+
+/**
+ *
+ * create a new http client pipeline that ends with a call to the
+ * request library.
+ *
+ * @param {Object} [requestOptions] - The request options
+ * {@link https://github.com/request/request#requestoptions-callback Options doc}
+ *
+ * @return function(request, callback) - function to make a request.
+ *
+ */
+exports.create = function (requestOptions) {
+  return function () {
+    if (arguments.length === 0) {
+      return exports.createWithSink(exports.requestLibrarySink(requestOptions));
+    }
+    // User passed filters to add to the pipeline.
+    // build up appropriate arguments and call exports.createWithSink
+    return exports.createWithSink.apply(null, [exports.requestLibrarySink(requestOptions)].concat(utils.objectValues(arguments)));
+  };
+};
+
+/**
+ * Create a new filter that's a combination of all the filters
+ * given on the arguments list.
+ *
+ * @param {varargs} filters to run. First filter in the list is closest to
+ * the sink, so last to run before the request, first to run on the response:
+ * exactly the same as if you called pipeline.add or passed the list to
+ * pipeline.create.
+ *
+ * @return the new filter.
+ */
+exports.createCompositeFilter = function createCompositeFilter() {
+  let filter = arguments[0];
+
+  function makePairedFilter(filterA, filterB) {
+    return (options, next, callback) => {
+      function callFilterA(o, cb) {
+        return filterA(o, next, cb);
+      }
+      return filterB(options, callFilterA, callback);
+    };
+  }
+
+  for(let i = 1; i &lt; arguments.length; ++i) {
+    filter = makePairedFilter(filter, arguments[i]);
+  }
+  return filter;
+};
+
+/**
+ * Creates an interim stream which can be returned to the
+ * caller synchronously, so that async operations can still
+ * hook up to the streaming output afterwards. Used when
+ * filters need to do async work before they can call the rest
+ * of the pipeline.
+ *
+ * @param setPipe function(input, output)
+ *    this function is invoked synchronously, to pass the two
+ *    underlying streams. input should be piped to the result of
+ *    the next filter. The result of next should be piped to output.
+ *    It's common to pause the input stream to prevent data loss
+ *    before actually returning the real stream to hook up to.
+ *
+ * @returns a duplex stream that writes to the input stream and
+ * produces data from the output stream.
+ */
+exports.interimStream = function(setPipes) {
+  let input = through();
+  let output = through();
+  let duplex = duplexer(input, output);
+  setPipes(input, output);
+  return duplex;
+};
+
+exports = module.exports;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Apr 05 2017 11:42:03 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

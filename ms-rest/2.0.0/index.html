@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BasicAuthenticationCredentials.html">BasicAuthenticationCredentials</a><ul class='methods'><li data-type='method'><a href="BasicAuthenticationCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="HttpOperationResponse.html">HttpOperationResponse</a></li><li><a href="ServiceClient.html">ServiceClient</a><ul class='methods'><li data-type='method'><a href="ServiceClient.html#addFilter">addFilter</a></li><li data-type='method'><a href="ServiceClient.html#addUserAgentInfo">addUserAgentInfo</a></li><li data-type='method'><a href="ServiceClient.html#getPackageJsonInfo">getPackageJsonInfo</a></li><li data-type='method'><a href="ServiceClient.html#sendRequest">sendRequest</a></li><li data-type='method'><a href="ServiceClient.html#sendRequestWithHttpOperationResponse">sendRequestWithHttpOperationResponse</a></li></ul></li><li><a href="SystemErrorRetryPolicyFilter.html">SystemErrorRetryPolicyFilter</a></li><li><a href="TestClient.html">TestClient</a></li><li><a href="TokenCredentials.html">TokenCredentials</a><ul class='methods'><li data-type='method'><a href="TokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="WebResource.html">WebResource</a><ul class='methods'><li data-type='method'><a href="WebResource.html#pipeInput">pipeInput</a></li><li data-type='method'><a href="WebResource.html#prepare">prepare</a></li><li data-type='method'><a href="WebResource.html#validateRequestProperties">validateRequestProperties</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_setDefaultProxy">_setDefaultProxy</a></li><li><a href="global.html#birthday">birthday</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#deserialize">deserialize</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#fishtype">fishtype</a></li><li><a href="global.html#food">food</a></li><li><a href="global.html#generateUuid">generateUuid</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#hates">hates</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isValidUuid">isValidUuid</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectValues">objectValues</a></li><li><a href="global.html#picture">picture</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#serialize">serialize</a></li><li><a href="global.html#serializeObject">serializeObject</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#string">string</a></li><li><a href="global.html#stripRequest">stripRequest</a></li><li><a href="global.html#stripResponse">stripResponse</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>MS-Rest</h1><p>Infrastructure for serialization/deserialization, error handling, tracing, and http client pipeline configuration. Required by nodeJS client libraries generated using AutoRest.</p>
+<ul>
+<li><strong>Node.js version: 4.x.x or higher</strong></li>
+</ul>
+<h2>How to Install</h2><pre class="prettyprint source lang-bash"><code>npm install ms-rest</code></pre><h2>Usage</h2><pre class="prettyprint source lang-javascript"><code>var msrest = require('ms-rest');</code></pre><h2>Serialization/Deserialization</h2><p>Features</p>
+<ul>
+<li>Type checking<ul>
+<li>(String, Number, Boolean, ByteArray, Base64Url, Date, DateTime, Enum, TimeSpan, DateTimeRfc1123, UnixTime, Object, Stream, Sequence, Dictionary, Composite, Uuid(as a string))</li>
+</ul>
+</li>
+<li>Validation of specified constraints<ul>
+<li>ExclusiveMaximum, ExclusiveMinimum, InclusiveMaximum, InclusiveMinimum, MaxItems, MaxLength, MinItems, MinLength, MultipleOf, Pattern, UniqueItems</li>
+</ul>
+</li>
+<li>Flattening/Unflattening properties</li>
+<li>Default Values</li>
+<li>Model Properties marked as constant are set during serialization, irrespective of they being provided or not</li>
+<li>Required check (If a model or property is marked required and is not provided in the object then an error is thrown)</li>
+<li>Readonly check (If a model or property is marked readonly then it is not sent on the wire during, serialization)</li>
+<li><p>Serializing Constant values</p>
+</li>
+<li><p>serialize an array of dictionary of primitive values</p>
+<pre class="prettyprint source lang-javascript"><code>var mapper = {
+type : {
+  name: 'Sequence', 
+  element: {
+    type : {
+      name: 'Dictionary',
+      value: {
+        type: {
+          name: 'Boolean'
+        }
+      }
+    }
+  }
+}
+};
+var array = [{ 1: true }, { 2: false }, { 1: true, 2: false, 3: true }];
+var serializedArray = msRest.serialize(mapper, array, 'arrayObj');
+assert.deepEqual(array, serializedArray);
+var serializedProduct = msrest.serialize(mapper, productObj, 'productObject');
+var deserializedArray = msRest.deserialize(mapper, serializedArray, 'serializedArrayObj');</code></pre><p>For more examples on serialization/deserialization with complex types please take a look over <a href="https://github.com/Azure/autorest/blob/master/ClientRuntimes/NodeJS/ms-rest/test/serializationTests.js#L116">here</a>.</p>
+</li>
+</ul>
+<h2>Related Projects</h2><ul>
+<li><a href="https://github.com/Azure/AutoRest">AutoRest</a></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Apr 05 2017 11:42:03 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

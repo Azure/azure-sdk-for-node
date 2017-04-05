@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/serviceClient.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BasicAuthenticationCredentials.html">BasicAuthenticationCredentials</a><ul class='methods'><li data-type='method'><a href="BasicAuthenticationCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="HttpOperationResponse.html">HttpOperationResponse</a></li><li><a href="ServiceClient.html">ServiceClient</a><ul class='methods'><li data-type='method'><a href="ServiceClient.html#addFilter">addFilter</a></li><li data-type='method'><a href="ServiceClient.html#addUserAgentInfo">addUserAgentInfo</a></li><li data-type='method'><a href="ServiceClient.html#getPackageJsonInfo">getPackageJsonInfo</a></li><li data-type='method'><a href="ServiceClient.html#sendRequest">sendRequest</a></li><li data-type='method'><a href="ServiceClient.html#sendRequestWithHttpOperationResponse">sendRequestWithHttpOperationResponse</a></li></ul></li><li><a href="SystemErrorRetryPolicyFilter.html">SystemErrorRetryPolicyFilter</a></li><li><a href="TestClient.html">TestClient</a></li><li><a href="TokenCredentials.html">TokenCredentials</a><ul class='methods'><li data-type='method'><a href="TokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="WebResource.html">WebResource</a><ul class='methods'><li data-type='method'><a href="WebResource.html#pipeInput">pipeInput</a></li><li data-type='method'><a href="WebResource.html#prepare">prepare</a></li><li data-type='method'><a href="WebResource.html#validateRequestProperties">validateRequestProperties</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_setDefaultProxy">_setDefaultProxy</a></li><li><a href="global.html#birthday">birthday</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#deserialize">deserialize</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#fishtype">fishtype</a></li><li><a href="global.html#food">food</a></li><li><a href="global.html#generateUuid">generateUuid</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#hates">hates</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isValidUuid">isValidUuid</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectValues">objectValues</a></li><li><a href="global.html#picture">picture</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#serialize">serialize</a></li><li><a href="global.html#serializeObject">serializeObject</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#string">string</a></li><li><a href="global.html#stripRequest">stripRequest</a></li><li><a href="global.html#stripResponse">stripResponse</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">lib/serviceClient.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+'use strict';
+
+const url = require('url');
+const Constants = require('./constants');
+const ProxyFilter = require('./filters/proxyFilter');
+const UserAgentFilter = require('./filters/userAgentFilter');
+const RedirectFilter = require('./filters/redirectFilter');
+const SigningFilter = require('./filters/signingFilter');
+const ExponentialRetryPolicyFilter = require('./filters/exponentialRetryPolicyFilter');
+const SystemErrorRetryPolicyFilter = require('./filters/systemErrorRetryPolicyFilter');
+const requestPipeline = require('./requestPipeline');
+const WebResource = require('./webResource');
+const serializer = require('./serialization');
+const utils = require('./utils');
+const path = require('path');
+const fs = require('fs');
+const HttpOperationResponse = require('./httpOperationResponse');
+const packageJson = require('../package.json');
+const moduleName = packageJson.name;
+const moduleVersion = packageJson.version;
+
+
+function _sendRequest(options, callback) {
+  if (options === null || options === undefined || typeof options !== 'object') {
+    throw new Error('options cannot be null or undefined and it must be of type object.');
+  }
+
+  if (callback === null || callback === undefined) {
+    throw new Error('callback cannot be null or undefined.');
+  }
+
+  let httpRequest = null;
+  try {
+    if (options instanceof WebResource) {
+      options.validateRequestProperties();
+      httpRequest = options;
+    } else {
+      httpRequest = new WebResource();
+      httpRequest = httpRequest.prepare(options);
+    }
+  } catch (error) {
+    return callback(error);
+  }
+  //send request
+  /* jshint validthis: true */
+  this.pipeline(httpRequest, (err, response, responseBody) => {
+    if (responseBody === '') responseBody = null;
+    let parsedResponse, result;
+
+    try {
+      parsedResponse = JSON.parse(responseBody);
+      result = JSON.parse(responseBody);
+      if (parsedResponse !== null &amp;&amp; parsedResponse !== undefined &amp;&amp; options.deserializationMapper) {
+        result = serializer.deserialize(options.deserializationMapper, parsedResponse, 'result');
+      }
+    } catch (parseError) {
+      let e = `An error occurred while deserializing the responseBody ${responseBody}. The error is:\n ${JSON.stringify(parseError, null, 2)}.`;
+      e.request = httpRequest;
+      e.response = response;
+      e.statusCode = response.statusCode;
+      return callback(e);
+    }
+
+    return callback(err, result, httpRequest, response);
+  });
+}
+
+/*
+ * Loads the fields "useProxy" and respective protocol, port and url
+ * from the environment values HTTPS_PROXY and HTTP_PROXY
+ * in case those are set.
+ * @ignore
+ *
+ * @return {string} or null
+ */
+function _loadEnvironmentProxyValue() {
+  let proxyUrl = null;
+  if (process.env[Constants.HTTPS_PROXY]) {
+    proxyUrl = process.env[Constants.HTTPS_PROXY];
+  } else if (process.env[Constants.HTTPS_PROXY.toLowerCase()]) {
+    proxyUrl = process.env[Constants.HTTPS_PROXY.toLowerCase()];
+  } else if (process.env[Constants.HTTP_PROXY]) {
+    proxyUrl = process.env[Constants.HTTP_PROXY];
+  } else if (process.env[Constants.HTTP_PROXY.toLowerCase()]) {
+    proxyUrl = process.env[Constants.HTTP_PROXY.toLowerCase()];
+  }
+
+  return proxyUrl;
+}
+
+/**
+ * Sets the service host default proxy from the environment.
+ * Can be overridden by calling _setProxyUrl or _setProxy
+ * It is useful for enabling Fiddler trace
+ */
+function _setDefaultProxy() {
+  /* jshint validthis: true */
+  let proxyUrl = this._loadEnvironmentProxyValue();
+  if (proxyUrl) {
+    let parsedUrl = url.parse(proxyUrl);
+    if (!parsedUrl.port) {
+      parsedUrl.port = 80;
+    }
+
+    this.pipeline = requestPipeline.createWithSink(this.pipeline,
+      ProxyFilter.create({
+        host: parsedUrl.hostname,
+        port: parsedUrl.port,
+        protocol: parsedUrl.protocol
+      },
+        utils.urlIsHTTPS(parsedUrl)));
+  }
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceClient class.
+ * @constructor
+ * @param {object} [credentials]    - BasicAuthenticationCredentials or 
+ * TokenCredentials object used for authentication. 
+ * 
+ * @param {object} [options] The parameter options
+ * 
+ * @param {Array} [options.filters]         - Filters to be added to the request pipeline
+ * 
+ * @param {object} [options.requestOptions] - Options for the request object
+ * {@link https://github.com/request/request#requestoptions-callback Options doc}
+ * 
+ * @param {bool} [options.noRetryPolicy] - If set to true, turn off default retry policy
+ */
+class ServiceClient {
+  constructor(credentials, options) {
+    if (!options) {
+      options = {};
+    }
+
+    if (!options.requestOptions) {
+      options.requestOptions = {};
+    }
+
+    if (!options.filters) {
+      options.filters = [];
+    }
+
+    //property to store various pieces of information we would finally concat to produce a user-agent header.
+    this.userAgentInfo = { value: [] };
+
+    if (credentials &amp;&amp; !credentials.signRequest) {
+      throw new Error('credentials argument needs to implement signRequest method');
+    }
+
+    this.addUserAgentInfo(`${moduleName}/${moduleVersion}`);
+
+    if (credentials) {
+      options.filters.push(SigningFilter.create(credentials));
+    }
+
+    options.filters.push(UserAgentFilter.create(this.userAgentInfo.value));
+    options.filters.push(RedirectFilter.create());
+    if (!options.noRetryPolicy) {
+      options.filters.push(new ExponentialRetryPolicyFilter());
+      options.filters.push(new SystemErrorRetryPolicyFilter());
+    }
+
+    this.pipeline = requestPipeline.create(options.requestOptions).apply(requestPipeline, options.filters);
+    this._sendRequest = _sendRequest;
+    this._setDefaultProxy = _setDefaultProxy;
+    this._loadEnvironmentProxyValue = _loadEnvironmentProxyValue;
+    // enable network tracing
+    this._setDefaultProxy();
+  }
+
+  /**
+   * Associate a filtering operation with this ServiceClient. Filtering operations
+   * can include logging, automatically retrying, etc. Filter operations are functions
+   * the signature:
+   *
+   *     "function (requestOptions, next, callback)".
+   *
+   * After doing its preprocessing on the request options, the method needs to call
+   * "next" passing the current options and a callback with the following signature:
+   *
+   *     "function (error, result, response, body)"
+   *
+   * In this callback, and after processing the result or response, the callback needs
+   * invoke the original passed in callback to continue processing other filters and
+   * finish up the service invocation.
+   *
+   * @param {function (requestOptions, next, callback)} filter The new filter object.
+   * @return {QueueService} A new service client with the filter applied.
+   */
+  addFilter(newFilter) {
+    if (!newFilter) {
+      throw new Error('No filter passed');
+    }
+    if (!(newFilter instanceof Function &amp;&amp; newFilter.length === 3)) {
+      throw new Error('newFilter must be a function taking three parameters');
+    }
+
+    this.pipeline = requestPipeline.createWithSink(this.pipeline, newFilter);
+    return this;
+  }
+
+  /**
+   * Sends the request and returns the response.
+   *
+   * @param {object|WebResource} options The request options that should be provided to send a request successfully. 
+   * It can either be an options object (a simple json object) or the WebResource object with all the required properties set to make a request.
+   *
+   * @param {string} options.method The HTTP request method. Valid values are 'GET', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'POST', 'PATCH'.
+   *
+   * @param {string} [options.url] The request url. It may or may not have query parameters in it. 
+   * Either provide the 'url' or provide the 'pathTemplate' in the options object. Both the options are mutually exclusive.
+   *
+   * @param {object} [options.queryParameters] A dictionary of query parameters to be appended to the url, where 
+   * the 'key' is the 'query-parameter-name' and the 'value' is the 'query-parameter-value'. 
+   * The 'query-parameter-value' can be of type 'string' or it can be of type 'object'. 
+   * The 'object' format should be used when you want to skip url encoding. While using the object format, 
+   * the object must have a property named value which provides the 'query-parameter-value'.
+   * Example: 
+   *    - query-parameter-value in 'object' format: { 'query-parameter-name': { value: 'query-parameter-value', skipUrlEncoding: true } }
+   *    - query-parameter-value in 'string' format: { 'query-parameter-name': 'query-parameter-value'}.
+   * Note: 'If options.url already has some query parameters, then the value provided in options.queryParameters will be appended to the url.
+   *
+   * @param {string} [options.pathTemplate] The path template of the request url. Either provide the 'url' or provide the 'pathTemplate' 
+   * in the options object. Both the options are mutually exclusive.
+   * Example: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}'
+   *
+   * @param {string} [options.baseUrl] The base url of the request. Default value is: 'https://management.azure.com'. This is applicable only with 
+   * options.pathTemplate. If you are providing options.url then it is expected that you provide the complete url.
+   *
+   * @param {object} [options.pathParameters] A dictionary of path parameters that need to be replaced with actual values in the pathTemplate.
+   * Here the key is the 'path-parameter-name' and the value is the 'path-parameter-value'. 
+   * The 'path-parameter-value' can be of type 'string'  or it can be of type 'object'.
+   * The 'object' format should be used when you want to skip url encoding. While using the object format, 
+   * the object must have a property named value which provides the 'path-parameter-value'.
+   * Example: 
+   *    - path-parameter-value in 'object' format: { 'path-parameter-name': { value: 'path-parameter-value', skipUrlEncoding: true } }
+   *    - path-parameter-value in 'string' format: { 'path-parameter-name': 'path-parameter-value' }.
+   *
+   * @param {object} [options.headers] A dictionary of request headers that need to be applied to the request.
+   * Here the key is the 'header-name' and the value is the 'header-value'. The header-value MUST be of type string.
+   *  - ContentType must be provided with the key name as 'Content-Type'. Default value 'application/json; charset=utf-8'.
+   *  - 'Transfer-Encoding' is set to 'chunked' by default if 'options.bodyIsStream' is set to true.
+   *  - 'Content-Type' is set to 'application/octet-stream' by default if 'options.bodyIsStream' is set to true.
+   *  - 'accept-language' by default is set to 'en-US'
+   *  - 'x-ms-client-request-id' by default is set to a new Guid. To not generate a guid for the request, please set options.disableClientRequestId to true
+   *
+   * @param {boolean} [options.disableClientRequestId] When set to true, instructs the client to not set 'x-ms-client-request-id' header to a new Guid().
+   *
+   * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
+   *
+   * @param {object} [options.serializationMapper] - Provides information on how to serialize the request body.
+   * 
+   * @param {object} [options.deserializationMapper] - Provides information on how to deserialize the response body.
+   * 
+   * @param {boolean} [options.disableJsonStringifyOnBody] - When set to true, this method will not apply `JSON.stringify()` to the request body. Default value: false.
+   *
+   * @param {boolean} [options.bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).
+   *
+   * @param {function} [optionalCallback] The optional callback.
+   *
+   * @returns {function|Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+   * 
+   *     {function} optionalCallback(err, result, request, response)
+   *
+   *                  {Error}  err      - The Error object if an error occurred, null otherwise.
+   *
+   *                  {object} result   - The parsed (JSON.parse()) responseBody
+   *
+   *                  {object} request  - The HTTP Request object.
+   * 
+   *                  {stream} response - The raw HTTP Response stream.
+   * 
+   *     {Promise} A promise is returned.
+   *        @resolve {result} - The parsed (JSON.parse()) responseBody.
+   *        @reject  {Error}  - The error object.
+   */
+  sendRequest(options, optionalCallback) {
+    let self = this;
+    if (!optionalCallback &amp;&amp; typeof options === 'function') {
+      optionalCallback = options;
+      options = {};
+    }
+    if (!optionalCallback) {
+      return new Promise((resolve, reject) => {
+        self._sendRequest(options, (err, result) => {
+          if (err) { reject(err); }
+          else { resolve(result); }
+          return;
+        });
+      });
+    } else {
+      return self._sendRequest(options, optionalCallback);
+    }
+  }
+
+  /**
+   * Sends the request and returns the response.
+   *
+   * @param {object|WebResource} options The request options that should be provided to send a request successfully. 
+   * It can either be an options object (a simple json object) or the WebResource object with all the required properties set to make a request.
+   *
+   * @param {string} options.method The HTTP request method. Valid values are 'GET', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'POST', 'PATCH'.
+   *
+   * @param {string} [options.url] The request url. It may or may not have query parameters in it. 
+   * Either provide the 'url' or provide the 'pathTemplate' in the options object. Both the options are mutually exclusive.
+   *
+   * @param {object} [options.queryParameters] A dictionary of query parameters to be appended to the url, where 
+   * the 'key' is the 'query-parameter-name' and the 'value' is the 'query-parameter-value'. 
+   * The 'query-parameter-value' can be of type 'string' or it can be of type 'object'. 
+   * The 'object' format should be used when you want to skip url encoding. While using the object format, 
+   * the object must have a property named value which provides the 'query-parameter-value'.
+   * Example: 
+   *    - query-parameter-value in 'object' format: { 'query-parameter-name': { value: 'query-parameter-value', skipUrlEncoding: true } }
+   *    - query-parameter-value in 'string' format: { 'query-parameter-name': 'query-parameter-value'}.
+   * Note: 'If options.url already has some query parameters, then the value provided in options.queryParameters will be appended to the url.
+   *
+   * @param {string} [options.pathTemplate] The path template of the request url. Either provide the 'url' or provide the 'pathTemplate' 
+   * in the options object. Both the options are mutually exclusive.
+   * Example: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}'
+   *
+   * @param {string} [options.baseUrl] The base url of the request. Default value is: 'https://management.azure.com'. This is applicable only with 
+   * options.pathTemplate. If you are providing options.url then it is expected that you provide the complete url.
+   *
+   * @param {object} [options.pathParameters] A dictionary of path parameters that need to be replaced with actual values in the pathTemplate.
+   * Here the key is the 'path-parameter-name' and the value is the 'path-parameter-value'. 
+   * The 'path-parameter-value' can be of type 'string'  or it can be of type 'object'.
+   * The 'object' format should be used when you want to skip url encoding. While using the object format, 
+   * the object must have a property named value which provides the 'path-parameter-value'.
+   * Example: 
+   *    - path-parameter-value in 'object' format: { 'path-parameter-name': { value: 'path-parameter-value', skipUrlEncoding: true } }
+   *    - path-parameter-value in 'string' format: { 'path-parameter-name': 'path-parameter-value' }.
+   *
+   * @param {object} [options.headers] A dictionary of request headers that need to be applied to the request.
+   * Here the key is the 'header-name' and the value is the 'header-value'. The header-value MUST be of type string.
+   *  - ContentType must be provided with the key name as 'Content-Type'. Default value 'application/json; charset=utf-8'.
+   *  - 'Transfer-Encoding' is set to 'chunked' by default if 'options.bodyIsStream' is set to true.
+   *  - 'Content-Type' is set to 'application/octet-stream' by default if 'options.bodyIsStream' is set to true.
+   *  - 'accept-language' by default is set to 'en-US'
+   *  - 'x-ms-client-request-id' by default is set to a new Guid. To not generate a guid for the request, please set options.disableClientRequestId to true
+   *
+   * @param {boolean} [options.disableClientRequestId] When set to true, instructs the client to not set 'x-ms-client-request-id' header to a new Guid().
+   *
+   * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
+   *
+   * @param {object|string|boolean|array|number|null|undefined} [options.body] - The request body. It can be of any type. This method will JSON.stringify() the request body.
+   *
+   * @param {object} [options.serializationMapper] - Provides information on how to serialize the request body.
+   * 
+   * @param {object} [options.deserializationMapper] - Provides information on how to deserialize the response body.
+   * 
+   * @param {boolean} [options.disableJsonStringifyOnBody] - When set to true, this method will not apply `JSON.stringify()` to the request body. Default value: false.
+   *
+   * @param {boolean} [options.bodyIsStream] - Indicates whether the request body is a stream (useful for file upload scenarios).
+   *
+   * @param {function} [optionalCallback] The optional callback.
+   *
+   * @returns {Promise} A promise is returned.
+   * @resolve {HttpOperationResponse&lt;T>} - The HttpOperationResponse which contains the raw request, response and the parsed (JSON.parse) response body
+   * @reject  {Error}  - The error object.
+   */
+  sendRequestWithHttpOperationResponse(options) {
+    let self = this;
+    return new Promise((resolve, reject) => {
+      self._sendRequest(options, (err, result, request, response) => {
+        let httpRes = new HttpOperationResponse(request, response);
+        httpRes.body = result;
+        if (err) { reject(err); }
+        else { resolve(httpRes); }
+        return;
+      });
+    });
+  }
+
+  /**
+   * Adds custom information to user agent header
+   * @param {any} additionalUserAgentInfo - information to be added to user agent header, as string.
+   */
+  addUserAgentInfo(additionalUserAgentInfo) {
+    if (this.userAgentInfo.value.indexOf(additionalUserAgentInfo) === -1) {
+      this.userAgentInfo.value.push(additionalUserAgentInfo);
+    }
+  }
+
+  /**
+   * Attempts to find package.json for the given azure nodejs package.
+   * If found, returns the name and version of the package by reading the package.json
+   * If package.json is not found, returns a default value.
+   * @param {string} managementClientDir - pass the directory of the specific azure management client.
+   * @returns {object} packageJsonInfo - "name" and "version" of the desired package.
+   */
+  getPackageJsonInfo(managementClientDir) {
+
+    // algorithm:
+    // package.json is placed next to the lib directory. So we try to find the lib directory first.
+    // In most packages we generate via autorest, the management client directly lives in the lib directory
+    // so, package.json could be found just one level above where management client lives.
+    // In some packages (azure-arm-resource), management client lives at one level deeper in the lib directory
+    // so, we have to traverse at least two levels higher to locate package.json.
+    // The algorithm for locating package.json would then be, start at the current directory where management client lives
+    // and keep searching up until the file is located. We also limit the search depth to 2, since we know the structure of 
+    // the clients we generate.
+
+    let packageJsonInfo = {
+      name: 'NO_NAME',
+      version: '0.0.0'
+    };
+
+    // private helper
+    function _getLibPath(currentDir, searchDepth) {
+      if (searchDepth &lt; 1) {
+        return;
+      }
+
+      // if current directory is lib, return current dir, otherwise search one level up.
+      return (currentDir.endsWith('lib') || currentDir.endsWith('lib' + path.sep)) ?
+        currentDir :
+        _getLibPath(path.join(currentDir, '..'), searchDepth - 1);
+    }
+
+    let libPath = _getLibPath(managementClientDir, 2);
+    if (libPath) {
+      let packageJsonPath = path.join(libPath, '..', 'package.json');
+      if (fs.existsSync(packageJsonPath)) {
+        let data = require(packageJsonPath);
+        packageJsonInfo.name = data.name;
+        packageJsonInfo.version = data.version;
+      }
+    }
+
+    return packageJsonInfo;
+  }
+}
+
+module.exports = ServiceClient;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Apr 05 2017 11:42:03 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
