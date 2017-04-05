@@ -9,7 +9,7 @@ const ApplicationTokenCredentials = require('./credentials/applicationTokenCrede
 const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
 const UserTokenCredentials = require('./credentials/userTokenCredentials');
 const AzureEnvironment = require('./azureEnvironment');
-const SubscriptionClient = require('azure-arm-resource').SubscriptionClient;
+const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
 
 // It will create a DeviceTokenCredentials object by default
 function _createCredentials(parameters) {
@@ -266,6 +266,20 @@ exports.interactive = function interactive(options, optionalCallback) {
   }
 };
 
+exports.interactiveWithAuthResponse = function interactiveWithAuthResponse(options) {
+  if (!options) options = {};
+  return new Promise((resolve, reject) => {
+    _interactive(options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse); 
+      }
+      return;
+    });
+  });
+};
+
 
 function _withUsernamePassword(username, password, options, callback) {
   if (!callback && typeof options === 'function') {
@@ -356,6 +370,20 @@ exports.withUsernamePassword = function withUsernamePassword(username, password,
   }
 };
 
+exports.withUsernamePasswordWithAuthResponse = function withUsernamePasswordWithAuthResponse(username, password, options) {
+  if (!options) options = {};
+  return new Promise((resolve, reject) => {
+    _withUsernamePassword(username, password, options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse);
+      }
+      return;
+    });
+  });
+};
+
 function _withServicePrincipalSecret(clientId, secret, domain, options, callback) {
   if (!callback && typeof options === 'function') {
     callback = options;
@@ -423,6 +451,20 @@ exports.withServicePrincipalSecret = function withServicePrincipalSecret(clientI
   } else {
     return _withServicePrincipalSecret(clientId, secret, domain, options, optionalCallback);
   }
+};
+
+exports.withServicePrincipalSecretWithAuthResponse = function withServicePrincipalSecretWithAuthResponse(clientId, secret, domain, options) {
+  if (!options) options = {};
+  return new Promise((resolve, reject) => {
+    _withServicePrincipalSecret(clientId, secret, domain, options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse);
+      }
+      return;
+    });
+  });
 };
 
 exports = module.exports;

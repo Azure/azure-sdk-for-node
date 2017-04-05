@@ -221,6 +221,65 @@ export interface InteractiveLoginOptions extends DeviceTokenCredentialsOptions {
 }
 
 /**
+ * The user type associated to a subscription in Azure.
+ */
+export enum UserType {
+  user,
+  servicePrincipal
+}
+
+/**
+ * The user associated to a subscription in Azure.
+ */
+export interface LinkedUser {
+  /**
+   * The user name. This could be a display name or a GUID.
+   */
+  name: string;
+  /**
+   * The user type: 'user', 'servicePrincipal'.
+   */
+  type: UserType
+}
+
+export interface LinkedSubscription {
+  /**
+   * The tenant that the subscription belongs to.
+   */
+  tenantId: string;
+  /**
+   * The user associated with the subscription. This could be a user or a serviceprincipal.
+   */
+  user: LinkedUser;
+  /**
+   * The environment name For example: AzureCloud, AzureChina, USGovernment, GermanCloud, or your own Dogfood environment
+   */
+  environmentName: string;
+  /**
+   * Display name of the subscription.
+   */
+  name: string;
+  /**
+   * The subscriptionId (usually a GUID).
+   */
+  id: string;
+  /**
+   * The authorization source of the subscription: 'RoleBased' , 'Legacy', 'Bypassed',' Direct', 'Management'. 
+   * It could also be a comma separated string containing more values 'Bypassed, Direct, Management'.
+   */
+  authorizationSource: string;
+  /**
+   * The state of the subscription. Example values: 'Enabled', 'Disabled', 'Warned', 'PastDue', 'Deleted'.
+   */
+  state: string;
+}
+
+export interface AuthResponse {
+  credentials: DeviceTokenCredentials | ApplicationTokenCredentials | UserTokenCredentials;
+  subscriptions: Array<LinkedSubscription>;
+}
+
+/**
  * Creates a new ApplicationTokenCredentials object.
  * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
  * for detailed instructions on creating an Azure Active Directory application.
@@ -268,18 +327,30 @@ export class BaseResource { }
  *
  * @param {function} [optionalCallback] The optional callback.
  *
- * @returns {function} optionalCallback(err, credentials) | Promise If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * @returns {function|Promise<DeviceTokenCredentials>} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
  *
  * optionalCallback(err, credentials)
  *                      {Error}  [err]                           - The Error object if an error occurred, null otherwise.
  *                      {DeviceTokenCredentials} [credentials]   - The DeviceTokenCredentials object
- *     {Promise} A promise is returned.
+ *     {Promise<DeviceTokenCredentials>} A promise is returned.
  *             @resolve {DeviceTokenCredentials} The DeviceTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function interactiveLogin(options: InteractiveLoginOptions, optionalCallback: { (err: Error, credentials: DeviceTokenCredentials): void }): void;
-export function interactiveLogin(optionalCallback: { (err: Error, credentials: DeviceTokenCredentials): void }): void;
+export function interactiveLogin(options: InteractiveLoginOptions, optionalCallback: { (err: Error, credentials: DeviceTokenCredentials, subscriptions: Array<LinkedSubscription>): void }): void;
+export function interactiveLogin(optionalCallback: { (err: Error, credentials: DeviceTokenCredentials, subscriptions: Array<LinkedSubscription>): void }): void;
 export function interactiveLogin(options?: InteractiveLoginOptions): Promise<DeviceTokenCredentials>;
+
+/**
+ * Provides a url and code that needs to be copy and pasted in a browser and authenticated over there. If successful, the user will get a 
+ * DeviceTokenCredentials object
+ *
+ * @param {InteractiveLoginOptions} [options] The parameter options.
+ *
+ * @returns {Promise<AuthResponse>} A promise is returned.
+ *             @resolve {DeviceTokenCredentials} The DeviceTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+export function interactiveLoginWithAuthResponse(options?: InteractiveLoginOptions): Promise<AuthResponse>;
 
 /**
  * Provides a UserTokenCredentials object. This method is applicable only for organizational ids that are not 2FA enabled.
@@ -293,19 +364,34 @@ export function interactiveLogin(options?: InteractiveLoginOptions): Promise<Dev
  *
  * @param {function} [optionalCallback] The optional callback.
  *
- * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * @returns {function|Promise<UserTokenCredentials>} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
  *
  *     optionalCallback(err, credentials)
  *                      {Error}  [err]                         - The Error object if an error occurred, null otherwise.
  *                      {UserTokenCredentials} [credentials]   - The UserTokenCredentials object
- *     {Promise} A promise is returned.
+ *     {Promise<UserTokenCredentials>} A promise is returned.
  *             @resolve {UserTokenCredentials} The UserTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function loginWithUsernamePassword(username: string, password: string, options: LoginWithUsernamePasswordOptions, callback: { (err: Error, credentials: UserTokenCredentials): void }): void;
-export function loginWithUsernamePassword(username: string, password: string, callback: { (err: Error, credentials: UserTokenCredentials): void }): void;
+export function loginWithUsernamePassword(username: string, password: string, options: LoginWithUsernamePasswordOptions, callback: { (err: Error, credentials: UserTokenCredentials, subscriptions: Array<LinkedSubscription>): void }): void;
+export function loginWithUsernamePassword(username: string, password: string, callback: { (err: Error, credentials: UserTokenCredentials, subscriptions: Array<LinkedSubscription>): void }): void;
 export function loginWithUsernamePassword(username: string, password: string, options?: LoginWithUsernamePasswordOptions): Promise<UserTokenCredentials>;
 
+/**
+ * Provides a UserTokenCredentials object. This method is applicable only for organizational ids that are not 2FA enabled.
+ * Otherwise please use interactive login.
+ *
+ * @param {string} username The user name for the Organization Id account.
+ *
+ * @param {string} password The password for the Organization Id account.
+ *
+ * @param {LoginWithUsernamePasswordOptions} [options] The parameter options.
+ *
+ * @returns {Promise<AuthResponse>} A promise is returned.
+ *             @resolve {UserTokenCredentials} The UserTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+export function loginWithUsernamePasswordWithAuthResponse(username: string, password: string, options?: LoginWithUsernamePasswordOptions): Promise<AuthResponse>;
 
 /**
  * Provides an ApplicationTokenCredentials object.
@@ -322,15 +408,34 @@ export function loginWithUsernamePassword(username: string, password: string, op
  *
  * @param {function} [optionalCallback] The optional callback.
  *
- * @returns {function} optionalCallback(err, credentials) | Promise If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * @returns {function|Promise<ApplicationTokenCredentials>} optionalCallback(err, credentials) | Promise<ApplicationTokenCredentials> If a callback was passed as the last parameter then it returns the callback else returns a Promise.
  *
  * optionalCallback(err, credentials)
  *                      {Error}  [err]                                - The Error object if an error occurred, null otherwise.
  *                      {ApplicationTokenCredentials} [credentials]   - The ApplicationTokenCredentials object
- *     {Promise} A promise is returned.
+ *     {Promise<ApplicationTokenCredentials>} A promise is returned.
  *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
  *             @reject {Error} - The error object.
  */
-export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options: AzureTokenCredentialsOptions, callback: { (err: Error, credentials: ApplicationTokenCredentials): void }): void;
-export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, callback: { (err: Error, credentials: ApplicationTokenCredentials): void }): void;
+export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options: AzureTokenCredentialsOptions, callback: { (err: Error, credentials: ApplicationTokenCredentials, subscriptions: Array<LinkedSubscription>): void }): void;
+export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, callback: { (err: Error, credentials: ApplicationTokenCredentials, subscriptions: Array<LinkedSubscription>): void }): void;
 export function loginWithServicePrincipalSecret(clientId: string, secret: string, domain: string, options?: AzureTokenCredentialsOptions): Promise<ApplicationTokenCredentials>;
+
+/**
+ * Provides an ApplicationTokenCredentials object.
+ *
+ * @param {string} clientId The active directory application client id also known as the SPN (ServicePrincipal Name). 
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for an example.
+ *
+ * @param {string} secret The application secret for the service principal.
+ *
+ * @param {string} domain The domain or tenant id containing this application.
+ *
+ * @param {AzureTokenCredentialsOptions} [options] The parameter options.
+ *
+ * @returns {Promise<AuthResponse>} A promise is returned.
+ *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+export function loginWithServicePrincipalSecretWithAuthResponse(clientId: string, secret: string, domain: string, options?: AzureTokenCredentialsOptions): Promise<AuthResponse>;
