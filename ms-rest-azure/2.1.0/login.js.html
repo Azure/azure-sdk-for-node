@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>login.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ApplicationTokenCredentials.html">ApplicationTokenCredentials</a><ul class='methods'><li data-type='method'><a href="ApplicationTokenCredentials.html#getToken">getToken</a></li><li data-type='method'><a href="ApplicationTokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="AzureEnvironment.html">AzureEnvironment</a><ul class='methods'><li data-type='method'><a href="AzureEnvironment.html#add">add</a></li></ul></li><li><a href="AzureServiceClient.html">AzureServiceClient</a><ul class='methods'><li data-type='method'><a href="AzureServiceClient.html#getLongRunningOperationResult">getLongRunningOperationResult</a></li><li data-type='method'><a href="AzureServiceClient.html#getPostOrDeleteOperationResult">getPostOrDeleteOperationResult</a></li><li data-type='method'><a href="AzureServiceClient.html#getPutOrPatchOperationResult">getPutOrPatchOperationResult</a></li><li data-type='method'><a href="AzureServiceClient.html#sendLongRunningRequest">sendLongRunningRequest</a></li><li data-type='method'><a href="AzureServiceClient.html#sendLongRunningRequestWithHttpOperationResponse">sendLongRunningRequestWithHttpOperationResponse</a></li></ul></li><li><a href="BaseResource.html">BaseResource</a><ul class='methods'><li data-type='method'><a href="BaseResource.html#deserialize">deserialize</a></li><li data-type='method'><a href="BaseResource.html#mapper">mapper</a></li><li data-type='method'><a href="BaseResource.html#serialize">serialize</a></li></ul></li><li><a href="DeviceTokenCredentials.html">DeviceTokenCredentials</a><ul class='methods'><li data-type='method'><a href="DeviceTokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="Location%2520list%2520operation%2520response..html">Location list operation response.</a></li><li><a href="PollingState.html">PollingState</a><ul class='methods'><li data-type='method'><a href="PollingState.html#getCloudError">getCloudError</a></li><li data-type='method'><a href="PollingState.html#getOperationResponse">getOperationResponse</a></li><li data-type='method'><a href="PollingState.html#getTimeout">getTimeout</a></li><li data-type='method'><a href="PollingState.html#updateResponse">updateResponse</a></li></ul></li><li><a href="SubscriptionClient.html">SubscriptionClient</a></li><li><a href="Subscriptions.html">Subscriptions</a><ul class='methods'><li data-type='method'><a href="Subscriptions.html#get">get</a></li><li data-type='method'><a href="Subscriptions.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Subscriptions.html#list">list</a></li><li data-type='method'><a href="Subscriptions.html#listLocations">listLocations</a></li><li data-type='method'><a href="Subscriptions.html#listLocationsWithHttpOperationResponse">listLocationsWithHttpOperationResponse</a></li><li data-type='method'><a href="Subscriptions.html#listNext">listNext</a></li><li data-type='method'><a href="Subscriptions.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Subscriptions.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Tenants.html">Tenants</a><ul class='methods'><li data-type='method'><a href="Tenants.html#list">list</a></li><li data-type='method'><a href="Tenants.html#listNext">listNext</a></li><li data-type='method'><a href="Tenants.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Tenants.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="UserTokenCredentials.html">UserTokenCredentials</a><ul class='methods'><li data-type='method'><a href="UserTokenCredentials.html#getToken">getToken</a></li><li data-type='method'><a href="UserTokenCredentials.html#signRequest">signRequest</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getLongRunningOperationResult">_getLongRunningOperationResult</a></li><li><a href="global.html#_getStatus">_getStatus</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listLocations">_listLocations</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_updateStateFromAzureAsyncOperationHeader">_updateStateFromAzureAsyncOperationHeader</a></li><li><a href="global.html#_updateStateFromGetResourceOperation">_updateStateFromGetResourceOperation</a></li><li><a href="global.html#_updateStateFromLocationHeader">_updateStateFromLocationHeader</a></li><li><a href="global.html#authorizationSource">authorizationSource</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#generateUuid">generateUuid</a></li><li><a href="global.html#interactive">interactive</a></li><li><a href="global.html#longitude">longitude</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#spendingLimit">spendingLimit</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#withServicePrincipalSecret">withServicePrincipalSecret</a></li><li><a href="global.html#withUsernamePassword">withUsernamePassword</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">login.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+'use strict';
+const adal = require('adal-node');
+const async = require('async');
+const azureConstants = require('./constants');
+const ApplicationTokenCredentials = require('./credentials/applicationTokenCredentials');
+const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
+const UserTokenCredentials = require('./credentials/userTokenCredentials');
+const AzureEnvironment = require('./azureEnvironment');
+const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
+
+// It will create a DeviceTokenCredentials object by default
+function _createCredentials(parameters) {
+  /* jshint validthis: true */
+  let options = {};
+  options.environment = this.environment;
+  options.domain = this.domain;
+  options.clientId = this.clientId;
+  options.tokenCache = this.tokenCache;
+  options.username = this.username;
+  options.authorizationScheme = this.authorizationScheme;
+  options.tokenAudience = this.tokenAudience;
+  if (parameters) {
+    if (parameters.domain) {
+      options.domain = parameters.domain;
+    }
+    if (parameters.environment) {
+      options.environment = parameters.environment;
+    }
+    if (parameters.userId) {
+      options.username = parameters.userId;
+    }
+    if (parameters.tokenCache) {
+      options.tokenCache = parameters.tokenCache;
+    }
+    if (parameters.tokenAudience) {
+      options.tokenAudience = parameters.tokenAudience;
+    }
+  }
+  let credentials;
+  if (UserTokenCredentials.prototype.isPrototypeOf(this)) {
+    credentials = new UserTokenCredentials(options.clientId, options.domain, options.username, this.password, options);
+  } else if (ApplicationTokenCredentials.prototype.isPrototypeOf(this)) {
+    credentials = new ApplicationTokenCredentials(options.clientId, options.domain, this.secret, options);
+  } else {
+    credentials = new DeviceTokenCredentials(options);
+  }
+  return credentials;
+}
+
+function buildTenantList(credentials, callback) {
+  let tenants = [];
+  if (credentials.domain &amp;&amp; credentials.domain !== azureConstants.AAD_COMMON_TENANT) {
+    return callback(null, [credentials.domain]);
+  }
+  let client = new SubscriptionClient(credentials, credentials.environment.resourceManagerEndpointUrl);
+  client.tenants.list(function (err, result) {
+    async.eachSeries(result, function (tenantInfo, cb) {
+      tenants.push(tenantInfo.tenantId);
+      cb(err);
+    }, function (err) {
+      callback(err, tenants);
+    });
+  });
+}
+
+function _getSubscriptionsFromTenants(tenantList, callback) {
+  /* jshint validthis: true */
+  let self = this;
+  let subscriptions = [];
+  let userType = 'user';
+  let username = self.username;
+  if (ApplicationTokenCredentials.prototype.isPrototypeOf(self)) {
+    userType = 'servicePrincipal';
+    username = self.clientId;
+  }
+  async.eachSeries(tenantList, function (tenant, cb) {
+    let creds = _createCredentials.call(self, { domain: tenant });
+    let client = new SubscriptionClient(creds, creds.environment.resourceManagerEndpointUrl);
+    client.subscriptions.list(function (err, result) {
+      if (!err) {
+        if (result &amp;&amp; result.length > 0) {
+          subscriptions = subscriptions.concat(result.map(function (s) {
+            s.tenantId = tenant;
+            s.user = { name: username, type: userType };
+            s.environmentName = creds.environment.name;
+            s.name = s.displayName;
+            s.id = s.subscriptionId;
+            delete s.displayName;
+            delete s.subscriptionId;
+            delete s.subscriptionPolicies;
+            return s;
+          }));
+        }
+      }
+      return cb(err);
+    });
+  }, function (err) {
+    callback(err, subscriptions);
+  });
+}
+
+function _turnOnLogging() {
+  let log = adal.Logging;
+  log.setLoggingOptions(
+    {
+      level: log.LOGGING_LEVEL.VERBOSE,
+      log: function (level, message, error) {
+        console.info(message);
+        if (error) {
+          console.error(error);
+        }
+      }
+    });
+}
+
+if (process.env['AZURE_ADAL_LOGGING_ENABLED']) {
+  _turnOnLogging();
+}
+
+function _crossCheckUserNameWithToken(usernameFromMethodCall, userIdFromToken) {
+  //to maintain the casing consistency between 'azureprofile.json' and token cache. (RD 1996587)
+  //use the 'userId' here, which should be the same with "username" except the casing.
+  if (usernameFromMethodCall.toLowerCase() === userIdFromToken.toLowerCase()) {
+    return userIdFromToken;
+  } else {
+    throw new Error(`The userId of "${userIdFromToken}" in access token doesn't match the username from method call "usernameFromMethodCall".`);
+  }
+}
+
+function _interactive(options, callback) {
+  /* jshint validthis: true */
+  if (!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+
+  if (!options.environment) {
+    options.environment = AzureEnvironment.Azure;
+  }
+
+  if (!options.domain) {
+    options.domain = azureConstants.AAD_COMMON_TENANT;
+  }
+
+  if (!options.clientId) {
+    options.clientId = azureConstants.DEFAULT_ADAL_CLIENT_ID;
+  }
+
+  if (!options.tokenCache) {
+    options.tokenCache = new adal.MemoryCache();
+  }
+
+  if (!options.language) {
+    options.language = azureConstants.DEFAULT_LANGUAGE;
+  }
+  let interactiveOptions = {};
+  interactiveOptions.tokenAudience = options.tokenAudience;
+  interactiveOptions.environment = options.environment;
+  interactiveOptions.domain = options.domain;
+  interactiveOptions.clientId = options.clientId;
+  interactiveOptions.tokenCache = options.tokenCache;
+  interactiveOptions.language = options.language;
+  interactiveOptions.userCodeResponseLogger = options.userCodeResponseLogger;
+  let authorityUrl = interactiveOptions.environment.activeDirectoryEndpointUrl + interactiveOptions.domain;
+  interactiveOptions.context = new adal.AuthenticationContext(authorityUrl, interactiveOptions.environment.validateAuthority, interactiveOptions.tokenCache);
+  let tenantList = [];
+  async.waterfall([
+    //acquire usercode
+    function (callback) {
+      interactiveOptions.context.acquireUserCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, interactiveOptions.language, function (err, userCodeResponse) {
+        if (err) return callback(err);
+        if (interactiveOptions.userCodeResponseLogger) {
+          interactiveOptions.userCodeResponseLogger(userCodeResponse.message);
+        } else {
+          console.log(userCodeResponse.message);
+        }
+        return callback(null, userCodeResponse);
+      });
+    },
+    //acquire token with device code and set the username to userId received from tokenResponse.
+    function (userCodeResponse, callback) {
+      interactiveOptions.context.acquireTokenWithDeviceCode(interactiveOptions.environment.activeDirectoryResourceId, interactiveOptions.clientId, userCodeResponse, function (err, tokenResponse) {
+        if (err) return callback(err);
+        interactiveOptions.username = tokenResponse.userId;
+        interactiveOptions.authorizationScheme = tokenResponse.tokenType;
+        return callback(null);
+      });
+    },
+    //get the list of tenants
+    function (callback) {
+      let credentials = _createCredentials.call(interactiveOptions);
+      buildTenantList(credentials, callback);
+    },
+    //build the token cache by getting tokens for all the tenants. We will acquire token from adal only when a request is sent. This is good as we also need
+    //to build the list of subscriptions across all tenants. So let's build both at the same time :).
+    function (tenants, callback) {
+      tenantList = tenants;
+      if (interactiveOptions.tokenAudience &amp;&amp; interactiveOptions.tokenAudience.toLowerCase() === 'graph') {
+        // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+        return callback(null, []);
+      } else {
+        return _getSubscriptionsFromTenants.call(interactiveOptions, tenants, callback);
+      }
+    }
+  ], function (err, subscriptions) {
+    if (err) return callback(err);
+    return callback(null, _createCredentials.call(interactiveOptions), subscriptions);
+  });
+}
+
+/**
+ * Provides a url and code that needs to be copy and pasted in a browser and authenticated over there. If successful, the user will get a 
+ * DeviceTokenCredentials object and the list of subscriptions associated with that userId across all the applicable tenants.
+ *
+ * @param {object} [options] Object representing optional parameters.
+ *
+ * @param {string} [options.clientId] The active directory application client id.
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for an example.
+ *
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'.If tokenAudience is provided 
+ * then domain should also be provided its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ *
+ * @param {string} [options.domain] The domain or tenant id containing this application. Default value is 'common'.
+ *
+ * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with. Default environment is "Public Azure".
+ *
+ * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
+ *
+ * @param {object} [options.language] The language code specifying how the message should be localized to. Default value 'en-us'.
+ *
+ * @param {object|function} [options.userCodeResponseLogger] A logger that logs the user code response message required for interactive login. When
+ * this option is specified the usercode response message will not be logged to console.
+ *
+ * @param {function} [optionalCallback] The optional callback.
+ *
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                           - The Error object if an error occurred, null otherwise.
+ *                 {DeviceTokenCredentials} [credentials]   - The DeviceTokenCredentials object.
+ *                 {Array}                [subscriptions]   - List of associated subscriptions across all the applicable tenants.
+ *    {Promise} A promise is returned.
+ *             @resolve {DeviceTokenCredentials} The DeviceTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+exports.interactive = function interactive(options, optionalCallback) {
+  if (!optionalCallback &amp;&amp; typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!options) options = {};
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _interactive(options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _interactive(options, optionalCallback);
+  }
+};
+
+exports.interactiveWithAuthResponse = function interactiveWithAuthResponse(options) {
+  if (!options) options = {};
+  return new Promise((resolve, reject) => {
+    _interactive(options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse); 
+      }
+      return;
+    });
+  });
+};
+
+
+function _withUsernamePassword(username, password, options, callback) {
+  if (!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+
+  if (!options.domain) {
+    options.domain = azureConstants.AAD_COMMON_TENANT;
+  }
+
+  if (!options.clientId) {
+    options.clientId = azureConstants.DEFAULT_ADAL_CLIENT_ID;
+  }
+  let creds;
+  let tenantList = [];
+  try {
+    creds = new UserTokenCredentials(options.clientId, options.domain, username, password, options);
+  } catch (err) {
+    return callback(err);
+  }
+  creds.getToken(function (err, result) {
+    if (err) return callback(err);
+    creds.username = _crossCheckUserNameWithToken(username, result.userId);
+    async.waterfall([
+      function (callback) {
+        buildTenantList(creds, callback);
+      },
+      function (tenants, callback) {
+        tenantList = tenants;
+        if (options.tokenAudience &amp;&amp; options.tokenAudience.toLowerCase() === 'graph') {
+          // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+          return callback(null, []);
+        } else {
+          return _getSubscriptionsFromTenants.call(options, tenants, callback);
+        }
+      },
+    ], function (err, subscriptions) {
+      return callback(null, creds, subscriptions);
+    });
+  });
+}
+
+/**
+ * Provides a UserTokenCredentials object and the list of subscriptions associated with that userId across all the applicable tenants. 
+ * This method is applicable only for organizational ids that are not 2FA enabled otherwise please use interactive login.
+ *
+ * @param {string} username The user name for the Organization Id account.
+ * @param {string} password The password for the Organization Id account.
+ * @param {object} [options] Object representing optional parameters.
+ * @param {string} [options.clientId] The active directory application client id. 
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for an example.
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'. If tokenAudience is provided 
+ * then domain should also be provided and its value should not be the default 'common' tenant. It must be a string (preferrably in a guid format).
+ * @param {string} [options.domain] The domain or tenant id containing this application. Default value 'common'.
+ * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
+ * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
+ * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
+ * @param {function} [optionalCallback] The optional callback.
+ *
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                         - The Error object if an error occurred, null otherwise.
+ *                 {UserTokenCredentials} [credentials]   - The UserTokenCredentials object.
+ *                 {Array}                [subscriptions] - List of associated subscriptions across all the applicable tenants.
+ *    {Promise} A promise is returned.
+ *             @resolve {UserTokenCredentials} The UserTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+exports.withUsernamePassword = function withUsernamePassword(username, password, options, optionalCallback) {
+  if (!optionalCallback &amp;&amp; typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!options) options = {};
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _withUsernamePassword(username, password, options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _withUsernamePassword(username, password, options, optionalCallback);
+  }
+};
+
+exports.withUsernamePasswordWithAuthResponse = function withUsernamePasswordWithAuthResponse(username, password, options) {
+  if (!options) options = {};
+  return new Promise((resolve, reject) => {
+    _withUsernamePassword(username, password, options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse);
+      }
+      return;
+    });
+  });
+};
+
+function _withServicePrincipalSecret(clientId, secret, domain, options, callback) {
+  if (!callback &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+  let creds;
+  try {
+    creds = new ApplicationTokenCredentials(clientId, domain, secret, options);
+  } catch (err) {
+    return callback(err);
+  }
+  creds.getToken(function (err) {
+    if (err) return callback(err);
+    if (options.tokenAudience &amp;&amp; options.tokenAudience.toLowerCase() === 'graph') {
+      // we dont need to get the subscriptionList if the tokenAudience is graph as graph clients are tenant based.
+      return callback(null, creds, []);
+    } else {
+      _getSubscriptionsFromTenants.call(creds, [domain], function (err, subscriptions) {
+        if (err) return callback(err);
+        return callback(null, creds, subscriptions);
+      });
+    }
+  });
+}
+
+/**
+ * Provides an ApplicationTokenCredentials object and the list of subscriptions associated with that servicePrinicpalId/clientId across all the applicable tenants.
+ *
+ * @param {string} clientId The active directory application client id also known as the SPN (ServicePrincipal Name). 
+ * See {@link https://azure.microsoft.com/en-us/documentation/articles/active-directory-devquickstarts-dotnet/ Active Directory Quickstart for .Net} 
+ * for an example.
+ * @param {string} secret The application secret for the service principal.
+ * @param {string} domain The domain or tenant id containing this application.
+ * @param {object} [options] Object representing optional parameters.
+ * @param {string} [options.tokenAudience] The audience for which the token is requested. Valid value is 'graph'.
+ * @param {AzureEnvironment} [options.environment] The azure environment to authenticate with.
+ * @param {string} [options.authorizationScheme] The authorization scheme. Default value is 'bearer'.
+ * @param {object} [options.tokenCache] The token cache. Default value is the MemoryCache object from adal.
+ * @param {function} [optionalCallback] The optional callback.
+ * 
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {ApplicationTokenCredentials} [credentials]  - The ApplicationTokenCredentials object.
+ *                 {Array}                [subscriptions]       - List of associated subscriptions across all the applicable tenants.
+ *    {Promise} A promise is returned.
+ *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+exports.withServicePrincipalSecret = function withServicePrincipalSecret(clientId, secret, domain, options, optionalCallback) {
+  if (!optionalCallback &amp;&amp; typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!options) options = {};
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _withServicePrincipalSecret(clientId, secret, domain, options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _withServicePrincipalSecret(clientId, secret, domain, options, optionalCallback);
+  }
+};
+
+exports.withServicePrincipalSecretWithAuthResponse = function withServicePrincipalSecretWithAuthResponse(clientId, secret, domain, options) {
+  if (!options) options = {};
+  return new Promise((resolve, reject) => {
+    _withServicePrincipalSecret(clientId, secret, domain, options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse);
+      }
+      return;
+    });
+  });
+};
+
+exports = module.exports;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Apr 05 2017 11:42:02 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebResource - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="BasicAuthenticationCredentials.html">BasicAuthenticationCredentials</a><ul class='methods'><li data-type='method'><a href="BasicAuthenticationCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="ExponentialRetryPolicyFilter.html">ExponentialRetryPolicyFilter</a></li><li><a href="HttpOperationResponse.html">HttpOperationResponse</a></li><li><a href="ServiceClient.html">ServiceClient</a><ul class='methods'><li data-type='method'><a href="ServiceClient.html#addFilter">addFilter</a></li><li data-type='method'><a href="ServiceClient.html#addUserAgentInfo">addUserAgentInfo</a></li><li data-type='method'><a href="ServiceClient.html#getPackageJsonInfo">getPackageJsonInfo</a></li><li data-type='method'><a href="ServiceClient.html#sendRequest">sendRequest</a></li><li data-type='method'><a href="ServiceClient.html#sendRequestWithHttpOperationResponse">sendRequestWithHttpOperationResponse</a></li></ul></li><li><a href="SystemErrorRetryPolicyFilter.html">SystemErrorRetryPolicyFilter</a></li><li><a href="TestClient.html">TestClient</a></li><li><a href="TokenCredentials.html">TokenCredentials</a><ul class='methods'><li data-type='method'><a href="TokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="WebResource.html">WebResource</a><ul class='methods'><li data-type='method'><a href="WebResource.html#pipeInput">pipeInput</a></li><li data-type='method'><a href="WebResource.html#prepare">prepare</a></li><li data-type='method'><a href="WebResource.html#validateRequestProperties">validateRequestProperties</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_setDefaultProxy">_setDefaultProxy</a></li><li><a href="global.html#birthday">birthday</a></li><li><a href="global.html#create">create</a></li><li><a href="global.html#createCompositeFilter">createCompositeFilter</a></li><li><a href="global.html#createWithSink">createWithSink</a></li><li><a href="global.html#deserialize">deserialize</a></li><li><a href="global.html#encodeUri">encodeUri</a></li><li><a href="global.html#fishtype">fishtype</a></li><li><a href="global.html#food">food</a></li><li><a href="global.html#generateUuid">generateUuid</a></li><li><a href="global.html#handle">handle</a></li><li><a href="global.html#hates">hates</a></li><li><a href="global.html#interimStream">interimStream</a></li><li><a href="global.html#isValidUuid">isValidUuid</a></li><li><a href="global.html#name">name</a></li><li><a href="global.html#objectIsNull">objectIsNull</a></li><li><a href="global.html#objectValues">objectValues</a></li><li><a href="global.html#picture">picture</a></li><li><a href="global.html#requestLibrarySink">requestLibrarySink</a></li><li><a href="global.html#serialize">serialize</a></li><li><a href="global.html#serializeObject">serializeObject</a></li><li><a href="global.html#setAgent">setAgent</a></li><li><a href="global.html#shouldRetry">shouldRetry</a></li><li><a href="global.html#string">string</a></li><li><a href="global.html#stripRequest">stripRequest</a></li><li><a href="global.html#stripResponse">stripResponse</a></li><li><a href="global.html#updateRetryData">updateRetryData</a></li><li><a href="global.html#urlIsHTTPS">urlIsHTTPS</a></li><li><a href="global.html#value">value</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">WebResource</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        WebResource
+        </h2>
+        
+            <div class="class-description"><p>Creates a new WebResource object.</p>
+<p>This class provides an abstraction over a REST call by being library / implementation agnostic and wrapping the necessary<br>properties to initiate a request.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="WebResource"><span class="type-signature"></span>new WebResource<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_webResource.js.html">lib/webResource.js</a>, <a href="lib_webResource.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="pipeInput"><span class="type-signature"></span>pipeInput<span class="signature">(inputStream, outputStream)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Hook up the given input stream to a destination output stream if the WebResource method<br>requires a request body and a body is not already set.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>inputStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Stream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the stream to pipe from</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>outputStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Stream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>the stream to pipe to</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_webResource.js.html">lib/webResource.js</a>, <a href="lib_webResource.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>destStream</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="prepare"><span class="type-signature"></span>prepare<span class="signature">(options)</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Prepares the request.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The request options that should be provided to send a request successfully</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#string">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The HTTP request method. Valid values are 'GET', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'POST', 'PATCH'.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#string">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request url. It may or may not have query parameters in it.<br>Either provide the 'url' or provide the 'pathTemplate' in the options object. Both the options are mutually exclusive.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queryParameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A dictionary of query parameters to be appended to the url, where<br>the 'key' is the 'query-parameter-name' and the 'value' is the 'query-parameter-value'.<br>The 'query-parameter-value' can be of type 'string' or it can be of type 'object'.<br>The 'object' format should be used when you want to skip url encoding. While using the object format,<br>the object must have a property named value which provides the 'query-parameter-value'.<br>Example: </p>
+<ul>
+<li>query-parameter-value in 'object' format: { 'query-parameter-name': { value: 'query-parameter-value', skipUrlEncoding: true } }</li>
+<li>query-parameter-value in 'string' format: { 'query-parameter-name': 'query-parameter-value'}.<br>Note: 'If options.url already has some query parameters, then the value provided in options.queryParameters will be appended to the url.</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pathTemplate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#string">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The path template of the request url. Either provide the 'url' or provide the 'pathTemplate'<br>in the options object. Both the options are mutually exclusive.<br>Example: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}'</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>baseUrl</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#string">string</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The base url of the request. Default value is: 'https://management.azure.com'. This is applicable only with<br>options.pathTemplate. If you are providing options.url then it is expected that you provide the complete url.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pathParameters</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A dictionary of path parameters that need to be replaced with actual values in the pathTemplate.<br>Here the key is the 'path-parameter-name' and the value is the 'path-parameter-value'.<br>The 'path-parameter-value' can be of type 'string'  or it can be of type 'object'.<br>The 'object' format should be used when you want to skip url encoding. While using the object format,<br>the object must have a property named value which provides the 'path-parameter-value'.<br>Example: </p>
+<ul>
+<li>path-parameter-value in 'object' format: { 'path-parameter-name': { value: 'path-parameter-value', skipUrlEncoding: true } }</li>
+<li>path-parameter-value in 'string' format: { 'path-parameter-name': 'path-parameter-value' }.</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>headers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A dictionary of request headers that need to be applied to the request.<br>Here the key is the 'header-name' and the value is the 'header-value'. The header-value MUST be of type string.</p>
+<ul>
+<li>ContentType must be provided with the key name as 'Content-Type'. Default value 'application/json; charset=utf-8'.</li>
+<li>'Transfer-Encoding' is set to 'chunked' by default if 'options.bodyIsStream' is set to true.</li>
+<li>'Content-Type' is set to 'application/octet-stream' by default if 'options.bodyIsStream' is set to true.</li>
+<li>'accept-language' by default is set to 'en-US'</li>
+<li>'x-ms-client-request-id' by default is set to a new Guid. To not generate a guid for the request, please set options.disableClientRequestId to true</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disableClientRequestId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>When set to true, instructs the client to not set 'x-ms-client-request-id' header to a new Guid().</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>body</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type"><a href="global.html#string">string</a></span>
+|
+
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">array</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type">null</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The request body. It can be of any type. This method will JSON.stringify() the request body.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>serializationMapper</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Provides information on how to serialize the request body.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>deserializationMapper</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Provides information on how to deserialize the response body.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disableJsonStringifyOnBody</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Indicates whether this method should JSON.stringify() the request body. Default value: false.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bodyIsStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Indicates whether the request body is a stream (useful for file upload scenarios).</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_webResource.js.html">lib/webResource.js</a>, <a href="lib_webResource.js.html#line121">line 121</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>WebResource Returns the prepared WebResource (HTTP Request) object that needs to be given to the request pipeline.</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="validateRequestProperties"><span class="type-signature"></span>validateRequestProperties<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Validates that the required properties such as method, url, headers['Content-Type'],<br>headers['accept-language'] are defined. It will throw an error if one of the above<br>mentioned properties are not defined.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_webResource.js.html">lib/webResource.js</a>, <a href="lib_webResource.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Apr 05 2017 11:42:03 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>

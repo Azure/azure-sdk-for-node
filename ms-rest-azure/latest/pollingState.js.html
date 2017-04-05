@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>pollingState.js - Documentation</title>
+    <meta name="viewport" content="initial-scale=.75">
+    <script src="../../scripts/prettify/prettify.js"></script>
+    <script src="../../scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="../../styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><span><a href="../../index.html">Home</a> <span class="github-short">| <a href="https://github.com/azure/azure-sdk-for-node.git">GitHub</a></span></span></h2><h3>Classes</h3><ul><li><a href="ApplicationTokenCredentials.html">ApplicationTokenCredentials</a><ul class='methods'><li data-type='method'><a href="ApplicationTokenCredentials.html#getToken">getToken</a></li><li data-type='method'><a href="ApplicationTokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="AzureEnvironment.html">AzureEnvironment</a><ul class='methods'><li data-type='method'><a href="AzureEnvironment.html#add">add</a></li></ul></li><li><a href="AzureServiceClient.html">AzureServiceClient</a><ul class='methods'><li data-type='method'><a href="AzureServiceClient.html#getLongRunningOperationResult">getLongRunningOperationResult</a></li><li data-type='method'><a href="AzureServiceClient.html#getPostOrDeleteOperationResult">getPostOrDeleteOperationResult</a></li><li data-type='method'><a href="AzureServiceClient.html#getPutOrPatchOperationResult">getPutOrPatchOperationResult</a></li><li data-type='method'><a href="AzureServiceClient.html#sendLongRunningRequest">sendLongRunningRequest</a></li><li data-type='method'><a href="AzureServiceClient.html#sendLongRunningRequestWithHttpOperationResponse">sendLongRunningRequestWithHttpOperationResponse</a></li></ul></li><li><a href="BaseResource.html">BaseResource</a><ul class='methods'><li data-type='method'><a href="BaseResource.html#deserialize">deserialize</a></li><li data-type='method'><a href="BaseResource.html#mapper">mapper</a></li><li data-type='method'><a href="BaseResource.html#serialize">serialize</a></li></ul></li><li><a href="DeviceTokenCredentials.html">DeviceTokenCredentials</a><ul class='methods'><li data-type='method'><a href="DeviceTokenCredentials.html#signRequest">signRequest</a></li></ul></li><li><a href="Location%2520list%2520operation%2520response..html">Location list operation response.</a></li><li><a href="PollingState.html">PollingState</a><ul class='methods'><li data-type='method'><a href="PollingState.html#getCloudError">getCloudError</a></li><li data-type='method'><a href="PollingState.html#getOperationResponse">getOperationResponse</a></li><li data-type='method'><a href="PollingState.html#getTimeout">getTimeout</a></li><li data-type='method'><a href="PollingState.html#updateResponse">updateResponse</a></li></ul></li><li><a href="SubscriptionClient.html">SubscriptionClient</a></li><li><a href="Subscriptions.html">Subscriptions</a><ul class='methods'><li data-type='method'><a href="Subscriptions.html#get">get</a></li><li data-type='method'><a href="Subscriptions.html#getWithHttpOperationResponse">getWithHttpOperationResponse</a></li><li data-type='method'><a href="Subscriptions.html#list">list</a></li><li data-type='method'><a href="Subscriptions.html#listLocations">listLocations</a></li><li data-type='method'><a href="Subscriptions.html#listLocationsWithHttpOperationResponse">listLocationsWithHttpOperationResponse</a></li><li data-type='method'><a href="Subscriptions.html#listNext">listNext</a></li><li data-type='method'><a href="Subscriptions.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Subscriptions.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="Tenants.html">Tenants</a><ul class='methods'><li data-type='method'><a href="Tenants.html#list">list</a></li><li data-type='method'><a href="Tenants.html#listNext">listNext</a></li><li data-type='method'><a href="Tenants.html#listNextWithHttpOperationResponse">listNextWithHttpOperationResponse</a></li><li data-type='method'><a href="Tenants.html#listWithHttpOperationResponse">listWithHttpOperationResponse</a></li></ul></li><li><a href="UserTokenCredentials.html">UserTokenCredentials</a><ul class='methods'><li data-type='method'><a href="UserTokenCredentials.html#getToken">getToken</a></li><li data-type='method'><a href="UserTokenCredentials.html#signRequest">signRequest</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#_get">_get</a></li><li><a href="global.html#_getLongRunningOperationResult">_getLongRunningOperationResult</a></li><li><a href="global.html#_getStatus">_getStatus</a></li><li><a href="global.html#_list">_list</a></li><li><a href="global.html#_listLocations">_listLocations</a></li><li><a href="global.html#_listNext">_listNext</a></li><li><a href="global.html#_updateStateFromAzureAsyncOperationHeader">_updateStateFromAzureAsyncOperationHeader</a></li><li><a href="global.html#_updateStateFromGetResourceOperation">_updateStateFromGetResourceOperation</a></li><li><a href="global.html#_updateStateFromLocationHeader">_updateStateFromLocationHeader</a></li><li><a href="global.html#authorizationSource">authorizationSource</a></li><li><a href="global.html#details">details</a></li><li><a href="global.html#generateUuid">generateUuid</a></li><li><a href="global.html#interactive">interactive</a></li><li><a href="global.html#longitude">longitude</a></li><li><a href="global.html#nextLink">nextLink</a></li><li><a href="global.html#spendingLimit">spendingLimit</a></li><li><a href="global.html#tenantId">tenantId</a></li><li><a href="global.html#withServicePrincipalSecret">withServicePrincipalSecret</a></li><li><a href="global.html#withUsernamePassword">withUsernamePassword</a></li></ul>
+</nav>
+
+<div id="main">
+    
+      <a class="github-banner" href="https://github.com/azure/azure-sdk-for-node.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    
+    
+    <h1 class="page-title">pollingState.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information. 
+'use strict';
+
+const msRest = require('ms-rest');
+const LroStates = require('./constants').LongRunningOperationStates;
+
+/**
+ * @class
+ * Initializes a new instance of the PollingState class.
+ * @constructor
+ * @param {object} [response] - The response object to extract long
+ * running operation status.
+ * 
+ * @param {number} retryTimeout - The timeout in seconds to retry on
+ * intermediate operation results. Default Value is 30.
+ */
+class PollingState {
+  constructor(resultOfInitialRequest, retryTimeout) {
+    if (retryTimeout === null || retryTimeout === undefined) {
+      retryTimeout = 30;
+    }
+    this._retryTimeout = retryTimeout;
+    this.updateResponse(resultOfInitialRequest.response);
+    this.request = resultOfInitialRequest.request;
+    //Parse response.body &amp; assign it as the resource
+    try {
+      if (resultOfInitialRequest.body &amp;&amp;
+        typeof resultOfInitialRequest.body.valueOf() === 'string' &amp;&amp;
+        resultOfInitialRequest.body.length > 0) {
+        this.resource = JSON.parse(resultOfInitialRequest.body);
+      } else {
+        this.resource = resultOfInitialRequest.body;
+      }
+    } catch (error) {
+      let deserializationError = new Error(`Error "${error}" occurred in parsing the responseBody ' +
+        'while creating the PollingState for Long Running Operation- "${resultOfInitialRequest.body}"`);
+      deserializationError.request = resultOfInitialRequest.request;
+      deserializationError.response = resultOfInitialRequest.response;
+      throw deserializationError;
+    }
+
+    switch (this.response.statusCode) {
+      case 202:
+        this.status = LroStates.InProgress;
+        break;
+
+      case 204:
+        this.status = LroStates.Succeeded;
+        break;
+      case 201:
+        if (this.resource &amp;&amp; this.resource.properties &amp;&amp; this.resource.properties.provisioningState) {
+          this.status = this.resource.properties.provisioningState;
+        } else {
+          this.status = LroStates.InProgress;
+        }
+        break;
+      case 200:
+        if (this.resource &amp;&amp; this.resource.properties &amp;&amp; this.resource.properties.provisioningState) {
+          this.status = this.resource.properties.provisioningState;
+        } else {
+          this.status = LroStates.Succeeded;
+        }
+        break;
+      default:
+        this.status = LroStates.Failed;
+        break;
+    }
+  }
+
+  /**
+   * Gets timeout in milliseconds. 
+   * @returns {number} timeout
+   */
+  getTimeout() {
+    if (this._retryTimeout || this._retryTimeout === 0) {
+      return this._retryTimeout * 1000;
+    }
+    if (this.response &amp;&amp; this.response.headers['retry-after']) {
+      return parseInt(this.response.headers['retry-after']) * 1000;
+    }
+    return 30 * 1000;
+  }
+
+  /**
+   * Update cached data using the provided response object
+   * @param {object} [response] - provider response object.
+   */
+  updateResponse(response) {
+    this.response = response;
+    if (response &amp;&amp; response.headers) {
+      if (response.headers['azure-asyncoperation']) {
+        this.azureAsyncOperationHeaderLink = response.headers['azure-asyncoperation'];
+      }
+
+      if (response.headers['location']) {
+        this.locationHeaderLink = response.headers['location'];
+      }
+    }
+  }
+
+  /**
+   * Returns long running operation result.
+   * @returns {object} HttpOperationResponse
+   */
+  getOperationResponse() {
+    let result = new msRest.HttpOperationResponse();
+    result.request = this.request;
+    result.response = this.response;
+    if (this.resource &amp;&amp; typeof this.resource.valueOf() === 'string') {
+      result.body = this.resource;
+    } else {
+      result.body = JSON.stringify(this.resource);
+    }
+    return result;
+  }
+
+  /**
+   * Returns an Error on operation failure.
+   * @returns {object} Error
+   */
+  getCloudError(err) {
+    let errMsg;
+    let errCode;
+
+    let error = new Error();
+    error.request = msRest.stripRequest(this.request);
+    let parsedResponse = this.response.body;
+    error.response = msRest.stripResponse(this.response);
+    try {
+      if (this.response.body &amp;&amp; typeof this.response.body.valueOf() === 'string') {
+        if (this.response.body === '') this.response.body = null;
+        parsedResponse = JSON.parse(this.response.body);
+      }
+    } catch (err) {
+      error.message = `Error "${err.message}" occurred while deserializing the error ` +
+        `message "${this.response.body}" for long running operation.`;
+      return error;
+    }
+
+    if (err &amp;&amp; err.message) {
+      errMsg = `Long running operation failed with error: "${err.message}".`;
+    } else {
+      errMsg = `Long running operation failed with status: "${this.status}".`;
+    }
+
+    if (parsedResponse) {
+      if (parsedResponse.error &amp;&amp; parsedResponse.error.message) {
+        errMsg = `Long running operation failed with error: "${parsedResponse.error.message}".`;
+      }
+      if (parsedResponse.error &amp;&amp; parsedResponse.error.code) {
+        errCode = parsedResponse.error.code;
+      }
+    }
+
+    error.message = errMsg;
+    if (errCode) error.code = errCode;
+    error.body = parsedResponse;
+    return error;
+  }
+}
+
+module.exports = PollingState;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Apr 05 2017 11:42:02 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="../../scripts/linenumber.js"></script>
+</body>
+</html>
