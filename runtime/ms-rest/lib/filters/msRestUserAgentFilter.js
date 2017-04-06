@@ -35,6 +35,16 @@ exports.tagRequest = function (requestOptions, userAgentInfo) {
   if(userAgentInfo.indexOf(runtimeInfo) === -1){
     userAgentInfo.unshift(runtimeInfo);
   }
+
+  var nodeSDKSignature = `Azure-SDK-For-Node`;
+  if(userAgentInfo.indexOf(nodeSDKSignature) === -1){
+    var azureRuntime = `ms-rest-azure`;
+    
+    var insertIndex = userAgentInfo.indexOf(azureRuntime);
+    // insert after azureRuntime, otherwise, insert last. 
+    insertIndex = insertIndex < 0 ? userAgentInfo.length : insertIndex + 1;
+    userAgentInfo.splice(insertIndex, 0, nodeSDKSignature);
+  }
   
   requestOptions.headers[HeaderConstants.USER_AGENT] = userAgentInfo.join(' ');
 };
