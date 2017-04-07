@@ -256,12 +256,6 @@ class WebResource {
     if (!this.headers['x-ms-client-request-id'] && !options.disableClientRequestId) {
       this.headers['x-ms-client-request-id'] = utils.generateUuid();
     }
-    //ensure content-type is set correctly
-    if (this.headers['Content-Type'] &&
-      typeof this.headers['Content-Type'].valueOf() === 'string' &&
-      !this.headers['Content-Type'].endsWith('; charset=utf-8')) {
-      this.headers['Content-Type'] += '; charset=utf-8';
-    }
 
     //default
     if (!this.headers['Content-Type']) {
