@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 'use strict';
+
 /**
  * Wrapper object for http request and response. Deserialized object is stored in 
  * the `body` property.

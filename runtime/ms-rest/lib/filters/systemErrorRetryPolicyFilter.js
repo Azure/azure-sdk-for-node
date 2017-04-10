@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+'use strict';
+
 var utils = require('../utils');
 
 /**
@@ -10,6 +12,7 @@ var utils = require('../utils');
  * @return {bool} True if the operation qualifies for a retry; false otherwise.
  */
 function shouldRetry(retryData) {
+   /*jshint validthis: true */
   var currentCount;
   if (!retryData) {
     throw new Error('retryData for the SystemErrorRetryPolicyFilter cannot be null.');
@@ -26,6 +29,7 @@ function shouldRetry(retryData) {
  * @param {object} err        The operation's error, if any.
  */
 function updateRetryData (retryData, err) {
+   /*jshint validthis: true */
   if (!retryData) {
     retryData = {
       retryCount: 0,
