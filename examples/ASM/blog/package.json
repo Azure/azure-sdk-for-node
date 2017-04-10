@@ -10,7 +10,7 @@
     "express": "^4.13.3",
     "express-ejs-layouts": "^2.0.0",
     "method-override": "^2.3.5",
-    "node-uuid": "^1.4.7",
+    "uuid": "^3.0.1",
     "stylus": "^0.53.0"
   }
 }

@@ -27,7 +27,7 @@ try {
 var TableQuery = azure.TableQuery;
 var TableBatch = azure.TableBatch;
 var entityGenerator = azure.TableUtilities.entityGenerator;
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 var tableName = 'posts';
 var partition = 'part1';

@@ -30,7 +30,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var Home = require('./home');
 var entityGen = azure.TableUtilities.entityGenerator;
 
