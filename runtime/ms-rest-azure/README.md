@@ -62,6 +62,39 @@ If you need to create an automation account for non interactive or scripting sce
    });
  });
 ```
+## Using the generic (authenticated) AzureServiceClient to make custom requests to Azure.
+This can be very useful in doing something custom or while debugging.
+
+### A simple client to make a request using the sendRequest() method.
+To find out the power of sendRequest(), please visit [this link](http://azure.github.io/azure-sdk-for-node/ms-rest/latest/ServiceClient.html#sendRequest) for detailed documentation of supported options while sending a request.
+```javascript
+const msrest = require('ms-rest');
+const msRestAzure = require('ms-rest-azure');
+const AzureServiceClient = msRestAzure.AzureServiceClient;
+
+const clientId = process.env['CLIENT_ID'];
+const secret = process.env['APPLICATION_SECRET'];
+const domain = process.env['DOMAIN']; //also known as tenantId
+const subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
+var client;
+
+//an example to list resource groups in a subscription
+msRestAzure.loginWithServicePrincipalSecret(clientId, secret, domain).then((creds) => {
+  client = new AzureServiceClient(creds);
+  let options = {
+    method: 'GET',
+    url: `https://management.azure.com/subscriptions/${subscriptionId}/resourcegroups?api-version=2016-09-01`,
+    headers: {
+      'user-agent': 'MyTestApp/1.0'
+    }
+  }
+  return client.sendRequest(options);
+}).then((result) => {
+  console.dir(result, {depth: null, colors: true});
+}).catch((err) => {
+  console.dir(err, {depth: null, colors: true});
+});
+```
 
 ## Related Projects
 

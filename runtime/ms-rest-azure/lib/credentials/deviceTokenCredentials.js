@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
 'use strict';
+
 const msrest = require('ms-rest');
 const adal = require('adal-node');
 const Constants = msrest.Constants;

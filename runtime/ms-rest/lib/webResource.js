@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
+'use strict';
+
 // Module dependencies.
 const utils = require('./utils');
 const Constants = require('./constants');
@@ -277,7 +279,7 @@ class WebResource {
       } else {
         let serializedBody = null;
         if (options.serializationMapper) {
-          serializedBody = serializer.serialize(serializationMapper, options.body, 'requestBody');
+          serializedBody = serializer.serialize(options.serializationMapper, options.body, 'requestBody');
         }
         if (options.disableJsonStringifyOnBody) {
           this.body = serializedBody || options.body;

@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
 'use strict';
+
 const Constants = require('../constants');
 const HeaderConstants = Constants.HeaderConstants;
 const DEFAULT_AUTHORIZATION_SCHEME = 'Basic';

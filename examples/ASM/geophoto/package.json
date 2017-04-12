@@ -13,7 +13,7 @@
     "method-override": "^2.3.5",
     "multer": "^1.1.0",
     "nconf": "^0.8.2",
-    "node-uuid": "^1.4.7",
+    "uuid": "^3.0.1",
     "socket.io": "^1.4.4"
   }
 }
