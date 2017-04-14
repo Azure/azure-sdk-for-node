@@ -11,7 +11,7 @@
   "tags": [ "node", "microsoft", "autorest", "azure", "clientruntime" ],
   "keywords": [ "node", "microsoft", "autorest", "azure", "clientruntime" ],
   "main": "../lib/msRestAzure.js",
-  "licenses": "MIT",
+  "license": "MIT",
   "dependencies": {
     "async": "0.2.7",
     "uuid": "2.0.1",

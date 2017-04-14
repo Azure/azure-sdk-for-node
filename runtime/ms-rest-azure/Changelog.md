@@ -1,3 +1,6 @@
+### 2.1.1 (4/14/2017)
+- Updated minimum dependency on `"ms-rest"` to `"^2.1.0"` to ensure the new fixes in ms-rest are consumed.
+
 ### 2.1.0 (4/5/2017)
 - Removed the dependency on azure-arm-resource and made subscription client local to ms-rest-azure
 - Added WithAuthResponse flavor login methods so that the user can get credentials and subscriptions when the Promise is resolved. These flavors look as follows:
