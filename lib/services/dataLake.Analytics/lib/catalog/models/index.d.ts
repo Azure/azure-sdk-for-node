@@ -689,6 +689,44 @@ export interface USqlViewList extends CatalogItemList {
 
 /**
  * @class
+ * Initializes a new instance of the USqlPackage class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL package item.
+ *
+ * @member {string} [databaseName] the name of the database containing the
+ * package.
+ *
+ * @member {string} [schemaName] the name of the schema associated with this
+ * package and database.
+ *
+ * @member {string} [name] the name of the package.
+ *
+ * @member {string} [definition] the definition of the package.
+ *
+ */
+export interface USqlPackage extends CatalogItem {
+  databaseName?: string;
+  schemaName?: string;
+  name?: string;
+  definition?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the USqlPackageList class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL package item list.
+ *
+ * @member {array} [value] the list of packages in the database and schema
+ * combination
+ *
+ */
+export interface USqlPackageList extends CatalogItemList {
+  readonly value?: USqlPackage[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTablePartition class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table partition item.
@@ -872,7 +910,7 @@ export interface USqlTableValuedFunctionList extends CatalogItemList {
  * A Data Lake Analytics catalog U-SQL assembly file information item.
  *
  * @member {string} [type] the assembly file type. Possible values include:
- * 'Assembly', 'Resource'
+ * 'Assembly', 'Resource', 'Nodeploy'
  *
  * @member {string} [originalPath] the the original path to the assembly file.
  *
@@ -1092,6 +1130,20 @@ export interface USqlTableList extends CatalogItemList {
 
 /**
  * @class
+ * Initializes a new instance of the USqlTableStatisticsList class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table statistics item list.
+ *
+ * @member {array} [value] the list of table statistics in the database, schema
+ * and table combination
+ *
+ */
+export interface USqlTableStatisticsList extends CatalogItemList {
+  readonly value?: USqlTableStatistics[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTableTypeList class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table type item list.
@@ -1106,6 +1158,20 @@ export interface USqlTableTypeList extends CatalogItemList {
 
 /**
  * @class
+ * Initializes a new instance of the USqlPackageList class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL package item list.
+ *
+ * @member {array} [value] the list of packages in the database and schema
+ * combination
+ *
+ */
+export interface USqlPackageList extends CatalogItemList {
+  readonly value?: USqlPackage[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlViewList class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL view item list.
@@ -1116,20 +1182,6 @@ export interface USqlTableTypeList extends CatalogItemList {
  */
 export interface USqlViewList extends CatalogItemList {
   readonly value?: USqlView[];
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableStatisticsList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table statistics item list.
- *
- * @member {array} [value] the list of table statistics in the database, schema
- * and table combination
- *
- */
-export interface USqlTableStatisticsList extends CatalogItemList {
-  readonly value?: USqlTableStatistics[];
 }
 
 /**
@@ -1256,6 +1308,16 @@ export interface USqlTableList extends Array<USqlTable> {
 
 /**
  * @class
+ * Initializes a new instance of the USqlTableStatisticsList class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL table statistics item list.
+ *
+ */
+export interface USqlTableStatisticsList extends Array<USqlTableStatistics> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlTableTypeList class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL table type item list.
@@ -1266,22 +1328,22 @@ export interface USqlTableTypeList extends Array<USqlTableType> {
 
 /**
  * @class
+ * Initializes a new instance of the USqlPackageList class.
+ * @constructor
+ * A Data Lake Analytics catalog U-SQL package item list.
+ *
+ */
+export interface USqlPackageList extends Array<USqlPackage> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the USqlViewList class.
  * @constructor
  * A Data Lake Analytics catalog U-SQL view item list.
  *
  */
 export interface USqlViewList extends Array<USqlView> {
-}
-
-/**
- * @class
- * Initializes a new instance of the USqlTableStatisticsList class.
- * @constructor
- * A Data Lake Analytics catalog U-SQL table statistics item list.
- *
- */
-export interface USqlTableStatisticsList extends Array<USqlTableStatistics> {
 }
 
 /**
