@@ -56,7 +56,6 @@ declare class EventHubManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  operations: operations.Operations;
   namespaces: operations.Namespaces;
   eventHubs: operations.EventHubs;
   consumerGroups: operations.ConsumerGroups;
