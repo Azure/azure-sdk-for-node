@@ -9,32 +9,6 @@ import * as msRestAzure from 'ms-rest-azure';
 import * as Models from './models';
 import InternalClient = require('./keyVaultClient');
 export { Models };
-/**
- * The service defined challenge. This contains the value of a 'www-authenticate' header. Typical fields are authorization and resource.
- */
-export interface Challenge {
-  authorization: string;
-  resource: msRest.WebResource;
-}
-
-export interface AuthorizationResponseCallback {
-  /**
-   * An error object. Must be null if the authentication was successful.
-   */
-  error: Error;
-  /**
-   * The contents of an 'authorization' header that answers the challenge. Typically a string in the format 'Bearer &lt;token&gt;'.
-   */
-  authorization: string;
-}
-
-export interface Authenticator {
-  challenge: Challenge;
-  /**
-   * A callback that must be called with the result of authorization.
-   */
-  callback: AuthorizationResponseCallback;
-}
 
 /**
  * An object that performs authentication for Key Vault.
@@ -116,7 +90,7 @@ export interface CreateKeyOptions {
  *
  */
 export class KeyVaultClient {
-  constructor(credentials: KeyVaultCredentials, options: msRestAzure.AzureServiceClientOptions);
+  constructor(credentials: KeyVaultCredentials, options?: msRestAzure.AzureServiceClientOptions);
 
   /**
    * Creates a new key, stores it, then returns key parameters and attributes to
@@ -224,7 +198,7 @@ export class KeyVaultClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createKey(vaultBaseUrl: string, keyName: string, keyType: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : Models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<Models.KeyBundle>;
+  createKey(vaultBaseUrl: string, keyName: string, keyType: string, options?: CreateKeyOptions): Promise<Models.KeyBundle>;
   createKey(vaultBaseUrl: string, keyName: string, keyType: string, callback: msRest.ServiceCallback<Models.KeyBundle>): void;
   createKey(vaultBaseUrl: string, keyName: string, keyType: string, options : CreateKeyOptions, callback: msRest.ServiceCallback<Models.KeyBundle>): void;
   
