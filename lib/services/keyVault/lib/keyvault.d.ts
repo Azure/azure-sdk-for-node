@@ -116,7 +116,7 @@ export interface CreateKeyOptions {
  *
  */
 export class KeyVaultClient {
-  constructor(credentials: KeyVaultCredentials, options: msRestAzure.AzureServiceClientOptions);
+  constructor(credentials: KeyVaultCredentials, options?: msRestAzure.AzureServiceClientOptions);
 
   /**
    * Creates a new key, stores it, then returns key parameters and attributes to
@@ -224,7 +224,7 @@ export class KeyVaultClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createKey(vaultBaseUrl: string, keyName: string, keyType: string, options?: { keySize? : number, keyOps? : string[], keyAttributes? : Models.KeyAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<Models.KeyBundle>;
+  createKey(vaultBaseUrl: string, keyName: string, keyType: string, options?: CreateKeyOptions): Promise<Models.KeyBundle>;
   createKey(vaultBaseUrl: string, keyName: string, keyType: string, callback: msRest.ServiceCallback<Models.KeyBundle>): void;
   createKey(vaultBaseUrl: string, keyName: string, keyType: string, options : CreateKeyOptions, callback: msRest.ServiceCallback<Models.KeyBundle>): void;
   
