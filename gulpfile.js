@@ -4,8 +4,6 @@
  * license information.
  */
 
-'use strict';
-
 const gulp = require('gulp');
 const args = require('yargs').argv;
 const colors = require('colors');
