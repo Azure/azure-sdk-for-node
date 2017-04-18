@@ -42,7 +42,7 @@ export interface Authenticator {
  * @param {KeyVaultCredentials~authRequest} authenticator  A callback that receives a challenge and returns an authentication token.
  */
 export class KeyVaultCredentials implements msRest.ServiceClientCredentials {
-  cosntructor(authenticator: Authenticator);
+  constructor( authenticator:  (challenge: any, callback: any) => any );
   signRequest(webResource: msRest.WebResource, callback: { (err: Error): void }): void;
 }
 
