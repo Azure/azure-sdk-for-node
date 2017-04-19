@@ -1453,6 +1453,19 @@ export interface NotificationHubs {
      * @param {string} [parameters.apnsCredential.thumbprint] The Apns certificate
      * Thumbprint
      *
+     * @param {string} [parameters.apnsCredential.keyId] A 10-character key
+     * identifier (kid) key, obtained from your developer account
+     *
+     * @param {string} [parameters.apnsCredential.appName] The name of the
+     * application
+     *
+     * @param {string} [parameters.apnsCredential.appId] The issuer (iss)
+     * registered claim key, whose value is your 10-character Team ID, obtained
+     * from your developer account
+     *
+     * @param {string} [parameters.apnsCredential.token] Provider Authentication
+     * Token, obtained through your developer account
+     *
      * @param {object} [parameters.wnsCredential] The WnsCredential of the created
      * NotificationHub
      *
@@ -1568,6 +1581,19 @@ export interface NotificationHubs {
      *
      * @param {string} [parameters.apnsCredential.thumbprint] The Apns certificate
      * Thumbprint
+     *
+     * @param {string} [parameters.apnsCredential.keyId] A 10-character key
+     * identifier (kid) key, obtained from your developer account
+     *
+     * @param {string} [parameters.apnsCredential.appName] The name of the
+     * application
+     *
+     * @param {string} [parameters.apnsCredential.appId] The issuer (iss)
+     * registered claim key, whose value is your 10-character Team ID, obtained
+     * from your developer account
+     *
+     * @param {string} [parameters.apnsCredential.token] Provider Authentication
+     * Token, obtained through your developer account
      *
      * @param {object} [parameters.wnsCredential] The WnsCredential of the created
      * NotificationHub

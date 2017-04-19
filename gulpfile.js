@@ -205,7 +205,7 @@ const mappings = {
   'notificationhubs': {
     'packageName': 'azure-arm-notificationhubs',
     'dir': 'notificationHubsManagement/lib',
-    'source': 'arm-notificationhubs/2016-03-01/swagger/notificationhubs.json'
+    'source': 'arm-notificationhubs/2017-04-01/swagger/notificationhubs.json'
   },
   'operationalinsights': {
     'packageName': 'azure-arm-operationalinsights',

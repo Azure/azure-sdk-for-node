@@ -71,6 +71,13 @@ describe('Notification Hubs Management', function () {
           packageSid : 'ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699',
           secretKey : 'w7TBprR-THIS-IS-DUMMY-KEYAzSYFhp',                                         
           windowsLiveEndpoint : 'http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf'
+        },
+        apnsCredential: {
+            token: "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgpVB15km4qskA5Ra5XvdtOwWPvaXIhVVQZdonzINh + hGgCgYIKoZIzj0DAQehRANCAASS3ek04J20BqA6WWDlD6 + xd3dJEifhW87wI0nnkfUB8LDb424TiWlzGIgnxV79hb3QHCAUNsPdBfLLF + Od8yqL",
+            appName: "Sample",
+            appId: "EF9WEB9D5K",
+            keyId: "TXRXD9P6K7",
+            endpoint: "https://api.push.apple.com:443/3/device"
         }
       };
       
@@ -178,7 +185,11 @@ describe('Notification Hubs Management', function () {
                 nhub.wnsCredential.secretKey.should.equal(createNotificationHubParameters.wnsCredential.secretKey);
                 nhub.wnsCredential.packageSid.should.equal(createNotificationHubParameters.wnsCredential.packageSid);
                 nhub.wnsCredential.windowsLiveEndpoint.should.equal(createNotificationHubParameters.wnsCredential.windowsLiveEndpoint);
-                
+                nhub.apnsCredential.keyId.should.equal(createNotificationHubParameters.apnsCredential.keyId);
+                nhub.apnsCredential.appId.should.equal(createNotificationHubParameters.apnsCredential.appId);
+                nhub.apnsCredential.appName.should.equal(createNotificationHubParameters.apnsCredential.appName);
+                nhub.apnsCredential.token.should.equal(createNotificationHubParameters.apnsCredential.token);
+                nhub.apnsCredential.endpoint.should.equal(createNotificationHubParameters.apnsCredential.endpoint);
                 //console.log("Create Notification Hub Authorization Rules : " + authorizationRuleName);
                 client.notificationHubs.createOrUpdateAuthorizationRule(groupName, namespaceName, notificationHubName, authorizationRuleName, authRuleParameter, function (err, result, request, response) {
                   should.not.exist(err);
