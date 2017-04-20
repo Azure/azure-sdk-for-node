@@ -25,12 +25,15 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [name] Resource name
  *
+ * @member {string} [location] Resource location.
+ *
  * @member {string} [type] Resource type
  *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
+  location?: string;
   readonly type?: string;
 }
 
@@ -40,13 +43,10 @@ export interface Resource extends BaseResource {
  * @constructor
  * The Resource definition.
  *
- * @member {string} location Resource location
- *
  * @member {object} [tags] Resource tags
  *
  */
 export interface TrackedResource extends Resource {
-  location: string;
   tags?: { [propertyName: string]: string };
 }
 
