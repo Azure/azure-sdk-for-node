@@ -4,11 +4,11 @@
  * license information.
  */
 
-import DataLakeStoreAccountManagementClient = require('./account/dataLakeStoreAccountManagementClient');
+import DataLakeStoreAccountClient = require('./account/dataLakeStoreAccountClient');
 import * as StoreAccountModels from './account/models';
 
-import DataLakeStoreFileSystemManagementClient = require('./filesystem/dataLakeStoreFileSystemManagementClient');
+import DataLakeStoreFileSystemClient = require('./filesystem/dataLakeStoreFileSystemClient');
 import * as FileSystemModels from './filesystem/models';
 
 
-export { DataLakeStoreAccountManagementClient, StoreAccountModels, DataLakeStoreFileSystemManagementClient, FileSystemModels };
+export { DataLakeStoreAccountClient, StoreAccountModels, DataLakeStoreFileSystemClient, FileSystemModels };
