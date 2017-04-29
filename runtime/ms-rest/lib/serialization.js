@@ -4,7 +4,8 @@
 'use strict';
 
 const moment = require('moment');
-const stream = require('stream');
+const isStream = require('is-stream');
+const isBuffer = require('is-buffer');
 const utils = require('./utils');
 
 /**
@@ -18,7 +19,7 @@ const utils = require('./utils');
  */
 exports.serializeObject = function (toSerialize) {
   if (toSerialize === null || toSerialize === undefined) return null;
-  if (Buffer.isBuffer(toSerialize)) {
+  if (isBuffer(toSerialize)) {
     toSerialize = toSerialize.toString('base64');
     return toSerialize;
   }
@@ -270,7 +271,7 @@ function serializeBasicTypes(typeName, objectName, value) {
         throw new Error(`${objectName} must be of type object.`);
       }
     }  else if (typeName.match(/^Stream$/ig) !== null) {
-      if (value instanceof stream.Stream) {
+      if (isStream(value)) {
         throw new Error(`${objectName} must be of type stream.`);
       }
     }
@@ -296,7 +297,7 @@ function serializeEnumType(objectName, allowedValues, value) {
 
 function serializeBufferType(objectName, value) {
   if (value !== null && value !== undefined) {
-    if (!Buffer.isBuffer(value)) {
+    if (!isBuffer(value)) {
       throw new Error(`${objectName} must be of type Buffer.`);
     }
     value = value.toString('base64');
@@ -306,7 +307,7 @@ function serializeBufferType(objectName, value) {
 
 function serializeBase64UrlType(objectName, value) {
   if (value !== null && value !== undefined) {
-    if (!Buffer.isBuffer(value)) {
+    if (!isBuffer(value)) {
       throw new Error(`${objectName} must be of type Buffer.`);
     }
     value = bufferToBase64Url(value);
@@ -611,7 +612,7 @@ function bufferToBase64Url(buffer) {
   if (!buffer) {
     return null;
   }
-  if (!Buffer.isBuffer(buffer)) {
+  if (!isBuffer(buffer)) {
     throw new Error(`Please provide an input of type Buffer for converting to Base64Url.`);
   }
   // Buffer to Base64.
