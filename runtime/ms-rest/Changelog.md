@@ -1,3 +1,6 @@
+### 2.2.0 (4/29/2017)
+- Minor bug fix in `WebResource.prepare()` while processing query parameters
+- Removed native references to `Buffer.isBuffer()` and stream and replaced it with packages that are browser compatible.
 ### 2.1.0 (4/14/2017)
 - Ensured `'use strict';` is applied correctly in all the files #2131
 - Modified the handling of `Content-Type` request header in `Webresource.prepare()` #2126

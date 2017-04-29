@@ -1,3 +1,6 @@
+### 2.1.2 (4/29/2017)
+- Updated minimum dependency on `"ms-rest"` to `"^2.2.0"` to ensure the new fixes in ms-rest are consumed.
+
 ### 2.1.1 (4/14/2017)
 - Updated minimum dependency on `"ms-rest"` to `"^2.1.0"` to ensure the new fixes in ms-rest are consumed.
 

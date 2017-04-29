@@ -223,16 +223,16 @@ class WebResource {
             queryParams.push(queryParamName + '=' + encodeURIComponent(queryParam));
             this.query[queryParamName] = encodeURIComponent(queryParam);
           }
-          if (typeof queryParam === 'object') {
+          else if (typeof queryParam === 'object') {
             if (!queryParam.value) {
               throw new Error(`options.queryParameters[${queryParamName}] is of type "object" but it does not contain a "value" property.`);
             }
             if (queryParam.skipUrlEncoding) {
-              queryParams.push(queryParamName + '=' + queryParameters[queryParamName]);
-              this.query[queryParamName] = queryParameters[queryParamName];
+              queryParams.push(queryParamName + '=' + queryParam.value);
+              this.query[queryParamName] = queryParam.value;
             } else {
-              queryParams.push(queryParamName + '=' + encodeURIComponent(queryParameters[queryParamName]));
-              this.query[queryParamName] = encodeURIComponent(queryParameters[queryParamName]);
+              queryParams.push(queryParamName + '=' + encodeURIComponent(queryParam.value));
+              this.query[queryParamName] = encodeURIComponent(queryParam.value);
             }
           }
         }
