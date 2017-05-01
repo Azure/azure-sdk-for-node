@@ -331,6 +331,8 @@ export interface IotHubSkuInfo {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
+ * The common properties of an Azure resource.
+ *
  * @member {string} [id] The resource identifier.
  *
  * @member {string} [name] The resource name.
@@ -555,7 +557,7 @@ export interface RegistryStatistics {
  *
  * @member {string} [jobId] The job identifier.
  *
- * @member {date} [startTimeUtc] The start time of the Job.
+ * @member {date} [startTimeUtc] The start time of the job.
  *
  * @member {date} [endTimeUtc] The time the job stopped processing.
  *
