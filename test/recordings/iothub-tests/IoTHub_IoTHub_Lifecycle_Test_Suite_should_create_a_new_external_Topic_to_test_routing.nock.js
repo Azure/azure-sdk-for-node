@@ -9,19 +9,19 @@ var result =
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1?api-version=2015-08-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1\",\"name\":\"nodetestTopic1\",\"type\":\"Microsoft.ServiceBus/Topic\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"defaultMessageTimeToLive\":\"10675199.02:48:05.4775807\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"00:10:00\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"filteringMessagesBeforePublishing\":false,\"isAnonymousAccessible\":false,\"status\":\"Active\",\"createdAt\":\"2017-05-02T01:13:53.7Z\",\"updatedAt\":\"2017-05-02T01:13:54Z\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"10675199.02:48:05.4775807\",\"enablePartitioning\":false,\"isExpress\":false,\"entityAvailabilityStatus\":\"Available\",\"enableSubscriptionPartitioning\":false,\"enableExpress\":false}}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1\",\"name\":\"nodetestTopic1\",\"type\":\"Microsoft.ServiceBus/Topic\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"defaultMessageTimeToLive\":\"10675199.02:48:05.4775807\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"00:10:00\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"filteringMessagesBeforePublishing\":false,\"isAnonymousAccessible\":false,\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:46:31.33Z\",\"updatedAt\":\"2017-05-02T19:46:31.55Z\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"10675199.02:48:05.4775807\",\"enablePartitioning\":false,\"isExpress\":false,\"entityAvailabilityStatus\":\"Available\",\"enableSubscriptionPartitioning\":false,\"enableExpress\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '862',
+  'content-length': '866',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '40a83655-60f2-42b2-ac50-160d411a5c45_M1_M1',
+  'x-ms-request-id': 'a3136dd7-1407-4f14-84c1-958ee04e31f3_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': 'a4c68c1c-393a-4043-b0f0-04d17f1218cc',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011352Z:a4c68c1c-393a-4043-b0f0-04d17f1218cc',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '842bbb27-0328-41e8-8e95-8797cd3c2ffb',
+  'x-ms-routing-request-id': 'WESTUS2:20170502T194630Z:842bbb27-0328-41e8-8e95-8797cd3c2ffb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:13:51 GMT',
+  date: 'Tue, 02 May 2017 19:46:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -29,18 +29,18 @@ var result =
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .put('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1?api-version=2015-08-01', '*')
-  .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1\",\"name\":\"nodetestTopic1\",\"type\":\"Microsoft.ServiceBus/Topic\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"defaultMessageTimeToLive\":\"10675199.02:48:05.4775807\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"00:10:00\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"filteringMessagesBeforePublishing\":false,\"isAnonymousAccessible\":false,\"status\":\"Active\",\"createdAt\":\"2017-05-02T01:13:53.7Z\",\"updatedAt\":\"2017-05-02T01:13:54Z\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"10675199.02:48:05.4775807\",\"enablePartitioning\":false,\"isExpress\":false,\"entityAvailabilityStatus\":\"Available\",\"enableSubscriptionPartitioning\":false,\"enableExpress\":false}}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"id\":\"/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/topics/nodetestTopic1\",\"name\":\"nodetestTopic1\",\"type\":\"Microsoft.ServiceBus/Topic\",\"location\":\"East US\",\"tags\":null,\"properties\":{\"defaultMessageTimeToLive\":\"10675199.02:48:05.4775807\",\"maxSizeInMegabytes\":1024,\"requiresDuplicateDetection\":false,\"duplicateDetectionHistoryTimeWindow\":\"00:10:00\",\"enableBatchedOperations\":true,\"sizeInBytes\":0,\"filteringMessagesBeforePublishing\":false,\"isAnonymousAccessible\":false,\"status\":\"Active\",\"createdAt\":\"2017-05-02T19:46:31.33Z\",\"updatedAt\":\"2017-05-02T19:46:31.55Z\",\"supportOrdering\":true,\"autoDeleteOnIdle\":\"10675199.02:48:05.4775807\",\"enablePartitioning\":false,\"isExpress\":false,\"entityAvailabilityStatus\":\"Available\",\"enableSubscriptionPartitioning\":false,\"enableExpress\":false}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '862',
+  'content-length': '866',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '40a83655-60f2-42b2-ac50-160d411a5c45_M1_M1',
+  'x-ms-request-id': 'a3136dd7-1407-4f14-84c1-958ee04e31f3_M2_M2',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': 'a4c68c1c-393a-4043-b0f0-04d17f1218cc',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011352Z:a4c68c1c-393a-4043-b0f0-04d17f1218cc',
+  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-correlation-request-id': '842bbb27-0328-41e8-8e95-8797cd3c2ffb',
+  'x-ms-routing-request-id': 'WESTUS2:20170502T194630Z:842bbb27-0328-41e8-8e95-8797cd3c2ffb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:13:51 GMT',
+  date: 'Tue, 02 May 2017 19:46:29 GMT',
   connection: 'close' });
  return result; }]];

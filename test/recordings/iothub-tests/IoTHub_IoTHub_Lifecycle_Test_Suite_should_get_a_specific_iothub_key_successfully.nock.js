@@ -8,35 +8,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/IotHubKeys/iothubowner/listkeys?api-version=2017-01-19')
-  .reply(200, "{\"keyName\":\"iothubowner\",\"primaryKey\":\"4E3k3LptWwmARQcReBM5Osx/iLUChsrDkemek5tbs8o=\",\"secondaryKey\":\"69kCIq7sVfKpRSpKAT79BcJEMcgg7zDGhn5JH9x7jYQ=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"keyName\":\"iothubowner\",\"primaryKey\":\"3LbtFAGcdRoYyXL5ienvKvA1IBixD9RWOPxKINsG8Dk=\",\"secondaryKey\":\"NMtLh9A6LdoGkNOKsvBxmm5qGa0LY9SMvFVwaeTH8lU=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '203',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': 'bdf6df36-8af1-4583-8d62-2987632fe316',
-  'x-ms-correlation-request-id': 'bdf6df36-8af1-4583-8d62-2987632fe316',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011937Z:bdf6df36-8af1-4583-8d62-2987632fe316',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'e3fc4d2a-b802-426a-91af-d2ec35f70e8e',
+  'x-ms-correlation-request-id': 'e3fc4d2a-b802-426a-91af-d2ec35f70e8e',
+  'x-ms-routing-request-id': 'WESTUS:20170502T195220Z:e3fc4d2a-b802-426a-91af-d2ec35f70e8e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:19:37 GMT',
+  date: 'Tue, 02 May 2017 19:52:20 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/IotHubKeys/iothubowner/listkeys?api-version=2017-01-19')
-  .reply(200, "{\"keyName\":\"iothubowner\",\"primaryKey\":\"4E3k3LptWwmARQcReBM5Osx/iLUChsrDkemek5tbs8o=\",\"secondaryKey\":\"69kCIq7sVfKpRSpKAT79BcJEMcgg7zDGhn5JH9x7jYQ=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"keyName\":\"iothubowner\",\"primaryKey\":\"3LbtFAGcdRoYyXL5ienvKvA1IBixD9RWOPxKINsG8Dk=\",\"secondaryKey\":\"NMtLh9A6LdoGkNOKsvBxmm5qGa0LY9SMvFVwaeTH8lU=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '203',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': 'bdf6df36-8af1-4583-8d62-2987632fe316',
-  'x-ms-correlation-request-id': 'bdf6df36-8af1-4583-8d62-2987632fe316',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011937Z:bdf6df36-8af1-4583-8d62-2987632fe316',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'e3fc4d2a-b802-426a-91af-d2ec35f70e8e',
+  'x-ms-correlation-request-id': 'e3fc4d2a-b802-426a-91af-d2ec35f70e8e',
+  'x-ms-routing-request-id': 'WESTUS:20170502T195220Z:e3fc4d2a-b802-426a-91af-d2ec35f70e8e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:19:37 GMT',
+  date: 'Tue, 02 May 2017 19:52:20 GMT',
   connection: 'close' });
  return result; }]];

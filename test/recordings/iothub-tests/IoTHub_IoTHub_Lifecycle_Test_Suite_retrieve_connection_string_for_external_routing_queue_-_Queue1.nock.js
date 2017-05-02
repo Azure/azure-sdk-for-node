@@ -8,37 +8,37 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/queues/nodetestQueue1/authorizationRules/Send/ListKeys?api-version=2015-08-01')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=y0csQzRpmFr/+fCdaLx2RCTs7Q3Gfq+VD91os+Tolj0=;EntityPath=nodetestQueue1\",\"secondaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=LlUtbL/DJVjGc1i/8H/4eiy0qPw3oVEaBufd24c8rbM=;EntityPath=nodetestQueue1\",\"primaryKey\":\"y0csQzRpmFr/+fCdaLx2RCTs7Q3Gfq+VD91os+Tolj0=\",\"secondaryKey\":\"LlUtbL/DJVjGc1i/8H/4eiy0qPw3oVEaBufd24c8rbM=\",\"keyName\":\"Send\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=8eXoVv51TlDjbtmw+ceGVemMYMViYg/m3nkkY5NLwrw=;EntityPath=nodetestQueue1\",\"secondaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=8BxlLpmV9IiPhcc4a7ZqRwVou3yBR5briB+a+RCmsE4=;EntityPath=nodetestQueue1\",\"primaryKey\":\"8eXoVv51TlDjbtmw+ceGVemMYMViYg/m3nkkY5NLwrw=\",\"secondaryKey\":\"8BxlLpmV9IiPhcc4a7ZqRwVou3yBR5briB+a+RCmsE4=\",\"keyName\":\"Send\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '528',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3cc5ce38-93a2-4907-bf41-63830e597a5a_M4_M4',
+  'x-ms-request-id': '77f2eec6-f97e-440e-893c-f34f999dee80_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': '6e7a1eb0-63ed-4c05-9e48-34e53b84e2a6',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011829Z:6e7a1eb0-63ed-4c05-9e48-34e53b84e2a6',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '65173ab9-40d6-4b46-9234-08a3325abc40',
+  'x-ms-routing-request-id': 'WESTUS:20170502T195142Z:65173ab9-40d6-4b46-9234-08a3325abc40',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:18:29 GMT',
+  date: 'Tue, 02 May 2017 19:51:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.ServiceBus/namespaces/nodetestSB-NS1/queues/nodetestQueue1/authorizationRules/Send/ListKeys?api-version=2015-08-01')
-  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=y0csQzRpmFr/+fCdaLx2RCTs7Q3Gfq+VD91os+Tolj0=;EntityPath=nodetestQueue1\",\"secondaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=LlUtbL/DJVjGc1i/8H/4eiy0qPw3oVEaBufd24c8rbM=;EntityPath=nodetestQueue1\",\"primaryKey\":\"y0csQzRpmFr/+fCdaLx2RCTs7Q3Gfq+VD91os+Tolj0=\",\"secondaryKey\":\"LlUtbL/DJVjGc1i/8H/4eiy0qPw3oVEaBufd24c8rbM=\",\"keyName\":\"Send\"}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"primaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=8eXoVv51TlDjbtmw+ceGVemMYMViYg/m3nkkY5NLwrw=;EntityPath=nodetestQueue1\",\"secondaryConnectionString\":\"Endpoint=sb://nodetestsb-ns1.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=8BxlLpmV9IiPhcc4a7ZqRwVou3yBR5briB+a+RCmsE4=;EntityPath=nodetestQueue1\",\"primaryKey\":\"8eXoVv51TlDjbtmw+ceGVemMYMViYg/m3nkkY5NLwrw=\",\"secondaryKey\":\"8BxlLpmV9IiPhcc4a7ZqRwVou3yBR5briB+a+RCmsE4=\",\"keyName\":\"Send\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '528',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '3cc5ce38-93a2-4907-bf41-63830e597a5a_M4_M4',
+  'x-ms-request-id': '77f2eec6-f97e-440e-893c-f34f999dee80_M5_M5',
   'server-sb': 'Service-Bus-Resource-Provider/SN1',
   server: 'Service-Bus-Resource-Provider/SN1',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'x-ms-correlation-request-id': '6e7a1eb0-63ed-4c05-9e48-34e53b84e2a6',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011829Z:6e7a1eb0-63ed-4c05-9e48-34e53b84e2a6',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-correlation-request-id': '65173ab9-40d6-4b46-9234-08a3325abc40',
+  'x-ms-routing-request-id': 'WESTUS:20170502T195142Z:65173ab9-40d6-4b46-9234-08a3325abc40',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:18:29 GMT',
+  date: 'Tue, 02 May 2017 19:51:42 GMT',
   connection: 'close' });
  return result; }]];

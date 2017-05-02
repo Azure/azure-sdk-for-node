@@ -9,18 +9,18 @@ var result =
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2017-01-19', '*')
-  .reply(200, "{\"nameAvailable\":true,\"reason\":\"Invalid\",\"message\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"IotHub name 'nodeTestHub' not available\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '56',
+  'content-length': '100',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': '71dbec1b-2910-49d0-954c-3fd14ac805a6',
-  'x-ms-correlation-request-id': '71dbec1b-2910-49d0-954c-3fd14ac805a6',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011227Z:71dbec1b-2910-49d0-954c-3fd14ac805a6',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-correlation-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194058Z:a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:12:27 GMT',
+  date: 'Tue, 02 May 2017 19:40:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -28,17 +28,17 @@ var result =
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2017-01-19', '*')
-  .reply(200, "{\"nameAvailable\":true,\"reason\":\"Invalid\",\"message\":null}", { 'cache-control': 'no-cache',
+  .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"IotHub name 'nodeTestHub' not available\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '56',
+  'content-length': '100',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': '71dbec1b-2910-49d0-954c-3fd14ac805a6',
-  'x-ms-correlation-request-id': '71dbec1b-2910-49d0-954c-3fd14ac805a6',
-  'x-ms-routing-request-id': 'WESTUS:20170502T011227Z:71dbec1b-2910-49d0-954c-3fd14ac805a6',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-correlation-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194058Z:a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 02 May 2017 01:12:27 GMT',
+  date: 'Tue, 02 May 2017 19:40:58 GMT',
   connection: 'close' });
  return result; }]];
