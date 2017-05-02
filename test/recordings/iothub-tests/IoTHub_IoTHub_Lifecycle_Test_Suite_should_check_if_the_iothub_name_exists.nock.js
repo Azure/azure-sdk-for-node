@@ -8,37 +8,37 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2016-02-03', '*')
-  .reply(200, "{\"nameAvailable\":true,\"reason\":\"Invalid\",\"message\":null}", { 'cache-control': 'no-cache',
+.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2017-01-19', '*')
+  .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"IotHub name 'nodeTestHub' not available\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '56',
+  'content-length': '100',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': '304bdf53-c7ba-459f-8a77-846271347a93',
-  'x-ms-correlation-request-id': '304bdf53-c7ba-459f-8a77-846271347a93',
-  'x-ms-routing-request-id': 'WESTUS2:20160920T220702Z:304bdf53-c7ba-459f-8a77-846271347a93',
+  'x-ms-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-correlation-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194058Z:a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 20 Sep 2016 22:07:01 GMT',
+  date: 'Tue, 02 May 2017 19:40:58 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2016-02-03', '*')
-  .reply(200, "{\"nameAvailable\":true,\"reason\":\"Invalid\",\"message\":null}", { 'cache-control': 'no-cache',
+.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2017-01-19', '*')
+  .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"IotHub name 'nodeTestHub' not available\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '56',
+  'content-length': '100',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': '304bdf53-c7ba-459f-8a77-846271347a93',
-  'x-ms-correlation-request-id': '304bdf53-c7ba-459f-8a77-846271347a93',
-  'x-ms-routing-request-id': 'WESTUS2:20160920T220702Z:304bdf53-c7ba-459f-8a77-846271347a93',
+  'x-ms-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-correlation-request-id': 'a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194058Z:a5b6de33-13f2-4da5-a3dc-b78635ed2b5e',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 20 Sep 2016 22:07:01 GMT',
+  date: 'Tue, 02 May 2017 19:40:58 GMT',
   connection: 'close' });
  return result; }]];

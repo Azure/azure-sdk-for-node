@@ -94,7 +94,7 @@
       "output_dir": "lib/services/intune/lib"
     },
     "iothub": {
-      "swagger": "arm-iothub/2016-02-03/swagger/iothub.json",
+      "swagger": "arm-iothub/2017-01-19/swagger/iothub.json",
       "output_dir": "lib/services/iothub/lib"
     },
     "network": {
