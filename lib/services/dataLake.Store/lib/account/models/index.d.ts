@@ -181,7 +181,7 @@ export interface KeyVaultMetaInfo {
  * Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
  * Possible values include: 'UserManaged', 'ServiceManaged'
  *
- * @member {object} [keyVaultMetaInfo] The Key vault information for connecting
+ * @member {object} [keyVaultMetaInfo] The Key Vault information for connecting
  * to user managed encryption keys.
  *
  * @member {string} [keyVaultMetaInfo.keyVaultResourceId] The resource
@@ -197,6 +197,37 @@ export interface KeyVaultMetaInfo {
 export interface EncryptionConfig {
   type: string;
   keyVaultMetaInfo?: KeyVaultMetaInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateKeyVaultMetaInfo class.
+ * @constructor
+ * The Key Vault update information used for user managed key rotation.
+ *
+ * @member {string} [encryptionKeyVersion] The version of the user managed
+ * encryption key to update through a key rotation.
+ *
+ */
+export interface UpdateKeyVaultMetaInfo {
+  encryptionKeyVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateEncryptionConfig class.
+ * @constructor
+ * The encryption configuration used to update a user managed Key Vault key.
+ *
+ * @member {object} [keyVaultMetaInfo] The updated Key Vault key to use in user
+ * managed key rotation.
+ *
+ * @member {string} [keyVaultMetaInfo.encryptionKeyVersion] The version of the
+ * user managed encryption key to update through a key rotation.
+ *
+ */
+export interface UpdateEncryptionConfig {
+  keyVaultMetaInfo?: UpdateKeyVaultMetaInfo;
 }
 
 /**
@@ -230,6 +261,17 @@ export interface EncryptionConfig {
  * firewall is disabled, this is not enforced. Possible values include:
  * 'Enabled', 'Disabled'
  *
+ * @member {object} [encryptionConfig] Used for rotation of user managed Key
+ * Vault keys. Can only be used to rotate a user managed encryption Key Vault
+ * key.
+ *
+ * @member {object} [encryptionConfig.keyVaultMetaInfo] The updated Key Vault
+ * key to use in user managed key rotation.
+ *
+ * @member {string} [encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion]
+ * The version of the user managed encryption key to update through a key
+ * rotation.
+ *
  */
 export interface DataLakeStoreAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -238,6 +280,7 @@ export interface DataLakeStoreAccountUpdateParameters {
   defaultGroup?: string;
   newTier?: string;
   firewallAllowAzureIps?: string;
+  encryptionConfig?: UpdateEncryptionConfig;
 }
 
 /**
@@ -271,7 +314,7 @@ export interface Resource extends BaseResource {
  * @constructor
  * Data Lake Store account information
  *
- * @member {object} [identity] The Key vault encryption identity, if any.
+ * @member {object} [identity] The Key Vault encryption identity, if any.
  *
  * @member {uuid} [identity.principalId] The principal identifier associated
  * with the encryption.
@@ -296,14 +339,14 @@ export interface Resource extends BaseResource {
  * encryption provisioning for this Data Lake store account. Possible values
  * include: 'Creating', 'Succeeded'
  *
- * @member {object} [encryptionConfig] The Key vault encryption configuration.
+ * @member {object} [encryptionConfig] The Key Vault encryption configuration.
  *
  * @member {string} [encryptionConfig.type] The type of encryption
  * configuration being used. Currently the only supported types are
  * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
  * 'ServiceManaged'
  *
- * @member {object} [encryptionConfig.keyVaultMetaInfo] The Key vault
+ * @member {object} [encryptionConfig.keyVaultMetaInfo] The Key Vault
  * information for connecting to user managed encryption keys.
  *
  * @member {string} [encryptionConfig.keyVaultMetaInfo.keyVaultResourceId] The
