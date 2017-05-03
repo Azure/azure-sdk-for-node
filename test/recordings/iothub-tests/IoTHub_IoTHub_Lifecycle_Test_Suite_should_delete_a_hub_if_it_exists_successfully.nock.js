@@ -4,4 +4,117 @@ exports.setEnvironment = function() {
   process.env['AZURE_SUBSCRIPTION_ID'] = 'e0b81f36-36ba-44f7-b550-7c9344a35893';
 };
 
-exports.scopes = [[]];
+exports.scopes = [[function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .delete('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub?api-version=2017-01-19')
+  .reply(202, "null", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '4',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  location: 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19',
+  'retry-after': '15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
+  'x-ms-correlation-request-id': 'cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194059Z:cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 02 May 2017 19:40:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .delete('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub?api-version=2017-01-19')
+  .reply(202, "null", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '4',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  location: 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19',
+  'retry-after': '15',
+  'azure-asyncoperation': 'https://management.azure.com/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': 'cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
+  'x-ms-correlation-request-id': 'cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194059Z:cee0a39c-42d0-44d4-8ce5-aa09a2f55d6f',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 02 May 2017 19:40:58 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '20',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-request-id': '4cec213d-903f-4a5c-b4bf-bb8c0435538c',
+  'x-ms-correlation-request-id': '4cec213d-903f-4a5c-b4bf-bb8c0435538c',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194130Z:4cec213d-903f-4a5c-b4bf-bb8c0435538c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 02 May 2017 19:41:29 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .reply(200, "{\"status\":\"Running\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '20',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14961',
+  'x-ms-request-id': '4cec213d-903f-4a5c-b4bf-bb8c0435538c',
+  'x-ms-correlation-request-id': '4cec213d-903f-4a5c-b4bf-bb8c0435538c',
+  'x-ms-routing-request-id': 'WESTUS:20170502T194130Z:4cec213d-903f-4a5c-b4bf-bb8c0435538c',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 02 May 2017 19:41:29 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('http://management.azure.com:443')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '22',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14970',
+  'x-ms-request-id': 'ad5437b1-0e41-4fb6-b6da-45fa1af5ead7',
+  'x-ms-correlation-request-id': 'ad5437b1-0e41-4fb6-b6da-45fa1af5ead7',
+  'x-ms-routing-request-id': 'WESTUS2:20170502T194200Z:ad5437b1-0e41-4fb6-b6da-45fa1af5ead7',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 02 May 2017 19:41:59 GMT',
+  connection: 'close' });
+ return result; },
+function (nock) { 
+var result = 
+nock('https://management.azure.com:443')
+  .get('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/operationResults/ZjA5NGU2MTYtY2UwNi00ZDQxLWFjZDktZWQ1ZjQ5MzkxNTE4?api-version=2017-01-19&asyncinfo')
+  .reply(200, "{\"status\":\"Succeeded\"}", { 'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'content-length': '22',
+  'content-type': 'application/json; charset=utf-8',
+  expires: '-1',
+  server: 'Microsoft-HTTPAPI/2.0',
+  'x-ms-ratelimit-remaining-subscription-reads': '14970',
+  'x-ms-request-id': 'ad5437b1-0e41-4fb6-b6da-45fa1af5ead7',
+  'x-ms-correlation-request-id': 'ad5437b1-0e41-4fb6-b6da-45fa1af5ead7',
+  'x-ms-routing-request-id': 'WESTUS2:20170502T194200Z:ad5437b1-0e41-4fb6-b6da-45fa1af5ead7',
+  'strict-transport-security': 'max-age=31536000; includeSubDomains',
+  date: 'Tue, 02 May 2017 19:41:59 GMT',
+  connection: 'close' });
+ return result; }]];
