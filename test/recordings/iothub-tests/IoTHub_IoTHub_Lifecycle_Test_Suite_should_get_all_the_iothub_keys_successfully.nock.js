@@ -7,36 +7,36 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2016-02-03')
-  .reply(200, "{\"value\":[{\"keyName\":\"iothubowner\",\"primaryKey\":\"RcxxYTEL+CHreQ8oluqE57aRBRqbG/GRf7QNndO/Jjo=\",\"secondaryKey\":\"x3pvpuCNeD/D4/hX8fum2VShvNbYJ8nk3StCv4RRpZk=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"},{\"keyName\":\"service\",\"primaryKey\":\"WVkGpFfTO9Fxsax6OFk2n7MdeCVLxBUYlMl4ntBX7ME=\",\"secondaryKey\":\"KT231VktccXaDevr0wHz0vwVEXe4usBjnsbKcKhYjjo=\",\"rights\":\"ServiceConnect\"},{\"keyName\":\"device\",\"primaryKey\":\"t++1pBZtS7IILrXRtHMI1mXjHG1cQnsTjDe58pd3LtA=\",\"secondaryKey\":\"AfH1x6rgCtGXVeSGVK1+mWU38Icx+bsFEXvGm+lYkHg=\",\"rights\":\"DeviceConnect\"},{\"keyName\":\"registryRead\",\"primaryKey\":\"gK6TZWn+JMQkmvftw9nI6NsaoJA8tca+hKH2UAk30kg=\",\"secondaryKey\":\"dIED8VUN3kFvtXpghrf1ST4a15bTCmw4pZcHaZ2QT0Y=\",\"rights\":\"RegistryRead\"},{\"keyName\":\"registryReadWrite\",\"primaryKey\":\"VKsVbRG2XoPFTcziBWtYH4EFI/4nnbMitH8cKpfpmYE=\",\"secondaryKey\":\"ieVWsfpdMSYslBz+ThGinZNQZkIzYYC3T8yhqki5dd0=\",\"rights\":\"RegistryWrite\"}]}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2017-01-19')
+  .reply(200, "{\"value\":[{\"keyName\":\"iothubowner\",\"primaryKey\":\"3LbtFAGcdRoYyXL5ienvKvA1IBixD9RWOPxKINsG8Dk=\",\"secondaryKey\":\"NMtLh9A6LdoGkNOKsvBxmm5qGa0LY9SMvFVwaeTH8lU=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"},{\"keyName\":\"service\",\"primaryKey\":\"xtfyIf0xDDnGQXrjx3DRkdmVkwl2LjM4Ri83MA7Lmck=\",\"secondaryKey\":\"1p6qCJaduQyBBesKA/Elh8ViaQ+89qa/GEcYrRyEBSs=\",\"rights\":\"ServiceConnect\"},{\"keyName\":\"device\",\"primaryKey\":\"GLxk1UQHUrR5UnVxLEk5Bz8j/pG7DPiY4G+7iHt3M3w=\",\"secondaryKey\":\"6nDaVYjDRXzxUzo11jS9mF8w+Xi7NPDYuqBasN3wLxw=\",\"rights\":\"DeviceConnect\"},{\"keyName\":\"registryRead\",\"primaryKey\":\"3SVf0EipWggJUN93q2KQUVv0U7CyNY6L/6Yt1yl2Eq8=\",\"secondaryKey\":\"kMiQWIdTY5R1hUZ0Ap6c5EVvDAxITTjcdpv9X0rfskE=\",\"rights\":\"RegistryRead\"},{\"keyName\":\"registryReadWrite\",\"primaryKey\":\"/lql+PkiYLyrWa+3Ou3uit3mgLWxVDRmL0wSFmQ+eYo=\",\"secondaryKey\":\"vEE0rYUV1IP9wKbs9q+fzCpMXrKvY2rRofI8QLyoJTM=\",\"rights\":\"RegistryWrite\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '905',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'd2985d5a-773e-42fd-afcb-5bc671eb5daa',
-  'x-ms-correlation-request-id': 'd2985d5a-773e-42fd-afcb-5bc671eb5daa',
-  'x-ms-routing-request-id': 'CENTRALUS:20160920T221329Z:d2985d5a-773e-42fd-afcb-5bc671eb5daa',
+  'x-ms-request-id': '8840dd37-dd35-4599-b6ec-13c835da1ddb',
+  'x-ms-correlation-request-id': '8840dd37-dd35-4599-b6ec-13c835da1ddb',
+  'x-ms-routing-request-id': 'WESTUS:20170502T195220Z:8840dd37-dd35-4599-b6ec-13c835da1ddb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 20 Sep 2016 22:13:29 GMT',
+  date: 'Tue, 02 May 2017 19:52:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2016-02-03')
-  .reply(200, "{\"value\":[{\"keyName\":\"iothubowner\",\"primaryKey\":\"RcxxYTEL+CHreQ8oluqE57aRBRqbG/GRf7QNndO/Jjo=\",\"secondaryKey\":\"x3pvpuCNeD/D4/hX8fum2VShvNbYJ8nk3StCv4RRpZk=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"},{\"keyName\":\"service\",\"primaryKey\":\"WVkGpFfTO9Fxsax6OFk2n7MdeCVLxBUYlMl4ntBX7ME=\",\"secondaryKey\":\"KT231VktccXaDevr0wHz0vwVEXe4usBjnsbKcKhYjjo=\",\"rights\":\"ServiceConnect\"},{\"keyName\":\"device\",\"primaryKey\":\"t++1pBZtS7IILrXRtHMI1mXjHG1cQnsTjDe58pd3LtA=\",\"secondaryKey\":\"AfH1x6rgCtGXVeSGVK1+mWU38Icx+bsFEXvGm+lYkHg=\",\"rights\":\"DeviceConnect\"},{\"keyName\":\"registryRead\",\"primaryKey\":\"gK6TZWn+JMQkmvftw9nI6NsaoJA8tca+hKH2UAk30kg=\",\"secondaryKey\":\"dIED8VUN3kFvtXpghrf1ST4a15bTCmw4pZcHaZ2QT0Y=\",\"rights\":\"RegistryRead\"},{\"keyName\":\"registryReadWrite\",\"primaryKey\":\"VKsVbRG2XoPFTcziBWtYH4EFI/4nnbMitH8cKpfpmYE=\",\"secondaryKey\":\"ieVWsfpdMSYslBz+ThGinZNQZkIzYYC3T8yhqki5dd0=\",\"rights\":\"RegistryWrite\"}]}", { 'cache-control': 'no-cache',
+  .post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/resourceGroups/nodetestrg/providers/Microsoft.Devices/IotHubs/nodeTestHub/listkeys?api-version=2017-01-19')
+  .reply(200, "{\"value\":[{\"keyName\":\"iothubowner\",\"primaryKey\":\"3LbtFAGcdRoYyXL5ienvKvA1IBixD9RWOPxKINsG8Dk=\",\"secondaryKey\":\"NMtLh9A6LdoGkNOKsvBxmm5qGa0LY9SMvFVwaeTH8lU=\",\"rights\":\"RegistryWrite, ServiceConnect, DeviceConnect\"},{\"keyName\":\"service\",\"primaryKey\":\"xtfyIf0xDDnGQXrjx3DRkdmVkwl2LjM4Ri83MA7Lmck=\",\"secondaryKey\":\"1p6qCJaduQyBBesKA/Elh8ViaQ+89qa/GEcYrRyEBSs=\",\"rights\":\"ServiceConnect\"},{\"keyName\":\"device\",\"primaryKey\":\"GLxk1UQHUrR5UnVxLEk5Bz8j/pG7DPiY4G+7iHt3M3w=\",\"secondaryKey\":\"6nDaVYjDRXzxUzo11jS9mF8w+Xi7NPDYuqBasN3wLxw=\",\"rights\":\"DeviceConnect\"},{\"keyName\":\"registryRead\",\"primaryKey\":\"3SVf0EipWggJUN93q2KQUVv0U7CyNY6L/6Yt1yl2Eq8=\",\"secondaryKey\":\"kMiQWIdTY5R1hUZ0Ap6c5EVvDAxITTjcdpv9X0rfskE=\",\"rights\":\"RegistryRead\"},{\"keyName\":\"registryReadWrite\",\"primaryKey\":\"/lql+PkiYLyrWa+3Ou3uit3mgLWxVDRmL0wSFmQ+eYo=\",\"secondaryKey\":\"vEE0rYUV1IP9wKbs9q+fzCpMXrKvY2rRofI8QLyoJTM=\",\"rights\":\"RegistryWrite\"}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '905',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-HTTPAPI/2.0',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-request-id': 'd2985d5a-773e-42fd-afcb-5bc671eb5daa',
-  'x-ms-correlation-request-id': 'd2985d5a-773e-42fd-afcb-5bc671eb5daa',
-  'x-ms-routing-request-id': 'CENTRALUS:20160920T221329Z:d2985d5a-773e-42fd-afcb-5bc671eb5daa',
+  'x-ms-request-id': '8840dd37-dd35-4599-b6ec-13c835da1ddb',
+  'x-ms-correlation-request-id': '8840dd37-dd35-4599-b6ec-13c835da1ddb',
+  'x-ms-routing-request-id': 'WESTUS:20170502T195220Z:8840dd37-dd35-4599-b6ec-13c835da1ddb',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Tue, 20 Sep 2016 22:13:29 GMT',
+  date: 'Tue, 02 May 2017 19:52:19 GMT',
   connection: 'close' });
  return result; }]];

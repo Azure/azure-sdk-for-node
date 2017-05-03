@@ -100,6 +100,231 @@ export interface EventHubProperties {
 
 /**
  * @class
+ * Initializes a new instance of the RoutingServiceBusQueueEndpointProperties class.
+ * @constructor
+ * The properties related to service bus queue endpoint types.
+ *
+ * @member {string} connectionString The connection string of the service bus
+ * queue endpoint.
+ *
+ * @member {string} name The name of the service bus queue endpoint. The name
+ * can only include alphanumeric characters, periods, underscores, hyphens and
+ * has a maximum length of 64 characters. The following names are reserved;
+ * events, operationsMonitoringEvents, fileNotifications, $default. Endpoint
+ * names must be unique across endpoint types. The name need not be the same as
+ * the actual queue name.
+ *
+ * @member {string} [subscriptionId] The subscription identifier of the service
+ * bus queue endpoint.
+ *
+ * @member {string} [resourceGroup] The name of the resource group of the
+ * service bus queue endpoint.
+ *
+ */
+export interface RoutingServiceBusQueueEndpointProperties {
+  connectionString: string;
+  name: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoutingServiceBusTopicEndpointProperties class.
+ * @constructor
+ * The properties related to service bus topic endpoint types.
+ *
+ * @member {string} connectionString The connection string of the service bus
+ * topic endpoint.
+ *
+ * @member {string} name The name of the service bus topic endpoint. The name
+ * can only include alphanumeric characters, periods, underscores, hyphens and
+ * has a maximum length of 64 characters. The following names are reserved;
+ * events, operationsMonitoringEvents, fileNotifications, $default. Endpoint
+ * names must be unique across endpoint types.  The name need not be the same
+ * as the actual topic name.
+ *
+ * @member {string} [subscriptionId] The subscription identifier of the service
+ * bus topic endpoint.
+ *
+ * @member {string} [resourceGroup] The name of the resource group of the
+ * service bus topic endpoint.
+ *
+ */
+export interface RoutingServiceBusTopicEndpointProperties {
+  connectionString: string;
+  name: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoutingEventHubProperties class.
+ * @constructor
+ * The properties related to an event hub endpoint.
+ *
+ * @member {string} connectionString The connection string of the event hub
+ * endpoint.
+ *
+ * @member {string} name The name of the event hub endpoint. The name can only
+ * include alphanumeric characters, periods, underscores, hyphens and has a
+ * maximum length of 64 characters. The following names are reserved;  events,
+ * operationsMonitoringEvents, fileNotifications, $default. Endpoint names must
+ * be unique across endpoint types.
+ *
+ * @member {string} [subscriptionId] The subscription identifier of the event
+ * hub endpoint.
+ *
+ * @member {string} [resourceGroup] The name of the resource group of the event
+ * hub endpoint.
+ *
+ */
+export interface RoutingEventHubProperties {
+  connectionString: string;
+  name: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoutingEndpoints class.
+ * @constructor
+ * The properties related to the custom endpoints to which your IoT hub routes
+ * messages based on the routing rules. A maximum of 10 custom endpoints are
+ * allowed across all endpoint types for paid hubs and only 1 custom endpoint
+ * is allowed across all endpoint types for free hubs.
+ *
+ * @member {array} [serviceBusQueues] The list of Service Bus queue endpoints
+ * that IoT hub routes the messages to, based on the routing rules.
+ *
+ * @member {array} [serviceBusTopics] The list of Service Bus topic endpoints
+ * that the IoT hub routes the messages to, based on the routing rules.
+ *
+ * @member {array} [eventHubs] The list of Event Hubs endpoints that IoT hub
+ * routes messages to, based on the routing rules. This list does not include
+ * the built-in Event Hubs endpoint.
+ *
+ */
+export interface RoutingEndpoints {
+  serviceBusQueues?: RoutingServiceBusQueueEndpointProperties[];
+  serviceBusTopics?: RoutingServiceBusTopicEndpointProperties[];
+  eventHubs?: RoutingEventHubProperties[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RouteProperties class.
+ * @constructor
+ * The properties of a routing rule that your IoT hub uses to route messages to
+ * endpoints.
+ *
+ * @member {string} name The name of the route. The name can only include
+ * alphanumeric characters, periods, underscores, hyphens, has a maximum length
+ * of 64 characters,  and must be unique.
+ *
+ * @member {string} source The source that the routing rule is to be applied
+ * to, such as DeviceMessages. Possible values include: 'DeviceMessages',
+ * 'TwinChangeEvents', 'DeviceLifecycleEvents', 'DeviceJobLifecycleEvents'
+ *
+ * @member {string} [condition] The condition that is evaluated to apply the
+ * routing rule. If no condition is provided, it evaluates to true by default.
+ * For grammar, See:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+ *
+ * @member {array} endpointNames The list of endpoints to which messages that
+ * satisfy the condition are routed. Currently only one endpoint is allowed.
+ *
+ * @member {boolean} isEnabled Used to specify whether a route is enabled.
+ *
+ */
+export interface RouteProperties {
+  name: string;
+  source: string;
+  condition?: string;
+  endpointNames: string[];
+  isEnabled: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FallbackRouteProperties class.
+ * @constructor
+ * The properties related to the fallback route based on which the IoT hub
+ * routes messages to the fallback endpoint.
+ *
+ * @member {string} [condition] The condition which is evaluated in order to
+ * apply the fallback route. If the condition is not provided it will evaluate
+ * to true by default. For grammar, See:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+ *
+ * @member {array} endpointNames The list of endpoints to which the messages
+ * that satisfy the condition are routed to. Currently only 1 endpoint is
+ * allowed.
+ *
+ * @member {boolean} isEnabled Used to specify whether the fallback route is
+ * enabled or not.
+ *
+ */
+export interface FallbackRouteProperties {
+  condition?: string;
+  endpointNames: string[];
+  isEnabled: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RoutingProperties class.
+ * @constructor
+ * The routing related properties of the IoT hub. See:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging
+ *
+ * @member {object} [endpoints]
+ *
+ * @member {array} [endpoints.serviceBusQueues] The list of Service Bus queue
+ * endpoints that IoT hub routes the messages to, based on the routing rules.
+ *
+ * @member {array} [endpoints.serviceBusTopics] The list of Service Bus topic
+ * endpoints that the IoT hub routes the messages to, based on the routing
+ * rules.
+ *
+ * @member {array} [endpoints.eventHubs] The list of Event Hubs endpoints that
+ * IoT hub routes messages to, based on the routing rules. This list does not
+ * include the built-in Event Hubs endpoint.
+ *
+ * @member {array} [routes] The list of user-provided routing rules that the
+ * IoT hub uses to route messages to built-in and custom endpoints. A maximum
+ * of 100 routing rules are allowed for paid hubs and a maximum of 5 routing
+ * rules are allowed for free hubs.
+ *
+ * @member {object} [fallbackRoute] The properties of the route that is used as
+ * a fall-back route when none of the conditions specified in the 'routes'
+ * section are met. This is an optional parameter. When this property is not
+ * set, the messages which do not meet any of the conditions specified in the
+ * 'routes' section get routed to the built-in eventhub endpoint.
+ *
+ * @member {string} [fallbackRoute.condition] The condition which is evaluated
+ * in order to apply the fallback route. If the condition is not provided it
+ * will evaluate to true by default. For grammar, See:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+ *
+ * @member {array} [fallbackRoute.endpointNames] The list of endpoints to which
+ * the messages that satisfy the condition are routed to. Currently only 1
+ * endpoint is allowed.
+ *
+ * @member {boolean} [fallbackRoute.isEnabled] Used to specify whether the
+ * fallback route is enabled or not.
+ *
+ */
+export interface RoutingProperties {
+  endpoints?: RoutingEndpoints;
+  routes?: RouteProperties[];
+  fallbackRoute?: FallbackRouteProperties;
+}
+
+/**
+ * @class
  * Initializes a new instance of the StorageEndpointProperties class.
  * @constructor
  * The properties of the Azure Storage endpoint for file upload.
@@ -129,15 +354,15 @@ export interface StorageEndpointProperties {
  * The properties of the messaging endpoints used by this IoT hub.
  *
  * @member {moment.duration} [lockDurationAsIso8601] The lock duration. See:
- * https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload.
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
  *
  * @member {moment.duration} [ttlAsIso8601] The period of time for which a
  * message is available to consume before it is expired by the IoT hub. See:
- * https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload.
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
  *
  * @member {number} [maxDeliveryCount] The number of times the IoT hub attempts
  * to deliver a message. See:
- * https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload.
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
  *
  */
 export interface MessagingEndpointProperties {
@@ -213,7 +438,8 @@ export interface CloudToDeviceProperties {
  * @constructor
  * The operations monitoring properties for the IoT hub. The possible keys to
  * the dictionary are Connections, DeviceTelemetry, C2DCommands,
- * DeviceIdentityOperations, FileUploadOperations.
+ * DeviceIdentityOperations, FileUploadOperations, Routes, D2CTwinOperations,
+ * C2DTwinOperations, TwinQueries, JobsOperations, DirectMethods.
  *
  * @member {object} [events]
  *
@@ -241,6 +467,45 @@ export interface OperationsMonitoringProperties {
  * properties. The possible keys to this dictionary are events and
  * operationsMonitoringEvents. Both of these keys have to be present in the
  * dictionary while making create or update calls for the IoT hub.
+ *
+ * @member {object} [routing]
+ *
+ * @member {object} [routing.endpoints]
+ *
+ * @member {array} [routing.endpoints.serviceBusQueues] The list of Service Bus
+ * queue endpoints that IoT hub routes the messages to, based on the routing
+ * rules.
+ *
+ * @member {array} [routing.endpoints.serviceBusTopics] The list of Service Bus
+ * topic endpoints that the IoT hub routes the messages to, based on the
+ * routing rules.
+ *
+ * @member {array} [routing.endpoints.eventHubs] The list of Event Hubs
+ * endpoints that IoT hub routes messages to, based on the routing rules. This
+ * list does not include the built-in Event Hubs endpoint.
+ *
+ * @member {array} [routing.routes] The list of user-provided routing rules
+ * that the IoT hub uses to route messages to built-in and custom endpoints. A
+ * maximum of 100 routing rules are allowed for paid hubs and a maximum of 5
+ * routing rules are allowed for free hubs.
+ *
+ * @member {object} [routing.fallbackRoute] The properties of the route that is
+ * used as a fall-back route when none of the conditions specified in the
+ * 'routes' section are met. This is an optional parameter. When this property
+ * is not set, the messages which do not meet any of the conditions specified
+ * in the 'routes' section get routed to the built-in eventhub endpoint.
+ *
+ * @member {string} [routing.fallbackRoute.condition] The condition which is
+ * evaluated in order to apply the fallback route. If the condition is not
+ * provided it will evaluate to true by default. For grammar, See:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+ *
+ * @member {array} [routing.fallbackRoute.endpointNames] The list of endpoints
+ * to which the messages that satisfy the condition are routed to. Currently
+ * only 1 endpoint is allowed.
+ *
+ * @member {boolean} [routing.fallbackRoute.isEnabled] Used to specify whether
+ * the fallback route is enabled or not.
  *
  * @member {object} [storageEndpoints] The list of Azure Storage endpoints
  * where you can upload files. Currently you can configure only one Azure
@@ -296,6 +561,7 @@ export interface IotHubProperties {
   readonly provisioningState?: string;
   readonly hostName?: string;
   eventHubEndpoints?: { [propertyName: string]: EventHubProperties };
+  routing?: RoutingProperties;
   storageEndpoints?: { [propertyName: string]: StorageEndpointProperties };
   messagingEndpoints?: { [propertyName: string]: MessagingEndpointProperties };
   enableFileUploadNotifications?: boolean;
@@ -331,6 +597,8 @@ export interface IotHubSkuInfo {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
+ * The common properties of an Azure resource.
+ *
  * @member {string} [id] The resource identifier.
  *
  * @member {string} [name] The resource name.
@@ -381,6 +649,46 @@ export interface Resource extends BaseResource {
  * endpoint properties. The possible keys to this dictionary are events and
  * operationsMonitoringEvents. Both of these keys have to be present in the
  * dictionary while making create or update calls for the IoT hub.
+ *
+ * @member {object} [properties.routing]
+ *
+ * @member {object} [properties.routing.endpoints]
+ *
+ * @member {array} [properties.routing.endpoints.serviceBusQueues] The list of
+ * Service Bus queue endpoints that IoT hub routes the messages to, based on
+ * the routing rules.
+ *
+ * @member {array} [properties.routing.endpoints.serviceBusTopics] The list of
+ * Service Bus topic endpoints that the IoT hub routes the messages to, based
+ * on the routing rules.
+ *
+ * @member {array} [properties.routing.endpoints.eventHubs] The list of Event
+ * Hubs endpoints that IoT hub routes messages to, based on the routing rules.
+ * This list does not include the built-in Event Hubs endpoint.
+ *
+ * @member {array} [properties.routing.routes] The list of user-provided
+ * routing rules that the IoT hub uses to route messages to built-in and custom
+ * endpoints. A maximum of 100 routing rules are allowed for paid hubs and a
+ * maximum of 5 routing rules are allowed for free hubs.
+ *
+ * @member {object} [properties.routing.fallbackRoute] The properties of the
+ * route that is used as a fall-back route when none of the conditions
+ * specified in the 'routes' section are met. This is an optional parameter.
+ * When this property is not set, the messages which do not meet any of the
+ * conditions specified in the 'routes' section get routed to the built-in
+ * eventhub endpoint.
+ *
+ * @member {string} [properties.routing.fallbackRoute.condition] The condition
+ * which is evaluated in order to apply the fallback route. If the condition is
+ * not provided it will evaluate to true by default. For grammar, See:
+ * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+ *
+ * @member {array} [properties.routing.fallbackRoute.endpointNames] The list of
+ * endpoints to which the messages that satisfy the condition are routed to.
+ * Currently only 1 endpoint is allowed.
+ *
+ * @member {boolean} [properties.routing.fallbackRoute.isEnabled] Used to
+ * specify whether the fallback route is enabled or not.
  *
  * @member {object} [properties.storageEndpoints] The list of Azure Storage
  * endpoints where you can upload files. Currently you can configure only one
@@ -555,7 +863,7 @@ export interface RegistryStatistics {
  *
  * @member {string} [jobId] The job identifier.
  *
- * @member {date} [startTimeUtc] The start time of the Job.
+ * @member {date} [startTimeUtc] The start time of the job.
  *
  * @member {date} [endTimeUtc] The time the job stopped processing.
  *
