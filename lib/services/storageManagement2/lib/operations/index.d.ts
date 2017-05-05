@@ -148,6 +148,9 @@ export interface StorageAccounts {
      * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
      *
+     * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
+     * only to storage service if sets to true.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -231,6 +234,9 @@ export interface StorageAccounts {
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
+     *
+     * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
+     * only to storage service if sets to true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -464,6 +470,9 @@ export interface StorageAccounts {
      * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
      *
+     * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
+     * only to storage service if sets to true.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -543,6 +552,9 @@ export interface StorageAccounts {
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
+     *
+     * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
+     * only to storage service if sets to true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1211,6 +1223,9 @@ export interface StorageAccounts {
      * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
      *
+     * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
+     * only to storage service if sets to true.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1294,6 +1309,9 @@ export interface StorageAccounts {
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
+     *
+     * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
+     * only to storage service if sets to true.
      *
      * @param {object} [options] Optional Parameters.
      *

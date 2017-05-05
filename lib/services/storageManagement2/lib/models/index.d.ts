@@ -323,6 +323,9 @@ export interface Encryption {
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
  *
+ * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
+ * storage service if sets to true. Default value: false .
+ *
  */
 export interface StorageAccountCreateParameters {
   sku: Sku;
@@ -332,6 +335,7 @@ export interface StorageAccountCreateParameters {
   customDomain?: CustomDomain;
   encryption?: Encryption;
   accessTier?: string;
+  enableHttpsTrafficOnly?: boolean;
 }
 
 /**
@@ -520,6 +524,9 @@ export interface Resource extends BaseResource {
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
  *
+ * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
+ * storage service if sets to true. Default value: false .
+ *
  */
 export interface StorageAccount extends Resource {
   readonly sku?: Sku;
@@ -536,6 +543,7 @@ export interface StorageAccount extends Resource {
   readonly secondaryEndpoints?: Endpoints;
   readonly encryption?: Encryption;
   readonly accessTier?: string;
+  enableHttpsTrafficOnly?: boolean;
 }
 
 /**
@@ -690,6 +698,9 @@ export interface StorageAccountRegenerateKeyParameters {
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
  *
+ * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
+ * storage service if sets to true. Default value: false .
+ *
  */
 export interface StorageAccountUpdateParameters {
   sku?: Sku;
@@ -697,6 +708,7 @@ export interface StorageAccountUpdateParameters {
   customDomain?: CustomDomain;
   encryption?: Encryption;
   accessTier?: string;
+  enableHttpsTrafficOnly?: boolean;
 }
 
 /**
