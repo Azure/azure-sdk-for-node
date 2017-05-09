@@ -34,7 +34,7 @@ var fs         = require('fs'),
 
 var managementClient = management.createManagementClient(management.createCertificateCloudCredentials({
   subscriptionId: '<your subscription id>',
-  pem: fs.readFileSync('<your pem file>')
+  pem: fs.readFileSync('<your pem file>').toString()
 }));
 ```
 
