@@ -609,7 +609,7 @@ export interface Profiles {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByInResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
+    listAllInResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
      * Lists all Traffic Manager profiles within a resource group.
@@ -644,9 +644,9 @@ export interface Profiles {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByInResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
-    listByInResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
-    listByInResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
+    listAllInResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProfileListResult>;
+    listAllInResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ProfileListResult>): void;
+    listAllInResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProfileListResult>): void;
 
 
     /**
@@ -792,10 +792,9 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
+     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
+     * long to cache DNS responses provided by this Traffic Manager profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -804,13 +803,27 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
+     *
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
+     * the monitor interval for endpoints in this profile. This is the interval at
+     * which Traffic Manager will check the health of each endpoint in this
+     * profile.
+     *
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
+     * monitor timeout for endpoints in this profile. This is the time that Traffic
+     * Manager allows endpoints in this profile to response to the health check.
+     *
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
+     * sets the number of consecutive failed health check that Traffic Manager
+     * tolerates before declaring an endpoint in this profile Degraded after the
+     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
@@ -863,10 +876,9 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
+     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
+     * long to cache DNS responses provided by this Traffic Manager profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -875,13 +887,27 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
+     *
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
+     * the monitor interval for endpoints in this profile. This is the interval at
+     * which Traffic Manager will check the health of each endpoint in this
+     * profile.
+     *
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
+     * monitor timeout for endpoints in this profile. This is the time that Traffic
+     * Manager allows endpoints in this profile to response to the health check.
+     *
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
+     * sets the number of consecutive failed health check that Traffic Manager
+     * tolerates before declaring an endpoint in this profile Degraded after the
+     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
@@ -1016,10 +1042,9 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
+     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
+     * long to cache DNS responses provided by this Traffic Manager profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -1028,13 +1053,27 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
+     *
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
+     * the monitor interval for endpoints in this profile. This is the interval at
+     * which Traffic Manager will check the health of each endpoint in this
+     * profile.
+     *
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
+     * monitor timeout for endpoints in this profile. This is the time that Traffic
+     * Manager allows endpoints in this profile to response to the health check.
+     *
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
+     * sets the number of consecutive failed health check that Traffic Manager
+     * tolerates before declaring an endpoint in this profile Degraded after the
+     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
@@ -1087,10 +1126,9 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
-     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
-     * DNS clients how long to cache DNS responses provided by this Traffic Manager
-     * profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
+     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
+     * long to cache DNS responses provided by this Traffic Manager profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -1099,13 +1137,27 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP or HTTPS) used to probe for endpoint health.
+     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
+     *
+     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
+     * the monitor interval for endpoints in this profile. This is the interval at
+     * which Traffic Manager will check the health of each endpoint in this
+     * profile.
+     *
+     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
+     * monitor timeout for endpoints in this profile. This is the time that Traffic
+     * Manager allows endpoints in this profile to response to the health check.
+     *
+     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
+     * sets the number of consecutive failed health check that Traffic Manager
+     * tolerates before declaring an endpoint in this profile Degraded after the
+     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
