@@ -101,7 +101,7 @@ describe('Storage Management', function () {
     it('should create an account correctly with encryption', function (done) {
       accountNameEncryption = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       createParametersEncryption = {
-        location: 'eastus2euap',
+        location: 'westus',
         sku: {
           name: accType,
         },
@@ -119,7 +119,7 @@ describe('Storage Management', function () {
     it('should create an account correctly with cool', function (done) {
       accountNameCool = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
       createParametersCool = {
-        location: 'eastasia',
+        location: 'westus',
         sku: {
           name: accType,
         },
@@ -129,6 +129,26 @@ describe('Storage Management', function () {
       client.storageAccounts.create(groupName, accountNameCool, createParametersCool, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    }); 
+
+    it('should create an account correctly with https only', function (done) {
+      accountNameCool = suite.generateId(accountPrefix, createdAccounts, suite.isMocked);
+      createParametersCool = {
+        location: 'westus',
+        sku: {
+          name: accType,
+        },
+        kind: 'Storage',
+        enableHttpsTrafficOnly: true
+      };
+      client.storageAccounts.create(groupName, accountNameCool, createParametersCool, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        var accounts = result;
+        accounts.enableHttpsTrafficOnly.should.equal(true);
         response.statusCode.should.equal(200);
         done();
       });
@@ -226,7 +246,6 @@ describe('Storage Management', function () {
         services : 'bftq',
         resourceTypes : 'sco',
         permissions : 'rdwlacup',
-        iPAddressOrRange : '0.0.0.0-255.255.255.255',
         protocols : 'https,http',
         sharedAccessStartTime : new Date().toISOString(),
         sharedAccessExpiryTime :  new Date((new Date).setHours((new Date).getHours()+1)).toISOString(),
@@ -247,7 +266,6 @@ describe('Storage Management', function () {
         canonicalizedResource : '/blob/'.concat(accountName).concat('/music'),
         resource : 'c',
         permissions : 'rdwlacup',
-        iPAddressOrRange : '0.0.0.0-255.255.255.255',
         protocols : 'https,http',
         sharedAccessStartTime : new Date().toISOString(),
         sharedAccessExpiryTime :  new Date((new Date).setHours((new Date).getHours()+1)).toISOString(),
