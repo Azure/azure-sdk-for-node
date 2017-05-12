@@ -1532,8 +1532,10 @@
       <TestFramework>
       </TestFramework>
     </Compile>
-    <Compile Include="test\services\notificationHubsManagement\namespace-tests.js" />
-    <Compile Include="test\services\notificationHubsManagement\notificationHub-tests.js" />
+    <Compile Include="test\services\notificationHubsManagement\namespace-tests.js">
+    </Compile>
+    <Compile Include="test\services\notificationHubsManagement\notificationHub-tests.js">
+    </Compile>
     <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
       <TestFramework>Mocha</TestFramework>
     </Compile>

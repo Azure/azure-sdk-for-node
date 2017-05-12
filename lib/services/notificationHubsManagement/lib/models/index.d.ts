@@ -17,6 +17,42 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the CheckNameAvailabilityRequestParameters class.
+ * @constructor
+ * Parameters supplied to the Check Name Availability for Namespace and
+ * NotificationHubs.
+ *
+ * @member {string} name Resource name
+ *
+ * @member {string} [type] Resource type
+ *
+ */
+export interface CheckNameAvailabilityRequestParameters {
+  name: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResponse class.
+ * @constructor
+ * @member {boolean} [nameAvailable] Checks if the namespace name is available
+ *
+ * @member {string} [reason] States the reason due to which the namespace name
+ * is not available
+ *
+ * @member {string} [message] The messsage returned when checking for namespace
+ * name availability
+ *
+ */
+export interface CheckNameAvailabilityResponse {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Sku class.
  * @constructor
  * The Sku description for a namespace
@@ -402,12 +438,27 @@ export interface PolicykeyResource {
  *
  * @member {string} [thumbprint] The Apns certificate Thumbprint
  *
+ * @member {string} [keyId] A 10-character key identifier (kid) key, obtained
+ * from your developer account
+ *
+ * @member {string} [appName] The name of the application
+ *
+ * @member {string} [appId] The issuer (iss) registered claim key, whose value
+ * is your 10-character Team ID, obtained from your developer account
+ *
+ * @member {string} [token] Provider Authentication Token, obtained through
+ * your developer account
+ *
  */
 export interface ApnsCredential {
   apnsCertificate?: string;
   certificateKey?: string;
   endpoint?: string;
   thumbprint?: string;
+  keyId?: string;
+  appName?: string;
+  appId?: string;
+  token?: string;
 }
 
 /**
@@ -528,6 +579,18 @@ export interface BaiduCredential {
  *
  * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
  *
+ * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
+ * key, obtained from your developer account
+ *
+ * @member {string} [apnsCredential.appName] The name of the application
+ *
+ * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * key, whose value is your 10-character Team ID, obtained from your developer
+ * account
+ *
+ * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * obtained through your developer account
+ *
  * @member {object} [wnsCredential] The WnsCredential of the created
  * NotificationHub
  *
@@ -614,6 +677,18 @@ export interface NotificationHubCreateOrUpdateParameters extends Resource {
  *
  * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
  *
+ * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
+ * key, obtained from your developer account
+ *
+ * @member {string} [apnsCredential.appName] The name of the application
+ *
+ * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * key, whose value is your 10-character Team ID, obtained from your developer
+ * account
+ *
+ * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * obtained through your developer account
+ *
  * @member {object} [wnsCredential] The WnsCredential of the created
  * NotificationHub
  *
@@ -691,6 +766,18 @@ export interface NotificationHubResource extends Resource {
  * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
  *
  * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
+ *
+ * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
+ * key, obtained from your developer account
+ *
+ * @member {string} [apnsCredential.appName] The name of the application
+ *
+ * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * key, whose value is your 10-character Team ID, obtained from your developer
+ * account
+ *
+ * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * obtained through your developer account
  *
  * @member {object} [wnsCredential] The WnsCredential of the created
  * NotificationHub

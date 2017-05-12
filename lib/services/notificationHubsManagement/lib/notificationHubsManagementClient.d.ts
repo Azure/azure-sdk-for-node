@@ -57,7 +57,9 @@ declare class NotificationHubsManagementClient {
 
   // Operation groups
   namespaces: operations.Namespaces;
+  name: operations.Name;
   notificationHubs: operations.NotificationHubs;
+  hubs: operations.Hubs;
 }
 
 export = NotificationHubsManagementClient;
