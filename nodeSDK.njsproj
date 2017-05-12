@@ -16,13 +16,6 @@
     <EnableTypeScript>true</EnableTypeScript>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <StartWebBrowser>False</StartWebBrowser>
-    <Environment>AZURE_SUBSCRIPTION_ID=2cac2a14-ba6b-46a6-bce8-2d9781a41ba2
-CLIENT_ID=0e44d72c-4a92-4fd0-a640-d165dde5da87
-DOMAIN=microsoft.com
-APPLICATION_SECRET=KsQw6kI7QKLair8uZkqFkMblh2ryIkJB98usb6xr2wU=
-NOCK_OFF=true
-</Environment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
@@ -1540,10 +1533,8 @@ NOCK_OFF=true
       </TestFramework>
     </Compile>
     <Compile Include="test\services\notificationHubsManagement\namespace-tests.js">
-      <TestFramework>Mocha</TestFramework>
     </Compile>
     <Compile Include="test\services\notificationHubsManagement\notificationHub-tests.js">
-      <TestFramework>Mocha</TestFramework>
     </Compile>
     <Compile Include="test\services\resourceManagement\authorizationClient-tests.js">
       <TestFramework>Mocha</TestFramework>
