@@ -67,33 +67,33 @@ Please feel free to provide feedback for the extension by opening github issues 
 | [Container Registry](https://azure.microsoft.com/en-us/services/container-registry/)                            | `npm install azure-arm-containerregistry`|
 | [CustomerInsights](https://docs.microsoft.com/en-us/dynamics365/customer-insights/ref/progref) | `npm install azure-arm-customerinsights`    |
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            | `npm install azure-arm-compute`|
-| [Datalake Analytics](https://azure.microsoft.com/en-us/services/data-lake-analytics/) | `azure-arm-datalake-analytics`       |
-| [Datalake Storage](https://azure.microsoft.com/en-us/services/data-lake-store/)   | `azure-arm-datalake-storage`       |
+| [Datalake Analytics](https://azure.microsoft.com/en-us/services/data-lake-analytics/) | `npm install azure-arm-datalake-analytics`       |
+| [Datalake Storage](https://azure.microsoft.com/en-us/services/data-lake-store/)   | `npm install azure-arm-datalake-storage`       |
 | [DevTest Labs](https://azure.microsoft.com/en-us/services/devtest-lab/)           | `npm install azure-arm-devtestlabs`       |
 | [DNS](http://azure.microsoft.com/en-us/services/dns/)                             | `npm install azure-arm-dns`       |
 | [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/) | `npm install azure-arm-documentdb`    |
-| [EventHubs](https://azure.microsoft.com/en-us/services/event-hubs/)               | `azure-arm-eventhub`  |
+| [EventHubs](https://azure.microsoft.com/en-us/services/event-hubs/)               | `npm install azure-arm-eventhub`  |
 | [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/)                 | `npm install azure-arm-hdinsight` |
-| [HDInsightJobs](https://msdn.microsoft.com/en-us/library/azure/mt613023.aspx)     | `azure-arm-hdinsight-jobs` |
+| [HDInsightJobs](https://msdn.microsoft.com/en-us/library/azure/mt613023.aspx)     | `npm install azure-arm-hdinsight-jobs` |
 | [Insights](https://msdn.microsoft.com/en-us/library/azure/dn931943.aspx)          | `npm install azure-arm-insights`  |
 | [IotHub](https://azure.microsoft.com/en-us/documentation/services/iot-hub/)       | `npm install azure-arm-iothub`  |
 | [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-arm-keyvault`  |
 | [Logic Apps](https://azure.microsoft.com/en-us/services/logic-apps/)           | `npm install azure-arm-logic`       |
 | [Machine Learning](https://azure.microsoft.com/en-us/services/machine-learning/)           | `npm install azure-arm-machinelearning`       |
 | [Media Services](https://azure.microsoft.com/en-us/services/media-services/)           | `npm install azure-arm-mediaservices`       |
-| [Notification Hubs](https://azure.microsoft.com/en-us/documentation/services/notification-hubs/)                 | `azure-arm-notificationhubs`  |
+| [Notification Hubs](https://azure.microsoft.com/en-us/documentation/services/notification-hubs/)                 | `npm install azure-arm-notificationhubs`  |
 | [Operational Insights](https://azure.microsoft.com/en-us/resources/videos/azure-operational-insights-overview/)           | `npm install azure-arm-operationalinsights`       |
-| [PowerBi Embedded](https://azure.microsoft.com/en-us/services/power-bi-embedded/) | `azure-arm-powerbiembedded`  |
+| [PowerBi Embedded](https://azure.microsoft.com/en-us/services/power-bi-embedded/) | `npm install azure-arm-powerbiembedded`  |
 | [RecoveryServices](https://azure.microsoft.com/en-us/services/site-recovery/)                             | `npm install azure-arm-recoveryservices`       |
 | [RecoveryServices Backup](https://azure.microsoft.com/en-us/services/site-recovery/)                             | `npm install azure-arm-recoveryservicesbackup`       |
 | [Redis Cache](https://azure.microsoft.com/en-us/services/cache/)                  | `npm install azure-arm-rediscache`   |
 | [Relay](https://docs.microsoft.com/en-us/azure/service-bus-relay/relay-what-is-it)                  | `npm install azure-arm-relay`   |
 | [Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-resource`  |
-| [Scheduler](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `azure-arm-scheduler`  |
-| [Search](https://azure.microsoft.com/en-us/services/search/)    | `azure-arm-search`  |
-| [ServerManagement](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `azure-arm-servermanagement`  |
-| [Servicebus](https://msdn.microsoft.com/en-us/library/mt639375.aspx)    | `azure-arm-sb`  |
-| [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)    | `azure-arm-servicefabric`  |
+| [Scheduler](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-scheduler`  |
+| [Search](https://azure.microsoft.com/en-us/services/search/)    | `npm install azure-arm-search`  |
+| [ServerManagement](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-servermanagement`  |
+| [Servicebus](https://msdn.microsoft.com/en-us/library/mt639375.aspx)    | `npm install azure-arm-sb`  |
+| [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)    | `npm install azure-arm-servicefabric`  |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-arm-storage`   |
 | [Storage Import-Export](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service)                     | `npm install azure-arm-storageimportexport`   |
 | [Sql](https://azure.microsoft.com/en-us/services/sql-database/)                     | `npm install azure-arm-sql`   |
