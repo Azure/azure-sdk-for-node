@@ -398,7 +398,8 @@ export interface Catalog {
      * to execute catalog operations.
      *
      * @param {string} databaseName The name of the database in which to create the
-     * credential.
+     * credential. Note: This is NOT an external database name, but the name of an
+     * existing U-SQL database that should contain the new credential object.
      *
      * @param {string} credentialName The name of the credential.
      *
@@ -435,7 +436,8 @@ export interface Catalog {
      * to execute catalog operations.
      *
      * @param {string} databaseName The name of the database in which to create the
-     * credential.
+     * credential. Note: This is NOT an external database name, but the name of an
+     * existing U-SQL database that should contain the new credential object.
      *
      * @param {string} credentialName The name of the credential.
      *
