@@ -642,6 +642,11 @@ export interface RecordSets {
      * @param {number} [options.top] The maximum number of record sets to return.
      * If not specified, returns up to 100 record sets.
      *
+     * @param {string} [options.recordsetnamesuffix] The suffix label of the record
+     * set name that has to be used to filter the record set enumerations. If this
+     * parameter is specified, Enumeration will return only records that end with
+     * .<recordSetNameSuffix>
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -651,7 +656,7 @@ export interface RecordSets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByTypeWithHttpOperationResponse(resourceGroupName: string, zoneName: string, recordType: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecordSetListResult>>;
+    listByTypeWithHttpOperationResponse(resourceGroupName: string, zoneName: string, recordType: string, options?: { top? : number, recordsetnamesuffix? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecordSetListResult>>;
 
     /**
      * Lists the record sets of a specified type in a DNS zone.
@@ -669,6 +674,11 @@ export interface RecordSets {
      * @param {number} [options.top] The maximum number of record sets to return.
      * If not specified, returns up to 100 record sets.
      *
+     * @param {string} [options.recordsetnamesuffix] The suffix label of the record
+     * set name that has to be used to filter the record set enumerations. If this
+     * parameter is specified, Enumeration will return only records that end with
+     * .<recordSetNameSuffix>
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -694,9 +704,9 @@ export interface RecordSets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByType(resourceGroupName: string, zoneName: string, recordType: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RecordSetListResult>;
+    listByType(resourceGroupName: string, zoneName: string, recordType: string, options?: { top? : number, recordsetnamesuffix? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RecordSetListResult>;
     listByType(resourceGroupName: string, zoneName: string, recordType: string, callback: ServiceCallback<models.RecordSetListResult>): void;
-    listByType(resourceGroupName: string, zoneName: string, recordType: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecordSetListResult>): void;
+    listByType(resourceGroupName: string, zoneName: string, recordType: string, options: { top? : number, recordsetnamesuffix? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecordSetListResult>): void;
 
 
     /**
@@ -711,6 +721,11 @@ export interface RecordSets {
      *
      * @param {number} [options.top] The maximum number of record sets to return.
      * If not specified, returns up to 100 record sets.
+     *
+     * @param {string} [options.recordsetnamesuffix] The suffix label of the record
+     * set name that has to be used to filter the record set enumerations. If this
+     * parameter is specified, Enumeration will return only records that end with
+     * .<recordSetNameSuffix>
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -721,7 +736,7 @@ export interface RecordSets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByDnsZoneWithHttpOperationResponse(resourceGroupName: string, zoneName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecordSetListResult>>;
+    listByDnsZoneWithHttpOperationResponse(resourceGroupName: string, zoneName: string, options?: { top? : number, recordsetnamesuffix? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecordSetListResult>>;
 
     /**
      * Lists all record sets in a DNS zone.
@@ -735,6 +750,11 @@ export interface RecordSets {
      *
      * @param {number} [options.top] The maximum number of record sets to return.
      * If not specified, returns up to 100 record sets.
+     *
+     * @param {string} [options.recordsetnamesuffix] The suffix label of the record
+     * set name that has to be used to filter the record set enumerations. If this
+     * parameter is specified, Enumeration will return only records that end with
+     * .<recordSetNameSuffix>
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -761,9 +781,9 @@ export interface RecordSets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByDnsZone(resourceGroupName: string, zoneName: string, options?: { top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RecordSetListResult>;
+    listByDnsZone(resourceGroupName: string, zoneName: string, options?: { top? : number, recordsetnamesuffix? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RecordSetListResult>;
     listByDnsZone(resourceGroupName: string, zoneName: string, callback: ServiceCallback<models.RecordSetListResult>): void;
-    listByDnsZone(resourceGroupName: string, zoneName: string, options: { top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecordSetListResult>): void;
+    listByDnsZone(resourceGroupName: string, zoneName: string, options: { top? : number, recordsetnamesuffix? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecordSetListResult>): void;
 
 
     /**
