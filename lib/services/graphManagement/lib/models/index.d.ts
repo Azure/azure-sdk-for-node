@@ -557,6 +557,11 @@ export interface PasswordProfile {
  * creating a new user account. It is used to associate an on-premises Active
  * Directory user account with their Azure AD user object.
  *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ *
  */
 export interface UserCreateParameters {
   accountEnabled: boolean;
@@ -565,6 +570,7 @@ export interface UserCreateParameters {
   userPrincipalName: string;
   mailNickname: string;
   immutableId?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -586,12 +592,18 @@ export interface UserCreateParameters {
  *
  * @member {string} [mailNickname] The mail alias for the user.
  *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ *
  */
 export interface UserUpdateParameters {
   accountEnabled?: boolean;
   displayName?: string;
   passwordProfile?: PasswordProfile;
   mailNickname?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -614,6 +626,11 @@ export interface UserUpdateParameters {
  *
  * @member {string} [mailNickname] The mail alias for the user.
  *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ *
  */
 export interface User {
   objectId?: string;
@@ -623,6 +640,7 @@ export interface User {
   signInName?: string;
   mail?: string;
   mailNickname?: string;
+  usageLocation?: string;
 }
 
 /**
