@@ -214,6 +214,11 @@ const mappings = {
     'modeler': 'CompositeSwagger',
     'clientName': 'OperationalInsightsManagementClient'
   },
+  'postgresql': {
+    'packageName': 'azure-arm-postgresql',
+    'dir': 'postgresqlManagement/lib',
+    'source': 'arm-rdbms/2017-04-30-preview/swagger/Rdms.PostgreSQL.json'
+  },
   'powerbiembedded': {
     'packageName': 'azure-arm-powerbiembedded',
     'dir': 'powerbiembedded/lib',

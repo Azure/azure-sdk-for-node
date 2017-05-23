@@ -27,3 +27,4 @@ services/iothub/iothubClient-tests.js
 services/keyVault/keyVault-key-tests.js
 services/keyVault/keyVault-secret-tests.js
 services/keyVault/keyVault-certificate-tests.js
+services/postgresqlManagement/postgreSQLManagementClient-tests.js
