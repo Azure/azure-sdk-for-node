@@ -196,6 +196,11 @@ const mappings = {
     'dir': 'mediaServicesManagement/lib',
     'source': 'arm-mediaservices/2015-10-01/swagger/media.json'
   },
+  'mysql': {
+    'packageName': 'azure-arm-mysql',
+    'dir': 'mysqlManagement/lib',
+    'source': 'arm-rdbms/2017-04-30-preview/swagger/Rdms.MySQL.json'
+  },
   'network': {
     'packageName': 'azure-arm-network',
     'dir': 'networkManagement2/lib',
