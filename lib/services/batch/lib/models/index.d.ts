@@ -35,10 +35,10 @@ export { CloudError } from 'ms-rest-azure';
  * machines for Cloud Services pools (pools created with
  * cloudServiceConfiguration), see Sizes for Cloud Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -129,7 +129,7 @@ export interface ImageReference {
  *
  * @member {string} [osType] The type of operating system (e.g. Windows or
  * Linux) compatible with the node agent SKU. Possible values include: 'linux',
- * 'windows', 'unmapped'
+ * 'windows'
  *
  */
 export interface NodeAgentSku {
@@ -556,7 +556,7 @@ export interface ApplicationSummary {
  * maximum size is 10KB.
  *
  * @member {string} [certificateFormat] The format of the certificate data.
- * Possible values include: 'pfx', 'cer', 'unmapped'
+ * Possible values include: 'pfx', 'cer'
  *
  * @member {string} [password] The password to access the certificate's private
  * key. This is required if the certificate format is pfx. It should be omitted
@@ -910,17 +910,37 @@ export interface ExitCodeRangeMapping {
  * @member {array} [exitCodeRanges] A list of task exit code ranges and how the
  * Batch service should respond to them.
  *
- * @member {object} [schedulingError] How the Batch service should respond if
- * the task fails with a scheduling error.
+ * @member {object} [preProcessingError] How the Batch service should respond
+ * if the task fails to start due to an error.
  *
- * @member {string} [schedulingError.jobAction] The default is none for exit
+ * @member {string} [preProcessingError.jobAction] The default is none for exit
  * code 0 and terminate for all other exit conditions. If the job's
  * onTaskFailed property is noAction, then specify this property returns an
  * error. The add task request fails with an invalid property value error;; if
  * you are calling the REST API directly, the HTTP status code is 400 (Bad
  * Request). Possible values include: 'none', 'disable', 'terminate'
  *
- * @member {string} [schedulingError.dependencyAction] The default is 'satisfy'
+ * @member {string} [preProcessingError.dependencyAction] The default is
+ * 'satisfy' for exit code 0, and 'block' for all other exit conditions. If the
+ * job's usesTaskDependencies property is set to false, then specifying the
+ * dependencyAction property returns an error. The add task request fails with
+ * an invalid property value error; if you are calling the REST API directly,
+ * the HTTP status code is 400  (Bad Request). Possible values include:
+ * 'satisfy', 'block'
+ *
+ * @member {object} [fileUploadError] How the Batch service should respond if a
+ * file upload error occurs. If the task exited with an exit code that was
+ * specified via exitCodes or exitCodeRanges, and then encountered a file
+ * upload error, then the action specified by the exit code takes precedence.
+ *
+ * @member {string} [fileUploadError.jobAction] The default is none for exit
+ * code 0 and terminate for all other exit conditions. If the job's
+ * onTaskFailed property is noAction, then specify this property returns an
+ * error. The add task request fails with an invalid property value error;; if
+ * you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
+ *
+ * @member {string} [fileUploadError.dependencyAction] The default is 'satisfy'
  * for exit code 0, and 'block' for all other exit conditions. If the job's
  * usesTaskDependencies property is set to false, then specifying the
  * dependencyAction property returns an error. The add task request fails with
@@ -929,12 +949,13 @@ export interface ExitCodeRangeMapping {
  * 'satisfy', 'block'
  *
  * @member {object} [default] How the Batch service should respond if the task
- * fails with an exit condition not covered by any of the other properties -
- * that is, any nonzero exit code not listed in the exitCodes or exitCodeRanges
- * collection, or a scheduling error if the schedulingError property is not
- * present. Note that the default condition does not include exit code 0. If
- * you want non-default behaviour on exit code 0, you must list it explicitly
- * using the exitCodes or exitCodeRanges collection.
+ * fails with an exit condition not covered by any of the other properties.
+ * This value is used if the task exits with any nonzero exit code not listed
+ * in the exitCodes or exitCodeRanges collection, with a pre-processing error
+ * if the preProcessingError property is not present, or with a file upload
+ * error if the fileUploadError property is not present. If you want
+ * non-default behaviour on exit code 0, you must list it explicitly using the
+ * exitCodes or exitCodeRanges collection.
  *
  * @member {string} [default.jobAction] The default is none for exit code 0 and
  * terminate for all other exit conditions. If the job's onTaskFailed property
@@ -955,7 +976,8 @@ export interface ExitCodeRangeMapping {
 export interface ExitConditions {
   exitCodes?: ExitCodeMapping[];
   exitCodeRanges?: ExitCodeRangeMapping[];
-  schedulingError?: ExitOptions;
+  preProcessingError?: ExitOptions;
+  fileUploadError?: ExitOptions;
   default?: ExitOptions;
 }
 
@@ -1017,9 +1039,40 @@ export interface UserIdentity {
 
 /**
  * @class
+ * Initializes a new instance of the LinuxUserConfiguration class.
+ * @constructor
+ * @summary Properties used to create a user account on a Linux node.
+ *
+ * @member {number} [uid] The user ID of the user account. The uid and gid
+ * properties must be specified together or not at all. If not specified the
+ * underlying operating system picks the uid.
+ *
+ * @member {number} [gid] The group ID for the user account. The uid and gid
+ * properties must be specified together or not at all. If not specified the
+ * underlying operating system picks the gid.
+ *
+ * @member {string} [sshPrivateKey] The SSH private key for the user account.
+ * The private key must not be password protected. The private key is used to
+ * automatically configure asymmetric-key based authentication for SSH between
+ * nodes in a Linux pool when the pool's enableInterNodeCommunication property
+ * is true (it is ignored if enableInterNodeCommunication is false). It does
+ * this by placing the key pair into the user's .ssh directory. If not
+ * specified, password-less SSH is not configured between nodes (no
+ * modification of the user's .ssh directory is done).
+ *
+ */
+export interface LinuxUserConfiguration {
+  uid?: number;
+  gid?: number;
+  sshPrivateKey?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UserAccount class.
  * @constructor
- * @summary Properties used to create a user on an Azure Batch node.
+ * @summary Properties used to create a user used to execute tasks on an Azure
+ * Batch node.
  *
  * @member {string} name The name of the user account.
  *
@@ -1031,17 +1084,34 @@ export interface UserIdentity {
  * Administrator permissions. The default value is nonAdmin. Possible values
  * include: 'nonAdmin', 'admin'
  *
- * @member {string} [sshPrivateKey] The SSH private key for the user account.
- * The SSH private key establishes password-less SSH between nodes in a Linux
- * pool when the pool's enableInterNodeCommunication property is true. This
- * property will be ignored in a Windows pool.
+ * @member {object} [linuxUserConfiguration] The Linux-specific user
+ * configuration for the user account. This property is ignored if specified on
+ * a Windows pool. If not specified, the user is created with the default
+ * options.
+ *
+ * @member {number} [linuxUserConfiguration.uid] The uid and gid properties
+ * must be specified together or not at all. If not specified the underlying
+ * operating system picks the uid.
+ *
+ * @member {number} [linuxUserConfiguration.gid] The uid and gid properties
+ * must be specified together or not at all. If not specified the underlying
+ * operating system picks the gid.
+ *
+ * @member {string} [linuxUserConfiguration.sshPrivateKey] The private key must
+ * not be password protected. The private key is used to automatically
+ * configure asymmetric-key based authentication for SSH between nodes in a
+ * Linux pool when the pool's enableInterNodeCommunication property is true (it
+ * is ignored if enableInterNodeCommunication is false). It does this by
+ * placing the key pair into the user's .ssh directory. If not specified,
+ * password-less SSH is not configured between nodes (no modification of the
+ * user's .ssh directory is done).
  *
  */
 export interface UserAccount {
   name: string;
   password: string;
   elevationLevel?: string;
-  sshPrivateKey?: string;
+  linuxUserConfiguration?: LinuxUserConfiguration;
 }
 
 /**
@@ -1079,6 +1149,118 @@ export interface TaskConstraints {
 
 /**
  * @class
+ * Initializes a new instance of the OutputFileBlobContainerDestination class.
+ * @constructor
+ * @summary Specifies a file upload destination within an Azure blob storage
+ * container.
+ *
+ * @member {string} [path] The destination blob or virtual directory within the
+ * Azure Storage container. If filePattern refers to a specific file (i.e.
+ * contains no wildcards), then path is the name of the blob to which to upload
+ * that file. If filePattern contains one or more wildcards (and therefore may
+ * match multiple files), then path is the name of the blob virtual directory
+ * (which is prepended to each blob name) to which to upload the file(s). If
+ * omitted, file(s) are uploaded to the root of the container with a blob name
+ * matching their file name.
+ *
+ * @member {string} containerUrl The URL of the container within Azure Blob
+ * Storage to which to upload the file(s). The URL must include a Shared Access
+ * Signature (SAS) granting write permissions to the container.
+ *
+ */
+export interface OutputFileBlobContainerDestination {
+  path?: string;
+  containerUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OutputFileDestination class.
+ * @constructor
+ * @summary The destination to which a file should be uploaded.
+ *
+ * @member {object} [container] A location in Azure blob storage to which files
+ * are uploaded.
+ *
+ * @member {string} [container.path] If filePattern refers to a specific file
+ * (i.e. contains no wildcards), then path is the name of the blob to which to
+ * upload that file. If filePattern contains one or more wildcards (and
+ * therefore may match multiple files), then path is the name of the blob
+ * virtual directory (which is prepended to each blob name) to which to upload
+ * the file(s). If omitted, file(s) are uploaded to the root of the container
+ * with a blob name matching their file name.
+ *
+ * @member {string} [container.containerUrl] The URL must include a Shared
+ * Access Signature (SAS) granting write permissions to the container.
+ *
+ */
+export interface OutputFileDestination {
+  container?: OutputFileBlobContainerDestination;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OutputFileUploadOptions class.
+ * @constructor
+ * @summary Details about an output file upload operation, including under what
+ * conditions to perform the upload.
+ *
+ * @member {string} uploadCondition The conditions under which the task output
+ * file or set of files should be uploaded. The default is taskCompletion.
+ * Possible values include: 'taskSuccess', 'taskFailure', 'taskCompletion'
+ *
+ */
+export interface OutputFileUploadOptions {
+  uploadCondition: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OutputFile class.
+ * @constructor
+ * @summary A specification for uploading files from an Azure Batch node to
+ * another location after the Batch service has finished executing the task
+ * process.
+ *
+ * @member {string} filePattern A pattern indicating which file(s) to upload.
+ * Both relative and absolute paths are supported. Relative paths are relative
+ * to the task working directory. For wildcards, use * to match any character
+ * and ** to match any directory. For example, **\*.txt matches any file ending
+ * in .txt in the task working directory or any subdirectory. Note that \ and /
+ * are treated interchangeably and mapped to the correct directory separator on
+ * the compute node operating system.
+ *
+ * @member {object} destination The destination for the output file(s).
+ *
+ * @member {object} [destination.container]
+ *
+ * @member {string} [destination.container.path] If filePattern refers to a
+ * specific file (i.e. contains no wildcards), then path is the name of the
+ * blob to which to upload that file. If filePattern contains one or more
+ * wildcards (and therefore may match multiple files), then path is the name of
+ * the blob virtual directory (which is prepended to each blob name) to which
+ * to upload the file(s). If omitted, file(s) are uploaded to the root of the
+ * container with a blob name matching their file name.
+ *
+ * @member {string} [destination.container.containerUrl] The URL must include a
+ * Shared Access Signature (SAS) granting write permissions to the container.
+ *
+ * @member {object} uploadOptions Additional options for the upload operation,
+ * including under what conditions to perform the upload.
+ *
+ * @member {string} [uploadOptions.uploadCondition] The default is
+ * taskCompletion. Possible values include: 'taskSuccess', 'taskFailure',
+ * 'taskCompletion'
+ *
+ */
+export interface OutputFile {
+  filePattern: string;
+  destination: OutputFileDestination;
+  uploadOptions: OutputFileUploadOptions;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobManagerTask class.
  * @constructor
  * @summary Specifies details of a Job Manager task.
@@ -1102,6 +1284,9 @@ export interface TaskConstraints {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
  * under this element are located in the task's working directory.
+ *
+ * @member {array} [outputFiles] A list of files that the Batch service will
+ * upload from the compute node after running the command line.
  *
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Manager task.
@@ -1194,12 +1379,16 @@ export interface TaskConstraints {
  * the only supported value for the access property is 'job', which grants
  * access to all operations related to the job which contains the task.
  *
+ * @member {boolean} [allowLowPriorityNode] Whether the Job Manager task may
+ * run on a low-priority compute node. The default value is false.
+ *
  */
 export interface JobManagerTask {
   id: string;
   displayName?: string;
   commandLine: string;
   resourceFiles?: ResourceFile[];
+  outputFiles?: OutputFile[];
   environmentSettings?: EnvironmentSetting[];
   constraints?: TaskConstraints;
   killJobOnCompletion?: boolean;
@@ -1207,6 +1396,7 @@ export interface JobManagerTask {
   runExclusive?: boolean;
   applicationPackageReferences?: ApplicationPackageReference[];
   authenticationTokenSettings?: AuthenticationTokenSettings;
+  allowLowPriorityNode?: boolean;
 }
 
 /**
@@ -1395,7 +1585,7 @@ export interface JobReleaseTask {
  * @summary Specifies how tasks should be distributed across compute nodes.
  *
  * @member {string} nodeFillType How tasks should be distributed across compute
- * nodes. Possible values include: 'spread', 'pack', 'unmapped'
+ * nodes. Possible values include: 'spread', 'pack'
  *
  */
 export interface TaskSchedulingPolicy {
@@ -1496,8 +1686,7 @@ export interface StartTask {
  * supplied to the task to query for this location. For certificates with
  * visibility of 'remoteUser', a 'certs' directory is created in the user's
  * home directory (e.g., /home/{user-name}/certs) and certificates are placed
- * in that directory. Possible values include: 'currentUser', 'localMachine',
- * 'unmapped'
+ * in that directory. Possible values include: 'currentUser', 'localMachine'
  *
  * @member {string} [storeName] The name of the certificate store on the
  * compute node into which to install the certificate. The default value is My.
@@ -1699,15 +1888,17 @@ export interface VirtualMachineConfiguration {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  */
 export interface NetworkConfiguration {
@@ -1729,10 +1920,10 @@ export interface NetworkConfiguration {
  * available sizes of virtual machines for Cloud Services pools (pools created
  * with cloudServiceConfiguration), see Sizes for Cloud Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -1839,7 +2030,7 @@ export interface NetworkConfiguration {
  * compute nodes in the pool.
  *
  * @member {string} [taskSchedulingPolicy.nodeFillType] Possible values
- * include: 'spread', 'pack', 'unmapped'
+ * include: 'spread', 'pack'
  *
  * @member {moment.duration} [resizeTimeout] The timeout for allocation of
  * compute nodes to the pool. This timeout applies only to manual scaling; it
@@ -1848,14 +2039,21 @@ export interface NetworkConfiguration {
  * minutes, the Batch service rejects the request with an error; if you are
  * calling the REST API directly, the HTTP status code is 400 (Bad Request).
  *
- * @member {number} [targetDedicated] The desired number of compute nodes in
- * the pool. This property must not be specified if enableAutoScale is set to
- * true. It is required if enableAutoScale is set to false.
+ * @member {number} [targetDedicatedNodes] The desired number of dedicated
+ * compute nodes in the pool. This property must not be specified if
+ * enableAutoScale is set to true. If enableAutoScale is set to false, then you
+ * must set either targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number} [targetLowPriorityNodes] The desired number of low-priority
+ * compute nodes in the pool. This property must not be specified if
+ * enableAutoScale is set to true. If enableAutoScale is set to false, then you
+ * must set either targetDedicatedNodes, targetLowPriorityNodes, or both.
  *
  * @member {boolean} [enableAutoScale] Whether the pool size should
- * automatically adjust over time. If false, the targetDedicated element is
- * required. If true, the autoScaleFormula element is required. The pool
- * automatically resizes according to the formula. The default value is false.
+ * automatically adjust over time. If false, at least one of
+ * targetDedicateNodes and targetLowPriorityNodes must be specified. If true,
+ * the autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  *
  * @member {string} [autoScaleFormula] The formula for the desired number of
  * compute nodes in the pool. This property must not be specified if
@@ -1886,15 +2084,17 @@ export interface NetworkConfiguration {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. This property can only be specified
- * for pools created with a cloudServiceConfiguration.
+ * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
+ * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
+ * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
+ * The specified subnet must allow communication from the Azure Batch service
+ * to be able to schedule tasks on the compute nodes. This can be verified by
+ * checking if the specified VNet has any associated Network Security Groups
+ * (NSG). If communication to the compute nodes in the specified subnet is
+ * denied by an NSG, then the Batch service will set the state of the compute
+ * nodes to unusable. For pools created via virtualMachineConfiguration the
+ * Batch account must have poolAllocationMode userSubscription in order to use
+ * a VNet.
  *
  * @member {object} [startTask] A task to run on each compute node as it joins
  * the pool. The task runs when the node is added to the pool or when the node
@@ -1965,6 +2165,12 @@ export interface NetworkConfiguration {
  * currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
  *
+ * @member {array} [applicationLicenses] The list of application licenses the
+ * Batch service will make available on each compute node in the pool. The list
+ * of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
+ *
  * @member {array} [userAccounts] The list of user accounts to be created on
  * each node in the pool.
  *
@@ -1981,7 +2187,8 @@ export interface PoolSpecification {
   maxTasksPerNode?: number;
   taskSchedulingPolicy?: TaskSchedulingPolicy;
   resizeTimeout?: moment.Duration;
-  targetDedicated?: number;
+  targetDedicatedNodes?: number;
+  targetLowPriorityNodes?: number;
   enableAutoScale?: boolean;
   autoScaleFormula?: string;
   autoScaleEvaluationInterval?: moment.Duration;
@@ -1990,6 +2197,7 @@ export interface PoolSpecification {
   startTask?: StartTask;
   certificateReferences?: CertificateReference[];
   applicationPackageReferences?: ApplicationPackageReference[];
+  applicationLicenses?: string[];
   userAccounts?: UserAccount[];
   metadata?: MetadataItem[];
 }
@@ -2013,7 +2221,7 @@ export interface PoolSpecification {
  * the last autopool created for the job schedule, and deletes that pool when
  * the job schedule completes. Batch will also delete this pool if the user
  * updates the auto pool specification in a way that changes this lifetime.
- * Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean} [keepAlive] Whether to keep an auto pool alive after its
  * lifetime expires. If false, the Batch service deletes the pool once its
@@ -2031,10 +2239,10 @@ export interface PoolSpecification {
  * virtual machines for Cloud Services pools (pools created with
  * cloudServiceConfiguration), see Sizes for Cloud Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -2140,7 +2348,7 @@ export interface PoolSpecification {
  * compute nodes in the pool.
  *
  * @member {string} [pool.taskSchedulingPolicy.nodeFillType] Possible values
- * include: 'spread', 'pack', 'unmapped'
+ * include: 'spread', 'pack'
  *
  * @member {moment.duration} [pool.resizeTimeout] This timeout applies only to
  * manual scaling; it has no effect when enableAutoScale is set to true. The
@@ -2149,14 +2357,20 @@ export interface PoolSpecification {
  * error; if you are calling the REST API directly, the HTTP status code is 400
  * (Bad Request).
  *
- * @member {number} [pool.targetDedicated] This property must not be specified
- * if enableAutoScale is set to true. It is required if enableAutoScale is set
- * to false.
+ * @member {number} [pool.targetDedicatedNodes] This property must not be
+ * specified if enableAutoScale is set to true. If enableAutoScale is set to
+ * false, then you must set either targetDedicatedNodes,
+ * targetLowPriorityNodes, or both.
  *
- * @member {boolean} [pool.enableAutoScale] If false, the targetDedicated
- * element is required. If true, the autoScaleFormula element is required. The
- * pool automatically resizes according to the formula. The default value is
- * false.
+ * @member {number} [pool.targetLowPriorityNodes] This property must not be
+ * specified if enableAutoScale is set to true. If enableAutoScale is set to
+ * false, then you must set either targetDedicatedNodes,
+ * targetLowPriorityNodes, or both.
+ *
+ * @member {boolean} [pool.enableAutoScale] If false, at least one of
+ * targetDedicateNodes and targetLowPriorityNodes must be specified. If true,
+ * the autoScaleFormula element is required. The pool automatically resizes
+ * according to the formula. The default value is false.
  *
  * @member {string} [pool.autoScaleFormula] This property must not be specified
  * if enableAutoScale is set to false. It is required if enableAutoScale is set
@@ -2183,15 +2397,17 @@ export interface PoolSpecification {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. This property can only be specified
- * for pools created with a cloudServiceConfiguration.
+ * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
+ * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
+ * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
+ * The specified subnet must allow communication from the Azure Batch service
+ * to be able to schedule tasks on the compute nodes. This can be verified by
+ * checking if the specified VNet has any associated Network Security Groups
+ * (NSG). If communication to the compute nodes in the specified subnet is
+ * denied by an NSG, then the Batch service will set the state of the compute
+ * nodes to unusable. For pools created via virtualMachineConfiguration the
+ * Batch account must have poolAllocationMode userSubscription in order to use
+ * a VNet.
  *
  * @member {object} [pool.startTask]
  *
@@ -2261,6 +2477,10 @@ export interface PoolSpecification {
  * currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
  *
+ * @member {array} [pool.applicationLicenses] The list of application licenses
+ * must be a subset of available Batch service application licenses. If a
+ * license is requested which is not supported, pool creation will fail.
+ *
  * @member {array} [pool.userAccounts]
  *
  * @member {array} [pool.metadata] The Batch service does not assign any
@@ -2309,7 +2529,7 @@ export interface AutoPoolSpecification {
  * last autopool created for the job schedule, and deletes that pool when the
  * job schedule completes. Batch will also delete this pool if the user updates
  * the auto pool specification in a way that changes this lifetime. Possible
- * values include: 'jobSchedule', 'job', 'unmapped'
+ * values include: 'jobSchedule', 'job'
  *
  * @member {boolean} [autoPoolSpecification.keepAlive] If false, the Batch
  * service deletes the pool once its lifetime (as determined by the
@@ -2328,10 +2548,10 @@ export interface AutoPoolSpecification {
  * available sizes of virtual machines for Cloud Services pools (pools created
  * with cloudServiceConfiguration), see Sizes for Cloud Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -2451,7 +2671,7 @@ export interface AutoPoolSpecification {
  *
  * @member {string}
  * [autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType] Possible
- * values include: 'spread', 'pack', 'unmapped'
+ * values include: 'spread', 'pack'
  *
  * @member {moment.duration} [autoPoolSpecification.pool.resizeTimeout] This
  * timeout applies only to manual scaling; it has no effect when
@@ -2460,14 +2680,20 @@ export interface AutoPoolSpecification {
  * service rejects the request with an error; if you are calling the REST API
  * directly, the HTTP status code is 400 (Bad Request).
  *
- * @member {number} [autoPoolSpecification.pool.targetDedicated] This property
- * must not be specified if enableAutoScale is set to true. It is required if
- * enableAutoScale is set to false.
+ * @member {number} [autoPoolSpecification.pool.targetDedicatedNodes] This
+ * property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
  *
- * @member {boolean} [autoPoolSpecification.pool.enableAutoScale] If false, the
- * targetDedicated element is required. If true, the autoScaleFormula element
- * is required. The pool automatically resizes according to the formula. The
- * default value is false.
+ * @member {number} [autoPoolSpecification.pool.targetLowPriorityNodes] This
+ * property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {boolean} [autoPoolSpecification.pool.enableAutoScale] If false, at
+ * least one of targetDedicateNodes and targetLowPriorityNodes must be
+ * specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string} [autoPoolSpecification.pool.autoScaleFormula] This property
  * must not be specified if enableAutoScale is set to false. It is required if
@@ -2495,15 +2721,17 @@ export interface AutoPoolSpecification {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object} [autoPoolSpecification.pool.startTask]
  *
@@ -2577,6 +2805,11 @@ export interface AutoPoolSpecification {
  * @member {array} [autoPoolSpecification.pool.applicationPackageReferences]
  * This property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
+ *
+ * @member {array} [autoPoolSpecification.pool.applicationLicenses] The list of
+ * application licenses must be a subset of available Batch service application
+ * licenses. If a license is requested which is not supported, pool creation
+ * will fail.
  *
  * @member {array} [autoPoolSpecification.pool.userAccounts]
  *
@@ -2664,6 +2897,8 @@ export interface PoolInformation {
  *
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
  * element are located in the task's working directory.
+ *
+ * @member {array} [jobManagerTask.outputFiles]
  *
  * @member {array} [jobManagerTask.environmentSettings]
  *
@@ -2753,6 +2988,9 @@ export interface PoolInformation {
  * operations. Currently the only supported value for the access property is
  * 'job', which grants access to all operations related to the job which
  * contains the task.
+ *
+ * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
+ * false.
  *
  * @member {object} [jobPreparationTask] The Job Preparation task for jobs
  * created under this schedule. If a job has a Job Preparation task, the Batch
@@ -2933,7 +3171,7 @@ export interface PoolInformation {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -2953,10 +3191,10 @@ export interface PoolInformation {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -3079,7 +3317,7 @@ export interface PoolInformation {
  *
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
@@ -3089,14 +3327,21 @@ export interface PoolInformation {
  * request with an error; if you are calling the REST API directly, the HTTP
  * status code is 400 (Bad Request).
  *
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes] This property
+ * must not be specified if enableAutoScale is set to true. If enableAutoScale
+ * is set to false, then you must set either targetDedicatedNodes,
+ * targetLowPriorityNodes, or both.
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
  * property must not be specified if enableAutoScale is set to false. It is
@@ -3126,15 +3371,17 @@ export interface PoolInformation {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -3214,6 +3461,11 @@ export interface PoolInformation {
  * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
  * property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
+ *
+ * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  *
@@ -3512,6 +3764,8 @@ export interface JobScheduleStatistics {
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
  * under this element are located in the task's working directory.
  *
+ * @member {array} [jobSpecification.jobManagerTask.outputFiles]
+ *
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  *
  * @member {object} [jobSpecification.jobManagerTask.constraints]
@@ -3608,6 +3862,9 @@ export interface JobScheduleStatistics {
  * operations. Currently the only supported value for the access property is
  * 'job', which grants access to all operations related to the job which
  * contains the task.
+ *
+ * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
+ * default value is false.
  *
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
@@ -3795,7 +4052,7 @@ export interface JobScheduleStatistics {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -3818,10 +4075,10 @@ export interface JobScheduleStatistics {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -3946,7 +4203,7 @@ export interface JobScheduleStatistics {
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
@@ -3957,15 +4214,22 @@ export interface JobScheduleStatistics {
  * directly, the HTTP status code is 400 (Bad Request).
  *
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
@@ -3997,15 +4261,17 @@ export interface JobScheduleStatistics {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -4089,6 +4355,12 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  * This property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
+ *
+ * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -4298,6 +4570,8 @@ export interface CloudJobSchedule {
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
  * under this element are located in the task's working directory.
  *
+ * @member {array} [jobSpecification.jobManagerTask.outputFiles]
+ *
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  *
  * @member {object} [jobSpecification.jobManagerTask.constraints]
@@ -4394,6 +4668,9 @@ export interface CloudJobSchedule {
  * operations. Currently the only supported value for the access property is
  * 'job', which grants access to all operations related to the job which
  * contains the task.
+ *
+ * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
+ * default value is false.
  *
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
@@ -4581,7 +4858,7 @@ export interface CloudJobSchedule {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -4604,10 +4881,10 @@ export interface CloudJobSchedule {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -4732,7 +5009,7 @@ export interface CloudJobSchedule {
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
@@ -4743,15 +5020,22 @@ export interface CloudJobSchedule {
  * directly, the HTTP status code is 400 (Bad Request).
  *
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
@@ -4783,15 +5067,17 @@ export interface CloudJobSchedule {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -4877,6 +5163,12 @@ export interface CloudJobSchedule {
  * virtualMachineConfiguration (IaaS) property.
  *
  * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
+ *
+ * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
  *
  * @member {array}
@@ -4923,7 +5215,7 @@ export interface CloudJobScheduleListResult {
  * @summary An error encountered by the Batch service when scheduling a job.
  *
  * @member {string} category The category of the job scheduling error. Possible
- * values include: 'userError', 'serverError', 'unmapped'
+ * values include: 'userError', 'serverError'
  *
  * @member {string} [code] An identifier for the job scheduling error. Codes
  * are invariant and are intended to be consumed programmatically.
@@ -4968,7 +5260,7 @@ export interface JobSchedulingError {
  * starting the job.
  *
  * @member {string} [schedulingError.category] Possible values include:
- * 'userError', 'serverError', 'unmapped'
+ * 'userError', 'serverError'
  *
  * @member {string} [schedulingError.code]
  *
@@ -5084,6 +5376,8 @@ export interface JobExecutionInformation {
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
  * element are located in the task's working directory.
  *
+ * @member {array} [jobManagerTask.outputFiles]
+ *
  * @member {array} [jobManagerTask.environmentSettings]
  *
  * @member {object} [jobManagerTask.constraints]
@@ -5172,6 +5466,9 @@ export interface JobExecutionInformation {
  * operations. Currently the only supported value for the access property is
  * 'job', which grants access to all operations related to the job which
  * contains the task.
+ *
+ * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
+ * false.
  *
  * @member {object} [jobPreparationTask] The Job Preparation task. The Job
  * Preparation task is a special task run on each node before any other task of
@@ -5343,7 +5640,7 @@ export interface JobExecutionInformation {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -5363,10 +5660,10 @@ export interface JobExecutionInformation {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -5489,7 +5786,7 @@ export interface JobExecutionInformation {
  *
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
@@ -5499,14 +5796,21 @@ export interface JobExecutionInformation {
  * request with an error; if you are calling the REST API directly, the HTTP
  * status code is 400 (Bad Request).
  *
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes] This property
+ * must not be specified if enableAutoScale is set to true. If enableAutoScale
+ * is set to false, then you must set either targetDedicatedNodes,
+ * targetLowPriorityNodes, or both.
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
  * property must not be specified if enableAutoScale is set to false. It is
@@ -5536,15 +5840,17 @@ export interface JobExecutionInformation {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -5625,6 +5931,11 @@ export interface JobExecutionInformation {
  * property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
  *
+ * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
+ *
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
@@ -5671,7 +5982,7 @@ export interface JobExecutionInformation {
  * there was no error starting the job.
  *
  * @member {string} [executionInfo.schedulingError.category] Possible values
- * include: 'userError', 'serverError', 'unmapped'
+ * include: 'userError', 'serverError'
  *
  * @member {string} [executionInfo.schedulingError.code]
  *
@@ -5821,6 +6132,8 @@ export interface CloudJob {
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
  * element are located in the task's working directory.
  *
+ * @member {array} [jobManagerTask.outputFiles]
+ *
  * @member {array} [jobManagerTask.environmentSettings]
  *
  * @member {object} [jobManagerTask.constraints]
@@ -5909,6 +6222,9 @@ export interface CloudJob {
  * operations. Currently the only supported value for the access property is
  * 'job', which grants access to all operations related to the job which
  * contains the task.
+ *
+ * @member {boolean} [jobManagerTask.allowLowPriorityNode] The default value is
+ * false.
  *
  * @member {object} [jobPreparationTask] The Job Preparation task. If a job has
  * a Job Preparation task, the Batch service will run the Job Preparation task
@@ -6086,7 +6402,7 @@ export interface CloudJob {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -6106,10 +6422,10 @@ export interface CloudJob {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -6232,7 +6548,7 @@ export interface CloudJob {
  *
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
@@ -6242,14 +6558,21 @@ export interface CloudJob {
  * request with an error; if you are calling the REST API directly, the HTTP
  * status code is 400 (Bad Request).
  *
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes] This property
+ * must not be specified if enableAutoScale is set to true. If enableAutoScale
+ * is set to false, then you must set either targetDedicatedNodes,
+ * targetLowPriorityNodes, or both.
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
  * property must not be specified if enableAutoScale is set to false. It is
@@ -6279,15 +6602,17 @@ export interface CloudJob {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -6368,6 +6693,11 @@ export interface CloudJob {
  * property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
  *
+ * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
+ *
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.metadata] The Batch
@@ -6437,24 +6767,23 @@ export interface CloudJobListResult {
 
 /**
  * @class
- * Initializes a new instance of the TaskSchedulingError class.
+ * Initializes a new instance of the TaskFailureInformation class.
  * @constructor
- * @summary Information about an error when scheduling a task.
+ * @summary Information about a task failure.
  *
- * @member {string} category The category of the task scheduling error.
- * Possible values include: 'userError', 'serverError', 'unmapped'
+ * @member {string} category The category of the task error. Possible values
+ * include: 'userError', 'serverError'
  *
- * @member {string} [code] An identifier for the task scheduling error. Codes
- * are invariant and are intended to be consumed programmatically.
+ * @member {string} [code] An identifier for the task error. Codes are
+ * invariant and are intended to be consumed programmatically.
  *
- * @member {string} [message] A message describing the task scheduling error,
- * intended to be suitable for display in a user interface.
+ * @member {string} [message] A message describing the task error, intended to
+ * be suitable for display in a user interface.
  *
- * @member {array} [details] The list of additional error details related to
- * the scheduling error.
+ * @member {array} [details] A list of additional details related to the error.
  *
  */
-export interface TaskSchedulingError {
+export interface TaskFailureInformation {
   category: string;
   code?: string;
   message?: string;
@@ -6496,21 +6825,23 @@ export interface TaskSchedulingError {
  * exit code may also be generated by the compute node operating system, such
  * as when a process is forcibly terminated.
  *
- * @member {object} [schedulingError] The error encountered by the Batch
- * service when starting the task.
+ * @member {object} [failureInfo] Information describing the task failure, if
+ * any. This property is set only if the task is in the completed state and
+ * encountered a failure.
  *
- * @member {string} [schedulingError.category] Possible values include:
- * 'userError', 'serverError', 'unmapped'
+ * @member {string} [failureInfo.category] Possible values include:
+ * 'userError', 'serverError'
  *
- * @member {string} [schedulingError.code]
+ * @member {string} [failureInfo.code]
  *
- * @member {string} [schedulingError.message]
+ * @member {string} [failureInfo.message]
  *
- * @member {array} [schedulingError.details]
+ * @member {array} [failureInfo.details]
  *
  * @member {number} retryCount The number of times the task has been retried by
- * the Batch service. Every time the task exits with a non-zero exit code, it
- * is deemed a task failure. The Batch service will retry the task up to the
+ * the Batch service. Task application failures (non-zero exit code) are
+ * retried, pre-processing errors (the task could not be run) and file upload
+ * errors are not retried. The Batch service will retry the task up to the
  * limit specified by the constraints.
  *
  * @member {date} [lastRetryTime] The most recent time at which a retry of the
@@ -6520,6 +6851,10 @@ export interface TaskSchedulingError {
  * reasons other than retry; for example, if the compute node was rebooted
  * during a retry, then the startTime is updated but the lastRetryTime is not.
  *
+ * @member {string} [result] The result of the task execution. If the value is
+ * 'failed', then the details of the failure can be found in the failureInfo
+ * property. Possible values include: 'success', 'failure'
+ *
  */
 export interface JobPreparationTaskExecutionInformation {
   startTime: Date;
@@ -6528,9 +6863,10 @@ export interface JobPreparationTaskExecutionInformation {
   taskRootDirectory?: string;
   taskRootDirectoryUrl?: string;
   exitCode?: number;
-  schedulingError?: TaskSchedulingError;
+  failureInfo?: TaskFailureInformation;
   retryCount: number;
   lastRetryTime?: Date;
+  result?: string;
 }
 
 /**
@@ -6568,17 +6904,22 @@ export interface JobPreparationTaskExecutionInformation {
  * exit code may also be generated by the compute node operating system, such
  * as when a process is forcibly terminated.
  *
- * @member {object} [schedulingError] The error encountered by the Batch
- * service when starting the task.
+ * @member {object} [failureInfo] Information describing the task failure, if
+ * any. This property is set only if the task is in the completed state and
+ * encountered a failure.
  *
- * @member {string} [schedulingError.category] Possible values include:
- * 'userError', 'serverError', 'unmapped'
+ * @member {string} [failureInfo.category] Possible values include:
+ * 'userError', 'serverError'
  *
- * @member {string} [schedulingError.code]
+ * @member {string} [failureInfo.code]
  *
- * @member {string} [schedulingError.message]
+ * @member {string} [failureInfo.message]
  *
- * @member {array} [schedulingError.details]
+ * @member {array} [failureInfo.details]
+ *
+ * @member {string} [result] The result of the task execution. If the value is
+ * 'failed', then the details of the failure can be found in the failureInfo
+ * property. Possible values include: 'success', 'failure'
  *
  */
 export interface JobReleaseTaskExecutionInformation {
@@ -6588,7 +6929,8 @@ export interface JobReleaseTaskExecutionInformation {
   taskRootDirectory?: string;
   taskRootDirectoryUrl?: string;
   exitCode?: number;
-  schedulingError?: TaskSchedulingError;
+  failureInfo?: TaskFailureInformation;
+  result?: string;
 }
 
 /**
@@ -6635,16 +6977,17 @@ export interface JobReleaseTaskExecutionInformation {
  * compute node operating system, such as when a process is forcibly
  * terminated.
  *
- * @member {object} [jobPreparationTaskExecutionInfo.schedulingError]
+ * @member {object} [jobPreparationTaskExecutionInfo.failureInfo] This property
+ * is set only if the task is in the completed state and encountered a failure.
  *
- * @member {string} [jobPreparationTaskExecutionInfo.schedulingError.category]
- * Possible values include: 'userError', 'serverError', 'unmapped'
+ * @member {string} [jobPreparationTaskExecutionInfo.failureInfo.category]
+ * Possible values include: 'userError', 'serverError'
  *
- * @member {string} [jobPreparationTaskExecutionInfo.schedulingError.code]
+ * @member {string} [jobPreparationTaskExecutionInfo.failureInfo.code]
  *
- * @member {string} [jobPreparationTaskExecutionInfo.schedulingError.message]
+ * @member {string} [jobPreparationTaskExecutionInfo.failureInfo.message]
  *
- * @member {array} [jobPreparationTaskExecutionInfo.schedulingError.details]
+ * @member {array} [jobPreparationTaskExecutionInfo.failureInfo.details]
  *
  * @member {number} [jobPreparationTaskExecutionInfo.retryCount]
  *
@@ -6654,6 +6997,10 @@ export interface JobReleaseTaskExecutionInformation {
  * the task has been restarted for reasons other than retry; for example, if
  * the compute node was rebooted during a retry, then the startTime is updated
  * but the lastRetryTime is not.
+ *
+ * @member {string} [jobPreparationTaskExecutionInfo.result] If the value is
+ * 'failed', then the details of the failure can be found in the failureInfo
+ * property. Possible values include: 'success', 'failure'
  *
  * @member {object} [jobReleaseTaskExecutionInfo] Information about the
  * execution status of the Job Release task on this compute node. This property
@@ -6682,16 +7029,21 @@ export interface JobReleaseTaskExecutionInformation {
  * compute node operating system, such as when a process is forcibly
  * terminated.
  *
- * @member {object} [jobReleaseTaskExecutionInfo.schedulingError]
+ * @member {object} [jobReleaseTaskExecutionInfo.failureInfo] This property is
+ * set only if the task is in the completed state and encountered a failure.
  *
- * @member {string} [jobReleaseTaskExecutionInfo.schedulingError.category]
- * Possible values include: 'userError', 'serverError', 'unmapped'
+ * @member {string} [jobReleaseTaskExecutionInfo.failureInfo.category] Possible
+ * values include: 'userError', 'serverError'
  *
- * @member {string} [jobReleaseTaskExecutionInfo.schedulingError.code]
+ * @member {string} [jobReleaseTaskExecutionInfo.failureInfo.code]
  *
- * @member {string} [jobReleaseTaskExecutionInfo.schedulingError.message]
+ * @member {string} [jobReleaseTaskExecutionInfo.failureInfo.message]
  *
- * @member {array} [jobReleaseTaskExecutionInfo.schedulingError.details]
+ * @member {array} [jobReleaseTaskExecutionInfo.failureInfo.details]
+ *
+ * @member {string} [jobReleaseTaskExecutionInfo.result] If the value is
+ * 'failed', then the details of the failure can be found in the failureInfo
+ * property. Possible values include: 'success', 'failure'
  *
  */
 export interface JobPreparationAndReleaseTaskExecutionInformation {
@@ -6819,9 +7171,9 @@ export interface ResizeError {
  * the meantime.
  *
  * @member {date} [lastModified] The last modified time of the pool. This is
- * the last time at which the pool level data, such as the targetDedicated or
- * enableAutoscale settings, changed. It does not factor in node-level changes
- * such as a compute node changing state.
+ * the last time at which the pool level data, such as the targetDedicatedNodes
+ * or enableAutoscale settings, changed. It does not factor in node-level
+ * changes such as a compute node changing state.
  *
  * @member {date} [creationTime] The creation time of the pool.
  *
@@ -6856,10 +7208,10 @@ export interface ResizeError {
  * available sizes of virtual machines for Cloud Services pools (pools created
  * with cloudServiceConfiguration), see Sizes for Cloud Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -6955,27 +7307,29 @@ export interface ResizeError {
  * operation. (The initial sizing when the pool is created counts as a resize.)
  * The default value is 15 minutes.
  *
- * @member {object} [resizeError] Details of any error encountered while
- * performing the last resize on the pool. This property is set only if an
- * error occurred during the last pool resize, and only when the pool
- * allocationState is Steady.
+ * @member {array} [resizeErrors] A list of errors encountered while performing
+ * the last resize on the pool. This property is set only if one or more errors
+ * occurred during the last pool resize, and only when the pool allocationState
+ * is Steady.
  *
- * @member {string} [resizeError.code]
+ * @member {number} [currentDedicatedNodes] The number of dedicated compute
+ * nodes currently in the pool.
  *
- * @member {string} [resizeError.message]
+ * @member {number} [currentLowPriorityNodes] The number of low-priority
+ * compute nodes currently in the pool. Low-priority compute nodes which have
+ * been preempted are included in this count.
  *
- * @member {array} [resizeError.values]
+ * @member {number} [targetDedicatedNodes] The desired number of dedicated
+ * compute nodes in the pool.
  *
- * @member {number} [currentDedicated] The number of compute nodes currently in
- * the pool.
- *
- * @member {number} [targetDedicated] The desired number of compute nodes in
- * the pool. This property is not set if enableAutoScale is true. It is
- * required if enableAutoScale is false.
+ * @member {number} [targetLowPriorityNodes] The desired number of low-priority
+ * compute nodes in the pool.
  *
  * @member {boolean} [enableAutoScale] Whether the pool size should
- * automatically adjust over time. If true, the autoScaleFormula property must
- * be set. If false, the targetDedicated property must be set.
+ * automatically adjust over time. If false, at least one of
+ * targetDedicateNodes and targetLowPriorityNodes must be specified. If true,
+ * the autoScaleFormula property is required and the pool automatically resizes
+ * according to the formula. The default value is false.
  *
  * @member {string} [autoScaleFormula] A formula for the desired number of
  * compute nodes in the pool. This property is set only if the pool
@@ -7016,15 +7370,17 @@ export interface ResizeError {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. This property can only be specified
- * for pools created with a cloudServiceConfiguration.
+ * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
+ * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
+ * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
+ * The specified subnet must allow communication from the Azure Batch service
+ * to be able to schedule tasks on the compute nodes. This can be verified by
+ * checking if the specified VNet has any associated Network Security Groups
+ * (NSG). If communication to the compute nodes in the specified subnet is
+ * denied by an NSG, then the Batch service will set the state of the compute
+ * nodes to unusable. For pools created via virtualMachineConfiguration the
+ * Batch account must have poolAllocationMode userSubscription in order to use
+ * a VNet.
  *
  * @member {object} [startTask] A task specified to run on each compute node as
  * it joins the pool.
@@ -7092,6 +7448,12 @@ export interface ResizeError {
  * @member {array} [applicationPackageReferences] The list of application
  * packages to be installed on each compute node in the pool.
  *
+ * @member {array} [applicationLicenses] The list of application licenses the
+ * Batch service will make available on each compute node in the pool. The list
+ * of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
+ *
  * @member {number} [maxTasksPerNode] The maximum number of tasks that can run
  * concurrently on a single compute node in the pool.
  *
@@ -7099,7 +7461,7 @@ export interface ResizeError {
  * tasks between compute nodes in the pool.
  *
  * @member {string} [taskSchedulingPolicy.nodeFillType] Possible values
- * include: 'spread', 'pack', 'unmapped'
+ * include: 'spread', 'pack'
  *
  * @member {array} [userAccounts] The list of user accounts to be created on
  * each node in the pool.
@@ -7168,9 +7530,11 @@ export interface CloudPool {
   cloudServiceConfiguration?: CloudServiceConfiguration;
   virtualMachineConfiguration?: VirtualMachineConfiguration;
   resizeTimeout?: moment.Duration;
-  resizeError?: ResizeError;
-  currentDedicated?: number;
-  targetDedicated?: number;
+  resizeErrors?: ResizeError[];
+  currentDedicatedNodes?: number;
+  currentLowPriorityNodes?: number;
+  targetDedicatedNodes?: number;
+  targetLowPriorityNodes?: number;
   enableAutoScale?: boolean;
   autoScaleFormula?: string;
   autoScaleEvaluationInterval?: moment.Duration;
@@ -7180,6 +7544,7 @@ export interface CloudPool {
   startTask?: StartTask;
   certificateReferences?: CertificateReference[];
   applicationPackageReferences?: ApplicationPackageReference[];
+  applicationLicenses?: string[];
   maxTasksPerNode?: number;
   taskSchedulingPolicy?: TaskSchedulingPolicy;
   userAccounts?: UserAccount[];
@@ -7208,10 +7573,10 @@ export interface CloudPool {
  * available sizes of virtual machines for Cloud Services pools (pools created
  * with cloudServiceConfiguration), see Sizes for Cloud Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -7309,14 +7674,21 @@ export interface CloudPool {
  * minutes, the Batch service returns an error; if you are calling the REST API
  * directly, the HTTP status code is 400 (Bad Request).
  *
- * @member {number} [targetDedicated] The desired number of compute nodes in
- * the pool. This property must have the default value if enableAutoScale is
- * true. It is required if enableAutoScale is false.
+ * @member {number} [targetDedicatedNodes] The desired number of dedicated
+ * compute nodes in the pool. This property must not be specified if
+ * enableAutoScale is set to true. If enableAutoScale is set to false, then you
+ * must set either targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number} [targetLowPriorityNodes] The desired number of low-priority
+ * compute nodes in the pool. This property must not be specified if
+ * enableAutoScale is set to true. If enableAutoScale is set to false, then you
+ * must set either targetDedicatedNodes, targetLowPriorityNodes, or both.
  *
  * @member {boolean} [enableAutoScale] Whether the pool size should
- * automatically adjust over time. If true, the autoScaleFormula property must
- * be set. If false, the targetDedicated property must be set. The default
- * value is false.
+ * automatically adjust over time. If false, at least one of
+ * targetDedicateNodes and targetLowPriorityNodes must be specified. If true,
+ * the autoScaleFormula property is required and the pool automatically resizes
+ * according to the formula. The default value is false.
  *
  * @member {string} [autoScaleFormula] A formula for the desired number of
  * compute nodes in the pool. This property must not be specified if
@@ -7349,15 +7721,17 @@ export interface CloudPool {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The 'MicrosoftAzureBatch' service principal must have the
- * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
- * for the specified VNet. The specified subnet must allow communication from
- * the Azure Batch service to be able to schedule tasks on the compute nodes.
- * This can be verified by checking if the specified VNet has any associated
- * Network Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. This property can only be specified
- * for pools created with a cloudServiceConfiguration.
+ * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
+ * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
+ * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
+ * The specified subnet must allow communication from the Azure Batch service
+ * to be able to schedule tasks on the compute nodes. This can be verified by
+ * checking if the specified VNet has any associated Network Security Groups
+ * (NSG). If communication to the compute nodes in the specified subnet is
+ * denied by an NSG, then the Batch service will set the state of the compute
+ * nodes to unusable. For pools created via virtualMachineConfiguration the
+ * Batch account must have poolAllocationMode userSubscription in order to use
+ * a VNet.
  *
  * @member {object} [startTask] A task specified to run on each compute node as
  * it joins the pool. The task runs when the node is added to the pool or when
@@ -7428,6 +7802,12 @@ export interface CloudPool {
  * currently not supported on pools created using the
  * virtualMachineConfiguration (IaaS) property.
  *
+ * @member {array} [applicationLicenses] The list of application licenses the
+ * Batch service will make available on each compute node in the pool. The list
+ * of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
+ *
  * @member {number} [maxTasksPerNode] The maximum number of tasks that can run
  * concurrently on a single compute node in the pool. The default value is 1.
  * The maximum value of this setting depends on the size of the compute nodes
@@ -7437,7 +7817,7 @@ export interface CloudPool {
  * tasks between compute nodes in the pool.
  *
  * @member {string} [taskSchedulingPolicy.nodeFillType] Possible values
- * include: 'spread', 'pack', 'unmapped'
+ * include: 'spread', 'pack'
  *
  * @member {array} [userAccounts] The list of user accounts to be created on
  * each node in the pool.
@@ -7454,7 +7834,8 @@ export interface PoolAddParameter {
   cloudServiceConfiguration?: CloudServiceConfiguration;
   virtualMachineConfiguration?: VirtualMachineConfiguration;
   resizeTimeout?: moment.Duration;
-  targetDedicated?: number;
+  targetDedicatedNodes?: number;
+  targetLowPriorityNodes?: number;
   enableAutoScale?: boolean;
   autoScaleFormula?: string;
   autoScaleEvaluationInterval?: moment.Duration;
@@ -7463,6 +7844,7 @@ export interface PoolAddParameter {
   startTask?: StartTask;
   certificateReferences?: CertificateReference[];
   applicationPackageReferences?: ApplicationPackageReference[];
+  applicationLicenses?: string[];
   maxTasksPerNode?: number;
   taskSchedulingPolicy?: TaskSchedulingPolicy;
   userAccounts?: UserAccount[];
@@ -7544,22 +7926,25 @@ export interface AffinityInformation {
  * the Batch service terminates the task (due to timeout, or user termination
  * via the API) you may see an operating system-defined exit code.
  *
- * @member {object} [schedulingError] Details of any error encountered
- * scheduling the task. This property is set only if the task is in the
- * completed state.
+ * @member {object} [failureInfo] Information describing the task failure, if
+ * any. This property is set only if the task is in the completed state and
+ * encountered a failure.
  *
- * @member {string} [schedulingError.category] Possible values include:
- * 'userError', 'serverError', 'unmapped'
+ * @member {string} [failureInfo.category] Possible values include:
+ * 'userError', 'serverError'
  *
- * @member {string} [schedulingError.code]
+ * @member {string} [failureInfo.code]
  *
- * @member {string} [schedulingError.message]
+ * @member {string} [failureInfo.message]
  *
- * @member {array} [schedulingError.details]
+ * @member {array} [failureInfo.details]
  *
  * @member {number} retryCount The number of times the task has been retried by
- * the Batch service. The task is retried if it exits with a nonzero exit code,
- * up to the specified maxTaskRetryCount.
+ * the Batch service. The number of times the task has been retried by the
+ * Batch service. Task application failures (non-zero exit code) are retried,
+ * pre-processing errors (the task could not be run) and file upload errors are
+ * not retried. The Batch service will retry the task up to the limit specified
+ * by the constraints.
  *
  * @member {date} [lastRetryTime] The most recent time at which a retry of the
  * task started running. This element is present only if the task was retried
@@ -7579,16 +7964,21 @@ export interface AffinityInformation {
  * been requeued by the Batch service as the result of a user request. This
  * property is set only if the requeueCount is nonzero.
  *
+ * @member {string} [result] The result of the task execution. If the value is
+ * 'failed', then the details of the failure can be found in the failureInfo
+ * property. Possible values include: 'success', 'failure'
+ *
  */
 export interface TaskExecutionInformation {
   startTime?: Date;
   endTime?: Date;
   exitCode?: number;
-  schedulingError?: TaskSchedulingError;
+  failureInfo?: TaskFailureInformation;
   retryCount: number;
   lastRetryTime?: Date;
   requeueCount: number;
   lastRequeueTime?: Date;
+  result?: string;
 }
 
 /**
@@ -7786,16 +8176,16 @@ export interface TaskDependencies {
  *
  * @member {array} [exitConditions.exitCodeRanges]
  *
- * @member {object} [exitConditions.schedulingError]
+ * @member {object} [exitConditions.preProcessingError]
  *
- * @member {string} [exitConditions.schedulingError.jobAction] The default is
- * none for exit code 0 and terminate for all other exit conditions. If the
+ * @member {string} [exitConditions.preProcessingError.jobAction] The default
+ * is none for exit code 0 and terminate for all other exit conditions. If the
  * job's onTaskFailed property is noAction, then specify this property returns
  * an error. The add task request fails with an invalid property value error;;
  * if you are calling the REST API directly, the HTTP status code is 400 (Bad
  * Request). Possible values include: 'none', 'disable', 'terminate'
  *
- * @member {string} [exitConditions.schedulingError.dependencyAction] The
+ * @member {string} [exitConditions.preProcessingError.dependencyAction] The
  * default is 'satisfy' for exit code 0, and 'block' for all other exit
  * conditions. If the job's usesTaskDependencies property is set to false, then
  * specifying the dependencyAction property returns an error. The add task
@@ -7803,10 +8193,33 @@ export interface TaskDependencies {
  * REST API directly, the HTTP status code is 400  (Bad Request). Possible
  * values include: 'satisfy', 'block'
  *
- * @member {object} [exitConditions.default] Note that the default condition
- * does not include exit code 0. If you want non-default behaviour on exit code
- * 0, you must list it explicitly using the exitCodes or exitCodeRanges
- * collection.
+ * @member {object} [exitConditions.fileUploadError] If the task exited with an
+ * exit code that was specified via exitCodes or exitCodeRanges, and then
+ * encountered a file upload error, then the action specified by the exit code
+ * takes precedence.
+ *
+ * @member {string} [exitConditions.fileUploadError.jobAction] The default is
+ * none for exit code 0 and terminate for all other exit conditions. If the
+ * job's onTaskFailed property is noAction, then specify this property returns
+ * an error. The add task request fails with an invalid property value error;;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
+ *
+ * @member {string} [exitConditions.fileUploadError.dependencyAction] The
+ * default is 'satisfy' for exit code 0, and 'block' for all other exit
+ * conditions. If the job's usesTaskDependencies property is set to false, then
+ * specifying the dependencyAction property returns an error. The add task
+ * request fails with an invalid property value error; if you are calling the
+ * REST API directly, the HTTP status code is 400  (Bad Request). Possible
+ * values include: 'satisfy', 'block'
+ *
+ * @member {object} [exitConditions.default] This value is used if the task
+ * exits with any nonzero exit code not listed in the exitCodes or
+ * exitCodeRanges collection, with a pre-processing error if the
+ * preProcessingError property is not present, or with a file upload error if
+ * the fileUploadError property is not present. If you want non-default
+ * behaviour on exit code 0, you must list it explicitly using the exitCodes or
+ * exitCodeRanges collection.
  *
  * @member {string} [exitConditions.default.jobAction] The default is none for
  * exit code 0 and terminate for all other exit conditions. If the job's
@@ -7850,6 +8263,11 @@ export interface TaskDependencies {
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
  * compute node on which the primary task is executed.
+ *
+ * @member {array} [outputFiles] A list of files that the Batch service will
+ * upload from the compute node after running the command line. For
+ * multi-instance tasks, the files will only be uploaded from the compute node
+ * on which the primary task is executed.
  *
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the task.
@@ -7921,20 +8339,23 @@ export interface TaskDependencies {
  * or user termination via the API) you may see an operating system-defined
  * exit code.
  *
- * @member {object} [executionInfo.schedulingError] This property is set only
- * if the task is in the completed state.
+ * @member {object} [executionInfo.failureInfo] This property is set only if
+ * the task is in the completed state and encountered a failure.
  *
- * @member {string} [executionInfo.schedulingError.category] Possible values
- * include: 'userError', 'serverError', 'unmapped'
+ * @member {string} [executionInfo.failureInfo.category] Possible values
+ * include: 'userError', 'serverError'
  *
- * @member {string} [executionInfo.schedulingError.code]
+ * @member {string} [executionInfo.failureInfo.code]
  *
- * @member {string} [executionInfo.schedulingError.message]
+ * @member {string} [executionInfo.failureInfo.message]
  *
- * @member {array} [executionInfo.schedulingError.details]
+ * @member {array} [executionInfo.failureInfo.details]
  *
- * @member {number} [executionInfo.retryCount] The task is retried if it exits
- * with a nonzero exit code, up to the specified maxTaskRetryCount.
+ * @member {number} [executionInfo.retryCount] The number of times the task has
+ * been retried by the Batch service. Task application failures (non-zero exit
+ * code) are retried, pre-processing errors (the task could not be run) and
+ * file upload errors are not retried. The Batch service will retry the task up
+ * to the limit specified by the constraints.
  *
  * @member {date} [executionInfo.lastRetryTime] This element is present only if
  * the task was retried (i.e. retryCount is nonzero). If present, this is
@@ -7951,6 +8372,10 @@ export interface TaskDependencies {
  *
  * @member {date} [executionInfo.lastRequeueTime] This property is set only if
  * the requeueCount is nonzero.
+ *
+ * @member {string} [executionInfo.result] If the value is 'failed', then the
+ * details of the failure can be found in the failureInfo property. Possible
+ * values include: 'success', 'failure'
  *
  * @member {object} [nodeInfo] Information about the compute node on which the
  * task ran.
@@ -8053,6 +8478,7 @@ export interface CloudTask {
   previousStateTransitionTime?: Date;
   commandLine?: string;
   resourceFiles?: ResourceFile[];
+  outputFiles?: OutputFile[];
   environmentSettings?: EnvironmentSetting[];
   affinityInfo?: AffinityInformation;
   constraints?: TaskConstraints;
@@ -8098,16 +8524,16 @@ export interface CloudTask {
  *
  * @member {array} [exitConditions.exitCodeRanges]
  *
- * @member {object} [exitConditions.schedulingError]
+ * @member {object} [exitConditions.preProcessingError]
  *
- * @member {string} [exitConditions.schedulingError.jobAction] The default is
- * none for exit code 0 and terminate for all other exit conditions. If the
+ * @member {string} [exitConditions.preProcessingError.jobAction] The default
+ * is none for exit code 0 and terminate for all other exit conditions. If the
  * job's onTaskFailed property is noAction, then specify this property returns
  * an error. The add task request fails with an invalid property value error;;
  * if you are calling the REST API directly, the HTTP status code is 400 (Bad
  * Request). Possible values include: 'none', 'disable', 'terminate'
  *
- * @member {string} [exitConditions.schedulingError.dependencyAction] The
+ * @member {string} [exitConditions.preProcessingError.dependencyAction] The
  * default is 'satisfy' for exit code 0, and 'block' for all other exit
  * conditions. If the job's usesTaskDependencies property is set to false, then
  * specifying the dependencyAction property returns an error. The add task
@@ -8115,10 +8541,33 @@ export interface CloudTask {
  * REST API directly, the HTTP status code is 400  (Bad Request). Possible
  * values include: 'satisfy', 'block'
  *
- * @member {object} [exitConditions.default] Note that the default condition
- * does not include exit code 0. If you want non-default behaviour on exit code
- * 0, you must list it explicitly using the exitCodes or exitCodeRanges
- * collection.
+ * @member {object} [exitConditions.fileUploadError] If the task exited with an
+ * exit code that was specified via exitCodes or exitCodeRanges, and then
+ * encountered a file upload error, then the action specified by the exit code
+ * takes precedence.
+ *
+ * @member {string} [exitConditions.fileUploadError.jobAction] The default is
+ * none for exit code 0 and terminate for all other exit conditions. If the
+ * job's onTaskFailed property is noAction, then specify this property returns
+ * an error. The add task request fails with an invalid property value error;;
+ * if you are calling the REST API directly, the HTTP status code is 400 (Bad
+ * Request). Possible values include: 'none', 'disable', 'terminate'
+ *
+ * @member {string} [exitConditions.fileUploadError.dependencyAction] The
+ * default is 'satisfy' for exit code 0, and 'block' for all other exit
+ * conditions. If the job's usesTaskDependencies property is set to false, then
+ * specifying the dependencyAction property returns an error. The add task
+ * request fails with an invalid property value error; if you are calling the
+ * REST API directly, the HTTP status code is 400  (Bad Request). Possible
+ * values include: 'satisfy', 'block'
+ *
+ * @member {object} [exitConditions.default] This value is used if the task
+ * exits with any nonzero exit code not listed in the exitCodes or
+ * exitCodeRanges collection, with a pre-processing error if the
+ * preProcessingError property is not present, or with a file upload error if
+ * the fileUploadError property is not present. If you want non-default
+ * behaviour on exit code 0, you must list it explicitly using the exitCodes or
+ * exitCodeRanges collection.
  *
  * @member {string} [exitConditions.default.jobAction] The default is none for
  * exit code 0 and terminate for all other exit conditions. If the job's
@@ -8139,6 +8588,11 @@ export interface CloudTask {
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
  * compute node on which the primary task is executed.
+ *
+ * @member {array} [outputFiles] A list of files that the Batch service will
+ * upload from the compute node after running the command line. For
+ * multi-instance tasks, the files will only be uploaded from the compute node
+ * on which the primary task is executed.
  *
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the task.
@@ -8241,6 +8695,7 @@ export interface TaskAddParameter {
   commandLine: string;
   exitConditions?: ExitConditions;
   resourceFiles?: ResourceFile[];
+  outputFiles?: OutputFile[];
   environmentSettings?: EnvironmentSetting[];
   affinityInfo?: AffinityInformation;
   constraints?: TaskConstraints;
@@ -8333,7 +8788,7 @@ export interface BatchError {
  * operation.
  *
  * @member {string} status The status of the add task request. Possible values
- * include: 'success', 'clientError', 'serverError', 'unmapped'
+ * include: 'success', 'clientError', 'serverError'
  *
  * @member {string} taskId The ID of the task for which this is the result.
  *
@@ -8421,17 +8876,18 @@ export interface TaskAddCollectionResult {
  * user termination via the API) you may see an operating system-defined exit
  * code.
  *
- * @member {object} [schedulingError] Details of any error encountered
- * scheduling the subtask.
+ * @member {object} [failureInfo] Information describing the task failure, if
+ * any. This property is set only if the task is in the completed state and
+ * encountered a failure.
  *
- * @member {string} [schedulingError.category] Possible values include:
- * 'userError', 'serverError', 'unmapped'
+ * @member {string} [failureInfo.category] Possible values include:
+ * 'userError', 'serverError'
  *
- * @member {string} [schedulingError.code]
+ * @member {string} [failureInfo.code]
  *
- * @member {string} [schedulingError.message]
+ * @member {string} [failureInfo.message]
  *
- * @member {array} [schedulingError.details]
+ * @member {array} [failureInfo.details]
  *
  * @member {string} [state] The current state of the subtask. Possible values
  * include: 'preparing', 'running', 'completed'
@@ -8447,6 +8903,10 @@ export interface TaskAddCollectionResult {
  * entered its previous state. This property is not set if the subtask is in
  * its initial running state.
  *
+ * @member {string} [result] The result of the task execution. If the value is
+ * 'failed', then the details of the failure can be found in the failureInfo
+ * property. Possible values include: 'success', 'failure'
+ *
  */
 export interface SubtaskInformation {
   id?: number;
@@ -8454,11 +8914,12 @@ export interface SubtaskInformation {
   startTime?: Date;
   endTime?: Date;
   exitCode?: number;
-  schedulingError?: TaskSchedulingError;
+  failureInfo?: TaskFailureInformation;
   state?: string;
   stateTransitionTime?: Date;
   previousState?: string;
   previousStateTransitionTime?: Date;
+  result?: string;
 }
 
 /**
@@ -8531,20 +8992,23 @@ export interface CloudTaskListResult {
  * or user termination via the API) you may see an operating system-defined
  * exit code.
  *
- * @member {object} [executionInfo.schedulingError] This property is set only
- * if the task is in the completed state.
+ * @member {object} [executionInfo.failureInfo] This property is set only if
+ * the task is in the completed state and encountered a failure.
  *
- * @member {string} [executionInfo.schedulingError.category] Possible values
- * include: 'userError', 'serverError', 'unmapped'
+ * @member {string} [executionInfo.failureInfo.category] Possible values
+ * include: 'userError', 'serverError'
  *
- * @member {string} [executionInfo.schedulingError.code]
+ * @member {string} [executionInfo.failureInfo.code]
  *
- * @member {string} [executionInfo.schedulingError.message]
+ * @member {string} [executionInfo.failureInfo.message]
  *
- * @member {array} [executionInfo.schedulingError.details]
+ * @member {array} [executionInfo.failureInfo.details]
  *
- * @member {number} [executionInfo.retryCount] The task is retried if it exits
- * with a nonzero exit code, up to the specified maxTaskRetryCount.
+ * @member {number} [executionInfo.retryCount] The number of times the task has
+ * been retried by the Batch service. Task application failures (non-zero exit
+ * code) are retried, pre-processing errors (the task could not be run) and
+ * file upload errors are not retried. The Batch service will retry the task up
+ * to the limit specified by the constraints.
  *
  * @member {date} [executionInfo.lastRetryTime] This element is present only if
  * the task was retried (i.e. retryCount is nonzero). If present, this is
@@ -8561,6 +9025,10 @@ export interface CloudTaskListResult {
  *
  * @member {date} [executionInfo.lastRequeueTime] This property is set only if
  * the requeueCount is nonzero.
+ *
+ * @member {string} [executionInfo.result] If the value is 'failed', then the
+ * details of the failure can be found in the failureInfo property. Possible
+ * values include: 'success', 'failure'
  *
  */
 export interface TaskInformation {
@@ -8603,21 +9071,25 @@ export interface TaskInformation {
  * user termination via the API) you may see an operating system-defined exit
  * code.
  *
- * @member {object} [schedulingError] Any error encountered scheduling the
- * start task.
+ * @member {object} [failureInfo] Information describing the task failure, if
+ * any. This property is set only if the task is in the completed state and
+ * encountered a failure.
  *
- * @member {string} [schedulingError.category] Possible values include:
- * 'userError', 'serverError', 'unmapped'
+ * @member {string} [failureInfo.category] Possible values include:
+ * 'userError', 'serverError'
  *
- * @member {string} [schedulingError.code]
+ * @member {string} [failureInfo.code]
  *
- * @member {string} [schedulingError.message]
+ * @member {string} [failureInfo.message]
  *
- * @member {array} [schedulingError.details]
+ * @member {array} [failureInfo.details]
  *
  * @member {number} retryCount The number of times the task has been retried by
- * the Batch service. The task is retried if it exits with a nonzero exit code,
- * up to the specified MaxTaskRetryCount.
+ * the Batch service. The number of times the task has been retried by the
+ * Batch service. Task application failures (non-zero exit code) are retried,
+ * pre-processing errors (the task could not be run) and file upload errors are
+ * not retried. The Batch service will retry the task up to the limit specified
+ * by the constraints.
  *
  * @member {date} [lastRetryTime] The most recent time at which a retry of the
  * task started running. This element is present only if the task was retried
@@ -8626,15 +9098,20 @@ export interface TaskInformation {
  * other than retry; for example, if the compute node was rebooted during a
  * retry, then the startTime is updated but the lastRetryTime is not.
  *
+ * @member {string} [result] The result of the task execution. If the value is
+ * 'failed', then the details of the failure can be found in the failureInfo
+ * property. Possible values include: 'success', 'failure'
+ *
  */
 export interface StartTaskInformation {
   state: string;
   startTime: Date;
   endTime?: Date;
   exitCode?: number;
-  schedulingError?: TaskSchedulingError;
+  failureInfo?: TaskFailureInformation;
   retryCount: number;
   lastRetryTime?: Date;
+  result?: string;
 }
 
 /**
@@ -8675,7 +9152,7 @@ export interface ComputeNodeError {
  * @member {string} [state] The current state of the compute node. Possible
  * values include: 'idle', 'rebooting', 'reimaging', 'running', 'unusable',
  * 'creating', 'starting', 'waitingForStartTask', 'startTaskFailed', 'unknown',
- * 'leavingPool', 'offline'
+ * 'leavingPool', 'offline', 'preempted'
  *
  * @member {string} [schedulingState] Whether the compute node is available for
  * task scheduling. enabled - Tasks can be scheduled on the node. disabled - No
@@ -8706,10 +9183,10 @@ export interface ComputeNodeError {
  * Cloud Services pools (pools created with cloudServiceConfiguration), see
  * Sizes for Cloud Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -8812,19 +9289,23 @@ export interface ComputeNodeError {
  * (due to timeout, or user termination via the API) you may see an operating
  * system-defined exit code.
  *
- * @member {object} [startTaskInfo.schedulingError]
+ * @member {object} [startTaskInfo.failureInfo] This property is set only if
+ * the task is in the completed state and encountered a failure.
  *
- * @member {string} [startTaskInfo.schedulingError.category] Possible values
- * include: 'userError', 'serverError', 'unmapped'
+ * @member {string} [startTaskInfo.failureInfo.category] Possible values
+ * include: 'userError', 'serverError'
  *
- * @member {string} [startTaskInfo.schedulingError.code]
+ * @member {string} [startTaskInfo.failureInfo.code]
  *
- * @member {string} [startTaskInfo.schedulingError.message]
+ * @member {string} [startTaskInfo.failureInfo.message]
  *
- * @member {array} [startTaskInfo.schedulingError.details]
+ * @member {array} [startTaskInfo.failureInfo.details]
  *
- * @member {number} [startTaskInfo.retryCount] The task is retried if it exits
- * with a nonzero exit code, up to the specified MaxTaskRetryCount.
+ * @member {number} [startTaskInfo.retryCount] The number of times the task has
+ * been retried by the Batch service. Task application failures (non-zero exit
+ * code) are retried, pre-processing errors (the task could not be run) and
+ * file upload errors are not retried. The Batch service will retry the task up
+ * to the limit specified by the constraints.
  *
  * @member {date} [startTaskInfo.lastRetryTime] This element is present only if
  * the task was retried (i.e. retryCount is nonzero). If present, this is
@@ -8832,6 +9313,10 @@ export interface ComputeNodeError {
  * restarted for reasons other than retry; for example, if the compute node was
  * rebooted during a retry, then the startTime is updated but the lastRetryTime
  * is not.
+ *
+ * @member {string} [startTaskInfo.result] If the value is 'failed', then the
+ * details of the failure can be found in the failureInfo property. Possible
+ * values include: 'success', 'failure'
  *
  * @member {array} [certificateReferences] The list of certificates installed
  * on the compute node. For Windows compute nodes, the Batch service installs
@@ -8845,6 +9330,9 @@ export interface ComputeNodeError {
  *
  * @member {array} [errors] The list of errors that are currently being
  * encountered by the compute node.
+ *
+ * @member {boolean} [isDedicated] Whether this compute node is a dedicated
+ * node. If false, the node is a low-priority node.
  *
  */
 export interface ComputeNode {
@@ -8866,6 +9354,7 @@ export interface ComputeNode {
   startTaskInfo?: StartTaskInformation;
   certificateReferences?: CertificateReference[];
   errors?: ComputeNodeError[];
+  isDedicated?: boolean;
 }
 
 /**
@@ -8888,7 +9377,7 @@ export interface ComputeNodeListResult {
  * @class
  * Initializes a new instance of the ComputeNodeUser class.
  * @constructor
- * @summary A user account on a compute node.
+ * @summary A user account for RDP or SSH access on a compute node.
  *
  * @member {string} name The user name of the account.
  *
@@ -9051,6 +9540,8 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
  * under this element are located in the task's working directory.
  *
+ * @member {array} [jobSpecification.jobManagerTask.outputFiles]
+ *
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  *
  * @member {object} [jobSpecification.jobManagerTask.constraints]
@@ -9147,6 +9638,9 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * operations. Currently the only supported value for the access property is
  * 'job', which grants access to all operations related to the job which
  * contains the task.
+ *
+ * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
+ * default value is false.
  *
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
@@ -9334,7 +9828,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -9357,10 +9851,10 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -9485,7 +9979,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
@@ -9496,15 +9990,22 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * directly, the HTTP status code is 400 (Bad Request).
  *
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
@@ -9536,15 +10037,17 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -9628,6 +10131,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  * This property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
+ *
+ * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -9763,6 +10272,8 @@ export interface JobSchedulePatchParameter {
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
  * under this element are located in the task's working directory.
  *
+ * @member {array} [jobSpecification.jobManagerTask.outputFiles]
+ *
  * @member {array} [jobSpecification.jobManagerTask.environmentSettings]
  *
  * @member {object} [jobSpecification.jobManagerTask.constraints]
@@ -9859,6 +10370,9 @@ export interface JobSchedulePatchParameter {
  * operations. Currently the only supported value for the access property is
  * 'job', which grants access to all operations related to the job which
  * contains the task.
+ *
+ * @member {boolean} [jobSpecification.jobManagerTask.allowLowPriorityNode] The
+ * default value is false.
  *
  * @member {object} [jobSpecification.jobPreparationTask] If a job has a Job
  * Preparation task, the Batch service will run the Job Preparation task on a
@@ -10046,7 +10560,7 @@ export interface JobSchedulePatchParameter {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.keepAlive] If false, the
@@ -10069,10 +10583,10 @@ export interface JobSchedulePatchParameter {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -10197,7 +10711,7 @@ export interface JobSchedulePatchParameter {
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.resizeTimeout] This
@@ -10208,15 +10722,22 @@ export interface JobSchedulePatchParameter {
  * directly, the HTTP status code is 400 (Bad Request).
  *
  * @member {number}
- * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
  *
  * @member {boolean}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
@@ -10248,15 +10769,17 @@ export interface JobSchedulePatchParameter {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -10340,6 +10863,12 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  * This property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
+ *
+ * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.userAccounts]
@@ -10466,7 +10995,7 @@ export interface JobTerminateParameter {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -10486,10 +11015,10 @@ export interface JobTerminateParameter {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -10612,7 +11141,7 @@ export interface JobTerminateParameter {
  *
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
@@ -10622,14 +11151,21 @@ export interface JobTerminateParameter {
  * request with an error; if you are calling the REST API directly, the HTTP
  * status code is 400 (Bad Request).
  *
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes] This property
+ * must not be specified if enableAutoScale is set to true. If enableAutoScale
+ * is set to false, then you must set either targetDedicatedNodes,
+ * targetLowPriorityNodes, or both.
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
  * property must not be specified if enableAutoScale is set to false. It is
@@ -10659,15 +11195,17 @@ export interface JobTerminateParameter {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -10747,6 +11285,11 @@ export interface JobTerminateParameter {
  * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
  * property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
+ *
+ * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  *
@@ -10827,7 +11370,7 @@ export interface JobPatchParameter {
  * of the last autopool created for the job schedule, and deletes that pool
  * when the job schedule completes. Batch will also delete this pool if the
  * user updates the auto pool specification in a way that changes this
- * lifetime. Possible values include: 'jobSchedule', 'job', 'unmapped'
+ * lifetime. Possible values include: 'jobSchedule', 'job'
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.keepAlive] If false, the
  * Batch service deletes the pool once its lifetime (as determined by the
@@ -10847,10 +11390,10 @@ export interface JobPatchParameter {
  * pools (pools created with cloudServiceConfiguration), see Sizes for Cloud
  * Services
  * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
- * Batch supports all Cloud Services VM sizes except ExtraSmall. For
- * information about available VM sizes for pools using images from the Virtual
- * Machines Marketplace (pools created with virtualMachineConfiguration) see
- * Sizes for Virtual Machines (Linux)
+ * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
+ * For information about available VM sizes for pools using images from the
+ * Virtual Machines Marketplace (pools created with
+ * virtualMachineConfiguration) see Sizes for Virtual Machines (Linux)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
  * or Sizes for Virtual Machines (Windows)
  * (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/).
@@ -10973,7 +11516,7 @@ export interface JobPatchParameter {
  *
  * @member {string}
  * [poolInfo.autoPoolSpecification.pool.taskSchedulingPolicy.nodeFillType]
- * Possible values include: 'spread', 'pack', 'unmapped'
+ * Possible values include: 'spread', 'pack'
  *
  * @member {moment.duration}
  * [poolInfo.autoPoolSpecification.pool.resizeTimeout] This timeout applies
@@ -10983,14 +11526,21 @@ export interface JobPatchParameter {
  * request with an error; if you are calling the REST API directly, the HTTP
  * status code is 400 (Bad Request).
  *
- * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicated] This
- * property must not be specified if enableAutoScale is set to true. It is
- * required if enableAutoScale is set to false.
+ * @member {number} [poolInfo.autoPoolSpecification.pool.targetDedicatedNodes]
+ * This property must not be specified if enableAutoScale is set to true. If
+ * enableAutoScale is set to false, then you must set either
+ * targetDedicatedNodes, targetLowPriorityNodes, or both.
+ *
+ * @member {number}
+ * [poolInfo.autoPoolSpecification.pool.targetLowPriorityNodes] This property
+ * must not be specified if enableAutoScale is set to true. If enableAutoScale
+ * is set to false, then you must set either targetDedicatedNodes,
+ * targetLowPriorityNodes, or both.
  *
  * @member {boolean} [poolInfo.autoPoolSpecification.pool.enableAutoScale] If
- * false, the targetDedicated element is required. If true, the
- * autoScaleFormula element is required. The pool automatically resizes
- * according to the formula. The default value is false.
+ * false, at least one of targetDedicateNodes and targetLowPriorityNodes must
+ * be specified. If true, the autoScaleFormula element is required. The pool
+ * automatically resizes according to the formula. The default value is false.
  *
  * @member {string} [poolInfo.autoPoolSpecification.pool.autoScaleFormula] This
  * property must not be specified if enableAutoScale is set to false. It is
@@ -11020,15 +11570,17 @@ export interface JobPatchParameter {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
- * must have the 'Classic Virtual Machine Contributor' Role-Based Access
- * Control (RBAC) role for the specified VNet. The specified subnet must allow
- * communication from the Azure Batch service to be able to schedule tasks on
- * the compute nodes. This can be verified by checking if the specified VNet
- * has any associated Network Security Groups (NSG). If communication to the
- * compute nodes in the specified subnet is denied by an NSG, then the Batch
- * service will set the state of the compute nodes to unusable. This property
- * can only be specified for pools created with a cloudServiceConfiguration.
+ * and a resize error will occur. The Batch service principal, named 'Microsoft
+ * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
+ * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
+ * VNet. The specified subnet must allow communication from the Azure Batch
+ * service to be able to schedule tasks on the compute nodes. This can be
+ * verified by checking if the specified VNet has any associated Network
+ * Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -11108,6 +11660,11 @@ export interface JobPatchParameter {
  * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
  * property is currently not supported on auto pools created with the
  * virtualMachineConfiguration (IaaS) property.
+ *
+ * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
+ * The list of application licenses must be a subset of available Batch service
+ * application licenses. If a license is requested which is not supported, pool
+ * creation will fail.
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.userAccounts]
  *
@@ -11191,8 +11748,11 @@ export interface PoolEvaluateAutoScaleParameter {
  * @constructor
  * @summary Options for changing the size of a pool.
  *
- * @member {number} targetDedicated The desired number of compute nodes in the
- * pool.
+ * @member {number} [targetDedicatedNodes] The desired number of dedicated
+ * compute nodes in the pool.
+ *
+ * @member {number} [targetLowPriorityNodes] The desired number of low-priority
+ * compute nodes in the pool.
  *
  * @member {moment.duration} [resizeTimeout] The timeout for allocation of
  * compute nodes to the pool or removal of compute nodes from the pool. The
@@ -11207,7 +11767,8 @@ export interface PoolEvaluateAutoScaleParameter {
  *
  */
 export interface PoolResizeParameter {
-  targetDedicated: number;
+  targetDedicatedNodes?: number;
+  targetLowPriorityNodes?: number;
   resizeTimeout?: moment.Duration;
   nodeDeallocationOption?: string;
 }

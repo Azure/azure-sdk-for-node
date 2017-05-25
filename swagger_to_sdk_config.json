@@ -23,7 +23,7 @@
       "output_dir": "lib/services/batchManagement/lib"
     },
     "batch": {
-      "swagger": "batch/2016-07-01.3.1/swagger/BatchService.json",
+      "swagger": "batch/2017-05-01.5.0/swagger/BatchService.json",
       "autorest_options": {
         "FT": 1
       },
