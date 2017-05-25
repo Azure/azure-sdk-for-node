@@ -17,6 +17,344 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [id] Resource Id
+ *
+ * @member {string} [name] Resource name
+ *
+ * @member {string} [type] Resource type
+ *
+ * @member {string} location Resource location
+ *
+ * @member {object} [tags] Resource tags
+ *
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceCustomProfile class.
+ * @constructor
+ * Properties to configure a custom container service cluster.
+ *
+ * @member {string} orchestrator The name of the custom orchestrator to use.
+ *
+ */
+export interface ContainerServiceCustomProfile {
+  orchestrator: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceServicePrincipalProfile class.
+ * @constructor
+ * Information about a service principal identity for the cluster to use for
+ * manipulating Azure APIs.
+ *
+ * @member {string} clientId The ID for the service principal.
+ *
+ * @member {string} secret The secret password associated with the service
+ * principal.
+ *
+ */
+export interface ContainerServiceServicePrincipalProfile {
+  clientId: string;
+  secret: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceOrchestratorProfile class.
+ * @constructor
+ * Profile for the container service orchestrator.
+ *
+ * @member {string} orchestratorType The orchestrator to use to manage
+ * container service cluster resources. Valid values are Swarm, DCOS, and
+ * Custom. Possible values include: 'Swarm', 'DCOS', 'Custom', 'Kubernetes'
+ *
+ */
+export interface ContainerServiceOrchestratorProfile {
+  orchestratorType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceMasterProfile class.
+ * @constructor
+ * Profile for the container service master.
+ *
+ * @member {number} [count] Number of masters (VMs) in the container service
+ * cluster. Allowed values are 1, 3, and 5. The default value is 1. Default
+ * value: 1 .
+ *
+ * @member {string} dnsPrefix DNS prefix to be used to create the FQDN for
+ * master.
+ *
+ * @member {string} [fqdn] FDQN for the master.
+ *
+ */
+export interface ContainerServiceMasterProfile {
+  count?: number;
+  dnsPrefix: string;
+  readonly fqdn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceAgentPoolProfile class.
+ * @constructor
+ * Profile for the container service agent pool.
+ *
+ * @member {string} name Unique name of the agent pool profile in the context
+ * of the subscription and resource group.
+ *
+ * @member {number} count Number of agents (VMs) to host docker containers.
+ * Allowed values must be in the range of 1 to 100 (inclusive). The default
+ * value is 1. . Default value: 1 .
+ *
+ * @member {string} vmSize Size of agent VMs. Possible values include:
+ * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
+ * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
+ * 'Standard_A10', 'Standard_A11', 'Standard_D1', 'Standard_D2', 'Standard_D3',
+ * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
+ * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
+ * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
+ * 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_G1', 'Standard_G2',
+ * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_DS1', 'Standard_DS2',
+ * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
+ * 'Standard_DS13', 'Standard_DS14', 'Standard_GS1', 'Standard_GS2',
+ * 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+ *
+ * @member {string} dnsPrefix DNS prefix to be used to create the FQDN for the
+ * agent pool.
+ *
+ * @member {string} [fqdn] FDQN for the agent pool.
+ *
+ */
+export interface ContainerServiceAgentPoolProfile {
+  name: string;
+  count: number;
+  vmSize: string;
+  dnsPrefix: string;
+  readonly fqdn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceWindowsProfile class.
+ * @constructor
+ * Profile for Windows VMs in the container service cluster.
+ *
+ * @member {string} adminUsername The administrator username to use for Windows
+ * VMs.
+ *
+ * @member {string} adminPassword The administrator password to use for Windows
+ * VMs.
+ *
+ */
+export interface ContainerServiceWindowsProfile {
+  adminUsername: string;
+  adminPassword: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceSshPublicKey class.
+ * @constructor
+ * Contains information about SSH certificate public key data.
+ *
+ * @member {string} keyData Certificate public key used to authenticate with
+ * VMs through SSH. The certificate must be in PEM format with or without
+ * headers.
+ *
+ */
+export interface ContainerServiceSshPublicKey {
+  keyData: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceSshConfiguration class.
+ * @constructor
+ * SSH configuration for Linux-based VMs running on Azure.
+ *
+ * @member {array} publicKeys the list of SSH public keys used to authenticate
+ * with Linux-based VMs.
+ *
+ */
+export interface ContainerServiceSshConfiguration {
+  publicKeys: ContainerServiceSshPublicKey[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceLinuxProfile class.
+ * @constructor
+ * Profile for Linux VMs in the container service cluster.
+ *
+ * @member {string} adminUsername The administrator username to use for Linux
+ * VMs.
+ *
+ * @member {object} ssh The ssh key configuration for Linux VMs.
+ *
+ * @member {array} [ssh.publicKeys] the list of SSH public keys used to
+ * authenticate with Linux-based VMs.
+ *
+ */
+export interface ContainerServiceLinuxProfile {
+  adminUsername: string;
+  ssh: ContainerServiceSshConfiguration;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceVMDiagnostics class.
+ * @constructor
+ * Profile for diagnostics on the container service VMs.
+ *
+ * @member {boolean} enabled Whether the VM diagnostic agent is provisioned on
+ * the VM.
+ *
+ * @member {string} [storageUri] The URI of the storage account where
+ * diagnostics are stored.
+ *
+ */
+export interface ContainerServiceVMDiagnostics {
+  enabled: boolean;
+  readonly storageUri?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceDiagnosticsProfile class.
+ * @constructor
+ * @member {object} vmDiagnostics Profile for the container service VM
+ * diagnostic agent.
+ *
+ * @member {boolean} [vmDiagnostics.enabled] Whether the VM diagnostic agent is
+ * provisioned on the VM.
+ *
+ * @member {string} [vmDiagnostics.storageUri] The URI of the storage account
+ * where diagnostics are stored.
+ *
+ */
+export interface ContainerServiceDiagnosticsProfile {
+  vmDiagnostics: ContainerServiceVMDiagnostics;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerService class.
+ * @constructor
+ * Container service.
+ *
+ * @member {string} [provisioningState] the current deployment or provisioning
+ * state, which only appears in the response.
+ *
+ * @member {object} [orchestratorProfile] Properties of the orchestrator.
+ *
+ * @member {string} [orchestratorProfile.orchestratorType] The orchestrator to
+ * use to manage container service cluster resources. Valid values are Swarm,
+ * DCOS, and Custom. Possible values include: 'Swarm', 'DCOS', 'Custom',
+ * 'Kubernetes'
+ *
+ * @member {object} [customProfile] Properties for custom clusters.
+ *
+ * @member {string} [customProfile.orchestrator] The name of the custom
+ * orchestrator to use.
+ *
+ * @member {object} [servicePrincipalProfile] Properties for cluster service
+ * principals.
+ *
+ * @member {string} [servicePrincipalProfile.clientId] The ID for the service
+ * principal.
+ *
+ * @member {string} [servicePrincipalProfile.secret] The secret password
+ * associated with the service principal.
+ *
+ * @member {object} masterProfile Properties of master agents.
+ *
+ * @member {number} [masterProfile.count] Number of masters (VMs) in the
+ * container service cluster. Allowed values are 1, 3, and 5. The default value
+ * is 1.
+ *
+ * @member {string} [masterProfile.dnsPrefix] DNS prefix to be used to create
+ * the FQDN for master.
+ *
+ * @member {string} [masterProfile.fqdn] FDQN for the master.
+ *
+ * @member {array} agentPoolProfiles Properties of the agent pool.
+ *
+ * @member {object} [windowsProfile] Properties of Windows VMs.
+ *
+ * @member {string} [windowsProfile.adminUsername] The administrator username
+ * to use for Windows VMs.
+ *
+ * @member {string} [windowsProfile.adminPassword] The administrator password
+ * to use for Windows VMs.
+ *
+ * @member {object} linuxProfile Properties of Linux VMs.
+ *
+ * @member {string} [linuxProfile.adminUsername] The administrator username to
+ * use for Linux VMs.
+ *
+ * @member {object} [linuxProfile.ssh] The ssh key configuration for Linux VMs.
+ *
+ * @member {array} [linuxProfile.ssh.publicKeys] the list of SSH public keys
+ * used to authenticate with Linux-based VMs.
+ *
+ * @member {object} [diagnosticsProfile] Properties of the diagnostic agent.
+ *
+ * @member {object} [diagnosticsProfile.vmDiagnostics] Profile for the
+ * container service VM diagnostic agent.
+ *
+ * @member {boolean} [diagnosticsProfile.vmDiagnostics.enabled] Whether the VM
+ * diagnostic agent is provisioned on the VM.
+ *
+ * @member {string} [diagnosticsProfile.vmDiagnostics.storageUri] The URI of
+ * the storage account where diagnostics are stored.
+ *
+ */
+export interface ContainerService extends Resource {
+  readonly provisioningState?: string;
+  orchestratorProfile?: ContainerServiceOrchestratorProfile;
+  customProfile?: ContainerServiceCustomProfile;
+  servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
+  masterProfile: ContainerServiceMasterProfile;
+  agentPoolProfiles: ContainerServiceAgentPoolProfile[];
+  windowsProfile?: ContainerServiceWindowsProfile;
+  linuxProfile: ContainerServiceLinuxProfile;
+  diagnosticsProfile?: ContainerServiceDiagnosticsProfile;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceListResult class.
+ * @constructor
+ * The response from the List Container Services operation.
+ *
+ * @member {array} [value] the list of container services.
+ *
+ * @member {string} [nextLink] The URL to get the next set of container service
+ * results.
+ *
+ */
+export interface ContainerServiceListResult {
+  value?: ContainerService[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the InstanceViewStatus class.
  * @constructor
  * Instance view status.
@@ -70,31 +408,6 @@ export interface Sku {
   name?: string;
   tier?: string;
   capacity?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Resource Id
- *
- * @member {string} [name] Resource name
- *
- * @member {string} [type] Resource type
- *
- * @member {string} location Resource location
- *
- * @member {object} [tags] Resource tags
- *
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -524,7 +837,9 @@ export interface Plan {
  * include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3', 'Basic_A4',
  * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
  * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
- * 'Standard_A10', 'Standard_A11', 'Standard_D1', 'Standard_D2', 'Standard_D3',
+ * 'Standard_A10', 'Standard_A11', 'Standard_A1_v2', 'Standard_A2_v2',
+ * 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2', 'Standard_A4m_v2',
+ * 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2', 'Standard_D3',
  * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
  * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
  * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
@@ -533,9 +848,16 @@ export interface Plan {
  * 'Standard_DS12', 'Standard_DS13', 'Standard_DS14', 'Standard_DS1_v2',
  * 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2', 'Standard_DS5_v2',
  * 'Standard_DS11_v2', 'Standard_DS12_v2', 'Standard_DS13_v2',
- * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1', 'Standard_G2',
- * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1', 'Standard_GS2',
- * 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+ * 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1', 'Standard_F2',
+ * 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+ * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+ * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+ * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+ * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+ * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+ * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+ * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+ * 'Standard_NV12', 'Standard_NV24'
  *
  */
 export interface HardwareProfile {
@@ -1325,6 +1647,45 @@ export interface VirtualMachineIdentity {
 
 /**
  * @class
+ * Initializes a new instance of the MaintenanceRedeployStatus class.
+ * @constructor
+ * Maintenance Operation Status.
+ *
+ * @member {boolean} [isCustomerInitiatedMaintenanceAllowed] True, if customer
+ * is allowed to perform Maintenance.
+ *
+ * @member {date} [preMaintenanceWindowStartTime] Start Time for the Pre
+ * Maintenance Window.
+ *
+ * @member {date} [preMaintenanceWindowEndTime] End Time for the Pre
+ * Maintenance Window.
+ *
+ * @member {date} [maintenanceWindowStartTime] Start Time for the Maintenance
+ * Window.
+ *
+ * @member {date} [maintenanceWindowEndTime] End Time for the Maintenance
+ * Window.
+ *
+ * @member {string} [lastOperationResultCode] The Last Maintenance Operation
+ * Result Code. Possible values include: 'None', 'RetryLater',
+ * 'MaintenanceAborted', 'MaintenanceCompleted'
+ *
+ * @member {string} [lastOperationMessage] Message returned for the last
+ * Maintenance Operation.
+ *
+ */
+export interface MaintenanceRedeployStatus {
+  isCustomerInitiatedMaintenanceAllowed?: boolean;
+  preMaintenanceWindowStartTime?: Date;
+  preMaintenanceWindowEndTime?: Date;
+  maintenanceWindowStartTime?: Date;
+  maintenanceWindowEndTime?: Date;
+  lastOperationResultCode?: string;
+  lastOperationMessage?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineInstanceView class.
  * @constructor
  * The instance view of a virtual machine.
@@ -1346,6 +1707,32 @@ export interface VirtualMachineIdentity {
  *
  * @member {array} [vmAgent.statuses] The resource status information.
  *
+ * @member {object} [maintenanceRedeployStatus] The Maintenance Operation
+ * status on the virtual machine.
+ *
+ * @member {boolean}
+ * [maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed] True, if
+ * customer is allowed to perform Maintenance.
+ *
+ * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowStartTime]
+ * Start Time for the Pre Maintenance Window.
+ *
+ * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
+ * Time for the Pre Maintenance Window.
+ *
+ * @member {date} [maintenanceRedeployStatus.maintenanceWindowStartTime] Start
+ * Time for the Maintenance Window.
+ *
+ * @member {date} [maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
+ * for the Maintenance Window.
+ *
+ * @member {string} [maintenanceRedeployStatus.lastOperationResultCode] The
+ * Last Maintenance Operation Result Code. Possible values include: 'None',
+ * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
+ *
+ * @member {string} [maintenanceRedeployStatus.lastOperationMessage] Message
+ * returned for the last Maintenance Operation.
+ *
  * @member {array} [disks] The virtual machine disk information.
  *
  * @member {array} [extensions] The extensions information.
@@ -1366,6 +1753,7 @@ export interface VirtualMachineInstanceView {
   platformFaultDomain?: number;
   rdpThumbPrint?: string;
   vmAgent?: VirtualMachineAgentInstanceView;
+  maintenanceRedeployStatus?: MaintenanceRedeployStatus;
   disks?: DiskInstanceView[];
   extensions?: VirtualMachineExtensionInstanceView[];
   bootDiagnostics?: BootDiagnosticsInstanceView;
@@ -1395,7 +1783,9 @@ export interface VirtualMachineInstanceView {
  * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
  * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
  * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
- * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1', 'Standard_D2',
+ * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+ * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+ * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2',
  * 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
  * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
  * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
@@ -1404,9 +1794,16 @@ export interface VirtualMachineInstanceView {
  * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
  * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
  * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
- * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
- * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
- * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+ * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
+ * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+ * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+ * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+ * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+ * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+ * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+ * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+ * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+ * 'Standard_NV12', 'Standard_NV24'
  *
  * @member {object} [storageProfile] The storage profile.
  *
@@ -1603,6 +2000,38 @@ export interface VirtualMachineInstanceView {
  * @member {array} [instanceView.vmAgent.statuses] The resource status
  * information.
  *
+ * @member {object} [instanceView.maintenanceRedeployStatus] The Maintenance
+ * Operation status on the virtual machine.
+ *
+ * @member {boolean}
+ * [instanceView.maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed]
+ * True, if customer is allowed to perform Maintenance.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowStartTime] Start
+ * Time for the Pre Maintenance Window.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
+ * Time for the Pre Maintenance Window.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowStartTime] Start
+ * Time for the Maintenance Window.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
+ * for the Maintenance Window.
+ *
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationResultCode] The Last
+ * Maintenance Operation Result Code. Possible values include: 'None',
+ * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
+ *
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationMessage] Message
+ * returned for the last Maintenance Operation.
+ *
  * @member {array} [instanceView.disks] The virtual machine disk information.
  *
  * @member {array} [instanceView.extensions] The extensions information.
@@ -1690,6 +2119,20 @@ export interface UpgradePolicy {
 
 /**
  * @class
+ * Initializes a new instance of the RecoveryPolicy class.
+ * @constructor
+ * Describes the recovery policy.
+ *
+ * @member {string} [mode] The recovery mode. Possible values include: 'None',
+ * 'OverProvision', 'Reprovision'
+ *
+ */
+export interface RecoveryPolicy {
+  mode?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ImageOSDisk class.
  * @constructor
  * Describes an Operating System disk.
@@ -1716,6 +2159,9 @@ export interface UpgradePolicy {
  * @member {number} [diskSizeGB] The initial managed disk size in GB for blank
  * data disks, and the new desired size for existing OS and Data disks.
  *
+ * @member {string} [storageAccountType] The Storage Account type. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
+ *
  */
 export interface ImageOSDisk {
   osType: string;
@@ -1725,6 +2171,7 @@ export interface ImageOSDisk {
   blobUri?: string;
   caching?: string;
   diskSizeGB?: number;
+  storageAccountType?: string;
 }
 
 /**
@@ -1751,6 +2198,9 @@ export interface ImageOSDisk {
  * @member {number} [diskSizeGB] The initial disk size in GB for blank data
  * disks, and the new desired size for existing OS and Data disks.
  *
+ * @member {string} [storageAccountType] The Storage Account type. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
+ *
  */
 export interface ImageDataDisk {
   lun: number;
@@ -1759,6 +2209,7 @@ export interface ImageDataDisk {
   blobUri?: string;
   caching?: string;
   diskSizeGB?: number;
+  storageAccountType?: string;
 }
 
 /**
@@ -1790,6 +2241,9 @@ export interface ImageDataDisk {
  *
  * @member {number} [osDisk.diskSizeGB] The initial managed disk size in GB for
  * blank data disks, and the new desired size for existing OS and Data disks.
+ *
+ * @member {string} [osDisk.storageAccountType] The Storage Account type.
+ * Possible values include: 'Standard_LRS', 'Premium_LRS'
  *
  * @member {array} [dataDisks] The data disks.
  *
@@ -1836,6 +2290,9 @@ export interface ImageStorageProfile {
  * @member {number} [storageProfile.osDisk.diskSizeGB] The initial managed disk
  * size in GB for blank data disks, and the new desired size for existing OS
  * and Data disks.
+ *
+ * @member {string} [storageProfile.osDisk.storageAccountType] The Storage
+ * Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
  *
  * @member {array} [storageProfile.dataDisks] The data disks.
  *
@@ -1886,6 +2343,163 @@ export interface VirtualMachineScaleSetIdentity {
   readonly principalId?: string;
   readonly tenantId?: string;
   type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCapacity class.
+ * @constructor
+ * Describes scaling information of a SKU.
+ *
+ * @member {number} [minimum] The minimum capacity.
+ *
+ * @member {number} [maximum] The maximum capacity that can be set.
+ *
+ * @member {number} [default] The default capacity.
+ *
+ * @member {string} [scaleType] The scale type applicable to the sku. Possible
+ * values include: 'Automatic', 'Manual', 'None'
+ *
+ */
+export interface ResourceSkuCapacity {
+  readonly minimum?: number;
+  readonly maximum?: number;
+  readonly default?: number;
+  readonly scaleType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCosts class.
+ * @constructor
+ * Describes metadata for retrieving price info.
+ *
+ * @member {string} [meterID] Used for querying price from commerce.
+ *
+ * @member {number} [quantity] The multiplier is needed to extend the base
+ * metered cost.
+ *
+ * @member {string} [extendedUnit] An invariant to show the extended unit.
+ *
+ */
+export interface ResourceSkuCosts {
+  readonly meterID?: string;
+  readonly quantity?: number;
+  readonly extendedUnit?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuCapabilities class.
+ * @constructor
+ * Describes The SKU capabilites object.
+ *
+ * @member {string} [name] An invariant to describe the feature.
+ *
+ * @member {string} [value] An invariant if the feature is measured by
+ * quantity.
+ *
+ */
+export interface ResourceSkuCapabilities {
+  readonly name?: string;
+  readonly value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictions class.
+ * @constructor
+ * Describes scaling information of a SKU.
+ *
+ * @member {string} [type] The type of restrictions. Possible values include:
+ * 'location'
+ *
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
+ * restricted.
+ *
+ * @member {string} [reasonCode] The reason for restriction. Possible values
+ * include: 'QuotaId', 'NotAvailableForSubscription'
+ *
+ */
+export interface ResourceSkuRestrictions {
+  readonly type?: string;
+  readonly values?: string[];
+  readonly reasonCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSku class.
+ * @constructor
+ * Describes an available Compute SKU.
+ *
+ * @member {string} [resourceType] The type of resource the SKU applies to.
+ *
+ * @member {string} [name] The name of SKU.
+ *
+ * @member {string} [tier] The tier of this particular SKU.
+ *
+ * @member {string} [size] The Size of the SKU.
+ *
+ * @member {string} [family] The Family of this particular SKU.
+ *
+ * @member {string} [kind] The Kind of resources that are supported in this
+ * SKU.
+ *
+ * @member {object} [capacity] Available scaling information.
+ *
+ * @member {number} [capacity.minimum] The minimum capacity.
+ *
+ * @member {number} [capacity.maximum] The maximum capacity that can be set.
+ *
+ * @member {number} [capacity.default] The default capacity.
+ *
+ * @member {string} [capacity.scaleType] The scale type applicable to the sku.
+ * Possible values include: 'Automatic', 'Manual', 'None'
+ *
+ * @member {array} [locations] The set of locations that the SKU is available.
+ *
+ * @member {array} [apiVersions] The api versions that support this SKU.
+ *
+ * @member {array} [costs] Metadata for retrieving price info.
+ *
+ * @member {array} [capabilities] A name value pair to describe the capability.
+ *
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
+ *
+ */
+export interface ResourceSku {
+  readonly resourceType?: string;
+  readonly name?: string;
+  readonly tier?: string;
+  readonly size?: string;
+  readonly family?: string;
+  readonly kind?: string;
+  readonly capacity?: ResourceSkuCapacity;
+  readonly locations?: string[];
+  readonly apiVersions?: string[];
+  readonly costs?: ResourceSkuCosts[];
+  readonly capabilities?: ResourceSkuCapabilities[];
+  readonly restrictions?: ResourceSkuRestrictions[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkusResult class.
+ * @constructor
+ * The Compute List Skus operation response.
+ *
+ * @member {array} value The list of skus available for the subscription.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Compute Skus.
+ * Call ListNext() with this to fetch the next page of VMSS Skus.
+ *
+ */
+export interface ResourceSkusResult {
+  value: ResourceSku[];
+  nextLink?: string;
 }
 
 /**
@@ -2113,16 +2727,80 @@ export interface ApiEntityReference {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings class.
+ * @constructor
+ * Describes a virtual machines scale sets network configuration's DNS
+ * settings.
+ *
+ * @member {string} domainNameLabel The Domain name label.The concatenation of
+ * the domain name label and vm index will be the domain name labels of the
+ * PublicIPAddress resources that will be created
+ *
+ */
+export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
+  domainNameLabel: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfiguration class.
+ * @constructor
+ * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+ * configuration
+ *
+ * @member {string} name The publicIP address configuration name.
+ *
+ * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
+ * address.
+ *
+ * @member {object} [dnsSettings] The dns settings to be applied on the
+ * publicIP addresses .
+ *
+ * @member {string} [dnsSettings.domainNameLabel] The Domain name label.The
+ * concatenation of the domain name label and vm index will be the domain name
+ * labels of the PublicIPAddress resources that will be created
+ *
+ */
+export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
+  name: string;
+  idleTimeoutInMinutes?: number;
+  dnsSettings?: VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetIPConfiguration class.
  * @constructor
  * Describes a virtual machine scale set network profile's IP configuration.
  *
  * @member {string} name The IP configuration name.
  *
- * @member {object} subnet The subnet.
+ * @member {object} [subnet] The subnet.
  *
  * @member {string} [subnet.id] The ARM resource id in the form of
  * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
+ *
+ * @member {object} [publicIPAddressConfiguration] The
+ * publicIPAddressConfiguration.
+ *
+ * @member {string} [publicIPAddressConfiguration.name] The publicIP address
+ * configuration name.
+ *
+ * @member {number} [publicIPAddressConfiguration.idleTimeoutInMinutes] The
+ * idle timeout of the public IP address.
+ *
+ * @member {object} [publicIPAddressConfiguration.dnsSettings] The dns settings
+ * to be applied on the publicIP addresses .
+ *
+ * @member {string} [publicIPAddressConfiguration.dnsSettings.domainNameLabel]
+ * The Domain name label.The concatenation of the domain name label and vm
+ * index will be the domain name labels of the PublicIPAddress resources that
+ * will be created
+ *
+ * @member {string} [privateIPAddressVersion] Available from Api-Version
+ * 2017-03-30 onwards, it represents whether the specific ipconfiguration is
+ * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
+ * 'IPv6'. Possible values include: 'IPv4', 'IPv6'
  *
  * @member {array} [applicationGatewayBackendAddressPools] The application
  * gateway backend address pools.
@@ -2136,10 +2814,26 @@ export interface ApiEntityReference {
  */
 export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
   name: string;
-  subnet: ApiEntityReference;
+  subnet?: ApiEntityReference;
+  publicIPAddressConfiguration?: VirtualMachineScaleSetPublicIPAddressConfiguration;
+  privateIPAddressVersion?: string;
   applicationGatewayBackendAddressPools?: SubResource[];
   loadBalancerBackendAddressPools?: SubResource[];
   loadBalancerInboundNatPools?: SubResource[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetNetworkConfigurationDnsSettings class.
+ * @constructor
+ * Describes a virtual machines scale sets network configuration's DNS
+ * settings.
+ *
+ * @member {array} [dnsServers] List of DNS servers IP addresses
+ *
+ */
+export interface VirtualMachineScaleSetNetworkConfigurationDnsSettings {
+  dnsServers?: string[];
 }
 
 /**
@@ -2154,6 +2848,15 @@ export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
  * @member {boolean} [primary] Whether this is a primary NIC on a virtual
  * machine.
  *
+ * @member {object} [networkSecurityGroup] The network security group.
+ *
+ * @member {string} [networkSecurityGroup.id] Resource Id
+ *
+ * @member {object} [dnsSettings] The dns settings to be applied on the network
+ * interfaces.
+ *
+ * @member {array} [dnsSettings.dnsServers] List of DNS servers IP addresses
+ *
  * @member {array} ipConfigurations The virtual machine scale set IP
  * Configuration.
  *
@@ -2161,6 +2864,8 @@ export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
 export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource {
   name: string;
   primary?: boolean;
+  networkSecurityGroup?: SubResource;
+  dnsSettings?: VirtualMachineScaleSetNetworkConfigurationDnsSettings;
   ipConfigurations: VirtualMachineScaleSetIPConfiguration[];
 }
 
@@ -2226,6 +2931,24 @@ export interface VirtualMachineScaleSetExtension extends SubResourceReadOnly {
   settings?: any;
   protectedSettings?: any;
   readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetExtensionListResult class.
+ * @constructor
+ * The List VM scale set extension operation response.
+ *
+ * @member {array} value The list of VM scale set extensions.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of VM scale set
+ * extensions. Call ListNext() with this to fetch the next page of VM scale set
+ * extensions.
+ *
+ */
+export interface VirtualMachineScaleSetExtensionListResult {
+  value: VirtualMachineScaleSetExtension[];
+  nextLink?: string;
 }
 
 /**
@@ -2354,18 +3077,36 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * @member {array} [networkProfile.networkInterfaceConfigurations] The list of
  * network configurations.
  *
+ * @member {object} [diagnosticsProfile] The virtual machine scale set
+ * diagnostics profile.
+ *
+ * @member {object} [diagnosticsProfile.bootDiagnostics] Boot Diagnostics is a
+ * debugging feature which allows the user to view console output and/or a
+ * screenshot of the virtual machine from the hypervisor.
+ *
+ * @member {boolean} [diagnosticsProfile.bootDiagnostics.enabled] Whether boot
+ * diagnostics should be enabled on the Virtual Machine.
+ *
+ * @member {string} [diagnosticsProfile.bootDiagnostics.storageUri] URI of the
+ * storage account to use for placing the console output and screenshot.
+ *
  * @member {object} [extensionProfile] The virtual machine scale set extension
  * profile.
  *
  * @member {array} [extensionProfile.extensions] The virtual machine scale set
  * child extension resources.
  *
+ * @member {string} [licenseType] The license type, which is for bring your own
+ * license scenario.
+ *
  */
 export interface VirtualMachineScaleSetVMProfile {
   osProfile?: VirtualMachineScaleSetOSProfile;
   storageProfile?: VirtualMachineScaleSetStorageProfile;
   networkProfile?: VirtualMachineScaleSetNetworkProfile;
+  diagnosticsProfile?: DiagnosticsProfile;
   extensionProfile?: VirtualMachineScaleSetExtensionProfile;
+  licenseType?: string;
 }
 
 /**
@@ -2397,6 +3138,11 @@ export interface VirtualMachineScaleSetVMProfile {
  *
  * @member {string} [upgradePolicy.mode] The upgrade mode. Possible values
  * include: 'Automatic', 'Manual'
+ *
+ * @member {object} [recoveryPolicy] The recovery policy.
+ *
+ * @member {string} [recoveryPolicy.mode] The recovery mode. Possible values
+ * include: 'None', 'OverProvision', 'Reprovision'
  *
  * @member {object} [virtualMachineProfile] The virtual machine profile.
  *
@@ -2527,17 +3273,39 @@ export interface VirtualMachineScaleSetVMProfile {
  * [virtualMachineProfile.networkProfile.networkInterfaceConfigurations] The
  * list of network configurations.
  *
+ * @member {object} [virtualMachineProfile.diagnosticsProfile] The virtual
+ * machine scale set diagnostics profile.
+ *
+ * @member {object} [virtualMachineProfile.diagnosticsProfile.bootDiagnostics]
+ * Boot Diagnostics is a debugging feature which allows the user to view
+ * console output and/or a screenshot of the virtual machine from the
+ * hypervisor.
+ *
+ * @member {boolean}
+ * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled] Whether
+ * boot diagnostics should be enabled on the Virtual Machine.
+ *
+ * @member {string}
+ * [virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri] URI of
+ * the storage account to use for placing the console output and screenshot.
+ *
  * @member {object} [virtualMachineProfile.extensionProfile] The virtual
  * machine scale set extension profile.
  *
  * @member {array} [virtualMachineProfile.extensionProfile.extensions] The
  * virtual machine scale set child extension resources.
  *
+ * @member {string} [virtualMachineProfile.licenseType] The license type, which
+ * is for bring your own license scenario.
+ *
  * @member {string} [provisioningState] The provisioning state, which only
  * appears in the response.
  *
  * @member {boolean} [overprovision] Specifies whether the Virtual Machine
  * Scale Set should be overprovisioned.
+ *
+ * @member {string} [uniqueId] Specifies the ID which uniquely identifies a
+ * Virtual Machine Scale Set.
  *
  * @member {boolean} [singlePlacementGroup] When true this limits the scale set
  * to a single placement group, of max size 100 virtual machines.
@@ -2561,9 +3329,11 @@ export interface VirtualMachineScaleSet extends Resource {
   sku?: Sku;
   plan?: Plan;
   upgradePolicy?: UpgradePolicy;
+  recoveryPolicy?: RecoveryPolicy;
   virtualMachineProfile?: VirtualMachineScaleSetVMProfile;
   readonly provisioningState?: string;
   overprovision?: boolean;
+  uniqueId?: string;
   singlePlacementGroup?: boolean;
   identity?: VirtualMachineScaleSetIdentity;
 }
@@ -2820,6 +3590,38 @@ export interface VirtualMachineScaleSetListSkusResult {
  * @member {array} [instanceView.vmAgent.statuses] The resource status
  * information.
  *
+ * @member {object} [instanceView.maintenanceRedeployStatus] The Maintenance
+ * Operation status on the virtual machine.
+ *
+ * @member {boolean}
+ * [instanceView.maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed]
+ * True, if customer is allowed to perform Maintenance.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowStartTime] Start
+ * Time for the Pre Maintenance Window.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
+ * Time for the Pre Maintenance Window.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowStartTime] Start
+ * Time for the Maintenance Window.
+ *
+ * @member {date}
+ * [instanceView.maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
+ * for the Maintenance Window.
+ *
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationResultCode] The Last
+ * Maintenance Operation Result Code. Possible values include: 'None',
+ * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
+ *
+ * @member {string}
+ * [instanceView.maintenanceRedeployStatus.lastOperationMessage] Message
+ * returned for the last Maintenance Operation.
+ *
  * @member {array} [instanceView.disks] The virtual machine disk information.
  *
  * @member {array} [instanceView.extensions] The extensions information.
@@ -2840,7 +3642,9 @@ export interface VirtualMachineScaleSetListSkusResult {
  * Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2', 'Basic_A3',
  * 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3',
  * 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
- * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1', 'Standard_D2',
+ * 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_A1_v2',
+ * 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2', 'Standard_A2m_v2',
+ * 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1', 'Standard_D2',
  * 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
  * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
  * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
@@ -2849,9 +3653,16 @@ export interface VirtualMachineScaleSetListSkusResult {
  * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
  * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
  * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
- * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
- * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
- * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+ * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
+ * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+ * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+ * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+ * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+ * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+ * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+ * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+ * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+ * 'Standard_NV12', 'Standard_NV24'
  *
  * @member {object} [storageProfile] The storage profile.
  *
@@ -3249,315 +4060,19 @@ export interface OperationStatusResponse {
 
 /**
  * @class
- * Initializes a new instance of the ContainerServiceCustomProfile class.
+ * Initializes a new instance of the DiskSku class.
  * @constructor
- * Properties to configure a custom container service cluster.
+ * The disks and snapshots sku name. Can be Standard_LRS or Premium_LRS.
  *
- * @member {string} orchestrator The name of the custom orchestrator to use.
+ * @member {string} [name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ *
+ * @member {string} [tier] The sku tier. Default value: 'Standard' .
  *
  */
-export interface ContainerServiceCustomProfile {
-  orchestrator: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceServicePrincipalProfile class.
- * @constructor
- * Information about a service principal identity for the cluster to use for
- * manipulating Azure APIs.
- *
- * @member {string} clientId The ID for the service principal.
- *
- * @member {string} secret The secret password associated with the service
- * principal.
- *
- */
-export interface ContainerServiceServicePrincipalProfile {
-  clientId: string;
-  secret: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceOrchestratorProfile class.
- * @constructor
- * Profile for the container service orchestrator.
- *
- * @member {string} orchestratorType The orchestrator to use to manage
- * container service cluster resources. Valid values are Swarm, DCOS, and
- * Custom. Possible values include: 'Swarm', 'DCOS', 'Custom', 'Kubernetes'
- *
- */
-export interface ContainerServiceOrchestratorProfile {
-  orchestratorType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceMasterProfile class.
- * @constructor
- * Profile for the container service master.
- *
- * @member {number} [count] Number of masters (VMs) in the container service
- * cluster. Allowed values are 1, 3, and 5. The default value is 1. Default
- * value: 1 .
- *
- * @member {string} dnsPrefix DNS prefix to be used to create the FQDN for
- * master.
- *
- * @member {string} [fqdn] FDQN for the master.
- *
- */
-export interface ContainerServiceMasterProfile {
-  count?: number;
-  dnsPrefix: string;
-  readonly fqdn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceAgentPoolProfile class.
- * @constructor
- * Profile for the container service agent pool.
- *
- * @member {string} name Unique name of the agent pool profile in the context
- * of the subscription and resource group.
- *
- * @member {number} count Number of agents (VMs) to host docker containers.
- * Allowed values must be in the range of 1 to 100 (inclusive). The default
- * value is 1. . Default value: 1 .
- *
- * @member {string} vmSize Size of agent VMs. Possible values include:
- * 'Standard_A0', 'Standard_A1', 'Standard_A2', 'Standard_A3', 'Standard_A4',
- * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8', 'Standard_A9',
- * 'Standard_A10', 'Standard_A11', 'Standard_D1', 'Standard_D2', 'Standard_D3',
- * 'Standard_D4', 'Standard_D11', 'Standard_D12', 'Standard_D13',
- * 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2', 'Standard_D3_v2',
- * 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2', 'Standard_D12_v2',
- * 'Standard_D13_v2', 'Standard_D14_v2', 'Standard_G1', 'Standard_G2',
- * 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_DS1', 'Standard_DS2',
- * 'Standard_DS3', 'Standard_DS4', 'Standard_DS11', 'Standard_DS12',
- * 'Standard_DS13', 'Standard_DS14', 'Standard_GS1', 'Standard_GS2',
- * 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
- *
- * @member {string} dnsPrefix DNS prefix to be used to create the FQDN for the
- * agent pool.
- *
- * @member {string} [fqdn] FDQN for the agent pool.
- *
- */
-export interface ContainerServiceAgentPoolProfile {
-  name: string;
-  count: number;
-  vmSize: string;
-  dnsPrefix: string;
-  readonly fqdn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceWindowsProfile class.
- * @constructor
- * Profile for Windows VMs in the container service cluster.
- *
- * @member {string} adminUsername The administrator username to use for Windows
- * VMs.
- *
- * @member {string} adminPassword The administrator password to use for Windows
- * VMs.
- *
- */
-export interface ContainerServiceWindowsProfile {
-  adminUsername: string;
-  adminPassword: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceSshPublicKey class.
- * @constructor
- * Contains information about SSH certificate public key data.
- *
- * @member {string} keyData Certificate public key used to authenticate with
- * VMs through SSH. The certificate must be in PEM format with or without
- * headers.
- *
- */
-export interface ContainerServiceSshPublicKey {
-  keyData: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceSshConfiguration class.
- * @constructor
- * SSH configuration for Linux-based VMs running on Azure.
- *
- * @member {array} publicKeys the list of SSH public keys used to authenticate
- * with Linux-based VMs.
- *
- */
-export interface ContainerServiceSshConfiguration {
-  publicKeys: ContainerServiceSshPublicKey[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceLinuxProfile class.
- * @constructor
- * Profile for Linux VMs in the container service cluster.
- *
- * @member {string} adminUsername The administrator username to use for Linux
- * VMs.
- *
- * @member {object} ssh The ssh key configuration for Linux VMs.
- *
- * @member {array} [ssh.publicKeys] the list of SSH public keys used to
- * authenticate with Linux-based VMs.
- *
- */
-export interface ContainerServiceLinuxProfile {
-  adminUsername: string;
-  ssh: ContainerServiceSshConfiguration;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceVMDiagnostics class.
- * @constructor
- * Profile for diagnostics on the container service VMs.
- *
- * @member {boolean} enabled Whether the VM diagnostic agent is provisioned on
- * the VM.
- *
- * @member {string} [storageUri] The URI of the storage account where
- * diagnostics are stored.
- *
- */
-export interface ContainerServiceVMDiagnostics {
-  enabled: boolean;
-  readonly storageUri?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceDiagnosticsProfile class.
- * @constructor
- * @member {object} vmDiagnostics Profile for the container service VM
- * diagnostic agent.
- *
- * @member {boolean} [vmDiagnostics.enabled] Whether the VM diagnostic agent is
- * provisioned on the VM.
- *
- * @member {string} [vmDiagnostics.storageUri] The URI of the storage account
- * where diagnostics are stored.
- *
- */
-export interface ContainerServiceDiagnosticsProfile {
-  vmDiagnostics: ContainerServiceVMDiagnostics;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerService class.
- * @constructor
- * Container service.
- *
- * @member {string} [provisioningState] the current deployment or provisioning
- * state, which only appears in the response.
- *
- * @member {object} [orchestratorProfile] Properties of the orchestrator.
- *
- * @member {string} [orchestratorProfile.orchestratorType] The orchestrator to
- * use to manage container service cluster resources. Valid values are Swarm,
- * DCOS, and Custom. Possible values include: 'Swarm', 'DCOS', 'Custom',
- * 'Kubernetes'
- *
- * @member {object} [customProfile] Properties for custom clusters.
- *
- * @member {string} [customProfile.orchestrator] The name of the custom
- * orchestrator to use.
- *
- * @member {object} [servicePrincipalProfile] Properties for cluster service
- * principals.
- *
- * @member {string} [servicePrincipalProfile.clientId] The ID for the service
- * principal.
- *
- * @member {string} [servicePrincipalProfile.secret] The secret password
- * associated with the service principal.
- *
- * @member {object} masterProfile Properties of master agents.
- *
- * @member {number} [masterProfile.count] Number of masters (VMs) in the
- * container service cluster. Allowed values are 1, 3, and 5. The default value
- * is 1.
- *
- * @member {string} [masterProfile.dnsPrefix] DNS prefix to be used to create
- * the FQDN for master.
- *
- * @member {string} [masterProfile.fqdn] FDQN for the master.
- *
- * @member {array} agentPoolProfiles Properties of the agent pool.
- *
- * @member {object} [windowsProfile] Properties of Windows VMs.
- *
- * @member {string} [windowsProfile.adminUsername] The administrator username
- * to use for Windows VMs.
- *
- * @member {string} [windowsProfile.adminPassword] The administrator password
- * to use for Windows VMs.
- *
- * @member {object} linuxProfile Properties of Linux VMs.
- *
- * @member {string} [linuxProfile.adminUsername] The administrator username to
- * use for Linux VMs.
- *
- * @member {object} [linuxProfile.ssh] The ssh key configuration for Linux VMs.
- *
- * @member {array} [linuxProfile.ssh.publicKeys] the list of SSH public keys
- * used to authenticate with Linux-based VMs.
- *
- * @member {object} [diagnosticsProfile] Properties of the diagnostic agent.
- *
- * @member {object} [diagnosticsProfile.vmDiagnostics] Profile for the
- * container service VM diagnostic agent.
- *
- * @member {boolean} [diagnosticsProfile.vmDiagnostics.enabled] Whether the VM
- * diagnostic agent is provisioned on the VM.
- *
- * @member {string} [diagnosticsProfile.vmDiagnostics.storageUri] The URI of
- * the storage account where diagnostics are stored.
- *
- */
-export interface ContainerService extends Resource {
-  readonly provisioningState?: string;
-  orchestratorProfile?: ContainerServiceOrchestratorProfile;
-  customProfile?: ContainerServiceCustomProfile;
-  servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
-  masterProfile: ContainerServiceMasterProfile;
-  agentPoolProfiles: ContainerServiceAgentPoolProfile[];
-  windowsProfile?: ContainerServiceWindowsProfile;
-  linuxProfile: ContainerServiceLinuxProfile;
-  diagnosticsProfile?: ContainerServiceDiagnosticsProfile;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContainerServiceListResult class.
- * @constructor
- * The response from the List Container Services operation.
- *
- * @member {array} [value] the list of container services.
- *
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
- *
- */
-export interface ContainerServiceListResult {
-  value?: ContainerService[];
-  nextLink?: string;
+export interface DiskSku {
+  name?: string;
+  readonly tier?: string;
 }
 
 /**
@@ -3568,9 +4083,17 @@ export interface ContainerServiceListResult {
  *
  * @member {object} [tags] Resource tags
  *
+ * @member {object} [sku]
+ *
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ *
+ * @member {string} [sku.tier] The sku tier.
+ *
  */
 export interface ResourceUpdate extends BaseResource {
   tags?: { [propertyName: string]: string };
+  sku?: DiskSku;
 }
 
 /**
@@ -3598,8 +4121,9 @@ export interface ImageDiskReference {
  * @constructor
  * Data used when creating a disk.
  *
- * @member {string} createOption Possible values include: 'Empty', 'Attach',
- * 'FromImage', 'Import', 'Copy', 'Restore'
+ * @member {string} createOption This enumerates the possible sources of a
+ * disk's creation. Possible values include: 'Empty', 'Attach', 'FromImage',
+ * 'Import', 'Copy'
  *
  * @member {string} [storageAccountId] If createOption is Import, the Azure
  * Resource Manager identifier of the storage account containing the blob to
@@ -3614,14 +4138,11 @@ export interface ImageDiskReference {
  * data disk, this is an index that indicates which of the data disks in the
  * image to use. For OS disks, this field is null.
  *
- * @member {string} [sourceUri] If creationOption is Import, this is a SAS URI
- * to a blob to be imported into a managed disk. If creationOption is Copy,
- * this is a relative Uri containing the id of the source snapshot to be copied
- * into a managed disk.
+ * @member {string} [sourceUri] If creationOption is Import, this is the URI of
+ * a blob to be imported into a managed disk.
  *
  * @member {string} [sourceResourceId] If createOption is Copy, this is the ARM
- * id of the source snapshot or disk. If creationOption is Restore, this is the
- * ARM-like id of the source disk restore point.
+ * id of the source snapshot or disk.
  *
  */
 export interface CreationData {
@@ -3732,8 +4253,15 @@ export interface EncryptionSettings {
  * @constructor
  * Disk resource.
  *
- * @member {string} [accountType] the storage account type of the disk.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * @member {string} [managedBy] A relative URI containing the ID of the VM that
+ * has the disk attached.
+ *
+ * @member {object} [sku]
+ *
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ *
+ * @member {string} [sku.tier] The sku tier.
  *
  * @member {date} [timeCreated] The time when the disk was created.
  *
@@ -3743,8 +4271,9 @@ export interface EncryptionSettings {
  * @member {object} creationData Disk source information. CreationData
  * information cannot be changed after the disk has been created.
  *
- * @member {string} [creationData.createOption] Possible values include:
- * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+ * @member {string} [creationData.createOption] This enumerates the possible
+ * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+ * 'FromImage', 'Import', 'Copy'
  *
  * @member {string} [creationData.storageAccountId] If createOption is Import,
  * the Azure Resource Manager identifier of the storage account containing the
@@ -3761,13 +4290,10 @@ export interface EncryptionSettings {
  * disks in the image to use. For OS disks, this field is null.
  *
  * @member {string} [creationData.sourceUri] If creationOption is Import, this
- * is a SAS URI to a blob to be imported into a managed disk. If creationOption
- * is Copy, this is a relative Uri containing the id of the source snapshot to
- * be copied into a managed disk.
+ * is the URI of a blob to be imported into a managed disk.
  *
  * @member {string} [creationData.sourceResourceId] If createOption is Copy,
- * this is the ARM id of the source snapshot or disk. If creationOption is
- * Restore, this is the ARM-like id of the source disk restore point.
+ * this is the ARM id of the source snapshot or disk.
  *
  * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
  * field is mandatory and it indicates the size of the VHD to create. If this
@@ -3808,20 +4334,17 @@ export interface EncryptionSettings {
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
  *
- * @member {string} [ownerId] A relative URI containing the VM id that has the
- * disk attached.
- *
  * @member {string} [provisioningState] The disk provisioning state.
  *
  */
 export interface Disk extends Resource {
-  accountType?: string;
+  readonly managedBy?: string;
+  sku?: DiskSku;
   readonly timeCreated?: Date;
   osType?: string;
   creationData: CreationData;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
-  readonly ownerId?: string;
   readonly provisioningState?: string;
 }
 
@@ -3831,40 +4354,8 @@ export interface Disk extends Resource {
  * @constructor
  * Disk update resource.
  *
- * @member {string} [accountType] the storage account type of the disk.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
- *
  * @member {string} [osType] the Operating System type. Possible values
  * include: 'Windows', 'Linux'
- *
- * @member {object} [creationData] disk source information. CreationData
- * information cannot be changed after the disk has been created.
- *
- * @member {string} [creationData.createOption] Possible values include:
- * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
- *
- * @member {string} [creationData.storageAccountId] If createOption is Import,
- * the Azure Resource Manager identifier of the storage account containing the
- * blob to import as a disk. Required only if the blob is in a different
- * subscription
- *
- * @member {object} [creationData.imageReference] Disk source information.
- *
- * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
- *
- * @member {number} [creationData.imageReference.lun] If the disk is created
- * from an image's data disk, this is an index that indicates which of the data
- * disks in the image to use. For OS disks, this field is null.
- *
- * @member {string} [creationData.sourceUri] If creationOption is Import, this
- * is a SAS URI to a blob to be imported into a managed disk. If creationOption
- * is Copy, this is a relative Uri containing the id of the source snapshot to
- * be copied into a managed disk.
- *
- * @member {string} [creationData.sourceResourceId] If createOption is Copy,
- * this is the ARM id of the source snapshot or disk. If creationOption is
- * Restore, this is the ARM-like id of the source disk restore point.
  *
  * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
  * field is mandatory and it indicates the size of the VHD to create. If this
@@ -3907,9 +4398,7 @@ export interface Disk extends Resource {
  *
  */
 export interface DiskUpdate extends ResourceUpdate {
-  accountType?: string;
   osType?: string;
-  creationData?: CreationData;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
 }
@@ -3922,7 +4411,7 @@ export interface DiskUpdate extends ResourceUpdate {
  *
  * @member {array} value A list of disks.
  *
- * @member {string} [nextLink] the uri to fetch the next page of disks. Call
+ * @member {string} [nextLink] The uri to fetch the next page of disks. Call
  * ListNext() with this to fetch the next page of disks.
  *
  */
@@ -3967,8 +4456,12 @@ export interface AccessUri {
  * @constructor
  * Snapshot resource.
  *
- * @member {string} [accountType] the storage account type of the disk.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
+ * @member {object} [sku]
+ *
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ *
+ * @member {string} [sku.tier] The sku tier.
  *
  * @member {date} [timeCreated] The time when the disk was created.
  *
@@ -3978,8 +4471,9 @@ export interface AccessUri {
  * @member {object} creationData Disk source information. CreationData
  * information cannot be changed after the disk has been created.
  *
- * @member {string} [creationData.createOption] Possible values include:
- * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+ * @member {string} [creationData.createOption] This enumerates the possible
+ * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+ * 'FromImage', 'Import', 'Copy'
  *
  * @member {string} [creationData.storageAccountId] If createOption is Import,
  * the Azure Resource Manager identifier of the storage account containing the
@@ -3996,13 +4490,10 @@ export interface AccessUri {
  * disks in the image to use. For OS disks, this field is null.
  *
  * @member {string} [creationData.sourceUri] If creationOption is Import, this
- * is a SAS URI to a blob to be imported into a managed disk. If creationOption
- * is Copy, this is a relative Uri containing the id of the source snapshot to
- * be copied into a managed disk.
+ * is the URI of a blob to be imported into a managed disk.
  *
  * @member {string} [creationData.sourceResourceId] If createOption is Copy,
- * this is the ARM id of the source snapshot or disk. If creationOption is
- * Restore, this is the ARM-like id of the source disk restore point.
+ * this is the ARM id of the source snapshot or disk.
  *
  * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
  * field is mandatory and it indicates the size of the VHD to create. If this
@@ -4043,20 +4534,16 @@ export interface AccessUri {
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
  *
- * @member {string} [ownerId] A relative URI containing the VM id that has the
- * disk attached.
- *
  * @member {string} [provisioningState] The disk provisioning state.
  *
  */
 export interface Snapshot extends Resource {
-  accountType?: string;
+  sku?: DiskSku;
   readonly timeCreated?: Date;
   osType?: string;
   creationData: CreationData;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
-  readonly ownerId?: string;
   readonly provisioningState?: string;
 }
 
@@ -4066,40 +4553,8 @@ export interface Snapshot extends Resource {
  * @constructor
  * Snapshot update resource.
  *
- * @member {string} [accountType] the storage account type of the disk.
- * Possible values include: 'Standard_LRS', 'Premium_LRS'
- *
  * @member {string} [osType] the Operating System type. Possible values
  * include: 'Windows', 'Linux'
- *
- * @member {object} [creationData] disk source information. CreationData
- * information cannot be changed after the disk has been created.
- *
- * @member {string} [creationData.createOption] Possible values include:
- * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
- *
- * @member {string} [creationData.storageAccountId] If createOption is Import,
- * the Azure Resource Manager identifier of the storage account containing the
- * blob to import as a disk. Required only if the blob is in a different
- * subscription
- *
- * @member {object} [creationData.imageReference] Disk source information.
- *
- * @member {string} [creationData.imageReference.id] A relative uri containing
- * either a Platform Imgage Repository or user image reference.
- *
- * @member {number} [creationData.imageReference.lun] If the disk is created
- * from an image's data disk, this is an index that indicates which of the data
- * disks in the image to use. For OS disks, this field is null.
- *
- * @member {string} [creationData.sourceUri] If creationOption is Import, this
- * is a SAS URI to a blob to be imported into a managed disk. If creationOption
- * is Copy, this is a relative Uri containing the id of the source snapshot to
- * be copied into a managed disk.
- *
- * @member {string} [creationData.sourceResourceId] If createOption is Copy,
- * this is the ARM id of the source snapshot or disk. If creationOption is
- * Restore, this is the ARM-like id of the source disk restore point.
  *
  * @member {number} [diskSizeGB] If creationData.createOption is Empty, this
  * field is mandatory and it indicates the size of the VHD to create. If this
@@ -4142,9 +4597,7 @@ export interface Snapshot extends Resource {
  *
  */
 export interface SnapshotUpdate extends ResourceUpdate {
-  accountType?: string;
   osType?: string;
-  creationData?: CreationData;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
 }
@@ -4163,6 +4616,150 @@ export interface SnapshotUpdate extends ResourceUpdate {
  */
 export interface SnapshotList {
   value: Snapshot[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandInputParameter class.
+ * @constructor
+ * Describes the properties of a run command parameter.
+ *
+ * @member {string} name The run command parameter name.
+ *
+ * @member {string} value The run command parameter value.
+ *
+ */
+export interface RunCommandInputParameter {
+  name: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandInput class.
+ * @constructor
+ * Capture Virtual Machine parameters.
+ *
+ * @member {string} commandId The run command id.
+ *
+ * @member {array} [parameters] The run command parameters.
+ *
+ */
+export interface RunCommandInput {
+  commandId: string;
+  parameters?: RunCommandInputParameter[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandParameterDefinition class.
+ * @constructor
+ * Describes the properties of a run command parameter.
+ *
+ * @member {string} name The run command parameter name.
+ *
+ * @member {string} type The run command parameter type.
+ *
+ * @member {string} [defaultValue] The run command parameter default value.
+ *
+ * @member {boolean} [required] The run command parameter required. Default
+ * value: false .
+ *
+ */
+export interface RunCommandParameterDefinition {
+  name: string;
+  type: string;
+  defaultValue?: string;
+  required?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandDocumentBase class.
+ * @constructor
+ * Describes the properties of a Run Command metadata.
+ *
+ * @member {string} schema The VM run command schema.
+ *
+ * @member {string} id The VM run command id.
+ *
+ * @member {string} osType The Operating System type. Possible values include:
+ * 'Windows', 'Linux'
+ *
+ * @member {string} label The VM run command label.
+ *
+ * @member {string} description The VM run command description.
+ *
+ */
+export interface RunCommandDocumentBase {
+  schema: string;
+  id: string;
+  osType: string;
+  label: string;
+  description: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandDocument class.
+ * @constructor
+ * Describes the properties of a Run Command.
+ *
+ * @member {array} script The script to be executed.
+ *
+ * @member {array} [parameters] The parameters used by the script.
+ *
+ */
+export interface RunCommandDocument extends RunCommandDocumentBase {
+  script: string[];
+  parameters?: RunCommandParameterDefinition[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandListResult class.
+ * @constructor
+ * The List Virtual Machine operation response.
+ *
+ * @member {array} value The list of virtual machine run commands.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of run commands.
+ * Call ListNext() with this to fetch the next page of run commands.
+ *
+ */
+export interface RunCommandListResult {
+  value: RunCommandDocumentBase[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandResult class.
+ * @constructor
+ * Run command operation response.
+ *
+ * @member {object} [output] Operation output data (raw JSON)
+ *
+ */
+export interface RunCommandResult extends OperationStatusResponse {
+  output?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceListResult class.
+ * @constructor
+ * The response from the List Container Services operation.
+ *
+ * @member {array} [value] the list of container services.
+ *
+ * @member {string} [nextLink] The URL to get the next set of container service
+ * results.
+ *
+ */
+export interface ContainerServiceListResult {
+  value?: ContainerService[];
   nextLink?: string;
 }
 
@@ -4224,6 +4821,23 @@ export interface ListUsagesResult {
  */
 export interface ImageListResult {
   value: Image[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkusResult class.
+ * @constructor
+ * The Compute List Skus operation response.
+ *
+ * @member {array} value The list of skus available for the subscription.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Compute Skus.
+ * Call ListNext() with this to fetch the next page of VMSS Skus.
+ *
+ */
+export interface ResourceSkusResult {
+  value: ResourceSku[];
   nextLink?: string;
 }
 
@@ -4301,6 +4915,24 @@ export interface VirtualMachineScaleSetListSkusResult {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineScaleSetExtensionListResult class.
+ * @constructor
+ * The List VM scale set extension operation response.
+ *
+ * @member {array} value The list of VM scale set extensions.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of VM scale set
+ * extensions. Call ListNext() with this to fetch the next page of VM scale set
+ * extensions.
+ *
+ */
+export interface VirtualMachineScaleSetExtensionListResult {
+  value: VirtualMachineScaleSetExtension[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetVMListResult class.
  * @constructor
  * The List Virtual Machine Scale Set VMs operation response.
@@ -4319,30 +4951,13 @@ export interface VirtualMachineScaleSetVMListResult {
 
 /**
  * @class
- * Initializes a new instance of the ContainerServiceListResult class.
- * @constructor
- * The response from the List Container Services operation.
- *
- * @member {array} [value] the list of container services.
- *
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
- *
- */
-export interface ContainerServiceListResult {
-  value?: ContainerService[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the DiskList class.
  * @constructor
  * The List Disks operation response.
  *
  * @member {array} value A list of disks.
  *
- * @member {string} [nextLink] the uri to fetch the next page of disks. Call
+ * @member {string} [nextLink] The uri to fetch the next page of disks. Call
  * ListNext() with this to fetch the next page of disks.
  *
  */
@@ -4368,6 +4983,37 @@ export interface SnapshotList {
   nextLink?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the RunCommandListResult class.
+ * @constructor
+ * The List Virtual Machine operation response.
+ *
+ * @member {array} value The list of virtual machine run commands.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of run commands.
+ * Call ListNext() with this to fetch the next page of run commands.
+ *
+ */
+export interface RunCommandListResult {
+  value: RunCommandDocumentBase[];
+  nextLink?: string;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceListResult class.
+ * @constructor
+ * The response from the List Container Services operation.
+ *
+ * @member {string} [nextLink] The URL to get the next set of container service
+ * results.
+ *
+ */
+export interface ContainerServiceListResult extends Array<ContainerService> {
+  nextLink?: string;
+}
 
 /**
  * @class
@@ -4415,6 +5061,20 @@ export interface ListUsagesResult extends Array<Usage> {
  *
  */
 export interface ImageListResult extends Array<Image> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkusResult class.
+ * @constructor
+ * The Compute List Skus operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Compute Skus.
+ * Call ListNext() with this to fetch the next page of VMSS Skus.
+ *
+ */
+export interface ResourceSkusResult extends Array<ResourceSku> {
   nextLink?: string;
 }
 
@@ -4479,6 +5139,21 @@ export interface VirtualMachineScaleSetListSkusResult extends Array<VirtualMachi
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineScaleSetExtensionListResult class.
+ * @constructor
+ * The List VM scale set extension operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of VM scale set
+ * extensions. Call ListNext() with this to fetch the next page of VM scale set
+ * extensions.
+ *
+ */
+export interface VirtualMachineScaleSetExtensionListResult extends Array<VirtualMachineScaleSetExtension> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetVMListResult class.
  * @constructor
  * The List Virtual Machine Scale Set VMs operation response.
@@ -4494,25 +5169,11 @@ export interface VirtualMachineScaleSetVMListResult extends Array<VirtualMachine
 
 /**
  * @class
- * Initializes a new instance of the ContainerServiceListResult class.
- * @constructor
- * The response from the List Container Services operation.
- *
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
- *
- */
-export interface ContainerServiceListResult extends Array<ContainerService> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the DiskList class.
  * @constructor
  * The List Disks operation response.
  *
- * @member {string} [nextLink] the uri to fetch the next page of disks. Call
+ * @member {string} [nextLink] The uri to fetch the next page of disks. Call
  * ListNext() with this to fetch the next page of disks.
  *
  */
@@ -4531,5 +5192,19 @@ export interface DiskList extends Array<Disk> {
  *
  */
 export interface SnapshotList extends Array<Snapshot> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunCommandListResult class.
+ * @constructor
+ * The List Virtual Machine operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of run commands.
+ * Call ListNext() with this to fetch the next page of run commands.
+ *
+ */
+export interface RunCommandListResult extends Array<RunCommandDocumentBase> {
   nextLink?: string;
 }
