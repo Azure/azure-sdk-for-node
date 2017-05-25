@@ -14,6 +14,896 @@ import * as models from '../models';
 
 /**
  * @class
+ * ContainerServices
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface ContainerServices {
+
+
+    /**
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
+    list(callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
+     *
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
+     *
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom', 'Kubernetes'
+     *
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     *
+     * @param {string} parameters.customProfile.orchestrator The name of the custom
+     * orchestrator to use.
+     *
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     *
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     *
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     *
+     * @param {object} parameters.masterProfile Properties of master agents.
+     *
+     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
+     *
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
+     *
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
+     *
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * username to use for Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
+     *
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
+     *
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * username to use for Linux VMs.
+     *
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
+     *
+     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
+     * keys used to authenticate with Linux-based VMs.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
+     * agent.
+     *
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
+     *
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
+     * the VM diagnostic agent is provisioned on the VM.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
+     *
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
+     *
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom', 'Kubernetes'
+     *
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     *
+     * @param {string} parameters.customProfile.orchestrator The name of the custom
+     * orchestrator to use.
+     *
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     *
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     *
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     *
+     * @param {object} parameters.masterProfile Properties of master agents.
+     *
+     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
+     *
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
+     *
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
+     *
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * username to use for Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
+     *
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
+     *
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * username to use for Linux VMs.
+     *
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
+     *
+     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
+     * keys used to authenticate with Linux-based VMs.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
+     * agent.
+     *
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
+     *
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
+     * the VM diagnostic agent is provisioned on the VM.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerService} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerService} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
+    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
+    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+
+
+    /**
+     * @summary Gets the properties of the specified container service.
+     *
+     * Gets the properties of the specified container service in the specified
+     * subscription and resource group. The operation returns the properties
+     * including state, orchestrator, number of masters and agents, and FQDNs of
+     * masters and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
+
+    /**
+     * @summary Gets the properties of the specified container service.
+     *
+     * Gets the properties of the specified container service in the specified
+     * subscription and resource group. The operation returns the properties
+     * including state, orchestrator, number of masters and agents, and FQDNs of
+     * masters and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerService} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerService} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
+    get(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<models.ContainerService>): void;
+    get(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+
+
+    /**
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted individually.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted individually.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and resource
+     * group. The operation returns properties of each container service including
+     * state, orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and resource
+     * group. The operation returns properties of each container service including
+     * state, orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
+     *
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
+     *
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom', 'Kubernetes'
+     *
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     *
+     * @param {string} parameters.customProfile.orchestrator The name of the custom
+     * orchestrator to use.
+     *
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     *
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     *
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     *
+     * @param {object} parameters.masterProfile Properties of master agents.
+     *
+     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
+     *
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
+     *
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
+     *
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * username to use for Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
+     *
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
+     *
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * username to use for Linux VMs.
+     *
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
+     *
+     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
+     * keys used to authenticate with Linux-based VMs.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
+     * agent.
+     *
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
+     *
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
+     * the VM diagnostic agent is provisioned on the VM.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
+
+    /**
+     * @summary Creates or updates a container service.
+     *
+     * Creates or updates a container service with the specified configuration of
+     * orchestrator, masters, and agents.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} parameters Parameters supplied to the Create or Update a
+     * Container Service operation.
+     *
+     * @param {object} [parameters.orchestratorProfile] Properties of the
+     * orchestrator.
+     *
+     * @param {string} parameters.orchestratorProfile.orchestratorType The
+     * orchestrator to use to manage container service cluster resources. Valid
+     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
+     * 'DCOS', 'Custom', 'Kubernetes'
+     *
+     * @param {object} [parameters.customProfile] Properties for custom clusters.
+     *
+     * @param {string} parameters.customProfile.orchestrator The name of the custom
+     * orchestrator to use.
+     *
+     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
+     * service principals.
+     *
+     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
+     * service principal.
+     *
+     * @param {string} parameters.servicePrincipalProfile.secret The secret
+     * password associated with the service principal.
+     *
+     * @param {object} parameters.masterProfile Properties of master agents.
+     *
+     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
+     * the container service cluster. Allowed values are 1, 3, and 5. The default
+     * value is 1.
+     *
+     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
+     * create the FQDN for master.
+     *
+     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
+     *
+     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminUsername The administrator
+     * username to use for Windows VMs.
+     *
+     * @param {string} parameters.windowsProfile.adminPassword The administrator
+     * password to use for Windows VMs.
+     *
+     * @param {object} parameters.linuxProfile Properties of Linux VMs.
+     *
+     * @param {string} parameters.linuxProfile.adminUsername The administrator
+     * username to use for Linux VMs.
+     *
+     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
+     * Linux VMs.
+     *
+     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
+     * keys used to authenticate with Linux-based VMs.
+     *
+     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
+     * agent.
+     *
+     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
+     * container service VM diagnostic agent.
+     *
+     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
+     * the VM diagnostic agent is provisioned on the VM.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerService} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerService} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
+    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
+    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
+
+
+    /**
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted individually.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the specified container service.
+     *
+     * Deletes the specified container service in the specified subscription and
+     * resource group. The operation does not delete other resources created as
+     * part of creating a container service, including storage accounts, VMs, and
+     * availability sets. All the other resources created with the container
+     * service are part of the same resource group and can be deleted individually.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerServiceName The name of the container service in
+     * the specified subscription and resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified subscription.
+     *
+     * Gets a list of container services in the specified subscription. The
+     * operation returns properties of each container service including state,
+     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and resource
+     * group. The operation returns properties of each container service including
+     * state, orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
+
+    /**
+     * @summary Gets a list of container services in the specified resource group.
+     *
+     * Gets a list of container services in the specified subscription and resource
+     * group. The operation returns properties of each container service including
+     * state, orchestrator, number of masters and agents, and FQDNs of masters and
+     * agents.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerServiceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
+}
+
+/**
+ * @class
  * AvailabilitySets
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
@@ -26,7 +916,7 @@ export interface AvailabilitySets {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} name The name of the availability set.
+     * @param {string} availabilitySetName The name of the availability set.
      *
      * @param {object} parameters Parameters supplied to the Create Availability
      * Set operation.
@@ -64,14 +954,14 @@ export interface AvailabilitySets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySet>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, parameters: models.AvailabilitySet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySet>>;
 
     /**
      * Create or update an availability set.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} name The name of the availability set.
+     * @param {string} availabilitySetName The name of the availability set.
      *
      * @param {object} parameters Parameters supplied to the Create Availability
      * Set operation.
@@ -125,9 +1015,9 @@ export interface AvailabilitySets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySet>;
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, callback: ServiceCallback<models.AvailabilitySet>): void;
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.AvailabilitySet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
+    createOrUpdate(resourceGroupName: string, availabilitySetName: string, parameters: models.AvailabilitySet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySet>;
+    createOrUpdate(resourceGroupName: string, availabilitySetName: string, parameters: models.AvailabilitySet, callback: ServiceCallback<models.AvailabilitySet>): void;
+    createOrUpdate(resourceGroupName: string, availabilitySetName: string, parameters: models.AvailabilitySet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySet>): void;
 
 
     /**
@@ -1695,6 +2585,9 @@ export interface Images {
      * managed disk size in GB for blank data disks, and the new desired size for
      * existing OS and Data disks.
      *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType] The
+     * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
      * @param {array} [parameters.storageProfile.dataDisks] The data disks.
      *
      * @param {string} parameters.location Resource location
@@ -1754,6 +2647,9 @@ export interface Images {
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] The initial
      * managed disk size in GB for blank data disks, and the new desired size for
      * existing OS and Data disks.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType] The
+     * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] The data disks.
      *
@@ -2069,6 +2965,9 @@ export interface Images {
      * managed disk size in GB for blank data disks, and the new desired size for
      * existing OS and Data disks.
      *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType] The
+     * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
+     *
      * @param {array} [parameters.storageProfile.dataDisks] The data disks.
      *
      * @param {string} parameters.location Resource location
@@ -2128,6 +3027,9 @@ export interface Images {
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] The initial
      * managed disk size in GB for blank data disks, and the new desired size for
      * existing OS and Data disks.
+     *
+     * @param {string} [parameters.storageProfile.osDisk.storageAccountType] The
+     * Storage Account type. Possible values include: 'Standard_LRS', 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] The data disks.
      *
@@ -2347,6 +3249,123 @@ export interface Images {
 
 /**
  * @class
+ * ResourceSkus
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface ResourceSkus {
+
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceSkusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceSkusResult>>;
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceSkusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceSkusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceSkusResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceSkusResult>;
+    list(callback: ServiceCallback<models.ResourceSkusResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceSkusResult>): void;
+
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceSkusResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceSkusResult>>;
+
+    /**
+     * Gets the list of Microsoft.Compute SKUs available for your Subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceSkusResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceSkusResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceSkusResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceSkusResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceSkusResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceSkusResult>): void;
+}
+
+/**
+ * @class
  * VirtualMachines
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
@@ -2467,7 +3486,9 @@ export interface VirtualMachines {
      * name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
      * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
      * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1',
+     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2',
+     * 'Standard_A2m_v2', 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1',
      * 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
      * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
      * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
@@ -2476,9 +3497,16 @@ export interface VirtualMachines {
      * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
      * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
      * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
-     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
+     * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+     * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+     * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+     * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+     * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+     * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+     * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+     * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
      *
      * @param {object} [parameters.storageProfile] The storage profile.
      *
@@ -2710,7 +3738,9 @@ export interface VirtualMachines {
      * name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
      * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
      * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1',
+     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2',
+     * 'Standard_A2m_v2', 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1',
      * 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
      * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
      * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
@@ -2719,9 +3749,16 @@ export interface VirtualMachines {
      * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
      * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
      * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
-     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
+     * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+     * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+     * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+     * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+     * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+     * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+     * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+     * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
      *
      * @param {object} [parameters.storageProfile] The storage profile.
      *
@@ -3675,6 +4712,137 @@ export interface VirtualMachines {
 
 
     /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    performMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    performMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    performMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    runCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
+
+
+    /**
      * Captures the VM by copying virtual hard disks of the VM and outputs a
      * template that can be used to create similar VMs.
      *
@@ -3787,7 +4955,9 @@ export interface VirtualMachines {
      * name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
      * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
      * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1',
+     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2',
+     * 'Standard_A2m_v2', 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1',
      * 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
      * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
      * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
@@ -3796,9 +4966,16 @@ export interface VirtualMachines {
      * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
      * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
      * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
-     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
+     * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+     * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+     * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+     * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+     * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+     * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+     * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+     * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
      *
      * @param {object} [parameters.storageProfile] The storage profile.
      *
@@ -4030,7 +5207,9 @@ export interface VirtualMachines {
      * name. Possible values include: 'Basic_A0', 'Basic_A1', 'Basic_A2',
      * 'Basic_A3', 'Basic_A4', 'Standard_A0', 'Standard_A1', 'Standard_A2',
      * 'Standard_A3', 'Standard_A4', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11', 'Standard_D1',
+     * 'Standard_A8', 'Standard_A9', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2_v2', 'Standard_A4_v2', 'Standard_A8_v2',
+     * 'Standard_A2m_v2', 'Standard_A4m_v2', 'Standard_A8m_v2', 'Standard_D1',
      * 'Standard_D2', 'Standard_D3', 'Standard_D4', 'Standard_D11', 'Standard_D12',
      * 'Standard_D13', 'Standard_D14', 'Standard_D1_v2', 'Standard_D2_v2',
      * 'Standard_D3_v2', 'Standard_D4_v2', 'Standard_D5_v2', 'Standard_D11_v2',
@@ -4039,9 +5218,16 @@ export interface VirtualMachines {
      * 'Standard_DS11', 'Standard_DS12', 'Standard_DS13', 'Standard_DS14',
      * 'Standard_DS1_v2', 'Standard_DS2_v2', 'Standard_DS3_v2', 'Standard_DS4_v2',
      * 'Standard_DS5_v2', 'Standard_DS11_v2', 'Standard_DS12_v2',
-     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_G1',
-     * 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5', 'Standard_GS1',
-     * 'Standard_GS2', 'Standard_GS3', 'Standard_GS4', 'Standard_GS5'
+     * 'Standard_DS13_v2', 'Standard_DS14_v2', 'Standard_DS15_v2', 'Standard_F1',
+     * 'Standard_F2', 'Standard_F4', 'Standard_F8', 'Standard_F16', 'Standard_F1s',
+     * 'Standard_F2s', 'Standard_F4s', 'Standard_F8s', 'Standard_F16s',
+     * 'Standard_G1', 'Standard_G2', 'Standard_G3', 'Standard_G4', 'Standard_G5',
+     * 'Standard_GS1', 'Standard_GS2', 'Standard_GS3', 'Standard_GS4',
+     * 'Standard_GS5', 'Standard_H8', 'Standard_H16', 'Standard_H8m',
+     * 'Standard_H16m', 'Standard_H16r', 'Standard_H16mr', 'Standard_L4s',
+     * 'Standard_L8s', 'Standard_L16s', 'Standard_L32s', 'Standard_NC6',
+     * 'Standard_NC12', 'Standard_NC24', 'Standard_NC24r', 'Standard_NV6',
+     * 'Standard_NV12', 'Standard_NV24'
      *
      * @param {object} [parameters.storageProfile] The storage profile.
      *
@@ -4694,6 +5880,137 @@ export interface VirtualMachines {
 
 
     /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to perform maintenance on a virtual machine.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+
+    /**
+     * Run command on the VM.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmName The name of the virtual machine.
+     *
+     * @param {object} parameters Parameters supplied to the Run command operation.
+     *
+     * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.parameters] The run command parameters.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
+
+
+    /**
      * Lists all of the virtual machines in the specified resource group. Use the
      * nextLink property in the response to get the next page of virtual machines.
      *
@@ -4827,7 +6144,8 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} name The name of the VM scale set to create or update.
+     * @param {string} vmScaleSetName The name of the VM scale set to create or
+     * update.
      *
      * @param {object} parameters The scale set object.
      *
@@ -4854,6 +6172,11 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string} [parameters.upgradePolicy.mode] The upgrade mode. Possible
      * values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.recoveryPolicy] The recovery policy.
+     *
+     * @param {string} [parameters.recoveryPolicy.mode] The recovery mode. Possible
+     * values include: 'None', 'OverProvision', 'Reprovision'
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -5004,6 +6327,23 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
      * The list of network configurations.
      *
+     * @param {object} [parameters.virtualMachineProfile.diagnosticsProfile] The
+     * virtual machine scale set diagnostics profile.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri]
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
+     *
      * @param {object} [parameters.virtualMachineProfile.extensionProfile] The
      * virtual machine scale set extension profile.
      *
@@ -5011,8 +6351,14 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.extensionProfile.extensions] The virtual
      * machine scale set child extension resources.
      *
+     * @param {string} [parameters.virtualMachineProfile.licenseType] The license
+     * type, which is for bring your own license scenario.
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
+     *
+     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
+     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
@@ -5040,14 +6386,15 @@ export interface VirtualMachineScaleSets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSet>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSet>>;
 
     /**
      * Create or update a VM scale set.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} name The name of the VM scale set to create or update.
+     * @param {string} vmScaleSetName The name of the VM scale set to create or
+     * update.
      *
      * @param {object} parameters The scale set object.
      *
@@ -5074,6 +6421,11 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string} [parameters.upgradePolicy.mode] The upgrade mode. Possible
      * values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.recoveryPolicy] The recovery policy.
+     *
+     * @param {string} [parameters.recoveryPolicy.mode] The recovery mode. Possible
+     * values include: 'None', 'OverProvision', 'Reprovision'
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -5224,6 +6576,23 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
      * The list of network configurations.
      *
+     * @param {object} [parameters.virtualMachineProfile.diagnosticsProfile] The
+     * virtual machine scale set diagnostics profile.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri]
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
+     *
      * @param {object} [parameters.virtualMachineProfile.extensionProfile] The
      * virtual machine scale set extension profile.
      *
@@ -5231,8 +6600,14 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.extensionProfile.extensions] The virtual
      * machine scale set child extension resources.
      *
+     * @param {string} [parameters.virtualMachineProfile.licenseType] The license
+     * type, which is for bring your own license scenario.
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
+     *
+     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
+     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
@@ -5277,79 +6652,9 @@ export interface VirtualMachineScaleSets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
-    createOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
-
-
-    /**
-     * Deallocates specific virtual machines in a VM scale set. Shuts down the
-     * virtual machines and releases the compute resources. You are not billed for
-     * the compute resources that this virtual machine scale set deallocates.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmScaleSetName The name of the VM scale set.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {array} [options.instanceIds] The virtual machine scale set instance
-     * ids.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Deallocates specific virtual machines in a VM scale set. Shuts down the
-     * virtual machines and releases the compute resources. You are not billed for
-     * the compute resources that this virtual machine scale set deallocates.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmScaleSetName The name of the VM scale set.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {array} [options.instanceIds] The virtual machine scale set instance
-     * ids.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    createOrUpdate(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
+    createOrUpdate(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    createOrUpdate(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
 
 
     /**
@@ -5470,6 +6775,76 @@ export interface VirtualMachineScaleSets {
     get(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
     get(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
     get(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+
+
+    /**
+     * Deallocates specific virtual machines in a VM scale set. Shuts down the
+     * virtual machines and releases the compute resources. You are not billed for
+     * the compute resources that this virtual machine scale set deallocates.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deallocates specific virtual machines in a VM scale set. Shuts down the
+     * virtual machines and releases the compute resources. You are not billed for
+     * the compute resources that this virtual machine scale set deallocates.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.instanceIds] The virtual machine scale set instance
+     * ids.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -6104,8 +7479,7 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
-     * virtual machine scale set. This operation is only supported for managed
-     * disks.
+     * VM scale set. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -6126,8 +7500,7 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
-     * virtual machine scale set. This operation is only supported for managed
-     * disks.
+     * VM scale set. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -6171,7 +7544,8 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} name The name of the VM scale set to create or update.
+     * @param {string} vmScaleSetName The name of the VM scale set to create or
+     * update.
      *
      * @param {object} parameters The scale set object.
      *
@@ -6198,6 +7572,11 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string} [parameters.upgradePolicy.mode] The upgrade mode. Possible
      * values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.recoveryPolicy] The recovery policy.
+     *
+     * @param {string} [parameters.recoveryPolicy.mode] The recovery mode. Possible
+     * values include: 'None', 'OverProvision', 'Reprovision'
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -6348,6 +7727,23 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
      * The list of network configurations.
      *
+     * @param {object} [parameters.virtualMachineProfile.diagnosticsProfile] The
+     * virtual machine scale set diagnostics profile.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri]
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
+     *
      * @param {object} [parameters.virtualMachineProfile.extensionProfile] The
      * virtual machine scale set extension profile.
      *
@@ -6355,8 +7751,14 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.extensionProfile.extensions] The virtual
      * machine scale set child extension resources.
      *
+     * @param {string} [parameters.virtualMachineProfile.licenseType] The license
+     * type, which is for bring your own license scenario.
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
+     *
+     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
+     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
@@ -6384,14 +7786,15 @@ export interface VirtualMachineScaleSets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSet>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSet>>;
 
     /**
      * Create or update a VM scale set.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} name The name of the VM scale set to create or update.
+     * @param {string} vmScaleSetName The name of the VM scale set to create or
+     * update.
      *
      * @param {object} parameters The scale set object.
      *
@@ -6418,6 +7821,11 @@ export interface VirtualMachineScaleSets {
      *
      * @param {string} [parameters.upgradePolicy.mode] The upgrade mode. Possible
      * values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.recoveryPolicy] The recovery policy.
+     *
+     * @param {string} [parameters.recoveryPolicy.mode] The recovery mode. Possible
+     * values include: 'None', 'OverProvision', 'Reprovision'
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -6568,6 +7976,23 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.networkProfile.networkInterfaceConfigurations]
      * The list of network configurations.
      *
+     * @param {object} [parameters.virtualMachineProfile.diagnosticsProfile] The
+     * virtual machine scale set diagnostics profile.
+     *
+     * @param {object}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics] Boot
+     * Diagnostics is a debugging feature which allows the user to view console
+     * output and/or a screenshot of the virtual machine from the hypervisor.
+     *
+     * @param {boolean}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.enabled]
+     * Whether boot diagnostics should be enabled on the Virtual Machine.
+     *
+     * @param {string}
+     * [parameters.virtualMachineProfile.diagnosticsProfile.bootDiagnostics.storageUri]
+     * URI of the storage account to use for placing the console output and
+     * screenshot.
+     *
      * @param {object} [parameters.virtualMachineProfile.extensionProfile] The
      * virtual machine scale set extension profile.
      *
@@ -6575,8 +8000,14 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.extensionProfile.extensions] The virtual
      * machine scale set child extension resources.
      *
+     * @param {string} [parameters.virtualMachineProfile.licenseType] The license
+     * type, which is for bring your own license scenario.
+     *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
+     *
+     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
+     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
@@ -6621,9 +8052,69 @@ export interface VirtualMachineScaleSets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
-    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
-    beginCreateOrUpdate(resourceGroupName: string, name: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSet>;
+    beginCreateOrUpdate(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmScaleSetName: string, parameters: models.VirtualMachineScaleSet, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSet>): void;
+
+
+    /**
+     * Deletes a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * Deletes a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -6694,66 +8185,6 @@ export interface VirtualMachineScaleSets {
     beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
     beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
     beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * Deletes a VM scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmScaleSetName The name of the VM scale set.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Deletes a VM scale set.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} vmScaleSetName The name of the VM scale set.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -7152,8 +8583,7 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
-     * virtual machine scale set. This operation is only supported for managed
-     * disks.
+     * VM scale set. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7174,8 +8604,7 @@ export interface VirtualMachineScaleSets {
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
-     * virtual machine scale set. This operation is only supported for managed
-     * disks.
+     * VM scale set. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7398,6 +8827,563 @@ export interface VirtualMachineScaleSets {
 
 /**
  * @class
+ * VirtualMachineScaleSetExtensions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface VirtualMachineScaleSetExtensions {
+
+
+    /**
+     * The operation to create or update an extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be create or updated.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} extensionParameters Parameters supplied to the Create VM
+     * scale set Extension operation.
+     *
+     * @param {string} [extensionParameters.name] The name of the extension.
+     *
+     * @param {string} [extensionParameters.publisher] The name of the extension
+     * handler publisher.
+     *
+     * @param {string} [extensionParameters.type] The type of the extension
+     * handler.
+     *
+     * @param {string} [extensionParameters.typeHandlerVersion] The type version of
+     * the extension handler.
+     *
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Whether the
+     * extension handler should be automatically upgraded across minor versions.
+     *
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     *
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetExtension>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetExtension>>;
+
+    /**
+     * The operation to create or update an extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be create or updated.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} extensionParameters Parameters supplied to the Create VM
+     * scale set Extension operation.
+     *
+     * @param {string} [extensionParameters.name] The name of the extension.
+     *
+     * @param {string} [extensionParameters.publisher] The name of the extension
+     * handler publisher.
+     *
+     * @param {string} [extensionParameters.type] The type of the extension
+     * handler.
+     *
+     * @param {string} [extensionParameters.typeHandlerVersion] The type version of
+     * the extension handler.
+     *
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Whether the
+     * extension handler should be automatically upgraded across minor versions.
+     *
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     *
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetExtension} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetExtension} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetExtension} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetExtension>;
+    createOrUpdate(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, callback: ServiceCallback<models.VirtualMachineScaleSetExtension>): void;
+    createOrUpdate(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetExtension>): void;
+
+
+    /**
+     * The operation to delete the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be deleted.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to delete the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be deleted.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
+
+    /**
+     * The operation to get the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set containing the
+     * extension.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetExtension>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetExtension>>;
+
+    /**
+     * The operation to get the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set containing the
+     * extension.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetExtension} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetExtension} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetExtension} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetExtension>;
+    get(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<models.VirtualMachineScaleSetExtension>): void;
+    get(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetExtension>): void;
+
+
+    /**
+     * Gets a list of all extensions in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set containing the
+     * extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetExtensionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetExtensionListResult>>;
+
+    /**
+     * Gets a list of all extensions in a VM scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set containing the
+     * extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetExtensionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetExtensionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetExtensionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetExtensionListResult>;
+    list(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetExtensionListResult>): void;
+    list(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetExtensionListResult>): void;
+
+
+    /**
+     * The operation to create or update an extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be create or updated.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} extensionParameters Parameters supplied to the Create VM
+     * scale set Extension operation.
+     *
+     * @param {string} [extensionParameters.name] The name of the extension.
+     *
+     * @param {string} [extensionParameters.publisher] The name of the extension
+     * handler publisher.
+     *
+     * @param {string} [extensionParameters.type] The type of the extension
+     * handler.
+     *
+     * @param {string} [extensionParameters.typeHandlerVersion] The type version of
+     * the extension handler.
+     *
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Whether the
+     * extension handler should be automatically upgraded across minor versions.
+     *
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     *
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetExtension>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetExtension>>;
+
+    /**
+     * The operation to create or update an extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be create or updated.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} extensionParameters Parameters supplied to the Create VM
+     * scale set Extension operation.
+     *
+     * @param {string} [extensionParameters.name] The name of the extension.
+     *
+     * @param {string} [extensionParameters.publisher] The name of the extension
+     * handler publisher.
+     *
+     * @param {string} [extensionParameters.type] The type of the extension
+     * handler.
+     *
+     * @param {string} [extensionParameters.typeHandlerVersion] The type version of
+     * the extension handler.
+     *
+     * @param {boolean} [extensionParameters.autoUpgradeMinorVersion] Whether the
+     * extension handler should be automatically upgraded across minor versions.
+     *
+     * @param {object} [extensionParameters.settings] Json formatted public
+     * settings for the extension.
+     *
+     * @param {object} [extensionParameters.protectedSettings] Json formatted
+     * protected settings for the extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetExtension} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetExtension} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetExtension} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetExtension>;
+    beginCreateOrUpdate(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, callback: ServiceCallback<models.VirtualMachineScaleSetExtension>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, extensionParameters: models.VirtualMachineScaleSetExtension, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetExtension>): void;
+
+
+    /**
+     * The operation to delete the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be deleted.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+
+    /**
+     * The operation to delete the extension.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set where the
+     * extension should be deleted.
+     *
+     * @param {string} vmssExtensionName The name of the VM scale set extension.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
+
+    /**
+     * Gets a list of all extensions in a VM scale set.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetExtensionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetExtensionListResult>>;
+
+    /**
+     * Gets a list of all extensions in a VM scale set.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetExtensionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetExtensionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetExtensionListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetExtensionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetExtensionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetExtensionListResult>): void;
+}
+
+/**
+ * @class
  * VirtualMachineScaleSetVMs
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
@@ -7472,9 +9458,8 @@ export interface VirtualMachineScaleSetVMs {
 
 
     /**
-     * Allows you to re-image all the disks ( including data disks ) in the a
-     * virtual machine scale set instance. This operation is only supported for
-     * managed disks.
+     * Allows you to re-image all the disks ( including data disks ) in the a VM
+     * scale set instance. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -7496,9 +9481,8 @@ export interface VirtualMachineScaleSetVMs {
     reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
-     * Allows you to re-image all the disks ( including data disks ) in the a
-     * virtual machine scale set instance. This operation is only supported for
-     * managed disks.
+     * Allows you to re-image all the disks ( including data disks ) in the a VM
+     * scale set instance. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8138,9 +10122,8 @@ export interface VirtualMachineScaleSetVMs {
 
 
     /**
-     * Allows you to re-image all the disks ( including data disks ) in the a
-     * virtual machine scale set instance. This operation is only supported for
-     * managed disks.
+     * Allows you to re-image all the disks ( including data disks ) in the a VM
+     * scale set instance. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8162,9 +10145,8 @@ export interface VirtualMachineScaleSetVMs {
     beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
-     * Allows you to re-image all the disks ( including data disks ) in the a
-     * virtual machine scale set instance. This operation is only supported for
-     * managed disks.
+     * Allows you to re-image all the disks ( including data disks ) in the a VM
+     * scale set instance. This operation is only supported for managed disks.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -8595,896 +10577,6 @@ export interface VirtualMachineScaleSetVMs {
 
 /**
  * @class
- * ContainerServices
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ComputeManagementClient.
- */
-export interface ContainerServices {
-
-
-    /**
-     * @summary Gets a list of container services in the specified subscription.
-     *
-     * Gets a list of container services in the specified subscription. The
-     * operation returns properties of each container service including state,
-     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
-
-    /**
-     * @summary Gets a list of container services in the specified subscription.
-     *
-     * Gets a list of container services in the specified subscription. The
-     * operation returns properties of each container service including state,
-     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerServiceListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
-    list(callback: ServiceCallback<models.ContainerServiceListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-
-
-    /**
-     * @summary Creates or updates a container service.
-     *
-     * Creates or updates a container service with the specified configuration of
-     * orchestrator, masters, and agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} parameters Parameters supplied to the Create or Update a
-     * Container Service operation.
-     *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
-     *
-     * @param {string} parameters.orchestratorProfile.orchestratorType The
-     * orchestrator to use to manage container service cluster resources. Valid
-     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
-     * 'DCOS', 'Custom', 'Kubernetes'
-     *
-     * @param {object} [parameters.customProfile] Properties for custom clusters.
-     *
-     * @param {string} parameters.customProfile.orchestrator The name of the custom
-     * orchestrator to use.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
-     * service principals.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} parameters.servicePrincipalProfile.secret The secret
-     * password associated with the service principal.
-     *
-     * @param {object} parameters.masterProfile Properties of master agents.
-     *
-     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container service cluster. Allowed values are 1, 3, and 5. The default
-     * value is 1.
-     *
-     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
-     * create the FQDN for master.
-     *
-     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
-     *
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminUsername The administrator
-     * username to use for Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminPassword The administrator
-     * password to use for Windows VMs.
-     *
-     * @param {object} parameters.linuxProfile Properties of Linux VMs.
-     *
-     * @param {string} parameters.linuxProfile.adminUsername The administrator
-     * username to use for Linux VMs.
-     *
-     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
-     * Linux VMs.
-     *
-     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
-     * keys used to authenticate with Linux-based VMs.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
-     * agent.
-     *
-     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
-     * container service VM diagnostic agent.
-     *
-     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
-     * the VM diagnostic agent is provisioned on the VM.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
-
-    /**
-     * @summary Creates or updates a container service.
-     *
-     * Creates or updates a container service with the specified configuration of
-     * orchestrator, masters, and agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} parameters Parameters supplied to the Create or Update a
-     * Container Service operation.
-     *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
-     *
-     * @param {string} parameters.orchestratorProfile.orchestratorType The
-     * orchestrator to use to manage container service cluster resources. Valid
-     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
-     * 'DCOS', 'Custom', 'Kubernetes'
-     *
-     * @param {object} [parameters.customProfile] Properties for custom clusters.
-     *
-     * @param {string} parameters.customProfile.orchestrator The name of the custom
-     * orchestrator to use.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
-     * service principals.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} parameters.servicePrincipalProfile.secret The secret
-     * password associated with the service principal.
-     *
-     * @param {object} parameters.masterProfile Properties of master agents.
-     *
-     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container service cluster. Allowed values are 1, 3, and 5. The default
-     * value is 1.
-     *
-     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
-     * create the FQDN for master.
-     *
-     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
-     *
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminUsername The administrator
-     * username to use for Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminPassword The administrator
-     * password to use for Windows VMs.
-     *
-     * @param {object} parameters.linuxProfile Properties of Linux VMs.
-     *
-     * @param {string} parameters.linuxProfile.adminUsername The administrator
-     * username to use for Linux VMs.
-     *
-     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
-     * Linux VMs.
-     *
-     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
-     * keys used to authenticate with Linux-based VMs.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
-     * agent.
-     *
-     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
-     * container service VM diagnostic agent.
-     *
-     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
-     * the VM diagnostic agent is provisioned on the VM.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerService} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerService} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
-    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
-    createOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
-
-
-    /**
-     * @summary Gets the properties of the specified container service.
-     *
-     * Gets the properties of the specified container service in the specified
-     * subscription and resource group. The operation returns the properties
-     * including state, orchestrator, number of masters and agents, and FQDNs of
-     * masters and agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
-
-    /**
-     * @summary Gets the properties of the specified container service.
-     *
-     * Gets the properties of the specified container service in the specified
-     * subscription and resource group. The operation returns the properties
-     * including state, orchestrator, number of masters and agents, and FQDNs of
-     * masters and agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerService} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerService} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
-    get(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<models.ContainerService>): void;
-    get(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
-
-
-    /**
-     * @summary Deletes the specified container service.
-     *
-     * Deletes the specified container service in the specified subscription and
-     * resource group. The operation does not delete other resources created as
-     * part of creating a container service, including storage accounts, VMs, and
-     * availability sets. All the other resources created with the container
-     * service are part of the same resource group and can be deleted individually.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Deletes the specified container service.
-     *
-     * Deletes the specified container service in the specified subscription and
-     * resource group. The operation does not delete other resources created as
-     * part of creating a container service, including storage accounts, VMs, and
-     * availability sets. All the other resources created with the container
-     * service are part of the same resource group and can be deleted individually.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Gets a list of container services in the specified resource group.
-     *
-     * Gets a list of container services in the specified subscription and resource
-     * group. The operation returns properties of each container service including
-     * state, orchestrator, number of masters and agents, and FQDNs of masters and
-     * agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
-
-    /**
-     * @summary Gets a list of container services in the specified resource group.
-     *
-     * Gets a list of container services in the specified subscription and resource
-     * group. The operation returns properties of each container service including
-     * state, orchestrator, number of masters and agents, and FQDNs of masters and
-     * agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerServiceListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-
-
-    /**
-     * @summary Creates or updates a container service.
-     *
-     * Creates or updates a container service with the specified configuration of
-     * orchestrator, masters, and agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} parameters Parameters supplied to the Create or Update a
-     * Container Service operation.
-     *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
-     *
-     * @param {string} parameters.orchestratorProfile.orchestratorType The
-     * orchestrator to use to manage container service cluster resources. Valid
-     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
-     * 'DCOS', 'Custom', 'Kubernetes'
-     *
-     * @param {object} [parameters.customProfile] Properties for custom clusters.
-     *
-     * @param {string} parameters.customProfile.orchestrator The name of the custom
-     * orchestrator to use.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
-     * service principals.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} parameters.servicePrincipalProfile.secret The secret
-     * password associated with the service principal.
-     *
-     * @param {object} parameters.masterProfile Properties of master agents.
-     *
-     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container service cluster. Allowed values are 1, 3, and 5. The default
-     * value is 1.
-     *
-     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
-     * create the FQDN for master.
-     *
-     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
-     *
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminUsername The administrator
-     * username to use for Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminPassword The administrator
-     * password to use for Windows VMs.
-     *
-     * @param {object} parameters.linuxProfile Properties of Linux VMs.
-     *
-     * @param {string} parameters.linuxProfile.adminUsername The administrator
-     * username to use for Linux VMs.
-     *
-     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
-     * Linux VMs.
-     *
-     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
-     * keys used to authenticate with Linux-based VMs.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
-     * agent.
-     *
-     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
-     * container service VM diagnostic agent.
-     *
-     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
-     * the VM diagnostic agent is provisioned on the VM.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerService>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerService>>;
-
-    /**
-     * @summary Creates or updates a container service.
-     *
-     * Creates or updates a container service with the specified configuration of
-     * orchestrator, masters, and agents.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} parameters Parameters supplied to the Create or Update a
-     * Container Service operation.
-     *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
-     *
-     * @param {string} parameters.orchestratorProfile.orchestratorType The
-     * orchestrator to use to manage container service cluster resources. Valid
-     * values are Swarm, DCOS, and Custom. Possible values include: 'Swarm',
-     * 'DCOS', 'Custom', 'Kubernetes'
-     *
-     * @param {object} [parameters.customProfile] Properties for custom clusters.
-     *
-     * @param {string} parameters.customProfile.orchestrator The name of the custom
-     * orchestrator to use.
-     *
-     * @param {object} [parameters.servicePrincipalProfile] Properties for cluster
-     * service principals.
-     *
-     * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
-     * service principal.
-     *
-     * @param {string} parameters.servicePrincipalProfile.secret The secret
-     * password associated with the service principal.
-     *
-     * @param {object} parameters.masterProfile Properties of master agents.
-     *
-     * @param {number} [parameters.masterProfile.count] Number of masters (VMs) in
-     * the container service cluster. Allowed values are 1, 3, and 5. The default
-     * value is 1.
-     *
-     * @param {string} parameters.masterProfile.dnsPrefix DNS prefix to be used to
-     * create the FQDN for master.
-     *
-     * @param {array} parameters.agentPoolProfiles Properties of the agent pool.
-     *
-     * @param {object} [parameters.windowsProfile] Properties of Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminUsername The administrator
-     * username to use for Windows VMs.
-     *
-     * @param {string} parameters.windowsProfile.adminPassword The administrator
-     * password to use for Windows VMs.
-     *
-     * @param {object} parameters.linuxProfile Properties of Linux VMs.
-     *
-     * @param {string} parameters.linuxProfile.adminUsername The administrator
-     * username to use for Linux VMs.
-     *
-     * @param {object} parameters.linuxProfile.ssh The ssh key configuration for
-     * Linux VMs.
-     *
-     * @param {array} parameters.linuxProfile.ssh.publicKeys the list of SSH public
-     * keys used to authenticate with Linux-based VMs.
-     *
-     * @param {object} [parameters.diagnosticsProfile] Properties of the diagnostic
-     * agent.
-     *
-     * @param {object} parameters.diagnosticsProfile.vmDiagnostics Profile for the
-     * container service VM diagnostic agent.
-     *
-     * @param {boolean} parameters.diagnosticsProfile.vmDiagnostics.enabled Whether
-     * the VM diagnostic agent is provisioned on the VM.
-     *
-     * @param {string} parameters.location Resource location
-     *
-     * @param {object} [parameters.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerService} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerService} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerService} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerService>;
-    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, callback: ServiceCallback<models.ContainerService>): void;
-    beginCreateOrUpdate(resourceGroupName: string, containerServiceName: string, parameters: models.ContainerService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerService>): void;
-
-
-    /**
-     * @summary Deletes the specified container service.
-     *
-     * Deletes the specified container service in the specified subscription and
-     * resource group. The operation does not delete other resources created as
-     * part of creating a container service, including storage accounts, VMs, and
-     * availability sets. All the other resources created with the container
-     * service are part of the same resource group and can be deleted individually.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Deletes the specified container service.
-     *
-     * Deletes the specified container service in the specified subscription and
-     * resource group. The operation does not delete other resources created as
-     * part of creating a container service, including storage accounts, VMs, and
-     * availability sets. All the other resources created with the container
-     * service are part of the same resource group and can be deleted individually.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} containerServiceName The name of the container service in
-     * the specified subscription and resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, containerServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Gets a list of container services in the specified subscription.
-     *
-     * Gets a list of container services in the specified subscription. The
-     * operation returns properties of each container service including state,
-     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
-
-    /**
-     * @summary Gets a list of container services in the specified subscription.
-     *
-     * Gets a list of container services in the specified subscription. The
-     * operation returns properties of each container service including state,
-     * orchestrator, number of masters and agents, and FQDNs of masters and agents.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerServiceListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-
-
-    /**
-     * @summary Gets a list of container services in the specified resource group.
-     *
-     * Gets a list of container services in the specified subscription and resource
-     * group. The operation returns properties of each container service including
-     * state, orchestrator, number of masters and agents, and FQDNs of masters and
-     * agents.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ContainerServiceListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerServiceListResult>>;
-
-    /**
-     * @summary Gets a list of container services in the specified resource group.
-     *
-     * Gets a list of container services in the specified subscription and resource
-     * group. The operation returns properties of each container service including
-     * state, orchestrator, number of masters and agents, and FQDNs of masters and
-     * agents.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ContainerServiceListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ContainerServiceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ContainerServiceListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerServiceListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerServiceListResult>): void;
-}
-
-/**
- * @class
  * Disks
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
@@ -9503,8 +10595,10 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -9512,8 +10606,9 @@ export interface Disks {
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -9530,13 +10625,10 @@ export interface Disks {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -9602,8 +10694,10 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -9611,8 +10705,9 @@ export interface Disks {
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -9629,13 +10724,10 @@ export interface Disks {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -9720,40 +10812,8 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [disk.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [disk.creationData] disk source information. CreationData
-     * information cannot be changed after the disk has been created.
-     *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [disk.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [disk.creationData.imageReference] Disk source information.
-     *
-     * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [disk.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -9792,6 +10852,11 @@ export interface Disks {
      * to a key or secret in KeyVault
      *
      * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9817,40 +10882,8 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [disk.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [disk.creationData] disk source information. CreationData
-     * information cannot be changed after the disk has been created.
-     *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [disk.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [disk.creationData.imageReference] Disk source information.
-     *
-     * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [disk.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -9889,6 +10922,11 @@ export interface Disks {
      * to a key or secret in KeyVault
      *
      * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10303,8 +11341,10 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -10312,8 +11352,9 @@ export interface Disks {
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -10330,13 +11371,10 @@ export interface Disks {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -10402,8 +11440,10 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [disk.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -10411,8 +11451,9 @@ export interface Disks {
      * @param {object} disk.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} disk.creationData.createOption This enumerates the possible
+     * sources of a disk's creation. Possible values include: 'Empty', 'Attach',
+     * 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [disk.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -10429,13 +11470,10 @@ export interface Disks {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -10520,40 +11558,8 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [disk.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [disk.creationData] disk source information. CreationData
-     * information cannot be changed after the disk has been created.
-     *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [disk.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [disk.creationData.imageReference] Disk source information.
-     *
-     * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [disk.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -10592,6 +11598,11 @@ export interface Disks {
      * to a key or secret in KeyVault
      *
      * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10617,40 +11628,8 @@ export interface Disks {
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
      *
-     * @param {string} [disk.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [disk.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [disk.creationData] disk source information. CreationData
-     * information cannot be changed after the disk has been created.
-     *
-     * @param {string} disk.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [disk.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [disk.creationData.imageReference] Disk source information.
-     *
-     * @param {string} disk.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [disk.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [disk.creationData.sourceUri] If creationOption is Import,
-     * this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [disk.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [disk.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -10689,6 +11668,11 @@ export interface Disks {
      * to a key or secret in KeyVault
      *
      * @param {object} [disk.tags] Resource tags
+     *
+     * @param {object} [disk.sku]
+     *
+     * @param {string} [disk.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11059,8 +12043,10 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Put
      * disk operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -11068,8 +12054,9 @@ export interface Snapshots {
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -11087,13 +12074,10 @@ export interface Snapshots {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * Import, this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -11159,8 +12143,10 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Put
      * disk operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -11168,8 +12154,9 @@ export interface Snapshots {
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -11187,13 +12174,10 @@ export interface Snapshots {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * Import, this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -11278,41 +12262,8 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Patch
      * snapshot operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [snapshot.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [snapshot.creationData] disk source information.
-     * CreationData information cannot be changed after the disk has been created.
-     *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [snapshot.creationData.imageReference] Disk source
-     * information.
-     *
-     * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -11351,6 +12302,11 @@ export interface Snapshots {
      * pointing to a key or secret in KeyVault
      *
      * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11376,41 +12332,8 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Patch
      * snapshot operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [snapshot.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [snapshot.creationData] disk source information.
-     * CreationData information cannot be changed after the disk has been created.
-     *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [snapshot.creationData.imageReference] Disk source
-     * information.
-     *
-     * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -11449,6 +12372,11 @@ export interface Snapshots {
      * pointing to a key or secret in KeyVault
      *
      * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11863,8 +12791,10 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Put
      * disk operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -11872,8 +12802,9 @@ export interface Snapshots {
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -11891,13 +12822,10 @@ export interface Snapshots {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * Import, this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -11963,8 +12891,10 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Put
      * disk operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {string} [snapshot.osType] The Operating System type. Possible values
      * include: 'Windows', 'Linux'
@@ -11972,8 +12902,9 @@ export interface Snapshots {
      * @param {object} snapshot.creationData Disk source information. CreationData
      * information cannot be changed after the disk has been created.
      *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
+     * @param {string} snapshot.creationData.createOption This enumerates the
+     * possible sources of a disk's creation. Possible values include: 'Empty',
+     * 'Attach', 'FromImage', 'Import', 'Copy'
      *
      * @param {string} [snapshot.creationData.storageAccountId] If createOption is
      * Import, the Azure Resource Manager identifier of the storage account
@@ -11991,13 +12922,10 @@ export interface Snapshots {
      * the data disks in the image to use. For OS disks, this field is null.
      *
      * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
+     * Import, this is the URI of a blob to be imported into a managed disk.
      *
      * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
+     * Copy, this is the ARM id of the source snapshot or disk.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -12082,41 +13010,8 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Patch
      * snapshot operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [snapshot.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [snapshot.creationData] disk source information.
-     * CreationData information cannot be changed after the disk has been created.
-     *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [snapshot.creationData.imageReference] Disk source
-     * information.
-     *
-     * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -12155,6 +13050,11 @@ export interface Snapshots {
      * pointing to a key or secret in KeyVault
      *
      * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12180,41 +13080,8 @@ export interface Snapshots {
      * @param {object} snapshot Snapshot object supplied in the body of the Patch
      * snapshot operation.
      *
-     * @param {string} [snapshot.accountType] the storage account type of the disk.
-     * Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
      * @param {string} [snapshot.osType] the Operating System type. Possible values
      * include: 'Windows', 'Linux'
-     *
-     * @param {object} [snapshot.creationData] disk source information.
-     * CreationData information cannot be changed after the disk has been created.
-     *
-     * @param {string} snapshot.creationData.createOption Possible values include:
-     * 'Empty', 'Attach', 'FromImage', 'Import', 'Copy', 'Restore'
-     *
-     * @param {string} [snapshot.creationData.storageAccountId] If createOption is
-     * Import, the Azure Resource Manager identifier of the storage account
-     * containing the blob to import as a disk. Required only if the blob is in a
-     * different subscription
-     *
-     * @param {object} [snapshot.creationData.imageReference] Disk source
-     * information.
-     *
-     * @param {string} snapshot.creationData.imageReference.id A relative uri
-     * containing either a Platform Imgage Repository or user image reference.
-     *
-     * @param {number} [snapshot.creationData.imageReference.lun] If the disk is
-     * created from an image's data disk, this is an index that indicates which of
-     * the data disks in the image to use. For OS disks, this field is null.
-     *
-     * @param {string} [snapshot.creationData.sourceUri] If creationOption is
-     * Import, this is a SAS URI to a blob to be imported into a managed disk. If
-     * creationOption is Copy, this is a relative Uri containing the id of the
-     * source snapshot to be copied into a managed disk.
-     *
-     * @param {string} [snapshot.creationData.sourceResourceId] If createOption is
-     * Copy, this is the ARM id of the source snapshot or disk. If creationOption
-     * is Restore, this is the ARM-like id of the source disk restore point.
      *
      * @param {number} [snapshot.diskSizeGB] If creationData.createOption is Empty,
      * this field is mandatory and it indicates the size of the VHD to create. If
@@ -12253,6 +13120,11 @@ export interface Snapshots {
      * pointing to a key or secret in KeyVault
      *
      * @param {object} [snapshot.tags] Resource tags
+     *
+     * @param {object} [snapshot.sku]
+     *
+     * @param {string} [snapshot.sku.name] The sku name. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12601,4 +13473,184 @@ export interface Snapshots {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.SnapshotList>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+}
+
+/**
+ * @class
+ * VirtualMachineRunCommands
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface VirtualMachineRunCommands {
+
+
+    /**
+     * Lists all available run commands for a subscription in a location.
+     *
+     * @param {string} location The location upon which run commands is queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandListResult>>;
+
+    /**
+     * Lists all available run commands for a subscription in a location.
+     *
+     * @param {string} location The location upon which run commands is queried.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandListResult>;
+    list(location: string, callback: ServiceCallback<models.RunCommandListResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandListResult>): void;
+
+
+    /**
+     * Gets specific run command for a subscription in a location.
+     *
+     * @param {string} location The location upon which run commands is queried.
+     *
+     * @param {string} commandId The command id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandDocument>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(location: string, commandId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandDocument>>;
+
+    /**
+     * Gets specific run command for a subscription in a location.
+     *
+     * @param {string} location The location upon which run commands is queried.
+     *
+     * @param {string} commandId The command id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandDocument} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandDocument} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandDocument} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(location: string, commandId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandDocument>;
+    get(location: string, commandId: string, callback: ServiceCallback<models.RunCommandDocument>): void;
+    get(location: string, commandId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandDocument>): void;
+
+
+    /**
+     * Lists all available run commands for a subscription in a location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunCommandListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandListResult>>;
+
+    /**
+     * Lists all available run commands for a subscription in a location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunCommandListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunCommandListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.RunCommandListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandListResult>): void;
 }

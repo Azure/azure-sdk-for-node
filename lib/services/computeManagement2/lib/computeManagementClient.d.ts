@@ -52,6 +52,7 @@ declare class ComputeManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  containerServices: operations.ContainerServices;
   availabilitySets: operations.AvailabilitySets;
   virtualMachineExtensionImages: operations.VirtualMachineExtensionImages;
   virtualMachineExtensions: operations.VirtualMachineExtensions;
@@ -59,12 +60,14 @@ declare class ComputeManagementClient {
   usageOperations: operations.UsageOperations;
   virtualMachineSizes: operations.VirtualMachineSizes;
   images: operations.Images;
+  resourceSkus: operations.ResourceSkus;
   virtualMachines: operations.VirtualMachines;
   virtualMachineScaleSets: operations.VirtualMachineScaleSets;
+  virtualMachineScaleSetExtensions: operations.VirtualMachineScaleSetExtensions;
   virtualMachineScaleSetVMs: operations.VirtualMachineScaleSetVMs;
-  containerServices: operations.ContainerServices;
   disks: operations.Disks;
   snapshots: operations.Snapshots;
+  virtualMachineRunCommands: operations.VirtualMachineRunCommands;
 }
 
 export = ComputeManagementClient;
