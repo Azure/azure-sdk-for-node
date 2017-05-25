@@ -16,7 +16,7 @@
       "output_dir": "lib/services/authorizationManagement/lib"
     },
     "batch.management": {
-      "swagger": "arm-batch/2015-12-01/swagger/BatchManagement.json",
+      "swagger": "arm-batch/2017-05-01/swagger/BatchManagement.json",
       "autorest_options": {
         "FT": 1
       },
