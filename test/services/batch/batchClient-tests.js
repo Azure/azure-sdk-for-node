@@ -167,7 +167,7 @@ describe('Batch Service', function () {
 
     it('should create a new pool successfully', function (done) {
       var pool = {
-        id: 'nodesdktestpool1', vmSize: 'small', cloudServiceConfiguration: { osFamily: '4' }, targetDedicated: 3,
+        id: 'nodesdktestpool1', vmSize: 'small', cloudServiceConfiguration: { osFamily: '4' }, targetDedicatedNodes: 3,
         certificateReferences: [{ thumbprint: certThumb, thumbprintAlgorithm: 'sha1' }],
         // Ensures there's a compute node file we can reference later
         startTask: { commandLine: 'cmd /c echo hello > hello.txt' },
@@ -192,6 +192,24 @@ describe('Batch Service', function () {
         } else {
           done();
         }
+      });
+    });
+
+    it('should fail to create a pool with application licenses', function (done) {
+      var pool = {
+        id: 'nodesdktestpool_licenses',
+        vmSize: 'small',
+        cloudServiceConfiguration: { osFamily: '4' },
+        targetDedicatedNodes: 3,
+        targetLowPriorityNodes: 2,
+        applicationLicenses: ['Maya']
+      };
+      client.pool.add(pool, function (err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
+        err.statusCode.should.equal(403);
+        err.body.code.should.equal('Forbidden');
+        done();
       });
     });
 
@@ -270,15 +288,15 @@ describe('Batch Service', function () {
         id: 'nodesdkvnetpool',
         vmSize: 'small',
         cloudServiceConfiguration: { osFamily: '4' },
-        targetDedicated: 0,
+        targetDedicatedNodes: 0,
         networkConfiguration: { subnetId: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1' }
       };
 
       client.pool.add(pool, function (err, result, request, response) {
         should.exist(err);
         should.not.exist(result);
-        err.statusCode.should.equal(400);
-        err.body.code.should.equal('InvalidPropertyValue');
+        err.statusCode.should.equal(403);
+        err.body.code.should.equal('Forbidden');
         done();
       });
     });
@@ -296,7 +314,7 @@ describe('Batch Service', function () {
             caching: 'none'
           }
         },
-        targetDedicated: 0
+        targetDedicatedNodes: 0
       };
 
       client.pool.add(pool, function (err, result, request, response) {
@@ -316,6 +334,7 @@ describe('Batch Service', function () {
         result.length.should.be.above(0);
         result[0].state.should.equal('idle');
         result[0].schedulingState.should.equal('enabled');
+        result[0].isDedicated.should.equal(true);
         response.statusCode.should.equal(200);
         compute_nodes = result.map(function (x) { return x.id })
         done();
@@ -413,7 +432,7 @@ describe('Batch Service', function () {
     });
 
     it('should enable autoscale successfully', function (done) {
-      var options = { autoScaleFormula: '$TargetDedicated=2', autoScaleEvaluationInterval: moment.duration({ minutes: 6 }) };
+      var options = { autoScaleFormula: '$TargetDedicatedNodes=2', autoScaleEvaluationInterval: moment.duration({ minutes: 6 }) };
 
       var requestModelMapper = new client.models['PoolEnableAutoScaleParameter']().mapper();
       var model = client.deserialize(requestModelMapper, options, 'poolEnableAutoScaleParameter');
@@ -427,10 +446,10 @@ describe('Batch Service', function () {
     });
 
     it('should evaluate pool autoscale successfully', function (done) {
-      client.pool.evaluateAutoScale('nodesdktestpool1', '$TargetDedicated=3', function (err, result, request, response) {
+      client.pool.evaluateAutoScale('nodesdktestpool1', '$TargetDedicatedNodes=3', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.results.should.equal('$TargetDedicated=3;$NodeDeallocationOption=requeue');
+        result.results.should.equal('$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue');
         response.statusCode.should.equal(200);
         done();
       });
@@ -440,7 +459,7 @@ describe('Batch Service', function () {
       client.pool.evaluateAutoScale('nodesdktestpool1', 'something_useless', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.results.should.equal('$TargetDedicated=2;$NodeDeallocationOption=requeue');
+        result.results.should.equal('$TargetDedicatedNodes=2;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue');
         response.statusCode.should.equal(200);
         done();
       });
@@ -537,7 +556,7 @@ describe('Batch Service', function () {
     });
 
     it('should start pool resizing successfully', function (done) {
-      var options = { targetDedicated: 3 };
+      var options = { targetDedicatedNodes: 3, targetLowPriorityNodes: 2 };
       client.pool.resize('nodesdktestpool2', options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
@@ -570,7 +589,7 @@ describe('Batch Service', function () {
       client.pool.listUsageMetrics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.be.above(0);
+        result.length.should.equal(0);
         response.statusCode.should.equal(200);
         done();
       });
@@ -687,10 +706,28 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should create a second task successfully', function (done) {
+    it('should create a second task with output files successfully', function (done) {
+      container = 'https://teststorage.blob.core.windows.net/batch-sdk-test?se=2017-05-05T23%3A48%3A11Z&sv=2016-05-31&sig=fwsWniANVb/KSQQdok%2BbT7gR79iiZSG%2BGkw9Rsd5efY';
+      var outputs = [
+        {
+          filePattern: '../stdout.txt',
+          destination: {
+            container: {containerUrl: container, path: 'taskLogs/output.txt'}
+          },
+          uploadOptions: {uploadCondition: 'taskCompletion'}
+        },
+        {
+          file_pattern: '../stderr.txt',
+          destination: {
+            container: {containerUrl: container, path: 'taskLogs/error.txt'}
+          },
+          uploadOptions: {uploadCondition: 'taskFailure'}
+        }
+      ]
       var options = {
         id: 'HelloWorldNodeSDKTestTask2',
-        commandLine: 'cmd /c echo hello world'
+        commandLine: 'cmd /c echo hello world',
+        output_files: outputs
       };
       client.task.add('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
         should.not.exist(err);
@@ -811,6 +848,7 @@ describe('Batch Service', function () {
             should.exist(result.userIdentity);
             result.userIdentity.userName.should.equal(nonAdminPoolUser);
             should.exist(result.executionInfo);
+            result.executionInfo.result.should.equal('Failure');
             result.executionInfo.exitCode.should.not.equal(0);
             done();
           });
