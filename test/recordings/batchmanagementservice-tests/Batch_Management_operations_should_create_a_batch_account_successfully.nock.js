@@ -2,95 +2,95 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'jsjapaneast';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '46241355-bb95-46a9-ba6c-42b554d71925';
+  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2017-01-01', '*')
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2017-05-01', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/10f33fa4-f254-48d8-bf1a-99c638ac654b?api-version=2017-01-01',
+  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/f684cadf-ff92-4aa6-8dd4-6a5b98379a61?api-version=2017-05-01',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'request-id': '10f33fa4-f254-48d8-bf1a-99c638ac654b',
+  'request-id': 'f684cadf-ff92-4aa6-8dd4-6a5b98379a61',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '964dc53d-1a63-4bba-8576-00d7683ea2a0',
-  'x-ms-correlation-request-id': '964dc53d-1a63-4bba-8576-00d7683ea2a0',
-  'x-ms-routing-request-id': 'CENTRALUS:20170218T001138Z:964dc53d-1a63-4bba-8576-00d7683ea2a0',
-  date: 'Sat, 18 Feb 2017 00:11:38 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-request-id': '0107079a-3bb9-4165-9e19-f99511e3ea9d',
+  'x-ms-correlation-request-id': '0107079a-3bb9-4165-9e19-f99511e3ea9d',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160212Z:0107079a-3bb9-4165-9e19-f99511e3ea9d',
+  date: 'Fri, 26 May 2017 16:02:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2017-01-01', '*')
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk?api-version=2017-05-01', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/10f33fa4-f254-48d8-bf1a-99c638ac654b?api-version=2017-01-01',
+  location: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/f684cadf-ff92-4aa6-8dd4-6a5b98379a61?api-version=2017-05-01',
   'retry-after': '15',
-  'x-ms-ratelimit-remaining-subscription-writes': '1196',
-  'request-id': '10f33fa4-f254-48d8-bf1a-99c638ac654b',
+  'request-id': 'f684cadf-ff92-4aa6-8dd4-6a5b98379a61',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-request-id': '964dc53d-1a63-4bba-8576-00d7683ea2a0',
-  'x-ms-correlation-request-id': '964dc53d-1a63-4bba-8576-00d7683ea2a0',
-  'x-ms-routing-request-id': 'CENTRALUS:20170218T001138Z:964dc53d-1a63-4bba-8576-00d7683ea2a0',
-  date: 'Sat, 18 Feb 2017 00:11:38 GMT',
+  'x-ms-ratelimit-remaining-subscription-writes': '1194',
+  'x-ms-request-id': '0107079a-3bb9-4165-9e19-f99511e3ea9d',
+  'x-ms-correlation-request-id': '0107079a-3bb9-4165-9e19-f99511e3ea9d',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160212Z:0107079a-3bb9-4165-9e19-f99511e3ea9d',
+  date: 'Fri, 26 May 2017 16:02:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/10f33fa4-f254-48d8-bf1a-99c638ac654b?api-version=2017-01-01')
-  .reply(200, "{\"name\":\"batchtestnodesdk\",\"location\":\"japaneast\",\"properties\":{\"accountEndpoint\":\"batchtestnodesdk.japaneast.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/jsjapaneast\",\"lastKeySync\":\"2017-02-18T00:11:36.9173633Z\"},\"poolAllocationMode\":\"batchservice\"},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/f684cadf-ff92-4aa6-8dd4-6a5b98379a61?api-version=2017-05-01')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk\",\"name\":\"batchtestnodesdk\",\"type\":\"Microsoft.Batch/batchAccounts\",\"location\":\"japaneast\",\"properties\":{\"accountEndpoint\":\"batchtestnodesdk.japaneast.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"dedicatedCoreQuota\":20,\"lowPriorityCoreQuota\":50,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/nodesdkteststorage\",\"lastKeySync\":\"2017-05-26T16:02:12.6933062Z\"},\"poolAllocationMode\":\"batchservice\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '693',
+  'content-length': '735',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Sat, 18 Feb 2017 00:12:09 GMT',
-  etag: '0x8D45792C7FE96E1',
-  'request-id': '59a7fde5-d37c-495e-8bcc-cc26eac48235',
+  'last-modified': 'Fri, 26 May 2017 16:02:40 GMT',
+  etag: '"0x8D4A450A32A9E8D"',
+  'x-ms-ratelimit-remaining-subscription-reads': '14975',
+  'request-id': 'b0a9d37f-22a8-48e1-bdf5-261c56714620',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14938',
-  'x-ms-request-id': '9d2b4311-b2c9-49c2-a1e5-a30e4c1144a7',
-  'x-ms-correlation-request-id': '9d2b4311-b2c9-49c2-a1e5-a30e4c1144a7',
-  'x-ms-routing-request-id': 'WESTUS2:20170218T001209Z:9d2b4311-b2c9-49c2-a1e5-a30e4c1144a7',
-  date: 'Sat, 18 Feb 2017 00:12:08 GMT',
+  'x-ms-request-id': '022315a9-d0a5-4fa4-b266-4a8008b374ed',
+  'x-ms-correlation-request-id': '022315a9-d0a5-4fa4-b266-4a8008b374ed',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160242Z:022315a9-d0a5-4fa4-b266-4a8008b374ed',
+  date: 'Fri, 26 May 2017 16:02:42 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/10f33fa4-f254-48d8-bf1a-99c638ac654b?api-version=2017-01-01')
-  .reply(200, "{\"name\":\"batchtestnodesdk\",\"location\":\"japaneast\",\"properties\":{\"accountEndpoint\":\"batchtestnodesdk.japaneast.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"coreQuota\":20,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/jsjapaneast\",\"lastKeySync\":\"2017-02-18T00:11:36.9173633Z\"},\"poolAllocationMode\":\"batchservice\"},\"id\":\"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk\",\"type\":\"Microsoft.Batch/batchAccounts\"}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk/operationResults/f684cadf-ff92-4aa6-8dd4-6a5b98379a61?api-version=2017-05-01')
+  .reply(200, "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdk\",\"name\":\"batchtestnodesdk\",\"type\":\"Microsoft.Batch/batchAccounts\",\"location\":\"japaneast\",\"properties\":{\"accountEndpoint\":\"batchtestnodesdk.japaneast.batch.azure.com\",\"provisioningState\":\"Succeeded\",\"dedicatedCoreQuota\":20,\"lowPriorityCoreQuota\":50,\"poolQuota\":20,\"activeJobAndJobScheduleQuota\":20,\"autoStorage\":{\"storageAccountId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/nodesdkteststorage\",\"lastKeySync\":\"2017-05-26T16:02:12.6933062Z\"},\"poolAllocationMode\":\"batchservice\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '693',
+  'content-length': '735',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'last-modified': 'Sat, 18 Feb 2017 00:12:09 GMT',
-  etag: '0x8D45792C7FE96E1',
-  'request-id': '59a7fde5-d37c-495e-8bcc-cc26eac48235',
+  'last-modified': 'Fri, 26 May 2017 16:02:40 GMT',
+  etag: '"0x8D4A450A32A9E8D"',
+  'x-ms-ratelimit-remaining-subscription-reads': '14975',
+  'request-id': 'b0a9d37f-22a8-48e1-bdf5-261c56714620',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14938',
-  'x-ms-request-id': '9d2b4311-b2c9-49c2-a1e5-a30e4c1144a7',
-  'x-ms-correlation-request-id': '9d2b4311-b2c9-49c2-a1e5-a30e4c1144a7',
-  'x-ms-routing-request-id': 'WESTUS2:20170218T001209Z:9d2b4311-b2c9-49c2-a1e5-a30e4c1144a7',
-  date: 'Sat, 18 Feb 2017 00:12:08 GMT',
+  'x-ms-request-id': '022315a9-d0a5-4fa4-b266-4a8008b374ed',
+  'x-ms-correlation-request-id': '022315a9-d0a5-4fa4-b266-4a8008b374ed',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160242Z:022315a9-d0a5-4fa4-b266-4a8008b374ed',
+  date: 'Fri, 26 May 2017 16:02:42 GMT',
   connection: 'close' });
  return result; }]];
