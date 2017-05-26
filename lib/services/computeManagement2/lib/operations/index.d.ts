@@ -928,9 +928,6 @@ export interface AvailabilitySets {
      * @param {array} [parameters.virtualMachines] A list of references to all
      * virtual machines in the availability set.
      *
-     * @param {boolean} [parameters.managed] If the availability set supports
-     * managed disks.
-     *
      * @param {object} [parameters.sku] Sku of the availability set
      *
      * @param {string} [parameters.sku.name] The sku name.
@@ -972,9 +969,6 @@ export interface AvailabilitySets {
      *
      * @param {array} [parameters.virtualMachines] A list of references to all
      * virtual machines in the availability set.
-     *
-     * @param {boolean} [parameters.managed] If the availability set supports
-     * managed disks.
      *
      * @param {object} [parameters.sku] Sku of the availability set
      *

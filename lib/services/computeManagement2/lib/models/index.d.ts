@@ -425,8 +425,6 @@ export interface Sku {
  *
  * @member {array} [statuses] The resource status information.
  *
- * @member {boolean} [managed] If the availability set supports managed disks.
- *
  * @member {object} [sku] Sku of the availability set
  *
  * @member {string} [sku.name] The sku name.
@@ -441,7 +439,6 @@ export interface AvailabilitySet extends Resource {
   platformFaultDomainCount?: number;
   virtualMachines?: SubResource[];
   readonly statuses?: InstanceViewStatus[];
-  managed?: boolean;
   sku?: Sku;
 }
 
