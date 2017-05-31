@@ -72,6 +72,19 @@ describe('Batch Management', function () {
   
   describe('operations', function () {
     
+    it('should list Batch operations successfully', function (done) {
+      client.operations.list(function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        result.length.should.equal(19);
+        result[0].name.should.equal('Microsoft.Batch/batchAccounts/providers/Microsoft.Insights/diagnosticSettings/read');
+        result[0].origin.should.equal('system');
+        result[0].display.provider.should.equal('Microsoft Batch');
+        result[0].display.operation.should.equal('Read diagnostic setting');
+        done();
+      });
+    });
+    
     it('should get subscription quota successfully', function (done) {
       client.location.getQuotas(location, function (err, result, request, response) {
         should.not.exist(err);
@@ -90,6 +103,8 @@ describe('Batch Management', function () {
         should.exist(result);
         result.location.should.equal(location);
         result.poolQuota.should.equal(20);
+        result.dedicatedCoreQuota.should.equal(20);
+        result.lowPriorityCoreQuota.should.equal(50);
         response.statusCode.should.equal(200);
         done();
       });
@@ -304,6 +319,7 @@ describe('Batch Management', function () {
       client.batchAccountOperations.getKeys(groupName, 'batchtestnodesdk', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
+        should.exist(result.accountName);
         should.exist(result.primary);
         should.exist(result.secondary);
         done();

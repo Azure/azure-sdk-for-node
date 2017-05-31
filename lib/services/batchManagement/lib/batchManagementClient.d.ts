@@ -19,7 +19,7 @@ declare class BatchManagementClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - A unique identifier of a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -60,6 +60,7 @@ declare class BatchManagementClient {
   applicationPackageOperations: operations.ApplicationPackageOperations;
   applicationOperations: operations.ApplicationOperations;
   location: operations.Location;
+  operations: operations.Operations;
 }
 
 export = BatchManagementClient;

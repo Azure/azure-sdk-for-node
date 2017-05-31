@@ -2,67 +2,67 @@
 
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
-  process.env['AZURE_AUTOSTORAGE'] = 'jsjapaneast';
-  process.env['AZURE_SUBSCRIPTION_ID'] = '46241355-bb95-46a9-ba6c-42b554d71925';
+  process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-01-01', '*')
-  .reply(400, "{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:83a12272-af36-4d46-9e5d-15f3c96ae838\\nTime:2017-02-18T00:08:11.4464252Z\",\"target\":\"BatchAccount\",\"details\":[{\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}", { 'cache-control': 'no-cache',
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-05-01', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:c56232c7-ec3b-46ce-86ea-2ba4b7aa4478\\nTime:2017-05-26T16:04:09.3700676Z\",\"target\":\"BatchAccount\",\"details\":[{\"code\":\"Reason\",\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '333',
+  'content-length': '359',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': '83a12272-af36-4d46-9e5d-15f3c96ae838',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'request-id': 'c56232c7-ec3b-46ce-86ea-2ba4b7aa4478',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1188',
-  'x-ms-request-id': '41fdb23e-db2a-43cf-80b1-424386d42bf2',
-  'x-ms-correlation-request-id': '41fdb23e-db2a-43cf-80b1-424386d42bf2',
-  'x-ms-routing-request-id': 'WESTUS2:20170218T000813Z:41fdb23e-db2a-43cf-80b1-424386d42bf2',
-  date: 'Sat, 18 Feb 2017 00:08:12 GMT',
+  'x-ms-request-id': '0d8bd2a6-a10d-49f3-bde6-6992ea310a3d',
+  'x-ms-correlation-request-id': '0d8bd2a6-a10d-49f3-bde6-6992ea310a3d',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160411Z:0d8bd2a6-a10d-49f3-bde6-6992ea310a3d',
+  date: 'Fri, 26 May 2017 16:04:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-01-01', '*')
-  .reply(400, "{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:83a12272-af36-4d46-9e5d-15f3c96ae838\\nTime:2017-02-18T00:08:11.4464252Z\",\"target\":\"BatchAccount\",\"details\":[{\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}", { 'cache-control': 'no-cache',
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-05-01', '*')
+  .reply(400, "{\"error\":{\"code\":\"InvalidRequestBody\",\"message\":\"The specified Request Body is not syntactically valid.\\nRequestId:c56232c7-ec3b-46ce-86ea-2ba4b7aa4478\\nTime:2017-05-26T16:04:09.3700676Z\",\"target\":\"BatchAccount\",\"details\":[{\"code\":\"Reason\",\"message\":\"keyVaultReference must be set if poolAllocationMode is specified as 'UserSubscription' on a PUT request\"}]}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '333',
+  'content-length': '359',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'request-id': '83a12272-af36-4d46-9e5d-15f3c96ae838',
+  'x-ms-ratelimit-remaining-subscription-writes': '1196',
+  'request-id': 'c56232c7-ec3b-46ce-86ea-2ba4b7aa4478',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-HTTPAPI/2.0',
-  'x-ms-ratelimit-remaining-subscription-writes': '1188',
-  'x-ms-request-id': '41fdb23e-db2a-43cf-80b1-424386d42bf2',
-  'x-ms-correlation-request-id': '41fdb23e-db2a-43cf-80b1-424386d42bf2',
-  'x-ms-routing-request-id': 'WESTUS2:20170218T000813Z:41fdb23e-db2a-43cf-80b1-424386d42bf2',
-  date: 'Sat, 18 Feb 2017 00:08:12 GMT',
+  'x-ms-request-id': '0d8bd2a6-a10d-49f3-bde6-6992ea310a3d',
+  'x-ms-correlation-request-id': '0d8bd2a6-a10d-49f3-bde6-6992ea310a3d',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160411Z:0d8bd2a6-a10d-49f3-bde6-6992ea310a3d',
+  date: 'Fri, 26 May 2017 16:04:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-01-01', '*')
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-05-01', '*')
   .reply(400, "{\"error\":{\"code\":\"LinkedInvalidPropertyId\",\"message\":\"Property id 'abc' at path 'properties.keyVaultReference.id' is invalid. Expect fully qualified resource Id that start with '/subscriptions/{subscriptionId}' or '/providers/{resourceProviderNamespace}/'.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'dbea3e69-d3f3-4d34-8e3f-a30d0edf61ef',
-  'x-ms-correlation-request-id': 'dbea3e69-d3f3-4d34-8e3f-a30d0edf61ef',
-  'x-ms-routing-request-id': 'WESTUS2:20170218T000813Z:dbea3e69-d3f3-4d34-8e3f-a30d0edf61ef',
+  'x-ms-request-id': '38f2b1e7-daf2-4a25-a6d5-6be1861ce52c',
+  'x-ms-correlation-request-id': '38f2b1e7-daf2-4a25-a6d5-6be1861ce52c',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160411Z:38f2b1e7-daf2-4a25-a6d5-6be1861ce52c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 18 Feb 2017 00:08:13 GMT',
+  date: 'Fri, 26 May 2017 16:04:10 GMT',
   connection: 'close',
   'content-length': '259' });
  return result; },
@@ -70,17 +70,17 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-01-01', '*')
+.put('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/batchtestnodesdkbyos?api-version=2017-05-01', '*')
   .reply(400, "{\"error\":{\"code\":\"LinkedInvalidPropertyId\",\"message\":\"Property id 'abc' at path 'properties.keyVaultReference.id' is invalid. Expect fully qualified resource Id that start with '/subscriptions/{subscriptionId}' or '/providers/{resourceProviderNamespace}/'.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   'x-ms-failure-cause': 'gateway',
-  'x-ms-request-id': 'dbea3e69-d3f3-4d34-8e3f-a30d0edf61ef',
-  'x-ms-correlation-request-id': 'dbea3e69-d3f3-4d34-8e3f-a30d0edf61ef',
-  'x-ms-routing-request-id': 'WESTUS2:20170218T000813Z:dbea3e69-d3f3-4d34-8e3f-a30d0edf61ef',
+  'x-ms-request-id': '38f2b1e7-daf2-4a25-a6d5-6be1861ce52c',
+  'x-ms-correlation-request-id': '38f2b1e7-daf2-4a25-a6d5-6be1861ce52c',
+  'x-ms-routing-request-id': 'WESTUS2:20170526T160411Z:38f2b1e7-daf2-4a25-a6d5-6be1861ce52c',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Sat, 18 Feb 2017 00:08:13 GMT',
+  date: 'Fri, 26 May 2017 16:04:10 GMT',
   connection: 'close',
   'content-length': '259' });
  return result; }]];
