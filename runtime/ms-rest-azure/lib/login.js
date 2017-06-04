@@ -11,6 +11,8 @@ const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
 const UserTokenCredentials = require('./credentials/userTokenCredentials');
 const AzureEnvironment = require('./azureEnvironment');
 const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
+const opn = require('opn');
+const ncp = require('copy-paste');
 
 // It will create a DeviceTokenCredentials object by default
 function _createCredentials(parameters) {
@@ -175,6 +177,10 @@ function _interactive(options, callback) {
         if (err) return callback(err);
         if (interactiveOptions.userCodeResponseLogger) {
           interactiveOptions.userCodeResponseLogger(userCodeResponse.message);
+        } else if (options.openBrowser) {
+          ncp.copy(userCodeResponse.userCode, function () {
+            opn(userCodeResponse.verificationUrl);
+          });
         } else {
           console.log(userCodeResponse.message);
         }
@@ -274,7 +280,7 @@ exports.interactiveWithAuthResponse = function interactiveWithAuthResponse(optio
       if (err) { reject(err); }
       else {
         let authResponse = { credentials: credentials, subscriptions: subscriptions };
-        resolve(authResponse); 
+        resolve(authResponse);
       }
       return;
     });
