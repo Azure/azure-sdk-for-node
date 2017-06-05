@@ -932,14 +932,14 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the Data Lake Store
      * account.
      *
-     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * @param {object} [parameters.identity] The Key Vault encryption identity, if
      * any.
      *
      * @param {string} [parameters.encryptionState] The current state of encryption
      * for this Data Lake store account. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {object} [parameters.encryptionConfig] The Key vault encryption
+     * @param {object} [parameters.encryptionConfig] The Key Vault encryption
      * configuration.
      *
      * @param {string} parameters.encryptionConfig.type The type of encryption
@@ -947,7 +947,7 @@ export interface Account {
      * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
      * 'ServiceManaged'
      *
-     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key vault
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key Vault
      * information for connecting to user managed encryption keys.
      *
      * @param {string}
@@ -1017,14 +1017,14 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the Data Lake Store
      * account.
      *
-     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * @param {object} [parameters.identity] The Key Vault encryption identity, if
      * any.
      *
      * @param {string} [parameters.encryptionState] The current state of encryption
      * for this Data Lake store account. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {object} [parameters.encryptionConfig] The Key vault encryption
+     * @param {object} [parameters.encryptionConfig] The Key Vault encryption
      * configuration.
      *
      * @param {string} parameters.encryptionConfig.type The type of encryption
@@ -1032,7 +1032,7 @@ export interface Account {
      * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
      * 'ServiceManaged'
      *
-     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key vault
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key Vault
      * information for connecting to user managed encryption keys.
      *
      * @param {string}
@@ -1147,6 +1147,17 @@ export interface Account {
      * If the firewall is disabled, this is not enforced. Possible values include:
      * 'Enabled', 'Disabled'
      *
+     * @param {object} [parameters.encryptionConfig] Used for rotation of user
+     * managed Key Vault keys. Can only be used to rotate a user managed encryption
+     * Key Vault key.
+     *
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The updated
+     * Key Vault key to use in user managed key rotation.
+     *
+     * @param {string}
+     * [parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion] The
+     * version of the user managed encryption key to update through a key rotation.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1196,6 +1207,17 @@ export interface Account {
      * allowing or disallowing IPs originating within Azure through the firewall.
      * If the firewall is disabled, this is not enforced. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.encryptionConfig] Used for rotation of user
+     * managed Key Vault keys. Can only be used to rotate a user managed encryption
+     * Key Vault key.
+     *
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The updated
+     * Key Vault key to use in user managed key rotation.
+     *
+     * @param {string}
+     * [parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion] The
+     * version of the user managed encryption key to update through a key rotation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1351,7 +1373,7 @@ export interface Account {
 
 
     /**
-     * Attempts to enable a user managed key vault for encryption of the specified
+     * Attempts to enable a user managed Key Vault for encryption of the specified
      * Data Lake Store account.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
@@ -1374,7 +1396,7 @@ export interface Account {
     enableKeyVaultWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Attempts to enable a user managed key vault for encryption of the specified
+     * Attempts to enable a user managed Key Vault for encryption of the specified
      * Data Lake Store account.
      *
      * @param {string} resourceGroupName The name of the Azure resource group that
@@ -1619,14 +1641,14 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the Data Lake Store
      * account.
      *
-     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * @param {object} [parameters.identity] The Key Vault encryption identity, if
      * any.
      *
      * @param {string} [parameters.encryptionState] The current state of encryption
      * for this Data Lake store account. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {object} [parameters.encryptionConfig] The Key vault encryption
+     * @param {object} [parameters.encryptionConfig] The Key Vault encryption
      * configuration.
      *
      * @param {string} parameters.encryptionConfig.type The type of encryption
@@ -1634,7 +1656,7 @@ export interface Account {
      * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
      * 'ServiceManaged'
      *
-     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key vault
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key Vault
      * information for connecting to user managed encryption keys.
      *
      * @param {string}
@@ -1704,14 +1726,14 @@ export interface Account {
      * @param {object} parameters Parameters supplied to create the Data Lake Store
      * account.
      *
-     * @param {object} [parameters.identity] The Key vault encryption identity, if
+     * @param {object} [parameters.identity] The Key Vault encryption identity, if
      * any.
      *
      * @param {string} [parameters.encryptionState] The current state of encryption
      * for this Data Lake store account. Possible values include: 'Enabled',
      * 'Disabled'
      *
-     * @param {object} [parameters.encryptionConfig] The Key vault encryption
+     * @param {object} [parameters.encryptionConfig] The Key Vault encryption
      * configuration.
      *
      * @param {string} parameters.encryptionConfig.type The type of encryption
@@ -1719,7 +1741,7 @@ export interface Account {
      * 'UserManaged' and 'ServiceManaged'. Possible values include: 'UserManaged',
      * 'ServiceManaged'
      *
-     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key vault
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The Key Vault
      * information for connecting to user managed encryption keys.
      *
      * @param {string}
@@ -1834,6 +1856,17 @@ export interface Account {
      * If the firewall is disabled, this is not enforced. Possible values include:
      * 'Enabled', 'Disabled'
      *
+     * @param {object} [parameters.encryptionConfig] Used for rotation of user
+     * managed Key Vault keys. Can only be used to rotate a user managed encryption
+     * Key Vault key.
+     *
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The updated
+     * Key Vault key to use in user managed key rotation.
+     *
+     * @param {string}
+     * [parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion] The
+     * version of the user managed encryption key to update through a key rotation.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1883,6 +1916,17 @@ export interface Account {
      * allowing or disallowing IPs originating within Azure through the firewall.
      * If the firewall is disabled, this is not enforced. Possible values include:
      * 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.encryptionConfig] Used for rotation of user
+     * managed Key Vault keys. Can only be used to rotate a user managed encryption
+     * Key Vault key.
+     *
+     * @param {object} [parameters.encryptionConfig.keyVaultMetaInfo] The updated
+     * Key Vault key to use in user managed key rotation.
+     *
+     * @param {string}
+     * [parameters.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion] The
+     * version of the user managed encryption key to update through a key rotation.
      *
      * @param {object} [options] Optional Parameters.
      *
