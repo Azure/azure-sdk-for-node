@@ -54,6 +54,8 @@ declare class DataLakeAnalyticsJobManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  pipeline: operations.Pipeline;
+  recurrence: operations.Recurrence;
   job: operations.Job;
 }
 

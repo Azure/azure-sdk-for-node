@@ -490,6 +490,197 @@ export interface JobErrorDetails {
 
 /**
  * @class
+ * Initializes a new instance of the JobRelationshipProperties class.
+ * @constructor
+ * Job relationship information properties including pipeline information,
+ * correlation information, etc.
+ *
+ * @member {uuid} [pipelineId] the job relationship pipeline identifier (a
+ * GUID).
+ *
+ * @member {string} [pipelineName] the friendly name of the job relationship
+ * pipeline, which does not need to be unique.
+ *
+ * @member {string} [pipelineUri] the pipeline uri, unique, links to the
+ * originating service for this pipeline.
+ *
+ * @member {uuid} [runId] the run identifier (a GUID), unique identifier of the
+ * iteration of this pipeline.
+ *
+ * @member {uuid} recurrenceId the recurrence identifier (a GUID), unique per
+ * activity/script, regardless of iterations. This is something to link
+ * different occurrences of the same job together.
+ *
+ * @member {string} [recurrenceName] the recurrence name, user friendly name
+ * for the correlation between jobs.
+ *
+ */
+export interface JobRelationshipProperties {
+  pipelineId?: string;
+  pipelineName?: string;
+  pipelineUri?: string;
+  runId?: string;
+  recurrenceId: string;
+  recurrenceName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobPipelineRunInformation class.
+ * @constructor
+ * Run info for a specific job pipeline.
+ *
+ * @member {uuid} [runId] the run identifier of an instance of pipeline
+ * executions (a GUID).
+ *
+ * @member {date} [lastSubmitTime] the time this instance was last submitted.
+ *
+ */
+export interface JobPipelineRunInformation {
+  readonly runId?: string;
+  readonly lastSubmitTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobPipelineInformation class.
+ * @constructor
+ * Job Pipeline Information, showing the relationship of jobs and recurrences
+ * of those jobs in a pipeline.
+ *
+ * @member {uuid} [pipelineId] the job relationship pipeline identifier (a
+ * GUID).
+ *
+ * @member {string} [pipelineName] the friendly name of the job relationship
+ * pipeline, which does not need to be unique.
+ *
+ * @member {string} [pipelineUri] the pipeline uri, unique, links to the
+ * originating service for this pipeline.
+ *
+ * @member {number} [numJobsFailed] the number of jobs in this pipeline that
+ * have failed.
+ *
+ * @member {number} [numJobsCanceled] the number of jobs in this pipeline that
+ * have been canceled.
+ *
+ * @member {number} [numJobsSucceeded] the number of jobs in this pipeline that
+ * have succeeded.
+ *
+ * @member {number} [auHoursFailed] the number of job execution hours that
+ * resulted in failed jobs.
+ *
+ * @member {number} [auHoursCanceled] the number of job execution hours that
+ * resulted in canceled jobs.
+ *
+ * @member {number} [auHoursSucceeded] the number of job execution hours that
+ * resulted in successful jobs.
+ *
+ * @member {date} [lastSubmitTime] the last time a job in this pipeline was
+ * submitted.
+ *
+ * @member {array} [runs] the list of recurrence identifiers representing each
+ * run of this pipeline.
+ *
+ * @member {array} [recurrences] the list of recurrence identifiers
+ * representing each run of this pipeline.
+ *
+ */
+export interface JobPipelineInformation {
+  readonly pipelineId?: string;
+  readonly pipelineName?: string;
+  readonly pipelineUri?: string;
+  readonly numJobsFailed?: number;
+  readonly numJobsCanceled?: number;
+  readonly numJobsSucceeded?: number;
+  readonly auHoursFailed?: number;
+  readonly auHoursCanceled?: number;
+  readonly auHoursSucceeded?: number;
+  readonly lastSubmitTime?: Date;
+  readonly runs?: JobPipelineRunInformation[];
+  readonly recurrences?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobPipelineInformationListResult class.
+ * @constructor
+ * List of job pipeline information items.
+ *
+ * @member {array} [value] the list of job pipeline information items.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface JobPipelineInformationListResult {
+  readonly value?: JobPipelineInformation[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobRecurrenceInformation class.
+ * @constructor
+ * Recurrence job information for a specific recurrence.
+ *
+ * @member {uuid} [recurrenceId] the recurrence identifier (a GUID), unique per
+ * activity/script, regardless of iterations. This is something to link
+ * different occurrences of the same job together.
+ *
+ * @member {string} [recurrenceName] the recurrence name, user friendly name
+ * for the correlation between jobs.
+ *
+ * @member {number} [numJobsFailed] the number of jobs in this recurrence that
+ * have failed.
+ *
+ * @member {number} [numJobsCanceled] the number of jobs in this recurrence
+ * that have been canceled.
+ *
+ * @member {number} [numJobsSucceeded] the number of jobs in this recurrence
+ * that have succeeded.
+ *
+ * @member {number} [auHoursFailed] the number of job execution hours that
+ * resulted in failed jobs.
+ *
+ * @member {number} [auHoursCanceled] the number of job execution hours that
+ * resulted in canceled jobs.
+ *
+ * @member {number} [auHoursSucceeded] the number of job execution hours that
+ * resulted in successful jobs.
+ *
+ * @member {date} [lastSubmitTime] the last time a job in this recurrence was
+ * submitted.
+ *
+ */
+export interface JobRecurrenceInformation {
+  readonly recurrenceId?: string;
+  readonly recurrenceName?: string;
+  readonly numJobsFailed?: number;
+  readonly numJobsCanceled?: number;
+  readonly numJobsSucceeded?: number;
+  readonly auHoursFailed?: number;
+  readonly auHoursCanceled?: number;
+  readonly auHoursSucceeded?: number;
+  readonly lastSubmitTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobRecurrenceInformationListResult class.
+ * @constructor
+ * List of job recurrence information items.
+ *
+ * @member {array} [value] the list of job recurrence information items.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface JobRecurrenceInformationListResult {
+  readonly value?: JobRecurrenceInformation[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobInformation class.
  * @constructor
  * The common Data Lake Analytics job information properties.
@@ -549,6 +740,28 @@ export interface JobErrorDetails {
  *
  * @member {string} [properties.type] Polymorphic Discriminator
  *
+ * @member {object} [related] the recurring job relationship information
+ * properties.
+ *
+ * @member {uuid} [related.pipelineId] the job relationship pipeline identifier
+ * (a GUID).
+ *
+ * @member {string} [related.pipelineName] the friendly name of the job
+ * relationship pipeline, which does not need to be unique.
+ *
+ * @member {string} [related.pipelineUri] the pipeline uri, unique, links to
+ * the originating service for this pipeline.
+ *
+ * @member {uuid} [related.runId] the run identifier (a GUID), unique
+ * identifier of the iteration of this pipeline.
+ *
+ * @member {uuid} [related.recurrenceId] the recurrence identifier (a GUID),
+ * unique per activity/script, regardless of iterations. This is something to
+ * link different occurrences of the same job together.
+ *
+ * @member {string} [related.recurrenceName] the recurrence name, user friendly
+ * name for the correlation between jobs.
+ *
  */
 export interface JobInformation {
   readonly jobId?: string;
@@ -567,6 +780,7 @@ export interface JobInformation {
   logFilePatterns?: string[];
   readonly stateAuditRecords?: JobStateAuditRecord[];
   properties: JobProperties;
+  related?: JobRelationshipProperties;
 }
 
 /**
@@ -587,6 +801,38 @@ export interface JobInfoListResult {
 
 /**
  * @class
+ * Initializes a new instance of the JobPipelineInformationListResult class.
+ * @constructor
+ * List of job pipeline information items.
+ *
+ * @member {array} [value] the list of job pipeline information items.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface JobPipelineInformationListResult {
+  readonly value?: JobPipelineInformation[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobRecurrenceInformationListResult class.
+ * @constructor
+ * List of job recurrence information items.
+ *
+ * @member {array} [value] the list of job recurrence information items.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface JobRecurrenceInformationListResult {
+  readonly value?: JobRecurrenceInformation[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobInfoListResult class.
  * @constructor
  * List of jobInfo items.
@@ -601,6 +847,32 @@ export interface JobInfoListResult {
   readonly nextLink?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the JobPipelineInformationListResult class.
+ * @constructor
+ * List of job pipeline information items.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface JobPipelineInformationListResult extends Array<JobPipelineInformation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobRecurrenceInformationListResult class.
+ * @constructor
+ * List of job recurrence information items.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface JobRecurrenceInformationListResult extends Array<JobRecurrenceInformation> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class
