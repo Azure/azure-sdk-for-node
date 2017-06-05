@@ -1283,7 +1283,10 @@ export interface IotHubResource {
      *
      * Check if an IoT hub name is available.
      *
-     * @param {string} name The name of the IoT hub to check.
+     * @param {object} operationInputs Set the name parameter in the
+     * OperationInputs structure to the name of the IoT hub to check.
+     *
+     * @param {string} operationInputs.name The name of the IoT hub to check.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1296,14 +1299,17 @@ export interface IotHubResource {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubNameAvailabilityInfo>>;
+    checkNameAvailabilityWithHttpOperationResponse(operationInputs: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubNameAvailabilityInfo>>;
 
     /**
      * @summary Check if an IoT hub name is available.
      *
      * Check if an IoT hub name is available.
      *
-     * @param {string} name The name of the IoT hub to check.
+     * @param {object} operationInputs Set the name parameter in the
+     * OperationInputs structure to the name of the IoT hub to check.
+     *
+     * @param {string} operationInputs.name The name of the IoT hub to check.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1333,9 +1339,9 @@ export interface IotHubResource {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailability(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubNameAvailabilityInfo>;
-    checkNameAvailability(name: string, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
-    checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
+    checkNameAvailability(operationInputs: models.OperationInputs, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IotHubNameAvailabilityInfo>;
+    checkNameAvailability(operationInputs: models.OperationInputs, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
+    checkNameAvailability(operationInputs: models.OperationInputs, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IotHubNameAvailabilityInfo>): void;
 
 
     /**
