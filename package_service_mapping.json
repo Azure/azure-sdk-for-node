@@ -1,0 +1,278 @@
+{
+  "azure-arm-advisor": {
+    "service_name": "advisor",
+    "category": "Management"
+  },
+  "azure-arm-analysisservices": {
+    "service_name": "analysisservices",
+    "category": "Management"
+  },
+  "azure-arm-authorization": {
+    "service_name": "authorization",
+    "category": "Management"
+  },
+  "azure-arm-automation": {
+    "service_name": "automation",
+    "category": "Management"
+  },
+  "azure-arm-batch": {
+    "service_name": "batch",
+    "category": "Management"
+  },
+  "azure-arm-billing": {
+    "service_name": "billing",
+    "category": "Management"
+  },
+  "azure-arm-cdn": {
+    "service_name": "cdn",
+    "category": "Management"
+  },
+  "azure-arm-cognitiveservices": {
+    "service_name": "cognitiveservices",
+    "category": "Management"
+  },
+  "azure-arm-commerce": {
+    "service_name": "commerce",
+    "category": "Management"
+  },
+  "azure-arm-compute": {
+    "service_name": "compute",
+    "category": "Management"
+  },
+  "azure-arm-containerregistry": {
+    "service_name": "containerregistry",
+    "category": "Management"
+  },
+  "azure-arm-customerinsights": {
+    "service_name": "customerinsights",
+    "category": "Management"
+  },
+  "azure-arm-datalake-analytics": {
+    "service_name": "datalake-analytics",
+    "category": "Management"
+  },
+  "azure-arm-datalake-store": {
+    "service_name": "datalake-store",
+    "category": "Management"
+  },
+  "azure-arm-devtestlabs": {
+    "service_name": "devtestlabs",
+    "category": "Management"
+  },
+  "azure-arm-dns": {
+    "service_name": "dns",
+    "category": "Management"
+  },
+  "azure-arm-documentdb": {
+    "service_name": "documentdb",
+    "category": "Management"
+  },
+  "azure-arm-eventhub": {
+    "service_name": "eventhub",
+    "category": "Management"
+  },
+  "azure-arm-hdinsight": {
+    "service_name": "hdinsight",
+    "category": "Management"
+  },
+  "azure-arm-hdinsight-jobs": {
+    "service_name": "hdinsight-jobs",
+    "category": "Management"
+  },
+  "azure-arm-insights": {
+    "service_name": "insights",
+    "category": "Management"
+  },
+  "azure-arm-intune": {
+    "service_name": "intune",
+    "category": "Management"
+  },
+  "azure-arm-iothub": {
+    "service_name": "iothub",
+    "category": "Management"
+  },
+  "azure-arm-keyvault": {
+    "service_name": "keyvault",
+    "category": "Management"
+  },
+  "azure-arm-logic": {
+    "service_name": "logic",
+    "category": "Management"
+  },
+  "azure-arm-machinelearning": {
+    "service_name": "machinelearning",
+    "category": "Management"
+  },
+  "azure-arm-mediaservices": {
+    "service_name": "mediaservices",
+    "category": "Management"
+  },
+  "azure-arm-network": {
+    "service_name": "network",
+    "category": "Management"
+  },
+  "azure-arm-notificationhubs": {
+    "service_name": "notificationhubs",
+    "category": "Management"
+  },
+  "azure-arm-operationalinsights": {
+    "service_name": "operationalinsights",
+    "category": "Management"
+  },
+  "azure-arm-powerbiembedded": {
+    "service_name": "powerbiembedded",
+    "category": "Management"
+  },
+  "azure-arm-recoveryservices": {
+    "service_name": "recoveryservices",
+    "category": "Management"
+  },
+  "azure-arm-recoveryservicesbackup": {
+    "service_name": "recoveryservicesbackup",
+    "category": "Management"
+  },
+  "azure-arm-rediscache": {
+    "service_name": "rediscache",
+    "category": "Management"
+  },
+  "azure-arm-relay": {
+    "service_name": "relay",
+    "category": "Management"
+  },
+  "azure-arm-resource": {
+    "service_name": "resource",
+    "category": "Management"
+  },
+  "azure-arm-sb": {
+    "service_name": "sb",
+    "category": "Management"
+  },
+  "azure-arm-scheduler": {
+    "service_name": "scheduler",
+    "category": "Management"
+  },
+  "azure-arm-search": {
+    "service_name": "search",
+    "category": "Management"
+  },
+  "azure-arm-servermanagement": {
+    "service_name": "servermanagement",
+    "category": "Management"
+  },
+  "azure-arm-servicefabric": {
+    "service_name": "servicefabric",
+    "category": "Management"
+  },
+  "azure-arm-servicemap": {
+    "service_name": "servicemap",
+    "category": "Management"
+  },
+  "azure-arm-sql": {
+    "service_name": "sql",
+    "category": "Management"
+  },
+  "azure-arm-storage": {
+    "service_name": "storage",
+    "category": "Management"
+  },
+  "azure-arm-storageimportexport": {
+    "service_name": "storageimportexport",
+    "category": "Management"
+  },
+  "azure-arm-trafficmanager": {
+    "service_name": "trafficmanager",
+    "category": "Management"
+  },
+  "azure-arm-website": {
+    "service_name": "website",
+    "category": "Management"
+  },
+  "azure-asm-compute": {
+    "service_name": "asm-compute",
+    "category": "Management"
+  },
+  "azure-asm-hdinsight": {
+    "service_name": "asm-hdinsight",
+    "category": "Management"
+  },
+  "azure-asm-mgmt": {
+    "service_name": "asm-mgmt",
+    "category": "Management"
+  },
+  "azure-asm-network": {
+    "service_name": "asm-network",
+    "category": "Management"
+  },
+  "azure-asm-sb": {
+    "service_name": "asm-sb",
+    "category": "Management"
+  },
+  "azure-asm-scheduler": {
+    "service_name": "asm-scheduler",
+    "category": "Management"
+  },
+  "azure-asm-sql": {
+    "service_name": "asm-sql",
+    "category": "Management"
+  },
+  "azure-asm-storage": {
+    "service_name": "asm-storage",
+    "category": "Management"
+  },
+  "azure-asm-store": {
+    "service_name": "asm-store",
+    "category": "Management"
+  },
+  "azure-asm-subscription": {
+    "service_name": "asm-subscription",
+    "category": "Management"
+  },
+  "azure-asm-trafficmanager": {
+    "service_name": "asm-trafficmanager",
+    "category": "Management"
+  },
+  "azure-asm-website": {
+    "service_name": "asm-website",
+    "category": "Management"
+  },
+  "azure-batch": {
+    "service_name": "Batch",
+    "category": "Management"
+  },
+  "azure-gallery": {
+    "service_name": "gallery",
+    "category": "Management"
+  },
+  "azure-graph": {
+    "service_name": "graph",
+    "category": "Management"
+  },
+  "azure-insights": {
+    "service_name": "insights",
+    "category": "Management"
+  },
+  "azure-keyvault": {
+    "service_name": "keyvault",
+    "category": "Client"
+  },
+  "azure-monitoring": {
+    "service_name": "monitoring",
+    "category": "Management"
+  },
+  "azure-sb": {
+    "service_name": "Service Bus",
+    "category": "Client"
+  },
+  "azure-scheduler": {
+    "service_name": "scheduler",
+    "category": "Management"
+  },
+  "azure-servicefabric": {
+    "service_name": "servicefabric",
+    "category": "Management"
+  },
+  "azure-storage": {
+    "service_name": "storage",
+    "category": "Client"
+  }
+}
