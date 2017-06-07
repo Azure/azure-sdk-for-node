@@ -14,6 +14,474 @@ import * as models from '../models';
 
 /**
  * @class
+ * ComputePolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeAnalyticsAccountManagementClient.
+ */
+export interface ComputePolicies {
+
+
+    /**
+     * Creates or updates the specified compute policy. During update, the compute
+     * policy with the specified name will be replaced with this new compute
+     * policy. An account supports, at most, 50 policies
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * add or replace the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to create
+     * or update.
+     *
+     * @param {object} parameters Parameters supplied to create or update the
+     * compute policy. The max degree of parallelism per job property, min priority
+     * per job property, or both must be present.
+     *
+     * @param {uuid} parameters.objectId The AAD object identifier for the entity
+     * to create a policy for.
+     *
+     * @param {string} parameters.objectType The type of AAD object the object
+     * identifier refers to. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal'
+     *
+     * @param {number} [parameters.maxDegreeOfParallelismPerJob] The maximum degree
+     * of parallelism per job this user can use to submit jobs. This property, the
+     * min priority per job property, or both must be passed.
+     *
+     * @param {number} [parameters.minPriorityPerJob] The minimum priority per job
+     * this user can use to submit jobs. This property, the max degree of
+     * parallelism per job property, or both must be passed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputePolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, accountName: string, computePolicyName: string, parameters: models.ComputePolicyCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputePolicy>>;
+
+    /**
+     * Creates or updates the specified compute policy. During update, the compute
+     * policy with the specified name will be replaced with this new compute
+     * policy. An account supports, at most, 50 policies
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * add or replace the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to create
+     * or update.
+     *
+     * @param {object} parameters Parameters supplied to create or update the
+     * compute policy. The max degree of parallelism per job property, min priority
+     * per job property, or both must be present.
+     *
+     * @param {uuid} parameters.objectId The AAD object identifier for the entity
+     * to create a policy for.
+     *
+     * @param {string} parameters.objectType The type of AAD object the object
+     * identifier refers to. Possible values include: 'User', 'Group',
+     * 'ServicePrincipal'
+     *
+     * @param {number} [parameters.maxDegreeOfParallelismPerJob] The maximum degree
+     * of parallelism per job this user can use to submit jobs. This property, the
+     * min priority per job property, or both must be passed.
+     *
+     * @param {number} [parameters.minPriorityPerJob] The minimum priority per job
+     * this user can use to submit jobs. This property, the max degree of
+     * parallelism per job property, or both must be passed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputePolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputePolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputePolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, accountName: string, computePolicyName: string, parameters: models.ComputePolicyCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputePolicy>;
+    createOrUpdate(resourceGroupName: string, accountName: string, computePolicyName: string, parameters: models.ComputePolicyCreateOrUpdateParameters, callback: ServiceCallback<models.ComputePolicy>): void;
+    createOrUpdate(resourceGroupName: string, accountName: string, computePolicyName: string, parameters: models.ComputePolicyCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputePolicy>): void;
+
+
+    /**
+     * Updates the specified compute policy.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to update the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to update the
+     * compute policy.
+     *
+     * @param {number} [options.parameters.maxDegreeOfParallelismPerJob] The
+     * maximum degree of parallelism per job this user can use to submit jobs.
+     *
+     * @param {number} [options.parameters.minPriorityPerJob] The minimum priority
+     * per job this user can use to submit jobs.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputePolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, computePolicyName: string, options?: { parameters? : models.ComputePolicy, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputePolicy>>;
+
+    /**
+     * Updates the specified compute policy.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account to
+     * which to update the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to update the
+     * compute policy.
+     *
+     * @param {number} [options.parameters.maxDegreeOfParallelismPerJob] The
+     * maximum degree of parallelism per job this user can use to submit jobs.
+     *
+     * @param {number} [options.parameters.minPriorityPerJob] The minimum priority
+     * per job this user can use to submit jobs.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputePolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputePolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputePolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, accountName: string, computePolicyName: string, options?: { parameters? : models.ComputePolicy, customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputePolicy>;
+    update(resourceGroupName: string, accountName: string, computePolicyName: string, callback: ServiceCallback<models.ComputePolicy>): void;
+    update(resourceGroupName: string, accountName: string, computePolicyName: string, options: { parameters? : models.ComputePolicy, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputePolicy>): void;
+
+
+    /**
+     * Deletes the specified compute policy from the specified Data Lake Analytics
+     * account
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to delete the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, accountName: string, computePolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified compute policy from the specified Data Lake Analytics
+     * account
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to delete the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, accountName: string, computePolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, accountName: string, computePolicyName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, accountName: string, computePolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified Data Lake Analytics compute policy.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputePolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, accountName: string, computePolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputePolicy>>;
+
+    /**
+     * Gets the specified Data Lake Analytics compute policy.
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the compute policy.
+     *
+     * @param {string} computePolicyName The name of the compute policy to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputePolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputePolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputePolicy} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, accountName: string, computePolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputePolicy>;
+    get(resourceGroupName: string, accountName: string, computePolicyName: string, callback: ServiceCallback<models.ComputePolicy>): void;
+    get(resourceGroupName: string, accountName: string, computePolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputePolicy>): void;
+
+
+    /**
+     * Lists the Data Lake Analytics compute policies within the specified Data
+     * Lake Analytics account. An account supports, at most, 50 policies
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the compute policies.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputePolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAccountWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputePolicyListResult>>;
+
+    /**
+     * Lists the Data Lake Analytics compute policies within the specified Data
+     * Lake Analytics account. An account supports, at most, 50 policies
+     *
+     * @param {string} resourceGroupName The name of the Azure resource group that
+     * contains the Data Lake Analytics account.
+     *
+     * @param {string} accountName The name of the Data Lake Analytics account from
+     * which to get the compute policies.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputePolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputePolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputePolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccount(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputePolicyListResult>;
+    listByAccount(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.ComputePolicyListResult>): void;
+    listByAccount(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputePolicyListResult>): void;
+
+
+    /**
+     * Lists the Data Lake Analytics compute policies within the specified Data
+     * Lake Analytics account. An account supports, at most, 50 policies
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ComputePolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputePolicyListResult>>;
+
+    /**
+     * Lists the Data Lake Analytics compute policies within the specified Data
+     * Lake Analytics account. An account supports, at most, 50 policies
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ComputePolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ComputePolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ComputePolicyListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputePolicyListResult>;
+    listByAccountNext(nextPageLink: string, callback: ServiceCallback<models.ComputePolicyListResult>): void;
+    listByAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputePolicyListResult>): void;
+}
+
+/**
+ * @class
  * FirewallRules
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsAccountManagementClient.
@@ -2103,6 +2571,15 @@ export interface Account {
      * @param {array} [parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
      *
+     * @param {number} [parameters.maxDegreeOfParallelismPerJob] the maximum
+     * supported degree of parallelism per job for this account.
+     *
+     * @param {number} [parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [parameters.computePolicies] the list of compute policies to
+     * create in this account.
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -2169,6 +2646,15 @@ export interface Account {
      *
      * @param {array} [parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
+     *
+     * @param {number} [parameters.maxDegreeOfParallelismPerJob] the maximum
+     * supported degree of parallelism per job for this account.
+     *
+     * @param {number} [parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [parameters.computePolicies] the list of compute policies to
+     * create in this account.
      *
      * @param {string} parameters.location Resource location
      *
@@ -2251,6 +2737,15 @@ export interface Account {
      * @param {array} [options.parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
      *
+     * @param {number} [options.parameters.maxDegreeOfParallelismPerJob] the
+     * maximum supported degree of parallelism per job for this account.
+     *
+     * @param {number} [options.parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [options.parameters.computePolicies] the list of existing
+     * compute policies to update in this account.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2305,6 +2800,15 @@ export interface Account {
      *
      * @param {array} [options.parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
+     *
+     * @param {number} [options.parameters.maxDegreeOfParallelismPerJob] the
+     * maximum supported degree of parallelism per job for this account.
+     *
+     * @param {number} [options.parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [options.parameters.computePolicies] the list of existing
+     * compute policies to update in this account.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2451,6 +2955,15 @@ export interface Account {
      * @param {array} [parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
      *
+     * @param {number} [parameters.maxDegreeOfParallelismPerJob] the maximum
+     * supported degree of parallelism per job for this account.
+     *
+     * @param {number} [parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [parameters.computePolicies] the list of compute policies to
+     * create in this account.
+     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -2517,6 +3030,15 @@ export interface Account {
      *
      * @param {array} [parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
+     *
+     * @param {number} [parameters.maxDegreeOfParallelismPerJob] the maximum
+     * supported degree of parallelism per job for this account.
+     *
+     * @param {number} [parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [parameters.computePolicies] the list of compute policies to
+     * create in this account.
      *
      * @param {string} parameters.location Resource location
      *
@@ -2599,6 +3121,15 @@ export interface Account {
      * @param {array} [options.parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
      *
+     * @param {number} [options.parameters.maxDegreeOfParallelismPerJob] the
+     * maximum supported degree of parallelism per job for this account.
+     *
+     * @param {number} [options.parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [options.parameters.computePolicies] the list of existing
+     * compute policies to update in this account.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2653,6 +3184,15 @@ export interface Account {
      *
      * @param {array} [options.parameters.firewallRules] The list of firewall rules
      * associated with this Data Lake Analytics account.
+     *
+     * @param {number} [options.parameters.maxDegreeOfParallelismPerJob] the
+     * maximum supported degree of parallelism per job for this account.
+     *
+     * @param {number} [options.parameters.minPriorityPerJob] the minimum supported
+     * priority per job for this account.
+     *
+     * @param {array} [options.parameters.computePolicies] the list of existing
+     * compute policies to update in this account.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
