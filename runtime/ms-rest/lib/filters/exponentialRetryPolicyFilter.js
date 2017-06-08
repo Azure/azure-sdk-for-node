@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+'use strict';
+
 var utils = require('../utils');
 
 /**
@@ -11,6 +13,7 @@ var utils = require('../utils');
  * @return {bool} True if the operation qualifies for a retry; false otherwise.
  */
 function shouldRetry(statusCode, retryData) {
+   /*jshint validthis: true */
   if ((statusCode < 500 && statusCode !== 408) || statusCode === 501 || statusCode === 505) {
     return false;
   }
@@ -32,6 +35,7 @@ function shouldRetry(statusCode, retryData) {
  * @param {object} err        The operation's error, if any.
  */
 function updateRetryData (retryData, err) {
+   /*jshint validthis: true */
   if (!retryData) {
     retryData = {
       retryCount: 0,
@@ -70,6 +74,7 @@ function updateRetryData (retryData, err) {
  * @return {undefined}
  */
 function handle(requestOptions, next) {
+   /*jshint validthis: true */
   var self = this;
   var retryData = null;
 

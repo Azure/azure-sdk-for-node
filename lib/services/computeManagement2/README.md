@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - Compute Management
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Compute Resources. Right now it supports:
-- **Node.js version: 4.x.x or higher**
+- **Node.js version: 6.x.x or higher**
 
 ## How to Install
 
@@ -30,7 +30,7 @@ npm install azure-arm-compute
  ```
 
 ## Detailed Sample
-A detailed sample for creating. getting, listing, powering off, restarting, deleting a vm can be found  [here](https://github.com/Azure/azure-sdk-for-node/blob/master/examples/ARM/compute/vm-sample.js).
+A detailed sample for creating, getting, listing, powering off, restarting, deleting a vm can be found [here](https://github.com/Azure-Samples/compute-node-manage-vm).
 
 ## Related projects
 

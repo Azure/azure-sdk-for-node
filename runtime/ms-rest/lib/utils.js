@@ -1,7 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
-var Constants = require('./constants');
+'use strict';
+
+const Constants = require('./constants');
+const uuid = require('uuid');
 
 /**
 * Checks if a parsed URL is HTTPS
@@ -47,7 +50,7 @@ exports.encodeUri = function (uri) {
  * @return {object} strippedResponse - The stripped version of Http Response.
  */
 exports.stripResponse = function (response) {
-  var strippedResponse = {};
+  let strippedResponse = {};
   strippedResponse.body = response.body;
   strippedResponse.headers = response.headers;
   strippedResponse.statusCode = response.statusCode;
@@ -63,7 +66,7 @@ exports.stripResponse = function (response) {
  * @return {object} strippedRequest - The stripped version of Http Request.
  */
 exports.stripRequest = function (request) {
-  var strippedRequest = {};
+  let strippedRequest = {};
   try {
     strippedRequest = JSON.parse(JSON.stringify(request));
     if (strippedRequest.headers && strippedRequest.headers.Authorization) {
@@ -72,8 +75,8 @@ exports.stripRequest = function (request) {
       delete strippedRequest.headers.authorization;
     }
   } catch (err) {
-    var errMsg = err.message;
-    err.message = util.format('Error - "%s" occured while creating a stripped version of the request object - "%s".', errMsg, request);
+    let errMsg = err.message;
+    err.message = `Error - "${errMsg}" occured while creating a stripped version of the request object - "${request}".`;
     return err;
   }
   
@@ -88,7 +91,7 @@ exports.stripRequest = function (request) {
  * @return {boolean} result - True if the uuid is valid; false otherwise.
  */
 exports.isValidUuid = function(uuid) {
-  var validUuidRegex = new RegExp('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$', 'ig');
+  let validUuidRegex = new RegExp('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$', 'ig');
   return validUuidRegex.test(uuid);
 };
 
@@ -101,18 +104,27 @@ exports.isValidUuid = function(uuid) {
  * @return {array} result - An array of values of the given object.
  */
 exports.objectValues = function (obj) {
-  var result = [];
+  let result = [];
   if (obj && obj instanceof Object) {
-    for (var key in obj) {
+    for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
         result.push(obj[key]);
       }
     }
   } else {
-    throw new Error(util.format('The provided object "%s" is not a valid object that can be ' + 
-      'enumerated to provide its values as an array.', util.inspect(obj, {depth: null})));
+    throw new Error(`The provided object ${JSON.stringify(obj, null, 2)} is not a valid object that can be ` + 
+      `enumerated to provide its values as an array.`);
   }
   return result;
+};
+
+/**
+* Generated UUID
+*
+* @return {string} RFC4122 v4 UUID.
+*/
+exports.generateUuid = function () {
+  return uuid.v4();
 };
 
 exports = module.exports;

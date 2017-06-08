@@ -26,7 +26,7 @@ function PerformRequestStubUtil(originalClass) {
   _originalClass = originalClass;
   _performRequestOriginal = originalClass.prototype._performRequest;
   originalClass.prototype._performRequestOriginal = originalClass.prototype._performRequest;
-  _performRequestStub = sinon.stub(originalClass.prototype, '_performRequest', function(webResource, body, options, callback) {
+  _performRequestStub = sinon.stub(originalClass.prototype, '_performRequest').callsFake(function(webResource, body, options, callback) {
     _lastWebResource = webResource;
     var response;
     var result;

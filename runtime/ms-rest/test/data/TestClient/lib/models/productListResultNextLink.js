@@ -10,7 +10,6 @@
 
 'use strict';
 
-var util = require('util');
 
 /**
  * @class
@@ -21,40 +20,43 @@ var util = require('util');
  * properties.
  * 
  */
-function ProductListResultNextLink() {
-}
 
-util.inherits(ProductListResultNextLink, Array);
+class ProductListResultNextLink extends Array {
 
-ProductListResultNextLink.prototype.mapper = function () {
-  return {
-    type: {
-      name: 'Composite',
-      className: 'ProductListResult',
-      modelProperties: {
-        value: {
-          serializedName: '',
-          required: false,
-          type: {
-            name: 'Sequence',
-            element: {
-              type: {
-                name: 'Composite',
-                className: 'Product'
+  constructor() {
+    super();
+  }
+
+  mapper() {
+    return {
+      type: {
+        name: 'Composite',
+        className: 'ProductListResult',
+        modelProperties: {
+          value: {
+            serializedName: '',
+            required: false,
+            type: {
+              name: 'Sequence',
+              element: {
+                type: {
+                  name: 'Composite',
+                  className: 'Product'
+                }
               }
             }
-          }
-        },
-        nextLink: {
-          serializedName: 'nextLink',
-          required: false,
-          type: {
-            name: 'String'
+          },
+          nextLink: {
+            serializedName: 'nextLink',
+            required: false,
+            type: {
+              name: 'String'
+            }
           }
         }
       }
-    }
-  };
+    };
+  }
 }
 
 module.exports = ProductListResultNextLink;

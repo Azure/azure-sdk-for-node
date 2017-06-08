@@ -16,14 +16,14 @@
       "output_dir": "lib/services/authorizationManagement/lib"
     },
     "batch.management": {
-      "swagger": "arm-batch/2015-12-01/swagger/BatchManagement.json",
+      "swagger": "arm-batch/2017-05-01/swagger/BatchManagement.json",
       "autorest_options": {
         "FT": 1
       },
       "output_dir": "lib/services/batchManagement/lib"
     },
     "batch": {
-      "swagger": "batch/2016-07-01.3.1/swagger/BatchService.json",
+      "swagger": "batch/2017-05-01.5.0/swagger/BatchService.json",
       "autorest_options": {
         "FT": 1
       },
@@ -94,7 +94,7 @@
       "output_dir": "lib/services/intune/lib"
     },
     "iothub": {
-      "swagger": "arm-iothub/2016-02-03/swagger/iothub.json",
+      "swagger": "arm-iothub/2017-01-19/swagger/iothub.json",
       "output_dir": "lib/services/iothub/lib"
     },
     "network": {

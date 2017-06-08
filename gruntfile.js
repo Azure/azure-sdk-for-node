@@ -25,9 +25,10 @@ module.exports = function(grunt) {
     template: 'node_modules/minami',
     configure: 'jsdocs/jsdoc.conf.json',
   };
-
-
-  var sources = _.map(glob.sync('lib/**/package.json', {}), function(pack) {
+  var servicePackages = glob.sync('lib/**/package.json', {ignore: 'lib/services/webSiteManagement2/package.json'});
+  var runtimePackages = glob.sync('runtime/**/package.json', {ignore: 'runtime/**/test/package.json'});
+  var packages = servicePackages.concat(runtimePackages);
+  var sources = _.map(packages, function(pack) {
     return _.map(['/**/*.js', '/package.json', '/README.md'], function(i) {
       return path.dirname(pack) + i;
     });

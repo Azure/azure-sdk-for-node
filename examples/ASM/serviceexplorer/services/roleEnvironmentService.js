@@ -15,7 +15,7 @@
 // 
 
 var path = require('path');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var util = require('util');
 var nconf = require('nconf');
 var _ = require('underscore');

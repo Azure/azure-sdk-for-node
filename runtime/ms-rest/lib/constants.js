@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
-var Constants = {
+'use strict';
+
+const Constants = {
   /**
   * Specifies HTTP.
   *
@@ -64,7 +66,15 @@ var Constants = {
     */
     AUTHORIZATION: 'authorization',
 
-    AUTHORIZATION_SCHEME: 'Bearer'
+    AUTHORIZATION_SCHEME: 'Bearer',
+
+    /**
+    * The UserAgent header.
+    *
+    * @const
+    * @type {string}
+    */
+    USER_AGENT: 'user-agent',
   }
 };
 

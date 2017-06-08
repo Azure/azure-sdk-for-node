@@ -12,8 +12,6 @@
 
 var models = require('./index');
 
-var util = require('util');
-
 /**
  * @class
  * Initializes a new instance of the Fish class.
@@ -27,48 +25,48 @@ var util = require('util');
  * @member {string} fishtype Polymorhpic Discriminator
  * 
  */
-function Fish() {
-}
+class Fish {
+  constructor() { }
 
-/**
- * Defines the metadata of Fish
- *
- * @returns {object} metadata of Fish
- *
- */
-Fish.prototype.mapper = function () {
-  return {
-    required: false,
-    serializedName: 'Fish',
-    type: {
-      name: 'Composite',
-      polymorphicDiscriminator: {
-        serializedName: 'fish.type',
-        clientName: 'fishtype'
-      },
-      uberParent: 'Fish',
-      className: 'Fish',
-      modelProperties: {
-        species: {
-          required: false,
-          serializedName: 'species',
-          type: {
-            name: 'String'
-          }
+  /**
+   * Defines the metadata of Fish
+   *
+   * @returns {object} metadata of Fish
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'Fish',
+      type: {
+        name: 'Composite',
+        polymorphicDiscriminator: {
+          serializedName: 'fish.type',
+          clientName: 'fishtype'
         },
-        length: {
-          required: true,
-          serializedName: 'length',
-          type: {
-            name: 'Number'
-          }
-        },
-        siblings: {
-          required: false,
-          serializedName: 'siblings',
-          type: {
-            name: 'Sequence',
-            element: {
+        uberParent: 'Fish',
+        className: 'Fish',
+        modelProperties: {
+          species: {
+            required: false,
+            serializedName: 'species',
+            type: {
+              name: 'String'
+            }
+          },
+          length: {
+            required: true,
+            serializedName: 'length',
+            type: {
+              name: 'Number'
+            }
+          },
+          siblings: {
+            required: false,
+            serializedName: 'siblings',
+            type: {
+              name: 'Sequence',
+              element: {
                 required: false,
                 serializedName: 'FishElementType',
                 type: {
@@ -80,19 +78,20 @@ Fish.prototype.mapper = function () {
                   uberParent: 'Fish',
                   className: 'Fish'
                 }
+              }
             }
-          }
-        },
-        fishtype: {
-          required: true,
-          serializedName: 'fish\\.type',
-          type: {
-            name: 'String'
+          },
+          fishtype: {
+            required: true,
+            serializedName: 'fish\\.type',
+            type: {
+              name: 'String'
+            }
           }
         }
       }
-    }
-  };
-};
+    };
+  }
+}
 
 module.exports = Fish;

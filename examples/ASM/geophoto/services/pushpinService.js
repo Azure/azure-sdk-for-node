@@ -23,7 +23,7 @@ try {
   azure = require('azure');
 }
 
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var _ = require('lodash');
 var entityGenerator = azure.TableUtilities.entityGenerator;
 // Table service 'constants'

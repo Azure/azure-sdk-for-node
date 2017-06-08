@@ -19,8 +19,10 @@ var util = require('util');
 var fs = require('fs');
 var stream = require('stream');
 var moment = require('moment');
+var uuid = require('uuid');
 var msRest = require('ms-rest');
 var msRestAzure = require('ms-rest-azure');
+var adal = require('adal-node');
 var SuiteBase = require('../../framework/suite-base');
 var FileTokenCache = require('../../../lib/util/fileTokenCache');
 var BatchServiceClient = require('../../../lib/services/batch/lib/batchServiceClient');
@@ -32,6 +34,7 @@ var testPrefix = 'batchservice-tests';
 var groupPrefix = 'nodeTestGroup';
 var accountPrefix = 'testacc';
 var certThumb = 'cff2ab63c8c955aaf71989efa641b906558d9fb7';
+var nonAdminPoolUser = 'nonAdminUser';
 var createdGroups = [];
 var createdAccounts = [];
 
@@ -43,7 +46,6 @@ var requiredEnvironment = [
 var suite;
 var client;
 var compute_nodes;
-
 
 var readStreamToBuffer = function (strm, callback)  {
   var bufs = [];
@@ -85,7 +87,6 @@ describe('Batch Service', function () {
   });
 
   describe('operations', function () {
-
     it('should list node agent sku successfully', function (done) {
       client.account.listNodeAgentSkus(function (err, result, request, response) {
         should.not.exist(err);
@@ -96,6 +97,36 @@ describe('Batch Service', function () {
         response.statusCode.should.equal(200);
         done();
       });
+    });
+
+    it('should perform AAD authentication successfully', function (done) {
+      var verifyAadAuth = function(token, callback) {
+        var tokenCreds = new msRest.TokenCredentials(token, 'Bearer');
+        aadClient = new BatchServiceClient(tokenCreds, process.env['AZURE_BATCH_ENDPOINT']);
+        aadClient.account.listNodeAgentSkus(function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          result.length.should.be.above(0);
+          response.statusCode.should.equal(200);
+          should.exist(request.headers.authorization);
+          request.headers.authorization.should.equal('Bearer ' + token);
+          callback();
+        });
+      };
+
+      if (!suite.isPlayback) {
+        var authContext = new adal.AuthenticationContext('https://login.microsoftonline.com/microsoft.onmicrosoft.com');
+        authContext.acquireTokenWithClientCredentials('https://batch.core.windows.net/', process.env['CLIENT_ID'], process.env['APPLICATION_SECRET'], function(err, tokenResponse) {
+          should.not.exist(err);
+          should.exist(tokenResponse);
+          should.exist(tokenResponse.accessToken); 
+          verifyAadAuth(tokenResponse.accessToken, done);
+        });
+      }
+      else
+      {
+        verifyAadAuth('dummy token', done);
+      }
     });
 
     it('should add new certificate successfully', function (done) {
@@ -136,8 +167,18 @@ describe('Batch Service', function () {
 
     it('should create a new pool successfully', function (done) {
       var pool = {
-        id: 'nodesdktestpool1', vmSize: 'small', cloudServiceConfiguration: { osFamily: '4' }, targetDedicated: 3,
-        certificateReferences: [{ thumbprint: certThumb, thumbprintAlgorithm: 'sha1' }]
+        id: 'nodesdktestpool1', vmSize: 'small', cloudServiceConfiguration: { osFamily: '4' }, targetDedicatedNodes: 3,
+        certificateReferences: [{ thumbprint: certThumb, thumbprintAlgorithm: 'sha1' }],
+        // Ensures there's a compute node file we can reference later
+        startTask: { commandLine: 'cmd /c echo hello > hello.txt' },
+        // Sets up pool user we can reference later
+        userAccounts: [
+          {
+            name: nonAdminPoolUser,
+            password: uuid.v4(),
+            elevationLevel: 'nonAdmin'
+          }
+        ]
       };
       client.pool.add(pool, function (err, result, request, response) {
         should.not.exist(err);
@@ -154,8 +195,32 @@ describe('Batch Service', function () {
       });
     });
 
+    it('should fail to create a pool with application licenses', function (done) {
+      var pool = {
+        id: 'nodesdktestpool_licenses',
+        vmSize: 'small',
+        cloudServiceConfiguration: { osFamily: '4' },
+        targetDedicatedNodes: 3,
+        targetLowPriorityNodes: 2,
+        applicationLicenses: ['Maya']
+      };
+      client.pool.add(pool, function (err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
+        err.statusCode.should.equal(403);
+        err.body.code.should.equal('Forbidden');
+        done();
+      });
+    });
+
     it('should update pool parameters successfully', function (done) {
-      var options = { metadata: [ { name: 'foo', value: 'bar' } ], certificateReferences: [], applicationPackageReferences: []};
+      var options = { 
+        metadata: [ { name: 'foo', value: 'bar' } ],
+        certificateReferences: [],
+        applicationPackageReferences: [],
+        // Ensures the start task isn't cleared
+        startTask: { commandLine: 'cmd /c echo hello > hello.txt' }
+      };
       client.pool.updateProperties('nodesdktestpool1', options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
@@ -193,6 +258,12 @@ describe('Batch Service', function () {
         result.vmSize.should.equal('small');
         result.metadata[0].name.should.equal('foo2');
         result.metadata[0].value.should.equal('bar2');
+        should.exist(result.startTask);
+        result.startTask.commandLine.should.equal('cmd /c echo hello > hello.txt');
+        should.exist(result.userAccounts);
+        result.userAccounts.length.should.equal(1);
+        result.userAccounts[0].name.should.equal(nonAdminPoolUser);
+        result.userAccounts[0].elevationLevel.should.equal('nonadmin');
         response.statusCode.should.equal(200);
         done();
       });
@@ -217,8 +288,33 @@ describe('Batch Service', function () {
         id: 'nodesdkvnetpool',
         vmSize: 'small',
         cloudServiceConfiguration: { osFamily: '4' },
-        targetDedicated: 0,
+        targetDedicatedNodes: 0,
         networkConfiguration: { subnetId: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1' }
+      };
+
+      client.pool.add(pool, function (err, result, request, response) {
+        should.exist(err);
+        should.not.exist(result);
+        err.statusCode.should.equal(403);
+        err.body.code.should.equal('Forbidden');
+        done();
+      });
+    });
+
+    it('should add a pool with an osDisk and get expected error', function (done) {
+      var pool = {
+        id: 'nodesdkosdiskpool',
+        vmSize: 'small',
+        virtualMachineConfiguration: {
+          nodeAgentSKUId: 'batch.node.ubuntu 16.04',
+          osDisk: {
+            imageUris: [
+              'https://myaccount.blob.core.windows.net/vhds/myimage.vhd'
+            ],
+            caching: 'none'
+          }
+        },
+        targetDedicatedNodes: 0
       };
 
       client.pool.add(pool, function (err, result, request, response) {
@@ -226,6 +322,7 @@ describe('Batch Service', function () {
         should.not.exist(result);
         err.statusCode.should.equal(400);
         err.body.code.should.equal('InvalidPropertyValue');
+        err.body.values[0].value.should.equal('osDisk');
         done();
       });
     });
@@ -237,6 +334,7 @@ describe('Batch Service', function () {
         result.length.should.be.above(0);
         result[0].state.should.equal('idle');
         result[0].schedulingState.should.equal('enabled');
+        result[0].isDedicated.should.equal(true);
         response.statusCode.should.equal(200);
         compute_nodes = result.map(function (x) { return x.id })
         done();
@@ -334,7 +432,7 @@ describe('Batch Service', function () {
     });
 
     it('should enable autoscale successfully', function (done) {
-      var options = { autoScaleFormula: '$TargetDedicated=2', autoScaleEvaluationInterval: moment.duration({ minutes: 6 }) };
+      var options = { autoScaleFormula: '$TargetDedicatedNodes=2', autoScaleEvaluationInterval: moment.duration({ minutes: 6 }) };
 
       var requestModelMapper = new client.models['PoolEnableAutoScaleParameter']().mapper();
       var model = client.deserialize(requestModelMapper, options, 'poolEnableAutoScaleParameter');
@@ -348,10 +446,10 @@ describe('Batch Service', function () {
     });
 
     it('should evaluate pool autoscale successfully', function (done) {
-      client.pool.evaluateAutoScale('nodesdktestpool1', '$TargetDedicated=3', function (err, result, request, response) {
+      client.pool.evaluateAutoScale('nodesdktestpool1', '$TargetDedicatedNodes=3', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.results.should.equal('$TargetDedicated=3;$NodeDeallocationOption=requeue');
+        result.results.should.equal('$TargetDedicatedNodes=3;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue');
         response.statusCode.should.equal(200);
         done();
       });
@@ -361,7 +459,7 @@ describe('Batch Service', function () {
       client.pool.evaluateAutoScale('nodesdktestpool1', 'something_useless', function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.results.should.equal('$TargetDedicated=2;$NodeDeallocationOption=requeue');
+        result.results.should.equal('$TargetDedicatedNodes=2;$TargetLowPriorityNodes=0;$NodeDeallocationOption=requeue');
         response.statusCode.should.equal(200);
         done();
       });
@@ -458,7 +556,7 @@ describe('Batch Service', function () {
     });
 
     it('should start pool resizing successfully', function (done) {
-      var options = { targetDedicated: 3 };
+      var options = { targetDedicatedNodes: 3, targetLowPriorityNodes: 2 };
       client.pool.resize('nodesdktestpool2', options, function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
@@ -477,7 +575,7 @@ describe('Batch Service', function () {
     });
 
     it('should get pool lifetime statistics', function (done) {
-      client.pool.getAllPoolsLifetimeStatistics(function (err, result, request, response) {
+      client.pool.getAllLifetimeStatistics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         should.exist(result.usageStats);
@@ -488,10 +586,10 @@ describe('Batch Service', function () {
     });
 
     it('should list pools usage metrics', function (done) {
-      client.pool.listPoolUsageMetrics(function (err, result, request, response) {
+      client.pool.listUsageMetrics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.be.above(0);
+        result.length.should.equal(0);
         response.statusCode.should.equal(200);
         done();
       });
@@ -548,7 +646,8 @@ describe('Batch Service', function () {
           poolId: 'dummypool'
         },
         onAllTasksComplete: 'noAction',
-        onTaskFailure: 'performExitOptionsJobAction'
+        onTaskFailure: 'performExitOptionsJobAction',
+        usesTaskDependencies: true
       };
 
       client.job.add(job, function (err, result, request, response) {
@@ -561,13 +660,15 @@ describe('Batch Service', function () {
           commandLine: 'echo Hello World',
           exitConditions: {
             default: {
-              jobAction: 'terminate'
+              jobAction: 'terminate',
+              dependencyAction: 'satisfy'
             },
             exitCodes: [
               {
                 code: 1,
                 exitOptions: {
-                 jobAction: 'none'
+                 jobAction: 'none',
+                 dependencyAction: 'block'
                 }
               }]
            }
@@ -582,8 +683,10 @@ describe('Batch Service', function () {
             should.not.exist(err);
             should.exist(result);
             result.exitConditions.default.jobAction.should.equal('terminate');
+            result.exitConditions.default.dependencyAction.should.equal('satisfy');
             result.exitConditions.exitCodes[0].code.should.equal(1);
             result.exitConditions.exitCodes[0].exitOptions.jobAction.should.equal('none');
+            result.exitConditions.exitCodes[0].exitOptions.dependencyAction.should.equal('block');
 
             client.job.deleteMethod(jobId, function (err, result, request, response) {
               should.not.exist(err);
@@ -603,10 +706,28 @@ describe('Batch Service', function () {
       });
     });
 
-    it('should create a second task successfully', function (done) {
+    it('should create a second task with output files successfully', function (done) {
+      container = 'https://teststorage.blob.core.windows.net/batch-sdk-test?se=2017-05-05T23%3A48%3A11Z&sv=2016-05-31&sig=fwsWniANVb/KSQQdok%2BbT7gR79iiZSG%2BGkw9Rsd5efY';
+      var outputs = [
+        {
+          filePattern: '../stdout.txt',
+          destination: {
+            container: {containerUrl: container, path: 'taskLogs/output.txt'}
+          },
+          uploadOptions: {uploadCondition: 'taskCompletion'}
+        },
+        {
+          file_pattern: '../stderr.txt',
+          destination: {
+            container: {containerUrl: container, path: 'taskLogs/error.txt'}
+          },
+          uploadOptions: {uploadCondition: 'taskFailure'}
+        }
+      ]
       var options = {
         id: 'HelloWorldNodeSDKTestTask2',
-        commandLine: 'cmd /c echo hello world'
+        commandLine: 'cmd /c echo hello world',
+        output_files: outputs
       };
       client.task.add('HelloWorldJobNodeSDKTest', options, function (err, result, request, response) {
         should.not.exist(err);
@@ -674,6 +795,67 @@ describe('Batch Service', function () {
       });
     });
 
+    it('should create a task with authentication token settings successfully', function (done) {
+      var jobId = 'HelloWorldJobNodeSDKTest';
+      var taskId = 'TaskWithAuthTokenSettings';
+      var task = {
+        id: taskId,
+        commandLine: 'cmd /c echo Hello World',
+        authenticationTokenSettings: {
+          access: [ 'job' ]
+        }
+      };
+
+      client.task.add(jobId, task, function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(201);
+
+        client.task.get(jobId, taskId, function (err, result, request, response) {
+          should.not.exist(err);
+          should.exist(result);
+          should.exist(result.authenticationTokenSettings);
+          should.exist(result.authenticationTokenSettings.access);
+          result.authenticationTokenSettings.access.length.should.equal(1);
+          result.authenticationTokenSettings.access[0].should.equal('job');
+        
+          done();
+        });
+      });
+    });
+
+    it('should create a task with a user identity successfully', function (done) {
+      var jobId = 'HelloWorldJobNodeSDKTest';
+      var taskId = 'TaskWithUserIdentity';
+      var task = {
+        id: taskId,
+        // This command should return a non-zero exit code for a non-admin user
+        commandLine: 'cmd /c net session >nul 2>&1',
+        userIdentity: {
+          userName: nonAdminPoolUser
+        }
+      };
+
+      client.task.add(jobId, task, function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(201);
+
+        setTimeout(function () {
+          client.task.get(jobId, taskId, function (err, result, request, response) {
+            should.not.exist(err);
+            should.exist(result);
+            should.exist(result.userIdentity);
+            result.userIdentity.userName.should.equal(nonAdminPoolUser);
+            should.exist(result.executionInfo);
+            result.executionInfo.result.should.equal('Failure');
+            result.executionInfo.exitCode.should.not.equal(0);
+            done();
+          });
+        }, suite.isPlayback ? 0 : 15000);
+      });
+    });
+
     it('should list files from task successfully', function (done) {
       client.file.listFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', function (err, result, request, response) {
         should.not.exist(err);
@@ -685,7 +867,7 @@ describe('Batch Service', function () {
     });
 
     it('should get file properties from task successfully', function (done) {
-      client.file.getNodeFilePropertiesFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', 'stderr.txt', function (err, result, request, response) {
+      client.file.getPropertiesFromTask('HelloWorldJobNodeSDKTest', 'HelloWorldNodeSDKTestTask2', 'stderr.txt', function (err, result, request, response) {
         should.not.exist(err);
         should.not.exist(result);
         response.statusCode.should.equal(200);
@@ -742,45 +924,42 @@ describe('Batch Service', function () {
       });
     });
 
-    //TODO: Test this with an actual compute node file
-    //it('should get file properties from node successfully', function (done) {
-    //  client.file.getNodeFilePropertiesFromComputeNode('nodesdktestpool1', compute_nodes[0], 'workitems', function (err, result, request, response) {
-    //    should.not.exist(err);
-    //    should.not.exist(result);
-    //    response.statusCode.should.equal(200);
-    //    done();
-    //  });
-    //});
+    it('should get file properties from node successfully', function (done) {
+      client.file.getPropertiesFromComputeNode('nodesdktestpool1', compute_nodes[0], 'startup/wd/hello.txt', function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
 
-    //TODO: Test this with an actual compute node file
-    //it('should get file from node successfully', function (done) {
-    //  client.file.getFromComputeNode('nodesdktestpool1', compute_nodes[0], 'workitems', function (err, result, request, response) {
-    //    should.not.exist(err);
-    //    should.exist(result);
-    //    response.statusCode.should.equal(200);
-    //    readStreamToBuffer(result, function (err, buff) {
-    //      should.not.exist(err);
-    //      buff.length.should.be.above(0);
-    //      done();
-    //    });
-    //  });
-    //});
+    it('should get file from node successfully', function (done) {
+      client.file.getFromComputeNode('nodesdktestpool1', compute_nodes[0], 'startup/wd/hello.txt', function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        readStreamToBuffer(result, function (err, buff) {
+          should.not.exist(err);
+          buff.length.should.be.above(0);
+          done();
+        });
+      });
+    });
 
-    //TODO: Test this with an actual compute node file
-    //it('should delete file from node successfully', function (done) {
-    //  client.file.deleteFromComputeNode('nodesdktestpool1', compute_nodes[0], 'workitems', function (err, result, request, response) {
-    //    should.not.exist(err);
-    //    should.not.exist(result);
-    //    response.statusCode.should.equal(200);
-    //    done();
-    //  });
-    //});
+    it('should delete file from node successfully', function (done) {
+      client.file.deleteFromComputeNode('nodesdktestpool1', compute_nodes[0], 'startup/wd/hello.txt', function (err, result, request, response) {
+        should.not.exist(err);
+        should.not.exist(result);
+        response.statusCode.should.equal(200);
+        done();
+      });
+    });
 
     it('should list applications successfully', function (done) {
       client.application.list(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
-        result.length.should.equal(1);
+        result.length.should.be.aboveOrEqual(1);
         response.statusCode.should.equal(200);
         done();
       });
@@ -903,7 +1082,7 @@ describe('Batch Service', function () {
     });
 
     it('should get all job statistics successfully', function (done) {
-      client.job.getAllJobsLifetimeStatistics(function (err, result, request, response) {
+      client.job.getAllLifetimeStatistics(function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         should.exist(result.userCPUTime);

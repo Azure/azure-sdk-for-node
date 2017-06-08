@@ -2,27 +2,50 @@
 
 [![NPM version](https://badge.fury.io/js/azure.png)](http://badge.fury.io/js/azure) [![Build Status](https://travis-ci.org/Azure/azure-sdk-for-node.png?branch=master)](https://travis-ci.org/Azure/azure-sdk-for-node)
 
-This project provides a Node.js package that makes it easy to consume and manage Microsoft Azure Services.
-## Non-Interactive Authentication
-If you need to create an automation account for non interactive or scripting scenarios then please take a look at the documentation over [here](./Documentation/Authentication.md).
+This project provides a Node.js package that makes it easy to consume and manage
+Microsoft Azure Services.
 
-## Install from npm
+## Usage
 
-We provide both fine-grained modules for different Microsoft Azure services which you can install separately, and an all-up module which contains everything.
+_This module includes all of the individual Azure Node.js modules in a single
+place. If your application only needs access to specific management modules, see
+[the list of individual modules](https://github.com/Azure/azure-sdk-for-node#install-individual-modules)
+below._
 
-**Notice**: we haven't provided fine-grained modules for every supported Microsoft Azure services yet. This will come soon.
-
-### Install the all-up module
-
+```shell
+$ npm install azure
 ```
-npm install azure
-```
-&nbsp;
 
-### Install individual modules
+This will allow you access to some helper methods as well as all of the
+individual modules. For example, by installing the `azure` module, you can
+directly require and use the `ms-rest-azure` common module. This organization
+method allows for submodules (and peer dependant modules) to always be in sync
+with each other.
 
-| **Azure Services**                                                                |
-| :-----------------------------------------------------------------------------    | :---------------------------      |
+**Note**: we haven't provided fine-grained modules for every supported Microsoft
+Azure services yet. This will come soon. If there is a module that you find is
+missing, [open an issue](https://github.com/Azure/azure-sdk-for-node/issues)
+so that we may prioritize it in the backlog.
+
+## Authenticating
+
+There are three ways to authenticate using this module, use
+[this guide](./Documentation/Authentication.md) to determine which method to use.
+
+## AzureNodeEssentials VSCode extension
+
+The [AzureNodeEssentials](https://marketplace.visualstudio.com/items?itemName=azuresdkteam.azurenodeessentials) extension helps you easily interact with Azure. 
+It helps you:
+- create a project scaffolding
+- install correct dependencies
+- ready to use snippets for authentication and deploying templates to azure
+
+Please feel free to provide feedback for the extension by opening github issues over [here](https://github.com/Azure/azure-node-essentials).
+
+## Install individual modules
+
+| **Azure Service (Data plane)** | **Install Command** |
+| ----------------------------------------------------------------------------- | --------------------------- |
 | [Gallery](http://azure.microsoft.com/en-us/marketplace/)                          | `npm install azure-gallery`       |
 | [Graph](https://azure.microsoft.com/en-us/services/active-directory/)             | `npm install azure-graph`         |
 | [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-keyvault`      |
@@ -32,35 +55,52 @@ npm install azure
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-sb`            |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-storage`       |
 | [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-batch`         |
-| &nbsp;                                                                            |                                   |
-| **Azure Resource Management (ARM)**                                                                                         |
+| **Azure Resource Management (ARM) (Control plane)**                                                                                         |
+| [Advisor](https://docs.microsoft.com/en-us/rest/api/advisor/) | `npm install azure-arm-advisor`    |
+| [Automation](https://docs.microsoft.com/en-us/azure/automation/) | `npm install azure-arm-automation`    |
 | [Authorization](https://azure.microsoft.com/en-us/documentation/articles/role-based-access-control-configure/) | `npm install azure-arm-authorization`    |
 | [Batch](https://azure.microsoft.com/en-us/services/batch/)                        | `npm install azure-arm-batch`     |
+| [Billing](https://docs.microsoft.com/en-us/azure/billing/billing-usage-rate-card-overview) | `npm install azure-arm-billing`    |
 | [CDN](https://azure.microsoft.com/en-us/services/cdn/)                            | `npm install azure-arm-cdn`|
-| [Commerce/Billing/Usage](https://azure.microsoft.com/en-us/documentation/articles/billing-usage-rate-card-overview/)                            | `npm install azure-arm-commerce`|
+| [CognitiveServices](https://azure.microsoft.com/en-us/services/cognitive-services/) | `npm install azure-arm-cognitiveservices`    |
+| [Commerce/Usage](https://azure.microsoft.com/en-us/documentation/articles/billing-usage-rate-card-overview/)                            | `npm install azure-arm-commerce`|
+| [Container Registry](https://azure.microsoft.com/en-us/services/container-registry/)                            | `npm install azure-arm-containerregistry`|
+| [CustomerInsights](https://docs.microsoft.com/en-us/dynamics365/customer-insights/ref/progref) | `npm install azure-arm-customerinsights`    |
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            | `npm install azure-arm-compute`|
-| [Datalake Analytics](https://azure.microsoft.com/en-us/services/data-lake-analytics/) | `azure-arm-datalake-analytics`       |
-| [Datalake Storage](https://azure.microsoft.com/en-us/services/data-lake-store/)   | `azure-arm-datalake-storage`       |
-| [DNS](http://azure.microsoft.com/en-us/services/dns/)                             | `npm install azure-arm-dns`       |
+| [Datalake Analytics](https://azure.microsoft.com/en-us/services/data-lake-analytics/) | `npm install azure-arm-datalake-analytics`       |
+| [Datalake Storage](https://azure.microsoft.com/en-us/services/data-lake-store/)   | `npm install azure-arm-datalake-storage`       |
 | [DevTest Labs](https://azure.microsoft.com/en-us/services/devtest-lab/)           | `npm install azure-arm-devtestlabs`       |
-| [EventHubs](https://azure.microsoft.com/en-us/services/event-hubs/)               | `azure-arm-eventhub`  |
+| [DNS](http://azure.microsoft.com/en-us/services/dns/)                             | `npm install azure-arm-dns`       |
+| [DocumentDB](https://azure.microsoft.com/en-us/services/documentdb/) | `npm install azure-arm-documentdb`    |
+| [EventHubs](https://azure.microsoft.com/en-us/services/event-hubs/)               | `npm install azure-arm-eventhub`  |
 | [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/)                 | `npm install azure-arm-hdinsight` |
-| [HDInsightJobs](https://msdn.microsoft.com/en-us/library/azure/mt613023.aspx)     | `azure-arm-hdinsight-jobs` |
+| [HDInsightJobs](https://msdn.microsoft.com/en-us/library/azure/mt613023.aspx)     | `npm install azure-arm-hdinsight-jobs` |
 | [Insights](https://msdn.microsoft.com/en-us/library/azure/dn931943.aspx)          | `npm install azure-arm-insights`  |
 | [IotHub](https://azure.microsoft.com/en-us/documentation/services/iot-hub/)       | `npm install azure-arm-iothub`  |
 | [Key Vault](http://azure.microsoft.com/en-us/services/key-vault/)                 | `npm install azure-arm-keyvault`  |
-| [Notification Hubs](https://azure.microsoft.com/en-us/documentation/services/notification-hubs/)                 | `azure-arm-notificationhubs`  |
-| [PowerBi Embedded](https://azure.microsoft.com/en-us/services/power-bi-embedded/) | `azure-arm-powerbiembedded`  |
+| [Logic Apps](https://azure.microsoft.com/en-us/services/logic-apps/)           | `npm install azure-arm-logic`       |
+| [Machine Learning](https://azure.microsoft.com/en-us/services/machine-learning/)           | `npm install azure-arm-machinelearning`       |
+| [Media Services](https://azure.microsoft.com/en-us/services/media-services/)           | `npm install azure-arm-mediaservices`       |
+| [Notification Hubs](https://azure.microsoft.com/en-us/documentation/services/notification-hubs/)                 | `npm install azure-arm-notificationhubs`  |
+| [Operational Insights](https://azure.microsoft.com/en-us/resources/videos/azure-operational-insights-overview/)           | `npm install azure-arm-operationalinsights`       |
+| [PowerBi Embedded](https://azure.microsoft.com/en-us/services/power-bi-embedded/) | `npm install azure-arm-powerbiembedded`  |
+| [RecoveryServices](https://azure.microsoft.com/en-us/services/site-recovery/)                             | `npm install azure-arm-recoveryservices`       |
+| [RecoveryServices Backup](https://azure.microsoft.com/en-us/services/site-recovery/)                             | `npm install azure-arm-recoveryservicesbackup`       |
 | [Redis Cache](https://azure.microsoft.com/en-us/services/cache/)                  | `npm install azure-arm-rediscache`   |
+| [Relay](https://docs.microsoft.com/en-us/azure/service-bus-relay/relay-what-is-it)                  | `npm install azure-arm-relay`   |
 | [Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-resource`  |
-| [ServerManagement](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `azure-arm-servermanagement`  |
-| [Servicebus](https://msdn.microsoft.com/en-us/library/mt639375.aspx)    | `azure-arm-sb`  |
+| [Scheduler](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-scheduler`  |
+| [Search](https://azure.microsoft.com/en-us/services/search/)    | `npm install azure-arm-search`  |
+| [ServerManagement](https://azure.microsoft.com/en-us/documentation/articles/resource-group-overview/)    | `npm install azure-arm-servermanagement`  |
+| [Servicebus](https://msdn.microsoft.com/en-us/library/mt639375.aspx)    | `npm install azure-arm-sb`  |
+| [Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/)    | `npm install azure-arm-servicefabric`  |
 | [Storage](http://azure.microsoft.com/en-us/services/storage/)                     | `npm install azure-arm-storage`   |
+| [Storage Import-Export](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service)                     | `npm install azure-arm-storageimportexport`   |
+| [Sql](https://azure.microsoft.com/en-us/services/sql-database/)                     | `npm install azure-arm-sql`   |
 | [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-arm-trafficManager`|
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-arm-network`   |
 | [WebApps (WebSites)](http://azure.microsoft.com/en-us/services/app-service/web/)  | `npm install azure-arm-website`   |
-| &nbsp;                                                                            |                                   |
-| **Azure Service Management (ASM)**                                                                                          |
+| **Azure Service Management (ASM) (Control plane)**                                                                                          |
 | [Compute](http://azure.microsoft.com/en-us/services/virtual-machines/)            |  `npm install azure-asm-compute`  |
 | [HDInsight](http://azure.microsoft.com/en-us/services/hdinsight/)                 | `npm install azure-asm-hdinsight` |
 | [Service Bus](http://azure.microsoft.com/en-us/services/service-bus/)             | `npm install azure-asm-sb`        |
@@ -73,9 +113,8 @@ npm install azure
 | [Traffic Manager](http://azure.microsoft.com/en-us/services/traffic-manager/)     | `npm install azure-asm-trafficManager`  |
 | [Virtual Networks](http://azure.microsoft.com/en-us/services/virtual-network/)    | `npm install azure-asm-network`   |
 | [WebSites](http://azure.microsoft.com/en-us/services/app-service/web/)            | `npm install azure-asm-website`   |
-| &nbsp;                                                                            |                                   |
 | **Base Libraries**                                                                |                                   |
-| Common Functionality (for ASM & ARM clients generated from old code generator)    | `npm install azure-common`        |
+| Common Functionality (for ASM & ARM clients)                                      | `npm install azure-common`        |
 | Common Functionality for ARM clients generated from Autorest (Generic)            | `npm install ms-rest`             |
 | Common Functionality for ARM clients generated from Autorest (Azure)              | `npm install ms-rest-azure`       |
 

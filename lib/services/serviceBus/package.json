@@ -25,7 +25,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.14",
-    "underscore": "1.4.x",
+    "underscore": "^1.8.3",
     "wns": "~0.5.3",
     "mpns": "~2.0.0"
   },

@@ -91,8 +91,7 @@ describe('Intune Resource Management', function() {
   });
 
   after(function(done) {
-    suite.teardownSuite(done);
-    /*if (!suite.isPlayback) {
+    if (!suite.isPlayback) {
       done = IntuneTestUtils.done(2, done);
 
       suite.teardownSuite(deletePolicies);
@@ -101,18 +100,16 @@ describe('Intune Resource Management', function() {
         // Delete all iOS Policies
         IntuneTestUtils.deleteAllPolicies(client, location, IntuneTestUtils.PolicyType.iOS, function(success) {
           success.should.be.true;
-          done();
-        });
-
-        // Delete all Android Policies
-        IntuneTestUtils.deleteAllPolicies(client, location, IntuneTestUtils.PolicyType.Android, function(success) {
-          success.should.be.true;
-          done();
+          // Delete all Android Policies
+           IntuneTestUtils.deleteAllPolicies(client, location, IntuneTestUtils.PolicyType.Android, function(success) {
+            success.should.be.true;
+            done();
+          });
         });
       }
     } else {
       suite.teardownSuite(done);
-    }*/
+    }
   });
 
   beforeEach(function(done) {
@@ -120,15 +117,18 @@ describe('Intune Resource Management', function() {
   });
 
   afterEach(function(done) {
-    suite.baseTeardownTest(function() {
-      IntuneTestUtils.deletePolicies(client, location, policiesType, policiesCreated, function(success) {
-        success.should.be.true;
-        policiesCreated = [];
-        policiesType = null;
-
-        done();
+    if (!suite.isPlayback) {
+      suite.baseTeardownTest(function() {
+        IntuneTestUtils.deletePolicies(client, location, policiesType, policiesCreated, function(success) {
+          success.should.be.true;
+          policiesCreated = [];
+          policiesType = null;
+          done();
+        });
       });
-    });
+    } else {
+      suite.baseTeardownTest(done);
+    }
   });
 
   describe('- Locations', function() {

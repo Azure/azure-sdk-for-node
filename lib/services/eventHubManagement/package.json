@@ -5,7 +5,7 @@
     "Zeeshan Sayed <sazeesha@microsoft.com>",
     "Amar Zavery <amzavery@microsoft.com>"
   ],
-  "version": "0.1.0",
+  "version": "1.0.0-preview",
   "description": "Microsoft EventHub Management Client Library for node",
   "tags": [
     "azure",
@@ -16,10 +16,11 @@
     "azure"
   ],
   "main": "./lib/eventHubManagementClient.js",
+  "types": "./lib/eventHubManagementClient.d.ts",
    "license": "MIT",
   "dependencies": {
-    "ms-rest-azure": "^1.14.0",
-    "ms-rest": "^1.14.0"
+    "ms-rest-azure": "^2.0.0",
+    "ms-rest": "^2.0.0"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {

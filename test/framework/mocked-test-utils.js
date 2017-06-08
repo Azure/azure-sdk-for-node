@@ -144,7 +144,7 @@ MockedTestUtils.prototype.stubMethods = function() {
     if (KvTestUtils.authenticator.restore) {
       KvTestUtils.authenticator.restore();
     }
-    sinon.stub(KvTestUtils, 'authenticator', function(challenge, callback) {
+    sinon.stub(KvTestUtils, 'authenticator').callsFake(function(challenge, callback) {
       return callback(null, 'Bearer MockedTest');
     });
   }

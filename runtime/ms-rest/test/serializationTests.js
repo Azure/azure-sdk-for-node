@@ -4,7 +4,6 @@
 var assert = require('assert');
 var should = require('should');
 var moment = require('moment');
-var util = require('util');
 var msRest = require('../lib/msRest');
 var testClient = require('./data/TestClient/lib/testClient');
 
@@ -583,7 +582,7 @@ describe('msrest', function () {
         ]
       };
       var deserializedProduct = client.deserialize(mapper, responseBody, 'responseBody');
-      (util.isArray(deserializedProduct)).should.be.true;
+      (Array.isArray(deserializedProduct)).should.be.true;
       deserializedProduct.length.should.equal(2);
       for (var i = 0; i < deserializedProduct.length; i++) {
         if (i === 0) {
@@ -623,7 +622,7 @@ describe('msrest', function () {
         nextLink: 'https://helloworld.com'
       };
       var deserializedProduct = client.deserialize(mapper, responseBody, 'responseBody');
-      (util.isArray(deserializedProduct)).should.be.true;
+      (Array.isArray(deserializedProduct)).should.be.true;
       deserializedProduct.length.should.equal(2);
       deserializedProduct.nextLink.should.equal('https://helloworld.com');
       for (var i = 0; i < deserializedProduct.length; i++) {

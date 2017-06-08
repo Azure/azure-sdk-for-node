@@ -1,12 +1,7 @@
 # Microsoft Azure SDK for Node.js - Resource Management
 
 This project provides a Node.js package that makes it easy to manage Azure resources. Right now it supports:
-- **Node.js version: 4.x.x or higher**
-- **API version: 2016-02-01**
-
-## Features
-
- - TODO
+- **Node.js version: 6.x.x or higher**
 
 ## How to Install
 

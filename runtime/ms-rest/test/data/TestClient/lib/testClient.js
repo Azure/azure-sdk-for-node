@@ -14,11 +14,9 @@
 
 'use strict';
 
-var util = require('util');
-var msRest = require('../../../../lib/msRest');
-var ServiceClient = msRest.ServiceClient;
-
-var models = require('./models');
+const msRest = require('../../../../lib/msRest');
+const ServiceClient = msRest.ServiceClient;
+const models = require('./models');
 
 /**
  * @class
@@ -36,22 +34,23 @@ var models = require('./models');
  *
  * @param {bool} [options.noRetryPolicy] - If set to true, turn off default retry policy
  */
-function TestClient(baseUri, options) {
-  if (!options) options = {};
 
-  TestClient['super_'].call(this, null, options);
-  this.baseUri = baseUri;
-  if (!this.baseUri) {
-    this.baseUri = 'https://management.azure.com';
-  }
+class TestClient extends ServiceClient {
+  constructor(baseUri, options) {
+    if (!options) options = {};
 
-  if(!this.acceptLanguage) {
-    this.acceptLanguage = 'en-US';
+    super(null, options);
+    this.baseUri = baseUri;
+    if (!this.baseUri) {
+      this.baseUri = 'https://management.azure.com';
+    }
+
+    if (!this.acceptLanguage) {
+      this.acceptLanguage = 'en-US';
+    }
+    this.models = models;
+    msRest.addSerializationMixin(this);
   }
-  this.models = models;
-  msRest.addSerializationMixin(this);
 }
-
-util.inherits(TestClient, ServiceClient);
 
 module.exports = TestClient;

@@ -60,7 +60,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2015-07-01-preview', '*')
+.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2016-07-01-preview', '*')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/nodes/saddlebags/sessions/session-28588\",\"name\":\"session-28588\",\"type\":\"microsoft.servermanagement/nodes/sessions\",\"properties\":{\"userName\":\"gsadmin\",\"created\":\"2016-05-06T16:52:54.5089226Z\",\"updated\":\"2016-05-06T16:52:54.5089226Z\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '356',
@@ -83,7 +83,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2015-07-01-preview', '*')
+.put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2016-07-01-preview', '*')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourcegroups/rsmt-rnr-rg/providers/microsoft.servermanagement/nodes/saddlebags/sessions/session-28588\",\"name\":\"session-28588\",\"type\":\"microsoft.servermanagement/nodes/sessions\",\"properties\":{\"userName\":\"gsadmin\",\"created\":\"2016-05-06T16:52:54.5089226Z\",\"updated\":\"2016-05-06T16:52:54.5089226Z\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '356',
@@ -157,7 +157,7 @@ nock('https://login.microsoftonline.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000?api-version=2015-07-01-preview')
+  .put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000?api-version=2016-07-01-preview')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000\",\"name\":\"00000000-0000-0000-0000-000000000000\",\"type\":\"Microsoft.ServerManagement/nodes/features/pssessions\",\"properties\":{\"sessionId\":\"7937490e-aaa4-4344-b363-9b80ad601e3b\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '413',
@@ -180,7 +180,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000?api-version=2015-07-01-preview')
+  .put('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000?api-version=2016-07-01-preview')
   .reply(200, "{\"id\":\"/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000\",\"name\":\"00000000-0000-0000-0000-000000000000\",\"type\":\"Microsoft.ServerManagement/nodes/features/pssessions\",\"properties\":{\"sessionId\":\"7937490e-aaa4-4344-b363-9b80ad601e3b\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '413',
@@ -256,7 +256,7 @@ function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/7937490e-aaa4-4344-b363-9b80ad601e3b/invokeCommand?api-version=2015-07-01-preview', '*')
+.post('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/7937490e-aaa4-4344-b363-9b80ad601e3b/invokeCommand?api-version=2016-07-01-preview', '*')
   .reply(200, "{\"results\":[{\"foregroundColor\":\"#FFFFFF\",\"backgroundColor\":\"#012456\",\"value\":\"\\r\\n\\r\\n    Directory: C:\\\\\\r\\n\\r\\n\\r\\nMode                LastWriteTime         Length Name                                                                  \\r\\n----                -------------         ------ ----                                                                  \\r\\nd-----        3/23/2016  10:02 AM                bootstrap                                                             \\r\\nd-----        3/23/2016   9:39 AM                Chocolatey                                                            \\r\\nd-----        3/31/2016   6:16 AM                Data                                                                  \\r\\nd-----        3/29/2016   5:08 PM                MSOTraceLite                                                          \\r\\nd-----        4/23/2016   3:27 AM                PerfLogs                                                              \\r\\nd-r---         5/5/2016   1:45 PM                Program Files                                                         \\r\\nd-r---         5/2/2016   3:39 PM                Program Files (x86)                                                   \\r\\nd-----        3/23/2016   8:16 AM                root                                                                  \\r\\nd-----         4/5/2016   9:47 AM                tmp                                                                   \\r\\nd-----        3/23/2016  10:03 AM                Tools                                                                 \\r\\nd-r---        4/25/2016  10:36 AM                Users                                                                 \\r\\nd-----         5/2/2016   9:51 AM                Windows                                                               \\r\\n\\r\\n\",\"messageType\":107},{\"prompt\":\"PS C:\\\\Users\\\\gsAdmin\\\\Documents> \",\"messageType\":0}],\"sessionId\":\"7937490e-aaa4-4344-b363-9b80ad601e3b\",\"commandId\":\"5fb737e3-61b1-4de2-a617-7ae290e37b02\",\"command\":\"dir\",\"completed\":\"true\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '2066',
@@ -280,7 +280,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/7937490e-aaa4-4344-b363-9b80ad601e3b/invokeCommand?api-version=2015-07-01-preview', '*')
+.post('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588/features/powerShellConsole/pssessions/7937490e-aaa4-4344-b363-9b80ad601e3b/invokeCommand?api-version=2016-07-01-preview', '*')
   .reply(200, "{\"results\":[{\"foregroundColor\":\"#FFFFFF\",\"backgroundColor\":\"#012456\",\"value\":\"\\r\\n\\r\\n    Directory: C:\\\\\\r\\n\\r\\n\\r\\nMode                LastWriteTime         Length Name                                                                  \\r\\n----                -------------         ------ ----                                                                  \\r\\nd-----        3/23/2016  10:02 AM                bootstrap                                                             \\r\\nd-----        3/23/2016   9:39 AM                Chocolatey                                                            \\r\\nd-----        3/31/2016   6:16 AM                Data                                                                  \\r\\nd-----        3/29/2016   5:08 PM                MSOTraceLite                                                          \\r\\nd-----        4/23/2016   3:27 AM                PerfLogs                                                              \\r\\nd-r---         5/5/2016   1:45 PM                Program Files                                                         \\r\\nd-r---         5/2/2016   3:39 PM                Program Files (x86)                                                   \\r\\nd-----        3/23/2016   8:16 AM                root                                                                  \\r\\nd-----         4/5/2016   9:47 AM                tmp                                                                   \\r\\nd-----        3/23/2016  10:03 AM                Tools                                                                 \\r\\nd-r---        4/25/2016  10:36 AM                Users                                                                 \\r\\nd-----         5/2/2016   9:51 AM                Windows                                                               \\r\\n\\r\\n\",\"messageType\":107},{\"prompt\":\"PS C:\\\\Users\\\\gsAdmin\\\\Documents> \",\"messageType\":0}],\"sessionId\":\"7937490e-aaa4-4344-b363-9b80ad601e3b\",\"commandId\":\"5fb737e3-61b1-4de2-a617-7ae290e37b02\",\"command\":\"dir\",\"completed\":\"true\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '2066',
@@ -355,7 +355,7 @@ nock('https://login.microsoftonline.com:443')
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2015-07-01-preview')
+  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2016-07-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
@@ -376,7 +376,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2015-07-01-preview')
+  .delete('/subscriptions/a01fbab8-1714-4f94-8b67-40d7827a5efd/resourceGroups/rsmt-rnr-rg/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/session-28588?api-version=2016-07-01-preview')
   .reply(200, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',

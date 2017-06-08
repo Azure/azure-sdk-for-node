@@ -1,7 +1,7 @@
 # Microsoft Azure SDK for Node.js - IoT Hub
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Iot Hub Resources.Right now it supports:
-- **Node.js version: 4.x.x or higher**
+- **Node.js version: 6.x.x or higher**
 
 ## How to Install
 

@@ -161,7 +161,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
                     should.not.exist(err);
                     setTimeout(function () {
                       done();
-                    }, 120000); // sleep for two minutes to guarantee that the queue has been created to run jobs against
+                    }, 30); // quick sleep to ensure that it finishes.
                   });
                 });
               });
@@ -189,7 +189,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             });
           });
         });                  
-      }, 60000); // sleep for one minute before attempting to delete the analytics account.
+      }, 30); // quick sleep to ensure that it finishes.
     }
     else {
       suite.teardownSuite(done);
@@ -472,7 +472,7 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
   });
   describe('Data Lake Analytics Catalog', function () {
     it('list commands should work', function (done) {
-      var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY BUCKETS (UserId) HASH (Region)); ALTER TABLE ' + dbName + '.dbo.' + tableName + ' ADD IF NOT EXISTS PARTITION (1); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
+      var scriptToRun = 'DROP DATABASE IF EXISTS ' + dbName + '; CREATE DATABASE ' + dbName + '; CREATE TABLE ' + dbName + '.dbo.' + tableName + '( UserId int, Start DateTime, Region string, Query string, Duration int, Urls string, ClickedUrls string, INDEX idx1 CLUSTERED (Region ASC) PARTITIONED BY (UserId) HASH (Region)); ALTER TABLE ' + dbName + '.dbo.' + tableName + ' ADD IF NOT EXISTS PARTITION (1); DROP FUNCTION IF EXISTS ' + dbName + '.dbo.' + tvfName + '; CREATE FUNCTION ' + dbName + '.dbo.' + tvfName + '() RETURNS @result TABLE ( s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int) AS BEGIN @result = EXTRACT s_date DateTime, s_time string, s_sitename string, cs_method string, cs_uristem string, cs_uriquery string, s_port int, cs_username string, c_ip string, cs_useragent string, cs_cookie string, cs_referer string, cs_host string, sc_status int, sc_substatus int, sc_win32status int, sc_bytes int, cs_bytes int, s_timetaken int FROM @"/Samples/Data/WebLog.log" USING Extractors.Text(delimiter:\' \'); RETURN; END; CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); CREATE PROCEDURE ' + dbName + '.dbo.' + procName + '() AS BEGIN CREATE VIEW ' + dbName + '.dbo.' + viewName + ' AS SELECT * FROM ( VALUES(1,2),(2,4) ) AS T(a, b); END;';
       // Get the default database (master) and all databases.
       catalogClient.catalog.getDatabase(jobAndCatalogAccountName, 'master', function (err, result, request, response) {
         should.not.exist(err);
@@ -600,21 +600,11 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
         uri: 'https://psrreporthistory.database.windows.net:443'
       };
       
+      // TODO: secret creation is still supported and hasn't been removed from REST, but credential creation using secrets has.
+      // as a result, we will keep these tests but removed the unsupported part. Eventually, secret CRUD will be completely removed.
       var setSecretPwd = 'clitestsetsecretpwd';
       var databaseName = 'master';
       var secondSecretName = secretName + 'dup';
-      var scriptToRun = 'USE ' + databaseName + '; CREATE CREDENTIAL ' + credName + ' WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "' + secretName + '";';
-      // Get the default database (master) and all databases.
-      // add a database, table, tvf, view and procedure
-      var job = {
-        jobId: suite.generateGuid(),
-        name: jobName,
-        type: 'USql', // NOTE: We do not support hive jobs yet.
-        properties: {
-          type: 'USql',
-          script: scriptToRun
-        }
-      };
       
       catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function (err, result, request, response) {
         should.not.exist(err);
@@ -634,64 +624,33 @@ describe('Data Lake Analytics Clients (Account, Job and Catalog)', function () {
             catalogClient.catalog.createSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function (err, result, request, response) {
               should.exist(err);
               err.statusCode.should.equal(409);
-              // Create a credential that uses the secret
-              jobClient.job.create(jobAndCatalogAccountName, job.jobId, job, function (err, result, request, response) {
+              // get the secret
+              catalogClient.catalog.getSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
                 should.not.exist(err);
                 should.exist(result);
                 response.statusCode.should.equal(200);
-                result.jobId.should.not.be.empty;
-                var jobId = result.jobId;
-                result.name.should.be.equal(jobName);
-                listPoll(suite, 10, jobAndCatalogAccountName, result.jobId, function (err, result, request, response) {
-                  jobClient.job.get(jobAndCatalogAccountName, jobId, function (err, result, request, response) {
-                    should.not.exist(err);
-                    should.exist(result);
-                    response.statusCode.should.equal(200);
-                    result.result.should.be.equal('Succeeded');
-                    // list all credentials in the db and confirm that there is one entry.
-                    catalogClient.catalog.listCredentials(jobAndCatalogAccountName, databaseName, function (err, result, request, response) {
+                result.creationTime.should.not.be.empty;
+                // delete the secret
+                catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
+                  should.not.exist(err);
+                  should.not.exist(result);
+                  response.statusCode.should.equal(200);
+                  // try to set the secret again (should fail)
+                  catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function(err, result, request, response) {
+                    should.exist(err);
+                    should.not.exist(result);
+                    err.statusCode.should.equal(404);
+                    // delete all secrets
+                    catalogClient.catalog.deleteAllSecrets(jobAndCatalogAccountName, databaseName, function(err, result, request, response) {
                       should.not.exist(err);
-                      should.exist(result);
+                      should.not.exist(result);
                       response.statusCode.should.equal(200);
-                      result.length.should.be.equal(1);
-                      // now get the specific credential we created
-                      catalogClient.catalog.getCredential(jobAndCatalogAccountName, databaseName, credName, function (err, result, request, response) {
-                        should.not.exist(err);
-                        should.exist(result);
-                        response.statusCode.should.equal(200);
-                        result.name.should.be.equal(credName);
-                        // get the secret
-                        catalogClient.catalog.getSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
-                          should.not.exist(err);
-                          should.exist(result);
-                          response.statusCode.should.equal(200);
-                          result.creationTime.should.not.be.empty;
-                          // delete the secret
-                          catalogClient.catalog.deleteSecret(jobAndCatalogAccountName, databaseName, secretName, function(err, result, request, response) {
-                            should.not.exist(err);
-                            should.not.exist(result);
-                            response.statusCode.should.equal(200);
-                            // try to set the secret again (should fail)
-                            catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secretName, secretCreateParameters, function(err, result, request, response) {
-                              should.exist(err);
-                              should.not.exist(result);
-                              err.statusCode.should.equal(404);
-                              // delete all secrets
-                              catalogClient.catalog.deleteAllSecrets(jobAndCatalogAccountName, databaseName, function(err, result, request, response) {
-                                should.not.exist(err);
-                                should.not.exist(result);
-                                response.statusCode.should.equal(200);
-                                // try to set the second secret again (should fail)
-                                catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function(err, result, request, response) {
-                                  should.exist(err);
-                                  should.not.exist(result);
-                                  err.statusCode.should.equal(404);
-                                  done();
-                                });
-                              });
-                            });
-                          });
-                        });
+                      // try to set the second secret again (should fail)
+                      catalogClient.catalog.updateSecret(jobAndCatalogAccountName, databaseName, secondSecretName, secretCreateParameters, function(err, result, request, response) {
+                        should.exist(err);
+                        should.not.exist(result);
+                        err.statusCode.should.equal(404);
+                        done();
                       });
                     });
                   });
