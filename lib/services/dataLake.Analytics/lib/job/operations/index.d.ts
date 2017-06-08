@@ -14,6 +14,444 @@ import * as models from '../models';
 
 /**
  * @class
+ * Pipeline
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeAnalyticsJobManagementClient.
+ */
+export interface Pipeline {
+
+
+    /**
+     * Lists all pipelines.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * list of pipelines. The startDateTime and endDateTime can be no more than 30
+     * days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get the list of
+     * pipelines. The startDateTime and endDateTime can be no more than 30 days
+     * apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobPipelineInformationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(accountName: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobPipelineInformationListResult>>;
+
+    /**
+     * Lists all pipelines.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * list of pipelines. The startDateTime and endDateTime can be no more than 30
+     * days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get the list of
+     * pipelines. The startDateTime and endDateTime can be no more than 30 days
+     * apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobPipelineInformationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobPipelineInformationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobPipelineInformationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(accountName: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobPipelineInformationListResult>;
+    list(accountName: string, callback: ServiceCallback<models.JobPipelineInformationListResult>): void;
+    list(accountName: string, options: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobPipelineInformationListResult>): void;
+
+
+    /**
+     * Gets the Pipeline information for the specified pipeline ID.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} pipelineIdentity Pipeline ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * pipeline and aggregate its data. The startDateTime and endDateTime can be no
+     * more than 30 days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get the
+     * pipeline and aggregate its data. The startDateTime and endDateTime can be no
+     * more than 30 days apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobPipelineInformation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(accountName: string, pipelineIdentity: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobPipelineInformation>>;
+
+    /**
+     * Gets the Pipeline information for the specified pipeline ID.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} pipelineIdentity Pipeline ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * pipeline and aggregate its data. The startDateTime and endDateTime can be no
+     * more than 30 days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get the
+     * pipeline and aggregate its data. The startDateTime and endDateTime can be no
+     * more than 30 days apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobPipelineInformation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobPipelineInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobPipelineInformation} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(accountName: string, pipelineIdentity: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobPipelineInformation>;
+    get(accountName: string, pipelineIdentity: string, callback: ServiceCallback<models.JobPipelineInformation>): void;
+    get(accountName: string, pipelineIdentity: string, options: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobPipelineInformation>): void;
+
+
+    /**
+     * Lists all pipelines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobPipelineInformationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobPipelineInformationListResult>>;
+
+    /**
+     * Lists all pipelines.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobPipelineInformationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobPipelineInformationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobPipelineInformationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobPipelineInformationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.JobPipelineInformationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobPipelineInformationListResult>): void;
+}
+
+/**
+ * @class
+ * Recurrence
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataLakeAnalyticsJobManagementClient.
+ */
+export interface Recurrence {
+
+
+    /**
+     * Lists all recurrences.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * list of recurrences. The startDateTime and endDateTime can be no more than
+     * 30 days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get the list of
+     * recurrences. The startDateTime and endDateTime can be no more than 30 days
+     * apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobRecurrenceInformationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(accountName: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobRecurrenceInformationListResult>>;
+
+    /**
+     * Lists all recurrences.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * list of recurrences. The startDateTime and endDateTime can be no more than
+     * 30 days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get the list of
+     * recurrences. The startDateTime and endDateTime can be no more than 30 days
+     * apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobRecurrenceInformationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobRecurrenceInformationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobRecurrenceInformationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(accountName: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobRecurrenceInformationListResult>;
+    list(accountName: string, callback: ServiceCallback<models.JobRecurrenceInformationListResult>): void;
+    list(accountName: string, options: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobRecurrenceInformationListResult>): void;
+
+
+    /**
+     * Gets the recurrence information for the specified recurrence ID.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} recurrenceIdentity Recurrence ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * recurrence and aggregate its data. The startDateTime and endDateTime can be
+     * no more than 30 days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get recurrence
+     * and aggregate its data. The startDateTime and endDateTime can be no more
+     * than 30 days apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobRecurrenceInformation>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(accountName: string, recurrenceIdentity: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobRecurrenceInformation>>;
+
+    /**
+     * Gets the recurrence information for the specified recurrence ID.
+     *
+     * @param {string} accountName The Azure Data Lake Analytics account to execute
+     * job operations on.
+     *
+     * @param {uuid} recurrenceIdentity Recurrence ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startDateTime] The start date for when to get the
+     * recurrence and aggregate its data. The startDateTime and endDateTime can be
+     * no more than 30 days apart.
+     *
+     * @param {date} [options.endDateTime] The end date for when to get recurrence
+     * and aggregate its data. The startDateTime and endDateTime can be no more
+     * than 30 days apart.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobRecurrenceInformation} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobRecurrenceInformation} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobRecurrenceInformation} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(accountName: string, recurrenceIdentity: string, options?: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobRecurrenceInformation>;
+    get(accountName: string, recurrenceIdentity: string, callback: ServiceCallback<models.JobRecurrenceInformation>): void;
+    get(accountName: string, recurrenceIdentity: string, options: { startDateTime? : Date, endDateTime? : Date, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobRecurrenceInformation>): void;
+
+
+    /**
+     * Lists all recurrences.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobRecurrenceInformationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobRecurrenceInformationListResult>>;
+
+    /**
+     * Lists all recurrences.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobRecurrenceInformationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobRecurrenceInformationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobRecurrenceInformationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobRecurrenceInformationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.JobRecurrenceInformationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobRecurrenceInformationListResult>): void;
+}
+
+/**
+ * @class
  * Job
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataLakeAnalyticsJobManagementClient.
@@ -179,6 +617,28 @@ export interface Job {
      *
      * @param {string} parameters.properties.type Polymorphic Discriminator
      *
+     * @param {object} [parameters.related] the recurring job relationship
+     * information properties.
+     *
+     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
+     * identifier (a GUID).
+     *
+     * @param {string} [parameters.related.pipelineName] the friendly name of the
+     * job relationship pipeline, which does not need to be unique.
+     *
+     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
+     * links to the originating service for this pipeline.
+     *
+     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
+     * identifier of the iteration of this pipeline.
+     *
+     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
+     * GUID), unique per activity/script, regardless of iterations. This is
+     * something to link different occurrences of the same job together.
+     *
+     * @param {string} [parameters.related.recurrenceName] the recurrence name,
+     * user friendly name for the correlation between jobs.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -227,6 +687,28 @@ export interface Job {
      * @param {string} parameters.properties.script the script to run
      *
      * @param {string} parameters.properties.type Polymorphic Discriminator
+     *
+     * @param {object} [parameters.related] the recurring job relationship
+     * information properties.
+     *
+     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
+     * identifier (a GUID).
+     *
+     * @param {string} [parameters.related.pipelineName] the friendly name of the
+     * job relationship pipeline, which does not need to be unique.
+     *
+     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
+     * links to the originating service for this pipeline.
+     *
+     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
+     * identifier of the iteration of this pipeline.
+     *
+     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
+     * GUID), unique per activity/script, regardless of iterations. This is
+     * something to link different occurrences of the same job together.
+     *
+     * @param {string} [parameters.related.recurrenceName] the recurrence name,
+     * user friendly name for the correlation between jobs.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -418,6 +900,28 @@ export interface Job {
      *
      * @param {string} parameters.properties.type Polymorphic Discriminator
      *
+     * @param {object} [parameters.related] the recurring job relationship
+     * information properties.
+     *
+     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
+     * identifier (a GUID).
+     *
+     * @param {string} [parameters.related.pipelineName] the friendly name of the
+     * job relationship pipeline, which does not need to be unique.
+     *
+     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
+     * links to the originating service for this pipeline.
+     *
+     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
+     * identifier of the iteration of this pipeline.
+     *
+     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
+     * GUID), unique per activity/script, regardless of iterations. This is
+     * something to link different occurrences of the same job together.
+     *
+     * @param {string} [parameters.related.recurrenceName] the recurrence name,
+     * user friendly name for the correlation between jobs.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -467,6 +971,28 @@ export interface Job {
      * @param {string} parameters.properties.script the script to run
      *
      * @param {string} parameters.properties.type Polymorphic Discriminator
+     *
+     * @param {object} [parameters.related] the recurring job relationship
+     * information properties.
+     *
+     * @param {uuid} [parameters.related.pipelineId] the job relationship pipeline
+     * identifier (a GUID).
+     *
+     * @param {string} [parameters.related.pipelineName] the friendly name of the
+     * job relationship pipeline, which does not need to be unique.
+     *
+     * @param {string} [parameters.related.pipelineUri] the pipeline uri, unique,
+     * links to the originating service for this pipeline.
+     *
+     * @param {uuid} [parameters.related.runId] the run identifier (a GUID), unique
+     * identifier of the iteration of this pipeline.
+     *
+     * @param {uuid} parameters.related.recurrenceId the recurrence identifier (a
+     * GUID), unique per activity/script, regardless of iterations. This is
+     * something to link different occurrences of the same job together.
+     *
+     * @param {string} [parameters.related.recurrenceName] the recurrence name,
+     * user friendly name for the correlation between jobs.
      *
      * @param {object} [options] Optional Parameters.
      *

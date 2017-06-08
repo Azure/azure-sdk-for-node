@@ -209,6 +209,66 @@ export interface FirewallRule extends OptionalSubResource {
 
 /**
  * @class
+ * Initializes a new instance of the ComputePolicyAccountCreateParameters class.
+ * @constructor
+ * The parameters used to create a new compute policy.
+ *
+ * @member {string} name The unique name of the policy to create
+ *
+ * @member {uuid} objectId The AAD object identifier for the entity to create a
+ * policy for.
+ *
+ * @member {string} objectType The type of AAD object the object identifier
+ * refers to. Possible values include: 'User', 'Group', 'ServicePrincipal'
+ *
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum degree of
+ * parallelism per job this user can use to submit jobs. This property, the min
+ * priority per job property, or both must be passed.
+ *
+ * @member {number} [minPriorityPerJob] The minimum priority per job this user
+ * can use to submit jobs. This property, the max degree of parallelism per job
+ * property, or both must be passed.
+ *
+ */
+export interface ComputePolicyAccountCreateParameters {
+  name: string;
+  objectId: string;
+  objectType: string;
+  maxDegreeOfParallelismPerJob?: number;
+  minPriorityPerJob?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputePolicy class.
+ * @constructor
+ * The parameters used to create a new compute policy.
+ *
+ * @member {string} [name] The name of the compute policy
+ *
+ * @member {uuid} [objectId] The AAD object identifier for the entity to create
+ * a policy for.
+ *
+ * @member {string} [objectType] The type of AAD object the object identifier
+ * refers to. Possible values include: 'User', 'Group', 'ServicePrincipal'
+ *
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum degree of
+ * parallelism per job this user can use to submit jobs.
+ *
+ * @member {number} [minPriorityPerJob] The minimum priority per job this user
+ * can use to submit jobs.
+ *
+ */
+export interface ComputePolicy {
+  readonly name?: string;
+  readonly objectId?: string;
+  readonly objectType?: string;
+  maxDegreeOfParallelismPerJob?: number;
+  minPriorityPerJob?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AddDataLakeStoreParameters class.
  * @constructor
  * Additional Data Lake Store parameters.
@@ -259,6 +319,50 @@ export interface UpdateStorageAccountParameters {
 
 /**
  * @class
+ * Initializes a new instance of the ComputePolicyCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters used to create a new compute policy.
+ *
+ * @member {uuid} objectId The AAD object identifier for the entity to create a
+ * policy for.
+ *
+ * @member {string} objectType The type of AAD object the object identifier
+ * refers to. Possible values include: 'User', 'Group', 'ServicePrincipal'
+ *
+ * @member {number} [maxDegreeOfParallelismPerJob] The maximum degree of
+ * parallelism per job this user can use to submit jobs. This property, the min
+ * priority per job property, or both must be passed.
+ *
+ * @member {number} [minPriorityPerJob] The minimum priority per job this user
+ * can use to submit jobs. This property, the max degree of parallelism per job
+ * property, or both must be passed.
+ *
+ */
+export interface ComputePolicyCreateOrUpdateParameters {
+  objectId: string;
+  objectType: string;
+  maxDegreeOfParallelismPerJob?: number;
+  minPriorityPerJob?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputePolicyListResult class.
+ * @constructor
+ * The list of compute policies in the account.
+ *
+ * @member {array} [value] the results of the list operation
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface ComputePolicyListResult {
+  readonly value?: ComputePolicy[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DataLakeAnalyticsAccountUpdateParameters class.
  * @constructor
  * The parameters that can be used to update an existing Data Lake Analytics
@@ -293,6 +397,15 @@ export interface UpdateStorageAccountParameters {
  * @member {array} [firewallRules] The list of firewall rules associated with
  * this Data Lake Analytics account.
  *
+ * @member {number} [maxDegreeOfParallelismPerJob] the maximum supported degree
+ * of parallelism per job for this account.
+ *
+ * @member {number} [minPriorityPerJob] the minimum supported priority per job
+ * for this account.
+ *
+ * @member {array} [computePolicies] the list of existing compute policies to
+ * update in this account.
+ *
  */
 export interface DataLakeAnalyticsAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -303,6 +416,9 @@ export interface DataLakeAnalyticsAccountUpdateParameters {
   firewallState?: string;
   firewallAllowAzureIps?: string;
   firewallRules?: FirewallRule[];
+  maxDegreeOfParallelismPerJob?: number;
+  minPriorityPerJob?: number;
+  computePolicies?: ComputePolicy[];
 }
 
 /**
@@ -401,6 +517,15 @@ export interface Resource extends BaseResource {
  * @member {array} [firewallRules] The list of firewall rules associated with
  * this Data Lake Analytics account.
  *
+ * @member {number} [maxDegreeOfParallelismPerJob] the maximum supported degree
+ * of parallelism per job for this account.
+ *
+ * @member {number} [minPriorityPerJob] the minimum supported priority per job
+ * for this account.
+ *
+ * @member {array} [computePolicies] the list of compute policies to create in
+ * this account.
+ *
  */
 export interface DataLakeAnalyticsAccount extends Resource {
   readonly provisioningState?: string;
@@ -421,6 +546,9 @@ export interface DataLakeAnalyticsAccount extends Resource {
   firewallState?: string;
   firewallAllowAzureIps?: string;
   firewallRules?: FirewallRule[];
+  maxDegreeOfParallelismPerJob?: number;
+  minPriorityPerJob?: number;
+  computePolicies?: ComputePolicyAccountCreateParameters[];
 }
 
 /**
@@ -473,6 +601,22 @@ export interface DataLakeAnalyticsFirewallRuleListResult {
 export interface UpdateFirewallRuleParameters {
   startIpAddress?: string;
   endIpAddress?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputePolicyListResult class.
+ * @constructor
+ * The list of compute policies in the account.
+ *
+ * @member {array} [value] the results of the list operation
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface ComputePolicyListResult {
+  readonly value?: ComputePolicy[];
+  readonly nextLink?: string;
 }
 
 /**
@@ -573,6 +717,19 @@ export interface DataLakeAnalyticsAccountListResult {
   readonly nextLink?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the ComputePolicyListResult class.
+ * @constructor
+ * The list of compute policies in the account.
+ *
+ * @member {string} [nextLink] the link (url) to the next page of results.
+ *
+ */
+export interface ComputePolicyListResult extends Array<ComputePolicy> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class

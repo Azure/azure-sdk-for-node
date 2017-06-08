@@ -56,6 +56,7 @@ declare class DataLakeAnalyticsAccountManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  computePolicies: operations.ComputePolicies;
   firewallRules: operations.FirewallRules;
   storageAccounts: operations.StorageAccounts;
   dataLakeStoreAccounts: operations.DataLakeStoreAccounts;

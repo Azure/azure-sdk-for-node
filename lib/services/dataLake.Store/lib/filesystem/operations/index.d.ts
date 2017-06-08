@@ -48,11 +48,14 @@ export interface FileSystem {
      * for append. Possible values include: 'autocreate'
      *
      * @param {string} [options.syncFlag] Optionally indicates what to do after
-     * completion of the concurrent append. DATA indicates more data is coming so
-     * no sync takes place, METADATA indicates a sync should be done to refresh
-     * metadata of the file only. CLOSE indicates that both the stream and metadata
-     * should be refreshed upon append completion. Possible values include: 'DATA',
-     * 'METADATA', 'CLOSE'
+     * completion of the concurrent append. DATA indicates that more data will be
+     * sent immediately by the client, the file handle should remain open/locked,
+     * and file metadata (including file length, last modified time) should NOT get
+     * updated. METADATA indicates that more data will be sent immediately by the
+     * client, the file handle should remain open/locked, and file metadata should
+     * get updated. CLOSE indicates that the client is done sending data, the file
+     * handle should be closed/unlocked, and file metadata should get updated.
+     * Possible values include: 'DATA', 'METADATA', 'CLOSE'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -91,11 +94,14 @@ export interface FileSystem {
      * for append. Possible values include: 'autocreate'
      *
      * @param {string} [options.syncFlag] Optionally indicates what to do after
-     * completion of the concurrent append. DATA indicates more data is coming so
-     * no sync takes place, METADATA indicates a sync should be done to refresh
-     * metadata of the file only. CLOSE indicates that both the stream and metadata
-     * should be refreshed upon append completion. Possible values include: 'DATA',
-     * 'METADATA', 'CLOSE'
+     * completion of the concurrent append. DATA indicates that more data will be
+     * sent immediately by the client, the file handle should remain open/locked,
+     * and file metadata (including file length, last modified time) should NOT get
+     * updated. METADATA indicates that more data will be sent immediately by the
+     * client, the file handle should remain open/locked, and file metadata should
+     * get updated. CLOSE indicates that the client is done sending data, the file
+     * handle should be closed/unlocked, and file metadata should get updated.
+     * Possible values include: 'DATA', 'METADATA', 'CLOSE'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -770,11 +776,14 @@ export interface FileSystem {
      * the append operation. Default is to append at the end of the stream.
      *
      * @param {string} [options.syncFlag] Optionally indicates what to do after
-     * completion of the append. DATA indicates more data is coming so no sync
-     * takes place, METADATA indicates a sync should be done to refresh metadata of
-     * the file only. CLOSE indicates that both the stream and metadata should be
-     * refreshed upon append completion. Possible values include: 'DATA',
-     * 'METADATA', 'CLOSE'
+     * completion of the concurrent append. DATA indicates that more data will be
+     * sent immediately by the client, the file handle should remain open/locked,
+     * and file metadata (including file length, last modified time) should NOT get
+     * updated. METADATA indicates that more data will be sent immediately by the
+     * client, the file handle should remain open/locked, and file metadata should
+     * get updated. CLOSE indicates that the client is done sending data, the file
+     * handle should be closed/unlocked, and file metadata should get updated.
+     * Possible values include: 'DATA', 'METADATA', 'CLOSE'
      *
      * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
      * single writer semantics, meaning that only clients that append to the file
@@ -818,11 +827,14 @@ export interface FileSystem {
      * the append operation. Default is to append at the end of the stream.
      *
      * @param {string} [options.syncFlag] Optionally indicates what to do after
-     * completion of the append. DATA indicates more data is coming so no sync
-     * takes place, METADATA indicates a sync should be done to refresh metadata of
-     * the file only. CLOSE indicates that both the stream and metadata should be
-     * refreshed upon append completion. Possible values include: 'DATA',
-     * 'METADATA', 'CLOSE'
+     * completion of the concurrent append. DATA indicates that more data will be
+     * sent immediately by the client, the file handle should remain open/locked,
+     * and file metadata (including file length, last modified time) should NOT get
+     * updated. METADATA indicates that more data will be sent immediately by the
+     * client, the file handle should remain open/locked, and file metadata should
+     * get updated. CLOSE indicates that the client is done sending data, the file
+     * handle should be closed/unlocked, and file metadata should get updated.
+     * Possible values include: 'DATA', 'METADATA', 'CLOSE'
      *
      * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
      * single writer semantics, meaning that only clients that append to the file
@@ -882,11 +894,14 @@ export interface FileSystem {
      * overwritten.
      *
      * @param {string} [options.syncFlag] Optionally indicates what to do after
-     * completion of the append. DATA indicates more data is coming so no sync
-     * takes place, METADATA indicates a sync should be done to refresh metadata of
-     * the file only. CLOSE indicates that both the stream and metadata should be
-     * refreshed upon create completion. Possible values include: 'DATA',
-     * 'METADATA', 'CLOSE'
+     * completion of the create. DATA indicates that more data will be sent
+     * immediately by the client, the file handle should remain open/locked, and
+     * file metadata (including file length, last modified time) should NOT get
+     * updated. METADATA indicates that more data will be sent immediately by the
+     * client, the file handle should remain open/locked, and file metadata should
+     * get updated. CLOSE indicates that the client is done sending data, the file
+     * handle should be closed/unlocked, and file metadata should get updated.
+     * Possible values include: 'DATA', 'METADATA', 'CLOSE'
      *
      * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
      * single writer semantics, meaning that only clients that append to the file
@@ -927,11 +942,14 @@ export interface FileSystem {
      * overwritten.
      *
      * @param {string} [options.syncFlag] Optionally indicates what to do after
-     * completion of the append. DATA indicates more data is coming so no sync
-     * takes place, METADATA indicates a sync should be done to refresh metadata of
-     * the file only. CLOSE indicates that both the stream and metadata should be
-     * refreshed upon create completion. Possible values include: 'DATA',
-     * 'METADATA', 'CLOSE'
+     * completion of the create. DATA indicates that more data will be sent
+     * immediately by the client, the file handle should remain open/locked, and
+     * file metadata (including file length, last modified time) should NOT get
+     * updated. METADATA indicates that more data will be sent immediately by the
+     * client, the file handle should remain open/locked, and file metadata should
+     * get updated. CLOSE indicates that the client is done sending data, the file
+     * handle should be closed/unlocked, and file metadata should get updated.
+     * Possible values include: 'DATA', 'METADATA', 'CLOSE'
      *
      * @param {uuid} [options.leaseId] Optional unique GUID per file to ensure
      * single writer semantics, meaning that only clients that append to the file
