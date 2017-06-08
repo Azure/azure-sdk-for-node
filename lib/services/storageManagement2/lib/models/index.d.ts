@@ -17,11 +17,148 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * Display metadata associated with the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft Storage.
+ *
+ * @member {string} [resource] Resource on which the operation is performed
+ * etc.
+ *
+ * @member {string} [operation] Type of operation: get, read, delete, etc.
+ *
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Dimension class.
+ * @constructor
+ * Dimensions.
+ *
+ * @member {string} [name] Display name of dimension.
+ *
+ * @member {string} [displayName] Display name of dimension.
+ *
+ */
+export interface Dimension {
+  name?: string;
+  displayName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricSpecification class.
+ * @constructor
+ * Metric specification of operation.
+ *
+ * @member {string} [name] Name of metric specification.
+ *
+ * @member {string} [displayName] Display name of metric specification.
+ *
+ * @member {string} [displayDescription] Display description of metric
+ * specification.
+ *
+ * @member {string} [unit] Unit could be Bytes or Count.
+ *
+ * @member {array} [dimensions] Dimensions.
+ *
+ * @member {string} [aggregationType] Aggregation type could be Average.
+ *
+ * @member {boolean} [fillGapWithZero] The property to decide fill gap with
+ * zero or not.
+ *
+ * @member {string} [category] The category this metric specification belong
+ * to, could be Capacity.
+ *
+ * @member {string} [resourceIdDimensionNameOverride] Account Resource Id.
+ *
+ */
+export interface MetricSpecification {
+  name?: string;
+  displayName?: string;
+  displayDescription?: string;
+  unit?: string;
+  dimensions?: Dimension[];
+  aggregationType?: string;
+  fillGapWithZero?: boolean;
+  category?: string;
+  resourceIdDimensionNameOverride?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceSpecification class.
+ * @constructor
+ * One property of operation, include metric specifications.
+ *
+ * @member {array} [metricSpecifications] Metric specifications of operation.
+ *
+ */
+export interface ServiceSpecification {
+  metricSpecifications?: MetricSpecification[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Storage REST API operation definition.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ *
+ * @member {object} [display] Display metadata associated with the operation.
+ *
+ * @member {string} [display.provider] Service provider: Microsoft Storage.
+ *
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed etc.
+ *
+ * @member {string} [display.operation] Type of operation: get, read, delete,
+ * etc.
+ *
+ * @member {string} [origin] The origin of operations.
+ *
+ * @member {object} [serviceSpecification]
+ *
+ * @member {array} [serviceSpecification.metricSpecifications] Metric
+ * specifications of operation.
+ *
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+  origin?: string;
+  serviceSpecification?: ServiceSpecification;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Storage operations. It contains a list of
+ * operations and a URL link to get the next set of results.
+ *
+ * @member {array} [value] List of Storage operations supported by the Storage
+ * resource provider.
+ *
+ */
+export interface OperationListResult {
+  value?: Operation[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the StorageAccountCheckNameAvailabilityParameters class.
  * @constructor
  * The parameters used to check the availabity of the storage account name.
  *
- * @member {string} name
+ * @member {string} name The storage account name.
  *
  */
 export interface StorageAccountCheckNameAvailabilityParameters {
@@ -170,6 +307,25 @@ export interface EncryptionServices {
 
 /**
  * @class
+ * Initializes a new instance of the KeyVaultProperties class.
+ * @constructor
+ * Properties of key vault.
+ *
+ * @member {string} [keyName] The name of KeyVault key.
+ *
+ * @member {string} [keyVersion] The version of KeyVault key.
+ *
+ * @member {string} [keyVaultUri] The Uri of KeyVault.
+ *
+ */
+export interface KeyVaultProperties {
+  keyName?: string;
+  keyVersion?: string;
+  keyVaultUri?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Encryption class.
  * @constructor
  * The encryption settings on the storage account.
@@ -220,9 +376,41 @@ export interface EncryptionServices {
  * when encryption is enabled. There might be some unencrypted blobs which were
  * written after this time, as it is just a rough estimate.
  *
+ * @member {string} keySource The encryption keySource (provider). Possible
+ * values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault. Possible
+ * values include: 'Microsoft.Storage', 'Microsoft.Keyvault'. Default value:
+ * 'Microsoft.Storage' .
+ *
+ * @member {object} [keyVaultProperties] Properties provided by key vault.
+ *
+ * @member {string} [keyVaultProperties.keyName] The name of KeyVault key.
+ *
+ * @member {string} [keyVaultProperties.keyVersion] The version of KeyVault
+ * key.
+ *
+ * @member {string} [keyVaultProperties.keyVaultUri] The Uri of KeyVault.
+ *
  */
 export interface Encryption {
   services?: EncryptionServices;
+  keySource: string;
+  keyVaultProperties?: KeyVaultProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Identity class.
+ * @constructor
+ * Identity for the resource.
+ *
+ * @member {string} [principalId] The principal ID of resource identity.
+ *
+ * @member {string} [tenantId] The tenant ID of resource.
+ *
+ */
+export interface Identity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
 }
 
 /**
@@ -255,6 +443,13 @@ export interface Encryption {
  * (across resource groups). A maximum of 15 tags can be provided for a
  * resource. Each tag must have a key with a length no greater than 128
  * characters and a value with a length no greater than 256 characters.
+ *
+ * @member {object} [identity] The identity of the resource.
+ *
+ * @member {string} [identity.principalId] The principal ID of resource
+ * identity.
+ *
+ * @member {string} [identity.tenantId] The tenant ID of resource.
  *
  * @member {object} [customDomain] User domain assigned to the storage account.
  * Name is the CNAME source. Only one custom domain is supported per storage
@@ -319,6 +514,22 @@ export interface Encryption {
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
  *
+ * @member {string} [encryption.keySource] The encryption keySource (provider).
+ * Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault.
+ * Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'
+ *
+ * @member {object} [encryption.keyVaultProperties] Properties provided by key
+ * vault.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyName] The name of
+ * KeyVault key.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyVersion] The version of
+ * KeyVault key.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
+ * KeyVault.
+ *
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
@@ -332,6 +543,7 @@ export interface StorageAccountCreateParameters {
   kind: string;
   location: string;
   tags?: { [propertyName: string]: string };
+  identity?: Identity;
   customDomain?: CustomDomain;
   encryption?: Encryption;
   accessTier?: string;
@@ -405,6 +617,13 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [kind] Gets the Kind. Possible values include: 'Storage',
  * 'BlobStorage'
+ *
+ * @member {object} [identity] The identity of the resource.
+ *
+ * @member {string} [identity.principalId] The principal ID of resource
+ * identity.
+ *
+ * @member {string} [identity.tenantId] The tenant ID of resource.
  *
  * @member {string} [provisioningState] Gets the status of the storage account
  * at the time the operation was called. Possible values include: 'Creating',
@@ -520,6 +739,22 @@ export interface Resource extends BaseResource {
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
  *
+ * @member {string} [encryption.keySource] The encryption keySource (provider).
+ * Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault.
+ * Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'
+ *
+ * @member {object} [encryption.keyVaultProperties] Properties provided by key
+ * vault.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyName] The name of
+ * KeyVault key.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyVersion] The version of
+ * KeyVault key.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
+ * KeyVault.
+ *
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
@@ -531,6 +766,7 @@ export interface Resource extends BaseResource {
 export interface StorageAccount extends Resource {
   readonly sku?: Sku;
   readonly kind?: string;
+  identity?: Identity;
   readonly provisioningState?: string;
   readonly primaryEndpoints?: Endpoints;
   readonly primaryLocation?: string;
@@ -600,7 +836,8 @@ export interface StorageAccountListKeysResult {
  * @constructor
  * The parameters used to regenerate the storage account key.
  *
- * @member {string} keyName
+ * @member {string} keyName The name of storage keys that want to be
+ * regenerated, possible vaules are key1, key2.
  *
  */
 export interface StorageAccountRegenerateKeyParameters {
@@ -631,6 +868,13 @@ export interface StorageAccountRegenerateKeyParameters {
  * (across resource groups). A maximum of 15 tags can be provided for a
  * resource. Each tag must have a key no greater in length than 128 characters
  * and a value no greater in length than 256 characters.
+ *
+ * @member {object} [identity] The identity of the resource.
+ *
+ * @member {string} [identity.principalId] The principal ID of resource
+ * identity.
+ *
+ * @member {string} [identity.tenantId] The tenant ID of resource.
  *
  * @member {object} [customDomain] Custom domain assigned to the storage
  * account by the user. Name is the CNAME source. Only one custom domain is
@@ -694,6 +938,22 @@ export interface StorageAccountRegenerateKeyParameters {
  * Only returned when encryption is enabled. There might be some unencrypted
  * blobs which were written after this time, as it is just a rough estimate.
  *
+ * @member {string} [encryption.keySource] The encryption keySource (provider).
+ * Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault.
+ * Possible values include: 'Microsoft.Storage', 'Microsoft.Keyvault'
+ *
+ * @member {object} [encryption.keyVaultProperties] Properties provided by key
+ * vault.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyName] The name of
+ * KeyVault key.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyVersion] The version of
+ * KeyVault key.
+ *
+ * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
+ * KeyVault.
+ *
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
@@ -705,6 +965,7 @@ export interface StorageAccountRegenerateKeyParameters {
 export interface StorageAccountUpdateParameters {
   sku?: Sku;
   tags?: { [propertyName: string]: string };
+  identity?: Identity;
   customDomain?: CustomDomain;
   encryption?: Encryption;
   accessTier?: string;
@@ -929,6 +1190,21 @@ export interface ListServiceSasResponse {
 
 /**
  * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Storage operations. It contains a list of
+ * operations and a URL link to get the next set of results.
+ *
+ * @member {array} [value] List of Storage operations supported by the Storage
+ * resource provider.
+ *
+ */
+export interface OperationListResult {
+  value?: Operation[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the StorageAccountListResult class.
  * @constructor
  * The response from the List Storage Accounts operation.
@@ -954,6 +1230,17 @@ export interface UsageListResult {
   value?: Usage[];
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Storage operations. It contains a list of
+ * operations and a URL link to get the next set of results.
+ *
+ */
+export interface OperationListResult extends Array<Operation> {
+}
 
 /**
  * @class
