@@ -106,6 +106,18 @@ var mappings = {
     'source': 'arm-keyvault/2015-06-01/swagger/keyvault.json',
     'ft': 1
   },
+  'monitor': {
+    'dir': 'monitor/lib',
+    'source': 'monitor/compositeMonitorClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
+  'monitor.management': {
+    'dir': 'monitorManagement/lib',
+    'source': 'arm-monitor/compositeMonitorManagementClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
   'network': {
     'dir': 'networkManagement2/lib',
     'source': 'arm-network/2016-09-01/swagger/network.json',
