@@ -106,7 +106,10 @@ describe('Storage Management', function () {
           name: accType,
         },
         kind: 'Storage',
-        encryption: {services: {blob: {enabled: true}, file: {enabled: true}}}
+        encryption: {
+          services: {blob: {enabled: true}, file: {enabled: true}},
+          keySource: 'Microsoft.Storage'
+        }
       };
       client.storageAccounts.create(groupName, accountNameEncryption, createParametersEncryption, function (err, result, request, response) {
         should.not.exist(err);
@@ -155,7 +158,10 @@ describe('Storage Management', function () {
     }); 
     
     it('should check the name availability for a storage account that already exists', function (done) {
-      client.storageAccounts.checkNameAvailability(accountName, function (err, result, request, response) {
+      accountNameCheck = {
+        name: accountName
+      };
+      client.storageAccounts.checkNameAvailability(accountNameCheck, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.nameAvailable.should.equal(false);
@@ -167,7 +173,10 @@ describe('Storage Management', function () {
     });
     
     it('should check the name availability for a storage account that does not exist', function (done) {
-      client.storageAccounts.checkNameAvailability(accountName + '1012', function (err, result, request, response) {
+      accountNameCheck = {
+        name: accountName + '1012'
+      };
+      client.storageAccounts.checkNameAvailability(accountNameCheck, function (err, result, request, response) {
         should.not.exist(err);
         should.exist(result);
         result.nameAvailable.should.equal(true);
@@ -230,7 +239,7 @@ describe('Storage Management', function () {
         should.exist(result);
         response.statusCode.should.equal(200);
         var keys = result.keys;
-        client.storageAccounts.regenerateKey(groupName, accountName, 'key1', function (err, result, request, response) {
+        client.storageAccounts.regenerateKey(groupName, accountName, {keyName: 'key1'}, function (err, result, request, response) {
           should.not.exist(err);
           should.exist(result);
           response.statusCode.should.equal(200);
