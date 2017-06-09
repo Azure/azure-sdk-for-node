@@ -9,75 +9,75 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodeTestGroup3502/providers/Microsoft.Storage/storageAccounts/testacc6988?api-version=2016-12-01', '*')
+.put('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodeTestGroup6590/providers/Microsoft.Storage/storageAccounts/testacc536?api-version=2017-06-01', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/c30b42f6-26f6-4330-972e-d16bb22a4e2d?monitor=true&api-version=2016-12-01',
+  location: 'https://management.azure.com/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/51ab30ac-d588-4d7d-a17f-3b8389fc2282?monitor=true&api-version=2017-06-01',
   'retry-after': '17',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': '69a4230a-2c06-4bf3-b175-33f3c529ec6f',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': '92a6b20b-d1f2-4703-87bf-780ccc89899a',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-correlation-request-id': '69a4230a-2c06-4bf3-b175-33f3c529ec6f',
-  'x-ms-routing-request-id': 'JAPANEAST:20170508T091351Z:69a4230a-2c06-4bf3-b175-33f3c529ec6f',
+  'x-ms-correlation-request-id': '92a6b20b-d1f2-4703-87bf-780ccc89899a',
+  'x-ms-routing-request-id': 'JAPANEAST:20170608T082625Z:92a6b20b-d1f2-4703-87bf-780ccc89899a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 08 May 2017 09:13:50 GMT',
+  date: 'Thu, 08 Jun 2017 08:26:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodeTestGroup3502/providers/Microsoft.Storage/storageAccounts/testacc6988?api-version=2016-12-01', '*')
+.put('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodeTestGroup6590/providers/Microsoft.Storage/storageAccounts/testacc536?api-version=2017-06-01', '*')
   .reply(202, "", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '0',
   expires: '-1',
-  location: 'https://management.azure.com/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/c30b42f6-26f6-4330-972e-d16bb22a4e2d?monitor=true&api-version=2016-12-01',
+  location: 'https://management.azure.com/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/51ab30ac-d588-4d7d-a17f-3b8389fc2282?monitor=true&api-version=2017-06-01',
   'retry-after': '17',
-  'x-ms-ratelimit-remaining-subscription-writes': '1195',
-  'x-ms-request-id': '69a4230a-2c06-4bf3-b175-33f3c529ec6f',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
+  'x-ms-request-id': '92a6b20b-d1f2-4703-87bf-780ccc89899a',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-correlation-request-id': '69a4230a-2c06-4bf3-b175-33f3c529ec6f',
-  'x-ms-routing-request-id': 'JAPANEAST:20170508T091351Z:69a4230a-2c06-4bf3-b175-33f3c529ec6f',
+  'x-ms-correlation-request-id': '92a6b20b-d1f2-4703-87bf-780ccc89899a',
+  'x-ms-routing-request-id': 'JAPANEAST:20170608T082625Z:92a6b20b-d1f2-4703-87bf-780ccc89899a',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 08 May 2017 09:13:50 GMT',
+  date: 'Thu, 08 Jun 2017 08:26:25 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/c30b42f6-26f6-4330-972e-d16bb22a4e2d?monitor=true&api-version=2016-12-01')
-  .reply(200, "{\"id\":\"/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodetestgroup3502/providers/Microsoft.Storage/storageAccounts/testacc6988\",\"kind\":\"Storage\",\"location\":\"westus\",\"name\":\"testacc6988\",\"properties\":{\"creationTime\":\"2017-05-08T09:13:50.9643852Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc6988.blob.core.windows.net/\",\"file\":\"https://testacc6988.file.core.windows.net/\",\"queue\":\"https://testacc6988.queue.core.windows.net/\",\"table\":\"https://testacc6988.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\",\"supportsHttpsTrafficOnly\":false},\"sku\":{\"name\":\"Standard_LRS\",\"tier\":\"Standard\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/51ab30ac-d588-4d7d-a17f-3b8389fc2282?monitor=true&api-version=2017-06-01')
+  .reply(200, "{\"id\":\"/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodetestgroup6590/providers/Microsoft.Storage/storageAccounts/testacc536\",\"kind\":\"Storage\",\"location\":\"westus\",\"name\":\"testacc536\",\"properties\":{\"creationTime\":\"2017-06-08T08:26:24.8482636Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc536.blob.core.windows.net/\",\"file\":\"https://testacc536.file.core.windows.net/\",\"queue\":\"https://testacc536.queue.core.windows.net/\",\"table\":\"https://testacc536.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\",\"supportsHttpsTrafficOnly\":false},\"sku\":{\"name\":\"Standard_LRS\",\"tier\":\"Standard\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '752',
+  'content-length': '746',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'f30ed567-24d5-4d54-9c0b-f884085f63cf',
+  'x-ms-request-id': 'c97a7daf-c693-4155-b30e-b4f91209e34b',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': 'f30ed567-24d5-4d54-9c0b-f884085f63cf',
-  'x-ms-routing-request-id': 'JAPANEAST:20170508T091422Z:f30ed567-24d5-4d54-9c0b-f884085f63cf',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-correlation-request-id': 'c97a7daf-c693-4155-b30e-b4f91209e34b',
+  'x-ms-routing-request-id': 'JAPANEAST:20170608T082656Z:c97a7daf-c693-4155-b30e-b4f91209e34b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 08 May 2017 09:14:22 GMT',
+  date: 'Thu, 08 Jun 2017 08:26:56 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/c30b42f6-26f6-4330-972e-d16bb22a4e2d?monitor=true&api-version=2016-12-01')
-  .reply(200, "{\"id\":\"/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodetestgroup3502/providers/Microsoft.Storage/storageAccounts/testacc6988\",\"kind\":\"Storage\",\"location\":\"westus\",\"name\":\"testacc6988\",\"properties\":{\"creationTime\":\"2017-05-08T09:13:50.9643852Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc6988.blob.core.windows.net/\",\"file\":\"https://testacc6988.file.core.windows.net/\",\"queue\":\"https://testacc6988.queue.core.windows.net/\",\"table\":\"https://testacc6988.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\",\"supportsHttpsTrafficOnly\":false},\"sku\":{\"name\":\"Standard_LRS\",\"tier\":\"Standard\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
+  .get('/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/providers/Microsoft.Storage/operations/51ab30ac-d588-4d7d-a17f-3b8389fc2282?monitor=true&api-version=2017-06-01')
+  .reply(200, "{\"id\":\"/subscriptions/2aa30309-3723-4112-bd0b-79e9f65fc52d/resourceGroups/nodetestgroup6590/providers/Microsoft.Storage/storageAccounts/testacc536\",\"kind\":\"Storage\",\"location\":\"westus\",\"name\":\"testacc536\",\"properties\":{\"creationTime\":\"2017-06-08T08:26:24.8482636Z\",\"primaryEndpoints\":{\"blob\":\"https://testacc536.blob.core.windows.net/\",\"file\":\"https://testacc536.file.core.windows.net/\",\"queue\":\"https://testacc536.queue.core.windows.net/\",\"table\":\"https://testacc536.table.core.windows.net/\"},\"primaryLocation\":\"westus\",\"provisioningState\":\"Succeeded\",\"statusOfPrimary\":\"available\",\"supportsHttpsTrafficOnly\":false},\"sku\":{\"name\":\"Standard_LRS\",\"tier\":\"Standard\"},\"tags\":{\"tag1\":\"val1\",\"tag2\":\"val2\"},\"type\":\"Microsoft.Storage/storageAccounts\"}\n", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '752',
+  'content-length': '746',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'f30ed567-24d5-4d54-9c0b-f884085f63cf',
+  'x-ms-request-id': 'c97a7daf-c693-4155-b30e-b4f91209e34b',
   server: 'Microsoft-Azure-Storage-Resource-Provider/1.0',
-  'x-ms-ratelimit-remaining-subscription-reads': '14989',
-  'x-ms-correlation-request-id': 'f30ed567-24d5-4d54-9c0b-f884085f63cf',
-  'x-ms-routing-request-id': 'JAPANEAST:20170508T091422Z:f30ed567-24d5-4d54-9c0b-f884085f63cf',
+  'x-ms-ratelimit-remaining-subscription-reads': '14999',
+  'x-ms-correlation-request-id': 'c97a7daf-c693-4155-b30e-b4f91209e34b',
+  'x-ms-routing-request-id': 'JAPANEAST:20170608T082656Z:c97a7daf-c693-4155-b30e-b4f91209e34b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Mon, 08 May 2017 09:14:22 GMT',
+  date: 'Thu, 08 Jun 2017 08:26:56 GMT',
   connection: 'close' });
  return result; }]];
