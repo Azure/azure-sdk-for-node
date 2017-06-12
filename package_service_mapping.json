@@ -1,278 +1,186 @@
 {
+  "azure": {
+    "service_name": "Azure",
+    "category": "Management"
+  },
   "azure-arm-advisor": {
-    "service_name": "advisor",
+    "service_name": "Advisor",
     "category": "Management"
   },
   "azure-arm-analysisservices": {
-    "service_name": "analysisservices",
+    "service_name": "Analysis Services",
     "category": "Management"
   },
   "azure-arm-authorization": {
-    "service_name": "authorization",
+    "service_name": "Authorization",
     "category": "Management"
   },
   "azure-arm-automation": {
-    "service_name": "automation",
-    "category": "Management"
-  },
-  "azure-arm-batch": {
-    "service_name": "batch",
+    "service_name": "Automation",
     "category": "Management"
   },
   "azure-arm-billing": {
-    "service_name": "billing",
+    "service_name": "Billing",
     "category": "Management"
   },
   "azure-arm-cdn": {
-    "service_name": "cdn",
+    "service_name": "CDN",
     "category": "Management"
   },
   "azure-arm-cognitiveservices": {
-    "service_name": "cognitiveservices",
+    "service_name": "Cognitive Services",
     "category": "Management"
   },
   "azure-arm-commerce": {
-    "service_name": "commerce",
+    "service_name": "Commerce",
     "category": "Management"
   },
   "azure-arm-compute": {
-    "service_name": "compute",
+    "service_name": "VMs",
     "category": "Management"
   },
   "azure-arm-containerregistry": {
-    "service_name": "containerregistry",
-    "category": "Management"
-  },
-  "azure-arm-customerinsights": {
-    "service_name": "customerinsights",
+    "service_name": "Container Registry",
     "category": "Management"
   },
   "azure-arm-datalake-analytics": {
-    "service_name": "datalake-analytics",
+    "service_name": "Data Lake Analytics",
     "category": "Management"
   },
   "azure-arm-datalake-store": {
-    "service_name": "datalake-store",
+    "service_name": "Data Lake Store",
     "category": "Management"
   },
   "azure-arm-devtestlabs": {
-    "service_name": "devtestlabs",
+    "service_name": "DevTest Labs",
     "category": "Management"
   },
   "azure-arm-dns": {
-    "service_name": "dns",
+    "service_name": "DNS",
     "category": "Management"
   },
   "azure-arm-documentdb": {
-    "service_name": "documentdb",
+    "service_name": "Cosmos DB",
     "category": "Management"
   },
   "azure-arm-eventhub": {
-    "service_name": "eventhub",
+    "service_name": "Event Hub",
     "category": "Management"
   },
   "azure-arm-hdinsight": {
-    "service_name": "hdinsight",
+    "service_name": "HDInsight",
     "category": "Management"
   },
   "azure-arm-hdinsight-jobs": {
-    "service_name": "hdinsight-jobs",
+    "service_name": "HDInsight",
     "category": "Management"
   },
   "azure-arm-insights": {
-    "service_name": "insights",
+    "service_name": "Monitor",
     "category": "Management"
   },
   "azure-arm-intune": {
-    "service_name": "intune",
+    "service_name": "Intune",
     "category": "Management"
   },
   "azure-arm-iothub": {
-    "service_name": "iothub",
+    "service_name": "IoT Hub",
     "category": "Management"
   },
   "azure-arm-keyvault": {
-    "service_name": "keyvault",
+    "service_name": "Key Vault",
     "category": "Management"
   },
   "azure-arm-logic": {
-    "service_name": "logic",
+    "service_name": "Logic Apps",
     "category": "Management"
   },
   "azure-arm-machinelearning": {
-    "service_name": "machinelearning",
+    "service_name": "Machine Learning",
     "category": "Management"
   },
   "azure-arm-mediaservices": {
-    "service_name": "mediaservices",
+    "service_name": "Media Services",
     "category": "Management"
   },
   "azure-arm-network": {
-    "service_name": "network",
+    "service_name": "Virtual Network",
     "category": "Management"
   },
   "azure-arm-notificationhubs": {
-    "service_name": "notificationhubs",
+    "service_name": "Notification Hubs",
     "category": "Management"
   },
   "azure-arm-operationalinsights": {
-    "service_name": "operationalinsights",
+    "service_name": "Operational Insights",
     "category": "Management"
   },
   "azure-arm-powerbiembedded": {
-    "service_name": "powerbiembedded",
+    "service_name": "PowerBI Embedded",
     "category": "Management"
   },
   "azure-arm-recoveryservices": {
-    "service_name": "recoveryservices",
+    "service_name": "Site Recovery",
     "category": "Management"
   },
   "azure-arm-recoveryservicesbackup": {
-    "service_name": "recoveryservicesbackup",
+    "service_name": "Backup",
     "category": "Management"
   },
   "azure-arm-rediscache": {
-    "service_name": "rediscache",
+    "service_name": "Redis Cache",
     "category": "Management"
   },
   "azure-arm-relay": {
-    "service_name": "relay",
+    "service_name": "Relay",
     "category": "Management"
   },
   "azure-arm-resource": {
-    "service_name": "resource",
+    "service_name": "Resources",
     "category": "Management"
   },
   "azure-arm-sb": {
-    "service_name": "sb",
+    "service_name": "Service Bus",
     "category": "Management"
   },
   "azure-arm-scheduler": {
-    "service_name": "scheduler",
+    "service_name": "Scheduler",
     "category": "Management"
   },
   "azure-arm-search": {
-    "service_name": "search",
+    "service_name": "Search",
     "category": "Management"
   },
   "azure-arm-servermanagement": {
-    "service_name": "servermanagement",
+    "service_name": "Server Management",
     "category": "Management"
   },
   "azure-arm-servicefabric": {
-    "service_name": "servicefabric",
+    "service_name": "Service Fabric",
     "category": "Management"
   },
   "azure-arm-servicemap": {
-    "service_name": "servicemap",
+    "service_name": "Service Map",
     "category": "Management"
   },
   "azure-arm-sql": {
-    "service_name": "sql",
+    "service_name": "SQL",
     "category": "Management"
   },
   "azure-arm-storage": {
-    "service_name": "storage",
+    "service_name": "Storage",
     "category": "Management"
   },
   "azure-arm-storageimportexport": {
-    "service_name": "storageimportexport",
+    "service_name": "Storage",
     "category": "Management"
   },
   "azure-arm-trafficmanager": {
-    "service_name": "trafficmanager",
+    "service_name": "Traffic Manager",
     "category": "Management"
   },
   "azure-arm-website": {
-    "service_name": "website",
+    "service_name": "App Service",
     "category": "Management"
-  },
-  "azure-asm-compute": {
-    "service_name": "asm-compute",
-    "category": "Management"
-  },
-  "azure-asm-hdinsight": {
-    "service_name": "asm-hdinsight",
-    "category": "Management"
-  },
-  "azure-asm-mgmt": {
-    "service_name": "asm-mgmt",
-    "category": "Management"
-  },
-  "azure-asm-network": {
-    "service_name": "asm-network",
-    "category": "Management"
-  },
-  "azure-asm-sb": {
-    "service_name": "asm-sb",
-    "category": "Management"
-  },
-  "azure-asm-scheduler": {
-    "service_name": "asm-scheduler",
-    "category": "Management"
-  },
-  "azure-asm-sql": {
-    "service_name": "asm-sql",
-    "category": "Management"
-  },
-  "azure-asm-storage": {
-    "service_name": "asm-storage",
-    "category": "Management"
-  },
-  "azure-asm-store": {
-    "service_name": "asm-store",
-    "category": "Management"
-  },
-  "azure-asm-subscription": {
-    "service_name": "asm-subscription",
-    "category": "Management"
-  },
-  "azure-asm-trafficmanager": {
-    "service_name": "asm-trafficmanager",
-    "category": "Management"
-  },
-  "azure-asm-website": {
-    "service_name": "asm-website",
-    "category": "Management"
-  },
-  "azure-batch": {
-    "service_name": "Batch",
-    "category": "Management"
-  },
-  "azure-gallery": {
-    "service_name": "gallery",
-    "category": "Management"
-  },
-  "azure-graph": {
-    "service_name": "graph",
-    "category": "Management"
-  },
-  "azure-insights": {
-    "service_name": "insights",
-    "category": "Management"
-  },
-  "azure-keyvault": {
-    "service_name": "keyvault",
-    "category": "Client"
-  },
-  "azure-monitoring": {
-    "service_name": "monitoring",
-    "category": "Management"
-  },
-  "azure-sb": {
-    "service_name": "Service Bus",
-    "category": "Client"
-  },
-  "azure-scheduler": {
-    "service_name": "scheduler",
-    "category": "Management"
-  },
-  "azure-servicefabric": {
-    "service_name": "servicefabric",
-    "category": "Management"
-  },
-  "azure-storage": {
-    "service_name": "storage",
-    "category": "Client"
   }
 }
