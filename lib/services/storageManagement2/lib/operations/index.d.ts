@@ -14,6 +14,66 @@ import * as models from '../models';
 
 /**
  * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the StorageManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available Storage Rest API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Storage Rest API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
  * StorageAccounts
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the StorageManagementClient.
@@ -24,7 +84,11 @@ export interface StorageAccounts {
     /**
      * Checks that the storage account name is valid and is not already in use.
      *
-     * @param {string} name
+     * @param {object} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {string} accountName.name The storage account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37,12 +101,16 @@ export interface StorageAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
+    checkNameAvailabilityWithHttpOperationResponse(accountName: models.StorageAccountCheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
 
     /**
      * Checks that the storage account name is valid and is not already in use.
      *
-     * @param {string} name
+     * @param {object} accountName The name of the storage account within the
+     * specified resource group. Storage account names must be between 3 and 24
+     * characters in length and use numbers and lower-case letters only.
+     *
+     * @param {string} accountName.name The storage account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -72,9 +140,9 @@ export interface StorageAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailability(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
-    checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
-    checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(accountName: models.StorageAccountCheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
+    checkNameAvailability(accountName: models.StorageAccountCheckNameAvailabilityParameters, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(accountName: models.StorageAccountCheckNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
 
 
     /**
@@ -116,6 +184,8 @@ export interface StorageAccounts {
      * for a resource. Each tag must have a key with a length no greater than 128
      * characters and a value with a length no greater than 256 characters.
      *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
      * @param {object} [parameters.customDomain] User domain assigned to the
      * storage account. Name is the CNAME source. Only one custom domain is
      * supported per storage account at this time. To clear the existing custom
@@ -143,6 +213,23 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
+     *
+     * @param {string} parameters.encryption.keySource The encryption keySource
+     * (provider). Possible values (case-insensitive):  Microsoft.Storage,
+     * Microsoft.Keyvault. Possible values include: 'Microsoft.Storage',
+     * 'Microsoft.Keyvault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Properties
+     * provided by key vault.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyName] The name
+     * of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVersion] The
+     * version of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
+     * Uri of KeyVault.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -203,6 +290,8 @@ export interface StorageAccounts {
      * for a resource. Each tag must have a key with a length no greater than 128
      * characters and a value with a length no greater than 256 characters.
      *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
      * @param {object} [parameters.customDomain] User domain assigned to the
      * storage account. Name is the CNAME source. Only one custom domain is
      * supported per storage account at this time. To clear the existing custom
@@ -230,6 +319,23 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
+     *
+     * @param {string} parameters.encryption.keySource The encryption keySource
+     * (provider). Possible values (case-insensitive):  Microsoft.Storage,
+     * Microsoft.Keyvault. Possible values include: 'Microsoft.Storage',
+     * 'Microsoft.Keyvault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Properties
+     * provided by key vault.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyName] The name
+     * of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVersion] The
+     * version of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
+     * Uri of KeyVault.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -439,6 +545,8 @@ export interface StorageAccounts {
      * for a resource. Each tag must have a key no greater in length than 128
      * characters and a value no greater in length than 256 characters.
      *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
      * @param {object} [parameters.customDomain] Custom domain assigned to the
      * storage account by the user. Name is the CNAME source. Only one custom
      * domain is supported per storage account at this time. To clear the existing
@@ -465,6 +573,23 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
+     *
+     * @param {string} parameters.encryption.keySource The encryption keySource
+     * (provider). Possible values (case-insensitive):  Microsoft.Storage,
+     * Microsoft.Keyvault. Possible values include: 'Microsoft.Storage',
+     * 'Microsoft.Keyvault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Properties
+     * provided by key vault.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyName] The name
+     * of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVersion] The
+     * version of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
+     * Uri of KeyVault.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -522,6 +647,8 @@ export interface StorageAccounts {
      * for a resource. Each tag must have a key no greater in length than 128
      * characters and a value no greater in length than 256 characters.
      *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
      * @param {object} [parameters.customDomain] Custom domain assigned to the
      * storage account by the user. Name is the CNAME source. Only one custom
      * domain is supported per storage account at this time. To clear the existing
@@ -548,6 +675,23 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
+     *
+     * @param {string} parameters.encryption.keySource The encryption keySource
+     * (provider). Possible values (case-insensitive):  Microsoft.Storage,
+     * Microsoft.Keyvault. Possible values include: 'Microsoft.Storage',
+     * 'Microsoft.Keyvault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Properties
+     * provided by key vault.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyName] The name
+     * of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVersion] The
+     * version of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
+     * Uri of KeyVault.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -780,7 +924,11 @@ export interface StorageAccounts {
      * specified resource group. Storage account names must be between 3 and 24
      * characters in length and use numbers and lower-case letters only.
      *
-     * @param {string} keyName
+     * @param {object} regenerateKeyParameter Specifies name of the key which
+     * should be regenerated -- key1 or key2.
+     *
+     * @param {string} regenerateKeyParameter.keyName The name of storage keys that
+     * want to be regenerated, possible vaules are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -793,7 +941,7 @@ export interface StorageAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, accountName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccountListKeysResult>>;
+    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccountListKeysResult>>;
 
     /**
      * Regenerates one of the access keys for the specified storage account.
@@ -805,7 +953,11 @@ export interface StorageAccounts {
      * specified resource group. Storage account names must be between 3 and 24
      * characters in length and use numbers and lower-case letters only.
      *
-     * @param {string} keyName
+     * @param {object} regenerateKeyParameter Specifies name of the key which
+     * should be regenerated -- key1 or key2.
+     *
+     * @param {string} regenerateKeyParameter.keyName The name of storage keys that
+     * want to be regenerated, possible vaules are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -835,9 +987,9 @@ export interface StorageAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccountListKeysResult>;
-    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
-    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
+    regenerateKey(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccountListKeysResult>;
+    regenerateKey(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
+    regenerateKey(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
 
 
     /**
@@ -1191,6 +1343,8 @@ export interface StorageAccounts {
      * for a resource. Each tag must have a key with a length no greater than 128
      * characters and a value with a length no greater than 256 characters.
      *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
      * @param {object} [parameters.customDomain] User domain assigned to the
      * storage account. Name is the CNAME source. Only one custom domain is
      * supported per storage account at this time. To clear the existing custom
@@ -1218,6 +1372,23 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
+     *
+     * @param {string} parameters.encryption.keySource The encryption keySource
+     * (provider). Possible values (case-insensitive):  Microsoft.Storage,
+     * Microsoft.Keyvault. Possible values include: 'Microsoft.Storage',
+     * 'Microsoft.Keyvault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Properties
+     * provided by key vault.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyName] The name
+     * of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVersion] The
+     * version of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
+     * Uri of KeyVault.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -1278,6 +1449,8 @@ export interface StorageAccounts {
      * for a resource. Each tag must have a key with a length no greater than 128
      * characters and a value with a length no greater than 256 characters.
      *
+     * @param {object} [parameters.identity] The identity of the resource.
+     *
      * @param {object} [parameters.customDomain] User domain assigned to the
      * storage account. Name is the CNAME source. Only one custom domain is
      * supported per storage account at this time. To clear the existing custom
@@ -1305,6 +1478,23 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.encryption.services.file.enabled] A boolean
      * indicating whether or not the service encrypts the data as it is stored.
+     *
+     * @param {string} parameters.encryption.keySource The encryption keySource
+     * (provider). Possible values (case-insensitive):  Microsoft.Storage,
+     * Microsoft.Keyvault. Possible values include: 'Microsoft.Storage',
+     * 'Microsoft.Keyvault'
+     *
+     * @param {object} [parameters.encryption.keyVaultProperties] Properties
+     * provided by key vault.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyName] The name
+     * of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVersion] The
+     * version of KeyVault key.
+     *
+     * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
+     * Uri of KeyVault.
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
