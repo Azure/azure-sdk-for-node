@@ -1295,6 +1295,11 @@ export interface Catalog {
      * request a count of the matching resources included with the resources in the
      * response, e.g. Categories?$count=true. Optional.
      *
+     * @param {boolean} [options.basic] The basic switch indicates what level of
+     * information to return when listing tables. When basic is true, only
+     * database_name, schema_name, table_name and version are returned for each
+     * table, otherwise all table metadata is returned. By default, it is false
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1304,7 +1309,7 @@ export interface Catalog {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listTablesWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableList>>;
+    listTablesWithHttpOperationResponse(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, basic? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.USqlTableList>>;
 
     /**
      * Retrieves the list of tables from the Data Lake Analytics catalog.
@@ -1338,6 +1343,11 @@ export interface Catalog {
      * request a count of the matching resources included with the resources in the
      * response, e.g. Categories?$count=true. Optional.
      *
+     * @param {boolean} [options.basic] The basic switch indicates what level of
+     * information to return when listing tables. When basic is true, only
+     * database_name, schema_name, table_name and version are returned for each
+     * table, otherwise all table metadata is returned. By default, it is false
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1363,9 +1373,9 @@ export interface Catalog {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listTables(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableList>;
+    listTables(accountName: string, databaseName: string, schemaName: string, options?: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, basic? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.USqlTableList>;
     listTables(accountName: string, databaseName: string, schemaName: string, callback: ServiceCallback<models.USqlTableList>): void;
-    listTables(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
+    listTables(accountName: string, databaseName: string, schemaName: string, options: { filter? : string, top? : number, skip? : number, select? : string, orderby? : string, count? : boolean, basic? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.USqlTableList>): void;
 
 
     /**
