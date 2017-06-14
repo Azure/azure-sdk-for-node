@@ -349,7 +349,7 @@ const mappings = {
   'storage': {
     'packageName': 'azure-arm-storage',
     'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2016-12-01/swagger/storage.json',
+    'source': 'arm-storage/2017-06-01/swagger/storage.json',
     'ft': 2,
     'clientName': 'StorageManagementClient'
   },
@@ -374,7 +374,7 @@ const mappings = {
   }
 };
 
-const defaultAutoRestVersion = '1.0.1-20170430-2300-nightly';
+const defaultAutoRestVersion = '1.0.1-20170608-2300-nightly';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 const project = args['project'];

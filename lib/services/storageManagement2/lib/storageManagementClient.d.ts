@@ -56,6 +56,7 @@ declare class StorageManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   storageAccounts: operations.StorageAccounts;
   usageOperations: operations.UsageOperations;
 }
