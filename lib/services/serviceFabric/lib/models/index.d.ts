@@ -18,10 +18,8 @@ import * as moment from "moment";
  * The package of the register cluster
  *
  * @member {string} [codeFilePath] The path of the code file
- *
  * @member {string} [clusterManifestFilePath] The relative path of the cluster
  * manifest file
- *
  */
 export interface RegisterClusterPackage {
   codeFilePath?: string;
@@ -35,9 +33,7 @@ export interface RegisterClusterPackage {
  * The package of the unregister cluster
  *
  * @member {string} [codeVersion] The version of the code
- *
  * @member {string} [configVersion] The version of the config
- *
  */
 export interface UnregisterClusterPackage {
   codeVersion?: string;
@@ -51,7 +47,6 @@ export interface UnregisterClusterPackage {
  * The id
  *
  * @member {string} [id]
- *
  */
 export interface NodeId {
   id?: string;
@@ -65,10 +60,8 @@ export interface NodeId {
  *
  * @member {string} [nodeDeactivationIntent] Possible values include:
  * 'Invalid', 'Pause', 'Restart', 'RemoveData'
- *
  * @member {string} [nodeDeactivationStatus] Possible values include:
  * 'Invalid', 'SafetyCheckInProgress', 'SafetyCheckComplete', 'Completed'
- *
  */
 export interface NodeNodeDeactivationInfo {
   nodeDeactivationIntent?: string;
@@ -82,44 +75,27 @@ export interface NodeNodeDeactivationInfo {
  * The node
  *
  * @member {string} [name]
- *
  * @member {string} [ipAddressOrFQDN]
- *
  * @member {string} [type]
- *
  * @member {string} [codeVersion]
- *
  * @member {string} [configVersion]
- *
  * @member {string} [nodeStatus] Possible values include: 'Invalid', 'Up',
  * 'Down', 'Enabling', 'Disabling', 'Disabled', 'Unknown', 'Removed'
- *
  * @member {string} [nodeUpTimeInSeconds]
- *
  * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- *
  * @member {boolean} [isSeedNode]
- *
  * @member {string} [upgradeDomain]
- *
  * @member {string} [faultDomain]
- *
  * @member {object} [id] The id
- *
  * @member {string} [id.id]
- *
  * @member {string} [instanceId]
- *
  * @member {object} [nodeDeactivationInfo] The info of the deactivation info
- *
  * @member {string} [nodeDeactivationInfo.nodeDeactivationIntent] Possible
  * values include: 'Invalid', 'Pause', 'Restart', 'RemoveData'
- *
  * @member {string} [nodeDeactivationInfo.nodeDeactivationStatus] Possible
  * values include: 'Invalid', 'SafetyCheckInProgress', 'SafetyCheckComplete',
  * 'Completed'
- *
  */
 export interface Node {
   name?: string;
@@ -145,9 +121,7 @@ export interface Node {
  * The list of the node
  *
  * @member {string} [continuationToken]
- *
  * @member {array} [items]
- *
  */
 export interface NodeList {
   continuationToken?: string;
@@ -161,20 +135,13 @@ export interface NodeList {
  * The report of the health
  *
  * @member {string} [sourceId]
- *
  * @member {string} [property]
- *
  * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [description]
- *
  * @member {string} [timeToLiveInMilliSeconds]
- *
  * @member {string} [sequenceNumber]
- *
  * @member {boolean} [removeWhenExpired]
- *
  */
 export interface HealthReport {
   sourceId?: string;
@@ -204,7 +171,6 @@ export interface NodeHealthReport extends HealthReport {
  *
  * @member {string} [deactivationIntent] Possible values include: 'Pause',
  * 'Restart', 'RemoveData', 'RemoveNode'
- *
  */
 export interface DisableNode {
   deactivationIntent?: string;
@@ -217,32 +183,19 @@ export interface DisableNode {
  * The event of the health
  *
  * @member {string} [sourceId]
- *
  * @member {string} [property]
- *
  * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [timeToLiveInMilliSeconds]
- *
  * @member {string} [description]
- *
  * @member {string} [sequenceNumber]
- *
  * @member {boolean} [removeWhenExpired]
- *
  * @member {string} [sourceUtcTimestamp]
- *
  * @member {string} [lastModifiedUtcTimestamp]
- *
  * @member {boolean} [isExpired]
- *
  * @member {string} [lastOkTransitionAt]
- *
  * @member {string} [lastWarningTransitionAt]
- *
  * @member {string} [lastErrorTransitionAt]
- *
  */
 export interface HealthEvent {
   sourceId?: string;
@@ -267,12 +220,9 @@ export interface HealthEvent {
  * The evauation of the health
  *
  * @member {string} [description]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} kind Polymorphic Discriminator
- *
  */
 export interface HealthEvaluation {
   description?: string;
@@ -287,14 +237,10 @@ export interface HealthEvaluation {
  * The evaluation of the unhealthy
  *
  * @member {object} [healthEvaluation]
- *
  * @member {string} [healthEvaluation.description]
- *
  * @member {string} [healthEvaluation.aggregatedHealthState] Possible values
  * include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [healthEvaluation.kind] Polymorphic Discriminator
- *
  */
 export interface UnhealthyEvaluation {
   healthEvaluation?: HealthEvaluation;
@@ -307,36 +253,21 @@ export interface UnhealthyEvaluation {
  * The evaluation of the event health
  *
  * @member {object} [unhealthyEvent]
- *
  * @member {string} [unhealthyEvent.sourceId]
- *
  * @member {string} [unhealthyEvent.property]
- *
  * @member {string} [unhealthyEvent.healthState] Possible values include:
  * 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [unhealthyEvent.timeToLiveInMilliSeconds]
- *
  * @member {string} [unhealthyEvent.description]
- *
  * @member {string} [unhealthyEvent.sequenceNumber]
- *
  * @member {boolean} [unhealthyEvent.removeWhenExpired]
- *
  * @member {string} [unhealthyEvent.sourceUtcTimestamp]
- *
  * @member {string} [unhealthyEvent.lastModifiedUtcTimestamp]
- *
  * @member {boolean} [unhealthyEvent.isExpired]
- *
  * @member {string} [unhealthyEvent.lastOkTransitionAt]
- *
  * @member {string} [unhealthyEvent.lastWarningTransitionAt]
- *
  * @member {string} [unhealthyEvent.lastErrorTransitionAt]
- *
  * @member {boolean} [considerWarningAsError]
- *
  */
 export interface EventHealthEvaluation extends HealthEvaluation {
   unhealthyEvent?: HealthEvent;
@@ -350,11 +281,8 @@ export interface EventHealthEvaluation extends HealthEvaluation {
  * The evaluation of the partitions health
  *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyPartitionsPerService]
- *
  */
 export interface PartitionsHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -369,11 +297,8 @@ export interface PartitionsHealthEvaluation extends HealthEvaluation {
  * The evaluation of the replicas health
  *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyPartitionsPerService]
- *
  */
 export interface ReplicasHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -388,9 +313,7 @@ export interface ReplicasHealthEvaluation extends HealthEvaluation {
  * The evaluation of the deployed service packages health
  *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  */
 export interface DeployedServicePackagesHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -404,11 +327,8 @@ export interface DeployedServicePackagesHealthEvaluation extends HealthEvaluatio
  * The evaluation of the deployed applications health
  *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyDeployedApplications]
- *
  */
 export interface DeployedApplicationsHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -423,13 +343,9 @@ export interface DeployedApplicationsHealthEvaluation extends HealthEvaluation {
  * The evaluation of the services health
  *
  * @member {string} [serviceTypeName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyServices]
- *
  */
 export interface ServicesHealthEvaluation extends HealthEvaluation {
   serviceTypeName?: string;
@@ -445,11 +361,8 @@ export interface ServicesHealthEvaluation extends HealthEvaluation {
  * The evaluation of the nodes health
  *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyNodes]
- *
  */
 export interface NodesHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -464,11 +377,8 @@ export interface NodesHealthEvaluation extends HealthEvaluation {
  * The evaluation of the applications health
  *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyApplications]
- *
  */
 export interface ApplicationsHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -483,13 +393,9 @@ export interface ApplicationsHealthEvaluation extends HealthEvaluation {
  * The evaluation of the upgrade domain nodes health
  *
  * @member {string} [upgradeDomainName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyNodes]
- *
  */
 export interface UpgradeDomainNodesHealthEvaluation extends HealthEvaluation {
   upgradeDomainName?: string;
@@ -505,13 +411,9 @@ export interface UpgradeDomainNodesHealthEvaluation extends HealthEvaluation {
  * The evaluation of the upgrade domain deployed applications health
  *
  * @member {string} [upgradeDomainName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyDeployedApplications]
- *
  */
 export interface UpgradeDomainDeployedApplicationsHealthEvaluation extends HealthEvaluation {
   upgradeDomainName?: string;
@@ -527,7 +429,6 @@ export interface UpgradeDomainDeployedApplicationsHealthEvaluation extends Healt
  * The evaluation of the system application health
  *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface SystemApplicationHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -540,9 +441,7 @@ export interface SystemApplicationHealthEvaluation extends HealthEvaluation {
  * The evaluation of the partition health
  *
  * @member {string} [partitionId]
- *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface PartitionHealthEvaluation extends HealthEvaluation {
   partitionId?: string;
@@ -556,11 +455,8 @@ export interface PartitionHealthEvaluation extends HealthEvaluation {
  * The evaluation of the replica health
  *
  * @member {string} [partitionId]
- *
  * @member {string} [replicaOrInstanceId]
- *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface ReplicaHealthEvaluation extends HealthEvaluation {
   partitionId?: string;
@@ -575,13 +471,9 @@ export interface ReplicaHealthEvaluation extends HealthEvaluation {
  * The evaluation of the deployed service package health
  *
  * @member {string} [applicationName]
- *
  * @member {string} [nodeName]
- *
  * @member {string} [serviceManifestName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface DeployedServicePackageHealthEvaluation extends HealthEvaluation {
   applicationName?: string;
@@ -597,11 +489,8 @@ export interface DeployedServicePackageHealthEvaluation extends HealthEvaluation
  * The evaluation of the deployed application health
  *
  * @member {string} [applicationName]
- *
  * @member {string} [nodeName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface DeployedApplicationHealthEvaluation extends HealthEvaluation {
   applicationName?: string;
@@ -616,9 +505,7 @@ export interface DeployedApplicationHealthEvaluation extends HealthEvaluation {
  * The evaluation of the service health
  *
  * @member {string} [serviceName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface ServiceHealthEvaluation extends HealthEvaluation {
   serviceName?: string;
@@ -632,9 +519,7 @@ export interface ServiceHealthEvaluation extends HealthEvaluation {
  * The evaluation of the node health
  *
  * @member {string} [nodeName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface NodeHealthEvaluation extends HealthEvaluation {
   nodeName?: string;
@@ -648,9 +533,7 @@ export interface NodeHealthEvaluation extends HealthEvaluation {
  * The evaluation of the application health
  *
  * @member {string} [serviceName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  */
 export interface ApplicationHealthEvaluation extends HealthEvaluation {
   serviceName?: string;
@@ -664,15 +547,10 @@ export interface ApplicationHealthEvaluation extends HealthEvaluation {
  * The evaluation of the delta nodes check health
  *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [baselineErrorCount]
- *
  * @member {number} [baselineTotalCount]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentDeltaUnhealthyNodes]
- *
  */
 export interface DeltaNodesCheckHealthEvaluation extends HealthEvaluation {
   unhealthyEvaluations?: UnhealthyEvaluation[];
@@ -689,17 +567,11 @@ export interface DeltaNodesCheckHealthEvaluation extends HealthEvaluation {
  * The evaluation of the upgrade domain delta nodes check health
  *
  * @member {string} [upgradeDomainName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [baselineErrorCount]
- *
  * @member {number} [baselineTotalCount]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUpgradeDomainDeltaUnhealthyNodes]
- *
  */
 export interface UpgradeDomainDeltaNodesCheckHealthEvaluation extends HealthEvaluation {
   upgradeDomainName?: string;
@@ -717,7 +589,6 @@ export interface UpgradeDomainDeltaNodesCheckHealthEvaluation extends HealthEval
  * The type of the register application
  *
  * @member {string} [applicationTypeBuildPath]
- *
  */
 export interface RegisterApplicationType {
   applicationTypeBuildPath?: string;
@@ -730,7 +601,6 @@ export interface RegisterApplicationType {
  * The type of the unregister application
  *
  * @member {string} [applicationTypeVersion]
- *
  */
 export interface UnregisterApplicationType {
   applicationTypeVersion?: string;
@@ -743,13 +613,9 @@ export interface UnregisterApplicationType {
  * The evaluation of the application type health
  *
  * @member {string} [applicationTypeName]
- *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {number} [totalCount]
- *
  * @member {number} [maxPercentUnhealthyApplications]
- *
  */
 export interface ApplicationTypeHealthEvaluation extends HealthEvaluation {
   applicationTypeName?: string;
@@ -765,12 +631,9 @@ export interface ApplicationTypeHealthEvaluation extends HealthEvaluation {
  * The health of the node
  *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [name]
- *
  */
 export interface NodeHealth {
   healthEvents?: HealthEvent[];
@@ -785,19 +648,12 @@ export interface NodeHealth {
  * The application of the deployed
  *
  * @member {string} [id]
- *
  * @member {string} [name]
- *
  * @member {string} [typeName]
- *
  * @member {string} [status]
- *
  * @member {string} [workDirectory]
- *
  * @member {string} [logDirectory]
- *
  * @member {string} [tempDirectory]
- *
  */
 export interface DeployedApplication {
   id?: string;
@@ -826,14 +682,10 @@ export interface DeployedApplicationHealthReport extends HealthReport {
  * The state of the deployed service package health
  *
  * @member {string} [applicationName]
- *
  * @member {string} [serviceManifestName]
- *
  * @member {string} [nodeName]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface DeployedServicePackageHealthState {
   applicationName?: string;
@@ -849,27 +701,17 @@ export interface DeployedServicePackageHealthState {
  * The health of the deployed application
  *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [unhealthyEvaluations]
- *
  * @member {string} [name]
- *
  * @member {string} [nodeName]
- *
  * @member {object} [deployedServicePackageHealthStates]
- *
  * @member {string} [deployedServicePackageHealthStates.applicationName]
- *
  * @member {string} [deployedServicePackageHealthStates.serviceManifestName]
- *
  * @member {string} [deployedServicePackageHealthStates.nodeName]
- *
  * @member {string} [deployedServicePackageHealthStates.aggregatedHealthState]
  * Possible values include: 'Invalid', 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface DeployedApplicationHealth {
   healthEvents?: HealthEvent[];
@@ -887,19 +729,12 @@ export interface DeployedApplicationHealth {
  * The information of the node load metric
  *
  * @member {string} [name]
- *
  * @member {string} [nodeCapacity]
- *
  * @member {string} [nodeLoad]
- *
  * @member {string} [nodeRemainingCapacity]
- *
  * @member {boolean} [isCapacityViolation]
- *
  * @member {string} [nodeBufferedCapacity]
- *
  * @member {string} [nodeRemainingBufferedCapacity]
- *
  */
 export interface NodeLoadMetricInformation {
   name?: string;
@@ -918,23 +753,14 @@ export interface NodeLoadMetricInformation {
  * The information of the node load
  *
  * @member {string} [nodeName]
- *
  * @member {object} [nodeLoadMetricInformation]
- *
  * @member {string} [nodeLoadMetricInformation.name]
- *
  * @member {string} [nodeLoadMetricInformation.nodeCapacity]
- *
  * @member {string} [nodeLoadMetricInformation.nodeLoad]
- *
  * @member {string} [nodeLoadMetricInformation.nodeRemainingCapacity]
- *
  * @member {boolean} [nodeLoadMetricInformation.isCapacityViolation]
- *
  * @member {string} [nodeLoadMetricInformation.nodeBufferedCapacity]
- *
  * @member {string} [nodeLoadMetricInformation.nodeRemainingBufferedCapacity]
- *
  */
 export interface NodeLoadInformation {
   nodeName?: string;
@@ -948,27 +774,16 @@ export interface NodeLoadInformation {
  * The statistics of the code package entry point
  *
  * @member {number} [lastExitCode]
- *
  * @member {string} [lastActivationTime]
- *
  * @member {string} [lastExitTime]
- *
  * @member {string} [lastSuccessfulActivationTime]
- *
  * @member {string} [lastSuccessfulExitTime]
- *
  * @member {number} [activationFailureCount]
- *
  * @member {number} [continuousActivationFailureCount]
- *
  * @member {number} [exitFailureCount]
- *
  * @member {number} [continuousExitFailureCount]
- *
  * @member {number} [activationCount]
- *
  * @member {number} [exitCount]
- *
  */
 export interface CodePackageEntryPointStatistics {
   lastExitCode?: number;
@@ -991,42 +806,25 @@ export interface CodePackageEntryPointStatistics {
  * The point of the entry
  *
  * @member {number} [entryPointLocation]
- *
  * @member {number} [processId]
- *
  * @member {number} [runAsUserName]
- *
  * @member {number} [nextActivationTime]
- *
  * @member {string} [status]
- *
  * @member {object} [codePackageEntryPointStatistics]
- *
  * @member {number} [codePackageEntryPointStatistics.lastExitCode]
- *
  * @member {string} [codePackageEntryPointStatistics.lastActivationTime]
- *
  * @member {string} [codePackageEntryPointStatistics.lastExitTime]
- *
  * @member {string}
  * [codePackageEntryPointStatistics.lastSuccessfulActivationTime]
- *
  * @member {string} [codePackageEntryPointStatistics.lastSuccessfulExitTime]
- *
  * @member {number} [codePackageEntryPointStatistics.activationFailureCount]
- *
  * @member {number}
  * [codePackageEntryPointStatistics.continuousActivationFailureCount]
- *
  * @member {number} [codePackageEntryPointStatistics.exitFailureCount]
- *
  * @member {number}
  * [codePackageEntryPointStatistics.continuousExitFailureCount]
- *
  * @member {number} [codePackageEntryPointStatistics.activationCount]
- *
  * @member {number} [codePackageEntryPointStatistics.exitCount]
- *
  */
 export interface EntryPoint {
   entryPointLocation?: number;
@@ -1044,109 +842,67 @@ export interface EntryPoint {
  * The package of the deployed code
  *
  * @member {string} [name]
- *
  * @member {string} [version]
- *
  * @member {string} [serviceManifestName]
- *
  * @member {string} [status]
- *
  * @member {string} [runFrequencyInterval]
- *
  * @member {object} [setupEntryPoint]
- *
  * @member {number} [setupEntryPoint.entryPointLocation]
- *
  * @member {number} [setupEntryPoint.processId]
- *
  * @member {number} [setupEntryPoint.runAsUserName]
- *
  * @member {number} [setupEntryPoint.nextActivationTime]
- *
  * @member {string} [setupEntryPoint.status]
- *
  * @member {object} [setupEntryPoint.codePackageEntryPointStatistics]
- *
  * @member {number}
  * [setupEntryPoint.codePackageEntryPointStatistics.lastExitCode]
- *
  * @member {string}
  * [setupEntryPoint.codePackageEntryPointStatistics.lastActivationTime]
- *
  * @member {string}
  * [setupEntryPoint.codePackageEntryPointStatistics.lastExitTime]
- *
  * @member {string}
  * [setupEntryPoint.codePackageEntryPointStatistics.lastSuccessfulActivationTime]
- *
  * @member {string}
  * [setupEntryPoint.codePackageEntryPointStatistics.lastSuccessfulExitTime]
- *
  * @member {number}
  * [setupEntryPoint.codePackageEntryPointStatistics.activationFailureCount]
- *
  * @member {number}
  * [setupEntryPoint.codePackageEntryPointStatistics.continuousActivationFailureCount]
- *
  * @member {number}
  * [setupEntryPoint.codePackageEntryPointStatistics.exitFailureCount]
- *
  * @member {number}
  * [setupEntryPoint.codePackageEntryPointStatistics.continuousExitFailureCount]
- *
  * @member {number}
  * [setupEntryPoint.codePackageEntryPointStatistics.activationCount]
- *
  * @member {number} [setupEntryPoint.codePackageEntryPointStatistics.exitCount]
- *
  * @member {object} [mainEntryPoint]
- *
  * @member {number} [mainEntryPoint.entryPointLocation]
- *
  * @member {number} [mainEntryPoint.processId]
- *
  * @member {number} [mainEntryPoint.runAsUserName]
- *
  * @member {number} [mainEntryPoint.nextActivationTime]
- *
  * @member {string} [mainEntryPoint.status]
- *
  * @member {object} [mainEntryPoint.codePackageEntryPointStatistics]
- *
  * @member {number}
  * [mainEntryPoint.codePackageEntryPointStatistics.lastExitCode]
- *
  * @member {string}
  * [mainEntryPoint.codePackageEntryPointStatistics.lastActivationTime]
- *
  * @member {string}
  * [mainEntryPoint.codePackageEntryPointStatistics.lastExitTime]
- *
  * @member {string}
  * [mainEntryPoint.codePackageEntryPointStatistics.lastSuccessfulActivationTime]
- *
  * @member {string}
  * [mainEntryPoint.codePackageEntryPointStatistics.lastSuccessfulExitTime]
- *
  * @member {number}
  * [mainEntryPoint.codePackageEntryPointStatistics.activationFailureCount]
- *
  * @member {number}
  * [mainEntryPoint.codePackageEntryPointStatistics.continuousActivationFailureCount]
- *
  * @member {number}
  * [mainEntryPoint.codePackageEntryPointStatistics.exitFailureCount]
- *
  * @member {number}
  * [mainEntryPoint.codePackageEntryPointStatistics.continuousExitFailureCount]
- *
  * @member {number}
  * [mainEntryPoint.codePackageEntryPointStatistics.activationCount]
- *
  * @member {number} [mainEntryPoint.codePackageEntryPointStatistics.exitCount]
- *
  * @member {boolean} [hasSetupEntryPoint]
- *
  */
 export interface DeployedCodePackage {
   name?: string;
@@ -1167,31 +923,19 @@ export interface DeployedCodePackage {
  *
  * @member {string} [serviceKind] Possible values include: 'Invalid',
  * 'Stateless', 'Stateful'
- *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceTypeName]
- *
  * @member {string} [serviceManifestVersion]
- *
  * @member {string} [serviceManifestName]
- *
  * @member {string} [codePackageName]
- *
  * @member {string} [partitionId]
- *
  * @member {string} [instanceId]
- *
  * @member {string} [replicaId]
- *
  * @member {string} [replicaRole] Possible values include: 'Invalid', 'None',
  * 'Primary', 'IdleSecondary', 'ActiveSecondary'
- *
  * @member {string} [replicaStatus] Possible values include: 'Invalid',
  * 'InBuild', 'Standby', 'Ready', 'Down', 'Dropped'
- *
  * @member {string} [address]
- *
  */
 export interface DeployedReplica {
   serviceKind?: string;
@@ -1215,17 +959,11 @@ export interface DeployedReplica {
  * The status of the replication queue
  *
  * @member {string} [queueUtilizationPercentage]
- *
  * @member {string} [queueMemorySize]
- *
  * @member {string} [firstSequenceNumber]
- *
  * @member {string} [completedSequenceNumber]
- *
  * @member {string} [committedSequenceNumber]
- *
  * @member {string} [lastSequenceNumber]
- *
  */
 export interface DeployedReplicaDetailReplicatorStatusReplicationQueueStatus {
   queueUtilizationPercentage?: string;
@@ -1243,22 +981,14 @@ export interface DeployedReplicaDetailReplicatorStatusReplicationQueueStatus {
  * The status of the replicator
  *
  * @member {number} [kind]
- *
  * @member {object} [replicationQueueStatus] The status of the replication
  * queue
- *
  * @member {string} [replicationQueueStatus.queueUtilizationPercentage]
- *
  * @member {string} [replicationQueueStatus.queueMemorySize]
- *
  * @member {string} [replicationQueueStatus.firstSequenceNumber]
- *
  * @member {string} [replicationQueueStatus.completedSequenceNumber]
- *
  * @member {string} [replicationQueueStatus.committedSequenceNumber]
- *
  * @member {string} [replicationQueueStatus.lastSequenceNumber]
- *
  */
 export interface DeployedReplicaDetailReplicatorStatus {
   kind?: number;
@@ -1273,49 +1003,30 @@ export interface DeployedReplicaDetailReplicatorStatus {
  *
  * @member {string} [serviceKind] Possible values include: 'Invalid',
  * 'Stateless', 'Stateful'
- *
  * @member {string} [serviceName]
- *
  * @member {string} [partitionId]
- *
  * @member {number} [currentServiceOperation]
- *
  * @member {number} [currentReplicatorOperation]
- *
  * @member {string} [currentServiceOperationStartTimeUtc]
- *
  * @member {string} [instanceId]
- *
  * @member {string} [replicaId]
- *
  * @member {number} [readStatus]
- *
  * @member {number} [writeStatus]
- *
  * @member {object} [replicatorStatus] The status of the replicator
- *
  * @member {number} [replicatorStatus.kind]
- *
  * @member {object} [replicatorStatus.replicationQueueStatus] The status of the
  * replication queue
- *
  * @member {string}
  * [replicatorStatus.replicationQueueStatus.queueUtilizationPercentage]
- *
  * @member {string} [replicatorStatus.replicationQueueStatus.queueMemorySize]
- *
  * @member {string}
  * [replicatorStatus.replicationQueueStatus.firstSequenceNumber]
- *
  * @member {string}
  * [replicatorStatus.replicationQueueStatus.completedSequenceNumber]
- *
  * @member {string}
  * [replicatorStatus.replicationQueueStatus.committedSequenceNumber]
- *
  * @member {string}
  * [replicatorStatus.replicationQueueStatus.lastSequenceNumber]
- *
  */
 export interface DeployedReplicaDetail {
   serviceKind?: string;
@@ -1338,11 +1049,8 @@ export interface DeployedReplicaDetail {
  * The package of the deployed service
  *
  * @member {string} [name]
- *
  * @member {string} [version]
- *
  * @member {string} [status]
- *
  */
 export interface DeployedServicePackage {
   name?: string;
@@ -1357,16 +1065,11 @@ export interface DeployedServicePackage {
  * The health of the deployed service package
  *
  * @member {string} [applicationName]
- *
  * @member {string} [serviceManifestName]
- *
  * @member {string} [nodeName]
- *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface DeployedServicePackageHealth {
   applicationName?: string;
@@ -1383,13 +1086,9 @@ export interface DeployedServicePackageHealth {
  * The type of the deploye service
  *
  * @member {string} [serviceTypeName]
- *
  * @member {string} [codePackageName]
- *
  * @member {string} [serviceManifestName]
- *
  * @member {string} [status]
- *
  */
 export interface DeployedServiceType {
   serviceTypeName?: string;
@@ -1415,9 +1114,7 @@ export interface DeployedServiceHealthReport extends HealthReport {
  * The list of the default parameter
  *
  * @member {string} [key]
- *
  * @member {string} [value]
- *
  */
 export interface ApplicationTypeDefaultParameterListItem {
   key?: string;
@@ -1431,11 +1128,8 @@ export interface ApplicationTypeDefaultParameterListItem {
  * The type of the application
  *
  * @member {string} [name]
- *
  * @member {string} [version]
- *
  * @member {array} [defaultParameterList]
- *
  */
 export interface ApplicationType {
   name?: string;
@@ -1450,7 +1144,6 @@ export interface ApplicationType {
  * The manifest of the service
  *
  * @member {string} [manifest]
- *
  */
 export interface ServiceManifest {
   manifest?: string;
@@ -1463,13 +1156,9 @@ export interface ServiceManifest {
  * The description of the service type
  *
  * @member {boolean} [isStateful]
- *
  * @member {string} [serviceTypeName]
- *
  * @member {string} [placementConstraints]
- *
  * @member {boolean} [hasPersistedState]
- *
  */
 export interface ServiceTypeServiceTypeDescription {
   isStateful?: boolean;
@@ -1486,21 +1175,13 @@ export interface ServiceTypeServiceTypeDescription {
  *
  * @member {object} [serviceTypeDescription] The description of the service
  * type
- *
  * @member {boolean} [serviceTypeDescription.isStateful]
- *
  * @member {string} [serviceTypeDescription.serviceTypeName]
- *
  * @member {string} [serviceTypeDescription.placementConstraints]
- *
  * @member {boolean} [serviceTypeDescription.hasPersistedState]
- *
  * @member {string} [serviceManifestVersion]
- *
  * @member {string} [serviceManifestName]
- *
  * @member {boolean} [isServiceGroup]
- *
  */
 export interface ServiceType {
   serviceTypeDescription?: ServiceTypeServiceTypeDescription;
@@ -1516,9 +1197,7 @@ export interface ServiceType {
  * The parameters
  *
  * @member {string} [key]
- *
  * @member {string} [value]
- *
  */
 export interface ApplicationParametersItem {
   key?: string;
@@ -1532,20 +1211,13 @@ export interface ApplicationParametersItem {
  * The application
  *
  * @member {string} [id]
- *
  * @member {string} [name]
- *
  * @member {string} [typeName]
- *
  * @member {string} [typeVersion]
- *
  * @member {string} [status]
- *
  * @member {array} [parameters]
- *
  * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- *
  */
 export interface Application {
   id?: string;
@@ -1564,9 +1236,7 @@ export interface Application {
  * The list of the application
  *
  * @member {string} [continuationToken]
- *
  * @member {array} [items]
- *
  */
 export interface ApplicationList {
   continuationToken?: string;
@@ -1580,9 +1250,7 @@ export interface ApplicationList {
  * The list of the parameter
  *
  * @member {string} [key]
- *
  * @member {string} [value]
- *
  */
 export interface ApplicationDescriptionParameterListItem {
   key?: string;
@@ -1596,13 +1264,9 @@ export interface ApplicationDescriptionParameterListItem {
  * The description of the application
  *
  * @member {string} [name]
- *
  * @member {string} [typeName]
- *
  * @member {string} [typeVersion]
- *
  * @member {array} [parameterList]
- *
  */
 export interface ApplicationDescription {
   name?: string;
@@ -1618,7 +1282,6 @@ export interface ApplicationDescription {
  * The manifest of the application
  *
  * @member {string} [manifest]
- *
  */
 export interface ApplicationManifest {
   manifest?: string;
@@ -1641,26 +1304,17 @@ export interface ApplicationHealthReport extends HealthReport {
  * The service
  *
  * @member {string} [id]
- *
  * @member {string} [serviceKind] Possible values include: 'Invalid',
  * 'Stateless', 'Stateful'
- *
  * @member {string} [name]
- *
  * @member {string} [typeName]
- *
  * @member {string} [manifestVersion]
- *
  * @member {boolean} [hasPersistedState]
- *
  * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [serviceStatus] Possible values include: 'Invalid',
  * 'Active', 'Upgrading', 'Deleting', 'Creating', 'Faile'
- *
  * @member {boolean} [isServiceGroup]
- *
  */
 export interface Service {
   id?: string;
@@ -1681,9 +1335,7 @@ export interface Service {
  * The list of the service
  *
  * @member {string} [continuationToken]
- *
  * @member {array} [items]
- *
  */
 export interface ServiceList {
   continuationToken?: string;
@@ -1708,15 +1360,10 @@ export interface ServiceHealthReport extends HealthReport {
  *
  * @member {string} [partitionScheme] Possible values include: 'Invalid',
  * 'Singleton', 'UniformInt64', 'Named'
- *
  * @member {number} [count]
- *
  * @member {array} [names]
- *
  * @member {string} [lowKey]
- *
  * @member {string} [highKey]
- *
  */
 export interface PartitionDescription {
   partitionScheme?: string;
@@ -1733,12 +1380,9 @@ export interface PartitionDescription {
  * The description of the service group member
  *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceTypeName]
- *
  * @member {string} [serviceKind] Possible values include: 'Invalid',
  * 'Stateless', 'Stateful'
- *
  */
 export interface ServiceGroupMemberDescription {
   serviceName?: string;
@@ -1753,10 +1397,8 @@ export interface ServiceGroupMemberDescription {
  * The description of the service correlation
  *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceCorrelationScheme] Possible values include:
  * 'Invalid', 'Affinity', 'AlignedAffinity', 'NonAlignedAffinity'
- *
  */
 export interface ServiceCorrelationDescription {
   serviceName?: string;
@@ -1770,56 +1412,34 @@ export interface ServiceCorrelationDescription {
  * The description of the service group
  *
  * @member {string} [applicationName]
- *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceTypeName]
- *
  * @member {object} [partitionDescription]
- *
  * @member {string} [partitionDescription.partitionScheme] Possible values
  * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
- *
  * @member {number} [partitionDescription.count]
- *
  * @member {array} [partitionDescription.names]
- *
  * @member {string} [partitionDescription.lowKey]
- *
  * @member {string} [partitionDescription.highKey]
- *
  * @member {string} [placementConstraints]
- *
  * @member {object} [correlationScheme]
- *
  * @member {string} [correlationScheme.serviceName]
- *
  * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [serviceLoadMetrics]
- *
  * @member {string} [serviceLoadMetrics.serviceName]
- *
  * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [servicePlacementPolicies]
- *
  * @member {string} [servicePlacementPolicies.serviceName]
- *
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
  * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {number} [flags]
- *
  * @member {array} [serviceGroupMemberDescription]
- *
  * @member {string} serviceKind Polymorphic Discriminator
- *
  */
 export interface ServiceGroupDescription {
   applicationName?: string;
@@ -1842,7 +1462,6 @@ export interface ServiceGroupDescription {
  * The description of the stateless service group
  *
  * @member {number} [instanceCount]
- *
  */
 export interface StatelessServiceGroupDescription extends ServiceGroupDescription {
   instanceCount?: number;
@@ -1855,22 +1474,14 @@ export interface StatelessServiceGroupDescription extends ServiceGroupDescriptio
  * The description of the stateful service group
  *
  * @member {number} [targetReplicaSetSize]
- *
  * @member {number} [minReplicaSetSize]
- *
  * @member {boolean} [hasPersistedState]
- *
  * @member {number} [replicaRestartWaitDurationSeconds]
- *
  * @member {number} [quorumLossWaitDurationSeconds]
- *
  * @member {number} [standByReplicaKeepDurationSeconds]
- *
  * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
  * 'Medium', 'High'
- *
  * @member {boolean} [isDefaultMoveCostSpecified]
- *
  */
 export interface StatefulServiceGroupDescription extends ServiceGroupDescription {
   targetReplicaSetSize?: number;
@@ -1890,56 +1501,34 @@ export interface StatefulServiceGroupDescription extends ServiceGroupDescription
  * The description of the create service group
  *
  * @member {string} [applicationName]
- *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceTypeName]
- *
  * @member {object} [partitionDescription]
- *
  * @member {string} [partitionDescription.partitionScheme] Possible values
  * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
- *
  * @member {number} [partitionDescription.count]
- *
  * @member {array} [partitionDescription.names]
- *
  * @member {string} [partitionDescription.lowKey]
- *
  * @member {string} [partitionDescription.highKey]
- *
  * @member {string} [placementConstraints]
- *
  * @member {object} [correlationScheme]
- *
  * @member {string} [correlationScheme.serviceName]
- *
  * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [serviceLoadMetrics]
- *
  * @member {string} [serviceLoadMetrics.serviceName]
- *
  * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [servicePlacementPolicies]
- *
  * @member {string} [servicePlacementPolicies.serviceName]
- *
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
  * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {number} [flags]
- *
  * @member {array} [serviceGroupMemberDescription]
- *
  * @member {string} serviceKind Polymorphic Discriminator
- *
  */
 export interface CreateServiceGroupDescription {
   applicationName?: string;
@@ -1962,7 +1551,6 @@ export interface CreateServiceGroupDescription {
  * The description of the stateless create service group
  *
  * @member {number} [instanceCount]
- *
  */
 export interface StatelessCreateServiceGroupDescription extends CreateServiceGroupDescription {
   instanceCount?: number;
@@ -1975,22 +1563,14 @@ export interface StatelessCreateServiceGroupDescription extends CreateServiceGro
  * The description of the stateful create service group
  *
  * @member {number} [targetReplicaSetSize]
- *
  * @member {number} [minReplicaSetSize]
- *
  * @member {boolean} [hasPersistedState]
- *
  * @member {number} [replicaRestartWaitDurationSeconds]
- *
  * @member {number} [quorumLossWaitDurationSeconds]
- *
  * @member {number} [standByReplicaKeepDurationSeconds]
- *
  * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
  * 'Medium', 'High'
- *
  * @member {boolean} [isDefaultMoveCostSpecified]
- *
  */
 export interface StatefulCreateServiceGroupDescription extends CreateServiceGroupDescription {
   targetReplicaSetSize?: number;
@@ -2010,9 +1590,7 @@ export interface StatefulCreateServiceGroupDescription extends CreateServiceGrou
  * The member of the service group
  *
  * @member {string} [name]
- *
  * @member {array} [serviceGroupMemberDescription]
- *
  */
 export interface ServiceGroupMember {
   name?: string;
@@ -2026,10 +1604,8 @@ export interface ServiceGroupMember {
  * The states of the service health
  *
  * @member {string} [serviceName]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface ApplicationHealthServiceHealthStatesItem {
   serviceName?: string;
@@ -2043,12 +1619,9 @@ export interface ApplicationHealthServiceHealthStatesItem {
  * The states of the deployed application health
  *
  * @member {string} [applicationName]
- *
  * @member {string} [nodeName]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface ApplicationHealthDeployedApplicationHealthStatesItem {
   applicationName?: string;
@@ -2063,18 +1636,12 @@ export interface ApplicationHealthDeployedApplicationHealthStatesItem {
  * The health of the application
  *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [unhealthyEvaluations]
- *
  * @member {string} [name]
- *
  * @member {array} [serviceHealthStates]
- *
  * @member {array} [deployedApplicationHealthStates]
- *
  */
 export interface ApplicationHealth {
   healthEvents?: HealthEvent[];
@@ -2093,10 +1660,8 @@ export interface ApplicationHealth {
  *
  * @member {number} [maxPercentDeltaUnhealthyNodes] The max percent of the
  * delta unhealthy nodes, values are [0-100]
- *
  * @member {number} [maxPercentUpgradeDomainDeltaUnhealthyNodes] The max
  * percent of the upgrade domain delta unhealthy nodes, values are [0-100]
- *
  */
 export interface ClusterUpgradeHealthPolicy {
   maxPercentDeltaUnhealthyNodes?: number;
@@ -2111,22 +1676,16 @@ export interface ClusterUpgradeHealthPolicy {
  *
  * @member {boolean} [considerWarningAsError] The boolean of the consider
  * warning as error
- *
  * @member {number} [maxPercentUnhealthyDeployedApplications] The max percent
  * of the unhealthy deployed applications
- *
  * @member {number} [defaultServiceTypeHealthPolicy] The policy of the default
  * service type health
- *
  * @member {number} [maxPercentUnhealthyServices] The policy of the default
  * service type health
- *
  * @member {number} [maxPercentUnhealthyPartitionsPerService] The max percent
  * unhealthy partitions per service
- *
  * @member {number} [maxPercentUnhealthyReplicasPerPartition] The max percent
  * unhealthy replicas per partition
- *
  */
 export interface ApplicationHealthPolicyMap {
   considerWarningAsError?: boolean;
@@ -2144,59 +1703,41 @@ export interface ApplicationHealthPolicyMap {
  * The description of the start cluster upgrade
  *
  * @member {string} [configVersion] The version of the config
- *
  * @member {string} [codeVersion] The version of the code
- *
  * @member {string} [upgradeKind] The kind of the upgrade
- *
  * @member {string} [rollingUpgradeMode] The mode of the rolling upgrade.
  * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
  * 'Monitored'
- *
  * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The seconds of the
  * upgrade replica set check timeout
- *
  * @member {boolean} [forceRestart] The flag of the force restart
- *
  * @member {boolean} [enableDeltaHealthEvaluation] The evaluation of the enable
  * delta health
- *
  * @member {object} [monitoringPolicy] The policy of the monitoring
- *
  * @member {object} [clusterUpgradeHealthPolicy] The policy of the cluster
  * upgrade health
- *
  * @member {number} [clusterUpgradeHealthPolicy.maxPercentDeltaUnhealthyNodes]
  * The max percent of the delta unhealthy nodes, values are [0-100]
- *
  * @member {number}
  * [clusterUpgradeHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes] The
  * max percent of the upgrade domain delta unhealthy nodes, values are [0-100]
- *
  * @member {object} [applicationHealthPolicyMap] The map of the application
  * health policy
- *
  * @member {boolean} [applicationHealthPolicyMap.considerWarningAsError] The
  * boolean of the consider warning as error
- *
  * @member {number}
  * [applicationHealthPolicyMap.maxPercentUnhealthyDeployedApplications] The max
  * percent of the unhealthy deployed applications
- *
  * @member {number} [applicationHealthPolicyMap.defaultServiceTypeHealthPolicy]
  * The policy of the default service type health
- *
  * @member {number} [applicationHealthPolicyMap.maxPercentUnhealthyServices]
  * The policy of the default service type health
- *
  * @member {number}
  * [applicationHealthPolicyMap.maxPercentUnhealthyPartitionsPerService] The max
  * percent unhealthy partitions per service
- *
  * @member {number}
  * [applicationHealthPolicyMap.maxPercentUnhealthyReplicasPerPartition] The max
  * percent unhealthy replicas per partition
- *
  */
 export interface StartClusterUpgrade {
   configVersion?: string;
@@ -2218,9 +1759,7 @@ export interface StartClusterUpgrade {
  * The progress of the current upgrade domain
  *
  * @member {string} [domainName]
- *
  * @member {string} [nodeUpgradeProgressList]
- *
  */
 export interface ApplicationUpgradeCurrentUpgradeDomainProgress {
   domainName?: string;
@@ -2234,9 +1773,7 @@ export interface ApplicationUpgradeCurrentUpgradeDomainProgress {
  * The states of the deployed application health
  *
  * @member {string} [domainName]
- *
  * @member {string} [nodeUpgradeProgressList]
- *
  */
 export interface ApplicationUpgradeDeployedApplicationHealthStates {
   domainName?: string;
@@ -2250,50 +1787,31 @@ export interface ApplicationUpgradeDeployedApplicationHealthStates {
  * The upgrade of the application
  *
  * @member {string} [name]
- *
  * @member {string} [typeName]
- *
  * @member {string} [targetApplicationTypeVersion]
- *
  * @member {string} [upgradeDomains]
- *
  * @member {string} [upgradeState] Possible values include: 'Invalid',
  * 'RollingBackInProgress', 'RollingBackCompleted', 'RollingForwardPending',
  * 'RollingForwardInProgress', 'RollingForwardCompleted'
- *
  * @member {string} [nextUpgradeDomain]
- *
  * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
  * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
- *
  * @member {string} [upgradeDurationInMilliseconds]
- *
  * @member {string} [upgradeDomainDurationInMilliseconds]
- *
  * @member {string} [unhealthyEvaluations]
- *
  * @member {object} [currentUpgradeDomainProgress] The progress of the current
  * upgrade domain
- *
  * @member {string} [currentUpgradeDomainProgress.domainName]
- *
  * @member {string} [currentUpgradeDomainProgress.nodeUpgradeProgressList]
- *
  * @member {string} [startTimestampUtc]
- *
  * @member {string} [failureTimestampUtc]
- *
  * @member {string} [failureReason] Possible values include: 'Invalid',
  * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout',
  * 'OverallUpgradeTimeout'
- *
  * @member {object} [deployedApplicationHealthStates] The states of the
  * deployed application health
- *
  * @member {string} [deployedApplicationHealthStates.domainName]
- *
  * @member {string} [deployedApplicationHealthStates.nodeUpgradeProgressList]
- *
  */
 export interface ApplicationUpgrade {
   name?: string;
@@ -2320,14 +1838,10 @@ export interface ApplicationUpgrade {
  * The description of the service load metric
  *
  * @member {string} [name]
- *
  * @member {string} [serviceLoadMetricWeight] Possible values include: 'Zero',
  * 'Low', 'Medium', 'High'
- *
  * @member {number} [primaryDefaultLoad]
- *
  * @member {number} [secondaryDefaultLoad]
- *
  */
 export interface ServiceLoadMetricDescription {
   name?: string;
@@ -2343,7 +1857,6 @@ export interface ServiceLoadMetricDescription {
  * The description of the service placement policy
  *
  * @member {string} [type]
- *
  */
 export interface ServicePlacementPolicyDescription {
   type?: string;
@@ -2356,54 +1869,33 @@ export interface ServicePlacementPolicyDescription {
  * The description of the service
  *
  * @member {string} [applicationName]
- *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceTypeName]
- *
  * @member {object} [partitionDescription]
- *
  * @member {string} [partitionDescription.partitionScheme] Possible values
  * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
- *
  * @member {number} [partitionDescription.count]
- *
  * @member {array} [partitionDescription.names]
- *
  * @member {string} [partitionDescription.lowKey]
- *
  * @member {string} [partitionDescription.highKey]
- *
  * @member {string} [placementConstraints]
- *
  * @member {object} [correlationScheme]
- *
  * @member {string} [correlationScheme.serviceName]
- *
  * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [serviceLoadMetrics]
- *
  * @member {string} [serviceLoadMetrics.serviceName]
- *
  * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [servicePlacementPolicies]
- *
  * @member {string} [servicePlacementPolicies.serviceName]
- *
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
  * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {number} [flags]
- *
  * @member {string} serviceKind Polymorphic Discriminator
- *
  */
 export interface ServiceDescription {
   applicationName?: string;
@@ -2425,7 +1917,6 @@ export interface ServiceDescription {
  * The description of the stateless service
  *
  * @member {number} [instanceCount]
- *
  */
 export interface StatelessServiceDescription extends ServiceDescription {
   instanceCount?: number;
@@ -2438,22 +1929,14 @@ export interface StatelessServiceDescription extends ServiceDescription {
  * The description of the stateful service
  *
  * @member {number} [targetReplicaSetSize]
- *
  * @member {number} [minReplicaSetSize]
- *
  * @member {boolean} [hasPersistedState]
- *
  * @member {number} [replicaRestartWaitDurationSeconds]
- *
  * @member {number} [quorumLossWaitDurationSeconds]
- *
  * @member {number} [standByReplicaKeepDurationSeconds]
- *
  * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
  * 'Medium', 'High'
- *
  * @member {boolean} [isDefaultMoveCostSpecified]
- *
  */
 export interface StatefulServiceDescription extends ServiceDescription {
   targetReplicaSetSize?: number;
@@ -2473,9 +1956,7 @@ export interface StatefulServiceDescription extends ServiceDescription {
  * The template of the service description
  *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceTypeName]
- *
  */
 export interface ServiceDescriptionTemplate {
   serviceName?: string;
@@ -2489,54 +1970,33 @@ export interface ServiceDescriptionTemplate {
  * The description of the create service
  *
  * @member {string} [applicationName]
- *
  * @member {string} [serviceName]
- *
  * @member {string} [serviceTypeName]
- *
  * @member {object} [partitionDescription]
- *
  * @member {string} [partitionDescription.partitionScheme] Possible values
  * include: 'Invalid', 'Singleton', 'UniformInt64', 'Named'
- *
  * @member {number} [partitionDescription.count]
- *
  * @member {array} [partitionDescription.names]
- *
  * @member {string} [partitionDescription.lowKey]
- *
  * @member {string} [partitionDescription.highKey]
- *
  * @member {string} [placementConstraints]
- *
  * @member {object} [correlationScheme]
- *
  * @member {string} [correlationScheme.serviceName]
- *
  * @member {string} [correlationScheme.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [serviceLoadMetrics]
- *
  * @member {string} [serviceLoadMetrics.serviceName]
- *
  * @member {string} [serviceLoadMetrics.serviceCorrelationScheme] Possible
  * values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {object} [servicePlacementPolicies]
- *
  * @member {string} [servicePlacementPolicies.serviceName]
- *
  * @member {string} [servicePlacementPolicies.serviceCorrelationScheme]
  * Possible values include: 'Invalid', 'Affinity', 'AlignedAffinity',
  * 'NonAlignedAffinity'
- *
  * @member {number} [flags]
- *
  * @member {string} serviceKind Polymorphic Discriminator
- *
  */
 export interface CreateServiceDescription {
   applicationName?: string;
@@ -2558,7 +2018,6 @@ export interface CreateServiceDescription {
  * The description of the stateless create service
  *
  * @member {number} [instanceCount]
- *
  */
 export interface StatelessCreateServiceDescription extends CreateServiceDescription {
   instanceCount?: number;
@@ -2571,22 +2030,14 @@ export interface StatelessCreateServiceDescription extends CreateServiceDescript
  * The description of the stateful create service
  *
  * @member {number} [targetReplicaSetSize]
- *
  * @member {number} [minReplicaSetSize]
- *
  * @member {boolean} [hasPersistedState]
- *
  * @member {number} [replicaRestartWaitDurationSeconds]
- *
  * @member {number} [quorumLossWaitDurationSeconds]
- *
  * @member {number} [standByReplicaKeepDurationSeconds]
- *
  * @member {string} [defaultMoveCost] Possible values include: 'Zero', 'Low',
  * 'Medium', 'High'
- *
  * @member {boolean} [isDefaultMoveCostSpecified]
- *
  */
 export interface StatefulCreateServiceDescription extends CreateServiceDescription {
   targetReplicaSetSize?: number;
@@ -2606,9 +2057,7 @@ export interface StatefulCreateServiceDescription extends CreateServiceDescripti
  * The description of the update service
  *
  * @member {number} [flags]
- *
  * @member {string} serviceKind Polymorphic Discriminator
- *
  */
 export interface UpdateServiceDescription {
   flags?: number;
@@ -2622,7 +2071,6 @@ export interface UpdateServiceDescription {
  * The description of the stateless update service
  *
  * @member {number} [instanceCount]
- *
  */
 export interface StatelessUpdateServiceDescription extends UpdateServiceDescription {
   instanceCount?: number;
@@ -2635,15 +2083,10 @@ export interface StatelessUpdateServiceDescription extends UpdateServiceDescript
  * The description of the stateful update service
  *
  * @member {number} [targetReplicaSetSize]
- *
  * @member {number} [minReplicaSetSize]
- *
  * @member {number} [replicaRestartWaitDurationInMilliseconds]
- *
  * @member {number} [quorumLossWaitDurationInMilliseconds]
- *
  * @member {number} [standByReplicaKeepDurationInMilliseconds]
- *
  */
 export interface StatefulUpdateServiceDescription extends UpdateServiceDescription {
   targetReplicaSetSize?: number;
@@ -2660,9 +2103,7 @@ export interface StatefulUpdateServiceDescription extends UpdateServiceDescripti
  * The description of the update service group
  *
  * @member {number} [flags]
- *
  * @member {string} serviceKind Polymorphic Discriminator
- *
  */
 export interface UpdateServiceGroupDescription {
   flags?: number;
@@ -2676,7 +2117,6 @@ export interface UpdateServiceGroupDescription {
  * The description of the stateless update service group
  *
  * @member {number} [instanceCount]
- *
  */
 export interface StatelessUpdateServiceGroupDescription extends UpdateServiceGroupDescription {
   instanceCount?: number;
@@ -2689,15 +2129,10 @@ export interface StatelessUpdateServiceGroupDescription extends UpdateServiceGro
  * The description of the stateful update service group
  *
  * @member {number} [targetReplicaSetSize]
- *
  * @member {number} [minReplicaSetSize]
- *
  * @member {number} [replicaRestartWaitDurationInMilliseconds]
- *
  * @member {number} [quorumLossWaitDurationInMilliseconds]
- *
  * @member {number} [standByReplicaKeepDurationInMilliseconds]
- *
  */
 export interface StatefulUpdateServiceGroupDescription extends UpdateServiceGroupDescription {
   targetReplicaSetSize?: number;
@@ -2714,10 +2149,8 @@ export interface StatefulUpdateServiceGroupDescription extends UpdateServiceGrou
  * The states of the partition health
  *
  * @member {string} [partitionId]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface ServiceHealthPartitionHealthStatesItem {
   partitionId?: string;
@@ -2731,14 +2164,10 @@ export interface ServiceHealthPartitionHealthStatesItem {
  * The health of the service
  *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [name]
- *
  * @member {array} [partitionHealthStates]
- *
  */
 export interface ServiceHealth {
   healthEvents?: HealthEvent[];
@@ -2755,15 +2184,10 @@ export interface ServiceHealth {
  *
  * @member {string} [servicePartitionKind] Possible values include: 'Invalid',
  * 'Singleton', 'Int64Range', 'Named'
- *
  * @member {string} [id]
- *
  * @member {array} [name]
- *
  * @member {string} [lowKey]
- *
  * @member {string} [highKey]
- *
  */
 export interface PartitionInformation {
   servicePartitionKind?: string;
@@ -2780,9 +2204,7 @@ export interface PartitionInformation {
  * The epoch of the current configuration
  *
  * @member {string} [configurationVersion]
- *
  * @member {string} [dataLossVersion]
- *
  */
 export interface PartitionCurrentConfigurationEpoch {
   configurationVersion?: string;
@@ -2797,39 +2219,24 @@ export interface PartitionCurrentConfigurationEpoch {
  *
  * @member {string} [serviceKind] Possible values include: 'Invalid',
  * 'Stateless', 'Stateful'
- *
  * @member {object} [partitionInformation]
- *
  * @member {string} [partitionInformation.servicePartitionKind] Possible values
  * include: 'Invalid', 'Singleton', 'Int64Range', 'Named'
- *
  * @member {string} [partitionInformation.id]
- *
  * @member {array} [partitionInformation.name]
- *
  * @member {string} [partitionInformation.lowKey]
- *
  * @member {string} [partitionInformation.highKey]
- *
  * @member {number} [instanceCount]
- *
  * @member {number} [targetReplicaSetSize]
- *
  * @member {number} [minReplicaSetSize]
- *
  * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [partitionStatus] Possible values include: 'Invalid',
  * 'Ready', 'NotReady', 'InQuorumLoss', 'Reconfiguring', 'Deleting'
- *
  * @member {object} [currentConfigurationEpoch] The epoch of the current
  * configuration
- *
  * @member {string} [currentConfigurationEpoch.configurationVersion]
- *
  * @member {string} [currentConfigurationEpoch.dataLossVersion]
- *
  */
 export interface Partition {
   serviceKind?: string;
@@ -2849,9 +2256,7 @@ export interface Partition {
  * The list of the partition
  *
  * @member {string} [continuationToken]
- *
  * @member {array} [items]
- *
  */
 export interface PartitionList {
   continuationToken?: string;
@@ -2876,26 +2281,17 @@ export interface PartitionHealthReport extends HealthReport {
  *
  * @member {string} [serviceKind] Possible values include: 'Invalid',
  * 'Stateless', 'Stateful'
- *
  * @member {string} [instanceId]
- *
  * @member {string} [replicaId]
- *
  * @member {string} [replicaRole] Possible values include: 'Invalid', 'None',
  * 'Primary', 'IdleSecondary', 'ActiveSecondary'
- *
  * @member {string} [replicaStatus] Possible values include: 'Invalid',
  * 'InBuild', 'Standby', 'Ready', 'Down', 'Dropped'
- *
  * @member {string} [healthState] Possible values include: 'Invalid', 'Ok',
  * 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [address]
- *
  * @member {string} [nodeName]
- *
  * @member {string} [lastInBuildDurationInSeconds]
- *
  */
 export interface Replica {
   serviceKind?: string;
@@ -2916,9 +2312,7 @@ export interface Replica {
  * The list of the replica
  *
  * @member {string} [continuationToken]
- *
  * @member {array} [items]
- *
  */
 export interface ReplicaList {
   continuationToken?: string;
@@ -2942,14 +2336,10 @@ export interface ReplicaHealthReport extends HealthReport {
  * The states of the replica health
  *
  * @member {number} [healthEvents]
- *
  * @member {string} [partitionId]
- *
  * @member {string} [replicaId]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface PartitionHealthReplicaHealthStatesItem {
   healthEvents?: number;
@@ -2965,14 +2355,10 @@ export interface PartitionHealthReplicaHealthStatesItem {
  * The health of the partition
  *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {string} [partitionId]
- *
  * @member {array} [replicaHealthStates]
- *
  */
 export interface PartitionHealth {
   healthEvents?: HealthEvent[];
@@ -2989,16 +2375,11 @@ export interface PartitionHealth {
  *
  * @member {string} [serviceKind] Possible values include: 'Invalid',
  * 'Stateless', 'Stateful'
- *
  * @member {string} [partitionId]
- *
  * @member {string} [replicaId]
- *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface ReplicaHealth {
   serviceKind?: string;
@@ -3015,11 +2396,8 @@ export interface ReplicaHealth {
  * The information of the partition load
  *
  * @member {string} [partitionId]
- *
  * @member {array} [primaryLoadMetricReports]
- *
  * @member {array} [secondaryLoadMetricReports]
- *
  */
 export interface PartitionLoadInformation {
   partitionId?: string;
@@ -3034,11 +2412,8 @@ export interface PartitionLoadInformation {
  * The information of the replica load
  *
  * @member {string} [partitionId]
- *
  * @member {string} [replicaOrInstanceId]
- *
  * @member {array} [reportedLoad]
- *
  */
 export interface ReplicaLoadInformation {
   partitionId?: string;
@@ -3053,7 +2428,6 @@ export interface ReplicaLoadInformation {
  * The id of the min node
  *
  * @member {string} [id]
- *
  */
 export interface LoadMetricInformationMinNodeLoadId {
   id?: string;
@@ -3066,7 +2440,6 @@ export interface LoadMetricInformationMinNodeLoadId {
  * The id of the max node load
  *
  * @member {string} [id]
- *
  */
 export interface LoadMetricInformationMaxNodeLoadId {
   id?: string;
@@ -3079,47 +2452,26 @@ export interface LoadMetricInformationMaxNodeLoadId {
  * The information of the load metric
  *
  * @member {string} [name]
- *
  * @member {boolean} [isBalancedBefore]
- *
  * @member {boolean} [isBalancedAfter]
- *
  * @member {number} [deviationBefore]
- *
  * @member {number} [deviationAfter]
- *
  * @member {number} [balancingThreshold]
- *
  * @member {string} [action]
- *
  * @member {number} [activityThreshold]
- *
  * @member {string} [clusterCapacity]
- *
  * @member {string} [clusterLoad]
- *
  * @member {string} [remainingUnbufferedCapacity]
- *
  * @member {number} [nodeBufferPercentage]
- *
  * @member {string} [bufferedCapacity]
- *
  * @member {string} [remainingBufferedCapacity]
- *
  * @member {boolean} [isClusterCapacityViolation]
- *
  * @member {string} [minNodeLoadValue]
- *
  * @member {object} [minNodeLoadId] The id of the min node
- *
  * @member {string} [minNodeLoadId.id]
- *
  * @member {string} [maxNodeLoadValue]
- *
  * @member {object} [maxNodeLoadId] The id of the max node load
- *
  * @member {string} [maxNodeLoadId.id]
- *
  */
 export interface LoadMetricInformation {
   name?: string;
@@ -3160,11 +2512,8 @@ export interface ClusterHealthReport extends HealthReport {
  * The information of the cluster load
  *
  * @member {string} [lastBalancingStartTimeUtc]
- *
  * @member {string} [lastBalancingEndTimeUtc]
- *
  * @member {array} [loadMetricInformation]
- *
  */
 export interface ClusterLoadInformation {
   lastBalancingStartTimeUtc?: string;
@@ -3179,7 +2528,6 @@ export interface ClusterLoadInformation {
  * The id
  *
  * @member {string} [id]
- *
  */
 export interface ClusterHealthNodeHealthStatesItemId {
   id?: string;
@@ -3192,14 +2540,10 @@ export interface ClusterHealthNodeHealthStatesItemId {
  * The states of tehe node health
  *
  * @member {string} [name]
- *
  * @member {object} [id] The id
- *
  * @member {string} [id.id]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface ClusterHealthNodeHealthStatesItem {
   name?: string;
@@ -3214,10 +2558,8 @@ export interface ClusterHealthNodeHealthStatesItem {
  * The state of the application health
  *
  * @member {string} [name]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  */
 export interface ClusterHealthApplicationHealthStateItem {
   name?: string;
@@ -3231,16 +2573,11 @@ export interface ClusterHealthApplicationHealthStateItem {
  * The health of the cluster
  *
  * @member {array} [healthEvents]
- *
  * @member {string} [aggregatedHealthState] Possible values include: 'Invalid',
  * 'Ok', 'Warning', 'Error', 'Unknown'
- *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {array} [nodeHealthStates]
- *
  * @member {array} [applicationHealthState]
- *
  */
 export interface ClusterHealth {
   healthEvents?: HealthEvent[];
@@ -3257,17 +2594,11 @@ export interface ClusterHealth {
  * The policy of the monitoring
  *
  * @member {string} [failureAction]
- *
  * @member {string} [healthCheckWaitDurationInMilliseconds]
- *
  * @member {string} [healthCheckStableDurationInMilliseconds]
- *
  * @member {string} [healthCheckRetryTimeoutInMilliseconds]
- *
  * @member {string} [upgradeTimeoutInMilliseconds]
- *
  * @member {string} [upgradeDomainTimeoutInMilliseconds]
- *
  */
 export interface MonitoringPolicy {
   failureAction?: string;
@@ -3285,11 +2616,8 @@ export interface MonitoringPolicy {
  * The policy of the default service type health
  *
  * @member {number} [maxPercentUnhealthyServices]
- *
  * @member {number} [maxPercentUnhealthyPartitionsPerService]
- *
  * @member {number} [maxPercentUnhealthyReplicasPerPartition]
- *
  */
 export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
   maxPercentUnhealthyServices?: number;
@@ -3304,21 +2632,15 @@ export interface ApplicationHealthPolicyDefaultServiceTypeHealthPolicy {
  * The policy of the application health
  *
  * @member {boolean} [considerWarningAsError]
- *
  * @member {number} [maxPercentUnhealthyDeployedApplications]
- *
  * @member {object} [defaultServiceTypeHealthPolicy] The policy of the default
  * service type health
- *
  * @member {number}
  * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- *
  * @member {number}
  * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
- *
  * @member {number}
  * [defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
- *
  */
 export interface ApplicationHealthPolicy {
   considerWarningAsError?: boolean;
@@ -3333,9 +2655,7 @@ export interface ApplicationHealthPolicy {
  * The parameters
  *
  * @member {string} [key]
- *
  * @member {string} [value]
- *
  */
 export interface StartApplicationUpgradeParametersItem {
   key?: string;
@@ -3349,53 +2669,32 @@ export interface StartApplicationUpgradeParametersItem {
  * The description of the start application upgrade
  *
  * @member {string} [name]
- *
  * @member {string} [targetApplicationTypeVersion]
- *
  * @member {array} [parameters]
- *
  * @member {string} [upgradeKind] Possible values include: 'Invalid', 'Rolling'
- *
  * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
  * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
- *
  * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds]
- *
  * @member {boolean} [forceRestart]
- *
  * @member {object} [monitoringPolicy]
- *
  * @member {string} [monitoringPolicy.failureAction]
- *
  * @member {string} [monitoringPolicy.healthCheckWaitDurationInMilliseconds]
- *
  * @member {string} [monitoringPolicy.healthCheckStableDurationInMilliseconds]
- *
  * @member {string} [monitoringPolicy.healthCheckRetryTimeoutInMilliseconds]
- *
  * @member {string} [monitoringPolicy.upgradeTimeoutInMilliseconds]
- *
  * @member {string} [monitoringPolicy.upgradeDomainTimeoutInMilliseconds]
- *
  * @member {object} [applicationHealthPolicy]
- *
  * @member {boolean} [applicationHealthPolicy.considerWarningAsError]
- *
  * @member {number}
  * [applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
- *
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
  * The policy of the default service type health
- *
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- *
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
- *
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
- *
  */
 export interface StartApplicationUpgrade {
   name?: string;
@@ -3418,29 +2717,20 @@ export interface StartApplicationUpgrade {
  * @member {string} [rollingUpgradeMode] The mode of the rolling upgrade.
  * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
  * 'Monitored'
- *
  * @member {boolean} [forceRestart] The flag of the force restart
- *
  * @member {string} [failureAction] The action of the failure
- *
  * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The seconds of the
  * upgrade replica set check timeout
- *
  * @member {string} [healthCheckWaitDurationInMilliseconds] The seconds of the
  * health check wait duration
- *
  * @member {string} [healthCheckStableDurationInMilliseconds] The seconds of
  * the health check stable duration
- *
  * @member {string} [healthCheckRetryTimeoutInMilliseconds] The milliseconds of
  * the health check retry timeout
- *
  * @member {string} [upgradeTimeoutInMilliseconds] The milliseconds of the
  * upgrade timeout
- *
  * @member {string} [upgradeDomainTimeoutInMilliseconds] The milliseconds of
  * the upgrade domain timeout
- *
  */
 export interface UpdateDescription {
   rollingUpgradeMode?: string;
@@ -3463,29 +2753,20 @@ export interface UpdateDescription {
  * @member {string} [rollingUpgradeMode] The mode of the rolling upgrade.
  * Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
  * 'Monitored'
- *
  * @member {boolean} [forceRestart] The flag of the force restart
- *
  * @member {string} [failureAction] The action of the failure
- *
  * @member {number} [upgradeReplicaSetCheckTimeoutInSeconds] The seconds of the
  * upgrade replica set check timeout
- *
  * @member {string} [healthCheckWaitDurationInMilliseconds] The milliseconds of
  * the health check wait duration
- *
  * @member {string} [healthCheckStableDurationInMilliseconds] The milliseconds
  * of the health check stable duration
- *
  * @member {string} [healthCheckRetryTimeoutInMilliseconds] The milliseconds of
  * the health check retry timeout
- *
  * @member {string} [upgradeTimeoutInMilliseconds] The milliseconds of the
  * upgrade timeout
- *
  * @member {string} [upgradeDomainTimeoutInMilliseconds] The milliseconds of
  * the upgrade domain timeout
- *
  */
 export interface ClusterHealthPolicy {
   rollingUpgradeMode?: string;
@@ -3506,71 +2787,49 @@ export interface ClusterHealthPolicy {
  * The description of the update cluster upgrade
  *
  * @member {string} [upgradeKind] The kind of the upgrade
- *
  * @member {object} [updateDescription] The description of the update
- *
  * @member {string} [updateDescription.rollingUpgradeMode] The mode of the
  * rolling upgrade. Possible values include: 'Invalid', 'UnmonitoredAuto',
  * 'UnmonitoredManual', 'Monitored'
- *
  * @member {boolean} [updateDescription.forceRestart] The flag of the force
  * restart
- *
  * @member {string} [updateDescription.failureAction] The action of the failure
- *
  * @member {number} [updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
  * The seconds of the upgrade replica set check timeout
- *
  * @member {string} [updateDescription.healthCheckWaitDurationInMilliseconds]
  * The seconds of the health check wait duration
- *
  * @member {string} [updateDescription.healthCheckStableDurationInMilliseconds]
  * The seconds of the health check stable duration
- *
  * @member {string} [updateDescription.healthCheckRetryTimeoutInMilliseconds]
  * The milliseconds of the health check retry timeout
- *
  * @member {string} [updateDescription.upgradeTimeoutInMilliseconds] The
  * milliseconds of the upgrade timeout
- *
  * @member {string} [updateDescription.upgradeDomainTimeoutInMilliseconds] The
  * milliseconds of the upgrade domain timeout
- *
  * @member {object} [clusterHealthPolicy] The policy of the cluster health
- *
  * @member {string} [clusterHealthPolicy.rollingUpgradeMode] The mode of the
  * rolling upgrade. Possible values include: 'Invalid', 'UnmonitoredAuto',
  * 'UnmonitoredManual', 'Monitored'
- *
  * @member {boolean} [clusterHealthPolicy.forceRestart] The flag of the force
  * restart
- *
  * @member {string} [clusterHealthPolicy.failureAction] The action of the
  * failure
- *
  * @member {number}
  * [clusterHealthPolicy.upgradeReplicaSetCheckTimeoutInSeconds] The seconds of
  * the upgrade replica set check timeout
- *
  * @member {string} [clusterHealthPolicy.healthCheckWaitDurationInMilliseconds]
  * The milliseconds of the health check wait duration
- *
  * @member {string}
  * [clusterHealthPolicy.healthCheckStableDurationInMilliseconds] The
  * milliseconds of the health check stable duration
- *
  * @member {string} [clusterHealthPolicy.healthCheckRetryTimeoutInMilliseconds]
  * The milliseconds of the health check retry timeout
- *
  * @member {string} [clusterHealthPolicy.upgradeTimeoutInMilliseconds] The
  * milliseconds of the upgrade timeout
- *
  * @member {string} [clusterHealthPolicy.upgradeDomainTimeoutInMilliseconds]
  * The milliseconds of the upgrade domain timeout
- *
  * @member {boolean} [enableDeltaHealthEvaluations] The evaluations of the
  * enable delta health
- *
  */
 export interface UpdateClusterUpgrade {
   upgradeKind?: string;
@@ -3586,57 +2845,38 @@ export interface UpdateClusterUpgrade {
  * The description of the update application upgrade
  *
  * @member {string} [name]
- *
  * @member {string} [upgradeKind]
- *
  * @member {object} [updateDescription]
- *
  * @member {string} [updateDescription.rollingUpgradeMode] The mode of the
  * rolling upgrade. Possible values include: 'Invalid', 'UnmonitoredAuto',
  * 'UnmonitoredManual', 'Monitored'
- *
  * @member {boolean} [updateDescription.forceRestart] The flag of the force
  * restart
- *
  * @member {string} [updateDescription.failureAction] The action of the failure
- *
  * @member {number} [updateDescription.upgradeReplicaSetCheckTimeoutInSeconds]
  * The seconds of the upgrade replica set check timeout
- *
  * @member {string} [updateDescription.healthCheckWaitDurationInMilliseconds]
  * The seconds of the health check wait duration
- *
  * @member {string} [updateDescription.healthCheckStableDurationInMilliseconds]
  * The seconds of the health check stable duration
- *
  * @member {string} [updateDescription.healthCheckRetryTimeoutInMilliseconds]
  * The milliseconds of the health check retry timeout
- *
  * @member {string} [updateDescription.upgradeTimeoutInMilliseconds] The
  * milliseconds of the upgrade timeout
- *
  * @member {string} [updateDescription.upgradeDomainTimeoutInMilliseconds] The
  * milliseconds of the upgrade domain timeout
- *
  * @member {object} [applicationHealthPolicy]
- *
  * @member {boolean} [applicationHealthPolicy.considerWarningAsError]
- *
  * @member {number}
  * [applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
- *
  * @member {object} [applicationHealthPolicy.defaultServiceTypeHealthPolicy]
  * The policy of the default service type health
- *
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
- *
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
- *
  * @member {number}
  * [applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
- *
  */
 export interface UpdateApplicationUpgrade {
   name?: string;
@@ -3652,7 +2892,6 @@ export interface UpdateApplicationUpgrade {
  * The upgrade of the resume cluster
  *
  * @member {string} [upgradeDomain]
- *
  */
 export interface ResumeClusterUpgrade {
   upgradeDomain?: string;
@@ -3665,7 +2904,6 @@ export interface ResumeClusterUpgrade {
  * The upgrade of the resume application
  *
  * @member {string} [upgradeDomainName]
- *
  */
 export interface ResumeApplicationUpgrade {
   upgradeDomainName?: string;
@@ -3678,9 +2916,7 @@ export interface ResumeApplicationUpgrade {
  * The endpoints
  *
  * @member {number} [kind]
- *
  * @member {string} [address]
- *
  */
 export interface ResolvedServicePartitionEndpointsItem {
   kind?: number;
@@ -3694,24 +2930,15 @@ export interface ResolvedServicePartitionEndpointsItem {
  * The partition of the resolved service
  *
  * @member {string} [name]
- *
  * @member {object} [partitionInformation]
- *
  * @member {string} [partitionInformation.servicePartitionKind] Possible values
  * include: 'Invalid', 'Singleton', 'Int64Range', 'Named'
- *
  * @member {string} [partitionInformation.id]
- *
  * @member {array} [partitionInformation.name]
- *
  * @member {string} [partitionInformation.lowKey]
- *
  * @member {string} [partitionInformation.highKey]
- *
  * @member {array} [endpoints]
- *
  * @member {string} [version]
- *
  */
 export interface ResolvedServicePartition {
   name?: string;
@@ -3727,9 +2954,7 @@ export interface ResolvedServicePartition {
  * The progress of the current upgrade domain
  *
  * @member {string} [domainName]
- *
  * @member {string} [nodeUpgradeProgressList]
- *
  */
 export interface ClusterUpgradeProgressCurrentUpgradeDomainProgress {
   domainName?: string;
@@ -3743,9 +2968,7 @@ export interface ClusterUpgradeProgressCurrentUpgradeDomainProgress {
  * The failure of the upgrade domain progress at
  *
  * @member {string} [domainName]
- *
  * @member {string} [nodeUpgradeProgressList]
- *
  */
 export interface ClusterUpgradeProgressUpgradeDomainProgressAtFailure {
   domainName?: string;
@@ -3759,48 +2982,30 @@ export interface ClusterUpgradeProgressUpgradeDomainProgressAtFailure {
  * The progress of the cluster upgrade
  *
  * @member {string} [codeVersion]
- *
  * @member {string} [configVersion]
- *
  * @member {array} [upgradeDomains]
- *
  * @member {string} [upgradeState] Possible values include: 'Invalid',
  * 'RollingBackInProgress', 'RollingBackCompleted', 'RollingForwardPending',
  * 'RollingForwardInProgress', 'RollingForwardCompleted'
- *
  * @member {string} [nextUpgradeDomain]
- *
  * @member {string} [rollingUpgradeMode] Possible values include: 'Invalid',
  * 'UnmonitoredAuto', 'UnmonitoredManual', 'Monitored'
- *
  * @member {string} [upgradeDurationInMilliseconds]
- *
  * @member {string} [upgradeDomainDurationInMilliseconds]
- *
  * @member {array} [unhealthyEvaluations]
- *
  * @member {object} [currentUpgradeDomainProgress] The progress of the current
  * upgrade domain
- *
  * @member {string} [currentUpgradeDomainProgress.domainName]
- *
  * @member {string} [currentUpgradeDomainProgress.nodeUpgradeProgressList]
- *
  * @member {string} [startTimestampUtc]
- *
  * @member {string} [failureTimestampUtc]
- *
  * @member {string} [failureReason] Possible values include: 'Invalid',
  * 'Interrupted', 'HealthCheck', 'UpgradeDomainTimeout',
  * 'OverallUpgradeTimeout'
- *
  * @member {object} [upgradeDomainProgressAtFailure] The failure of the upgrade
  * domain progress at
- *
  * @member {string} [upgradeDomainProgressAtFailure.domainName]
- *
  * @member {string} [upgradeDomainProgressAtFailure.nodeUpgradeProgressList]
- *
  */
 export interface ClusterUpgradeProgress {
   codeVersion?: string;
@@ -3826,9 +3031,7 @@ export interface ClusterUpgradeProgress {
  * The error
  *
  * @member {string} [code]
- *
  * @member {string} [message]
- *
  */
 export interface ErrorModelError {
   code?: string;
@@ -3842,11 +3045,8 @@ export interface ErrorModelError {
  * The model of the error
  *
  * @member {object} [error] The error
- *
  * @member {string} [error.code]
- *
  * @member {string} [error.message]
- *
  */
 export interface ErrorModel {
   error?: ErrorModelError;

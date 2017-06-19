@@ -108,13 +108,6 @@ export interface AppServiceCertificateOrders {
      * @param {string} [appServiceCertificateOrder.csr] Last CSR that was created
      * for this order.
      *
-     * @param {boolean} [appServiceCertificateOrder.isPrivateKeyExternal]
-     * <code>true</code> if private key is external; otherwise, <code>false</code>.
-     *
-     * @param {array}
-     * [appServiceCertificateOrder.appServiceCertificateNotRenewableReasons]
-     * Reasons why App Service Certificate is not renewable at the current moment.
-     *
      * @param {string} [appServiceCertificateOrder.name] Resource Name.
      *
      * @param {string} [appServiceCertificateOrder.kind] Kind of resource.
@@ -167,13 +160,6 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} [appServiceCertificateOrder.csr] Last CSR that was created
      * for this order.
-     *
-     * @param {boolean} [appServiceCertificateOrder.isPrivateKeyExternal]
-     * <code>true</code> if private key is external; otherwise, <code>false</code>.
-     *
-     * @param {array}
-     * [appServiceCertificateOrder.appServiceCertificateNotRenewableReasons]
-     * Reasons why App Service Certificate is not renewable at the current moment.
      *
      * @param {string} [appServiceCertificateOrder.name] Resource Name.
      *
@@ -379,13 +365,6 @@ export interface AppServiceCertificateOrders {
      * @param {string} [certificateDistinguishedName.csr] Last CSR that was created
      * for this order.
      *
-     * @param {boolean} [certificateDistinguishedName.isPrivateKeyExternal]
-     * <code>true</code> if private key is external; otherwise, <code>false</code>.
-     *
-     * @param {array}
-     * [certificateDistinguishedName.appServiceCertificateNotRenewableReasons]
-     * Reasons why App Service Certificate is not renewable at the current moment.
-     *
      * @param {string} [certificateDistinguishedName.name] Resource Name.
      *
      * @param {string} [certificateDistinguishedName.kind] Kind of resource.
@@ -443,13 +422,6 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} [certificateDistinguishedName.csr] Last CSR that was created
      * for this order.
-     *
-     * @param {boolean} [certificateDistinguishedName.isPrivateKeyExternal]
-     * <code>true</code> if private key is external; otherwise, <code>false</code>.
-     *
-     * @param {array}
-     * [certificateDistinguishedName.appServiceCertificateNotRenewableReasons]
-     * Reasons why App Service Certificate is not renewable at the current moment.
      *
      * @param {string} [certificateDistinguishedName.name] Resource Name.
      *
@@ -1526,13 +1498,6 @@ export interface AppServiceCertificateOrders {
      * @param {string} [certificateDistinguishedName.csr] Last CSR that was created
      * for this order.
      *
-     * @param {boolean} [certificateDistinguishedName.isPrivateKeyExternal]
-     * <code>true</code> if private key is external; otherwise, <code>false</code>.
-     *
-     * @param {array}
-     * [certificateDistinguishedName.appServiceCertificateNotRenewableReasons]
-     * Reasons why App Service Certificate is not renewable at the current moment.
-     *
      * @param {string} [certificateDistinguishedName.name] Resource Name.
      *
      * @param {string} [certificateDistinguishedName.kind] Kind of resource.
@@ -1590,13 +1555,6 @@ export interface AppServiceCertificateOrders {
      *
      * @param {string} [certificateDistinguishedName.csr] Last CSR that was created
      * for this order.
-     *
-     * @param {boolean} [certificateDistinguishedName.isPrivateKeyExternal]
-     * <code>true</code> if private key is external; otherwise, <code>false</code>.
-     *
-     * @param {array}
-     * [certificateDistinguishedName.appServiceCertificateNotRenewableReasons]
-     * Reasons why App Service Certificate is not renewable at the current moment.
      *
      * @param {string} [certificateDistinguishedName.name] Resource Name.
      *
@@ -2187,10 +2145,6 @@ export interface AppServiceEnvironments {
      * @param {array} [hostingEnvironmentEnvelope.networkAccessControlList] Access
      * control list for controlling traffic to the App Service Environment.
      *
-     * @param {string}
-     * [hostingEnvironmentEnvelope.appServiceEnvironmentResourceKind] Kind of the
-     * app service environment
-     *
      * @param {number} [hostingEnvironmentEnvelope.frontEndScaleFactor] Scale
      * factor for front-ends.
      *
@@ -2294,10 +2248,6 @@ export interface AppServiceEnvironments {
      *
      * @param {array} [hostingEnvironmentEnvelope.networkAccessControlList] Access
      * control list for controlling traffic to the App Service Environment.
-     *
-     * @param {string}
-     * [hostingEnvironmentEnvelope.appServiceEnvironmentResourceKind] Kind of the
-     * app service environment
      *
      * @param {number} [hostingEnvironmentEnvelope.frontEndScaleFactor] Scale
      * factor for front-ends.
@@ -4952,10 +4902,6 @@ export interface AppServiceEnvironments {
      * @param {array} [hostingEnvironmentEnvelope.networkAccessControlList] Access
      * control list for controlling traffic to the App Service Environment.
      *
-     * @param {string}
-     * [hostingEnvironmentEnvelope.appServiceEnvironmentResourceKind] Kind of the
-     * app service environment
-     *
      * @param {number} [hostingEnvironmentEnvelope.frontEndScaleFactor] Scale
      * factor for front-ends.
      *
@@ -5059,10 +5005,6 @@ export interface AppServiceEnvironments {
      *
      * @param {array} [hostingEnvironmentEnvelope.networkAccessControlList] Access
      * control list for controlling traffic to the App Service Environment.
-     *
-     * @param {string}
-     * [hostingEnvironmentEnvelope.appServiceEnvironmentResourceKind] Kind of the
-     * app service environment
      *
      * @param {number} [hostingEnvironmentEnvelope.frontEndScaleFactor] Scale
      * factor for front-ends.
@@ -10279,8 +10221,6 @@ export interface Certificates {
      *
      * @param {string} [certificateEnvelope.password] Certificate password.
      *
-     * @param {string} [certificateEnvelope.cerBlob] Raw bytes of .cer file
-     *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
      * @param {string} [certificateEnvelope.keyVaultSecretName] Key Vault secret
@@ -10332,8 +10272,6 @@ export interface Certificates {
      * @param {buffer} [certificateEnvelope.pfxBlob] Pfx blob.
      *
      * @param {string} [certificateEnvelope.password] Certificate password.
-     *
-     * @param {string} [certificateEnvelope.cerBlob] Raw bytes of .cer file
      *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
@@ -10470,8 +10408,6 @@ export interface Certificates {
      *
      * @param {string} [certificateEnvelope.password] Certificate password.
      *
-     * @param {string} [certificateEnvelope.cerBlob] Raw bytes of .cer file
-     *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
      * @param {string} [certificateEnvelope.keyVaultSecretName] Key Vault secret
@@ -10524,8 +10460,6 @@ export interface Certificates {
      *
      * @param {string} [certificateEnvelope.password] Certificate password.
      *
-     * @param {string} [certificateEnvelope.cerBlob] Raw bytes of .cer file
-     *
      * @param {string} [certificateEnvelope.keyVaultId] Key Vault Csm resource Id.
      *
      * @param {string} [certificateEnvelope.keyVaultSecretName] Key Vault secret
@@ -10575,442 +10509,6 @@ export interface Certificates {
     update(resourceGroupName: string, name: string, certificateEnvelope: models.Certificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
     update(resourceGroupName: string, name: string, certificateEnvelope: models.Certificate, callback: ServiceCallback<models.Certificate>): void;
     update(resourceGroupName: string, name: string, certificateEnvelope: models.Certificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
-
-
-    /**
-     * @summary Get all certificate signing requests in a resource group.
-     *
-     * Get all certificate signing requests in a resource group.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CsrCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listSigningRequestByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsrCollection>>;
-
-    /**
-     * @summary Get all certificate signing requests in a resource group.
-     *
-     * Get all certificate signing requests in a resource group.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CsrCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CsrCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CsrCollection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listSigningRequestByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsrCollection>;
-    listSigningRequestByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.CsrCollection>): void;
-    listSigningRequestByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsrCollection>): void;
-
-
-    /**
-     * @summary Get a certificate signing request.
-     *
-     * Get a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Csr>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getSigningRequestWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Csr>>;
-
-    /**
-     * @summary Get a certificate signing request.
-     *
-     * Get a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Csr} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Csr} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Csr} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getSigningRequest(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Csr>;
-    getSigningRequest(resourceGroupName: string, name: string, callback: ServiceCallback<models.Csr>): void;
-    getSigningRequest(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Csr>): void;
-
-
-    /**
-     * @summary Create or update a certificate signing request.
-     *
-     * Create or update a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} csrEnvelope Details of certificate signing request, if it
-     * exists already.
-     *
-     * @param {string} [csrEnvelope.csrName] Name used to locate CSR object.
-     *
-     * @param {string} [csrEnvelope.distinguishedName] Distinguished name of
-     * certificate to be created.
-     *
-     * @param {string} [csrEnvelope.csrString] Actual CSR string created.
-     *
-     * @param {string} [csrEnvelope.pfxBlob] PFX certifcate of created certificate.
-     *
-     * @param {string} [csrEnvelope.password] PFX password.
-     *
-     * @param {string} [csrEnvelope.publicKeyHash] Hash of the certificate's public
-     * key.
-     *
-     * @param {string} [csrEnvelope.hostingEnvironment] App Service Environment.
-     *
-     * @param {string} [csrEnvelope.name] Resource Name.
-     *
-     * @param {string} [csrEnvelope.kind] Kind of resource.
-     *
-     * @param {string} csrEnvelope.location Resource Location.
-     *
-     * @param {string} [csrEnvelope.type] Resource type.
-     *
-     * @param {object} [csrEnvelope.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Csr>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateSigningRequestWithHttpOperationResponse(resourceGroupName: string, name: string, csrEnvelope: models.Csr, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Csr>>;
-
-    /**
-     * @summary Create or update a certificate signing request.
-     *
-     * Create or update a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} csrEnvelope Details of certificate signing request, if it
-     * exists already.
-     *
-     * @param {string} [csrEnvelope.csrName] Name used to locate CSR object.
-     *
-     * @param {string} [csrEnvelope.distinguishedName] Distinguished name of
-     * certificate to be created.
-     *
-     * @param {string} [csrEnvelope.csrString] Actual CSR string created.
-     *
-     * @param {string} [csrEnvelope.pfxBlob] PFX certifcate of created certificate.
-     *
-     * @param {string} [csrEnvelope.password] PFX password.
-     *
-     * @param {string} [csrEnvelope.publicKeyHash] Hash of the certificate's public
-     * key.
-     *
-     * @param {string} [csrEnvelope.hostingEnvironment] App Service Environment.
-     *
-     * @param {string} [csrEnvelope.name] Resource Name.
-     *
-     * @param {string} [csrEnvelope.kind] Kind of resource.
-     *
-     * @param {string} csrEnvelope.location Resource Location.
-     *
-     * @param {string} [csrEnvelope.type] Resource type.
-     *
-     * @param {object} [csrEnvelope.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Csr} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Csr} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Csr} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdateSigningRequest(resourceGroupName: string, name: string, csrEnvelope: models.Csr, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Csr>;
-    createOrUpdateSigningRequest(resourceGroupName: string, name: string, csrEnvelope: models.Csr, callback: ServiceCallback<models.Csr>): void;
-    createOrUpdateSigningRequest(resourceGroupName: string, name: string, csrEnvelope: models.Csr, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Csr>): void;
-
-
-    /**
-     * @summary Delete a certificate signing request.
-     *
-     * Delete a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteSigningRequestWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Delete a certificate signing request.
-     *
-     * Delete a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteSigningRequest(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteSigningRequest(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
-    deleteSigningRequest(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Create or update a certificate signing request.
-     *
-     * Create or update a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} csrEnvelope Details of certificate signing request, if it
-     * exists already.
-     *
-     * @param {string} [csrEnvelope.csrName] Name used to locate CSR object.
-     *
-     * @param {string} [csrEnvelope.distinguishedName] Distinguished name of
-     * certificate to be created.
-     *
-     * @param {string} [csrEnvelope.csrString] Actual CSR string created.
-     *
-     * @param {string} [csrEnvelope.pfxBlob] PFX certifcate of created certificate.
-     *
-     * @param {string} [csrEnvelope.password] PFX password.
-     *
-     * @param {string} [csrEnvelope.publicKeyHash] Hash of the certificate's public
-     * key.
-     *
-     * @param {string} [csrEnvelope.hostingEnvironment] App Service Environment.
-     *
-     * @param {string} [csrEnvelope.name] Resource Name.
-     *
-     * @param {string} [csrEnvelope.kind] Kind of resource.
-     *
-     * @param {string} csrEnvelope.location Resource Location.
-     *
-     * @param {string} [csrEnvelope.type] Resource type.
-     *
-     * @param {object} [csrEnvelope.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Csr>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateSigningRequestWithHttpOperationResponse(resourceGroupName: string, name: string, csrEnvelope: models.Csr, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Csr>>;
-
-    /**
-     * @summary Create or update a certificate signing request.
-     *
-     * Create or update a certificate signing request.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the certificate signing request.
-     *
-     * @param {object} csrEnvelope Details of certificate signing request, if it
-     * exists already.
-     *
-     * @param {string} [csrEnvelope.csrName] Name used to locate CSR object.
-     *
-     * @param {string} [csrEnvelope.distinguishedName] Distinguished name of
-     * certificate to be created.
-     *
-     * @param {string} [csrEnvelope.csrString] Actual CSR string created.
-     *
-     * @param {string} [csrEnvelope.pfxBlob] PFX certifcate of created certificate.
-     *
-     * @param {string} [csrEnvelope.password] PFX password.
-     *
-     * @param {string} [csrEnvelope.publicKeyHash] Hash of the certificate's public
-     * key.
-     *
-     * @param {string} [csrEnvelope.hostingEnvironment] App Service Environment.
-     *
-     * @param {string} [csrEnvelope.name] Resource Name.
-     *
-     * @param {string} [csrEnvelope.kind] Kind of resource.
-     *
-     * @param {string} csrEnvelope.location Resource Location.
-     *
-     * @param {string} [csrEnvelope.type] Resource type.
-     *
-     * @param {object} [csrEnvelope.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Csr} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Csr} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Csr} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateSigningRequest(resourceGroupName: string, name: string, csrEnvelope: models.Csr, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Csr>;
-    updateSigningRequest(resourceGroupName: string, name: string, csrEnvelope: models.Csr, callback: ServiceCallback<models.Csr>): void;
-    updateSigningRequest(resourceGroupName: string, name: string, csrEnvelope: models.Csr, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Csr>): void;
 
 
     /**
@@ -11133,67 +10631,6 @@ export interface Certificates {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateCollection>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.CertificateCollection>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateCollection>): void;
-
-
-    /**
-     * @summary Get all certificate signing requests in a resource group.
-     *
-     * Get all certificate signing requests in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CsrCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listSigningRequestByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CsrCollection>>;
-
-    /**
-     * @summary Get all certificate signing requests in a resource group.
-     *
-     * Get all certificate signing requests in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CsrCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CsrCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CsrCollection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listSigningRequestByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CsrCollection>;
-    listSigningRequestByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.CsrCollection>): void;
-    listSigningRequestByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CsrCollection>): void;
 }
 
 /**
@@ -11626,16 +11063,11 @@ export interface Domains {
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
-     * @param {array} [domain.nameServers] Name servers.
-     *
      * @param {boolean} [domain.privacy] <code>true</code> if domain privacy is
      * enabled for this domain; otherwise, <code>false</code>.
      *
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
-     *
-     * @param {array} [domain.managedHostNames] All hostnames derived from the
-     * domain and assigned to Azure resources.
      *
      * @param {object} [domain.consent] Legal agreement consent.
      *
@@ -11648,8 +11080,13 @@ export interface Domains {
      * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
      * accepted.
      *
-     * @param {array} [domain.domainNotRenewableReasons] Reasons why domain is not
-     * renewable.
+     * @param {string} [domain.dnsType] Current DNS type. Possible values include:
+     * 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.dnsZoneId] Azure DNS Zone to use
+     *
+     * @param {string} [domain.targetDnsType] Target DNS type (would be used for
+     * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
      *
      * @param {string} [domain.name] Resource Name.
      *
@@ -11724,16 +11161,11 @@ export interface Domains {
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
-     * @param {array} [domain.nameServers] Name servers.
-     *
      * @param {boolean} [domain.privacy] <code>true</code> if domain privacy is
      * enabled for this domain; otherwise, <code>false</code>.
      *
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
-     *
-     * @param {array} [domain.managedHostNames] All hostnames derived from the
-     * domain and assigned to Azure resources.
      *
      * @param {object} [domain.consent] Legal agreement consent.
      *
@@ -11746,8 +11178,13 @@ export interface Domains {
      * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
      * accepted.
      *
-     * @param {array} [domain.domainNotRenewableReasons] Reasons why domain is not
-     * renewable.
+     * @param {string} [domain.dnsType] Current DNS type. Possible values include:
+     * 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.dnsZoneId] Azure DNS Zone to use
+     *
+     * @param {string} [domain.targetDnsType] Target DNS type (would be used for
+     * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
      *
      * @param {string} [domain.name] Resource Name.
      *
@@ -12325,16 +11762,11 @@ export interface Domains {
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
-     * @param {array} [domain.nameServers] Name servers.
-     *
      * @param {boolean} [domain.privacy] <code>true</code> if domain privacy is
      * enabled for this domain; otherwise, <code>false</code>.
      *
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
-     *
-     * @param {array} [domain.managedHostNames] All hostnames derived from the
-     * domain and assigned to Azure resources.
      *
      * @param {object} [domain.consent] Legal agreement consent.
      *
@@ -12347,8 +11779,13 @@ export interface Domains {
      * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
      * accepted.
      *
-     * @param {array} [domain.domainNotRenewableReasons] Reasons why domain is not
-     * renewable.
+     * @param {string} [domain.dnsType] Current DNS type. Possible values include:
+     * 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.dnsZoneId] Azure DNS Zone to use
+     *
+     * @param {string} [domain.targetDnsType] Target DNS type (would be used for
+     * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
      *
      * @param {string} [domain.name] Resource Name.
      *
@@ -12423,16 +11860,11 @@ export interface Domains {
      *
      * @param {string} domain.contactTech.phone Phone number.
      *
-     * @param {array} [domain.nameServers] Name servers.
-     *
      * @param {boolean} [domain.privacy] <code>true</code> if domain privacy is
      * enabled for this domain; otherwise, <code>false</code>.
      *
      * @param {boolean} [domain.autoRenew] <code>true</code> if the domain should
      * be automatically renewed; otherwise, <code>false</code>.
-     *
-     * @param {array} [domain.managedHostNames] All hostnames derived from the
-     * domain and assigned to Azure resources.
      *
      * @param {object} [domain.consent] Legal agreement consent.
      *
@@ -12445,8 +11877,13 @@ export interface Domains {
      * @param {date} [domain.consent.agreedAt] Timestamp when the agreements were
      * accepted.
      *
-     * @param {array} [domain.domainNotRenewableReasons] Reasons why domain is not
-     * renewable.
+     * @param {string} [domain.dnsType] Current DNS type. Possible values include:
+     * 'AzureDns', 'DefaultDomainRegistrarDns'
+     *
+     * @param {string} [domain.dnsZoneId] Azure DNS Zone to use
+     *
+     * @param {string} [domain.targetDnsType] Target DNS type (would be used for
+     * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
      *
      * @param {string} [domain.name] Resource Name.
      *
@@ -13363,11 +12800,17 @@ export interface TopLevelDomains {
      *
      * @param {string} name Name of the top-level domain.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} agreementOption Domain agreement options.
      *
-     * @param {boolean} [options.includePrivacy] If <code>true</code>, then the
-     * list of agreements will include agreements for domain privacy as well;
+     * @param {boolean} [agreementOption.includePrivacy] If <code>true</code>, then
+     * the list of agreements will include agreements for domain privacy as well;
      * otherwise, <code>false</code>.
+     *
+     * @param {boolean} [agreementOption.forTransfer] If <code>true</code>, then
+     * the list of agreements will include agreements for domain transfer as well;
+     * otherwise, <code>false</code>.
+     *
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -13378,7 +12821,7 @@ export interface TopLevelDomains {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAgreementsWithHttpOperationResponse(name: string, options?: { includePrivacy? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TldLegalAgreementCollection>>;
+    listAgreementsWithHttpOperationResponse(name: string, agreementOption: models.TopLevelDomainAgreementOption, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TldLegalAgreementCollection>>;
 
     /**
      * @summary Gets all legal agreements that user needs to accept before
@@ -13389,11 +12832,17 @@ export interface TopLevelDomains {
      *
      * @param {string} name Name of the top-level domain.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} agreementOption Domain agreement options.
      *
-     * @param {boolean} [options.includePrivacy] If <code>true</code>, then the
-     * list of agreements will include agreements for domain privacy as well;
+     * @param {boolean} [agreementOption.includePrivacy] If <code>true</code>, then
+     * the list of agreements will include agreements for domain privacy as well;
      * otherwise, <code>false</code>.
+     *
+     * @param {boolean} [agreementOption.forTransfer] If <code>true</code>, then
+     * the list of agreements will include agreements for domain transfer as well;
+     * otherwise, <code>false</code>.
+     *
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -13421,9 +12870,9 @@ export interface TopLevelDomains {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAgreements(name: string, options?: { includePrivacy? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.TldLegalAgreementCollection>;
-    listAgreements(name: string, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
-    listAgreements(name: string, options: { includePrivacy? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
+    listAgreements(name: string, agreementOption: models.TopLevelDomainAgreementOption, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TldLegalAgreementCollection>;
+    listAgreements(name: string, agreementOption: models.TopLevelDomainAgreementOption, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
+    listAgreements(name: string, agreementOption: models.TopLevelDomainAgreementOption, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TldLegalAgreementCollection>): void;
 
 
     /**
@@ -14078,6 +13527,9 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
@@ -14440,6 +13892,9 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
@@ -14761,12 +14216,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -14832,12 +14287,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -15286,12 +14741,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -15364,12 +14819,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -15585,6 +15040,72 @@ export interface WebApps {
     restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreResponse>;
     restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, callback: ServiceCallback<models.RestoreResponse>): void;
     restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreResponse>): void;
+
+
+    /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteConfigResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listConfigurationsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigResourceCollection>>;
+
+    /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteConfigResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteConfigResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listConfigurations(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigResourceCollection>;
+    listConfigurations(resourceGroupName: string, name: string, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
+    listConfigurations(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
 
 
     /**
@@ -16200,12 +15721,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -16270,12 +15791,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -22819,6 +22340,74 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadata>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getResourceHealthMetadataWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadata>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadata} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadata} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadata} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getResourceHealthMetadata(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadata>;
+    getResourceHealthMetadata(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+    getResourceHealthMetadata(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+
+
+    /**
      * @summary Restarts an app (or deployment slot, if specified).
      *
      * Restarts an app (or deployment slot, if specified).
@@ -23360,6 +22949,9 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
@@ -23725,6 +23317,9 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
@@ -24067,12 +23662,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -24141,12 +23736,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -24622,12 +24217,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -24703,12 +24298,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -24933,6 +24528,78 @@ export interface WebApps {
     restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreResponse>;
     restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<models.RestoreResponse>): void;
     restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreResponse>): void;
+
+
+    /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will return configuration for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteConfigResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listConfigurationsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigResourceCollection>>;
+
+    /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will return configuration for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteConfigResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteConfigResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listConfigurationsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigResourceCollection>;
+    listConfigurationsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
+    listConfigurationsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
 
 
     /**
@@ -25576,12 +25243,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -25650,12 +25317,12 @@ export interface WebApps {
      * @param {object} [request.backupSchedule] Schedule for the backup if it is
      * executed periodically.
      *
-     * @param {number} request.backupSchedule.frequencyInterval How often should be
-     * the backup executed (e.g. for weekly backup, this should be set to 7 and
-     * FrequencyUnit should be set to Day)
+     * @param {number} request.backupSchedule.frequencyInterval How often the
+     * backup should be executed (e.g. for weekly backup, this should be set to 7
+     * and FrequencyUnit should be set to Day)
      *
      * @param {string} request.backupSchedule.frequencyUnit The unit of time for
-     * how often should be the backup executed (e.g. for weekly backup, this should
+     * how often the backup should be executed (e.g. for weekly backup, this should
      * be set to Day and FrequencyInterval should be set to 7). Possible values
      * include: 'Day', 'Hour'
      *
@@ -32186,6 +31853,80 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ResourceHealthMetadata>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getResourceHealthMetadataSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadata>>;
+
+    /**
+     * @summary Gets the category of ResourceHealthMetadata to use for the given
+     * site
+     *
+     * Gets the category of ResourceHealthMetadata to use for the given site
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ResourceHealthMetadata} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ResourceHealthMetadata} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ResourceHealthMetadata} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getResourceHealthMetadataSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadata>;
+    getResourceHealthMetadataSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+    getResourceHealthMetadataSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
+
+
+    /**
      * @summary Restarts an app (or deployment slot, if specified).
      *
      * Restarts an app (or deployment slot, if specified).
@@ -33006,6 +32747,76 @@ export interface WebApps {
     syncRepositorySlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     syncRepositorySlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
     syncRepositorySlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Syncs function trigger metadata to the scale controller
+     *
+     * Syncs function trigger metadata to the scale controller
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will restore a backup of the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    syncFunctionTriggersSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Syncs function trigger metadata to the scale controller
+     *
+     * Syncs function trigger metadata to the scale controller
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will restore a backup of the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    syncFunctionTriggersSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    syncFunctionTriggersSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
+    syncFunctionTriggersSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -34542,6 +34353,70 @@ export interface WebApps {
 
 
     /**
+     * @summary Syncs function trigger metadata to the scale controller
+     *
+     * Syncs function trigger metadata to the scale controller
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    syncFunctionTriggersWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Syncs function trigger metadata to the scale controller
+     *
+     * Syncs function trigger metadata to the scale controller
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    syncFunctionTriggers(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    syncFunctionTriggers(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+    syncFunctionTriggers(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * @summary Gets the quota usage information of an app (or deployment slot, if
      * specified).
      *
@@ -35657,6 +35532,9 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
@@ -36018,6 +35896,9 @@ export interface WebApps {
      * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
      *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
@@ -36932,6 +36813,9 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
+     *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
@@ -37296,6 +37180,9 @@ export interface WebApps {
      * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
+     *
+     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
+     * if quotas should be ignored; otherwise, <code>false</code>.
      *
      * @param {string} [siteEnvelope.name] Resource Name.
      *
@@ -38302,6 +38189,68 @@ export interface WebApps {
 
 
     /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteConfigResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listConfigurationsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigResourceCollection>>;
+
+    /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteConfigResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteConfigResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listConfigurationsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigResourceCollection>;
+    listConfigurationsNext(nextPageLink: string, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
+    listConfigurationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
+
+
+    /**
      * @summary List deployments for an app, or a deployment slot, or for an
      * instance of a scaled-out app.
      *
@@ -38926,6 +38875,68 @@ export interface WebApps {
     listBackupsSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupItemCollection>;
     listBackupsSlotNext(nextPageLink: string, callback: ServiceCallback<models.BackupItemCollection>): void;
     listBackupsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
+
+
+    /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SiteConfigResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listConfigurationsSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SiteConfigResourceCollection>>;
+
+    /**
+     * @summary List the configurations of an app
+     *
+     * List the configurations of an app
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SiteConfigResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SiteConfigResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SiteConfigResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listConfigurationsSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SiteConfigResourceCollection>;
+    listConfigurationsSlotNext(nextPageLink: string, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
+    listConfigurationsSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SiteConfigResourceCollection>): void;
 
 
     /**
@@ -40064,4 +40075,121 @@ export interface DeletedWebApps {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedWebAppCollection>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.DeletedWebAppCollection>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedWebAppCollection>): void;
+}
+
+/**
+ * @class
+ * Provider
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the WebSiteManagementClient.
+ */
+export interface Provider {
+
+
+    /**
+     * @summary Get available application frameworks and their versions
+     *
+     * Get available application frameworks and their versions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAvailableStacksWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get available application frameworks and their versions
+     *
+     * Get available application frameworks and their versions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAvailableStacks(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getAvailableStacks(callback: ServiceCallback<any>): void;
+    getAvailableStacks(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * @summary Get available application frameworks and their versions
+     *
+     * Get available application frameworks and their versions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAvailableStacksOnPremWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * @summary Get available application frameworks and their versions
+     *
+     * Get available application frameworks and their versions
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAvailableStacksOnPrem(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getAvailableStacksOnPrem(callback: ServiceCallback<any>): void;
+    getAvailableStacksOnPrem(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }

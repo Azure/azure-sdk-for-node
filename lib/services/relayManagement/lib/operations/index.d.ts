@@ -602,11 +602,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a namespace.
@@ -628,7 +628,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -636,17 +636,17 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
@@ -659,7 +659,7 @@ export interface Namespaces {
      *
      * @param {string} authorizationRuleName The authorizationRule name.
      *
-     * @param {object} parameters The shared access authorization rule.
+     * @param {object} parameters The authorization rule parameters
      *
      * @param {array} parameters.rights The rights associated with the rule.
      *
@@ -670,11 +670,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
      * Creates or Updates an authorization rule for a namespace
@@ -686,7 +686,7 @@ export interface Namespaces {
      *
      * @param {string} authorizationRuleName The authorizationRule name.
      *
-     * @param {object} parameters The shared access authorization rule.
+     * @param {object} parameters The authorization rule parameters
      *
      * @param {array} parameters.rights The rights associated with the rule.
      *
@@ -702,7 +702,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -710,17 +710,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
@@ -804,11 +803,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
      * Authorization rule for a namespace by name.
@@ -832,7 +831,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -840,17 +839,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
@@ -870,11 +868,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleKeys>>;
 
     /**
      * Primary and Secondary ConnectionStrings to the namespace
@@ -898,7 +896,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -906,16 +904,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AuthorizationRuleKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
 
 
     /**
@@ -940,11 +938,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleKeys>>;
 
     /**
      * Regenerates the Primary or Secondary ConnectionStrings to the namespace
@@ -973,7 +971,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -981,16 +979,16 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AuthorizationRuleKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
 
 
     /**
@@ -1261,11 +1259,11 @@ export interface Namespaces {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a namespace.
@@ -1285,7 +1283,7 @@ export interface Namespaces {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1293,17 +1291,17 @@ export interface Namespaces {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 }
 
 /**
@@ -1397,8 +1395,6 @@ export interface HybridConnections {
      * be used to store  descriptive data, such as list of teams and their contact
      * information also user-defined configuration settings can be stored.
      *
-     * @param {string} [parameters.path] The path of the HybridConnection.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1431,8 +1427,6 @@ export interface HybridConnections {
      * store user-defined string data for the HybridConnection endpoint.e.g. it can
      * be used to store  descriptive data, such as list of teams and their contact
      * information also user-defined configuration settings can be stored.
-     *
-     * @param {string} [parameters.path] The path of the HybridConnection.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1612,11 +1606,11 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a HybridConnection.
@@ -1640,7 +1634,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1648,17 +1642,17 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
@@ -1673,7 +1667,7 @@ export interface HybridConnections {
      *
      * @param {string} authorizationRuleName The authorizationRule name.
      *
-     * @param {object} parameters The shared access authorization rule.
+     * @param {object} parameters The authorization rule parameters
      *
      * @param {array} parameters.rights The rights associated with the rule.
      *
@@ -1684,11 +1678,11 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
      * Creates or Updates an authorization rule for a HybridConnection
@@ -1702,7 +1696,7 @@ export interface HybridConnections {
      *
      * @param {string} authorizationRuleName The authorizationRule name.
      *
-     * @param {object} parameters The shared access authorization rule.
+     * @param {object} parameters The authorization rule parameters
      *
      * @param {array} parameters.rights The rights associated with the rule.
      *
@@ -1718,7 +1712,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1726,17 +1720,16 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
@@ -1826,11 +1819,11 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
      * HybridConnection authorizationRule for a HybridConnection by name.
@@ -1856,7 +1849,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1864,17 +1857,16 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
@@ -1896,11 +1888,11 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleKeys>>;
 
     /**
      * Primary and Secondary ConnectionStrings to the HybridConnection.
@@ -1926,7 +1918,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1934,16 +1926,16 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AuthorizationRuleKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
 
 
     /**
@@ -1971,11 +1963,11 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleKeys>>;
 
     /**
      * Regenerates the Primary or Secondary ConnectionStrings to the
@@ -2007,7 +1999,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2015,16 +2007,16 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AuthorizationRuleKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, hybridConnectionName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
 
 
     /**
@@ -2098,11 +2090,11 @@ export interface HybridConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a HybridConnection.
@@ -2122,7 +2114,7 @@ export interface HybridConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2130,17 +2122,17 @@ export interface HybridConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 }
 
 /**
@@ -2456,11 +2448,11 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a WCFRelays.
@@ -2484,7 +2476,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2492,17 +2484,17 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRules(resourceGroupName: string, namespaceName: string, relayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 
 
     /**
@@ -2517,7 +2509,7 @@ export interface WCFRelays {
      *
      * @param {string} authorizationRuleName The authorizationRule name.
      *
-     * @param {object} parameters The shared access authorization rule.
+     * @param {object} parameters The authorization rule parameters.
      *
      * @param {array} parameters.rights The rights associated with the rule.
      *
@@ -2528,11 +2520,11 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    createOrUpdateAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
      * Creates or Updates an authorization rule for a WCFRelays
@@ -2546,7 +2538,7 @@ export interface WCFRelays {
      *
      * @param {string} authorizationRuleName The authorizationRule name.
      *
-     * @param {object} parameters The shared access authorization rule.
+     * @param {object} parameters The authorization rule parameters.
      *
      * @param {array} parameters.rights The rights associated with the rule.
      *
@@ -2562,7 +2554,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2570,17 +2562,16 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.SharedAccessAuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, callback: ServiceCallback<models.AuthorizationRule>): void;
+    createOrUpdateAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.AuthorizationRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
@@ -2670,11 +2661,11 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRule>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRule>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRule>>;
+    getAuthorizationRuleWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRule>>;
 
     /**
      * Get authorizationRule for a WCFRelays by name.
@@ -2700,7 +2691,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRule} - The deserialized result object.
+     *                      @resolve {AuthorizationRule} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2708,17 +2699,16 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRule} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRule} for more
-     *                      information.
+     *                      {AuthorizationRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRule} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRule>;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
-    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRule>;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRule>): void;
+    getAuthorizationRule(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRule>): void;
 
 
     /**
@@ -2740,11 +2730,11 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    listKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleKeys>>;
 
     /**
      * Primary and Secondary ConnectionStrings to the WCFRelays.
@@ -2770,7 +2760,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2778,16 +2768,16 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AuthorizationRuleKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.ResourceListKeys>): void;
-    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleKeys>;
+    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
+    listKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
 
 
     /**
@@ -2814,11 +2804,11 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ResourceListKeys>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleKeys>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceListKeys>>;
+    regenerateKeysWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleKeys>>;
 
     /**
      * Regenerates the Primary or Secondary ConnectionStrings to the WCFRelays
@@ -2849,7 +2839,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ResourceListKeys} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleKeys} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2857,16 +2847,16 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ResourceListKeys} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceListKeys} for more information.
+     *                      {AuthorizationRuleKeys} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleKeys} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceListKeys>;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.ResourceListKeys>): void;
-    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceListKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleKeys>;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
+    regenerateKeys(resourceGroupName: string, namespaceName: string, relayName: string, authorizationRuleName: string, parameters: models.RegenerateKeysParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleKeys>): void;
 
 
     /**
@@ -2939,11 +2929,11 @@ export interface WCFRelays {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SharedAccessAuthorizationRuleListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<AuthorizationRuleListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SharedAccessAuthorizationRuleListResult>>;
+    listAuthorizationRulesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AuthorizationRuleListResult>>;
 
     /**
      * Authorization rules for a WCFRelays.
@@ -2963,7 +2953,7 @@ export interface WCFRelays {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SharedAccessAuthorizationRuleListResult} - The deserialized result object.
+     *                      @resolve {AuthorizationRuleListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2971,15 +2961,15 @@ export interface WCFRelays {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SharedAccessAuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SharedAccessAuthorizationRuleListResult} for
-     *                      more information.
+     *                      {AuthorizationRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AuthorizationRuleListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessAuthorizationRuleListResult>;
-    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
-    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessAuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AuthorizationRuleListResult>;
+    listAuthorizationRulesNext(nextPageLink: string, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
+    listAuthorizationRulesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AuthorizationRuleListResult>): void;
 }

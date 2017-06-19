@@ -22,12 +22,9 @@ export { CloudError } from 'ms-rest-azure';
  * The object that represents the operation.
  *
  * @member {string} [provider] Service provider: Microsoft.EventHub
- *
  * @member {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- *
  * @member {string} [operation] Operation type: Read, write, delete, etc.
- *
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -39,20 +36,15 @@ export interface OperationDisplay {
  * @class
  * Initializes a new instance of the Operation class.
  * @constructor
- * A EventHub REST API operation
+ * A Event Hub REST API operation
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- *
  * @member {object} [display] The object that represents the operation.
- *
  * @member {string} [display.provider] Service provider: Microsoft.EventHub
- *
  * @member {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- *
  * @member {string} [display.operation] Operation type: Read, write, delete,
  * etc.
- *
  */
 export interface Operation {
   readonly name?: string;
@@ -63,35 +55,17 @@ export interface Operation {
  * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
- * Result of the request to list EventHub operations. It contains a list of
+ * Result of the request to list Event Hub operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {array} [value] List of EventHub operations supported by the
+ * @member {array} [value] List of Event Hub operations supported by the
  * Microsoft.EventHub resource provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   readonly value?: Operation[];
   readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * Definition of Resource
- *
- * @member {string} location Resource location
- *
- * @member {object} [tags] Resource tags
- *
- */
-export interface TrackedResource extends BaseResource {
-  location: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -101,32 +75,40 @@ export interface TrackedResource extends BaseResource {
  * The Resource definition
  *
  * @member {string} [id] Resource Id
- *
  * @member {string} [name] Resource name
- *
+ * @member {string} [location] Resource location
  * @member {string} [type] Resource type
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
+  location?: string;
   readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * Definition of Resource
+ *
+ * @member {object} [tags] Resource tags
+ */
+export interface TrackedResource extends Resource {
+  tags?: { [propertyName: string]: string };
 }
 
 /**
  * @class
  * Initializes a new instance of the Sku class.
  * @constructor
- * SKU of the namespace.
+ * SKU parameters supplied to the create Namespace operation
  *
  * @member {string} [name] Name of this SKU. Possible values include: 'Basic',
  * 'Standard'
- *
  * @member {string} tier The billing tier of this particular SKU. Possible
  * values include: 'Basic', 'Standard', 'Premium'
- *
- * @member {number} [capacity] The EventHubs throughput units.
- *
+ * @member {number} [capacity] The Event Hubs throughput units.
  */
 export interface Sku {
   name?: string;
@@ -136,36 +118,76 @@ export interface Sku {
 
 /**
  * @class
- * Initializes a new instance of the Namespace class.
+ * Initializes a new instance of the NamespaceCreateOrUpdateParameters class.
  * @constructor
- * Description of a namespace resource.
+ * Parameters supplied to the Create Or Update Namespace operation.
  *
+ * @member {string} location Namespace location.
  * @member {object} [sku]
- *
  * @member {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard'
- *
  * @member {string} [sku.tier] The billing tier of this particular SKU.
  * Possible values include: 'Basic', 'Standard', 'Premium'
- *
- * @member {number} [sku.capacity] The EventHubs throughput units.
- *
- * @member {string} [provisioningState] Provisioning state of the namespace.
- *
- * @member {date} [createdAt] The time the namespace was created.
- *
- * @member {date} [updatedAt] The time the namespace was updated.
- *
+ * @member {number} [sku.capacity] The Event Hubs throughput units.
+ * @member {object} [tags] Namespace tags.
+ * @member {string} [status] State of the Namespace. Possible values include:
+ * 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling', 'Active',
+ * 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted', 'Removing',
+ * 'Removed', 'Failed'
+ * @member {string} [provisioningState] Provisioning state of the Namespace.
+ * @member {date} [createdAt] The time the Namespace was created.
+ * @member {date} [updatedAt] The time the Namespace was updated.
  * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- *
+ * @member {string} [metricId] Identifier for Azure Insights metrics
+ * @member {boolean} [enabled] Specifies whether this instance is enabled.
  */
-export interface Namespace extends TrackedResource {
+export interface NamespaceCreateOrUpdateParameters {
+  location: string;
   sku?: Sku;
-  readonly provisioningState?: string;
-  readonly createdAt?: Date;
-  readonly updatedAt?: Date;
-  readonly serviceBusEndpoint?: string;
+  tags?: { [propertyName: string]: string };
+  status?: string;
+  provisioningState?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  serviceBusEndpoint?: string;
+  readonly metricId?: string;
+  enabled?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NamespaceResource class.
+ * @constructor
+ * Single Namespace item in List or Get Operation
+ *
+ * @member {object} [sku]
+ * @member {string} [sku.name] Name of this SKU. Possible values include:
+ * 'Basic', 'Standard'
+ * @member {string} [sku.tier] The billing tier of this particular SKU.
+ * Possible values include: 'Basic', 'Standard', 'Premium'
+ * @member {number} [sku.capacity] The Event Hubs throughput units.
+ * @member {string} [status] State of the Namespace. Possible values include:
+ * 'Unknown', 'Creating', 'Created', 'Activating', 'Enabling', 'Active',
+ * 'Disabling', 'Disabled', 'SoftDeleting', 'SoftDeleted', 'Removing',
+ * 'Removed', 'Failed'
+ * @member {string} [provisioningState] Provisioning state of the Namespace.
+ * @member {date} [createdAt] The time the Namespace was created.
+ * @member {date} [updatedAt] The time the Namespace was updated.
+ * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
+ * Service Bus operations.
+ * @member {string} [metricId] Identifier for Azure Insights metrics
+ * @member {boolean} [enabled] Specifies whether this instance is enabled.
+ */
+export interface NamespaceResource extends TrackedResource {
+  sku?: Sku;
+  status?: string;
+  provisioningState?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  serviceBusEndpoint?: string;
+  readonly metricId?: string;
+  enabled?: boolean;
 }
 
 /**
@@ -175,26 +197,39 @@ export interface Namespace extends TrackedResource {
  * The response of the List Namespace operation.
  *
  * @member {array} [value] Result of the List Namespace operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of namespaces.
- *
  */
 export interface NamespaceListResult {
-  value?: Namespace[];
+  value?: NamespaceResource[];
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the SharedAccessAuthorizationRule class.
+ * Initializes a new instance of the SharedAccessAuthorizationRuleCreateOrUpdateParameters class.
  * @constructor
- * Description of a namespace authorization rule.
+ * Parameters supplied to the Create Or Update Authorization Rules operation.
+ *
+ * @member {string} [location] Data center location.
+ * @member {string} [name] Name of the AuthorizationRule.
+ * @member {array} rights The rights associated with the rule.
+ */
+export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters {
+  location?: string;
+  name?: string;
+  rights: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SharedAccessAuthorizationRuleResource class.
+ * @constructor
+ * Single item in a List or Get AuthorizationRule operation
  *
  * @member {array} rights The rights associated with the rule.
- *
  */
-export interface SharedAccessAuthorizationRule extends Resource {
+export interface SharedAccessAuthorizationRuleResource extends Resource {
   rights: string[];
 }
 
@@ -205,13 +240,11 @@ export interface SharedAccessAuthorizationRule extends Resource {
  * The response from the List Namespace operation.
  *
  * @member {array} [value] Result of the List Authorization Rules operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains an incomplete list of Authorization Rules
- *
  */
 export interface SharedAccessAuthorizationRuleListResult {
-  value?: SharedAccessAuthorizationRule[];
+  value?: SharedAccessAuthorizationRuleResource[];
   nextLink?: string;
 }
 
@@ -222,19 +255,14 @@ export interface SharedAccessAuthorizationRuleListResult {
  * Namespace/EventHub Connection String
  *
  * @member {string} [primaryConnectionString] Primary connection string of the
- * created namespace authorization rule.
- *
+ * created Namespace AuthorizationRule.
  * @member {string} [secondaryConnectionString] Secondary connection string of
- * the created namespace authorization rule.
- *
+ * the created Namespace AuthorizationRule.
  * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
- *
- * @member {string} [secondaryKey] A base64-encoded 256-bit secondary key for
+ * @member {string} [secondaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token.
- *
- * @member {string} [keyName] A string that describes the authorization rule.
- *
+ * @member {string} [keyName] A string that describes the AuthorizationRule.
  */
 export interface ResourceListKeys {
   readonly primaryConnectionString?: string;
@@ -248,11 +276,10 @@ export interface ResourceListKeys {
  * @class
  * Initializes a new instance of the RegenerateKeysParameters class.
  * @constructor
- * Parameters supplied to the Regenerate Authorization Rule operation.
+ * Parameters supplied to the Regenerate Authorization Rule keys operation.
  *
  * @member {string} [policykey] Key that needs to be regenerated. Possible
  * values include: 'PrimaryKey', 'SecondaryKey'
- *
  */
 export interface RegenerateKeysParameters {
   policykey?: string;
@@ -260,34 +287,61 @@ export interface RegenerateKeysParameters {
 
 /**
  * @class
- * Initializes a new instance of the EventHubModel class.
+ * Initializes a new instance of the EventHubCreateOrUpdateParameters class.
  * @constructor
- * Description of the Event Hub resource.
+ * Parameters supplied to the Create Or Update Event Hub operation.
  *
+ * @member {string} location Location of the resource.
+ * @member {string} [type] ARM type of the Namespace.
+ * @member {string} [name] Name of the Event Hub.
  * @member {date} [createdAt] Exact time the Event Hub was created.
- *
  * @member {number} [messageRetentionInDays] Number of days to retain the
  * events for this Event Hub.
- *
  * @member {number} [partitionCount] Number of partitions created for the Event
  * Hub.
- *
  * @member {array} [partitionIds] Current number of shards on the Event Hub.
- *
  * @member {string} [status] Enumerates the possible values for the status of
  * the Event Hub. Possible values include: 'Active', 'Disabled', 'Restoring',
  * 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting', 'Renaming',
  * 'Unknown'
- *
  * @member {date} [updatedAt] The exact time the message was updated.
- *
  */
-export interface EventHubModel extends Resource {
+export interface EventHubCreateOrUpdateParameters {
+  location: string;
+  type?: string;
+  name?: string;
   readonly createdAt?: Date;
   messageRetentionInDays?: number;
   partitionCount?: number;
   readonly partitionIds?: string[];
-  readonly status?: string;
+  status?: string;
+  readonly updatedAt?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventHubResource class.
+ * @constructor
+ * Single item in List or Get Event Hub operation
+ *
+ * @member {date} [createdAt] Exact time the Event Hub was created.
+ * @member {number} [messageRetentionInDays] Number of days to retain the
+ * events for this Event Hub.
+ * @member {number} [partitionCount] Number of partitions created for the Event
+ * Hub.
+ * @member {array} [partitionIds] Current number of shards on the Event Hub.
+ * @member {string} [status] Enumerates the possible values for the status of
+ * the Event Hub. Possible values include: 'Active', 'Disabled', 'Restoring',
+ * 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting', 'Renaming',
+ * 'Unknown'
+ * @member {date} [updatedAt] The exact time the message was updated.
+ */
+export interface EventHubResource extends Resource {
+  readonly createdAt?: Date;
+  messageRetentionInDays?: number;
+  partitionCount?: number;
+  readonly partitionIds?: string[];
+  status?: string;
   readonly updatedAt?: Date;
 }
 
@@ -295,38 +349,53 @@ export interface EventHubModel extends Resource {
  * @class
  * Initializes a new instance of the EventHubListResult class.
  * @constructor
- * The response of the List Event Hubs operation.
+ * The result of the List EventHubs operation.
  *
- * @member {array} [value] Result of the List Event Hubs operation.
- *
+ * @member {array} [value] Result of the List EventHubs operation.
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Event Hubs.
- *
+ * Value contains incomplete list of EventHubs.
  */
 export interface EventHubListResult {
-  value?: EventHubModel[];
+  value?: EventHubResource[];
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ConsumerGroup class.
+ * Initializes a new instance of the ConsumerGroupCreateOrUpdateParameters class.
  * @constructor
- * Description of the consumer group resource.
+ * Parameters supplied to the Create Or Update Consumer Group operation.
+ *
+ * @member {string} location Location of the resource.
+ * @member {string} [type] ARM type of the Namespace.
+ * @member {string} [name] Name of the consumer group.
+ * @member {date} [createdAt] Exact time the message was created.
+ * @member {string} [eventHubPath] The path of the Event Hub.
+ * @member {date} [updatedAt] The exact time the message was updated.
+ * @member {string} [userMetadata] The user metadata.
+ */
+export interface ConsumerGroupCreateOrUpdateParameters {
+  location: string;
+  type?: string;
+  name?: string;
+  readonly createdAt?: Date;
+  readonly eventHubPath?: string;
+  readonly updatedAt?: Date;
+  userMetadata?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConsumerGroupResource class.
+ * @constructor
+ * Single item in List or Get Consumer group operation
  *
  * @member {date} [createdAt] Exact time the message was created.
- *
  * @member {string} [eventHubPath] The path of the Event Hub.
- *
  * @member {date} [updatedAt] The exact time the message was updated.
- *
- * @member {string} [userMetadata] Usermetadata is a placeholder to store
- * user-defined string data with maximum length 1024. e.g. it can be used to
- * store descriptive data, such as list of teams and their contact information
- * also user-defined configuration settings can be stored.
- *
+ * @member {string} [userMetadata] The user metadata.
  */
-export interface ConsumerGroup extends Resource {
+export interface ConsumerGroupResource extends Resource {
   readonly createdAt?: Date;
   readonly eventHubPath?: string;
   readonly updatedAt?: Date;
@@ -337,29 +406,26 @@ export interface ConsumerGroup extends Resource {
  * @class
  * Initializes a new instance of the ConsumerGroupListResult class.
  * @constructor
- * The response to the List Consumer Group operation.
+ * The result to the List Consumer Group operation.
  *
  * @member {array} [value] Result of the List Consumer Group operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Consumer Group
- *
  */
 export interface ConsumerGroupListResult {
-  value?: ConsumerGroup[];
+  value?: ConsumerGroupResource[];
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the CheckNameAvailability class.
+ * Initializes a new instance of the CheckNameAvailabilityParameter class.
  * @constructor
- * Description of a Check Name availability request properties.
+ * Parameter supplied to check Namespace name availability operation
  *
- * @member {string} name The Name to check the namespce name availability
- *
+ * @member {string} name Name to check the namespace name availability
  */
-export interface CheckNameAvailability {
+export interface CheckNameAvailabilityParameter {
   name: string;
 }
 
@@ -367,18 +433,15 @@ export interface CheckNameAvailability {
  * @class
  * Initializes a new instance of the CheckNameAvailabilityResult class.
  * @constructor
- * Description of a Check Name availability request properties.
+ * The Result of the CheckNameAvailability operation
  *
- * @member {boolean} [nameAvailable] Value indicating namespace is
- * availability, true if the namespace is available; otherwise, false.
- *
- * @member {string} [reason] The reason for unavailability of a namespace.
+ * @member {boolean} [nameAvailable] Value indicating Namespace is
+ * availability, true if the Namespace is available; otherwise, false.
+ * @member {string} [reason] The reason for unavailability of a Namespace.
  * Possible values include: 'None', 'InvalidName', 'SubscriptionIsDisabled',
  * 'NameInUse', 'NameInLockdown', 'TooManyNamespaceInCurrentSubscription'
- *
  * @member {string} [message] The detailed info regarding the reason associated
- * with the namespace.
- *
+ * with the Namespace.
  */
 export interface CheckNameAvailabilityResult {
   nameAvailable?: boolean;
@@ -390,20 +453,15 @@ export interface CheckNameAvailabilityResult {
  * @class
  * Initializes a new instance of the NamespaceUpdateParameter class.
  * @constructor
- * Parameters supplied to the Patch Namespace operation.
+ * Parameters supplied to the Patch/update Namespace operation.
  *
  * @member {object} [tags] Resource tags
- *
- * @member {object} [sku] The sku of the created namespace
- *
+ * @member {object} [sku] The sku of the created Namespace
  * @member {string} [sku.name] Name of this SKU. Possible values include:
  * 'Basic', 'Standard'
- *
  * @member {string} [sku.tier] The billing tier of this particular SKU.
  * Possible values include: 'Basic', 'Standard', 'Premium'
- *
- * @member {number} [sku.capacity] The EventHubs throughput units.
- *
+ * @member {number} [sku.capacity] The Event Hubs throughput units.
  */
 export interface NamespaceUpdateParameter {
   tags?: { [propertyName: string]: string };
@@ -412,35 +470,15 @@ export interface NamespaceUpdateParameter {
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponse class.
- * @constructor
- * Error reponse indicates EventHub service is not able to process the incoming
- * request. The reason is provided in the error message.
- *
- * @member {string} [code] Error code.
- *
- * @member {string} [message] Error message indicating why the operation
- * failed.
- *
- */
-export interface ErrorResponse {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
- * Result of the request to list EventHub operations. It contains a list of
+ * Result of the request to list Event Hub operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {array} [value] List of EventHub operations supported by the
+ * @member {array} [value] List of Event Hub operations supported by the
  * Microsoft.EventHub resource provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   readonly value?: Operation[];
@@ -454,13 +492,11 @@ export interface OperationListResult {
  * The response of the List Namespace operation.
  *
  * @member {array} [value] Result of the List Namespace operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of namespaces.
- *
  */
 export interface NamespaceListResult {
-  value?: Namespace[];
+  value?: NamespaceResource[];
   nextLink?: string;
 }
 
@@ -471,13 +507,11 @@ export interface NamespaceListResult {
  * The response from the List Namespace operation.
  *
  * @member {array} [value] Result of the List Authorization Rules operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains an incomplete list of Authorization Rules
- *
  */
 export interface SharedAccessAuthorizationRuleListResult {
-  value?: SharedAccessAuthorizationRule[];
+  value?: SharedAccessAuthorizationRuleResource[];
   nextLink?: string;
 }
 
@@ -485,16 +519,14 @@ export interface SharedAccessAuthorizationRuleListResult {
  * @class
  * Initializes a new instance of the EventHubListResult class.
  * @constructor
- * The response of the List Event Hubs operation.
+ * The result of the List EventHubs operation.
  *
- * @member {array} [value] Result of the List Event Hubs operation.
- *
+ * @member {array} [value] Result of the List EventHubs operation.
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Event Hubs.
- *
+ * Value contains incomplete list of EventHubs.
  */
 export interface EventHubListResult {
-  value?: EventHubModel[];
+  value?: EventHubResource[];
   nextLink?: string;
 }
 
@@ -502,16 +534,14 @@ export interface EventHubListResult {
  * @class
  * Initializes a new instance of the ConsumerGroupListResult class.
  * @constructor
- * The response to the List Consumer Group operation.
+ * The result to the List Consumer Group operation.
  *
  * @member {array} [value] Result of the List Consumer Group operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Consumer Group
- *
  */
 export interface ConsumerGroupListResult {
-  value?: ConsumerGroup[];
+  value?: ConsumerGroupResource[];
   nextLink?: string;
 }
 
@@ -520,12 +550,11 @@ export interface ConsumerGroupListResult {
  * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
- * Result of the request to list EventHub operations. It contains a list of
+ * Result of the request to list Event Hub operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult extends Array<Operation> {
   readonly nextLink?: string;
@@ -539,9 +568,8 @@ export interface OperationListResult extends Array<Operation> {
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of namespaces.
- *
  */
-export interface NamespaceListResult extends Array<Namespace> {
+export interface NamespaceListResult extends Array<NamespaceResource> {
   nextLink?: string;
 }
 
@@ -553,9 +581,8 @@ export interface NamespaceListResult extends Array<Namespace> {
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains an incomplete list of Authorization Rules
- *
  */
-export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAccessAuthorizationRule> {
+export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAccessAuthorizationRuleResource> {
   nextLink?: string;
 }
 
@@ -563,13 +590,12 @@ export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAcc
  * @class
  * Initializes a new instance of the EventHubListResult class.
  * @constructor
- * The response of the List Event Hubs operation.
+ * The result of the List EventHubs operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
- * Value contains incomplete list of Event Hubs.
- *
+ * Value contains incomplete list of EventHubs.
  */
-export interface EventHubListResult extends Array<EventHubModel> {
+export interface EventHubListResult extends Array<EventHubResource> {
   nextLink?: string;
 }
 
@@ -577,12 +603,11 @@ export interface EventHubListResult extends Array<EventHubModel> {
  * @class
  * Initializes a new instance of the ConsumerGroupListResult class.
  * @constructor
- * The response to the List Consumer Group operation.
+ * The result to the List Consumer Group operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Consumer Group
- *
  */
-export interface ConsumerGroupListResult extends Array<ConsumerGroup> {
+export interface ConsumerGroupListResult extends Array<ConsumerGroupResource> {
   nextLink?: string;
 }

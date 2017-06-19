@@ -20,15 +20,10 @@ export { CloudError } from 'ms-rest-azure';
  * Initializes a new instance of the Resource class.
  * @constructor
  * @member {string} [id] Resource Id
- *
  * @member {string} [name] Resource name
- *
  * @member {string} [type] Resource type
- *
  * @member {object} [tags] Resource Tags
- *
  * @member {string} [location] Resource Location
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -45,7 +40,6 @@ export interface Resource extends BaseResource {
  * Location entity for given tenant.
  *
  * @member {string} hostName
- *
  */
 export interface Location extends Resource {
   hostName: string;
@@ -56,9 +50,7 @@ export interface Location extends Resource {
  * Initializes a new instance of the ErrorModel class.
  * @constructor
  * @member {string} code
- *
  * @member {string} message
- *
  */
 export interface ErrorModel {
   code: string;
@@ -70,9 +62,7 @@ export interface ErrorModel {
  * Initializes a new instance of the LocationCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface LocationCollection {
   value: Location[];
@@ -86,7 +76,6 @@ export interface LocationCollection {
  * Group entity for Intune MAM.
  *
  * @member {string} friendlyName
- *
  */
 export interface GroupItem extends Resource {
   friendlyName: string;
@@ -97,9 +86,7 @@ export interface GroupItem extends Resource {
  * Initializes a new instance of the GroupsCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface GroupsCollection {
   value: GroupItem[];
@@ -113,12 +100,9 @@ export interface GroupsCollection {
  * Application entity for Intune MAM.
  *
  * @member {string} friendlyName
- *
  * @member {string} platform Possible values include: 'ios', 'android',
  * 'windows'. Default value: 'ios' .
- *
  * @member {string} [appId]
- *
  */
 export interface Application extends Resource {
   friendlyName: string;
@@ -131,9 +115,7 @@ export interface Application extends Resource {
  * Initializes a new instance of the ApplicationCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface ApplicationCollection {
   value: Application[];
@@ -147,59 +129,39 @@ export interface ApplicationCollection {
  * iOS Policy entity for Intune MAM.
  *
  * @member {string} friendlyName
- *
  * @member {string} [description]
- *
  * @member {string} [appSharingFromLevel] Possible values include: 'none',
  * 'policyManagedApps', 'allApps'. Default value: 'none' .
- *
  * @member {string} [appSharingToLevel] Possible values include: 'none',
  * 'policyManagedApps', 'allApps'. Default value: 'none' .
- *
  * @member {string} [authentication] Possible values include: 'required',
  * 'notRequired'. Default value: 'required' .
- *
  * @member {string} [clipboardSharingLevel] Possible values include: 'blocked',
  * 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'. Default
  * value: 'blocked' .
- *
  * @member {string} [dataBackup] Possible values include: 'allow', 'block'.
  * Default value: 'allow' .
- *
  * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
  * 'block'. Default value: 'allow' .
- *
  * @member {string} [pin] Possible values include: 'required', 'notRequired'.
  * Default value: 'required' .
- *
  * @member {number} [pinNumRetry]
- *
  * @member {string} [deviceCompliance] Possible values include: 'enable',
  * 'disable'. Default value: 'enable' .
- *
  * @member {string} [managedBrowser] Possible values include: 'required',
  * 'notRequired'. Default value: 'required' .
- *
  * @member {moment.duration} [accessRecheckOfflineTimeout]
- *
  * @member {moment.duration} [accessRecheckOnlineTimeout]
- *
  * @member {moment.duration} [offlineWipeTimeout]
- *
  * @member {number} [numOfApps]
- *
  * @member {string} [groupStatus] Possible values include: 'notTargeted',
  * 'targeted'. Default value: 'notTargeted' .
- *
  * @member {date} [lastModifiedTime]
- *
  * @member {string} [fileEncryptionLevel] Possible values include:
  * 'deviceLocked', 'deviceLockedExceptFilesOpen', 'afterDeviceRestart',
  * 'useDeviceSettings'. Default value: 'deviceLocked' .
- *
  * @member {string} [touchId] Possible values include: 'enable', 'disable'.
  * Default value: 'enable' .
- *
  */
 export interface IOSMAMPolicy extends Resource {
   friendlyName: string;
@@ -229,9 +191,7 @@ export interface IOSMAMPolicy extends Resource {
  * Initializes a new instance of the IOSMAMPolicyCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface IOSMAMPolicyCollection {
   value: IOSMAMPolicy[];
@@ -245,58 +205,38 @@ export interface IOSMAMPolicyCollection {
  * Android Policy entity for Intune MAM.
  *
  * @member {string} friendlyName
- *
  * @member {string} [description]
- *
  * @member {string} [appSharingFromLevel] Possible values include: 'none',
  * 'policyManagedApps', 'allApps'. Default value: 'none' .
- *
  * @member {string} [appSharingToLevel] Possible values include: 'none',
  * 'policyManagedApps', 'allApps'. Default value: 'none' .
- *
  * @member {string} [authentication] Possible values include: 'required',
  * 'notRequired'. Default value: 'required' .
- *
  * @member {string} [clipboardSharingLevel] Possible values include: 'blocked',
  * 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'. Default
  * value: 'blocked' .
- *
  * @member {string} [dataBackup] Possible values include: 'allow', 'block'.
  * Default value: 'allow' .
- *
  * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
  * 'block'. Default value: 'allow' .
- *
  * @member {string} [pin] Possible values include: 'required', 'notRequired'.
  * Default value: 'required' .
- *
  * @member {number} [pinNumRetry]
- *
  * @member {string} [deviceCompliance] Possible values include: 'enable',
  * 'disable'. Default value: 'enable' .
- *
  * @member {string} [managedBrowser] Possible values include: 'required',
  * 'notRequired'. Default value: 'required' .
- *
  * @member {moment.duration} [accessRecheckOfflineTimeout]
- *
  * @member {moment.duration} [accessRecheckOnlineTimeout]
- *
  * @member {moment.duration} [offlineWipeTimeout]
- *
  * @member {number} [numOfApps]
- *
  * @member {string} [groupStatus] Possible values include: 'notTargeted',
  * 'targeted'. Default value: 'notTargeted' .
- *
  * @member {date} [lastModifiedTime]
- *
  * @member {string} [screenCapture] Possible values include: 'allow', 'block'.
  * Default value: 'allow' .
- *
  * @member {string} [fileEncryption] Possible values include: 'required',
  * 'notRequired'. Default value: 'required' .
- *
  */
 export interface AndroidMAMPolicy extends Resource {
   friendlyName: string;
@@ -326,9 +266,7 @@ export interface AndroidMAMPolicy extends Resource {
  * Initializes a new instance of the AndroidMAMPolicyCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface AndroidMAMPolicyCollection {
   value: AndroidMAMPolicy[];
@@ -342,7 +280,6 @@ export interface AndroidMAMPolicyCollection {
  * Android Policy request body for Intune MAM.
  *
  * @member {string} url
- *
  */
 export interface MAMPolicyAppOrGroupIdProperties {
   url: string;
@@ -355,9 +292,7 @@ export interface MAMPolicyAppOrGroupIdProperties {
  * MAM Policy request body for properties Intune MAM.
  *
  * @member {object} [properties]
- *
  * @member {string} [properties.url]
- *
  */
 export interface MAMPolicyAppIdOrGroupIdPayload {
   properties?: MAMPolicyAppOrGroupIdProperties;
@@ -368,52 +303,34 @@ export interface MAMPolicyAppIdOrGroupIdPayload {
  * Initializes a new instance of the MAMPolicyProperties class.
  * @constructor
  * @member {string} friendlyName
- *
  * @member {string} [description]
- *
  * @member {string} [appSharingFromLevel] Possible values include: 'none',
  * 'policyManagedApps', 'allApps'. Default value: 'none' .
- *
  * @member {string} [appSharingToLevel] Possible values include: 'none',
  * 'policyManagedApps', 'allApps'. Default value: 'none' .
- *
  * @member {string} [authentication] Possible values include: 'required',
  * 'notRequired'. Default value: 'required' .
- *
  * @member {string} [clipboardSharingLevel] Possible values include: 'blocked',
  * 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'. Default
  * value: 'blocked' .
- *
  * @member {string} [dataBackup] Possible values include: 'allow', 'block'.
  * Default value: 'allow' .
- *
  * @member {string} [fileSharingSaveAs] Possible values include: 'allow',
  * 'block'. Default value: 'allow' .
- *
  * @member {string} [pin] Possible values include: 'required', 'notRequired'.
  * Default value: 'required' .
- *
  * @member {number} [pinNumRetry]
- *
  * @member {string} [deviceCompliance] Possible values include: 'enable',
  * 'disable'. Default value: 'enable' .
- *
  * @member {string} [managedBrowser] Possible values include: 'required',
  * 'notRequired'. Default value: 'required' .
- *
  * @member {moment.duration} [accessRecheckOfflineTimeout]
- *
  * @member {moment.duration} [accessRecheckOnlineTimeout]
- *
  * @member {moment.duration} [offlineWipeTimeout]
- *
  * @member {number} [numOfApps]
- *
  * @member {string} [groupStatus] Possible values include: 'notTargeted',
  * 'targeted'. Default value: 'notTargeted' .
- *
  * @member {date} [lastModifiedTime]
- *
  */
 export interface MAMPolicyProperties {
   friendlyName: string;
@@ -443,15 +360,10 @@ export interface MAMPolicyProperties {
  * Device entity for Intune.
  *
  * @member {string} userId
- *
  * @member {string} friendlyName
- *
  * @member {string} platform
- *
  * @member {string} platformVersion
- *
  * @member {string} deviceType
- *
  */
 export interface Device extends Resource {
   userId: string;
@@ -466,9 +378,7 @@ export interface Device extends Resource {
  * Initializes a new instance of the DeviceCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface DeviceCollection {
   value: Device[];
@@ -482,7 +392,6 @@ export interface DeviceCollection {
  * Device entity for Intune.
  *
  * @member {string} value
- *
  */
 export interface WipeDeviceOperationResult extends Resource {
   value: string;
@@ -493,9 +402,7 @@ export interface WipeDeviceOperationResult extends Resource {
  * Initializes a new instance of the OperationMetadataProperties class.
  * @constructor
  * @member {string} name
- *
  * @member {string} value
- *
  */
 export interface OperationMetadataProperties {
   name: string;
@@ -509,15 +416,10 @@ export interface OperationMetadataProperties {
  * OperationResult entity for Intune.
  *
  * @member {string} friendlyName
- *
  * @member {string} [category]
- *
  * @member {string} [lastModifiedTime]
- *
  * @member {string} [state]
- *
  * @member {array} operationMetadata
- *
  */
 export interface OperationResult extends Resource {
   friendlyName: string;
@@ -532,9 +434,7 @@ export interface OperationResult extends Resource {
  * Initializes a new instance of the OperationResultCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface OperationResultCollection {
   value: OperationResult[];
@@ -548,25 +448,15 @@ export interface OperationResultCollection {
  * Default Statuses entity for the given tenant.
  *
  * @member {number} [deployedPolicies]
- *
  * @member {number} [enrolledUsers]
- *
  * @member {number} [flaggedUsers]
- *
  * @member {date} [lastModifiedTime]
- *
  * @member {number} [policyAppliedUsers]
- *
  * @member {string} [status]
- *
  * @member {number} [wipeFailedApps]
- *
  * @member {number} [wipePendingApps]
- *
  * @member {number} [wipeSucceededApps]
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface StatusesDefault extends Resource {
   readonly deployedPolicies?: number;
@@ -588,9 +478,7 @@ export interface StatusesDefault extends Resource {
  * Flagged user for the given tenant.
  *
  * @member {number} [errorCount]
- *
  * @member {string} [friendlyName]
- *
  */
 export interface FlaggedUser extends Resource {
   readonly errorCount?: number;
@@ -604,9 +492,7 @@ export interface FlaggedUser extends Resource {
  * Flagged user collection for the given tenant.
  *
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface FlaggedUserCollection {
   value: FlaggedUser[];
@@ -618,9 +504,7 @@ export interface FlaggedUserCollection {
  * Initializes a new instance of the FlaggedEnrolledAppError class.
  * @constructor
  * @member {string} [errorCode]
- *
  * @member {string} [severity]
- *
  */
 export interface FlaggedEnrolledAppError {
   readonly errorCode?: string;
@@ -634,15 +518,10 @@ export interface FlaggedEnrolledAppError {
  * Flagged Enrolled App for the given tenant.
  *
  * @member {string} [deviceType]
- *
  * @member {string} [friendlyName]
- *
  * @member {string} [lastModifiedTime]
- *
  * @member {string} [platform]
- *
  * @member {array} [errors]
- *
  */
 export interface FlaggedEnrolledApp extends Resource {
   readonly deviceType?: string;
@@ -659,9 +538,7 @@ export interface FlaggedEnrolledApp extends Resource {
  * Flagged Enrolled App collection for the given tenant.
  *
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface FlaggedEnrolledAppCollection {
   value: FlaggedEnrolledApp[];
@@ -673,9 +550,7 @@ export interface FlaggedEnrolledAppCollection {
  * Initializes a new instance of the LocationCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface LocationCollection {
   value: Location[];
@@ -687,9 +562,7 @@ export interface LocationCollection {
  * Initializes a new instance of the ApplicationCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface ApplicationCollection {
   value: Application[];
@@ -701,9 +574,7 @@ export interface ApplicationCollection {
  * Initializes a new instance of the DeviceCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface DeviceCollection {
   value: Device[];
@@ -715,9 +586,7 @@ export interface DeviceCollection {
  * Initializes a new instance of the OperationResultCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface OperationResultCollection {
   value: OperationResult[];
@@ -731,9 +600,7 @@ export interface OperationResultCollection {
  * Flagged user collection for the given tenant.
  *
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface FlaggedUserCollection {
   value: FlaggedUser[];
@@ -747,9 +614,7 @@ export interface FlaggedUserCollection {
  * Flagged Enrolled App collection for the given tenant.
  *
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface FlaggedEnrolledAppCollection {
   value: FlaggedEnrolledApp[];
@@ -761,9 +626,7 @@ export interface FlaggedEnrolledAppCollection {
  * Initializes a new instance of the IOSMAMPolicyCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface IOSMAMPolicyCollection {
   value: IOSMAMPolicy[];
@@ -775,9 +638,7 @@ export interface IOSMAMPolicyCollection {
  * Initializes a new instance of the GroupsCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface GroupsCollection {
   value: GroupItem[];
@@ -789,9 +650,7 @@ export interface GroupsCollection {
  * Initializes a new instance of the AndroidMAMPolicyCollection class.
  * @constructor
  * @member {array} value
- *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface AndroidMAMPolicyCollection {
   value: AndroidMAMPolicy[];
@@ -804,7 +663,6 @@ export interface AndroidMAMPolicyCollection {
  * Initializes a new instance of the LocationCollection class.
  * @constructor
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface LocationCollection extends Array<Location> {
   readonly nextlink?: string;
@@ -815,7 +673,6 @@ export interface LocationCollection extends Array<Location> {
  * Initializes a new instance of the ApplicationCollection class.
  * @constructor
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface ApplicationCollection extends Array<Application> {
   readonly nextlink?: string;
@@ -826,7 +683,6 @@ export interface ApplicationCollection extends Array<Application> {
  * Initializes a new instance of the DeviceCollection class.
  * @constructor
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface DeviceCollection extends Array<Device> {
   readonly nextlink?: string;
@@ -837,7 +693,6 @@ export interface DeviceCollection extends Array<Device> {
  * Initializes a new instance of the OperationResultCollection class.
  * @constructor
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface OperationResultCollection extends Array<OperationResult> {
   readonly nextlink?: string;
@@ -850,7 +705,6 @@ export interface OperationResultCollection extends Array<OperationResult> {
  * Flagged user collection for the given tenant.
  *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface FlaggedUserCollection extends Array<FlaggedUser> {
   readonly nextlink?: string;
@@ -863,7 +717,6 @@ export interface FlaggedUserCollection extends Array<FlaggedUser> {
  * Flagged Enrolled App collection for the given tenant.
  *
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface FlaggedEnrolledAppCollection extends Array<FlaggedEnrolledApp> {
   readonly nextlink?: string;
@@ -874,7 +727,6 @@ export interface FlaggedEnrolledAppCollection extends Array<FlaggedEnrolledApp> 
  * Initializes a new instance of the IOSMAMPolicyCollection class.
  * @constructor
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface IOSMAMPolicyCollection extends Array<IOSMAMPolicy> {
   readonly nextlink?: string;
@@ -885,7 +737,6 @@ export interface IOSMAMPolicyCollection extends Array<IOSMAMPolicy> {
  * Initializes a new instance of the GroupsCollection class.
  * @constructor
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface GroupsCollection extends Array<GroupItem> {
   readonly nextlink?: string;
@@ -896,7 +747,6 @@ export interface GroupsCollection extends Array<GroupItem> {
  * Initializes a new instance of the AndroidMAMPolicyCollection class.
  * @constructor
  * @member {string} [nextlink] Gets the URL to get the next set of results.
- *
  */
 export interface AndroidMAMPolicyCollection extends Array<AndroidMAMPolicy> {
   readonly nextlink?: string;

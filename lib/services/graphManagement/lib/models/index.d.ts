@@ -22,9 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * Active Directory error information.
  *
  * @member {string} [code] Error code.
- *
  * @member {string} [message] Error message value.
- *
  */
 export interface GraphError {
   code?: string;
@@ -38,18 +36,12 @@ export interface GraphError {
  * Active Directory Key Credential information.
  *
  * @member {date} [startDate] Start date.
- *
  * @member {date} [endDate] End date.
- *
  * @member {string} [value] Key value.
- *
  * @member {string} [keyId] Key ID.
- *
  * @member {string} [usage] Usage. Acceptable values are 'Verify' and 'Sign'.
- *
  * @member {string} [type] Type. Acceptable values are 'AsymmetricX509Cert' and
  * 'Symmetric'.
- *
  */
 export interface KeyCredential {
   startDate?: Date;
@@ -67,13 +59,9 @@ export interface KeyCredential {
  * Active Directory Password Credential information.
  *
  * @member {date} [startDate] Start date.
- *
  * @member {date} [endDate] End date.
- *
  * @member {string} [keyId] Key ID.
- *
  * @member {string} [value] Key value.
- *
  */
 export interface PasswordCredential {
   startDate?: Date;
@@ -90,20 +78,13 @@ export interface PasswordCredential {
  *
  * @member {boolean} availableToOtherTenants Whether the application is
  * available to other tenants.
- *
  * @member {string} displayName The display name of the application.
- *
  * @member {string} [homepage] The home page of the application.
- *
  * @member {array} identifierUris A collection of URIs for the application.
- *
  * @member {array} [replyUrls] A collection of reply URLs for the application.
- *
  * @member {array} [keyCredentials] The list of KeyCredential objects.
- *
  * @member {array} [passwordCredentials] The list of PasswordCredential
  * objects.
- *
  */
 export interface ApplicationCreateParameters {
   availableToOtherTenants: boolean;
@@ -123,20 +104,13 @@ export interface ApplicationCreateParameters {
  *
  * @member {boolean} [availableToOtherTenants] Whether the application is
  * available to other tenants
- *
  * @member {string} [displayName] The display name of the application.
- *
  * @member {string} [homepage] The home page of the application.
- *
  * @member {array} [identifierUris] A collection of URIs for the application.
- *
  * @member {array} [replyUrls] A collection of reply URLs for the application.
- *
  * @member {array} [keyCredentials] The list of KeyCredential objects.
- *
  * @member {array} [passwordCredentials] The list of PasswordCredential
  * objects.
- *
  */
 export interface ApplicationUpdateParameters {
   availableToOtherTenants?: boolean;
@@ -155,24 +129,15 @@ export interface ApplicationUpdateParameters {
  * Active Directory application information.
  *
  * @member {string} [objectId] The object ID.
- *
  * @member {string} [objectType] The object type.
- *
  * @member {string} [appId] The application ID.
- *
  * @member {array} [appPermissions] The application permissions.
- *
  * @member {boolean} [availableToOtherTenants] Whether the application is be
  * available to other tenants.
- *
  * @member {string} [displayName] The display name of the application.
- *
  * @member {array} [identifierUris] A collection of URIs for the application.
- *
  * @member {array} [replyUrls] A collection of reply URLs for the application.
- *
  * @member {string} [homepage] The home page of the application.
- *
  */
 export interface Application {
   objectId?: string;
@@ -193,9 +158,7 @@ export interface Application {
  * Application list operation result.
  *
  * @member {array} [value] A collection of applications.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface ApplicationListResult {
   value?: Application[];
@@ -209,7 +172,6 @@ export interface ApplicationListResult {
  * KeyCredential list operation result.
  *
  * @member {array} [value] A collection of KeyCredentials.
- *
  */
 export interface KeyCredentialListResult {
   value?: KeyCredential[];
@@ -222,7 +184,6 @@ export interface KeyCredentialListResult {
  * Request parameters for a KeyCredentials update operation
  *
  * @member {array} value A collection of KeyCredentials.
- *
  */
 export interface KeyCredentialsUpdateParameters {
   value: KeyCredential[];
@@ -235,7 +196,6 @@ export interface KeyCredentialsUpdateParameters {
  * PasswordCredential list operation result.
  *
  * @member {array} [value] A collection of PasswordCredentials.
- *
  */
 export interface PasswordCredentialListResult {
   value?: PasswordCredential[];
@@ -248,7 +208,6 @@ export interface PasswordCredentialListResult {
  * Request parameters for a PasswordCredentials update operation.
  *
  * @member {array} value A collection of PasswordCredentials.
- *
  */
 export interface PasswordCredentialsUpdateParameters {
   value: PasswordCredential[];
@@ -261,27 +220,17 @@ export interface PasswordCredentialsUpdateParameters {
  * The properties of an Active Directory object.
  *
  * @member {string} [objectId] The ID of the object.
- *
  * @member {string} [objectType] The type of AAD object.
- *
  * @member {string} [displayName] The display name of the object.
- *
  * @member {string} [userPrincipalName] The principal name of the object.
- *
  * @member {string} [mail] The primary email address of the object.
- *
  * @member {boolean} [mailEnabled] Whether the AAD object is mail-enabled.
- *
  * @member {boolean} [securityEnabled] Whether the AAD object is
  * security-enabled.
- *
  * @member {string} [signInName] The sign-in name of the object.
- *
  * @member {array} [servicePrincipalNames] A collection of service principal
  * names associated with the object.
- *
  * @member {string} [userType] The user type of the object.
- *
  */
 export interface AADObject {
   objectId?: string;
@@ -303,9 +252,7 @@ export interface AADObject {
  * The response to an Active Directory object inquiry API request.
  *
  * @member {array} [value] A collection of Active Directory objects.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface GetObjectsResult {
   value?: AADObject[];
@@ -323,7 +270,6 @@ export interface GetObjectsResult {
  * where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and
  * "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the member (user,
  * application, servicePrincipal, group) to be added.
- *
  */
 export interface GroupAddMemberParameters {
   url: string;
@@ -336,9 +282,7 @@ export interface GroupAddMemberParameters {
  * Request parameters for creating a new group.
  *
  * @member {string} displayName Group display name
- *
  * @member {string} mailNickname Mail nickname
- *
  */
 export interface GroupCreateParameters {
   displayName: string;
@@ -352,15 +296,10 @@ export interface GroupCreateParameters {
  * Active Directory group information.
  *
  * @member {string} [objectId] The object ID.
- *
  * @member {string} [objectType] The object type.
- *
  * @member {string} [displayName] The display name of the group.
- *
  * @member {boolean} [securityEnabled] Whether the group is security-enable.
- *
  * @member {string} [mail] The primary email address of the group.
- *
  */
 export interface ADGroup {
   objectId?: string;
@@ -377,9 +316,7 @@ export interface ADGroup {
  * Server response for Get tenant groups API call
  *
  * @member {array} [value] A collection of Active Directory groups.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface GroupListResult {
   value?: ADGroup[];
@@ -395,7 +332,6 @@ export interface GroupListResult {
  * @member {boolean} securityEnabledOnly If true, only membership in
  * security-enabled groups should be checked. Otherwise, membership in all
  * groups should be checked.
- *
  */
 export interface GroupGetMemberGroupsParameters {
   securityEnabledOnly: boolean;
@@ -409,7 +345,6 @@ export interface GroupGetMemberGroupsParameters {
  *
  * @member {array} [value] A collection of group IDs of which the group is a
  * member.
- *
  */
 export interface GroupGetMemberGroupsResult {
   value?: string[];
@@ -422,10 +357,8 @@ export interface GroupGetMemberGroupsResult {
  * Request parameters for IsMemberOf API call.
  *
  * @member {string} groupId The object ID of the group to check.
- *
  * @member {string} memberId The object ID of the contact, group, user, or
  * service principal to check for membership in the specified group.
- *
  */
 export interface CheckGroupMembershipParameters {
   groupId: string;
@@ -441,7 +374,6 @@ export interface CheckGroupMembershipParameters {
  * @member {boolean} [value] True if the specified user, group, contact, or
  * service principal has either direct or transitive membership in the
  * specified group; otherwise, false.
- *
  */
 export interface CheckGroupMembershipResult {
   value?: boolean;
@@ -454,14 +386,10 @@ export interface CheckGroupMembershipResult {
  * Request parameters for creating a new service principal.
  *
  * @member {string} appId application Id
- *
  * @member {boolean} accountEnabled Whether the account is enabled
- *
  * @member {array} [keyCredentials] A collection of KeyCredential objects.
- *
  * @member {array} [passwordCredentials] A collection of PasswordCredential
  * objects
- *
  */
 export interface ServicePrincipalCreateParameters {
   appId: string;
@@ -477,16 +405,11 @@ export interface ServicePrincipalCreateParameters {
  * Active Directory service principal information.
  *
  * @member {string} [objectId] The object ID.
- *
  * @member {string} [objectType] The object type.
- *
  * @member {string} [displayName] The display name of the service principal.
- *
  * @member {string} [appId] The application ID.
- *
  * @member {array} [servicePrincipalNames] A collection of service principal
  * names.
- *
  */
 export interface ServicePrincipal {
   objectId?: string;
@@ -503,9 +426,7 @@ export interface ServicePrincipal {
  * Server response for get tenant service principals API call.
  *
  * @member {array} [value] the list of service principals.
- *
  * @member {string} [odatanextLink] the URL to get the next set of results.
- *
  */
 export interface ServicePrincipalListResult {
   value?: ServicePrincipal[];
@@ -519,10 +440,8 @@ export interface ServicePrincipalListResult {
  * The password profile associated with a user.
  *
  * @member {string} password Password
- *
  * @member {boolean} [forceChangePasswordNextLogin] Whether to force a password
  * change on next login.
- *
  */
 export interface PasswordProfile {
   password: string;
@@ -536,27 +455,23 @@ export interface PasswordProfile {
  * Request parameters for creating a new work or school account user.
  *
  * @member {boolean} accountEnabled Whether the account is enabled.
- *
  * @member {string} displayName The display name of the user.
- *
  * @member {object} passwordProfile Password Profile
- *
  * @member {string} [passwordProfile.password] Password
- *
  * @member {boolean} [passwordProfile.forceChangePasswordNextLogin] Whether to
  * force a password change on next login.
- *
  * @member {string} userPrincipalName The user principal name
  * (someuser@contoso.com). It must contain one of the verified domains for the
  * tenant.
- *
  * @member {string} mailNickname The mail alias for the user.
- *
  * @member {string} [immutableId] This must be specified if you are using a
  * federated domain for the user's userPrincipalName (UPN) property when
  * creating a new user account. It is used to associate an on-premises Active
  * Directory user account with their Azure AD user object.
- *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
  */
 export interface UserCreateParameters {
   accountEnabled: boolean;
@@ -565,6 +480,7 @@ export interface UserCreateParameters {
   userPrincipalName: string;
   mailNickname: string;
   immutableId?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -574,24 +490,23 @@ export interface UserCreateParameters {
  * Request parameters for updating an existing work or school account user.
  *
  * @member {boolean} [accountEnabled] Whether the account is enabled.
- *
  * @member {string} [displayName] The display name of the user.
- *
  * @member {object} [passwordProfile] The password profile of the user.
- *
  * @member {string} [passwordProfile.password] Password
- *
  * @member {boolean} [passwordProfile.forceChangePasswordNextLogin] Whether to
  * force a password change on next login.
- *
  * @member {string} [mailNickname] The mail alias for the user.
- *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
  */
 export interface UserUpdateParameters {
   accountEnabled?: boolean;
   displayName?: string;
   passwordProfile?: PasswordProfile;
   mailNickname?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -601,19 +516,16 @@ export interface UserUpdateParameters {
  * Active Directory user information.
  *
  * @member {string} [objectId] The object ID.
- *
  * @member {string} [objectType] The object type.
- *
  * @member {string} [userPrincipalName] The principal name of the user.
- *
  * @member {string} [displayName] The display name of the user.
- *
  * @member {string} [signInName] The sign-in name of the user.
- *
  * @member {string} [mail] The primary email address of the user.
- *
  * @member {string} [mailNickname] The mail alias for the user.
- *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
  */
 export interface User {
   objectId?: string;
@@ -623,6 +535,7 @@ export interface User {
   signInName?: string;
   mail?: string;
   mailNickname?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -634,7 +547,6 @@ export interface User {
  * @member {boolean} securityEnabledOnly If true, only membership in
  * security-enabled groups should be checked. Otherwise, membership in all
  * groups should be checked.
- *
  */
 export interface UserGetMemberGroupsParameters {
   securityEnabledOnly: boolean;
@@ -648,7 +560,6 @@ export interface UserGetMemberGroupsParameters {
  *
  * @member {array} [value] A collection of group IDs of which the user is a
  * member.
- *
  */
 export interface UserGetMemberGroupsResult {
   value?: string[];
@@ -661,9 +572,7 @@ export interface UserGetMemberGroupsResult {
  * Server response for Get tenant users API call.
  *
  * @member {array} [value] the list of users.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface UserListResult {
   value?: User[];
@@ -677,12 +586,9 @@ export interface UserListResult {
  * Request parameters for the GetObjectsByObjectIds API.
  *
  * @member {array} [objectIds] The requested object IDs.
- *
  * @member {array} [types] The requested object types.
- *
  * @member {boolean} includeDirectoryObjectReferences If true, also searches
  * for object IDs in the partner tenant.
- *
  */
 export interface GetObjectsParameters {
   objectIds?: string[];
@@ -697,9 +603,7 @@ export interface GetObjectsParameters {
  * The response to an Active Directory object inquiry API request.
  *
  * @member {array} [value] A collection of Active Directory objects.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface GetObjectsResult {
   value?: AADObject[];
@@ -713,9 +617,7 @@ export interface GetObjectsResult {
  * Application list operation result.
  *
  * @member {array} [value] A collection of applications.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface ApplicationListResult {
   value?: Application[];
@@ -729,7 +631,6 @@ export interface ApplicationListResult {
  * KeyCredential list operation result.
  *
  * @member {array} [value] A collection of KeyCredentials.
- *
  */
 export interface KeyCredentialListResult {
   value?: KeyCredential[];
@@ -742,7 +643,6 @@ export interface KeyCredentialListResult {
  * PasswordCredential list operation result.
  *
  * @member {array} [value] A collection of PasswordCredentials.
- *
  */
 export interface PasswordCredentialListResult {
   value?: PasswordCredential[];
@@ -755,9 +655,7 @@ export interface PasswordCredentialListResult {
  * Server response for Get tenant groups API call
  *
  * @member {array} [value] A collection of Active Directory groups.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface GroupListResult {
   value?: ADGroup[];
@@ -772,7 +670,6 @@ export interface GroupListResult {
  *
  * @member {array} [value] A collection of group IDs of which the group is a
  * member.
- *
  */
 export interface GroupGetMemberGroupsResult {
   value?: string[];
@@ -785,9 +682,7 @@ export interface GroupGetMemberGroupsResult {
  * Server response for get tenant service principals API call.
  *
  * @member {array} [value] the list of service principals.
- *
  * @member {string} [odatanextLink] the URL to get the next set of results.
- *
  */
 export interface ServicePrincipalListResult {
   value?: ServicePrincipal[];
@@ -801,9 +696,7 @@ export interface ServicePrincipalListResult {
  * Server response for Get tenant users API call.
  *
  * @member {array} [value] the list of users.
- *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface UserListResult {
   value?: User[];
@@ -818,7 +711,6 @@ export interface UserListResult {
  *
  * @member {array} [value] A collection of group IDs of which the user is a
  * member.
- *
  */
 export interface UserGetMemberGroupsResult {
   value?: string[];
@@ -832,7 +724,6 @@ export interface UserGetMemberGroupsResult {
  * The response to an Active Directory object inquiry API request.
  *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface GetObjectsResult extends Array<AADObject> {
   odatanextLink?: string;
@@ -845,7 +736,6 @@ export interface GetObjectsResult extends Array<AADObject> {
  * Application list operation result.
  *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface ApplicationListResult extends Array<Application> {
   odatanextLink?: string;
@@ -878,7 +768,6 @@ export interface PasswordCredentialListResult extends Array<PasswordCredential> 
  * Server response for Get tenant groups API call
  *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface GroupListResult extends Array<ADGroup> {
   odatanextLink?: string;
@@ -901,7 +790,6 @@ export interface GroupGetMemberGroupsResult extends Array<string> {
  * Server response for get tenant service principals API call.
  *
  * @member {string} [odatanextLink] the URL to get the next set of results.
- *
  */
 export interface ServicePrincipalListResult extends Array<ServicePrincipal> {
   odatanextLink?: string;
@@ -914,7 +802,6 @@ export interface ServicePrincipalListResult extends Array<ServicePrincipal> {
  * Server response for Get tenant users API call.
  *
  * @member {string} [odatanextLink] The URL to get the next set of results.
- *
  */
 export interface UserListResult extends Array<User> {
   odatanextLink?: string;

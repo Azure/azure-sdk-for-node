@@ -23,7 +23,6 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [principalId] Returns role assignment of the specific
  * principal.
- *
  */
 export interface RoleAssignmentFilter {
   principalId?: string;
@@ -36,7 +35,6 @@ export interface RoleAssignmentFilter {
  * Role Definitions filter
  *
  * @member {string} [roleName] Returns role definition with the specific name.
- *
  */
 export interface RoleDefinitionFilter {
   roleName?: string;
@@ -49,9 +47,7 @@ export interface RoleDefinitionFilter {
  * Classic Administrator properties.
  *
  * @member {string} [emailAddress] The email address of the administrator.
- *
  * @member {string} [role] The role of the administrator.
- *
  */
 export interface ClassicAdministratorProperties {
   emailAddress?: string;
@@ -65,18 +61,12 @@ export interface ClassicAdministratorProperties {
  * Classic Administrators
  *
  * @member {string} [id] The ID of the administrator.
- *
  * @member {string} [name] The name of the administrator.
- *
  * @member {string} [type] The type of the administrator.
- *
  * @member {object} [properties] Properties for the classic administrator.
- *
  * @member {string} [properties.emailAddress] The email address of the
  * administrator.
- *
  * @member {string} [properties.role] The role of the administrator.
- *
  */
 export interface ClassicAdministrator {
   id?: string;
@@ -92,10 +82,8 @@ export interface ClassicAdministrator {
  * ClassicAdministrator list result information.
  *
  * @member {array} [value] An array of administrators.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ClassicAdministratorListResult {
   value?: ClassicAdministrator[];
@@ -109,9 +97,7 @@ export interface ClassicAdministratorListResult {
  * Role definition permissions.
  *
  * @member {array} [actions] Allowed actions.
- *
  * @member {array} [notActions] Denied actions.
- *
  */
 export interface Permission {
   actions?: string[];
@@ -125,10 +111,8 @@ export interface Permission {
  * Permissions information.
  *
  * @member {array} [value] An array of permissions.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PermissionGetResult {
   value?: Permission[];
@@ -142,15 +126,10 @@ export interface PermissionGetResult {
  * Operation
  *
  * @member {string} [name] The operation name.
- *
  * @member {string} [displayName] The operation display name.
- *
  * @member {string} [description] The operation description.
- *
  * @member {string} [origin] The operation origin.
- *
  * @member {object} [properties] The operation properties.
- *
  */
 export interface ProviderOperation {
   name?: string;
@@ -167,11 +146,8 @@ export interface ProviderOperation {
  * Resource Type
  *
  * @member {string} [name] The resource type name.
- *
  * @member {string} [displayName] The resource type display name.
- *
  * @member {array} [operations] The resource type operations.
- *
  */
 export interface ResourceType {
   name?: string;
@@ -186,17 +162,11 @@ export interface ResourceType {
  * Provider Operations metadata
  *
  * @member {string} [id] The provider id.
- *
  * @member {string} [name] The provider name.
- *
  * @member {string} [type] The provider type.
- *
  * @member {string} [displayName] The provider display name.
- *
  * @member {array} [resourceTypes] The provider resource types
- *
  * @member {array} [operations] The provider operations.
- *
  */
 export interface ProviderOperationsMetadata {
   id?: string;
@@ -214,10 +184,8 @@ export interface ProviderOperationsMetadata {
  * Provider operations metadata list
  *
  * @member {array} [value] The list of providers.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ProviderOperationsMetadataListResult {
   value?: ProviderOperationsMetadata[];
@@ -231,11 +199,8 @@ export interface ProviderOperationsMetadataListResult {
  * Role assignment properties with scope.
  *
  * @member {string} [scope] The role assignment scope.
- *
  * @member {string} [roleDefinitionId] The role definition ID.
- *
  * @member {string} [principalId] The principal ID.
- *
  */
 export interface RoleAssignmentPropertiesWithScope {
   scope?: string;
@@ -250,19 +215,12 @@ export interface RoleAssignmentPropertiesWithScope {
  * Role Assignments
  *
  * @member {string} [id] The role assignment ID.
- *
  * @member {string} [name] The role assignment name.
- *
  * @member {string} [type] The role assignment type.
- *
  * @member {object} [properties] Role assignment properties.
- *
  * @member {string} [properties.scope] The role assignment scope.
- *
  * @member {string} [properties.roleDefinitionId] The role definition ID.
- *
  * @member {string} [properties.principalId] The principal ID.
- *
  */
 export interface RoleAssignment {
   id?: string;
@@ -278,10 +236,8 @@ export interface RoleAssignment {
  * Role assignment list operation result.
  *
  * @member {array} [value] Role assignment list.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface RoleAssignmentListResult {
   value?: RoleAssignment[];
@@ -296,11 +252,9 @@ export interface RoleAssignmentListResult {
  *
  * @member {string} [roleDefinitionId] The role definition ID used in the role
  * assignment.
- *
  * @member {string} [principalId] The principal ID assigned to the role. This
  * maps to the ID inside the Active Directory. It can point to a user, service
  * principal, or security group.
- *
  */
 export interface RoleAssignmentProperties {
   roleDefinitionId?: string;
@@ -314,14 +268,11 @@ export interface RoleAssignmentProperties {
  * Role assignment create parameters.
  *
  * @member {object} [properties] Role assignment properties.
- *
  * @member {string} [properties.roleDefinitionId] The role definition ID used
  * in the role assignment.
- *
  * @member {string} [properties.principalId] The principal ID assigned to the
  * role. This maps to the ID inside the Active Directory. It can point to a
  * user, service principal, or security group.
- *
  */
 export interface RoleAssignmentCreateParameters {
   properties?: RoleAssignmentProperties;
@@ -334,15 +285,10 @@ export interface RoleAssignmentCreateParameters {
  * Role definition properties.
  *
  * @member {string} [roleName] The role name.
- *
  * @member {string} [description] The role definition description.
- *
  * @member {string} [type] The role type.
- *
  * @member {array} [permissions] Role definition permissions.
- *
  * @member {array} [assignableScopes] Role definition assignable scopes.
- *
  */
 export interface RoleDefinitionProperties {
   roleName?: string;
@@ -359,24 +305,15 @@ export interface RoleDefinitionProperties {
  * Role definition.
  *
  * @member {string} [id] The role definition ID.
- *
  * @member {string} [name] The role definition name.
- *
  * @member {string} [type] The role definition type.
- *
  * @member {object} [properties] Role definition properties.
- *
  * @member {string} [properties.roleName] The role name.
- *
  * @member {string} [properties.description] The role definition description.
- *
  * @member {string} [properties.type] The role type.
- *
  * @member {array} [properties.permissions] Role definition permissions.
- *
  * @member {array} [properties.assignableScopes] Role definition assignable
  * scopes.
- *
  */
 export interface RoleDefinition {
   id?: string;
@@ -392,10 +329,8 @@ export interface RoleDefinition {
  * Role definition list operation result.
  *
  * @member {array} [value] Role definition list.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface RoleDefinitionListResult {
   value?: RoleDefinition[];
@@ -409,10 +344,8 @@ export interface RoleDefinitionListResult {
  * ClassicAdministrator list result information.
  *
  * @member {array} [value] An array of administrators.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ClassicAdministratorListResult {
   value?: ClassicAdministrator[];
@@ -426,10 +359,8 @@ export interface ClassicAdministratorListResult {
  * Permissions information.
  *
  * @member {array} [value] An array of permissions.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PermissionGetResult {
   value?: Permission[];
@@ -443,10 +374,8 @@ export interface PermissionGetResult {
  * Provider operations metadata list
  *
  * @member {array} [value] The list of providers.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ProviderOperationsMetadataListResult {
   value?: ProviderOperationsMetadata[];
@@ -460,10 +389,8 @@ export interface ProviderOperationsMetadataListResult {
  * Role assignment list operation result.
  *
  * @member {array} [value] Role assignment list.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface RoleAssignmentListResult {
   value?: RoleAssignment[];
@@ -477,10 +404,8 @@ export interface RoleAssignmentListResult {
  * Role definition list operation result.
  *
  * @member {array} [value] Role definition list.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface RoleDefinitionListResult {
   value?: RoleDefinition[];
@@ -496,7 +421,6 @@ export interface RoleDefinitionListResult {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ClassicAdministratorListResult extends Array<ClassicAdministrator> {
   nextLink?: string;
@@ -510,7 +434,6 @@ export interface ClassicAdministratorListResult extends Array<ClassicAdministrat
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PermissionGetResult extends Array<Permission> {
   nextLink?: string;
@@ -524,7 +447,6 @@ export interface PermissionGetResult extends Array<Permission> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ProviderOperationsMetadataListResult extends Array<ProviderOperationsMetadata> {
   nextLink?: string;
@@ -538,7 +460,6 @@ export interface ProviderOperationsMetadataListResult extends Array<ProviderOper
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface RoleAssignmentListResult extends Array<RoleAssignment> {
   nextLink?: string;
@@ -552,7 +473,6 @@ export interface RoleAssignmentListResult extends Array<RoleAssignment> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface RoleDefinitionListResult extends Array<RoleDefinition> {
   nextLink?: string;

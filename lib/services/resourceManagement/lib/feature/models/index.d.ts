@@ -23,7 +23,6 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [state] The registration state of the feature for the
  * subscription.
- *
  */
 export interface FeatureProperties {
   state?: string;
@@ -36,16 +35,11 @@ export interface FeatureProperties {
  * Previewed feature information.
  *
  * @member {string} [name] The name of the feature.
- *
  * @member {object} [properties] Properties of the previewed feature.
- *
  * @member {string} [properties.state] The registration state of the feature
  * for the subscription.
- *
  * @member {string} [id] The resource ID of the feature.
- *
  * @member {string} [type] The resource type of the feature.
- *
  */
 export interface FeatureResult {
   name?: string;
@@ -61,10 +55,8 @@ export interface FeatureResult {
  * List of previewed features.
  *
  * @member {array} [value] The array of features.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface FeatureOperationsListResult {
   value?: FeatureResult[];
@@ -78,10 +70,8 @@ export interface FeatureOperationsListResult {
  * List of previewed features.
  *
  * @member {array} [value] The array of features.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface FeatureOperationsListResult {
   value?: FeatureResult[];
@@ -97,7 +87,6 @@ export interface FeatureOperationsListResult {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface FeatureOperationsListResult extends Array<FeatureResult> {
   nextLink?: string;

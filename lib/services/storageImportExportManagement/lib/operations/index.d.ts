@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * Jobs
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the StorageImportExportManagementClient.
+ * instance of the StorageImportExport.
  */
 export interface Jobs {
 

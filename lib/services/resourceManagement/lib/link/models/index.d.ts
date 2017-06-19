@@ -22,7 +22,6 @@ export { CloudError } from 'ms-rest-azure';
  * Resource link filter.
  *
  * @member {string} targetId The ID of the target resource.
- *
  */
 export interface ResourceLinkFilter {
   targetId: string;
@@ -36,12 +35,9 @@ export interface ResourceLinkFilter {
  *
  * @member {string} [sourceId] The fully qualified ID of the source resource in
  * the link.
- *
  * @member {string} targetId The fully qualified ID of the target resource in
  * the link.
- *
  * @member {string} [notes] Notes about the resource link.
- *
  */
 export interface ResourceLinkProperties {
   readonly sourceId?: string;
@@ -56,19 +52,13 @@ export interface ResourceLinkProperties {
  * The resource link.
  *
  * @member {string} [id] The fully qualified ID of the resource link.
- *
  * @member {string} [name] The name of the resource link.
- *
  * @member {object} [properties] Properties for resource link.
- *
  * @member {string} [properties.sourceId] The fully qualified ID of the source
  * resource in the link.
- *
  * @member {string} [properties.targetId] The fully qualified ID of the target
  * resource in the link.
- *
  * @member {string} [properties.notes] Notes about the resource link.
- *
  */
 export interface ResourceLink {
   readonly id?: string;
@@ -83,10 +73,8 @@ export interface ResourceLink {
  * List of resource links.
  *
  * @member {array} value An array of resource links.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceLinkResult {
   value: ResourceLink[];
@@ -100,10 +88,8 @@ export interface ResourceLinkResult {
  * List of resource links.
  *
  * @member {array} value An array of resource links.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceLinkResult {
   value: ResourceLink[];
@@ -119,7 +105,6 @@ export interface ResourceLinkResult {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceLinkResult extends Array<ResourceLink> {
   readonly nextLink?: string;

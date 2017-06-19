@@ -9,20 +9,23 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
+import * as stream from 'stream';
 import * as models from '../models';
 
 
 /**
  * @class
- * AutomationAccounts
+ * AutomationAccountOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
  */
-export interface AutomationAccounts {
+export interface AutomationAccountOperations {
 
 
     /**
      * Update an automation account.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName Automation account name.
      *
@@ -31,8 +34,8 @@ export interface AutomationAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets account SKU.
      *
-     * @param {string} [parameters.sku.name] Gets or sets the SKU (pricing tier) of
-     * the account. Possible values include: 'Free', 'Basic'
+     * @param {string} parameters.sku.name Gets or sets the SKU name of the
+     * account. Possible values include: 'Free', 'Basic'
      *
      * @param {string} [parameters.sku.family] Gets or sets the SKU family.
      *
@@ -45,8 +48,6 @@ export interface AutomationAccounts {
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
-     *
-     * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -59,10 +60,12 @@ export interface AutomationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccount>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccount>>;
 
     /**
      * Update an automation account.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName Automation account name.
      *
@@ -71,8 +74,8 @@ export interface AutomationAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets account SKU.
      *
-     * @param {string} [parameters.sku.name] Gets or sets the SKU (pricing tier) of
-     * the account. Possible values include: 'Free', 'Basic'
+     * @param {string} parameters.sku.name Gets or sets the SKU name of the
+     * account. Possible values include: 'Free', 'Basic'
      *
      * @param {string} [parameters.sku.family] Gets or sets the SKU family.
      *
@@ -85,8 +88,6 @@ export interface AutomationAccounts {
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
-     *
-     * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -115,13 +116,15 @@ export interface AutomationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccount>;
-    update(automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, resourceGroupName: string, callback: ServiceCallback<models.AutomationAccount>): void;
-    update(automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccount>): void;
+    update(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccount>;
+    update(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, callback: ServiceCallback<models.AutomationAccount>): void;
+    update(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccount>): void;
 
 
     /**
-     * Create or update an automation account.
+     * Create or update automation account.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName Parameters supplied to the create or
      * update automation account.
@@ -131,22 +134,20 @@ export interface AutomationAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets account SKU.
      *
-     * @param {string} [parameters.sku.name] Gets or sets the SKU (pricing tier) of
-     * the account. Possible values include: 'Free', 'Basic'
+     * @param {string} parameters.sku.name Gets or sets the SKU name of the
+     * account. Possible values include: 'Free', 'Basic'
      *
      * @param {string} [parameters.sku.family] Gets or sets the SKU family.
      *
      * @param {number} [parameters.sku.capacity] Gets or sets the SKU capacity.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     * @param {string} [parameters.name] Gets or sets name of the resource.
      *
      * @param {string} [parameters.location] Gets or sets the location of the
      * resource.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
-     *
-     * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -159,10 +160,12 @@ export interface AutomationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccount>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccount>>;
 
     /**
-     * Create or update an automation account.
+     * Create or update automation account.
+     *
+     * @param {string} resourceGroupName The resource group name.
      *
      * @param {string} automationAccountName Parameters supplied to the create or
      * update automation account.
@@ -172,22 +175,20 @@ export interface AutomationAccounts {
      *
      * @param {object} [parameters.sku] Gets or sets account SKU.
      *
-     * @param {string} [parameters.sku.name] Gets or sets the SKU (pricing tier) of
-     * the account. Possible values include: 'Free', 'Basic'
+     * @param {string} parameters.sku.name Gets or sets the SKU name of the
+     * account. Possible values include: 'Free', 'Basic'
      *
      * @param {string} [parameters.sku.family] Gets or sets the SKU family.
      *
      * @param {number} [parameters.sku.capacity] Gets or sets the SKU capacity.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     * @param {string} [parameters.name] Gets or sets name of the resource.
      *
      * @param {string} [parameters.location] Gets or sets the location of the
      * resource.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
-     *
-     * @param {string} resourceGroupName The resource group name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -216,17 +217,17 @@ export interface AutomationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccount>;
-    createOrUpdate(automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, resourceGroupName: string, callback: ServiceCallback<models.AutomationAccount>): void;
-    createOrUpdate(automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccount>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccount>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, callback: ServiceCallback<models.AutomationAccount>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, parameters: models.AutomationAccountCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccount>): void;
 
 
     /**
      * Delete an automation account.
      *
-     * @param {string} automationAccountName Automation account name.
-     *
      * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName Automation account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -239,14 +240,14 @@ export interface AutomationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(automationAccountName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete an automation account.
      *
-     * @param {string} automationAccountName Automation account name.
-     *
      * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName Automation account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -274,17 +275,17 @@ export interface AutomationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(automationAccountName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(automationAccountName: string, resourceGroupName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(automationAccountName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
      * Get information about an Automation Account.
      *
-     * @param {string} automationAccountName The automation account name.
-     *
      * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -297,14 +298,14 @@ export interface AutomationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(automationAccountName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccount>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccount>>;
 
     /**
      * Get information about an Automation Account.
      *
-     * @param {string} automationAccountName The automation account name.
-     *
      * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -333,9 +334,9 @@ export interface AutomationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(automationAccountName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccount>;
-    get(automationAccountName: string, resourceGroupName: string, callback: ServiceCallback<models.AutomationAccount>): void;
-    get(automationAccountName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccount>): void;
+    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccount>;
+    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.AutomationAccount>): void;
+    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccount>): void;
 
 
     /**
@@ -395,7 +396,7 @@ export interface AutomationAccounts {
 
 
     /**
-     * @summary Lists the Automation Accounts within an Azure subscitption.
+     * @summary Lists the Automation Accounts within an Azure subscription.
      *
      * Retrieve a list of accounts within a given subscription.
      *
@@ -410,10 +411,10 @@ export interface AutomationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
 
     /**
-     * @summary Lists the Automation Accounts within an Azure subscitption.
+     * @summary Lists the Automation Accounts within an Azure subscription.
      *
      * Retrieve a list of accounts within a given subscription.
      *
@@ -445,9 +446,9 @@ export interface AutomationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionId(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
-    listBySubscriptionId(callback: ServiceCallback<models.AutomationAccountListResult>): void;
-    listBySubscriptionId(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
+    list(callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
 
 
     /**
@@ -509,7 +510,7 @@ export interface AutomationAccounts {
 
 
     /**
-     * @summary Lists the Automation Accounts within an Azure subscitption.
+     * @summary Lists the Automation Accounts within an Azure subscription.
      *
      * Retrieve a list of accounts within a given subscription.
      *
@@ -527,10 +528,10 @@ export interface AutomationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
 
     /**
-     * @summary Lists the Automation Accounts within an Azure subscitption.
+     * @summary Lists the Automation Accounts within an Azure subscription.
      *
      * Retrieve a list of accounts within a given subscription.
      *
@@ -565,9 +566,9 @@ export interface AutomationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionIdNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
-    listBySubscriptionIdNext(nextPageLink: string, callback: ServiceCallback<models.AutomationAccountListResult>): void;
-    listBySubscriptionIdNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
 }
 
 /**
@@ -628,4 +629,9159 @@ export interface Operations {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
     list(callback: ServiceCallback<models.OperationListResult>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
+ * StatisticsOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface StatisticsOperations {
+
+
+    /**
+     * Retrieve the statistics for the account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<StatisticsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StatisticsListResult>>;
+
+    /**
+     * Retrieve the statistics for the account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {StatisticsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {StatisticsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link StatisticsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.StatisticsListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.StatisticsListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StatisticsListResult>): void;
+}
+
+/**
+ * @class
+ * Usages
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface Usages {
+
+
+    /**
+     * Retrieve the usage for the account id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageListResult>>;
+
+    /**
+     * Retrieve the usage for the account id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.UsageListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageListResult>): void;
+}
+
+/**
+ * @class
+ * CertificateOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface CertificateOperations {
+
+
+    /**
+     * Delete the certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The name of certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The name of certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, certificateName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the certificate identified by certificate name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The name of certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * Retrieve the certificate identified by certificate name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The name of certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    get(resourceGroupName: string, automationAccountName: string, certificateName: string, callback: ServiceCallback<models.Certificate>): void;
+    get(resourceGroupName: string, automationAccountName: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * Create a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The parameters supplied to the create or
+     * update certificate operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * certificate operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the certificate.
+     *
+     * @param {string} parameters.base64Value Gets or sets the base64 encoded value
+     * of the certificate.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * certificate.
+     *
+     * @param {string} [parameters.thumbprint] Gets or sets the thumbprint of the
+     * certificate.
+     *
+     * @param {boolean} [parameters.isExportable] Gets or sets the is exportable
+     * flag of the certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * Create a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The parameters supplied to the create or
+     * update certificate operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * certificate operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the certificate.
+     *
+     * @param {string} parameters.base64Value Gets or sets the base64 encoded value
+     * of the certificate.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * certificate.
+     *
+     * @param {string} [parameters.thumbprint] Gets or sets the thumbprint of the
+     * certificate.
+     *
+     * @param {boolean} [parameters.isExportable] Gets or sets the is exportable
+     * flag of the certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * Update a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The parameters supplied to the update
+     * certificate operation.
+     *
+     * @param {object} parameters The parameters supplied to the update certificate
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the certificate.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Certificate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Certificate>>;
+
+    /**
+     * Update a certificate.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} certificateName The parameters supplied to the update
+     * certificate operation.
+     *
+     * @param {object} parameters The parameters supplied to the update certificate
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the certificate.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * certificate.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Certificate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Certificate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Certificate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Certificate>;
+    update(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, callback: ServiceCallback<models.Certificate>): void;
+    update(resourceGroupName: string, automationAccountName: string, certificateName: string, parameters: models.CertificateUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Certificate>): void;
+
+
+    /**
+     * Retrieve a list of certificates.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
+
+    /**
+     * Retrieve a list of certificates.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.CertificateListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
+
+
+    /**
+     * Retrieve a list of certificates.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
+
+    /**
+     * Retrieve a list of certificates.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.CertificateListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
+}
+
+/**
+ * @class
+ * ConnectionOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface ConnectionOperations {
+
+
+    /**
+     * Delete the connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The name of connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Connection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+
+    /**
+     * Delete the connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The name of connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Connection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Connection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Connection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionName: string, callback: ServiceCallback<models.Connection>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+
+
+    /**
+     * Retrieve the connection identified by connection name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The name of connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Connection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+
+    /**
+     * Retrieve the connection identified by connection name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The name of connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Connection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Connection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Connection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    get(resourceGroupName: string, automationAccountName: string, connectionName: string, callback: ServiceCallback<models.Connection>): void;
+    get(resourceGroupName: string, automationAccountName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+
+
+    /**
+     * Create or update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The parameters supplied to the create or
+     * update connection operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * connection operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the connection.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * connection.
+     *
+     * @param {object} parameters.connectionType Gets or sets the connectionType of
+     * the connection.
+     *
+     * @param {string} [parameters.connectionType.name] Gets or sets the name of
+     * the connection type.
+     *
+     * @param {object} [parameters.fieldDefinitionValues] Gets or sets the field
+     * definition properties of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Connection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+
+    /**
+     * Create or update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The parameters supplied to the create or
+     * update connection operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * connection operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the connection.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * connection.
+     *
+     * @param {object} parameters.connectionType Gets or sets the connectionType of
+     * the connection.
+     *
+     * @param {string} [parameters.connectionType.name] Gets or sets the name of
+     * the connection type.
+     *
+     * @param {object} [parameters.fieldDefinitionValues] Gets or sets the field
+     * definition properties of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Connection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Connection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Connection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, callback: ServiceCallback<models.Connection>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+
+
+    /**
+     * Update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The parameters supplied to the update a
+     * connection operation.
+     *
+     * @param {object} parameters The parameters supplied to the update a
+     * connection operation.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the connection.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * connection.
+     *
+     * @param {object} [parameters.fieldDefinitionValues] Gets or sets the field
+     * definition values of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Connection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Connection>>;
+
+    /**
+     * Update a connection.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionName The parameters supplied to the update a
+     * connection operation.
+     *
+     * @param {object} parameters The parameters supplied to the update a
+     * connection operation.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the connection.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * connection.
+     *
+     * @param {object} [parameters.fieldDefinitionValues] Gets or sets the field
+     * definition values of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Connection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Connection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Connection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Connection>;
+    update(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, callback: ServiceCallback<models.Connection>): void;
+    update(resourceGroupName: string, automationAccountName: string, connectionName: string, parameters: models.ConnectionUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Connection>): void;
+
+
+    /**
+     * Retrieve a list of connections.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionListResult>>;
+
+    /**
+     * Retrieve a list of connections.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ConnectionListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionListResult>): void;
+
+
+    /**
+     * Retrieve a list of connections.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionListResult>>;
+
+    /**
+     * Retrieve a list of connections.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.ConnectionListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionListResult>): void;
+}
+
+/**
+ * @class
+ * ConnectionTypeOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface ConnectionTypeOperations {
+
+
+    /**
+     * Delete the connectiontype.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionTypeName The name of connectiontype.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the connectiontype.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionTypeName The name of connectiontype.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the connectiontype identified by connectiontype name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionTypeName The name of connectiontype.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionType>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
+
+    /**
+     * Retrieve the connectiontype identified by connectiontype name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionTypeName The name of connectiontype.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionType} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionType} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionType} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionType>;
+    get(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, callback: ServiceCallback<models.ConnectionType>): void;
+    get(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionType>): void;
+
+
+    /**
+     * Create a connectiontype.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionTypeName The parameters supplied to the create or
+     * update connectiontype operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * connectiontype operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the connection
+     * type.
+     *
+     * @param {boolean} [parameters.isGlobal] Gets or sets a Boolean value to
+     * indicate if the connection type is global.
+     *
+     * @param {object} parameters.fieldDefinitions Gets or sets the field
+     * definitions of the connection type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionType>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionType>>;
+
+    /**
+     * Create a connectiontype.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} connectionTypeName The parameters supplied to the create or
+     * update connectiontype operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * connectiontype operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the connection
+     * type.
+     *
+     * @param {boolean} [parameters.isGlobal] Gets or sets a Boolean value to
+     * indicate if the connection type is global.
+     *
+     * @param {object} parameters.fieldDefinitions Gets or sets the field
+     * definitions of the connection type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionType} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionType} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionType} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionType>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, callback: ServiceCallback<models.ConnectionType>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, connectionTypeName: string, parameters: models.ConnectionTypeCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionType>): void;
+
+
+    /**
+     * Retrieve a list of connectiontypes.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionTypeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionTypeListResult>>;
+
+    /**
+     * Retrieve a list of connectiontypes.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionTypeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionTypeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionTypeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionTypeListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
+
+
+    /**
+     * Retrieve a list of connectiontypes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ConnectionTypeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConnectionTypeListResult>>;
+
+    /**
+     * Retrieve a list of connectiontypes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ConnectionTypeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ConnectionTypeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ConnectionTypeListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConnectionTypeListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConnectionTypeListResult>): void;
+}
+
+/**
+ * @class
+ * CredentialOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface CredentialOperations {
+
+
+    /**
+     * Delete the credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The name of credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The name of credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, credentialName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the credential identified by credential name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The name of credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Credential>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
+
+    /**
+     * Retrieve the credential identified by credential name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The name of credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Credential} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Credential} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Credential} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
+    get(resourceGroupName: string, automationAccountName: string, credentialName: string, callback: ServiceCallback<models.Credential>): void;
+    get(resourceGroupName: string, automationAccountName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
+
+
+    /**
+     * Create a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The parameters supplied to the create or
+     * update credential operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * credential operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the credential.
+     *
+     * @param {string} parameters.userName Gets or sets the user name of the
+     * credential.
+     *
+     * @param {string} parameters.password Gets or sets the password of the
+     * credential.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Credential>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
+
+    /**
+     * Create a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The parameters supplied to the create or
+     * update credential operation.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * credential operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the credential.
+     *
+     * @param {string} parameters.userName Gets or sets the user name of the
+     * credential.
+     *
+     * @param {string} parameters.password Gets or sets the password of the
+     * credential.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Credential} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Credential} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Credential} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, callback: ServiceCallback<models.Credential>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
+
+
+    /**
+     * Update a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The parameters supplied to the Update
+     * credential operation.
+     *
+     * @param {object} parameters The parameters supplied to the Update credential
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the credential.
+     *
+     * @param {string} [parameters.userName] Gets or sets the user name of the
+     * credential.
+     *
+     * @param {string} [parameters.password] Gets or sets the password of the
+     * credential.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Credential>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Credential>>;
+
+    /**
+     * Update a credential.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} credentialName The parameters supplied to the Update
+     * credential operation.
+     *
+     * @param {object} parameters The parameters supplied to the Update credential
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the credential.
+     *
+     * @param {string} [parameters.userName] Gets or sets the user name of the
+     * credential.
+     *
+     * @param {string} [parameters.password] Gets or sets the password of the
+     * credential.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Credential} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Credential} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Credential} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Credential>;
+    update(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, callback: ServiceCallback<models.Credential>): void;
+    update(resourceGroupName: string, automationAccountName: string, credentialName: string, parameters: models.CredentialUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Credential>): void;
+
+
+    /**
+     * Retrieve a list of credentials.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CredentialListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialListResult>>;
+
+    /**
+     * Retrieve a list of credentials.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CredentialListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CredentialListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CredentialListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.CredentialListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialListResult>): void;
+
+
+    /**
+     * Retrieve a list of credentials.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CredentialListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CredentialListResult>>;
+
+    /**
+     * Retrieve a list of credentials.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CredentialListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CredentialListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CredentialListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CredentialListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.CredentialListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CredentialListResult>): void;
+}
+
+/**
+ * @class
+ * JobOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface JobOperations {
+
+
+    /**
+     * Retrieve the job output identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOutputWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * Retrieve the job output identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOutput(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getOutput(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<stream.Readable>): void;
+    getOutput(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * Retrieve the runbook content of the job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getRunbookContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * Retrieve the runbook content of the job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getRunbookContent(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getRunbookContent(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<stream.Readable>): void;
+    getRunbookContent(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * Suspend the job identified by jobId.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    suspendWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Suspend the job identified by jobId.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    suspend(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    suspend(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<void>): void;
+    suspend(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Stop the job identified by jobId.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Stop the job identified by jobId.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+
+    /**
+     * Retrieve the job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Job} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Job} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Job} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    get(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<models.Job>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+
+
+    /**
+     * Create a job of the runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} parameters The parameters supplied to the create job
+     * operation.
+     *
+     * @param {object} parameters.runbook Gets or sets the runbook.
+     *
+     * @param {string} [parameters.runbook.name] Gets or sets the name of the
+     * runbook.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
+     * the group name where the job is to be executed.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, parameters: models.JobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+
+    /**
+     * Create a job of the runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} parameters The parameters supplied to the create job
+     * operation.
+     *
+     * @param {object} parameters.runbook Gets or sets the runbook.
+     *
+     * @param {string} [parameters.runbook.name] Gets or sets the name of the
+     * runbook.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
+     * the group name where the job is to be executed.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Job} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Job} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Job} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, automationAccountName: string, jobId: string, parameters: models.JobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    create(resourceGroupName: string, automationAccountName: string, jobId: string, parameters: models.JobCreateParameters, callback: ServiceCallback<models.Job>): void;
+    create(resourceGroupName: string, automationAccountName: string, jobId: string, parameters: models.JobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+
+
+    /**
+     * Retrieve a list of jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+
+    /**
+     * Retrieve a list of jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.JobListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+
+
+    /**
+     * Resume the job identified by jobId.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resumeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resume the job identified by jobId.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resume(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resume(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<void>): void;
+    resume(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a list of jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+
+    /**
+     * Retrieve a list of jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.JobListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+}
+
+/**
+ * @class
+ * JobStreamOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface JobStreamOperations {
+
+
+    /**
+     * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job id.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStream>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+
+    /**
+     * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job id.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStream} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStream} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStream} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    get(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+
+
+    /**
+     * Retrieve a list of jobs streams identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+
+    /**
+     * Retrieve a list of jobs streams identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} jobId The job Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStreamListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStreamListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+
+
+    /**
+     * Retrieve a list of jobs streams identified by job id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+
+    /**
+     * Retrieve a list of jobs streams identified by job id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStreamListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStreamListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByJobNext(nextPageLink: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+}
+
+/**
+ * @class
+ * ActivityOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface ActivityOperations {
+
+
+    /**
+     * Retrieve the activity in the module identified by module name and activity
+     * name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {string} activityName The name of activity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Activity>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Activity>>;
+
+    /**
+     * Retrieve the activity in the module identified by module name and activity
+     * name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {string} activityName The name of activity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Activity} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Activity} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Activity} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Activity>;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, callback: ServiceCallback<models.Activity>): void;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, activityName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Activity>): void;
+
+
+    /**
+     * Retrieve a list of activities in the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ActivityListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByModuleWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActivityListResult>>;
+
+    /**
+     * Retrieve a list of activities in the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ActivityListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ActivityListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActivityListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByModule(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityListResult>;
+    listByModule(resourceGroupName: string, automationAccountName: string, moduleName: string, callback: ServiceCallback<models.ActivityListResult>): void;
+    listByModule(resourceGroupName: string, automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityListResult>): void;
+
+
+    /**
+     * Retrieve a list of activities in the module identified by module name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ActivityListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByModuleNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActivityListResult>>;
+
+    /**
+     * Retrieve a list of activities in the module identified by module name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ActivityListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ActivityListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActivityListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByModuleNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityListResult>;
+    listByModuleNext(nextPageLink: string, callback: ServiceCallback<models.ActivityListResult>): void;
+    listByModuleNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityListResult>): void;
+}
+
+/**
+ * @class
+ * ModuleOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface ModuleOperations {
+
+
+    /**
+     * Delete the module by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The module name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the module by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The module name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, moduleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The module name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Module>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+
+    /**
+     * Retrieve the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The module name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Module} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Module} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Module} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, callback: ServiceCallback<models.Module>): void;
+    get(resourceGroupName: string, automationAccountName: string, moduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+
+
+    /**
+     * Create or Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {object} parameters The create or update parameters for module.
+     *
+     * @param {object} parameters.contentLink Gets or sets the module content link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Module>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+
+    /**
+     * Create or Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {object} parameters The create or update parameters for module.
+     *
+     * @param {object} parameters.contentLink Gets or sets the module content link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Module} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Module} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Module} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, callback: ServiceCallback<models.Module>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+
+
+    /**
+     * Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {object} parameters The update parameters for module.
+     *
+     * @param {object} [parameters.contentLink] Gets or sets the module content
+     * link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Module>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+
+    /**
+     * Update the module identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {object} parameters The update parameters for module.
+     *
+     * @param {object} [parameters.contentLink] Gets or sets the module content
+     * link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Module} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Module} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Module} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    update(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, callback: ServiceCallback<models.Module>): void;
+    update(resourceGroupName: string, automationAccountName: string, moduleName: string, parameters: models.ModuleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+
+
+    /**
+     * Retrieve a list of modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ModuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModuleListResult>>;
+
+    /**
+     * Retrieve a list of modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ModuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ModuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ModuleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModuleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ModuleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModuleListResult>): void;
+
+
+    /**
+     * Retrieve a list of modules.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ModuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModuleListResult>>;
+
+    /**
+     * Retrieve a list of modules.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ModuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ModuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ModuleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModuleListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.ModuleListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModuleListResult>): void;
+}
+
+/**
+ * @class
+ * ObjectDataTypes
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface ObjectDataTypes {
+
+
+    /**
+     * Retrieve a list of fields of a given type identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {string} typeName The name of type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TypeFieldListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listFieldsByModuleAndTypeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
+
+    /**
+     * Retrieve a list of fields of a given type identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {string} typeName The name of type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TypeFieldListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TypeFieldListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TypeFieldListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listFieldsByModuleAndType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
+    listFieldsByModuleAndType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listFieldsByModuleAndType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
+
+
+    /**
+     * Retrieve a list of fields of a given type across all accessible modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} typeName The name of type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TypeFieldListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listFieldsByTypeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
+
+    /**
+     * Retrieve a list of fields of a given type across all accessible modules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} typeName The name of type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TypeFieldListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TypeFieldListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TypeFieldListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listFieldsByType(resourceGroupName: string, automationAccountName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
+    listFieldsByType(resourceGroupName: string, automationAccountName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listFieldsByType(resourceGroupName: string, automationAccountName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
+}
+
+/**
+ * @class
+ * Fields
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface Fields {
+
+
+    /**
+     * Retrieve a list of fields of a given type identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {string} typeName The name of type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TypeFieldListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByTypeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TypeFieldListResult>>;
+
+    /**
+     * Retrieve a list of fields of a given type identified by module name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} moduleName The name of module.
+     *
+     * @param {string} typeName The name of type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TypeFieldListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TypeFieldListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TypeFieldListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TypeFieldListResult>;
+    listByType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, callback: ServiceCallback<models.TypeFieldListResult>): void;
+    listByType(resourceGroupName: string, automationAccountName: string, moduleName: string, typeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TypeFieldListResult>): void;
+}
+
+/**
+ * @class
+ * RunbookDraftOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface RunbookDraftOperations {
+
+
+    /**
+     * Retrieve the content of runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * Retrieve the content of runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * Updates the runbook draft with runbookStream as its content.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the runbook draft with runbookStream as its content.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, callback: ServiceCallback<void>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookDraft>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraft>>;
+
+    /**
+     * Retrieve the runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookDraft} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookDraft} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookDraft} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraft>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraft>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraft>): void;
+
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    publishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Runbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Runbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.Runbook>): void;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+
+
+    /**
+     * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookDraftUndoEditResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    undoEditWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraftUndoEditResult>>;
+
+    /**
+     * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookDraftUndoEditResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookDraftUndoEditResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookDraftUndoEditResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraftUndoEditResult>;
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
+
+
+    /**
+     * Updates the runbook draft with runbookStream as its content.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Updates the runbook draft with runbookStream as its content.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, callback: ServiceCallback<void>): void;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPublishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Runbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Runbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.Runbook>): void;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+}
+
+/**
+ * @class
+ * RunbookOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface RunbookOperations {
+
+
+    /**
+     * Retrieve the content of runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * Retrieve the content of runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+
+    /**
+     * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Runbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Runbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.Runbook>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+
+
+    /**
+     * Create the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The create or update parameters for runbook.
+     * Provide either content link for a published runbook or draft, not both.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {string} parameters.runbookType Gets or sets the type of the runbook.
+     * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
+     * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
+     *
+     * @param {object} [parameters.draft] Gets or sets the draft runbook
+     * properties.
+     *
+     * @param {boolean} [parameters.draft.inEdit] Gets or sets whether runbook is
+     * in edit mode.
+     *
+     * @param {object} [parameters.draft.draftContentLink] Gets or sets the draft
+     * runbook content link.
+     *
+     * @param {date} [parameters.draft.creationTime] Gets or sets the creation time
+     * of the runbook draft.
+     *
+     * @param {date} [parameters.draft.lastModifiedTime] Gets or sets the last
+     * modified time of the runbook draft.
+     *
+     * @param {object} [parameters.draft.parameters] Gets or sets the runbook draft
+     * parameters.
+     *
+     * @param {array} [parameters.draft.outputTypes] Gets or sets the runbook
+     * output types.
+     *
+     * @param {object} [parameters.publishContentLink] Gets or sets the published
+     * runbook content link.
+     *
+     * @param {string} [parameters.publishContentLink.uri] Gets or sets the uri of
+     * the runbook content.
+     *
+     * @param {object} [parameters.publishContentLink.contentHash] Gets or sets the
+     * hash.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.algorithm Gets or
+     * sets the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.publishContentLink.version] Gets or sets the
+     * version of the content.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Create the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The create or update parameters for runbook.
+     * Provide either content link for a published runbook or draft, not both.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {string} parameters.runbookType Gets or sets the type of the runbook.
+     * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
+     * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
+     *
+     * @param {object} [parameters.draft] Gets or sets the draft runbook
+     * properties.
+     *
+     * @param {boolean} [parameters.draft.inEdit] Gets or sets whether runbook is
+     * in edit mode.
+     *
+     * @param {object} [parameters.draft.draftContentLink] Gets or sets the draft
+     * runbook content link.
+     *
+     * @param {date} [parameters.draft.creationTime] Gets or sets the creation time
+     * of the runbook draft.
+     *
+     * @param {date} [parameters.draft.lastModifiedTime] Gets or sets the last
+     * modified time of the runbook draft.
+     *
+     * @param {object} [parameters.draft.parameters] Gets or sets the runbook draft
+     * parameters.
+     *
+     * @param {array} [parameters.draft.outputTypes] Gets or sets the runbook
+     * output types.
+     *
+     * @param {object} [parameters.publishContentLink] Gets or sets the published
+     * runbook content link.
+     *
+     * @param {string} [parameters.publishContentLink.uri] Gets or sets the uri of
+     * the runbook content.
+     *
+     * @param {object} [parameters.publishContentLink.contentHash] Gets or sets the
+     * hash.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.algorithm Gets or
+     * sets the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.publishContentLink.version] Gets or sets the
+     * version of the content.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, callback: ServiceCallback<void>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Update the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The update parameters for runbook.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+
+    /**
+     * Update the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The update parameters for runbook.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Runbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Runbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+
+
+    /**
+     * Delete the runbook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the runbook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.RunbookListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
+
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.RunbookListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
+}
+
+/**
+ * @class
+ * TestJobStreams
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface TestJobStreams {
+
+
+    /**
+     * Retrieve a test job streams identified by runbook name and stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStream>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+
+    /**
+     * Retrieve a test job streams identified by runbook name and stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStream} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStream} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStream} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByTestJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStreamListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStreamListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByTestJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStreamListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStreamListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByTestJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByTestJobNext(nextPageLink: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByTestJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+}
+
+/**
+ * @class
+ * TestJobs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface TestJobs {
+
+
+    /**
+     * Create a test job of the runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {object} parameters The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {string} parameters.runbookName Gets or sets the runbook name.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * test job.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
+     * the group name where the job is to be executed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TestJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
+
+    /**
+     * Create a test job of the runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {object} parameters The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {string} parameters.runbookName Gets or sets the runbook name.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * test job.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
+     * the group name where the job is to be executed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TestJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TestJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TestJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, callback: ServiceCallback<models.TestJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
+
+
+    /**
+     * Retrieve the test job for the specified runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TestJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
+
+    /**
+     * Retrieve the test job for the specified runbook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TestJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TestJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TestJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.TestJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
+
+
+    /**
+     * Resume the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resumeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resume the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Stop the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Stop the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Suspend the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    suspendWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Suspend the test job.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ScheduleOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface ScheduleOperations {
+
+
+    /**
+     * Create a schedule.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * schedule operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the schedule.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * schedule.
+     *
+     * @param {date} parameters.startTime Gets or sets the start time of the
+     * schedule.
+     *
+     * @param {date} [parameters.expiryTime] Gets or sets the end time of the
+     * schedule.
+     *
+     * @param {object} [parameters.interval] Gets or sets the interval of the
+     * schedule.
+     *
+     * @param {string} parameters.frequency Gets or sets the frequency of the
+     * schedule. Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
+     *
+     * @param {string} [parameters.timeZone] Gets or sets the time zone of the
+     * schedule.
+     *
+     * @param {object} [parameters.advancedSchedule] Gets or sets the
+     * AdvancedSchedule.
+     *
+     * @param {array} [parameters.advancedSchedule.weekDays] Days of the week that
+     * the job should execute on.
+     *
+     * @param {array} [parameters.advancedSchedule.monthDays] Days of the month
+     * that the job should execute on. Must be between 1 and 31.
+     *
+     * @param {array} [parameters.advancedSchedule.monthlyOccurrences] Occurrences
+     * of days within a month.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+
+    /**
+     * Create a schedule.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * schedule operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the schedule.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * schedule.
+     *
+     * @param {date} parameters.startTime Gets or sets the start time of the
+     * schedule.
+     *
+     * @param {date} [parameters.expiryTime] Gets or sets the end time of the
+     * schedule.
+     *
+     * @param {object} [parameters.interval] Gets or sets the interval of the
+     * schedule.
+     *
+     * @param {string} parameters.frequency Gets or sets the frequency of the
+     * schedule. Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month'
+     *
+     * @param {string} [parameters.timeZone] Gets or sets the time zone of the
+     * schedule.
+     *
+     * @param {object} [parameters.advancedSchedule] Gets or sets the
+     * AdvancedSchedule.
+     *
+     * @param {array} [parameters.advancedSchedule.weekDays] Days of the week that
+     * the job should execute on.
+     *
+     * @param {array} [parameters.advancedSchedule.monthDays] Days of the month
+     * that the job should execute on. Must be between 1 and 31.
+     *
+     * @param {array} [parameters.advancedSchedule.monthlyOccurrences] Occurrences
+     * of days within a month.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Schedule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Schedule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, callback: ServiceCallback<models.Schedule>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+
+
+    /**
+     * Update the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} parameters The parameters supplied to the update schedule
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the schedule.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * schedule.
+     *
+     * @param {boolean} [parameters.isEnabled] Gets or sets a value indicating
+     * whether this schedule is enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+
+    /**
+     * Update the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} parameters The parameters supplied to the update schedule
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the schedule.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * schedule.
+     *
+     * @param {boolean} [parameters.isEnabled] Gets or sets a value indicating
+     * whether this schedule is enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Schedule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Schedule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    update(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, callback: ServiceCallback<models.Schedule>): void;
+    update(resourceGroupName: string, automationAccountName: string, scheduleName: string, parameters: models.ScheduleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+
+
+    /**
+     * Retrieve the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Schedule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Schedule>>;
+
+    /**
+     * Retrieve the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Schedule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Schedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Schedule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Schedule>;
+    get(resourceGroupName: string, automationAccountName: string, scheduleName: string, callback: ServiceCallback<models.Schedule>): void;
+    get(resourceGroupName: string, automationAccountName: string, scheduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Schedule>): void;
+
+
+    /**
+     * Delete the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the schedule identified by schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} scheduleName The schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, scheduleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, scheduleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, scheduleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a list of schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ScheduleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleListResult>>;
+
+    /**
+     * Retrieve a list of schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ScheduleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ScheduleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ScheduleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleListResult>): void;
+
+
+    /**
+     * Retrieve a list of schedules.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ScheduleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScheduleListResult>>;
+
+    /**
+     * Retrieve a list of schedules.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ScheduleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ScheduleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ScheduleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScheduleListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.ScheduleListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScheduleListResult>): void;
+}
+
+/**
+ * @class
+ * JobScheduleOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface JobScheduleOperations {
+
+
+    /**
+     * Delete the job schedule identified by job schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobScheduleId The job schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the job schedule identified by job schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobScheduleId The job schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the job schedule identified by job schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobScheduleId The job schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobSchedule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobSchedule>>;
+
+    /**
+     * Retrieve the job schedule identified by job schedule name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobScheduleId The job schedule name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobSchedule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobSchedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobSchedule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobSchedule>;
+    get(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, callback: ServiceCallback<models.JobSchedule>): void;
+    get(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobSchedule>): void;
+
+
+    /**
+     * Create a job schedule.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobScheduleId The job schedule name.
+     *
+     * @param {object} parameters The parameters supplied to the create job
+     * schedule operation.
+     *
+     * @param {object} parameters.schedule Gets or sets the schedule.
+     *
+     * @param {string} [parameters.schedule.name] Gets or sets the name of the
+     * schedule.
+     *
+     * @param {object} parameters.runbook Gets or sets the runbook.
+     *
+     * @param {string} [parameters.runbook.name] Gets or sets the name of the
+     * runbook.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the hybrid worker group that
+     * the scheduled job should run on.
+     *
+     * @param {object} [parameters.parameters] Gets or sets a list of job
+     * properties.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobSchedule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobSchedule>>;
+
+    /**
+     * Create a job schedule.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobScheduleId The job schedule name.
+     *
+     * @param {object} parameters The parameters supplied to the create job
+     * schedule operation.
+     *
+     * @param {object} parameters.schedule Gets or sets the schedule.
+     *
+     * @param {string} [parameters.schedule.name] Gets or sets the name of the
+     * schedule.
+     *
+     * @param {object} parameters.runbook Gets or sets the runbook.
+     *
+     * @param {string} [parameters.runbook.name] Gets or sets the name of the
+     * runbook.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the hybrid worker group that
+     * the scheduled job should run on.
+     *
+     * @param {object} [parameters.parameters] Gets or sets a list of job
+     * properties.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobSchedule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobSchedule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobSchedule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobSchedule>;
+    create(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, callback: ServiceCallback<models.JobSchedule>): void;
+    create(resourceGroupName: string, automationAccountName: string, jobScheduleId: string, parameters: models.JobScheduleCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobSchedule>): void;
+
+
+    /**
+     * Retrieve a list of job schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobScheduleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
+
+    /**
+     * Retrieve a list of job schedules.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobScheduleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobScheduleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobScheduleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.JobScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
+
+
+    /**
+     * Retrieve a list of job schedules.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobScheduleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
+
+    /**
+     * Retrieve a list of job schedules.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobScheduleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobScheduleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobScheduleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.JobScheduleListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
+}
+
+/**
+ * @class
+ * VariableOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface VariableOperations {
+
+
+    /**
+     * Create a variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The variable name.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * variable operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the variable.
+     *
+     * @param {string} [parameters.value] Gets or sets the value of the variable.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * variable.
+     *
+     * @param {boolean} [parameters.isEncrypted] Gets or sets the encrypted flag of
+     * the variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Variable>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
+
+    /**
+     * Create a variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The variable name.
+     *
+     * @param {object} parameters The parameters supplied to the create or update
+     * variable operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the variable.
+     *
+     * @param {string} [parameters.value] Gets or sets the value of the variable.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * variable.
+     *
+     * @param {boolean} [parameters.isEncrypted] Gets or sets the encrypted flag of
+     * the variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Variable} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Variable} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Variable} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, callback: ServiceCallback<models.Variable>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
+
+
+    /**
+     * Update a variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The variable name.
+     *
+     * @param {object} parameters The parameters supplied to the update variable
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the variable.
+     *
+     * @param {string} [parameters.value] Gets or sets the value of the variable.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Variable>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
+
+    /**
+     * Update a variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The variable name.
+     *
+     * @param {object} parameters The parameters supplied to the update variable
+     * operation.
+     *
+     * @param {string} parameters.name Gets or sets the name of the variable.
+     *
+     * @param {string} [parameters.value] Gets or sets the value of the variable.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Variable} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Variable} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Variable} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
+    update(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, callback: ServiceCallback<models.Variable>): void;
+    update(resourceGroupName: string, automationAccountName: string, variableName: string, parameters: models.VariableUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
+
+
+    /**
+     * Delete the variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The name of variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the variable.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The name of variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, variableName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, variableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the variable identified by variable name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The name of variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Variable>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Variable>>;
+
+    /**
+     * Retrieve the variable identified by variable name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} variableName The name of variable.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Variable} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Variable} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Variable} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, variableName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Variable>;
+    get(resourceGroupName: string, automationAccountName: string, variableName: string, callback: ServiceCallback<models.Variable>): void;
+    get(resourceGroupName: string, automationAccountName: string, variableName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Variable>): void;
+
+
+    /**
+     * Retrieve a list of variables.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VariableListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VariableListResult>>;
+
+    /**
+     * Retrieve a list of variables.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VariableListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VariableListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VariableListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VariableListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.VariableListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VariableListResult>): void;
+
+
+    /**
+     * Retrieve a list of variables.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VariableListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VariableListResult>>;
+
+    /**
+     * Retrieve a list of variables.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VariableListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VariableListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VariableListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VariableListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.VariableListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VariableListResult>): void;
+}
+
+/**
+ * @class
+ * WebhookOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface WebhookOperations {
+
+
+    /**
+     * Generates a Uri for use in creating a webhook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    generateUriWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Generates a Uri for use in creating a webhook.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generateUri(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    generateUri(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<string>): void;
+    generateUri(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+    /**
+     * Delete the webhook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the webhook by name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, webhookName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Retrieve the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, webhookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    get(resourceGroupName: string, automationAccountName: string, webhookName: string, callback: ServiceCallback<models.Webhook>): void;
+    get(resourceGroupName: string, automationAccountName: string, webhookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Create the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} parameters The create or update parameters for webhook.
+     *
+     * @param {string} parameters.name Gets or sets the name of the webhook.
+     *
+     * @param {boolean} [parameters.isEnabled] Gets or sets the value of the
+     * enabled flag of webhook.
+     *
+     * @param {string} [parameters.uri] Gets or sets the uri.
+     *
+     * @param {date} [parameters.expiryTime] Gets or sets the expiry time.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {object} [parameters.runbook] Gets or sets the runbook.
+     *
+     * @param {string} [parameters.runbook.name] Gets or sets the name of the
+     * runbook.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the name of the hybrid
+     * worker group the webhook job will run on.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Create the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} parameters The create or update parameters for webhook.
+     *
+     * @param {string} parameters.name Gets or sets the name of the webhook.
+     *
+     * @param {boolean} [parameters.isEnabled] Gets or sets the value of the
+     * enabled flag of webhook.
+     *
+     * @param {string} [parameters.uri] Gets or sets the uri.
+     *
+     * @param {date} [parameters.expiryTime] Gets or sets the expiry time.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {object} [parameters.runbook] Gets or sets the runbook.
+     *
+     * @param {string} [parameters.runbook.name] Gets or sets the name of the
+     * runbook.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the name of the hybrid
+     * worker group the webhook job will run on.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Update the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} parameters The update parameters for webhook.
+     *
+     * @param {string} parameters.name Gets or sets the name of the webhook.
+     *
+     * @param {boolean} [parameters.isEnabled] Gets or sets the value of the
+     * enabled flag of webhook.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the name of the hybrid
+     * worker group the webhook job will run on.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Webhook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Webhook>>;
+
+    /**
+     * Update the webhook identified by webhook name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} webhookName The webhook name.
+     *
+     * @param {object} parameters The update parameters for webhook.
+     *
+     * @param {string} parameters.name Gets or sets the name of the webhook.
+     *
+     * @param {boolean} [parameters.isEnabled] Gets or sets the value of the
+     * enabled flag of webhook.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the name of the hybrid
+     * worker group the webhook job will run on.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * webhook.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Webhook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Webhook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Webhook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Webhook>;
+    update(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, callback: ServiceCallback<models.Webhook>): void;
+    update(resourceGroupName: string, automationAccountName: string, webhookName: string, parameters: models.WebhookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Webhook>): void;
+
+
+    /**
+     * Retrieve a list of webhooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebhookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebhookListResult>>;
+
+    /**
+     * Retrieve a list of webhooks.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebhookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebhookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebhookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.WebhookListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.WebhookListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebhookListResult>): void;
+
+
+    /**
+     * Retrieve a list of webhooks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebhookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebhookListResult>>;
+
+    /**
+     * Retrieve a list of webhooks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebhookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebhookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebhookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebhookListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.WebhookListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebhookListResult>): void;
+}
+
+/**
+ * @class
+ * DscCompilationJobOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscCompilationJobOperations {
+
+
+    /**
+     * Creates the Dsc compilation job of the configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} compilationJobId The the DSC configuration Id.
+     *
+     * @param {object} parameters The parameters supplied to the create compilation
+     * job operation.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
+
+    /**
+     * Creates the Dsc compilation job of the configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} compilationJobId The the DSC configuration Id.
+     *
+     * @param {object} parameters The parameters supplied to the create compilation
+     * job operation.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
+    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, callback: ServiceCallback<models.DscCompilationJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
+
+
+    /**
+     * Retrieve the Dsc configuration compilation job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} compilationJobId The Dsc configuration compilation job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
+
+    /**
+     * Retrieve the Dsc configuration compilation job identified by job id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} compilationJobId The Dsc configuration compilation job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
+    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, callback: ServiceCallback<models.DscCompilationJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
+
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJobListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+
+
+    /**
+     * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStream>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getStreamWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+
+    /**
+     * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStream} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStream} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStream} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJobListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+}
+
+/**
+ * @class
+ * DscConfigurationOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscConfigurationOperations {
+
+
+    /**
+     * Delete the dsc configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the dsc configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
+
+    /**
+     * Retrieve the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
+    get(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<models.DscConfiguration>): void;
+    get(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
+
+
+    /**
+     * Create the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the configuration
+     * parameters.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * configuration.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfiguration>>;
+
+    /**
+     * Create the configuration identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the configuration
+     * parameters.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * configuration.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfiguration>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, configurationName: string, parameters: models.DscConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfiguration>): void;
+
+
+    /**
+     * Retrieve the configuration script identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * Retrieve the configuration script identified by configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} configurationName The configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, configurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * Retrieve a list of configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
+
+    /**
+     * Retrieve a list of configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscConfigurationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+
+
+    /**
+     * Retrieve a list of configurations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
+
+    /**
+     * Retrieve a list of configurations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscConfigurationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+}
+
+/**
+ * @class
+ * AgentRegistrationInformation
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface AgentRegistrationInformation {
+
+
+    /**
+     * Retrieve the automation agent registration information.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AgentRegistration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
+
+    /**
+     * Retrieve the automation agent registration information.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AgentRegistration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AgentRegistration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AgentRegistration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
+    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.AgentRegistration>): void;
+    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
+
+
+    /**
+     * Regenerate a primary or secondary agent registration key
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} parameters The name of the agent registration key to be
+     * regenerated
+     *
+     * @param {string} parameters.keyName Gets or sets the agent registration key
+     * name - Primary or Secondary. Possible values include: 'Primary', 'Secondary'
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AgentRegistration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
+
+    /**
+     * Regenerate a primary or secondary agent registration key
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} parameters The name of the agent registration key to be
+     * regenerated
+     *
+     * @param {string} parameters.keyName Gets or sets the agent registration key
+     * name - Primary or Secondary. Possible values include: 'Primary', 'Secondary'
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AgentRegistration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AgentRegistration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AgentRegistration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, callback: ServiceCallback<models.AgentRegistration>): void;
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
+}
+
+/**
+ * @class
+ * DscNodeOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscNodeOperations {
+
+
+    /**
+     * Delete the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName Automation account name.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+
+    /**
+     * Delete the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName Automation account name.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNode} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+
+
+    /**
+     * Retrieve the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+
+    /**
+     * Retrieve the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNode} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+
+
+    /**
+     * Update the dsc node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId Parameters supplied to the update dsc node.
+     *
+     * @param {object} parameters Parameters supplied to the update dsc node.
+     *
+     * @param {string} [parameters.nodeId] Gets or sets the id of the dsc node.
+     *
+     * @param {object} [parameters.nodeConfiguration] Gets or sets the
+     * configuration of the node.
+     *
+     * @param {string} [parameters.nodeConfiguration.name] Gets or sets the name of
+     * the dsc nodeconfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+
+    /**
+     * Update the dsc node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId Parameters supplied to the update dsc node.
+     *
+     * @param {object} parameters Parameters supplied to the update dsc node.
+     *
+     * @param {string} [parameters.nodeId] Gets or sets the id of the dsc node.
+     *
+     * @param {object} [parameters.nodeConfiguration] Gets or sets the
+     * configuration of the node.
+     *
+     * @param {string} [parameters.nodeConfiguration.name] Gets or sets the name of
+     * the dsc nodeconfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNode} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, callback: ServiceCallback<models.DscNode>): void;
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
+
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
+}
+
+/**
+ * @class
+ * NodeReports
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface NodeReports {
+
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The parameters supplied to the list operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeReportListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByNodeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The parameters supplied to the list operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeReportListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeReportListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeReportListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+
+
+    /**
+     * Retrieve the Dsc node report data by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeReport>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReport>>;
+
+    /**
+     * Retrieve the Dsc node report data by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeReport} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeReport} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeReport} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReport>;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<models.DscNodeReport>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReport>): void;
+
+
+    /**
+     * Retrieve the Dsc node reports by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+
+    /**
+     * Retrieve the Dsc node reports by node id and report id.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<stream.Readable>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeReportListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByNodeNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeReportListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeReportListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeReportListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByNodeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
+    listByNodeNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+    listByNodeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+}
+
+/**
+ * @class
+ * DscNodeConfigurationOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscNodeConfigurationOperations {
+
+
+    /**
+     * Delete the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+
+    /**
+     * Retrieve the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+
+
+    /**
+     * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeConfigurationName The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+
+    /**
+     * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} nodeConfigurationName The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfigurationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfigurationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+}
+
+/**
+ * @class
+ * HybridRunbookWorkerGroupOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface HybridRunbookWorkerGroupOperations {
+
+
+    /**
+     * Delete a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName Automation account name.
+     *
+     * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
+     * name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName Automation account name.
+     *
+     * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
+     * name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
+     * name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HybridRunbookWorkerGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroup>>;
+
+    /**
+     * Retrieve a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
+     * name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HybridRunbookWorkerGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HybridRunbookWorkerGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HybridRunbookWorkerGroup} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroup>;
+    get(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+    get(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+
+
+    /**
+     * Update a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
+     * name
+     *
+     * @param {object} parameters The hybrid runbook worker group
+     *
+     * @param {object} [parameters.credential] Sets the credential of a worker
+     * group.
+     *
+     * @param {string} [parameters.credential.name] Gets or sets the name of the
+     * credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HybridRunbookWorkerGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroup>>;
+
+    /**
+     * Update a hybrid runbook worker group.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
+     * name
+     *
+     * @param {object} parameters The hybrid runbook worker group
+     *
+     * @param {object} [parameters.credential] Sets the credential of a worker
+     * group.
+     *
+     * @param {string} [parameters.credential.name] Gets or sets the name of the
+     * credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HybridRunbookWorkerGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HybridRunbookWorkerGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HybridRunbookWorkerGroup} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroup>;
+    update(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+    update(resourceGroupName: string, automationAccountName: string, hybridRunbookWorkerGroupName: string, parameters: models.HybridRunbookWorkerGroupUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroup>): void;
+
+
+    /**
+     * Retrieve a list of hybrid runbook worker groups.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HybridRunbookWorkerGroupsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
+
+    /**
+     * Retrieve a list of hybrid runbook worker groups.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} automationAccountName The automation account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HybridRunbookWorkerGroupsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HybridRunbookWorkerGroupsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HybridRunbookWorkerGroupsListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
+
+
+    /**
+     * Retrieve a list of hybrid runbook worker groups.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<HybridRunbookWorkerGroupsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
+
+    /**
+     * Retrieve a list of hybrid runbook worker groups.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {HybridRunbookWorkerGroupsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {HybridRunbookWorkerGroupsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link HybridRunbookWorkerGroupsListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
 }

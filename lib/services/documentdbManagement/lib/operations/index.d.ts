@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * DatabaseAccounts
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the DocumentdbManagementClient.
+ * instance of the DocumentDB.
  */
 export interface DatabaseAccounts {
 
@@ -169,7 +169,8 @@ export interface DatabaseAccounts {
      * @param {string}
      * createUpdateParameters.consistencyPolicy.defaultConsistencyLevel The default
      * consistency level and configuration settings of the DocumentDB account.
-     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness', 'Strong'
+     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness',
+     * 'Strong', 'ConsistentPrefix'
      *
      * @param {number}
      * [createUpdateParameters.consistencyPolicy.maxStalenessPrefix] When used with
@@ -193,6 +194,12 @@ export interface DatabaseAccounts {
      * in CIDR form to be included as the allowed list of client IPs for a given
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
+     *
+     * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
+     * automatic failover of the write region in the rare event that the region is
+     * unavailable due to an outage. Automatic failover will result in a new write
+     * region for the account and is chosen based on the failover priorities
+     * configured for the account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -232,7 +239,8 @@ export interface DatabaseAccounts {
      * @param {string}
      * createUpdateParameters.consistencyPolicy.defaultConsistencyLevel The default
      * consistency level and configuration settings of the DocumentDB account.
-     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness', 'Strong'
+     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness',
+     * 'Strong', 'ConsistentPrefix'
      *
      * @param {number}
      * [createUpdateParameters.consistencyPolicy.maxStalenessPrefix] When used with
@@ -256,6 +264,12 @@ export interface DatabaseAccounts {
      * in CIDR form to be included as the allowed list of client IPs for a given
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
+     *
+     * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
+     * automatic failover of the write region in the rare event that the region is
+     * unavailable due to an outage. Automatic failover will result in a new write
+     * region for the account and is chosen based on the failover priorities
+     * configured for the account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -943,7 +957,8 @@ export interface DatabaseAccounts {
      * @param {string}
      * createUpdateParameters.consistencyPolicy.defaultConsistencyLevel The default
      * consistency level and configuration settings of the DocumentDB account.
-     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness', 'Strong'
+     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness',
+     * 'Strong', 'ConsistentPrefix'
      *
      * @param {number}
      * [createUpdateParameters.consistencyPolicy.maxStalenessPrefix] When used with
@@ -967,6 +982,12 @@ export interface DatabaseAccounts {
      * in CIDR form to be included as the allowed list of client IPs for a given
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
+     *
+     * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
+     * automatic failover of the write region in the rare event that the region is
+     * unavailable due to an outage. Automatic failover will result in a new write
+     * region for the account and is chosen based on the failover priorities
+     * configured for the account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1006,7 +1027,8 @@ export interface DatabaseAccounts {
      * @param {string}
      * createUpdateParameters.consistencyPolicy.defaultConsistencyLevel The default
      * consistency level and configuration settings of the DocumentDB account.
-     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness', 'Strong'
+     * Possible values include: 'Eventual', 'Session', 'BoundedStaleness',
+     * 'Strong', 'ConsistentPrefix'
      *
      * @param {number}
      * [createUpdateParameters.consistencyPolicy.maxStalenessPrefix] When used with
@@ -1030,6 +1052,12 @@ export interface DatabaseAccounts {
      * in CIDR form to be included as the allowed list of client IPs for a given
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
+     *
+     * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
+     * automatic failover of the write region in the rare event that the region is
+     * unavailable due to an outage. Automatic failover will result in a new write
+     * region for the account and is chosen based on the failover priorities
+     * configured for the account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.

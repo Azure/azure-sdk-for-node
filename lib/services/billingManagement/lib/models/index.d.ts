@@ -24,9 +24,7 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {date} [expiryTime] The time in UTC at which this download URL will
  * expire.
- *
  * @member {string} [url] The URL to the PDF file.
- *
  */
 export interface DownloadUrl {
   readonly expiryTime?: Date;
@@ -40,12 +38,9 @@ export interface DownloadUrl {
  * The details of the error.
  *
  * @member {string} [code] Error code.
- *
  * @member {string} [message] Error message indicating why the operation
  * failed.
- *
  * @member {string} [target] The target of the particular error.
- *
  */
 export interface ErrorDetails {
   readonly code?: string;
@@ -61,14 +56,10 @@ export interface ErrorDetails {
  * incoming request. The reason is provided in the error message.
  *
  * @member {object} [error]
- *
  * @member {string} [error.code] Error code.
- *
  * @member {string} [error.message] Error message indicating why the operation
  * failed.
- *
  * @member {string} [error.target] The target of the particular error.
- *
  */
 export interface ErrorResponse {
   error?: ErrorDetails;
@@ -81,11 +72,8 @@ export interface ErrorResponse {
  * The Resource model definition.
  *
  * @member {string} [id] Resource Id
- *
  * @member {string} [name] Resource name
- *
  * @member {string} [type] Resource type
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -101,18 +89,13 @@ export interface Resource extends BaseResource {
  *
  * @member {date} [invoicePeriodStartDate] The start of the date range covered
  * by the invoice.
- *
  * @member {date} [invoicePeriodEndDate] The end of the date range covered by
  * the invoice.
- *
  * @member {object} [downloadUrl] A secure link to download the PDF version of
  * an invoice. The link will cease to work after its expiry time is reached.
- *
  * @member {date} [downloadUrl.expiryTime] The time in UTC at which this
  * download URL will expire.
- *
  * @member {string} [downloadUrl.url] The URL to the PDF file.
- *
  */
 export interface Invoice extends Resource {
   readonly invoicePeriodStartDate?: Date;
@@ -128,9 +111,7 @@ export interface Invoice extends Resource {
  * invoices in reverse chronological order.
  *
  * @member {array} [value] The list of invoices.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface InvoicesListResult {
   readonly value?: Invoice[];
@@ -144,12 +125,9 @@ export interface InvoicesListResult {
  * The object that represents the operation.
  *
  * @member {string} [provider] Service provider: Microsoft.Billing
- *
  * @member {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- *
  * @member {string} [operation] Operation type: Read, write, delete, etc.
- *
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -164,17 +142,12 @@ export interface OperationDisplay {
  * A Billing REST API operation
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- *
  * @member {object} [display] The object that represents the operation.
- *
  * @member {string} [display.provider] Service provider: Microsoft.Billing
- *
  * @member {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- *
  * @member {string} [display.operation] Operation type: Read, write, delete,
  * etc.
- *
  */
 export interface Operation {
   readonly name?: string;
@@ -190,10 +163,8 @@ export interface Operation {
  *
  * @member {array} [value] List of billing operations supported by the
  * Microsoft.Billing resource provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   readonly value?: Operation[];
@@ -208,9 +179,7 @@ export interface OperationListResult {
  * invoices in reverse chronological order.
  *
  * @member {array} [value] The list of invoices.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface InvoicesListResult {
   readonly value?: Invoice[];
@@ -226,10 +195,8 @@ export interface InvoicesListResult {
  *
  * @member {array} [value] List of billing operations supported by the
  * Microsoft.Billing resource provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   readonly value?: Operation[];
@@ -245,7 +212,6 @@ export interface OperationListResult {
  * invoices in reverse chronological order.
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface InvoicesListResult extends Array<Invoice> {
   readonly nextLink?: string;
@@ -260,7 +226,6 @@ export interface InvoicesListResult extends Array<Invoice> {
  *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult extends Array<Operation> {
   readonly nextLink?: string;

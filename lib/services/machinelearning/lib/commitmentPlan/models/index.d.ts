@@ -22,15 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * Common properties of an ARM resource.
  *
  * @member {string} [id] Resource Id.
- *
  * @member {string} [name] Resource name.
- *
  * @member {string} location Resource location.
- *
  * @member {string} [type] Resource type.
- *
  * @member {object} [tags] User-defined tags for the resource.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -48,13 +43,10 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [associatedResourceId] The ID of the resource this
  * association points to, such as the ARM ID of an Azure ML web service.
- *
  * @member {string} [commitmentPlanId] The ARM ID of the parent Azure ML
  * commitment plan.
- *
  * @member {date} [creationDate] The date at which this commitment association
  * was created, in ISO 8601 format.
- *
  */
 export interface CommitmentAssociationProperties {
   readonly associatedResourceId?: string;
@@ -71,19 +63,14 @@ export interface CommitmentAssociationProperties {
  *
  * @member {string} [etag] An entity tag used to enforce optimistic
  * concurrency.
- *
  * @member {object} [properties] The properties of the commitment association
  * resource.
- *
  * @member {string} [properties.associatedResourceId] The ID of the resource
  * this association points to, such as the ARM ID of an Azure ML web service.
- *
  * @member {string} [properties.commitmentPlanId] The ARM ID of the parent
  * Azure ML commitment plan.
- *
  * @member {date} [properties.creationDate] The date at which this commitment
  * association was created, in ISO 8601 format.
- *
  */
 export interface CommitmentAssociation extends Resource {
   etag?: string;
@@ -99,13 +86,10 @@ export interface CommitmentAssociation extends Resource {
  * @member {number} [capacity] The scale-out capacity of the resource. 1 is 1x,
  * 2 is 2x, etc. This impacts the quantities and cost of any commitment plan
  * resource.
- *
  * @member {string} [name] The SKU name. Along with tier, uniquely identifies
  * the SKU.
- *
  * @member {string} [tier] The SKU tier. Along with name, uniquely identifies
  * the SKU.
- *
  */
 export interface ResourceSku {
   capacity?: number;
@@ -120,9 +104,7 @@ export interface ResourceSku {
  * A page of commitment association resources.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  * @member {array} [value] The set of results for this page.
- *
  */
 export interface CommitmentAssociationListResult {
   nextLink?: string;
@@ -137,7 +119,6 @@ export interface CommitmentAssociationListResult {
  *
  * @member {string} [destinationPlanId] The ARM ID of the commitment plan to
  * re-parent the commitment association to.
- *
  */
 export interface MoveCommitmentAssociationRequest {
   destinationPlanId?: string;
@@ -150,19 +131,14 @@ export interface MoveCommitmentAssociationRequest {
  * The properties of a commitment plan which may be updated via PATCH.
  *
  * @member {object} [tags] User-defined tags for the commitment plan.
- *
  * @member {object} [sku] The commitment plan SKU.
- *
  * @member {number} [sku.capacity] The scale-out capacity of the resource. 1 is
  * 1x, 2 is 2x, etc. This impacts the quantities and cost of any commitment
  * plan resource.
- *
  * @member {string} [sku.name] The SKU name. Along with tier, uniquely
  * identifies the SKU.
- *
  * @member {string} [sku.tier] The SKU tier. Along with name, uniquely
  * identifies the SKU.
- *
  */
 export interface CommitmentPlanPatchPayload {
   tags?: { [propertyName: string]: string };
@@ -177,16 +153,12 @@ export interface CommitmentPlanPatchPayload {
  *
  * @member {number} [allowance] The quantity added to the commitment plan at an
  * interval specified by its allowance frequency.
- *
  * @member {number} [amount] The quantity available to the plan the last time
  * usage was calculated.
- *
  * @member {string} [includedQuantityMeter] The Azure meter for usage against
  * included quantities.
- *
  * @member {string} [overageMeter] The Azure meter for usage which exceeds
  * included quantities.
- *
  */
 export interface PlanQuantity {
   readonly allowance?: number;
@@ -203,35 +175,25 @@ export interface PlanQuantity {
  *
  * @member {boolean} [chargeForOverage] Indicates whether usage beyond the
  * commitment plan's included quantities will be charged.
- *
  * @member {boolean} [chargeForPlan] Indicates whether the commitment plan will
  * incur a charge.
- *
  * @member {date} [creationDate] The date at which this commitment plan was
  * created, in ISO 8601 format.
- *
  * @member {object} [includedQuantities] The included resource quantities this
  * plan gives you.
- *
  * @member {number} [maxAssociationLimit] The maximum number of commitment
  * associations that can be children of this commitment plan.
- *
  * @member {number} [maxCapacityLimit] The maximum scale-out capacity for this
  * commitment plan.
- *
  * @member {number} [minCapacityLimit] The minimum scale-out capacity for this
  * commitment plan.
- *
  * @member {string} [planMeter] The Azure meter which will be used to charge
  * for this commitment plan.
- *
  * @member {number} [refillFrequencyInDays] The frequency at which this
  * commitment plan's included quantities are refilled.
- *
  * @member {boolean} [suspendPlanOnOverage] Indicates whether this commitment
  * plan will be moved into a suspended state if usage goes beyond the
  * commitment plan's included quantities.
- *
  */
 export interface CommitmentPlanProperties {
   readonly chargeForOverage?: boolean;
@@ -254,52 +216,36 @@ export interface CommitmentPlanProperties {
  *
  * @member {string} [etag] An entity tag used to enforce optimistic
  * concurrency.
- *
  * @member {object} [properties] The commitment plan properties.
- *
  * @member {boolean} [properties.chargeForOverage] Indicates whether usage
  * beyond the commitment plan's included quantities will be charged.
- *
  * @member {boolean} [properties.chargeForPlan] Indicates whether the
  * commitment plan will incur a charge.
- *
  * @member {date} [properties.creationDate] The date at which this commitment
  * plan was created, in ISO 8601 format.
- *
  * @member {object} [properties.includedQuantities] The included resource
  * quantities this plan gives you.
- *
  * @member {number} [properties.maxAssociationLimit] The maximum number of
  * commitment associations that can be children of this commitment plan.
- *
  * @member {number} [properties.maxCapacityLimit] The maximum scale-out
  * capacity for this commitment plan.
- *
  * @member {number} [properties.minCapacityLimit] The minimum scale-out
  * capacity for this commitment plan.
- *
  * @member {string} [properties.planMeter] The Azure meter which will be used
  * to charge for this commitment plan.
- *
  * @member {number} [properties.refillFrequencyInDays] The frequency at which
  * this commitment plan's included quantities are refilled.
- *
  * @member {boolean} [properties.suspendPlanOnOverage] Indicates whether this
  * commitment plan will be moved into a suspended state if usage goes beyond
  * the commitment plan's included quantities.
- *
  * @member {object} [sku] The commitment plan SKU.
- *
  * @member {number} [sku.capacity] The scale-out capacity of the resource. 1 is
  * 1x, 2 is 2x, etc. This impacts the quantities and cost of any commitment
  * plan resource.
- *
  * @member {string} [sku.name] The SKU name. Along with tier, uniquely
  * identifies the SKU.
- *
  * @member {string} [sku.tier] The SKU tier. Along with name, uniquely
  * identifies the SKU.
- *
  */
 export interface CommitmentPlan extends Resource {
   etag?: string;
@@ -314,9 +260,7 @@ export interface CommitmentPlan extends Resource {
  * A page of commitment plan resources.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  * @member {array} [value] The set of results for this page.
- *
  */
 export interface CommitmentPlanListResult {
   nextLink?: string;
@@ -332,27 +276,20 @@ export interface CommitmentPlanListResult {
  *
  * @member {object} [planDeletionOverage] Overage incurred as a result of
  * deleting a commitment plan.
- *
  * @member {object} [planMigrationOverage] Overage incurred as a result of
  * migrating a commitment plan from one SKU to another.
- *
  * @member {object} [planQuantitiesAfterUsage] Included quantities remaining
  * after usage against the commitment plan's associated resources was
  * calculated.
- *
  * @member {object} [planQuantitiesBeforeUsage] Included quantities remaining
  * before usage against the commitment plan's associated resources was
  * calculated.
- *
  * @member {object} [planUsageOverage] Usage against the commitment plan's
  * associated resources which was not covered by included quantities and is
  * therefore overage.
- *
  * @member {object} [usage] Usage against the commitment plan's associated
  * resources.
- *
  * @member {date} [usageDate] The date of usage, in ISO 8601 format.
- *
  */
 export interface PlanUsageHistory {
   planDeletionOverage?: { [propertyName: string]: number };
@@ -371,9 +308,7 @@ export interface PlanUsageHistory {
  * A page of usage history.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  * @member {array} [value] The set of results for this page.
- *
  */
 export interface PlanUsageHistoryListResult {
   nextLink?: string;
@@ -387,9 +322,7 @@ export interface PlanUsageHistoryListResult {
  * A page of commitment association resources.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  * @member {array} [value] The set of results for this page.
- *
  */
 export interface CommitmentAssociationListResult {
   nextLink?: string;
@@ -403,9 +336,7 @@ export interface CommitmentAssociationListResult {
  * A page of commitment plan resources.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  * @member {array} [value] The set of results for this page.
- *
  */
 export interface CommitmentPlanListResult {
   nextLink?: string;
@@ -419,9 +350,7 @@ export interface CommitmentPlanListResult {
  * A page of usage history.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  * @member {array} [value] The set of results for this page.
- *
  */
 export interface PlanUsageHistoryListResult {
   nextLink?: string;
@@ -436,7 +365,6 @@ export interface PlanUsageHistoryListResult {
  * A page of commitment association resources.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  */
 export interface CommitmentAssociationListResult extends Array<CommitmentAssociation> {
   nextLink?: string;
@@ -449,7 +377,6 @@ export interface CommitmentAssociationListResult extends Array<CommitmentAssocia
  * A page of commitment plan resources.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  */
 export interface CommitmentPlanListResult extends Array<CommitmentPlan> {
   nextLink?: string;
@@ -462,7 +389,6 @@ export interface CommitmentPlanListResult extends Array<CommitmentPlan> {
  * A page of usage history.
  *
  * @member {string} [nextLink] A URI to retrieve the next page of results.
- *
  */
 export interface PlanUsageHistoryListResult extends Array<PlanUsageHistory> {
   nextLink?: string;

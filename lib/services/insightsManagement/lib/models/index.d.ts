@@ -22,15 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * An azure resource object
  *
  * @member {string} [id] Azure resource Id
- *
  * @member {string} [name] Azure resource name
- *
  * @member {string} [type] Azure resource type
- *
  * @member {string} location Resource location
- *
  * @member {object} [tags] Resource tags
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -47,15 +42,12 @@ export interface Resource extends BaseResource {
  * The number of instances that can be used during this profile.
  *
  * @member {string} minimum the minimum number of instances for the resource.
- *
  * @member {string} maximum the maximum number of instances for the resource.
  * The actual maximum number of instances is limited by the cores that are
  * available in the subscription.
- *
  * @member {string} default the number of instances that will be set if metrics
  * are not available for evaluation. The default is only used if the current
  * instance count is lower than the default.
- *
  */
 export interface ScaleCapacity {
   minimum: string;
@@ -71,34 +63,26 @@ export interface ScaleCapacity {
  *
  * @member {string} metricName the name of the metric that defines what the
  * rule monitors.
- *
  * @member {string} metricResourceUri the resource identifier of the resource
  * the rule monitors.
- *
  * @member {moment.duration} timeGrain the granularity of metrics the rule
  * monitors. Must be one of the predefined values returned from metric
  * definitions for the metric. Must be between 12 hours and 1 minute.
- *
  * @member {string} statistic the metric statistic type. How the metrics from
  * multiple instances are combined. Possible values include: 'Average', 'Min',
  * 'Max', 'Sum'
- *
  * @member {moment.duration} timeWindow the range of time in which instance
  * data is collected. This value must be greater than the delay in metric
  * collection, which can vary from resource-to-resource. Must be between 12
  * hours and 5 minutes.
- *
  * @member {string} timeAggregation time aggregation type. How the data that is
  * collected should be combined over time. The default value is Average.
  * Possible values include: 'Average', 'Minimum', 'Maximum', 'Total', 'Count'
- *
  * @member {string} operator the operator that is used to compare the metric
  * data and the threshold. Possible values include: 'Equals', 'NotEquals',
  * 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'
- *
  * @member {number} threshold the threshold of the metric that triggers the
  * scale action.
- *
  */
 export interface MetricTrigger {
   metricName: string;
@@ -120,19 +104,15 @@ export interface MetricTrigger {
  * @member {string} direction the scale direction. Whether the scaling action
  * increases or decreases the number of instances. Possible values include:
  * 'None', 'Increase', 'Decrease'
- *
  * @member {string} type the type of action that should occur when the scale
  * rule fires. Possible values include: 'ChangeCount', 'PercentChangeCount',
  * 'ExactCount'
- *
  * @member {string} [value] the number of instances that are involved in the
  * scaling action. This value must be 1 or greater. The default value is 1.
  * Default value: '1' .
- *
  * @member {moment.duration} cooldown the amount of time to wait since the last
  * scaling action before this action occurs. It must be between 1 week and 1
  * minute in ISO 8601 format.
- *
  */
 export interface ScaleAction {
   direction: string;
@@ -148,58 +128,44 @@ export interface ScaleAction {
  * A rule that provide the triggers and parameters for the scaling action.
  *
  * @member {object} metricTrigger the trigger that results in a scaling action.
- *
  * @member {string} [metricTrigger.metricName] the name of the metric that
  * defines what the rule monitors.
- *
  * @member {string} [metricTrigger.metricResourceUri] the resource identifier
  * of the resource the rule monitors.
- *
  * @member {moment.duration} [metricTrigger.timeGrain] the granularity of
  * metrics the rule monitors. Must be one of the predefined values returned
  * from metric definitions for the metric. Must be between 12 hours and 1
  * minute.
- *
  * @member {string} [metricTrigger.statistic] the metric statistic type. How
  * the metrics from multiple instances are combined. Possible values include:
  * 'Average', 'Min', 'Max', 'Sum'
- *
  * @member {moment.duration} [metricTrigger.timeWindow] the range of time in
  * which instance data is collected. This value must be greater than the delay
  * in metric collection, which can vary from resource-to-resource. Must be
  * between 12 hours and 5 minutes.
- *
  * @member {string} [metricTrigger.timeAggregation] time aggregation type. How
  * the data that is collected should be combined over time. The default value
  * is Average. Possible values include: 'Average', 'Minimum', 'Maximum',
  * 'Total', 'Count'
- *
  * @member {string} [metricTrigger.operator] the operator that is used to
  * compare the metric data and the threshold. Possible values include:
  * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
  * 'LessThanOrEqual'
- *
  * @member {number} [metricTrigger.threshold] the threshold of the metric that
  * triggers the scale action.
- *
  * @member {object} scaleAction the parameters for the scaling action.
- *
  * @member {string} [scaleAction.direction] the scale direction. Whether the
  * scaling action increases or decreases the number of instances. Possible
  * values include: 'None', 'Increase', 'Decrease'
- *
  * @member {string} [scaleAction.type] the type of action that should occur
  * when the scale rule fires. Possible values include: 'ChangeCount',
  * 'PercentChangeCount', 'ExactCount'
- *
  * @member {string} [scaleAction.value] the number of instances that are
  * involved in the scaling action. This value must be 1 or greater. The default
  * value is 1.
- *
  * @member {moment.duration} [scaleAction.cooldown] the amount of time to wait
  * since the last scaling action before this action occurs. It must be between
  * 1 week and 1 minute in ISO 8601 format.
- *
  */
 export interface ScaleRule {
   metricTrigger: MetricTrigger;
@@ -249,11 +215,8 @@ export interface ScaleRule {
  * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
  * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
  * Standard Time, Samoa Standard Time, Line Islands Standard Time
- *
  * @member {date} start the start time for the profile in ISO 8601 format.
- *
  * @member {date} end the end time for the profile in ISO 8601 format.
- *
  */
 export interface TimeWindow {
   timeZone?: string;
@@ -304,17 +267,13 @@ export interface TimeWindow {
  * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
  * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
  * Standard Time, Samoa Standard Time, Line Islands Standard Time
- *
  * @member {array} days the collection of days that the profile takes effect
  * on. Possible values are Sunday through Saturday.
- *
  * @member {array} hours A collection of hours that the profile takes effect
  * on. Values supported are 0 to 23 on the 24-hour clock (AM/PM times are not
  * supported).
- *
  * @member {array} minutes A collection of minutes at which the profile takes
  * effect at.
- *
  */
 export interface RecurrentSchedule {
   timeZone: string;
@@ -334,10 +293,8 @@ export interface RecurrentSchedule {
  * profile should take effect. This value must be Week, meaning each week will
  * have the same set of profiles. Possible values include: 'None', 'Second',
  * 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- *
  * @member {object} schedule the scheduling constraints for when the profile
  * begins.
- *
  * @member {string} [schedule.timeZone] the timezone for the hours of the
  * profile. Some examples of valid timezones are: Dateline Standard Time,
  * UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time
@@ -375,17 +332,13 @@ export interface RecurrentSchedule {
  * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
  * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
  * Standard Time, Samoa Standard Time, Line Islands Standard Time
- *
  * @member {array} [schedule.days] the collection of days that the profile
  * takes effect on. Possible values are Sunday through Saturday.
- *
  * @member {array} [schedule.hours] A collection of hours that the profile
  * takes effect on. Values supported are 0 to 23 on the 24-hour clock (AM/PM
  * times are not supported).
- *
  * @member {array} [schedule.minutes] A collection of minutes at which the
  * profile takes effect at.
- *
  */
 export interface Recurrence {
   frequency: string;
@@ -399,27 +352,20 @@ export interface Recurrence {
  * Autoscale profile.
  *
  * @member {string} name the name of the profile.
- *
  * @member {object} capacity the number of instances that can be used during
  * this profile.
- *
  * @member {string} [capacity.minimum] the minimum number of instances for the
  * resource.
- *
  * @member {string} [capacity.maximum] the maximum number of instances for the
  * resource. The actual maximum number of instances is limited by the cores
  * that are available in the subscription.
- *
  * @member {string} [capacity.default] the number of instances that will be set
  * if metrics are not available for evaluation. The default is only used if the
  * current instance count is lower than the default.
- *
  * @member {array} rules the collection of rules that provide the triggers and
  * parameters for the scaling action. A maximum of 10 rules can be specified.
- *
  * @member {object} [fixedDate] the specific date-time for the profile. This
  * element is not used if the Recurrence element is used.
- *
  * @member {string} [fixedDate.timeZone] the timezone of the start and end
  * times for the profile. Some examples of valid timezones are: Dateline
  * Standard Time, UTC-11, Hawaiian Standard Time, Alaskan Standard Time,
@@ -458,24 +404,18 @@ export interface Recurrence {
  * Time Zone 11, New Zealand Standard Time, UTC+12, Fiji Standard Time,
  * Kamchatka Standard Time, Tonga Standard Time, Samoa Standard Time, Line
  * Islands Standard Time
- *
  * @member {date} [fixedDate.start] the start time for the profile in ISO 8601
  * format.
- *
  * @member {date} [fixedDate.end] the end time for the profile in ISO 8601
  * format.
- *
  * @member {object} [recurrence] the repeating times at which this profile
  * begins. This element is not used if the FixedDate element is used.
- *
  * @member {string} [recurrence.frequency] the recurrence frequency. How often
  * the schedule profile should take effect. This value must be Week, meaning
  * each week will have the same set of profiles. Possible values include:
  * 'None', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
- *
  * @member {object} [recurrence.schedule] the scheduling constraints for when
  * the profile begins.
- *
  * @member {string} [recurrence.schedule.timeZone] the timezone for the hours
  * of the profile. Some examples of valid timezones are: Dateline Standard
  * Time, UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific
@@ -513,17 +453,13 @@ export interface Recurrence {
  * Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand
  * Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga
  * Standard Time, Samoa Standard Time, Line Islands Standard Time
- *
  * @member {array} [recurrence.schedule.days] the collection of days that the
  * profile takes effect on. Possible values are Sunday through Saturday.
- *
  * @member {array} [recurrence.schedule.hours] A collection of hours that the
  * profile takes effect on. Values supported are 0 to 23 on the 24-hour clock
  * (AM/PM times are not supported).
- *
  * @member {array} [recurrence.schedule.minutes] A collection of minutes at
  * which the profile takes effect at.
- *
  */
 export interface AutoscaleProfile {
   name: string;
@@ -541,13 +477,10 @@ export interface AutoscaleProfile {
  *
  * @member {boolean} [sendToSubscriptionAdministrator] a value indicating
  * whether to send email to subscription administrator.
- *
  * @member {boolean} [sendToSubscriptionCoAdministrators] a value indicating
  * whether to send email to subscription co-administrators.
- *
  * @member {array} [customEmails] the custom e-mails list. This value can be
  * null or empty, in which case this attribute will be ignored.
- *
  */
 export interface EmailNotification {
   sendToSubscriptionAdministrator?: boolean;
@@ -563,10 +496,8 @@ export interface EmailNotification {
  *
  * @member {string} [serviceUri] the service address to receive the
  * notification.
- *
  * @member {object} [properties] a property bag of settings. This value can be
  * empty.
- *
  */
 export interface WebhookNotification {
   serviceUri?: string;
@@ -580,18 +511,13 @@ export interface WebhookNotification {
  * Autoscale notification.
  *
  * @member {object} [email] the email notification.
- *
  * @member {boolean} [email.sendToSubscriptionAdministrator] a value indicating
  * whether to send email to subscription administrator.
- *
  * @member {boolean} [email.sendToSubscriptionCoAdministrators] a value
  * indicating whether to send email to subscription co-administrators.
- *
  * @member {array} [email.customEmails] the custom e-mails list. This value can
  * be null or empty, in which case this attribute will be ignored.
- *
  * @member {array} [webhooks] the collection of webhook notifications.
- *
  */
 export interface AutoscaleNotification {
   email?: EmailNotification;
@@ -607,19 +533,14 @@ export interface AutoscaleNotification {
  * @member {array} profiles the collection of automatic scaling profiles that
  * specify different scaling parameters for different time periods. A maximum
  * of 20 profiles can be specified.
- *
  * @member {array} [notifications] the collection of notifications.
- *
  * @member {boolean} [enabled] the enabled flag. Specifies whether automatic
  * scaling is enabled for the resource. The default value is 'true'. Default
  * value: true .
- *
  * @member {string} autoscaleSettingResourceName the name of the autoscale
  * setting.
- *
  * @member {string} [targetResourceUri] the resource identifier of the resource
  * that the autoscale setting should be added to.
- *
  */
 export interface AutoscaleSettingResource extends Resource {
   profiles: AutoscaleProfile[];
@@ -636,9 +557,7 @@ export interface AutoscaleSettingResource extends Resource {
  * Represents a collection of autoscale setting resources.
  *
  * @member {array} value the values for the autoscale setting resources.
- *
  * @member {string} [nextLink] URL to get the next set of results.
- *
  */
 export interface AutoscaleSettingResourceCollection {
   value: AutoscaleSettingResource[];
@@ -653,10 +572,8 @@ export interface AutoscaleSettingResourceCollection {
  *
  * @member {boolean} enabled a value indicating whether the retention policy is
  * enabled.
- *
  * @member {number} days the number of days for the retention in days. A value
  * of 0 will retain the events indefinitely.
- *
  */
 export interface RetentionPolicy {
   enabled: boolean;
@@ -672,18 +589,13 @@ export interface RetentionPolicy {
  *
  * @member {moment.duration} timeGrain the timegrain of the metric in ISO8601
  * format.
- *
  * @member {boolean} enabled a value indicating whether this timegrain is
  * enabled.
- *
  * @member {object} [retentionPolicy] the retention policy for this timegrain.
- *
  * @member {boolean} [retentionPolicy.enabled] a value indicating whether the
  * retention policy is enabled.
- *
  * @member {number} [retentionPolicy.days] the number of days for the retention
  * in days. A value of 0 will retain the events indefinitely.
- *
  */
 export interface MetricSettings {
   timeGrain: moment.Duration;
@@ -702,17 +614,12 @@ export interface MetricSettings {
  * type this setting is applied to. To obtain the list of Diagnostic Log
  * categories for a resource, first perform a GET diagnostic settings
  * operation.
- *
  * @member {boolean} enabled a value indicating whether this log is enabled.
- *
  * @member {object} [retentionPolicy] the retention policy for this log.
- *
  * @member {boolean} [retentionPolicy.enabled] a value indicating whether the
  * retention policy is enabled.
- *
  * @member {number} [retentionPolicy.days] the number of days for the retention
  * in days. A value of 0 will retain the events indefinitely.
- *
  */
 export interface LogSettings {
   category?: string;
@@ -728,21 +635,16 @@ export interface LogSettings {
  *
  * @member {string} [storageAccountId] The resource ID of the storage account
  * to which you would like to send Diagnostic Logs.
- *
  * @member {string} [serviceBusRuleId] The service bus rule ID of the service
  * bus namespace in which you would like to have Event Hubs created for
  * streaming Diagnostic Logs. The rule ID is of the format: '{service bus
  * resource ID}/authorizationrules/{key name}'.
- *
  * @member {array} [metrics] the list of metric settings.
- *
  * @member {array} [logs] the list of logs settings.
- *
  * @member {string} [workspaceId] The workspace ID (resource ID of a Log
  * Analytics workspace) for a Log Analytics workspace to which you would like
  * to send Diagnostic Logs. Example:
  * /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
- *
  */
 export interface ServiceDiagnosticSettingsResource extends Resource {
   storageAccountId?: string;
@@ -759,7 +661,6 @@ export interface ServiceDiagnosticSettingsResource extends Resource {
  * The condition that results in the alert rule being activated.
  *
  * @member {string} odatatype Polymorphic Discriminator
- *
  */
 export interface RuleCondition {
   odatatype: string;
@@ -772,7 +673,6 @@ export interface RuleCondition {
  * The resource from which the rule collects its data.
  *
  * @member {string} odatatype Polymorphic Discriminator
- *
  */
 export interface RuleDataSource {
   odatatype: string;
@@ -787,10 +687,8 @@ export interface RuleDataSource {
  *
  * @member {string} [resourceUri] the resource identifier of the resource the
  * rule monitors.
- *
  * @member {string} [metricName] the name of the metric that defines what the
  * rule monitors.
- *
  */
 export interface RuleMetricDataSource extends RuleDataSource {
   resourceUri?: string;
@@ -804,7 +702,6 @@ export interface RuleMetricDataSource extends RuleDataSource {
  * The claims for a rule management event data source.
  *
  * @member {string} [emailAddress] the email address.
- *
  */
 export interface RuleManagementEventClaimsDataSource {
   emailAddress?: string;
@@ -818,29 +715,18 @@ export interface RuleManagementEventClaimsDataSource {
  * RuleManagementEventDataSource in this case.
  *
  * @member {string} [eventName] the event name.
- *
  * @member {string} [eventSource] the event source.
- *
  * @member {string} [level] the level.
- *
  * @member {string} [operationName] The name of the operation that should be
  * checked for. If no name is provided, any operation will match.
- *
  * @member {string} [resourceGroupName] the resource group name.
- *
  * @member {string} [resourceProviderName] the resource provider name.
- *
  * @member {string} [resourceUri] the resource uri.
- *
  * @member {string} [status] The status of the operation that should be checked
  * for. If no status is provided, any status will match.
- *
  * @member {string} [subStatus] the substatus.
- *
  * @member {object} [claims] the claims.
- *
  * @member {string} [claims.emailAddress] the email address.
- *
  */
 export interface RuleManagementEventDataSource extends RuleDataSource {
   eventName?: string;
@@ -863,24 +749,18 @@ export interface RuleManagementEventDataSource extends RuleDataSource {
  *
  * @member {object} [dataSource] the resource from which the rule collects its
  * data. For this type dataSource will always be of type RuleMetricDataSource.
- *
  * @member {string} [dataSource.odatatype] Polymorphic Discriminator
- *
  * @member {string} operator the operator used to compare the data and the
  * threshold. Possible values include: 'GreaterThan', 'GreaterThanOrEqual',
  * 'LessThan', 'LessThanOrEqual'
- *
  * @member {number} threshold the threshold value that activates the alert.
- *
  * @member {moment.duration} [windowSize] the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold. If specified then it must be between 5 minutes and 1 day.
- *
  * @member {string} [timeAggregation] the time aggregation operator. How the
  * data that are collected should be combined over time. The default value is
  * the PrimaryAggregationType of the Metric. Possible values include:
  * 'Average', 'Minimum', 'Maximum', 'Total', 'Last'
- *
  */
 export interface ThresholdRuleCondition extends RuleCondition {
   dataSource?: RuleDataSource;
@@ -898,16 +778,12 @@ export interface ThresholdRuleCondition extends RuleCondition {
  *
  * @member {object} [dataSource] the resource from which the rule collects its
  * data. For this type dataSource will always be of type RuleMetricDataSource.
- *
  * @member {string} [dataSource.odatatype] Polymorphic Discriminator
- *
  * @member {moment.duration} [windowSize] the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold. If specified then it must be between 5 minutes and 1 day.
- *
  * @member {number} failedLocationCount the number of locations that must fail
  * to activate the alert.
- *
  */
 export interface LocationThresholdRuleCondition extends RuleCondition {
   dataSource?: RuleDataSource;
@@ -923,13 +799,10 @@ export interface LocationThresholdRuleCondition extends RuleCondition {
  *
  * @member {string} [operator] the condition operator. Possible values include:
  * 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'
- *
  * @member {number} [threshold] The threshold value that activates the alert.
- *
  * @member {moment.duration} [windowSize] the period of time (in ISO 8601
  * duration format) that is used to monitor alert activity based on the
  * threshold. If specified then it must be between 5 minutes and 1 day.
- *
  */
 export interface ManagementEventAggregationCondition {
   operator?: string;
@@ -946,25 +819,19 @@ export interface ManagementEventAggregationCondition {
  * @member {object} [dataSource] the resource from which the rule collects its
  * data. For this type dataSource will always be of type
  * RuleManagementEventDataSource.
- *
  * @member {string} [dataSource.odatatype] Polymorphic Discriminator
- *
  * @member {object} [aggregation] How the data that is collected should be
  * combined over time and when the alert is activated. Note that for management
  * event alerts aggregation is optional – if it is not provided then any event
  * will cause the alert to activate.
- *
  * @member {string} [aggregation.operator] the condition operator. Possible
  * values include: 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
  * 'LessThanOrEqual'
- *
  * @member {number} [aggregation.threshold] The threshold value that activates
  * the alert.
- *
  * @member {moment.duration} [aggregation.windowSize] the period of time (in
  * ISO 8601 duration format) that is used to monitor alert activity based on
  * the threshold. If specified then it must be between 5 minutes and 1 day.
- *
  */
 export interface ManagementEventRuleCondition extends RuleCondition {
   dataSource?: RuleDataSource;
@@ -979,7 +846,6 @@ export interface ManagementEventRuleCondition extends RuleCondition {
  * alert condition is resolved.
  *
  * @member {string} odatatype Polymorphic Discriminator
- *
  */
 export interface RuleAction {
   odatatype: string;
@@ -995,10 +861,8 @@ export interface RuleAction {
  * @member {boolean} [sendToServiceOwners] Whether the administrators (service
  * and co-adiminstrators) of the service should be notified when the alert is
  * activated.
- *
  * @member {array} [customEmails] the list of administrator's custom email
  * addresses notifiy of the activation of the alert.
- *
  */
 export interface RuleEmailAction extends RuleAction {
   sendToServiceOwners?: boolean;
@@ -1014,10 +878,8 @@ export interface RuleEmailAction extends RuleAction {
  *
  * @member {string} [serviceUri] the service uri to Post the notitication when
  * the alert activates or resolves.
- *
  * @member {object} [properties] the dictionary of custom properties to include
  * with the post operation. These data are appended to the webhook payload.
- *
  */
 export interface RuleWebhookAction extends RuleAction {
   serviceUri?: string;
@@ -1031,24 +893,17 @@ export interface RuleWebhookAction extends RuleAction {
  * The alert rule resource.
  *
  * @member {string} alertRuleResourceName the name of the alert rule.
- *
  * @member {string} [description] the description of the alert rule that will
  * be included in the alert email.
- *
  * @member {boolean} isEnabled the flag that indicates whether the alert rule
  * is enabled.
- *
  * @member {object} [condition] the condition that results in the alert rule
  * being activated.
- *
  * @member {string} [condition.odatatype] Polymorphic Discriminator
- *
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
- *
  * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
  * format.
- *
  */
 export interface AlertRuleResource extends Resource {
   alertRuleResourceName: string;
@@ -1066,7 +921,6 @@ export interface AlertRuleResource extends Resource {
  * Represents a collection of alert rule resources.
  *
  * @member {array} [value] the values for the alert rule resources.
- *
  */
 export interface AlertRuleResourceCollection {
   value?: AlertRuleResource[];
@@ -1079,18 +933,13 @@ export interface AlertRuleResourceCollection {
  * An alert incident indicates the activation status of an alert rule.
  *
  * @member {string} [name] Incident name.
- *
  * @member {string} [ruleName] Rule name that is associated with the incident.
- *
  * @member {boolean} [isActive] A boolean to indicate whether the incident is
  * active or resolved.
- *
  * @member {date} [activatedTime] The time at which the incident was activated
  * in ISO8601 format.
- *
  * @member {date} [resolvedTime] The time at which the incident was resolved in
  * ISO8601 format. If null, it means the incident is still active.
- *
  */
 export interface Incident {
   readonly name?: string;
@@ -1107,7 +956,6 @@ export interface Incident {
  * The List incidents operation response.
  *
  * @member {array} [value] the incident collection.
- *
  */
 export interface IncidentListResult {
   value?: Incident[];
@@ -1121,29 +969,22 @@ export interface IncidentListResult {
  *
  * @member {string} [storageAccountId] the resource id of the storage account
  * to which you would like to send the Activity Log.
- *
  * @member {string} [serviceBusRuleId] The service bus rule ID of the service
  * bus namespace in which you would like to have Event Hubs created for
  * streaming the Activity Log. The rule ID is of the format: '{service bus
  * resource ID}/authorizationrules/{key name}'.
- *
  * @member {array} locations List of regions for which Activity Log events
  * should be stored or streamed. It is a comma separated list of valid ARM
  * locations including the 'global' location.
- *
  * @member {array} [categories] the categories of the logs. These categories
  * are created as is convenient to the user. Some values are: 'Write',
  * 'Delete', and/or 'Action.'
- *
  * @member {object} [retentionPolicy] the retention policy for the events in
  * the log.
- *
  * @member {boolean} [retentionPolicy.enabled] a value indicating whether the
  * retention policy is enabled.
- *
  * @member {number} [retentionPolicy.days] the number of days for the retention
  * in days. A value of 0 will retain the events indefinitely.
- *
  */
 export interface LogProfileResource extends Resource {
   storageAccountId?: string;
@@ -1160,7 +1001,6 @@ export interface LogProfileResource extends Resource {
  * Represents a collection of log profiles.
  *
  * @member {array} value the values of the log profiles.
- *
  */
 export interface LogProfileCollection {
   value: LogProfileResource[];
@@ -1173,9 +1013,7 @@ export interface LogProfileCollection {
  * Represents a collection of autoscale setting resources.
  *
  * @member {array} value the values for the autoscale setting resources.
- *
  * @member {string} [nextLink] URL to get the next set of results.
- *
  */
 export interface AutoscaleSettingResourceCollection {
   value: AutoscaleSettingResource[];
@@ -1189,7 +1027,6 @@ export interface AutoscaleSettingResourceCollection {
  * Represents a collection of alert rule resources.
  *
  * @member {array} [value] the values for the alert rule resources.
- *
  */
 export interface AlertRuleResourceCollection {
   value?: AlertRuleResource[];
@@ -1202,7 +1039,6 @@ export interface AlertRuleResourceCollection {
  * The List incidents operation response.
  *
  * @member {array} [value] the incident collection.
- *
  */
 export interface IncidentListResult {
   value?: Incident[];
@@ -1215,7 +1051,6 @@ export interface IncidentListResult {
  * Represents a collection of log profiles.
  *
  * @member {array} value the values of the log profiles.
- *
  */
 export interface LogProfileCollection {
   value: LogProfileResource[];
@@ -1229,7 +1064,6 @@ export interface LogProfileCollection {
  * Represents a collection of autoscale setting resources.
  *
  * @member {string} [nextLink] URL to get the next set of results.
- *
  */
 export interface AutoscaleSettingResourceCollection extends Array<AutoscaleSettingResource> {
   nextLink?: string;

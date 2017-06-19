@@ -19,11 +19,10 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the AutoStorageBaseProperties class.
  * @constructor
- * The properties related to the auto-storage account.
+ * The properties related to auto storage account.
  *
  * @member {string} storageAccountId The resource ID of the storage account to
- * be used for auto-storage account.
- *
+ * be used for auto storage account.
  */
 export interface AutoStorageBaseProperties {
   storageAccountId: string;
@@ -37,10 +36,8 @@ export interface AutoStorageBaseProperties {
  *
  * @member {string} id The resource ID of the Azure key vault associated with
  * the Batch account.
- *
- * @member {string} url The URL of the Azure key vault associated with the
+ * @member {string} url The Url of the Azure key vault associated with the
  * Batch account.
- *
  */
 export interface KeyVaultReference {
   id: string;
@@ -54,15 +51,11 @@ export interface KeyVaultReference {
  * Parameters supplied to the Create operation.
  *
  * @member {string} location The region in which to create the account.
- *
- * @member {object} [tags] The user-specified tags associated with the account.
- *
- * @member {object} [autoStorage] The properties related to the auto-storage
+ * @member {object} [tags] The user specified tags associated with the account.
+ * @member {object} [autoStorage] The properties related to auto storage
  * account.
- *
  * @member {string} [autoStorage.storageAccountId] The resource ID of the
- * storage account to be used for auto-storage account.
- *
+ * storage account to be used for auto storage account.
  * @member {string} [poolAllocationMode] The allocation mode to use for
  * creating pools in the Batch account. The pool allocation mode also affects
  * how clients may authenticate to the Batch Service API. If the mode is
@@ -70,16 +63,12 @@ export interface KeyVaultReference {
  * Directory. If the mode is UserSubscription, clients must use Azure Active
  * Directory. The default is BatchService. Possible values include:
  * 'BatchService', 'UserSubscription'
- *
  * @member {object} [keyVaultReference] A reference to the Azure key vault
  * associated with the Batch account.
- *
  * @member {string} [keyVaultReference.id] The resource ID of the Azure key
  * vault associated with the Batch account.
- *
- * @member {string} [keyVaultReference.url] The URL of the Azure key vault
+ * @member {string} [keyVaultReference.url] The Url of the Azure key vault
  * associated with the Batch account.
- *
  */
 export interface BatchAccountCreateParameters {
   location: string;
@@ -93,14 +82,16 @@ export interface BatchAccountCreateParameters {
  * @class
  * Initializes a new instance of the AutoStorageProperties class.
  * @constructor
- * Contains information about the auto-storage account associated with a Batch
+ * Contains information about the auto storage account associated with a Batch
  * account.
  *
+ * @member {string} storageAccountId The resource ID of the storage account to
+ * be used for auto storage account.
  * @member {date} lastKeySync The UTC time at which storage keys were last
  * synchronized with the Batch account.
- *
  */
-export interface AutoStorageProperties extends AutoStorageBaseProperties {
+export interface AutoStorageProperties {
+  storageAccountId: string;
   lastKeySync: Date;
 }
 
@@ -110,16 +101,11 @@ export interface AutoStorageProperties extends AutoStorageBaseProperties {
  * @constructor
  * A definition of an Azure resource.
  *
- * @member {string} [id] The ID of the resource.
- *
- * @member {string} [name] The name of the resource.
- *
- * @member {string} [type] The type of the resource.
- *
- * @member {string} [location] The location of the resource.
- *
- * @member {object} [tags] The tags of the resource.
- *
+ * @member {string} [id] The ID of the resource
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource
+ * @member {string} [location] The location of the resource
+ * @member {object} [tags] The tags of the resource
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -135,43 +121,30 @@ export interface Resource extends BaseResource {
  * @constructor
  * Contains information about an Azure Batch account.
  *
- * @member {string} [accountEndpoint] The account endpoint used to interact
- * with the Batch service.
- *
+ * @member {string} [accountEndpoint] The endpoint used by this account to
+ * interact with the Batch services.
  * @member {string} [provisioningState] The provisioned state of the resource.
  * Possible values include: 'Invalid', 'Creating', 'Deleting', 'Succeeded',
  * 'Failed', 'Cancelled'
- *
  * @member {string} [poolAllocationMode] The allocation mode to use for
  * creating pools in the Batch account. Possible values include:
  * 'BatchService', 'UserSubscription'
- *
  * @member {object} [keyVaultReference] A reference to the Azure key vault
  * associated with the Batch account.
- *
  * @member {string} [keyVaultReference.id] The resource ID of the Azure key
  * vault associated with the Batch account.
- *
- * @member {string} [keyVaultReference.url] The URL of the Azure key vault
+ * @member {string} [keyVaultReference.url] The Url of the Azure key vault
  * associated with the Batch account.
- *
- * @member {object} [autoStorage] The properties and status of any auto-storage
+ * @member {object} [autoStorage] The properties and status of any auto storage
  * account associated with the Batch account.
- *
+ * @member {string} [autoStorage.storageAccountId] The resource ID of the
+ * storage account to be used for auto storage account.
  * @member {date} [autoStorage.lastKeySync] The UTC time at which storage keys
  * were last synchronized with the Batch account.
- *
- * @member {number} [dedicatedCoreQuota] The dedicated core quota for this
- * Batch account.
- *
- * @member {number} [lowPriorityCoreQuota] The low-priority core quota for this
- * Batch account.
- *
+ * @member {number} [coreQuota] The core quota for this Batch account.
  * @member {number} [poolQuota] The pool quota for this Batch account.
- *
  * @member {number} [activeJobAndJobScheduleQuota] The active job and job
  * schedule quota for this Batch account.
- *
  */
 export interface BatchAccount extends Resource {
   readonly accountEndpoint?: string;
@@ -179,8 +152,7 @@ export interface BatchAccount extends Resource {
   readonly poolAllocationMode?: string;
   readonly keyVaultReference?: KeyVaultReference;
   readonly autoStorage?: AutoStorageProperties;
-  readonly dedicatedCoreQuota?: number;
-  readonly lowPriorityCoreQuota?: number;
+  readonly coreQuota?: number;
   readonly poolQuota?: number;
   readonly activeJobAndJobScheduleQuota?: number;
 }
@@ -189,16 +161,13 @@ export interface BatchAccount extends Resource {
  * @class
  * Initializes a new instance of the BatchAccountUpdateParameters class.
  * @constructor
- * Parameters for updating an Azure Batch account.
+ * Parameters supplied to the Update operation.
  *
- * @member {object} [tags] The user-specified tags associated with the account.
- *
- * @member {object} [autoStorage] The properties related to the auto-storage
+ * @member {object} [tags] The user specified tags associated with the account.
+ * @member {object} [autoStorage] The properties related to auto storage
  * account.
- *
  * @member {string} [autoStorage.storageAccountId] The resource ID of the
- * storage account to be used for auto-storage account.
- *
+ * storage account to be used for auto storage account.
  */
 export interface BatchAccountUpdateParameters {
   tags?: { [propertyName: string]: string };
@@ -211,11 +180,8 @@ export interface BatchAccountUpdateParameters {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {array} [value] The collection of Batch accounts returned by the
- * listing operation.
- *
+ * @member {array} [value] The collection of returned Batch accounts.
  * @member {string} [nextLink] The continuation token.
- *
  */
 export interface BatchAccountListResult {
   value?: BatchAccount[];
@@ -230,7 +196,6 @@ export interface BatchAccountListResult {
  *
  * @member {string} keyName The type of account key to regenerate. Possible
  * values include: 'Primary', 'Secondary'
- *
  */
 export interface BatchAccountRegenerateKeyParameters {
   keyName: string;
@@ -242,15 +207,10 @@ export interface BatchAccountRegenerateKeyParameters {
  * @constructor
  * A set of Azure Batch account keys.
  *
- * @member {string} [accountName] The Batch account name.
- *
  * @member {string} [primary] The primary key associated with the account.
- *
  * @member {string} [secondary] The secondary key associated with the account.
- *
  */
 export interface BatchAccountKeys {
-  readonly accountName?: string;
   readonly primary?: string;
   readonly secondary?: string;
 }
@@ -259,10 +219,9 @@ export interface BatchAccountKeys {
  * @class
  * Initializes a new instance of the ActivateApplicationPackageParameters class.
  * @constructor
- * Parameters for an activating an application package.
+ * Parameters for an ApplicationOperations.ActivateApplicationPackage request.
  *
  * @member {string} format The format of the application package binary file.
- *
  */
 export interface ActivateApplicationPackageParameters {
   format: string;
@@ -270,17 +229,15 @@ export interface ActivateApplicationPackageParameters {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationCreateParameters class.
+ * Initializes a new instance of the AddApplicationParameters class.
  * @constructor
- * Parameters for adding an Application.
+ * Parameters for an ApplicationOperations.AddApplication request.
  *
  * @member {boolean} [allowUpdates] A value indicating whether packages within
  * the application may be overwritten using the same version string.
- *
  * @member {string} [displayName] The display name for the application.
- *
  */
-export interface ApplicationCreateParameters {
+export interface AddApplicationParameters {
   allowUpdates?: boolean;
   displayName?: string;
 }
@@ -293,24 +250,17 @@ export interface ApplicationCreateParameters {
  * application.
  *
  * @member {string} [id] The ID of the application.
- *
  * @member {string} [version] The version of the application package.
- *
  * @member {string} [state] The current state of the application package.
  * Possible values include: 'pending', 'active', 'unmapped'
- *
  * @member {string} [format] The format of the application package, if the
  * package is active.
- *
- * @member {string} [storageUrl] The URL for the application package in Azure
- * Storage.
- *
- * @member {date} [storageUrlExpiry] The UTC time at which the Azure Storage
- * URL will expire.
- *
+ * @member {string} [storageUrl] The storage URL at which the application
+ * package is stored.
+ * @member {date} [storageUrlExpiry] The UTC time at which the storage URL will
+ * expire.
  * @member {date} [lastActivationTime] The time at which the package was last
  * activated, if the package is active.
- *
  */
 export interface ApplicationPackage {
   readonly id?: string;
@@ -330,17 +280,12 @@ export interface ApplicationPackage {
  *
  * @member {string} [id] A string that uniquely identifies the application
  * within the account.
- *
  * @member {string} [displayName] The display name for the application.
- *
  * @member {array} [packages] The list of packages under this application.
- *
  * @member {boolean} [allowUpdates] A value indicating whether packages within
  * the application may be overwritten using the same version string.
- *
  * @member {string} [defaultVersion] The package to use if a client requests
  * the application but does not specify a version.
- *
  */
 export interface Application {
   id?: string;
@@ -354,12 +299,10 @@ export interface Application {
  * @class
  * Initializes a new instance of the ListApplicationsResult class.
  * @constructor
- * The result of performing list applications.
+ * Response to an ApplicationOperations.ListApplications request.
  *
  * @member {array} [value] The list of applications.
- *
  * @member {string} [nextLink] The URL to get the next set of results.
- *
  */
 export interface ListApplicationsResult {
   value?: Application[];
@@ -368,20 +311,17 @@ export interface ListApplicationsResult {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationUpdateParameters class.
+ * Initializes a new instance of the UpdateApplicationParameters class.
  * @constructor
- * Parameters for an update application request.
+ * Parameters for an ApplicationOperations.UpdateApplication request.
  *
  * @member {boolean} [allowUpdates] A value indicating whether packages within
  * the application may be overwritten using the same version string.
- *
  * @member {string} [defaultVersion] The package to use if a client requests
  * the application but does not specify a version.
- *
  * @member {string} [displayName] The display name for the application.
- *
  */
-export interface ApplicationUpdateParameters {
+export interface UpdateApplicationParameters {
   allowUpdates?: boolean;
   defaultVersion?: string;
   displayName?: string;
@@ -395,85 +335,9 @@ export interface ApplicationUpdateParameters {
  *
  * @member {number} [accountQuota] The number of Batch accounts that may be
  * created under the subscription in the specified region.
- *
  */
 export interface BatchLocationQuota {
   readonly accountQuota?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationDisplay class.
- * @constructor
- * @summary The object that describes the operation.
- *
- * @member {string} [provider] Friendly name of the resource provider.
- *
- * @member {string} [operation] The operation type. For example: read, write,
- * delete, or listKeys/action
- *
- * @member {string} [resource] The resource type on which the operation is
- * performed.
- *
- * @member {string} [description] The friendly name of the operation.
- *
- */
-export interface OperationDisplay {
-  provider?: string;
-  operation?: string;
-  resource?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Operation class.
- * @constructor
- * @summary A REST API operation
- *
- * @member {string} [name] The operation name. This is of the format
- * {provider}/{resource}/{operation}
- *
- * @member {object} [display] The object that describes the operation.
- *
- * @member {string} [display.provider]
- *
- * @member {string} [display.operation] For example: read, write, delete, or
- * listKeys/action
- *
- * @member {string} [display.resource]
- *
- * @member {string} [display.description]
- *
- * @member {string} [origin] The intended executor of the operation.
- *
- * @member {object} [properties] Properties of the operation.
- *
- */
-export interface Operation {
-  name?: string;
-  display?: OperationDisplay;
-  origin?: string;
-  properties?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * @summary Result of the request to list REST API operations. It contains a
- * list of operations and a URL nextLink to get the next set of results.
- *
- * @member {array} [value] The list of operations supported by the resource
- * provider.
- *
- * @member {string} [nextLink] The URL to get the next set of operation list
- * results if there are any.
- *
- */
-export interface OperationListResult {
-  value?: Operation[];
-  nextLink?: string;
 }
 
 /**
@@ -482,11 +346,8 @@ export interface OperationListResult {
  * @constructor
  * Values returned by the List operation.
  *
- * @member {array} [value] The collection of Batch accounts returned by the
- * listing operation.
- *
+ * @member {array} [value] The collection of returned Batch accounts.
  * @member {string} [nextLink] The continuation token.
- *
  */
 export interface BatchAccountListResult {
   value?: BatchAccount[];
@@ -497,34 +358,13 @@ export interface BatchAccountListResult {
  * @class
  * Initializes a new instance of the ListApplicationsResult class.
  * @constructor
- * The result of performing list applications.
+ * Response to an ApplicationOperations.ListApplications request.
  *
  * @member {array} [value] The list of applications.
- *
  * @member {string} [nextLink] The URL to get the next set of results.
- *
  */
 export interface ListApplicationsResult {
   value?: Application[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * @summary Result of the request to list REST API operations. It contains a
- * list of operations and a URL nextLink to get the next set of results.
- *
- * @member {array} [value] The list of operations supported by the resource
- * provider.
- *
- * @member {string} [nextLink] The URL to get the next set of operation list
- * results if there are any.
- *
- */
-export interface OperationListResult {
-  value?: Operation[];
   nextLink?: string;
 }
 
@@ -536,7 +376,6 @@ export interface OperationListResult {
  * Values returned by the List operation.
  *
  * @member {string} [nextLink] The continuation token.
- *
  */
 export interface BatchAccountListResult extends Array<BatchAccount> {
   nextLink?: string;
@@ -546,25 +385,10 @@ export interface BatchAccountListResult extends Array<BatchAccount> {
  * @class
  * Initializes a new instance of the ListApplicationsResult class.
  * @constructor
- * The result of performing list applications.
+ * Response to an ApplicationOperations.ListApplications request.
  *
  * @member {string} [nextLink] The URL to get the next set of results.
- *
  */
 export interface ListApplicationsResult extends Array<Application> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * @summary Result of the request to list REST API operations. It contains a
- * list of operations and a URL nextLink to get the next set of results.
- *
- * @member {string} [nextLink]
- *
- */
-export interface OperationListResult extends Array<Operation> {
   nextLink?: string;
 }

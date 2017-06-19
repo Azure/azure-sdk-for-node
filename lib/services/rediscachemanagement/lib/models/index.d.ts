@@ -24,14 +24,11 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} name The type of Redis cache to deploy. Valid values:
  * (Basic, Standard, Premium). Possible values include: 'Basic', 'Standard',
  * 'Premium'
- *
  * @member {string} family The SKU family to use. Valid values: (C, P). (C =
  * Basic/Standard, P = Premium). Possible values include: 'C', 'P'
- *
  * @member {number} capacity The size of the Redis cache to deploy. Valid
  * values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium)
  * family (1, 2, 3, 4).
- *
  */
 export interface Sku {
   name: string;
@@ -46,15 +43,10 @@ export interface Sku {
  * The Resource definition.
  *
  * @member {string} [id] Resource ID.
- *
  * @member {string} [name] Resource name.
- *
  * @member {string} [type] Resource type.
- *
  * @member {string} location Resource location.
- *
  * @member {object} [tags] Resource tags.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -73,35 +65,25 @@ export interface Resource extends BaseResource {
  * @member {object} [redisConfiguration] All Redis Settings. Few possible keys:
  * rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
  * etc.
- *
  * @member {boolean} [enableNonSslPort] Specifies whether the non-ssl Redis
  * server port (6379) is enabled.
- *
  * @member {object} [tenantSettings] tenantSettings
- *
  * @member {number} [shardCount] The number of shards to be created on a
  * Premium Cluster Cache.
- *
  * @member {string} [subnetId] The full resource ID of a subnet in a virtual
  * network to deploy the Redis cache in. Example format:
  * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
- *
  * @member {string} [staticIP] Static IP address. Required when deploying a
  * Redis cache inside an existing Azure Virtual Network.
- *
  * @member {object} sku The SKU of the Redis cache to deploy.
- *
  * @member {string} [sku.name] The type of Redis cache to deploy. Valid values:
  * (Basic, Standard, Premium). Possible values include: 'Basic', 'Standard',
  * 'Premium'
- *
  * @member {string} [sku.family] The SKU family to use. Valid values: (C, P).
  * (C = Basic/Standard, P = Premium). Possible values include: 'C', 'P'
- *
  * @member {number} [sku.capacity] The size of the Redis cache to deploy. Valid
  * values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium)
  * family (1, 2, 3, 4).
- *
  */
 export interface RedisCreateParameters extends Resource {
   redisConfiguration?: { [propertyName: string]: string };
@@ -122,37 +104,26 @@ export interface RedisCreateParameters extends Resource {
  * @member {object} [redisConfiguration] All Redis Settings. Few possible keys:
  * rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
  * etc.
- *
  * @member {boolean} [enableNonSslPort] Specifies whether the non-ssl Redis
  * server port (6379) is enabled.
- *
  * @member {object} [tenantSettings] tenantSettings
- *
  * @member {number} [shardCount] The number of shards to be created on a
  * Premium Cluster Cache.
- *
  * @member {string} [subnetId] The full resource ID of a subnet in a virtual
  * network to deploy the Redis cache in. Example format:
  * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
- *
  * @member {string} [staticIP] Static IP address. Required when deploying a
  * Redis cache inside an existing Azure Virtual Network.
- *
  * @member {object} [sku] The SKU of the Redis cache to deploy.
- *
  * @member {string} [sku.name] The type of Redis cache to deploy. Valid values:
  * (Basic, Standard, Premium). Possible values include: 'Basic', 'Standard',
  * 'Premium'
- *
  * @member {string} [sku.family] The SKU family to use. Valid values: (C, P).
  * (C = Basic/Standard, P = Premium). Possible values include: 'C', 'P'
- *
  * @member {number} [sku.capacity] The size of the Redis cache to deploy. Valid
  * values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium)
  * family (1, 2, 3, 4).
- *
  * @member {object} [tags] Resource tags.
- *
  */
 export interface RedisUpdateParameters {
   redisConfiguration?: { [propertyName: string]: string };
@@ -173,10 +144,8 @@ export interface RedisUpdateParameters {
  *
  * @member {string} [primaryKey] The current primary key that clients can use
  * to authenticate with Redis cache.
- *
  * @member {string} [secondaryKey] The current secondary key that clients can
  * use to authenticate with Redis cache.
- *
  */
 export interface RedisAccessKeys {
   readonly primaryKey?: string;
@@ -191,16 +160,11 @@ export interface RedisAccessKeys {
  * range of IP addresses permitted to connect
  *
  * @member {string} [id] resource ID (of the firewall rule)
- *
  * @member {string} [name] name of the firewall rule
- *
  * @member {string} [type] type (of the firewall rule resource =
  * 'Microsoft.Cache/redis/firewallRule')
- *
  * @member {string} startIP lowest IP address included in the range
- *
  * @member {string} endIP highest IP address included in the range
- *
  */
 export interface RedisFirewallRule {
   readonly id?: string;
@@ -217,9 +181,7 @@ export interface RedisFirewallRule {
  * The response of list firewall rules Redis operation.
  *
  * @member {array} value Results of the list firewall rules operation.
- *
  * @member {string} [nextLink] Link for next set of locations.
- *
  */
 export interface RedisFirewallRuleListResult {
   value: RedisFirewallRule[];
@@ -235,54 +197,36 @@ export interface RedisFirewallRuleListResult {
  * @member {object} [redisConfiguration] All Redis Settings. Few possible keys:
  * rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
  * etc.
- *
  * @member {boolean} [enableNonSslPort] Specifies whether the non-ssl Redis
  * server port (6379) is enabled.
- *
  * @member {object} [tenantSettings] tenantSettings
- *
  * @member {number} [shardCount] The number of shards to be created on a
  * Premium Cluster Cache.
- *
  * @member {string} [subnetId] The full resource ID of a subnet in a virtual
  * network to deploy the Redis cache in. Example format:
  * /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
- *
  * @member {string} [staticIP] Static IP address. Required when deploying a
  * Redis cache inside an existing Azure Virtual Network.
- *
  * @member {object} [sku] The SKU of the Redis cache to deploy.
- *
  * @member {string} [sku.name] The type of Redis cache to deploy. Valid values:
  * (Basic, Standard, Premium). Possible values include: 'Basic', 'Standard',
  * 'Premium'
- *
  * @member {string} [sku.family] The SKU family to use. Valid values: (C, P).
  * (C = Basic/Standard, P = Premium). Possible values include: 'C', 'P'
- *
  * @member {number} [sku.capacity] The size of the Redis cache to deploy. Valid
  * values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium)
  * family (1, 2, 3, 4).
- *
  * @member {string} [redisVersion] Redis version.
- *
  * @member {string} [provisioningState] Redis instance provisioning status.
- *
  * @member {string} [hostName] Redis host name.
- *
  * @member {number} [port] Redis non-SSL port.
- *
  * @member {number} [sslPort] Redis SSL port.
- *
  * @member {object} [accessKeys] The keys of the Redis cache - not set if this
  * object is not the response to Create or Update redis cache
- *
  * @member {string} [accessKeys.primaryKey] The current primary key that
  * clients can use to authenticate with Redis cache.
- *
  * @member {string} [accessKeys.secondaryKey] The current secondary key that
  * clients can use to authenticate with Redis cache.
- *
  */
 export interface RedisResource extends Resource {
   redisConfiguration?: { [propertyName: string]: string };
@@ -307,9 +251,7 @@ export interface RedisResource extends Resource {
  * The response of list Redis operation.
  *
  * @member {array} [value] List of Redis cache instances.
- *
  * @member {string} [nextLink] Link for next set of locations.
- *
  */
 export interface RedisListResult {
   value?: RedisResource[];
@@ -324,7 +266,6 @@ export interface RedisListResult {
  *
  * @member {string} keyType The Redis access key to regenerate. Possible values
  * include: 'Primary', 'Secondary'
- *
  */
 export interface RedisRegenerateKeyParameters {
   keyType: string;
@@ -339,10 +280,8 @@ export interface RedisRegenerateKeyParameters {
  * @member {string} rebootType Which Redis node(s) to reboot. Depending on this
  * value data loss is possible. Possible values include: 'PrimaryNode',
  * 'SecondaryNode', 'AllNodes'
- *
  * @member {number} [shardId] If clustering is enabled, the ID of the shard to
  * be rebooted.
- *
  */
 export interface RedisRebootParameters {
   rebootType: string;
@@ -356,11 +295,8 @@ export interface RedisRebootParameters {
  * Parameters for Redis export operation.
  *
  * @member {string} [format] File format.
- *
  * @member {string} prefix Prefix to use for exported files.
- *
  * @member {string} container Container name to export to.
- *
  */
 export interface ExportRDBParameters {
   format?: string;
@@ -375,9 +311,7 @@ export interface ExportRDBParameters {
  * Parameters for Redis import operation.
  *
  * @member {string} [format] File format.
- *
  * @member {array} files files to import.
- *
  */
 export interface ImportRDBParameters {
   format?: string;
@@ -393,13 +327,10 @@ export interface ImportRDBParameters {
  * @member {string} dayOfWeek Day of the week when a cache can be patched.
  * Possible values include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
  * 'Friday', 'Saturday', 'Sunday', 'Everyday', 'Weekend'
- *
  * @member {number} startHourUtc Start hour after which cache patching can
  * start.
- *
  * @member {moment.duration} [maintenanceWindow] ISO8601 timespan specifying
  * how much time cache patching can take.
- *
  */
 export interface ScheduleEntry {
   dayOfWeek: string;
@@ -414,15 +345,10 @@ export interface ScheduleEntry {
  * Response to put/get patch schedules for Redis cache.
  *
  * @member {string} [id] Resource ID.
- *
  * @member {string} [name] Resource name.
- *
  * @member {string} [type] Resource type.
- *
  * @member {string} [location] Resource location.
- *
  * @member {array} scheduleEntries List of patch schedules for a Redis cache.
- *
  */
 export interface RedisPatchSchedule {
   readonly id?: string;
@@ -439,7 +365,6 @@ export interface RedisPatchSchedule {
  * Response to force reboot for Redis cache.
  *
  * @member {string} [message] Status message
- *
  */
 export interface RedisForceRebootResponse {
   readonly message?: string;
@@ -452,15 +377,11 @@ export interface RedisForceRebootResponse {
  * The object that describes the operation.
  *
  * @member {string} [provider] Friendly name of the resource provider
- *
  * @member {string} [operation] Operation type: read, write, delete,
  * listKeys/action, etc.
- *
  * @member {string} [resource] Resource type on which the operation is
  * performed.
- *
  * @member {string} [description] Friendly name of the operation
- *
  */
 export interface OperationDisplay {
   provider?: string;
@@ -476,19 +397,13 @@ export interface OperationDisplay {
  * REST API operation
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- *
  * @member {object} [display] The object that describes the operation.
- *
  * @member {string} [display.provider] Friendly name of the resource provider
- *
  * @member {string} [display.operation] Operation type: read, write, delete,
  * listKeys/action, etc.
- *
  * @member {string} [display.resource] Resource type on which the operation is
  * performed.
- *
  * @member {string} [display.description] Friendly name of the operation
- *
  */
 export interface Operation {
   name?: string;
@@ -504,10 +419,8 @@ export interface Operation {
  *
  * @member {array} [value] List of operations supported by the resource
  * provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   value?: Operation[];
@@ -523,10 +436,8 @@ export interface OperationListResult {
  *
  * @member {array} [value] List of operations supported by the resource
  * provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   value?: Operation[];
@@ -540,9 +451,7 @@ export interface OperationListResult {
  * The response of list Redis operation.
  *
  * @member {array} [value] List of Redis cache instances.
- *
  * @member {string} [nextLink] Link for next set of locations.
- *
  */
 export interface RedisListResult {
   value?: RedisResource[];
@@ -556,9 +465,7 @@ export interface RedisListResult {
  * The response of list firewall rules Redis operation.
  *
  * @member {array} value Results of the list firewall rules operation.
- *
  * @member {string} [nextLink] Link for next set of locations.
- *
  */
 export interface RedisFirewallRuleListResult {
   value: RedisFirewallRule[];
@@ -575,7 +482,6 @@ export interface RedisFirewallRuleListResult {
  *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult extends Array<Operation> {
   nextLink?: string;
@@ -588,7 +494,6 @@ export interface OperationListResult extends Array<Operation> {
  * The response of list Redis operation.
  *
  * @member {string} [nextLink] Link for next set of locations.
- *
  */
 export interface RedisListResult extends Array<RedisResource> {
   nextLink?: string;
@@ -601,7 +506,6 @@ export interface RedisListResult extends Array<RedisResource> {
  * The response of list firewall rules Redis operation.
  *
  * @member {string} [nextLink] Link for next set of locations.
- *
  */
 export interface RedisFirewallRuleListResult extends Array<RedisFirewallRule> {
   nextLink?: string;

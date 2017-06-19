@@ -22,9 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * The localizable string class.
  *
  * @member {string} value the invariant value.
- *
  * @member {string} [localizedValue] the locale specific value.
- *
  */
 export interface LocalizableString {
   value: string;
@@ -38,24 +36,15 @@ export interface LocalizableString {
  * Usage Metric data.
  *
  * @member {object} [name] the usage metric name and display name.
- *
  * @member {string} [name.value] the invariant value.
- *
  * @member {string} [name.localizedValue] the locale specific value.
- *
  * @member {number} [currentValue] the current value for the usage metric.
- *
  * @member {string} [id] the id for the usage metric.
- *
  * @member {number} [limit] the quota limit the usage metric.
- *
  * @member {string} [unit] the unit for the usage metric.
- *
  * @member {date} [nextResetTime] the next reset time for the current value.
- *
  * @member {moment.duration} [quotaPeriod] the amount of time it takes to reset
  * the value.
- *
  */
 export interface UsageMetric {
   name?: LocalizableString;
@@ -74,7 +63,6 @@ export interface UsageMetric {
  * Represents collection of usage metrics.
  *
  * @member {array} value the usage values.
- *
  */
 export interface UsageMetricCollection {
   value: UsageMetric[];
@@ -88,7 +76,6 @@ export interface UsageMetricCollection {
  * Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
  *
  * @member {array} value the list that includes the Azure event categories.
- *
  */
 export interface EventCategoryCollection {
   value: LocalizableString[];
@@ -102,12 +89,9 @@ export interface EventCategoryCollection {
  *
  * @member {string} [action] the permissible actions. For instance:
  * microsoft.support/supporttickets/write
- *
  * @member {string} [role] the role of the user. For instance: Subscription
  * Admin
- *
  * @member {string} [scope] the scope.
- *
  */
 export interface SenderAuthorization {
   action?: string;
@@ -122,13 +106,9 @@ export interface SenderAuthorization {
  * The Http request info.
  *
  * @member {string} [clientRequestId] the client request id.
- *
  * @member {string} [clientIpAddress] the client Ip Address
- *
  * @member {string} [method] the Http request method.
- *
  * @member {string} [uri] the Uri.
- *
  */
 export interface HttpRequestInfo {
   clientRequestId?: string;
@@ -147,105 +127,66 @@ export interface HttpRequestInfo {
  * performed the operation that led to this event. This captures the RBAC
  * properties of the event. These usually include the 'action', 'role' and the
  * 'scope'
- *
  * @member {string} [authorization.action] the permissible actions. For
  * instance: microsoft.support/supporttickets/write
- *
  * @member {string} [authorization.role] the role of the user. For instance:
  * Subscription Admin
- *
  * @member {string} [authorization.scope] the scope.
- *
  * @member {string} channels the event channels. The regular event logs, that
  * you see in the Azure Management Portals, flow through the 'Operation'
  * channel. Possible values include: 'Admin', 'Operation', 'Debug', 'Analytics'
- *
  * @member {object} [claims] key value pairs to identify ARM permissions.
- *
  * @member {string} [caller] the email address of the user who has performed
  * the operation, the UPN claim or SPN claim based on availability.
- *
  * @member {string} [description] the description of the event.
- *
  * @member {string} [id] the Id of this event as required by ARM for RBAC. It
  * contains the EventDataID and a timestamp information.
- *
  * @member {string} [eventDataId] the event data Id. This is a unique
  * identifier for an event.
- *
  * @member {string} [correlationId] the correlation Id, usually a GUID in the
  * string format. The correlation Id is shared among the events that belong to
  * the same uber operation.
- *
  * @member {object} [eventName] the event name. This value should not be
  * confused with OperationName. For practical purposes, OperationName might be
  * more appealing to end users.
- *
  * @member {string} [eventName.value] the invariant value.
- *
  * @member {string} [eventName.localizedValue] the locale specific value.
- *
  * @member {object} [category] the event category.
- *
  * @member {string} [category.value] the invariant value.
- *
  * @member {string} [category.localizedValue] the locale specific value.
- *
  * @member {object} [httpRequest] the HTTP request info. Usually includes the
  * 'clientRequestId', 'clientIpAddress' (IP address of the user who initiated
  * the event) and 'method' (HTTP method e.g. PUT).
- *
  * @member {string} [httpRequest.clientRequestId] the client request id.
- *
  * @member {string} [httpRequest.clientIpAddress] the client Ip Address
- *
  * @member {string} [httpRequest.method] the Http request method.
- *
  * @member {string} [httpRequest.uri] the Uri.
- *
  * @member {string} level the event level. Possible values include: 'Critical',
  * 'Error', 'Warning', 'Informational', 'Verbose'
- *
  * @member {string} [resourceGroupName] the resource group name of the impacted
  * resource.
- *
  * @member {object} [resourceProviderName] the resource provider name of the
  * impacted resource.
- *
  * @member {string} [resourceProviderName.value] the invariant value.
- *
  * @member {string} [resourceProviderName.localizedValue] the locale specific
  * value.
- *
  * @member {string} [resourceId] the resource uri that uniquely identifies the
  * resource that caused this event.
- *
  * @member {object} [resourceType] the resource type
- *
  * @member {string} [resourceType.value] the invariant value.
- *
  * @member {string} [resourceType.localizedValue] the locale specific value.
- *
  * @member {string} [operationId] It is usually a GUID shared among the events
  * corresponding to single operation. This value should not be confused with
  * EventName.
- *
  * @member {object} [operationName] the operation name.
- *
  * @member {string} [operationName.value] the invariant value.
- *
  * @member {string} [operationName.localizedValue] the locale specific value.
- *
  * @member {object} [properties] the set of <Key, Value> pairs (usually a
  * Dictionary<String, String>) that includes details about the event.
- *
  * @member {object} [status] a string describing the status of the operation.
  * Some typical values are: Started, In progress, Succeeded, Failed, Resolved.
- *
  * @member {string} [status.value] the invariant value.
- *
  * @member {string} [status.localizedValue] the locale specific value.
- *
  * @member {object} [subStatus] the event sub status. Most of the time, when
  * included, this captures the HTTP status code of the REST call. Common values
  * are: OK (HTTP Status Code: 200), Created (HTTP Status Code: 201), Accepted
@@ -254,25 +195,18 @@ export interface HttpRequestInfo {
  * (HTTP Status Code: 409), Internal Server Error (HTTP Status Code: 500),
  * Service Unavailable (HTTP Status Code:503), Gateway Timeout (HTTP Status
  * Code: 504)
- *
  * @member {string} [subStatus.value] the invariant value.
- *
  * @member {string} [subStatus.localizedValue] the locale specific value.
- *
  * @member {date} eventTimestamp the timestamp of when the event was generated
  * by the Azure service processing the request corresponding the event. It in
  * ISO 8601 format.
- *
  * @member {date} submissionTimestamp the timestamp of when the event became
  * available for querying via this API. It is in ISO 8601 format. This value
  * should not be confused eventTimestamp. As there might be a delay between the
  * occurence time of the event, and the time that the event is submitted to the
  * Azure logging infrastructure.
- *
  * @member {string} [subscriptionId] the Azure subscription Id usually a GUID.
- *
  * @member {string} [tenantId] the Azure tenant Id
- *
  */
 export interface EventData {
   authorization?: SenderAuthorization;
@@ -309,10 +243,8 @@ export interface EventData {
  * Represents collection of events.
  *
  * @member {array} value this list that includes the Azure audit logs.
- *
  * @member {string} [nextLink] Provides the link to retrive the next set of
  * events.
- *
  */
 export interface EventDataCollection {
   value: EventData[];
@@ -329,10 +261,8 @@ export interface EventDataCollection {
  * @member {moment.duration} [timeGrain] the time grain specifies the
  * aggregation interval for the metric. Expressed as a duration 'PT1M', 'P1D',
  * etc.
- *
  * @member {moment.duration} [retention] the retention period for the metric at
  * the specified timegrain.  Expressed as a duration 'PT1M', 'P1D', etc.
- *
  */
 export interface MetricAvailability {
   timeGrain?: moment.Duration;
@@ -347,27 +277,19 @@ export interface MetricAvailability {
  *
  * @member {string} [resourceId] the resource identifier of the resource that
  * emitted the metric.
- *
  * @member {object} [name] the name and the display name of the metric, i.e. it
  * is a localizable string.
- *
  * @member {string} [name.value] the invariant value.
- *
  * @member {string} [name.localizedValue] the locale specific value.
- *
  * @member {string} [unit] the unit of the metric. Possible values include:
  * 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond', 'Percent',
  * 'MilliSeconds'
- *
  * @member {string} [primaryAggregationType] the primary aggregation type value
  * defining how to use the values for display. Possible values include: 'None',
  * 'Average', 'Count', 'Minimum', 'Maximum', 'Total'
- *
  * @member {array} [metricAvailabilities] the collection of what aggregation
  * intervals are available to be queried.
- *
  * @member {string} [id] the resource identifier of the metric definition.
- *
  */
 export interface MetricDefinition {
   resourceId?: string;
@@ -385,7 +307,6 @@ export interface MetricDefinition {
  * Represents collection of metric definitions.
  *
  * @member {array} value the values for the metric definitions.
- *
  */
 export interface MetricDefinitionCollection {
   value: MetricDefinition[];
@@ -399,19 +320,13 @@ export interface MetricDefinitionCollection {
  *
  * @member {date} timeStamp the timestamp for the metric value in ISO 8601
  * format.
- *
  * @member {number} [average] the average value in the time range.
- *
  * @member {number} [minimum] the least value in the time range.
- *
  * @member {number} [maximum] the greatest value in the time range.
- *
  * @member {number} [total] the sum of all of the values in the time range.
- *
  * @member {number} [count] the number of samples in the time range. Can be
  * used to determine the number of values that contributed to the average
  * value.
- *
  */
 export interface MetricValue {
   timeStamp: Date;
@@ -429,22 +344,15 @@ export interface MetricValue {
  * A set of metric values in a time range.
  *
  * @member {string} [id] the id, resourceId, of the metric.
- *
  * @member {string} [type] the resource type of the metric resource.
- *
  * @member {object} name the name and the display name of the metric, i.e. it
  * is localizable string.
- *
  * @member {string} [name.value] the invariant value.
- *
  * @member {string} [name.localizedValue] the locale specific value.
- *
  * @member {string} unit the unit of the metric. Possible values include:
  * 'Count', 'Bytes', 'Seconds', 'CountPerSecond', 'BytesPerSecond', 'Percent',
  * 'MilliSeconds'
- *
  * @member {array} data Array of data points representing the metric values.
- *
  */
 export interface Metric {
   id?: string;
@@ -461,7 +369,6 @@ export interface Metric {
  * The collection of metric value sets.
  *
  * @member {array} value the value of the collection.
- *
  */
 export interface MetricCollection {
   value: Metric[];
@@ -474,7 +381,6 @@ export interface MetricCollection {
  * Represents collection of usage metrics.
  *
  * @member {array} value the usage values.
- *
  */
 export interface UsageMetricCollection {
   value: UsageMetric[];
@@ -488,7 +394,6 @@ export interface UsageMetricCollection {
  * Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
  *
  * @member {array} value the list that includes the Azure event categories.
- *
  */
 export interface EventCategoryCollection {
   value: LocalizableString[];
@@ -501,10 +406,8 @@ export interface EventCategoryCollection {
  * Represents collection of events.
  *
  * @member {array} value this list that includes the Azure audit logs.
- *
  * @member {string} [nextLink] Provides the link to retrive the next set of
  * events.
- *
  */
 export interface EventDataCollection {
   value: EventData[];
@@ -518,7 +421,6 @@ export interface EventDataCollection {
  * Represents collection of metric definitions.
  *
  * @member {array} value the values for the metric definitions.
- *
  */
 export interface MetricDefinitionCollection {
   value: MetricDefinition[];
@@ -531,7 +433,6 @@ export interface MetricDefinitionCollection {
  * The collection of metric value sets.
  *
  * @member {array} value the value of the collection.
- *
  */
 export interface MetricCollection {
   value: Metric[];
@@ -567,7 +468,6 @@ export interface EventCategoryCollection extends Array<LocalizableString> {
  *
  * @member {string} [nextLink] Provides the link to retrive the next set of
  * events.
- *
  */
 export interface EventDataCollection extends Array<EventData> {
   nextLink?: string;
