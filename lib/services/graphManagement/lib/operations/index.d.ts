@@ -2085,6 +2085,11 @@ export interface Users {
      * when creating a new user account. It is used to associate an on-premises
      * Active Directory user account with their Azure AD user object.
      *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2124,6 +2129,11 @@ export interface Users {
      * using a federated domain for the user's userPrincipalName (UPN) property
      * when creating a new user account. It is used to associate an on-premises
      * Active Directory user account with their Azure AD user object.
+     *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2291,6 +2301,11 @@ export interface Users {
      *
      * @param {string} [parameters.mailNickname] The mail alias for the user.
      *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2325,6 +2340,11 @@ export interface Users {
      * Whether to force a password change on next login.
      *
      * @param {string} [parameters.mailNickname] The mail alias for the user.
+     *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
      *
      * @param {object} [options] Optional Parameters.
      *

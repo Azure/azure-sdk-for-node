@@ -24,7 +24,6 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} name SKU name to specify whether the key vault is a
  * standard vault or a premium vault. Possible values include: 'standard',
  * 'premium'
- *
  */
 export interface Sku {
   name: string;
@@ -37,11 +36,8 @@ export interface Sku {
  * Permissions the identity has for keys, secrets and certificates.
  *
  * @member {array} [keys] Permissions to keys
- *
  * @member {array} [secrets] Permissions to secrets
- *
  * @member {array} [certificates] Permissions to certificates
- *
  */
 export interface Permissions {
   keys?: string[];
@@ -58,23 +54,16 @@ export interface Permissions {
  *
  * @member {uuid} tenantId The Azure Active Directory tenant ID that should be
  * used for authenticating requests to the key vault.
- *
  * @member {string} objectId The object ID of a user, service principal or
  * security group in the Azure Active Directory tenant for the vault. The
  * object ID must be unique for the list of access policies.
- *
  * @member {uuid} [applicationId] Application ID of the client making request
  * on behalf of a principal
- *
  * @member {object} permissions Permissions the identity has for keys, secrets
  * and certificates.
- *
  * @member {array} [permissions.keys] Permissions to keys
- *
  * @member {array} [permissions.secrets] Permissions to secrets
- *
  * @member {array} [permissions.certificates] Permissions to certificates
- *
  */
 export interface AccessPolicyEntry {
   tenantId: string;
@@ -91,31 +80,25 @@ export interface AccessPolicyEntry {
  *
  * @member {string} [vaultUri] The URI of the vault for performing operations
  * on keys and secrets.
- *
  * @member {uuid} tenantId The Azure Active Directory tenant ID that should be
  * used for authenticating requests to the key vault.
- *
  * @member {object} sku SKU details
- *
  * @member {string} [sku.name] SKU name to specify whether the key vault is a
  * standard vault or a premium vault. Possible values include: 'standard',
  * 'premium'
- *
  * @member {array} accessPolicies An array of 0 to 16 identities that have
  * access to the key vault. All identities in the array must use the same
  * tenant ID as the key vault's tenant ID.
- *
  * @member {boolean} [enabledForDeployment] Property to specify whether Azure
  * Virtual Machines are permitted to retrieve certificates stored as secrets
  * from the key vault.
- *
  * @member {boolean} [enabledForDiskEncryption] Property to specify whether
  * Azure Disk Encryption is permitted to retrieve secrets from the vault and
  * unwrap keys.
- *
  * @member {boolean} [enabledForTemplateDeployment] Property to specify whether
  * Azure Resource Manager is permitted to retrieve secrets from the key vault.
- *
+ * @member {boolean} [enableSoftDelete] Property to specify whether the 'soft
+ * delete' functionality is enabled for this key vault.
  */
 export interface VaultProperties {
   vaultUri?: string;
@@ -125,6 +108,7 @@ export interface VaultProperties {
   enabledForDeployment?: boolean;
   enabledForDiskEncryption?: boolean;
   enabledForTemplateDeployment?: boolean;
+  enableSoftDelete?: boolean;
 }
 
 /**
@@ -135,39 +119,30 @@ export interface VaultProperties {
  *
  * @member {string} location The supported Azure location where the key vault
  * should be created.
- *
  * @member {object} [tags] The tags that will be assigned to the key vault.
- *
  * @member {object} properties Properties of the vault
- *
  * @member {string} [properties.vaultUri] The URI of the vault for performing
  * operations on keys and secrets.
- *
  * @member {uuid} [properties.tenantId] The Azure Active Directory tenant ID
  * that should be used for authenticating requests to the key vault.
- *
  * @member {object} [properties.sku] SKU details
- *
  * @member {string} [properties.sku.name] SKU name to specify whether the key
  * vault is a standard vault or a premium vault. Possible values include:
  * 'standard', 'premium'
- *
  * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
  * that have access to the key vault. All identities in the array must use the
  * same tenant ID as the key vault's tenant ID.
- *
  * @member {boolean} [properties.enabledForDeployment] Property to specify
  * whether Azure Virtual Machines are permitted to retrieve certificates stored
  * as secrets from the key vault.
- *
  * @member {boolean} [properties.enabledForDiskEncryption] Property to specify
  * whether Azure Disk Encryption is permitted to retrieve secrets from the
  * vault and unwrap keys.
- *
  * @member {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- *
+ * @member {boolean} [properties.enableSoftDelete] Property to specify whether
+ * the 'soft delete' functionality is enabled for this key vault.
  */
 export interface VaultCreateOrUpdateParameters extends BaseResource {
   location: string;
@@ -183,16 +158,11 @@ export interface VaultCreateOrUpdateParameters extends BaseResource {
  *
  * @member {string} [id] The Azure Resource Manager resource ID for the key
  * vault.
- *
  * @member {string} name The name of the key vault.
- *
  * @member {string} [type] The resource type of the key vault.
- *
  * @member {string} location The supported Azure location where the key vault
  * should be created.
- *
  * @member {object} [tags] The tags that will be assigned to the key vault.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -209,35 +179,28 @@ export interface Resource extends BaseResource {
  * Resource information with extended details.
  *
  * @member {object} properties Properties of the vault
- *
  * @member {string} [properties.vaultUri] The URI of the vault for performing
  * operations on keys and secrets.
- *
  * @member {uuid} [properties.tenantId] The Azure Active Directory tenant ID
  * that should be used for authenticating requests to the key vault.
- *
  * @member {object} [properties.sku] SKU details
- *
  * @member {string} [properties.sku.name] SKU name to specify whether the key
  * vault is a standard vault or a premium vault. Possible values include:
  * 'standard', 'premium'
- *
  * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
  * that have access to the key vault. All identities in the array must use the
  * same tenant ID as the key vault's tenant ID.
- *
  * @member {boolean} [properties.enabledForDeployment] Property to specify
  * whether Azure Virtual Machines are permitted to retrieve certificates stored
  * as secrets from the key vault.
- *
  * @member {boolean} [properties.enabledForDiskEncryption] Property to specify
  * whether Azure Disk Encryption is permitted to retrieve secrets from the
  * vault and unwrap keys.
- *
  * @member {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- *
+ * @member {boolean} [properties.enableSoftDelete] Property to specify whether
+ * the 'soft delete' functionality is enabled for this key vault.
  */
 export interface Vault extends Resource {
   properties: VaultProperties;
@@ -250,10 +213,8 @@ export interface Vault extends Resource {
  * List of vaults
  *
  * @member {array} [value] Gets or sets the list of vaults.
- *
  * @member {string} [nextLink] Gets or sets the URL to get the next set of
  * vaults.
- *
  */
 export interface VaultListResult {
   value?: Vault[];
@@ -267,10 +228,8 @@ export interface VaultListResult {
  * List of vault resources.
  *
  * @member {array} [value] Gets the list of vault resources.
- *
  * @member {string} [nextLink] Gets the URL to get the next set of vault
  * resources.
- *
  */
 export interface ResourceListResult {
   value?: Resource[];
@@ -284,10 +243,8 @@ export interface ResourceListResult {
  * List of vaults
  *
  * @member {array} [value] Gets or sets the list of vaults.
- *
  * @member {string} [nextLink] Gets or sets the URL to get the next set of
  * vaults.
- *
  */
 export interface VaultListResult {
   value?: Vault[];
@@ -301,10 +258,8 @@ export interface VaultListResult {
  * List of vault resources.
  *
  * @member {array} [value] Gets the list of vault resources.
- *
  * @member {string} [nextLink] Gets the URL to get the next set of vault
  * resources.
- *
  */
 export interface ResourceListResult {
   value?: Resource[];
@@ -320,7 +275,6 @@ export interface ResourceListResult {
  *
  * @member {string} [nextLink] Gets or sets the URL to get the next set of
  * vaults.
- *
  */
 export interface VaultListResult extends Array<Vault> {
   nextLink?: string;
@@ -334,7 +288,6 @@ export interface VaultListResult extends Array<Vault> {
  *
  * @member {string} [nextLink] Gets the URL to get the next set of vault
  * resources.
- *
  */
 export interface ResourceListResult extends Array<Resource> {
   nextLink?: string;

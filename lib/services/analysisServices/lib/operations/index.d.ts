@@ -124,12 +124,12 @@ export interface Servers {
      * resource.
      *
      * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'.
-     * Possible values include: 'S1', 'S2', 'S4', 'D1'
+     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
+     * 'S2', 'S4', 'D1'
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
-     * tier to which the SKU applies. Possible values are: 'Development' and
-     * 'Standard'. Possible values include: 'Development', 'Standard'
+     * tier to which the SKU applies. Possible values include: 'Development',
+     * 'Basic', 'Standard'
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -184,12 +184,12 @@ export interface Servers {
      * resource.
      *
      * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'.
-     * Possible values include: 'S1', 'S2', 'S4', 'D1'
+     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
+     * 'S2', 'S4', 'D1'
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
-     * tier to which the SKU applies. Possible values are: 'Development' and
-     * 'Standard'. Possible values include: 'Development', 'Standard'
+     * tier to which the SKU applies. Possible values include: 'Development',
+     * 'Basic', 'Standard'
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -308,12 +308,12 @@ export interface Servers {
      * Services resource.
      *
      * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
-     * the server being provisioned. Possible values are: 'S1', 'S2', 'S4', and
-     * 'D1'. Possible values include: 'S1', 'S2', 'S4', 'D1'
+     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
+     * 'S1', 'S2', 'S4', 'D1'
      *
      * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
-     * pricing tier to which the SKU applies. Possible values are: 'Development'
-     * and 'Standard'. Possible values include: 'Development', 'Standard'
+     * pricing tier to which the SKU applies. Possible values include:
+     * 'Development', 'Basic', 'Standard'
      *
      * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
      * provisioning properties.
@@ -364,12 +364,12 @@ export interface Servers {
      * Services resource.
      *
      * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
-     * the server being provisioned. Possible values are: 'S1', 'S2', 'S4', and
-     * 'D1'. Possible values include: 'S1', 'S2', 'S4', 'D1'
+     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
+     * 'S1', 'S2', 'S4', 'D1'
      *
      * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
-     * pricing tier to which the SKU applies. Possible values are: 'Development'
-     * and 'Standard'. Possible values include: 'Development', 'Standard'
+     * pricing tier to which the SKU applies. Possible values include:
+     * 'Development', 'Basic', 'Standard'
      *
      * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
      * provisioning properties.
@@ -700,12 +700,12 @@ export interface Servers {
      * resource.
      *
      * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'.
-     * Possible values include: 'S1', 'S2', 'S4', 'D1'
+     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
+     * 'S2', 'S4', 'D1'
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
-     * tier to which the SKU applies. Possible values are: 'Development' and
-     * 'Standard'. Possible values include: 'Development', 'Standard'
+     * tier to which the SKU applies. Possible values include: 'Development',
+     * 'Basic', 'Standard'
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -760,12 +760,12 @@ export interface Servers {
      * resource.
      *
      * @param {string} serverParameters.sku.name Name of the SKU level for the
-     * server being provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'.
-     * Possible values include: 'S1', 'S2', 'S4', 'D1'
+     * server being provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1',
+     * 'S2', 'S4', 'D1'
      *
      * @param {string} [serverParameters.sku.tier] The name of the Azure pricing
-     * tier to which the SKU applies. Possible values are: 'Development' and
-     * 'Standard'. Possible values include: 'Development', 'Standard'
+     * tier to which the SKU applies. Possible values include: 'Development',
+     * 'Basic', 'Standard'
      *
      * @param {object} [serverParameters.tags] Key-value pairs of additional
      * resource provisioning properties.
@@ -865,6 +865,138 @@ export interface Servers {
     beginDeleteMethod(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, serverName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates the current state of the specified Analysis Services server.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server. It must
+     * be at least 3 characters in length, and no more than 63.
+     *
+     * @param {object} serverUpdateParameters Request object that contains the
+     * updated information for the server.
+     *
+     * @param {object} [serverUpdateParameters.sku] The SKU of the Analysis
+     * Services resource.
+     *
+     * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
+     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
+     * 'S1', 'S2', 'S4', 'D1'
+     *
+     * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
+     * pricing tier to which the SKU applies. Possible values include:
+     * 'Development', 'Basic', 'Standard'
+     *
+     * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
+     * provisioning properties.
+     *
+     * @param {object} [serverUpdateParameters.asAdministrators]
+     *
+     * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
+     * administrator user identities.
+     *
+     * @param {object} [serverUpdateParameters.backupConfiguration]
+     *
+     * @param {string} serverUpdateParameters.backupConfiguration.storageAccount
+     * Storage account full resource id for backup configuration
+     *
+     * @param {string} serverUpdateParameters.backupConfiguration.blobContainer The
+     * name of blob container for backup configuration
+     *
+     * @param {string} [serverUpdateParameters.backupConfiguration.accessKey] The
+     * access key of storage account used for backup configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AnalysisServicesServer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AnalysisServicesServer>>;
+
+    /**
+     * Updates the current state of the specified Analysis Services server.
+     *
+     * @param {string} resourceGroupName The name of the Azure Resource group of
+     * which a given Analysis Services server is part. This name must be at least 1
+     * character in length, and no more than 90.
+     *
+     * @param {string} serverName The name of the Analysis Services server. It must
+     * be at least 3 characters in length, and no more than 63.
+     *
+     * @param {object} serverUpdateParameters Request object that contains the
+     * updated information for the server.
+     *
+     * @param {object} [serverUpdateParameters.sku] The SKU of the Analysis
+     * Services resource.
+     *
+     * @param {string} serverUpdateParameters.sku.name Name of the SKU level for
+     * the server being provisioned. Possible values include: 'B1', 'B2', 'S0',
+     * 'S1', 'S2', 'S4', 'D1'
+     *
+     * @param {string} [serverUpdateParameters.sku.tier] The name of the Azure
+     * pricing tier to which the SKU applies. Possible values include:
+     * 'Development', 'Basic', 'Standard'
+     *
+     * @param {object} [serverUpdateParameters.tags] Key-value pairs of additional
+     * provisioning properties.
+     *
+     * @param {object} [serverUpdateParameters.asAdministrators]
+     *
+     * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
+     * administrator user identities.
+     *
+     * @param {object} [serverUpdateParameters.backupConfiguration]
+     *
+     * @param {string} serverUpdateParameters.backupConfiguration.storageAccount
+     * Storage account full resource id for backup configuration
+     *
+     * @param {string} serverUpdateParameters.backupConfiguration.blobContainer The
+     * name of blob container for backup configuration
+     *
+     * @param {string} [serverUpdateParameters.backupConfiguration.accessKey] The
+     * access key of storage account used for backup configuration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AnalysisServicesServer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AnalysisServicesServer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AnalysisServicesServer} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AnalysisServicesServer>;
+    beginUpdate(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, callback: ServiceCallback<models.AnalysisServicesServer>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, serverUpdateParameters: models.AnalysisServicesServerUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AnalysisServicesServer>): void;
 
 
     /**

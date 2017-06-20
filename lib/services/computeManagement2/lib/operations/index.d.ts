@@ -6351,9 +6351,6 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
-     *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
@@ -6599,9 +6596,6 @@ export interface VirtualMachineScaleSets {
      *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
-     *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
@@ -7751,9 +7745,6 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
-     *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
@@ -7999,9 +7990,6 @@ export interface VirtualMachineScaleSets {
      *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
-     *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.

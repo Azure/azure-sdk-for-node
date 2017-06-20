@@ -24,22 +24,15 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [policyType] The type of policy definition. Possible values
  * are NotSpecified, BuiltIn, and Custom. Possible values include:
  * 'NotSpecified', 'BuiltIn', 'Custom'
- *
  * @member {string} [displayName] The display name of the policy definition.
- *
  * @member {string} [description] The policy definition description.
- *
  * @member {object} [policyRule] The policy rule.
- *
  * @member {object} [parameters] Required if a parameter is used in policy
  * rule.
- *
  * @member {string} [id] The ID of the policy definition.
- *
  * @member {string} [name] The name of the policy definition. If you do not
  * specify a value for name, the value is inferred from the name value in the
  * request URI.
- *
  */
 export interface PolicyDefinition extends BaseResource {
   policyType?: string;
@@ -58,10 +51,8 @@ export interface PolicyDefinition extends BaseResource {
  * List of policy definitions.
  *
  * @member {array} [value] An array of policy definitions.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PolicyDefinitionListResult {
   value?: PolicyDefinition[];
@@ -75,23 +66,15 @@ export interface PolicyDefinitionListResult {
  * The policy definition.
  *
  * @member {string} [displayName] The display name of the policy assignment.
- *
  * @member {string} [policyDefinitionId] The ID of the policy definition.
- *
  * @member {string} [scope] The scope for the policy assignment.
- *
  * @member {object} [parameters] Required if a parameter is used in policy
  * rule.
- *
  * @member {string} [description] This message will be part of response in case
  * of policy violation.
- *
  * @member {string} [id] The ID of the policy assignment.
- *
  * @member {string} [type] The type of the policy assignment.
- *
  * @member {string} [name] The name of the policy assignment.
- *
  */
 export interface PolicyAssignment extends BaseResource {
   displayName?: string;
@@ -111,10 +94,8 @@ export interface PolicyAssignment extends BaseResource {
  * List of policy assignments.
  *
  * @member {array} [value] An array of policy assignments.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PolicyAssignmentListResult {
   value?: PolicyAssignment[];
@@ -128,10 +109,8 @@ export interface PolicyAssignmentListResult {
  * List of policy assignments.
  *
  * @member {array} [value] An array of policy assignments.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PolicyAssignmentListResult {
   value?: PolicyAssignment[];
@@ -145,10 +124,8 @@ export interface PolicyAssignmentListResult {
  * List of policy definitions.
  *
  * @member {array} [value] An array of policy definitions.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PolicyDefinitionListResult {
   value?: PolicyDefinition[];
@@ -164,7 +141,6 @@ export interface PolicyDefinitionListResult {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
   nextLink?: string;
@@ -178,7 +154,6 @@ export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface PolicyDefinitionListResult extends Array<PolicyDefinition> {
   nextLink?: string;

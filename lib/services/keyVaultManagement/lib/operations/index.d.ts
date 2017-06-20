@@ -67,6 +67,10 @@ export interface Vaults {
      * Property to specify whether Azure Resource Manager is permitted to retrieve
      * secrets from the key vault.
      *
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -125,6 +129,10 @@ export interface Vaults {
      * @param {boolean} [parameters.properties.enabledForTemplateDeployment]
      * Property to specify whether Azure Resource Manager is permitted to retrieve
      * secrets from the key vault.
+     *
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault.
      *
      * @param {object} [options] Optional Parameters.
      *

@@ -84,11 +84,7 @@ export interface StorageAccounts {
     /**
      * Checks that the storage account name is valid and is not already in use.
      *
-     * @param {object} accountName The name of the storage account within the
-     * specified resource group. Storage account names must be between 3 and 24
-     * characters in length and use numbers and lower-case letters only.
-     *
-     * @param {string} accountName.name The storage account name.
+     * @param {string} name The storage account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -101,16 +97,12 @@ export interface StorageAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    checkNameAvailabilityWithHttpOperationResponse(accountName: models.StorageAccountCheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
+    checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckNameAvailabilityResult>>;
 
     /**
      * Checks that the storage account name is valid and is not already in use.
      *
-     * @param {object} accountName The name of the storage account within the
-     * specified resource group. Storage account names must be between 3 and 24
-     * characters in length and use numbers and lower-case letters only.
-     *
-     * @param {string} accountName.name The storage account name.
+     * @param {string} name The storage account name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -140,9 +132,9 @@ export interface StorageAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    checkNameAvailability(accountName: models.StorageAccountCheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
-    checkNameAvailability(accountName: models.StorageAccountCheckNameAvailabilityParameters, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
-    checkNameAvailability(accountName: models.StorageAccountCheckNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
+    checkNameAvailability(name: string, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+    checkNameAvailability(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
 
 
     /**
@@ -230,6 +222,23 @@ export interface StorageAccounts {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
+     *
+     * @param {object} [parameters.networkAcls] Network ACL
+     *
+     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
+     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * combination of Logging|Metrics|AzureServices (For example, "Logging,
+     * Metrics"), or None to bypass none of those traffics. Possible values
+     * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+     *
+     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
+     * network ACL rules
+     *
+     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     *
+     * @param {string} parameters.networkAcls.defaultAction Specifies the default
+     * action of allow or deny when no other rules match. Possible values include:
+     * 'Allow', 'Deny'
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -336,6 +345,23 @@ export interface StorageAccounts {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
+     *
+     * @param {object} [parameters.networkAcls] Network ACL
+     *
+     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
+     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * combination of Logging|Metrics|AzureServices (For example, "Logging,
+     * Metrics"), or None to bypass none of those traffics. Possible values
+     * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+     *
+     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
+     * network ACL rules
+     *
+     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     *
+     * @param {string} parameters.networkAcls.defaultAction Specifies the default
+     * action of allow or deny when no other rules match. Possible values include:
+     * 'Allow', 'Deny'
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
@@ -598,6 +624,23 @@ export interface StorageAccounts {
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
      *
+     * @param {object} [parameters.networkAcls] Network ACL
+     *
+     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
+     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * combination of Logging|Metrics|AzureServices (For example, "Logging,
+     * Metrics"), or None to bypass none of those traffics. Possible values
+     * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+     *
+     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
+     * network ACL rules
+     *
+     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     *
+     * @param {string} parameters.networkAcls.defaultAction Specifies the default
+     * action of allow or deny when no other rules match. Possible values include:
+     * 'Allow', 'Deny'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -699,6 +742,23 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
+     *
+     * @param {object} [parameters.networkAcls] Network ACL
+     *
+     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
+     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * combination of Logging|Metrics|AzureServices (For example, "Logging,
+     * Metrics"), or None to bypass none of those traffics. Possible values
+     * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+     *
+     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
+     * network ACL rules
+     *
+     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     *
+     * @param {string} parameters.networkAcls.defaultAction Specifies the default
+     * action of allow or deny when no other rules match. Possible values include:
+     * 'Allow', 'Deny'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -924,11 +984,8 @@ export interface StorageAccounts {
      * specified resource group. Storage account names must be between 3 and 24
      * characters in length and use numbers and lower-case letters only.
      *
-     * @param {object} regenerateKeyParameter Specifies name of the key which
-     * should be regenerated -- key1 or key2.
-     *
-     * @param {string} regenerateKeyParameter.keyName The name of storage keys that
-     * want to be regenerated, possible vaules are key1, key2.
+     * @param {string} keyName The name of storage keys that want to be
+     * regenerated, possible vaules are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -941,7 +998,7 @@ export interface StorageAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccountListKeysResult>>;
+    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, accountName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageAccountListKeysResult>>;
 
     /**
      * Regenerates one of the access keys for the specified storage account.
@@ -953,11 +1010,8 @@ export interface StorageAccounts {
      * specified resource group. Storage account names must be between 3 and 24
      * characters in length and use numbers and lower-case letters only.
      *
-     * @param {object} regenerateKeyParameter Specifies name of the key which
-     * should be regenerated -- key1 or key2.
-     *
-     * @param {string} regenerateKeyParameter.keyName The name of storage keys that
-     * want to be regenerated, possible vaules are key1, key2.
+     * @param {string} keyName The name of storage keys that want to be
+     * regenerated, possible vaules are key1, key2.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -987,9 +1041,9 @@ export interface StorageAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    regenerateKey(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccountListKeysResult>;
-    regenerateKey(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
-    regenerateKey(resourceGroupName: string, accountName: string, regenerateKeyParameter: models.StorageAccountRegenerateKeyParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
+    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageAccountListKeysResult>;
+    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
+    regenerateKey(resourceGroupName: string, accountName: string, keyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageAccountListKeysResult>): void;
 
 
     /**
@@ -1390,6 +1444,23 @@ export interface StorageAccounts {
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
      *
+     * @param {object} [parameters.networkAcls] Network ACL
+     *
+     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
+     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * combination of Logging|Metrics|AzureServices (For example, "Logging,
+     * Metrics"), or None to bypass none of those traffics. Possible values
+     * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+     *
+     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
+     * network ACL rules
+     *
+     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     *
+     * @param {string} parameters.networkAcls.defaultAction Specifies the default
+     * action of allow or deny when no other rules match. Possible values include:
+     * 'Allow', 'Deny'
+     *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values
      * include: 'Hot', 'Cool'
@@ -1495,6 +1566,23 @@ export interface StorageAccounts {
      *
      * @param {string} [parameters.encryption.keyVaultProperties.keyVaultUri] The
      * Uri of KeyVault.
+     *
+     * @param {object} [parameters.networkAcls] Network ACL
+     *
+     * @param {string} [parameters.networkAcls.bypass] Specifies whether traffic is
+     * bypassed for Logging/Metrics/AzureServices. Possible values are any
+     * combination of Logging|Metrics|AzureServices (For example, "Logging,
+     * Metrics"), or None to bypass none of those traffics. Possible values
+     * include: 'None', 'Logging', 'Metrics', 'AzureServices'
+     *
+     * @param {array} [parameters.networkAcls.virtualNetworkRules] Sets the virtual
+     * network ACL rules
+     *
+     * @param {array} [parameters.networkAcls.ipRules] Sets the IP ACL rules
+     *
+     * @param {string} parameters.networkAcls.defaultAction Specifies the default
+     * action of allow or deny when no other rules match. Possible values include:
+     * 'Allow', 'Deny'
      *
      * @param {string} [parameters.accessTier] Required for storage accounts where
      * kind = BlobStorage. The access tier used for billing. Possible values

@@ -22,7 +22,6 @@ export { CloudError } from 'ms-rest-azure';
  * The result of the request or operation.
  *
  * @member {boolean} [operationResult] The result of the operation or request.
- *
  */
 export interface DeleteOperationResult {
   readonly operationResult?: boolean;
@@ -35,52 +34,40 @@ export interface DeleteOperationResult {
  * Class representing a Traffic Manager endpoint.
  *
  * @member {string} [id] Gets or sets the ID of the Traffic Manager endpoint.
- *
  * @member {string} [name] Gets or sets the name of the Traffic Manager
  * endpoint.
- *
  * @member {string} [type] Gets or sets the endpoint type of the Traffic
  * Manager endpoint.
- *
  * @member {string} [targetResourceId] Gets or sets the Azure Resource URI of
  * the of the endpoint.  Not applicable to endpoints of type
  * 'ExternalEndpoints'.
- *
  * @member {string} [target] Gets or sets the fully-qualified DNS name of the
  * endpoint.  Traffic Manager returns this value in DNS responses to direct
  * traffic to this endpoint.
- *
  * @member {string} [endpointStatus] Gets or sets the status of the endpoint..
  * If the endpoint is Enabled, it is probed for endpoint health and is included
  * in the traffic routing method.  Possible values are 'Enabled' and
  * 'Disabled'.
- *
  * @member {number} [weight] Gets or sets the weight of this endpoint when
  * using the 'Weighted' traffic routing method. Possible values are from 1 to
  * 1000.
- *
  * @member {number} [priority] Gets or sets the priority of this endpoint when
  * using the ‘Priority’ traffic routing method. Possible values are from 1 to
  * 1000, lower values represent higher priority. This is an optional parameter.
  * If specified, it must be specified on all endpoints, and no two endpoints
  * can share the same priority value.
- *
  * @member {string} [endpointLocation] Specifies the location of the external
  * or nested endpoints when using the ‘Performance’ traffic routing method.
- *
  * @member {string} [endpointMonitorStatus] Gets or sets the monitoring status
  * of the endpoint.
- *
  * @member {number} [minChildEndpoints] Gets or sets the minimum number of
  * endpoints that must be available in the child profile in order for the
  * parent profile to be considered available. Only applicable to endpoint of
  * type 'NestedEndpoints'.
- *
  * @member {array} [geoMapping] Gets or sets the list of countries/regions
  * mapped to this endpoint when using the ‘Geographic’ traffic routing method.
  * Please consult Traffic Manager Geographic documentation for a full list of
  * accepted values.
- *
  */
 export interface Endpoint {
   id?: string;
@@ -104,9 +91,7 @@ export interface Endpoint {
  * Parameters supplied to check Traffic Manager name operation.
  *
  * @member {string} [name] Gets or sets the name of the resource.
- *
  * @member {string} [type] Gets or sets the type of the resource.
- *
  */
 export interface CheckTrafficManagerRelativeDnsNameAvailabilityParameters {
   name?: string;
@@ -123,15 +108,12 @@ export interface CheckTrafficManagerRelativeDnsNameAvailabilityParameters {
  * by this Traffic Manager profile.  This value is combined with the DNS domain
  * name used by Azure Traffic Manager to form the fully-qualified domain name
  * (FQDN) of the profile.
- *
  * @member {string} [fqdn] Gets or sets the fully-qualified domain name (FQDN)
  * of the Traffic Manager profile.  This is formed from the concatenation of
  * the RelativeName with the DNS domain used by Azure Traffic Manager.
- *
- * @member {number} [ttl] Gets or sets the DNS Time-To-Live (TTL), in seconds.
+ * @member {number} [ttl] Gets or sets the DNS Ttime-To-Live (TTL), in seconds.
  * This informs the local DNS resolvers and DNS clients how long to cache DNS
  * responses provided by this Traffic Manager profile.
- *
  */
 export interface DnsConfig {
   relativeName?: string;
@@ -147,38 +129,18 @@ export interface DnsConfig {
  *
  * @member {string} [profileMonitorStatus] Gets or sets the profile-level
  * monitoring status of the Traffic Manager profile.
- *
- * @member {string} [protocol] Gets or sets the protocol (HTTP, HTTPS or TCP)
- * used to probe for endpoint health.
- *
+ * @member {string} [protocol] Gets or sets the protocol (HTTP or HTTPS) used
+ * to probe for endpoint health.
  * @member {number} [port] Gets or sets the TCP port used to probe for endpoint
  * health.
- *
  * @member {string} [path] Gets or sets the path relative to the endpoint
  * domain name used to probe for endpoint health.
- *
- * @member {number} [intervalInSeconds] Gets or sets the monitor interval for
- * endpoints in this profile. This is the interval at which Traffic Manager
- * will check the health of each endpoint in this profile.
- *
- * @member {number} [timeoutInSeconds] Gets or sets the monitor timeout for
- * endpoints in this profile. This is the time that Traffic Manager allows
- * endpoints in this profile to response to the health check.
- *
- * @member {number} [toleratedNumberOfFailures] Gets or sets the number of
- * consecutive failed health check that Traffic Manager tolerates before
- * declaring an endpoint in this profile Degraded after the next failed health
- * check.
- *
  */
 export interface MonitorConfig {
   profileMonitorStatus?: string;
   protocol?: string;
   port?: number;
   path?: string;
-  intervalInSeconds?: number;
-  timeoutInSeconds?: number;
-  toleratedNumberOfFailures?: number;
 }
 
 /**
@@ -188,15 +150,10 @@ export interface MonitorConfig {
  * The Resource model definition.
  *
  * @member {string} [id] Resource Id
- *
  * @member {string} [name] Resource name
- *
  * @member {string} [type] Resource type
- *
  * @member {string} [location] Resource location
- *
  * @member {object} [tags] Resource tags
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -214,59 +171,34 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [profileStatus] Gets or sets the status of the Traffic
  * Manager profile.  Possible values are 'Enabled' and 'Disabled'.
- *
  * @member {string} [trafficRoutingMethod] Gets or sets the traffic routing
  * method of the Traffic Manager profile.  Possible values are 'Performance',
  * 'Weighted', 'Priority' or 'Geographic'.
- *
  * @member {object} [dnsConfig] Gets or sets the DNS settings of the Traffic
  * Manager profile.
- *
  * @member {string} [dnsConfig.relativeName] Gets or sets the relative DNS name
  * provided by this Traffic Manager profile.  This value is combined with the
  * DNS domain name used by Azure Traffic Manager to form the fully-qualified
  * domain name (FQDN) of the profile.
- *
  * @member {string} [dnsConfig.fqdn] Gets or sets the fully-qualified domain
  * name (FQDN) of the Traffic Manager profile.  This is formed from the
  * concatenation of the RelativeName with the DNS domain used by Azure Traffic
  * Manager.
- *
- * @member {number} [dnsConfig.ttl] Gets or sets the DNS Time-To-Live (TTL), in
- * seconds.  This informs the local DNS resolvers and DNS clients how long to
- * cache DNS responses provided by this Traffic Manager profile.
- *
+ * @member {number} [dnsConfig.ttl] Gets or sets the DNS Ttime-To-Live (TTL),
+ * in seconds.  This informs the local DNS resolvers and DNS clients how long
+ * to cache DNS responses provided by this Traffic Manager profile.
  * @member {object} [monitorConfig] Gets or sets the endpoint monitoring
  * settings of the Traffic Manager profile.
- *
  * @member {string} [monitorConfig.profileMonitorStatus] Gets or sets the
  * profile-level monitoring status of the Traffic Manager profile.
- *
- * @member {string} [monitorConfig.protocol] Gets or sets the protocol (HTTP,
- * HTTPS or TCP) used to probe for endpoint health.
- *
+ * @member {string} [monitorConfig.protocol] Gets or sets the protocol (HTTP or
+ * HTTPS) used to probe for endpoint health.
  * @member {number} [monitorConfig.port] Gets or sets the TCP port used to
  * probe for endpoint health.
- *
  * @member {string} [monitorConfig.path] Gets or sets the path relative to the
  * endpoint domain name used to probe for endpoint health.
- *
- * @member {number} [monitorConfig.intervalInSeconds] Gets or sets the monitor
- * interval for endpoints in this profile. This is the interval at which
- * Traffic Manager will check the health of each endpoint in this profile.
- *
- * @member {number} [monitorConfig.timeoutInSeconds] Gets or sets the monitor
- * timeout for endpoints in this profile. This is the time that Traffic Manager
- * allows endpoints in this profile to response to the health check.
- *
- * @member {number} [monitorConfig.toleratedNumberOfFailures] Gets or sets the
- * number of consecutive failed health check that Traffic Manager tolerates
- * before declaring an endpoint in this profile Degraded after the next failed
- * health check.
- *
  * @member {array} [endpoints] Gets or sets the list of endpoints in the
  * Traffic Manager profile.
- *
  */
 export interface Profile extends Resource {
   profileStatus?: string;
@@ -283,7 +215,6 @@ export interface Profile extends Resource {
  * The list Traffic Manager profiles operation response.
  *
  * @member {array} [value] Gets the list of Traffic manager profiles.
- *
  */
 export interface ProfileListResult {
   value?: Profile[];
@@ -296,18 +227,13 @@ export interface ProfileListResult {
  * Class representing a Traffic Manager Name Availability response.
  *
  * @member {string} [name] The relative name.
- *
  * @member {string} [type] Traffic Manager profile resource type.
- *
  * @member {boolean} [nameAvailable] Describes whether the relative name is
  * available or not.
- *
  * @member {string} [reason] The reason why the name is not available, when
  * applicable.
- *
  * @member {string} [message] Descriptive message that explains why the name is
  * not available, when applicable.
- *
  */
 export interface TrafficManagerNameAvailability {
   name?: string;
@@ -325,12 +251,9 @@ export interface TrafficManagerNameAvailability {
  * Geographic traffic routing method.
  *
  * @member {string} [code] The code of the region
- *
  * @member {string} [name] The name of the region
- *
  * @member {array} [regions] The list of Regions grouped under this Region in
  * the Geographic Hierarchy.
- *
  */
 export interface Region {
   code?: string;
@@ -347,14 +270,10 @@ export interface Region {
  *
  * @member {object} [geographicHierarchy] The region at the root of the
  * hierarchy from all the regions in the hierarchy can be retrieved.
- *
  * @member {string} [geographicHierarchy.code] The code of the region
- *
  * @member {string} [geographicHierarchy.name] The name of the region
- *
  * @member {array} [geographicHierarchy.regions] The list of Regions grouped
  * under this Region in the Geographic Hierarchy.
- *
  */
 export interface TrafficManagerGeographicHierarchy extends Resource {
   geographicHierarchy?: Region;
@@ -367,7 +286,6 @@ export interface TrafficManagerGeographicHierarchy extends Resource {
  * The list Traffic Manager profiles operation response.
  *
  * @member {array} [value] Gets the list of Traffic manager profiles.
- *
  */
 export interface ProfileListResult {
   value?: Profile[];

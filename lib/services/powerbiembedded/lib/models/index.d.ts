@@ -20,11 +20,8 @@ export { CloudError } from 'ms-rest-azure';
  * Initializes a new instance of the ErrorDetail class.
  * @constructor
  * @member {string} [code]
- *
  * @member {string} [message]
- *
  * @member {string} [target]
- *
  */
 export interface ErrorDetail {
   code?: string;
@@ -37,13 +34,9 @@ export interface ErrorDetail {
  * Initializes a new instance of the ErrorModel class.
  * @constructor
  * @member {string} [code]
- *
  * @member {string} [message]
- *
  * @member {string} [target]
- *
  * @member {array} [details]
- *
  */
 export interface ErrorModel {
   code?: string;
@@ -65,17 +58,11 @@ export interface AzureSku {
  * Initializes a new instance of the WorkspaceCollection class.
  * @constructor
  * @member {string} [id] Resource id
- *
  * @member {string} [name] Workspace collection name
- *
  * @member {string} [type] Resource type
- *
  * @member {string} [location] Azure location
- *
  * @member {object} [tags]
- *
  * @member {object} [properties] Properties
- *
  */
 export interface WorkspaceCollection {
   id?: string;
@@ -91,7 +78,6 @@ export interface WorkspaceCollection {
  * Initializes a new instance of the WorkspaceCollectionList class.
  * @constructor
  * @member {array} [value]
- *
  */
 export interface WorkspaceCollectionList {
   value?: WorkspaceCollection[];
@@ -102,13 +88,9 @@ export interface WorkspaceCollectionList {
  * Initializes a new instance of the Workspace class.
  * @constructor
  * @member {string} [id] Workspace id
- *
  * @member {string} [name] Workspace name
- *
  * @member {string} [type] Resource type
- *
  * @member {object} [properties] Property bag
- *
  */
 export interface Workspace {
   id?: string;
@@ -122,7 +104,6 @@ export interface Workspace {
  * Initializes a new instance of the WorkspaceList class.
  * @constructor
  * @member {array} [value]
- *
  */
 export interface WorkspaceList {
   value?: Workspace[];
@@ -136,25 +117,20 @@ export interface WorkspaceList {
  * provider name. This form is also expected to include the publisher/company
  * responsible. Use Title Casing. Begin with “Microsoft” for 1st party
  * services.
- *
  * @member {string} [resource] The localized friendly form of the resource type
  * related to this action/operation. This form should match the public
  * documentation for the resource provider. Use Title Casing. For examples,
  * refer to the “name” section.
- *
  * @member {string} [operation] The localized friendly name for the operation
  * as shown to the user. This name should be concise (to fit in drop downs),
  * but clear (self-documenting). Use Title Casing and include the
  * entity/resource to which it applies.
- *
  * @member {string} [description] The localized friendly description for the
  * operation as shown to the user. This description should be thorough, yet
  * concise. It will be used in tool-tips and detailed views.
- *
  * @member {string} [origin] The intended executor of the operation; governs
  * the display of the operation in the RBAC UX and the audit logs UX. Default
  * value is 'user,system'
- *
  */
 export interface Display {
   provider?: string;
@@ -171,32 +147,25 @@ export interface Display {
  * @member {string} [name] The name of the operation being performed on this
  * particular object. This name should match the action name that appears in
  * RBAC / the event service.
- *
  * @member {object} [display]
- *
  * @member {string} [display.provider] The localized friendly form of the
  * resource provider name. This form is also expected to include the
  * publisher/company responsible. Use Title Casing. Begin with “Microsoft” for
  * 1st party services.
- *
  * @member {string} [display.resource] The localized friendly form of the
  * resource type related to this action/operation. This form should match the
  * public documentation for the resource provider. Use Title Casing. For
  * examples, refer to the “name” section.
- *
  * @member {string} [display.operation] The localized friendly name for the
  * operation as shown to the user. This name should be concise (to fit in drop
  * downs), but clear (self-documenting). Use Title Casing and include the
  * entity/resource to which it applies.
- *
  * @member {string} [display.description] The localized friendly description
  * for the operation as shown to the user. This description should be thorough,
  * yet concise. It will be used in tool-tips and detailed views.
- *
  * @member {string} [display.origin] The intended executor of the operation;
  * governs the display of the operation in the RBAC UX and the audit logs UX.
  * Default value is 'user,system'
- *
  */
 export interface Operation {
   name?: string;
@@ -208,7 +177,6 @@ export interface Operation {
  * Initializes a new instance of the OperationList class.
  * @constructor
  * @member {array} [value]
- *
  */
 export interface OperationList {
   value?: Operation[];
@@ -219,9 +187,7 @@ export interface OperationList {
  * Initializes a new instance of the WorkspaceCollectionAccessKeys class.
  * @constructor
  * @member {string} [key1] Access key 1
- *
  * @member {string} [key2] Access key 2
- *
  */
 export interface WorkspaceCollectionAccessKeys {
   key1?: string;
@@ -233,7 +199,6 @@ export interface WorkspaceCollectionAccessKeys {
  * Initializes a new instance of the WorkspaceCollectionAccessKey class.
  * @constructor
  * @member {string} [keyName] Key name. Possible values include: 'key1', 'key2'
- *
  */
 export interface WorkspaceCollectionAccessKey {
   keyName?: string;
@@ -244,9 +209,7 @@ export interface WorkspaceCollectionAccessKey {
  * Initializes a new instance of the CreateWorkspaceCollectionRequest class.
  * @constructor
  * @member {string} [location] Azure location
- *
  * @member {object} [tags]
- *
  */
 export interface CreateWorkspaceCollectionRequest {
   location?: string;
@@ -258,7 +221,6 @@ export interface CreateWorkspaceCollectionRequest {
  * Initializes a new instance of the UpdateWorkspaceCollectionRequest class.
  * @constructor
  * @member {object} [tags]
- *
  */
 export interface UpdateWorkspaceCollectionRequest {
   tags?: { [propertyName: string]: string };
@@ -269,10 +231,8 @@ export interface UpdateWorkspaceCollectionRequest {
  * Initializes a new instance of the CheckNameRequest class.
  * @constructor
  * @member {string} [name] Workspace collection name
- *
  * @member {string} [type] Resource type. Default value:
  * 'Microsoft.PowerBI/workspaceCollections' .
- *
  */
 export interface CheckNameRequest {
   name?: string;
@@ -286,13 +246,10 @@ export interface CheckNameRequest {
  * @member {boolean} [nameAvailable] Specifies a Boolean value that indicates
  * whether the specified Power BI Workspace Collection name is available to
  * use.
- *
  * @member {string} [reason] Reason why the workspace collection name cannot be
  * used. Possible values include: 'Unavailable', 'Invalid'
- *
  * @member {string} [message] Message indicating an unavailable name due to a
  * conflict, or a description of the naming rules that are violated.
- *
  */
 export interface CheckNameResponse {
   nameAvailable?: boolean;
@@ -306,9 +263,7 @@ export interface CheckNameResponse {
  * @constructor
  * @member {string} [targetResourceGroup] Name of the resource group the Power
  * BI workspace collections will be migrated to.
- *
  * @member {array} [resources]
- *
  */
 export interface MigrateWorkspaceCollectionRequest {
   targetResourceGroup?: string;
@@ -320,7 +275,6 @@ export interface MigrateWorkspaceCollectionRequest {
  * Initializes a new instance of the WorkspaceCollectionList class.
  * @constructor
  * @member {array} [value]
- *
  */
 export interface WorkspaceCollectionList {
   value?: WorkspaceCollection[];
@@ -331,7 +285,6 @@ export interface WorkspaceCollectionList {
  * Initializes a new instance of the WorkspaceList class.
  * @constructor
  * @member {array} [value]
- *
  */
 export interface WorkspaceList {
   value?: Workspace[];

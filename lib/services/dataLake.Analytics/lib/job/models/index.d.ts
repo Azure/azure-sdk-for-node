@@ -22,61 +22,41 @@ export { CloudError } from 'ms-rest-azure';
  * The Data Lake Analytics job statistics vertex stage information.
  *
  * @member {number} [dataRead] the amount of data read, in bytes.
- *
  * @member {number} [dataReadCrossPod] the amount of data read across multiple
  * pods, in bytes.
- *
  * @member {number} [dataReadIntraPod] the amount of data read in one pod, in
  * bytes.
- *
  * @member {number} [dataToRead] the amount of data remaining to be read, in
  * bytes.
- *
  * @member {number} [dataWritten] the amount of data written, in bytes.
- *
  * @member {number} [duplicateDiscardCount] the number of duplicates that were
  * discarded.
- *
  * @member {number} [failedCount] the number of failures that occured in this
  * stage.
- *
  * @member {number} [maxVertexDataRead] the maximum amount of data read in a
  * single vertex, in bytes.
- *
  * @member {number} [minVertexDataRead] the minimum amount of data read in a
  * single vertex, in bytes.
- *
  * @member {number} [readFailureCount] the number of read failures in this
  * stage.
- *
  * @member {number} [revocationCount] the number of vertices that were revoked
  * during this stage.
- *
  * @member {number} [runningCount] the number of currently running vertices in
  * this stage.
- *
  * @member {number} [scheduledCount] the number of currently scheduled vertices
  * in this stage
- *
  * @member {string} [stageName] the name of this stage in job execution.
- *
  * @member {number} [succeededCount] the number of vertices that succeeded in
  * this stage.
- *
  * @member {number} [tempDataWritten] the amount of temporary data written, in
  * bytes.
- *
  * @member {number} [totalCount] the total vertex count for this stage.
- *
  * @member {moment.duration} [totalFailedTime] the amount of time that failed
  * vertices took up in this stage.
- *
  * @member {number} [totalProgress] the current progress of this stage, as a
  * percentage.
- *
  * @member {moment.duration} [totalSucceededTime] the amount of time all
  * successful vertices took in this stage.
- *
  */
 export interface JobStatisticsVertexStage {
   readonly dataRead?: number;
@@ -108,11 +88,8 @@ export interface JobStatisticsVertexStage {
  * The Data Lake Analytics job execution statistics.
  *
  * @member {date} [lastUpdateTimeUtc] the last update time for the statistics.
- *
  * @member {date} [finalizingTimeUtc] the job finalizing start time.
- *
  * @member {array} [stages] the list of stages for the job.
- *
  */
 export interface JobStatistics {
   readonly lastUpdateTimeUtc?: Date;
@@ -127,11 +104,8 @@ export interface JobStatistics {
  * A Data Lake Analytics job data path item.
  *
  * @member {uuid} [jobId] the id of the job this data is for.
- *
  * @member {string} [command] the command that this job data relates to.
- *
  * @member {array} [paths] the list of paths to all of the job data.
- *
  */
 export interface JobDataPath {
   readonly jobId?: string;
@@ -147,13 +121,9 @@ export interface JobDataPath {
  * of a job.
  *
  * @member {string} [newState] the new state the job is in.
- *
  * @member {date} [timeStamp] the time stamp that the state change took place.
- *
  * @member {string} [requestedByUser] the user who requests the change.
- *
  * @member {string} [details] the details of the audit log.
- *
  */
 export interface JobStateAuditRecord {
   readonly newState?: string;
@@ -169,14 +139,11 @@ export interface JobStateAuditRecord {
  * The Data Lake Analytics job resources.
  *
  * @member {string} [name] the name of the resource.
- *
  * @member {string} [resourcePath] the path to the resource.
- *
  * @member {string} [type] the job resource type. Possible values include:
  * 'VertexResource', 'JobManagerResource', 'StatisticsResource',
  * 'VertexResourceInUserFolder', 'JobManagerResourceInUserFolder',
  * 'StatisticsResourceInUserFolder'
- *
  */
 export interface JobResource {
   name?: string;
@@ -191,19 +158,13 @@ export interface JobResource {
  * Error diagnostic information for failed jobs.
  *
  * @member {number} [columnNumber] the column where the error occured.
- *
  * @member {number} [end] the ending index of the error.
- *
  * @member {number} [lineNumber] the line number the error occured on.
- *
  * @member {string} [message] the error message.
- *
  * @member {string} [severity] the severity of the error. Possible values
  * include: 'Warning', 'Error', 'Info', 'SevereWarning', 'Deprecated',
  * 'UserWarning'
- *
  * @member {number} [start] the starting index of the error.
- *
  */
 export interface Diagnostics {
   readonly columnNumber?: number;
@@ -222,11 +183,8 @@ export interface Diagnostics {
  *
  * @member {string} [runtimeVersion] the runtime version of the Data Lake
  * Analytics engine to use for the specific type of job being run.
- *
  * @member {string} script the script to run
- *
  * @member {string} type Polymorphic Discriminator
- *
  */
 export interface JobProperties {
   runtimeVersion?: string;
@@ -242,63 +200,44 @@ export interface JobProperties {
  *
  * @member {array} [resources] the list of resources that are required by the
  * job
- *
  * @member {object} [statistics] the job specific statistics.
- *
  * @member {date} [statistics.lastUpdateTimeUtc] the last update time for the
  * statistics.
- *
  * @member {date} [statistics.finalizingTimeUtc] the job finalizing start time.
- *
  * @member {array} [statistics.stages] the list of stages for the job.
- *
  * @member {object} [debugData] the job specific debug data locations.
- *
  * @member {uuid} [debugData.jobId] the id of the job this data is for.
- *
  * @member {string} [debugData.command] the command that this job data relates
  * to.
- *
  * @member {array} [debugData.paths] the list of paths to all of the job data.
- *
  * @member {array} [diagnostics] the diagnostics for the job.
- *
  * @member {string} [algebraFilePath] the algebra file path after the job has
  * completed
- *
  * @member {moment.duration} [totalCompilationTime] the total time this job
  * spent compiling. This value should not be set by the user and will be
  * ignored if it is.
- *
  * @member {moment.duration} [totalPauseTime] the total time this job spent
  * paused. This value should not be set by the user and will be ignored if it
  * is.
- *
  * @member {moment.duration} [totalQueuedTime] the total time this job spent
  * queued. This value should not be set by the user and will be ignored if it
  * is.
- *
  * @member {moment.duration} [totalRunningTime] the total time this job spent
  * executing. This value should not be set by the user and will be ignored if
  * it is.
- *
  * @member {string} [rootProcessNodeId] the ID used to identify the job manager
  * coordinating job execution. This value should not be set by the user and
  * will be ignored if it is.
- *
  * @member {string} [yarnApplicationId] the ID used to identify the yarn
  * application executing the job. This value should not be set by the user and
  * will be ignored if it is.
- *
  * @member {number} [yarnApplicationTimeStamp] the timestamp (in ticks) for the
  * yarn application executing the job. This value should not be set by the user
  * and will be ignored if it is.
- *
  * @member {string} [compileMode] Optionally enforces a specific compilation
  * mode for the job during execution. If this is not specified during
  * submission, the server will determine the optimal compilation mode. Possible
  * values include: 'Semantic', 'Full', 'SingleBox'
- *
  */
 export interface USqlJobProperties extends JobProperties {
   resources?: JobResource[];
@@ -323,16 +262,12 @@ export interface USqlJobProperties extends JobProperties {
  * Hive job properties used when submitting and retrieving Hive jobs.
  *
  * @member {string} [logsLocation] the Hive logs location
- *
  * @member {string} [outputLocation] the location of Hive job output files
  * (both execution output and results)
- *
  * @member {number} [statementCount] the number of statements that will be run
  * based on the script
- *
  * @member {number} [executedStatementCount] the number of statements that have
  * been run based on the script
- *
  */
 export interface HiveJobProperties extends JobProperties {
   readonly logsLocation?: string;
@@ -348,35 +283,24 @@ export interface HiveJobProperties extends JobProperties {
  * The Data Lake Analytics job error details.
  *
  * @member {number} [diagnosticCode] the diagnostic error code.
- *
  * @member {string} [severity] the severity level of the failure. Possible
  * values include: 'Warning', 'Error', 'Info', 'SevereWarning', 'Deprecated',
  * 'UserWarning'
- *
  * @member {string} [details] the details of the error message.
- *
  * @member {string} [component] the component that failed.
- *
  * @member {string} [errorId] the specific identifier for the type of error
  * encountered in the job.
- *
  * @member {string} [helpLink] the link to MSDN or Azure help for this type of
  * error, if any.
- *
  * @member {string} [internalDiagnostics] the internal diagnostic stack trace
  * if the user requesting the job error details has sufficient permissions it
  * will be retrieved, otherwise it will be empty.
- *
  * @member {string} [message] the user friendly error message for the failure.
- *
  * @member {string} [resolution] the recommended resolution for the failure, if
  * any.
- *
  * @member {string} [source] the ultimate source of the failure (usually either
  * SYSTEM or USER).
- *
  * @member {string} [description] the error message description
- *
  */
 export interface JobInnerError {
   readonly diagnosticCode?: number;
@@ -399,77 +323,52 @@ export interface JobInnerError {
  * The Data Lake Analytics job error details.
  *
  * @member {string} [description] the error message description
- *
  * @member {string} [details] the details of the error message.
- *
  * @member {number} [endOffset] the end offset in the job where the error was
  * found.
- *
  * @member {string} [errorId] the specific identifier for the type of error
  * encountered in the job.
- *
  * @member {string} [filePath] the path to any supplemental error files, if
  * any.
- *
  * @member {string} [helpLink] the link to MSDN or Azure help for this type of
  * error, if any.
- *
  * @member {string} [internalDiagnostics] the internal diagnostic stack trace
  * if the user requesting the job error details has sufficient permissions it
  * will be retrieved, otherwise it will be empty.
- *
  * @member {number} [lineNumber] the specific line number in the job where the
  * error occured.
- *
  * @member {string} [message] the user friendly error message for the failure.
- *
  * @member {string} [resolution] the recommended resolution for the failure, if
  * any.
- *
  * @member {object} [innerError] the inner error of this specific job error
  * message, if any.
- *
  * @member {number} [innerError.diagnosticCode] the diagnostic error code.
- *
  * @member {string} [innerError.severity] the severity level of the failure.
  * Possible values include: 'Warning', 'Error', 'Info', 'SevereWarning',
  * 'Deprecated', 'UserWarning'
- *
  * @member {string} [innerError.details] the details of the error message.
- *
  * @member {string} [innerError.component] the component that failed.
- *
  * @member {string} [innerError.errorId] the specific identifier for the type
  * of error encountered in the job.
- *
  * @member {string} [innerError.helpLink] the link to MSDN or Azure help for
  * this type of error, if any.
- *
  * @member {string} [innerError.internalDiagnostics] the internal diagnostic
  * stack trace if the user requesting the job error details has sufficient
  * permissions it will be retrieved, otherwise it will be empty.
- *
  * @member {string} [innerError.message] the user friendly error message for
  * the failure.
- *
  * @member {string} [innerError.resolution] the recommended resolution for the
  * failure, if any.
- *
  * @member {string} [innerError.source] the ultimate source of the failure
  * (usually either SYSTEM or USER).
- *
  * @member {string} [innerError.description] the error message description
- *
  * @member {string} [severity] the severity level of the failure. Possible
  * values include: 'Warning', 'Error', 'Info', 'SevereWarning', 'Deprecated',
  * 'UserWarning'
- *
  * @member {string} [source] the ultimate source of the failure (usually either
  * SYSTEM or USER).
- *
  * @member {number} [startOffset] the start offset in the job where the error
  * was found
- *
  */
 export interface JobErrorDetails {
   readonly description?: string;
@@ -497,23 +396,17 @@ export interface JobErrorDetails {
  *
  * @member {uuid} [pipelineId] the job relationship pipeline identifier (a
  * GUID).
- *
  * @member {string} [pipelineName] the friendly name of the job relationship
  * pipeline, which does not need to be unique.
- *
  * @member {string} [pipelineUri] the pipeline uri, unique, links to the
  * originating service for this pipeline.
- *
  * @member {uuid} [runId] the run identifier (a GUID), unique identifier of the
  * iteration of this pipeline.
- *
  * @member {uuid} recurrenceId the recurrence identifier (a GUID), unique per
  * activity/script, regardless of iterations. This is something to link
  * different occurrences of the same job together.
- *
  * @member {string} [recurrenceName] the recurrence name, user friendly name
  * for the correlation between jobs.
- *
  */
 export interface JobRelationshipProperties {
   pipelineId?: string;
@@ -532,9 +425,7 @@ export interface JobRelationshipProperties {
  *
  * @member {uuid} [runId] the run identifier of an instance of pipeline
  * executions (a GUID).
- *
  * @member {date} [lastSubmitTime] the time this instance was last submitted.
- *
  */
 export interface JobPipelineRunInformation {
   readonly runId?: string;
@@ -550,40 +441,28 @@ export interface JobPipelineRunInformation {
  *
  * @member {uuid} [pipelineId] the job relationship pipeline identifier (a
  * GUID).
- *
  * @member {string} [pipelineName] the friendly name of the job relationship
  * pipeline, which does not need to be unique.
- *
  * @member {string} [pipelineUri] the pipeline uri, unique, links to the
  * originating service for this pipeline.
- *
  * @member {number} [numJobsFailed] the number of jobs in this pipeline that
  * have failed.
- *
  * @member {number} [numJobsCanceled] the number of jobs in this pipeline that
  * have been canceled.
- *
  * @member {number} [numJobsSucceeded] the number of jobs in this pipeline that
  * have succeeded.
- *
  * @member {number} [auHoursFailed] the number of job execution hours that
  * resulted in failed jobs.
- *
  * @member {number} [auHoursCanceled] the number of job execution hours that
  * resulted in canceled jobs.
- *
  * @member {number} [auHoursSucceeded] the number of job execution hours that
  * resulted in successful jobs.
- *
  * @member {date} [lastSubmitTime] the last time a job in this pipeline was
  * submitted.
- *
  * @member {array} [runs] the list of recurrence identifiers representing each
  * run of this pipeline.
- *
  * @member {array} [recurrences] the list of recurrence identifiers
  * representing each run of this pipeline.
- *
  */
 export interface JobPipelineInformation {
   readonly pipelineId?: string;
@@ -607,9 +486,7 @@ export interface JobPipelineInformation {
  * List of job pipeline information items.
  *
  * @member {array} [value] the list of job pipeline information items.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobPipelineInformationListResult {
   readonly value?: JobPipelineInformation[];
@@ -625,31 +502,22 @@ export interface JobPipelineInformationListResult {
  * @member {uuid} [recurrenceId] the recurrence identifier (a GUID), unique per
  * activity/script, regardless of iterations. This is something to link
  * different occurrences of the same job together.
- *
  * @member {string} [recurrenceName] the recurrence name, user friendly name
  * for the correlation between jobs.
- *
  * @member {number} [numJobsFailed] the number of jobs in this recurrence that
  * have failed.
- *
  * @member {number} [numJobsCanceled] the number of jobs in this recurrence
  * that have been canceled.
- *
  * @member {number} [numJobsSucceeded] the number of jobs in this recurrence
  * that have succeeded.
- *
  * @member {number} [auHoursFailed] the number of job execution hours that
  * resulted in failed jobs.
- *
  * @member {number} [auHoursCanceled] the number of job execution hours that
  * resulted in canceled jobs.
- *
  * @member {number} [auHoursSucceeded] the number of job execution hours that
  * resulted in successful jobs.
- *
  * @member {date} [lastSubmitTime] the last time a job in this recurrence was
  * submitted.
- *
  */
 export interface JobRecurrenceInformation {
   readonly recurrenceId?: string;
@@ -670,9 +538,7 @@ export interface JobRecurrenceInformation {
  * List of job recurrence information items.
  *
  * @member {array} [value] the list of job recurrence information items.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobRecurrenceInformationListResult {
   readonly value?: JobRecurrenceInformation[];
@@ -686,82 +552,56 @@ export interface JobRecurrenceInformationListResult {
  * The common Data Lake Analytics job information properties.
  *
  * @member {uuid} [jobId] the job's unique identifier (a GUID).
- *
  * @member {string} name the friendly name of the job.
- *
  * @member {string} type the job type of the current job (Hive or USql).
  * Possible values include: 'USql', 'Hive'
- *
  * @member {string} [submitter] the user or account that submitted the job.
- *
  * @member {array} [errorMessage] the error message details for the job, if the
  * job failed.
- *
  * @member {number} [degreeOfParallelism] the degree of parallelism used for
  * this job. This must be greater than 0, if set to less than 0 it will default
  * to 1. Default value: 1 .
- *
  * @member {number} [priority] the priority value for the current job. Lower
  * numbers have a higher priority. By default, a job has a priority of 1000.
  * This must be greater than 0.
- *
  * @member {date} [submitTime] the time the job was submitted to the service.
- *
  * @member {date} [startTime] the start time of the job.
- *
  * @member {date} [endTime] the completion time of the job.
- *
  * @member {string} [state] the job state. When the job is in the Ended state,
  * refer to Result and ErrorMessage for details. Possible values include:
  * 'Accepted', 'Compiling', 'Ended', 'New', 'Queued', 'Running', 'Scheduling',
  * 'Starting', 'Paused', 'WaitingForCapacity'
- *
  * @member {string} [result] the result of job execution or the current result
  * of the running job. Possible values include: 'None', 'Succeeded',
  * 'Cancelled', 'Failed'
- *
  * @member {string} [logFolder] the log folder path to use in the following
  * format:
  * adl://<accountName>.azuredatalakestore.net/system/jobservice/jobs/Usql/2016/03/13/17/18/5fe51957-93bc-4de0-8ddc-c5a4753b068b/logs/.
- *
  * @member {array} [logFilePatterns] the list of log file name patterns to find
  * in the logFolder. '*' is the only matching character allowed. Example
  * format: jobExecution*.log or *mylog*.txt
- *
  * @member {array} [stateAuditRecords] the job state audit records, indicating
  * when various operations have been performed on this job.
- *
  * @member {object} properties the job specific properties.
- *
  * @member {string} [properties.runtimeVersion] the runtime version of the Data
  * Lake Analytics engine to use for the specific type of job being run.
- *
  * @member {string} [properties.script] the script to run
- *
  * @member {string} [properties.type] Polymorphic Discriminator
- *
  * @member {object} [related] the recurring job relationship information
  * properties.
- *
  * @member {uuid} [related.pipelineId] the job relationship pipeline identifier
  * (a GUID).
- *
  * @member {string} [related.pipelineName] the friendly name of the job
  * relationship pipeline, which does not need to be unique.
- *
  * @member {string} [related.pipelineUri] the pipeline uri, unique, links to
  * the originating service for this pipeline.
- *
  * @member {uuid} [related.runId] the run identifier (a GUID), unique
  * identifier of the iteration of this pipeline.
- *
  * @member {uuid} [related.recurrenceId] the recurrence identifier (a GUID),
  * unique per activity/script, regardless of iterations. This is something to
  * link different occurrences of the same job together.
- *
  * @member {string} [related.recurrenceName] the recurrence name, user friendly
  * name for the correlation between jobs.
- *
  */
 export interface JobInformation {
   readonly jobId?: string;
@@ -790,9 +630,7 @@ export interface JobInformation {
  * List of jobInfo items.
  *
  * @member {array} [value] the list of jobInfo items.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobInfoListResult {
   readonly value?: JobInformation[];
@@ -806,9 +644,7 @@ export interface JobInfoListResult {
  * List of job pipeline information items.
  *
  * @member {array} [value] the list of job pipeline information items.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobPipelineInformationListResult {
   readonly value?: JobPipelineInformation[];
@@ -822,9 +658,7 @@ export interface JobPipelineInformationListResult {
  * List of job recurrence information items.
  *
  * @member {array} [value] the list of job recurrence information items.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobRecurrenceInformationListResult {
   readonly value?: JobRecurrenceInformation[];
@@ -838,9 +672,7 @@ export interface JobRecurrenceInformationListResult {
  * List of jobInfo items.
  *
  * @member {array} [value] the list of jobInfo items.
- *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobInfoListResult {
   readonly value?: JobInformation[];
@@ -855,7 +687,6 @@ export interface JobInfoListResult {
  * List of job pipeline information items.
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobPipelineInformationListResult extends Array<JobPipelineInformation> {
   readonly nextLink?: string;
@@ -868,7 +699,6 @@ export interface JobPipelineInformationListResult extends Array<JobPipelineInfor
  * List of job recurrence information items.
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobRecurrenceInformationListResult extends Array<JobRecurrenceInformation> {
   readonly nextLink?: string;
@@ -881,7 +711,6 @@ export interface JobRecurrenceInformationListResult extends Array<JobRecurrenceI
  * List of jobInfo items.
  *
  * @member {string} [nextLink] the link (url) to the next page of results.
- *
  */
 export interface JobInfoListResult extends Array<JobInformation> {
   readonly nextLink?: string;

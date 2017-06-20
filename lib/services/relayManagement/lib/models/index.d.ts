@@ -22,11 +22,8 @@ export { CloudError } from 'ms-rest-azure';
  * The Resource definition
  *
  * @member {string} [id] Resource Id
- *
  * @member {string} [name] Resource name
- *
  * @member {string} [type] Resource type
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -41,9 +38,7 @@ export interface Resource extends BaseResource {
  * Definition of Resource
  *
  * @member {string} location Resource location
- *
  * @member {object} [tags] Resource tags
- *
  */
 export interface TrackedResource extends Resource {
   location: string;
@@ -57,22 +52,15 @@ export interface TrackedResource extends Resource {
  * Description of HybridConnection Resource.
  *
  * @member {date} [createdAt] The time the HybridConnection was created.
- *
  * @member {date} [updatedAt] The time the namespace was updated.
- *
  * @member {number} [listenerCount] The number of listeners for this
  * HybridConnection. min : 1 and max:25 supported
- *
  * @member {boolean} [requiresClientAuthorization] true if client authorization
  * is needed for this HybridConnection; otherwise, false.
- *
  * @member {string} [userMetadata] usermetadata is a placeholder to store
  * user-defined string data for the HybridConnection endpoint.e.g. it can be
  * used to store  descriptive data, such as list of teams and their contact
  * information also user-defined configuration settings can be stored.
- *
- * @member {string} [path] The path of the HybridConnection.
- *
  */
 export interface HybridConnection extends Resource {
   readonly createdAt?: Date;
@@ -80,7 +68,6 @@ export interface HybridConnection extends Resource {
   readonly listenerCount?: number;
   requiresClientAuthorization?: boolean;
   userMetadata?: string;
-  path?: string;
 }
 
 /**
@@ -90,10 +77,8 @@ export interface HybridConnection extends Resource {
  * The response of the List HybridConnection operation.
  *
  * @member {array} [value] Result of the List HybridConnection .
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of HybridConnection operation
- *
  */
 export interface HybridConnectionListResult {
   value?: HybridConnection[];
@@ -108,28 +93,20 @@ export interface HybridConnectionListResult {
  *
  * @member {string} [relayType] WCFRelay Type. Possible values include:
  * 'NetTcp', 'Http'
- *
  * @member {date} [createdAt] The time the WCFRelay was created.
- *
  * @member {date} [updatedAt] The time the namespace was updated.
- *
  * @member {number} [listenerCount] The number of listeners for this relay. min
  * : 1 and max:25 supported
- *
  * @member {boolean} [requiresClientAuthorization] true if client authorization
  * is needed for this relay; otherwise, false.
- *
  * @member {boolean} [requiresTransportSecurity] true if transport security is
  * needed for this relay; otherwise, false.
- *
  * @member {boolean} [isDynamic] true if the relay is dynamic; otherwise,
  * false.
- *
  * @member {string} [userMetadata] usermetadata is a placeholder to store
  * user-defined string data for the HybridConnection endpoint.e.g. it can be
  * used to store  descriptive data, such as list of teams and their contact
  * information also user-defined configuration settings can be stored.
- *
  */
 export interface WcfRelay extends Resource {
   relayType?: string;
@@ -149,10 +126,8 @@ export interface WcfRelay extends Resource {
  * The response of the List WcfRelays operation.
  *
  * @member {array} [value] Result of the List WcfRelays .
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of WcfRelays operation
- *
  */
 export interface WcfRelaysListResult {
   value?: WcfRelay[];
@@ -176,16 +151,11 @@ export interface Sku {
  * Description of a Namespace resource.
  *
  * @member {string} [provisioningState] Provisioning state of the namespace.
- *
  * @member {date} [createdAt] The time the namespace was created.
- *
  * @member {date} [updatedAt] The time the namespace was updated.
- *
  * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
  * Service Bus operations.
- *
  * @member {string} [metricId] Identifier for Azure Insights metrics
- *
  */
 export interface RelayNamespace extends TrackedResource {
   readonly provisioningState?: string;
@@ -202,10 +172,8 @@ export interface RelayNamespace extends TrackedResource {
  * The response of the List Namespace operation.
  *
  * @member {array} [value] Result of the List Namespace operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Namespaces
- *
  */
 export interface RelayNamespaceListResult {
   value?: RelayNamespace[];
@@ -214,56 +182,48 @@ export interface RelayNamespaceListResult {
 
 /**
  * @class
- * Initializes a new instance of the SharedAccessAuthorizationRule class.
+ * Initializes a new instance of the AuthorizationRule class.
  * @constructor
  * Description of a Namespace AuthorizationRules.
  *
  * @member {array} rights The rights associated with the rule.
- *
  */
-export interface SharedAccessAuthorizationRule extends Resource {
+export interface AuthorizationRule extends Resource {
   rights: string[];
 }
 
 /**
  * @class
- * Initializes a new instance of the SharedAccessAuthorizationRuleListResult class.
+ * Initializes a new instance of the AuthorizationRuleListResult class.
  * @constructor
  * The response of the List Namespace operation.
  *
  * @member {array} [value] Result of the List AuthorizationRules operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of AuthorizationRules
- *
  */
-export interface SharedAccessAuthorizationRuleListResult {
-  value?: SharedAccessAuthorizationRule[];
+export interface AuthorizationRuleListResult {
+  value?: AuthorizationRule[];
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ResourceListKeys class.
+ * Initializes a new instance of the AuthorizationRuleKeys class.
  * @constructor
  * Namespace/Relay Connection String
  *
  * @member {string} [primaryConnectionString] PrimaryConnectionString of the
  * created Namespace AuthorizationRule.
- *
  * @member {string} [secondaryConnectionString] SecondaryConnectionString of
  * the created Namespace AuthorizationRule
- *
  * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
  * signing and validating the SAS token
- *
  * @member {string} [secondaryKey] A base64-encoded 256-bit secondary key for
  * signing and validating the SAS token
- *
  * @member {string} [keyName] A string that describes the authorization rule
- *
  */
-export interface ResourceListKeys {
+export interface AuthorizationRuleKeys {
   primaryConnectionString?: string;
   secondaryConnectionString?: string;
   primaryKey?: string;
@@ -279,7 +239,6 @@ export interface ResourceListKeys {
  *
  * @member {string} [policyKey] Key that needs to be regenerated. Possible
  * values include: 'PrimaryKey', 'SecondaryKey'
- *
  */
 export interface RegenerateKeysParameters {
   policyKey?: string;
@@ -293,10 +252,8 @@ export interface RegenerateKeysParameters {
  * request. The reason is provided in the error message.
  *
  * @member {string} [code] Error code.
- *
  * @member {string} [message] Error message indicating why the operation
  * failed.
- *
  */
 export interface ErrorResponse {
   code?: string;
@@ -312,7 +269,6 @@ export interface ErrorResponse {
  * @member {string} name The Name to check the namespce name availability and
  * The namespace name can contain only letters, numbers, and hyphens. The
  * namespace must start with a letter, and it must end with a letter or number.
- *
  */
 export interface CheckNameAvailability {
   name: string;
@@ -326,14 +282,11 @@ export interface CheckNameAvailability {
  *
  * @member {boolean} [nameAvailable] Value indicating namespace is
  * availability, true if the namespace is available; otherwise, false.
- *
  * @member {string} [reason] The reason for unavailability of a namespace.
  * Possible values include: 'None', 'InvalidName', 'SubscriptionIsDisabled',
  * 'NameInUse', 'NameInLockdown', 'TooManyNamespaceInCurrentSubscription'
- *
  * @member {string} [message] The detailed info regarding the reason associated
  * with the namespace.
- *
  */
 export interface CheckNameAvailabilityResult {
   nameAvailable?: boolean;
@@ -348,7 +301,6 @@ export interface CheckNameAvailabilityResult {
  * Parameters supplied to the Patch Namespace operation.
  *
  * @member {object} [tags] Resource tags
- *
  */
 export interface RelayNamespaceUpdateParameter {
   tags?: { [propertyName: string]: string };
@@ -361,12 +313,9 @@ export interface RelayNamespaceUpdateParameter {
  * The object that represents the operation.
  *
  * @member {string} [provider] Service provider: Microsoft.EventHub
- *
  * @member {string} [resource] Resource on which the operation is performed:
  * Invoice, etc.
- *
  * @member {string} [operation] Operation type: Read, write, delete, etc.
- *
  */
 export interface OperationDisplay {
   readonly provider?: string;
@@ -381,17 +330,12 @@ export interface OperationDisplay {
  * A EventHub REST API operation
  *
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- *
  * @member {object} [display] The object that represents the operation.
- *
  * @member {string} [display.provider] Service provider: Microsoft.EventHub
- *
  * @member {string} [display.resource] Resource on which the operation is
  * performed: Invoice, etc.
- *
  * @member {string} [display.operation] Operation type: Read, write, delete,
  * etc.
- *
  */
 export interface Operation {
   readonly name?: string;
@@ -407,10 +351,8 @@ export interface Operation {
  *
  * @member {array} [value] List of EventHub operations supported by the
  * Microsoft.EventHub resource provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   readonly value?: Operation[];
@@ -426,10 +368,8 @@ export interface OperationListResult {
  *
  * @member {array} [value] List of EventHub operations supported by the
  * Microsoft.EventHub resource provider.
- *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult {
   readonly value?: Operation[];
@@ -443,10 +383,8 @@ export interface OperationListResult {
  * The response of the List Namespace operation.
  *
  * @member {array} [value] Result of the List Namespace operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Namespaces
- *
  */
 export interface RelayNamespaceListResult {
   value?: RelayNamespace[];
@@ -455,18 +393,16 @@ export interface RelayNamespaceListResult {
 
 /**
  * @class
- * Initializes a new instance of the SharedAccessAuthorizationRuleListResult class.
+ * Initializes a new instance of the AuthorizationRuleListResult class.
  * @constructor
  * The response of the List Namespace operation.
  *
  * @member {array} [value] Result of the List AuthorizationRules operation.
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of AuthorizationRules
- *
  */
-export interface SharedAccessAuthorizationRuleListResult {
-  value?: SharedAccessAuthorizationRule[];
+export interface AuthorizationRuleListResult {
+  value?: AuthorizationRule[];
   nextLink?: string;
 }
 
@@ -477,10 +413,8 @@ export interface SharedAccessAuthorizationRuleListResult {
  * The response of the List HybridConnection operation.
  *
  * @member {array} [value] Result of the List HybridConnection .
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of HybridConnection operation
- *
  */
 export interface HybridConnectionListResult {
   value?: HybridConnection[];
@@ -494,10 +428,8 @@ export interface HybridConnectionListResult {
  * The response of the List WcfRelays operation.
  *
  * @member {array} [value] Result of the List WcfRelays .
- *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of WcfRelays operation
- *
  */
 export interface WcfRelaysListResult {
   value?: WcfRelay[];
@@ -514,7 +446,6 @@ export interface WcfRelaysListResult {
  *
  * @member {string} [nextLink] URL to get the next set of operation list
  * results if there are any.
- *
  */
 export interface OperationListResult extends Array<Operation> {
   readonly nextLink?: string;
@@ -528,7 +459,6 @@ export interface OperationListResult extends Array<Operation> {
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of Namespaces
- *
  */
 export interface RelayNamespaceListResult extends Array<RelayNamespace> {
   nextLink?: string;
@@ -536,15 +466,14 @@ export interface RelayNamespaceListResult extends Array<RelayNamespace> {
 
 /**
  * @class
- * Initializes a new instance of the SharedAccessAuthorizationRuleListResult class.
+ * Initializes a new instance of the AuthorizationRuleListResult class.
  * @constructor
  * The response of the List Namespace operation.
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of AuthorizationRules
- *
  */
-export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAccessAuthorizationRule> {
+export interface AuthorizationRuleListResult extends Array<AuthorizationRule> {
   nextLink?: string;
 }
 
@@ -556,7 +485,6 @@ export interface SharedAccessAuthorizationRuleListResult extends Array<SharedAcc
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of HybridConnection operation
- *
  */
 export interface HybridConnectionListResult extends Array<HybridConnection> {
   nextLink?: string;
@@ -570,7 +498,6 @@ export interface HybridConnectionListResult extends Array<HybridConnection> {
  *
  * @member {string} [nextLink] Link to the next set of results. Not empty if
  * Value contains incomplete list of WcfRelays operation
- *
  */
 export interface WcfRelaysListResult extends Array<WcfRelay> {
   nextLink?: string;

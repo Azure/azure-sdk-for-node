@@ -22,9 +22,7 @@ export { CloudError } from 'ms-rest-azure';
  * The properties for a Media Services REST API endpoint.
  *
  * @member {string} [endpoint] The Media Services REST endpoint.
- *
  * @member {string} [majorVersion] The version of Media Services REST API.
- *
  */
 export interface ApiEndpoint {
   endpoint?: string;
@@ -38,9 +36,7 @@ export interface ApiEndpoint {
  * The error returned from a failed Media Services REST API call.
  *
  * @member {string} [code] Error code.
- *
  * @member {string} [message] Error message.
- *
  */
 export interface ApiError {
   code?: string;
@@ -55,7 +51,6 @@ export interface ApiError {
  *
  * @member {string} name The name of the resource. A name must be globally
  * unique.
- *
  */
 export interface CheckNameAvailabilityInput {
   name: string;
@@ -68,13 +63,10 @@ export interface CheckNameAvailabilityInput {
  * The response body for CheckNameAvailability API.
  *
  * @member {boolean} [nameAvailable] Specifies if the name is available.
- *
  * @member {string} [reason] Specifies the reason if the name is not available.
  * Possible values include: 'None', 'Invalid', 'AlreadyExists'
- *
  * @member {string} [message] Specifies the detailed reason if the name is not
  * available.
- *
  */
 export interface CheckNameAvailabilityOutput {
   nameAvailable?: boolean;
@@ -93,11 +85,9 @@ export interface CheckNameAvailabilityOutput {
  * must be a Standard Storage account (either Microsoft.ClassicStorage or
  * Microsoft.Storage). Blob only storage accounts can be added as secondary
  * storage accounts (isPrimary false).
- *
  * @member {boolean} isPrimary Is this storage account resource the primary
  * storage account for the Media Service resource. Blob only storage must set
  * this to false.
- *
  */
 export interface StorageAccount {
   id: string;
@@ -111,18 +101,13 @@ export interface StorageAccount {
  * The Azure Resource Manager resource.
  *
  * @member {string} [id] The id of the resource.
- *
  * @member {string} [name] The name of the resource.
- *
  * @member {string} [type] The type of the resource
- *
  * @member {string} [location] The geographic location of the resource. This
  * must be one of the supported and registered Azure Geo Regions (for example,
  * West US, East US, Southeast Asia, and so forth).
- *
  * @member {object} [tags] Tags to help categorize the resource in the Azure
  * portal.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -141,9 +126,7 @@ export interface Resource extends BaseResource {
  * @member {array} [apiEndpoints] Read-only property that lists the Media
  * Services REST API endpoints for this resource. If supplied on a PUT or
  * PATCH, the value will be ignored.
- *
  * @member {array} [storageAccounts] The storage accounts for this resource.
- *
  */
 export interface MediaService extends Resource {
   readonly apiEndpoints?: ApiEndpoint[];
@@ -157,7 +140,6 @@ export interface MediaService extends Resource {
  * The collection of Media Service resources.
  *
  * @member {array} [value]
- *
  */
 export interface MediaServiceCollection {
   value?: MediaService[];
@@ -172,7 +154,6 @@ export interface MediaServiceCollection {
  * @member {string} keyType The keyType indicating which key you want to
  * regenerate, Primary or Secondary. Possible values include: 'Primary',
  * 'Secondary'
- *
  */
 export interface RegenerateKeyInput {
   keyType: string;
@@ -185,7 +166,6 @@ export interface RegenerateKeyInput {
  * The response body for a RegenerateKey API.
  *
  * @member {string} [key] The new value of either the primary or secondary key.
- *
  */
 export interface RegenerateKeyOutput {
   key?: string;
@@ -198,18 +178,13 @@ export interface RegenerateKeyOutput {
  * The response body for a ListKeys API.
  *
  * @member {string} [primaryAuthEndpoint] The primary authorization endpoint.
- *
  * @member {string} [secondaryAuthEndpoint] The secondary authorization
  * endpoint.
- *
  * @member {string} [primaryKey] The primary key for the Media Service
  * resource.
- *
  * @member {string} [secondaryKey] The secondary key for the Media Service
  * resource.
- *
  * @member {string} [scope] The authorization scope.
- *
  */
 export interface ServiceKeys {
   primaryAuthEndpoint?: string;
@@ -226,7 +201,6 @@ export interface ServiceKeys {
  * The request  body for a SyncStorageKeys API.
  *
  * @member {string} id The id of the storage account resource.
- *
  */
 export interface SyncStorageKeysInput {
   id: string;
@@ -239,7 +213,6 @@ export interface SyncStorageKeysInput {
  * The collection of Media Service resources.
  *
  * @member {array} [value]
- *
  */
 export interface MediaServiceCollection {
   value?: MediaService[];

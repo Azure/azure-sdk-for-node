@@ -27,7 +27,7 @@ export interface BatchAccountOperations {
      * Update Batch Account API.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the new Batch account.
      *
      * @param {string} accountName A name for the Batch account which must be
      * unique within the region. Batch account names must be between 3 and 24
@@ -41,14 +41,14 @@ export interface BatchAccountOperations {
      * @param {string} parameters.location The region in which to create the
      * account.
      *
-     * @param {object} [parameters.tags] The user-specified tags associated with
+     * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
      *
-     * @param {object} [parameters.autoStorage] The properties related to the
-     * auto-storage account.
+     * @param {object} [parameters.autoStorage] The properties related to auto
+     * storage account.
      *
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
-     * the storage account to be used for auto-storage account.
+     * the storage account to be used for auto storage account.
      *
      * @param {string} [parameters.poolAllocationMode] The allocation mode to use
      * for creating pools in the Batch account. The pool allocation mode also
@@ -64,7 +64,7 @@ export interface BatchAccountOperations {
      * @param {string} parameters.keyVaultReference.id The resource ID of the Azure
      * key vault associated with the Batch account.
      *
-     * @param {string} parameters.keyVaultReference.url The URL of the Azure key
+     * @param {string} parameters.keyVaultReference.url The Url of the Azure key
      * vault associated with the Batch account.
      *
      * @param {object} [options] Optional Parameters.
@@ -86,7 +86,7 @@ export interface BatchAccountOperations {
      * Update Batch Account API.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the new Batch account.
      *
      * @param {string} accountName A name for the Batch account which must be
      * unique within the region. Batch account names must be between 3 and 24
@@ -100,14 +100,14 @@ export interface BatchAccountOperations {
      * @param {string} parameters.location The region in which to create the
      * account.
      *
-     * @param {object} [parameters.tags] The user-specified tags associated with
+     * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
      *
-     * @param {object} [parameters.autoStorage] The properties related to the
-     * auto-storage account.
+     * @param {object} [parameters.autoStorage] The properties related to auto
+     * storage account.
      *
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
-     * the storage account to be used for auto-storage account.
+     * the storage account to be used for auto storage account.
      *
      * @param {string} [parameters.poolAllocationMode] The allocation mode to use
      * for creating pools in the Batch account. The pool allocation mode also
@@ -123,7 +123,7 @@ export interface BatchAccountOperations {
      * @param {string} parameters.keyVaultReference.id The resource ID of the Azure
      * key vault associated with the Batch account.
      *
-     * @param {string} parameters.keyVaultReference.url The URL of the Azure key
+     * @param {string} parameters.keyVaultReference.url The Url of the Azure key
      * vault associated with the Batch account.
      *
      * @param {object} [options] Optional Parameters.
@@ -164,18 +164,18 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {object} parameters Additional parameters for account update.
      *
-     * @param {object} [parameters.tags] The user-specified tags associated with
+     * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
      *
-     * @param {object} [parameters.autoStorage] The properties related to the
-     * auto-storage account.
+     * @param {object} [parameters.autoStorage] The properties related to auto
+     * storage account.
      *
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
-     * the storage account to be used for auto-storage account.
+     * the storage account to be used for auto storage account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -196,18 +196,18 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {object} parameters Additional parameters for account update.
      *
-     * @param {object} [parameters.tags] The user-specified tags associated with
+     * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
      *
-     * @param {object} [parameters.autoStorage] The properties related to the
-     * auto-storage account.
+     * @param {object} [parameters.autoStorage] The properties related to auto
+     * storage account.
      *
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
-     * the storage account to be used for auto-storage account.
+     * the storage account to be used for auto storage account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -245,9 +245,9 @@ export interface BatchAccountOperations {
      * Deletes the specified Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the Batch account to be deleted.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -266,9 +266,9 @@ export interface BatchAccountOperations {
      * Deletes the specified Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the Batch account to be deleted.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -307,7 +307,7 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -328,7 +328,7 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -415,11 +415,11 @@ export interface BatchAccountOperations {
 
 
     /**
-     * Gets information about the Batch accounts associated with the specified
+     * Gets information about the Batch accounts associated within the specified
      * resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * @param {string} resourceGroupName The name of the resource group whose Batch
+     * accounts to list.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -435,11 +435,11 @@ export interface BatchAccountOperations {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchAccountListResult>>;
 
     /**
-     * Gets information about the Batch accounts associated with the specified
+     * Gets information about the Batch accounts associated within the specified
      * resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * @param {string} resourceGroupName The name of the resource group whose Batch
+     * accounts to list.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -475,7 +475,7 @@ export interface BatchAccountOperations {
 
 
     /**
-     * Synchronizes access keys for the auto-storage account configured for the
+     * Synchronizes access keys for the auto storage account configured for the
      * specified Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -497,7 +497,7 @@ export interface BatchAccountOperations {
     synchronizeAutoStorageKeysWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Synchronizes access keys for the auto-storage account configured for the
+     * Synchronizes access keys for the auto storage account configured for the
      * specified Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
@@ -542,7 +542,7 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {string} keyName The type of account key to regenerate. Possible
      * values include: 'Primary', 'Secondary'
@@ -566,7 +566,7 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {string} keyName The type of account key to regenerate. Possible
      * values include: 'Primary', 'Secondary'
@@ -615,7 +615,7 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -642,7 +642,7 @@ export interface BatchAccountOperations {
      * @param {string} resourceGroupName The name of the resource group that
      * contains the Batch account.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -682,7 +682,7 @@ export interface BatchAccountOperations {
      * Update Batch Account API.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the new Batch account.
      *
      * @param {string} accountName A name for the Batch account which must be
      * unique within the region. Batch account names must be between 3 and 24
@@ -696,14 +696,14 @@ export interface BatchAccountOperations {
      * @param {string} parameters.location The region in which to create the
      * account.
      *
-     * @param {object} [parameters.tags] The user-specified tags associated with
+     * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
      *
-     * @param {object} [parameters.autoStorage] The properties related to the
-     * auto-storage account.
+     * @param {object} [parameters.autoStorage] The properties related to auto
+     * storage account.
      *
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
-     * the storage account to be used for auto-storage account.
+     * the storage account to be used for auto storage account.
      *
      * @param {string} [parameters.poolAllocationMode] The allocation mode to use
      * for creating pools in the Batch account. The pool allocation mode also
@@ -719,7 +719,7 @@ export interface BatchAccountOperations {
      * @param {string} parameters.keyVaultReference.id The resource ID of the Azure
      * key vault associated with the Batch account.
      *
-     * @param {string} parameters.keyVaultReference.url The URL of the Azure key
+     * @param {string} parameters.keyVaultReference.url The Url of the Azure key
      * vault associated with the Batch account.
      *
      * @param {object} [options] Optional Parameters.
@@ -741,7 +741,7 @@ export interface BatchAccountOperations {
      * Update Batch Account API.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the new Batch account.
      *
      * @param {string} accountName A name for the Batch account which must be
      * unique within the region. Batch account names must be between 3 and 24
@@ -755,14 +755,14 @@ export interface BatchAccountOperations {
      * @param {string} parameters.location The region in which to create the
      * account.
      *
-     * @param {object} [parameters.tags] The user-specified tags associated with
+     * @param {object} [parameters.tags] The user specified tags associated with
      * the account.
      *
-     * @param {object} [parameters.autoStorage] The properties related to the
-     * auto-storage account.
+     * @param {object} [parameters.autoStorage] The properties related to auto
+     * storage account.
      *
      * @param {string} parameters.autoStorage.storageAccountId The resource ID of
-     * the storage account to be used for auto-storage account.
+     * the storage account to be used for auto storage account.
      *
      * @param {string} [parameters.poolAllocationMode] The allocation mode to use
      * for creating pools in the Batch account. The pool allocation mode also
@@ -778,7 +778,7 @@ export interface BatchAccountOperations {
      * @param {string} parameters.keyVaultReference.id The resource ID of the Azure
      * key vault associated with the Batch account.
      *
-     * @param {string} parameters.keyVaultReference.url The URL of the Azure key
+     * @param {string} parameters.keyVaultReference.url The Url of the Azure key
      * vault associated with the Batch account.
      *
      * @param {object} [options] Optional Parameters.
@@ -817,9 +817,9 @@ export interface BatchAccountOperations {
      * Deletes the specified Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the Batch account to be deleted.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -838,9 +838,9 @@ export interface BatchAccountOperations {
      * Deletes the specified Batch account.
      *
      * @param {string} resourceGroupName The name of the resource group that
-     * contains the Batch account.
+     * contains the Batch account to be deleted.
      *
-     * @param {string} accountName The name of the Batch account.
+     * @param {string} accountName The name of the account to be deleted.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -932,7 +932,7 @@ export interface BatchAccountOperations {
 
 
     /**
-     * Gets information about the Batch accounts associated with the specified
+     * Gets information about the Batch accounts associated within the specified
      * resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -952,7 +952,7 @@ export interface BatchAccountOperations {
     listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchAccountListResult>>;
 
     /**
-     * Gets information about the Batch accounts associated with the specified
+     * Gets information about the Batch accounts associated within the specified
      * resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1317,7 +1317,7 @@ export interface ApplicationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, options?: { parameters? : models.ApplicationCreateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+    createWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, options?: { parameters? : models.AddApplicationParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
      * Adds an application to the specified Batch account.
@@ -1365,9 +1365,9 @@ export interface ApplicationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, accountName: string, applicationId: string, options?: { parameters? : models.ApplicationCreateParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    create(resourceGroupName: string, accountName: string, applicationId: string, options?: { parameters? : models.AddApplicationParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
     create(resourceGroupName: string, accountName: string, applicationId: string, callback: ServiceCallback<models.Application>): void;
-    create(resourceGroupName: string, accountName: string, applicationId: string, options: { parameters? : models.ApplicationCreateParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
+    create(resourceGroupName: string, accountName: string, applicationId: string, options: { parameters? : models.AddApplicationParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**
@@ -1532,7 +1532,7 @@ export interface ApplicationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Updates settings for the specified application.
@@ -1582,9 +1582,9 @@ export interface ApplicationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, callback: ServiceCallback<void>): void;
-    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.ApplicationUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, accountName: string, applicationId: string, parameters: models.UpdateApplicationParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1726,8 +1726,7 @@ export interface Location {
      * Gets the Batch service quotas for the specified subscription at the given
      * location.
      *
-     * @param {string} locationName The region for which to retrieve Batch service
-     * quotas.
+     * @param {string} locationName The desired region for the quotas.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1746,8 +1745,7 @@ export interface Location {
      * Gets the Batch service quotas for the specified subscription at the given
      * location.
      *
-     * @param {string} locationName The region for which to retrieve Batch service
-     * quotas.
+     * @param {string} locationName The desired region for the quotas.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1779,121 +1777,4 @@ export interface Location {
     getQuotas(locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchLocationQuota>;
     getQuotas(locationName: string, callback: ServiceCallback<models.BatchLocationQuota>): void;
     getQuotas(locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchLocationQuota>): void;
-}
-
-/**
- * @class
- * Operations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the BatchManagementClient.
- */
-export interface Operations {
-
-
-    /**
-     * Lists available operations for the Microsoft.Batch provider
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-    /**
-     * Lists available operations for the Microsoft.Batch provider
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-    list(callback: ServiceCallback<models.OperationListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
-
-
-    /**
-     * Lists available operations for the Microsoft.Batch provider
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-    /**
-     * Lists available operations for the Microsoft.Batch provider
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }

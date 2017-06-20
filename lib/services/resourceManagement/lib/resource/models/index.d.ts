@@ -22,7 +22,6 @@ export { CloudError } from 'ms-rest-azure';
  * Deployment filter.
  *
  * @member {string} [provisioningState] The provisioning state.
- *
  */
 export interface DeploymentExtendedFilter {
   provisioningState?: string;
@@ -35,11 +34,8 @@ export interface DeploymentExtendedFilter {
  * Resource filter.
  *
  * @member {string} [resourceType] The resource type.
- *
  * @member {string} [tagname] The tag name.
- *
  * @member {string} [tagvalue] The tag value.
- *
  */
 export interface GenericResourceFilter {
   resourceType?: string;
@@ -54,9 +50,7 @@ export interface GenericResourceFilter {
  * Resource group filter.
  *
  * @member {string} [tagName] The tag name.
- *
  * @member {string} [tagValue] The tag value.
- *
  */
 export interface ResourceGroupFilter {
   tagName?: string;
@@ -70,10 +64,8 @@ export interface ResourceGroupFilter {
  * Entity representing the reference to the template.
  *
  * @member {string} uri The URI of the template to deploy.
- *
  * @member {string} [contentVersion] If included, must match the ContentVersion
  * in the template.
- *
  */
 export interface TemplateLink {
   uri: string;
@@ -87,10 +79,8 @@ export interface TemplateLink {
  * Entity representing the reference to the deployment paramaters.
  *
  * @member {string} uri The URI of the parameters file.
- *
  * @member {string} [contentVersion] If included, must match the ContentVersion
  * in the template.
- *
  */
 export interface ParametersLink {
   uri: string;
@@ -108,7 +98,6 @@ export interface ParametersLink {
  * you are passing in during deployment. By logging information about the
  * request or response, you could potentially expose sensitive data that is
  * retrieved through the deployment operations.
- *
  */
 export interface DebugSetting {
   detailLevel?: string;
@@ -125,31 +114,23 @@ export interface DebugSetting {
  * link to an existing template. It can be a JObject or well-formed JSON
  * string. Use either the templateLink property or the template property, but
  * not both.
- *
  * @member {object} [templateLink] The URI of the template. Use either the
  * templateLink property or the template property, but not both.
- *
  * @member {string} [templateLink.uri] The URI of the template to deploy.
- *
  * @member {string} [templateLink.contentVersion] If included, must match the
  * ContentVersion in the template.
- *
  * @member {object} [parameters] Name and value pairs that define the
  * deployment parameters for the template. You use this element when you want
  * to provide the parameter values directly in the request rather than link to
  * an existing parameter file. Use either the parametersLink property or the
  * parameters property, but not both. It can be a JObject or a well formed JSON
  * string.
- *
  * @member {object} [parametersLink] The URI of parameters file. You use this
  * element to link to an existing parameters file. Use either the
  * parametersLink property or the parameters property, but not both.
- *
  * @member {string} [parametersLink.uri] The URI of the parameters file.
- *
  * @member {string} [parametersLink.contentVersion] If included, must match the
  * ContentVersion in the template.
- *
  * @member {string} mode The mode that is used to deploy resources. This value
  * can be either Incremental or Complete. In Incremental mode, resources are
  * deployed without deleting existing resources that are not included in the
@@ -157,9 +138,7 @@ export interface DebugSetting {
  * the resource group that are not included in the template are deleted. Be
  * careful when using Complete mode as you may unintentionally delete
  * resources. Possible values include: 'Incremental', 'Complete'
- *
  * @member {object} [debugSetting] The debug setting of the deployment.
- *
  * @member {string} [debugSetting.detailLevel] Specifies the type of
  * information to log for debugging. The permitted values are none,
  * requestContent, responseContent, or both requestContent and responseContent
@@ -168,7 +147,6 @@ export interface DebugSetting {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
- *
  */
 export interface DeploymentProperties {
   template?: any;
@@ -186,39 +164,30 @@ export interface DeploymentProperties {
  * Deployment operation parameters.
  *
  * @member {object} properties The deployment properties.
- *
  * @member {object} [properties.template] The template content. You use this
  * element when you want to pass the template syntax directly in the request
  * rather than link to an existing template. It can be a JObject or well-formed
  * JSON string. Use either the templateLink property or the template property,
  * but not both.
- *
  * @member {object} [properties.templateLink] The URI of the template. Use
  * either the templateLink property or the template property, but not both.
- *
  * @member {string} [properties.templateLink.uri] The URI of the template to
  * deploy.
- *
  * @member {string} [properties.templateLink.contentVersion] If included, must
  * match the ContentVersion in the template.
- *
  * @member {object} [properties.parameters] Name and value pairs that define
  * the deployment parameters for the template. You use this element when you
  * want to provide the parameter values directly in the request rather than
  * link to an existing parameter file. Use either the parametersLink property
  * or the parameters property, but not both. It can be a JObject or a well
  * formed JSON string.
- *
  * @member {object} [properties.parametersLink] The URI of parameters file. You
  * use this element to link to an existing parameters file. Use either the
  * parametersLink property or the parameters property, but not both.
- *
  * @member {string} [properties.parametersLink.uri] The URI of the parameters
  * file.
- *
  * @member {string} [properties.parametersLink.contentVersion] If included,
  * must match the ContentVersion in the template.
- *
  * @member {string} [properties.mode] The mode that is used to deploy
  * resources. This value can be either Incremental or Complete. In Incremental
  * mode, resources are deployed without deleting existing resources that are
@@ -227,10 +196,8 @@ export interface DeploymentProperties {
  * template are deleted. Be careful when using Complete mode as you may
  * unintentionally delete resources. Possible values include: 'Incremental',
  * 'Complete'
- *
  * @member {object} [properties.debugSetting] The debug setting of the
  * deployment.
- *
  * @member {string} [properties.debugSetting.detailLevel] Specifies the type of
  * information to log for debugging. The permitted values are none,
  * requestContent, responseContent, or both requestContent and responseContent
@@ -239,7 +206,6 @@ export interface DeploymentProperties {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
- *
  */
 export interface Deployment {
   properties: DeploymentProperties;
@@ -252,7 +218,6 @@ export interface Deployment {
  * The deployment export result.
  *
  * @member {object} [template] The template content.
- *
  */
 export interface DeploymentExportResult {
   template?: any;
@@ -263,13 +228,9 @@ export interface DeploymentExportResult {
  * Initializes a new instance of the ResourceManagementErrorWithDetails class.
  * @constructor
  * @member {string} [code] The error code returned when exporting the template.
- *
  * @member {string} [message] The error message describing the export error.
- *
  * @member {string} [target] The target of the error.
- *
  * @member {array} [details] Validation error.
- *
  */
 export interface ResourceManagementErrorWithDetails {
   readonly code?: string;
@@ -285,9 +246,7 @@ export interface ResourceManagementErrorWithDetails {
  * The type of the paths for alias.
  *
  * @member {string} [path] The path of an alias.
- *
  * @member {array} [apiVersions] The API versions.
- *
  */
 export interface AliasPathType {
   path?: string;
@@ -301,9 +260,7 @@ export interface AliasPathType {
  * The alias type.
  *
  * @member {string} [name] The alias name.
- *
  * @member {array} [paths] The paths for an alias.
- *
  */
 export interface AliasType {
   name?: string;
@@ -317,17 +274,12 @@ export interface AliasType {
  * Resource type managed by the resource provider.
  *
  * @member {string} [resourceType] The resource type.
- *
  * @member {array} [locations] The collection of locations where this resource
  * type can be created.
- *
  * @member {array} [aliases] The aliases that are supported by this resource
  * type.
- *
  * @member {array} [apiVersions] The API version.
- *
  * @member {object} [properties] The properties.
- *
  */
 export interface ProviderResourceType {
   resourceType?: string;
@@ -344,13 +296,9 @@ export interface ProviderResourceType {
  * Resource provider information.
  *
  * @member {string} [id] The provider ID.
- *
  * @member {string} [namespace] The namespace of the resource provider.
- *
  * @member {string} [registrationState] The registration state of the provider.
- *
  * @member {array} [resourceTypes] The collection of provider resource types.
- *
  */
 export interface Provider {
   readonly id?: string;
@@ -366,11 +314,8 @@ export interface Provider {
  * Deployment dependency information.
  *
  * @member {string} [id] The ID of the dependency.
- *
  * @member {string} [resourceType] The dependency resource type.
- *
  * @member {string} [resourceName] The dependency resource name.
- *
  */
 export interface BasicDependency {
   id?: string;
@@ -385,13 +330,9 @@ export interface BasicDependency {
  * Deployment dependency information.
  *
  * @member {array} [dependsOn] The list of dependencies.
- *
  * @member {string} [id] The ID of the dependency.
- *
  * @member {string} [resourceType] The dependency resource type.
- *
  * @member {string} [resourceName] The dependency resource name.
- *
  */
 export interface Dependency {
   dependsOn?: BasicDependency[];
@@ -407,45 +348,29 @@ export interface Dependency {
  * Deployment properties with additional details.
  *
  * @member {string} [provisioningState] The state of the provisioning.
- *
  * @member {string} [correlationId] The correlation ID of the deployment.
- *
  * @member {date} [timestamp] The timestamp of the template deployment.
- *
  * @member {object} [outputs] Key/value pairs that represent deploymentoutput.
- *
  * @member {array} [providers] The list of resource providers needed for the
  * deployment.
- *
  * @member {array} [dependencies] The list of deployment dependencies.
- *
  * @member {object} [template] The template content. Use only one of Template
  * or TemplateLink.
- *
  * @member {object} [templateLink] The URI referencing the template. Use only
  * one of Template or TemplateLink.
- *
  * @member {string} [templateLink.uri] The URI of the template to deploy.
- *
  * @member {string} [templateLink.contentVersion] If included, must match the
  * ContentVersion in the template.
- *
  * @member {object} [parameters] Deployment parameters. Use only one of
  * Parameters or ParametersLink.
- *
  * @member {object} [parametersLink] The URI referencing the parameters. Use
  * only one of Parameters or ParametersLink.
- *
  * @member {string} [parametersLink.uri] The URI of the parameters file.
- *
  * @member {string} [parametersLink.contentVersion] If included, must match the
  * ContentVersion in the template.
- *
  * @member {string} [mode] The deployment mode. Possible values are Incremental
  * and Complete. Possible values include: 'Incremental', 'Complete'
- *
  * @member {object} [debugSetting] The debug setting of the deployment.
- *
  * @member {string} [debugSetting.detailLevel] Specifies the type of
  * information to log for debugging. The permitted values are none,
  * requestContent, responseContent, or both requestContent and responseContent
@@ -454,7 +379,6 @@ export interface Dependency {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
- *
  */
 export interface DeploymentPropertiesExtended {
   readonly provisioningState?: string;
@@ -478,67 +402,45 @@ export interface DeploymentPropertiesExtended {
  * Information from validate template deployment response.
  *
  * @member {object} [error] Validation error.
- *
  * @member {string} [error.code] The error code returned when exporting the
  * template.
- *
  * @member {string} [error.message] The error message describing the export
  * error.
- *
  * @member {string} [error.target] The target of the error.
- *
  * @member {array} [error.details] Validation error.
- *
  * @member {object} [properties] The template deployment properties.
- *
  * @member {string} [properties.provisioningState] The state of the
  * provisioning.
- *
  * @member {string} [properties.correlationId] The correlation ID of the
  * deployment.
- *
  * @member {date} [properties.timestamp] The timestamp of the template
  * deployment.
- *
  * @member {object} [properties.outputs] Key/value pairs that represent
  * deploymentoutput.
- *
  * @member {array} [properties.providers] The list of resource providers needed
  * for the deployment.
- *
  * @member {array} [properties.dependencies] The list of deployment
  * dependencies.
- *
  * @member {object} [properties.template] The template content. Use only one of
  * Template or TemplateLink.
- *
  * @member {object} [properties.templateLink] The URI referencing the template.
  * Use only one of Template or TemplateLink.
- *
  * @member {string} [properties.templateLink.uri] The URI of the template to
  * deploy.
- *
  * @member {string} [properties.templateLink.contentVersion] If included, must
  * match the ContentVersion in the template.
- *
  * @member {object} [properties.parameters] Deployment parameters. Use only one
  * of Parameters or ParametersLink.
- *
  * @member {object} [properties.parametersLink] The URI referencing the
  * parameters. Use only one of Parameters or ParametersLink.
- *
  * @member {string} [properties.parametersLink.uri] The URI of the parameters
  * file.
- *
  * @member {string} [properties.parametersLink.contentVersion] If included,
  * must match the ContentVersion in the template.
- *
  * @member {string} [properties.mode] The deployment mode. Possible values are
  * Incremental and Complete. Possible values include: 'Incremental', 'Complete'
- *
  * @member {object} [properties.debugSetting] The debug setting of the
  * deployment.
- *
  * @member {string} [properties.debugSetting.detailLevel] Specifies the type of
  * information to log for debugging. The permitted values are none,
  * requestContent, responseContent, or both requestContent and responseContent
@@ -547,7 +449,6 @@ export interface DeploymentPropertiesExtended {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
- *
  */
 export interface DeploymentValidateResult {
   error?: ResourceManagementErrorWithDetails;
@@ -561,59 +462,40 @@ export interface DeploymentValidateResult {
  * Deployment information.
  *
  * @member {string} [id] The ID of the deployment.
- *
  * @member {string} name The name of the deployment.
- *
  * @member {object} [properties] Deployment properties.
- *
  * @member {string} [properties.provisioningState] The state of the
  * provisioning.
- *
  * @member {string} [properties.correlationId] The correlation ID of the
  * deployment.
- *
  * @member {date} [properties.timestamp] The timestamp of the template
  * deployment.
- *
  * @member {object} [properties.outputs] Key/value pairs that represent
  * deploymentoutput.
- *
  * @member {array} [properties.providers] The list of resource providers needed
  * for the deployment.
- *
  * @member {array} [properties.dependencies] The list of deployment
  * dependencies.
- *
  * @member {object} [properties.template] The template content. Use only one of
  * Template or TemplateLink.
- *
  * @member {object} [properties.templateLink] The URI referencing the template.
  * Use only one of Template or TemplateLink.
- *
  * @member {string} [properties.templateLink.uri] The URI of the template to
  * deploy.
- *
  * @member {string} [properties.templateLink.contentVersion] If included, must
  * match the ContentVersion in the template.
- *
  * @member {object} [properties.parameters] Deployment parameters. Use only one
  * of Parameters or ParametersLink.
- *
  * @member {object} [properties.parametersLink] The URI referencing the
  * parameters. Use only one of Parameters or ParametersLink.
- *
  * @member {string} [properties.parametersLink.uri] The URI of the parameters
  * file.
- *
  * @member {string} [properties.parametersLink.contentVersion] If included,
  * must match the ContentVersion in the template.
- *
  * @member {string} [properties.mode] The deployment mode. Possible values are
  * Incremental and Complete. Possible values include: 'Incremental', 'Complete'
- *
  * @member {object} [properties.debugSetting] The debug setting of the
  * deployment.
- *
  * @member {string} [properties.debugSetting.detailLevel] Specifies the type of
  * information to log for debugging. The permitted values are none,
  * requestContent, responseContent, or both requestContent and responseContent
@@ -622,7 +504,6 @@ export interface DeploymentValidateResult {
  * deployment. By logging information about the request or response, you could
  * potentially expose sensitive data that is retrieved through the deployment
  * operations.
- *
  */
 export interface DeploymentExtended {
   id?: string;
@@ -637,10 +518,8 @@ export interface DeploymentExtended {
  * List of deployments.
  *
  * @member {array} [value] An array of deployments.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface DeploymentListResult {
   value?: DeploymentExtended[];
@@ -654,10 +533,8 @@ export interface DeploymentListResult {
  * List of resource providers.
  *
  * @member {array} [value] An array of resource providers.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ProviderListResult {
   value?: Provider[];
@@ -671,13 +548,9 @@ export interface ProviderListResult {
  * Plan for the resource.
  *
  * @member {string} [name] The plan ID.
- *
  * @member {string} [publisher] The publisher ID.
- *
  * @member {string} [product] The offer ID.
- *
  * @member {string} [promotionCode] The promotion code.
- *
  */
 export interface Plan {
   name?: string;
@@ -693,17 +566,11 @@ export interface Plan {
  * SKU for the resource.
  *
  * @member {string} [name] The SKU name.
- *
  * @member {string} [tier] The SKU tier.
- *
  * @member {string} [size] The SKU size.
- *
  * @member {string} [family] The SKU family.
- *
  * @member {string} [model] The SKU model.
- *
  * @member {number} [capacity] The SKU capacity.
- *
  */
 export interface Sku {
   name?: string;
@@ -721,12 +588,9 @@ export interface Sku {
  * Identity for the resource.
  *
  * @member {string} [principalId] The principal ID of resource identity.
- *
  * @member {string} [tenantId] The tenant ID of resource.
- *
  * @member {string} [type] The identity type. Possible values include:
  * 'SystemAssigned'
- *
  */
 export interface Identity {
   readonly principalId?: string;
@@ -739,15 +603,10 @@ export interface Identity {
  * Initializes a new instance of the Resource class.
  * @constructor
  * @member {string} [id] Resource ID
- *
  * @member {string} [name] Resource name
- *
  * @member {string} [type] Resource type
- *
  * @member {string} [location] Resource location
- *
  * @member {object} [tags] Resource tags
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -764,45 +623,26 @@ export interface Resource extends BaseResource {
  * Resource information.
  *
  * @member {object} [plan] The plan of the resource.
- *
  * @member {string} [plan.name] The plan ID.
- *
  * @member {string} [plan.publisher] The publisher ID.
- *
  * @member {string} [plan.product] The offer ID.
- *
  * @member {string} [plan.promotionCode] The promotion code.
- *
  * @member {object} [properties] The resource properties.
- *
  * @member {string} [kind] The kind of the resource.
- *
  * @member {string} [managedBy] ID of the resource that manages this resource.
- *
  * @member {object} [sku] The SKU of the resource.
- *
  * @member {string} [sku.name] The SKU name.
- *
  * @member {string} [sku.tier] The SKU tier.
- *
  * @member {string} [sku.size] The SKU size.
- *
  * @member {string} [sku.family] The SKU family.
- *
  * @member {string} [sku.model] The SKU model.
- *
  * @member {number} [sku.capacity] The SKU capacity.
- *
  * @member {object} [identity] The identity of the resource.
- *
  * @member {string} [identity.principalId] The principal ID of resource
  * identity.
- *
  * @member {string} [identity.tenantId] The tenant ID of resource.
- *
  * @member {string} [identity.type] The identity type. Possible values include:
  * 'SystemAssigned'
- *
  */
 export interface GenericResource extends Resource {
   plan?: Plan;
@@ -820,10 +660,8 @@ export interface GenericResource extends Resource {
  * List of resource groups.
  *
  * @member {array} [value] An array of resources.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceListResult {
   value?: GenericResource[];
@@ -837,7 +675,6 @@ export interface ResourceListResult {
  * The resource group properties.
  *
  * @member {string} [provisioningState] The provisioning state.
- *
  */
 export interface ResourceGroupProperties {
   readonly provisioningState?: string;
@@ -850,22 +687,15 @@ export interface ResourceGroupProperties {
  * Resource group information.
  *
  * @member {string} [id] The ID of the resource group.
- *
  * @member {string} [name] The name of the resource group.
- *
  * @member {object} [properties]
- *
  * @member {string} [properties.provisioningState] The provisioning state.
- *
  * @member {string} location The location of the resource group. It cannot be
  * changed after the resource group has been created. It muct be one of the
  * supported Azure locations.
- *
  * @member {string} [managedBy] The ID of the resource that manages this
  * resource group.
- *
  * @member {object} [tags] The tags attached to the resource group.
- *
  */
 export interface ResourceGroup {
   readonly id?: string;
@@ -883,10 +713,8 @@ export interface ResourceGroup {
  * List of resource groups.
  *
  * @member {array} [value] An array of resource groups.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceGroupListResult {
   value?: ResourceGroup[];
@@ -900,9 +728,7 @@ export interface ResourceGroupListResult {
  * Parameters of move resources.
  *
  * @member {array} [resourcesProperty] The IDs of the resources.
- *
  * @member {string} [targetResourceGroup] The target resource group.
- *
  */
 export interface ResourcesMoveInfo {
   resourcesProperty?: string[];
@@ -918,11 +744,9 @@ export interface ResourcesMoveInfo {
  * @member {array} [resourcesProperty] The IDs of the resources. The only
  * supported string currently is '*' (all resources). Future updates will
  * support exporting specific resources.
- *
  * @member {string} [options] The export template options. Supported values
  * include 'IncludeParameterDefaultValue', 'IncludeComments' or
  * 'IncludeParameterDefaultValue, IncludeComments
- *
  */
 export interface ExportTemplateRequest {
   resourcesProperty?: string[];
@@ -936,9 +760,7 @@ export interface ExportTemplateRequest {
  * Tag count.
  *
  * @member {string} [type] Type of count.
- *
  * @member {number} [value] Value of count.
- *
  */
 export interface TagCount {
   type?: string;
@@ -952,15 +774,10 @@ export interface TagCount {
  * Tag information.
  *
  * @member {string} [id] The tag ID.
- *
  * @member {string} [tagValue] The tag value.
- *
  * @member {object} [count] The tag value count.
- *
  * @member {string} [count.type] Type of count.
- *
  * @member {number} [count.value] Value of count.
- *
  */
 export interface TagValue {
   id?: string;
@@ -975,19 +792,13 @@ export interface TagValue {
  * Tag details.
  *
  * @member {string} [id] The tag ID.
- *
  * @member {string} [tagName] The tag name.
- *
  * @member {object} [count] The total number of resources that use the resource
  * tag. When a tag is initially created and has no associated resources, the
  * value is 0.
- *
  * @member {string} [count.type] Type of count.
- *
  * @member {number} [count.value] Value of count.
- *
  * @member {array} [values] The list of tag values.
- *
  */
 export interface TagDetails {
   id?: string;
@@ -1003,10 +814,8 @@ export interface TagDetails {
  * List of subscription tags.
  *
  * @member {array} [value] An array of tags.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface TagsListResult {
   value?: TagDetails[];
@@ -1020,11 +829,8 @@ export interface TagsListResult {
  * Target resource.
  *
  * @member {string} [id] The ID of the resource.
- *
  * @member {string} [resourceName] The name of the resource.
- *
  * @member {string} [resourceType] The type of the resource.
- *
  */
 export interface TargetResource {
   id?: string;
@@ -1037,7 +843,6 @@ export interface TargetResource {
  * Initializes a new instance of the HttpMessage class.
  * @constructor
  * @member {object} [content] HTTP message content.
- *
  */
 export interface HttpMessage {
   content?: any;
@@ -1050,31 +855,18 @@ export interface HttpMessage {
  * Deployment operation properties.
  *
  * @member {string} [provisioningState] The state of the provisioning.
- *
  * @member {date} [timestamp] The date and time of the operation.
- *
  * @member {string} [serviceRequestId] Deployment operation service request id.
- *
  * @member {string} [statusCode] Operation status code.
- *
  * @member {object} [statusMessage] Operation status message.
- *
  * @member {object} [targetResource] The target resource.
- *
  * @member {string} [targetResource.id] The ID of the resource.
- *
  * @member {string} [targetResource.resourceName] The name of the resource.
- *
  * @member {string} [targetResource.resourceType] The type of the resource.
- *
  * @member {object} [request] The HTTP request message.
- *
  * @member {object} [request.content] HTTP message content.
- *
  * @member {object} [response] The HTTP response message.
- *
  * @member {object} [response.content] HTTP message content.
- *
  */
 export interface DeploymentOperationProperties {
   readonly provisioningState?: string;
@@ -1094,41 +886,25 @@ export interface DeploymentOperationProperties {
  * Deployment operation information.
  *
  * @member {string} [id] Full deployment operation ID.
- *
  * @member {string} [operationId] Deployment operation ID.
- *
  * @member {object} [properties] Deployment properties.
- *
  * @member {string} [properties.provisioningState] The state of the
  * provisioning.
- *
  * @member {date} [properties.timestamp] The date and time of the operation.
- *
  * @member {string} [properties.serviceRequestId] Deployment operation service
  * request id.
- *
  * @member {string} [properties.statusCode] Operation status code.
- *
  * @member {object} [properties.statusMessage] Operation status message.
- *
  * @member {object} [properties.targetResource] The target resource.
- *
  * @member {string} [properties.targetResource.id] The ID of the resource.
- *
  * @member {string} [properties.targetResource.resourceName] The name of the
  * resource.
- *
  * @member {string} [properties.targetResource.resourceType] The type of the
  * resource.
- *
  * @member {object} [properties.request] The HTTP request message.
- *
  * @member {object} [properties.request.content] HTTP message content.
- *
  * @member {object} [properties.response] The HTTP response message.
- *
  * @member {object} [properties.response.content] HTTP message content.
- *
  */
 export interface DeploymentOperation {
   readonly id?: string;
@@ -1143,10 +919,8 @@ export interface DeploymentOperation {
  * List of deployment operations.
  *
  * @member {array} [value] An array of deployment operations.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface DeploymentOperationsListResult {
   value?: DeploymentOperation[];
@@ -1160,15 +934,10 @@ export interface DeploymentOperationsListResult {
  * Resource provider operation's display properties.
  *
  * @member {string} [publisher] Operation description.
- *
  * @member {string} [provider] Operation provider.
- *
  * @member {string} [resource] Operation resource.
- *
  * @member {string} [operation] Operation.
- *
  * @member {string} [description] Operation description.
- *
  */
 export interface ResourceProviderOperationDisplayProperties {
   publisher?: string;
@@ -1183,7 +952,6 @@ export interface ResourceProviderOperationDisplayProperties {
  * Initializes a new instance of the SubResource class.
  * @constructor
  * @member {string} [id] Resource ID
- *
  */
 export interface SubResource extends BaseResource {
   id?: string;
@@ -1194,19 +962,13 @@ export interface SubResource extends BaseResource {
  * Initializes a new instance of the ResourceGroupExportResult class.
  * @constructor
  * @member {object} [template] The template content.
- *
  * @member {object} [error] The error.
- *
  * @member {string} [error.code] The error code returned when exporting the
  * template.
- *
  * @member {string} [error.message] The error message describing the export
  * error.
- *
  * @member {string} [error.target] The target of the error.
- *
  * @member {array} [error.details] Validation error.
- *
  */
 export interface ResourceGroupExportResult {
   template?: any;
@@ -1220,10 +982,8 @@ export interface ResourceGroupExportResult {
  * List of deployments.
  *
  * @member {array} [value] An array of deployments.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface DeploymentListResult {
   value?: DeploymentExtended[];
@@ -1237,10 +997,8 @@ export interface DeploymentListResult {
  * List of resource providers.
  *
  * @member {array} [value] An array of resource providers.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ProviderListResult {
   value?: Provider[];
@@ -1254,10 +1012,8 @@ export interface ProviderListResult {
  * List of resource groups.
  *
  * @member {array} [value] An array of resources.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceListResult {
   value?: GenericResource[];
@@ -1271,10 +1027,8 @@ export interface ResourceListResult {
  * List of resource groups.
  *
  * @member {array} [value] An array of resource groups.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceGroupListResult {
   value?: ResourceGroup[];
@@ -1288,10 +1042,8 @@ export interface ResourceGroupListResult {
  * List of subscription tags.
  *
  * @member {array} [value] An array of tags.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface TagsListResult {
   value?: TagDetails[];
@@ -1305,10 +1057,8 @@ export interface TagsListResult {
  * List of deployment operations.
  *
  * @member {array} [value] An array of deployment operations.
- *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface DeploymentOperationsListResult {
   value?: DeploymentOperation[];
@@ -1324,7 +1074,6 @@ export interface DeploymentOperationsListResult {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface DeploymentListResult extends Array<DeploymentExtended> {
   readonly nextLink?: string;
@@ -1338,7 +1087,6 @@ export interface DeploymentListResult extends Array<DeploymentExtended> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ProviderListResult extends Array<Provider> {
   readonly nextLink?: string;
@@ -1352,7 +1100,6 @@ export interface ProviderListResult extends Array<Provider> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceListResult extends Array<GenericResource> {
   readonly nextLink?: string;
@@ -1366,7 +1113,6 @@ export interface ResourceListResult extends Array<GenericResource> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface ResourceGroupListResult extends Array<ResourceGroup> {
   readonly nextLink?: string;
@@ -1380,7 +1126,6 @@ export interface ResourceGroupListResult extends Array<ResourceGroup> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface TagsListResult extends Array<TagDetails> {
   readonly nextLink?: string;
@@ -1394,7 +1139,6 @@ export interface TagsListResult extends Array<TagDetails> {
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
- *
  */
 export interface DeploymentOperationsListResult extends Array<DeploymentOperation> {
   readonly nextLink?: string;

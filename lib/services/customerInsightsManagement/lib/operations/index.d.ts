@@ -983,6 +983,72 @@ export interface Profiles {
 
 
     /**
+     * Gets the KPIs that enrich the profile Type identified by the supplied name.
+     * Enrichment happens through participants of the Interaction on an Interaction
+     * KPI and through Relationships for Profile KPIs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} profileName The name of the profile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEnrichingKpisWithHttpOperationResponse(resourceGroupName: string, hubName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KpiDefinition[]>>;
+
+    /**
+     * Gets the KPIs that enrich the profile Type identified by the supplied name.
+     * Enrichment happens through participants of the Interaction on an Interaction
+     * KPI and through Relationships for Profile KPIs.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} profileName The name of the profile.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEnrichingKpis(resourceGroupName: string, hubName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KpiDefinition[]>;
+    getEnrichingKpis(resourceGroupName: string, hubName: string, profileName: string, callback: ServiceCallback<models.KpiDefinition[]>): void;
+    getEnrichingKpis(resourceGroupName: string, hubName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KpiDefinition[]>): void;
+
+
+    /**
      * Creates a profile within a Hub, or updates an existing profile.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1329,6 +1395,11 @@ export interface Interactions {
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
      *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1403,6 +1474,11 @@ export interface Interactions {
      * primary participant property name for an interaction ,This is used to
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
+     *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1573,6 +1649,70 @@ export interface Interactions {
 
 
     /**
+     * Suggests relationships to create relationship links.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} interactionName The name of the interaction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SuggestRelationshipLinksResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    suggestRelationshipLinksWithHttpOperationResponse(resourceGroupName: string, hubName: string, interactionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SuggestRelationshipLinksResponse>>;
+
+    /**
+     * Suggests relationships to create relationship links.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} hubName The name of the hub.
+     *
+     * @param {string} interactionName The name of the interaction.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SuggestRelationshipLinksResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SuggestRelationshipLinksResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SuggestRelationshipLinksResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    suggestRelationshipLinks(resourceGroupName: string, hubName: string, interactionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SuggestRelationshipLinksResponse>;
+    suggestRelationshipLinks(resourceGroupName: string, hubName: string, interactionName: string, callback: ServiceCallback<models.SuggestRelationshipLinksResponse>): void;
+    suggestRelationshipLinks(resourceGroupName: string, hubName: string, interactionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SuggestRelationshipLinksResponse>): void;
+
+
+    /**
      * Creates an interaction or updates an existing interaction within a hub.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1633,6 +1773,11 @@ export interface Interactions {
      * primary participant property name for an interaction ,This is used to
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
+     *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1708,6 +1853,11 @@ export interface Interactions {
      * primary participant property name for an interaction ,This is used to
      * logically represent the agent of the interaction, Specify the participant
      * name here from ParticipantName.
+     *
+     * @param {boolean} [parameters.isActivity] An interaction can be tagged as an
+     * activity only during create. This enables the interaction to be editable and
+     * can enable merging of properties from multiple data sources based on
+     * precedence, which is defined at a link level.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3310,13 +3460,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3346,13 +3499,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3587,13 +3743,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3623,13 +3782,16 @@ export interface Connectors {
      * @param {string} [parameters.connectorName] Name of the connector.
      *
      * @param {string} parameters.connectorType Type of connector. Possible values
-     * include: 'CRM', 'AzureBlob', 'Salesforce'
+     * include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} [parameters.displayName] Display name of the connector.
      *
      * @param {string} [parameters.description] Description of the connector.
      *
      * @param {object} parameters.connectorProperties The connector properties.
+     *
+     * @param {boolean} [parameters.isInternal] If this is an internal connector.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3808,7 +3970,8 @@ export interface ConnectorMappings {
      * Connector Mapping operation.
      *
      * @param {string} [parameters.connectorType] Type of connector. Possible
-     * values include: 'CRM', 'AzureBlob', 'Salesforce'
+     * values include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} parameters.entityType Defines which entity type the file
      * should map to. Possible values include: 'None', 'Profile', 'Interaction',
@@ -3916,7 +4079,8 @@ export interface ConnectorMappings {
      * Connector Mapping operation.
      *
      * @param {string} [parameters.connectorType] Type of connector. Possible
-     * values include: 'CRM', 'AzureBlob', 'Salesforce'
+     * values include: 'None', 'CRM', 'AzureBlob', 'Salesforce', 'ExchangeOnline',
+     * 'Outbound'
      *
      * @param {string} parameters.entityType Defines which entity type the file
      * should map to. Possible values include: 'None', 'Profile', 'Interaction',
@@ -4315,11 +4479,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -4378,11 +4545,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -4706,11 +4876,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -4769,11 +4942,14 @@ export interface Kpi {
      * @param {object} [parameters.description] Localized description for the KPI.
      *
      * @param {string} parameters.calculationWindow The calculation window.
-     * Possible values include: 'Hour', 'Day', 'Week', 'Month'
+     * Possible values include: 'Lifetime', 'Hour', 'Day', 'Week', 'Month'
+     *
+     * @param {string} [parameters.calculationWindowFieldName] Name of calculation
+     * window field.
      *
      * @param {string} parameters.functionProperty The computation function for the
      * KPI. Possible values include: 'Sum', 'Avg', 'Min', 'Max', 'Last', 'Count',
-     * 'None'
+     * 'None', 'CountDistinct'
      *
      * @param {string} parameters.expression The computation expression for the
      * KPI.
@@ -5526,6 +5702,10 @@ export interface Links {
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
      *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5573,6 +5753,10 @@ export interface Links {
      * reference only link. This flag is ingored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
+     *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5825,6 +6009,10 @@ export interface Links {
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
      *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5872,6 +6060,10 @@ export interface Links {
      * reference only link. This flag is ingored if the Mappings are defined. If
      * the mappings are not defined and it is set to true, links processing will
      * not create or update profiles.
+     *
+     * @param {string} [parameters.operationType] Determines whether this link is
+     * supposed to create or delete instances if Link is NOT Reference Only.
+     * Possible values include: 'Upsert', 'Delete'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6207,11 +6399,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6277,11 +6475,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6493,11 +6697,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6563,11 +6773,17 @@ export interface RoleAssignments {
      * @param {object} [parameters.roleAssignments] The Role assignments set for
      * the assignment.
      *
-     * @param {array} [parameters.roleAssignments.elements] The elements included
-     * in the set.
+     * @param {object} [parameters.conflationPolicies] Widget types set for the
+     * assignment.
      *
-     * @param {array} [parameters.roleAssignments.exceptions] The elements that are
-     * not included in the set, in case elements contains '*' indicating 'all'.
+     * @param {object} [parameters.segments] The Role assignments set for the
+     * assignment.
+     *
+     * @param {array} [parameters.segments.elements] The elements included in the
+     * set.
+     *
+     * @param {array} [parameters.segments.exceptions] The elements that are not
+     * included in the set, in case elements contains '*' indicating 'all'.
      *
      * @param {object} [options] Optional Parameters.
      *

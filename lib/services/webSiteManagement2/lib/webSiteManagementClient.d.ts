@@ -62,6 +62,7 @@ declare class WebSiteManagementClient {
   topLevelDomains: operations.TopLevelDomains;
   webApps: operations.WebApps;
   deletedWebApps: operations.DeletedWebApps;
+  provider: operations.Provider;
 
 
   /**
@@ -466,7 +467,7 @@ declare class WebSiteManagementClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic'
+   * 'Dynamic', 'Isolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
@@ -491,7 +492,7 @@ declare class WebSiteManagementClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'Dynamic'
+   * 'Dynamic', 'Isolated'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.

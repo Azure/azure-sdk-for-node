@@ -22,16 +22,13 @@ export { CloudError } from 'ms-rest-azure';
  * Key Vault container for a certificate that is purchased through Azure.
  *
  * @member {string} [keyVaultId] Key Vault resource Id.
- *
  * @member {string} [keyVaultSecretName] Key Vault secret name.
- *
  * @member {string} [provisioningState] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
  * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
  * 'Unknown'
- *
  */
 export interface AppServiceCertificate {
   keyVaultId?: string;
@@ -46,17 +43,11 @@ export interface AppServiceCertificate {
  * Azure resource.
  *
  * @member {string} [id] Resource Id.
- *
  * @member {string} [name] Resource Name.
- *
  * @member {string} [kind] Kind of resource.
- *
  * @member {string} location Resource Location.
- *
  * @member {string} [type] Resource type.
- *
  * @member {object} [tags] Resource tags.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -75,16 +66,13 @@ export interface Resource extends BaseResource {
  * Azure.
  *
  * @member {string} [keyVaultId] Key Vault resource Id.
- *
  * @member {string} [keyVaultSecretName] Key Vault secret name.
- *
  * @member {string} [provisioningState] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
  * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
  * 'Unknown'
- *
  */
 export interface AppServiceCertificateResource extends Resource {
   keyVaultId?: string;
@@ -99,9 +87,7 @@ export interface AppServiceCertificateResource extends Resource {
  * Collection of certitificateorder certificates.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceCertificateCollection {
   value: AppServiceCertificateResource[];
@@ -115,23 +101,14 @@ export interface AppServiceCertificateCollection {
  * SSL certificate details.
  *
  * @member {number} [version] Version.
- *
  * @member {string} [serialNumber] Serial Number.
- *
  * @member {string} [thumbprint] Thumbprint.
- *
  * @member {string} [subject] Subject.
- *
  * @member {date} [notBefore] Valid from.
- *
  * @member {date} [notAfter] Valid to.
- *
  * @member {string} [signatureAlgorithm] Signature algorithm.
- *
  * @member {string} [issuer] Issuer.
- *
  * @member {string} [rawData] Raw certificate data.
- *
  */
 export interface CertificateDetails {
   readonly version?: number;
@@ -152,104 +129,61 @@ export interface CertificateDetails {
  * SSL certificate purchase order.
  *
  * @member {object} [certificates] State of the Key Vault secret.
- *
  * @member {string} [distinguishedName] Certificate distinguished name.
- *
  * @member {string} [domainVerificationToken] Domain verification token.
- *
  * @member {number} [validityInYears] Duration in years (must be between 1 and
  * 3). Default value: 1 .
- *
  * @member {number} [keySize] Certificate key size. Default value: 2048 .
- *
  * @member {string} [productType] Certificate product type. Possible values
  * include: 'StandardDomainValidatedSsl', 'StandardDomainValidatedWildCardSsl'
- *
  * @member {boolean} [autoRenew] <code>true</code> if the certificate should be
  * automatically renewed when it expires; otherwise, <code>false</code>.
  * Default value: true .
- *
  * @member {string} [provisioningState] Status of certificate order. Possible
  * values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
- *
  * @member {string} [status] Current order status. Possible values include:
  * 'Pendingissuance', 'Issued', 'Revoked', 'Canceled', 'Denied',
  * 'Pendingrevocation', 'PendingRekey', 'Unused', 'Expired', 'NotSubmitted'
- *
  * @member {object} [signedCertificate] Signed certificate.
- *
  * @member {number} [signedCertificate.version] Version.
- *
  * @member {string} [signedCertificate.serialNumber] Serial Number.
- *
  * @member {string} [signedCertificate.thumbprint] Thumbprint.
- *
  * @member {string} [signedCertificate.subject] Subject.
- *
  * @member {date} [signedCertificate.notBefore] Valid from.
- *
  * @member {date} [signedCertificate.notAfter] Valid to.
- *
  * @member {string} [signedCertificate.signatureAlgorithm] Signature algorithm.
- *
  * @member {string} [signedCertificate.issuer] Issuer.
- *
  * @member {string} [signedCertificate.rawData] Raw certificate data.
- *
  * @member {string} [csr] Last CSR that was created for this order.
- *
  * @member {object} [intermediate] Intermediate certificate.
- *
  * @member {number} [intermediate.version] Version.
- *
  * @member {string} [intermediate.serialNumber] Serial Number.
- *
  * @member {string} [intermediate.thumbprint] Thumbprint.
- *
  * @member {string} [intermediate.subject] Subject.
- *
  * @member {date} [intermediate.notBefore] Valid from.
- *
  * @member {date} [intermediate.notAfter] Valid to.
- *
  * @member {string} [intermediate.signatureAlgorithm] Signature algorithm.
- *
  * @member {string} [intermediate.issuer] Issuer.
- *
  * @member {string} [intermediate.rawData] Raw certificate data.
- *
  * @member {object} [root] Root certificate.
- *
  * @member {number} [root.version] Version.
- *
  * @member {string} [root.serialNumber] Serial Number.
- *
  * @member {string} [root.thumbprint] Thumbprint.
- *
  * @member {string} [root.subject] Subject.
- *
  * @member {date} [root.notBefore] Valid from.
- *
  * @member {date} [root.notAfter] Valid to.
- *
  * @member {string} [root.signatureAlgorithm] Signature algorithm.
- *
  * @member {string} [root.issuer] Issuer.
- *
  * @member {string} [root.rawData] Raw certificate data.
- *
  * @member {string} [serialNumber] Current serial number of the certificate.
- *
  * @member {date} [lastCertificateIssuanceTime] Certificate last issuance time.
- *
  * @member {date} [expirationTime] Certificate expiration time.
- *
  * @member {boolean} [isPrivateKeyExternal] <code>true</code> if private key is
  * external; otherwise, <code>false</code>.
- *
  * @member {array} [appServiceCertificateNotRenewableReasons] Reasons why App
  * Service Certificate is not renewable at the current moment.
- *
+ * @member {date} [nextAutoRenewalTimeStamp] Time stamp when the certificate
+ * would be auto renewed next
  */
 export interface AppServiceCertificateOrder extends Resource {
   certificates?: { [propertyName: string]: AppServiceCertificate };
@@ -268,8 +202,9 @@ export interface AppServiceCertificateOrder extends Resource {
   readonly serialNumber?: string;
   readonly lastCertificateIssuanceTime?: Date;
   readonly expirationTime?: Date;
-  isPrivateKeyExternal?: boolean;
-  appServiceCertificateNotRenewableReasons?: string[];
+  readonly isPrivateKeyExternal?: boolean;
+  readonly appServiceCertificateNotRenewableReasons?: string[];
+  readonly nextAutoRenewalTimeStamp?: Date;
 }
 
 /**
@@ -279,9 +214,7 @@ export interface AppServiceCertificateOrder extends Resource {
  * Collection of certitificate orders.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceCertificateOrderCollection {
   value: AppServiceCertificateOrder[];
@@ -295,9 +228,7 @@ export interface AppServiceCertificateOrderCollection {
  * SSL certificate email.
  *
  * @member {string} [emailId] Email id.
- *
  * @member {date} [timeStamp] Time stamp.
- *
  */
 export interface CertificateEmail extends Resource {
   emailId?: string;
@@ -316,10 +247,8 @@ export interface CertificateEmail extends Resource {
  * 'FraudDetected', 'OrgNameChange', 'OrgValidationComplete', 'SanDrop',
  * 'FraudCleared', 'CertificateExpired', 'CertificateExpirationWarning',
  * 'FraudDocumentationRequired', 'Unknown'
- *
  * @member {date} [createdAt] Time at which the certificate action was
  * performed.
- *
  */
 export interface CertificateOrderAction extends Resource {
   certificateOrderActionType?: string;
@@ -333,7 +262,6 @@ export interface CertificateOrderAction extends Resource {
  * Identifies an object.
  *
  * @member {string} [name] Name of the object.
- *
  */
 export interface NameIdentifier {
   name?: string;
@@ -346,15 +274,11 @@ export interface NameIdentifier {
  * Class representing certificate reissue request.
  *
  * @member {number} [keySize] Certificate Key Size.
- *
  * @member {number} [delayExistingRevokeInHours] Delay in hours to revoke
  * existing certificate after the new certificate is issued.
- *
  * @member {string} [csr] Csr to be used for re-key operation.
- *
  * @member {boolean} [isPrivateKeyExternal] Should we change the ASC type (from
  * managed private key to external private key and vice versa).
- *
  */
 export interface ReissueCertificateOrderRequest extends Resource {
   keySize?: number;
@@ -370,12 +294,9 @@ export interface ReissueCertificateOrderRequest extends Resource {
  * Class representing certificate renew request.
  *
  * @member {number} [keySize] Certificate Key Size.
- *
  * @member {string} [csr] Csr to be used for re-key operation.
- *
  * @member {boolean} [isPrivateKeyExternal] Should we change the ASC type (from
  * managed private key to external private key and vice versa).
- *
  */
 export interface RenewCertificateOrderRequest extends Resource {
   keySize?: number;
@@ -390,7 +311,6 @@ export interface RenewCertificateOrderRequest extends Resource {
  * Site seal
  *
  * @member {string} html HTML snippet
- *
  */
 export interface SiteSeal {
   html: string;
@@ -403,9 +323,7 @@ export interface SiteSeal {
  * Site seal request.
  *
  * @member {boolean} [lightTheme] Theme
- *
  * @member {string} [locale] Locale
- *
  */
 export interface SiteSealRequest {
   lightTheme?: boolean;
@@ -419,13 +337,9 @@ export interface SiteSealRequest {
  * Virtual IP mapping.
  *
  * @member {string} [virtualIP] Virtual IP address.
- *
  * @member {number} [internalHttpPort] Internal HTTP port.
- *
  * @member {number} [internalHttpsPort] Internal HTTPS port.
- *
  * @member {boolean} [inUse] Is virtual IP mapping in use.
- *
  */
 export interface VirtualIPMapping {
   virtualIP?: string;
@@ -441,15 +355,11 @@ export interface VirtualIPMapping {
  * Describes main public IP address and any extra virtual IPs.
  *
  * @member {string} [serviceIpAddress] Main public virtual IP.
- *
  * @member {string} [internalIpAddress] Virtual Network internal IP address of
  * the App Service Environment if it is in internal load-balancing mode.
- *
  * @member {array} [outboundIpAddresses] IP addresses appearing on outbound
  * connections.
- *
  * @member {array} [vipMappings] Additional virtual IPs.
- *
  */
 export interface AddressResponse {
   serviceIpAddress?: string;
@@ -465,7 +375,6 @@ export interface AddressResponse {
  * Information about the formal API definition for the app.
  *
  * @member {string} [url] The URL of the API definition.
- *
  */
 export interface ApiDefinitionInfo {
   url?: string;
@@ -478,13 +387,9 @@ export interface ApiDefinitionInfo {
  * Specification for using a Virtual Network.
  *
  * @member {string} [id] Resource id of the Virtual Network.
- *
  * @member {string} [name] Name of the Virtual Network (read-only).
- *
  * @member {string} [type] Resource type of the Virtual Network (read-only).
- *
  * @member {string} [subnet] Subnet within the Virtual Network.
- *
  */
 export interface VirtualNetworkProfile {
   id?: string;
@@ -501,17 +406,12 @@ export interface VirtualNetworkProfile {
  *
  * @member {number} [workerSizeId] Worker size ID for referencing this worker
  * pool.
- *
  * @member {string} [computeMode] Shared or dedicated app hosting. Possible
  * values include: 'Shared', 'Dedicated', 'Dynamic'
- *
  * @member {string} [workerSize] VM size of the worker pool instances.
- *
  * @member {number} [workerCount] Number of instances in the worker pool.
- *
  * @member {array} [instanceNames] Names of all instances in the worker pool
  * (read only).
- *
  */
 export interface WorkerPool {
   workerSizeId?: number;
@@ -528,35 +428,25 @@ export interface WorkerPool {
  * Stamp capacity information.
  *
  * @member {string} [name] Name of the stamp.
- *
  * @member {number} [availableCapacity] Available capacity (# of machines,
  * bytes of storage etc...).
- *
  * @member {number} [totalCapacity] Total capacity (# of machines, bytes of
  * storage etc...).
- *
  * @member {string} [unit] Name of the unit.
- *
  * @member {string} [computeMode] Shared/dedicated workers. Possible values
  * include: 'Shared', 'Dedicated', 'Dynamic'
- *
  * @member {string} [workerSize] Size of the machines. Possible values include:
  * 'Default', 'Small', 'Medium', 'Large'
- *
  * @member {number} [workerSizeId] Size ID of machines:
  * 0 - Small
  * 1 - Medium
  * 2 - Large
- *
  * @member {boolean} [excludeFromCapacityAllocation] If <code>true</code>, it
  * includes basic apps.
  * Basic apps are not used for capacity allocation.
- *
  * @member {boolean} [isApplicableForAllComputeModes] <code>true</code> if
  * capacity is applicable for all apps; otherwise, <code>false</code>.
- *
  * @member {string} [siteMode] Shared or Dedicated.
- *
  */
 export interface StampCapacity {
   name?: string;
@@ -579,13 +469,9 @@ export interface StampCapacity {
  *
  * @member {string} [action] Action object. Possible values include: 'Permit',
  * 'Deny'
- *
  * @member {string} [description] Description.
- *
  * @member {number} [order] Order of precedence.
- *
  * @member {string} [remoteSubnet] Remote subnet.
- *
  */
 export interface NetworkAccessControlEntry {
   action?: string;
@@ -601,9 +487,7 @@ export interface NetworkAccessControlEntry {
  * Name value pair.
  *
  * @member {string} [name] Pair name.
- *
  * @member {string} [value] Pair value.
- *
  */
 export interface NameValuePair {
   name?: string;
@@ -617,121 +501,80 @@ export interface NameValuePair {
  * Description of an App Service Environment.
  *
  * @member {string} name Name of the App Service Environment.
- *
  * @member {string} location Location of the App Service Environment, e.g.
  * "West US".
- *
  * @member {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- *
  * @member {string} [status] Current status of the App Service Environment.
  * Possible values include: 'Preparing', 'Ready', 'Scaling', 'Deleting'
- *
  * @member {string} [vnetName] Name of the Virtual Network for the App Service
  * Environment.
- *
  * @member {string} [vnetResourceGroupName] Resource group of the Virtual
  * Network.
- *
  * @member {string} [vnetSubnetName] Subnet of the Virtual Network.
- *
  * @member {object} virtualNetwork Description of the Virtual Network.
- *
  * @member {string} [virtualNetwork.id] Resource id of the Virtual Network.
- *
  * @member {string} [virtualNetwork.name] Name of the Virtual Network
  * (read-only).
- *
  * @member {string} [virtualNetwork.type] Resource type of the Virtual Network
  * (read-only).
- *
  * @member {string} [virtualNetwork.subnet] Subnet within the Virtual Network.
- *
  * @member {string} [internalLoadBalancingMode] Specifies which endpoints to
  * serve internally in the Virtual Network for the App Service Environment.
  * Possible values include: 'None', 'Web', 'Publishing'
- *
  * @member {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
- *
  * @member {number} [multiRoleCount] Number of front-end instances.
- *
  * @member {array} workerPools Description of worker pools with worker size
  * IDs, VM sizes, and number of workers in each pool.
- *
  * @member {number} [ipsslAddressCount] Number of IP SSL addresses reserved for
  * the App Service Environment.
- *
  * @member {string} [databaseEdition] Edition of the metadata database for the
  * App Service Environment, e.g. "Standard".
- *
  * @member {string} [databaseServiceObjective] Service objective of the
  * metadata database for the App Service Environment, e.g. "S0".
- *
  * @member {number} [upgradeDomains] Number of upgrade domains of the App
  * Service Environment.
- *
  * @member {string} [subscriptionId] Subscription of the App Service
  * Environment.
- *
  * @member {string} [dnsSuffix] DNS suffix of the App Service Environment.
- *
  * @member {string} [lastAction] Last deployment action on the App Service
  * Environment.
- *
  * @member {string} [lastActionResult] Result of the last deployment action on
  * the App Service Environment.
- *
  * @member {string} [allowedMultiSizes] List of comma separated strings
  * describing which VM sizes are allowed for front-ends.
- *
  * @member {string} [allowedWorkerSizes] List of comma separated strings
  * describing which VM sizes are allowed for workers.
- *
  * @member {number} [maximumNumberOfMachines] Maximum number of VMs in the App
  * Service Environment.
- *
  * @member {array} [vipMappings] Description of IP SSL mapping for the App
  * Service Environment.
- *
  * @member {array} [environmentCapacities] Current total, used, and available
  * worker capacities.
- *
  * @member {array} [networkAccessControlList] Access control list for
  * controlling traffic to the App Service Environment.
- *
  * @member {boolean} [environmentIsHealthy] True/false indicating whether the
  * App Service Environment is healthy.
- *
  * @member {string} [environmentStatus] Detailed message about with results of
  * the last check of the App Service Environment.
- *
- * @member {string} [kind] Kind of the app service environment
- *
  * @member {string} [resourceGroup] Resource group of the App Service
  * Environment.
- *
  * @member {number} [frontEndScaleFactor] Scale factor for front-ends.
- *
  * @member {number} [defaultFrontEndScaleFactor] Default Scale Factor for
  * FrontEnds.
- *
  * @member {string} [apiManagementAccountId] API Management Account associated
  * with the App Service Environment.
- *
  * @member {boolean} [suspended] <code>true</code> if the App Service
  * Environment is suspended; otherwise, <code>false</code>. The environment can
  * be suspended, e.g. when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- *
  * @member {boolean} [dynamicCacheEnabled] True/false indicating whether the
  * App Service Environment is suspended. The environment can be suspended e.g.
  * when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- *
  * @member {array} [clusterSettings] Custom settings for changing the behavior
  * of the App Service Environment.
- *
  */
 export interface AppServiceEnvironment {
   name: string;
@@ -762,7 +605,6 @@ export interface AppServiceEnvironment {
   networkAccessControlList?: NetworkAccessControlEntry[];
   readonly environmentIsHealthy?: boolean;
   readonly environmentStatus?: string;
-  kind?: string;
   readonly resourceGroup?: string;
   frontEndScaleFactor?: number;
   readonly defaultFrontEndScaleFactor?: number;
@@ -779,9 +621,7 @@ export interface AppServiceEnvironment {
  * Collection of App Service Environments.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceEnvironmentCollection {
   value: AppServiceEnvironment[];
@@ -796,122 +636,80 @@ export interface AppServiceEnvironmentCollection {
  *
  * @member {string} appServiceEnvironmentResourceName Name of the App Service
  * Environment.
- *
  * @member {string} appServiceEnvironmentResourceLocation Location of the App
  * Service Environment, e.g. "West US".
- *
  * @member {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- *
  * @member {string} [status] Current status of the App Service Environment.
  * Possible values include: 'Preparing', 'Ready', 'Scaling', 'Deleting'
- *
  * @member {string} [vnetName] Name of the Virtual Network for the App Service
  * Environment.
- *
  * @member {string} [vnetResourceGroupName] Resource group of the Virtual
  * Network.
- *
  * @member {string} [vnetSubnetName] Subnet of the Virtual Network.
- *
  * @member {object} virtualNetwork Description of the Virtual Network.
- *
  * @member {string} [virtualNetwork.id] Resource id of the Virtual Network.
- *
  * @member {string} [virtualNetwork.name] Name of the Virtual Network
  * (read-only).
- *
  * @member {string} [virtualNetwork.type] Resource type of the Virtual Network
  * (read-only).
- *
  * @member {string} [virtualNetwork.subnet] Subnet within the Virtual Network.
- *
  * @member {string} [internalLoadBalancingMode] Specifies which endpoints to
  * serve internally in the Virtual Network for the App Service Environment.
  * Possible values include: 'None', 'Web', 'Publishing'
- *
  * @member {string} [multiSize] Front-end VM size, e.g. "Medium", "Large".
- *
  * @member {number} [multiRoleCount] Number of front-end instances.
- *
  * @member {array} workerPools Description of worker pools with worker size
  * IDs, VM sizes, and number of workers in each pool.
- *
  * @member {number} [ipsslAddressCount] Number of IP SSL addresses reserved for
  * the App Service Environment.
- *
  * @member {string} [databaseEdition] Edition of the metadata database for the
  * App Service Environment, e.g. "Standard".
- *
  * @member {string} [databaseServiceObjective] Service objective of the
  * metadata database for the App Service Environment, e.g. "S0".
- *
  * @member {number} [upgradeDomains] Number of upgrade domains of the App
  * Service Environment.
- *
  * @member {string} [subscriptionId] Subscription of the App Service
  * Environment.
- *
  * @member {string} [dnsSuffix] DNS suffix of the App Service Environment.
- *
  * @member {string} [lastAction] Last deployment action on the App Service
  * Environment.
- *
  * @member {string} [lastActionResult] Result of the last deployment action on
  * the App Service Environment.
- *
  * @member {string} [allowedMultiSizes] List of comma separated strings
  * describing which VM sizes are allowed for front-ends.
- *
  * @member {string} [allowedWorkerSizes] List of comma separated strings
  * describing which VM sizes are allowed for workers.
- *
  * @member {number} [maximumNumberOfMachines] Maximum number of VMs in the App
  * Service Environment.
- *
  * @member {array} [vipMappings] Description of IP SSL mapping for the App
  * Service Environment.
- *
  * @member {array} [environmentCapacities] Current total, used, and available
  * worker capacities.
- *
  * @member {array} [networkAccessControlList] Access control list for
  * controlling traffic to the App Service Environment.
- *
  * @member {boolean} [environmentIsHealthy] True/false indicating whether the
  * App Service Environment is healthy.
- *
  * @member {string} [environmentStatus] Detailed message about with results of
  * the last check of the App Service Environment.
- *
- * @member {string} [appServiceEnvironmentResourceKind] Kind of the app service
- * environment
- *
  * @member {string} [resourceGroup] Resource group of the App Service
  * Environment.
- *
  * @member {number} [frontEndScaleFactor] Scale factor for front-ends.
- *
  * @member {number} [defaultFrontEndScaleFactor] Default Scale Factor for
  * FrontEnds.
- *
  * @member {string} [apiManagementAccountId] API Management Account associated
  * with the App Service Environment.
- *
  * @member {boolean} [suspended] <code>true</code> if the App Service
  * Environment is suspended; otherwise, <code>false</code>. The environment can
  * be suspended, e.g. when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- *
  * @member {boolean} [dynamicCacheEnabled] True/false indicating whether the
  * App Service Environment is suspended. The environment can be suspended e.g.
  * when the management endpoint is no longer available
  * (most likely because NSG blocked the incoming traffic).
- *
  * @member {array} [clusterSettings] Custom settings for changing the behavior
  * of the App Service Environment.
- *
  */
 export interface AppServiceEnvironmentResource extends Resource {
   appServiceEnvironmentResourceName: string;
@@ -942,7 +740,6 @@ export interface AppServiceEnvironmentResource extends Resource {
   networkAccessControlList?: NetworkAccessControlEntry[];
   readonly environmentIsHealthy?: boolean;
   readonly environmentStatus?: string;
-  appServiceEnvironmentResourceKind?: string;
   readonly resourceGroup?: string;
   frontEndScaleFactor?: number;
   readonly defaultFrontEndScaleFactor?: number;
@@ -959,11 +756,8 @@ export interface AppServiceEnvironmentResource extends Resource {
  * Specification for an App Service Environment to use for this resource.
  *
  * @member {string} [id] Resource ID of the App Service Environment.
- *
  * @member {string} [name] Name of the App Service Environment.
- *
  * @member {string} [type] Resource type of the App Service Environment.
- *
  */
 export interface HostingEnvironmentProfile {
   id?: string;
@@ -979,16 +773,12 @@ export interface HostingEnvironmentProfile {
  *
  * @member {number} [minimum] Minimum number of workers for this App Service
  * plan SKU.
- *
  * @member {number} [maximum] Maximum number of workers for this App Service
  * plan SKU.
- *
  * @member {number} [default] Default number of workers for this App Service
  * plan SKU.
- *
  * @member {string} [scaleType] Available scale configurations for an App
  * Service plan.
- *
  */
 export interface SkuCapacity {
   minimum?: number;
@@ -1004,11 +794,8 @@ export interface SkuCapacity {
  * Describes the capabilities/features allowed for a specific SKU.
  *
  * @member {string} [name] Name of the SKU capability.
- *
  * @member {string} [value] Value of the SKU capability.
- *
  * @member {string} [reason] Reason of the SKU capability.
- *
  */
 export interface Capability {
   name?: string;
@@ -1023,36 +810,24 @@ export interface Capability {
  * Description of a SKU for a scalable resource.
  *
  * @member {string} [name] Name of the resource SKU.
- *
  * @member {string} [tier] Service tier of the resource SKU.
- *
  * @member {string} [size] Size specifier of the resource SKU.
- *
  * @member {string} [family] Family code of the resource SKU.
- *
  * @member {number} [capacity] Current number of instances assigned to the
  * resource.
- *
  * @member {object} [skuCapacity] Min, max, and default scale values of the
  * SKU.
- *
  * @member {number} [skuCapacity.minimum] Minimum number of workers for this
  * App Service plan SKU.
- *
  * @member {number} [skuCapacity.maximum] Maximum number of workers for this
  * App Service plan SKU.
- *
  * @member {number} [skuCapacity.default] Default number of workers for this
  * App Service plan SKU.
- *
  * @member {string} [skuCapacity.scaleType] Available scale configurations for
  * an App Service plan.
- *
  * @member {array} [locations] Locations of the SKU.
- *
  * @member {array} [capabilities] Capabilities of the SKU, e.g., is traffic
  * manager enabled?
- *
  */
 export interface SkuDescription {
   name?: string;
@@ -1072,87 +847,56 @@ export interface SkuDescription {
  * App Service plan.
  *
  * @member {string} [appServicePlanName] Name for the App Service plan.
- *
  * @member {string} [workerTierName] Target worker tier assigned to the App
  * Service plan.
- *
  * @member {string} [status] App Service plan status. Possible values include:
  * 'Ready', 'Pending'
- *
  * @member {string} [subscription] App Service plan subscription.
- *
  * @member {string} [adminSiteName] App Service plan administration site.
- *
  * @member {object} [hostingEnvironmentProfile] Specification for the App
  * Service Environment to use for the App Service plan.
- *
  * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- *
  * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- *
  * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- *
  * @member {number} [maximumNumberOfWorkers] Maximum number of instances that
  * can be assigned to this App Service plan.
- *
  * @member {string} [geoRegion] Geographical location for the App Service plan.
- *
  * @member {boolean} [perSiteScaling] If <code>true</code>, apps assigned to
  * this App Service plan can be scaled independently.
  * If <code>false</code>, apps assigned to this App Service plan will scale to
  * all instances of the plan. Default value: false .
- *
  * @member {number} [numberOfSites] Number of apps assigned to this App Service
  * plan.
- *
  * @member {string} [resourceGroup] Resource group of the App Service plan.
- *
  * @member {boolean} [reserved] Reserved. Default value: false .
- *
  * @member {number} [targetWorkerCount] Scaling worker count.
- *
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
- *
  * @member {string} [provisioningState] Provisioning state of the App Service
  * Environment. Possible values include: 'Succeeded', 'Failed', 'Canceled',
  * 'InProgress', 'Deleting'
- *
  * @member {object} [sku]
- *
  * @member {string} [sku.name] Name of the resource SKU.
- *
  * @member {string} [sku.tier] Service tier of the resource SKU.
- *
  * @member {string} [sku.size] Size specifier of the resource SKU.
- *
  * @member {string} [sku.family] Family code of the resource SKU.
- *
  * @member {number} [sku.capacity] Current number of instances assigned to the
  * resource.
- *
  * @member {object} [sku.skuCapacity] Min, max, and default scale values of the
  * SKU.
- *
  * @member {number} [sku.skuCapacity.minimum] Minimum number of workers for
  * this App Service plan SKU.
- *
  * @member {number} [sku.skuCapacity.maximum] Maximum number of workers for
  * this App Service plan SKU.
- *
  * @member {number} [sku.skuCapacity.default] Default number of workers for
  * this App Service plan SKU.
- *
  * @member {string} [sku.skuCapacity.scaleType] Available scale configurations
  * for an App Service plan.
- *
  * @member {array} [sku.locations] Locations of the SKU.
- *
  * @member {array} [sku.capabilities] Capabilities of the SKU, e.g., is traffic
  * manager enabled?
- *
  */
 export interface AppServicePlan extends Resource {
   appServicePlanName?: string;
@@ -1180,9 +924,7 @@ export interface AppServicePlan extends Resource {
  * Collection of App Service plans.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServicePlanCollection {
   value: AppServicePlan[];
@@ -1197,9 +939,7 @@ export interface AppServicePlanCollection {
  * when an auto heal rule is triggered.
  *
  * @member {string} [exe] Executable to be run.
- *
  * @member {string} [parameters] Parameters for the executable.
- *
  */
 export interface AutoHealCustomAction {
   exe?: string;
@@ -1214,17 +954,12 @@ export interface AutoHealCustomAction {
  *
  * @member {string} [actionType] Predefined action to be taken. Possible values
  * include: 'Recycle', 'LogEvent', 'CustomAction'
- *
  * @member {object} [customAction] Custom action to be taken.
- *
  * @member {string} [customAction.exe] Executable to be run.
- *
  * @member {string} [customAction.parameters] Parameters for the executable.
- *
  * @member {string} [minProcessExecutionTime] Minimum time the process must
  * execute
  * before taking the action
- *
  */
 export interface AutoHealActions {
   actionType?: string;
@@ -1239,9 +974,7 @@ export interface AutoHealActions {
  * Trigger based on total requests.
  *
  * @member {number} [count] Count.
- *
  * @member {string} [timeInterval] Time interval.
- *
  */
 export interface RequestsBasedTrigger {
   count?: number;
@@ -1255,15 +988,10 @@ export interface RequestsBasedTrigger {
  * Trigger based on status code.
  *
  * @member {number} [status] HTTP status code.
- *
  * @member {number} [subStatus] SubStatus.
- *
  * @member {number} [win32Status] Win32 error code.
- *
  * @member {number} [count] Count.
- *
  * @member {string} [timeInterval] Time interval.
- *
  */
 export interface StatusCodesBasedTrigger {
   status?: number;
@@ -1280,11 +1008,8 @@ export interface StatusCodesBasedTrigger {
  * Trigger based on request execution time.
  *
  * @member {string} [timeTaken] Time taken.
- *
  * @member {number} [count] Count.
- *
  * @member {string} [timeInterval] Time interval.
- *
  */
 export interface SlowRequestsBasedTrigger {
   timeTaken?: string;
@@ -1299,23 +1024,14 @@ export interface SlowRequestsBasedTrigger {
  * Triggers for auto-heal.
  *
  * @member {object} [requests] A rule based on total requests.
- *
  * @member {number} [requests.count] Count.
- *
  * @member {string} [requests.timeInterval] Time interval.
- *
  * @member {number} [privateBytesInKB] A rule based on private bytes.
- *
  * @member {array} [statusCodes] A rule based on status codes.
- *
  * @member {object} [slowRequests] A rule based on request execution time.
- *
  * @member {string} [slowRequests.timeTaken] Time taken.
- *
  * @member {number} [slowRequests.count] Count.
- *
  * @member {string} [slowRequests.timeInterval] Time interval.
- *
  */
 export interface AutoHealTriggers {
   requests?: RequestsBasedTrigger;
@@ -1332,42 +1048,26 @@ export interface AutoHealTriggers {
  *
  * @member {object} [triggers] Conditions that describe when to execute the
  * auto-heal actions.
- *
  * @member {object} [triggers.requests] A rule based on total requests.
- *
  * @member {number} [triggers.requests.count] Count.
- *
  * @member {string} [triggers.requests.timeInterval] Time interval.
- *
  * @member {number} [triggers.privateBytesInKB] A rule based on private bytes.
- *
  * @member {array} [triggers.statusCodes] A rule based on status codes.
- *
  * @member {object} [triggers.slowRequests] A rule based on request execution
  * time.
- *
  * @member {string} [triggers.slowRequests.timeTaken] Time taken.
- *
  * @member {number} [triggers.slowRequests.count] Count.
- *
  * @member {string} [triggers.slowRequests.timeInterval] Time interval.
- *
  * @member {object} [actions] Actions to be executed when a rule is triggered.
- *
  * @member {string} [actions.actionType] Predefined action to be taken.
  * Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
- *
  * @member {object} [actions.customAction] Custom action to be taken.
- *
  * @member {string} [actions.customAction.exe] Executable to be run.
- *
  * @member {string} [actions.customAction.parameters] Parameters for the
  * executable.
- *
  * @member {string} [actions.minProcessExecutionTime] Minimum time the process
  * must execute
  * before taking the action
- *
  */
 export interface AutoHealRules {
   triggers?: AutoHealTriggers;
@@ -1383,42 +1083,34 @@ export interface AutoHealRules {
  * @member {string} [correlationId] Correlation ID of cloning operation. This
  * ID ties multiple cloning operations
  * together to use the same snapshot.
- *
  * @member {boolean} [overwrite] <code>true</code> to overwrite destination
  * app; otherwise, <code>false</code>.
- *
  * @member {boolean} [cloneCustomHostNames] <code>true</code> to clone custom
  * hostnames from source app; otherwise, <code>false</code>.
- *
  * @member {boolean} [cloneSourceControl] <code>true</code> to clone source
  * control from source app; otherwise, <code>false</code>.
- *
  * @member {string} sourceWebAppId ARM resource ID of the source app. App
  * resource ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
  * for other slots.
- *
  * @member {string} [hostingEnvironment] App Service Environment.
- *
  * @member {object} [appSettingsOverrides] Application setting overrides for
  * cloned app. If specified, these settings override the settings cloned
  * from source app. Otherwise, application settings from source app are
  * retained.
- *
  * @member {boolean} [configureLoadBalancing] <code>true</code> to configure
  * load balancing for source and destination app.
- *
  * @member {string} [trafficManagerProfileId] ARM resource ID of the Traffic
  * Manager profile to use, if it exists. Traffic Manager resource ID is of the
  * form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
- *
  * @member {string} [trafficManagerProfileName] Name of Traffic Manager profile
  * to create. This is only needed if Traffic Manager profile does not already
  * exist.
- *
+ * @member {boolean} [ignoreQuotas] <code>true</code> if quotas should be
+ * ignored; otherwise, <code>false</code>.
  */
 export interface CloningInfo {
   correlationId?: string;
@@ -1431,6 +1123,7 @@ export interface CloningInfo {
   configureLoadBalancing?: boolean;
   trafficManagerProfileId?: string;
   trafficManagerProfileName?: string;
+  ignoreQuotas?: boolean;
 }
 
 /**
@@ -1440,13 +1133,10 @@ export interface CloningInfo {
  * Database connection string information.
  *
  * @member {string} [name] Name of connection string.
- *
  * @member {string} [connectionString] Connection string value.
- *
  * @member {string} [type] Type of database. Possible values include: 'MySql',
  * 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus',
- * 'EventHub', 'ApiHub', 'DocDb', 'RedisCache'
- *
+ * 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
  */
 export interface ConnStringInfo {
   name?: string;
@@ -1463,7 +1153,6 @@ export interface ConnStringInfo {
  * @member {array} [allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- *
  */
 export interface CorsSettings {
   allowedOrigins?: string[];
@@ -1476,9 +1165,7 @@ export interface CorsSettings {
  * Localizable string object containing the name and a localized value.
  *
  * @member {string} [value] Non-localized name.
- *
  * @member {string} [localizedValue] Localized name.
- *
  */
 export interface LocalizableString {
   value?: string;
@@ -1492,19 +1179,12 @@ export interface LocalizableString {
  * Usage of the quota resource.
  *
  * @member {string} [unit] Units of measurement for the quota resourse.
- *
  * @member {date} [nextResetTime] Next reset time for the resource counter.
- *
  * @member {number} [currentValue] The current value of the resource counter.
- *
  * @member {number} [limit] The resource limit.
- *
  * @member {object} [name] Quota name.
- *
  * @member {string} [name.value] Non-localized name.
- *
  * @member {string} [name.localizedValue] Localized name.
- *
  */
 export interface CsmUsageQuota {
   unit?: string;
@@ -1521,9 +1201,7 @@ export interface CsmUsageQuota {
  * Collection of CSM usage quotas.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface CsmUsageQuotaCollection {
   value: CsmUsageQuota[];
@@ -1537,17 +1215,11 @@ export interface CsmUsageQuotaCollection {
  * Body of the error response returned from the API.
  *
  * @member {string} [extendedCode] Type of error.
- *
  * @member {string} [messageTemplate] Message template.
- *
  * @member {array} [parameters] Parameters for the template.
- *
  * @member {array} [innerErrors] Inner errors.
- *
  * @member {string} [code] Basic error code.
- *
  * @member {string} [message] Any details of the error.
- *
  */
 export interface ErrorEntity {
   extendedCode?: string;
@@ -1567,10 +1239,8 @@ export interface ErrorEntity {
  *
  * @member {string} [actionHostName] Hostname of a slot to which the traffic
  * will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
- *
  * @member {number} [reroutePercentage] Percentage of the traffic which will be
  * redirected to <code>ActionHostName</code>.
- *
  * @member {number} [changeStep] In auto ramp up scenario this is the step to
  * to add/remove from <code>ReroutePercentage</code> until it reaches
  * <code>MinReroutePercentage</code> or <code>MaxReroutePercentage</code>. Site
@@ -1578,24 +1248,18 @@ export interface ErrorEntity {
  * <code>ChangeIntervalInMinutes</code>.
  * Custom decision algorithm can be provided in TiPCallback site extension
  * which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
- *
  * @member {number} [changeIntervalInMinutes] Specifies interval in mimuntes to
  * reevaluate ReroutePercentage.
- *
  * @member {number} [minReroutePercentage] Specifies lower boundary above which
  * ReroutePercentage will stay.
- *
  * @member {number} [maxReroutePercentage] Specifies upper boundary below which
  * ReroutePercentage will stay.
- *
  * @member {string} [changeDecisionCallbackUrl] Custom decision algorithm can
  * be provided in TiPCallback site extension which URL can be specified. See
  * TiPCallback site extension for the scaffold and contracts.
  * https://www.siteextensions.net/packages/TiPCallback/
- *
  * @member {string} [name] Name of the routing rule. The recommended name would
  * be to point to the slot which will receive the traffic in the experiment.
- *
  */
 export interface RampUpRule {
   actionHostName?: string;
@@ -1615,7 +1279,6 @@ export interface RampUpRule {
  * Routing rules in production experiments.
  *
  * @member {array} [rampUpRules] List of ramp-up rules.
- *
  */
 export interface Experiments {
   rampUpRules?: RampUpRule[];
@@ -1632,13 +1295,10 @@ export interface Experiments {
  *
  * @member {string} [extension] Requests with this extension will be handled
  * using the specified FastCGI application.
- *
  * @member {string} [scriptProcessor] The absolute path to the FastCGI
  * application.
- *
  * @member {string} [arguments] Command-line arguments to be passed to the
  * script processor.
- *
  */
 export interface HandlerMapping {
   extension?: string;
@@ -1653,21 +1313,15 @@ export interface HandlerMapping {
  * SSL-enabled hostname.
  *
  * @member {string} [name] Hostname.
- *
  * @member {string} [sslState] SSL type. Possible values include: 'Disabled',
  * 'SniEnabled', 'IpBasedEnabled'
- *
  * @member {string} [virtualIP] Virtual IP address assigned to the hostname if
  * IP based SSL is enabled.
- *
  * @member {string} [thumbprint] SSL certificate thumbprint.
- *
  * @member {boolean} [toUpdate] Set to <code>true</code> to update existing
  * hostname.
- *
  * @member {string} [hostType] Indicates whether the hostname is a standard or
  * repository hostname. Possible values include: 'Standard', 'Repository'
- *
  */
 export interface HostNameSslState {
   name?: string;
@@ -1685,9 +1339,7 @@ export interface HostNameSslState {
  * Diagnostics for an App Service Environment.
  *
  * @member {string} [name] Name/identifier of the diagnostics.
- *
  * @member {string} [diagnosicsOutput] Diagnostics output.
- *
  */
 export interface HostingEnvironmentDiagnostics {
   name?: string;
@@ -1701,10 +1353,8 @@ export interface HostingEnvironmentDiagnostics {
  * IP security restriction on an app.
  *
  * @member {string} ipAddress IP address the security restriction is valid for.
- *
  * @member {string} [subnetMask] Subnet mask for the range of IP addresses the
  * restriction is valid for.
- *
  */
 export interface IpSecurityRestriction {
   ipAddress: string;
@@ -1718,9 +1368,7 @@ export interface IpSecurityRestriction {
  * Metric availability and retention.
  *
  * @member {string} [timeGrain] Time grain.
- *
  * @member {string} [retention] Retention period for the current time grain.
- *
  */
 export interface MetricAvailabilily {
   timeGrain?: string;
@@ -1734,16 +1382,11 @@ export interface MetricAvailabilily {
  * Metadata for a metric.
  *
  * @member {string} [metricDefinitionName] Name of the metric.
- *
  * @member {string} [unit] Unit of the metric.
- *
  * @member {string} [primaryAggregationType] Primary aggregation type.
- *
  * @member {array} [metricAvailabilities] List of time grains supported for the
  * metric together with retention period.
- *
  * @member {string} [displayName] Friendly name shown in the UI.
- *
  */
 export interface MetricDefinition extends Resource {
   readonly metricDefinitionName?: string;
@@ -1760,23 +1403,15 @@ export interface MetricDefinition extends Resource {
  * Operation.
  *
  * @member {string} [id] Operation ID.
- *
  * @member {string} [name] Operation name.
- *
  * @member {string} [status] The current status of the operation. Possible
  * values include: 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created'
- *
  * @member {array} [errors] Any errors associate with the operation.
- *
  * @member {date} [createdTime] Time when operation has started.
- *
  * @member {date} [modifiedTime] Time when operation has been updated.
- *
  * @member {date} [expirationTime] Time when operation will expire.
- *
  * @member {string} [geoMasterOperationId] Applicable only for stamp operation
  * ids.
- *
  */
 export interface Operation {
   id?: string;
@@ -1797,21 +1432,17 @@ export interface Operation {
  *
  * @member {boolean} isPushEnabled Gets or sets a flag indicating whether the
  * Push endpoint is enabled.
- *
  * @member {string} [tagWhitelistJson] Gets or sets a JSON string containing a
  * list of tags that are whitelisted for use by the push registration endpoint.
- *
  * @member {string} [tagsRequiringAuth] Gets or sets a JSON string containing a
  * list of tags that require user authentication to be used in the push
  * registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- *
  * @member {string} [dynamicTagsJson] Gets or sets a JSON string containing a
  * list of dynamic tags that will be evaluated from user claims in the push
  * registration endpoint.
- *
  */
 export interface PushSettings {
   isPushEnabled: boolean;
@@ -1827,9 +1458,7 @@ export interface PushSettings {
  * Name of a metric for any resource .
  *
  * @member {string} [value] metric name value.
- *
  * @member {string} [localizedValue] Localized metric name value.
- *
  */
 export interface ResourceMetricName {
   readonly value?: string;
@@ -1843,9 +1472,7 @@ export interface ResourceMetricName {
  * Resource metric property.
  *
  * @member {string} [key] Key for resource metric property.
- *
  * @member {string} [value] Value of pair.
- *
  */
 export interface ResourceMetricProperty {
   key?: string;
@@ -1859,19 +1486,12 @@ export interface ResourceMetricProperty {
  * Value of resource metric.
  *
  * @member {string} [timestamp] Value timestamp.
- *
  * @member {number} [average] Value average.
- *
  * @member {number} [minimum] Value minimum.
- *
  * @member {number} [maximum] Value maximum.
- *
  * @member {number} [total] Value total.
- *
  * @member {number} [count] Value count.
- *
  * @member {array} [properties] Properties.
- *
  */
 export interface ResourceMetricValue {
   readonly timestamp?: string;
@@ -1890,27 +1510,16 @@ export interface ResourceMetricValue {
  * Object representing a metric for any resource .
  *
  * @member {object} [name] Name of metric.
- *
  * @member {string} [name.value] metric name value.
- *
  * @member {string} [name.localizedValue] Localized metric name value.
- *
  * @member {string} [unit] Metric unit.
- *
  * @member {string} [timeGrain] Metric granularity. E.g PT1H, PT5M, P1D
- *
  * @member {date} [startTime] Metric start time.
- *
  * @member {date} [endTime] Metric end time.
- *
  * @member {string} [resourceId] Metric resource Id.
- *
  * @member {string} [id] Resource Id.
- *
  * @member {array} [metricValues] Metric values.
- *
  * @member {array} [properties] Properties.
- *
  */
 export interface ResourceMetric {
   readonly name?: ResourceMetricName;
@@ -1931,9 +1540,7 @@ export interface ResourceMetric {
  * Metrics availability and retention.
  *
  * @member {string} [timeGrain] Time grain .
- *
  * @member {string} [retention] Retention period for the current time grain.
- *
  */
 export interface ResourceMetricAvailability {
   readonly timeGrain?: string;
@@ -1947,9 +1554,7 @@ export interface ResourceMetricAvailability {
  * Collection of metric responses.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceMetricCollection {
   value: ResourceMetric[];
@@ -1963,25 +1568,16 @@ export interface ResourceMetricCollection {
  * Metadata for the metrics.
  *
  * @member {object} [resourceMetricDefinitionName] Name of the metric.
- *
  * @member {string} [resourceMetricDefinitionName.value] metric name value.
- *
  * @member {string} [resourceMetricDefinitionName.localizedValue] Localized
  * metric name value.
- *
  * @member {string} [unit] Unit of the metric.
- *
  * @member {string} [primaryAggregationType] Primary aggregation type.
- *
  * @member {array} [metricAvailabilities] List of time grains supported for the
  * metric together with retention period.
- *
  * @member {string} [resourceUri] Resource URI.
- *
  * @member {string} [resourceMetricDefinitionId] Resource ID.
- *
  * @member {object} [properties] Properties.
- *
  */
 export interface ResourceMetricDefinition extends Resource {
   readonly resourceMetricDefinitionName?: ResourceMetricName;
@@ -2000,9 +1596,7 @@ export interface ResourceMetricDefinition extends Resource {
  * Collection of metric definitions.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceMetricDefinitionCollection {
   value: ResourceMetricDefinition[];
@@ -2016,13 +1610,9 @@ export interface ResourceMetricDefinitionCollection {
  * MachineKey of an app.
  *
  * @member {string} [validation] MachineKey validation.
- *
  * @member {string} [validationKey] Validation key.
- *
  * @member {string} [decryption] Decryption.
- *
  * @member {string} [decryptionKey] Decryption key.
- *
  */
 export interface SiteMachineKey {
   validation?: string;
@@ -2038,9 +1628,7 @@ export interface SiteMachineKey {
  * Directory for virtual application.
  *
  * @member {string} [virtualPath] Path to virtual application.
- *
  * @member {string} [physicalPath] Physical path.
- *
  */
 export interface VirtualDirectory {
   virtualPath?: string;
@@ -2054,15 +1642,11 @@ export interface VirtualDirectory {
  * Virtual application in an app.
  *
  * @member {string} [virtualPath] Virtual path.
- *
  * @member {string} [physicalPath] Physical path.
- *
  * @member {boolean} [preloadEnabled] <code>true</code> if preloading is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {array} [virtualDirectories] Virtual directories for virtual
  * application.
- *
  */
 export interface VirtualApplication {
   virtualPath?: string;
@@ -2078,11 +1662,8 @@ export interface VirtualApplication {
  * Metric limits set on an app.
  *
  * @member {number} [maxPercentageCpu] Maximum allowed CPU usage percentage.
- *
  * @member {number} [maxMemoryInMb] Maximum allowed memory usage in MB.
- *
  * @member {number} [maxDiskSizeInMb] Maximum allowed disk size usage in MB.
- *
  */
 export interface SiteLimits {
   maxPercentageCpu?: number;
@@ -2097,197 +1678,124 @@ export interface SiteLimits {
  * Configuration of an App Service app.
  *
  * @member {number} [numberOfWorkers] Number of workers.
- *
  * @member {array} [defaultDocuments] Default documents.
- *
  * @member {string} [netFrameworkVersion] .NET Framework version. Default
  * value: 'v4.6' .
- *
  * @member {string} [phpVersion] Version of PHP.
- *
  * @member {string} [pythonVersion] Version of Python.
- *
  * @member {string} [nodeVersion] Version of Node.js.
- *
  * @member {string} [linuxFxVersion] Linux App Framework and version
- *
  * @member {boolean} [requestTracingEnabled] <code>true</code> if request
  * tracing is enabled; otherwise, <code>false</code>.
- *
  * @member {date} [requestTracingExpirationTime] Request tracing expiration
  * time.
- *
  * @member {boolean} [remoteDebuggingEnabled] <code>true</code> if remote
  * debugging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [remoteDebuggingVersion] Remote debugging version.
- *
  * @member {boolean} [httpLoggingEnabled] <code>true</code> if HTTP logging is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {number} [logsDirectorySizeLimit] HTTP logs directory size limit.
- *
  * @member {boolean} [detailedErrorLoggingEnabled] <code>true</code> if
  * detailed error logging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [publishingUsername] Publishing user name.
- *
  * @member {array} [appSettings] Application settings.
- *
  * @member {array} [connectionStrings] Connection strings.
- *
  * @member {object} [machineKey] Site MachineKey.
- *
  * @member {string} [machineKey.validation] MachineKey validation.
- *
  * @member {string} [machineKey.validationKey] Validation key.
- *
  * @member {string} [machineKey.decryption] Decryption.
- *
  * @member {string} [machineKey.decryptionKey] Decryption key.
- *
  * @member {array} [handlerMappings] Handler mappings.
- *
  * @member {string} [documentRoot] Document root.
- *
  * @member {string} [scmType] SCM type. Possible values include: 'None',
  * 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- *
  * @member {boolean} [use32BitWorkerProcess] <code>true</code> to use 32-bit
  * worker process; otherwise, <code>false</code>.
- *
  * @member {boolean} [webSocketsEnabled] <code>true</code> if WebSocket is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {boolean} [alwaysOn] <code>true</code> if Always On is enabled;
  * otherwise, <code>false</code>.
- *
  * @member {string} [javaVersion] Java version.
- *
  * @member {string} [javaContainer] Java container.
- *
  * @member {string} [javaContainerVersion] Java container version.
- *
  * @member {string} [appCommandLine] App command line to launch.
- *
  * @member {string} [managedPipelineMode] Managed pipeline mode. Possible
  * values include: 'Integrated', 'Classic'
- *
  * @member {array} [virtualApplications] Virtual applications.
- *
  * @member {string} [loadBalancing] Site load balancing. Possible values
  * include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- *
  * @member {object} [experiments] This is work around for polymophic types.
- *
  * @member {array} [experiments.rampUpRules] List of ramp-up rules.
- *
  * @member {object} [limits] Site limits.
- *
  * @member {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
  * percentage.
- *
  * @member {number} [limits.maxMemoryInMb] Maximum allowed memory usage in MB.
- *
  * @member {number} [limits.maxDiskSizeInMb] Maximum allowed disk size usage in
  * MB.
- *
  * @member {boolean} [autoHealEnabled] <code>true</code> if Auto Heal is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {object} [autoHealRules] Auto Heal rules.
- *
  * @member {object} [autoHealRules.triggers] Conditions that describe when to
  * execute the auto-heal actions.
- *
  * @member {object} [autoHealRules.triggers.requests] A rule based on total
  * requests.
- *
  * @member {number} [autoHealRules.triggers.requests.count] Count.
- *
  * @member {string} [autoHealRules.triggers.requests.timeInterval] Time
  * interval.
- *
  * @member {number} [autoHealRules.triggers.privateBytesInKB] A rule based on
  * private bytes.
- *
  * @member {array} [autoHealRules.triggers.statusCodes] A rule based on status
  * codes.
- *
  * @member {object} [autoHealRules.triggers.slowRequests] A rule based on
  * request execution time.
- *
  * @member {string} [autoHealRules.triggers.slowRequests.timeTaken] Time taken.
- *
  * @member {number} [autoHealRules.triggers.slowRequests.count] Count.
- *
  * @member {string} [autoHealRules.triggers.slowRequests.timeInterval] Time
  * interval.
- *
  * @member {object} [autoHealRules.actions] Actions to be executed when a rule
  * is triggered.
- *
  * @member {string} [autoHealRules.actions.actionType] Predefined action to be
  * taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
- *
  * @member {object} [autoHealRules.actions.customAction] Custom action to be
  * taken.
- *
  * @member {string} [autoHealRules.actions.customAction.exe] Executable to be
  * run.
- *
  * @member {string} [autoHealRules.actions.customAction.parameters] Parameters
  * for the executable.
- *
  * @member {string} [autoHealRules.actions.minProcessExecutionTime] Minimum
  * time the process must execute
  * before taking the action
- *
  * @member {string} [tracingOptions] Tracing options.
- *
  * @member {string} [vnetName] Virtual Network name.
- *
  * @member {object} [cors] Cross-Origin Resource Sharing (CORS) settings.
- *
  * @member {array} [cors.allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- *
  * @member {object} [push] Push endpoint settings.
- *
  * @member {boolean} [push.isPushEnabled] Gets or sets a flag indicating
  * whether the Push endpoint is enabled.
- *
  * @member {string} [push.tagWhitelistJson] Gets or sets a JSON string
  * containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- *
  * @member {string} [push.tagsRequiringAuth] Gets or sets a JSON string
  * containing a list of tags that require user authentication to be used in the
  * push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- *
  * @member {string} [push.dynamicTagsJson] Gets or sets a JSON string
  * containing a list of dynamic tags that will be evaluated from user claims in
  * the push registration endpoint.
- *
  * @member {object} [apiDefinition] Information about the formal API definition
  * for the app.
- *
  * @member {string} [apiDefinition.url] The URL of the API definition.
- *
  * @member {string} [autoSwapSlotName] Auto-swap slot name.
- *
  * @member {boolean} [localMySqlEnabled] <code>true</code> to enable local
  * MySQL; otherwise, <code>false</code>. Default value: false .
- *
  * @member {array} [ipSecurityRestrictions] IP security restrictions.
- *
  */
 export interface SiteConfig {
   numberOfWorkers?: number;
@@ -2343,13 +1851,10 @@ export interface SiteConfig {
  *
  * @member {date} [timestampUtc] The time the last successful slot swap
  * completed.
- *
  * @member {string} [sourceSlotName] The source slot of the last swap
  * operation.
- *
  * @member {string} [destinationSlotName] The destination slot of the last swap
  * operation.
- *
  */
 export interface SlotSwapStatus {
   readonly timestampUtc?: Date;
@@ -2364,363 +1869,244 @@ export interface SlotSwapStatus {
  * A web app, a mobile app backend, or an API app.
  *
  * @member {string} [state] Current state of the app.
- *
  * @member {array} [hostNames] Hostnames associated with the app.
- *
  * @member {string} [repositorySiteName] Name of the repository site.
- *
  * @member {string} [usageState] State indicating whether the app has exceeded
  * its quota usage. Read-only. Possible values include: 'Normal', 'Exceeded'
- *
  * @member {boolean} [enabled] <code>true</code> if the app is enabled;
  * otherwise, <code>false</code>. Setting this value to false disables the app
  * (takes the app offline).
- *
  * @member {array} [enabledHostNames] Enabled hostnames for the app.Hostnames
  * need to be assigned (see HostNames) AND enabled. Otherwise,
  * the app is not served on those hostnames.
- *
  * @member {string} [availabilityState] Management information availability
  * state for the app. Possible values include: 'Normal', 'Limited',
  * 'DisasterRecoveryMode'
- *
  * @member {array} [hostNameSslStates] Hostname SSL states are used to manage
  * the SSL bindings for app's hostnames.
- *
  * @member {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
- *
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- *
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
- *
  * @member {object} [siteConfig] Configuration of the app.
- *
  * @member {number} [siteConfig.numberOfWorkers] Number of workers.
- *
  * @member {array} [siteConfig.defaultDocuments] Default documents.
- *
  * @member {string} [siteConfig.netFrameworkVersion] .NET Framework version.
- *
  * @member {string} [siteConfig.phpVersion] Version of PHP.
- *
  * @member {string} [siteConfig.pythonVersion] Version of Python.
- *
  * @member {string} [siteConfig.nodeVersion] Version of Node.js.
- *
  * @member {string} [siteConfig.linuxFxVersion] Linux App Framework and version
- *
  * @member {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
  * request tracing is enabled; otherwise, <code>false</code>.
- *
  * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
  * expiration time.
- *
  * @member {boolean} [siteConfig.remoteDebuggingEnabled] <code>true</code> if
  * remote debugging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [siteConfig.remoteDebuggingVersion] Remote debugging
  * version.
- *
  * @member {boolean} [siteConfig.httpLoggingEnabled] <code>true</code> if HTTP
  * logging is enabled; otherwise, <code>false</code>.
- *
  * @member {number} [siteConfig.logsDirectorySizeLimit] HTTP logs directory
  * size limit.
- *
  * @member {boolean} [siteConfig.detailedErrorLoggingEnabled] <code>true</code>
  * if detailed error logging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [siteConfig.publishingUsername] Publishing user name.
- *
  * @member {array} [siteConfig.appSettings] Application settings.
- *
  * @member {array} [siteConfig.connectionStrings] Connection strings.
- *
  * @member {object} [siteConfig.machineKey] Site MachineKey.
- *
  * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
- *
  * @member {string} [siteConfig.machineKey.validationKey] Validation key.
- *
  * @member {string} [siteConfig.machineKey.decryption] Decryption.
- *
  * @member {string} [siteConfig.machineKey.decryptionKey] Decryption key.
- *
  * @member {array} [siteConfig.handlerMappings] Handler mappings.
- *
  * @member {string} [siteConfig.documentRoot] Document root.
- *
  * @member {string} [siteConfig.scmType] SCM type. Possible values include:
  * 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- *
  * @member {boolean} [siteConfig.use32BitWorkerProcess] <code>true</code> to
  * use 32-bit worker process; otherwise, <code>false</code>.
- *
  * @member {boolean} [siteConfig.webSocketsEnabled] <code>true</code> if
  * WebSocket is enabled; otherwise, <code>false</code>.
- *
  * @member {boolean} [siteConfig.alwaysOn] <code>true</code> if Always On is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {string} [siteConfig.javaVersion] Java version.
- *
  * @member {string} [siteConfig.javaContainer] Java container.
- *
  * @member {string} [siteConfig.javaContainerVersion] Java container version.
- *
  * @member {string} [siteConfig.appCommandLine] App command line to launch.
- *
  * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
- *
  * @member {array} [siteConfig.virtualApplications] Virtual applications.
- *
  * @member {string} [siteConfig.loadBalancing] Site load balancing. Possible
  * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- *
  * @member {object} [siteConfig.experiments] This is work around for polymophic
  * types.
- *
  * @member {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
- *
  * @member {object} [siteConfig.limits] Site limits.
- *
  * @member {number} [siteConfig.limits.maxPercentageCpu] Maximum allowed CPU
  * usage percentage.
- *
  * @member {number} [siteConfig.limits.maxMemoryInMb] Maximum allowed memory
  * usage in MB.
- *
  * @member {number} [siteConfig.limits.maxDiskSizeInMb] Maximum allowed disk
  * size usage in MB.
- *
  * @member {boolean} [siteConfig.autoHealEnabled] <code>true</code> if Auto
  * Heal is enabled; otherwise, <code>false</code>.
- *
  * @member {object} [siteConfig.autoHealRules] Auto Heal rules.
- *
  * @member {object} [siteConfig.autoHealRules.triggers] Conditions that
  * describe when to execute the auto-heal actions.
- *
  * @member {object} [siteConfig.autoHealRules.triggers.requests] A rule based
  * on total requests.
- *
  * @member {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
- *
  * @member {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
  * Time interval.
- *
  * @member {number} [siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
  * based on private bytes.
- *
  * @member {array} [siteConfig.autoHealRules.triggers.statusCodes] A rule based
  * on status codes.
- *
  * @member {object} [siteConfig.autoHealRules.triggers.slowRequests] A rule
  * based on request execution time.
- *
  * @member {string} [siteConfig.autoHealRules.triggers.slowRequests.timeTaken]
  * Time taken.
- *
  * @member {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
  * Count.
- *
  * @member {string}
  * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
- *
  * @member {object} [siteConfig.autoHealRules.actions] Actions to be executed
  * when a rule is triggered.
- *
  * @member {string} [siteConfig.autoHealRules.actions.actionType] Predefined
  * action to be taken. Possible values include: 'Recycle', 'LogEvent',
  * 'CustomAction'
- *
  * @member {object} [siteConfig.autoHealRules.actions.customAction] Custom
  * action to be taken.
- *
  * @member {string} [siteConfig.autoHealRules.actions.customAction.exe]
  * Executable to be run.
- *
  * @member {string} [siteConfig.autoHealRules.actions.customAction.parameters]
  * Parameters for the executable.
- *
  * @member {string} [siteConfig.autoHealRules.actions.minProcessExecutionTime]
  * Minimum time the process must execute
  * before taking the action
- *
  * @member {string} [siteConfig.tracingOptions] Tracing options.
- *
  * @member {string} [siteConfig.vnetName] Virtual Network name.
- *
  * @member {object} [siteConfig.cors] Cross-Origin Resource Sharing (CORS)
  * settings.
- *
  * @member {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
  * origins that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- *
  * @member {object} [siteConfig.push] Push endpoint settings.
- *
  * @member {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
  * indicating whether the Push endpoint is enabled.
- *
  * @member {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
  * string containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- *
  * @member {string} [siteConfig.push.tagsRequiringAuth] Gets or sets a JSON
  * string containing a list of tags that require user authentication to be used
  * in the push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- *
  * @member {string} [siteConfig.push.dynamicTagsJson] Gets or sets a JSON
  * string containing a list of dynamic tags that will be evaluated from user
  * claims in the push registration endpoint.
- *
  * @member {object} [siteConfig.apiDefinition] Information about the formal API
  * definition for the app.
- *
  * @member {string} [siteConfig.apiDefinition.url] The URL of the API
  * definition.
- *
  * @member {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
- *
  * @member {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
  * local MySQL; otherwise, <code>false</code>.
- *
  * @member {array} [siteConfig.ipSecurityRestrictions] IP security
  * restrictions.
- *
  * @member {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
  * associated with the app. Read-only.
- *
  * @member {boolean} [premiumAppDeployed] Indicates whether app is deployed as
  * a premium app.
- *
  * @member {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM (KUDU)
  * site when the app is stopped; otherwise, <code>false</code>. The default is
  * <code>false</code>. Default value: false .
- *
  * @member {string} [targetSwapSlot] Specifies which deployment slot this app
  * will swap into. Read-only.
- *
  * @member {object} [hostingEnvironmentProfile] App Service Environment to use
  * for the app.
- *
  * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- *
  * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- *
  * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- *
  * @member {string} [microService] Micro services like apps, logic apps.
  * Default value: 'WebSites' .
- *
  * @member {string} [gatewaySiteName] Name of gateway app associated with the
  * app.
- *
  * @member {boolean} [clientAffinityEnabled] <code>true</code> to enable client
  * affinity; <code>false</code> to stop sending session affinity cookies, which
  * route client requests in the same session to the same instance. Default is
  * <code>true</code>.
- *
  * @member {boolean} [clientCertEnabled] <code>true</code> to enable client
  * certificate authentication (TLS mutual authentication); otherwise,
  * <code>false</code>. Default is <code>false</code>.
- *
  * @member {boolean} [hostNamesDisabled] <code>true</code> to disable the
  * public hostnames of the app; otherwise, <code>false</code>.
  * If <code>true</code>, the app is only accessible via API management process.
- *
  * @member {string} [outboundIpAddresses] List of IP addresses that the app
  * uses for outbound connections (e.g. database access). Read-only.
- *
  * @member {number} [containerSize] Size of the function container.
- *
  * @member {number} [dailyMemoryTimeQuota] Maximum allowed daily memory-time
  * quota (applicable on dynamic apps only).
- *
  * @member {date} [suspendedTill] App suspended till in case memory-time quota
  * is exceeded.
- *
  * @member {number} [maxNumberOfWorkers] Maximum number of workers.
  * This only applies to Functions container.
- *
  * @member {object} [cloningInfo] If specified during app creation, the app is
  * cloned from a source app.
- *
  * @member {string} [cloningInfo.correlationId] Correlation ID of cloning
  * operation. This ID ties multiple cloning operations
  * together to use the same snapshot.
- *
  * @member {boolean} [cloningInfo.overwrite] <code>true</code> to overwrite
  * destination app; otherwise, <code>false</code>.
- *
  * @member {boolean} [cloningInfo.cloneCustomHostNames] <code>true</code> to
  * clone custom hostnames from source app; otherwise, <code>false</code>.
- *
  * @member {boolean} [cloningInfo.cloneSourceControl] <code>true</code> to
  * clone source control from source app; otherwise, <code>false</code>.
- *
  * @member {string} [cloningInfo.sourceWebAppId] ARM resource ID of the source
  * app. App resource ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
  * for other slots.
- *
  * @member {string} [cloningInfo.hostingEnvironment] App Service Environment.
- *
  * @member {object} [cloningInfo.appSettingsOverrides] Application setting
  * overrides for cloned app. If specified, these settings override the settings
  * cloned
  * from source app. Otherwise, application settings from source app are
  * retained.
- *
  * @member {boolean} [cloningInfo.configureLoadBalancing] <code>true</code> to
  * configure load balancing for source and destination app.
- *
  * @member {string} [cloningInfo.trafficManagerProfileId] ARM resource ID of
  * the Traffic Manager profile to use, if it exists. Traffic Manager resource
  * ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
- *
  * @member {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
  * Manager profile to create. This is only needed if Traffic Manager profile
  * does not already exist.
- *
+ * @member {boolean} [cloningInfo.ignoreQuotas] <code>true</code> if quotas
+ * should be ignored; otherwise, <code>false</code>.
  * @member {string} [resourceGroup] Name of the resource group the app belongs
  * to. Read-only.
- *
  * @member {boolean} [isDefaultContainer] <code>true</code> if the app is a
  * default container; otherwise, <code>false</code>.
- *
  * @member {string} [defaultHostName] Default hostname of the app. Read-only.
- *
  * @member {object} [slotSwapStatus] Status of the last deployment slot swap
  * operation.
- *
  * @member {date} [slotSwapStatus.timestampUtc] The time the last successful
  * slot swap completed.
- *
  * @member {string} [slotSwapStatus.sourceSlotName] The source slot of the last
  * swap operation.
- *
  * @member {string} [slotSwapStatus.destinationSlotName] The destination slot
  * of the last swap operation.
- *
  */
 export interface Site extends Resource {
   readonly state?: string;
@@ -2764,54 +2150,35 @@ export interface Site extends Resource {
  * SKU discovery information.
  *
  * @member {string} [resourceType] Resource type that this SKU applies to.
- *
  * @member {object} [sku] Name and tier of the SKU.
- *
  * @member {string} [sku.name] Name of the resource SKU.
- *
  * @member {string} [sku.tier] Service tier of the resource SKU.
- *
  * @member {string} [sku.size] Size specifier of the resource SKU.
- *
  * @member {string} [sku.family] Family code of the resource SKU.
- *
  * @member {number} [sku.capacity] Current number of instances assigned to the
  * resource.
- *
  * @member {object} [sku.skuCapacity] Min, max, and default scale values of the
  * SKU.
- *
  * @member {number} [sku.skuCapacity.minimum] Minimum number of workers for
  * this App Service plan SKU.
- *
  * @member {number} [sku.skuCapacity.maximum] Maximum number of workers for
  * this App Service plan SKU.
- *
  * @member {number} [sku.skuCapacity.default] Default number of workers for
  * this App Service plan SKU.
- *
  * @member {string} [sku.skuCapacity.scaleType] Available scale configurations
  * for an App Service plan.
- *
  * @member {array} [sku.locations] Locations of the SKU.
- *
  * @member {array} [sku.capabilities] Capabilities of the SKU, e.g., is traffic
  * manager enabled?
- *
  * @member {object} [capacity] Min, max, and default scale values of the SKU.
- *
  * @member {number} [capacity.minimum] Minimum number of workers for this App
  * Service plan SKU.
- *
  * @member {number} [capacity.maximum] Maximum number of workers for this App
  * Service plan SKU.
- *
  * @member {number} [capacity.default] Default number of workers for this App
  * Service plan SKU.
- *
  * @member {string} [capacity.scaleType] Available scale configurations for an
  * App Service plan.
- *
  */
 export interface SkuInfo {
   resourceType?: string;
@@ -2826,9 +2193,7 @@ export interface SkuInfo {
  * Collection of SKU information.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SkuInfoCollection {
   value: SkuInfo[];
@@ -2842,9 +2207,7 @@ export interface SkuInfoCollection {
  * Collection of stamp capacities.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface StampCapacityCollection {
   value: StampCapacity[];
@@ -2858,24 +2221,15 @@ export interface StampCapacityCollection {
  * Usage of the quota resource.
  *
  * @member {string} [displayName] Friendly name shown in the UI.
- *
  * @member {string} [usageName] Name of the quota.
- *
  * @member {string} [resourceName] Name of the quota resource.
- *
  * @member {string} [unit] Units of measurement for the quota resource.
- *
  * @member {number} [currentValue] The current value of the resource counter.
- *
  * @member {number} [limit] The resource limit.
- *
  * @member {date} [nextResetTime] Next reset time for the resource counter.
- *
  * @member {string} [computeMode] Compute mode used for this usage. Possible
  * values include: 'Shared', 'Dedicated', 'Dynamic'
- *
  * @member {string} [siteMode] Site mode used for this usage.
- *
  */
 export interface Usage extends Resource {
   readonly displayName?: string;
@@ -2896,9 +2250,7 @@ export interface Usage extends Resource {
  * Collection of usages.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface UsageCollection {
   value: Usage[];
@@ -2912,9 +2264,7 @@ export interface UsageCollection {
  * Collection of App Service apps.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WebAppCollection {
   value: Site[];
@@ -2929,50 +2279,32 @@ export interface WebAppCollection {
  *
  * @member {number} [workerSizeId] Worker size ID for referencing this worker
  * pool.
- *
  * @member {string} [computeMode] Shared or dedicated app hosting. Possible
  * values include: 'Shared', 'Dedicated', 'Dynamic'
- *
  * @member {string} [workerSize] VM size of the worker pool instances.
- *
  * @member {number} [workerCount] Number of instances in the worker pool.
- *
  * @member {array} [instanceNames] Names of all instances in the worker pool
  * (read only).
- *
  * @member {object} [sku]
- *
  * @member {string} [sku.name] Name of the resource SKU.
- *
  * @member {string} [sku.tier] Service tier of the resource SKU.
- *
  * @member {string} [sku.size] Size specifier of the resource SKU.
- *
  * @member {string} [sku.family] Family code of the resource SKU.
- *
  * @member {number} [sku.capacity] Current number of instances assigned to the
  * resource.
- *
  * @member {object} [sku.skuCapacity] Min, max, and default scale values of the
  * SKU.
- *
  * @member {number} [sku.skuCapacity.minimum] Minimum number of workers for
  * this App Service plan SKU.
- *
  * @member {number} [sku.skuCapacity.maximum] Maximum number of workers for
  * this App Service plan SKU.
- *
  * @member {number} [sku.skuCapacity.default] Default number of workers for
  * this App Service plan SKU.
- *
  * @member {string} [sku.skuCapacity.scaleType] Available scale configurations
  * for an App Service plan.
- *
  * @member {array} [sku.locations] Locations of the SKU.
- *
  * @member {array} [sku.capabilities] Capabilities of the SKU, e.g., is traffic
  * manager enabled?
- *
  */
 export interface WorkerPoolResource extends Resource {
   workerSizeId?: number;
@@ -2990,9 +2322,7 @@ export interface WorkerPoolResource extends Resource {
  * Collection of worker pools.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WorkerPoolCollection {
   value: WorkerPoolResource[];
@@ -3007,22 +2337,15 @@ export interface WorkerPoolCollection {
  *
  * @member {string} [serviceBusNamespace] The name of the Service Bus
  * namespace.
- *
  * @member {string} [relayName] The name of the Service Bus relay.
- *
  * @member {string} [relayArmUri] The ARM URI to the Service Bus relay.
- *
  * @member {string} [hostname] The hostname of the endpoint.
- *
  * @member {number} [port] The port of the endpoint.
- *
  * @member {string} [sendKeyName] The name of the Service Bus key which has
  * Send permissions. This is used to authenticate to Service Bus.
- *
  * @member {string} [sendKeyValue] The value of the Service Bus key. This is
  * used to authenticate to Service Bus. In ARM this key will not be returned
  * normally, use the POST /listKeys API instead.
- *
  */
 export interface HybridConnection extends Resource {
   serviceBusNamespace?: string;
@@ -3041,9 +2364,7 @@ export interface HybridConnection extends Resource {
  * Collection of hostname bindings.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface HybridConnectionCollection {
   value: HybridConnection[];
@@ -3058,9 +2379,7 @@ export interface HybridConnectionCollection {
  * Hybrid Connection.
  *
  * @member {string} [sendKeyName] The name of the send key.
- *
  * @member {string} [sendKeyValue] The value of the send key.
- *
  */
 export interface HybridConnectionKey extends Resource {
   readonly sendKeyName?: string;
@@ -3075,9 +2394,7 @@ export interface HybridConnectionKey extends Resource {
  * Hybrid Connections.
  *
  * @member {number} [current] The current number of Hybrid Connections.
- *
  * @member {number} [maximum] The maximum number of Hybrid Connections allowed.
- *
  */
 export interface HybridConnectionLimits extends Resource {
   readonly current?: number;
@@ -3091,9 +2408,7 @@ export interface HybridConnectionLimits extends Resource {
  * Collection of resources.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceCollection {
   value: string[];
@@ -3108,10 +2423,8 @@ export interface ResourceCollection {
  * Network gateway access to the VPN package.
  *
  * @member {string} [vnetName] The Virtual Network name.
- *
  * @member {string} [vpnPackageUri] The URI where the VPN package can be
  * downloaded.
- *
  */
 export interface VnetGateway extends Resource {
   vnetName?: string;
@@ -3127,14 +2440,11 @@ export interface VnetGateway extends Resource {
  *
  * @member {string} [vnetRouteName] The name of this route. This is only
  * returned by the server and does not need to be set by the client.
- *
  * @member {string} [startAddress] The starting address for this route. This
  * may also include a CIDR notation, in which case the end address must not be
  * specified.
- *
  * @member {string} [endAddress] The ending address for this route. If the
  * start address is specified in CIDR notation, this must be omitted.
- *
  * @member {string} [routeType] The type of route this is:
  * DEFAULT - By default, every app has routes to the local address ranges
  * specified by RFC1918
@@ -3143,7 +2453,6 @@ export interface VnetGateway extends Resource {
  *
  * These values will be used for syncing an app's routes with those from a
  * Virtual Network. Possible values include: 'DEFAULT', 'INHERITED', 'STATIC'
- *
  */
 export interface VnetRoute extends Resource {
   vnetRouteName?: string;
@@ -3159,22 +2468,16 @@ export interface VnetRoute extends Resource {
  * Virtual Network information contract.
  *
  * @member {string} [vnetResourceId] The Virtual Network's resource ID.
- *
  * @member {string} [certThumbprint] The client certificate thumbprint.
- *
  * @member {string} [certBlob] A certificate file (.cer) blob containing the
  * public key of the private key used to authenticate a
  * Point-To-Site VPN connection.
- *
  * @member {array} [routes] The routes that this Virtual Network connection
  * uses.
- *
  * @member {boolean} [resyncRequired] <code>true</code> if a resync is
  * required; otherwise, <code>false</code>.
- *
  * @member {string} [dnsServers] DNS servers to be used by this Virtual
  * Network. This should be a comma-separated list of IP addresses.
- *
  */
 export interface VnetInfo {
   vnetResourceId?: string;
@@ -3192,60 +2495,40 @@ export interface VnetInfo {
  * SSL certificate for an app.
  *
  * @member {string} [friendlyName] Friendly name of the certificate.
- *
  * @member {string} [subjectName] Subject name of the certificate.
- *
  * @member {array} [hostNames] Host names the certificate applies to.
- *
  * @member {buffer} [pfxBlob] Pfx blob.
- *
  * @member {string} [siteName] App name.
- *
  * @member {string} [selfLink] Self link.
- *
  * @member {string} [issuer] Certificate issuer.
- *
  * @member {date} [issueDate] Certificate issue Date.
- *
  * @member {date} [expirationDate] Certificate expriration date.
- *
  * @member {string} [password] Certificate password.
- *
  * @member {string} [thumbprint] Certificate thumbprint.
- *
  * @member {boolean} [valid] Is the certificate valid?.
- *
  * @member {string} [cerBlob] Raw bytes of .cer file
- *
  * @member {string} [publicKeyHash] Public key hash.
- *
  * @member {object} [hostingEnvironmentProfile] Specification for the App
  * Service Environment to use for the certificate.
- *
  * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- *
  * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- *
  * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- *
  * @member {string} [keyVaultId] Key Vault Csm resource Id.
- *
  * @member {string} [keyVaultSecretName] Key Vault secret name.
- *
  * @member {string} [keyVaultSecretStatus] Status of the Key Vault secret.
  * Possible values include: 'Initialized', 'WaitingOnCertificateOrder',
  * 'Succeeded', 'CertificateOrderFailed', 'OperationNotPermittedOnKeyVault',
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
  * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
  * 'Unknown'
- *
+ * @member {string} [geoRegion] Region of the certificate.
+ * @member {string} [certificateName] Resource name of the certificate.
  * @member {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
- *
  */
 export interface Certificate extends Resource {
   readonly friendlyName?: string;
@@ -3260,12 +2543,14 @@ export interface Certificate extends Resource {
   password?: string;
   readonly thumbprint?: string;
   readonly valid?: boolean;
-  cerBlob?: string;
+  readonly cerBlob?: string;
   readonly publicKeyHash?: string;
   readonly hostingEnvironmentProfile?: HostingEnvironmentProfile;
   keyVaultId?: string;
   keyVaultSecretName?: string;
   readonly keyVaultSecretStatus?: string;
+  readonly geoRegion?: string;
+  readonly certificateName?: string;
   serverFarmId?: string;
 }
 
@@ -3276,60 +2561,10 @@ export interface Certificate extends Resource {
  * Collection of certificates.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface CertificateCollection {
   value: Certificate[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Csr class.
- * @constructor
- * Certificate signing request.
- *
- * @member {string} [csrName] Name used to locate CSR object.
- *
- * @member {string} [distinguishedName] Distinguished name of certificate to be
- * created.
- *
- * @member {string} [csrString] Actual CSR string created.
- *
- * @member {string} [pfxBlob] PFX certifcate of created certificate.
- *
- * @member {string} [password] PFX password.
- *
- * @member {string} [publicKeyHash] Hash of the certificate's public key.
- *
- * @member {string} [hostingEnvironment] App Service Environment.
- *
- */
-export interface Csr extends Resource {
-  csrName?: string;
-  distinguishedName?: string;
-  csrString?: string;
-  pfxBlob?: string;
-  password?: string;
-  publicKeyHash?: string;
-  hostingEnvironment?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CsrCollection class.
- * @constructor
- * Collection of CSRs.
- *
- * @member {array} value Collection of resources.
- *
- * @member {string} [nextLink] Link to next page of resources.
- *
- */
-export interface CsrCollection {
-  value: Csr[];
   nextLink?: string;
 }
 
@@ -3340,17 +2575,11 @@ export interface CsrCollection {
  * Address information for domain registration.
  *
  * @member {string} address1 Address 1.
- *
  * @member {string} [address2] Address 2.
- *
  * @member {string} city City.
- *
  * @member {string} country Country.
- *
  * @member {string} postalCode Postal code.
- *
  * @member {string} state State.
- *
  */
 export interface Address {
   address1: string;
@@ -3371,35 +2600,20 @@ export interface Address {
  * directories as per ICANN requirements.
  *
  * @member {object} [addressMailing] Mailing address.
- *
  * @member {string} [addressMailing.address1] Address 1.
- *
  * @member {string} [addressMailing.address2] Address 2.
- *
  * @member {string} [addressMailing.city] City.
- *
  * @member {string} [addressMailing.country] Country.
- *
  * @member {string} [addressMailing.postalCode] Postal code.
- *
  * @member {string} [addressMailing.state] State.
- *
  * @member {string} email Email address.
- *
  * @member {string} [fax] Fax number.
- *
  * @member {string} [jobTitle] Job title.
- *
  * @member {string} nameFirst First name.
- *
  * @member {string} nameLast Last name.
- *
  * @member {string} [nameMiddle] Middle name.
- *
  * @member {string} [organization] Organization.
- *
  * @member {string} phone Phone number.
- *
  */
 export interface Contact {
   addressMailing?: Address;
@@ -3420,24 +2634,18 @@ export interface Contact {
  * Details of a hostname derived from a domain.
  *
  * @member {string} [name] Name of the hostname.
- *
  * @member {array} [siteNames] List of apps the hostname is assigned to. This
  * list will have more than one app only if the hostname is pointing to a
  * Traffic Manager.
- *
  * @member {string} [azureResourceName] Name of the Azure resource the hostname
  * is assigned to. If it is assigned to a Traffic Manager then it will be the
  * Traffic Manager name otherwise it will be the app name.
- *
  * @member {string} [azureResourceType] Type of the Azure resource the hostname
  * is assigned to. Possible values include: 'Website', 'TrafficManager'
- *
  * @member {string} [customHostNameDnsRecordType] Type of the DNS record.
  * Possible values include: 'CName', 'A'
- *
  * @member {string} [hostNameType] Type of the hostname. Possible values
  * include: 'Verified', 'Managed'
- *
  */
 export interface HostName {
   name?: string;
@@ -3458,11 +2666,8 @@ export interface HostName {
  * @member {array} [agreementKeys] List of applicable legal agreement keys.
  * This list can be retrieved using ListLegalAgreements API under
  * <code>TopLevelDomain</code> resource.
- *
  * @member {string} [agreedBy] Client IP address.
- *
  * @member {date} [agreedAt] Timestamp when the agreements were accepted.
- *
  */
 export interface DomainPurchaseConsent {
   agreementKeys?: string[];
@@ -3477,180 +2682,107 @@ export interface DomainPurchaseConsent {
  * Information about a domain.
  *
  * @member {object} [contactAdmin] Administrative contact.
- *
  * @member {object} [contactAdmin.addressMailing] Mailing address.
- *
  * @member {string} [contactAdmin.addressMailing.address1] Address 1.
- *
  * @member {string} [contactAdmin.addressMailing.address2] Address 2.
- *
  * @member {string} [contactAdmin.addressMailing.city] City.
- *
  * @member {string} [contactAdmin.addressMailing.country] Country.
- *
  * @member {string} [contactAdmin.addressMailing.postalCode] Postal code.
- *
  * @member {string} [contactAdmin.addressMailing.state] State.
- *
  * @member {string} [contactAdmin.email] Email address.
- *
  * @member {string} [contactAdmin.fax] Fax number.
- *
  * @member {string} [contactAdmin.jobTitle] Job title.
- *
  * @member {string} [contactAdmin.nameFirst] First name.
- *
  * @member {string} [contactAdmin.nameLast] Last name.
- *
  * @member {string} [contactAdmin.nameMiddle] Middle name.
- *
  * @member {string} [contactAdmin.organization] Organization.
- *
  * @member {string} [contactAdmin.phone] Phone number.
- *
  * @member {object} [contactBilling] Billing contact.
- *
  * @member {object} [contactBilling.addressMailing] Mailing address.
- *
  * @member {string} [contactBilling.addressMailing.address1] Address 1.
- *
  * @member {string} [contactBilling.addressMailing.address2] Address 2.
- *
  * @member {string} [contactBilling.addressMailing.city] City.
- *
  * @member {string} [contactBilling.addressMailing.country] Country.
- *
  * @member {string} [contactBilling.addressMailing.postalCode] Postal code.
- *
  * @member {string} [contactBilling.addressMailing.state] State.
- *
  * @member {string} [contactBilling.email] Email address.
- *
  * @member {string} [contactBilling.fax] Fax number.
- *
  * @member {string} [contactBilling.jobTitle] Job title.
- *
  * @member {string} [contactBilling.nameFirst] First name.
- *
  * @member {string} [contactBilling.nameLast] Last name.
- *
  * @member {string} [contactBilling.nameMiddle] Middle name.
- *
  * @member {string} [contactBilling.organization] Organization.
- *
  * @member {string} [contactBilling.phone] Phone number.
- *
  * @member {object} [contactRegistrant] Registrant contact.
- *
  * @member {object} [contactRegistrant.addressMailing] Mailing address.
- *
  * @member {string} [contactRegistrant.addressMailing.address1] Address 1.
- *
  * @member {string} [contactRegistrant.addressMailing.address2] Address 2.
- *
  * @member {string} [contactRegistrant.addressMailing.city] City.
- *
  * @member {string} [contactRegistrant.addressMailing.country] Country.
- *
  * @member {string} [contactRegistrant.addressMailing.postalCode] Postal code.
- *
  * @member {string} [contactRegistrant.addressMailing.state] State.
- *
  * @member {string} [contactRegistrant.email] Email address.
- *
  * @member {string} [contactRegistrant.fax] Fax number.
- *
  * @member {string} [contactRegistrant.jobTitle] Job title.
- *
  * @member {string} [contactRegistrant.nameFirst] First name.
- *
  * @member {string} [contactRegistrant.nameLast] Last name.
- *
  * @member {string} [contactRegistrant.nameMiddle] Middle name.
- *
  * @member {string} [contactRegistrant.organization] Organization.
- *
  * @member {string} [contactRegistrant.phone] Phone number.
- *
  * @member {object} [contactTech] Technical contact.
- *
  * @member {object} [contactTech.addressMailing] Mailing address.
- *
  * @member {string} [contactTech.addressMailing.address1] Address 1.
- *
  * @member {string} [contactTech.addressMailing.address2] Address 2.
- *
  * @member {string} [contactTech.addressMailing.city] City.
- *
  * @member {string} [contactTech.addressMailing.country] Country.
- *
  * @member {string} [contactTech.addressMailing.postalCode] Postal code.
- *
  * @member {string} [contactTech.addressMailing.state] State.
- *
  * @member {string} [contactTech.email] Email address.
- *
  * @member {string} [contactTech.fax] Fax number.
- *
  * @member {string} [contactTech.jobTitle] Job title.
- *
  * @member {string} [contactTech.nameFirst] First name.
- *
  * @member {string} [contactTech.nameLast] Last name.
- *
  * @member {string} [contactTech.nameMiddle] Middle name.
- *
  * @member {string} [contactTech.organization] Organization.
- *
  * @member {string} [contactTech.phone] Phone number.
- *
  * @member {string} [registrationStatus] Domain registration status. Possible
  * values include: 'Active', 'Awaiting', 'Cancelled', 'Confiscated',
  * 'Disabled', 'Excluded', 'Expired', 'Failed', 'Held', 'Locked', 'Parked',
  * 'Pending', 'Reserved', 'Reverted', 'Suspended', 'Transferred', 'Unknown',
  * 'Unlocked', 'Unparked', 'Updated', 'JsonConverterFailed'
- *
  * @member {string} [provisioningState] Domain provisioning state. Possible
  * values include: 'Succeeded', 'Failed', 'Canceled', 'InProgress', 'Deleting'
- *
  * @member {array} [nameServers] Name servers.
- *
  * @member {boolean} [privacy] <code>true</code> if domain privacy is enabled
  * for this domain; otherwise, <code>false</code>.
- *
  * @member {date} [createdTime] Domain creation timestamp.
- *
  * @member {date} [expirationTime] Domain expiration timestamp.
- *
  * @member {date} [lastRenewedTime] Timestamp when the domain was renewed last
  * time.
- *
  * @member {boolean} [autoRenew] <code>true</code> if the domain should be
  * automatically renewed; otherwise, <code>false</code>. Default value: true .
- *
  * @member {boolean} [readyForDnsRecordManagement] <code>true</code> if Azure
  * can assign this domain to App Service apps; otherwise, <code>false</code>.
  * This value will be <code>true</code> if domain registration status is active
  * and
  * it is hosted on name servers Azure has programmatic access to.
- *
  * @member {array} [managedHostNames] All hostnames derived from the domain and
  * assigned to Azure resources.
- *
  * @member {object} [consent] Legal agreement consent.
- *
  * @member {array} [consent.agreementKeys] List of applicable legal agreement
  * keys. This list can be retrieved using ListLegalAgreements API under
  * <code>TopLevelDomain</code> resource.
- *
  * @member {string} [consent.agreedBy] Client IP address.
- *
  * @member {date} [consent.agreedAt] Timestamp when the agreements were
  * accepted.
- *
  * @member {array} [domainNotRenewableReasons] Reasons why domain is not
  * renewable.
- *
+ * @member {string} [dnsType] Current DNS type. Possible values include:
+ * 'AzureDns', 'DefaultDomainRegistrarDns'
+ * @member {string} [dnsZoneId] Azure DNS Zone to use
+ * @member {string} [targetDnsType] Target DNS type (would be used for
+ * migration). Possible values include: 'AzureDns', 'DefaultDomainRegistrarDns'
+ * @member {string} [authCode]
  */
 export interface Domain extends Resource {
   contactAdmin?: Contact;
@@ -3659,16 +2791,20 @@ export interface Domain extends Resource {
   contactTech?: Contact;
   readonly registrationStatus?: string;
   readonly provisioningState?: string;
-  nameServers?: string[];
+  readonly nameServers?: string[];
   privacy?: boolean;
   readonly createdTime?: Date;
   readonly expirationTime?: Date;
   readonly lastRenewedTime?: Date;
   autoRenew?: boolean;
   readonly readyForDnsRecordManagement?: boolean;
-  managedHostNames?: HostName[];
+  readonly managedHostNames?: HostName[];
   consent?: DomainPurchaseConsent;
-  domainNotRenewableReasons?: string[];
+  readonly domainNotRenewableReasons?: string[];
+  dnsType?: string;
+  dnsZoneId?: string;
+  targetDnsType?: string;
+  readonly authCode?: string;
 }
 
 /**
@@ -3678,15 +2814,12 @@ export interface Domain extends Resource {
  * Domain availablility check result.
  *
  * @member {string} [name] Name of the domain.
- *
  * @member {boolean} [available] <code>true</code> if domain can be purchased
  * using CreateDomain API; otherwise, <code>false</code>.
- *
  * @member {string} [domainType] Valid values are Regular domain: Azure will
  * charge the full price of domain registration, SoftDeleted: Purchasing this
  * domain will simply restore it and this operation will not cost anything.
  * Possible values include: 'Regular', 'SoftDeleted'
- *
  */
 export interface DomainAvailablilityCheckResult {
   name?: string;
@@ -3701,9 +2834,7 @@ export interface DomainAvailablilityCheckResult {
  * Collection of domains.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DomainCollection {
   value: Domain[];
@@ -3717,12 +2848,9 @@ export interface DomainCollection {
  * Single sign-on request information for domain management.
  *
  * @member {string} [url] URL where the single sign-on request is to be made.
- *
  * @member {string} [postParameterKey] Post parameter key.
- *
  * @member {string} [postParameterValue] Post parameter value. Client should
  * use 'application/x-www-form-urlencoded' encoding for this value.
- *
  */
 export interface DomainControlCenterSsoRequest {
   readonly url?: string;
@@ -3737,7 +2865,6 @@ export interface DomainControlCenterSsoRequest {
  * Domain ownership Identifier.
  *
  * @member {string} [ownershipId] Ownership Id.
- *
  */
 export interface DomainOwnershipIdentifier extends Resource {
   ownershipId?: string;
@@ -3750,9 +2877,7 @@ export interface DomainOwnershipIdentifier extends Resource {
  * Collection of domain ownership identifiers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DomainOwnershipIdentifierCollection {
   value: DomainOwnershipIdentifier[];
@@ -3767,10 +2892,8 @@ export interface DomainOwnershipIdentifierCollection {
  *
  * @member {string} [keywords] Keywords to be used for generating domain
  * recommendations.
- *
  * @member {number} [maxDomainRecommendations] Maximum number of
  * recommendations.
- *
  */
 export interface DomainRecommendationSearchParameters {
   keywords?: string;
@@ -3784,9 +2907,7 @@ export interface DomainRecommendationSearchParameters {
  * Collection of domain name identifiers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface NameIdentifierCollection {
   value: NameIdentifier[];
@@ -3800,55 +2921,44 @@ export interface NameIdentifierCollection {
  * Represents a recommendation result generated by the recommendation engine.
  *
  * @member {date} [creationTime] Timestamp when this instance was created.
- *
  * @member {string} [recommendationId] A GUID value that each recommendation
  * object is associated with.
- *
  * @member {string} [resourceId] Full ARM resource ID string that this
  * recommendation object is associated with.
- *
  * @member {string} [resourceScope] Name of a resource type this recommendation
  * applies, e.g. Subscription, ServerFarm, Site. Possible values include:
  * 'ServerFarm', 'Subscription', 'WebSite'
- *
  * @member {string} [ruleName] Unique name of the rule.
- *
  * @member {string} [displayName] UI friendly name of the rule (may not be
  * unique).
- *
  * @member {string} [message] Recommendation text.
- *
  * @member {string} [level] Level indicating how critical this recommendation
  * can impact. Possible values include: 'Critical', 'Warning', 'Information',
  * 'NonUrgentSuggestion'
- *
  * @member {string} [channels] List of channels that this recommendation can
  * apply. Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
  * 'All'
- *
  * @member {array} [tags] The list of category tags that this recommendation
  * belongs to.
- *
  * @member {string} [actionName] Name of action recommended by this object.
- *
  * @member {date} [startTime] The beginning time in UTC of a range that the
  * recommendation refers to.
- *
  * @member {date} [endTime] The end time in UTC of a range that the
  * recommendation refers to.
- *
  * @member {date} [nextNotificationTime] When to notify this recommendation
  * next in UTC. Null means that this will never be notified anymore.
- *
  * @member {date} [notificationExpirationTime] Date and time in UTC when this
  * notification expires.
- *
  * @member {date} [notifiedTime] Last timestamp in UTC this instance was
  * actually notified. Null means that this recommendation hasn't been notified
  * yet.
- *
  * @member {number} [score] A metric value measured by the rule.
- *
+ * @member {boolean} [isDynamic] True if this is associated with a dynamically
+ * added rule
+ * @member {string} [extensionName] Extension name of the portal if exists.
+ * @member {string} [bladeName] Deep link to a blade on the portal.
+ * @member {string} [forwardLink] Forward link to an external document
+ * associated with the rule.
  */
 export interface Recommendation {
   creationTime?: Date;
@@ -3868,6 +2978,10 @@ export interface Recommendation {
   notificationExpirationTime?: Date;
   notifiedTime?: Date;
   score?: number;
+  isDynamic?: boolean;
+  extensionName?: string;
+  bladeName?: string;
+  forwardLink?: string;
 }
 
 /**
@@ -3877,30 +2991,29 @@ export interface Recommendation {
  * Represents a recommendation rule that the recommendation engine can perform.
  *
  * @member {string} [name] Unique name of the rule.
- *
  * @member {string} [displayName] UI friendly name of the rule.
- *
  * @member {string} [message] Localized name of the rule (Good for UI).
- *
  * @member {uuid} [recommendationId] Recommendation ID of an associated
  * recommendation object tied to the rule, if exists.
  * If such an object doesn't exist, it is set to null.
- *
  * @member {string} [description] Localized detailed description of the rule.
- *
  * @member {string} [actionName] Name of action that is recommended by this
  * rule in string.
- *
  * @member {string} [level] Level of impact indicating how critical this rule
  * is. Possible values include: 'Critical', 'Warning', 'Information',
  * 'NonUrgentSuggestion'
- *
  * @member {string} [channels] List of available channels that this rule
  * applies. Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
  * 'All'
- *
  * @member {array} [tags] An array of category tags that the rule contains.
- *
+ * @member {boolean} [isDynamic] True if this is associated with a dynamically
+ * added rule
+ * @member {string} [extensionName] Extension name of the portal if exists.
+ * Applicable to dynamic rule only.
+ * @member {string} [bladeName] Deep link to a blade on the portal. Applicable
+ * to dynamic rule only.
+ * @member {string} [forwardLink] Forward link to an external document
+ * associated with the rule. Applicable to dynamic rule only.
  */
 export interface RecommendationRule {
   name?: string;
@@ -3912,6 +3025,10 @@ export interface RecommendationRule {
   level?: string;
   channels?: string;
   tags?: string[];
+  isDynamic?: boolean;
+  extensionName?: string;
+  bladeName?: string;
+  forwardLink?: string;
 }
 
 /**
@@ -3922,9 +3039,7 @@ export interface RecommendationRule {
  * group they should be moved to.
  *
  * @member {string} [targetResourceGroup]
- *
  * @member {array} [resources]
- *
  */
 export interface CsmMoveResourceEnvelope {
   targetResourceGroup?: string;
@@ -3938,11 +3053,8 @@ export interface CsmMoveResourceEnvelope {
  * Geographical region.
  *
  * @member {string} [geoRegionName] Region name.
- *
  * @member {string} [description] Region description.
- *
  * @member {string} [displayName] Display name for region.
- *
  */
 export interface GeoRegion extends Resource {
   readonly geoRegionName?: string;
@@ -3957,9 +3069,7 @@ export interface GeoRegion extends Resource {
  * Collection of geographical regions.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface GeoRegionCollection {
   value: GeoRegion[];
@@ -3973,28 +3083,19 @@ export interface GeoRegionCollection {
  * A Global SKU Description.
  *
  * @member {string} [name] Name of the resource SKU.
- *
  * @member {string} [tier] Service Tier of the resource SKU.
- *
  * @member {object} [capacity] Min, max, and default scale values of the SKU.
- *
  * @member {number} [capacity.minimum] Minimum number of workers for this App
  * Service plan SKU.
- *
  * @member {number} [capacity.maximum] Maximum number of workers for this App
  * Service plan SKU.
- *
  * @member {number} [capacity.default] Default number of workers for this App
  * Service plan SKU.
- *
  * @member {string} [capacity.scaleType] Available scale configurations for an
  * App Service plan.
- *
  * @member {array} [locations] Locations of the SKU.
- *
  * @member {array} [capabilities] Capabilities of the SKU, e.g., is traffic
  * manager enabled?
- *
  */
 export interface GlobalCsmSkuDescription {
   name?: string;
@@ -4011,30 +3112,19 @@ export interface GlobalCsmSkuDescription {
  * Premier add-on offer.
  *
  * @member {string} [sku] SKU.
- *
  * @member {string} [product] Product.
- *
  * @member {string} [vendor] Vendor.
- *
  * @member {string} [premierAddOnOfferName] Name.
- *
  * @member {boolean} [promoCodeRequired] <code>true</code> if promotion code is
  * required; otherwise, <code>false</code>.
- *
  * @member {number} [quota] Quota.
- *
  * @member {string} [webHostingPlanRestrictions] App Service plans this offer
  * is restricted to. Possible values include: 'None', 'Free', 'Shared',
  * 'Basic', 'Standard', 'Premium'
- *
  * @member {string} [privacyPolicyUrl] Privacy policy URL.
- *
  * @member {string} [legalTermsUrl] Legal terms URL.
- *
  * @member {string} [marketplacePublisher] Marketplace publisher.
- *
  * @member {string} [marketplaceOffer] Marketplace offer.
- *
  */
 export interface PremierAddOnOffer extends Resource {
   sku?: string;
@@ -4057,9 +3147,7 @@ export interface PremierAddOnOffer extends Resource {
  * Collection of premier add-on offers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface PremierAddOnOfferCollection {
   value: PremierAddOnOffer[];
@@ -4075,18 +3163,15 @@ export interface PremierAddOnOfferCollection {
  * @member {boolean} [nameAvailable] <code>true</code> indicates name is valid
  * and available. <code>false</code> indicates the name is invalid,
  * unavailable, or both.
- *
  * @member {string} [reason] <code>Invalid</code> indicates the name provided
  * does not match Azure App Service naming requirements.
  * <code>AlreadyExists</code> indicates that the name is already in use and is
  * therefore unavailable. Possible values include: 'Invalid', 'AlreadyExists'
- *
  * @member {string} [message] If reason == invalid, provide the user with the
  * reason why the given name is invalid, and provide the resource naming
  * requirements so that the user can select a valid name. If reason ==
  * AlreadyExists, explain that resource name is already in use, and direct them
  * to select a different name.
- *
  */
 export interface ResourceNameAvailability {
   nameAvailable?: boolean;
@@ -4101,12 +3186,9 @@ export interface ResourceNameAvailability {
  * Resource name availability request content.
  *
  * @member {string} name Resource name to verify.
- *
  * @member {string} type Resource type used for verification. Possible values
  * include: 'Site', 'Slot', 'HostingEnvironment'
- *
  * @member {boolean} [isFqdn] Is fully qualified domain name.
- *
  */
 export interface ResourceNameAvailabilityRequest {
   name: string;
@@ -4121,9 +3203,7 @@ export interface ResourceNameAvailabilityRequest {
  * Collection of SKU information.
  *
  * @member {string} [resourceType] Resource type that this SKU applies to.
- *
  * @member {array} [skus] List of SKUs the subscription is able to use.
- *
  */
 export interface SkuInfos {
   resourceType?: string;
@@ -4137,15 +3217,10 @@ export interface SkuInfos {
  * The source control OAuth token.
  *
  * @member {string} [sourceControlName] Name or source control type.
- *
  * @member {string} [token] OAuth access token.
- *
  * @member {string} [tokenSecret] OAuth access token secret.
- *
  * @member {string} [refreshToken] OAuth refresh token.
- *
  * @member {date} [expirationTime] OAuth token expiration.
- *
  */
 export interface SourceControl extends Resource {
   sourceControlName?: string;
@@ -4162,9 +3237,7 @@ export interface SourceControl extends Resource {
  * Collection of source controls.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SourceControlCollection {
   value: SourceControl[];
@@ -4178,16 +3251,11 @@ export interface SourceControlCollection {
  * User crendentials used for publishing activity.
  *
  * @member {string} [userName] Username
- *
  * @member {string} [publishingUserName] Username used for publishing.
- *
  * @member {string} [publishingPassword] Password used for publishing.
- *
  * @member {string} [publishingPasswordHash] Password hash used for publishing.
- *
  * @member {string} [publishingPasswordHashSalt] Password hash salt used for
  * publishing.
- *
  */
 export interface User extends Resource {
   userName?: string;
@@ -4204,26 +3272,18 @@ export interface User extends Resource {
  * Resource validation request content.
  *
  * @member {string} name Resource name to verify.
- *
  * @member {string} type Resource type used for verification. Possible values
  * include: 'ServerFarm', 'Site'
- *
  * @member {string} location Expected location of the resource.
- *
  * @member {string} [serverFarmId] ARM resource ID of an App Service plan that
  * would host the app.
- *
  * @member {string} [skuName] Name of the target SKU for the App Service plan.
- *
  * @member {boolean} [needLinuxWorkers] <code>true</code> if App Service plan
  * is for Linux workers; otherwise, <code>false</code>.
- *
  * @member {number} [capacity] Target capacity of the App Service plan (number
  * of VM's).
- *
  * @member {string} [hostingEnvironment] Name of App Service Environment where
  * app or App Service plan should be created.
- *
  */
 export interface ValidateRequest {
   name: string;
@@ -4243,9 +3303,7 @@ export interface ValidateRequest {
  * Error details for when validation fails.
  *
  * @member {string} [code] Validation error code.
- *
  * @member {string} [message] Validation error message.
- *
  */
 export interface ValidateResponseError {
   code?: string;
@@ -4259,13 +3317,9 @@ export interface ValidateResponseError {
  * Describes the result of resource validation.
  *
  * @member {string} [status] Result of validation.
- *
  * @member {object} [error] Error details for the case when validation fails.
- *
  * @member {string} [error.code] Validation error code.
- *
  * @member {string} [error.message] Validation error message.
- *
  */
 export interface ValidateResponse {
   status?: string;
@@ -4279,13 +3333,9 @@ export interface ValidateResponse {
  * Legal agreement for a top level domain.
  *
  * @member {string} agreementKey Unique identifier for the agreement.
- *
  * @member {string} title Agreement title.
- *
  * @member {string} content Agreement details.
- *
  * @member {string} [url] URL where a copy of the agreement details is hosted.
- *
  */
 export interface TldLegalAgreement {
   agreementKey: string;
@@ -4301,9 +3351,7 @@ export interface TldLegalAgreement {
  * Collection of top-level domain legal agreements.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface TldLegalAgreementCollection {
   value: TldLegalAgreement[];
@@ -4317,10 +3365,8 @@ export interface TldLegalAgreementCollection {
  * A top level domain object.
  *
  * @member {string} [domainName] Name of the top level domain.
- *
  * @member {boolean} [privacy] If <code>true</code>, then the top level domain
  * supports domain privacy; otherwise, <code>false</code>.
- *
  */
 export interface TopLevelDomain extends Resource {
   readonly domainName?: string;
@@ -4336,10 +3382,13 @@ export interface TopLevelDomain extends Resource {
  * @member {boolean} [includePrivacy] If <code>true</code>, then the list of
  * agreements will include agreements for domain privacy as well; otherwise,
  * <code>false</code>.
- *
+ * @member {boolean} [forTransfer] If <code>true</code>, then the list of
+ * agreements will include agreements for domain transfer as well; otherwise,
+ * <code>false</code>.
  */
 export interface TopLevelDomainAgreementOption {
   includePrivacy?: boolean;
+  forTransfer?: boolean;
 }
 
 /**
@@ -4349,9 +3398,7 @@ export interface TopLevelDomainAgreementOption {
  * Collection of Top-level domains.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface TopLevelDomainCollection {
   value: TopLevelDomain[];
@@ -4366,7 +3413,6 @@ export interface TopLevelDomainCollection {
  *
  * @member {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'. Default value: 'Off' .
- *
  */
 export interface FileSystemApplicationLogsConfig {
   level?: string;
@@ -4380,10 +3426,8 @@ export interface FileSystemApplicationLogsConfig {
  *
  * @member {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {string} sasUrl SAS URL to an Azure table with add/query/delete
  * permissions.
- *
  */
 export interface AzureTableStorageApplicationLogsConfig {
   level?: string;
@@ -4398,14 +3442,11 @@ export interface AzureTableStorageApplicationLogsConfig {
  *
  * @member {string} [level] Log level. Possible values include: 'Off',
  * 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {string} [sasUrl] SAS url to a azure blob container with
  * read/write/list/delete permissions.
- *
  * @member {number} [retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- *
  */
 export interface AzureBlobStorageApplicationLogsConfig {
   level?: string;
@@ -4420,32 +3461,23 @@ export interface AzureBlobStorageApplicationLogsConfig {
  * Application logs configuration.
  *
  * @member {object} [fileSystem] Application logs to file system configuration.
- *
  * @member {string} [fileSystem.level] Log level. Possible values include:
  * 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {object} [azureTableStorage] Application logs to azure table storage
  * configuration.
- *
  * @member {string} [azureTableStorage.level] Log level. Possible values
  * include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {string} [azureTableStorage.sasUrl] SAS URL to an Azure table with
  * add/query/delete permissions.
- *
  * @member {object} [azureBlobStorage] Application logs to blob storage
  * configuration.
- *
  * @member {string} [azureBlobStorage.level] Log level. Possible values
  * include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {string} [azureBlobStorage.sasUrl] SAS url to a azure blob container
  * with read/write/list/delete permissions.
- *
  * @member {number} [azureBlobStorage.retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- *
  */
 export interface ApplicationLogsConfig {
   fileSystem?: FileSystemApplicationLogsConfig;
@@ -4461,13 +3493,10 @@ export interface ApplicationLogsConfig {
  *
  * @member {string} [sasUrl] SAS url to a azure blob container with
  * read/write/list/delete permissions.
- *
  * @member {number} [retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- *
  * @member {boolean} [enabled] Enabled.
- *
  */
 export interface AzureBlobStorageHttpLogsConfig {
   sasUrl?: string;
@@ -4482,18 +3511,14 @@ export interface AzureBlobStorageHttpLogsConfig {
  * Database backup settings.
  *
  * @member {string} databaseType Database type (e.g. SqlAzure / MySql).
- * Possible values include: 'SqlAzure', 'MySql', 'LocalMySql'
- *
+ * Possible values include: 'SqlAzure', 'MySql', 'LocalMySql', 'PostgreSql'
  * @member {string} [name]
- *
  * @member {string} [connectionStringName] Contains a connection string name
  * that is linked to the SiteConfig.ConnectionStrings.
  * This is used during restore with overwrite connection strings options.
- *
  * @member {string} [connectionString] Contains a connection string to a
  * database which is being backed up or restored. If the restore should happen
  * to a new database, the database name inside is the new one.
- *
  */
 export interface DatabaseBackupSetting {
   databaseType: string;
@@ -4509,42 +3534,28 @@ export interface DatabaseBackupSetting {
  * Backup description.
  *
  * @member {number} [backupId] Id of the backup.
- *
  * @member {string} [storageAccountUrl] SAS URL for the storage account
  * container which contains this backup.
- *
  * @member {string} [blobName] Name of the blob which contains data for this
  * backup.
- *
  * @member {string} [backupItemName] Name of this backup.
- *
  * @member {string} [status] Backup status. Possible values include:
  * 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created', 'Skipped',
  * 'PartiallySucceeded', 'DeleteInProgress', 'DeleteFailed', 'Deleted'
- *
  * @member {number} [sizeInBytes] Size of the backup in bytes.
- *
  * @member {date} [created] Timestamp of the backup creation.
- *
  * @member {string} [log] Details regarding this backup. Might contain an error
  * message.
- *
  * @member {array} [databases] List of databases included in the backup.
- *
  * @member {boolean} [scheduled] True if this backup has been created due to a
  * schedule being triggered.
- *
  * @member {date} [lastRestoreTimeStamp] Timestamp of a last restore operation
  * which used this backup.
- *
  * @member {date} [finishedTimeStamp] Timestamp when this backup finished.
- *
  * @member {string} [correlationId] Unique correlation identifier. Please use
  * this along with the timestamp while communicating with Azure support.
- *
  * @member {number} [websiteSizeInBytes] Size of the original web app which has
  * been backed up.
- *
  */
 export interface BackupItem extends Resource {
   readonly backupId?: number;
@@ -4570,9 +3581,7 @@ export interface BackupItem extends Resource {
  * Collection of backup items.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface BackupItemCollection {
   value: BackupItem[];
@@ -4586,27 +3595,21 @@ export interface BackupItemCollection {
  * Description of a backup schedule. Describes how often should be the backup
  * performed and what should be the retention policy.
  *
- * @member {number} frequencyInterval How often should be the backup executed
+ * @member {number} frequencyInterval How often the backup should be executed
  * (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be
  * set to Day). Default value: 7 .
- *
- * @member {string} frequencyUnit The unit of time for how often should be the
- * backup executed (e.g. for weekly backup, this should be set to Day and
+ * @member {string} frequencyUnit The unit of time for how often the backup
+ * should be executed (e.g. for weekly backup, this should be set to Day and
  * FrequencyInterval should be set to 7). Possible values include: 'Day',
  * 'Hour'. Default value: 'Day' .
- *
  * @member {boolean} keepAtLeastOneBackup True if the retention policy should
  * always keep at least one backup in the storage account, regardless how old
  * it is; false otherwise. Default value: true .
- *
  * @member {number} retentionPeriodInDays After how many days backups should be
- * deleted. Default value: 90 .
- *
+ * deleted. Default value: 30 .
  * @member {date} [startTime] When the schedule should start working.
- *
  * @member {date} [lastExecutionTime] Last time when this schedule was
  * triggered.
- *
  */
 export interface BackupSchedule {
   frequencyInterval: number;
@@ -4624,42 +3627,30 @@ export interface BackupSchedule {
  * Description of a backup which will be performed.
  *
  * @member {string} [backupRequestName] Name of the backup.
- *
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
  * included in that case), false if the backup schedule should be disabled.
- *
  * @member {string} [storageAccountUrl] SAS URL to the container.
- *
  * @member {object} [backupSchedule] Schedule for the backup if it is executed
  * periodically.
- *
- * @member {number} [backupSchedule.frequencyInterval] How often should be the
- * backup executed (e.g. for weekly backup, this should be set to 7 and
+ * @member {number} [backupSchedule.frequencyInterval] How often the backup
+ * should be executed (e.g. for weekly backup, this should be set to 7 and
  * FrequencyUnit should be set to Day)
- *
  * @member {string} [backupSchedule.frequencyUnit] The unit of time for how
- * often should be the backup executed (e.g. for weekly backup, this should be
+ * often the backup should be executed (e.g. for weekly backup, this should be
  * set to Day and FrequencyInterval should be set to 7). Possible values
  * include: 'Day', 'Hour'
- *
  * @member {boolean} [backupSchedule.keepAtLeastOneBackup] True if the
  * retention policy should always keep at least one backup in the storage
  * account, regardless how old it is; false otherwise.
- *
  * @member {number} [backupSchedule.retentionPeriodInDays] After how many days
  * backups should be deleted.
- *
  * @member {date} [backupSchedule.startTime] When the schedule should start
  * working.
- *
  * @member {date} [backupSchedule.lastExecutionTime] Last time when this
  * schedule was triggered.
- *
  * @member {array} [databases] Databases included in the backup.
- *
  * @member {string} [backupRequestType] Type of the backup. Possible values
  * include: 'Default', 'Clone', 'Relocation'
- *
  */
 export interface BackupRequest extends Resource {
   backupRequestName?: string;
@@ -4677,11 +3668,9 @@ export interface BackupRequest extends Resource {
  * Database connection string value to type pair.
  *
  * @member {string} value Value of pair.
- *
  * @member {string} type Type of database. Possible values include: 'MySql',
  * 'SQLServer', 'SQLAzure', 'Custom', 'NotificationHub', 'ServiceBus',
- * 'EventHub', 'ApiHub', 'DocDb', 'RedisCache'
- *
+ * 'EventHub', 'ApiHub', 'DocDb', 'RedisCache', 'PostgreSQL'
  */
 export interface ConnStringValueTypePair {
   value: string;
@@ -4695,7 +3684,6 @@ export interface ConnStringValueTypePair {
  * String dictionary resource.
  *
  * @member {object} [properties] Connection strings.
- *
  */
 export interface ConnectionStringDictionary extends Resource {
   properties?: { [propertyName: string]: ConnStringValueTypePair };
@@ -4711,7 +3699,6 @@ export interface ConnectionStringDictionary extends Resource {
  * FileZilla3
  * WebDeploy -- default
  * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
- *
  */
 export interface CsmPublishingProfileOptions {
   format?: string;
@@ -4725,13 +3712,10 @@ export interface CsmPublishingProfileOptions {
  *
  * @member {date} [snapshotTime] Point in time in which the app recovery should
  * be attempted.
- *
  * @member {string} [siteName] [Optional] Destination app name into which app
  * should be recovered. This is case when new app should be created instead.
- *
  * @member {string} [slotName] [Optional] Destination app slot name into which
  * app should be recovered.
- *
  */
 export interface CsmSiteRecoveryEntity {
   snapshotTime?: Date;
@@ -4747,10 +3731,8 @@ export interface CsmSiteRecoveryEntity {
  *
  * @member {string} targetSlot Destination deployment slot during swap
  * operation.
- *
  * @member {boolean} preserveVnet <code>true</code> to preserve Virtual Network
  * to the slot during swap; otherwise, <code>false</code>.
- *
  */
 export interface CsmSlotEntity {
   targetSlot: string;
@@ -4765,54 +3747,37 @@ export interface CsmSlotEntity {
  *
  * @member {boolean} [isHostnameAlreadyVerified] <code>true</code> if hostname
  * is already verified; otherwise, <code>false</code>.
- *
  * @member {string} [customDomainVerificationTest] DNS verification test
  * result. Possible values include: 'Passed', 'Failed', 'Skipped'
- *
  * @member {object} [customDomainVerificationFailureInfo] Raw failure
  * information if DNS verification fails.
- *
  * @member {string} [customDomainVerificationFailureInfo.extendedCode] Type of
  * error.
- *
  * @member {string} [customDomainVerificationFailureInfo.messageTemplate]
  * Message template.
- *
  * @member {array} [customDomainVerificationFailureInfo.parameters] Parameters
  * for the template.
- *
  * @member {array} [customDomainVerificationFailureInfo.innerErrors] Inner
  * errors.
- *
  * @member {string} [customDomainVerificationFailureInfo.code] Basic error
  * code.
- *
  * @member {string} [customDomainVerificationFailureInfo.message] Any details
  * of the error.
- *
  * @member {boolean} [hasConflictOnScaleUnit] <code>true</code> if there is a
  * conflict on a scale unit; otherwise, <code>false</code>.
- *
  * @member {boolean} [hasConflictAcrossSubscription] <code>true</code> if htere
  * is a conflict across subscriptions; otherwise, <code>false</code>.
- *
  * @member {string} [conflictingAppResourceId] Name of the conflicting app on
  * scale unit if it's within the same subscription.
- *
  * @member {array} [cNameRecords] CName records controller can see for this
  * hostname.
- *
  * @member {array} [txtRecords] TXT records controller can see for this
  * hostname.
- *
  * @member {array} [aRecords] A records controller can see for this hostname.
- *
  * @member {array} [alternateCNameRecords] Alternate CName records controller
  * can see for this hostname.
- *
  * @member {array} [alternateTxtRecords] Alternate TXT records controller can
  * see for this hostname.
- *
  */
 export interface CustomHostnameAnalysisResult extends Resource {
   readonly isHostnameAlreadyVerified?: boolean;
@@ -4835,25 +3800,15 @@ export interface CustomHostnameAnalysisResult extends Resource {
  * User crendentials used for publishing activity.
  *
  * @member {string} [deploymentId] ID.
- *
  * @member {number} [status] Status.
- *
  * @member {string} [message] Message.
- *
  * @member {string} [author] Author.
- *
  * @member {string} [deployer] Deployer.
- *
  * @member {string} [authorEmail] Author email.
- *
  * @member {date} [startTime] Start time.
- *
  * @member {date} [endTime] End time.
- *
  * @member {boolean} [active] Active.
- *
  * @member {string} [details] Detail.
- *
  */
 export interface Deployment extends Resource {
   deploymentId?: string;
@@ -4875,9 +3830,7 @@ export interface Deployment extends Resource {
  * Collection of app deployments.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DeploymentCollection {
   value: Deployment[];
@@ -4891,7 +3844,6 @@ export interface DeploymentCollection {
  * Enabled configuration.
  *
  * @member {boolean} [enabled] Enabled.
- *
  */
 export interface EnabledConfig {
   enabled?: boolean;
@@ -4907,13 +3859,10 @@ export interface EnabledConfig {
  * files can use.
  * When reached old log files will be removed to make space for new ones.
  * Value can range between 25 and 100.
- *
  * @member {number} [retentionInDays] Retention in days.
  * Remove files older than X days.
  * 0 or lower means no retention.
- *
  * @member {boolean} [enabled] Enabled.
- *
  */
 export interface FileSystemHttpLogsConfig {
   retentionInMb?: number;
@@ -4928,30 +3877,20 @@ export interface FileSystemHttpLogsConfig {
  * A hostname binding object.
  *
  * @member {string} [hostNameBindingName] Hostname.
- *
  * @member {string} [siteName] App Service app name.
- *
  * @member {string} [domainId] Fully qualified ARM domain resource URI.
- *
  * @member {string} [azureResourceName] Azure resource name.
- *
  * @member {string} [azureResourceType] Azure resource type. Possible values
  * include: 'Website', 'TrafficManager'
- *
  * @member {string} [customHostNameDnsRecordType] Custom DNS record type.
  * Possible values include: 'CName', 'A'
- *
  * @member {string} [hostNameType] Hostname type. Possible values include:
  * 'Verified', 'Managed'
- *
  * @member {string} [sslState] SSL type. Possible values include: 'Disabled',
  * 'SniEnabled', 'IpBasedEnabled'
- *
  * @member {string} [thumbprint] SSL certificate thumbprint
- *
  * @member {string} [virtualIP] Virtual IP address assigned to the hostname if
  * IP based SSL is enabled.
- *
  */
 export interface HostNameBinding extends Resource {
   hostNameBindingName?: string;
@@ -4973,9 +3912,7 @@ export interface HostNameBinding extends Resource {
  * Collection of hostname bindings.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface HostNameBindingCollection {
   value: HostNameBinding[];
@@ -4989,30 +3926,22 @@ export interface HostNameBindingCollection {
  * Http logs configuration.
  *
  * @member {object} [fileSystem] Http logs to file system configuration.
- *
  * @member {number} [fileSystem.retentionInMb] Maximum size in megabytes that
  * http log files can use.
  * When reached old log files will be removed to make space for new ones.
  * Value can range between 25 and 100.
- *
  * @member {number} [fileSystem.retentionInDays] Retention in days.
  * Remove files older than X days.
  * 0 or lower means no retention.
- *
  * @member {boolean} [fileSystem.enabled] Enabled.
- *
  * @member {object} [azureBlobStorage] Http logs to azure blob storage
  * configuration.
- *
  * @member {string} [azureBlobStorage.sasUrl] SAS url to a azure blob container
  * with read/write/list/delete permissions.
- *
  * @member {number} [azureBlobStorage.retentionInDays] Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- *
  * @member {boolean} [azureBlobStorage.enabled] Enabled.
- *
  */
 export interface HttpLogsConfig {
   fileSystem?: FileSystemHttpLogsConfig;
@@ -5026,7 +3955,6 @@ export interface HttpLogsConfig {
  * Identifier.
  *
  * @member {string} [identifierId] ID.
- *
  */
 export interface Identifier extends Resource {
   identifierId?: string;
@@ -5039,9 +3967,7 @@ export interface Identifier extends Resource {
  * Collection of identifiers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface IdentifierCollection {
   value: Identifier[];
@@ -5056,7 +3982,6 @@ export interface IdentifierCollection {
  *
  * @member {string} [connectionString] Connection string to the remote MySQL
  * database to which data should be migrated.
- *
  */
 export interface MigrateMySqlRequest extends Resource {
   connectionString?: string;
@@ -5071,12 +3996,9 @@ export interface MigrateMySqlRequest extends Resource {
  * @member {string} [migrationOperationStatus] Status of the migration task.
  * Possible values include: 'InProgress', 'Failed', 'Succeeded', 'TimedOut',
  * 'Created'
- *
  * @member {string} [operationId] Operation ID for the migration task.
- *
  * @member {boolean} [localMySqlEnabled] True if the web app has in app MySql
  * enabled
- *
  */
 export interface MigrateMySqlStatus extends Resource {
   readonly migrationOperationStatus?: string;
@@ -5091,19 +4013,12 @@ export interface MigrateMySqlStatus extends Resource {
  * Hybrid Connection for an App Service app.
  *
  * @member {string} [entityName]
- *
  * @member {string} [entityConnectionString]
- *
  * @member {string} [resourceType]
- *
  * @member {string} [resourceConnectionString]
- *
  * @member {string} [hostname]
- *
  * @member {number} [port]
- *
  * @member {string} [biztalkUri]
- *
  */
 export interface RelayServiceConnectionEntity extends Resource {
   entityName?: string;
@@ -5123,36 +4038,26 @@ export interface RelayServiceConnectionEntity extends Resource {
  * Hybrid Connections).
  *
  * @member {string} [virtualNetworkName] The Virtual Network name.
- *
  * @member {object} [virtualNetworkConnection] The Virtual Network summary
  * view.
- *
  * @member {string} [virtualNetworkConnection.vnetResourceId] The Virtual
  * Network's resource ID.
- *
  * @member {string} [virtualNetworkConnection.certThumbprint] The client
  * certificate thumbprint.
- *
  * @member {string} [virtualNetworkConnection.certBlob] A certificate file
  * (.cer) blob containing the public key of the private key used to
  * authenticate a
  * Point-To-Site VPN connection.
- *
  * @member {array} [virtualNetworkConnection.routes] The routes that this
  * Virtual Network connection uses.
- *
  * @member {boolean} [virtualNetworkConnection.resyncRequired]
  * <code>true</code> if a resync is required; otherwise, <code>false</code>.
- *
  * @member {string} [virtualNetworkConnection.dnsServers] DNS servers to be
  * used by this Virtual Network. This should be a comma-separated list of IP
  * addresses.
- *
  * @member {array} [hybridConnections] The Hybrid Connections summary view.
- *
  * @member {array} [hybridConnectionsV2] The Hybrid Connection V2 (Service Bus)
  * view.
- *
  */
 export interface NetworkFeatures extends Resource {
   readonly virtualNetworkName?: string;
@@ -5168,12 +4073,9 @@ export interface NetworkFeatures extends Resource {
  * Performance monitor sample in a set.
  *
  * @member {date} [time] Point in time for which counter was measured.
- *
  * @member {string} [instanceName] Name of the server on which the measurement
  * is made.
- *
  * @member {number} [value] Value of counter at a certain time.
- *
  */
 export interface PerfMonSample {
   time?: Date;
@@ -5188,16 +4090,11 @@ export interface PerfMonSample {
  * Metric information.
  *
  * @member {string} [name] Unique key name of the counter.
- *
  * @member {date} [startTime] Start time of the period.
- *
  * @member {date} [endTime] End time of the period.
- *
  * @member {string} [timeGrain] Presented time grain.
- *
  * @member {array} [values] Collection of workers that are active during this
  * time.
- *
  */
 export interface PerfMonSet {
   name?: string;
@@ -5214,22 +4111,14 @@ export interface PerfMonSet {
  * Performance monitor API response.
  *
  * @member {string} [code] The response code.
- *
  * @member {string} [message] The message.
- *
  * @member {object} [data] The performance monitor counters.
- *
  * @member {string} [data.name] Unique key name of the counter.
- *
  * @member {date} [data.startTime] Start time of the period.
- *
  * @member {date} [data.endTime] End time of the period.
- *
  * @member {string} [data.timeGrain] Presented time grain.
- *
  * @member {array} [data.values] Collection of workers that are active during
  * this time.
- *
  */
 export interface PerfMonResponse {
   code?: string;
@@ -5244,9 +4133,7 @@ export interface PerfMonResponse {
  * Collection of performance monitor counters.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface PerfMonCounterCollection {
   value: PerfMonResponse[];
@@ -5260,21 +4147,13 @@ export interface PerfMonCounterCollection {
  * Premier add-on.
  *
  * @member {string} [sku] SKU.
- *
  * @member {string} [product] Product.
- *
  * @member {string} [vendor] Vendor.
- *
  * @member {string} [premierAddOnName] Name.
- *
  * @member {string} [premierAddOnLocation] Location.
- *
  * @member {object} [premierAddOnTags] Tags.
- *
  * @member {string} [marketplacePublisher] Marketplace publisher.
- *
  * @member {string} [marketplaceOffer] Marketplace offer.
- *
  */
 export interface PremierAddOn extends Resource {
   sku?: string;
@@ -5295,10 +4174,27 @@ export interface PremierAddOn extends Resource {
  *
  * @member {string} [operationId] ID of the recovery operation. Can be used to
  * check the status of the corresponding operation.
- *
  */
 export interface RecoverResponse extends Resource {
   readonly operationId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceHealthMetadata class.
+ * @constructor
+ * Used for getting ResourceHealthCheck settings.
+ *
+ * @member {string} [resourceHealthMetadataId] ARM Resource Id
+ * @member {string} [category] The category that the resource matches in the
+ * RHC Policy File
+ * @member {boolean} [signalAvailability] Is there a health signal for the
+ * resource
+ */
+export interface ResourceHealthMetadata extends Resource {
+  resourceHealthMetadataId?: string;
+  category?: string;
+  signalAvailability?: boolean;
 }
 
 /**
@@ -5308,35 +4204,26 @@ export interface RecoverResponse extends Resource {
  * Description of a restore request.
  *
  * @member {string} [storageAccountUrl] SAS URL to the container.
- *
  * @member {string} [blobName] Name of a blob which contains the backup.
- *
  * @member {boolean} [overwrite] <code>true</code> if the restore operation can
  * overwrite target app; otherwise, <code>false</code>. <code>true</code> is
  * needed if trying to restore over an existing app.
- *
  * @member {string} [siteName] Name of an app.
- *
  * @member {array} [databases] Collection of databases which should be
  * restored. This list has to match the list of databases included in the
  * backup.
- *
  * @member {boolean} [ignoreConflictingHostNames] Changes a logic when
  * restoring an app with custom domains. <code>true</code> to remove custom
  * domains automatically. If <code>false</code>, custom domains are added to
  * the app's object when it is being restored, but that might fail due to
  * conflicts during the operation. Default value: false .
- *
  * @member {string} [operationType] Operation type. Possible values include:
  * 'Default', 'Clone', 'Relocation'. Default value: 'Default' .
- *
  * @member {boolean} [adjustConnectionStrings] <code>true</code> if
  * SiteConfig.ConnectionStrings should be set in new app; otherwise,
  * <code>false</code>.
- *
  * @member {string} [hostingEnvironment] App Service Environment name, if
  * needed (only when restoring an app to an App Service Environment).
- *
  */
 export interface RestoreRequest extends Resource {
   storageAccountUrl?: string;
@@ -5358,7 +4245,6 @@ export interface RestoreRequest extends Resource {
  *
  * @member {string} [operationId] When server starts the restore process, it
  * will return an operation ID identifying that particular restore operation.
- *
  */
 export interface RestoreResponse extends Resource {
   readonly operationId?: string;
@@ -5374,39 +4260,32 @@ export interface RestoreResponse extends Resource {
  * @member {boolean} [enabled] <code>true</code> if the Authentication /
  * Authorization feature is enabled for the current app; otherwise,
  * <code>false</code>.
- *
  * @member {string} [runtimeVersion] The RuntimeVersion of the Authentication /
  * Authorization feature in use for the current app.
  * The setting in this value can control the behavior of certain features in
  * the Authentication / Authorization module.
- *
  * @member {string} [unauthenticatedClientAction] The action to take when an
  * unauthenticated client attempts to access the app. Possible values include:
  * 'RedirectToLoginPage', 'AllowAnonymous'
- *
  * @member {boolean} [tokenStoreEnabled] <code>true</code> to durably store
  * platform-specific security tokens that are obtained during login flows;
  * otherwise, <code>false</code>.
  * The default is <code>false</code>.
- *
  * @member {array} [allowedExternalRedirectUrls] External URLs that can be
  * redirected to as part of logging in or logging out of the app. Note that the
  * query string part of the URL is ignored.
  * This is an advanced setting typically only needed by Windows Store
  * application backends.
  * Note that URLs within the current domain are always implicitly allowed.
- *
  * @member {string} [defaultProvider] The default authentication provider to
  * use when multiple providers are configured.
  * This setting is only needed if multiple providers are configured and the
  * unauthenticated client
  * action is set to "RedirectToLoginPage". Possible values include:
  * 'AzureActiveDirectory', 'Facebook', 'Google', 'MicrosoftAccount', 'Twitter'
- *
  * @member {number} [tokenRefreshExtensionHours] The number of hours after
  * session token expiration that a session token can be used to
  * call the token refresh API. The default is 72 hours.
- *
  * @member {string} [clientId] The Client ID of this relying party application,
  * known as the client_id.
  * This setting is required for enabling OpenID Connection authentication with
@@ -5414,7 +4293,6 @@ export interface RestoreResponse extends Resource {
  * other 3rd party OpenID Connect providers.
  * More information on OpenID Connect:
  * http://openid.net/specs/openid-connect-core-1_0.html
- *
  * @member {string} [clientSecret] The Client Secret of this relying party
  * application (in Azure Active Directory, this is also referred to as the
  * Key).
@@ -5424,7 +4302,6 @@ export interface RestoreResponse extends Resource {
  * authenticate end users.
  * More information on OpenID Connect:
  * http://openid.net/specs/openid-connect-core-1_0.html
- *
  * @member {string} [issuer] The OpenID Connect Issuer URI that represents the
  * entity which issues access tokens for this application.
  * When using Azure Active Directory, this value is the URI of the directory
@@ -5432,83 +4309,69 @@ export interface RestoreResponse extends Resource {
  * This URI is a case-sensitive identifier for the token issuer.
  * More information on OpenID Connect Discovery:
  * http://openid.net/specs/openid-connect-discovery-1_0.html
- *
  * @member {array} [allowedAudiences] Allowed audience values to consider when
  * validating JWTs issued by
  * Azure Active Directory. Note that the <code>ClientID</code> value is always
  * considered an
  * allowed audience, regardless of this setting.
- *
  * @member {array} [additionalLoginParams] Login parameters to send to the
  * OpenID Connect authorization endpoint when
  * a user logs in. Each parameter must be in the form "key=value".
- *
  * @member {string} [googleClientId] The OpenID Connect Client ID for the
  * Google web application.
  * This setting is required for enabling Google Sign-In.
  * Google Sign-In documentation:
  * https://developers.google.com/identity/sign-in/web/
- *
  * @member {string} [googleClientSecret] The client secret associated with the
  * Google web application.
  * This setting is required for enabling Google Sign-In.
  * Google Sign-In documentation:
  * https://developers.google.com/identity/sign-in/web/
- *
  * @member {array} [googleOAuthScopes] The OAuth 2.0 scopes that will be
  * requested as part of Google Sign-In authentication.
  * This setting is optional. If not specified, "openid", "profile", and "email"
  * are used as default scopes.
  * Google Sign-In documentation:
  * https://developers.google.com/identity/sign-in/web/
- *
  * @member {string} [facebookAppId] The App ID of the Facebook app used for
  * login.
  * This setting is required for enabling Facebook Login.
  * Facebook Login documentation:
  * https://developers.facebook.com/docs/facebook-login
- *
  * @member {string} [facebookAppSecret] The App Secret of the Facebook app used
  * for Facebook Login.
  * This setting is required for enabling Facebook Login.
  * Facebook Login documentation:
  * https://developers.facebook.com/docs/facebook-login
- *
  * @member {array} [facebookOAuthScopes] The OAuth 2.0 scopes that will be
  * requested as part of Facebook Login authentication.
  * This setting is optional.
  * Facebook Login documentation:
  * https://developers.facebook.com/docs/facebook-login
- *
  * @member {string} [twitterConsumerKey] The OAuth 1.0a consumer key of the
  * Twitter application used for sign-in.
  * This setting is required for enabling Twitter Sign-In.
  * Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
- *
  * @member {string} [twitterConsumerSecret] The OAuth 1.0a consumer secret of
  * the Twitter application used for sign-in.
  * This setting is required for enabling Twitter Sign-In.
  * Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
- *
  * @member {string} [microsoftAccountClientId] The OAuth 2.0 client ID that was
  * created for the app used for authentication.
  * This setting is required for enabling Microsoft Account authentication.
  * Microsoft Account OAuth documentation:
  * https://dev.onedrive.com/auth/msa_oauth.htm
- *
  * @member {string} [microsoftAccountClientSecret] The OAuth 2.0 client secret
  * that was created for the app used for authentication.
  * This setting is required for enabling Microsoft Account authentication.
  * Microsoft Account OAuth documentation:
  * https://dev.onedrive.com/auth/msa_oauth.htm
- *
  * @member {array} [microsoftAccountOAuthScopes] The OAuth 2.0 scopes that will
  * be requested as part of Microsoft Account authentication.
  * This setting is optional. If not specified, "wl.basic" is used as the
  * default scope.
  * Microsoft Account Scopes and permissions documentation:
  * https://msdn.microsoft.com/en-us/library/dn631845.aspx
- *
  */
 export interface SiteAuthSettings extends Resource {
   enabled?: boolean;
@@ -5543,9 +4406,7 @@ export interface SiteAuthSettings extends Resource {
  * An app cloneability criterion.
  *
  * @member {string} [name] Name of criterion.
- *
  * @member {string} [description] Description of criterion.
- *
  */
 export interface SiteCloneabilityCriterion {
   name?: string;
@@ -5560,17 +4421,13 @@ export interface SiteCloneabilityCriterion {
  *
  * @member {string} [result] Name of app. Possible values include: 'Cloneable',
  * 'PartiallyCloneable', 'NotCloneable'
- *
  * @member {array} [blockingFeatures] List of features enabled on app that
  * prevent cloning.
- *
  * @member {array} [unsupportedFeatures] List of features enabled on app that
  * are non-blocking but cannot be cloned. The app can still be cloned
  * but the features in this list will not be set up on cloned app.
- *
  * @member {array} [blockingCharacteristics] List of blocking application
  * characteristics.
- *
  */
 export interface SiteCloneability {
   result?: string;
@@ -5586,197 +4443,124 @@ export interface SiteCloneability {
  * Web app configuration ARM resource.
  *
  * @member {number} [numberOfWorkers] Number of workers.
- *
  * @member {array} [defaultDocuments] Default documents.
- *
  * @member {string} [netFrameworkVersion] .NET Framework version. Default
  * value: 'v4.6' .
- *
  * @member {string} [phpVersion] Version of PHP.
- *
  * @member {string} [pythonVersion] Version of Python.
- *
  * @member {string} [nodeVersion] Version of Node.js.
- *
  * @member {string} [linuxFxVersion] Linux App Framework and version
- *
  * @member {boolean} [requestTracingEnabled] <code>true</code> if request
  * tracing is enabled; otherwise, <code>false</code>.
- *
  * @member {date} [requestTracingExpirationTime] Request tracing expiration
  * time.
- *
  * @member {boolean} [remoteDebuggingEnabled] <code>true</code> if remote
  * debugging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [remoteDebuggingVersion] Remote debugging version.
- *
  * @member {boolean} [httpLoggingEnabled] <code>true</code> if HTTP logging is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {number} [logsDirectorySizeLimit] HTTP logs directory size limit.
- *
  * @member {boolean} [detailedErrorLoggingEnabled] <code>true</code> if
  * detailed error logging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [publishingUsername] Publishing user name.
- *
  * @member {array} [appSettings] Application settings.
- *
  * @member {array} [connectionStrings] Connection strings.
- *
  * @member {object} [machineKey] Site MachineKey.
- *
  * @member {string} [machineKey.validation] MachineKey validation.
- *
  * @member {string} [machineKey.validationKey] Validation key.
- *
  * @member {string} [machineKey.decryption] Decryption.
- *
  * @member {string} [machineKey.decryptionKey] Decryption key.
- *
  * @member {array} [handlerMappings] Handler mappings.
- *
  * @member {string} [documentRoot] Document root.
- *
  * @member {string} [scmType] SCM type. Possible values include: 'None',
  * 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- *
  * @member {boolean} [use32BitWorkerProcess] <code>true</code> to use 32-bit
  * worker process; otherwise, <code>false</code>.
- *
  * @member {boolean} [webSocketsEnabled] <code>true</code> if WebSocket is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {boolean} [alwaysOn] <code>true</code> if Always On is enabled;
  * otherwise, <code>false</code>.
- *
  * @member {string} [javaVersion] Java version.
- *
  * @member {string} [javaContainer] Java container.
- *
  * @member {string} [javaContainerVersion] Java container version.
- *
  * @member {string} [appCommandLine] App command line to launch.
- *
  * @member {string} [managedPipelineMode] Managed pipeline mode. Possible
  * values include: 'Integrated', 'Classic'
- *
  * @member {array} [virtualApplications] Virtual applications.
- *
  * @member {string} [loadBalancing] Site load balancing. Possible values
  * include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- *
  * @member {object} [experiments] This is work around for polymophic types.
- *
  * @member {array} [experiments.rampUpRules] List of ramp-up rules.
- *
  * @member {object} [limits] Site limits.
- *
  * @member {number} [limits.maxPercentageCpu] Maximum allowed CPU usage
  * percentage.
- *
  * @member {number} [limits.maxMemoryInMb] Maximum allowed memory usage in MB.
- *
  * @member {number} [limits.maxDiskSizeInMb] Maximum allowed disk size usage in
  * MB.
- *
  * @member {boolean} [autoHealEnabled] <code>true</code> if Auto Heal is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {object} [autoHealRules] Auto Heal rules.
- *
  * @member {object} [autoHealRules.triggers] Conditions that describe when to
  * execute the auto-heal actions.
- *
  * @member {object} [autoHealRules.triggers.requests] A rule based on total
  * requests.
- *
  * @member {number} [autoHealRules.triggers.requests.count] Count.
- *
  * @member {string} [autoHealRules.triggers.requests.timeInterval] Time
  * interval.
- *
  * @member {number} [autoHealRules.triggers.privateBytesInKB] A rule based on
  * private bytes.
- *
  * @member {array} [autoHealRules.triggers.statusCodes] A rule based on status
  * codes.
- *
  * @member {object} [autoHealRules.triggers.slowRequests] A rule based on
  * request execution time.
- *
  * @member {string} [autoHealRules.triggers.slowRequests.timeTaken] Time taken.
- *
  * @member {number} [autoHealRules.triggers.slowRequests.count] Count.
- *
  * @member {string} [autoHealRules.triggers.slowRequests.timeInterval] Time
  * interval.
- *
  * @member {object} [autoHealRules.actions] Actions to be executed when a rule
  * is triggered.
- *
  * @member {string} [autoHealRules.actions.actionType] Predefined action to be
  * taken. Possible values include: 'Recycle', 'LogEvent', 'CustomAction'
- *
  * @member {object} [autoHealRules.actions.customAction] Custom action to be
  * taken.
- *
  * @member {string} [autoHealRules.actions.customAction.exe] Executable to be
  * run.
- *
  * @member {string} [autoHealRules.actions.customAction.parameters] Parameters
  * for the executable.
- *
  * @member {string} [autoHealRules.actions.minProcessExecutionTime] Minimum
  * time the process must execute
  * before taking the action
- *
  * @member {string} [tracingOptions] Tracing options.
- *
  * @member {string} [vnetName] Virtual Network name.
- *
  * @member {object} [cors] Cross-Origin Resource Sharing (CORS) settings.
- *
  * @member {array} [cors.allowedOrigins] Gets or sets the list of origins that
  * should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- *
  * @member {object} [push] Push endpoint settings.
- *
  * @member {boolean} [push.isPushEnabled] Gets or sets a flag indicating
  * whether the Push endpoint is enabled.
- *
  * @member {string} [push.tagWhitelistJson] Gets or sets a JSON string
  * containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- *
  * @member {string} [push.tagsRequiringAuth] Gets or sets a JSON string
  * containing a list of tags that require user authentication to be used in the
  * push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- *
  * @member {string} [push.dynamicTagsJson] Gets or sets a JSON string
  * containing a list of dynamic tags that will be evaluated from user claims in
  * the push registration endpoint.
- *
  * @member {object} [apiDefinition] Information about the formal API definition
  * for the app.
- *
  * @member {string} [apiDefinition.url] The URL of the API definition.
- *
  * @member {string} [autoSwapSlotName] Auto-swap slot name.
- *
  * @member {boolean} [localMySqlEnabled] <code>true</code> to enable local
  * MySQL; otherwise, <code>false</code>. Default value: false .
- *
  * @member {array} [ipSecurityRestrictions] IP security restrictions.
- *
  */
 export interface SiteConfigResource extends Resource {
   numberOfWorkers?: number;
@@ -5826,14 +4610,26 @@ export interface SiteConfigResource extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the SiteConfigResourceCollection class.
+ * @constructor
+ * Collection of site configurations.
+ *
+ * @member {array} value Collection of resources.
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface SiteConfigResourceCollection {
+  value: SiteConfigResource[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SiteConfigurationSnapshotInfo class.
  * @constructor
  * A snapshot of a web app configuration.
  *
  * @member {date} [time] The time the snapshot was taken.
- *
  * @member {number} [siteConfigurationSnapshotInfoId] The id of the snapshot
- *
  */
 export interface SiteConfigurationSnapshotInfo extends Resource {
   readonly time?: Date;
@@ -5847,7 +4643,6 @@ export interface SiteConfigurationSnapshotInfo extends Resource {
  * Instance of an app.
  *
  * @member {string} [siteInstanceName] Name of instance.
- *
  */
 export interface SiteInstance extends Resource {
   readonly siteInstanceName?: string;
@@ -5860,75 +4655,52 @@ export interface SiteInstance extends Resource {
  * Configuration of App Service site logs.
  *
  * @member {object} [applicationLogs] Application logs configuration.
- *
  * @member {object} [applicationLogs.fileSystem] Application logs to file
  * system configuration.
- *
  * @member {string} [applicationLogs.fileSystem.level] Log level. Possible
  * values include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {object} [applicationLogs.azureTableStorage] Application logs to
  * azure table storage configuration.
- *
  * @member {string} [applicationLogs.azureTableStorage.level] Log level.
  * Possible values include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {string} [applicationLogs.azureTableStorage.sasUrl] SAS URL to an
  * Azure table with add/query/delete permissions.
- *
  * @member {object} [applicationLogs.azureBlobStorage] Application logs to blob
  * storage configuration.
- *
  * @member {string} [applicationLogs.azureBlobStorage.level] Log level.
  * Possible values include: 'Off', 'Verbose', 'Information', 'Warning', 'Error'
- *
  * @member {string} [applicationLogs.azureBlobStorage.sasUrl] SAS url to a
  * azure blob container with read/write/list/delete permissions.
- *
  * @member {number} [applicationLogs.azureBlobStorage.retentionInDays]
  * Retention in days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- *
  * @member {object} [httpLogs] HTTP logs configuration.
- *
  * @member {object} [httpLogs.fileSystem] Http logs to file system
  * configuration.
- *
  * @member {number} [httpLogs.fileSystem.retentionInMb] Maximum size in
  * megabytes that http log files can use.
  * When reached old log files will be removed to make space for new ones.
  * Value can range between 25 and 100.
- *
  * @member {number} [httpLogs.fileSystem.retentionInDays] Retention in days.
  * Remove files older than X days.
  * 0 or lower means no retention.
- *
  * @member {boolean} [httpLogs.fileSystem.enabled] Enabled.
- *
  * @member {object} [httpLogs.azureBlobStorage] Http logs to azure blob storage
  * configuration.
- *
  * @member {string} [httpLogs.azureBlobStorage.sasUrl] SAS url to a azure blob
  * container with read/write/list/delete permissions.
- *
  * @member {number} [httpLogs.azureBlobStorage.retentionInDays] Retention in
  * days.
  * Remove blobs older than X days.
  * 0 or lower means no retention.
- *
  * @member {boolean} [httpLogs.azureBlobStorage.enabled] Enabled.
- *
  * @member {object} [failedRequestsTracing] Failed requests tracing
  * configuration.
- *
  * @member {boolean} [failedRequestsTracing.enabled] Enabled.
- *
  * @member {object} [detailedErrorMessages] Detailed error messages
  * configuration.
- *
  * @member {boolean} [detailedErrorMessages.enabled] Enabled.
- *
  */
 export interface SiteLogsConfig extends Resource {
   applicationLogs?: ApplicationLogsConfig;
@@ -5944,14 +4716,10 @@ export interface SiteLogsConfig extends Resource {
  * Used for getting PHP error logging flag.
  *
  * @member {string} [localLogErrors] Local log_errors setting.
- *
  * @member {string} [masterLogErrors] Master log_errors setting.
- *
  * @member {string} [localLogErrorsMaxLength] Local log_errors_max_len setting.
- *
  * @member {string} [masterLogErrorsMaxLength] Master log_errors_max_len
  * setting.
- *
  */
 export interface SitePhpErrorLogFlag extends Resource {
   localLogErrors?: string;
@@ -5967,19 +4735,14 @@ export interface SitePhpErrorLogFlag extends Resource {
  * Source control configuration for an app.
  *
  * @member {string} [repoUrl] Repository or source control URL.
- *
  * @member {string} [branch] Name of branch to use for deployment.
- *
  * @member {boolean} [isManualIntegration] <code>true</code> to limit to manual
  * integration; <code>false</code> to enable continuous integration (which
  * configures webhooks into online repos like GitHub).
- *
  * @member {boolean} [deploymentRollbackEnabled] <code>true</code> to enable
  * deployment rollback; otherwise, <code>false</code>.
- *
  * @member {boolean} [isMercurial] <code>true</code> for a Mercurial
  * repository; <code>false</code> for a Git repository.
- *
  */
 export interface SiteSourceControl extends Resource {
   repoUrl?: string;
@@ -5996,9 +4759,7 @@ export interface SiteSourceControl extends Resource {
  * Slot Config names azure resource.
  *
  * @member {array} [connectionStringNames] List of connection string names.
- *
  * @member {array} [appSettingNames] List of application settings names.
- *
  */
 export interface SlotConfigNamesResource extends Resource {
   connectionStringNames?: string[];
@@ -6013,23 +4774,16 @@ export interface SlotConfigNamesResource extends Resource {
  *
  * @member {string} [slotDifferenceType] Type of the difference: Information,
  * Warning or Error.
- *
  * @member {string} [settingType] The type of the setting: General, AppSetting
  * or ConnectionString.
- *
  * @member {string} [diffRule] Rule that describes how to process the setting
  * difference during a slot swap.
- *
  * @member {string} [settingName] Name of the setting.
- *
  * @member {string} [valueInCurrentSlot] Value of the setting in the current
  * slot.
- *
  * @member {string} [valueInTargetSlot] Value of the setting in the target
  * slot.
- *
  * @member {string} [description] Description of the setting difference.
- *
  */
 export interface SlotDifference extends Resource {
   readonly slotDifferenceType?: string;
@@ -6048,9 +4802,7 @@ export interface SlotDifference extends Resource {
  * Collection of slot differences.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SlotDifferenceCollection {
   value: SlotDifference[];
@@ -6064,7 +4816,6 @@ export interface SlotDifferenceCollection {
  * A snapshot of an app.
  *
  * @member {date} [time] The time the snapshot was taken.
- *
  */
 export interface Snapshot extends Resource {
   readonly time?: Date;
@@ -6078,9 +4829,7 @@ export interface Snapshot extends Resource {
  * time.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SnapshotCollection {
   value: Snapshot[];
@@ -6094,17 +4843,13 @@ export interface SnapshotCollection {
  * Options for app content migration.
  *
  * @member {string} [azurefilesConnectionString] AzureFiles connection string.
- *
  * @member {string} [azurefilesShare] AzureFiles share.
- *
  * @member {boolean} [switchSiteAfterMigration] <code>true</code>if the app
  * should be switched over; otherwise, <code>false</code>. Default value: false
  * .
- *
  * @member {boolean} [blockWriteAccessToSite] <code>true</code> if the app
  * should be read only during copy operation; otherwise, <code>false</code>.
  * Default value: false .
- *
  */
 export interface StorageMigrationOptions extends Resource {
   azurefilesConnectionString?: string;
@@ -6121,7 +4866,6 @@ export interface StorageMigrationOptions extends Resource {
  *
  * @member {string} [operationId] When server starts the migration process, it
  * will return an operation ID identifying that particular migration operation.
- *
  */
 export interface StorageMigrationResponse extends Resource {
   readonly operationId?: string;
@@ -6134,7 +4878,6 @@ export interface StorageMigrationResponse extends Resource {
  * String dictionary resource.
  *
  * @member {object} [properties] Settings.
- *
  */
 export interface StringDictionary extends Resource {
   properties?: { [propertyName: string]: string };
@@ -6147,9 +4890,7 @@ export interface StringDictionary extends Resource {
  * Collection of app instances.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WebAppInstanceCollection {
   value: SiteInstance[];
@@ -6163,365 +4904,245 @@ export interface WebAppInstanceCollection {
  * A deleted app.
  *
  * @member {date} [deletedTimestamp] Time in UTC when the app was deleted.
- *
  * @member {string} [state] Current state of the app.
- *
  * @member {array} [hostNames] Hostnames associated with the app.
- *
  * @member {string} [repositorySiteName] Name of the repository site.
- *
  * @member {string} [usageState] State indicating whether the app has exceeded
  * its quota usage. Read-only. Possible values include: 'Normal', 'Exceeded'
- *
  * @member {boolean} [enabled] <code>true</code> if the app is enabled;
  * otherwise, <code>false</code>. Setting this value to false disables the app
  * (takes the app offline).
- *
  * @member {array} [enabledHostNames] Enabled hostnames for the app.Hostnames
  * need to be assigned (see HostNames) AND enabled. Otherwise,
  * the app is not served on those hostnames.
- *
  * @member {string} [availabilityState] Management information availability
  * state for the app. Possible values include: 'Normal', 'Limited',
  * 'DisasterRecoveryMode'
- *
  * @member {array} [hostNameSslStates] Hostname SSL states are used to manage
  * the SSL bindings for app's hostnames.
- *
  * @member {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
- *
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
- *
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
- *
  * @member {object} [siteConfig] Configuration of the app.
- *
  * @member {number} [siteConfig.numberOfWorkers] Number of workers.
- *
  * @member {array} [siteConfig.defaultDocuments] Default documents.
- *
  * @member {string} [siteConfig.netFrameworkVersion] .NET Framework version.
- *
  * @member {string} [siteConfig.phpVersion] Version of PHP.
- *
  * @member {string} [siteConfig.pythonVersion] Version of Python.
- *
  * @member {string} [siteConfig.nodeVersion] Version of Node.js.
- *
  * @member {string} [siteConfig.linuxFxVersion] Linux App Framework and version
- *
  * @member {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
  * request tracing is enabled; otherwise, <code>false</code>.
- *
  * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
  * expiration time.
- *
  * @member {boolean} [siteConfig.remoteDebuggingEnabled] <code>true</code> if
  * remote debugging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [siteConfig.remoteDebuggingVersion] Remote debugging
  * version.
- *
  * @member {boolean} [siteConfig.httpLoggingEnabled] <code>true</code> if HTTP
  * logging is enabled; otherwise, <code>false</code>.
- *
  * @member {number} [siteConfig.logsDirectorySizeLimit] HTTP logs directory
  * size limit.
- *
  * @member {boolean} [siteConfig.detailedErrorLoggingEnabled] <code>true</code>
  * if detailed error logging is enabled; otherwise, <code>false</code>.
- *
  * @member {string} [siteConfig.publishingUsername] Publishing user name.
- *
  * @member {array} [siteConfig.appSettings] Application settings.
- *
  * @member {array} [siteConfig.connectionStrings] Connection strings.
- *
  * @member {object} [siteConfig.machineKey] Site MachineKey.
- *
  * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
- *
  * @member {string} [siteConfig.machineKey.validationKey] Validation key.
- *
  * @member {string} [siteConfig.machineKey.decryption] Decryption.
- *
  * @member {string} [siteConfig.machineKey.decryptionKey] Decryption key.
- *
  * @member {array} [siteConfig.handlerMappings] Handler mappings.
- *
  * @member {string} [siteConfig.documentRoot] Document root.
- *
  * @member {string} [siteConfig.scmType] SCM type. Possible values include:
  * 'None', 'Dropbox', 'Tfs', 'LocalGit', 'GitHub', 'CodePlexGit', 'CodePlexHg',
  * 'BitbucketGit', 'BitbucketHg', 'ExternalGit', 'ExternalHg', 'OneDrive',
  * 'VSO'
- *
  * @member {boolean} [siteConfig.use32BitWorkerProcess] <code>true</code> to
  * use 32-bit worker process; otherwise, <code>false</code>.
- *
  * @member {boolean} [siteConfig.webSocketsEnabled] <code>true</code> if
  * WebSocket is enabled; otherwise, <code>false</code>.
- *
  * @member {boolean} [siteConfig.alwaysOn] <code>true</code> if Always On is
  * enabled; otherwise, <code>false</code>.
- *
  * @member {string} [siteConfig.javaVersion] Java version.
- *
  * @member {string} [siteConfig.javaContainer] Java container.
- *
  * @member {string} [siteConfig.javaContainerVersion] Java container version.
- *
  * @member {string} [siteConfig.appCommandLine] App command line to launch.
- *
  * @member {string} [siteConfig.managedPipelineMode] Managed pipeline mode.
  * Possible values include: 'Integrated', 'Classic'
- *
  * @member {array} [siteConfig.virtualApplications] Virtual applications.
- *
  * @member {string} [siteConfig.loadBalancing] Site load balancing. Possible
  * values include: 'WeightedRoundRobin', 'LeastRequests', 'LeastResponseTime',
  * 'WeightedTotalTraffic', 'RequestHash'
- *
  * @member {object} [siteConfig.experiments] This is work around for polymophic
  * types.
- *
  * @member {array} [siteConfig.experiments.rampUpRules] List of ramp-up rules.
- *
  * @member {object} [siteConfig.limits] Site limits.
- *
  * @member {number} [siteConfig.limits.maxPercentageCpu] Maximum allowed CPU
  * usage percentage.
- *
  * @member {number} [siteConfig.limits.maxMemoryInMb] Maximum allowed memory
  * usage in MB.
- *
  * @member {number} [siteConfig.limits.maxDiskSizeInMb] Maximum allowed disk
  * size usage in MB.
- *
  * @member {boolean} [siteConfig.autoHealEnabled] <code>true</code> if Auto
  * Heal is enabled; otherwise, <code>false</code>.
- *
  * @member {object} [siteConfig.autoHealRules] Auto Heal rules.
- *
  * @member {object} [siteConfig.autoHealRules.triggers] Conditions that
  * describe when to execute the auto-heal actions.
- *
  * @member {object} [siteConfig.autoHealRules.triggers.requests] A rule based
  * on total requests.
- *
  * @member {number} [siteConfig.autoHealRules.triggers.requests.count] Count.
- *
  * @member {string} [siteConfig.autoHealRules.triggers.requests.timeInterval]
  * Time interval.
- *
  * @member {number} [siteConfig.autoHealRules.triggers.privateBytesInKB] A rule
  * based on private bytes.
- *
  * @member {array} [siteConfig.autoHealRules.triggers.statusCodes] A rule based
  * on status codes.
- *
  * @member {object} [siteConfig.autoHealRules.triggers.slowRequests] A rule
  * based on request execution time.
- *
  * @member {string} [siteConfig.autoHealRules.triggers.slowRequests.timeTaken]
  * Time taken.
- *
  * @member {number} [siteConfig.autoHealRules.triggers.slowRequests.count]
  * Count.
- *
  * @member {string}
  * [siteConfig.autoHealRules.triggers.slowRequests.timeInterval] Time interval.
- *
  * @member {object} [siteConfig.autoHealRules.actions] Actions to be executed
  * when a rule is triggered.
- *
  * @member {string} [siteConfig.autoHealRules.actions.actionType] Predefined
  * action to be taken. Possible values include: 'Recycle', 'LogEvent',
  * 'CustomAction'
- *
  * @member {object} [siteConfig.autoHealRules.actions.customAction] Custom
  * action to be taken.
- *
  * @member {string} [siteConfig.autoHealRules.actions.customAction.exe]
  * Executable to be run.
- *
  * @member {string} [siteConfig.autoHealRules.actions.customAction.parameters]
  * Parameters for the executable.
- *
  * @member {string} [siteConfig.autoHealRules.actions.minProcessExecutionTime]
  * Minimum time the process must execute
  * before taking the action
- *
  * @member {string} [siteConfig.tracingOptions] Tracing options.
- *
  * @member {string} [siteConfig.vnetName] Virtual Network name.
- *
  * @member {object} [siteConfig.cors] Cross-Origin Resource Sharing (CORS)
  * settings.
- *
  * @member {array} [siteConfig.cors.allowedOrigins] Gets or sets the list of
  * origins that should be allowed to make cross-origin
  * calls (for example: http://example.com:12345). Use "*" to allow all.
- *
  * @member {object} [siteConfig.push] Push endpoint settings.
- *
  * @member {boolean} [siteConfig.push.isPushEnabled] Gets or sets a flag
  * indicating whether the Push endpoint is enabled.
- *
  * @member {string} [siteConfig.push.tagWhitelistJson] Gets or sets a JSON
  * string containing a list of tags that are whitelisted for use by the push
  * registration endpoint.
- *
  * @member {string} [siteConfig.push.tagsRequiringAuth] Gets or sets a JSON
  * string containing a list of tags that require user authentication to be used
  * in the push registration endpoint.
  * Tags can consist of alphanumeric characters and the following:
  * '_', '@', '#', '.', ':', '-'.
  * Validation should be performed at the PushRequestHandler.
- *
  * @member {string} [siteConfig.push.dynamicTagsJson] Gets or sets a JSON
  * string containing a list of dynamic tags that will be evaluated from user
  * claims in the push registration endpoint.
- *
  * @member {object} [siteConfig.apiDefinition] Information about the formal API
  * definition for the app.
- *
  * @member {string} [siteConfig.apiDefinition.url] The URL of the API
  * definition.
- *
  * @member {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
- *
  * @member {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
  * local MySQL; otherwise, <code>false</code>.
- *
  * @member {array} [siteConfig.ipSecurityRestrictions] IP security
  * restrictions.
- *
  * @member {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
  * associated with the app. Read-only.
- *
  * @member {boolean} [premiumAppDeployed] Indicates whether app is deployed as
  * a premium app.
- *
  * @member {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM (KUDU)
  * site when the app is stopped; otherwise, <code>false</code>. The default is
  * <code>false</code>. Default value: false .
- *
  * @member {string} [targetSwapSlot] Specifies which deployment slot this app
  * will swap into. Read-only.
- *
  * @member {object} [hostingEnvironmentProfile] App Service Environment to use
  * for the app.
- *
  * @member {string} [hostingEnvironmentProfile.id] Resource ID of the App
  * Service Environment.
- *
  * @member {string} [hostingEnvironmentProfile.name] Name of the App Service
  * Environment.
- *
  * @member {string} [hostingEnvironmentProfile.type] Resource type of the App
  * Service Environment.
- *
  * @member {string} [microService] Micro services like apps, logic apps.
  * Default value: 'WebSites' .
- *
  * @member {string} [gatewaySiteName] Name of gateway app associated with the
  * app.
- *
  * @member {boolean} [clientAffinityEnabled] <code>true</code> to enable client
  * affinity; <code>false</code> to stop sending session affinity cookies, which
  * route client requests in the same session to the same instance. Default is
  * <code>true</code>.
- *
  * @member {boolean} [clientCertEnabled] <code>true</code> to enable client
  * certificate authentication (TLS mutual authentication); otherwise,
  * <code>false</code>. Default is <code>false</code>.
- *
  * @member {boolean} [hostNamesDisabled] <code>true</code> to disable the
  * public hostnames of the app; otherwise, <code>false</code>.
  * If <code>true</code>, the app is only accessible via API management process.
- *
  * @member {string} [outboundIpAddresses] List of IP addresses that the app
  * uses for outbound connections (e.g. database access). Read-only.
- *
  * @member {number} [containerSize] Size of the function container.
- *
  * @member {number} [dailyMemoryTimeQuota] Maximum allowed daily memory-time
  * quota (applicable on dynamic apps only).
- *
  * @member {date} [suspendedTill] App suspended till in case memory-time quota
  * is exceeded.
- *
  * @member {number} [maxNumberOfWorkers] Maximum number of workers.
  * This only applies to Functions container.
- *
  * @member {object} [cloningInfo] If specified during app creation, the app is
  * cloned from a source app.
- *
  * @member {string} [cloningInfo.correlationId] Correlation ID of cloning
  * operation. This ID ties multiple cloning operations
  * together to use the same snapshot.
- *
  * @member {boolean} [cloningInfo.overwrite] <code>true</code> to overwrite
  * destination app; otherwise, <code>false</code>.
- *
  * @member {boolean} [cloningInfo.cloneCustomHostNames] <code>true</code> to
  * clone custom hostnames from source app; otherwise, <code>false</code>.
- *
  * @member {boolean} [cloningInfo.cloneSourceControl] <code>true</code> to
  * clone source control from source app; otherwise, <code>false</code>.
- *
  * @member {string} [cloningInfo.sourceWebAppId] ARM resource ID of the source
  * app. App resource ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
  * for production slots and
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
  * for other slots.
- *
  * @member {string} [cloningInfo.hostingEnvironment] App Service Environment.
- *
  * @member {object} [cloningInfo.appSettingsOverrides] Application setting
  * overrides for cloned app. If specified, these settings override the settings
  * cloned
  * from source app. Otherwise, application settings from source app are
  * retained.
- *
  * @member {boolean} [cloningInfo.configureLoadBalancing] <code>true</code> to
  * configure load balancing for source and destination app.
- *
  * @member {string} [cloningInfo.trafficManagerProfileId] ARM resource ID of
  * the Traffic Manager profile to use, if it exists. Traffic Manager resource
  * ID is of the form
  * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
- *
  * @member {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
  * Manager profile to create. This is only needed if Traffic Manager profile
  * does not already exist.
- *
+ * @member {boolean} [cloningInfo.ignoreQuotas] <code>true</code> if quotas
+ * should be ignored; otherwise, <code>false</code>.
  * @member {string} [resourceGroup] Name of the resource group the app belongs
  * to. Read-only.
- *
  * @member {boolean} [isDefaultContainer] <code>true</code> if the app is a
  * default container; otherwise, <code>false</code>.
- *
  * @member {string} [defaultHostName] Default hostname of the app. Read-only.
- *
  * @member {object} [slotSwapStatus] Status of the last deployment slot swap
  * operation.
- *
  * @member {date} [slotSwapStatus.timestampUtc] The time the last successful
  * slot swap completed.
- *
  * @member {string} [slotSwapStatus.sourceSlotName] The source slot of the last
  * swap operation.
- *
  * @member {string} [slotSwapStatus.destinationSlotName] The destination slot
  * of the last swap operation.
- *
  */
 export interface DeletedSite extends Resource {
   readonly deletedTimestamp?: Date;
@@ -6566,9 +5187,7 @@ export interface DeletedSite extends Resource {
  * Collection of deleted apps.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DeletedWebAppCollection {
   value: DeletedSite[];
@@ -6582,9 +5201,7 @@ export interface DeletedWebAppCollection {
  * Collection of certitificate orders.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceCertificateOrderCollection {
   value: AppServiceCertificateOrder[];
@@ -6598,9 +5215,7 @@ export interface AppServiceCertificateOrderCollection {
  * Collection of certitificateorder certificates.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceCertificateCollection {
   value: AppServiceCertificateResource[];
@@ -6614,9 +5229,7 @@ export interface AppServiceCertificateCollection {
  * Collection of App Service Environments.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceEnvironmentCollection {
   value: AppServiceEnvironment[];
@@ -6630,9 +5243,7 @@ export interface AppServiceEnvironmentCollection {
  * Collection of stamp capacities.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface StampCapacityCollection {
   value: StampCapacity[];
@@ -6646,9 +5257,7 @@ export interface StampCapacityCollection {
  * Collection of metric responses.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceMetricCollection {
   value: ResourceMetric[];
@@ -6662,9 +5271,7 @@ export interface ResourceMetricCollection {
  * Collection of worker pools.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WorkerPoolCollection {
   value: WorkerPoolResource[];
@@ -6678,9 +5285,7 @@ export interface WorkerPoolCollection {
  * Collection of metric definitions.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceMetricDefinitionCollection {
   value: ResourceMetricDefinition[];
@@ -6694,9 +5299,7 @@ export interface ResourceMetricDefinitionCollection {
  * Collection of SKU information.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SkuInfoCollection {
   value: SkuInfo[];
@@ -6710,9 +5313,7 @@ export interface SkuInfoCollection {
  * Collection of usages.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface UsageCollection {
   value: Usage[];
@@ -6726,9 +5327,7 @@ export interface UsageCollection {
  * Collection of App Service apps.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WebAppCollection {
   value: Site[];
@@ -6742,9 +5341,7 @@ export interface WebAppCollection {
  * Collection of App Service plans.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServicePlanCollection {
   value: AppServicePlan[];
@@ -6758,9 +5355,7 @@ export interface AppServicePlanCollection {
  * Collection of CSM usage quotas.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface CsmUsageQuotaCollection {
   value: CsmUsageQuota[];
@@ -6774,9 +5369,7 @@ export interface CsmUsageQuotaCollection {
  * Collection of resources.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceCollection {
   value: string[];
@@ -6790,9 +5383,7 @@ export interface ResourceCollection {
  * Collection of hostname bindings.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface HybridConnectionCollection {
   value: HybridConnection[];
@@ -6806,28 +5397,10 @@ export interface HybridConnectionCollection {
  * Collection of certificates.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface CertificateCollection {
   value: Certificate[];
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CsrCollection class.
- * @constructor
- * Collection of CSRs.
- *
- * @member {array} value Collection of resources.
- *
- * @member {string} [nextLink] Link to next page of resources.
- *
- */
-export interface CsrCollection {
-  value: Csr[];
   nextLink?: string;
 }
 
@@ -6838,9 +5411,7 @@ export interface CsrCollection {
  * Collection of domains.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DomainCollection {
   value: Domain[];
@@ -6854,9 +5425,7 @@ export interface DomainCollection {
  * Collection of domain name identifiers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface NameIdentifierCollection {
   value: NameIdentifier[];
@@ -6870,9 +5439,7 @@ export interface NameIdentifierCollection {
  * Collection of domain ownership identifiers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DomainOwnershipIdentifierCollection {
   value: DomainOwnershipIdentifier[];
@@ -6886,9 +5453,7 @@ export interface DomainOwnershipIdentifierCollection {
  * Collection of source controls.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SourceControlCollection {
   value: SourceControl[];
@@ -6902,9 +5467,7 @@ export interface SourceControlCollection {
  * Collection of geographical regions.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface GeoRegionCollection {
   value: GeoRegion[];
@@ -6918,9 +5481,7 @@ export interface GeoRegionCollection {
  * Collection of premier add-on offers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface PremierAddOnOfferCollection {
   value: PremierAddOnOffer[];
@@ -6934,9 +5495,7 @@ export interface PremierAddOnOfferCollection {
  * Collection of Top-level domains.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface TopLevelDomainCollection {
   value: TopLevelDomain[];
@@ -6950,9 +5509,7 @@ export interface TopLevelDomainCollection {
  * Collection of top-level domain legal agreements.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface TldLegalAgreementCollection {
   value: TldLegalAgreement[];
@@ -6966,12 +5523,24 @@ export interface TldLegalAgreementCollection {
  * Collection of backup items.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface BackupItemCollection {
   value: BackupItem[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SiteConfigResourceCollection class.
+ * @constructor
+ * Collection of site configurations.
+ *
+ * @member {array} value Collection of resources.
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface SiteConfigResourceCollection {
+  value: SiteConfigResource[];
   nextLink?: string;
 }
 
@@ -6982,9 +5551,7 @@ export interface BackupItemCollection {
  * Collection of app deployments.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DeploymentCollection {
   value: Deployment[];
@@ -6998,9 +5565,7 @@ export interface DeploymentCollection {
  * Collection of identifiers.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface IdentifierCollection {
   value: Identifier[];
@@ -7014,9 +5579,7 @@ export interface IdentifierCollection {
  * Collection of hostname bindings.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface HostNameBindingCollection {
   value: HostNameBinding[];
@@ -7030,9 +5593,7 @@ export interface HostNameBindingCollection {
  * Collection of app instances.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WebAppInstanceCollection {
   value: SiteInstance[];
@@ -7046,9 +5607,7 @@ export interface WebAppInstanceCollection {
  * Collection of performance monitor counters.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface PerfMonCounterCollection {
   value: PerfMonResponse[];
@@ -7062,9 +5621,7 @@ export interface PerfMonCounterCollection {
  * Collection of slot differences.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SlotDifferenceCollection {
   value: SlotDifference[];
@@ -7079,9 +5636,7 @@ export interface SlotDifferenceCollection {
  * time.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SnapshotCollection {
   value: Snapshot[];
@@ -7095,9 +5650,7 @@ export interface SnapshotCollection {
  * Collection of deleted apps.
  *
  * @member {array} value Collection of resources.
- *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DeletedWebAppCollection {
   value: DeletedSite[];
@@ -7112,7 +5665,6 @@ export interface DeletedWebAppCollection {
  * Collection of certitificate orders.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceCertificateOrderCollection extends Array<AppServiceCertificateOrder> {
   nextLink?: string;
@@ -7125,7 +5677,6 @@ export interface AppServiceCertificateOrderCollection extends Array<AppServiceCe
  * Collection of certitificateorder certificates.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceCertificateCollection extends Array<AppServiceCertificateResource> {
   nextLink?: string;
@@ -7138,7 +5689,6 @@ export interface AppServiceCertificateCollection extends Array<AppServiceCertifi
  * Collection of App Service Environments.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServiceEnvironmentCollection extends Array<AppServiceEnvironment> {
   nextLink?: string;
@@ -7151,7 +5701,6 @@ export interface AppServiceEnvironmentCollection extends Array<AppServiceEnviron
  * Collection of stamp capacities.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface StampCapacityCollection extends Array<StampCapacity> {
   nextLink?: string;
@@ -7164,7 +5713,6 @@ export interface StampCapacityCollection extends Array<StampCapacity> {
  * Collection of metric responses.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceMetricCollection extends Array<ResourceMetric> {
   nextLink?: string;
@@ -7177,7 +5725,6 @@ export interface ResourceMetricCollection extends Array<ResourceMetric> {
  * Collection of worker pools.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WorkerPoolCollection extends Array<WorkerPoolResource> {
   nextLink?: string;
@@ -7190,7 +5737,6 @@ export interface WorkerPoolCollection extends Array<WorkerPoolResource> {
  * Collection of metric definitions.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceMetricDefinitionCollection extends Array<ResourceMetricDefinition> {
   nextLink?: string;
@@ -7203,7 +5749,6 @@ export interface ResourceMetricDefinitionCollection extends Array<ResourceMetric
  * Collection of SKU information.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SkuInfoCollection extends Array<SkuInfo> {
   nextLink?: string;
@@ -7216,7 +5761,6 @@ export interface SkuInfoCollection extends Array<SkuInfo> {
  * Collection of usages.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface UsageCollection extends Array<Usage> {
   nextLink?: string;
@@ -7229,7 +5773,6 @@ export interface UsageCollection extends Array<Usage> {
  * Collection of App Service apps.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WebAppCollection extends Array<Site> {
   nextLink?: string;
@@ -7242,7 +5785,6 @@ export interface WebAppCollection extends Array<Site> {
  * Collection of App Service plans.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface AppServicePlanCollection extends Array<AppServicePlan> {
   nextLink?: string;
@@ -7255,7 +5797,6 @@ export interface AppServicePlanCollection extends Array<AppServicePlan> {
  * Collection of CSM usage quotas.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface CsmUsageQuotaCollection extends Array<CsmUsageQuota> {
   nextLink?: string;
@@ -7268,7 +5809,6 @@ export interface CsmUsageQuotaCollection extends Array<CsmUsageQuota> {
  * Collection of resources.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface ResourceCollection extends Array<string> {
   nextLink?: string;
@@ -7281,7 +5821,6 @@ export interface ResourceCollection extends Array<string> {
  * Collection of hostname bindings.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface HybridConnectionCollection extends Array<HybridConnection> {
   nextLink?: string;
@@ -7294,22 +5833,8 @@ export interface HybridConnectionCollection extends Array<HybridConnection> {
  * Collection of certificates.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface CertificateCollection extends Array<Certificate> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CsrCollection class.
- * @constructor
- * Collection of CSRs.
- *
- * @member {string} [nextLink] Link to next page of resources.
- *
- */
-export interface CsrCollection extends Array<Csr> {
   nextLink?: string;
 }
 
@@ -7320,7 +5845,6 @@ export interface CsrCollection extends Array<Csr> {
  * Collection of domains.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DomainCollection extends Array<Domain> {
   nextLink?: string;
@@ -7333,7 +5857,6 @@ export interface DomainCollection extends Array<Domain> {
  * Collection of domain name identifiers.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface NameIdentifierCollection extends Array<NameIdentifier> {
   nextLink?: string;
@@ -7346,7 +5869,6 @@ export interface NameIdentifierCollection extends Array<NameIdentifier> {
  * Collection of domain ownership identifiers.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DomainOwnershipIdentifierCollection extends Array<DomainOwnershipIdentifier> {
   nextLink?: string;
@@ -7359,7 +5881,6 @@ export interface DomainOwnershipIdentifierCollection extends Array<DomainOwnersh
  * Collection of source controls.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SourceControlCollection extends Array<SourceControl> {
   nextLink?: string;
@@ -7372,7 +5893,6 @@ export interface SourceControlCollection extends Array<SourceControl> {
  * Collection of geographical regions.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface GeoRegionCollection extends Array<GeoRegion> {
   nextLink?: string;
@@ -7385,7 +5905,6 @@ export interface GeoRegionCollection extends Array<GeoRegion> {
  * Collection of premier add-on offers.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface PremierAddOnOfferCollection extends Array<PremierAddOnOffer> {
   nextLink?: string;
@@ -7398,7 +5917,6 @@ export interface PremierAddOnOfferCollection extends Array<PremierAddOnOffer> {
  * Collection of Top-level domains.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface TopLevelDomainCollection extends Array<TopLevelDomain> {
   nextLink?: string;
@@ -7411,7 +5929,6 @@ export interface TopLevelDomainCollection extends Array<TopLevelDomain> {
  * Collection of top-level domain legal agreements.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface TldLegalAgreementCollection extends Array<TldLegalAgreement> {
   nextLink?: string;
@@ -7424,9 +5941,20 @@ export interface TldLegalAgreementCollection extends Array<TldLegalAgreement> {
  * Collection of backup items.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface BackupItemCollection extends Array<BackupItem> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SiteConfigResourceCollection class.
+ * @constructor
+ * Collection of site configurations.
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface SiteConfigResourceCollection extends Array<SiteConfigResource> {
   nextLink?: string;
 }
 
@@ -7437,7 +5965,6 @@ export interface BackupItemCollection extends Array<BackupItem> {
  * Collection of app deployments.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DeploymentCollection extends Array<Deployment> {
   nextLink?: string;
@@ -7450,7 +5977,6 @@ export interface DeploymentCollection extends Array<Deployment> {
  * Collection of identifiers.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface IdentifierCollection extends Array<Identifier> {
   nextLink?: string;
@@ -7463,7 +5989,6 @@ export interface IdentifierCollection extends Array<Identifier> {
  * Collection of hostname bindings.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface HostNameBindingCollection extends Array<HostNameBinding> {
   nextLink?: string;
@@ -7476,7 +6001,6 @@ export interface HostNameBindingCollection extends Array<HostNameBinding> {
  * Collection of app instances.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface WebAppInstanceCollection extends Array<SiteInstance> {
   nextLink?: string;
@@ -7489,7 +6013,6 @@ export interface WebAppInstanceCollection extends Array<SiteInstance> {
  * Collection of performance monitor counters.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface PerfMonCounterCollection extends Array<PerfMonResponse> {
   nextLink?: string;
@@ -7502,7 +6025,6 @@ export interface PerfMonCounterCollection extends Array<PerfMonResponse> {
  * Collection of slot differences.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SlotDifferenceCollection extends Array<SlotDifference> {
   nextLink?: string;
@@ -7516,7 +6038,6 @@ export interface SlotDifferenceCollection extends Array<SlotDifference> {
  * time.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface SnapshotCollection extends Array<Snapshot> {
   nextLink?: string;
@@ -7529,7 +6050,6 @@ export interface SnapshotCollection extends Array<Snapshot> {
  * Collection of deleted apps.
  *
  * @member {string} [nextLink] Link to next page of resources.
- *
  */
 export interface DeletedWebAppCollection extends Array<DeletedSite> {
   nextLink?: string;

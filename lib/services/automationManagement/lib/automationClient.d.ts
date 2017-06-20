@@ -52,8 +52,35 @@ declare class AutomationClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  automationAccounts: operations.AutomationAccounts;
+  automationAccountOperations: operations.AutomationAccountOperations;
   operations: operations.Operations;
+  statisticsOperations: operations.StatisticsOperations;
+  usages: operations.Usages;
+  certificateOperations: operations.CertificateOperations;
+  connectionOperations: operations.ConnectionOperations;
+  connectionTypeOperations: operations.ConnectionTypeOperations;
+  credentialOperations: operations.CredentialOperations;
+  jobOperations: operations.JobOperations;
+  jobStreamOperations: operations.JobStreamOperations;
+  activityOperations: operations.ActivityOperations;
+  moduleOperations: operations.ModuleOperations;
+  objectDataTypes: operations.ObjectDataTypes;
+  fields: operations.Fields;
+  runbookDraftOperations: operations.RunbookDraftOperations;
+  runbookOperations: operations.RunbookOperations;
+  testJobStreams: operations.TestJobStreams;
+  testJobs: operations.TestJobs;
+  scheduleOperations: operations.ScheduleOperations;
+  jobScheduleOperations: operations.JobScheduleOperations;
+  variableOperations: operations.VariableOperations;
+  webhookOperations: operations.WebhookOperations;
+  dscCompilationJobOperations: operations.DscCompilationJobOperations;
+  dscConfigurationOperations: operations.DscConfigurationOperations;
+  agentRegistrationInformation: operations.AgentRegistrationInformation;
+  dscNodeOperations: operations.DscNodeOperations;
+  nodeReports: operations.NodeReports;
+  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
+  hybridRunbookWorkerGroupOperations: operations.HybridRunbookWorkerGroupOperations;
 }
 
 export = AutomationClient;

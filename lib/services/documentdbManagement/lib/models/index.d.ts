@@ -23,18 +23,15 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} defaultConsistencyLevel The default consistency level and
  * configuration settings of the DocumentDB account. Possible values include:
- * 'Eventual', 'Session', 'BoundedStaleness', 'Strong'
- *
+ * 'Eventual', 'Session', 'BoundedStaleness', 'Strong', 'ConsistentPrefix'
  * @member {number} [maxStalenessPrefix] When used with the Bounded Staleness
  * consistency level, this value represents the number of stale requests
  * tolerated. Accepted range for this value is 1 – 2,147,483,647. Required when
  * defaultConsistencyPolicy is set to 'BoundedStaleness'.
- *
  * @member {number} [maxIntervalInSeconds] When used with the Bounded Staleness
  * consistency level, this value represents the time amount of staleness (in
  * seconds) tolerated. Accepted range for this value is 1 - 100. Required when
  * defaultConsistencyPolicy is set to 'BoundedStaleness'.
- *
  */
 export interface ConsistencyPolicy {
   defaultConsistencyLevel: string;
@@ -50,20 +47,15 @@ export interface ConsistencyPolicy {
  *
  * @member {string} [id] The unique identifier of the region within the
  * database account. Example: &lt;accountName&gt;-&lt;locationName&gt;.
- *
  * @member {string} [locationName] The name of the region.
- *
  * @member {string} [documentEndpoint] The connection endpoint for the specific
  * region. Example:
  * https://&lt;accountName&gt;-&lt;locationName&gt;.documents.azure.com:443/
- *
  * @member {string} [provisioningState]
- *
  * @member {number} [failoverPriority] The failover priority of the region. A
  * failover priority of 0 indicates a write region. The maximum value for a
  * failover priority = (total number of regions - 1). Failover priority values
  * must be unique for each of the regions in which the database account exists.
- *
  */
 export interface Location {
   readonly id?: string;
@@ -82,15 +74,12 @@ export interface Location {
  * @member {string} [id] The unique identifier of the region in which the
  * database account replicates to. Example:
  * &lt;accountName&gt;-&lt;locationName&gt;.
- *
  * @member {string} [locationName] The name of the region in which the database
  * account exists.
- *
  * @member {number} [failoverPriority] The failover priority of the region. A
  * failover priority of 0 indicates a write region. The maximum value for a
  * failover priority = (total number of regions - 1). Failover priority values
  * must be unique for each of the regions in which the database account exists.
- *
  */
 export interface FailoverPolicy {
   readonly id?: string;
@@ -106,16 +95,11 @@ export interface FailoverPolicy {
  *
  * @member {string} [id] The unique resource identifier of the database
  * account.
- *
  * @member {string} [name] The name of the database account.
- *
  * @member {string} [type] The type of Azure resource.
- *
  * @member {string} location The location of the resource group to which the
  * resource belongs.
- *
  * @member {object} [tags]
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -134,48 +118,41 @@ export interface Resource extends BaseResource {
  * @member {string} [kind] Indicates the type of database account. This can
  * only be set at database account creation. Possible values include:
  * 'GlobalDocumentDB', 'MongoDB', 'Parse'. Default value: 'GlobalDocumentDB' .
- *
  * @member {string} [provisioningState]
- *
  * @member {string} [documentEndpoint] The connection endpoint for the
  * DocumentDB database account.
- *
  * @member {string} [databaseAccountOfferType] The offer type for the
  * DocumentDB database account. Default value: Standard. Possible values
  * include: 'Standard'
- *
  * @member {string} [ipRangeFilter] DocumentDB Firewall Support: This value
  * specifies the set of IP addresses or IP address ranges in CIDR form to be
  * included as the allowed list of client IPs for a given database account. IP
  * addresses/ranges must be comma separated and must not contain any spaces.
- *
+ * @member {boolean} [enableAutomaticFailover] Enables automatic failover of
+ * the write region in the rare event that the region is unavailable due to an
+ * outage. Automatic failover will result in a new write region for the account
+ * and is chosen based on the failover priorities configured for the account.
  * @member {object} [consistencyPolicy] The consistency policy for the
  * DocumentDB database account.
- *
  * @member {string} [consistencyPolicy.defaultConsistencyLevel] The default
  * consistency level and configuration settings of the DocumentDB account.
- * Possible values include: 'Eventual', 'Session', 'BoundedStaleness', 'Strong'
- *
+ * Possible values include: 'Eventual', 'Session', 'BoundedStaleness',
+ * 'Strong', 'ConsistentPrefix'
  * @member {number} [consistencyPolicy.maxStalenessPrefix] When used with the
  * Bounded Staleness consistency level, this value represents the number of
  * stale requests tolerated. Accepted range for this value is 1 –
  * 2,147,483,647. Required when defaultConsistencyPolicy is set to
  * 'BoundedStaleness'.
- *
  * @member {number} [consistencyPolicy.maxIntervalInSeconds] When used with the
  * Bounded Staleness consistency level, this value represents the time amount
  * of staleness (in seconds) tolerated. Accepted range for this value is 1 -
  * 100. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
- *
  * @member {array} [writeLocations] An array that contains the write location
  * for the DocumentDB account.
- *
  * @member {array} [readLocations] An array that contains of the read locations
  * enabled for the DocumentDB account.
- *
  * @member {array} [failoverPolicies] An array that contains the regions
  * ordered by their failover priorities.
- *
  */
 export interface DatabaseAccount extends Resource {
   kind?: string;
@@ -183,6 +160,7 @@ export interface DatabaseAccount extends Resource {
   readonly documentEndpoint?: string;
   readonly databaseAccountOfferType?: string;
   ipRangeFilter?: string;
+  enableAutomaticFailover?: boolean;
   consistencyPolicy?: ConsistencyPolicy;
   readonly writeLocations?: Location[];
   readonly readLocations?: Location[];
@@ -197,7 +175,6 @@ export interface DatabaseAccount extends Resource {
  * properties.
  *
  * @member {array} [value] List of database account and their properties.
- *
  */
 export interface DatabaseAccountsListResult {
   readonly value?: DatabaseAccount[];
@@ -210,7 +187,6 @@ export interface DatabaseAccountsListResult {
  * The list of new failover policies for the failover priority change.
  *
  * @member {array} [failoverPolicies] List of failover policies.
- *
  */
 export interface FailoverPolicies {
   failoverPolicies?: FailoverPolicy[];
@@ -225,39 +201,38 @@ export interface FailoverPolicies {
  * @member {string} [kind] Indicates the type of database account. This can
  * only be set at database account creation. Possible values include:
  * 'GlobalDocumentDB', 'MongoDB', 'Parse'. Default value: 'GlobalDocumentDB' .
- *
  * @member {object} [consistencyPolicy] The consistency policy for the
  * DocumentDB account.
- *
  * @member {string} [consistencyPolicy.defaultConsistencyLevel] The default
  * consistency level and configuration settings of the DocumentDB account.
- * Possible values include: 'Eventual', 'Session', 'BoundedStaleness', 'Strong'
- *
+ * Possible values include: 'Eventual', 'Session', 'BoundedStaleness',
+ * 'Strong', 'ConsistentPrefix'
  * @member {number} [consistencyPolicy.maxStalenessPrefix] When used with the
  * Bounded Staleness consistency level, this value represents the number of
  * stale requests tolerated. Accepted range for this value is 1 –
  * 2,147,483,647. Required when defaultConsistencyPolicy is set to
  * 'BoundedStaleness'.
- *
  * @member {number} [consistencyPolicy.maxIntervalInSeconds] When used with the
  * Bounded Staleness consistency level, this value represents the time amount
  * of staleness (in seconds) tolerated. Accepted range for this value is 1 -
  * 100. Required when defaultConsistencyPolicy is set to 'BoundedStaleness'.
- *
  * @member {array} locations An array that contains the georeplication
  * locations enabled for the DocumentDB account.
- *
  * @member {string} [ipRangeFilter] DocumentDB Firewall Support: This value
  * specifies the set of IP addresses or IP address ranges in CIDR form to be
  * included as the allowed list of client IPs for a given database account. IP
  * addresses/ranges must be comma separated and must not contain any spaces.
- *
+ * @member {boolean} [enableAutomaticFailover] Enables automatic failover of
+ * the write region in the rare event that the region is unavailable due to an
+ * outage. Automatic failover will result in a new write region for the account
+ * and is chosen based on the failover priorities configured for the account.
  */
 export interface DatabaseAccountCreateUpdateParameters extends Resource {
   kind?: string;
   consistencyPolicy?: ConsistencyPolicy;
   locations: Location[];
   ipRangeFilter?: string;
+  enableAutomaticFailover?: boolean;
 }
 
 /**
@@ -267,7 +242,6 @@ export interface DatabaseAccountCreateUpdateParameters extends Resource {
  * Parameters for patching Azure DocumentDB database account properties.
  *
  * @member {object} tags
- *
  */
 export interface DatabaseAccountPatchParameters {
   tags: { [propertyName: string]: string };
@@ -281,10 +255,8 @@ export interface DatabaseAccountPatchParameters {
  *
  * @member {string} [primaryReadonlyMasterKey] Base 64 encoded value of the
  * primary read-only key.
- *
  * @member {string} [secondaryReadonlyMasterKey] Base 64 encoded value of the
  * secondary read-only key.
- *
  */
 export interface DatabaseAccountListReadOnlyKeysResult {
   readonly primaryReadonlyMasterKey?: string;
@@ -299,16 +271,12 @@ export interface DatabaseAccountListReadOnlyKeysResult {
  *
  * @member {string} [primaryMasterKey] Base 64 encoded value of the primary
  * read-write key.
- *
  * @member {string} [secondaryMasterKey] Base 64 encoded value of the secondary
  * read-write key.
- *
  * @member {string} [primaryReadonlyMasterKey] Base 64 encoded value of the
  * primary read-only key.
- *
  * @member {string} [secondaryReadonlyMasterKey] Base 64 encoded value of the
  * secondary read-only key.
- *
  */
 export interface DatabaseAccountListKeysResult {
   readonly primaryMasterKey?: string;
@@ -324,9 +292,7 @@ export interface DatabaseAccountListKeysResult {
  * Connection string for the DocumentDB account
  *
  * @member {string} [connectionString] Value of the connection string
- *
  * @member {string} [description] Description of the connection string
- *
  */
 export interface DatabaseAccountConnectionString {
   readonly connectionString?: string;
@@ -341,7 +307,6 @@ export interface DatabaseAccountConnectionString {
  *
  * @member {array} [connectionStrings] An array that contains the connection
  * strings for the DocumentDB account.
- *
  */
 export interface DatabaseAccountListConnectionStringsResult {
   connectionStrings?: DatabaseAccountConnectionString[];
@@ -355,7 +320,6 @@ export interface DatabaseAccountListConnectionStringsResult {
  *
  * @member {string} keyKind The access key to regenerate. Possible values
  * include: 'primary', 'secondary', 'primaryReadonly', 'secondaryReadonly'
- *
  */
 export interface DatabaseAccountRegenerateKeyParameters {
   keyKind: string;
@@ -369,7 +333,6 @@ export interface DatabaseAccountRegenerateKeyParameters {
  * properties.
  *
  * @member {array} [value] List of database account and their properties.
- *
  */
 export interface DatabaseAccountsListResult {
   readonly value?: DatabaseAccount[];

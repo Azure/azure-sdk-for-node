@@ -23,13 +23,10 @@ export { CloudError } from 'ms-rest-azure';
  * resource.
  *
  * @member {string} name Name of the SKU level for the server being
- * provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'. Possible
- * values include: 'S1', 'S2', 'S4', 'D1'
- *
+ * provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1', 'S2', 'S4',
+ * 'D1'
  * @member {string} [tier] The name of the Azure pricing tier to which the SKU
- * applies. Possible values are: 'Development' and 'Standard'. Possible values
- * include: 'Development', 'Standard'
- *
+ * applies. Possible values include: 'Development', 'Basic', 'Standard'
  */
 export interface ResourceSku {
   name: string;
@@ -44,26 +41,17 @@ export interface ResourceSku {
  *
  * @member {string} [id] An identifier that represents the Analysis Services
  * resource.
- *
  * @member {string} [name] The name of the Analysis Services resource.
- *
  * @member {string} [type] The type of the Analysis Services resource.
- *
  * @member {string} location Location of the Analysis Services resource.
- *
  * @member {object} sku The SKU of the Analysis Services resource.
- *
  * @member {string} [sku.name] Name of the SKU level for the server being
- * provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'. Possible
- * values include: 'S1', 'S2', 'S4', 'D1'
- *
+ * provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1', 'S2', 'S4',
+ * 'D1'
  * @member {string} [sku.tier] The name of the Azure pricing tier to which the
- * SKU applies. Possible values are: 'Development' and 'Standard'. Possible
- * values include: 'Development', 'Standard'
- *
+ * SKU applies. Possible values include: 'Development', 'Basic', 'Standard'
  * @member {object} [tags] Key-value pairs of additional resource provisioning
  * properties.
- *
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -81,36 +69,27 @@ export interface Resource extends BaseResource {
  * Represents an instance of an Analysis Services resource.
  *
  * @member {object} [asAdministrators]
- *
  * @member {array} [asAdministrators.members] An array of administrator user
  * identities.
- *
  * @member {object} [backupConfiguration]
- *
  * @member {string} [backupConfiguration.storageAccount] Storage account full
  * resource id for backup configuration
- *
  * @member {string} [backupConfiguration.blobContainer] The name of blob
  * container for backup configuration
- *
  * @member {string} [backupConfiguration.accessKey] The access key of storage
  * account used for backup configuration
- *
  * @member {string} [state] The current state of Analysis Services resource.
  * The state is to indicate more states outside of resource provisioning.
  * Possible values include: 'Deleting', 'Succeeded', 'Failed', 'Paused',
  * 'Suspended', 'Provisioning', 'Updating', 'Suspending', 'Pausing',
  * 'Resuming', 'Preparing', 'Scaling'
- *
  * @member {string} [provisioningState] The current deployment state of
  * Analysis Services resource. The provisioningState is to indicate states for
  * resource provisioning. Possible values include: 'Deleting', 'Succeeded',
  * 'Failed', 'Paused', 'Suspended', 'Provisioning', 'Updating', 'Suspending',
  * 'Pausing', 'Resuming', 'Preparing', 'Scaling'
- *
  * @member {string} [serverFullName] The full name of the Analysis Services
  * resource.
- *
  */
 export interface AnalysisServicesServer extends Resource {
   asAdministrators?: ServerAdministrators;
@@ -127,7 +106,6 @@ export interface AnalysisServicesServer extends Resource {
  * An array of Analysis Services resources.
  *
  * @member {array} value An array of Analysis Services resources.
- *
  */
 export interface AnalysisServicesServers {
   value: AnalysisServicesServer[];
@@ -140,7 +118,6 @@ export interface AnalysisServicesServers {
  * An array of administrator user identities
  *
  * @member {array} [members] An array of administrator user identities.
- *
  */
 export interface ServerAdministrators {
   members?: string[];
@@ -154,13 +131,10 @@ export interface ServerAdministrators {
  *
  * @member {string} storageAccount Storage account full resource id for backup
  * configuration
- *
  * @member {string} blobContainer The name of blob container for backup
  * configuration
- *
  * @member {string} [accessKey] The access key of storage account used for
  * backup configuration
- *
  */
 export interface BackupConfiguration {
   storageAccount: string;
@@ -175,34 +149,23 @@ export interface BackupConfiguration {
  * Provision request specification
  *
  * @member {object} [sku] The SKU of the Analysis Services resource.
- *
  * @member {string} [sku.name] Name of the SKU level for the server being
- * provisioned. Possible values are: 'S1', 'S2', 'S4', and 'D1'. Possible
- * values include: 'S1', 'S2', 'S4', 'D1'
- *
+ * provisioned. Possible values include: 'B1', 'B2', 'S0', 'S1', 'S2', 'S4',
+ * 'D1'
  * @member {string} [sku.tier] The name of the Azure pricing tier to which the
- * SKU applies. Possible values are: 'Development' and 'Standard'. Possible
- * values include: 'Development', 'Standard'
- *
+ * SKU applies. Possible values include: 'Development', 'Basic', 'Standard'
  * @member {object} [tags] Key-value pairs of additional provisioning
  * properties.
- *
  * @member {object} [asAdministrators]
- *
  * @member {array} [asAdministrators.members] An array of administrator user
  * identities.
- *
  * @member {object} [backupConfiguration]
- *
  * @member {string} [backupConfiguration.storageAccount] Storage account full
  * resource id for backup configuration
- *
  * @member {string} [backupConfiguration.blobContainer] The name of blob
  * container for backup configuration
- *
  * @member {string} [backupConfiguration.accessKey] The access key of storage
  * account used for backup configuration
- *
  */
 export interface AnalysisServicesServerUpdateParameters {
   sku?: ResourceSku;
@@ -218,7 +181,6 @@ export interface AnalysisServicesServerUpdateParameters {
  * An array of Analysis Services resources.
  *
  * @member {array} value An array of Analysis Services resources.
- *
  */
 export interface AnalysisServicesServers {
   value: AnalysisServicesServer[];

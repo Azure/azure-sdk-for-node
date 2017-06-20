@@ -22,15 +22,10 @@ export { CloudError } from 'ms-rest-azure';
  * The object attributes managed by the KeyVault service.
  *
  * @member {boolean} [enabled] Determines whether the object is enabled.
- *
  * @member {date} [notBefore] Not before date in UTC.
- *
  * @member {date} [expires] Expiry date in UTC.
- *
  * @member {date} [created] Creation time in UTC.
- *
  * @member {date} [updated] Last updated time in UTC.
- *
  */
 export interface Attributes {
   enabled?: boolean;
@@ -47,33 +42,20 @@ export interface Attributes {
  * As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
  *
  * @member {string} [kid] Key identifier.
- *
  * @member {string} [kty] Supported JsonWebKey key types (kty) for Elliptic
  * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
  * 'EC', 'RSA', 'RSA-HSM', 'oct'
- *
  * @member {array} [keyOps]
- *
  * @member {buffer} [n] RSA modulus.
- *
  * @member {buffer} [e] RSA public exponent.
- *
  * @member {buffer} [d] RSA private exponent.
- *
  * @member {buffer} [dp] RSA private key parameter.
- *
  * @member {buffer} [dq] RSA private key parameter.
- *
  * @member {buffer} [qi] RSA private key parameter.
- *
  * @member {buffer} [p] RSA secret prime.
- *
  * @member {buffer} [q] RSA secret prime, with p < q.
- *
  * @member {buffer} [k] Symmetric key.
- *
  * @member {buffer} [t] HSM Token, used with 'Bring Your Own Key'.
- *
  */
 export interface JsonWebKey {
   kid?: string;
@@ -97,8 +79,15 @@ export interface JsonWebKey {
  * @constructor
  * The attributes of a key managed by the key vault service.
  *
+ * @member {string} [recoveryLevel] Reflects the deletion recovery level
+ * currently in effect for keys in the current vault. If it contains
+ * 'Purgeable' the key can be permanently deleted by a privileged user;
+ * otherwise, only the system can purge the key, at the end of the retention
+ * interval. Possible values include: 'Purgeable', 'Recoverable+Purgeable',
+ * 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface KeyAttributes extends Attributes {
+  readonly recoveryLevel?: string;
 }
 
 /**
@@ -108,43 +97,32 @@ export interface KeyAttributes extends Attributes {
  * A KeyBundle consisting of a WebKey plus its attributes.
  *
  * @member {object} [key] The Json web key.
- *
  * @member {string} [key.kid] Key identifier.
- *
  * @member {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
  * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
  * 'EC', 'RSA', 'RSA-HSM', 'oct'
- *
  * @member {array} [key.keyOps]
- *
  * @member {buffer} [key.n] RSA modulus.
- *
  * @member {buffer} [key.e] RSA public exponent.
- *
  * @member {buffer} [key.d] RSA private exponent.
- *
  * @member {buffer} [key.dp] RSA private key parameter.
- *
  * @member {buffer} [key.dq] RSA private key parameter.
- *
  * @member {buffer} [key.qi] RSA private key parameter.
- *
  * @member {buffer} [key.p] RSA secret prime.
- *
  * @member {buffer} [key.q] RSA secret prime, with p < q.
- *
  * @member {buffer} [key.k] Symmetric key.
- *
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
- *
  * @member {object} [attributes] The key management attributes.
- *
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for keys in the current vault. If it contains
+ * 'Purgeable' the key can be permanently deleted by a privileged user;
+ * otherwise, only the system can purge the key, at the end of the retention
+ * interval. Possible values include: 'Purgeable', 'Recoverable+Purgeable',
+ * 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  * @member {boolean} [managed] True if the key's lifetime is managed by key
  * vault. If this is a key backing a certificate, then managed will be true.
- *
  */
 export interface KeyBundle {
   key?: JsonWebKey;
@@ -160,15 +138,17 @@ export interface KeyBundle {
  * The key item containing key metadata.
  *
  * @member {string} [kid] Key identifier.
- *
  * @member {object} [attributes] The key management attributes.
- *
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for keys in the current vault. If it contains
+ * 'Purgeable' the key can be permanently deleted by a privileged user;
+ * otherwise, only the system can purge the key, at the end of the retention
+ * interval. Possible values include: 'Purgeable', 'Recoverable+Purgeable',
+ * 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  * @member {boolean} [managed] True if the key's lifetime is managed by key
  * vault. If this is a key backing a certificate, then managed will be true.
- *
  */
 export interface KeyItem {
   kid?: string;
@@ -179,12 +159,57 @@ export interface KeyItem {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedKeyBundle class.
+ * @constructor
+ * A DeletedKeyBundle consisting of a WebKey plus its Attributes and deletion
+ * info
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted key.
+ * @member {date} [scheduledPurgeDate] The time when the key is scheduled to be
+ * purged, in UTC
+ * @member {date} [deletedDate] The time when the key was deleted, in UTC
+ */
+export interface DeletedKeyBundle extends KeyBundle {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedKeyItem class.
+ * @constructor
+ * The deleted key item containing the deleted key metadata and information
+ * about deletion.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted key.
+ * @member {date} [scheduledPurgeDate] The time when the key is scheduled to be
+ * purged, in UTC
+ * @member {date} [deletedDate] The time when the key was deleted, in UTC
+ */
+export interface DeletedKeyItem extends KeyItem {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SecretAttributes class.
  * @constructor
  * The secret management attributes.
  *
+ * @member {string} [recoveryLevel] Reflects the deletion recovery level
+ * currently in effect for secrets in the current vault. If it contains
+ * 'Purgeable', the secret can be permanently deleted by a privileged user;
+ * otherwise, only the system can purge the secret, at the end of the retention
+ * interval. Possible values include: 'Purgeable', 'Recoverable+Purgeable',
+ * 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface SecretAttributes extends Attributes {
+  readonly recoveryLevel?: string;
 }
 
 /**
@@ -194,22 +219,21 @@ export interface SecretAttributes extends Attributes {
  * A secret consisting of a value, id and its attributes.
  *
  * @member {string} [value] The secret value.
- *
  * @member {string} [id] The secret id.
- *
  * @member {string} [contentType] The content type of the secret.
- *
  * @member {object} [attributes] The secret management attributes.
- *
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for secrets in the current vault. If it contains
+ * 'Purgeable', the secret can be permanently deleted by a privileged user;
+ * otherwise, only the system can purge the secret, at the end of the retention
+ * interval. Possible values include: 'Purgeable', 'Recoverable+Purgeable',
+ * 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  * @member {string} [kid] If this is a secret backing a KV certificate, then
  * this field specifies the corresponding key backing the KV certificate.
- *
  * @member {boolean} [managed] True if the secret's lifetime is managed by key
  * vault. If this is a secret backing a certificate, then managed will be true.
- *
  */
 export interface SecretBundle {
   value?: string;
@@ -228,17 +252,18 @@ export interface SecretBundle {
  * The secret item containing secret metadata.
  *
  * @member {string} [id] Secret identifier.
- *
  * @member {object} [attributes] The secret management attributes.
- *
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for secrets in the current vault. If it contains
+ * 'Purgeable', the secret can be permanently deleted by a privileged user;
+ * otherwise, only the system can purge the secret, at the end of the retention
+ * interval. Possible values include: 'Purgeable', 'Recoverable+Purgeable',
+ * 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  * @member {string} [contentType] Type of the secret value such as a password.
- *
  * @member {boolean} [managed] True if the secret's lifetime is managed by key
  * vault. If this is a key backing a certificate, then managed will be true.
- *
  */
 export interface SecretItem {
   id?: string;
@@ -250,12 +275,69 @@ export interface SecretItem {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedSecretBundle class.
+ * @constructor
+ * A Deleted Secret consisting of its previous id, attributes and its tags, as
+ * well as information on when it will be purged.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted secret.
+ * @member {date} [scheduledPurgeDate] The time when the secret is scheduled to
+ * be purged, in UTC
+ * @member {date} [deletedDate] The time when the secret was deleted, in UTC
+ */
+export interface DeletedSecretBundle extends SecretBundle {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSecretItem class.
+ * @constructor
+ * The deleted secret item containing metadata about the deleted secret.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted secret.
+ * @member {date} [scheduledPurgeDate] The time when the secret is scheduled to
+ * be purged, in UTC
+ * @member {date} [deletedDate] The time when the secret was deleted, in UTC
+ */
+export interface DeletedSecretItem extends SecretItem {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SecretRestoreParameters class.
+ * @constructor
+ * The secret restore parameters.
+ *
+ * @member {buffer} secretBundleBackup The backup blob associated with a secret
+ * bundle.
+ */
+export interface SecretRestoreParameters {
+  secretBundleBackup: Buffer;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CertificateAttributes class.
  * @constructor
  * The certificate management attributes.
  *
+ * @member {string} [recoveryLevel] Reflects the deletion recovery level
+ * currently in effect for certificates in the current vault. If it contains
+ * 'Purgeable', the certificate can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the certificate, at the end of
+ * the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface CertificateAttributes extends Attributes {
+  readonly recoveryLevel?: string;
 }
 
 /**
@@ -265,14 +347,16 @@ export interface CertificateAttributes extends Attributes {
  * The certificate item containing certificate metadata.
  *
  * @member {string} [id] Certificate identifier.
- *
  * @member {object} [attributes] The certificate management attributes.
- *
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for certificates in the current vault. If it
+ * contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  * @member {buffer} [x509Thumbprint] Thumbprint of the certificate.
- *
  */
 export interface CertificateItem {
   id?: string;
@@ -288,9 +372,7 @@ export interface CertificateItem {
  * The certificate issuer item containing certificate issuer metadata.
  *
  * @member {string} [id] Certificate Identifier.
- *
  * @member {string} [provider] The issuer provider.
- *
  */
 export interface CertificateIssuerItem {
   id?: string;
@@ -304,15 +386,11 @@ export interface CertificateIssuerItem {
  * Properties of the key pair backing a certificate.
  *
  * @member {boolean} [exportable] Indicates if the private key can be exported.
- *
  * @member {string} [keyType] The key type.
- *
  * @member {number} [keySize] The key size in bytes. For example;  1024 or
  * 2048.
- *
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
  * certificate renewal.
- *
  */
 export interface KeyProperties {
   exportable?: boolean;
@@ -328,7 +406,6 @@ export interface KeyProperties {
  * Properties of the key backing a certificate.
  *
  * @member {string} [contentType] The media type (MIME type).
- *
  */
 export interface SecretProperties {
   contentType?: string;
@@ -341,11 +418,8 @@ export interface SecretProperties {
  * The subject alternate names of a X509 object.
  *
  * @member {array} [emails] Email addresses.
- *
  * @member {array} [dnsNames] Domain names.
- *
  * @member {array} [upns] User principal names.
- *
  */
 export interface SubjectAlternativeNames {
   emails?: string[];
@@ -361,22 +435,14 @@ export interface SubjectAlternativeNames {
  *
  * @member {string} [subject] The subject name. Should be a valid X509
  * distinguished Name.
- *
  * @member {array} [ekus] The enhanced key usage.
- *
  * @member {object} [subjectAlternativeNames] The subject alternative names.
- *
  * @member {array} [subjectAlternativeNames.emails] Email addresses.
- *
  * @member {array} [subjectAlternativeNames.dnsNames] Domain names.
- *
  * @member {array} [subjectAlternativeNames.upns] User principal names.
- *
  * @member {array} [keyUsage] List of key usages.
- *
  * @member {number} [validityInMonths] The duration that the ceritifcate is
  * valid in months.
- *
  */
 export interface X509CertificateProperties {
   subject?: string;
@@ -394,9 +460,7 @@ export interface X509CertificateProperties {
  *
  * @member {number} [lifetimePercentage] Percentage of lifetime at which to
  * trigger. Value should be between 1 and 99.
- *
  * @member {number} [daysBeforeExpiry] Days before expiry.
- *
  */
 export interface Trigger {
   lifetimePercentage?: number;
@@ -411,7 +475,6 @@ export interface Trigger {
  *
  * @member {string} [actionType] The type of the action. Possible values
  * include: 'EmailContacts', 'AutoRenew'
- *
  */
 export interface Action {
   actionType?: string;
@@ -425,17 +488,12 @@ export interface Action {
  * of a certificate.
  *
  * @member {object} [trigger] The condition that will execute the action.
- *
  * @member {number} [trigger.lifetimePercentage] Percentage of lifetime at
  * which to trigger. Value should be between 1 and 99.
- *
  * @member {number} [trigger.daysBeforeExpiry] Days before expiry.
- *
  * @member {object} [action] The action that will be executed.
- *
  * @member {string} [action.actionType] The type of the action. Possible values
  * include: 'EmailContacts', 'AutoRenew'
- *
  */
 export interface LifetimeAction {
   trigger?: Trigger;
@@ -450,10 +508,8 @@ export interface LifetimeAction {
  *
  * @member {string} [name] Name of the referenced issuer object or reserved
  * names; for example, 'Self' or 'Unknown'.
- *
  * @member {string} [certificateType] Type of certificate to be requested from
  * the issuer provider.
- *
  */
 export interface IssuerParameters {
   name?: string;
@@ -467,65 +523,49 @@ export interface IssuerParameters {
  * Management policy for a certificate.
  *
  * @member {string} [id] The certificate id.
- *
  * @member {object} [keyProperties] Properties of the key backing a
  * certificate.
- *
  * @member {boolean} [keyProperties.exportable] Indicates if the private key
  * can be exported.
- *
  * @member {string} [keyProperties.keyType] The key type.
- *
  * @member {number} [keyProperties.keySize] The key size in bytes. For example;
  * 1024 or 2048.
- *
  * @member {boolean} [keyProperties.reuseKey] Indicates if the same key pair
  * will be used on certificate renewal.
- *
  * @member {object} [secretProperties] Properties of the secret backing a
  * certificate.
- *
  * @member {string} [secretProperties.contentType] The media type (MIME type).
- *
  * @member {object} [x509CertificateProperties] Properties of the X509
  * component of a certificate.
- *
  * @member {string} [x509CertificateProperties.subject] The subject name.
  * Should be a valid X509 distinguished Name.
- *
  * @member {array} [x509CertificateProperties.ekus] The enhanced key usage.
- *
  * @member {object} [x509CertificateProperties.subjectAlternativeNames] The
  * subject alternative names.
- *
  * @member {array} [x509CertificateProperties.subjectAlternativeNames.emails]
  * Email addresses.
- *
  * @member {array} [x509CertificateProperties.subjectAlternativeNames.dnsNames]
  * Domain names.
- *
  * @member {array} [x509CertificateProperties.subjectAlternativeNames.upns]
  * User principal names.
- *
  * @member {array} [x509CertificateProperties.keyUsage] List of key usages.
- *
  * @member {number} [x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- *
  * @member {array} [lifetimeActions] Actions that will be performed by Key
  * Vault over the lifetime of a certificate.
- *
  * @member {object} [issuerParameters] Parameters for the issuer of the X509
  * component of a certificate.
- *
  * @member {string} [issuerParameters.name] Name of the referenced issuer
  * object or reserved names; for example, 'Self' or 'Unknown'.
- *
  * @member {string} [issuerParameters.certificateType] Type of certificate to
  * be requested from the issuer provider.
- *
  * @member {object} [attributes] The certificate attributes.
- *
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for certificates in the current vault. If it
+ * contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface CertificatePolicy {
   readonly id?: string;
@@ -544,90 +584,71 @@ export interface CertificatePolicy {
  * A certificate bundle consists of a certificate (X509) plus its attributes.
  *
  * @member {string} [id] The certificate id.
- *
  * @member {string} [kid] The key id.
- *
  * @member {string} [sid] The secret id.
- *
  * @member {buffer} [x509Thumbprint] Thumbprint of the certificate.
- *
  * @member {object} [policy] The management policy.
- *
  * @member {string} [policy.id] The certificate id.
- *
  * @member {object} [policy.keyProperties] Properties of the key backing a
  * certificate.
- *
  * @member {boolean} [policy.keyProperties.exportable] Indicates if the private
  * key can be exported.
- *
  * @member {string} [policy.keyProperties.keyType] The key type.
- *
  * @member {number} [policy.keyProperties.keySize] The key size in bytes. For
  * example;  1024 or 2048.
- *
  * @member {boolean} [policy.keyProperties.reuseKey] Indicates if the same key
  * pair will be used on certificate renewal.
- *
  * @member {object} [policy.secretProperties] Properties of the secret backing
  * a certificate.
- *
  * @member {string} [policy.secretProperties.contentType] The media type (MIME
  * type).
- *
  * @member {object} [policy.x509CertificateProperties] Properties of the X509
  * component of a certificate.
- *
  * @member {string} [policy.x509CertificateProperties.subject] The subject
  * name. Should be a valid X509 distinguished Name.
- *
  * @member {array} [policy.x509CertificateProperties.ekus] The enhanced key
  * usage.
- *
  * @member {object} [policy.x509CertificateProperties.subjectAlternativeNames]
  * The subject alternative names.
- *
  * @member {array}
  * [policy.x509CertificateProperties.subjectAlternativeNames.emails] Email
  * addresses.
- *
  * @member {array}
  * [policy.x509CertificateProperties.subjectAlternativeNames.dnsNames] Domain
  * names.
- *
  * @member {array}
  * [policy.x509CertificateProperties.subjectAlternativeNames.upns] User
  * principal names.
- *
  * @member {array} [policy.x509CertificateProperties.keyUsage] List of key
  * usages.
- *
  * @member {number} [policy.x509CertificateProperties.validityInMonths] The
  * duration that the ceritifcate is valid in months.
- *
  * @member {array} [policy.lifetimeActions] Actions that will be performed by
  * Key Vault over the lifetime of a certificate.
- *
  * @member {object} [policy.issuerParameters] Parameters for the issuer of the
  * X509 component of a certificate.
- *
  * @member {string} [policy.issuerParameters.name] Name of the referenced
  * issuer object or reserved names; for example, 'Self' or 'Unknown'.
- *
  * @member {string} [policy.issuerParameters.certificateType] Type of
  * certificate to be requested from the issuer provider.
- *
  * @member {object} [policy.attributes] The certificate attributes.
- *
+ * @member {string} [policy.attributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for certificates in the current vault. If
+ * it contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {buffer} [cer] CER contents of x509 certificate.
- *
  * @member {string} [contentType] The content type of the secret.
- *
  * @member {object} [attributes] The certificate attributes.
- *
+ * @member {string} [attributes.recoveryLevel] Reflects the deletion recovery
+ * level currently in effect for certificates in the current vault. If it
+ * contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs
- *
  */
 export interface CertificateBundle {
   readonly id?: string;
@@ -643,16 +664,53 @@ export interface CertificateBundle {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedCertificateBundle class.
+ * @constructor
+ * A Deleted Certificate consisting of its previous id, attributes and its
+ * tags, as well as information on when it will be purged.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted certificate.
+ * @member {date} [scheduledPurgeDate] The time when the certificate is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the certificate was deleted, in
+ * UTC
+ */
+export interface DeletedCertificateBundle extends CertificateBundle {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedCertificateItem class.
+ * @constructor
+ * The deleted certificate item containing metadata about the deleted
+ * certificate.
+ *
+ * @member {string} [recoveryId] The url of the recovery object, used to
+ * identify and recover the deleted certificate.
+ * @member {date} [scheduledPurgeDate] The time when the certificate is
+ * scheduled to be purged, in UTC
+ * @member {date} [deletedDate] The time when the certificate was deleted, in
+ * UTC
+ */
+export interface DeletedCertificateItem extends CertificateItem {
+  recoveryId?: string;
+  readonly scheduledPurgeDate?: Date;
+  readonly deletedDate?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorModel class.
  * @constructor
  * The key vault server error.
  *
  * @member {string} [code] The error code.
- *
  * @member {string} [message] The error message.
- *
  * @member {object} [innerError]
- *
  */
 export interface ErrorModel {
   readonly code?: string;
@@ -667,41 +725,27 @@ export interface ErrorModel {
  * A certificate operation is returned in case of asynchronous requests.
  *
  * @member {string} [id] The certificate id.
- *
  * @member {object} [issuerParameters] Parameters for the issuer of the X509
  * component of a certificate.
- *
  * @member {string} [issuerParameters.name] Name of the referenced issuer
  * object or reserved names; for example, 'Self' or 'Unknown'.
- *
  * @member {string} [issuerParameters.certificateType] Type of certificate to
  * be requested from the issuer provider.
- *
  * @member {buffer} [csr] The certificate signing request (CSR) that is being
  * used in the certificate operation.
- *
  * @member {boolean} [cancellationRequested] Indicates if cancellation was
  * requested on the certificate operation.
- *
  * @member {string} [status] Status of the certificate operation.
- *
  * @member {string} [statusDetails] The status details of the certificate
  * operation.
- *
  * @member {object} [error] Error encountered, if any, during the certificate
  * operation.
- *
  * @member {string} [error.code] The error code.
- *
  * @member {string} [error.message] The error message.
- *
  * @member {object} [error.innerError]
- *
  * @member {string} [target] Location which contains the result of the
  * certificate operation.
- *
  * @member {string} [requestId] Identifier for the certificate operation.
- *
  */
 export interface CertificateOperation {
   readonly id?: string;
@@ -722,9 +766,7 @@ export interface CertificateOperation {
  * The credentials to be used for the certificate issuer.
  *
  * @member {string} [accountId] The user name/account name/account id.
- *
  * @member {string} [password] The password/secret/account key.
- *
  */
 export interface IssuerCredentials {
   accountId?: string;
@@ -738,13 +780,9 @@ export interface IssuerCredentials {
  * Details of the organization administrator of the certificate issuer.
  *
  * @member {string} [firstName] First name.
- *
  * @member {string} [lastName] Last name.
- *
  * @member {string} [emailAddress] Email addresss.
- *
  * @member {string} [phone] Phone number.
- *
  */
 export interface AdministratorDetails {
   firstName?: string;
@@ -760,9 +798,7 @@ export interface AdministratorDetails {
  * Details of the organization of the certificate issuer.
  *
  * @member {string} [id] Id of the organization.
- *
  * @member {array} [adminDetails] Details of the organization administrator.
- *
  */
 export interface OrganizationDetails {
   id?: string;
@@ -776,11 +812,8 @@ export interface OrganizationDetails {
  * The attributes of an issuer managed by the Key Vault service.
  *
  * @member {boolean} [enabled] Determines whether the issuer is enabled.
- *
  * @member {date} [created] Creation time in UTC.
- *
  * @member {date} [updated] Last updated time in UTC.
- *
  */
 export interface IssuerAttributes {
   enabled?: boolean;
@@ -795,33 +828,21 @@ export interface IssuerAttributes {
  * The issuer for Key Vault certificate.
  *
  * @member {string} [id] Identifier for the issuer object.
- *
  * @member {string} [provider] The issuer provider.
- *
  * @member {object} [credentials] The credentials to be used for the issuer.
- *
  * @member {string} [credentials.accountId] The user name/account name/account
  * id.
- *
  * @member {string} [credentials.password] The password/secret/account key.
- *
  * @member {object} [organizationDetails] Details of the organization as
  * provided to the issuer.
- *
  * @member {string} [organizationDetails.id] Id of the organization.
- *
  * @member {array} [organizationDetails.adminDetails] Details of the
  * organization administrator.
- *
  * @member {object} [attributes] Attributes of the issuer object.
- *
  * @member {boolean} [attributes.enabled] Determines whether the issuer is
  * enabled.
- *
  * @member {date} [attributes.created] Creation time in UTC.
- *
  * @member {date} [attributes.updated] Last updated time in UTC.
- *
  */
 export interface IssuerBundle {
   readonly id?: string;
@@ -838,11 +859,8 @@ export interface IssuerBundle {
  * The contact information for the vault certificates.
  *
  * @member {string} [emailAddress] Email addresss.
- *
  * @member {string} [name] Name.
- *
  * @member {string} [phone] Phone number.
- *
  */
 export interface Contact {
   emailAddress?: string;
@@ -857,9 +875,7 @@ export interface Contact {
  * The contacts for the vault certificates.
  *
  * @member {string} [id] Identifier for the contacts collection.
- *
  * @member {array} [contactList] The contact list for the vault certificates.
- *
  */
 export interface Contacts {
   readonly id?: string;
@@ -875,16 +891,17 @@ export interface Contacts {
  * @member {string} kty The type of key to create. For valid key types, see
  * JsonWebKeyType. Supported JsonWebKey key types (kty) for Elliptic Curve,
  * RSA, HSM, Octet. Possible values include: 'EC', 'RSA', 'RSA-HSM', 'oct'
- *
  * @member {number} [keySize] The key size in bytes. For example, 1024 or 2048.
- *
  * @member {array} [keyOps]
- *
  * @member {object} [keyAttributes]
- *
+ * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for keys in the current vault. If it
+ * contains 'Purgeable' the key can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the key, at the end of the
+ * retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface KeyCreateParameters {
   kty: string;
@@ -902,42 +919,31 @@ export interface KeyCreateParameters {
  *
  * @member {boolean} [hsm] Whether to import as a hardware key (HSM) or
  * software key.
- *
  * @member {object} key The Json web key
- *
  * @member {string} [key.kid] Key identifier.
- *
  * @member {string} [key.kty] Supported JsonWebKey key types (kty) for Elliptic
  * Curve, RSA, HSM, Octet. Kty is usually set to RSA. Possible values include:
  * 'EC', 'RSA', 'RSA-HSM', 'oct'
- *
  * @member {array} [key.keyOps]
- *
  * @member {buffer} [key.n] RSA modulus.
- *
  * @member {buffer} [key.e] RSA public exponent.
- *
  * @member {buffer} [key.d] RSA private exponent.
- *
  * @member {buffer} [key.dp] RSA private key parameter.
- *
  * @member {buffer} [key.dq] RSA private key parameter.
- *
  * @member {buffer} [key.qi] RSA private key parameter.
- *
  * @member {buffer} [key.p] RSA secret prime.
- *
  * @member {buffer} [key.q] RSA secret prime, with p < q.
- *
  * @member {buffer} [key.k] Symmetric key.
- *
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
- *
  * @member {object} [keyAttributes] The key management attributes.
- *
+ * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for keys in the current vault. If it
+ * contains 'Purgeable' the key can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the key, at the end of the
+ * retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface KeyImportParameters {
   hsm?: boolean;
@@ -953,10 +959,8 @@ export interface KeyImportParameters {
  * The key operations parameters.
  *
  * @member {string} algorithm algorithm identifier. Possible values include:
- * 'RSA-OAEP', 'RSA1_5'
- *
+ * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
  * @member {buffer} value
- *
  */
 export interface KeyOperationsParameters {
   algorithm: string;
@@ -971,11 +975,9 @@ export interface KeyOperationsParameters {
  *
  * @member {string} algorithm The signing/verification algorithm identifier.
  * For more information on possible algorithm types, see
- * JsonWebKeySignatureAlgorithm. Possible values include: 'RS256', 'RS384',
- * 'RS512', 'RSNULL'
- *
+ * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
+ * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL'
  * @member {buffer} value
- *
  */
 export interface KeySignParameters {
   algorithm: string;
@@ -990,12 +992,10 @@ export interface KeySignParameters {
  *
  * @member {string} algorithm The signing/verification algorithm. For more
  * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
- * Possible values include: 'RS256', 'RS384', 'RS512', 'RSNULL'
- *
+ * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
+ * 'RS512', 'RSNULL'
  * @member {buffer} digest The digest used for signing.
- *
  * @member {buffer} signature The signature to be verified.
- *
  */
 export interface KeyVerifyParameters {
   algorithm: string;
@@ -1011,12 +1011,15 @@ export interface KeyVerifyParameters {
  *
  * @member {array} [keyOps] Json web key operations. For more information on
  * possible key operations, see JsonWebKeyOperation.
- *
  * @member {object} [keyAttributes]
- *
+ * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for keys in the current vault. If it
+ * contains 'Purgeable' the key can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the key, at the end of the
+ * retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface KeyUpdateParameters {
   keyOps?: string[];
@@ -1032,7 +1035,6 @@ export interface KeyUpdateParameters {
  *
  * @member {buffer} keyBundleBackup The backup blob associated with a key
  * bundle.
- *
  */
 export interface KeyRestoreParameters {
   keyBundleBackup: Buffer;
@@ -1045,14 +1047,16 @@ export interface KeyRestoreParameters {
  * The secret set parameters.
  *
  * @member {string} value The value of the secret.
- *
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  * @member {string} [contentType] Type of the secret value such as a password.
- *
  * @member {object} [secretAttributes] The secret management attributes.
- *
+ * @member {string} [secretAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for secrets in the current vault. If it
+ * contains 'Purgeable', the secret can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the secret, at the end of the
+ * retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  */
 export interface SecretSetParameters {
   value: string;
@@ -1068,12 +1072,15 @@ export interface SecretSetParameters {
  * The secret update parameters.
  *
  * @member {string} [contentType] Type of the secret value such as a password.
- *
  * @member {object} [secretAttributes] The secret management attributes.
- *
+ * @member {string} [secretAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for secrets in the current vault. If it
+ * contains 'Purgeable', the secret can be permanently deleted by a privileged
+ * user; otherwise, only the system can purge the secret, at the end of the
+ * retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface SecretUpdateParameters {
   contentType?: string;
@@ -1089,82 +1096,70 @@ export interface SecretUpdateParameters {
  *
  * @member {object} [certificatePolicy] The management policy for the
  * certificate.
- *
  * @member {string} [certificatePolicy.id] The certificate id.
- *
  * @member {object} [certificatePolicy.keyProperties] Properties of the key
  * backing a certificate.
- *
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- *
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
- *
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bytes. For example;  1024 or 2048.
- *
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
- *
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
- *
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
  * type (MIME type).
- *
  * @member {object} [certificatePolicy.x509CertificateProperties] Properties of
  * the X509 component of a certificate.
- *
  * @member {string} [certificatePolicy.x509CertificateProperties.subject] The
  * subject name. Should be a valid X509 distinguished Name.
- *
  * @member {array} [certificatePolicy.x509CertificateProperties.ekus] The
  * enhanced key usage.
- *
  * @member {object}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames] The
  * subject alternative names.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.emails]
  * Email addresses.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.dnsNames]
  * Domain names.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.upns]
  * User principal names.
- *
  * @member {array} [certificatePolicy.x509CertificateProperties.keyUsage] List
  * of key usages.
- *
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- *
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
- *
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
  * issuer of the X509 component of a certificate.
- *
  * @member {string} [certificatePolicy.issuerParameters.name] Name of the
  * referenced issuer object or reserved names; for example, 'Self' or
  * 'Unknown'.
- *
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
- *
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
- *
+ * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for certificates in the current
+ * vault. If it contains 'Purgeable', the certificate can be permanently
+ * deleted by a privileged user; otherwise, only the system can purge the
+ * certificate, at the end of the retention interval. Possible values include:
+ * 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [certificateAttributes] The attributes of the certificate
  * (optional).
- *
+ * @member {string} [certificateAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for certificates in the current vault. If
+ * it contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface CertificateCreateParameters {
   certificatePolicy?: CertificatePolicy;
@@ -1181,88 +1176,74 @@ export interface CertificateCreateParameters {
  * @member {string} base64EncodedCertificate Base64 encoded representation of
  * the certificate object to import. This certificate needs to contain the
  * private key.
- *
  * @member {string} [password] If the private key in base64EncodedCertificate
  * is encrypted, the password used for encryption.
- *
  * @member {object} [certificatePolicy] The management policy for the
  * certificate.
- *
  * @member {string} [certificatePolicy.id] The certificate id.
- *
  * @member {object} [certificatePolicy.keyProperties] Properties of the key
  * backing a certificate.
- *
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- *
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
- *
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bytes. For example;  1024 or 2048.
- *
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
- *
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
- *
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
  * type (MIME type).
- *
  * @member {object} [certificatePolicy.x509CertificateProperties] Properties of
  * the X509 component of a certificate.
- *
  * @member {string} [certificatePolicy.x509CertificateProperties.subject] The
  * subject name. Should be a valid X509 distinguished Name.
- *
  * @member {array} [certificatePolicy.x509CertificateProperties.ekus] The
  * enhanced key usage.
- *
  * @member {object}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames] The
  * subject alternative names.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.emails]
  * Email addresses.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.dnsNames]
  * Domain names.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.upns]
  * User principal names.
- *
  * @member {array} [certificatePolicy.x509CertificateProperties.keyUsage] List
  * of key usages.
- *
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- *
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
- *
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
  * issuer of the X509 component of a certificate.
- *
  * @member {string} [certificatePolicy.issuerParameters.name] Name of the
  * referenced issuer object or reserved names; for example, 'Self' or
  * 'Unknown'.
- *
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
- *
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
- *
+ * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for certificates in the current
+ * vault. If it contains 'Purgeable', the certificate can be permanently
+ * deleted by a privileged user; otherwise, only the system can purge the
+ * certificate, at the end of the retention interval. Possible values include:
+ * 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [certificateAttributes] The attributes of the certificate
  * (optional).
- *
+ * @member {string} [certificateAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for certificates in the current vault. If
+ * it contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface CertificateImportParameters {
   base64EncodedCertificate: string;
@@ -1280,82 +1261,70 @@ export interface CertificateImportParameters {
  *
  * @member {object} [certificatePolicy] The management policy for the
  * certificate.
- *
  * @member {string} [certificatePolicy.id] The certificate id.
- *
  * @member {object} [certificatePolicy.keyProperties] Properties of the key
  * backing a certificate.
- *
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- *
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
- *
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bytes. For example;  1024 or 2048.
- *
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
- *
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
- *
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
  * type (MIME type).
- *
  * @member {object} [certificatePolicy.x509CertificateProperties] Properties of
  * the X509 component of a certificate.
- *
  * @member {string} [certificatePolicy.x509CertificateProperties.subject] The
  * subject name. Should be a valid X509 distinguished Name.
- *
  * @member {array} [certificatePolicy.x509CertificateProperties.ekus] The
  * enhanced key usage.
- *
  * @member {object}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames] The
  * subject alternative names.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.emails]
  * Email addresses.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.dnsNames]
  * Domain names.
- *
  * @member {array}
  * [certificatePolicy.x509CertificateProperties.subjectAlternativeNames.upns]
  * User principal names.
- *
  * @member {array} [certificatePolicy.x509CertificateProperties.keyUsage] List
  * of key usages.
- *
  * @member {number}
  * [certificatePolicy.x509CertificateProperties.validityInMonths] The duration
  * that the ceritifcate is valid in months.
- *
  * @member {array} [certificatePolicy.lifetimeActions] Actions that will be
  * performed by Key Vault over the lifetime of a certificate.
- *
  * @member {object} [certificatePolicy.issuerParameters] Parameters for the
  * issuer of the X509 component of a certificate.
- *
  * @member {string} [certificatePolicy.issuerParameters.name] Name of the
  * referenced issuer object or reserved names; for example, 'Self' or
  * 'Unknown'.
- *
  * @member {string} [certificatePolicy.issuerParameters.certificateType] Type
  * of certificate to be requested from the issuer provider.
- *
  * @member {object} [certificatePolicy.attributes] The certificate attributes.
- *
+ * @member {string} [certificatePolicy.attributes.recoveryLevel] Reflects the
+ * deletion recovery level currently in effect for certificates in the current
+ * vault. If it contains 'Purgeable', the certificate can be permanently
+ * deleted by a privileged user; otherwise, only the system can purge the
+ * certificate, at the end of the retention interval. Possible values include:
+ * 'Purgeable', 'Recoverable+Purgeable', 'Recoverable',
+ * 'Recoverable+ProtectedSubscription'
  * @member {object} [certificateAttributes] The attributes of the certificate
  * (optional).
- *
+ * @member {string} [certificateAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for certificates in the current vault. If
+ * it contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface CertificateUpdateParameters {
   certificatePolicy?: CertificatePolicy;
@@ -1371,13 +1340,16 @@ export interface CertificateUpdateParameters {
  *
  * @member {array} x509Certificates The certificate or the certificate chain to
  * merge.
- *
  * @member {object} [certificateAttributes] The attributes of the certificate
  * (optional).
- *
+ * @member {string} [certificateAttributes.recoveryLevel] Reflects the deletion
+ * recovery level currently in effect for certificates in the current vault. If
+ * it contains 'Purgeable', the certificate can be permanently deleted by a
+ * privileged user; otherwise, only the system can purge the certificate, at
+ * the end of the retention interval. Possible values include: 'Purgeable',
+ * 'Recoverable+Purgeable', 'Recoverable', 'Recoverable+ProtectedSubscription'
  * @member {object} [tags] Application specific metadata in the form of
  * key-value pairs.
- *
  */
 export interface CertificateMergeParameters {
   x509Certificates: Buffer[];
@@ -1392,31 +1364,20 @@ export interface CertificateMergeParameters {
  * The certificate issuer set parameters.
  *
  * @member {string} provider The issuer provider.
- *
  * @member {object} [credentials] The credentials to be used for the issuer.
- *
  * @member {string} [credentials.accountId] The user name/account name/account
  * id.
- *
  * @member {string} [credentials.password] The password/secret/account key.
- *
  * @member {object} [organizationDetails] Details of the organization as
  * provided to the issuer.
- *
  * @member {string} [organizationDetails.id] Id of the organization.
- *
  * @member {array} [organizationDetails.adminDetails] Details of the
  * organization administrator.
- *
  * @member {object} [attributes] Attributes of the issuer object.
- *
  * @member {boolean} [attributes.enabled] Determines whether the issuer is
  * enabled.
- *
  * @member {date} [attributes.created] Creation time in UTC.
- *
  * @member {date} [attributes.updated] Last updated time in UTC.
- *
  */
 export interface CertificateIssuerSetParameters {
   provider: string;
@@ -1432,31 +1393,20 @@ export interface CertificateIssuerSetParameters {
  * The certificate issuer update parameters.
  *
  * @member {string} [provider] The issuer provider.
- *
  * @member {object} [credentials] The credentials to be used for the issuer.
- *
  * @member {string} [credentials.accountId] The user name/account name/account
  * id.
- *
  * @member {string} [credentials.password] The password/secret/account key.
- *
  * @member {object} [organizationDetails] Details of the organization as
  * provided to the issuer.
- *
  * @member {string} [organizationDetails.id] Id of the organization.
- *
  * @member {array} [organizationDetails.adminDetails] Details of the
  * organization administrator.
- *
  * @member {object} [attributes] Attributes of the issuer object.
- *
  * @member {boolean} [attributes.enabled] Determines whether the issuer is
  * enabled.
- *
  * @member {date} [attributes.created] Creation time in UTC.
- *
  * @member {date} [attributes.updated] Last updated time in UTC.
- *
  */
 export interface CertificateIssuerUpdateParameters {
   provider?: string;
@@ -1473,7 +1423,6 @@ export interface CertificateIssuerUpdateParameters {
  *
  * @member {boolean} cancellationRequested Indicates if cancellation was
  * requested on the certificate operation.
- *
  */
 export interface CertificateOperationUpdateParameter {
   cancellationRequested: boolean;
@@ -1486,9 +1435,7 @@ export interface CertificateOperationUpdateParameter {
  * The key operation result.
  *
  * @member {string} [kid] Key identifier
- *
  * @member {buffer} [result]
- *
  */
 export interface KeyOperationResult {
   readonly kid?: string;
@@ -1503,7 +1450,6 @@ export interface KeyOperationResult {
  *
  * @member {boolean} [value] True if the signature is verified, otherwise
  * false.
- *
  */
 export interface KeyVerifyResult {
   readonly value?: boolean;
@@ -1517,12 +1463,25 @@ export interface KeyVerifyResult {
  *
  * @member {array} [value] A response message containing a list of keys in the
  * key vault along with a link to the next page of keys.
- *
  * @member {string} [nextLink] The URL to get the next set of keys.
- *
  */
 export interface KeyListResult {
   readonly value?: KeyItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedKeyListResult class.
+ * @constructor
+ * A list of keys that have been deleted in this vault.
+ *
+ * @member {array} [value] A response message containing a list of deleted keys
+ * in the vault along with a link to the next page of deleted keys
+ * @member {string} [nextLink] The URL to get the next set of deleted keys.
+ */
+export interface DeletedKeyListResult {
+  readonly value?: DeletedKeyItem[];
   readonly nextLink?: string;
 }
 
@@ -1534,12 +1493,25 @@ export interface KeyListResult {
  *
  * @member {array} [value] A response message containing a list of secrets in
  * the key vault along with a link to the next page of secrets.
- *
  * @member {string} [nextLink] The URL to get the next set of secrets.
- *
  */
 export interface SecretListResult {
   readonly value?: SecretItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSecretListResult class.
+ * @constructor
+ * The deleted secret list result
+ *
+ * @member {array} [value] A response message containing a list of the deleted
+ * secrets in the vault along with a link to the next page of deleted secrets
+ * @member {string} [nextLink] The URL to get the next set of deleted secrets.
+ */
+export interface DeletedSecretListResult {
+  readonly value?: DeletedSecretItem[];
   readonly nextLink?: string;
 }
 
@@ -1551,12 +1523,27 @@ export interface SecretListResult {
  *
  * @member {array} [value] A response message containing a list of certificates
  * in the key vault along with a link to the next page of certificates.
- *
  * @member {string} [nextLink] The URL to get the next set of certificates.
- *
  */
 export interface CertificateListResult {
   readonly value?: CertificateItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedCertificateListResult class.
+ * @constructor
+ * A list of certificates that have been deleted in this vault.
+ *
+ * @member {array} [value] A response message containing a list of deleted
+ * certificates in the vault along with a link to the next page of deleted
+ * certificates
+ * @member {string} [nextLink] The URL to get the next set of deleted
+ * certificates.
+ */
+export interface DeletedCertificateListResult {
+  readonly value?: DeletedCertificateItem[];
   readonly nextLink?: string;
 }
 
@@ -1569,10 +1556,8 @@ export interface CertificateListResult {
  * @member {array} [value] A response message containing a list of certificate
  * issuers in the key vault along with a link to the next page of certificate
  * issuers.
- *
  * @member {string} [nextLink] The URL to get the next set of certificate
  * issuers.
- *
  */
 export interface CertificateIssuerListResult {
   readonly value?: CertificateIssuerItem[];
@@ -1586,9 +1571,20 @@ export interface CertificateIssuerListResult {
  * The backup key result, containing the backup blob.
  *
  * @member {buffer} [value] The backup blob containing the backed up key.
- *
  */
 export interface BackupKeyResult {
+  readonly value?: Buffer;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupSecretResult class.
+ * @constructor
+ * The backup secret result, containing the backup blob.
+ *
+ * @member {buffer} [value] The backup blob containing the backed up secret.
+ */
+export interface BackupSecretResult {
   readonly value?: Buffer;
 }
 
@@ -1600,10 +1596,291 @@ export interface BackupKeyResult {
  *
  * @member {string} [value] The pending certificate signing request as Base64
  * encoded string.
- *
  */
 export interface PendingCertificateSigningRequestResult {
   readonly value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountAttributes class.
+ * @constructor
+ * The storage account management attributes.
+ *
+ * @member {boolean} [enabled] the enabled state of the object.
+ * @member {date} [created] Creation time in UTC.
+ * @member {date} [updated] Last updated time in UTC.
+ */
+export interface StorageAccountAttributes {
+  enabled?: boolean;
+  readonly created?: Date;
+  readonly updated?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageBundle class.
+ * @constructor
+ * A Storage account bundle consists of key vault storage account details plus
+ * its attributes.
+ *
+ * @member {string} [id] The storage account id.
+ * @member {string} [resourceId] The storage account resource id.
+ * @member {string} [activeKeyName] The current active storage account key
+ * name.
+ * @member {boolean} [autoRegenerateKey] whether keyvault should manage the
+ * storage account for the user.
+ * @member {string} [regenerationPeriod] The key regeneration time duration
+ * specified in ISO-8601 format.
+ * @member {object} [attributes] The storage account attributes.
+ * @member {boolean} [attributes.enabled] the enabled state of the object.
+ * @member {date} [attributes.created] Creation time in UTC.
+ * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs
+ */
+export interface StorageBundle {
+  readonly id?: string;
+  readonly resourceId?: string;
+  readonly activeKeyName?: string;
+  readonly autoRegenerateKey?: boolean;
+  readonly regenerationPeriod?: string;
+  readonly attributes?: StorageAccountAttributes;
+  readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountCreateParameters class.
+ * @constructor
+ * The storage account create parameters.
+ *
+ * @member {string} resourceId Storage account resource id.
+ * @member {string} activeKeyName Current active storage account key name.
+ * @member {boolean} autoRegenerateKey whether keyvault should manage the
+ * storage account for the user.
+ * @member {string} [regenerationPeriod] The key regeneration time duration
+ * specified in ISO-8601 format.
+ * @member {object} [storageAccountAttributes] The attributes of the storage
+ * account.
+ * @member {boolean} [storageAccountAttributes.enabled] the enabled state of
+ * the object.
+ * @member {date} [storageAccountAttributes.created] Creation time in UTC.
+ * @member {date} [storageAccountAttributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs.
+ */
+export interface StorageAccountCreateParameters {
+  resourceId: string;
+  activeKeyName: string;
+  autoRegenerateKey: boolean;
+  regenerationPeriod?: string;
+  storageAccountAttributes?: StorageAccountAttributes;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountUpdateParameters class.
+ * @constructor
+ * The storage account update parameters.
+ *
+ * @member {string} [activeKeyName] The current active storage account key
+ * name.
+ * @member {boolean} [autoRegenerateKey] whether keyvault should manage the
+ * storage account for the user.
+ * @member {string} [regenerationPeriod] The key regeneration time duration
+ * specified in ISO-8601 format.
+ * @member {object} [storageAccountAttributes] The attributes of the storage
+ * account.
+ * @member {boolean} [storageAccountAttributes.enabled] the enabled state of
+ * the object.
+ * @member {date} [storageAccountAttributes.created] Creation time in UTC.
+ * @member {date} [storageAccountAttributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs.
+ */
+export interface StorageAccountUpdateParameters {
+  activeKeyName?: string;
+  autoRegenerateKey?: boolean;
+  regenerationPeriod?: string;
+  storageAccountAttributes?: StorageAccountAttributes;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountRegenerteKeyParameters class.
+ * @constructor
+ * The storage account key regenerate parameters.
+ *
+ * @member {string} keyName The storage account key name.
+ */
+export interface StorageAccountRegenerteKeyParameters {
+  keyName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountItem class.
+ * @constructor
+ * The storage account item containing storage account metadata.
+ *
+ * @member {string} [id] Storage identifier.
+ * @member {string} [resourceId] Storage account resource Id.
+ * @member {object} [attributes] The storage account management attributes.
+ * @member {boolean} [attributes.enabled] the enabled state of the object.
+ * @member {date} [attributes.created] Creation time in UTC.
+ * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs.
+ */
+export interface StorageAccountItem {
+  readonly id?: string;
+  readonly resourceId?: string;
+  readonly attributes?: StorageAccountAttributes;
+  readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageListResult class.
+ * @constructor
+ * The storage accounts list result.
+ *
+ * @member {array} [value] A response message containing a list of storage
+ * accounts in the key vault along with a link to the next page of storage
+ * accounts.
+ * @member {string} [nextLink] The URL to get the next set of storage accounts.
+ */
+export interface StorageListResult {
+  readonly value?: StorageAccountItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionAttributes class.
+ * @constructor
+ * The SAS definition management attributes.
+ *
+ * @member {boolean} [enabled] the enabled state of the object.
+ * @member {date} [created] Creation time in UTC.
+ * @member {date} [updated] Last updated time in UTC.
+ */
+export interface SasDefinitionAttributes {
+  enabled?: boolean;
+  readonly created?: Date;
+  readonly updated?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionBundle class.
+ * @constructor
+ * A SAS definition bundle consists of key vault SAS definition details plus
+ * its attributes.
+ *
+ * @member {string} [id] The SAS definition id.
+ * @member {string} [secretId] Storage account SAS definition secret id.
+ * @member {object} [parameters] The SAS definition metadata in the form of
+ * key-value pairs.
+ * @member {object} [attributes] The SAS definition attributes.
+ * @member {boolean} [attributes.enabled] the enabled state of the object.
+ * @member {date} [attributes.created] Creation time in UTC.
+ * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs
+ */
+export interface SasDefinitionBundle {
+  readonly id?: string;
+  readonly secretId?: string;
+  readonly parameters?: { [propertyName: string]: string };
+  readonly attributes?: SasDefinitionAttributes;
+  readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionItem class.
+ * @constructor
+ * The SAS definition item containing storage SAS definition metadata.
+ *
+ * @member {string} [id] The storage SAS identifier.
+ * @member {string} [secretId] The storage account SAS definition secret id.
+ * @member {object} [attributes] The SAS definition management attributes.
+ * @member {boolean} [attributes.enabled] the enabled state of the object.
+ * @member {date} [attributes.created] Creation time in UTC.
+ * @member {date} [attributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs.
+ */
+export interface SasDefinitionItem {
+  readonly id?: string;
+  readonly secretId?: string;
+  readonly attributes?: SasDefinitionAttributes;
+  readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionListResult class.
+ * @constructor
+ * The storage account SAS definition list result.
+ *
+ * @member {array} [value] A response message containing a list of SAS
+ * definitions along with a link to the next page of SAS definitions.
+ * @member {string} [nextLink] The URL to get the next set of SAS defintions.
+ */
+export interface SasDefinitionListResult {
+  readonly value?: SasDefinitionItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionCreateParameters class.
+ * @constructor
+ * The SAS definition create parameters.
+ *
+ * @member {object} parameters Sas definition creation metadata in the form of
+ * key-value pairs.
+ * @member {object} [sasDefinitionAttributes] The attributes of the SAS
+ * definition.
+ * @member {boolean} [sasDefinitionAttributes.enabled] the enabled state of the
+ * object.
+ * @member {date} [sasDefinitionAttributes.created] Creation time in UTC.
+ * @member {date} [sasDefinitionAttributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs.
+ */
+export interface SasDefinitionCreateParameters {
+  parameters: { [propertyName: string]: string };
+  sasDefinitionAttributes?: SasDefinitionAttributes;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionUpdateParameters class.
+ * @constructor
+ * The SAS definition update parameters.
+ *
+ * @member {object} [parameters] Sas definition update metadata in the form of
+ * key-value pairs.
+ * @member {object} [sasDefinitionAttributes] The attributes of the SAS
+ * definition.
+ * @member {boolean} [sasDefinitionAttributes.enabled] the enabled state of the
+ * object.
+ * @member {date} [sasDefinitionAttributes.created] Creation time in UTC.
+ * @member {date} [sasDefinitionAttributes.updated] Last updated time in UTC.
+ * @member {object} [tags] Application specific metadata in the form of
+ * key-value pairs.
+ */
+export interface SasDefinitionUpdateParameters {
+  parameters?: { [propertyName: string]: string };
+  sasDefinitionAttributes?: SasDefinitionAttributes;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1613,13 +1890,9 @@ export interface PendingCertificateSigningRequestResult {
  * The key vault error exception.
  *
  * @member {object} [error]
- *
  * @member {string} [error.code] The error code.
- *
  * @member {string} [error.message] The error message.
- *
  * @member {object} [error.innerError]
- *
  */
 export interface KeyVaultError {
   readonly error?: ErrorModel;
@@ -1633,12 +1906,25 @@ export interface KeyVaultError {
  *
  * @member {array} [value] A response message containing a list of keys in the
  * key vault along with a link to the next page of keys.
- *
  * @member {string} [nextLink] The URL to get the next set of keys.
- *
  */
 export interface KeyListResult {
   readonly value?: KeyItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedKeyListResult class.
+ * @constructor
+ * A list of keys that have been deleted in this vault.
+ *
+ * @member {array} [value] A response message containing a list of deleted keys
+ * in the vault along with a link to the next page of deleted keys
+ * @member {string} [nextLink] The URL to get the next set of deleted keys.
+ */
+export interface DeletedKeyListResult {
+  readonly value?: DeletedKeyItem[];
   readonly nextLink?: string;
 }
 
@@ -1650,12 +1936,25 @@ export interface KeyListResult {
  *
  * @member {array} [value] A response message containing a list of secrets in
  * the key vault along with a link to the next page of secrets.
- *
  * @member {string} [nextLink] The URL to get the next set of secrets.
- *
  */
 export interface SecretListResult {
   readonly value?: SecretItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSecretListResult class.
+ * @constructor
+ * The deleted secret list result
+ *
+ * @member {array} [value] A response message containing a list of the deleted
+ * secrets in the vault along with a link to the next page of deleted secrets
+ * @member {string} [nextLink] The URL to get the next set of deleted secrets.
+ */
+export interface DeletedSecretListResult {
+  readonly value?: DeletedSecretItem[];
   readonly nextLink?: string;
 }
 
@@ -1667,9 +1966,7 @@ export interface SecretListResult {
  *
  * @member {array} [value] A response message containing a list of certificates
  * in the key vault along with a link to the next page of certificates.
- *
  * @member {string} [nextLink] The URL to get the next set of certificates.
- *
  */
 export interface CertificateListResult {
   readonly value?: CertificateItem[];
@@ -1685,13 +1982,59 @@ export interface CertificateListResult {
  * @member {array} [value] A response message containing a list of certificate
  * issuers in the key vault along with a link to the next page of certificate
  * issuers.
- *
  * @member {string} [nextLink] The URL to get the next set of certificate
  * issuers.
- *
  */
 export interface CertificateIssuerListResult {
   readonly value?: CertificateIssuerItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedCertificateListResult class.
+ * @constructor
+ * A list of certificates that have been deleted in this vault.
+ *
+ * @member {array} [value] A response message containing a list of deleted
+ * certificates in the vault along with a link to the next page of deleted
+ * certificates
+ * @member {string} [nextLink] The URL to get the next set of deleted
+ * certificates.
+ */
+export interface DeletedCertificateListResult {
+  readonly value?: DeletedCertificateItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageListResult class.
+ * @constructor
+ * The storage accounts list result.
+ *
+ * @member {array} [value] A response message containing a list of storage
+ * accounts in the key vault along with a link to the next page of storage
+ * accounts.
+ * @member {string} [nextLink] The URL to get the next set of storage accounts.
+ */
+export interface StorageListResult {
+  readonly value?: StorageAccountItem[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionListResult class.
+ * @constructor
+ * The storage account SAS definition list result.
+ *
+ * @member {array} [value] A response message containing a list of SAS
+ * definitions along with a link to the next page of SAS definitions.
+ * @member {string} [nextLink] The URL to get the next set of SAS defintions.
+ */
+export interface SasDefinitionListResult {
+  readonly value?: SasDefinitionItem[];
   readonly nextLink?: string;
 }
 
@@ -1703,9 +2046,20 @@ export interface CertificateIssuerListResult {
  * The key list result.
  *
  * @member {string} [nextLink] The URL to get the next set of keys.
- *
  */
 export interface KeyListResult extends Array<KeyItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedKeyListResult class.
+ * @constructor
+ * A list of keys that have been deleted in this vault.
+ *
+ * @member {string} [nextLink] The URL to get the next set of deleted keys.
+ */
+export interface DeletedKeyListResult extends Array<DeletedKeyItem> {
   readonly nextLink?: string;
 }
 
@@ -1716,9 +2070,20 @@ export interface KeyListResult extends Array<KeyItem> {
  * The secret list result.
  *
  * @member {string} [nextLink] The URL to get the next set of secrets.
- *
  */
 export interface SecretListResult extends Array<SecretItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSecretListResult class.
+ * @constructor
+ * The deleted secret list result
+ *
+ * @member {string} [nextLink] The URL to get the next set of deleted secrets.
+ */
+export interface DeletedSecretListResult extends Array<DeletedSecretItem> {
   readonly nextLink?: string;
 }
 
@@ -1729,7 +2094,6 @@ export interface SecretListResult extends Array<SecretItem> {
  * The certificate list result.
  *
  * @member {string} [nextLink] The URL to get the next set of certificates.
- *
  */
 export interface CertificateListResult extends Array<CertificateItem> {
   readonly nextLink?: string;
@@ -1743,8 +2107,44 @@ export interface CertificateListResult extends Array<CertificateItem> {
  *
  * @member {string} [nextLink] The URL to get the next set of certificate
  * issuers.
- *
  */
 export interface CertificateIssuerListResult extends Array<CertificateIssuerItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedCertificateListResult class.
+ * @constructor
+ * A list of certificates that have been deleted in this vault.
+ *
+ * @member {string} [nextLink] The URL to get the next set of deleted
+ * certificates.
+ */
+export interface DeletedCertificateListResult extends Array<DeletedCertificateItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageListResult class.
+ * @constructor
+ * The storage accounts list result.
+ *
+ * @member {string} [nextLink] The URL to get the next set of storage accounts.
+ */
+export interface StorageListResult extends Array<StorageAccountItem> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SasDefinitionListResult class.
+ * @constructor
+ * The storage account SAS definition list result.
+ *
+ * @member {string} [nextLink] The URL to get the next set of SAS defintions.
+ */
+export interface SasDefinitionListResult extends Array<SasDefinitionItem> {
   readonly nextLink?: string;
 }

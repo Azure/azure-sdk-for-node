@@ -9,7 +9,6 @@
  */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
-import * as models from "./models";
 import * as operations from "./operations";
 
 declare class SqlManagementClient {
@@ -46,6 +45,8 @@ declare class SqlManagementClient {
 
   subscriptionId: string;
 
+  geoBackupPolicyName: string;
+
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -53,63 +54,20 @@ declare class SqlManagementClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  databases: operations.Databases;
+  recoverableDatabases: operations.RecoverableDatabases;
+  restorableDroppedDatabases: operations.RestorableDroppedDatabases;
   capabilities: operations.Capabilities;
   firewallRules: operations.FirewallRules;
-  databases: operations.Databases;
-  servers: operations.Servers;
   elasticPools: operations.ElasticPools;
+  operations: operations.Operations;
+  servers: operations.Servers;
   recommendedElasticPools: operations.RecommendedElasticPools;
-
-
-  /**
-   * Lists all of the available SQL Rest API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  listOperationsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-  /**
-   * Lists all of the available SQL Rest API operations.
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {OperationListResult} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link OperationListResult} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  listOperations(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-  listOperations(callback: ServiceCallback<models.OperationListResult>): void;
-  listOperations(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+  serverAzureADAdministrators: operations.ServerAzureADAdministrators;
+  serverCommunicationLinks: operations.ServerCommunicationLinks;
+  failoverGroups: operations.FailoverGroups;
+  virtualNetworkRules: operations.VirtualNetworkRules;
+  serverKeys: operations.ServerKeys;
 }
 
 export = SqlManagementClient;

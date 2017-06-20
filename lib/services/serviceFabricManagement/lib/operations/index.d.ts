@@ -16,7 +16,7 @@ import * as models from '../models';
  * @class
  * Clusters
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
+ * instance of the ServiceFabricManagementClient.
  */
 export interface Clusters {
 
@@ -24,56 +24,121 @@ export interface Clusters {
     /**
      * Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] This level is used to set the
+     * number of replicas of the system services. Possible values include:
+     * 'Bronze', 'Silver', 'Gold'
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version, if set it, please make sure you have set upgradeMode to Manual,
+     * otherwise ,it will fail, if you are using PUT new cluster, you can get the
+     * version by using ClusterVersions_List, if you are updating existing cluster,
+     * you can get the availableClusterVersions from Clusters_Get
      *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client, the certificate should exist
+     * in the virtual machine scale sets or Azure key vault, before you add it. It
+     * will override original value
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details, it is used for client access for cluster operation, it
+     * will override existing collection
      *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
+     * @param {array} [parameters.clientCertificateCommonNames] List of client
+     * certificates to whitelist based on common names.
      *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster, Note, it will overwrite existing collection
      *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
+     * @param {object} [parameters.reverseProxyCertificate] Certificate for the
+     * reverse proxy
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {array} [parameters.nodeTypes] The list of nodetypes that make up the
+     * cluster, it will override
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
+     * restart or not
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
+     *
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
+     * Policy
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
+     * health policy
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -86,61 +151,126 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
      * Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] This level is used to set the
+     * number of replicas of the system services. Possible values include:
+     * 'Bronze', 'Silver', 'Gold'
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version, if set it, please make sure you have set upgradeMode to Manual,
+     * otherwise ,it will fail, if you are using PUT new cluster, you can get the
+     * version by using ClusterVersions_List, if you are updating existing cluster,
+     * you can get the availableClusterVersions from Clusters_Get
      *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client, the certificate should exist
+     * in the virtual machine scale sets or Azure key vault, before you add it. It
+     * will override original value
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details, it is used for client access for cluster operation, it
+     * will override existing collection
      *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
+     * @param {array} [parameters.clientCertificateCommonNames] List of client
+     * certificates to whitelist based on common names.
      *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster, Note, it will overwrite existing collection
      *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
+     * @param {object} [parameters.reverseProxyCertificate] Certificate for the
+     * reverse proxy
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {array} [parameters.nodeTypes] The list of nodetypes that make up the
+     * cluster, it will override
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
+     * restart or not
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
+     *
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
+     * Policy
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
+     * health policy
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -169,18 +299,18 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    update(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
      * Get cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -198,10 +328,10 @@ export interface Clusters {
     /**
      * Get cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -238,151 +368,154 @@ export interface Clusters {
     /**
      * Create cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterResource Put Request
+     * @param {object} parameters Put Request
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version running in your cluster
      *
-     * @param {object} [clusterResource.certificate] The cluster certificate
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client
      *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] Cluster reliability level
+     * indicates replica set size of system service. Possible values include:
+     * 'Bronze', 'Silver', 'Gold', 'Platinum'
      *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details ,it is used for client access for cluster operation
      *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
+     * @param {array} [parameters.clientCertificateCommonNames]  List of client
+     * certificates to whitelist based on common names
      *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster.
      *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster
      *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
+     * @param {array} parameters.nodeTypes The list of nodetypes that make up the
+     * cluster
      *
-     * @param {string} clusterResource.vmImage The OS type
+     * @param {object} [parameters.azureActiveDirectory] The settings to enable AAD
+     * authentication on the cluster
      *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
+     * @param {string} [parameters.vmImage] The name of VM image VMSS has been
+     * configured with. Generic names such as Windows or Linux can be used.
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * diagnostics account configuration details
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName Diagnostics
+     * storage account name
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName Protected
+     * Diagnostics storage key name
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint
+     * Diagnostics storage account blob endpoint
      *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint
+     * Diagnostics storage account queue endpoint
      *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint
+     * Diagnostics storage account table endpoint
      *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
      * restart or not
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
      *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
      * Policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
      * health policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
+     * @param {string} parameters.location Resource location.
      *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -395,156 +528,159 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
      * Create cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterResource Put Request
+     * @param {object} parameters Put Request
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version running in your cluster
      *
-     * @param {object} [clusterResource.certificate] The cluster certificate
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client
      *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] Cluster reliability level
+     * indicates replica set size of system service. Possible values include:
+     * 'Bronze', 'Silver', 'Gold', 'Platinum'
      *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details ,it is used for client access for cluster operation
      *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
+     * @param {array} [parameters.clientCertificateCommonNames]  List of client
+     * certificates to whitelist based on common names
      *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster.
      *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster
      *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
+     * @param {array} parameters.nodeTypes The list of nodetypes that make up the
+     * cluster
      *
-     * @param {string} clusterResource.vmImage The OS type
+     * @param {object} [parameters.azureActiveDirectory] The settings to enable AAD
+     * authentication on the cluster
      *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
+     * @param {string} [parameters.vmImage] The name of VM image VMSS has been
+     * configured with. Generic names such as Windows or Linux can be used.
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * diagnostics account configuration details
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName Diagnostics
+     * storage account name
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName Protected
+     * Diagnostics storage key name
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint
+     * Diagnostics storage account blob endpoint
      *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint
+     * Diagnostics storage account queue endpoint
      *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint
+     * Diagnostics storage account table endpoint
      *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
      * restart or not
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
      *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
      * Policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
      * health policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
+     * @param {string} parameters.location Resource location.
      *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -573,18 +709,18 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    create(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
-    create(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    create(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    create(resourceGroupName: string, clusterName: string, parameters: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
+    create(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
      * Delete cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -602,10 +738,10 @@ export interface Clusters {
     /**
      * Delete cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -641,8 +777,8 @@ export interface Clusters {
     /**
      * List cluster resource by resource group
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -660,8 +796,8 @@ export interface Clusters {
     /**
      * List cluster resource by resource group
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -749,56 +885,121 @@ export interface Clusters {
     /**
      * Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] This level is used to set the
+     * number of replicas of the system services. Possible values include:
+     * 'Bronze', 'Silver', 'Gold'
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version, if set it, please make sure you have set upgradeMode to Manual,
+     * otherwise ,it will fail, if you are using PUT new cluster, you can get the
+     * version by using ClusterVersions_List, if you are updating existing cluster,
+     * you can get the availableClusterVersions from Clusters_Get
      *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client, the certificate should exist
+     * in the virtual machine scale sets or Azure key vault, before you add it. It
+     * will override original value
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details, it is used for client access for cluster operation, it
+     * will override existing collection
      *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
+     * @param {array} [parameters.clientCertificateCommonNames] List of client
+     * certificates to whitelist based on common names.
      *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster, Note, it will overwrite existing collection
      *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
+     * @param {object} [parameters.reverseProxyCertificate] Certificate for the
+     * reverse proxy
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {array} [parameters.nodeTypes] The list of nodetypes that make up the
+     * cluster, it will override
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
+     * restart or not
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
+     *
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
+     * Policy
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
+     * health policy
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -811,61 +1012,126 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
      * Update cluster configuration
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] Cluster
-     * reliability level. Possible values include: 'Invalid', 'Bronze', 'Silver',
-     * 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] This level is used to set the
+     * number of replicas of the system services. Possible values include:
+     * 'Bronze', 'Silver', 'Gold'
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] Cluster upgrade mode.
-     * Possible values include: 'Default', 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The
-     * ServiceFabric code version, if set it, please make sure you have set
-     * upgradeMode to Manual, otherwise ,it will fail
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version, if set it, please make sure you have set upgradeMode to Manual,
+     * otherwise ,it will fail, if you are using PUT new cluster, you can get the
+     * version by using ClusterVersions_List, if you are updating existing cluster,
+     * you can get the availableClusterVersions from Clusters_Get
      *
-     * @param {object} [clusterUpdateParameters.certificate] The cluster
-     * certificate settings, the new certificate should exist in Vmss or
-     * KeyVault,before you add it, it will override original value
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client, the certificate should exist
+     * in the virtual machine scale sets or Azure key vault, before you add it. It
+     * will override original value
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * cluster client thumbprints, it will override existing collection
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details, it is used for client access for cluster operation, it
+     * will override existing collection
      *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The new fabric
-     * settings for the cluster, Be noted, it will overwrite existing collection
+     * @param {array} [parameters.clientCertificateCommonNames] List of client
+     * certificates to whitelist based on common names.
      *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate]
-     * Certificate for the reverse proxy
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster, Note, it will overwrite existing collection
      *
-     * @param {string} [clusterUpdateParameters.reverseProxyCertificate.thumbprint]
-     * Primary certificate thumbprint
+     * @param {object} [parameters.reverseProxyCertificate] Certificate for the
+     * reverse proxy
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Secondary certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] Certificate
-     * x509 store location. Possible values include: 'AddressBook', 'AuthRoot',
-     * 'CertificateAuthority', 'Disallowed', 'My', 'Root', 'TrustedPeople',
-     * 'TrustedPublisher'
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The settings for
-     * NodeTypes, it will override
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {array} [parameters.nodeTypes] The list of nodetypes that make up the
+     * cluster, it will override
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
+     * restart or not
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
+     *
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
+     *
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
+     * Policy
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
+     * health policy
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -894,159 +1160,162 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    beginUpdate(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
      * Create cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterResource Put Request
+     * @param {object} parameters Put Request
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version running in your cluster
      *
-     * @param {object} [clusterResource.certificate] The cluster certificate
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client
      *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] Cluster reliability level
+     * indicates replica set size of system service. Possible values include:
+     * 'Bronze', 'Silver', 'Gold', 'Platinum'
      *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details ,it is used for client access for cluster operation
      *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
+     * @param {array} [parameters.clientCertificateCommonNames]  List of client
+     * certificates to whitelist based on common names
      *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster.
      *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster
      *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
+     * @param {array} parameters.nodeTypes The list of nodetypes that make up the
+     * cluster
      *
-     * @param {string} clusterResource.vmImage The OS type
+     * @param {object} [parameters.azureActiveDirectory] The settings to enable AAD
+     * authentication on the cluster
      *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
+     * @param {string} [parameters.vmImage] The name of VM image VMSS has been
+     * configured with. Generic names such as Windows or Linux can be used.
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * diagnostics account configuration details
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName Diagnostics
+     * storage account name
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName Protected
+     * Diagnostics storage key name
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint
+     * Diagnostics storage account blob endpoint
      *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint
+     * Diagnostics storage account queue endpoint
      *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint
+     * Diagnostics storage account table endpoint
      *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
      * restart or not
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
      *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
      * Policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
      * health policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
+     * @param {string} parameters.location Resource location.
      *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1059,156 +1328,159 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
      * Create cluster resource
      *
-     * @param {string} resourceGroupName The name of the Resource Group to which
-     * the server belongs.
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the resource belongs or get created
      *
-     * @param {string} clusterName The name of the cluster
+     * @param {string} clusterName The name of the cluster resource
      *
-     * @param {object} clusterResource Put Request
+     * @param {object} parameters Put Request
      *
-     * @param {string} [clusterResource.clusterCodeVersion] The ServiceFabric code
-     * version, you don't need to set it, when you choose upgradeMode as Automatic
+     * @param {string} [parameters.clusterCodeVersion] The ServiceFabric code
+     * version running in your cluster
      *
-     * @param {object} [clusterResource.certificate] The cluster certificate
+     * @param {object} [parameters.certificate] This primay certificate will be
+     * used as cluster node to node security, SSL certificate for cluster
+     * management endpoint and default admin client
      *
-     * @param {string} clusterResource.reliabilityLevel The reliability level for
-     * the cluster. Possible values include: 'Bronze', 'Silver', 'Gold', 'Platinum'
+     * @param {string} [parameters.reliabilityLevel] Cluster reliability level
+     * indicates replica set size of system service. Possible values include:
+     * 'Bronze', 'Silver', 'Gold', 'Platinum'
      *
-     * @param {string} clusterResource.upgradeMode The cluster upgrade mode.
-     * Possible values include: 'Automatic', 'Manual'
+     * @param {string} [parameters.upgradeMode] Cluster upgrade mode indicates if
+     * fabric upgrade is initiated automatically by the system or not. Possible
+     * values include: 'Automatic', 'Manual'
      *
-     * @param {array} [clusterResource.clientCertificateThumbprints] The client
-     * certificate thumbprints
+     * @param {array} [parameters.clientCertificateThumbprints] The client
+     * thumbprint details ,it is used for client access for cluster operation
      *
-     * @param {array} [clusterResource.clientCertificateCommonNames] The
-     * certificate common name and issurer thumprint for the client certificate
+     * @param {array} [parameters.clientCertificateCommonNames]  List of client
+     * certificates to whitelist based on common names
      *
-     * @param {array} [clusterResource.fabricSettings] The faric setting collection
+     * @param {array} [parameters.fabricSettings] List of custom fabric settings to
+     * configure the cluster.
      *
-     * @param {object} [clusterResource.reverseProxyCertificate] The certificate
-     * for the reverse proxy
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.thumbprint] Primary
-     * certificate thumbprint
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate
      *
-     * @param {string}
-     * [clusterResource.reverseProxyCertificate.thumbprintSecondary] Secondary
-     * certificate thumbprint
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate
      *
-     * @param {string} [clusterResource.reverseProxyCertificate.x509StoreName]
-     * Certificate x509 store location. Possible values include: 'AddressBook',
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} clusterResource.managementEndpoint The cluster management
-     * endpoint address
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster
      *
-     * @param {array} clusterResource.nodeTypes The arary of the nodeType
+     * @param {array} parameters.nodeTypes The list of nodetypes that make up the
+     * cluster
      *
-     * @param {string} clusterResource.vmImage The OS type
+     * @param {object} [parameters.azureActiveDirectory] The settings to enable AAD
+     * authentication on the cluster
      *
-     * @param {object} clusterResource.diagnosticsStorageAccountConfig The storage
-     * diagnostics account configuration
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.storageAccountName]
-     * Diagnostics storage account name
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.primaryAccessKey] Primary
-     * diagnostics storage access key
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.secondaryAccessKey]
-     * Secondary diagnostics storage access key
+     * @param {string} [parameters.vmImage] The name of VM image VMSS has been
+     * configured with. Generic names such as Windows or Linux can be used.
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.protectedAccountKeyName]
-     * Protected Diagnostics storage key name
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * diagnostics account configuration details
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.blobEndpoint] Diagnostics
-     * storage account blob endpoint
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName Diagnostics
+     * storage account name
      *
      * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.queueEndpoint] Diagnostics
-     * storage account queue endpoint
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName Protected
+     * Diagnostics storage key name
      *
-     * @param {string}
-     * [clusterResource.diagnosticsStorageAccountConfig.tableEndpoint] Diagnostics
-     * storage account table endpoint
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint
+     * Diagnostics storage account blob endpoint
      *
-     * @param {object} [clusterResource.upgradeDescription] The upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint
+     * Diagnostics storage account queue endpoint
      *
-     * @param {boolean}
-     * [clusterResource.upgradeDescription.overrideUserUpgradePolicy] Override user
-     * upgrade policy
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint
+     * Diagnostics storage account table endpoint
      *
-     * @param {boolean} [clusterResource.upgradeDescription.forceRestart] Force
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.overrideUserUpgradePolicy]
+     * Use the user defined upgrade policy or not
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] Force node to
      * restart or not
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.upgradeReplicaSetCheckTimeout] Upgrade
-     * replica set check timeout
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * Timeout for replica set upgrade to complete,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckWaitDuration]
-     * Health check wait duration
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks, it represents .Net TimeSpan
      *
-     * @param {string}
-     * [clusterResource.upgradeDescription.healthCheckStableDuration] Health check
-     * stable duration
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * length of time that health checks must pass continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.healthCheckRetryTimeout]
-     * Health check retry timeout
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * length of time that health checks can fail continuously,it represents .Net
+     * TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeTimeout] Upgrade
-     * Timeout
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The upgrade
+     * timeout,it represents .Net TimeSpan
      *
-     * @param {string} [clusterResource.upgradeDescription.upgradeDomainTimeout]
-     * upgrade domain timeout
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * timeout for any upgrade domain,it represents .Net TimeSpan
      *
-     * @param {object} [clusterResource.upgradeDescription.healthPolicy] Health
+     * @param {object} parameters.upgradeDescription.healthPolicy Cluster health
      * Policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * Max percent of unhealthy nodes
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * Max percent of unhealthy applications
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.healthPolicy.applicationHealthPolicies]
-     * Application health policies
-     *
-     * @param {object} [clusterResource.upgradeDescription.deltaHealthPolicy] Delta
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] Delta
      * health policy
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes]
-     * Max of percent of delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes]
-     * Max of percent upgrade domain delta unhealthy nodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * Additional unhealthy nodes percentage per upgrade domain
      *
      * @param {number}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications]
-     * Max percent of delta unhealthy applications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * Additional unhealthy applications percentage
      *
-     * @param {object}
-     * [clusterResource.upgradeDescription.deltaHealthPolicy.applicationHealthPolicies]
-     * Application health policies
+     * @param {string} parameters.location Resource location.
      *
-     * @param {string} clusterResource.location Resource location.
-     *
-     * @param {object} [clusterResource.tags] Resource tags.
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1237,9 +1509,9 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    beginCreate(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
-    beginCreate(resourceGroupName: string, clusterName: string, clusterResource: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    beginCreate(resourceGroupName: string, clusterName: string, parameters: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
@@ -1358,9 +1630,140 @@ export interface Clusters {
 
 /**
  * @class
+ * ClusterVersions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ServiceFabricManagementClient.
+ */
+export interface ClusterVersions {
+
+
+    /**
+     * List cluster code versions by location
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} environment Cluster operating system, the default means all.
+     * Possible values include: 'Default', 'Windows', 'Linux'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterCodeVersionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, environment: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
+
+    /**
+     * List cluster code versions by location
+     *
+     * @param {string} location The location for the cluster code versions, this is
+     * different from cluster location
+     *
+     * @param {string} environment Cluster operating system, the default means all.
+     * Possible values include: 'Default', 'Windows', 'Linux'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterCodeVersionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterCodeVersionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterCodeVersionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, environment: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterCodeVersionsListResult>;
+    list(location: string, environment: string, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+    list(location: string, environment: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+
+
+    /**
+     * List cluster code versions by location
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterCodeVersionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
+
+    /**
+     * List cluster code versions by location
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterCodeVersionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterCodeVersionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterCodeVersionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterCodeVersionsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterCodeVersionsListResult>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ServiceFabricClient.
+ * instance of the ServiceFabricManagementClient.
  */
 export interface Operations {
 

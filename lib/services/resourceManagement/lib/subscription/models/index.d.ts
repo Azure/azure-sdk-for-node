@@ -23,17 +23,11 @@ export { CloudError } from 'ms-rest-azure';
  *
  * @member {string} [id] The fully qualified ID of the location. For example,
  * /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
- *
  * @member {string} [subscriptionId] The subscription ID.
- *
  * @member {string} [name] The location name.
- *
  * @member {string} [displayName] The display name of the location.
- *
  * @member {string} [latitude] The latitude of the location.
- *
  * @member {string} [longitude] The longitude of the location.
- *
  */
 export interface Location {
   readonly id?: string;
@@ -51,7 +45,6 @@ export interface Location {
  * Location list operation response.
  *
  * @member {array} [value] An array of locations.
- *
  */
 export interface LocationListResult {
   value?: Location[];
@@ -67,12 +60,9 @@ export interface LocationListResult {
  * ID. The ID indicates which regions are visible for a subscription. For
  * example, a subscription with a location placement Id of Public_2014-09-01
  * has access to Azure public regions.
- *
  * @member {string} [quotaId] The subscription quota ID.
- *
  * @member {string} [spendingLimit] The subscription spending limit. Possible
  * values include: 'On', 'Off', 'CurrentPeriodOff'
- *
  */
 export interface SubscriptionPolicies {
   readonly locationPlacementId?: string;
@@ -88,38 +78,26 @@ export interface SubscriptionPolicies {
  *
  * @member {string} [id] The fully qualified ID for the subscription. For
  * example, /subscriptions/00000000-0000-0000-0000-000000000000.
- *
  * @member {string} [subscriptionId] The subscription ID.
- *
- * @member {string} [tenantId] The tenant ID.
- *
  * @member {string} [displayName] The subscription display name.
- *
  * @member {string} [state] The subscription state. Possible values are
  * Enabled, Warned, PastDue, Disabled, and Deleted. Possible values include:
  * 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted'
- *
  * @member {object} [subscriptionPolicies] The subscription policies.
- *
  * @member {string} [subscriptionPolicies.locationPlacementId] The subscription
  * location placement ID. The ID indicates which regions are visible for a
  * subscription. For example, a subscription with a location placement Id of
  * Public_2014-09-01 has access to Azure public regions.
- *
  * @member {string} [subscriptionPolicies.quotaId] The subscription quota ID.
- *
  * @member {string} [subscriptionPolicies.spendingLimit] The subscription
  * spending limit. Possible values include: 'On', 'Off', 'CurrentPeriodOff'
- *
  * @member {string} [authorizationSource] The authorization source of the
  * request. Valid values are one or more combinations of Legacy, RoleBased,
  * Bypassed, Direct and Management. For example, 'Legacy, RoleBased'.
- *
  */
 export interface Subscription {
   readonly id?: string;
   readonly subscriptionId?: string;
-  readonly tenantId?: string;
   readonly displayName?: string;
   readonly state?: string;
   subscriptionPolicies?: SubscriptionPolicies;
@@ -133,9 +111,7 @@ export interface Subscription {
  * Subscription list operation response.
  *
  * @member {array} [value] An array of subscriptions.
- *
  * @member {string} nextLink The URL to get the next set of results.
- *
  */
 export interface SubscriptionListResult {
   value?: Subscription[];
@@ -150,10 +126,8 @@ export interface SubscriptionListResult {
  *
  * @member {string} [id] The fully qualified ID of the tenant. For example,
  * /tenants/00000000-0000-0000-0000-000000000000.
- *
  * @member {string} [tenantId] The tenant ID. For example,
  * 00000000-0000-0000-0000-000000000000.
- *
  */
 export interface TenantIdDescription {
   readonly id?: string;
@@ -167,10 +141,8 @@ export interface TenantIdDescription {
  * Tenant Ids information.
  *
  * @member {array} [value] An array of tenants.
- *
  * @member {string} nextLink The URL to use for getting the next set of
  * results.
- *
  */
 export interface TenantListResult {
   value?: TenantIdDescription[];
@@ -184,7 +156,6 @@ export interface TenantListResult {
  * Location list operation response.
  *
  * @member {array} [value] An array of locations.
- *
  */
 export interface LocationListResult {
   value?: Location[];
@@ -197,9 +168,7 @@ export interface LocationListResult {
  * Subscription list operation response.
  *
  * @member {array} [value] An array of subscriptions.
- *
  * @member {string} nextLink The URL to get the next set of results.
- *
  */
 export interface SubscriptionListResult {
   value?: Subscription[];
@@ -213,10 +182,8 @@ export interface SubscriptionListResult {
  * Tenant Ids information.
  *
  * @member {array} [value] An array of tenants.
- *
  * @member {string} nextLink The URL to use for getting the next set of
  * results.
- *
  */
 export interface TenantListResult {
   value?: TenantIdDescription[];
@@ -241,7 +208,6 @@ export interface LocationListResult extends Array<Location> {
  * Subscription list operation response.
  *
  * @member {string} nextLink The URL to get the next set of results.
- *
  */
 export interface SubscriptionListResult extends Array<Subscription> {
   nextLink: string;
@@ -255,7 +221,6 @@ export interface SubscriptionListResult extends Array<Subscription> {
  *
  * @member {string} nextLink The URL to use for getting the next set of
  * results.
- *
  */
 export interface TenantListResult extends Array<TenantIdDescription> {
   nextLink: string;
