@@ -2035,6 +2035,10 @@ export interface ExpressRouteCircuitPeerings {
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
      * reference of AdvertisedPublicPrefixes.
      *
+     * @param {array}
+     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
+     * communities of bgp peering. Spepcified for microsoft peering
+     *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
      * AdvertisedPublicPrefixState of the Peering resource. Possible values are
@@ -2044,6 +2048,9 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
      * CustomerASN of the peering.
+     *
+     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
      *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
@@ -2150,6 +2157,10 @@ export interface ExpressRouteCircuitPeerings {
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
      * reference of AdvertisedPublicPrefixes.
      *
+     * @param {array}
+     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
+     * communities of bgp peering. Spepcified for microsoft peering
+     *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
      * AdvertisedPublicPrefixState of the Peering resource. Possible values are
@@ -2159,6 +2170,9 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
      * CustomerASN of the peering.
+     *
+     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
      *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
@@ -2407,6 +2421,10 @@ export interface ExpressRouteCircuitPeerings {
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
      * reference of AdvertisedPublicPrefixes.
      *
+     * @param {array}
+     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
+     * communities of bgp peering. Spepcified for microsoft peering
+     *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
      * AdvertisedPublicPrefixState of the Peering resource. Possible values are
@@ -2416,6 +2434,9 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
      * CustomerASN of the peering.
+     *
+     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
      *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
@@ -2522,6 +2543,10 @@ export interface ExpressRouteCircuitPeerings {
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
      * reference of AdvertisedPublicPrefixes.
      *
+     * @param {array}
+     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
+     * communities of bgp peering. Spepcified for microsoft peering
+     *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
      * AdvertisedPublicPrefixState of the Peering resource. Possible values are
@@ -2531,6 +2556,9 @@ export interface ExpressRouteCircuitPeerings {
      *
      * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
      * CustomerASN of the peering.
+     *
+     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
      *
      * @param {string}
      * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
@@ -10635,6 +10663,227 @@ export interface PublicIPAddresses {
 
 
     /**
+     * Gets information about all public IP addresses on a virtual machine scale
+     * set level.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPAddressListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualMachineScaleSetPublicIPAddressesWithHttpOperationResponse(resourceGroupName: string, virtualMachineScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPAddressListResult>>;
+
+    /**
+     * Gets information about all public IP addresses on a virtual machine scale
+     * set level.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPAddressListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPAddressListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPAddressListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualMachineScaleSetPublicIPAddresses(resourceGroupName: string, virtualMachineScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddressListResult>;
+    listVirtualMachineScaleSetPublicIPAddresses(resourceGroupName: string, virtualMachineScaleSetName: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+    listVirtualMachineScaleSetPublicIPAddresses(resourceGroupName: string, virtualMachineScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+
+
+    /**
+     * Gets information about all public IP addresses in a virtual machine IP
+     * configuration in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The network interface name.
+     *
+     * @param {string} ipConfigurationName The IP configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPAddressListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualMachineScaleSetVMPublicIPAddressesWithHttpOperationResponse(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPAddressListResult>>;
+
+    /**
+     * Gets information about all public IP addresses in a virtual machine IP
+     * configuration in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The network interface name.
+     *
+     * @param {string} ipConfigurationName The IP configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPAddressListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPAddressListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPAddressListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualMachineScaleSetVMPublicIPAddresses(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddressListResult>;
+    listVirtualMachineScaleSetVMPublicIPAddresses(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+    listVirtualMachineScaleSetVMPublicIPAddresses(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+
+
+    /**
+     * Get the specified public IP address in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {string} ipConfigurationName The name of the IP configuration.
+     *
+     * @param {string} publicIpAddressName The name of the public IP Address.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPAddress>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getVirtualMachineScaleSetPublicIPAddressWithHttpOperationResponse(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, publicIpAddressName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPAddress>>;
+
+    /**
+     * Get the specified public IP address in a virtual machine scale set.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualMachineScaleSetName The name of the virtual machine
+     * scale set.
+     *
+     * @param {string} virtualmachineIndex The virtual machine index.
+     *
+     * @param {string} networkInterfaceName The name of the network interface.
+     *
+     * @param {string} ipConfigurationName The name of the IP configuration.
+     *
+     * @param {string} publicIpAddressName The name of the public IP Address.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPAddress} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPAddress} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPAddress} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getVirtualMachineScaleSetPublicIPAddress(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, publicIpAddressName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddress>;
+    getVirtualMachineScaleSetPublicIPAddress(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, publicIpAddressName: string, callback: ServiceCallback<models.PublicIPAddress>): void;
+    getVirtualMachineScaleSetPublicIPAddress(resourceGroupName: string, virtualMachineScaleSetName: string, virtualmachineIndex: string, networkInterfaceName: string, ipConfigurationName: string, publicIpAddressName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddress>): void;
+
+
+    /**
      * Deletes the specified public IP address.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -10967,6 +11216,126 @@ export interface PublicIPAddresses {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddressListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+
+
+    /**
+     * Gets information about all public IP addresses on a virtual machine scale
+     * set level.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPAddressListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualMachineScaleSetPublicIPAddressesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPAddressListResult>>;
+
+    /**
+     * Gets information about all public IP addresses on a virtual machine scale
+     * set level.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPAddressListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPAddressListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPAddressListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualMachineScaleSetPublicIPAddressesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddressListResult>;
+    listVirtualMachineScaleSetPublicIPAddressesNext(nextPageLink: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+    listVirtualMachineScaleSetPublicIPAddressesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+
+
+    /**
+     * Gets information about all public IP addresses in a virtual machine IP
+     * configuration in a virtual machine scale set.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPAddressListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listVirtualMachineScaleSetVMPublicIPAddressesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPAddressListResult>>;
+
+    /**
+     * Gets information about all public IP addresses in a virtual machine IP
+     * configuration in a virtual machine scale set.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPAddressListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPAddressListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPAddressListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listVirtualMachineScaleSetVMPublicIPAddressesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddressListResult>;
+    listVirtualMachineScaleSetVMPublicIPAddressesNext(nextPageLink: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+    listVirtualMachineScaleSetVMPublicIPAddressesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
 }
 
 /**

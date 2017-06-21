@@ -2373,6 +2373,9 @@ export interface AuthorizationListResult {
  * @member {array} [advertisedPublicPrefixes] The reference of
  * AdvertisedPublicPrefixes.
  *
+ * @member {array} [advertisedCommunities] The communities of bgp peering.
+ * Spepcified for microsoft peering
+ *
  * @member {string} [advertisedPublicPrefixesState] AdvertisedPublicPrefixState
  * of the Peering resource. Possible values are 'NotConfigured', 'Configuring',
  * 'Configured', and 'ValidationNeeded'. Possible values include:
@@ -2380,14 +2383,18 @@ export interface AuthorizationListResult {
  *
  * @member {number} [customerASN] The CustomerASN of the peering.
  *
+ * @member {number} [legacyMode] The legacy mode of the peering.
+ *
  * @member {string} [routingRegistryName] The RoutingRegistryName of the
  * configuration.
  *
  */
 export interface ExpressRouteCircuitPeeringConfig {
   advertisedPublicPrefixes?: string[];
+  advertisedCommunities?: string[];
   advertisedPublicPrefixesState?: string;
   customerASN?: number;
+  legacyMode?: number;
   routingRegistryName?: string;
 }
 
@@ -2485,6 +2492,9 @@ export interface RouteFilterRule extends SubResource {
  * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
  * reference of AdvertisedPublicPrefixes.
  *
+ * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ *
  * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
  * AdvertisedPublicPrefixState of the Peering resource. Possible values are
  * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
@@ -2492,6 +2502,9 @@ export interface RouteFilterRule extends SubResource {
  * 'ValidationNeeded'
  *
  * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
+ * peering.
+ *
+ * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
  * peering.
  *
  * @member {string} [microsoftPeeringConfig.routingRegistryName] The
@@ -4858,12 +4871,20 @@ export interface RouteListResult {
  * @member {array} [communityPrefixes] The prefixes that the bgp community
  * contains.
  *
+ * @member {boolean} [isAuthorizedToUse] Customer is authorized to use bgp
+ * community or not.
+ *
+ * @member {string} [serviceGroup] The service group of the bgp community
+ * contains.
+ *
  */
 export interface BGPCommunity {
   serviceSupportedRegion?: string;
   communityName?: string;
   communityValue?: string;
   communityPrefixes?: string[];
+  isAuthorizedToUse?: boolean;
+  serviceGroup?: string;
 }
 
 /**
