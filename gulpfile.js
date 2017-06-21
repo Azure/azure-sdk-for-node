@@ -201,6 +201,18 @@ const mappings = {
     'dir': 'mysqlManagement/lib',
     'source': 'arm-rdbms/2017-04-30-preview/swagger/Rdms.MySQL.json'
   },
+  'monitor': {
+    'dir': 'monitor/lib',
+    'source': 'monitor/compositeMonitorClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
+  'monitor.management': {
+    'dir': 'monitorManagement/lib',
+    'source': 'arm-monitor/compositeMonitorManagementClient.json',
+    'ft': 1,
+    'modeler': 'CompositeSwagger'
+  },
   'network': {
     'packageName': 'azure-arm-network',
     'dir': 'networkManagement2/lib',
