@@ -27,7 +27,7 @@ exports.create = function create(retryTimeoutInSec) {
   if (retryTimeoutInSec !== null && retryTimeoutInSec !== undefined) {
     exports.retryTimeout = retryTimeoutInSec;
   }
-  return function handle (options, next, callback) {
+  return function handle(options, next, callback) {
     return next(options, function (err, response, body) {
       if (err) {
         return callback(err);
@@ -102,11 +102,11 @@ exports.checkRPNotRegisteredError = function checkRPNotRegisteredError(body) {
     } catch (err) {
       //do nothing;
     }
-    if (responseBody && responseBody.error && responseBody.error.message && 
-    responseBody.error.code && responseBody.error.code === 'MissingSubscriptionRegistration') {
+    if (responseBody && responseBody.error && responseBody.error.message &&
+      responseBody.error.code && responseBody.error.code === 'MissingSubscriptionRegistration') {
       let matchRes = responseBody.error.message.match(/'(\w+\.?\w+)'*/ig);
       if (matchRes && matchRes[1]) {
-        result = matchRes[1].slice(1, matchRes[1].length-1);
+        result = matchRes[1].slice(1, matchRes[1].length - 1);
       }
     }
   }
@@ -122,7 +122,7 @@ exports.checkRPNotRegisteredError = function checkRPNotRegisteredError(body) {
 exports.extractSubscriptionUrl = function extractSubscriptionUrl(url) {
   let result;
   let matchRes = url.match(/.*\/subscriptions\/[a-f0-9-]+\//ig);
-  if (matchRes && matchRes[0]) { 
+  if (matchRes && matchRes[0]) {
     result = matchRes[0];
   } else {
     throw new Error(`Unable to extract subscriptionId from the given url - ${url}.`);
@@ -171,16 +171,16 @@ exports.getRegistrationStatus = function getRegistrationStatus(url, originalRequ
     try {
       responseBody = JSON.parse(body);
     } catch (error) {
-      return callback(new Error(`An error occurred while parsing the response body for ` + 
-      `getting registration status ${url}. The response body was ${body}.`));
+      return callback(new Error(`An error occurred while parsing the response body for ` +
+        `getting registration status ${url}. The response body was ${body}.`));
     }
-    if(responseBody.registrationState && responseBody.registrationState === 'Registered') {
-      return callback (null, true);
+    if (responseBody.registrationState && responseBody.registrationState === 'Registered') {
+      return callback(null, true);
     } else {
       setTimeout(() => {
         return exports.getRegistrationStatus(url, originalRequest, callback);
       }, exports.retryTimeout * 1000);
-      
+
     }
   });
 };

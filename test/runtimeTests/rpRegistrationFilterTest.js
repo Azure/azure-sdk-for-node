@@ -24,12 +24,12 @@ var accountPrefix = 'xplattestadls';
 var providerName = 'Microsoft.DatalakeStore';
 var knownNames = [];
 var requiredEnvironment = [{
-    name: 'AZURE_TEST_LOCATION',
-    defaultValue: 'East US 2'
-  }, {
-    name: 'AZURE_TEST_RESOURCE_GROUP',
-    defaultValue: 'xplattestadlsrg01'
-  }
+  name: 'AZURE_TEST_LOCATION',
+  defaultValue: 'East US 2'
+}, {
+  name: 'AZURE_TEST_RESOURCE_GROUP',
+  defaultValue: 'xplattestadlsrg01'
+}
 ];
 
 // the necessary clients
@@ -55,7 +55,7 @@ describe('Automatic RP Registration', function () {
       testLocation = testLocation.toLowerCase().replace(/ /g, '');
       testResourceGroup = process.env['AZURE_TEST_RESOURCE_GROUP'];
       accountName = suite.generateId(accountPrefix, knownNames);
-      
+
       let clientOptions = {
         rpRegistrationRetryTimeout: 0
       };
@@ -83,7 +83,7 @@ describe('Automatic RP Registration', function () {
       }
     });
   });
-  
+
   after(function (done) {
     if (!suite.isPlayback) {
       resourceClient.resourceGroups.deleteMethod(testResourceGroup, function () {
@@ -94,11 +94,11 @@ describe('Automatic RP Registration', function () {
       suite.teardownSuite(done);
     }
   });
-  
+
   beforeEach(function (done) {
     suite.setupTest(done);
   });
-  
+
   afterEach(function (done) {
     suite.baseTeardownTest(done);
   });
@@ -121,7 +121,7 @@ describe('Automatic RP Registration', function () {
       },
       location: testLocation
     };
-    
+
     adlsClient.account.create(testResourceGroup, accountName, accountToCreate, function (err, result) {
       should.not.exist(err);
       should.exist(result);

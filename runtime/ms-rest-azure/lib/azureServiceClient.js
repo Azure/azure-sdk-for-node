@@ -287,7 +287,7 @@ function _getStatus(operationUrl, callback) {
     let statusCode = response.statusCode;
     if (statusCode !== 200 && statusCode !== 201 && statusCode !== 202 && statusCode !== 204) {
       let error = new Error(`Invalid status code with response body "${responseBody}" occurred ` +
-          `when polling for operation status.`);
+        `when polling for operation status.`);
       error.statusCode = response.statusCode;
       error.request = msRest.stripRequest(httpRequest);
       error.response = msRest.stripResponse(response);
@@ -354,7 +354,7 @@ class AzureServiceClient extends msRest.ServiceClient {
     if (!options) options = {};
     if (!options.filters) options.filters = [];
     options.filters.push(RpRegistrationFilter.create(options.rpRegistrationRetryTimeout));
-    
+
     super(credentials, options);
 
     this.acceptLanguage = 'en-US';
