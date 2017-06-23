@@ -89,6 +89,42 @@ describe('Storage Management', function () {
   });
   
   describe('storage accounts', function () {
+    it('should create an account with vnet acl correctly', function (done) {
+      createParametersVnet = {
+        location: 'eastus2euap',
+        sku: {
+          name: accType,
+        },
+        kind: 'Storage',
+        networkAcls: {
+          bypass: 'Logging, AzureServices',
+          ipRules: [
+            {
+              iPAddressOrRange: '23.45.67.90'
+            },
+            {
+              iPAddressOrRange: '23.45.67.91',
+              action: 'Allow'
+            }
+          ],
+          defaultAction: 'Deny'
+        }
+      }
+      client.storageAccounts.create(groupName, accountName, createParametersVnet, function (err, result, request, response) {
+        should.not.exist(err);
+        should.exist(result);
+        response.statusCode.should.equal(200);
+        should.exist(result.networkAcls);
+        should.exist(result.networkAcls.bypass);
+        should.exist(result.networkAcls.ipRules);
+        result.networkAcls.ipRules[0].iPAddressOrRange.should.equal('23.45.67.90');
+        result.networkAcls.ipRules[0].action.should.equal('Allow');
+        result.networkAcls.ipRules[1].iPAddressOrRange.should.equal('23.45.67.91');
+        result.networkAcls.ipRules[1].action.should.equal('Allow');
+        done();
+      });
+    });
+
     it('should create an account correctly', function (done) {
       client.storageAccounts.create(groupName, accountName, createParameters, function (err, result, request, response) {
         should.not.exist(err);
