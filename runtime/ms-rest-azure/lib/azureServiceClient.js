@@ -361,8 +361,6 @@ class AzureServiceClient extends msRest.ServiceClient {
     this.generateClientRequestId = true;
     this.longRunningOperationRetryTimeout = 30;
 
-    if (!options) options = {};
-
     if (options.acceptLanguage !== null && options.acceptLanguage !== undefined) {
       this.acceptLanguage = options.acceptLanguage;
     }

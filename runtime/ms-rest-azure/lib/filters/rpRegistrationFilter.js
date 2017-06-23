@@ -9,6 +9,15 @@ var utils = require('../utils');
 exports.retryTimeout = 30;
 
 /**
+ * Mostly all the filters are in the generic runtime 'ms-rest'. However this one ends up here because
+ * it is Azure specific. This filter is responsible for autoregistering an RP if the initial request failed.
+ * After successful registration of the RP it retries the initial request. Other filters play with other aspects
+ * of the request/response but the actual request on the wire is made from the sink. However, this filter 
+ * makes actual requests on the wire. It does not depend on the sink. This is done because it is tasked to register
+ * the RP, poll the registration status and the retry the initial request.
+ */
+
+/**
  * Creates a filter that verifies whether the request failed due to RP not being registered.
  * It tries to register the RP and after successful registration it retries the original request.
  * @param {number} retryTimeoutInSec The retry timeout in seconds. Default is 30 seconds.
@@ -33,7 +42,8 @@ exports.create = function create(retryTimeoutInSec) {
               return callback(err);
             }
             if (result) {
-              //retry the original request
+              //Retry the original request. We have to change the x-ms-client-request-id 
+              //otherwise Azure endpoint will return the initial 409 (cached) response.
               options.headers['x-ms-client-request-id'] = utils.generateUuid();
               return request(options.url, options, (error, response) => {
                 return callback(error, response, response.body);
@@ -48,6 +58,35 @@ exports.create = function create(retryTimeoutInSec) {
     });
   };
 };
+
+/**
+ * Reuses the headers of the original request and url (if specified).
+ * @param {object} originalRequest The original request
+ * @param {boolean} reuseUrlToo Should the url from the original request be reused as well. Default false.
+ * @returns {object} reqOptions - A new request object with desired headers.
+ */
+function getRequestEssentials(originalRequest, reuseUrlToo) {
+  let reqOptions = {
+    headers: {}
+  };
+  if (reuseUrlToo) {
+    reqOptions.url = originalRequest.url;
+  }
+
+  //Copy over the original request headers. This will get us the auth token and other useful stuff from
+  //the original request header. Thus making it easier to make requests from this filter.
+  for (let h in originalRequest.headers) {
+    reqOptions.headers[h] = originalRequest.headers[h];
+  }
+  //We have to change the x-ms-client-request-id otherwise Azure endpoint 
+  //will return the initial 409 (cached) response.
+  reqOptions.headers['x-ms-client-request-id'] = utils.generateUuid();
+
+  //Set content-type to application/json
+  reqOptions.headers['Content-Type'] = 'application/json; charset=utf-8';
+
+  return reqOptions;
+}
 
 /**
  * Validates the error code and message associated with 409 response status code. If it matches to that of 
@@ -99,13 +138,10 @@ exports.extractSubscriptionUrl = function extractSubscriptionUrl(url) {
  * with a message that the provider is not registered.
  * @param {registrationCallback} callback - The callback that handles the RP registration
  */
-exports.registerRP = function regiserRP(urlPrefix, provider, originalRequest, callback) {
+exports.registerRP = function registerRP(urlPrefix, provider, originalRequest, callback) {
   let postUrl = `${urlPrefix}providers/${provider}/register?api-version=2016-02-01`;
   let getUrl = `${urlPrefix}providers/${provider}?api-version=2016-02-01`;
-  let reqOptions = {
-    headers: originalRequest.headers
-  };
-  reqOptions.headers['x-ms-client-request-id'] = utils.generateUuid();
+  let reqOptions = getRequestEssentials(originalRequest);
   return request.post(postUrl, reqOptions, (err, response) => {
     if (response.statusCode !== 200) {
       return callback(new Error(`Autoregistration of ${provider} failed. Please try registering manually.`));
@@ -128,10 +164,7 @@ exports.registerRP = function regiserRP(urlPrefix, provider, originalRequest, ca
  * @param {registrationCallback} callback - The callback that handles the RP registration.
  */
 exports.getRegistrationStatus = function getRegistrationStatus(url, originalRequest, callback) {
-  let reqOptions = {
-    headers: originalRequest.headers
-  };
-  reqOptions.headers['x-ms-client-request-id'] = utils.generateUuid();
+  let reqOptions = getRequestEssentials(originalRequest);
   return request.get(url, reqOptions, (err, response, body) => {
     if (err) return callback(err);
     let responseBody = {};
