@@ -124,7 +124,8 @@ export interface ServiceSpecification {
  *
  * @member {string} [origin] The origin of operations.
  *
- * @member {object} [serviceSpecification]
+ * @member {object} [serviceSpecification] One property of operation, include
+ * metric specifications.
  *
  * @member {array} [serviceSpecification.metricSpecifications] Metric
  * specifications of operation.
@@ -399,6 +400,75 @@ export interface Encryption {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * Virtual Network rule.
+ *
+ * @member {string} virtualNetworkResourceId A URL of vnet, subnet, classicVnet
+ * or classicSubnet.
+ *
+ * @member {string} [action] The action of virtual network ACL rule. Possible
+ * values include: 'Allow'. Default value: 'Allow' .
+ *
+ * @member {string} [state] Gets the state of virtual network ACL rule.
+ * Possible values include: 'provisioning', 'deprovisioning', 'succeeded',
+ * 'failed', 'networkSourceDeleted'
+ *
+ */
+export interface VirtualNetworkRule {
+  virtualNetworkResourceId: string;
+  action?: string;
+  state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IPRule class.
+ * @constructor
+ * IP rule with specific IP or IP range in CIDR format.
+ *
+ * @member {string} iPAddressOrRange Specifies the IP or IP range in CIDR
+ * format. Only IPV4 address is allowed.
+ *
+ * @member {string} [action] The action of IP ACL rule. Possible values
+ * include: 'Allow'. Default value: 'Allow' .
+ *
+ */
+export interface IPRule {
+  iPAddressOrRange: string;
+  action?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageNetworkAcls class.
+ * @constructor
+ * Network ACL
+ *
+ * @member {string} [bypass] Specifies whether traffic is bypassed for
+ * Logging/Metrics/AzureServices. Possible values are any combination of
+ * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
+ * bypass none of those traffics. Possible values include: 'None', 'Logging',
+ * 'Metrics', 'AzureServices'. Default value: 'AzureServices' .
+ *
+ * @member {array} [virtualNetworkRules] Sets the virtual network ACL rules
+ *
+ * @member {array} [ipRules] Sets the IP ACL rules
+ *
+ * @member {string} defaultAction Specifies the default action of allow or deny
+ * when no other rules match. Possible values include: 'Allow', 'Deny'. Default
+ * value: 'Allow' .
+ *
+ */
+export interface StorageNetworkAcls {
+  bypass?: string;
+  virtualNetworkRules?: VirtualNetworkRule[];
+  ipRules?: IPRule[];
+  defaultAction: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Identity class.
  * @constructor
  * Identity for the resource.
@@ -530,6 +600,23 @@ export interface Identity {
  * @member {string} [encryption.keyVaultProperties.keyVaultUri] The Uri of
  * KeyVault.
  *
+ * @member {object} [networkAcls] Network ACL
+ *
+ * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
+ * for Logging/Metrics/AzureServices. Possible values are any combination of
+ * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
+ * bypass none of those traffics. Possible values include: 'None', 'Logging',
+ * 'Metrics', 'AzureServices'
+ *
+ * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
+ * ACL rules
+ *
+ * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
+ *
+ * @member {string} [networkAcls.defaultAction] Specifies the default action of
+ * allow or deny when no other rules match. Possible values include: 'Allow',
+ * 'Deny'
+ *
  * @member {string} [accessTier] Required for storage accounts where kind =
  * BlobStorage. The access tier used for billing. Possible values include:
  * 'Hot', 'Cool'
@@ -546,6 +633,7 @@ export interface StorageAccountCreateParameters {
   identity?: Identity;
   customDomain?: CustomDomain;
   encryption?: Encryption;
+  networkAcls?: StorageNetworkAcls;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
 }
@@ -762,6 +850,23 @@ export interface Resource extends BaseResource {
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
  *
+ * @member {object} [networkAcls] Network ACL
+ *
+ * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
+ * for Logging/Metrics/AzureServices. Possible values are any combination of
+ * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
+ * bypass none of those traffics. Possible values include: 'None', 'Logging',
+ * 'Metrics', 'AzureServices'
+ *
+ * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
+ * ACL rules
+ *
+ * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
+ *
+ * @member {string} [networkAcls.defaultAction] Specifies the default action of
+ * allow or deny when no other rules match. Possible values include: 'Allow',
+ * 'Deny'
+ *
  */
 export interface StorageAccount extends Resource {
   readonly sku?: Sku;
@@ -780,6 +885,7 @@ export interface StorageAccount extends Resource {
   readonly encryption?: Encryption;
   readonly accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
+  readonly networkAcls?: StorageNetworkAcls;
 }
 
 /**
@@ -961,6 +1067,23 @@ export interface StorageAccountRegenerateKeyParameters {
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
  *
+ * @member {object} [networkAcls] Network ACL
+ *
+ * @member {string} [networkAcls.bypass] Specifies whether traffic is bypassed
+ * for Logging/Metrics/AzureServices. Possible values are any combination of
+ * Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to
+ * bypass none of those traffics. Possible values include: 'None', 'Logging',
+ * 'Metrics', 'AzureServices'
+ *
+ * @member {array} [networkAcls.virtualNetworkRules] Sets the virtual network
+ * ACL rules
+ *
+ * @member {array} [networkAcls.ipRules] Sets the IP ACL rules
+ *
+ * @member {string} [networkAcls.defaultAction] Specifies the default action of
+ * allow or deny when no other rules match. Possible values include: 'Allow',
+ * 'Deny'
+ *
  */
 export interface StorageAccountUpdateParameters {
   sku?: Sku;
@@ -970,6 +1093,7 @@ export interface StorageAccountUpdateParameters {
   encryption?: Encryption;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
+  networkAcls?: StorageNetworkAcls;
 }
 
 /**
