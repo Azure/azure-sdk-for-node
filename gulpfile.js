@@ -528,21 +528,17 @@ gulp.task('default', function () {
 
 //This task is used to generate libraries based on the mappings specified above.
 gulp.task('codegen', function (cb) {
-  if (true) {
-    if (project === undefined) {
-      let arr = Object.keys(mappings);
-      for (let i = 0; i < arr.length; i++) {
-        codegen(arr[i], i);
-      }
-    } else {
-      if (mappings[project] === undefined) {
-        console.error('Invalid project name "' + project + '"!');
-        process.exit(1);
-      }
-      codegen(project, null);
+  if (project === undefined) {
+    let arr = Object.keys(mappings);
+    for (let i = 0; i < arr.length; i++) {
+      codegen(arr[i], i);
     }
   } else {
-    process.exit(1);
+    if (mappings[project] === undefined) {
+      console.error('Invalid project name "' + project + '"!');
+      process.exit(1);
+    }
+    codegen(project, null);
   }
 });
 
