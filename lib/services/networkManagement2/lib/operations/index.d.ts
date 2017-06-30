@@ -163,8 +163,22 @@ export interface ApplicationGateways {
      * @param {object} [parameters.sslPolicy] SSL policy of the application gateway
      * resource.
      *
-     * @param {array} [parameters.sslPolicy.disabledSslProtocols] SSL protocols to
+     * @param {array} [parameters.sslPolicy.disabledSslProtocols] Ssl protocols to
      * be disabled on application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.policyType] Type of Ssl Policy.
+     * Possible values include: 'Predefined', 'Custom'
+     *
+     * @param {string} [parameters.sslPolicy.policyName] Name of Ssl predefined
+     * policy. Possible values include: 'AppGwSslPolicy20150501',
+     * 'AppGwSslPolicy20170401', 'AppGwSslPolicy20170401S'
+     *
+     * @param {array} [parameters.sslPolicy.cipherSuites] Ssl cipher suites to be
+     * enabled in the specified order to application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.minProtocolVersion] Minimum version of
+     * Ssl protocol to be supported on application gateway. Possible values
+     * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
      * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
      * the gateway resource.
@@ -198,6 +212,9 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
+     *
+     * @param {array} [parameters.redirectConfigurations] Redirect configurations
+     * of the application gateway resource.
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -275,8 +292,22 @@ export interface ApplicationGateways {
      * @param {object} [parameters.sslPolicy] SSL policy of the application gateway
      * resource.
      *
-     * @param {array} [parameters.sslPolicy.disabledSslProtocols] SSL protocols to
+     * @param {array} [parameters.sslPolicy.disabledSslProtocols] Ssl protocols to
      * be disabled on application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.policyType] Type of Ssl Policy.
+     * Possible values include: 'Predefined', 'Custom'
+     *
+     * @param {string} [parameters.sslPolicy.policyName] Name of Ssl predefined
+     * policy. Possible values include: 'AppGwSslPolicy20150501',
+     * 'AppGwSslPolicy20170401', 'AppGwSslPolicy20170401S'
+     *
+     * @param {array} [parameters.sslPolicy.cipherSuites] Ssl cipher suites to be
+     * enabled in the specified order to application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.minProtocolVersion] Minimum version of
+     * Ssl protocol to be supported on application gateway. Possible values
+     * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
      * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
      * the gateway resource.
@@ -310,6 +341,9 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
+     *
+     * @param {array} [parameters.redirectConfigurations] Redirect configurations
+     * of the application gateway resource.
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -727,6 +761,167 @@ export interface ApplicationGateways {
 
 
     /**
+     * Lists available Ssl options for configuring Ssl policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableSslOptions>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    availableSslOptionsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableSslOptions>>;
+
+    /**
+     * Lists available Ssl options for configuring Ssl policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableSslOptions} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableSslOptions} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationGatewayAvailableSslOptions} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    availableSslOptions(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableSslOptions>;
+    availableSslOptions(callback: ServiceCallback<models.ApplicationGatewayAvailableSslOptions>): void;
+    availableSslOptions(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableSslOptions>): void;
+
+
+    /**
+     * Lists all SSL predefined policies for configuring Ssl policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableSslPredefinedPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableSslPredefinedPoliciesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableSslPredefinedPolicies>>;
+
+    /**
+     * Lists all SSL predefined policies for configuring Ssl policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableSslPredefinedPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableSslPredefinedPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableSslPredefinedPolicies} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableSslPredefinedPolicies(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableSslPredefinedPolicies>;
+    listAvailableSslPredefinedPolicies(callback: ServiceCallback<models.ApplicationGatewayAvailableSslPredefinedPolicies>): void;
+    listAvailableSslPredefinedPolicies(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableSslPredefinedPolicies>): void;
+
+
+    /**
+     * Gets Ssl predefined policy with the specified policy name.
+     *
+     * @param {string} predefinedPolicyName Name of Ssl predefined policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewaySslPredefinedPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSslPredefinedPolicyWithHttpOperationResponse(predefinedPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewaySslPredefinedPolicy>>;
+
+    /**
+     * Gets Ssl predefined policy with the specified policy name.
+     *
+     * @param {string} predefinedPolicyName Name of Ssl predefined policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewaySslPredefinedPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewaySslPredefinedPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationGatewaySslPredefinedPolicy} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSslPredefinedPolicy(predefinedPolicyName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewaySslPredefinedPolicy>;
+    getSslPredefinedPolicy(predefinedPolicyName: string, callback: ServiceCallback<models.ApplicationGatewaySslPredefinedPolicy>): void;
+    getSslPredefinedPolicy(predefinedPolicyName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewaySslPredefinedPolicy>): void;
+
+
+    /**
      * Deletes the specified application gateway.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -809,8 +1004,22 @@ export interface ApplicationGateways {
      * @param {object} [parameters.sslPolicy] SSL policy of the application gateway
      * resource.
      *
-     * @param {array} [parameters.sslPolicy.disabledSslProtocols] SSL protocols to
+     * @param {array} [parameters.sslPolicy.disabledSslProtocols] Ssl protocols to
      * be disabled on application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.policyType] Type of Ssl Policy.
+     * Possible values include: 'Predefined', 'Custom'
+     *
+     * @param {string} [parameters.sslPolicy.policyName] Name of Ssl predefined
+     * policy. Possible values include: 'AppGwSslPolicy20150501',
+     * 'AppGwSslPolicy20170401', 'AppGwSslPolicy20170401S'
+     *
+     * @param {array} [parameters.sslPolicy.cipherSuites] Ssl cipher suites to be
+     * enabled in the specified order to application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.minProtocolVersion] Minimum version of
+     * Ssl protocol to be supported on application gateway. Possible values
+     * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
      * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
      * the gateway resource.
@@ -844,6 +1053,9 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
+     *
+     * @param {array} [parameters.redirectConfigurations] Redirect configurations
+     * of the application gateway resource.
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -921,8 +1133,22 @@ export interface ApplicationGateways {
      * @param {object} [parameters.sslPolicy] SSL policy of the application gateway
      * resource.
      *
-     * @param {array} [parameters.sslPolicy.disabledSslProtocols] SSL protocols to
+     * @param {array} [parameters.sslPolicy.disabledSslProtocols] Ssl protocols to
      * be disabled on application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.policyType] Type of Ssl Policy.
+     * Possible values include: 'Predefined', 'Custom'
+     *
+     * @param {string} [parameters.sslPolicy.policyName] Name of Ssl predefined
+     * policy. Possible values include: 'AppGwSslPolicy20150501',
+     * 'AppGwSslPolicy20170401', 'AppGwSslPolicy20170401S'
+     *
+     * @param {array} [parameters.sslPolicy.cipherSuites] Ssl cipher suites to be
+     * enabled in the specified order to application gateway.
+     *
+     * @param {string} [parameters.sslPolicy.minProtocolVersion] Minimum version of
+     * Ssl protocol to be supported on application gateway. Possible values
+     * include: 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
      *
      * @param {array} [parameters.gatewayIPConfigurations] Subnets of application
      * the gateway resource.
@@ -956,6 +1182,9 @@ export interface ApplicationGateways {
      *
      * @param {array} [parameters.requestRoutingRules] Request routing rules of the
      * application gateway resource.
+     *
+     * @param {array} [parameters.redirectConfigurations] Redirect configurations
+     * of the application gateway resource.
      *
      * @param {object} [parameters.webApplicationFirewallConfiguration] Web
      * application firewall configuration.
@@ -1325,6 +1554,65 @@ export interface ApplicationGateways {
     listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayListResult>;
     listAllNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationGatewayListResult>): void;
     listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayListResult>): void;
+
+
+    /**
+     * Lists all SSL predefined policies for configuring Ssl policy.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationGatewayAvailableSslPredefinedPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAvailableSslPredefinedPoliciesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableSslPredefinedPolicies>>;
+
+    /**
+     * Lists all SSL predefined policies for configuring Ssl policy.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationGatewayAvailableSslPredefinedPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationGatewayAvailableSslPredefinedPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      ApplicationGatewayAvailableSslPredefinedPolicies} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAvailableSslPredefinedPoliciesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableSslPredefinedPolicies>;
+    listAvailableSslPredefinedPoliciesNext(nextPageLink: string, callback: ServiceCallback<models.ApplicationGatewayAvailableSslPredefinedPolicies>): void;
+    listAvailableSslPredefinedPoliciesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableSslPredefinedPolicies>): void;
 }
 
 /**
@@ -16411,6 +16699,9 @@ export interface VirtualNetworkGateways {
      * [parameters.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
      *
+     * @param {array} [parameters.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
+     *
      * @param {object} [parameters.bgpSettings] Virtual network gateway's BGP
      * speaker settings.
      *
@@ -16514,6 +16805,9 @@ export interface VirtualNetworkGateways {
      * @param {array}
      * [parameters.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
+     *
+     * @param {array} [parameters.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
      *
      * @param {object} [parameters.bgpSettings] Virtual network gateway's BGP
      * speaker settings.
@@ -16828,9 +17122,22 @@ export interface VirtualNetworkGateways {
      * @param {object} parameters Parameters supplied to the generate virtual
      * network gateway VPN client package operation.
      *
-     * @param {string} parameters.processorArchitecture VPN client Processor
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
      * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
      * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16857,9 +17164,22 @@ export interface VirtualNetworkGateways {
      * @param {object} parameters Parameters supplied to the generate virtual
      * network gateway VPN client package operation.
      *
-     * @param {string} parameters.processorArchitecture VPN client Processor
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
      * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
      * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16890,6 +17210,108 @@ export interface VirtualNetworkGateways {
     generatevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
     generatevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, callback: ServiceCallback<string>): void;
     generatevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+    /**
+     * Generates VPN profile for P2S client of the virtual network gateway in the
+     * specified resource group. Used for IKEV2 and radius based authentication.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate virtual
+     * network gateway VPN client package operation.
+     *
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
+     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
+     * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    generateVpnProfileWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Generates VPN profile for P2S client of the virtual network gateway in the
+     * specified resource group. Used for IKEV2 and radius based authentication.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate virtual
+     * network gateway VPN client package operation.
+     *
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
+     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
+     * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    generateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    generateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, callback: ServiceCallback<string>): void;
+    generateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
@@ -17160,6 +17582,9 @@ export interface VirtualNetworkGateways {
      * [parameters.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
      *
+     * @param {array} [parameters.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
+     *
      * @param {object} [parameters.bgpSettings] Virtual network gateway's BGP
      * speaker settings.
      *
@@ -17263,6 +17688,9 @@ export interface VirtualNetworkGateways {
      * @param {array}
      * [parameters.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
+     *
+     * @param {array} [parameters.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
      *
      * @param {object} [parameters.bgpSettings] Virtual network gateway's BGP
      * speaker settings.
@@ -17446,6 +17874,210 @@ export interface VirtualNetworkGateways {
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGateway>;
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, options: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
+
+
+    /**
+     * Generates VPN client package for P2S client of the virtual network gateway
+     * in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate virtual
+     * network gateway VPN client package operation.
+     *
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
+     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
+     * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginGeneratevpnclientpackageWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Generates VPN client package for P2S client of the virtual network gateway
+     * in the specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate virtual
+     * network gateway VPN client package operation.
+     *
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
+     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
+     * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGeneratevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    beginGeneratevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, callback: ServiceCallback<string>): void;
+    beginGeneratevpnclientpackage(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+    /**
+     * Generates VPN profile for P2S client of the virtual network gateway in the
+     * specified resource group. Used for IKEV2 and radius based authentication.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate virtual
+     * network gateway VPN client package operation.
+     *
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
+     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
+     * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginGenerateVpnProfileWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Generates VPN profile for P2S client of the virtual network gateway in the
+     * specified resource group. Used for IKEV2 and radius based authentication.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} parameters Parameters supplied to the generate virtual
+     * network gateway VPN client package operation.
+     *
+     * @param {string} [parameters.processorArchitecture] VPN client Processor
+     * Architecture. Possible values are: 'AMD64' and 'X86'. Possible values
+     * include: 'Amd64', 'X86'
+     *
+     * @param {string} [parameters.authenticationMethod] VPN client Authentication
+     * Method. Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values
+     * include: 'EAPTLS', 'EAPMSCHAPv2'
+     *
+     * @param {string} [parameters.radiusServerAuthCertificate] The public
+     * certificate data for the radius server authentication certificate as a
+     * Base-64 encoded string. Required only if external radius authentication has
+     * been configured with EAPTLS authentication.
+     *
+     * @param {array} [parameters.clientRootCertificates] A list of client root
+     * certificates public certificate data encoded as Base-64 strings. Optional
+     * parameter for external radius based authentication with EAPTLS.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGenerateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    beginGenerateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, callback: ServiceCallback<string>): void;
+    beginGenerateVpnProfile(resourceGroupName: string, virtualNetworkGatewayName: string, parameters: models.VpnClientParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
 
 
     /**
@@ -17787,6 +18419,10 @@ export interface VirtualNetworkGatewayConnections {
      * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
      *
+     * @param {array}
+     * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
+     *
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.
      *
@@ -17957,6 +18593,10 @@ export interface VirtualNetworkGatewayConnections {
      * @param {array}
      * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
+     *
+     * @param {array}
+     * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
      *
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.
@@ -18557,6 +19197,10 @@ export interface VirtualNetworkGatewayConnections {
      * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
      *
+     * @param {array}
+     * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
+     *
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.
      *
@@ -18727,6 +19371,10 @@ export interface VirtualNetworkGatewayConnections {
      * @param {array}
      * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientRevokedCertificates]
      * VpnClientRevokedCertificate for Virtual network gateway.
+     *
+     * @param {array}
+     * [parameters.virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
+     * VpnClientProtocols for Virtual network gateway.
      *
      * @param {object} [parameters.virtualNetworkGateway2.bgpSettings] Virtual
      * network gateway's BGP speaker settings.

@@ -1419,6 +1419,8 @@ export interface ApplicationGatewayBackendAddress {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayBackendAddressPool extends SubResource {
   backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
@@ -1426,6 +1428,7 @@ export interface ApplicationGatewayBackendAddressPool extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1472,10 +1475,6 @@ export interface ApplicationGatewayConnectionDraining {
  * @member {array} [authenticationCertificates] Array of references to
  * application gateway authentication certificates.
  *
- * @member {string} [provisioningState] Provisioning state of the backend http
- * settings resource. Possible values are: 'Updating', 'Deleting', and
- * 'Failed'.
- *
  * @member {object} [connectionDraining] Connection draining of the backend
  * http settings resource.
  *
@@ -1486,11 +1485,32 @@ export interface ApplicationGatewayConnectionDraining {
  * seconds connection draining is active. Acceptable values are from 1 second
  * to 3600 seconds.
  *
+ * @member {string} [hostName] Host header to be sent to the backend servers.
+ *
+ * @member {boolean} [pickHostNameFromBackendAddress] Whether to pick host
+ * header should be picked from the host name of the backend server. Default
+ * value is false.
+ *
+ * @member {string} [affinityCookieName] Cookie name to use for the affinity
+ * cookie.
+ *
+ * @member {boolean} [probeEnabled] Whether the probe is enabled. Default value
+ * is false.
+ *
+ * @member {string} [path] Path which should be used as a prefix for all HTTP
+ * requests. Null means no path will be prefixed. Default value is null.
+ *
+ * @member {string} [provisioningState] Provisioning state of the backend http
+ * settings resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ *
  * @member {string} [name] Name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  *
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
+ *
+ * @member {string} [type] Type of the resource.
  *
  */
 export interface ApplicationGatewayBackendHttpSettings extends SubResource {
@@ -1500,10 +1520,16 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
   requestTimeout?: number;
   probe?: SubResource;
   authenticationCertificates?: SubResource[];
-  provisioningState?: string;
   connectionDraining?: ApplicationGatewayConnectionDraining;
+  hostName?: string;
+  pickHostNameFromBackendAddress?: boolean;
+  affinityCookieName?: string;
+  probeEnabled?: boolean;
+  path?: string;
+  provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1517,7 +1543,259 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {object} [ipConfiguration] Reference of IP configuration of backend
  * server.
  *
- * @member {string} [ipConfiguration.id] Resource ID.
+ * @member {array} [ipConfiguration.applicationGatewayBackendAddressPools] The
+ * reference of ApplicationGatewayBackendAddressPool resource.
+ *
+ * @member {array} [ipConfiguration.loadBalancerBackendAddressPools] The
+ * reference of LoadBalancerBackendAddressPool resource.
+ *
+ * @member {array} [ipConfiguration.loadBalancerInboundNatRules] A list of
+ * references of LoadBalancerInboundNatRules.
+ *
+ * @member {string} [ipConfiguration.privateIPAddress]
+ *
+ * @member {string} [ipConfiguration.privateIPAllocationMethod] Defines how a
+ * private IP address is assigned. Possible values are: 'Static' and 'Dynamic'.
+ * Possible values include: 'Static', 'Dynamic'
+ *
+ * @member {string} [ipConfiguration.privateIPAddressVersion] Available from
+ * Api-Version 2016-03-30 onwards, it represents whether the specific
+ * ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values
+ * are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4', 'IPv6'
+ *
+ * @member {object} [ipConfiguration.subnet]
+ *
+ * @member {string} [ipConfiguration.subnet.addressPrefix] The address prefix
+ * for the subnet.
+ *
+ * @member {object} [ipConfiguration.subnet.networkSecurityGroup] The reference
+ * of the NetworkSecurityGroup resource.
+ *
+ * @member {array} [ipConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ *
+ * @member {array}
+ * [ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules] The
+ * default security rules of network security group.
+ *
+ * @member {array}
+ * [ipConfiguration.subnet.networkSecurityGroup.networkInterfaces] A collection
+ * of references to network interfaces.
+ *
+ * @member {array} [ipConfiguration.subnet.networkSecurityGroup.subnets] A
+ * collection of references to subnets.
+ *
+ * @member {string} [ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ *
+ * @member {string}
+ * [ipConfiguration.subnet.networkSecurityGroup.provisioningState] The
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ *
+ * @member {string} [ipConfiguration.subnet.networkSecurityGroup.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ *
+ * @member {object} [ipConfiguration.subnet.routeTable] The reference of the
+ * RouteTable resource.
+ *
+ * @member {array} [ipConfiguration.subnet.routeTable.routes] Collection of
+ * routes contained within a route table.
+ *
+ * @member {array} [ipConfiguration.subnet.routeTable.subnets] A collection of
+ * references to subnets.
+ *
+ * @member {string} [ipConfiguration.subnet.routeTable.provisioningState] The
+ * provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ *
+ * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated.
+ *
+ * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
+ * references to the network interface IP configurations using subnet.
+ *
+ * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
+ * array of references to the external resources using subnet.
+ *
+ * @member {string} [ipConfiguration.subnet.provisioningState] The provisioning
+ * state of the resource.
+ *
+ * @member {string} [ipConfiguration.subnet.name] The name of the resource that
+ * is unique within a resource group. This name can be used to access the
+ * resource.
+ *
+ * @member {string} [ipConfiguration.subnet.etag] A unique read-only string
+ * that changes whenever the resource is updated.
+ *
+ * @member {boolean} [ipConfiguration.primary] Gets whether this is a primary
+ * customer address on the network interface.
+ *
+ * @member {object} [ipConfiguration.publicIPAddress]
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPAllocationMethod]
+ * The public IP allocation method. Possible values are: 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPAddressVersion]
+ * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+ * Possible values include: 'IPv4', 'IPv6'
+ *
+ * @member {object} [ipConfiguration.publicIPAddress.ipConfiguration]
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.privateIPAddress] The
+ * private IP address of the IP configuration.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.privateIPAllocationMethod]
+ * The private IP allocation method. Possible values are 'Static' and
+ * 'Dynamic'. Possible values include: 'Static', 'Dynamic'
+ *
+ * @member {object} [ipConfiguration.publicIPAddress.ipConfiguration.subnet]
+ * The reference of the subnet resource.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.addressPrefix] The
+ * address prefix for the subnet.
+ *
+ * @member {object}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup]
+ * The reference of the NetworkSecurityGroup resource.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.securityRules]
+ * A collection of security rules of the network security group.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.defaultSecurityRules]
+ * The default security rules of network security group.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.networkInterfaces]
+ * A collection of references to network interfaces.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.subnets]
+ * A collection of references to subnets.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.resourceGuid]
+ * The resource GUID property of the network security group resource.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.provisioningState]
+ * The provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.networkSecurityGroup.etag]
+ * A unique read-only string that changes whenever the resource is updated.
+ *
+ * @member {object}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable] The
+ * reference of the RouteTable resource.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.routes]
+ * Collection of routes contained within a route table.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.subnets]
+ * A collection of references to subnets.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.provisioningState]
+ * The provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
+ * Gets a unique read-only string that changes whenever the resource is
+ * updated.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
+ * Gets an array of references to the network interface IP configurations using
+ * subnet.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.resourceNavigationLinks]
+ * Gets an array of references to the external resources using subnet.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.provisioningState]
+ * The provisioning state of the resource.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.name] The name of
+ * the resource that is unique within a resource group. This name can be used
+ * to access the resource.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ *
+ * @member {object}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.publicIPAddress] The
+ * reference of the public IP resource.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.provisioningState] Gets the
+ * provisioning state of the public IP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.ipConfiguration.name] The
+ * name of the resource that is unique within a resource group. This name can
+ * be used to access the resource.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.ipConfiguration.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ *
+ * @member {object} [ipConfiguration.publicIPAddress.dnsSettings] The FQDN of
+ * the DNS record associated with the public IP address.
+ *
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.dnsSettings.domainNameLabel] Gets or sets
+ * the Domain name label.The concatenation of the domain name label and the
+ * regionalized DNS zone make up the fully qualified domain name associated
+ * with the public IP address. If a domain name label is specified, an A DNS
+ * record is created for the public IP in the Microsoft Azure DNS system.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.dnsSettings.fqdn] Gets the
+ * FQDN, Fully qualified domain name of the A DNS record associated with the
+ * public IP. This is the concatenation of the domainNameLabel and the
+ * regionalized DNS zone.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.dnsSettings.reverseFqdn]
+ * Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name
+ * that resolves to this public IP address. If the reverseFqdn is specified,
+ * then a PTR DNS record is created pointing from the IP address in the
+ * in-addr.arpa domain to the reverse FQDN.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.ipAddress]
+ *
+ * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
+ * idle timeout of the public IP address.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
+ * GUID property of the public IP resource.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.provisioningState] The
+ * provisioning state of the PublicIP resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ *
+ * @member {string} [ipConfiguration.publicIPAddress.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ *
+ * @member {string} [ipConfiguration.provisioningState]
+ *
+ * @member {string} [ipConfiguration.name] The name of the resource that is
+ * unique within a resource group. This name can be used to access the
+ * resource.
+ *
+ * @member {string} [ipConfiguration.etag] A unique read-only string that
+ * changes whenever the resource is updated.
  *
  * @member {string} [health] Health of backend server. Possible values include:
  * 'Unknown', 'Up', 'Down', 'Partial', 'Draining'
@@ -1525,7 +1803,7 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  */
 export interface ApplicationGatewayBackendHealthServer {
   address?: string;
-  ipConfiguration?: SubResource;
+  ipConfiguration?: NetworkInterfaceIPConfiguration;
   health?: string;
 }
 
@@ -1559,10 +1837,6 @@ export interface ApplicationGatewayBackendHealthServer {
  * @member {array} [backendHttpSettings.authenticationCertificates] Array of
  * references to application gateway authentication certificates.
  *
- * @member {string} [backendHttpSettings.provisioningState] Provisioning state
- * of the backend http settings resource. Possible values are: 'Updating',
- * 'Deleting', and 'Failed'.
- *
  * @member {object} [backendHttpSettings.connectionDraining] Connection
  * draining of the backend http settings resource.
  *
@@ -1573,12 +1847,35 @@ export interface ApplicationGatewayBackendHealthServer {
  * The number of seconds connection draining is active. Acceptable values are
  * from 1 second to 3600 seconds.
  *
+ * @member {string} [backendHttpSettings.hostName] Host header to be sent to
+ * the backend servers.
+ *
+ * @member {boolean} [backendHttpSettings.pickHostNameFromBackendAddress]
+ * Whether to pick host header should be picked from the host name of the
+ * backend server. Default value is false.
+ *
+ * @member {string} [backendHttpSettings.affinityCookieName] Cookie name to use
+ * for the affinity cookie.
+ *
+ * @member {boolean} [backendHttpSettings.probeEnabled] Whether the probe is
+ * enabled. Default value is false.
+ *
+ * @member {string} [backendHttpSettings.path] Path which should be used as a
+ * prefix for all HTTP requests. Null means no path will be prefixed. Default
+ * value is null.
+ *
+ * @member {string} [backendHttpSettings.provisioningState] Provisioning state
+ * of the backend http settings resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ *
  * @member {string} [backendHttpSettings.name] Name of the resource that is
  * unique within a resource group. This name can be used to access the
  * resource.
  *
  * @member {string} [backendHttpSettings.etag] A unique read-only string that
  * changes whenever the resource is updated.
+ *
+ * @member {string} [backendHttpSettings.type] Type of the resource.
  *
  * @member {array} [servers] List of ApplicationGatewayBackendHealthServer
  * resources.
@@ -1612,6 +1909,8 @@ export interface ApplicationGatewayBackendHealthHttpSettings {
  *
  * @member {string} [backendAddressPool.etag] A unique read-only string that
  * changes whenever the resource is updated.
+ *
+ * @member {string} [backendAddressPool.type] Type of the resource.
  *
  * @member {array} [backendHttpSettingsCollection] List of
  * ApplicationGatewayBackendHealthHttpSettings resources.
@@ -1662,14 +1961,32 @@ export interface ApplicationGatewaySku {
  * @class
  * Initializes a new instance of the ApplicationGatewaySslPolicy class.
  * @constructor
- * Application gateway SSL policy.
+ * Application Gateway Ssl policy.
  *
- * @member {array} [disabledSslProtocols] SSL protocols to be disabled on
+ * @member {array} [disabledSslProtocols] Ssl protocols to be disabled on
  * application gateway.
+ *
+ * @member {string} [policyType] Type of Ssl Policy. Possible values include:
+ * 'Predefined', 'Custom'
+ *
+ * @member {string} [policyName] Name of Ssl predefined policy. Possible values
+ * include: 'AppGwSslPolicy20150501', 'AppGwSslPolicy20170401',
+ * 'AppGwSslPolicy20170401S'
+ *
+ * @member {array} [cipherSuites] Ssl cipher suites to be enabled in the
+ * specified order to application gateway.
+ *
+ * @member {string} [minProtocolVersion] Minimum version of Ssl protocol to be
+ * supported on application gateway. Possible values include: 'TLSv1_0',
+ * 'TLSv1_1', 'TLSv1_2'
  *
  */
 export interface ApplicationGatewaySslPolicy {
   disabledSslProtocols?: string[];
+  policyType?: string;
+  policyName?: string;
+  cipherSuites?: string[];
+  minProtocolVersion?: string;
 }
 
 /**
@@ -1694,12 +2011,15 @@ export interface ApplicationGatewaySslPolicy {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayIPConfiguration extends SubResource {
   subnet?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1720,12 +2040,15 @@ export interface ApplicationGatewayIPConfiguration extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayAuthenticationCertificate extends SubResource {
   data?: string;
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1753,6 +2076,8 @@ export interface ApplicationGatewayAuthenticationCertificate extends SubResource
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewaySslCertificate extends SubResource {
   data?: string;
@@ -1761,6 +2086,7 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1792,6 +2118,8 @@ export interface ApplicationGatewaySslCertificate extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
   privateIPAddress?: string;
@@ -1801,6 +2129,7 @@ export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1820,12 +2149,15 @@ export interface ApplicationGatewayFrontendIPConfiguration extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayFrontendPort extends SubResource {
   port?: number;
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1866,6 +2198,8 @@ export interface ApplicationGatewayFrontendPort extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayHttpListener extends SubResource {
   frontendIPConfiguration?: SubResource;
@@ -1877,6 +2211,7 @@ export interface ApplicationGatewayHttpListener extends SubResource {
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1888,14 +2223,19 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * @member {array} [paths] Path rules of URL path map.
  *
  * @member {object} [backendAddressPool] Backend address pool resource of URL
- * path map.
+ * path map path rule.
  *
  * @member {string} [backendAddressPool.id] Resource ID.
  *
  * @member {object} [backendHttpSettings] Backend http settings resource of URL
- * path map.
+ * path map path rule.
  *
  * @member {string} [backendHttpSettings.id] Resource ID.
+ *
+ * @member {object} [redirectConfiguration] Redirect configuration resource of
+ * URL path map path rule.
+ *
+ * @member {string} [redirectConfiguration.id] Resource ID.
  *
  * @member {string} [provisioningState] Path rule of URL path map resource.
  * Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -1906,14 +2246,36 @@ export interface ApplicationGatewayHttpListener extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayPathRule extends SubResource {
   paths?: string[];
   backendAddressPool?: SubResource;
   backendHttpSettings?: SubResource;
+  redirectConfiguration?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayProbeHealthResponseMatch class.
+ * @constructor
+ * Application gateway probe health response match
+ *
+ * @member {string} [body] Body that must be contained in the health response.
+ * Default value is empty.
+ *
+ * @member {array} [statusCodes] Allowed ranges of healthy status codes.
+ * Default range of healthy status codes is 200-399.
+ *
+ */
+export interface ApplicationGatewayProbeHealthResponseMatch {
+  body?: string;
+  statusCodes?: string[];
 }
 
 /**
@@ -1942,6 +2304,21 @@ export interface ApplicationGatewayPathRule extends SubResource {
  * is marked down after consecutive probe failure count reaches
  * UnhealthyThreshold. Acceptable values are from 1 second to 20.
  *
+ * @member {boolean} [pickHostNameFromBackendHttpSettings] Whether the host
+ * header should be picked from the backend http settings. Default value is
+ * false.
+ *
+ * @member {number} [minServers] Minimum number of servers that are always
+ * marked healthy. Default value is 0.
+ *
+ * @member {object} [match] Criterion for classifying a healthy probe response.
+ *
+ * @member {string} [match.body] Body that must be contained in the health
+ * response. Default value is empty.
+ *
+ * @member {array} [match.statusCodes] Allowed ranges of healthy status codes.
+ * Default range of healthy status codes is 200-399.
+ *
  * @member {string} [provisioningState] Provisioning state of the backend http
  * settings resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -1952,6 +2329,8 @@ export interface ApplicationGatewayPathRule extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayProbe extends SubResource {
   protocol?: string;
@@ -1960,9 +2339,13 @@ export interface ApplicationGatewayProbe extends SubResource {
   interval?: number;
   timeout?: number;
   unhealthyThreshold?: number;
+  pickHostNameFromBackendHttpSettings?: boolean;
+  minServers?: number;
+  match?: ApplicationGatewayProbeHealthResponseMatch;
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -1994,6 +2377,11 @@ export interface ApplicationGatewayProbe extends SubResource {
  *
  * @member {string} [urlPathMap.id] Resource ID.
  *
+ * @member {object} [redirectConfiguration] Redirect configuration resource of
+ * the application gateway.
+ *
+ * @member {string} [redirectConfiguration.id] Resource ID.
+ *
  * @member {string} [provisioningState] Provisioning state of the request
  * routing rule resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -2004,6 +2392,8 @@ export interface ApplicationGatewayProbe extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayRequestRoutingRule extends SubResource {
   ruleType?: string;
@@ -2011,9 +2401,64 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
   backendHttpSettings?: SubResource;
   httpListener?: SubResource;
   urlPathMap?: SubResource;
+  redirectConfiguration?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayRedirectConfiguration class.
+ * @constructor
+ * Redirect configuration of an application gateway.
+ *
+ * @member {string} [redirectType] Supported http redirection types -
+ * Permanent, Temporary, Found, SeeOther. Possible values include: 'Permanent',
+ * 'Found', 'SeeOther', 'Temporary'
+ *
+ * @member {object} [targetListener] Reference to a listener to redirect the
+ * request to.
+ *
+ * @member {string} [targetListener.id] Resource ID.
+ *
+ * @member {string} [targetUrl] Url to redirect the request to.
+ *
+ * @member {boolean} [includePath] Include path in the redirected url.
+ *
+ * @member {boolean} [includeQueryString] Include query string in the
+ * redirected url.
+ *
+ * @member {array} [requestRoutingRules] Request routing specifying redirect
+ * configuration.
+ *
+ * @member {array} [urlPathMaps] Url path maps specifying default redirect
+ * configuration.
+ *
+ * @member {array} [pathRules] Path rules specifying redirect configuration.
+ *
+ * @member {string} [name] Name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ *
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ *
+ * @member {string} [type] Type of the resource.
+ *
+ */
+export interface ApplicationGatewayRedirectConfiguration extends SubResource {
+  redirectType?: string;
+  targetListener?: SubResource;
+  targetUrl?: string;
+  includePath?: boolean;
+  includeQueryString?: boolean;
+  requestRoutingRules?: SubResource[];
+  urlPathMaps?: SubResource[];
+  pathRules?: SubResource[];
+  name?: string;
+  etag?: string;
+  type?: string;
 }
 
 /**
@@ -2033,6 +2478,11 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
  *
  * @member {string} [defaultBackendHttpSettings.id] Resource ID.
  *
+ * @member {object} [defaultRedirectConfiguration] Default redirect
+ * configuration resource of URL path map.
+ *
+ * @member {string} [defaultRedirectConfiguration.id] Resource ID.
+ *
  * @member {array} [pathRules] Path rule of URL path map resource.
  *
  * @member {string} [provisioningState] Provisioning state of the backend http
@@ -2045,14 +2495,18 @@ export interface ApplicationGatewayRequestRoutingRule extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  *
+ * @member {string} [type] Type of the resource.
+ *
  */
 export interface ApplicationGatewayUrlPathMap extends SubResource {
   defaultBackendAddressPool?: SubResource;
   defaultBackendHttpSettings?: SubResource;
+  defaultRedirectConfiguration?: SubResource;
   pathRules?: ApplicationGatewayPathRule[];
   provisioningState?: string;
   name?: string;
   etag?: string;
+  type?: string;
 }
 
 /**
@@ -2121,8 +2575,22 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  *
  * @member {object} [sslPolicy] SSL policy of the application gateway resource.
  *
- * @member {array} [sslPolicy.disabledSslProtocols] SSL protocols to be
+ * @member {array} [sslPolicy.disabledSslProtocols] Ssl protocols to be
  * disabled on application gateway.
+ *
+ * @member {string} [sslPolicy.policyType] Type of Ssl Policy. Possible values
+ * include: 'Predefined', 'Custom'
+ *
+ * @member {string} [sslPolicy.policyName] Name of Ssl predefined policy.
+ * Possible values include: 'AppGwSslPolicy20150501', 'AppGwSslPolicy20170401',
+ * 'AppGwSslPolicy20170401S'
+ *
+ * @member {array} [sslPolicy.cipherSuites] Ssl cipher suites to be enabled in
+ * the specified order to application gateway.
+ *
+ * @member {string} [sslPolicy.minProtocolVersion] Minimum version of Ssl
+ * protocol to be supported on application gateway. Possible values include:
+ * 'TLSv1_0', 'TLSv1_1', 'TLSv1_2'
  *
  * @member {string} [operationalState] Operational state of the application
  * gateway resource. Possible values include: 'Stopped', 'Starting', 'Running',
@@ -2158,6 +2626,9 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * resource.
  *
  * @member {array} [requestRoutingRules] Request routing rules of the
+ * application gateway resource.
+ *
+ * @member {array} [redirectConfigurations] Redirect configurations of the
  * application gateway resource.
  *
  * @member {object} [webApplicationFirewallConfiguration] Web application
@@ -2204,6 +2675,7 @@ export interface ApplicationGateway extends Resource {
   httpListeners?: ApplicationGatewayHttpListener[];
   urlPathMaps?: ApplicationGatewayUrlPathMap[];
   requestRoutingRules?: ApplicationGatewayRequestRoutingRule[];
+  redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   resourceGuid?: string;
   provisioningState?: string;
@@ -2301,6 +2773,70 @@ export interface ApplicationGatewayFirewallRuleSet extends Resource {
  */
 export interface ApplicationGatewayAvailableWafRuleSetsResult {
   value?: ApplicationGatewayFirewallRuleSet[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAvailableSslOptions class.
+ * @constructor
+ * Response for ApplicationGatewayAvailableSslOptions API service call.
+ *
+ * @member {array} [predefinedPolicies] List of available Ssl predefined
+ * policy.
+ *
+ * @member {string} [defaultPolicy] Name of the Ssl predefined policy applied
+ * by default to application gateway. Possible values include:
+ * 'AppGwSslPolicy20150501', 'AppGwSslPolicy20170401',
+ * 'AppGwSslPolicy20170401S'
+ *
+ * @member {array} [availableCipherSuites] List of available Ssl cipher suites.
+ *
+ * @member {array} [availableProtocols] List of available Ssl protocols.
+ *
+ */
+export interface ApplicationGatewayAvailableSslOptions extends Resource {
+  predefinedPolicies?: SubResource[];
+  defaultPolicy?: string;
+  availableCipherSuites?: string[];
+  availableProtocols?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewaySslPredefinedPolicy class.
+ * @constructor
+ * An Ssl predefined policy
+ *
+ * @member {string} [name] Name of Ssl predefined policy.
+ *
+ * @member {array} [cipherSuites] Ssl cipher suites to be enabled in the
+ * specified order for application gateway.
+ *
+ * @member {string} [minProtocolVersion] Minimum version of Ssl protocol to be
+ * supported on application gateway. Possible values include: 'TLSv1_0',
+ * 'TLSv1_1', 'TLSv1_2'
+ *
+ */
+export interface ApplicationGatewaySslPredefinedPolicy extends SubResource {
+  name?: string;
+  cipherSuites?: string[];
+  minProtocolVersion?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAvailableSslPredefinedPolicies class.
+ * @constructor
+ * Response for ApplicationGatewayAvailableSslOptions API service call.
+ *
+ * @member {array} [value] List of available Ssl predefined policy.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ *
+ */
+export interface ApplicationGatewayAvailableSslPredefinedPolicies {
+  value?: ApplicationGatewaySslPredefinedPolicy[];
+  nextLink?: string;
 }
 
 /**
@@ -5363,11 +5899,15 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * @member {array} [vpnClientRevokedCertificates] VpnClientRevokedCertificate
  * for Virtual network gateway.
  *
+ * @member {array} [vpnClientProtocols] VpnClientProtocols for Virtual network
+ * gateway.
+ *
  */
 export interface VpnClientConfiguration {
   vpnClientAddressPool?: AddressSpace;
   vpnClientRootCertificates?: VpnClientRootCertificate[];
   vpnClientRevokedCertificates?: VpnClientRevokedCertificate[];
+  vpnClientProtocols?: string[];
 }
 
 /**
@@ -5518,6 +6058,9 @@ export interface GatewayRoute {
  * @member {array} [vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
  *
+ * @member {array} [vpnClientConfiguration.vpnClientProtocols]
+ * VpnClientProtocols for Virtual network gateway.
+ *
  * @member {object} [bgpSettings] Virtual network gateway's BGP speaker
  * settings.
  *
@@ -5561,13 +6104,29 @@ export interface VirtualNetworkGateway extends Resource {
  * @constructor
  * Vpn Client Parameters for package generation
  *
- * @member {string} processorArchitecture VPN client Processor Architecture.
+ * @member {string} [processorArchitecture] VPN client Processor Architecture.
  * Possible values are: 'AMD64' and 'X86'. Possible values include: 'Amd64',
  * 'X86'
  *
+ * @member {string} [authenticationMethod] VPN client Authentication Method.
+ * Possible values are: 'EAPTLS' and 'EAPMSCHAPv2'. Possible values include:
+ * 'EAPTLS', 'EAPMSCHAPv2'
+ *
+ * @member {string} [radiusServerAuthCertificate] The public certificate data
+ * for the radius server authentication certificate as a Base-64 encoded
+ * string. Required only if external radius authentication has been configured
+ * with EAPTLS authentication.
+ *
+ * @member {array} [clientRootCertificates] A list of client root certificates
+ * public certificate data encoded as Base-64 strings. Optional parameter for
+ * external radius based authentication with EAPTLS.
+ *
  */
 export interface VpnClientParameters {
-  processorArchitecture: string;
+  processorArchitecture?: string;
+  authenticationMethod?: string;
+  radiusServerAuthCertificate?: string;
+  clientRootCertificates?: string[];
 }
 
 /**
@@ -5803,6 +6362,10 @@ export interface IpsecPolicy {
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
  *
+ * @member {array}
+ * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientProtocols]
+ * VpnClientProtocols for Virtual network gateway.
+ *
  * @member {object} [virtualNetworkGateway1.bgpSettings] Virtual network
  * gateway's BGP speaker settings.
  *
@@ -5884,6 +6447,10 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientRevokedCertificates]
  * VpnClientRevokedCertificate for Virtual network gateway.
+ *
+ * @member {array}
+ * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
+ * VpnClientProtocols for Virtual network gateway.
  *
  * @member {object} [virtualNetworkGateway2.bgpSettings] Virtual network
  * gateway's BGP speaker settings.
@@ -6081,6 +6648,22 @@ export interface LocalNetworkGatewayListResult {
  */
 export interface ApplicationGatewayListResult {
   value?: ApplicationGateway[];
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAvailableSslPredefinedPolicies class.
+ * @constructor
+ * Response for ApplicationGatewayAvailableSslOptions API service call.
+ *
+ * @member {array} [value] List of available Ssl predefined policy.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ *
+ */
+export interface ApplicationGatewayAvailableSslPredefinedPolicies {
+  value?: ApplicationGatewaySslPredefinedPolicy[];
   nextLink?: string;
 }
 
@@ -6483,6 +7066,19 @@ export interface LocalNetworkGatewayListResult {
  *
  */
 export interface ApplicationGatewayListResult extends Array<ApplicationGateway> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAvailableSslPredefinedPolicies class.
+ * @constructor
+ * Response for ApplicationGatewayAvailableSslOptions API service call.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ *
+ */
+export interface ApplicationGatewayAvailableSslPredefinedPolicies extends Array<ApplicationGatewaySslPredefinedPolicy> {
   nextLink?: string;
 }
 
