@@ -1,4 +1,5 @@
 common/framework-tests.js
+runtimeTests/rpRegistrationFilterTest.js
 services/computeManagement/computeManagementClient-tests.js
 services/computeManagement/diskManagementClient-tests.js
 services/resourceManagement/resourceManagementClient-tests.js
