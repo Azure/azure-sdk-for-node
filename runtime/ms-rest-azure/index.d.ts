@@ -2,16 +2,27 @@ import * as msRest from 'ms-rest';
 
 export interface AzureServiceClientOptions extends msRest.ServiceClientOptions {
   /**
-   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for 
+   * @property {number} [longRunningOperationRetryTimeout] - The retry timeout in seconds for 
    * Long Running Operations. Default value is 30 seconds.
    */
   longRunningOperationRetryTimeout?: number;
 
   /**
-   * @param {number} [options.rpRegistrationRetryTimeout] - Gets or sets the retry timeout in seconds for 
+   * @property {number} [rpRegistrationRetryTimeout] - Gets or sets the retry timeout in seconds for 
    * AutomaticRPRegistration. Default value is 30 seconds.
    */
   rpRegistrationRetryTimeout?: number;
+
+  /**
+   * @property {string} [acceptLanguage] - Gets or sets the preferred language for the response. 
+   * Default value is: 'en-US'.
+   */
+  acceptLanguage?: string;
+  /**
+   * @property {boolean} [generateClientRequestId] - When set to true a unique x-ms-client-request-id value 
+   * is generated and included in each request. Default is true.
+   */
+  generateClientRequestId?: boolean;
 }
 
 export interface LongRunningPathTemplateBasedRequestPrepareOptions extends msRest.PathTemplateBasedRequestPrepareOptions {
