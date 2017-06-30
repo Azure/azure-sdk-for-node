@@ -1,3 +1,7 @@
+### 2.2.1 (4/29/2017)
+- Updated AzureServiceClientOptions type definitions.
+- Updated dependency of ms-rest to ^2.2.1.
+
 ### 2.2.0 (4/29/2017)
 - Added support for automatic RP registration by adding a filter in the request pipeline.
 
