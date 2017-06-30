@@ -4,7 +4,7 @@
   "contributors": [
     "Goldsmith, Benjamin <begoldsm@microsoft.com>"
   ],
-  "version": "2.0.2-preview",
+  "version": "2.1.0-preview",
   "description": "Microsoft Azure Data Lake Store Management Client Library for node",
   "tags": [
     "azure",
