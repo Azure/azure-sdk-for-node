@@ -4,14 +4,14 @@
  * license information.
  */
 
-import DataLakeAnalyticsAccountManagementClient = require('./account/dataLakeAnalyticsAccountManagementClient');
+import DataLakeAnalyticsAccountClient = require('./account/dataLakeAnalyticsAccountManagementClient');
 import * as AnalyticsAccountModels from './account/models';
 
-import DataLakeAnalyticsJobManagementClient = require('./job/dataLakeAnalyticsJobManagementClient');
+import DataLakeAnalyticsJobClient = require('./job/dataLakeAnalyticsJobManagementClient');
 import * as JobModels from './job/models';
 
-import DataLakeAnalyticsCatalogManagementClient = require('./catalog/dataLakeAnalyticsCatalogManagementClient');
+import DataLakeAnalyticsCatalogClient = require('./catalog/dataLakeAnalyticsCatalogManagementClient');
 import * as CatalogModels from './catalog/models';
 
 
-export { DataLakeAnalyticsAccountManagementClient, AnalyticsAccountModels, DataLakeAnalyticsJobManagementClient, JobModels, DataLakeAnalyticsCatalogManagementClient, CatalogModels };
+export { DataLakeAnalyticsAccountClient, AnalyticsAccountModels, DataLakeAnalyticsJobClient, JobModels, DataLakeAnalyticsCatalogClient, CatalogModels };
