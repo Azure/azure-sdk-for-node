@@ -3330,7 +3330,7 @@ export interface VirtualMachineScaleSet extends Resource {
   virtualMachineProfile?: VirtualMachineScaleSetVMProfile;
   readonly provisioningState?: string;
   overprovision?: boolean;
-  uniqueId?: string;
+  readonly uniqueId?: string;
   singlePlacementGroup?: boolean;
   identity?: VirtualMachineScaleSetIdentity;
 }
@@ -4453,6 +4453,9 @@ export interface AccessUri {
  * @constructor
  * Snapshot resource.
  *
+ * @member {string} [managedBy] A relative URI containing the ID of the VM that
+ * has the disk attached.
+ *
  * @member {object} [sku]
  *
  * @member {string} [sku.name] The sku name. Possible values include:
@@ -4535,6 +4538,7 @@ export interface AccessUri {
  *
  */
 export interface Snapshot extends Resource {
+  readonly managedBy?: string;
   sku?: DiskSku;
   readonly timeCreated?: Date;
   osType?: string;
