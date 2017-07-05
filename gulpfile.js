@@ -374,7 +374,7 @@ const mappings = {
   }
 };
 
-const defaultAutoRestVersion = '1.0.1-20170608-2300-nightly';
+const defaultAutoRestVersion = '1.1.0-20170704-2300-nightly --prerelease';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 const project = args['project'];
