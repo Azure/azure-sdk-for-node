@@ -151,6 +151,9 @@ export interface BackendAddressPool extends SubResource {
  * @member {string} [backendIPConfiguration.subnet.routeTable.etag] Gets a
  * unique read-only string that changes whenever the resource is updated.
  *
+ * @member {array} [backendIPConfiguration.subnet.privateAccessServices] An
+ * array of private access services values.
+ *
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  *
@@ -255,6 +258,10 @@ export interface BackendAddressPool extends SubResource {
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ *
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.privateAccessServices]
+ * An array of private access services values.
  *
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
@@ -711,6 +718,25 @@ export interface RouteTable extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the PrivateAccessServicePropertiesFormat class.
+ * @constructor
+ * The private access service properties.
+ *
+ * @member {string} [service] The type of the private access.
+ *
+ * @member {array} [locations] A list of locations.
+ *
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ *
+ */
+export interface PrivateAccessServicePropertiesFormat {
+  service?: string;
+  locations?: string[];
+  provisioningState?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddressDnsSettings class.
  * @constructor
  * Contains FQDN of the DNS record associated with the public IP address
@@ -809,6 +835,9 @@ export interface PublicIPAddressDnsSettings {
  *
  * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
+ *
+ * @member {array} [ipConfiguration.subnet.privateAccessServices] An array of
+ * private access services values.
  *
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
@@ -942,6 +971,9 @@ export interface PublicIPAddress extends Resource {
  *
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ *
+ * @member {array} [subnet.privateAccessServices] An array of private access
+ * services values.
  *
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
@@ -1100,6 +1132,9 @@ export interface ResourceNavigationLink extends SubResource {
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
  *
+ * @member {array} [privateAccessServices] An array of private access services
+ * values.
+ *
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  *
@@ -1119,6 +1154,7 @@ export interface Subnet extends SubResource {
   addressPrefix?: string;
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
+  privateAccessServices?: PrivateAccessServicePropertiesFormat[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   provisioningState?: string;
@@ -1196,6 +1232,9 @@ export interface Subnet extends SubResource {
  *
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
+ *
+ * @member {array} [subnet.privateAccessServices] An array of private access
+ * services values.
  *
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
@@ -1290,6 +1329,10 @@ export interface Subnet extends SubResource {
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ *
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.privateAccessServices] An array of
+ * private access services values.
  *
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -1612,6 +1655,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {string} [ipConfiguration.subnet.routeTable.etag] Gets a unique
  * read-only string that changes whenever the resource is updated.
  *
+ * @member {array} [ipConfiguration.subnet.privateAccessServices] An array of
+ * private access services values.
+ *
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  *
@@ -1713,6 +1759,10 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ *
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.privateAccessServices]
+ * An array of private access services values.
  *
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
@@ -2917,9 +2967,9 @@ export interface AuthorizationListResult {
  * 'Configured', and 'ValidationNeeded'. Possible values include:
  * 'NotConfigured', 'Configuring', 'Configured', 'ValidationNeeded'
  *
- * @member {number} [customerASN] The CustomerASN of the peering.
- *
  * @member {number} [legacyMode] The legacy mode of the peering.
+ *
+ * @member {number} [customerASN] The CustomerASN of the peering.
  *
  * @member {string} [routingRegistryName] The RoutingRegistryName of the
  * configuration.
@@ -2929,31 +2979,9 @@ export interface ExpressRouteCircuitPeeringConfig {
   advertisedPublicPrefixes?: string[];
   advertisedCommunities?: string[];
   advertisedPublicPrefixesState?: string;
-  customerASN?: number;
   legacyMode?: number;
+  customerASN?: number;
   routingRegistryName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressRouteCircuitStats class.
- * @constructor
- * Contains stats associated with the peering.
- *
- * @member {number} [primarybytesIn] Gets BytesIn of the peering.
- *
- * @member {number} [primarybytesOut] Gets BytesOut of the peering.
- *
- * @member {number} [secondarybytesIn] Gets BytesIn of the peering.
- *
- * @member {number} [secondarybytesOut] Gets BytesOut of the peering.
- *
- */
-export interface ExpressRouteCircuitStats {
-  primarybytesIn?: number;
-  primarybytesOut?: number;
-  secondarybytesIn?: number;
-  secondarybytesOut?: number;
 }
 
 /**
@@ -2990,6 +3018,28 @@ export interface RouteFilterRule extends SubResource {
   location?: string;
   readonly etag?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCircuitStats class.
+ * @constructor
+ * Contains stats associated with the peering.
+ *
+ * @member {number} [primarybytesIn] Gets BytesIn of the peering.
+ *
+ * @member {number} [primarybytesOut] Gets BytesOut of the peering.
+ *
+ * @member {number} [secondarybytesIn] Gets BytesIn of the peering.
+ *
+ * @member {number} [secondarybytesOut] Gets BytesOut of the peering.
+ *
+ */
+export interface ExpressRouteCircuitStats {
+  primarybytesIn?: number;
+  primarybytesOut?: number;
+  secondarybytesIn?: number;
+  secondarybytesOut?: number;
 }
 
 /**
@@ -3037,10 +3087,10 @@ export interface RouteFilterRule extends SubResource {
  * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
  * 'ValidationNeeded'
  *
- * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
+ * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
  * peering.
  *
- * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
+ * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
  * peering.
  *
  * @member {string} [microsoftPeeringConfig.routingRegistryName] The
@@ -3080,6 +3130,62 @@ export interface RouteFilterRule extends SubResource {
  * @member {string} [routeFilter.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
  *
+ * @member {object} [ipv6PeeringConfig] The IPv6 peering configuration.
+ *
+ * @member {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+ * address prefix.
+ *
+ * @member {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+ * secondary address prefix.
+ *
+ * @member {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
+ * peering configuration.
+ *
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ *
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ *
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ *
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+ * legacy mode of the peering.
+ *
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+ * CustomerASN of the peering.
+ *
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ *
+ * @member {object} [ipv6PeeringConfig.routeFilter] The reference of the
+ * RouteFilter resource.
+ *
+ * @member {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
+ * RouteFilterRules contained within a route filter.
+ *
+ * @member {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
+ * references to express route circuit peerings.
+ *
+ * @member {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
+ * provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', 'Succeeded' and 'Failed'.
+ *
+ * @member {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated.
+ *
+ * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
+ * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
+ * 'Enabled'
+ *
  * @member {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  *
@@ -3104,6 +3210,7 @@ export interface ExpressRouteCircuitPeering extends SubResource {
   gatewayManagerEtag?: string;
   lastModifiedBy?: string;
   routeFilter?: RouteFilter;
+  ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
   name?: string;
   readonly etag?: string;
 }
@@ -3132,6 +3239,67 @@ export interface RouteFilter extends Resource {
   readonly peerings?: ExpressRouteCircuitPeering[];
   readonly provisioningState?: string;
   readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Ipv6ExpressRouteCircuitPeeringConfig class.
+ * @constructor
+ * Contains IPv6 peering config.
+ *
+ * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
+ *
+ * @member {string} [secondaryPeerAddressPrefix] The secondary address prefix.
+ *
+ * @member {object} [microsoftPeeringConfig] The Microsoft peering
+ * configuration.
+ *
+ * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ *
+ * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ *
+ * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ *
+ * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
+ * peering.
+ *
+ * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
+ * peering.
+ *
+ * @member {string} [microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ *
+ * @member {object} [routeFilter] The reference of the RouteFilter resource.
+ *
+ * @member {array} [routeFilter.rules] Collection of RouteFilterRules contained
+ * within a route filter.
+ *
+ * @member {array} [routeFilter.peerings] A collection of references to express
+ * route circuit peerings.
+ *
+ * @member {string} [routeFilter.provisioningState] The provisioning state of
+ * the resource. Possible values are: 'Updating', 'Deleting', 'Succeeded' and
+ * 'Failed'.
+ *
+ * @member {string} [routeFilter.etag] Gets a unique read-only string that
+ * changes whenever the resource is updated.
+ *
+ * @member {string} [state] The state of peering. Possible values are:
+ * 'Disabled' and 'Enabled'. Possible values include: 'Disabled', 'Enabled'
+ *
+ */
+export interface Ipv6ExpressRouteCircuitPeeringConfig {
+  primaryPeerAddressPrefix?: string;
+  secondaryPeerAddressPrefix?: string;
+  microsoftPeeringConfig?: ExpressRouteCircuitPeeringConfig;
+  routeFilter?: RouteFilter;
+  state?: string;
 }
 
 /**
@@ -3525,6 +3693,9 @@ export interface ExpressRouteServiceProviderListResult {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  *
+ * @member {array} [subnet.privateAccessServices] An array of private access
+ * services values.
+ *
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  *
@@ -3615,6 +3786,10 @@ export interface ExpressRouteServiceProviderListResult {
  * @member {string} [publicIPAddress.ipConfiguration.subnet.routeTable.etag]
  * Gets a unique read-only string that changes whenever the resource is
  * updated.
+ *
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.privateAccessServices] An array of
+ * private access services values.
  *
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -6637,6 +6812,39 @@ export interface LocalNetworkGatewayListResult {
 
 /**
  * @class
+ * Initializes a new instance of the PrivateAccessServiceResult class.
+ * @constructor
+ * Private access service.
+ *
+ * @member {string} [name] Name of the private access value.
+ *
+ * @member {string} [type] Type of the private access value.
+ *
+ */
+export interface PrivateAccessServiceResult extends SubResource {
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrivateAccessServicesListResult class.
+ * @constructor
+ * Response for the ListAvailablePrivateAccessServices API service call.
+ *
+ * @member {array} [value] List of available private access service values in a
+ * region.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ *
+ */
+export interface PrivateAccessServicesListResult {
+  value?: PrivateAccessServiceResult[];
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGatewayListResult class.
  * @constructor
  * Response for ListApplicationGateways API service call.
@@ -7055,6 +7263,23 @@ export interface LocalNetworkGatewayListResult {
   nextLink?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the PrivateAccessServicesListResult class.
+ * @constructor
+ * Response for the ListAvailablePrivateAccessServices API service call.
+ *
+ * @member {array} [value] List of available private access service values in a
+ * region.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ *
+ */
+export interface PrivateAccessServicesListResult {
+  value?: PrivateAccessServiceResult[];
+  nextLink?: string;
+}
+
 
 /**
  * @class
@@ -7390,5 +7615,18 @@ export interface VirtualNetworkGatewayConnectionListResult extends Array<Virtual
  *
  */
 export interface LocalNetworkGatewayListResult extends Array<LocalNetworkGateway> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrivateAccessServicesListResult class.
+ * @constructor
+ * Response for the ListAvailablePrivateAccessServices API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ *
+ */
+export interface PrivateAccessServicesListResult extends Array<PrivateAccessServiceResult> {
   nextLink?: string;
 }

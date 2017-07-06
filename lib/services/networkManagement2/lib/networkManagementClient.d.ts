@@ -77,6 +77,7 @@ declare class NetworkManagementClient {
   virtualNetworkGateways: operations.VirtualNetworkGateways;
   virtualNetworkGatewayConnections: operations.VirtualNetworkGatewayConnections;
   localNetworkGateways: operations.LocalNetworkGateways;
+  availablePrivateAccessServices: operations.AvailablePrivateAccessServices;
 
 
   /**
