@@ -774,7 +774,7 @@ export interface ApplicationGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    availableSslOptionsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableSslOptions>>;
+    listAvailableSslOptionsWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationGatewayAvailableSslOptions>>;
 
     /**
      * Lists available Ssl options for configuring Ssl policy.
@@ -807,9 +807,9 @@ export interface ApplicationGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    availableSslOptions(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableSslOptions>;
-    availableSslOptions(callback: ServiceCallback<models.ApplicationGatewayAvailableSslOptions>): void;
-    availableSslOptions(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableSslOptions>): void;
+    listAvailableSslOptions(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationGatewayAvailableSslOptions>;
+    listAvailableSslOptions(callback: ServiceCallback<models.ApplicationGatewayAvailableSslOptions>): void;
+    listAvailableSslOptions(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationGatewayAvailableSslOptions>): void;
 
 
     /**
@@ -2319,31 +2319,6 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
      *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
-     * reference of AdvertisedPublicPrefixes.
-     *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
-     * communities of bgp peering. Spepcified for microsoft peering
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
-     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
-     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
-     * 'ValidationNeeded'
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
-     * CustomerASN of the peering.
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
-     * legacy mode of the peering.
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
-     * RoutingRegistryName of the configuration.
-     *
      * @param {object} [peeringParameters.stats] Gets peering stats.
      *
      * @param {number} [peeringParameters.stats.primarybytesIn] Gets BytesIn of the
@@ -2371,14 +2346,65 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.routeFilter] The reference of the
      * RouteFilter resource.
      *
-     * @param {array} [peeringParameters.routeFilter.rules] Collection of
-     * RouteFilterRules contained within a route filter.
+     * @param {object} [peeringParameters.ipv6PeeringConfig] The IPv6 peering
+     * configuration.
      *
-     * @param {string} [peeringParameters.routeFilter.id] Resource ID.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+     * address prefix.
      *
-     * @param {string} [peeringParameters.routeFilter.location] Resource location.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+     * secondary address prefix.
      *
-     * @param {object} [peeringParameters.routeFilter.tags] Resource tags.
+     * @param {object} [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig]
+     * The Microsoft peering configuration.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes]
+     * The reference of AdvertisedPublicPrefixes.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
+     * The communities of bgp peering. Spepcified for microsoft peering
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+     * 'ValidationNeeded'
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+     * CustomerASN of the peering.
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName]
+     * The RoutingRegistryName of the configuration.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter] The
+     * reference of the RouteFilter resource.
+     *
+     * @param {array} [peeringParameters.ipv6PeeringConfig.routeFilter.rules]
+     * Collection of RouteFilterRules contained within a route filter.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.id]
+     * Resource ID.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.location]
+     * Resource location.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter.tags]
+     * Resource tags.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.state] The state of
+     * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
+     * include: 'Disabled', 'Enabled'
      *
      * @param {string} [peeringParameters.name] Gets name of the resource that is
      * unique within a resource group. This name can be used to access the
@@ -2441,31 +2467,6 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
      *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
-     * reference of AdvertisedPublicPrefixes.
-     *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
-     * communities of bgp peering. Spepcified for microsoft peering
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
-     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
-     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
-     * 'ValidationNeeded'
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
-     * CustomerASN of the peering.
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
-     * legacy mode of the peering.
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
-     * RoutingRegistryName of the configuration.
-     *
      * @param {object} [peeringParameters.stats] Gets peering stats.
      *
      * @param {number} [peeringParameters.stats.primarybytesIn] Gets BytesIn of the
@@ -2493,14 +2494,65 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.routeFilter] The reference of the
      * RouteFilter resource.
      *
-     * @param {array} [peeringParameters.routeFilter.rules] Collection of
-     * RouteFilterRules contained within a route filter.
+     * @param {object} [peeringParameters.ipv6PeeringConfig] The IPv6 peering
+     * configuration.
      *
-     * @param {string} [peeringParameters.routeFilter.id] Resource ID.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+     * address prefix.
      *
-     * @param {string} [peeringParameters.routeFilter.location] Resource location.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+     * secondary address prefix.
      *
-     * @param {object} [peeringParameters.routeFilter.tags] Resource tags.
+     * @param {object} [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig]
+     * The Microsoft peering configuration.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes]
+     * The reference of AdvertisedPublicPrefixes.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
+     * The communities of bgp peering. Spepcified for microsoft peering
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+     * 'ValidationNeeded'
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+     * CustomerASN of the peering.
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName]
+     * The RoutingRegistryName of the configuration.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter] The
+     * reference of the RouteFilter resource.
+     *
+     * @param {array} [peeringParameters.ipv6PeeringConfig.routeFilter.rules]
+     * Collection of RouteFilterRules contained within a route filter.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.id]
+     * Resource ID.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.location]
+     * Resource location.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter.tags]
+     * Resource tags.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.state] The state of
+     * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
+     * include: 'Disabled', 'Enabled'
      *
      * @param {string} [peeringParameters.name] Gets name of the resource that is
      * unique within a resource group. This name can be used to access the
@@ -2705,31 +2757,6 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
      *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
-     * reference of AdvertisedPublicPrefixes.
-     *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
-     * communities of bgp peering. Spepcified for microsoft peering
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
-     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
-     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
-     * 'ValidationNeeded'
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
-     * CustomerASN of the peering.
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
-     * legacy mode of the peering.
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
-     * RoutingRegistryName of the configuration.
-     *
      * @param {object} [peeringParameters.stats] Gets peering stats.
      *
      * @param {number} [peeringParameters.stats.primarybytesIn] Gets BytesIn of the
@@ -2757,14 +2784,65 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.routeFilter] The reference of the
      * RouteFilter resource.
      *
-     * @param {array} [peeringParameters.routeFilter.rules] Collection of
-     * RouteFilterRules contained within a route filter.
+     * @param {object} [peeringParameters.ipv6PeeringConfig] The IPv6 peering
+     * configuration.
      *
-     * @param {string} [peeringParameters.routeFilter.id] Resource ID.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+     * address prefix.
      *
-     * @param {string} [peeringParameters.routeFilter.location] Resource location.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+     * secondary address prefix.
      *
-     * @param {object} [peeringParameters.routeFilter.tags] Resource tags.
+     * @param {object} [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig]
+     * The Microsoft peering configuration.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes]
+     * The reference of AdvertisedPublicPrefixes.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
+     * The communities of bgp peering. Spepcified for microsoft peering
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+     * 'ValidationNeeded'
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+     * CustomerASN of the peering.
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName]
+     * The RoutingRegistryName of the configuration.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter] The
+     * reference of the RouteFilter resource.
+     *
+     * @param {array} [peeringParameters.ipv6PeeringConfig.routeFilter.rules]
+     * Collection of RouteFilterRules contained within a route filter.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.id]
+     * Resource ID.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.location]
+     * Resource location.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter.tags]
+     * Resource tags.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.state] The state of
+     * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
+     * include: 'Disabled', 'Enabled'
      *
      * @param {string} [peeringParameters.name] Gets name of the resource that is
      * unique within a resource group. This name can be used to access the
@@ -2827,31 +2905,6 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
      *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixes] The
-     * reference of AdvertisedPublicPrefixes.
-     *
-     * @param {array}
-     * [peeringParameters.microsoftPeeringConfig.advertisedCommunities] The
-     * communities of bgp peering. Spepcified for microsoft peering
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.advertisedPublicPrefixesState]
-     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
-     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
-     * 'ValidationNeeded'
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.customerASN] The
-     * CustomerASN of the peering.
-     *
-     * @param {number} [peeringParameters.microsoftPeeringConfig.legacyMode] The
-     * legacy mode of the peering.
-     *
-     * @param {string}
-     * [peeringParameters.microsoftPeeringConfig.routingRegistryName] The
-     * RoutingRegistryName of the configuration.
-     *
      * @param {object} [peeringParameters.stats] Gets peering stats.
      *
      * @param {number} [peeringParameters.stats.primarybytesIn] Gets BytesIn of the
@@ -2879,14 +2932,65 @@ export interface ExpressRouteCircuitPeerings {
      * @param {object} [peeringParameters.routeFilter] The reference of the
      * RouteFilter resource.
      *
-     * @param {array} [peeringParameters.routeFilter.rules] Collection of
-     * RouteFilterRules contained within a route filter.
+     * @param {object} [peeringParameters.ipv6PeeringConfig] The IPv6 peering
+     * configuration.
      *
-     * @param {string} [peeringParameters.routeFilter.id] Resource ID.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+     * address prefix.
      *
-     * @param {string} [peeringParameters.routeFilter.location] Resource location.
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+     * secondary address prefix.
      *
-     * @param {object} [peeringParameters.routeFilter.tags] Resource tags.
+     * @param {object} [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig]
+     * The Microsoft peering configuration.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes]
+     * The reference of AdvertisedPublicPrefixes.
+     *
+     * @param {array}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities]
+     * The communities of bgp peering. Spepcified for microsoft peering
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+     * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+     * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+     * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+     * 'ValidationNeeded'
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+     * legacy mode of the peering.
+     *
+     * @param {number}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+     * CustomerASN of the peering.
+     *
+     * @param {string}
+     * [peeringParameters.ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName]
+     * The RoutingRegistryName of the configuration.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter] The
+     * reference of the RouteFilter resource.
+     *
+     * @param {array} [peeringParameters.ipv6PeeringConfig.routeFilter.rules]
+     * Collection of RouteFilterRules contained within a route filter.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.id]
+     * Resource ID.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.routeFilter.location]
+     * Resource location.
+     *
+     * @param {object} [peeringParameters.ipv6PeeringConfig.routeFilter.tags]
+     * Resource tags.
+     *
+     * @param {string} [peeringParameters.ipv6PeeringConfig.state] The state of
+     * peering. Possible values are: 'Disabled' and 'Enabled'. Possible values
+     * include: 'Disabled', 'Enabled'
      *
      * @param {string} [peeringParameters.name] Gets name of the resource that is
      * unique within a resource group. This name can be used to access the
@@ -15488,6 +15592,9 @@ export interface Subnets {
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
      *
+     * @param {array} [subnetParameters.privateAccessServices] An array of private
+     * access services values.
+     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -15575,6 +15682,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.routeTable.location] Resource location.
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
+     *
+     * @param {array} [subnetParameters.privateAccessServices] An array of private
+     * access services values.
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
@@ -15804,6 +15914,9 @@ export interface Subnets {
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
      *
+     * @param {array} [subnetParameters.privateAccessServices] An array of private
+     * access services values.
+     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -15891,6 +16004,9 @@ export interface Subnets {
      * @param {string} [subnetParameters.routeTable.location] Resource location.
      *
      * @param {object} [subnetParameters.routeTable.tags] Resource tags.
+     *
+     * @param {array} [subnetParameters.privateAccessServices] An array of private
+     * access services values.
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
@@ -20342,4 +20458,129 @@ export interface LocalNetworkGateways {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LocalNetworkGatewayListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.LocalNetworkGatewayListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocalNetworkGatewayListResult>): void;
+}
+
+/**
+ * @class
+ * AvailablePrivateAccessServices
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface AvailablePrivateAccessServices {
+
+
+    /**
+     * List what values of private access services are available for use.
+     *
+     * @param {string} location The location to check available private access
+     * values.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateAccessServicesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateAccessServicesListResult>>;
+
+    /**
+     * List what values of private access services are available for use.
+     *
+     * @param {string} location The location to check available private access
+     * values.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateAccessServicesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateAccessServicesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateAccessServicesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateAccessServicesListResult>;
+    list(location: string, callback: ServiceCallback<models.PrivateAccessServicesListResult>): void;
+    list(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateAccessServicesListResult>): void;
+
+
+    /**
+     * List what values of private access services are available for use.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateAccessServicesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateAccessServicesListResult>>;
+
+    /**
+     * List what values of private access services are available for use.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateAccessServicesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateAccessServicesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateAccessServicesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateAccessServicesListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PrivateAccessServicesListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateAccessServicesListResult>): void;
 }

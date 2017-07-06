@@ -2,7 +2,7 @@
 
 This project provides a Node.js package that makes it easy to manage Microsoft Azure Network Resources.
 - **Node.js version: 6.x.x or higher**
-- **API version: 2017-03-01**
+- **API version: 2017-06-01**
 
 ## Features
 
