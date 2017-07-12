@@ -272,6 +272,8 @@ export interface PasswordCredentialsUpdateParameters {
  *
  * @member {boolean} [mailEnabled] Whether the AAD object is mail-enabled.
  *
+ * @member {string} [mailNickname] The mail alias for the user.
+ *
  * @member {boolean} [securityEnabled] Whether the AAD object is
  * security-enabled.
  *
@@ -282,6 +284,24 @@ export interface PasswordCredentialsUpdateParameters {
  *
  * @member {string} [userType] The user type of the object.
  *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ *
+ * @member {string} [appId] The application ID.
+ *
+ * @member {array} [appPermissions] The application permissions.
+ *
+ * @member {boolean} [availableToOtherTenants] Whether the application is be
+ * available to other tenants.
+ *
+ * @member {array} [identifierUris] A collection of URIs for the application.
+ *
+ * @member {array} [replyUrls] A collection of reply URLs for the application.
+ *
+ * @member {string} [homepage] The home page of the application.
+ *
  */
 export interface AADObject {
   objectId?: string;
@@ -290,10 +310,18 @@ export interface AADObject {
   userPrincipalName?: string;
   mail?: string;
   mailEnabled?: boolean;
+  readonly mailNickname?: string;
   securityEnabled?: boolean;
   signInName?: string;
   servicePrincipalNames?: string[];
   userType?: string;
+  readonly usageLocation?: string;
+  readonly appId?: string;
+  readonly appPermissions?: string[];
+  readonly availableToOtherTenants?: boolean;
+  readonly identifierUris?: string[];
+  readonly replyUrls?: string[];
+  readonly homepage?: string;
 }
 
 /**
@@ -557,6 +585,11 @@ export interface PasswordProfile {
  * creating a new user account. It is used to associate an on-premises Active
  * Directory user account with their Azure AD user object.
  *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ *
  */
 export interface UserCreateParameters {
   accountEnabled: boolean;
@@ -565,6 +598,7 @@ export interface UserCreateParameters {
   userPrincipalName: string;
   mailNickname: string;
   immutableId?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -586,12 +620,18 @@ export interface UserCreateParameters {
  *
  * @member {string} [mailNickname] The mail alias for the user.
  *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ *
  */
 export interface UserUpdateParameters {
   accountEnabled?: boolean;
   displayName?: string;
   passwordProfile?: PasswordProfile;
   mailNickname?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -614,6 +654,11 @@ export interface UserUpdateParameters {
  *
  * @member {string} [mailNickname] The mail alias for the user.
  *
+ * @member {string} [usageLocation] A two letter country code (ISO standard
+ * 3166). Required for users that will be assigned licenses due to legal
+ * requirement to check for availability of services in countries. Examples
+ * include: "US", "JP", and "GB".
+ *
  */
 export interface User {
   objectId?: string;
@@ -623,6 +668,7 @@ export interface User {
   signInName?: string;
   mail?: string;
   mailNickname?: string;
+  usageLocation?: string;
 }
 
 /**
@@ -688,6 +734,42 @@ export interface GetObjectsParameters {
   objectIds?: string[];
   types?: string[];
   includeDirectoryObjectReferences: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Domain class.
+ * @constructor
+ * Active Directory Domain information.
+ *
+ * @member {string} [authenticationType] the type of the authentication into
+ * the domain.
+ *
+ * @member {boolean} [isDefault] if this is the default domain in the tenant.
+ *
+ * @member {boolean} [isVerified] if this domain's ownership is verified.
+ *
+ * @member {string} name the domain name.
+ *
+ */
+export interface Domain {
+  readonly authenticationType?: string;
+  readonly isDefault?: boolean;
+  readonly isVerified?: boolean;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DomainListResult class.
+ * @constructor
+ * Server response for Get tenant domains API call.
+ *
+ * @member {array} [value] the list of domains.
+ *
+ */
+export interface DomainListResult {
+  value?: Domain[];
 }
 
 /**
@@ -824,6 +906,19 @@ export interface UserGetMemberGroupsResult {
   value?: string[];
 }
 
+/**
+ * @class
+ * Initializes a new instance of the DomainListResult class.
+ * @constructor
+ * Server response for Get tenant domains API call.
+ *
+ * @member {array} [value] the list of domains.
+ *
+ */
+export interface DomainListResult {
+  value?: Domain[];
+}
+
 
 /**
  * @class
@@ -928,4 +1023,14 @@ export interface UserListResult extends Array<User> {
  *
  */
 export interface UserGetMemberGroupsResult extends Array<string> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DomainListResult class.
+ * @constructor
+ * Server response for Get tenant domains API call.
+ *
+ */
+export interface DomainListResult extends Array<Domain> {
 }
