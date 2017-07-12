@@ -1263,7 +1263,7 @@ export interface VirtualMachineExtensionImages {
     /**
      * Gets a virtual machine extension image.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      *
      * @param {string} publisherName
      *
@@ -1287,7 +1287,7 @@ export interface VirtualMachineExtensionImages {
     /**
      * Gets a virtual machine extension image.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      *
      * @param {string} publisherName
      *
@@ -1331,7 +1331,7 @@ export interface VirtualMachineExtensionImages {
     /**
      * Gets a list of virtual machine extension image types.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      *
      * @param {string} publisherName
      *
@@ -1351,7 +1351,7 @@ export interface VirtualMachineExtensionImages {
     /**
      * Gets a list of virtual machine extension image types.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      *
      * @param {string} publisherName
      *
@@ -1389,7 +1389,7 @@ export interface VirtualMachineExtensionImages {
     /**
      * Gets a list of virtual machine extension image versions.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      *
      * @param {string} publisherName
      *
@@ -1417,7 +1417,7 @@ export interface VirtualMachineExtensionImages {
     /**
      * Gets a list of virtual machine extension image versions.
      *
-     * @param {string} location
+     * @param {string} location The name of a supported Azure region.
      *
      * @param {string} publisherName
      *
@@ -4776,6 +4776,10 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.commandId The run command id.
      *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
      * @param {array} [parameters.parameters] The run command parameters.
      *
      * @param {object} [options] Optional Parameters.
@@ -4801,6 +4805,10 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Run command operation.
      *
      * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
      *
      * @param {array} [parameters.parameters] The run command parameters.
      *
@@ -5944,6 +5952,10 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.commandId The run command id.
      *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
+     *
      * @param {array} [parameters.parameters] The run command parameters.
      *
      * @param {object} [options] Optional Parameters.
@@ -5969,6 +5981,10 @@ export interface VirtualMachines {
      * @param {object} parameters Parameters supplied to the Run command operation.
      *
      * @param {string} parameters.commandId The run command id.
+     *
+     * @param {array} [parameters.script] Optional. The script to be executed.
+     * When this value is given, the given script will override the default script
+     * of the command.
      *
      * @param {array} [parameters.parameters] The run command parameters.
      *
@@ -6351,9 +6367,6 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
-     *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
@@ -6599,9 +6612,6 @@ export interface VirtualMachineScaleSets {
      *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
-     *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
@@ -7751,9 +7761,6 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
      *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
-     *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.
      *
@@ -7999,9 +8006,6 @@ export interface VirtualMachineScaleSets {
      *
      * @param {boolean} [parameters.overprovision] Specifies whether the Virtual
      * Machine Scale Set should be overprovisioned.
-     *
-     * @param {string} [parameters.uniqueId] Specifies the ID which uniquely
-     * identifies a Virtual Machine Scale Set.
      *
      * @param {boolean} [parameters.singlePlacementGroup] When true this limits the
      * scale set to a single placement group, of max size 100 virtual machines.

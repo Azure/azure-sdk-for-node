@@ -2777,6 +2777,9 @@ export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
  * @member {string} [subnet.id] The ARM resource id in the form of
  * /subscriptions/{SubcriptionId}/resourceGroups/{ResourceGroupName}/...
  *
+ * @member {boolean} [primary] Specifies the primary IP Configuration in case
+ * the network interface has more than one IP Configuration.
+ *
  * @member {object} [publicIPAddressConfiguration] The
  * publicIPAddressConfiguration.
  *
@@ -2812,6 +2815,7 @@ export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
 export interface VirtualMachineScaleSetIPConfiguration extends SubResource {
   name: string;
   subnet?: ApiEntityReference;
+  primary?: boolean;
   publicIPAddressConfiguration?: VirtualMachineScaleSetPublicIPAddressConfiguration;
   privateIPAddressVersion?: string;
   applicationGatewayBackendAddressPools?: SubResource[];
@@ -2845,6 +2849,9 @@ export interface VirtualMachineScaleSetNetworkConfigurationDnsSettings {
  * @member {boolean} [primary] Whether this is a primary NIC on a virtual
  * machine.
  *
+ * @member {boolean} [enableAcceleratedNetworking] Specifies whether the
+ * network interface is accelerated networking-enabled.
+ *
  * @member {object} [networkSecurityGroup] The network security group.
  *
  * @member {string} [networkSecurityGroup.id] Resource Id
@@ -2861,6 +2868,7 @@ export interface VirtualMachineScaleSetNetworkConfigurationDnsSettings {
 export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource {
   name: string;
   primary?: boolean;
+  enableAcceleratedNetworking?: boolean;
   networkSecurityGroup?: SubResource;
   dnsSettings?: VirtualMachineScaleSetNetworkConfigurationDnsSettings;
   ipConfigurations: VirtualMachineScaleSetIPConfiguration[];
@@ -3330,7 +3338,7 @@ export interface VirtualMachineScaleSet extends Resource {
   virtualMachineProfile?: VirtualMachineScaleSetVMProfile;
   readonly provisioningState?: string;
   overprovision?: boolean;
-  uniqueId?: string;
+  readonly uniqueId?: string;
   singlePlacementGroup?: boolean;
   identity?: VirtualMachineScaleSetIdentity;
 }
@@ -4453,6 +4461,9 @@ export interface AccessUri {
  * @constructor
  * Snapshot resource.
  *
+ * @member {string} [managedBy] A relative URI containing the ID of the VM that
+ * has the disk attached.
+ *
  * @member {object} [sku]
  *
  * @member {string} [sku.name] The sku name. Possible values include:
@@ -4535,6 +4546,7 @@ export interface AccessUri {
  *
  */
 export interface Snapshot extends Resource {
+  readonly managedBy?: string;
   sku?: DiskSku;
   readonly timeCreated?: Date;
   osType?: string;
@@ -4640,11 +4652,16 @@ export interface RunCommandInputParameter {
  *
  * @member {string} commandId The run command id.
  *
+ * @member {array} [script] Optional. The script to be executed.  When this
+ * value is given, the given script will override the default script of the
+ * command.
+ *
  * @member {array} [parameters] The run command parameters.
  *
  */
 export interface RunCommandInput {
   commandId: string;
+  script?: string[];
   parameters?: RunCommandInputParameter[];
 }
 
