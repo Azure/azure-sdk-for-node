@@ -37,9 +37,11 @@ exports.create = function create(retryTimeoutInSec) {
         rpName = exports.checkRPNotRegisteredError(body);
         if (rpName) {
           urlPrefix = exports.extractSubscriptionUrl(options.url);
-          return exports.registerRP(urlPrefix, rpName, options, (err, result) => {
-            if (err) {
-              return callback(err);
+          return exports.registerRP(urlPrefix, rpName, options, (registrationErr, result) => {
+            if (registrationErr) {
+              //Autoregistration of ${provider} failed for some reason. We will not return this error 
+              //instead will return the initial response with 409 status code back to the user.
+              return callback(err, response, body);
             }
             if (result) {
               //Retry the original request. We have to change the x-ms-client-request-id 
@@ -104,9 +106,9 @@ exports.checkRPNotRegisteredError = function checkRPNotRegisteredError(body) {
     }
     if (responseBody && responseBody.error && responseBody.error.message &&
       responseBody.error.code && responseBody.error.code === 'MissingSubscriptionRegistration') {
-      let matchRes = responseBody.error.message.match(/'(\w+\.?\w+)'*/ig);
-      if (matchRes && matchRes[1]) {
-        result = matchRes[1].slice(1, matchRes[1].length - 1);
+      let matchRes = responseBody.error.message.match(/.*'(.*)'/i);
+      if (matchRes) {
+        result = matchRes.pop();
       }
     }
   }
