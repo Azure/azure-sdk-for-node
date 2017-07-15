@@ -1,3 +1,7 @@
+### 2.2.3 (7/14/2017)
+- Hot fix for RP Registration Filter for new subscription scenario.
+- Return the original response with 409 status code if auto RP registration failed.
+
 ### 2.2.1 (6/29/2017)
 - Updated AzureServiceClientOptions type definitions.
 - Updated dependency of ms-rest to ^2.2.1.
