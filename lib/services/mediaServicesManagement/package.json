@@ -14,8 +14,8 @@
     "node",
     "azure"
   ],
-  "main": "./lib/mediaservicesManagementClient.js",
-  "types": "./lib/mediaservicesManagementClient.d.ts",
+  "main": "./lib/mediaServicesManagementClient.js",
+  "types": "./lib/mediaServicesManagementClient.d.ts",
   "license": "MIT",
   "dependencies": {
     "ms-rest": "^2.0.0",
