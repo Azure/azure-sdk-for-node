@@ -4,7 +4,7 @@
   "contributors": [
     "Blum, Brian <brianbl@microsoft.com>"
   ],
-  "version": "1.0.0-preview",
+  "version": "1.0.1-preview",
   "description": "Microsoft Azure MediaServices Management Client Library for node",
   "tags": [
     "azure",
