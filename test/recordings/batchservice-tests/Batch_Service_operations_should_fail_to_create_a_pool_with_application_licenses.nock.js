@@ -10,29 +10,29 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-05-01.5.0', '*')
-  .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:b92752f2-f222-4dda-919d-007a77acdf60\\nTime:2017-05-26T16:46:34.3076275Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property applicationLicenses is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '448',
+.post('/pools?api-version=2017-06-01.5.1', '*')
+  .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:2cc2beb7-c4d4-4727-8d4d-78e8e4105b99\\nTime:2017-07-20T19:52:39.0888246Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property applicationLicenses is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '448',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b92752f2-f222-4dda-919d-007a77acdf60',
+  'request-id': '2cc2beb7-c4d4-4727-8d4d-78e8e4105b99',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:46:33 GMT',
+  date: 'Thu, 20 Jul 2017 19:52:39 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-05-01.5.0', '*')
-  .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:b92752f2-f222-4dda-919d-007a77acdf60\\nTime:2017-05-26T16:46:34.3076275Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property applicationLicenses is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '448',
+.post('/pools?api-version=2017-06-01.5.1', '*')
+  .reply(403, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"Forbidden\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"Access is Forbidden\\nRequestId:2cc2beb7-c4d4-4727-8d4d-78e8e4105b99\\nTime:2017-07-20T19:52:39.0888246Z\"\r\n  },\"values\":[\r\n    {\r\n      \"key\":\"Reason\",\"value\":\"Property applicationLicenses is not enabled for current account\"\r\n    }\r\n  ]\r\n}", { 'content-length': '448',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b92752f2-f222-4dda-919d-007a77acdf60',
+  'request-id': '2cc2beb7-c4d4-4727-8d4d-78e8e4105b99',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:46:33 GMT',
+  date: 'Thu, 20 Jul 2017 19:52:39 GMT',
   connection: 'close' });
  return result; }]];

@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1?api-version=2017-05-01.5.0')
+  .delete('/pools/nodesdktestpool1?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a9b73390-d8d6-4751-9851-e13409568924',
+  'request-id': '8ddfb582-22fb-4c81-8796-9b54370c9390',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 17:01:46 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:38 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/pools/nodesdktestpool1?api-version=2017-05-01.5.0')
+  .delete('/pools/nodesdktestpool1?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'a9b73390-d8d6-4751-9851-e13409568924',
+  'request-id': '8ddfb582-22fb-4c81-8796-9b54370c9390',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 17:01:46 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:38 GMT',
   connection: 'close' });
  return result; }]];

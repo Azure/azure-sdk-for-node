@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2017-06-01.5.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1,\"validationStatus\":\"Validated\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '595afe5c-fb4d-45a3-a848-014f32acad8a',
+  'request-id': '36ae4df6-b6ec-47c5-bcc8-ebb0c4031ad9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:32 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobschedules/NodeSDKTestSchedule/jobs?api-version=2017-06-01.5.1')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#jobs\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/taskcounts?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#taskcounts/@Element\",\"active\":0,\"running\":0,\"completed\":4,\"succeeded\":3,\"failed\":1,\"validationStatus\":\"Validated\"\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '595afe5c-fb4d-45a3-a848-014f32acad8a',
+  'request-id': '36ae4df6-b6ec-47c5-bcc8-ebb0c4031ad9',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Thu, 20 Jul 2017 20:12:32 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:27 GMT',
   connection: 'close' });
  return result; }]];

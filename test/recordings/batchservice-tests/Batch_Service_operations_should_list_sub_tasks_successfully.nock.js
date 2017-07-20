@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/subtasksinfo?api-version=2017-05-01.5.0')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/subtasksinfo?api-version=2017-06-01.5.1')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#subtaskinfo\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '762dabc2-38ad-4414-8aa0-9b4dc4d47c06',
+  'request-id': '64b1eadd-4528-4b6e-a256-9bf27daff419',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:55:28 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:07 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/subtasksinfo?api-version=2017-05-01.5.0')
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/HelloWorldNodeSDKTestTask/subtasksinfo?api-version=2017-06-01.5.1')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#subtaskinfo\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '762dabc2-38ad-4414-8aa0-9b4dc4d47c06',
+  'request-id': '64b1eadd-4528-4b6e-a256-9bf27daff419',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:55:28 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:07 GMT',
   connection: 'close' });
  return result; }]];

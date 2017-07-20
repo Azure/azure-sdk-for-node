@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/applications?api-version=2017-05-01.5.0')
+  .get('/applications?api-version=2017-06-01.5.1')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_updated_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '24e6c335-ab91-4435-a3e9-f6f5d8edaf28',
+  'request-id': 'edf75677-325f-4eac-9869-bbc05dcb90cc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:59:26 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/applications?api-version=2017-05-01.5.0')
+  .get('/applications?api-version=2017-06-01.5.1')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#listapplicationsummariesresponses\",\"value\":[\r\n    {\r\n      \"id\":\"my_application_id\",\"versions\":[\r\n        \"v1.0\"\r\n      ],\"displayName\":\"my_updated_name\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '24e6c335-ab91-4435-a3e9-f6f5d8edaf28',
+  'request-id': 'edf75677-325f-4eac-9869-bbc05dcb90cc',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:59:26 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:21 GMT',
   connection: 'close' });
  return result; }]];

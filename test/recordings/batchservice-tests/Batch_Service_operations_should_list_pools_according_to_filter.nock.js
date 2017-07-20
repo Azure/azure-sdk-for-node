@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2017-05-01.5.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
+  .get('/pools?api-version=2017-06-01.5.1&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools\",\"value\":[\r\n    {\r\n      \"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b7f79835-1073-45f7-8af9-5a694d4db693',
+  'request-id': '3e89f1e5-78d0-452f-9923-e2fe5e2959d1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:36 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:15 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/pools?api-version=2017-05-01.5.0&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
+  .get('/pools?api-version=2017-06-01.5.1&$filter=startswith(id%2C%27nodesdktestpool1%27)&$select=id%2Cstate&$expand=stats')
   .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#pools\",\"value\":[\r\n    {\r\n      \"id\":\"nodesdktestpool1\",\"state\":\"active\"\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b7f79835-1073-45f7-8af9-5a694d4db693',
+  'request-id': '3e89f1e5-78d0-452f-9923-e2fe5e2959d1',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:36 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:15 GMT',
   connection: 'close' });
  return result; }]];

@@ -12,16 +12,16 @@ nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools?api-version=2017-06-01.5.1', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 19:51:00 GMT',
-  etag: '0x8D4CFA8A59F3DCC',
-  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
+  'last-modified': 'Thu, 20 Jul 2017 19:59:25 GMT',
+  etag: '0x8D4CFA9D2973294',
+  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'eca3fef0-e352-4159-a937-e97ae7035a19',
+  'request-id': '5893f602-0a07-41a7-b46a-699d19bb58d5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
-  date: 'Thu, 20 Jul 2017 19:50:57 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
+  date: 'Thu, 20 Jul 2017 19:59:24 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
@@ -30,15 +30,15 @@ nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
 .post('/pools?api-version=2017-06-01.5.1', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Thu, 20 Jul 2017 19:51:00 GMT',
-  etag: '0x8D4CFA8A59F3DCC',
-  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
+  'last-modified': 'Thu, 20 Jul 2017 19:59:25 GMT',
+  etag: '0x8D4CFA9D2973294',
+  location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'eca3fef0-e352-4159-a937-e97ae7035a19',
+  'request-id': '5893f602-0a07-41a7-b46a-699d19bb58d5',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
-  date: 'Thu, 20 Jul 2017 19:50:57 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdkinboundendpointpool',
+  date: 'Thu, 20 Jul 2017 19:59:24 GMT',
   connection: 'close' });
  return result; }]];

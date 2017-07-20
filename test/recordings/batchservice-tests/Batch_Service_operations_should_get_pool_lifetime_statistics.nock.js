@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/lifetimepoolstats?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-05-26T16:00:00Z\",\"dedicatedCoreTime\":\"PT12M18.173S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"0\",\"diskWriteIOps\":\"0\",\"lastUpdateTime\":\"2017-05-26T16:19:27.0644752Z\",\"avgCPUPercentage\":0.0,\"avgMemoryGiB\":0.0,\"peakMemoryGiB\":0.0,\"avgDiskGiB\":0.0,\"peakDiskGiB\":0.0,\"diskReadGiB\":0.0,\"diskWriteGiB\":0.0,\"networkReadGiB\":0.0,\"networkWriteGiB\":0.0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimepoolstats?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"dedicatedCoreTime\":\"PT4H50M26.903S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"226\",\"diskWriteIOps\":\"57238\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"avgCPUPercentage\":1.4050073280151554,\"avgMemoryGiB\":0.5743197621274504,\"peakMemoryGiB\":1.0807723999023437,\"avgDiskGiB\":0.026134560419552685,\"peakDiskGiB\":0.060092926025390625,\"diskReadGiB\":0.0036163330078125,\"diskWriteGiB\":6.4845428466796875,\"networkReadGiB\":0.032594382762908936,\"networkWriteGiB\":0.024887630715966225\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '01fd7b03-0fb2-4f21-8a39-7e5701250830',
+  'request-id': '985e3c81-b44d-4d89-ba4c-7b6cde002ce7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:39 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:19 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/lifetimepoolstats?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-05-26T16:00:00Z\",\"dedicatedCoreTime\":\"PT12M18.173S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"0\",\"diskWriteIOps\":\"0\",\"lastUpdateTime\":\"2017-05-26T16:19:27.0644752Z\",\"avgCPUPercentage\":0.0,\"avgMemoryGiB\":0.0,\"peakMemoryGiB\":0.0,\"avgDiskGiB\":0.0,\"peakDiskGiB\":0.0,\"diskReadGiB\":0.0,\"diskWriteGiB\":0.0,\"networkReadGiB\":0.0,\"networkWriteGiB\":0.0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/lifetimepoolstats?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolstats/@Element\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/lifetimepoolstats\",\"usageStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"dedicatedCoreTime\":\"PT4H50M26.903S\"\r\n  },\"resourceStats\":{\r\n    \"startTime\":\"2017-05-26T16:19:27.0644752Z\",\"diskReadIOps\":\"226\",\"diskWriteIOps\":\"57238\",\"lastUpdateTime\":\"2017-07-20T19:00:00Z\",\"avgCPUPercentage\":1.4050073280151554,\"avgMemoryGiB\":0.5743197621274504,\"peakMemoryGiB\":1.0807723999023437,\"avgDiskGiB\":0.026134560419552685,\"peakDiskGiB\":0.060092926025390625,\"diskReadGiB\":0.0036163330078125,\"diskWriteGiB\":6.4845428466796875,\"networkReadGiB\":0.032594382762908936,\"networkWriteGiB\":0.024887630715966225\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '01fd7b03-0fb2-4f21-8a39-7e5701250830',
+  'request-id': '985e3c81-b44d-4d89-ba4c-7b6cde002ce7',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:39 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:19 GMT',
   connection: 'close' });
  return result; }]];
