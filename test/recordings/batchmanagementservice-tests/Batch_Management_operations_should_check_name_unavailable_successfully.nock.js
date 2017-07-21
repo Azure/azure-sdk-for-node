@@ -3,12 +3,14 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'japaneast';
   process.env['AZURE_AUTOSTORAGE'] = 'nodesdkteststorage';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '00000000-0000-0000-0000-000000000000';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
+.post('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Batch/locations/japaneast/checkNameAvailability?api-version=2017-05-01', '*')
   .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"An account named 'batchtestnodesdk' is already in use.\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '115',
@@ -28,6 +30,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
+.post('/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Batch/locations/japaneast/checkNameAvailability?api-version=2017-05-01', '*')
   .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"An account named 'batchtestnodesdk' is already in use.\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '115',
