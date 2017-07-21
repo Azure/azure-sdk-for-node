@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2017-05-01.5.0')
-  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:3a9dc9c5-8160-43ef-bd4a-d5bd752ae39f\\nTime:2017-05-26T16:59:34.3655969Z\"\r\n  }\r\n}", { 'content-length': '417',
+  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2017-06-01.5.1')
+  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:be9479b6-30b2-4252-9059-57de4585ad57\\nTime:2017-07-20T20:12:27.2349224Z\"\r\n  }\r\n}", { 'content-length': '417',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3a9dc9c5-8160-43ef-bd4a-d5bd752ae39f',
+  'request-id': 'be9479b6-30b2-4252-9059-57de4585ad57',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:59:34 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2017-05-01.5.0')
-  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:3a9dc9c5-8160-43ef-bd4a-d5bd752ae39f\\nTime:2017-05-26T16:59:34.3655969Z\"\r\n  }\r\n}", { 'content-length': '417',
+  .get('/jobs/HelloWorldJobNodeSDKTest/jobpreparationandreleasetaskstatus?api-version=2017-06-01.5.1')
+  .reply(409, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\"code\":\"JobPreparationTaskOrReleaseTaskNotSpecified\",\"message\":{\r\n    \"lang\":\"en-US\",\"value\":\"The specified job does not have either job preparation task or job release task.\\nRequestId:be9479b6-30b2-4252-9059-57de4585ad57\\nTime:2017-07-20T20:12:27.2349224Z\"\r\n  }\r\n}", { 'content-length': '417',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '3a9dc9c5-8160-43ef-bd4a-d5bd752ae39f',
+  'request-id': 'be9479b6-30b2-4252-9059-57de4585ad57',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:59:34 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:27 GMT',
   connection: 'close' });
  return result; }]];

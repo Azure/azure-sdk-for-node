@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2017-05-01.5.0')
+  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 17:01:45 GMT',
-  etag: '0x8D4A458E42B434C',
+  'last-modified': 'Thu, 20 Jul 2017 20:12:35 GMT',
+  etag: '0x8D4CFABA93B9F04',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'ec786e75-4645-4253-a5cd-f5f71e59aaf1',
+  'request-id': 'f12be520-6d1a-4430-8f28-f75e00255052',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule/terminate',
-  date: 'Fri, 26 May 2017 17:01:45 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:37 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2017-05-01.5.0')
+  .post('/jobschedules/NodeSDKTestSchedule/terminate?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 17:01:45 GMT',
-  etag: '0x8D4A458E42B434C',
+  'last-modified': 'Thu, 20 Jul 2017 20:12:35 GMT',
+  etag: '0x8D4CFABA93B9F04',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'ec786e75-4645-4253-a5cd-f5f71e59aaf1',
+  'request-id': 'f12be520-6d1a-4430-8f28-f75e00255052',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobschedules/NodeSDKTestSchedule/terminate',
-  date: 'Fri, 26 May 2017 17:01:45 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:37 GMT',
   connection: 'close' });
  return result; }]];

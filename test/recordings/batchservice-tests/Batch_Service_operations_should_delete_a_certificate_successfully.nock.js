@@ -9,26 +9,26 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)?api-version=2017-05-01.5.0')
+  .delete('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b97ec9dc-0599-4c3c-a3e5-023a7574839b',
+  'request-id': 'b80232d4-6334-44ab-95d5-b12b93452ae4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 17:01:48 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:40 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .delete('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)?api-version=2017-05-01.5.0')
+  .delete('/certificates(thumbprintAlgorithm=sha1,thumbprint=cff2ab63c8c955aaf71989efa641b906558d9fb7)?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'b97ec9dc-0599-4c3c-a3e5-023a7574839b',
+  'request-id': 'b80232d4-6334-44ab-95d5-b12b93452ae4',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 17:01:48 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:40 GMT',
   connection: 'close' });
  return result; }]];

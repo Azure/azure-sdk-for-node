@@ -478,6 +478,44 @@ export interface OperationListResult {
 
 /**
  * @class
+ * Initializes a new instance of the CheckNameAvailabilityParameters class.
+ * @constructor
+ * Parameters for a check name availability request.
+ *
+ * @member {string} name The name to check for availability
+ *
+ */
+export interface CheckNameAvailabilityParameters {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * The CheckNameAvailability operation response.
+ *
+ * @member {boolean} [nameAvailable] Gets a boolean value that indicates
+ * whether the name is available for you to use. If true, the name is
+ * available. If false, the name has already been taken or invalid and cannot
+ * be used.
+ *
+ * @member {string} [reason] Gets the reason that a Batch account name could
+ * not be used. The Reason element is only returned if NameAvailable is false.
+ * Possible values include: 'Invalid', 'AlreadyExists'
+ *
+ * @member {string} [message] Gets an error message explaining the Reason value
+ * in more detail.
+ *
+ */
+export interface CheckNameAvailabilityResult {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the BatchAccountListResult class.
  * @constructor
  * Values returned by the List operation.

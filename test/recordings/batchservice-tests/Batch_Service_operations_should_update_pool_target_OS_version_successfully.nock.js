@@ -10,33 +10,33 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool2/upgradeos?api-version=2017-05-01.5.0', '*')
+.post('/pools/nodesdktestpool2/upgradeos?api-version=2017-06-01.5.1', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:53:31 GMT',
-  etag: '0x8D4A457BD5F0996',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:15 GMT',
+  etag: '0x8D4CFAAC73A3163',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '51c6834e-20b6-44f3-89ac-1052b2b85579',
+  'request-id': 'b525e3d7-ad27-4b9e-8b2f-bd5a7024ec78',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2/upgradeos',
-  date: 'Fri, 26 May 2017 16:53:31 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:11 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools/nodesdktestpool2/upgradeos?api-version=2017-05-01.5.0', '*')
+.post('/pools/nodesdktestpool2/upgradeos?api-version=2017-06-01.5.1', '*')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:53:31 GMT',
-  etag: '0x8D4A457BD5F0996',
+  'last-modified': 'Thu, 20 Jul 2017 20:06:15 GMT',
+  etag: '0x8D4CFAAC73A3163',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '51c6834e-20b6-44f3-89ac-1052b2b85579',
+  'request-id': 'b525e3d7-ad27-4b9e-8b2f-bd5a7024ec78',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool2/upgradeos',
-  date: 'Fri, 26 May 2017 16:53:31 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:11 GMT',
   connection: 'close' });
  return result; }]];

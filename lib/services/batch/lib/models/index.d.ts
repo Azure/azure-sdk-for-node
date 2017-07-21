@@ -1224,11 +1224,21 @@ export interface OutputFileUploadOptions {
  *
  * @member {string} filePattern A pattern indicating which file(s) to upload.
  * Both relative and absolute paths are supported. Relative paths are relative
- * to the task working directory. For wildcards, use * to match any character
- * and ** to match any directory. For example, **\*.txt matches any file ending
- * in .txt in the task working directory or any subdirectory. Note that \ and /
- * are treated interchangeably and mapped to the correct directory separator on
- * the compute node operating system.
+ * to the task working directory. The following wildcards are supported: *
+ * matches 0 or more characters (for example pattern abc* would match abc or
+ * abcdef), ** matches any directory, ? matches any single character, [abc]
+ * matches one character in the brackets, and [a-c] matches one character in
+ * the range. Brackets can include a negation to match any character not
+ * specified (for example [!abc] matches any character but a, b, or c). If a
+ * file name starts with "." it is ignored by default but may be matched by
+ * specifying it explicitly (for example *.gif will not match .a.gif, but
+ * .*.gif will). A simple example: **\*.txt matches any file that does not
+ * start in '.' and ends with .txt in the task working directory or any
+ * subdirectory. If the filename contains a wildcard character it can be
+ * escaped using brackets (for example abc[*] would match a file named abc*).
+ * Note that both \ and / are treated as directory separators on Windows, but
+ * only / is on Linux. Environment variables (%var% on Windows or $var on
+ * Linux) are expanded prior to the pattern being applied.
  *
  * @member {object} destination The destination for the output file(s).
  *
@@ -1359,10 +1369,7 @@ export interface OutputFile {
  * re-downloaded; the existing copy on the compute node is used. If a
  * referenced application package cannot be installed, for example because the
  * package has been deleted or because download failed, the task fails with a
- * scheduling error. This property is currently not supported on jobs running
- * on pools created using the virtualMachineConfiguration (IaaS) property. If a
- * task specifying applicationPackageReferences runs on such a pool, it fails
- * with a scheduling error with code TaskSchedulingConstraintFailed.
+ * scheduling error.
  *
  * @member {object} [authenticationTokenSettings] The settings for an
  * authentication token that the task can use to perform Batch service
@@ -1876,6 +1883,106 @@ export interface VirtualMachineConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the NetworkSecurityGroupRule class.
+ * @constructor
+ * @summary A network security group rule to apply to an inbound endpoint.
+ *
+ * @member {number} priority The priority for this rule. Priorities within a
+ * pool must be unique and are evaluated in order of priority. The lower the
+ * number the higher the priority. For example, rules could be specified with
+ * order numbers of 150, 250, and 350. The rule with the order number of 150
+ * takes precedence over the rule that has an order of 250. Allowed priorities
+ * are 150 to 3500. If any reserved or duplicate values are provided the
+ * request fails with HTTP status code 400.
+ *
+ * @member {string} access The action that should be taken for a specified IP
+ * address, subnet range or tag. Possible values include: 'allow', 'deny'
+ *
+ * @member {string} sourceAddressPrefix The source address prefix or tag to
+ * match for the rule. Valid values are a single IP address (i.e. 10.10.10.10),
+ * IP subnet (i.e. 192.168.1.0/24), default tag, or * (for all addresses).  If
+ * any other values are provided the request fails with HTTP status code 400.
+ *
+ */
+export interface NetworkSecurityGroupRule {
+  priority: number;
+  access: string;
+  sourceAddressPrefix: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InboundNATPool class.
+ * @constructor
+ * @summary A inbound NAT pool that can be used to address specific ports on
+ * compute nodes in a Batch pool externally.
+ *
+ * @member {string} name The name of the endpoint. The name must be unique
+ * within a Batch pool, can contain letters, numbers, underscores, periods, and
+ * hyphens. Names must start with a letter or number, must end with a letter,
+ * number, or underscore, and cannot exceed 77 characters.  If any invalid
+ * values are provided the request fails with HTTP status code 400.
+ *
+ * @member {string} protocol The protocol of the endpoint. Possible values
+ * include: 'tcp', 'udp'
+ *
+ * @member {number} backendPort The port number on the compute node. This must
+ * be unique within a Batch pool. Acceptable values are between 1 and 65535
+ * except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved
+ * values are provided the request fails with HTTP status code 400.
+ *
+ * @member {number} frontendPortRangeStart The first port number in the range
+ * of external ports that will be used to provide inbound access to the
+ * backendPort on individual compute nodes. Acceptable values range between 1
+ * and 65534 except ports from 50000 to 55000 which are reserved. All ranges
+ * within a pool must be distinct and cannot overlap. If any reserved or
+ * overlapping values are provided the request fails with HTTP status code 400.
+ *
+ * @member {number} frontendPortRangeEnd The last port number in the range of
+ * external ports that will be used to provide inbound access to the
+ * backendPort on individual compute nodes. Acceptable values range between 1
+ * and 65534 except ports from 50000 to 55000 which are reserved by the Batch
+ * service. All ranges within a pool must be distinct and cannot overlap. If
+ * any reserved or overlapping values are provided the request fails with HTTP
+ * status code 400.
+ *
+ * @member {array} [networkSecurityGroupRules] A list of network security group
+ * rules that will be applied to the endpoint. The maximum number of rules that
+ * can be specified across all the endpoints on a Batch pool is 25. If no
+ * network security group rules are specified, a default rule will be created
+ * to allow inbound access to the specified backendPort. If the maximum number
+ * of network security group rules is exceeded the request fails with HTTP
+ * status code 400.
+ *
+ */
+export interface InboundNATPool {
+  name: string;
+  protocol: string;
+  backendPort: number;
+  frontendPortRangeStart: number;
+  frontendPortRangeEnd: number;
+  networkSecurityGroupRules?: NetworkSecurityGroupRule[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PoolEndpointConfiguration class.
+ * @constructor
+ * @summary The endpoint configuration for a pool.
+ *
+ * @member {array} inboundNATPools A list of inbound NAT pools that can be used
+ * to address specific ports on an individual compute node externally. The
+ * maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
+ *
+ */
+export interface PoolEndpointConfiguration {
+  inboundNATPools: InboundNATPool[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the NetworkConfiguration class.
  * @constructor
  * The network configuration for a pool.
@@ -1888,21 +1995,29 @@ export interface VirtualMachineConfiguration {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object} [endpointConfiguration] The configuration for endpoints on
+ * compute nodes in the Batch pool. Pool endpoint configuration is only
+ * supported on pools with the virtualMachineConfiguration property.
+ *
+ * @member {array} [endpointConfiguration.inboundNATPools] The maximum number
+ * of inbound NAT pools per Batch pool is 5. If the maximum number of inbound
+ * NAT pools is exceeded the request fails with HTTP status code 400.
  *
  */
 export interface NetworkConfiguration {
   subnetId?: string;
+  endpointConfiguration?: PoolEndpointConfiguration;
 }
 
 /**
@@ -2084,17 +2199,25 @@ export interface NetworkConfiguration {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
- * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
- * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
- * The specified subnet must allow communication from the Azure Batch service
- * to be able to schedule tasks on the compute nodes. This can be verified by
- * checking if the specified VNet has any associated Network Security Groups
- * (NSG). If communication to the compute nodes in the specified subnet is
- * denied by an NSG, then the Batch service will set the state of the compute
- * nodes to unusable. For pools created via virtualMachineConfiguration the
- * Batch account must have poolAllocationMode userSubscription in order to use
- * a VNet.
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
+ *
+ * @member {object} [networkConfiguration.endpointConfiguration] Pool endpoint
+ * configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array} [networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [startTask] A task to run on each compute node as it joins
  * the pool. The task runs when the node is added to the pool or when the node
@@ -2161,9 +2284,7 @@ export interface NetworkConfiguration {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array} [applicationPackageReferences] The list of application
- * packages to be installed on each compute node in the pool. This property is
- * currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
+ * packages to be installed on each compute node in the pool.
  *
  * @member {array} [applicationLicenses] The list of application licenses the
  * Batch service will make available on each compute node in the pool. The list
@@ -2397,17 +2518,26 @@ export interface PoolSpecification {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
- * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
- * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
- * The specified subnet must allow communication from the Azure Batch service
- * to be able to schedule tasks on the compute nodes. This can be verified by
- * checking if the specified VNet has any associated Network Security Groups
- * (NSG). If communication to the compute nodes in the specified subnet is
- * denied by an NSG, then the Batch service will set the state of the compute
- * nodes to unusable. For pools created via virtualMachineConfiguration the
- * Batch account must have poolAllocationMode userSubscription in order to use
- * a VNet.
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
+ *
+ * @member {object} [pool.networkConfiguration.endpointConfiguration] Pool
+ * endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [pool.networkConfiguration.endpointConfiguration.inboundNATPools] The
+ * maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [pool.startTask]
  *
@@ -2473,9 +2603,7 @@ export interface PoolSpecification {
  * directory is created in the user's home directory (e.g.,
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
- * @member {array} [pool.applicationPackageReferences] This property is
- * currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
+ * @member {array} [pool.applicationPackageReferences]
  *
  * @member {array} [pool.applicationLicenses] The list of application licenses
  * must be a subset of available Batch service application licenses. If a
@@ -2721,17 +2849,27 @@ export interface AutoPoolSpecification {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [autoPoolSpecification.pool.networkConfiguration.endpointConfiguration] Pool
+ * endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [autoPoolSpecification.pool.startTask]
  *
@@ -2803,8 +2941,6 @@ export interface AutoPoolSpecification {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array} [autoPoolSpecification.pool.applicationPackageReferences]
- * This property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
  *
  * @member {array} [autoPoolSpecification.pool.applicationLicenses] The list of
  * application licenses must be a subset of available Batch service application
@@ -2968,11 +3104,7 @@ export interface PoolInformation {
  * node, and is up to date, then it is not re-downloaded; the existing copy on
  * the compute node is used. If a referenced application package cannot be
  * installed, for example because the package has been deleted or because
- * download failed, the task fails with a scheduling error. This property is
- * currently not supported on jobs running on pools created using the
- * virtualMachineConfiguration (IaaS) property. If a task specifying
- * applicationPackageReferences runs on such a pool, it fails with a scheduling
- * error with code TaskSchedulingConstraintFailed.
+ * download failed, the task fails with a scheduling error.
  *
  * @member {object} [jobManagerTask.authenticationTokenSettings] If this
  * property is set, the Batch service provides the task with an authentication
@@ -3371,17 +3503,27 @@ export interface PoolInformation {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -3458,9 +3600,7 @@ export interface PoolInformation {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
- * property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
@@ -3840,11 +3980,7 @@ export interface JobScheduleStatistics {
  * node, and is up to date, then it is not re-downloaded; the existing copy on
  * the compute node is used. If a referenced application package cannot be
  * installed, for example because the package has been deleted or because
- * download failed, the task fails with a scheduling error. This property is
- * currently not supported on jobs running on pools created using the
- * virtualMachineConfiguration (IaaS) property. If a task specifying
- * applicationPackageReferences runs on such a pool, it fails with a scheduling
- * error with code TaskSchedulingConstraintFailed.
+ * download failed, the task fails with a scheduling error.
  *
  * @member {object}
  * [jobSpecification.jobManagerTask.authenticationTokenSettings] If this
@@ -4261,17 +4397,27 @@ export interface JobScheduleStatistics {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -4353,8 +4499,6 @@ export interface JobScheduleStatistics {
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
- * This property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
@@ -4646,11 +4790,7 @@ export interface CloudJobSchedule {
  * node, and is up to date, then it is not re-downloaded; the existing copy on
  * the compute node is used. If a referenced application package cannot be
  * installed, for example because the package has been deleted or because
- * download failed, the task fails with a scheduling error. This property is
- * currently not supported on jobs running on pools created using the
- * virtualMachineConfiguration (IaaS) property. If a task specifying
- * applicationPackageReferences runs on such a pool, it fails with a scheduling
- * error with code TaskSchedulingConstraintFailed.
+ * download failed, the task fails with a scheduling error.
  *
  * @member {object}
  * [jobSpecification.jobManagerTask.authenticationTokenSettings] If this
@@ -5067,17 +5207,27 @@ export interface CloudJobSchedule {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -5159,8 +5309,6 @@ export interface CloudJobSchedule {
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
- * This property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
@@ -5446,11 +5594,7 @@ export interface JobExecutionInformation {
  * node, and is up to date, then it is not re-downloaded; the existing copy on
  * the compute node is used. If a referenced application package cannot be
  * installed, for example because the package has been deleted or because
- * download failed, the task fails with a scheduling error. This property is
- * currently not supported on jobs running on pools created using the
- * virtualMachineConfiguration (IaaS) property. If a task specifying
- * applicationPackageReferences runs on such a pool, it fails with a scheduling
- * error with code TaskSchedulingConstraintFailed.
+ * download failed, the task fails with a scheduling error.
  *
  * @member {object} [jobManagerTask.authenticationTokenSettings] If this
  * property is set, the Batch service provides the task with an authentication
@@ -5840,17 +5984,27 @@ export interface JobExecutionInformation {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -5927,9 +6081,7 @@ export interface JobExecutionInformation {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
- * property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
@@ -6202,11 +6354,7 @@ export interface CloudJob {
  * node, and is up to date, then it is not re-downloaded; the existing copy on
  * the compute node is used. If a referenced application package cannot be
  * installed, for example because the package has been deleted or because
- * download failed, the task fails with a scheduling error. This property is
- * currently not supported on jobs running on pools created using the
- * virtualMachineConfiguration (IaaS) property. If a task specifying
- * applicationPackageReferences runs on such a pool, it fails with a scheduling
- * error with code TaskSchedulingConstraintFailed.
+ * download failed, the task fails with a scheduling error.
  *
  * @member {object} [jobManagerTask.authenticationTokenSettings] If this
  * property is set, the Batch service provides the task with an authentication
@@ -6602,17 +6750,27 @@ export interface CloudJob {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -6689,9 +6847,7 @@ export interface CloudJob {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
- * property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
@@ -7074,6 +7230,42 @@ export interface CloudJobListPreparationAndReleaseTaskStatusResult {
 
 /**
  * @class
+ * Initializes a new instance of the TaskCounts class.
+ * @constructor
+ * @summary The task counts for a job.
+ *
+ * @member {number} active The number of tasks in the active state.
+ *
+ * @member {number} running The number of tasks in the running or preparing
+ * state.
+ *
+ * @member {number} completed The number of tasks in the completed state.
+ *
+ * @member {number} succeeded The number of tasks which succeeded. A task
+ * succeeds if its result (found in the executionInfo property) is 'success'.
+ *
+ * @member {number} failed The number of tasks which failed. A task fails if
+ * its result (found in the executionInfo property) is 'failure'.
+ *
+ * @member {string} validationStatus Whether the task counts have been
+ * validated.  If the validationStatus is unvalidated, then the Batch service
+ * has not been able to check state counts against the task states as reported
+ * in the List Tasks API. The validationStatus may be unvalidated if the job
+ * contains more than 200,000 tasks. Possible values include: 'validated',
+ * 'unvalidated'
+ *
+ */
+export interface TaskCounts {
+  active: number;
+  running: number;
+  completed: number;
+  succeeded: number;
+  failed: number;
+  validationStatus: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AutoScaleRunError class.
  * @constructor
  * @summary An error that occurred when executing or evaluating a pool
@@ -7370,17 +7562,25 @@ export interface ResizeError {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
- * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
- * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
- * The specified subnet must allow communication from the Azure Batch service
- * to be able to schedule tasks on the compute nodes. This can be verified by
- * checking if the specified VNet has any associated Network Security Groups
- * (NSG). If communication to the compute nodes in the specified subnet is
- * denied by an NSG, then the Batch service will set the state of the compute
- * nodes to unusable. For pools created via virtualMachineConfiguration the
- * Batch account must have poolAllocationMode userSubscription in order to use
- * a VNet.
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
+ *
+ * @member {object} [networkConfiguration.endpointConfiguration] Pool endpoint
+ * configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array} [networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [startTask] A task specified to run on each compute node as
  * it joins the pool.
@@ -7721,17 +7921,25 @@ export interface CloudPool {
  * specified subnet should have enough free IP addresses to accommodate the
  * number of nodes in the pool. If the subnet doesn't have enough free IP
  * addresses, the pool will partially allocate compute nodes, and a resize
- * error will occur. The Batch service principal, named 'Microsoft Azure Batch'
- * or 'MicrosoftAzureBatch', must have the 'Classic Virtual Machine
- * Contributor' Role-Based Access Control (RBAC) role for the specified VNet.
- * The specified subnet must allow communication from the Azure Batch service
- * to be able to schedule tasks on the compute nodes. This can be verified by
- * checking if the specified VNet has any associated Network Security Groups
- * (NSG). If communication to the compute nodes in the specified subnet is
- * denied by an NSG, then the Batch service will set the state of the compute
- * nodes to unusable. For pools created via virtualMachineConfiguration the
- * Batch account must have poolAllocationMode userSubscription in order to use
- * a VNet.
+ * error will occur. The 'MicrosoftAzureBatch' service principal must have the
+ * 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role
+ * for the specified VNet. The specified subnet must allow communication from
+ * the Azure Batch service to be able to schedule tasks on the compute nodes.
+ * This can be verified by checking if the specified VNet has any associated
+ * Network Security Groups (NSG). If communication to the compute nodes in the
+ * specified subnet is denied by an NSG, then the Batch service will set the
+ * state of the compute nodes to unusable. For pools created via
+ * virtualMachineConfiguration the Batch account must have poolAllocationMode
+ * userSubscription in order to use a VNet.
+ *
+ * @member {object} [networkConfiguration.endpointConfiguration] Pool endpoint
+ * configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array} [networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [startTask] A task specified to run on each compute node as
  * it joins the pool. The task runs when the node is added to the pool or when
@@ -7798,9 +8006,7 @@ export interface CloudPool {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array} [applicationPackageReferences] The list of application
- * packages to be installed on each compute node in the pool. This property is
- * currently not supported on pools created using the
- * virtualMachineConfiguration (IaaS) property.
+ * packages to be installed on each compute node in the pool.
  *
  * @member {array} [applicationLicenses] The list of application licenses the
  * Batch service will make available on each compute node in the pool. The list
@@ -9138,6 +9344,50 @@ export interface ComputeNodeError {
 
 /**
  * @class
+ * Initializes a new instance of the InboundEndpoint class.
+ * @constructor
+ * @summary An inbound endpoint on a compute node.
+ *
+ * @member {string} name The name of the endpoint.
+ *
+ * @member {string} protocol The protocol of the endpoint. Possible values
+ * include: 'tcp', 'udp'
+ *
+ * @member {string} publicIPAddress The public IP address of the compute node.
+ *
+ * @member {string} publicFQDN The public fully qualified domain name for the
+ * compute node.
+ *
+ * @member {number} frontendPort The public port number of the endpoint.
+ *
+ * @member {number} backendPort The backend port number of the endpoint.
+ *
+ */
+export interface InboundEndpoint {
+  name: string;
+  protocol: string;
+  publicIPAddress: string;
+  publicFQDN: string;
+  frontendPort: number;
+  backendPort: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputeNodeEndpointConfiguration class.
+ * @constructor
+ * @summary The endpoint configuration for the compute node.
+ *
+ * @member {array} inboundEndpoints The list of inbound endpoints that are
+ * accessible on the compute node.
+ *
+ */
+export interface ComputeNodeEndpointConfiguration {
+  inboundEndpoints: InboundEndpoint[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ComputeNode class.
  * @constructor
  * @summary A compute node in the Batch service.
@@ -9334,6 +9584,11 @@ export interface ComputeNodeError {
  * @member {boolean} [isDedicated] Whether this compute node is a dedicated
  * node. If false, the node is a low-priority node.
  *
+ * @member {object} [endpointConfiguration] The endpoint configuration for the
+ * compute node.
+ *
+ * @member {array} [endpointConfiguration.inboundEndpoints]
+ *
  */
 export interface ComputeNode {
   id?: string;
@@ -9355,6 +9610,7 @@ export interface ComputeNode {
   certificateReferences?: CertificateReference[];
   errors?: ComputeNodeError[];
   isDedicated?: boolean;
+  endpointConfiguration?: ComputeNodeEndpointConfiguration;
 }
 
 /**
@@ -9616,11 +9872,7 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * node, and is up to date, then it is not re-downloaded; the existing copy on
  * the compute node is used. If a referenced application package cannot be
  * installed, for example because the package has been deleted or because
- * download failed, the task fails with a scheduling error. This property is
- * currently not supported on jobs running on pools created using the
- * virtualMachineConfiguration (IaaS) property. If a task specifying
- * applicationPackageReferences runs on such a pool, it fails with a scheduling
- * error with code TaskSchedulingConstraintFailed.
+ * download failed, the task fails with a scheduling error.
  *
  * @member {object}
  * [jobSpecification.jobManagerTask.authenticationTokenSettings] If this
@@ -10037,17 +10289,27 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -10129,8 +10391,6 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
- * This property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
@@ -10348,11 +10608,7 @@ export interface JobSchedulePatchParameter {
  * node, and is up to date, then it is not re-downloaded; the existing copy on
  * the compute node is used. If a referenced application package cannot be
  * installed, for example because the package has been deleted or because
- * download failed, the task fails with a scheduling error. This property is
- * currently not supported on jobs running on pools created using the
- * virtualMachineConfiguration (IaaS) property. If a task specifying
- * applicationPackageReferences runs on such a pool, it fails with a scheduling
- * error with code TaskSchedulingConstraintFailed.
+ * download failed, the task fails with a scheduling error.
  *
  * @member {object}
  * [jobSpecification.jobManagerTask.authenticationTokenSettings] If this
@@ -10769,17 +11025,27 @@ export interface JobSchedulePatchParameter {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [jobSpecification.poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
@@ -10861,8 +11127,6 @@ export interface JobSchedulePatchParameter {
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
- * This property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
  *
  * @member {array}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.applicationLicenses]
@@ -11195,17 +11459,27 @@ export interface JobTerminateParameter {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -11282,9 +11556,7 @@ export interface JobTerminateParameter {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
- * property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
@@ -11570,17 +11842,27 @@ export interface JobPatchParameter {
  * Batch account. The specified subnet should have enough free IP addresses to
  * accommodate the number of nodes in the pool. If the subnet doesn't have
  * enough free IP addresses, the pool will partially allocate compute nodes,
- * and a resize error will occur. The Batch service principal, named 'Microsoft
- * Azure Batch' or 'MicrosoftAzureBatch', must have the 'Classic Virtual
- * Machine Contributor' Role-Based Access Control (RBAC) role for the specified
- * VNet. The specified subnet must allow communication from the Azure Batch
- * service to be able to schedule tasks on the compute nodes. This can be
- * verified by checking if the specified VNet has any associated Network
- * Security Groups (NSG). If communication to the compute nodes in the
- * specified subnet is denied by an NSG, then the Batch service will set the
- * state of the compute nodes to unusable. For pools created via
- * virtualMachineConfiguration the Batch account must have poolAllocationMode
- * userSubscription in order to use a VNet.
+ * and a resize error will occur. The 'MicrosoftAzureBatch' service principal
+ * must have the 'Classic Virtual Machine Contributor' Role-Based Access
+ * Control (RBAC) role for the specified VNet. The specified subnet must allow
+ * communication from the Azure Batch service to be able to schedule tasks on
+ * the compute nodes. This can be verified by checking if the specified VNet
+ * has any associated Network Security Groups (NSG). If communication to the
+ * compute nodes in the specified subnet is denied by an NSG, then the Batch
+ * service will set the state of the compute nodes to unusable. For pools
+ * created via virtualMachineConfiguration the Batch account must have
+ * poolAllocationMode userSubscription in order to use a VNet.
+ *
+ * @member {object}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration]
+ * Pool endpoint configuration is only supported on pools with the
+ * virtualMachineConfiguration property.
+ *
+ * @member {array}
+ * [poolInfo.autoPoolSpecification.pool.networkConfiguration.endpointConfiguration.inboundNATPools]
+ * The maximum number of inbound NAT pools per Batch pool is 5. If the maximum
+ * number of inbound NAT pools is exceeded the request fails with HTTP status
+ * code 400.
  *
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  *
@@ -11657,9 +11939,7 @@ export interface JobPatchParameter {
  * /home/{user-name}/certs) and certificates are placed in that directory.
  *
  * @member {array}
- * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences] This
- * property is currently not supported on auto pools created with the
- * virtualMachineConfiguration (IaaS) property.
+ * [poolInfo.autoPoolSpecification.pool.applicationPackageReferences]
  *
  * @member {array} [poolInfo.autoPoolSpecification.pool.applicationLicenses]
  * The list of application licenses must be a subset of available Batch service
@@ -13482,6 +13762,35 @@ export interface JobListPreparationAndReleaseTaskStatusOptions {
   filter?: string;
   select?: string;
   maxResults?: number;
+  timeout?: number;
+  clientRequestId?: string;
+  returnClientRequestId?: boolean;
+  ocpDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobGetTaskCountsOptions class.
+ * @constructor
+ * Additional parameters for the Job_getTaskCounts operation.
+ *
+ * @member {number} [timeout] The maximum time that the server can spend
+ * processing the request, in seconds. The default is 30 seconds. Default
+ * value: 30 .
+ *
+ * @member {uuid} [clientRequestId] The caller-generated request identity, in
+ * the form of a GUID with no decoration such as curly braces, e.g.
+ * 9C4D50EE-2D56-4CD3-8152-34347DC9F2B0.
+ *
+ * @member {boolean} [returnClientRequestId] Whether the server should return
+ * the client-request-id in the response. Default value: false .
+ *
+ * @member {date} [ocpDate] The time the request was issued. Client libraries
+ * typically set this to the current system clock time; set it explicitly if
+ * you are calling the REST API directly.
+ *
+ */
+export interface JobGetTaskCountsOptions {
   timeout?: number;
   clientRequestId?: string;
   returnClientRequestId?: boolean;

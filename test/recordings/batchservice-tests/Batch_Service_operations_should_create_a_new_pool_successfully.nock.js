@@ -10,35 +10,35 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-05-01.5.0', '*')
+.post('/pools?api-version=2017-06-01.5.1', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:44:53 GMT',
-  etag: '0x8D4A45688E10B47',
+  'last-modified': 'Thu, 20 Jul 2017 19:51:00 GMT',
+  etag: '0x8D4CFA8A59F3DCC',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7f0fa65f-5d37-4afb-9739-ecda4884e436',
+  'request-id': 'eca3fef0-e352-4159-a937-e97ae7035a19',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
-  date: 'Fri, 26 May 2017 16:44:53 GMT',
+  date: 'Thu, 20 Jul 2017 19:50:57 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/pools?api-version=2017-05-01.5.0', '*')
+.post('/pools?api-version=2017-06-01.5.1', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:44:53 GMT',
-  etag: '0x8D4A45688E10B47',
+  'last-modified': 'Thu, 20 Jul 2017 19:51:00 GMT',
+  etag: '0x8D4CFA8A59F3DCC',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '7f0fa65f-5d37-4afb-9739-ecda4884e436',
+  'request-id': 'eca3fef0-e352-4159-a937-e97ae7035a19',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1',
-  date: 'Fri, 26 May 2017 16:44:53 GMT',
+  date: 'Thu, 20 Jul 2017 19:50:57 GMT',
   connection: 'close' });
  return result; }]];

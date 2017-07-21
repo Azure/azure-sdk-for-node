@@ -9,32 +9,32 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2017-05-01.5.0')
+  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:59:36 GMT',
-  etag: '0x8D4A458970D086C',
+  'last-modified': 'Thu, 20 Jul 2017 20:12:27 GMT',
+  etag: '0x8D4CFABA4969642',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c8892ae1-abf1-456d-954b-c528bc35b3c3',
+  'request-id': '22c57416-6e0e-41d2-bfc3-c107fbd6f554',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/terminate',
-  date: 'Fri, 26 May 2017 16:59:34 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:27 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2017-05-01.5.0')
+  .post('/jobs/HelloWorldJobNodeSDKTest/terminate?api-version=2017-06-01.5.1')
   .reply(202, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:59:36 GMT',
-  etag: '0x8D4A458970D086C',
+  'last-modified': 'Thu, 20 Jul 2017 20:12:27 GMT',
+  etag: '0x8D4CFABA4969642',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'c8892ae1-abf1-456d-954b-c528bc35b3c3',
+  'request-id': '22c57416-6e0e-41d2-bfc3-c107fbd6f554',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/terminate',
-  date: 'Fri, 26 May 2017 16:59:34 GMT',
+  date: 'Thu, 20 Jul 2017 20:12:27 GMT',
   connection: 'close' });
  return result; }]];

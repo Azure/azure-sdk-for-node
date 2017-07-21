@@ -10,67 +10,67 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-05-01.5.0', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-06-01.5.1', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:55:28 GMT',
-  etag: '0x8D4A458037E6C82',
+  'last-modified': 'Thu, 20 Jul 2017 20:08:08 GMT',
+  etag: '0x8D4CFAB0A3AC0FB',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '53f655f1-4896-4ec2-8b80-86e634c4453e',
+  'request-id': '3cb712ae-3329-41c0-8de0-2f0d3e947f7b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings',
-  date: 'Fri, 26 May 2017 16:55:28 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-05-01.5.0', '*')
+.post('/jobs/HelloWorldJobNodeSDKTest/tasks?api-version=2017-06-01.5.1', '*')
   .reply(201, "", { 'transfer-encoding': 'chunked',
-  'last-modified': 'Fri, 26 May 2017 16:55:28 GMT',
-  etag: '0x8D4A458037E6C82',
+  'last-modified': 'Thu, 20 Jul 2017 20:08:08 GMT',
+  etag: '0x8D4CFAB0A3AC0FB',
   location: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '53f655f1-4896-4ec2-8b80-86e634c4453e',
+  'request-id': '3cb712ae-3329-41c0-8de0-2f0d3e947f7b',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
   dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings',
-  date: 'Fri, 26 May 2017 16:55:28 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:08 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAuthTokenSettings\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings\",\"eTag\":\"0x8D4A458037E6C82\",\"creationTime\":\"2017-05-26T16:55:28.8776834Z\",\"lastModified\":\"2017-05-26T16:55:28.8776834Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-05-26T16:55:29.7543367Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-05-26T16:55:29.6083363Z\",\"commandLine\":\"cmd /c echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"authenticationTokenSettings\":{\r\n    \"access\":[\r\n      \"job\"\r\n    ]\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-05-26T16:55:29.6083363Z\",\"endTime\":\"2017-05-26T16:55:29.7543367Z\",\"exitCode\":0,\"result\":\"Success\",\"retryCount\":0,\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20170526t164605z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170526t164605z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20170526t164605z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithauthtokensettings\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170526t164605z/files/workitems/helloworldjobnodesdktest/job-1/taskwithauthtokensettings\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAuthTokenSettings\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings\",\"eTag\":\"0x8D4CFAB0A3AC0FB\",\"creationTime\":\"2017-07-20T20:08:08.4062459Z\",\"lastModified\":\"2017-07-20T20:08:08.4062459Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:08:08.4062459Z\",\"commandLine\":\"cmd /c echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"authenticationTokenSettings\":{\r\n    \"access\":[\r\n      \"job\"\r\n    ]\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 26 May 2017 16:55:28 GMT',
-  etag: '0x8D4A458037E6C82',
+  'last-modified': 'Thu, 20 Jul 2017 20:08:08 GMT',
+  etag: '0x8D4CFAB0A3AC0FB',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5aa50aba-25bd-480c-8f12-7c590fb15f26',
+  'request-id': '99f44703-ff97-44db-8998-5786170e5223',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:55:30 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:06 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAuthTokenSettings\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings\",\"eTag\":\"0x8D4A458037E6C82\",\"creationTime\":\"2017-05-26T16:55:28.8776834Z\",\"lastModified\":\"2017-05-26T16:55:28.8776834Z\",\"state\":\"completed\",\"stateTransitionTime\":\"2017-05-26T16:55:29.7543367Z\",\"previousState\":\"running\",\"previousStateTransitionTime\":\"2017-05-26T16:55:29.6083363Z\",\"commandLine\":\"cmd /c echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"authenticationTokenSettings\":{\r\n    \"access\":[\r\n      \"job\"\r\n    ]\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"startTime\":\"2017-05-26T16:55:29.6083363Z\",\"endTime\":\"2017-05-26T16:55:29.7543367Z\",\"exitCode\":0,\"result\":\"Success\",\"retryCount\":0,\"requeueCount\":0\r\n  },\"nodeInfo\":{\r\n    \"affinityId\":\"TVM:tvm-115883067_3-20170526t164605z\",\"nodeUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170526t164605z\",\"poolId\":\"nodesdktestpool1\",\"nodeId\":\"tvm-115883067_3-20170526t164605z\",\"taskRootDirectory\":\"workitems\\\\helloworldjobnodesdktest\\\\job-1\\\\taskwithauthtokensettings\",\"taskRootDirectoryUrl\":\"https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_3-20170526t164605z/files/workitems/helloworldjobnodesdktest/job-1/taskwithauthtokensettings\"\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#tasks/@Element\",\"id\":\"TaskWithAuthTokenSettings\",\"url\":\"https://batchtestnodesdk.japaneast.batch.azure.com/jobs/HelloWorldJobNodeSDKTest/tasks/TaskWithAuthTokenSettings\",\"eTag\":\"0x8D4CFAB0A3AC0FB\",\"creationTime\":\"2017-07-20T20:08:08.4062459Z\",\"lastModified\":\"2017-07-20T20:08:08.4062459Z\",\"state\":\"active\",\"stateTransitionTime\":\"2017-07-20T20:08:08.4062459Z\",\"commandLine\":\"cmd /c echo Hello World\",\"userIdentity\":{\r\n    \"autoUser\":{\r\n      \"elevationLevel\":\"nonadmin\"\r\n    }\r\n  },\"authenticationTokenSettings\":{\r\n    \"access\":[\r\n      \"job\"\r\n    ]\r\n  },\"constraints\":{\r\n    \"maxWallClockTime\":\"P10675199DT2H48M5.4775807S\",\"retentionTime\":\"P10675199DT2H48M5.4775807S\",\"maxTaskRetryCount\":3\r\n  },\"executionInfo\":{\r\n    \"retryCount\":0,\"requeueCount\":0\r\n  }\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
-  'last-modified': 'Fri, 26 May 2017 16:55:28 GMT',
-  etag: '0x8D4A458037E6C82',
+  'last-modified': 'Thu, 20 Jul 2017 20:08:08 GMT',
+  etag: '0x8D4CFAB0A3AC0FB',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': '5aa50aba-25bd-480c-8f12-7c590fb15f26',
+  'request-id': '99f44703-ff97-44db-8998-5786170e5223',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:55:30 GMT',
+  date: 'Thu, 20 Jul 2017 20:08:06 GMT',
   connection: 'close' });
  return result; }]];

@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/poolusagemetrics?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.18461387972222221,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.66085967769444443,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'af1e746e-b110-41da-9be3-4437fcd30a7b',
+  'request-id': '4e8d1cc4-1e87-4234-b049-ee2827b1ca95',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:40 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:18 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .get('/poolusagemetrics?api-version=2017-05-01.5.0')
-  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    \r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
+  .get('/poolusagemetrics?api-version=2017-06-01.5.1')
+  .reply(200, "{\r\n  \"odata.metadata\":\"https://batchtestnodesdk.japaneast.batch.azure.com/$metadata#poolusagemetrics\",\"value\":[\r\n    {\r\n      \"poolId\":\"nodesdkinboundendpointpool\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"standard_a1\",\"totalCoreHours\":0.18461387972222221,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    },{\r\n      \"poolId\":\"nodesdktestpool1\",\"startTime\":\"2017-07-20T17:30:00Z\",\"endTime\":\"2017-07-20T18:00:00Z\",\"vmSize\":\"small\",\"totalCoreHours\":0.66085967769444443,\"dataIngressGiB\":0.0,\"dataEgressGiB\":0.0\r\n    }\r\n  ]\r\n}", { 'transfer-encoding': 'chunked',
   'content-type': 'application/json;odata=minimalmetadata',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'af1e746e-b110-41da-9be3-4437fcd30a7b',
+  'request-id': '4e8d1cc4-1e87-4234-b049-ee2827b1ca95',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  date: 'Fri, 26 May 2017 16:53:40 GMT',
+  date: 'Thu, 20 Jul 2017 20:06:18 GMT',
   connection: 'close' });
  return result; }]];

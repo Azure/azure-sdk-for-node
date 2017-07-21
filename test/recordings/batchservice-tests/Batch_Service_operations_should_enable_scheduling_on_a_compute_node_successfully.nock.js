@@ -9,28 +9,28 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170526t164605z/enablescheduling?api-version=2017-05-01.5.0')
+  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/enablescheduling?api-version=2017-06-01.5.1')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'abdad854-8c9c-4446-ab86-2032a93f7838',
+  'request-id': '37b7f770-20d4-4e4f-af98-456fca299172',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170526t164605z/enablescheduling',
-  date: 'Fri, 26 May 2017 16:53:24 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/enablescheduling',
+  date: 'Thu, 20 Jul 2017 20:06:09 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://batchtestnodesdk.japaneast.batch.azure.com:443')
-  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170526t164605z/enablescheduling?api-version=2017-05-01.5.0')
+  .post('/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/enablescheduling?api-version=2017-06-01.5.1')
   .reply(200, "", { 'transfer-encoding': 'chunked',
   server: 'Microsoft-HTTPAPI/2.0',
-  'request-id': 'abdad854-8c9c-4446-ab86-2032a93f7838',
+  'request-id': '37b7f770-20d4-4e4f-af98-456fca299172',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   dataserviceversion: '3.0',
-  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170526t164605z/enablescheduling',
-  date: 'Fri, 26 May 2017 16:53:24 GMT',
+  dataserviceid: 'https://batchtestnodesdk.japaneast.batch.azure.com/pools/nodesdktestpool1/nodes/tvm-115883067_2-20170720t195226z/enablescheduling',
+  date: 'Thu, 20 Jul 2017 20:06:09 GMT',
   connection: 'close' });
  return result; }]];
