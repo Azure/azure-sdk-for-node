@@ -1,3 +1,4 @@
 azureServiceClientTests.js
 azureEnvironmentTests.js
 rpRegistrationFilterTests.js
+credTests.js

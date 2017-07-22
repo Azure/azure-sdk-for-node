@@ -5,11 +5,13 @@
 
 const adal = require('adal-node');
 const async = require('async');
+const fs = require('fs');
+const msRest = require('ms-rest');
 const azureConstants = require('./constants');
+const AzureEnvironment = require('./azureEnvironment');
 const ApplicationTokenCredentials = require('./credentials/applicationTokenCredentials');
 const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
 const UserTokenCredentials = require('./credentials/userTokenCredentials');
-const AzureEnvironment = require('./azureEnvironment');
 const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
 
 // It will create a DeviceTokenCredentials object by default
@@ -458,6 +460,234 @@ exports.withServicePrincipalSecretWithAuthResponse = function withServicePrincip
   if (!options) options = {};
   return new Promise((resolve, reject) => {
     _withServicePrincipalSecret(clientId, secret, domain, options, (err, credentials, subscriptions) => {
+      if (err) { reject(err); }
+      else {
+        let authResponse = { credentials: credentials, subscriptions: subscriptions };
+        resolve(authResponse);
+      }
+      return;
+    });
+  });
+};
+
+function _validateAuthFileContent(credsObj, filePath) {
+  if (!credsObj) {
+    throw new Error('Please provide a credsObj to validate.');
+  }
+  if (!filePath) {
+    throw new Error('Please provide a filePath.');
+  }
+  if (!credsObj.clientId) {
+    throw new Error(`"clientId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.clientSecret) {
+    throw new Error(`"clientSecret" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.subscriptionId) {
+    throw new Error(`"subscriptionId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.tenantId) {
+    throw new Error(`"tenantId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.activeDirectoryEndpointUrl) {
+    throw new Error(`"activeDirectoryEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.resourceManagerEndpointUrl) {
+    throw new Error(`"resourceManagerEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.activeDirectoryGraphResourceId) {
+    throw new Error(`"activeDirectoryGraphResourceId" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.sqlManagementEndpointUrl) {
+    throw new Error(`"sqlManagementEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.galleryEndpointUrl) {
+    throw new Error(`"galleryEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+  if (!credsObj.managementEndpointUrl) {
+    throw new Error(`"managementEndpointUrl" is missing from the auth file: ${filePath}.`);
+  }
+}
+
+function _foundManagementEndpointUrl(authFileUrl, envUrl) {
+  if (!authFileUrl || (authFileUrl && typeof authFileUrl.valueOf() !== 'string')) {
+    throw new Error('authFileUrl cannot be null or undefined and must be of type string.');
+  }
+
+  if (!envUrl || (envUrl && typeof envUrl.valueOf() !== 'string')) {
+    throw new Error('envUrl cannot be null or undefined and must be of type string.');
+  }
+
+  authFileUrl = authFileUrl.endsWith('/') ? authFileUrl.slice(0, -1) : authFileUrl;  
+  envUrl = envUrl.endsWith('/') ? envUrl.slice(0, -1) : envUrl;
+  return (authFileUrl.toLowerCase() === envUrl.toLowerCase());
+}
+
+/**
+ * Authenticates using the service principal information provided in the auth file. This method will set 
+ * the subscriptionId from the auth file to the user provided environment variable in the options 
+ * parameter or the default AZURE_SUBSCRIPTION_ID.
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.filePath] - Absolute file path to the auth file. If not provided 
+ * then please set the environment variable AZURE_AUTH_LOCATION.
+ * @param {string} [options.subscriptionEnvVariableName] - The subscriptionId environment variable 
+ * name. Default is 'AZURE_SUBSCRIPTION_ID'.
+ * @param {function} callback - The callback
+ */
+function _withAuthFile(options, callback) {
+  if (!callback && typeof options === 'function') {
+    callback = options;
+    options = {};
+  }
+  if (!options) options = { filePath: '' };
+  if (!callback) {
+    throw new Error('callback cannot be null or undefined.');
+  }
+
+  let filePath = options.filePath;
+  let authLocation = process.env[azureConstants.AZURE_AUTH_LOCATION];
+  let subscriptionEnvVariableName = options.subscriptionEnvVariableName || 'AZURE_SUBSCRIPTION_ID';
+  if (!filePath) {
+    if (!authLocation) {
+      let msg = `Either provide an absolute file path to the auth file or set/export the environment variable - ${azureConstants.AZURE_AUTH_LOCATION}.`;
+      return callback(new Error(msg));
+    }
+    filePath = authLocation;
+  }
+  //expand ~ to user's home directory.
+  if(filePath.startsWith('~')) {
+    filePath = msRest.homeDir(filePath.slice(1));
+  }
+
+  let content = null, credsObj = {}, optionsForSpSecret = {};
+  try {
+    content = fs.readFileSync(filePath, {encoding: 'utf8'});
+    credsObj = JSON.parse(content);
+    _validateAuthFileContent(credsObj, filePath);
+    if (!process.env[subscriptionEnvVariableName]) {
+      process.env[subscriptionEnvVariableName] = credsObj.subscriptionId;
+    }
+  } catch(err) {
+    return callback(err);
+  }
+
+  //get the AzureEnvironment or create a new AzureEnvironment based on the info provided in the auth file
+  let envFound = { 
+    state: false,
+    name: ''
+  };
+  let envNames = Object.keys(Object.getPrototypeOf(AzureEnvironment)).slice(1);
+  for(let i = 0; i < envNames.length; i++) {
+    let env = envNames[i];
+    let environmentObj = AzureEnvironment[env];
+    if (environmentObj && 
+      environmentObj.managementEndpointUrl && 
+      _foundManagementEndpointUrl(credsObj.managementEndpointUrl, environmentObj.managementEndpointUrl)) {
+      envFound.state = true;
+      envFound.name = environmentObj.name;
+      break;
+    }
+  }
+  if (envFound.state) {
+    optionsForSpSecret.environment = AzureEnvironment[envFound.name];
+  } else {
+    //create a new environment with provided info.
+    let envParams = {
+      //try to find a logical name or set the filepath as the env name.
+      name: credsObj.managementEndpointUrl.match(/.*management\.core\.(.*)\..*/i)[1] || filePath
+    };
+    let keys = Object.keys(credsObj);
+    for (let i = 0; i < keys.length; i++) {
+      let key = keys[i];
+      if (key.match(/^(clientId|clientSecret|subscriptionId|tenantId)$/ig) === null) {
+        if (key === 'activeDirectoryEndpointUrl' && !key.endsWith('/')) {
+          envParams[key] = credsObj[key] + '/';
+        } else {
+          envParams[key] = credsObj[key];
+        }
+      }
+    }
+    if (!envParams.activeDirectoryResourceId) {
+      envParams.activeDirectoryResourceId = credsObj.managementEndpointUrl;
+    }
+    if (!envParams.portalUrl) {
+      envParams.portalUrl = 'https://portal.azure.com';
+    }
+    optionsForSpSecret.environment = AzureEnvironment.add(envParams);
+  }
+  return exports.withServicePrincipalSecret(credsObj.clientId, credsObj.clientSecret, credsObj.tenantId, optionsForSpSecret, callback);
+}
+
+/**
+ * Before using this method please install az cli from https://github.com/Azure/azure-cli/releases. Then execute `az ad sp create-for-rbac --sdk-auth > ${yourFilename.json}`.
+ * If you want to create the sp for a different cloud/environment then please execute:
+ * 1. az cloud list
+ * 2. az cloud set –n <name of the environment>
+ * 3. az ad sp create-for-rbac --sdk-auth > auth.json
+ * 
+ * Authenticates using the service principal information provided in the auth file. This method will set 
+ * the subscriptionId from the auth file to the user provided environment variable in the options 
+ * parameter or the default 'AZURE_SUBSCRIPTION_ID'.
+ * 
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.filePath] - Absolute file path to the auth file. If not provided 
+ * then please set the environment variable AZURE_AUTH_LOCATION.
+ * @param {string} [options.subscriptionEnvVariableName] - The subscriptionId environment variable 
+ * name. Default is 'AZURE_SUBSCRIPTION_ID'.
+ * @param {function} [optionalCallback] The optional callback.
+ * 
+ * @returns {function | Promise} If a callback was passed as the last parameter then it returns the callback else returns a Promise.
+ * 
+ *    {function} optionalCallback(err, credentials)
+ *                 {Error}  [err]                               - The Error object if an error occurred, null otherwise.
+ *                 {ApplicationTokenCredentials} [credentials]  - The ApplicationTokenCredentials object.
+ *                 {Array}                [subscriptions]       - List of associated subscriptions across all the applicable tenants.
+ *    {Promise} A promise is returned.
+ *             @resolve {ApplicationTokenCredentials} The ApplicationTokenCredentials object.
+ *             @reject {Error} - The error object.
+ */
+exports.withAuthFile = function withAuthFile(options, optionalCallback) {
+  if (!optionalCallback && typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _withAuthFile(options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _withAuthFile(options, optionalCallback);
+  }
+};
+
+/**
+ * Before using this method please install az cli from https://github.com/Azure/azure-cli/releases. Then execute `az ad sp create-for-rbac --sdk-auth > ${yourFilename.json}`.
+ * If you want to create the sp for a different cloud/environment then please execute:
+ * 1. az cloud list
+ * 2. az cloud set –n <name of the environment>
+ * 3. az ad sp create-for-rbac --sdk-auth > auth.json
+ * 
+ * Authenticates using the service principal information provided in the auth file. This method will set 
+ * the subscriptionId from the auth file to the user provided environment variable in the options 
+ * parameter or the default 'AZURE_SUBSCRIPTION_ID'.
+ * 
+ * @param {object} [options] - Optional parameters
+ * @param {string} [options.filePath] - Absolute file path to the auth file. If not provided 
+ * then please set the environment variable AZURE_AUTH_LOCATION.
+ * @param {string} [options.subscriptionEnvVariableName] - The subscriptionId environment variable 
+ * name. Default is 'AZURE_SUBSCRIPTION_ID'.
+ * 
+ * @returns {Promise} A promise is returned.
+ *   @resolve {{credentials: ApplicationTokenCredentials, subscriptions: subscriptions[]}} An object with credentials and associated subscription info.
+ *   @reject {Error} - The error object.
+ */
+exports.withAuthFileWithAuthResponse = function withAuthFileWithAuthResponse(options) {
+  return new Promise((resolve, reject) => {
+    _withAuthFile(options, (err, credentials, subscriptions) => {
       if (err) { reject(err); }
       else {
         let authResponse = { credentials: credentials, subscriptions: subscriptions };

@@ -1,3 +1,6 @@
+### 2.3.0
+- Added support to authenticate using service principal from auth file.
+
 ### 2.2.3 (7/14/2017)
 - Hot fix for RP Registration Filter for new subscription scenario.
 - Return the original response with 409 status code if auto RP registration failed.
