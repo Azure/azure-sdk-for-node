@@ -2,9 +2,10 @@
   "name": "azure-arm-datalake-store",
   "author": "Microsoft Corporation",
   "contributors": [
-    "Goldsmith, Benjamin <begoldsm@microsoft.com>"
+    "Goldsmith, Benjamin <begoldsm@microsoft.com>",
+	"Ro, Joo Wan <jooro@microsoft.com>"
   ],
-  "version": "2.1.0-preview",
+  "version": "2.2.0-preview",
   "description": "Microsoft Azure Data Lake Store Management Client Library for node",
   "tags": [
     "azure",
