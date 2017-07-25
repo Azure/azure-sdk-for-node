@@ -8,29 +8,29 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadla6478.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla4847.azuredatalakeanalytics.net:443')
   .get('/Jobs?api-version=2016-11-01')
-  .reply(200, "{\"value\":[{\"jobId\":\"dc20feca-9925-499a-9338-19e4fc9c409e\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:32:48.479554+00:00\",\"startTime\":\"2017-07-25T17:33:18.1050111+00:00\",\"endTime\":\"2017-07-25T17:33:21.5269373+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}},{\"jobId\":\"1728a603-2927-49ca-87b5-c8af85991b44\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:34:00.6368821+00:00\",\"endTime\":\"2017-07-25T17:34:01.4181624+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+  .reply(200, "{\"value\":[{\"jobId\":\"7a0497fb-8848-45e8-afde-075c5128af81\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:56:59.4818856+00:00\",\"endTime\":\"2017-07-25T17:57:00.15375+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}},{\"jobId\":\"a2d21fea-608f-4695-a654-c8a7f9b85275\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:56:18.8093652+00:00\",\"startTime\":\"2017-07-25T17:56:38.0596677+00:00\",\"endTime\":\"2017-07-25T17:56:44.919145+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f7b88056-5ac0-4af2-91c8-b0775ab1ad40',
+  'x-ms-request-id': '9955d451-bb11-44b8-a55c-2b749472157b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 25 Jul 2017 17:34:02 GMT',
+  date: 'Tue, 25 Jul 2017 17:57:01 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla6478.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla4847.azuredatalakeanalytics.net:443')
   .get('/Jobs?api-version=2016-11-01')
-  .reply(200, "{\"value\":[{\"jobId\":\"dc20feca-9925-499a-9338-19e4fc9c409e\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:32:48.479554+00:00\",\"startTime\":\"2017-07-25T17:33:18.1050111+00:00\",\"endTime\":\"2017-07-25T17:33:21.5269373+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}},{\"jobId\":\"1728a603-2927-49ca-87b5-c8af85991b44\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:34:00.6368821+00:00\",\"endTime\":\"2017-07-25T17:34:01.4181624+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+  .reply(200, "{\"value\":[{\"jobId\":\"7a0497fb-8848-45e8-afde-075c5128af81\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:56:59.4818856+00:00\",\"endTime\":\"2017-07-25T17:57:00.15375+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}},{\"jobId\":\"a2d21fea-608f-4695-a654-c8a7f9b85275\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:56:18.8093652+00:00\",\"startTime\":\"2017-07-25T17:56:38.0596677+00:00\",\"endTime\":\"2017-07-25T17:56:44.919145+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': 'f7b88056-5ac0-4af2-91c8-b0775ab1ad40',
+  'x-ms-request-id': '9955d451-bb11-44b8-a55c-2b749472157b',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Tue, 25 Jul 2017 17:34:02 GMT',
+  date: 'Tue, 25 Jul 2017 17:57:01 GMT',
   connection: 'close' });
  return result; }]];
