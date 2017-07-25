@@ -91,27 +91,27 @@ const mappings = {
   'datalake-analytics.account': {
     'packageName': 'azure-arm-datalake-analytics',
     'dir': 'dataLake.Analytics/lib/account',
-    'source': 'specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/2016-11-01/account.json'
+    'source': 'arm-datalake-analytics/account/2016-11-01/swagger/account.json'
   },
   'datalake-analytics.catalog': {
     'packageName': 'azure-arm-datalake-analytics',
     'dir': 'dataLake.Analytics/lib/catalog',
-    'source': 'specification/datalake-analytics/data-plane/Microsoft.DataLakeAnalytics/2016-11-01/catalog.json'
+    'source': 'arm-datalake-analytics/catalog/2016-11-01/swagger/catalog.json'
   },
   'datalake-analytics.job': {
     'packageName': 'azure-arm-datalake-analytics',
     'dir': 'dataLake.Analytics/lib/job',
-    'source': 'specification/datalake-analytics/data-plane/Microsoft.DataLakeAnalytics/2016-11-01/job.json'
+    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
   },
   'datalake-store.account': {
     'packageName': 'azure-arm-datalake-store',
     'dir': 'dataLake.Store/lib/account',
-    'source': 'specification/datalake-store/resource-manager/Microsoft.DataLakeStore/2016-11-01/account.json'
+    'source': 'arm-datalake-store/account/2016-11-01/swagger/account.json'
   },
   'datalake-store.filesystem': {
     'packageName': 'azure-arm-datalake-store',
     'dir': 'dataLake.Store/lib/filesystem',
-    'source': 'specification/datalake-store/data-plane/Microsoft.DataLakeStore/2016-11-01/filesystem.json'
+    'source': 'arm-datalake-store/filesystem/2016-11-01/swagger/filesystem.json'
   },
   'devtestlabs': {
     'packageName': 'azure-arm-devtestlabs',
