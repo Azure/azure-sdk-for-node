@@ -3,50 +3,50 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'East US 2';
   process.env['AZURE_TEST_RESOURCE_GROUP'] = 'xplattestadlarg05';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'ce4a7590-4722-4bcf-a2c6-e473e9f11778';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '04319d6d-4a66-4701-bb2f-e7dbbd9ae4db';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/resourceGroups/xplattestadla5226/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla8406?api-version=2016-11-01', '*')
+.put('/subscriptions/04319d6d-4a66-4701-bb2f-e7dbbd9ae4db/resourceGroups/xplattestadla7716/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla315?api-version=2016-11-01', '*')
   .reply(409, "{\"error\":{\"code\":\"ResourceConflicted\",\"message\":\"Resource Name belongs to another resource.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '94',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'd94e9816-85d0-4f45-895b-88899f0ec32b',
+  'x-ms-request-id': 'd4b9a39e-0047-43fa-bbbf-8e5a66be9e72',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '94b359a4-a150-42be-9e26-15524e38711b',
-  'x-ms-routing-request-id': 'JAPANEAST:20170609T092349Z:94b359a4-a150-42be-9e26-15524e38711b',
+  'x-ms-correlation-request-id': 'f80f2e78-4c3f-4302-8942-3d1a03ec2e02',
+  'x-ms-routing-request-id': 'WESTUS:20170725T173230Z:f80f2e78-4c3f-4302-8942-3d1a03ec2e02',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 09 Jun 2017 09:23:49 GMT',
+  date: 'Tue, 25 Jul 2017 17:32:29 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/ce4a7590-4722-4bcf-a2c6-e473e9f11778/resourceGroups/xplattestadla5226/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla8406?api-version=2016-11-01', '*')
+.put('/subscriptions/04319d6d-4a66-4701-bb2f-e7dbbd9ae4db/resourceGroups/xplattestadla7716/providers/Microsoft.DataLakeAnalytics/accounts/xplattestadla315?api-version=2016-11-01', '*')
   .reply(409, "{\"error\":{\"code\":\"ResourceConflicted\",\"message\":\"Resource Name belongs to another resource.\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '94',
   'content-type': 'application/json',
   expires: '-1',
-  'x-ms-request-id': 'd94e9816-85d0-4f45-895b-88899f0ec32b',
+  'x-ms-request-id': 'd4b9a39e-0047-43fa-bbbf-8e5a66be9e72',
   'x-content-type-options': 'nosniff',
   server: 'Microsoft-IIS/8.5',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'x-ms-ratelimit-remaining-subscription-writes': '1199',
-  'x-ms-correlation-request-id': '94b359a4-a150-42be-9e26-15524e38711b',
-  'x-ms-routing-request-id': 'JAPANEAST:20170609T092349Z:94b359a4-a150-42be-9e26-15524e38711b',
+  'x-ms-correlation-request-id': 'f80f2e78-4c3f-4302-8942-3d1a03ec2e02',
+  'x-ms-routing-request-id': 'WESTUS:20170725T173230Z:f80f2e78-4c3f-4302-8942-3d1a03ec2e02',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
-  date: 'Fri, 09 Jun 2017 09:23:49 GMT',
+  date: 'Tue, 25 Jul 2017 17:32:29 GMT',
   connection: 'close' });
  return result; }]];

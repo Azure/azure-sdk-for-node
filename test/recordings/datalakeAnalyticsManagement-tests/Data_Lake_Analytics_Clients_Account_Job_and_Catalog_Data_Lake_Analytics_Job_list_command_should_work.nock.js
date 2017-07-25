@@ -3,34 +3,34 @@
 exports.setEnvironment = function() {
   process.env['AZURE_TEST_LOCATION'] = 'East US 2';
   process.env['AZURE_TEST_RESOURCE_GROUP'] = 'xplattestadlarg05';
-  process.env['AZURE_SUBSCRIPTION_ID'] = 'ce4a7590-4722-4bcf-a2c6-e473e9f11778';
+  process.env['AZURE_SUBSCRIPTION_ID'] = '04319d6d-4a66-4701-bb2f-e7dbbd9ae4db';
 };
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('http://xplattestadla7793.azuredatalakeanalytics.net:443')
+nock('http://xplattestadla6478.azuredatalakeanalytics.net:443')
   .get('/Jobs?api-version=2016-11-01')
-  .reply(200, "{\"value\":[{\"jobId\":\"1bdd969f-80c0-4fab-b456-41692c9050a8\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-06-09T09:24:21.6330462+00:00\",\"startTime\":\"2017-06-09T09:24:47.8090831+00:00\",\"endTime\":\"2017-06-09T09:24:51.4810151+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}},{\"jobId\":\"d059392c-e921-4b4b-ad8a-f5e0afd119f7\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-06-09T09:25:09.5124408+00:00\",\"endTime\":\"2017-06-09T09:25:11.0593325+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+  .reply(200, "{\"value\":[{\"jobId\":\"dc20feca-9925-499a-9338-19e4fc9c409e\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:32:48.479554+00:00\",\"startTime\":\"2017-07-25T17:33:18.1050111+00:00\",\"endTime\":\"2017-07-25T17:33:21.5269373+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}},{\"jobId\":\"1728a603-2927-49ca-87b5-c8af85991b44\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:34:00.6368821+00:00\",\"endTime\":\"2017-07-25T17:34:01.4181624+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '78bde991-e469-4b65-aaca-711dc0b85c48',
+  'x-ms-request-id': 'f7b88056-5ac0-4af2-91c8-b0775ab1ad40',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 09 Jun 2017 09:25:14 GMT',
+  date: 'Tue, 25 Jul 2017 17:34:02 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://xplattestadla7793.azuredatalakeanalytics.net:443')
+nock('https://xplattestadla6478.azuredatalakeanalytics.net:443')
   .get('/Jobs?api-version=2016-11-01')
-  .reply(200, "{\"value\":[{\"jobId\":\"1bdd969f-80c0-4fab-b456-41692c9050a8\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-06-09T09:24:21.6330462+00:00\",\"startTime\":\"2017-06-09T09:24:47.8090831+00:00\",\"endTime\":\"2017-06-09T09:24:51.4810151+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}},{\"jobId\":\"d059392c-e921-4b4b-ad8a-f5e0afd119f7\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"jasonsrptest2@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-06-09T09:25:09.5124408+00:00\",\"endTime\":\"2017-06-09T09:25:11.0593325+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
+  .reply(200, "{\"value\":[{\"jobId\":\"dc20feca-9925-499a-9338-19e4fc9c409e\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:32:48.479554+00:00\",\"startTime\":\"2017-07-25T17:33:18.1050111+00:00\",\"endTime\":\"2017-07-25T17:33:21.5269373+00:00\",\"state\":\"Ended\",\"result\":\"Succeeded\",\"related\":{}},{\"jobId\":\"1728a603-2927-49ca-87b5-c8af85991b44\",\"name\":\"xplattestjob\",\"type\":\"USql\",\"submitter\":\"AdlSdkTestApp01@SPI\",\"degreeOfParallelism\":1,\"priority\":1000,\"submitTime\":\"2017-07-25T17:34:00.6368821+00:00\",\"endTime\":\"2017-07-25T17:34:01.4181624+00:00\",\"state\":\"Ended\",\"result\":\"Cancelled\",\"related\":{}}]}", { 'cache-control': 'private, no-cache, no-store, max-age=0',
   'transfer-encoding': 'chunked',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-request-id': '78bde991-e469-4b65-aaca-711dc0b85c48',
+  'x-ms-request-id': 'f7b88056-5ac0-4af2-91c8-b0775ab1ad40',
   'x-content-type-options': 'nosniff',
   'strict-transport-security': 'max-age=15724800; includeSubDomains',
-  date: 'Fri, 09 Jun 2017 09:25:14 GMT',
+  date: 'Tue, 25 Jul 2017 17:34:02 GMT',
   connection: 'close' });
  return result; }]];
