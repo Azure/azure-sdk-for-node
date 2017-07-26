@@ -3012,6 +3012,72 @@ export interface Resources {
 
 
     /**
+     * Resource action request.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Recource action request post JSON.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resourceActionRequestIdWithHttpOperationResponse(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GenericResource>>;
+
+    /**
+     * Resource action request.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Recource action request post JSON.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GenericResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GenericResource} [result] - The result JSON object if an error did not occur.
+     *
+     *                      {WebResource} [request] - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resourceActionRequest(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
+    resourceActionRequest(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+    resourceActionRequest(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+
+
+    /**
      * Gets a resource by ID.
      *
      * @param {string} resourceId The fully qualified ID of the resource, including
@@ -3522,6 +3588,31 @@ export interface Resources {
     beginCreateOrUpdateByIdWithHttpOperationResponse(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GenericResource>>;
 
     /**
+     * Resource action request.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Recource action request post JSON.
+     * 
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResourceActionRequestWithHttpOperationResponse(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GenericResource>>;
+
+
+    /**
      * Create a resource by ID.
      *
      * @param {string} resourceId The fully qualified ID of the resource, including
@@ -3602,6 +3693,48 @@ export interface Resources {
     beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
     beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
     beginCreateOrUpdateById(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+
+        /**
+     * Resource action request.
+     *
+     * @param {string} resourceId The fully qualified ID of the resource, including
+     * the resource name and resource type. Use the format,
+     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+     *
+     * @param {string} apiVersion The API version to use for the operation.
+     *
+     * @param {object} parameters Recource action request post JSON.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GenericResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GenericResource} [result] - The result JSON object if an error did not occur.
+     *
+     *                      {WebResource} [request] - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResourceActionRequest(resourceId: string, apiVersion: string, parameters: models.GenericResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GenericResource>;
+    beginResourceActionRequest(resourceId: string, apiVersion: string, parameters: models.GenericResource, callback: ServiceCallback<models.GenericResource>): void;
+    beginResourceActionRequest(resourceId: string, apiVersion: string, parameters: models.GenericResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GenericResource>): void;
+
 
 
     /**
