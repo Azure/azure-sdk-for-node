@@ -449,7 +449,14 @@ function generateProject(project, specRoot, autoRestVersion) {
   let cmd = `autorest --output-folder=${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
   
   // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
-  if (language === azureTemplate) cmd += '  --azure-arm';
+  if (language === azureTemplate) cmd += '  --azure-arm ';
+  if (isInputJson){
+    cmd += `  --input-file=${specPath} `;
+  }
+  else{
+    cmd += `  ${specPath} `;
+  }
+
   if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' --payload-flattening-threshold=' + mappings[project].ft;
   if (mappings[project].clientName !== null && mappings[project].clientName !== undefined) cmd += ' --override-client-name=' + mappings[project].clientName;
   if (mappings[project].args !== undefined) {
