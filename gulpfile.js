@@ -371,7 +371,7 @@ const mappings = {
   }
 };
 
-const defaultAutoRestVersion = '1.1.0-20170704-2300-nightly --prerelease';
+const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 const project = args['project'];
@@ -433,23 +433,25 @@ function clearProjectBeforeGenerating(projectDir) {
 }
 
 function generateProject(project, specRoot, autoRestVersion) {
-  let currentModeler = modeler;
   let specPath = specRoot + '/' + mappings[project].source;
+  let isInputJson = mappings[project].source.endsWith("json");
   let result;
-  language = 'Azure.NodeJS'
+  const azureTemplate = 'Azure.NodeJs';
+  language = azureTemplate;
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
     language = mappings[project].language;
   }
-  //default Modeler is Swagger. However, some services may want to use CompositeSwaggerModeler
-  if (mappings[project].modeler && mappings[project].modeler.match(/^CompositeSwagger$/ig) !== null) {
-    currentModeler = mappings[project].modeler;
-  }
+
   console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
   let outputDir = `lib/services/${mappings[project].dir}`;
-  let cmd = `autorest -Modeler ${currentModeler} -CodeGenerator ${language} -Input ${specPath}  -outputDirectory ${outputDir} -Header MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
-  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
-  if (mappings[project].clientName !== null && mappings[project].clientName !== undefined) cmd += ' -ClientName ' + mappings[project].clientName;
+  let packageName = mappings[project].packageName;
+  let cmd = `autorest --output-folder=${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
+  
+  // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
+  if (language === azureTemplate) cmd += '  --azure-arm';
+  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' --payload-flattening-threshold=' + mappings[project].ft;
+  if (mappings[project].clientName !== null && mappings[project].clientName !== undefined) cmd += ' --override-client-name=' + mappings[project].clientName;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }
