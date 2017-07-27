@@ -79,10 +79,6 @@
     "service_name": "Monitor",
     "category": "Management"
   },
-  "azure-arm-intune": {
-    "service_name": "Intune",
-    "category": "Management"
-  },
   "azure-arm-iothub": {
     "service_name": "IoT Hub",
     "category": "Management"
