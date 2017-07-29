@@ -23,7 +23,7 @@ describe('Login', () => {
       var dummyCreds = {
       tokenAudience: undefined,
       environment: {},
-      authorizattionScheme: 'Bearer',
+      authorizationScheme: 'Bearer',
       tokenCache: {},
       clientId: credsObj.clientSecret,
       domain: credsObj.tenantId,

@@ -501,12 +501,6 @@ function _validateAuthFileContent(credsObj, filePath) {
   if (!credsObj.sqlManagementEndpointUrl) {
     throw new Error(`"sqlManagementEndpointUrl" is missing from the auth file: ${filePath}.`);
   }
-  if (!credsObj.galleryEndpointUrl) {
-    throw new Error(`"galleryEndpointUrl" is missing from the auth file: ${filePath}.`);
-  }
-  if (!credsObj.managementEndpointUrl) {
-    throw new Error(`"managementEndpointUrl" is missing from the auth file: ${filePath}.`);
-  }
 }
 
 function _foundManagementEndpointUrl(authFileUrl, envUrl) {
@@ -544,15 +538,11 @@ function _withAuthFile(options, callback) {
     throw new Error('callback cannot be null or undefined.');
   }
 
-  let filePath = options.filePath;
-  let authLocation = process.env[azureConstants.AZURE_AUTH_LOCATION];
+  let filePath = options.filePath || process.env[azureConstants.AZURE_AUTH_LOCATION];
   let subscriptionEnvVariableName = options.subscriptionEnvVariableName || 'AZURE_SUBSCRIPTION_ID';
   if (!filePath) {
-    if (!authLocation) {
-      let msg = `Either provide an absolute file path to the auth file or set/export the environment variable - ${azureConstants.AZURE_AUTH_LOCATION}.`;
-      return callback(new Error(msg));
-    }
-    filePath = authLocation;
+    let msg = `Either provide an absolute file path to the auth file or set/export the environment variable - ${azureConstants.AZURE_AUTH_LOCATION}.`;
+    return callback(new Error(msg));
   }
   //expand ~ to user's home directory.
   if(filePath.startsWith('~')) {
@@ -564,16 +554,17 @@ function _withAuthFile(options, callback) {
     content = fs.readFileSync(filePath, {encoding: 'utf8'});
     credsObj = JSON.parse(content);
     _validateAuthFileContent(credsObj, filePath);
-    if (!process.env[subscriptionEnvVariableName]) {
-      process.env[subscriptionEnvVariableName] = credsObj.subscriptionId;
-    }
   } catch(err) {
     return callback(err);
   }
 
+  if (!credsObj.managementEndpointUrl) {
+    credsObj.managementEndpointUrl = credsObj.resourceManagerEndpointUrl;
+  }
+  //setting the subscriptionId from auth file to the environment variable
+  process.env[subscriptionEnvVariableName] = credsObj.subscriptionId;
   //get the AzureEnvironment or create a new AzureEnvironment based on the info provided in the auth file
   let envFound = { 
-    state: false,
     name: ''
   };
   let envNames = Object.keys(Object.getPrototypeOf(AzureEnvironment)).slice(1);
@@ -583,12 +574,11 @@ function _withAuthFile(options, callback) {
     if (environmentObj && 
       environmentObj.managementEndpointUrl && 
       _foundManagementEndpointUrl(credsObj.managementEndpointUrl, environmentObj.managementEndpointUrl)) {
-      envFound.state = true;
       envFound.name = environmentObj.name;
       break;
     }
   }
-  if (envFound.state) {
+  if (envFound.name) {
     optionsForSpSecret.environment = AzureEnvironment[envFound.name];
   } else {
     //create a new environment with provided info.
