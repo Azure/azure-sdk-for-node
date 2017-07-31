@@ -615,6 +615,10 @@ function _withAuthFile(options, callback) {
  * 2. az cloud set –n <name of the environment>
  * 3. az ad sp create-for-rbac --sdk-auth > auth.json
  * 
+ * If the service principal is already created then login with service principal info:
+ * 3. az login --service-principal -u <clientId> -p <clientSecret> -t <tenantId>
+ * 4. az account show --sdk-auth > auth.json 
+ * 
  * Authenticates using the service principal information provided in the auth file. This method will set 
  * the subscriptionId from the auth file to the user provided environment variable in the options 
  * parameter or the default 'AZURE_SUBSCRIPTION_ID'.
@@ -660,6 +664,10 @@ exports.withAuthFile = function withAuthFile(options, optionalCallback) {
  * 1. az cloud list
  * 2. az cloud set –n <name of the environment>
  * 3. az ad sp create-for-rbac --sdk-auth > auth.json
+ * 
+ * If the service principal is already created then login with service principal info:
+ * 3. az login --service-principal -u <clientId> -p <clientSecret> -t <tenantId>
+ * 4. az account show --sdk-auth > auth.json 
  * 
  * Authenticates using the service principal information provided in the auth file. This method will set 
  * the subscriptionId from the auth file to the user provided environment variable in the options 
