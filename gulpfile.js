@@ -17,364 +17,361 @@ const mappings = {
   'advisor': {
     'packageName': 'azure-arm-advisor',
     'dir': 'advisorManagement/lib',
-    'source': 'arm-advisor/2017-03-31/swagger/advisor.json'
+    'source': 'advisor/resource-manager/readme.md'
   },
   'analysisservices': {
     'packageName': 'azure-arm-analysisservices',
     'dir': 'analysisServices/lib',
-    'source': 'arm-analysisservices/2016-05-16/swagger/analysisservices.json',
+    'source': 'analysisservices/resource-manager/readme.md',
+  },
+  'apimanagement': {
+    'packageName': 'azure-arm-apimanagement',
+    'dir': 'apimanagement/lib',
+    'source': 'apimanagement/resource-manager/readme.md',
+  },
+  'appinsights': {
+    'packageName': 'azure-arm-appinsights',
+    'dir': 'appinsights/lib',
+    'source': 'appinsights/resource-manager/readme.md',
   },
   'authorization': {
     'packageName': 'azure-arm-authorization',
     'dir': 'authorizationManagement/lib',
-    'source': 'arm-authorization/2015-07-01/swagger/authorization.json',
+    'source': 'authorization/resource-manager/readme.md',
     'ft': 1
   },
   'automation': {
     'packageName': 'azure-arm-automation',
     'dir': 'automationManagement/lib',
-    'source': 'arm-automation/compositeAutomation.json',
-    'modeler': 'CompositeSwagger'
+    'source': 'automation/resource-manager/readme.md',
   },
   'batch.Management': {
     'packageName': 'azure-arm-batch',
     'dir': 'batchManagement/lib',
-    'source': 'arm-batch/2017-01-01/swagger/BatchManagement.json',
+    'source': 'batch/resource-manager/readme.md',
     'ft': 1
   },
   'batch.Service': {
     'packageName': 'azure-batch',
     'dir': 'batch/lib',
-    'source': 'batch/2017-01-01.4.0/swagger/BatchService.json',
+    'source': 'batch/data-plane/readme.md',
     'ft': 1
   },
   'billing': {
     'packageName': 'azure-arm-billing',
     'dir': 'billingManagement/lib',
-    'source': 'arm-billing/2017-02-27-preview/swagger/billing.json',
+    'source': 'billing/resource-manager/readme.md',
     'ft': 1
   },
   'cdn': {
     'packageName': 'azure-arm-cdn',
     'dir': 'cdnManagement/lib',
-    'source': 'arm-cdn/2016-10-02/swagger/cdn.json',
+    'source': 'cdn/resource-manager/readme.md',
     'ft': 2
   },
-  'coginitiveServices': {
-    'packageName': 'azure-arm-coginitiveServices',
+  'cognitiveServices': {
+    'packageName': 'azure-arm-cognitiveServices',
     'dir': 'coginitiveServicesManagement/lib',
-    'source': 'arm-cognitiveservices/2016-02-01-preview/swagger/cognitiveservices.json'
+    'source': 'cognitiveservices/resource-manager/readme.md'
   },
   'commerce': {
     'packageName': 'azure-arm-commerce',
     'dir': 'commerce/lib',
-    'source': 'arm-commerce/2015-06-01-preview/swagger/commerce.json',
+    'source': 'commerce/resource-manager/readme.md',
     'ft': 2
   },
   'compute': {
     'packageName': 'azure-arm-compute',
     'dir': 'computeManagement2/lib',
-    'source': 'arm-compute/compositeComputeClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
+    'source': 'compute/resource-manager/readme.md',
+    'ft': 1
+  },
+  'consumption': {
+    'packageName': 'azure-arm-consumption',
+    'dir': 'consumptionManagement/lib',
+    'source': 'consumption/resource-manager/readme.md'
   },
   'containerregistry': {
     'packageName': 'azure-arm-containerregistry',
     'dir': 'containerRegistryManagement/lib',
-    'source': 'arm-containerregistry/2017-03-01/swagger/containerregistry.json'
+    'source': 'containerregistry/resource-manager/readme.md'
+  },
+  'cosmosdb': {
+    'packageName': 'azure-arm-cosmosdb',
+    'dir': 'cosmosdbManagement/lib',
+    'source': 'cosmos-db/resource-manager/readme.md'
   },
   'customerinsights': {
     'packageName': 'azure-arm-customerinsights',
     'dir': 'customerInsightsManagement/lib',
-    'source': 'arm-customer-insights/2017-01-01/swagger/customer-insights.json'
+    'source': 'customer-insights/resource-manager/readme.md'
   },
   'datalake-analytics.account': {
     'packageName': 'azure-arm-datalake-analytics',
     'dir': 'dataLake.Analytics/lib/account',
-    'source': 'arm-datalake-analytics/account/2016-11-01/swagger/account.json'
+    'source': 'datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/2016-11-01/account.json'
   },
   'datalake-analytics.catalog': {
     'packageName': 'azure-arm-datalake-analytics',
     'dir': 'dataLake.Analytics/lib/catalog',
-    'source': 'arm-datalake-analytics/catalog/2016-11-01/swagger/catalog.json'
+    'source': 'datalake-analytics/data-plane/Microsoft.DataLakeAnalytics/2016-11-01/catalog.json'
   },
   'datalake-analytics.job': {
     'packageName': 'azure-arm-datalake-analytics',
     'dir': 'dataLake.Analytics/lib/job',
-    'source': 'arm-datalake-analytics/job/2016-11-01/swagger/job.json'
+    'source': 'datalake-analytics/data-plane/Microsoft.DataLakeAnalytics/2016-11-01/job.json'
   },
   'datalake-store.account': {
     'packageName': 'azure-arm-datalake-store',
     'dir': 'dataLake.Store/lib/account',
-    'source': 'arm-datalake-store/account/2016-11-01/swagger/account.json'
+    'source': 'datalake-store/resource-manager/readme.md'
   },
   'datalake-store.filesystem': {
     'packageName': 'azure-arm-datalake-store',
     'dir': 'dataLake.Store/lib/filesystem',
-    'source': 'arm-datalake-store/filesystem/2016-11-01/swagger/filesystem.json'
+    'source': 'datalake-store/data-plane/readme.md'
   },
   'devtestlabs': {
     'packageName': 'azure-arm-devtestlabs',
     'dir': 'devTestLabs/lib',
-    'source': 'arm-devtestlabs/2016-05-15/swagger/DTL.json'
+    'source': 'devtestlabs/resource-manager/readme.md'
   },
   'dns': {
     'packageName': 'azure-arm-dns',
     'dir': 'dnsManagement/lib',
-    'source': 'arm-dns/2016-04-01/swagger/dns.json'
-  },
-  'documentdb': {
-    'packageName': 'azure-arm-documentdb',
-    'dir': 'documentdbManagement/lib',
-    'source': 'arm-documentdb/2015-04-08/swagger/documentdb.json',
-    'clientName': 'DocumentdbManagementClient'
+    'source': 'dns/resource-manager/readme.md'
   },
   'eventhub': {
     'packageName': 'azure-arm-eventhub',
     'dir': 'eventHubManagement/lib',
-    'source': 'arm-eventhub/2015-08-01/swagger/EventHub.json'
+    'source': 'eventhub/resource-manager/readme.md'
   },
   'graph': {
     'packageName': 'azure-graph',
     'dir': 'graphManagement/lib',
-    'source': 'arm-graphrbac/compositeGraphRbacManagementClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
+    'source': 'graphrbac/data-plane/readme.md',
+    'ft': 1
+  },
+  'hdinsight': {
+    'packageName': 'azure-arm-hdinsight',
+    'dir': 'hdInsightManagement/lib',
+    'source': 'hdinsight/resource-manager/readme.md',
   },
   'intune': {
     'packageName': 'azure-arm-intune',
     'dir': 'intune/lib',
-    'source': 'arm-intune/2015-01-14-preview/swagger/intune.json',
-  },
-  'insights': {
-    'packageName': 'azure-insights',
-    'dir': 'insights/lib',
-    'source': 'insights/compositeInsightsClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
-  },
-  'arm-insights': {
-    'packageName': 'azure-arm-insights',
-    'dir': 'insightsManagement/lib',
-    'source': 'arm-insights/compositeInsightsManagementClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
+    'source': 'intune/resource-manager/readme.md',
   },
   'iothub': {
     'packageName': 'azure-arm-iothub',
     'dir': 'iothub/lib',
-    'source': 'arm-iothub/2017-01-19/swagger/iothub.json',
+    'source': 'iothub/resource-manager/readme.md',
     'ft': 1
   },
   'keyvault': {
     'packageName': 'azure-keyvault',
     'dir': 'keyvault/lib',
-    'source': 'keyvault/2016-10-01/swagger/keyvault.json'
+    'source': 'keyvault/data-plane/readme.md'
   },
   'arm-keyvault': {
     'packageName': 'azure-arm-keyvault',
     'dir': 'keyVaultManagement/lib',
-    'source': 'arm-keyvault/2015-06-01/swagger/keyvault.json'
+    'source': 'keyvault/resource-manager/readme.md'
   },
   'logic': {
     'packageName': 'azure-arm-logic',
     'dir': 'logicManagement/lib',
-    'source': 'arm-logic/2016-06-01/swagger/logic.json',
+    'source': 'logic/resource-manager/readme.md',
   },
-  'machinelearning.commitmentPlan': {
+  'machinelearning': {
     'packageName': 'azure-arm-machinelearning',
-    'dir': 'machinelearning/lib/commitmentPlan',
-    'source': 'arm-machinelearning/2016-05-01-preview/swagger/commitmentPlans.json'
-  },
-  'machinelearning.webservices': {
-    'packageName': 'azure-arm-machinelearning',
-    'dir': 'machinelearning/lib/webservices',
-    'source': 'arm-machinelearning/2016-05-01-preview/swagger/webservices.json'
+    'dir': 'machinelearning/lib',
+    'source': 'machinelearning/resource-manager/readme.md'
   },
   'mediaservices': {
     'packageName': 'azure-arm-mediaservices',
     'dir': 'mediaServicesManagement/lib',
-    'source': 'arm-mediaservices/2015-10-01/swagger/media.json'
+    'source': 'mediaservices/resource-manager/readme.md'
+  },
+  'mobileengagement': {
+    'packageName': 'azure-arm-mobileengagement',
+    'dir': 'mobileEngagementManagement/lib',
+    'source': 'mobileengagement/resource-manager/readme.md'
+  },
+  'monitor': {
+    'package': 'azure-monitor',
+    'dir': 'monitor/lib',
+    'source': 'monitor/data-plane/readme.md',
+    'ft': 1
+  },
+  'monitor.management': {
+    'package': 'azure-arm-monitor',
+    'dir': 'monitorManagement/lib',
+    'source': 'monitor/resource-manager/readme.md',
+    'ft': 1
   },
   'mysql': {
     'packageName': 'azure-arm-mysql',
     'dir': 'mysqlManagement/lib',
-    'source': 'arm-rdbms/2017-04-30-preview/swagger/Rdms.MySQL.json'
-  },
-  'monitor': {
-    'dir': 'monitor/lib',
-    'source': 'monitor/compositeMonitorClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
-  },
-  'monitor.management': {
-    'dir': 'monitorManagement/lib',
-    'source': 'arm-monitor/compositeMonitorManagementClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
+    'source': 'mysql/resource-manager/readme.md'
   },
   'network': {
     'packageName': 'azure-arm-network',
     'dir': 'networkManagement2/lib',
-    'source': 'arm-network/compositeNetworkClient.json',
-    'modeler': 'CompositeSwagger'
+    'source': 'network/resource-manager/readme.md'
   },
   'notificationhubs': {
     'packageName': 'azure-arm-notificationhubs',
     'dir': 'notificationHubsManagement/lib',
-    'source': 'arm-notificationhubs/2017-04-01/swagger/notificationhubs.json'
+    'source': 'notificationhubs/resource-manager/readme.md'
   },
   'operationalinsights': {
     'packageName': 'azure-arm-operationalinsights',
     'dir': 'operationalInsightsManagement2/lib',
-    'source': 'arm-operationalinsights/compositeOperationalInsights.json',
-    'modeler': 'CompositeSwagger',
+    'source': 'operationalinsights/resource-manager/readme.md',
     'clientName': 'OperationalInsightsManagementClient'
   },
   'postgresql': {
     'packageName': 'azure-arm-postgresql',
     'dir': 'postgresqlManagement/lib',
-    'source': 'arm-rdbms/2017-04-30-preview/swagger/Rdms.PostgreSQL.json'
+    'source': 'postgresql/resource-manager/readme.md'
   },
   'powerbiembedded': {
     'packageName': 'azure-arm-powerbiembedded',
     'dir': 'powerbiembedded/lib',
-    'source': 'arm-powerbiembedded/2016-01-29/swagger/powerbiembedded.json'
+    'source': 'powerbiembedded/resource-manager/readme.md'
   },
   'recoveryservices': {
     'packageName': 'azure-arm-recoveryservices',
     'dir': 'recoveryServicesManagement/lib',
-    'source': 'arm-recoveryservices/2016-06-01/swagger/recoveryservices.json'
+    'source': 'recoveryservices/resource-manager/readme.md'
   },
   'recoveryservicesbackup': {
     'packageName': 'azure-arm-recoveryservicesbackup',
     'dir': 'recoveryServicesBackupManagement/lib',
-    'source': 'arm-recoveryservicesbackup/compositeRecoveryServicesBackupClient.json',
-    'modeler': 'CompositeSwagger'
+    'source': 'recoveryservicesbackup/resource-manager/readme.md'
+  },
+  'recoveryservicessiterecovery': {
+    'packageName': 'azure-arm-recoveryservices-siterecovery',
+    'dir': 'recoveryServicesSiteRecoveryManagement/lib',
+    'source': 'recoveryservicessiterecovery/resource-manager/readme.md'
   },
   'rediscache': {
     'packageName': 'azure-arm-rediscache',
     'dir': 'rediscachemanagement/lib',
-    'source': 'arm-redis/2016-04-01/swagger/redis.json',
+    'source': 'redis/resource-manager/readme.md',
     'ft': 1
   },
   'relay': {
     'packageName': 'azure-arm-relay',
     'dir': 'relayManagement/lib',
-    'source': 'arm-relay/2016-07-01/swagger/relay.json'
+    'source': 'relay/resource-manager/readme.md'
   },
-  'resource.feature': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/feature',
-    'source': 'arm-resources/features/2015-12-01/swagger/features.json'
-  },
-  'resource.link': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/link',
-    'source': 'arm-resources/links/2016-09-01/swagger/links.json'
-  },
-  'resource.lock': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/lock',
-    'source': 'arm-resources/locks/2016-09-01/swagger/locks.json'
-  },
-  'resource.policy': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/policy',
-    'source': 'arm-resources/policy/2016-12-01/swagger/policy.json'
+  'resourcehealth': {
+    'packageName': 'azure-arm-resourcehealth',
+    'dir': 'resourceHealthManagement/lib',
+    'source': 'resourcehealth/resource-manager/readme.md'
   },
   'resource': {
     'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/resource',
-    'source': 'arm-resources/resources/2016-09-01/swagger/resources.json'
-  },
-  'resource.subscription': {
-    'packageName': 'azure-arm-resource',
-    'dir': 'resourceManagement/lib/subscription',
-    'source': 'arm-resources/subscriptions/2016-06-01/swagger/subscriptions.json'
+    'dir': 'resourceManagement/lib',
+    'source': 'resources/resource-manager/readme.md'
   },
   'scheduler': {
     'packageName': 'azure-arm-scheduler',
     'dir': 'schedulerManagement2/lib',
-    'source': 'arm-scheduler/2016-03-01/swagger/scheduler.json'
+    'source': 'scheduler/resource-manager/readme.md'
   },
   'searchindex': {
     'packageName': 'azure-search',
     'dir': 'search/lib/index',
-    'source': 'search/2016-09-01/swagger/searchindex.json'
+    'source': 'search/data-plane/Microsoft.Search/2016-09-01/searchindex.json'
   },
   'searchservice': {
     'packageName': 'azure-search',
     'dir': 'search/lib/service',
-    'source': 'search/2016-09-01/swagger/searchservice.json'
+    'source': 'search/data-plane/Microsoft.Search/2016-09-01/searchservice.json'
   },
   'arm-search': {
     'packageName': 'azure-arm-search',
     'dir': 'searchManagement/lib',
-    'source': 'arm-search/2015-08-19/swagger/search.json'
+    'source': 'search/resource-manager/readme.md'
   },
   'servermanagement': {
     'packageName': 'azure-arm-servermanagement',
     'dir': 'servermanagement/lib',
-    'source': 'arm-servermanagement/2016-07-01-preview/swagger/servermanagement.json'
+    'source': 'servermanagement/resource-manager/readme.md'
   },
   'servicemap': {
     'packageName': 'azure-arm-servicemap',
     'dir': 'serviceMapManagement/lib',
-    'source': 'arm-service-map/2015-11-01-preview/swagger/arm-service-map.json',
+    'source': 'service-map/resource-manager/readme.md',
     'clientName': 'ServicemapManagementClient'
   },
   'sb': {
     'packageName': 'azure-arm-sb',
     'dir': 'serviceBusManagement2/lib',
-    'source': 'arm-servicebus/2015-08-01/swagger/servicebus.json'
+    'source': 'servicebus/resource-manager/readme.md'
   },
   'arm-servicefabric': {
     'packageName': 'azure-arm-servicefabric',
     'dir': 'serviceFabricManagement/lib',
-    'source': 'arm-servicefabric/2016-09-01/swagger/servicefabric.json'
+    'source': 'servicefabric/resource-manager/readme.md'
   },
   'servicefabric': {
     'packageName': 'azure-servicefabric',
     'dir': 'serviceFabric/lib',
-    'source': 'servicefabric/2016-01-28/swagger/servicefabric.json',
+    'source': 'servicefabric/data-plane/readme.md',
     'language': 'NodeJS'
   },
   'sql': {
     'packageName': 'azure-arm-sql',
     'dir': 'sqlManagement2/lib',
-    'source': 'arm-sql/compositeSql.json',
-    'modeler': 'CompositeSwagger'
+    'source': 'sql/resource-manager'
   },
   'storage': {
     'packageName': 'azure-arm-storage',
     'dir': 'storageManagement2/lib',
-    'source': 'arm-storage/2017-06-01/swagger/storage.json',
+    'source': 'storage/resource-manager/readme.md',
     'ft': 2,
     'clientName': 'StorageManagementClient'
   },
   'storageimportexport': {
     'packageName': 'azure-arm-storageimportexport',
     'dir': 'storageImportExportManagement/lib',
-    'source': 'arm-storageimportexport/2016-11-01/swagger/storageimportexport.json',
+    'source': 'storageimportexport/resource-manager/readme.md',
     'clientName': 'StorageImportExportManagementClient'
+  },
+  'storsimple8000series': {
+    'packageName': 'azure-arm-storsimple8000series',
+    'dir': 'storsimple8000series/lib',
+    'source': 'storsimple8000series/resource-manager/readme.md'
+  },
+  'streamanalytics': {
+    'packageName': 'azure-arm-streamanalytics',
+    'dir': 'streamanalyticsManagement/lib',
+    'source': 'streamanalytics/resource-manager/readme.md'
+  },
+  'timeseriesinsights': {
+    'packageName': 'azure-arm-timeseriesinsights',
+    'dir': 'timeseriesinsightsManagement/lib',
+    'source': 'timeseriesinsights/resource-manager/readme.md'
   },
   'trafficmanager': {
     'packageName': 'azure-arm-trafficmanager',
     'dir': 'trafficManagerManagement2/lib',
-    'source': 'arm-trafficmanager/2017-03-01/swagger/trafficmanager.json',
+    'source': 'trafficmanager/resource-manager/readme.md',
     'ft': 1
   },
   'website': {
     'packageName': 'azure-arm-website',
     'dir': 'websiteManagement2/lib',
-    'source': 'arm-web/compositeWebAppClient.json',
-    'ft': 1,
-    'modeler': 'CompositeSwagger'
+    'source': 'web/resource-manager/readme.md',
+    'ft': 1
   }
 };
 
-const defaultAutoRestVersion = '1.1.0-20170704-2300-nightly --prerelease';
+const defaultAutoRestVersion = '1.2.2';
 var usingAutoRestVersion;
 const specRoot = args['spec-root'] || "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master";
 const project = args['project'];
@@ -436,23 +433,32 @@ function clearProjectBeforeGenerating(projectDir) {
 }
 
 function generateProject(project, specRoot, autoRestVersion) {
-  let currentModeler = modeler;
   let specPath = specRoot + '/' + mappings[project].source;
+  let isInputJson = mappings[project].source.endsWith("json");
   let result;
-  language = 'Azure.NodeJS'
+  const azureTemplate = 'Azure.NodeJs';
+  language = azureTemplate;
   //servicefabric wants to generate using generic NodeJS.
   if (mappings[project].language && mappings[project].language.match(/^NodeJS$/ig) !== null) {
     language = mappings[project].language;
   }
-  //default Modeler is Swagger. However, some services may want to use CompositeSwaggerModeler
-  if (mappings[project].modeler && mappings[project].modeler.match(/^CompositeSwagger$/ig) !== null) {
-    currentModeler = mappings[project].modeler;
-  }
+
   console.log(`\n>>>>>>>>>>>>>>>>>>>Start: "${project}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
   let outputDir = `lib/services/${mappings[project].dir}`;
-  let cmd = `autorest -Modeler ${currentModeler} -CodeGenerator ${language} -Input ${specPath}  -outputDirectory ${outputDir} -Header MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
-  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' -FT ' + mappings[project].ft;
-  if (mappings[project].clientName !== null && mappings[project].clientName !== undefined) cmd += ' -ClientName ' + mappings[project].clientName;
+  let packageName = mappings[project].packageName;
+  let cmd = `autorest --output-folder=${outputDir} --package-name=${packageName} --nodejs --license-header=MICROSOFT_MIT_NO_VERSION --version=${autoRestVersion}`;
+  
+  // if using azure template, pass in azure-arm argument. otherwise, get the generic template by not passing in anything.
+  if (language === azureTemplate) cmd += '  --azure-arm ';
+  if (isInputJson){
+    cmd += `  --input-file=${specPath} `;
+  }
+  else{
+    cmd += `  ${specPath} `;
+  }
+
+  if (mappings[project].ft !== null && mappings[project].ft !== undefined) cmd += ' --payload-flattening-threshold=' + mappings[project].ft;
+  if (mappings[project].clientName !== null && mappings[project].clientName !== undefined) cmd += ' --override-client-name=' + mappings[project].clientName;
   if (mappings[project].args !== undefined) {
     cmd = cmd + ' ' + args;
   }
