@@ -166,6 +166,91 @@ export type AzureEnvironmentParameters = {
 
 export class AzureEnvironment {
   /**
+   * The Environment name.
+   */
+  name: string;
+  
+    /**
+     * The management portal URL.
+     */
+    portalUrl: string;
+  
+    /**
+     * The management service endpoint.
+     */
+    managementEndpointUrl: string;
+  
+    /**
+     * The resource management endpoint.
+     */
+    resourceManagerEndpointUrl: string;
+  
+    /**
+     * The Active Directory login endpoint.
+     */
+    activeDirectoryEndpointUrl: string;
+  
+    /**
+     * The resource ID to obtain AD tokens for (token audience).
+     */
+    activeDirectoryResourceId: string;
+  
+    /**
+     * The publish settings file URL.
+     */
+    publishingProfileUrl: string;
+  
+    /**
+     * The sql server management endpoint for mobile commands.
+     */
+    sqlManagementEndpointUrl: string;
+  
+    /**
+     * The dns suffix for sql servers.
+     */
+    sqlServerHostnameSuffix: string;
+  
+    /**
+     * The template gallery endpoint.
+     */
+    galleryEndpointUrl: string;
+  
+    /**
+     * The Active Directory resource ID.
+     */
+    activeDirectoryGraphResourceId: string;
+  
+    /**
+     * The Active Directory api version.
+     */
+    activeDirectoryGraphApiVersion: string;
+  
+    /**
+     * The endpoint suffix for storage accounts.
+     */
+    storageEndpointSuffix: string;
+  
+    /**
+     * The keyvault service dns suffix.
+     */
+    keyVaultDnsSuffix: string;
+  
+    /**
+     * The data lake store filesystem service dns suffix.
+     */
+    azureDataLakeStoreFileSystemEndpointSuffix: string;
+  
+    /**
+     * The data lake analytics job and catalog service dns suffix.
+     */
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: string;
+  
+    /**
+     * Determines whether the authentication endpoint should be validated with Azure AD. Default value is true.
+     */
+    validateAuthority: boolean;
+
+  /**
    * Initializes a new instance of the AzureEnvironment class.
    * @param {string} parameters.name - The Environment name
    * @param {string} parameters.portalUrl - The management portal URL
@@ -187,6 +272,83 @@ export class AzureEnvironment {
    * be validated with Azure AD. Default value is true.
    */
   constructor(parameters: AzureEnvironmentParameters);
+
+  static readonly Azure: {
+    name: 'Azure',
+    portalUrl: 'https://portal.azure.com',
+    publishingProfileUrl: 'https://go.microsoft.com/fwlink/?LinkId=254432',
+    managementEndpointUrl: 'https://management.core.windows.net',
+    resourceManagerEndpointUrl: 'https://management.azure.com/',
+    sqlManagementEndpointUrl: 'https://management.core.windows.net:8443/',
+    sqlServerHostnameSuffix: '.database.windows.net',
+    galleryEndpointUrl: 'https://gallery.azure.com/',
+    activeDirectoryEndpointUrl: 'https://login.microsoftonline.com/',
+    activeDirectoryResourceId: 'https://management.core.windows.net/',
+    activeDirectoryGraphResourceId: 'https://graph.windows.net/',
+    activeDirectoryGraphApiVersion: '2013-04-05',
+    storageEndpointSuffix: '.core.windows.net',
+    keyVaultDnsSuffix: '.vault.azure.net',
+    azureDataLakeStoreFileSystemEndpointSuffix: 'azuredatalakestore.net',
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'azuredatalakeanalytics.net'
+  };
+
+  static readonly AzureChina: {
+    name: 'AzureChina',
+    portalUrl: 'https://portal.azure.cn',
+    publishingProfileUrl: 'https://go.microsoft.com/fwlink/?LinkID=301774',
+    managementEndpointUrl: 'https://management.core.chinacloudapi.cn',
+    resourceManagerEndpointUrl: 'https://management.chinacloudapi.cn',
+    sqlManagementEndpointUrl: 'https://management.core.chinacloudapi.cn:8443/',
+    sqlServerHostnameSuffix: '.database.chinacloudapi.cn',
+    galleryEndpointUrl: 'https://gallery.chinacloudapi.cn/',
+    activeDirectoryEndpointUrl: 'https://login.chinacloudapi.cn/',
+    activeDirectoryResourceId: 'https://management.core.chinacloudapi.cn/',
+    activeDirectoryGraphResourceId: 'https://graph.chinacloudapi.cn/',
+    activeDirectoryGraphApiVersion: '2013-04-05',
+    storageEndpointSuffix: '.core.chinacloudapi.cn',
+    keyVaultDnsSuffix: '.vault.azure.cn',
+    // TODO: add dns suffixes for the china cloud for datalake store and datalake analytics once they are defined.
+    azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
+  };
+
+  static readonly AzureUSGovernment: {
+    name: 'AzureUSGovernment',
+    portalUrl: 'https://portal.azure.us',
+    publishingProfileUrl: 'https://manage.windowsazure.us/publishsettings/index',
+    managementEndpointUrl: 'https://management.core.usgovcloudapi.net',
+    resourceManagerEndpointUrl: 'https://management.usgovcloudapi.net',
+    sqlManagementEndpointUrl: 'https://management.core.usgovcloudapi.net:8443/',
+    sqlServerHostnameSuffix: '.database.usgovcloudapi.net',
+    galleryEndpointUrl: 'https://gallery.usgovcloudapi.net/',
+    activeDirectoryEndpointUrl: 'https://login.microsoftonline.com/',
+    activeDirectoryResourceId: 'https://management.core.usgovcloudapi.net/',
+    activeDirectoryGraphResourceId: 'https://graph.windows.net/',
+    activeDirectoryGraphApiVersion: '2013-04-05',
+    storageEndpointSuffix: '.core.usgovcloudapi.net',
+    keyVaultDnsSuffix: '.vault.usgovcloudapi.net',
+    azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
+  };
+
+  static readonly AzureGermanCloud: {
+    name: 'AzureGermanCloud',
+    portalUrl: 'https://portal.microsoftazure.de/',
+    publishingProfileUrl: 'https://manage.microsoftazure.de/publishsettings/index',
+    managementEndpointUrl: 'https://management.core.cloudapi.de',
+    resourceManagerEndpointUrl: 'https://management.microsoftazure.de',
+    sqlManagementEndpointUrl: 'https://management.core.cloudapi.de:8443/',
+    sqlServerHostnameSuffix: '.database.cloudapi.de',
+    galleryEndpointUrl: 'https://gallery.cloudapi.de/',
+    activeDirectoryEndpointUrl: 'https://login.microsoftonline.de/',
+    activeDirectoryResourceId: 'https://management.core.cloudapi.de/',
+    activeDirectoryGraphResourceId: 'https://graph.cloudapi.de/',
+    activeDirectoryGraphApiVersion: '2013-04-05',
+    storageEndpointSuffix: '.core.cloudapi.de',
+    keyVaultDnsSuffix: '.vault.microsoftazure.de',
+    azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
+  };
 }
 
 export interface AzureTokenCredentialsOptions {

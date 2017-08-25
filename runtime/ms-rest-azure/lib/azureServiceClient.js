@@ -202,7 +202,7 @@ function _updateStateFromLocationHeader(method, pollingState, callback) {
     if (statusCode === 202) {
       pollingState.status = LroStates.InProgress;
     } else if (statusCode === 200 ||
-      (statusCode === 201 && method === 'PUT') ||
+      (statusCode === 201 && (method === 'PUT' || method === 'PATCH')) ||
       (statusCode === 204 && (method === 'DELETE' || method === 'POST'))) {
 
       pollingState.status = LroStates.Succeeded;
