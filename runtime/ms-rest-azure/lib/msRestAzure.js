@@ -20,3 +20,5 @@ exports.loginWithUsernamePassword = require('./login').withUsernamePassword;
 exports.loginWithUsernamePasswordWithAuthResponse = require('./login').withUsernamePasswordWithAuthResponse;
 exports.loginWithServicePrincipalSecret = require('./login').withServicePrincipalSecret;
 exports.loginWithServicePrincipalSecretWithAuthResponse = require('./login').withServicePrincipalSecretWithAuthResponse;
+exports.loginwithAuthFile = require('./login').withAuthFile;
+exports.loginWithAuthFileAuthResponse = require('./login').withAuthFileWithAuthResponse;

@@ -5,6 +5,7 @@
 
 const Constants = require('./constants');
 const uuid = require('uuid');
+const path = require('path');
 
 /**
 * Checks if a parsed URL is HTTPS
@@ -119,12 +120,20 @@ exports.objectValues = function (obj) {
 };
 
 /**
-* Generated UUID
-*
-* @return {string} RFC4122 v4 UUID.
-*/
+ * Generated UUID
+ *
+ * @return {string} RFC4122 v4 UUID.
+ */
 exports.generateUuid = function () {
   return uuid.v4();
+};
+
+/**
+ * Provides path to home directory.
+ */
+exports.homeDir = function homeDir(subDir) {
+  let baseDir = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+  return (subDir) ? path.join(baseDir, subDir) : baseDir;
 };
 
 exports = module.exports;

@@ -5,7 +5,7 @@
     "email": "azsdkteam@microsoft.com",
     "url": "https://github.com/Azure/azure-sdk-for-node"
   },
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Client Runtime for Node.js client libraries generated using AutoRest",
   "tags": [
     "node",
@@ -23,9 +23,9 @@
   "types": "./index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^7.0.10",
-    "@types/request": "^0.0.45",
-    "@types/uuid": "^2.0.29",
+    "@types/node": "^8.0.25",
+    "@types/request": "^2.0.3",
+    "@types/uuid": "^3.4.1",
     "duplexer": "~0.1.1",
     "is-buffer": "^1.1.5",
     "is-stream": "^1.1.0",
