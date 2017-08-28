@@ -17,6 +17,121 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the CertificateVerificationDescription class.
+ * @constructor
+ * The JSON-serialized leaf certificate
+ *
+ * @member {string} [certificate] base-64 representation of X509 certificate
+ * .cer file or just .pem file content.
+ *
+ */
+export interface CertificateVerificationDescription {
+  certificate?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateBodyDescription class.
+ * @constructor
+ * The JSON-serialized X509 Certificate.
+ *
+ * @member {string} [certificate] base-64 representation of the X509 leaf
+ * certificate .cer file or just .pem file content.
+ *
+ */
+export interface CertificateBodyDescription {
+  certificate?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateDescription class.
+ * @constructor
+ * The X509 Certificate.
+ *
+ * @member {string} [name] The name of the certificate.
+ *
+ * @member {string} [etag] The entity tag.
+ *
+ * @member {string} [subject] The certificate's subject name.
+ *
+ * @member {date} [expiry] The certificate's expiration date and time.
+ *
+ * @member {string} [thumbprint] The certificate's thumbprint.
+ *
+ * @member {boolean} [isVerified] Determines wether certificate has been
+ * verified.
+ *
+ * @member {date} [created] The certificate's create date and time.
+ *
+ * @member {date} [updated] The certificate's last update date and time.
+ *
+ */
+export interface CertificateDescription extends BaseResource {
+  name?: string;
+  etag?: string;
+  subject?: string;
+  expiry?: Date;
+  thumbprint?: string;
+  isVerified?: boolean;
+  created?: Date;
+  updated?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateListDescription class.
+ * @constructor
+ * The JSON-serialized array of Certificate objects.
+ *
+ * @member {array} [value] The array of Certificate objects.
+ *
+ */
+export interface CertificateListDescription {
+  value?: CertificateDescription[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CertificateWithNonceDescription class.
+ * @constructor
+ * The X509 Certificate.
+ *
+ * @member {string} [name] The name of the certificate.
+ *
+ * @member {string} [etag] The entity tag.
+ *
+ * @member {string} [subject] The certificate's subject name.
+ *
+ * @member {date} [expiry] The certificate's expiration date and time.
+ *
+ * @member {string} [thumbprint] The certificate's thumbprint.
+ *
+ * @member {boolean} [isVerified] Determines wether certificate has been
+ * verified.
+ *
+ * @member {date} [created] The certificate's create date and time.
+ *
+ * @member {date} [updated] The certificate's last update date and time.
+ *
+ * @member {string} [verificationCode] The certificate's verification code that
+ * will be used for proof of posession.
+ *
+ */
+export interface CertificateWithNonceDescription {
+  name?: string;
+  etag?: string;
+  subject?: string;
+  expiry?: Date;
+  thumbprint?: string;
+  isVerified?: boolean;
+  created?: Date;
+  updated?: Date;
+  verificationCode?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SharedAccessSignatureAuthorizationRule class.
  * @constructor
  * The properties of an IoT hub shared access policy.

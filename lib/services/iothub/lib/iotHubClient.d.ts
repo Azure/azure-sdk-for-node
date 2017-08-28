@@ -57,6 +57,7 @@ declare class IotHubClient {
 
   // Operation groups
   iotHubResource: operations.IotHubResource;
+  certificate: operations.Certificate;
 }
 
 export = IotHubClient;
