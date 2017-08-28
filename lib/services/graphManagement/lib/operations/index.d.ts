@@ -2085,6 +2085,11 @@ export interface Users {
      * when creating a new user account. It is used to associate an on-premises
      * Active Directory user account with their Azure AD user object.
      *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2124,6 +2129,11 @@ export interface Users {
      * using a federated domain for the user's userPrincipalName (UPN) property
      * when creating a new user account. It is used to associate an on-premises
      * Active Directory user account with their Azure AD user object.
+     *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2291,6 +2301,11 @@ export interface Users {
      *
      * @param {string} [parameters.mailNickname] The mail alias for the user.
      *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2325,6 +2340,11 @@ export interface Users {
      * Whether to force a password change on next login.
      *
      * @param {string} [parameters.mailNickname] The mail alias for the user.
+     *
+     * @param {string} [parameters.usageLocation] A two letter country code (ISO
+     * standard 3166). Required for users that will be assigned licenses due to
+     * legal requirement to check for availability of services in countries.
+     * Examples include: "US", "JP", and "GB".
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2534,4 +2554,123 @@ export interface Users {
     listNext(nextLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserListResult>;
     listNext(nextLink: string, callback: ServiceCallback<models.UserListResult>): void;
     listNext(nextLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserListResult>): void;
+}
+
+/**
+ * @class
+ * Domains
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the GraphRbacManagementClient.
+ */
+export interface Domains {
+
+
+    /**
+     * Gets a list of domains for the current tenant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply to the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DomainListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DomainListResult>>;
+
+    /**
+     * Gets a list of domains for the current tenant.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply to the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DomainListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DomainListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DomainListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DomainListResult>;
+    list(callback: ServiceCallback<models.DomainListResult>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DomainListResult>): void;
+
+
+    /**
+     * Gets a specific domain in the current tenant.
+     *
+     * @param {string} domainName name of the domain.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Domain>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Domain>>;
+
+    /**
+     * Gets a specific domain in the current tenant.
+     *
+     * @param {string} domainName name of the domain.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Domain} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Domain} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Domain} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(domainName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Domain>;
+    get(domainName: string, callback: ServiceCallback<models.Domain>): void;
+    get(domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Domain>): void;
 }

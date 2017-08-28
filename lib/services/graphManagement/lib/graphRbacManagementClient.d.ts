@@ -57,6 +57,7 @@ declare class GraphRbacManagementClient {
   groups: operations.Groups;
   servicePrincipals: operations.ServicePrincipals;
   users: operations.Users;
+  domains: operations.Domains;
 }
 
 export = GraphRbacManagementClient;
