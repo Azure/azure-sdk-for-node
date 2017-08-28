@@ -82,11 +82,6 @@ export interface Endpoints {
      * the parent profile to be considered available. Only applicable to endpoint
      * of type 'NestedEndpoints'.
      *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -160,11 +155,6 @@ export interface Endpoints {
      * number of endpoints that must be available in the child profile in order for
      * the parent profile to be considered available. Only applicable to endpoint
      * of type 'NestedEndpoints'.
-     *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -328,11 +318,6 @@ export interface Endpoints {
      * the parent profile to be considered available. Only applicable to endpoint
      * of type 'NestedEndpoints'.
      *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -407,11 +392,6 @@ export interface Endpoints {
      * the parent profile to be considered available. Only applicable to endpoint
      * of type 'NestedEndpoints'.
      *
-     * @param {array} [parameters.geoMapping] Gets or sets the list of
-     * countries/regions mapped to this endpoint when using the ‘Geographic’
-     * traffic routing method. Please consult Traffic Manager Geographic
-     * documentation for a full list of accepted values.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -465,11 +445,11 @@ export interface Endpoints {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<DeleteOperationResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeleteOperationResult>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a Traffic Manager endpoint.
@@ -497,7 +477,7 @@ export interface Endpoints {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {DeleteOperationResult} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -505,16 +485,15 @@ export interface Endpoints {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {DeleteOperationResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DeleteOperationResult} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeleteOperationResult>;
-    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, callback: ServiceCallback<models.DeleteOperationResult>): void;
-    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeleteOperationResult>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, endpointType: string, endpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -777,7 +756,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
      * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * 'Performance', 'Weighted', or 'Priority'.
      *
      * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
      * Traffic Manager profile.
@@ -792,9 +771,10 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
-     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
-     * long to cache DNS responses provided by this Traffic Manager profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
+     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
+     * DNS clients how long to cache DNS responses provided by this Traffic Manager
+     * profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -803,27 +783,13 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+     * protocol (HTTP or HTTPS) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
-     *
-     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
-     * the monitor interval for endpoints in this profile. This is the interval at
-     * which Traffic Manager will check the health of each endpoint in this
-     * profile.
-     *
-     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
-     * monitor timeout for endpoints in this profile. This is the time that Traffic
-     * Manager allows endpoints in this profile to response to the health check.
-     *
-     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
-     * sets the number of consecutive failed health check that Traffic Manager
-     * tolerates before declaring an endpoint in this profile Degraded after the
-     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
@@ -861,7 +827,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
      * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * 'Performance', 'Weighted', or 'Priority'.
      *
      * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
      * Traffic Manager profile.
@@ -876,9 +842,10 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
-     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
-     * long to cache DNS responses provided by this Traffic Manager profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
+     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
+     * DNS clients how long to cache DNS responses provided by this Traffic Manager
+     * profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -887,27 +854,13 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+     * protocol (HTTP or HTTPS) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
-     *
-     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
-     * the monitor interval for endpoints in this profile. This is the interval at
-     * which Traffic Manager will check the health of each endpoint in this
-     * profile.
-     *
-     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
-     * monitor timeout for endpoints in this profile. This is the time that Traffic
-     * Manager allows endpoints in this profile to response to the health check.
-     *
-     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
-     * sets the number of consecutive failed health check that Traffic Manager
-     * tolerates before declaring an endpoint in this profile Degraded after the
-     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
@@ -964,11 +917,11 @@ export interface Profiles {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<DeleteOperationResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeleteOperationResult>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a Traffic Manager profile.
@@ -991,7 +944,7 @@ export interface Profiles {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {DeleteOperationResult} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -999,16 +952,15 @@ export interface Profiles {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {DeleteOperationResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DeleteOperationResult} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeleteOperationResult>;
-    deleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.DeleteOperationResult>): void;
-    deleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeleteOperationResult>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, profileName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, profileName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1027,7 +979,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
      * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * 'Performance', 'Weighted', or 'Priority'.
      *
      * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
      * Traffic Manager profile.
@@ -1042,9 +994,10 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
-     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
-     * long to cache DNS responses provided by this Traffic Manager profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
+     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
+     * DNS clients how long to cache DNS responses provided by this Traffic Manager
+     * profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -1053,27 +1006,13 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+     * protocol (HTTP or HTTPS) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
-     *
-     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
-     * the monitor interval for endpoints in this profile. This is the interval at
-     * which Traffic Manager will check the health of each endpoint in this
-     * profile.
-     *
-     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
-     * monitor timeout for endpoints in this profile. This is the time that Traffic
-     * Manager allows endpoints in this profile to response to the health check.
-     *
-     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
-     * sets the number of consecutive failed health check that Traffic Manager
-     * tolerates before declaring an endpoint in this profile Degraded after the
-     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
@@ -1111,7 +1050,7 @@ export interface Profiles {
      *
      * @param {string} [parameters.trafficRoutingMethod] Gets or sets the traffic
      * routing method of the Traffic Manager profile.  Possible values are
-     * 'Performance', 'Weighted', 'Priority' or 'Geographic'.
+     * 'Performance', 'Weighted', or 'Priority'.
      *
      * @param {object} [parameters.dnsConfig] Gets or sets the DNS settings of the
      * Traffic Manager profile.
@@ -1126,9 +1065,10 @@ export interface Profiles {
      * concatenation of the RelativeName with the DNS domain used by Azure Traffic
      * Manager.
      *
-     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS Time-To-Live
-     * (TTL), in seconds.  This informs the local DNS resolvers and DNS clients how
-     * long to cache DNS responses provided by this Traffic Manager profile.
+     * @param {number} [parameters.dnsConfig.ttl] Gets or sets the DNS
+     * Ttime-To-Live (TTL), in seconds.  This informs the local DNS resolvers and
+     * DNS clients how long to cache DNS responses provided by this Traffic Manager
+     * profile.
      *
      * @param {object} [parameters.monitorConfig] Gets or sets the endpoint
      * monitoring settings of the Traffic Manager profile.
@@ -1137,27 +1077,13 @@ export interface Profiles {
      * the profile-level monitoring status of the Traffic Manager profile.
      *
      * @param {string} [parameters.monitorConfig.protocol] Gets or sets the
-     * protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
+     * protocol (HTTP or HTTPS) used to probe for endpoint health.
      *
      * @param {number} [parameters.monitorConfig.port] Gets or sets the TCP port
      * used to probe for endpoint health.
      *
      * @param {string} [parameters.monitorConfig.path] Gets or sets the path
      * relative to the endpoint domain name used to probe for endpoint health.
-     *
-     * @param {number} [parameters.monitorConfig.intervalInSeconds] Gets or sets
-     * the monitor interval for endpoints in this profile. This is the interval at
-     * which Traffic Manager will check the health of each endpoint in this
-     * profile.
-     *
-     * @param {number} [parameters.monitorConfig.timeoutInSeconds] Gets or sets the
-     * monitor timeout for endpoints in this profile. This is the time that Traffic
-     * Manager allows endpoints in this profile to response to the health check.
-     *
-     * @param {number} [parameters.monitorConfig.toleratedNumberOfFailures] Gets or
-     * sets the number of consecutive failed health check that Traffic Manager
-     * tolerates before declaring an endpoint in this profile Degraded after the
-     * next failed health check.
      *
      * @param {array} [parameters.endpoints] Gets or sets the list of endpoints in
      * the Traffic Manager profile.
@@ -1196,67 +1122,4 @@ export interface Profiles {
     update(resourceGroupName: string, profileName: string, parameters: models.Profile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Profile>;
     update(resourceGroupName: string, profileName: string, parameters: models.Profile, callback: ServiceCallback<models.Profile>): void;
     update(resourceGroupName: string, profileName: string, parameters: models.Profile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Profile>): void;
-}
-
-/**
- * @class
- * GeographicHierarchies
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the TrafficManagerManagementClient.
- */
-export interface GeographicHierarchies {
-
-
-    /**
-     * Gets the default Geographic Hierarchy used by the Geographic traffic routing
-     * method.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<TrafficManagerGeographicHierarchy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getDefaultWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TrafficManagerGeographicHierarchy>>;
-
-    /**
-     * Gets the default Geographic Hierarchy used by the Geographic traffic routing
-     * method.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {TrafficManagerGeographicHierarchy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {TrafficManagerGeographicHierarchy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TrafficManagerGeographicHierarchy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getDefault(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TrafficManagerGeographicHierarchy>;
-    getDefault(callback: ServiceCallback<models.TrafficManagerGeographicHierarchy>): void;
-    getDefault(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrafficManagerGeographicHierarchy>): void;
 }

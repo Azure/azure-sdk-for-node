@@ -58,7 +58,6 @@ declare class TrafficManagerManagementClient {
   // Operation groups
   endpoints: operations.Endpoints;
   profiles: operations.Profiles;
-  geographicHierarchies: operations.GeographicHierarchies;
 }
 
 export = TrafficManagerManagementClient;
