@@ -8,10 +8,37 @@
  * regenerated.
  */
 
-import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as operations from "./operations";
 
-declare class DataLakeAnalyticsJobManagementClient {
+/**
+ * DataLakeAnalyticsJobManagementClientOptions for DataLakeAnalyticsJobManagementClient.
+ */
+declare interface DataLakeAnalyticsJobManagementClientOptions extends ServiceClientOptions {
+        /**
+        * @property {string} [apiVersion] - Client Api Version.
+        */
+        apiVersion?: String;
+        /**
+        * @property {string} [adlaJobDnsSuffix] - Gets the DNS suffix used as the base for all Azure Data Lake Analytics Job service requests.
+        */
+        adlaJobDnsSuffix?: String;
+        /**
+        * @property {string} [acceptLanguage] - Gets or sets the preferred language for the response.
+        */
+        acceptLanguage?: String;
+        /**
+        * @property {number} [longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+        */
+        longRunningOperationRetryTimeout?: Number;
+        /**
+        * @property {boolean} [generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+        */
+        generateClientRequestId?: Boolean;
+    }
+
+declare class DataLakeAnalyticsJobManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DataLakeAnalyticsJobManagementClient class.
    * @constructor
@@ -39,7 +66,7 @@ declare class DataLakeAnalyticsJobManagementClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, options?: DataLakeAnalyticsJobManagementClientOptions);
 
   credentials: ServiceClientCredentials;
 

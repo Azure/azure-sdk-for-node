@@ -10,6 +10,7 @@
 
 import { BaseResource } from 'ms-rest-azure';
 import { CloudError } from 'ms-rest-azure';
+import * as moment from 'moment';
 
 export { BaseResource } from 'ms-rest-azure';
 export { CloudError } from 'ms-rest-azure';
@@ -22,7 +23,6 @@ export { CloudError } from 'ms-rest-azure';
  * The result of the request or operation.
  *
  * @member {boolean} [operationResult] the result of the operation or request.
- *
  */
 export interface FileOperationResult {
   readonly operationResult?: boolean;
@@ -36,17 +36,12 @@ export interface FileOperationResult {
  *
  * @member {array} [entries] the list of ACLSpec entries on a file or
  * directory.
- *
  * @member {string} [group] the group owner, an AAD Object ID.
- *
  * @member {string} [owner] the user owner, an AAD Object ID.
- *
  * @member {number} [permission] The octal representation of the unnamed user,
  * mask and other permissions.
- *
  * @member {boolean} [stickyBit] the indicator of whether the sticky bit is on
  * or off.
- *
  */
 export interface AclStatus {
   entries?: string[];
@@ -64,20 +59,14 @@ export interface AclStatus {
  *
  * @member {object} [aclStatus] the AclStatus object for a given file or
  * directory.
- *
  * @member {array} [aclStatus.entries] the list of ACLSpec entries on a file or
  * directory.
- *
  * @member {string} [aclStatus.group] the group owner, an AAD Object ID.
- *
  * @member {string} [aclStatus.owner] the user owner, an AAD Object ID.
- *
  * @member {number} [aclStatus.permission] The octal representation of the
  * unnamed user, mask and other permissions.
- *
  * @member {boolean} [aclStatus.stickyBit] the indicator of whether the sticky
  * bit is on or off.
- *
  */
 export interface AclStatusResult {
   aclStatus?: AclStatus;
@@ -90,13 +79,9 @@ export interface AclStatusResult {
  * Data Lake Store content summary information
  *
  * @member {number} [directoryCount] the number of directories.
- *
  * @member {number} [fileCount] the number of files.
- *
  * @member {number} [length] the number of bytes used by the content.
- *
  * @member {number} [spaceConsumed] the disk space consumed by the content.
- *
  */
 export interface ContentSummary {
   readonly directoryCount?: number;
@@ -112,17 +97,12 @@ export interface ContentSummary {
  * Data Lake Store filesystem content summary information response.
  *
  * @member {object} [contentSummary] the content summary for the specified path
- *
  * @member {number} [contentSummary.directoryCount] the number of directories.
- *
  * @member {number} [contentSummary.fileCount] the number of files.
- *
  * @member {number} [contentSummary.length] the number of bytes used by the
  * content.
- *
  * @member {number} [contentSummary.spaceConsumed] the disk space consumed by
  * the content.
- *
  */
 export interface ContentSummaryResult {
   readonly contentSummary?: ContentSummary;
@@ -135,33 +115,21 @@ export interface ContentSummaryResult {
  * Data Lake Store file or directory information.
  *
  * @member {number} [accessTime] the last access time as ticks since the epoch.
- *
  * @member {number} [blockSize] the block size for the file.
- *
  * @member {number} [childrenNum] the number of children in the directory.
- *
  * @member {number} [expirationTime] Gets the expiration time, if any, as ticks
  * since the epoch. If the value is 0 or DateTime.MaxValue there is no
  * expiration.
- *
  * @member {string} [group] the group owner.
- *
  * @member {number} [length] the number of bytes in a file.
- *
  * @member {number} [modificationTime] the modification time as ticks since the
  * epoch.
- *
  * @member {string} [owner] the user who is the owner.
- *
  * @member {string} [pathSuffix] the path suffix.
- *
  * @member {string} [permission] the permission represented as an string.
- *
  * @member {string} [type] the type of the path object. Possible values
  * include: 'FILE', 'DIRECTORY'
- *
  * @member {boolean} [aclBit] flag to indicate if extended acls are enabled
- *
  */
 export interface FileStatusProperties {
   readonly accessTime?: number;
@@ -186,7 +154,6 @@ export interface FileStatusProperties {
  *
  * @member {array} [fileStatus] the object containing the list of properties of
  * the files.
- *
  */
 export interface FileStatuses {
   readonly fileStatus?: FileStatusProperties[];
@@ -200,10 +167,8 @@ export interface FileStatuses {
  *
  * @member {object} [fileStatuses] the object representing the list of file
  * statuses.
- *
  * @member {array} [fileStatuses.fileStatus] the object containing the list of
  * properties of the files.
- *
  */
 export interface FileStatusesResult {
   readonly fileStatuses?: FileStatuses;
@@ -217,39 +182,26 @@ export interface FileStatusesResult {
  *
  * @member {object} [fileStatus] the file status object associated with the
  * specified path.
- *
  * @member {number} [fileStatus.accessTime] the last access time as ticks since
  * the epoch.
- *
  * @member {number} [fileStatus.blockSize] the block size for the file.
- *
  * @member {number} [fileStatus.childrenNum] the number of children in the
  * directory.
- *
  * @member {number} [fileStatus.expirationTime] Gets the expiration time, if
  * any, as ticks since the epoch. If the value is 0 or DateTime.MaxValue there
  * is no expiration.
- *
  * @member {string} [fileStatus.group] the group owner.
- *
  * @member {number} [fileStatus.length] the number of bytes in a file.
- *
  * @member {number} [fileStatus.modificationTime] the modification time as
  * ticks since the epoch.
- *
  * @member {string} [fileStatus.owner] the user who is the owner.
- *
  * @member {string} [fileStatus.pathSuffix] the path suffix.
- *
  * @member {string} [fileStatus.permission] the permission represented as an
  * string.
- *
  * @member {string} [fileStatus.type] the type of the path object. Possible
  * values include: 'FILE', 'DIRECTORY'
- *
  * @member {boolean} [fileStatus.aclBit] flag to indicate if extended acls are
  * enabled
- *
  */
 export interface FileStatusResult {
   readonly fileStatus?: FileStatusProperties;
@@ -264,12 +216,9 @@ export interface FileStatusResult {
  *
  * @member {string} [javaClassName] the full class package name for the
  * exception thrown, such as 'java.lang.IllegalArgumentException'.
- *
  * @member {string} [message] the message associated with the exception that
  * was thrown, such as 'Invalid value for webhdfs parameter "permission":...'.
- *
  * @member {string} exception Polymorphic Discriminator
- *
  */
 export interface AdlsRemoteException {
   readonly javaClassName?: string;
@@ -399,16 +348,12 @@ export interface AdlsThrottledException extends AdlsRemoteException {
  *
  * @member {object} [remoteException] the object representing the actual
  * WebHDFS exception being returned.
- *
  * @member {string} [remoteException.javaClassName] the full class package name
  * for the exception thrown, such as 'java.lang.IllegalArgumentException'.
- *
  * @member {string} [remoteException.message] the message associated with the
  * exception that was thrown, such as 'Invalid value for webhdfs parameter
  * "permission":...'.
- *
  * @member {string} [remoteException.exception] Polymorphic Discriminator
- *
  */
 export interface AdlsError {
   readonly remoteException?: AdlsRemoteException;
