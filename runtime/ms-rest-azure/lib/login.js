@@ -12,6 +12,7 @@ const AzureEnvironment = require('./azureEnvironment');
 const ApplicationTokenCredentials = require('./credentials/applicationTokenCredentials');
 const DeviceTokenCredentials = require('./credentials/deviceTokenCredentials');
 const UserTokenCredentials = require('./credentials/userTokenCredentials');
+const MSITokenCredentials = require('./credentials/msiTokenCredentials');
 const SubscriptionClient = require('./subscriptionManagement/subscriptionClient');
 
 // It will create a DeviceTokenCredentials object by default
@@ -276,7 +277,7 @@ exports.interactiveWithAuthResponse = function interactiveWithAuthResponse(optio
       if (err) { reject(err); }
       else {
         let authResponse = { credentials: credentials, subscriptions: subscriptions };
-        resolve(authResponse); 
+        resolve(authResponse);
       }
       return;
     });
@@ -512,7 +513,7 @@ function _foundManagementEndpointUrl(authFileUrl, envUrl) {
     throw new Error('envUrl cannot be null or undefined and must be of type string.');
   }
 
-  authFileUrl = authFileUrl.endsWith('/') ? authFileUrl.slice(0, -1) : authFileUrl;  
+  authFileUrl = authFileUrl.endsWith('/') ? authFileUrl.slice(0, -1) : authFileUrl;
   envUrl = envUrl.endsWith('/') ? envUrl.slice(0, -1) : envUrl;
   return (authFileUrl.toLowerCase() === envUrl.toLowerCase());
 }
@@ -545,16 +546,16 @@ function _withAuthFile(options, callback) {
     return callback(new Error(msg));
   }
   //expand ~ to user's home directory.
-  if(filePath.startsWith('~')) {
+  if (filePath.startsWith('~')) {
     filePath = msRest.homeDir(filePath.slice(1));
   }
 
   let content = null, credsObj = {}, optionsForSpSecret = {};
   try {
-    content = fs.readFileSync(filePath, {encoding: 'utf8'});
+    content = fs.readFileSync(filePath, { encoding: 'utf8' });
     credsObj = JSON.parse(content);
     _validateAuthFileContent(credsObj, filePath);
-  } catch(err) {
+  } catch (err) {
     return callback(err);
   }
 
@@ -564,15 +565,15 @@ function _withAuthFile(options, callback) {
   //setting the subscriptionId from auth file to the environment variable
   process.env[subscriptionEnvVariableName] = credsObj.subscriptionId;
   //get the AzureEnvironment or create a new AzureEnvironment based on the info provided in the auth file
-  let envFound = { 
+  let envFound = {
     name: ''
   };
   let envNames = Object.keys(Object.getPrototypeOf(AzureEnvironment)).slice(1);
-  for(let i = 0; i < envNames.length; i++) {
+  for (let i = 0; i < envNames.length; i++) {
     let env = envNames[i];
     let environmentObj = AzureEnvironment[env];
-    if (environmentObj && 
-      environmentObj.managementEndpointUrl && 
+    if (environmentObj &&
+      environmentObj.managementEndpointUrl &&
       _foundManagementEndpointUrl(credsObj.managementEndpointUrl, environmentObj.managementEndpointUrl)) {
       envFound.name = environmentObj.name;
       break;
@@ -694,6 +695,38 @@ exports.withAuthFileWithAuthResponse = function withAuthFileWithAuthResponse(opt
       return;
     });
   });
+};
+
+function _withMSI(domain, options, callback) {
+  if (!callback) {
+    throw new Error('callback cannot be null or undefined.');
+  }
+  const creds = new MSITokenCredentials(domain, options)
+  creds.getToken(function (err) {
+    if (err) return callback(err);
+    return callback(null, creds);
+  });
+}
+
+exports.withMSI = function withMSI(domain, options, optionalCallback) {
+  if (!Boolean(domain) || typeof domain.valueOf() !== 'string') {
+    throw new Error('domain must be a non empty string.');
+  }
+  if (!optionalCallback && typeof options === 'function') {
+    optionalCallback = options;
+    options = {};
+  }
+  if (!optionalCallback) {
+    return new Promise((resolve, reject) => {
+      _withMSI(domain, options, (err, credentials) => {
+        if (err) { reject(err); }
+        else { resolve(credentials); }
+        return;
+      });
+    });
+  } else {
+    return _withMSI(options, optionalCallback);
+  }
 };
 
 exports = module.exports;
