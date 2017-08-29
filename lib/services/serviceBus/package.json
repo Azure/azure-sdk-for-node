@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Kulshrestha, Ankur <ankurkul@microsoft.com>"
   ],
-  "version": "0.10.4",
+  "version": "0.10.5",
   "description": "Microsoft Azure Service Bus Service Library for node",
   "tags": [
     "azure",
