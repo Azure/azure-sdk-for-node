@@ -39,7 +39,7 @@ class MSITokenCredentials {
   }
 
   /**
-   * Tries to get the token from cache initially. If that is unsuccessfull then it tries to get the token from ADAL.
+   * Prepares and sends a POST request to a service endpoint hosted on the Azure VM, which responds with the access token.
    * @param  {function} callback  The callback in the form (err, result)
    * @return {function} callback
    *                       {Error} [err]  The error if any
