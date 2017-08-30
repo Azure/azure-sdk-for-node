@@ -22,3 +22,4 @@ exports.loginWithServicePrincipalSecret = require('./login').withServicePrincipa
 exports.loginWithServicePrincipalSecretWithAuthResponse = require('./login').withServicePrincipalSecretWithAuthResponse;
 exports.loginwithAuthFile = require('./login').withAuthFile;
 exports.loginWithAuthFileAuthResponse = require('./login').withAuthFileWithAuthResponse;
+exports.loginWithMSI = require('./login').withMSI;
