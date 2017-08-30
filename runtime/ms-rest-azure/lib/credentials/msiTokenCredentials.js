@@ -1,9 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information. 
 
+// jshint ignore: start
+// Note that this file is jshint clean except for properties inside token response 
+// which are not camel cased and they are issued by the MSI service, 
+// we do not control the shape of the response object.
+
 'use strict';
 const request = require('request');
-const Constants = require('ms-rest').Constants;
 
 class MSITokenCredentials {
   constructor(domain, options) {
@@ -23,7 +27,7 @@ class MSITokenCredentials {
     }
 
     if (!options.resource) {
-      options.resource = "https://management.azure.com";
+      options.resource = 'https://management.azure.com';
     } else if (typeof options.resource.valueOf() !== 'string') {
       throw new Error('resource must be a uri.');
     }
@@ -31,7 +35,7 @@ class MSITokenCredentials {
     this.domain = domain;
     this.port = options.port;
     this.resource = options.resource;
-    this.aad_endpoint = "https://login.microsoftonline.com";
+    this.aadEndpoint = 'https://login.microsoftonline.com';
   }
 
   /**
@@ -65,16 +69,16 @@ class MSITokenCredentials {
 
   prepareRequestOptions() {
     const resource = encodeURIComponent(this.resource);
-    const aad_endpoint = encodeURIComponent(this.aad_endpoint);
-    const forward_slash = encodeURIComponent("/");
+    const aadEndpoint = encodeURIComponent(this.aadEndpoint);
+    const forwardSlash = encodeURIComponent('/');
     let reqOptions = {
       headers: {},
-      body: ""
+      body: ''
     };
 
     reqOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     reqOptions.headers['Metadata'] = 'true';
-    reqOptions.body = `authority=${aad_endpoint}${forward_slash}${this.domain}&resource=${resource}`;
+    reqOptions.body = `authority=${aadEndpoint}${forwardSlash}${this.domain}&resource=${resource}`;
 
     return reqOptions;
   }

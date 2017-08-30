@@ -701,7 +701,7 @@ function _withMSI(domain, options, callback) {
   if (!callback) {
     throw new Error('callback cannot be null or undefined.');
   }
-  const creds = new MSITokenCredentials(domain, options)
+  const creds = new MSITokenCredentials(domain, options);
   creds.getToken(function (err) {
     if (err) return callback(err);
     return callback(null, creds);
