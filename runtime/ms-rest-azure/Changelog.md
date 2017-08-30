@@ -1,6 +1,7 @@
 ### 2.3.0
-- Added support to authenticate using service principal from auth file.
+- Added support to authenticate using service principal from auth file. #2225
 - Added support for polling PATCH operation with 201 initial response.
+- Added support for authenticating via MSI on an Azure VM with managed identity #2224
 - Fixed issues #2245, #2247
 
 ### 2.2.3 (7/14/2017)
